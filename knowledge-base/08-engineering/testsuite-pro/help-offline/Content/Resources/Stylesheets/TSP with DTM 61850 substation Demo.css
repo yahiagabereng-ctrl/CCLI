@@ -1,0 +1,338 @@
+/*<meta />*/
+
+/*<meta sourceDocument="C:\Users\rfarrow\Desktop\TSP with DTM 61850 substation Demo.docx" />*/
+
+p
+{
+	margin-bottom: 8pt;
+	font-size: 11pt;
+	margin-top: 0pt;
+}
+
+ol
+{
+	margin-bottom: 8pt;
+	font-size: 11pt;
+	margin-top: 0pt;
+}
+
+ul
+{
+	margin-bottom: 8pt;
+	font-size: 11pt;
+	margin-top: 0pt;
+}
+
+li
+{
+	margin-bottom: 8pt;
+	font-size: 11pt;
+	margin-top: 0pt;
+}
+
+td
+{
+	margin-bottom: 8pt;
+	font-size: 11pt;
+	vertical-align: top;
+}
+
+p.Title
+{
+	margin-bottom: 0pt;
+	letter-spacing: -1pt;
+	font-size: 28pt;
+}
+
+h1.Heading1
+{
+	page-break-after: avoid;
+	page-break-inside: avoid;
+	margin-top: 12pt;
+	margin-bottom: 0pt;
+	mc-heading-level: 1;
+	color: #2F5496;
+	font-size: 16pt;
+	font-weight: normal;
+}
+
+span.span_1
+{
+	margin-right: 0pt;
+	font-family: 'Calibri Light';
+}
+
+span.span_2
+{
+	color: #000000;
+}
+
+img.img_1
+{
+	mso-wrap-distance-bottom: 0;
+	mso-wrap-distance-left: 0;
+	mso-wrap-distance-right: 0;
+	mso-wrap-distance-top: 0;
+	width: 605px;
+	height: 29px;
+}
+
+img.img_2
+{
+	mso-wrap-distance-bottom: 0;
+	mso-wrap-distance-left: 0;
+	mso-wrap-distance-right: 0;
+	mso-wrap-distance-top: 0;
+	width: 605px;
+	height: 219px;
+}
+
+img.img_3
+{
+	mso-wrap-distance-bottom: 0;
+	mso-wrap-distance-left: 0;
+	mso-wrap-distance-right: 0;
+	mso-wrap-distance-top: 0;
+	width: 461px;
+	height: 97px;
+}
+
+img.img_4
+{
+	mso-wrap-distance-bottom: 0;
+	mso-wrap-distance-left: 0;
+	mso-wrap-distance-right: 0;
+	mso-wrap-distance-top: 0;
+	width: 605px;
+	height: 327px;
+}
+
+img.img_5
+{
+	mso-wrap-distance-bottom: 0;
+	mso-wrap-distance-left: 0;
+	mso-wrap-distance-right: 0;
+	mso-wrap-distance-top: 0;
+	width: 605px;
+	height: 104px;
+}
+
+img.img_6
+{
+	mso-wrap-distance-bottom: 0;
+	mso-wrap-distance-left: 0;
+	mso-wrap-distance-right: 0;
+	mso-wrap-distance-top: 0;
+	width: 578px;
+	height: 121px;
+}
+
+img.img_7
+{
+	mso-wrap-distance-bottom: 0;
+	mso-wrap-distance-left: 0;
+	mso-wrap-distance-right: 0;
+	mso-wrap-distance-top: 0;
+	width: 605px;
+	height: 341px;
+}
+
+img.img_8
+{
+	mso-wrap-distance-bottom: 0;
+	mso-wrap-distance-left: 0;
+	mso-wrap-distance-right: 0;
+	mso-wrap-distance-top: 0;
+	width: 605px;
+	height: 291px;
+}
+
+img.img_9
+{
+	mso-wrap-distance-bottom: 0;
+	mso-wrap-distance-left: 0;
+	mso-wrap-distance-right: 0;
+	mso-wrap-distance-top: 0;
+	width: 605px;
+	height: 453px;
+}
+
+img.img_10
+{
+	mso-wrap-distance-bottom: 0;
+	mso-wrap-distance-left: 0;
+	mso-wrap-distance-right: 0;
+	mso-wrap-distance-top: 0;
+	width: 605px;
+	height: 417px;
+}
+
+img.img_11
+{
+	mso-wrap-distance-bottom: 0;
+	mso-wrap-distance-left: 0;
+	mso-wrap-distance-right: 0;
+	mso-wrap-distance-top: 0;
+	width: 605px;
+	height: 420px;
+}
+
+img.img_12
+{
+	mso-wrap-distance-bottom: 0;
+	mso-wrap-distance-left: 0;
+	mso-wrap-distance-right: 0;
+	mso-wrap-distance-top: 0;
+	width: 605px;
+	height: 48px;
+}
+
+img.img_13
+{
+	mso-wrap-distance-bottom: 0;
+	mso-wrap-distance-left: 0;
+	mso-wrap-distance-right: 0;
+	mso-wrap-distance-top: 0;
+	width: 282px;
+	height: 82px;
+}
+
+img.img_14
+{
+	mso-wrap-distance-bottom: 0;
+	mso-wrap-distance-left: 0;
+	mso-wrap-distance-right: 0;
+	mso-wrap-distance-top: 0;
+	width: 605px;
+	height: 454px;
+}
+
+p.ListParagraph
+{
+	margin-bottom: 8pt;
+	font-size: 11pt;
+}
+
+li.ListParagraph
+{
+	margin-bottom: 8pt;
+	font-size: 11pt;
+}
+
+img.img_15
+{
+	mso-wrap-distance-bottom: 0;
+	mso-wrap-distance-left: 0;
+	mso-wrap-distance-right: 0;
+	mso-wrap-distance-top: 0;
+	width: 291px;
+	height: 491px;
+}
+
+ul.ul_1
+{
+	padding-left: 0px;
+	list-style-type: square;
+	margin-left: 36pt;
+}
+
+img.img_16
+{
+	mso-wrap-distance-bottom: 0;
+	mso-wrap-distance-left: 0;
+	mso-wrap-distance-right: 0;
+	mso-wrap-distance-top: 0;
+	width: 208px;
+	height: 435px;
+}
+
+img.img_17
+{
+	mso-wrap-distance-bottom: 0;
+	mso-wrap-distance-left: 0;
+	mso-wrap-distance-right: 0;
+	mso-wrap-distance-top: 0;
+	width: 605px;
+	height: 297px;
+}
+
+img.img_18
+{
+	mso-wrap-distance-bottom: 0;
+	mso-wrap-distance-left: 0;
+	mso-wrap-distance-right: 0;
+	mso-wrap-distance-top: 0;
+	width: 605px;
+	height: 340px;
+}
+
+img.img_19
+{
+	mso-wrap-distance-bottom: 0;
+	mso-wrap-distance-left: 0;
+	mso-wrap-distance-right: 0;
+	mso-wrap-distance-top: 0;
+	width: 605px;
+	height: 369px;
+}
+
+img.img_20
+{
+	mso-wrap-distance-bottom: 0;
+	mso-wrap-distance-left: 0;
+	mso-wrap-distance-right: 0;
+	mso-wrap-distance-top: 0;
+	width: 605px;
+	height: 392px;
+}
+
+img.img_21
+{
+	mso-wrap-distance-bottom: 0;
+	mso-wrap-distance-left: 0;
+	mso-wrap-distance-right: 0;
+	mso-wrap-distance-top: 0;
+	width: 493px;
+	height: 292px;
+}
+
+img.img_22
+{
+	mso-wrap-distance-bottom: 0;
+	mso-wrap-distance-left: 0;
+	mso-wrap-distance-right: 0;
+	mso-wrap-distance-top: 0;
+	width: 428px;
+	height: 302px;
+}
+
+img.img_23
+{
+	mso-wrap-distance-bottom: 0;
+	mso-wrap-distance-left: 0;
+	mso-wrap-distance-right: 0;
+	mso-wrap-distance-top: 0;
+	width: 228px;
+	height: 315px;
+}
+
+img.img_24
+{
+	mso-wrap-distance-bottom: 0;
+	mso-wrap-distance-left: 0;
+	mso-wrap-distance-right: 0;
+	mso-wrap-distance-top: 0;
+	width: 605px;
+	height: 147px;
+}
+
+img.img_25
+{
+	mso-wrap-distance-bottom: 0;
+	mso-wrap-distance-left: 0;
+	mso-wrap-distance-right: 0;
+	mso-wrap-distance-top: 0;
+	width: 605px;
+	height: 425px;
+}
+

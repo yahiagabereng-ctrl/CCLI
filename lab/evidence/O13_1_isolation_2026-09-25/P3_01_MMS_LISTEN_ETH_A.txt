@@ -1,0 +1,54 @@
+===== P3 Step 4 — MMS listen Eth_A (P3-01) =====
+Date: 2026-09-25
+DUT: TG544 / TR500 · OpenWrt
+Clause: T.1 / T.3 · REQ-61850-001 · P3-01
+
+BUILD
+-----
+libiec61850 v1.6.0 (third_party/libiec61850) static-linked into ccli
+Package: ccli-0.1.0-r5.apk (OpenWrt SDK mediatek/filogic aarch64)
+Runtime model: dynamic MVP matching signal_map.yaml
+  IED CCI016_01 / LD_Plant / WlimDWMX1 / PdCMMXU1 / urcb_PdC_Mis4sec intgPd=4000
+Config: /etc/ccli/lab.yaml
+  mms.enabled: true
+  mms.bind_address: 192.168.10.1
+  mms.tcp_port: 102
+
+DEPLOY
+------
+PC on LAN1 → SSH/SCP root@192.168.10.1
+apk add ccli-0.1.0-r5 (init CRLF issue — started manually for lab)
+/usr/sbin/ccli --config /etc/ccli/lab.yaml
+
+DEVICE EVIDENCE
+---------------
+log: mms: listening on 192.168.10.1:102 (IED CCI016_01 / LD_Plant)
+
+netstat -lntp:
+  tcp  0  0  192.168.10.1:102  0.0.0.0:*  LISTEN  ccli
+
+PC EVIDENCE
+-----------
+Test-NetConnection 192.168.10.1 -Port 102 → TcpTestSucceeded = True
+
+PASS RULE (P3-01)
+-----------------
+[x] MMS TCP 102 listening
+[x] Bind address = Eth_A / LAN1 192.168.10.1 only (not 0.0.0.0)
+[x] Reachable from DSO-role PC on LAN1
+
+NOT YET (later steps)
+---------------------
+P3-02 full CID file load via genconfig (Java) — dynamic MVP only
+P3-03 client sees 4 s TotW reports
+P3-04 Wlim SBO → PF2 actuator
+P3-06 TLS
+
+NOTE
+----
+Disable TesPro LuCI "IEC 61850 Protocol" if it grabs :102 (client/gateway — not used for Annex T).
+procd /etc/init.d/ccli still has CRLF risk from Windows — sed strip before enable.
+
+P3-01 = PASS (lab)
+
+===== END =====

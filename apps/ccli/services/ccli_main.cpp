@@ -1,0 +1,657 @@
+#include "svc_iec104.hpp"
+#include "svc_mms.hpp"
+#include "svc_modbus.hpp"
+#include "svc_pf2.hpp"
+#include "svc_io.h"
+
+#include "cci/hal/platform.hpp"
+#include "cci/hal/time.hpp"
+#include "config/ccli_config.hpp"
+#include "dso/dso_phase1.hpp"
+#include "drv_gpio.h"
+#include "policy/net_policy.hpp"
+#include "regulation/regulation_bench.hpp"
+#include "version/ccli_version.hpp"
+
+#include "modbus_adapter.hpp"
+
+#include <algorithm>
+#include <atomic>
+#include <cmath>
+#include <csignal>
+#include <cstdint>
+#include <fstream>
+#include <iostream>
+#include <sstream>
+#include <string>
+#include <unistd.h>
+
+namespace {
+
+constexpr const char* kBenchStatusPath = "/var/run/ccli-status.json";
+
+std::string quality_string(const cci::core::DataQuality q) {
+    switch (q) {
+        case cci::core::DataQuality::Good:
+            return "good";
+        case cci::core::DataQuality::Stale:
+            return "stale";
+        default:
+            return "invalid";
+    }
+}
+
+void write_bench_status_file(const std::string& path, const cci::core::CcliConfig& cfg,
+                             const cci::core::Measurement& m, const cci::core::Pf2State& pf2_st,
+                             const bool curtailment_commanded, const bool permissive_ok,
+                             const bool do_curtail_on,
+                             const cci::core::dso::DsoPhase1ApplyResult& dso_apply) {
+    std::ofstream out(path, std::ios::trunc);
+    if (!out) {
+        return;
+    }
+    const auto& d = dso_apply.derived;
+    out << "{\n"
+        << "  \"ts_ms\": " << m.timestamp_ms << ",\n"
+        << "  \"p_kw\": " << m.p_kw << ",\n"
+        << "  \"quality\": \"" << quality_string(m.quality) << "\",\n"
+        << "  \"pf2_reason\": \"" << pf2_st.reason << "\",\n"
+        << "  \"curtailment_commanded\": " << (curtailment_commanded ? "true" : "false")
+        << ",\n"
+        << "  \"permissive_ok\": " << (permissive_ok ? "true" : "false") << ",\n"
+        << "  \"do_curtail_on\": " << (do_curtail_on ? "true" : "false") << ",\n"
+        << "  \"dso_applied\": " << (dso_apply.applied ? "true" : "false") << ",\n"
+        << "  \"derived\": {\n"
+        << "    \"smax_calc_kva\": " << d.smax_kva_calc << ",\n"
+        << "    \"smax_used_kva\": " << d.smax_kva_used << ",\n"
+        << "    \"p_wsd_kw\": " << d.p_wsd_kw << ",\n"
+        << "    \"p_wlim_kw\": " << d.p_wlim_kw << ",\n"
+        << "    \"p_w110_kw\": " << d.p_w110_kw << ",\n"
+        << "    \"p_effective_kw\": " << d.p_effective_export_kw << ",\n"
+        << "    \"pf2_enter_kw\": " << dso_apply.pf2_threshold_kw << ",\n"
+        << "    \"pf2_release_kw\": " << dso_apply.pf2_release_kw << "\n"
+        << "  },\n"
+        << "  \"pf2_debounce_s\": " << cfg.pf2.debounce_s << ",\n"
+        << "  \"stale_data_s\": " << cfg.pf2.stale_data_s << "\n"
+        << "}\n";
+}
+
+int run_bench_status_json() {
+    std::ifstream in(kBenchStatusPath);
+    if (!in) {
+        std::cout << "{\"error\":\"ccli not running or status file missing\","
+                     "\"path\":\""
+                  << kBenchStatusPath << "\"}\n";
+        return 1;
+    }
+    std::cout << in.rdbuf();
+    return 0;
+}
+
+int run_bench_write_config(const std::string& path) {
+    std::ostringstream buf;
+    buf << std::cin.rdbuf();
+    const std::string yaml = buf.str();
+    if (yaml.size() < 20) {
+        std::cerr << "bench-write-config: empty or too short\n";
+        return 1;
+    }
+    std::ofstream out(path, std::ios::trunc);
+    if (!out) {
+        std::cerr << "bench-write-config: cannot write " << path << "\n";
+        return 1;
+    }
+    out << yaml;
+    std::cout << "{\"ok\":true,\"path\":\"" << path << "\",\"bytes\":" << yaml.size() << "}\n";
+    return 0;
+}
+
+std::atomic<bool> g_running{true};
+
+void on_signal(int) {
+    g_running = false;
+}
+
+void print_usage() {
+    std::cout << "ccli — CCI lab application (PF2 / Modbus / MMS scaffold)\n"
+              << "Usage: ccli [--config PATH] [--version] [--version-json]\n"
+              << "       ccli --gpio-test     Toggle DO5 / read DI27 (lab wiring check)\n"
+              << "       ccli --gpio-blink N  Blink DO N times at start (relay wiring check)\n"
+              << "       ccli --lab-demo      Ramp sim power to exercise PF2 -> DO5\n"
+              << "       ccli --regulation-check [--live] [--live-watch SEC] [--json]\n"
+              << "       ccli --bench-status --json   Read /var/run/ccli-status.json (daemon)\n"
+              << "       ccli --bench-write-config PATH   Write lab yaml from stdin (lab UI)\n";
+}
+
+cci::core::regulation::ModbusLiveTrace modbus_trace_from(
+    const cci::adapters::ModbusExchangeRecord& ex) {
+    cci::core::regulation::ModbusLiveTrace t{};
+    if (!ex.valid) {
+        return t;
+    }
+    t.valid = true;
+    t.function_code = ex.function_code;
+    t.slave_id = ex.slave_id;
+    t.reg_start = ex.reg_start;
+    t.reg_count = ex.reg_count;
+    t.raw_regs_hex = ex.raw_regs_hex;
+    t.p_kw = ex.p_kw;
+    t.q_kvar = ex.q_kvar;
+    t.success = ex.success;
+    t.error = ex.error;
+    t.exchange_ms = ex.exchange_ms;
+    t.backend = ex.backend_label;
+    std::ostringstream cmd;
+    cmd << "FC" << t.function_code << " ReadHoldingRegisters"
+        << " unit=" << t.slave_id << " addr=" << (40001 + t.reg_start) << " qty=" << t.reg_count
+        << " -> P=" << ex.p_kw << "kW Q=" << ex.q_kvar << "kvar";
+    if (!ex.success) {
+        cmd << " ERR=" << ex.error;
+    }
+    t.command = cmd.str();
+    return t;
+}
+
+void capture_modbus_log(const cci::adapters::ModbusExchangeRecord& ex,
+                        std::vector<cci::core::regulation::ModbusLiveTrace>& log,
+                        std::int64_t& last_logged_ms) {
+    if (!ex.valid || ex.exchange_ms == 0 || ex.exchange_ms == last_logged_ms) {
+        return;
+    }
+    last_logged_ms = ex.exchange_ms;
+    log.push_back(modbus_trace_from(ex));
+}
+
+int run_regulation_check(const std::string& config_path, bool live, bool json_out,
+                         int live_watch_sec) {
+    if (!cci::hal::platform_init()) {
+        std::cerr << "regulation-check: platform_init failed\n";
+        return 1;
+    }
+
+    const cci::core::CcliConfig app_cfg = cci::core::load_config(config_path);
+    cci::core::regulation::RegulationReport report =
+        cci::core::regulation::build_regulation_report(app_cfg, config_path);
+
+    if (live) {
+        cci::core::regulation::LiveSnapshot snap{};
+        snap.valid = true;
+        snap.permissive_bypass = app_cfg.permissive_bypass;
+
+        DrvGpioConfig gcfg{};
+        gcfg.outputs[DRVGPIO__OUT__CURTAIL].line = app_cfg.do_curtail.gpio;
+        gcfg.outputs[DRVGPIO__OUT__CURTAIL].active_high = app_cfg.do_curtail.active_high;
+        gcfg.inputs[DRVGPIO__IN__PERMISSIVE].line = app_cfg.di_permissive.gpio;
+        gcfg.inputs[DRVGPIO__IN__PERMISSIVE].active_high = app_cfg.di_permissive.active_high;
+
+        if (svc_io_init_cfg(&gcfg)) {
+            cci::core::MeasurementStore measurements;
+            cci::core::EventRing events;
+            cci::services::ModbusService modbus(measurements, app_cfg);
+            cci::core::Pf2Config pf2_cfg = app_cfg.pf2;
+            const auto dso_apply =
+                cci::core::dso::apply_dso_to_pf2_config(pf2_cfg, app_cfg.plant, app_cfg.dso);
+            cci::services::Pf2Service pf2(measurements, events, pf2_cfg);
+
+            snap.p_effective_export_kw = dso_apply.derived.p_effective_export_kw;
+            snap.pf2_enter_kw = pf2_cfg.threshold_kw;
+            snap.pf2_release_kw = pf2_cfg.release_threshold_kw;
+            snap.modbus_poll_ms = app_cfg.modbus.poll_ms;
+
+            std::int64_t last_logged_ms = -1;
+            const int default_watch =
+                std::max(4, (app_cfg.modbus.poll_ms + 999) / 1000);
+            const int watch_s = live_watch_sec > 0 ? live_watch_sec : default_watch;
+            const int step_ms = 100;
+            const int iterations = (watch_s * 1000) / step_ms;
+
+            for (int i = 0; i < iterations; ++i) {
+                modbus.tick();
+                pf2.tick();
+                capture_modbus_log(modbus.last_exchange(), snap.modbus_log, last_logged_ms);
+                usleep(static_cast<useconds_t>(step_ms * 1000));
+            }
+
+            const cci::core::Measurement m = measurements.snapshot();
+            snap.p_kw = m.p_kw;
+            snap.quality = m.quality;
+            snap.pf2_state = pf2.last_state();
+            snap.curtailment_commanded = pf2.curtailment_active();
+            snap.modbus_last = modbus_trace_from(modbus.last_exchange());
+            snap.modbus_timeout_count = modbus.timeout_count();
+
+            bool perm = false;
+            if (app_cfg.permissive_bypass) {
+                snap.permissive_ok = true;
+            } else {
+                (void)svc_io_read_permissive(&perm);
+                snap.permissive_ok = perm;
+            }
+            snap.do_curtail_on = snap.curtailment_commanded && snap.permissive_ok;
+            svc_io_shutdown();
+        } else {
+            std::cerr << "regulation-check: svc_io_init failed (live IO skipped)\n";
+        }
+
+        cci::core::regulation::apply_live_snapshot(report, snap, app_cfg);
+    }
+
+    if (json_out) {
+        cci::core::regulation::print_regulation_report_json(report, std::cout);
+    } else {
+        cci::core::regulation::print_regulation_report_text(report, std::cout);
+    }
+    return 0;
+}
+
+void gpio_blink_curtail(int count) {
+    std::cerr << "gpio-blink: " << count << " cycles on DO (active-low relay: LOW=click)\n";
+    for (int i = 0; i < count && g_running; ++i) {
+        if (!svc_io_apply_curtailment(true)) {
+            std::cerr << "gpio-blink: apply_curtailment(true) failed\n";
+            return;
+        }
+        usleep(400000);
+        if (!svc_io_apply_curtailment(false)) {
+            std::cerr << "gpio-blink: apply_curtailment(false) failed\n";
+            return;
+        }
+        usleep(400000);
+    }
+    std::cerr << "gpio-blink: done\n";
+}
+
+int run_gpio_test() {
+    if (!cci::hal::platform_init()) {
+        std::cerr << "platform_init failed\n";
+        return 1;
+    }
+    if (!svc_io_init()) {
+        std::cerr << "svc_io_init failed\n";
+        return 1;
+    }
+
+    std::signal(SIGTERM, on_signal);
+    std::signal(SIGINT, on_signal);
+
+    std::cerr << "gpio-test: toggling curtail DO every 1s; reading permissive DI\n";
+
+    bool on = false;
+    while (g_running) {
+        on = !on;
+        if (!svc_io_apply_curtailment(on)) {
+            std::cerr << "gpio-test: apply_curtailment failed\n";
+            return 1;
+        }
+        bool permissive = false;
+        if (!svc_io_read_permissive(&permissive)) {
+            std::cerr << "gpio-test: read_permissive failed\n";
+            return 1;
+        }
+        svc_io_log_status(on, permissive);
+        usleep(1000000);
+    }
+
+    svc_io_shutdown();
+    return 0;
+}
+
+}  // namespace
+
+int main(int argc, char** argv) {
+    std::string config_path = "config/lab_pi.yaml";
+    bool gpio_test = false;
+    bool lab_demo = false;
+    bool regulation_check = false;
+    bool regulation_live = false;
+    bool regulation_json = false;
+    int live_watch_sec = 0;
+    bool bench_status = false;
+    bool bench_write_config = false;
+    int gpio_blink = 0;
+
+    for (int i = 1; i < argc; ++i) {
+        const std::string arg = argv[i];
+        if (arg == "--version") {
+            cci::core::version::print_text(std::cout);
+            return 0;
+        }
+        if (arg == "--version-json") {
+            cci::core::version::print_json(std::cout);
+            return 0;
+        }
+        if (arg == "--help" || arg == "-h") {
+            print_usage();
+            return 0;
+        }
+        if (arg == "--regulation-check") {
+            regulation_check = true;
+            continue;
+        }
+        if (arg == "--live") {
+            regulation_live = true;
+            continue;
+        }
+        if (arg == "--json") {
+            regulation_json = true;
+            continue;
+        }
+        if (arg == "--live-watch" && i + 1 < argc) {
+            try {
+                live_watch_sec = std::stoi(argv[++i]);
+            } catch (const std::exception&) {
+                live_watch_sec = 0;
+            }
+            if (live_watch_sec < 0) {
+                live_watch_sec = 0;
+            }
+            continue;
+        }
+        if (arg == "--gpio-test") {
+            gpio_test = true;
+            continue;
+        }
+        if (arg == "--lab-demo") {
+            lab_demo = true;
+            continue;
+        }
+        if (arg == "--gpio-blink" && i + 1 < argc) {
+            try {
+                gpio_blink = std::stoi(argv[++i]);
+            } catch (const std::exception&) {
+                std::cerr << "ccli: invalid --gpio-blink value, ignoring\n";
+                gpio_blink = 0;
+            }
+            if (gpio_blink < 0) {
+                gpio_blink = 0;
+            }
+            continue;
+        }
+        if (arg == "--bench-status") {
+            bench_status = true;
+            continue;
+        }
+        if (arg == "--bench-write-config" && i + 1 < argc) {
+            bench_write_config = true;
+            config_path = argv[++i];
+            continue;
+        }
+        if (arg == "--config" && i + 1 < argc) {
+            config_path = argv[++i];
+            continue;
+        }
+    }
+
+    if (bench_status) {
+        return run_bench_status_json();
+    }
+    if (bench_write_config) {
+        return run_bench_write_config(config_path);
+    }
+    if (regulation_check) {
+        return run_regulation_check(config_path, regulation_live, regulation_json, live_watch_sec);
+    }
+
+    if (gpio_test) {
+        return run_gpio_test();
+    }
+
+    if (!cci::hal::platform_init()) {
+        std::cerr << "platform_init failed\n";
+        return 1;
+    }
+
+    const auto policy = cci::core::lab_segmentation_policy();
+    (void)policy;
+
+    // Load runtime configuration (PF2 thresholds + GPIO map) from the deployed
+    // YAML. Falls back to safe compiled defaults if the file is missing.
+    cci::core::CcliConfig app_cfg = cci::core::load_config(config_path);
+    if (lab_demo) {
+        app_cfg.modbus.backend = cci::core::ModbusBackendKind::Simulator;
+    }
+    std::cout << "ccli config " << (app_cfg.loaded_from_file ? "loaded from " : "defaults (no ")
+              << config_path << (app_cfg.loaded_from_file ? "" : ")") << '\n';
+
+    DrvGpioConfig gcfg{};
+    gcfg.outputs[DRVGPIO__OUT__CURTAIL].line = app_cfg.do_curtail.gpio;
+    gcfg.outputs[DRVGPIO__OUT__CURTAIL].active_high = app_cfg.do_curtail.active_high;
+    gcfg.inputs[DRVGPIO__IN__PERMISSIVE].line = app_cfg.di_permissive.gpio;
+    gcfg.inputs[DRVGPIO__IN__PERMISSIVE].active_high = app_cfg.di_permissive.active_high;
+
+    // DI/DO stack: initialize to safe state (all outputs de-energized) before
+    // any protocol activity. IEC 62443-4-2 CR 3.6 direction.
+    if (!svc_io_init_cfg(&gcfg)) {
+        std::cerr << "svc_io_init failed\n";
+        return 1;
+    }
+
+    if (app_cfg.permissive_bypass) {
+        std::cerr << "io: WARNING permissive_bypass=on — DI gate disabled (lab only)\n";
+    }
+
+    if (gpio_blink > 0) {
+        gpio_blink_curtail(gpio_blink);
+    }
+
+    cci::core::MeasurementStore measurements;
+    cci::core::EventRing events;
+    cci::services::ModbusService modbus(measurements, app_cfg);
+
+    cci::core::Pf2Config pf2_cfg = app_cfg.pf2;
+
+    /* Phase 1 CEI mock: optional rewrite of PF2 kW thresholds from O.8.2 / O.11 (core/dso/). */
+    const auto dso_apply =
+        cci::core::dso::apply_dso_to_pf2_config(pf2_cfg, app_cfg.plant, app_cfg.dso);
+    if (dso_apply.applied) {
+        std::cerr << "dso-phase1: O.8.2/O.11 mock — Smax_calc=" << dso_apply.derived.smax_kva_calc
+                  << " Smax_used=" << dso_apply.derived.smax_kva_used << " kVA"
+                  << " p_w110=" << dso_apply.derived.p_w110_kw
+                  << " p_wlim=" << dso_apply.derived.p_wlim_kw
+                  << " p_wsd=" << dso_apply.derived.p_wsd_kw
+                  << " p_eff=" << dso_apply.derived.p_effective_export_kw
+                  << " kW → pf2 enter=" << pf2_cfg.threshold_kw
+                  << " release=" << pf2_cfg.release_threshold_kw << " kW\n";
+    }
+
+    cci::services::Pf2Service pf2(measurements, events, pf2_cfg);
+    cci::services::MmsService mms;
+    cci::services::Iec104Service iec104;
+
+    modbus.tick();
+    pf2.tick();
+    // Curtailment DO is driven by the PF2 decision AND gated by the external
+    // permissive input: no actuation unless the plant permissive allows it
+    // (CCLI-VAL-001 §7 "output policy permits actuation").
+    bool permissive0 = false;
+    if (app_cfg.permissive_bypass) {
+        permissive0 = true;
+    } else {
+        svc_io_read_permissive(&permissive0);
+    }
+    bool do_state = pf2.curtailment_active() && permissive0;
+    svc_io_apply_curtailment(do_state);
+    events.append({cci::hal::now().epoch_ms, "do",
+                   do_state ? "curtail_on" : "curtail_off"});
+    if (app_cfg.mms.enabled) {
+        if (!mms.start(app_cfg.mms)) {
+            std::cerr << "mms: FAILED to bind " << app_cfg.mms.bind_address << ":"
+                      << app_cfg.mms.tcp_port
+                      << (app_cfg.mms.tls.enabled ? " (TLS)" : "")
+                      << " — disable TesPro IEC61850 LuCI or check LAN1 IP/certs\n";
+        }
+    } else {
+        std::cerr << "mms: disabled in config\n";
+    }
+
+    if (app_cfg.iec104.enabled) {
+        if (!iec104.start(app_cfg.iec104)) {
+            std::cerr << "iec104: FAILED to bind " << app_cfg.iec104.bind_address << ":"
+                      << app_cfg.iec104.tcp_port << " — check LAN2 IP / port 2404 free\n";
+        }
+    } else {
+        std::cerr << "iec104: disabled in config\n";
+    }
+
+    std::signal(SIGTERM, on_signal);
+    std::signal(SIGINT, on_signal);
+
+    const auto ver = cci::core::version::current();
+    std::cerr << "ccli " << ver.full << " (" << ver.git_sha << ") starting"
+              << " config=" << config_path;
+    if (lab_demo) {
+        std::cerr << " lab-demo=on";
+    }
+    std::cerr << '\n';
+    std::cout << "ccli " << ver.full << " started. config=" << config_path << '\n' << std::flush;
+
+    std::int64_t loop_count = 0;
+    const std::int64_t status_interval = 50; /* 50 * 100ms = 5s */
+    std::int64_t last_mb_trace_ms = -1;
+
+    while (g_running) {
+        if (lab_demo) {
+            /* Triangle wave 400..950 kW over ~120s to cross PF2 threshold (900 kW). */
+            const auto t = loop_count / 10;
+            const double phase = static_cast<double>(t % 120);
+            const double p_kw = 400.0 + 550.0 * std::fabs(1.0 - std::fabs(phase / 60.0 - 1.0));
+            modbus.set_simulated_power_kw(p_kw);
+        }
+
+        modbus.tick();
+        pf2.tick();
+        {
+            const cci::core::Measurement m = measurements.snapshot();
+            mms.update_tot_w_kw(m.p_kw);
+            mms.update_totvar_kvar(m.q_kvar);
+            mms.update_ppv_kv(app_cfg.plant.poc_ppv_kv);
+            iec104.update_tot_w_kw(m.p_kw);
+        }
+        mms.refresh_time_quality();
+        iec104.tick();
+
+        /* Eth_A: DSO Wlim (O.9.2.2) + WSd (O.9.2.3 Figura 2 s.p. W) → PF2 */
+        /* P3-05: no-comms → clear live Wlim/WSd (Operating Rule autonomous) */
+        {
+            if (mms.poll_comms_loss_fallback()) {
+                std::cerr << "mms→pf2: P3-05 Operating Rule fallback (Eth_A no-comms)\n";
+                events.append({cci::hal::now().epoch_ms, "mms", "comms_loss_fallback"});
+            }
+            cci::adapters::DsoLiveCommand dso_cmd{};
+            if (mms.poll_dso_live_command(dso_cmd) && dso_cmd.valid) {
+                if (dso_cmd.dirty) {
+                    cci::core::Pf2Config live_cfg = pf2.config();
+                    live_cfg.use_dso_mock = true;
+                    const auto live = cci::core::dso::apply_live_dso_commands_to_pf2(
+                        live_cfg, app_cfg.plant, app_cfg.dso, dso_cmd.wlim_active,
+                        dso_cmd.wmax_spt_pct, dso_cmd.wsd_active, dso_cmd.wspt_pct);
+                    if (live.applied) {
+                        pf2.set_thresholds(live.pf2_threshold_kw, live.pf2_release_kw);
+                        std::cerr << "mms→pf2: Wlim=" << (dso_cmd.wlim_active ? "on" : "off")
+                                  << "@" << dso_cmd.wmax_spt_pct
+                                  << "% WSd=" << (dso_cmd.wsd_active ? "on" : "off")
+                                  << "@" << dso_cmd.wspt_pct
+                                  << "% p_wlim=" << live.derived.p_wlim_kw
+                                  << " p_wsd=" << live.derived.p_wsd_kw
+                                  << " p_eff=" << live.derived.p_effective_export_kw
+                                  << " kW → enter=" << live.pf2_threshold_kw
+                                  << " release=" << live.pf2_release_kw << " kW\n";
+                        events.append({cci::hal::now().epoch_ms, "mms",
+                                       dso_cmd.wsd_active   ? "wsd_update"
+                                       : dso_cmd.wlim_active ? "wlim_on"
+                                                            : "wlim_off"});
+                    }
+                }
+                if (dso_cmd.reactive_dirty) {
+                    const auto q_cmd = cci::core::dso::apply_live_varsd_command(
+                        app_cfg.plant, app_cfg.dso, dso_cmd.varsd_active,
+                        dso_cmd.vartgt_spt_pct);
+                    if (q_cmd.applied) {
+                        if (modbus.write_reactive_kvar(q_cmd.derived.q_target_kvar)) {
+                            std::cerr << "mms→plant: VArSd on @" << dso_cmd.vartgt_spt_pct
+                                      << "% Smax → Q=" << q_cmd.derived.q_target_kvar
+                                      << " kvar [O.9.1.4 P5-R01]\n";
+                            events.append({cci::hal::now().epoch_ms, "mms", "varsd_update"});
+                        } else {
+                            std::cerr << "mms→plant: VArSd Q write FAILED q="
+                                      << q_cmd.derived.q_target_kvar << " kvar\n";
+                            events.append({cci::hal::now().epoch_ms, "mms",
+                                           "varsd_plant_write_fail"});
+                        }
+                    } else {
+                        std::cerr << "mms→plant: VArSd off — plant Q command cleared "
+                                     "[O.9.1.4]\n";
+                        events.append({cci::hal::now().epoch_ms, "mms", "varsd_off"});
+                    }
+                }
+            }
+        }
+
+        if (iec104.poll_comms_loss_fallback()) {
+            std::cerr << "iec104: P4-04 Eth_B comms-loss fallback\n";
+            events.append({cci::hal::now().epoch_ms, "iec104", "comms_loss_fallback"});
+        }
+
+        {
+            cci::adapters::Iec104Adapter::OperatorAuditEvent oa{};
+            if (iec104.poll_operator_audit(oa) && oa.valid) {
+                const std::string& detail =
+                    oa.detail.empty()
+                        ? (oa.rejected ? "operator_asdu_reject" : "operator_asdu_accept")
+                        : oa.detail;
+                std::cerr << "iec104: " << detail << "\n";
+                events.append({cci::hal::now().epoch_ms, "iec104", detail});
+            }
+        }
+
+        const bool commanded = pf2.curtailment_active();
+        bool permissive = false;
+        const bool permissive_ok =
+            app_cfg.permissive_bypass || (svc_io_read_permissive(&permissive) && permissive);
+
+        // Gate the DO by the permissive input. A commanded curtailment that is
+        // blocked by permissive is recorded for audit (traceable actuation).
+        const bool new_do_state = commanded && permissive_ok;
+        if (new_do_state != do_state) {
+            svc_io_apply_curtailment(new_do_state);
+            const char* detail = new_do_state ? "curtail_on"
+                                 : (commanded ? "curtail_blocked_permissive" : "curtail_off");
+            events.append({cci::hal::now().epoch_ms, "do", detail});
+            std::cerr << "io: DO " << detail << "\n";
+            do_state = new_do_state;
+        }
+
+        if ((loop_count % status_interval) == 0) {
+            svc_io_log_status(do_state, permissive_ok);
+            write_bench_status_file(kBenchStatusPath, app_cfg, measurements.snapshot(),
+                                    pf2.last_state(), commanded, permissive_ok, do_state,
+                                    dso_apply);
+        }
+
+        if (app_cfg.modbus.trace) {
+            const auto& ex = modbus.last_exchange();
+            if (ex.valid && ex.exchange_ms != last_mb_trace_ms) {
+                last_mb_trace_ms = ex.exchange_ms;
+                const auto tr = modbus_trace_from(ex);
+                const cci::core::Measurement m = measurements.snapshot();
+                std::cerr << "modbus: " << tr.command;
+                if (!tr.raw_regs_hex.empty()) {
+                    std::cerr << " raw=" << tr.raw_regs_hex;
+                }
+                std::cerr << " P=" << m.p_kw << "kW pf2=" << pf2.last_state().reason
+                          << " curtail=" << (commanded ? "yes" : "no")
+                          << " DO=" << (do_state ? "ON" : "OFF") << "\n";
+            }
+        }
+
+        ++loop_count;
+        usleep(100000);
+    }
+
+    svc_io_shutdown();
+    iec104.stop();
+    mms.stop();
+
+    std::cout << "ccli stopping\n";
+    return 0;
+}

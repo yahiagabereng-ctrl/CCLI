@@ -1,0 +1,43 @@
+[2026-09-30 16:22:46] # P5 Phase 5 LAN1 verify (Eth_A MMS TLS)
+[2026-09-30 16:22:46] Gates: P5-M07 TotVAr + P5-M08 PPV + TotW
+[2026-09-30 16:22:46] PC IPv4: 192.168.10.10
+[2026-09-30 16:23:00] Ping 192.168.10.1: True
+[2026-09-30 16:23:00] mms_tls_client -> 192.168.10.1:3782 ...
+[2026-09-30 16:23:00] TLS: Verify cert: depth 1
+[2026-09-30 16:23:00] TLS:    flags: 00000000
+[2026-09-30 16:23:00] TLS:   cert. version     : 3
+[2026-09-30 16:23:00]   serial number     : 42:54:6F:79:FE:8A:9A:98
+[2026-09-30 16:23:00]   issuer name       : C=IT, O=HiTEKS, OU=CCLI-Lab, CN=CCLI_Lab_Root_CA
+[2026-09-30 16:23:00]   subject name      : C=IT, O=HiTEKS, OU=CCLI-Lab, CN=CCLI_Lab_Root_CA
+[2026-09-30 16:23:00]   issued  on        : 2026-09-29 19:36:09
+[2026-09-30 16:23:00]   expires on        : 2036-09-26 19:36:09
+[2026-09-30 16:23:00]   signed using      : RSA with SHA-256
+[2026-09-30 16:23:00]   RSA key size      : 2048 bits
+[2026-09-30 16:23:00]   basic constraints : CA=true
+[2026-09-30 16:23:00]   key usage         : Digital Signature, Key Cert Sign, CRL Sign
+[2026-09-30 16:23:00] System.Management.Automation.RemoteException
+[2026-09-30 16:23:00] TLS: Verify cert: depth 0
+[2026-09-30 16:23:00] TLS:    flags: 00000000
+[2026-09-30 16:23:00] TLS:   cert. version     : 3
+[2026-09-30 16:23:00]   serial number     : 69:1B:6D:54:0A:8C:E3:9E
+[2026-09-30 16:23:01]   issuer name       : C=IT, O=HiTEKS, OU=CCLI-Lab, CN=CCLI_Lab_Root_CA
+[2026-09-30 16:23:01]   subject name      : C=IT, O=HiTEKS, OU=CCLI-Lab, CN=CCI016_01
+[2026-09-30 16:23:01]   issued  on        : 2026-09-29 19:36:09
+[2026-09-30 16:23:01]   expires on        : 2029-01-01 19:36:09
+[2026-09-30 16:23:01]   signed using      : RSA with SHA-256
+[2026-09-30 16:23:01]   RSA key size      : 2048 bits
+[2026-09-30 16:23:01]   basic constraints : CA=false
+[2026-09-30 16:23:01]   key usage         : Digital Signature, Key Encipherment
+[2026-09-30 16:23:01] System.Management.Automation.RemoteException
+[2026-09-30 16:23:01] === CCLI MMS TLS client (P3-06) ===
+[2026-09-30 16:23:01] host=192.168.10.1 port=3782 cert_dir=.
+[2026-09-30 16:23:01] CONNECT OK (TLS)
+[2026-09-30 16:23:01] READ Mod.stVal=5
+[2026-09-30 16:23:01] READ OK TotW.mag.f=0.000
+[2026-09-30 16:23:01] READ OK TotVAr.mag.f=0.000
+[2026-09-30 16:23:01] VERDICT: TLS MMS session OK GÇö cleartext :102 should be closed on DUT
+[2026-09-30 16:23:01] 
+[2026-09-30 16:23:01] P5-M07 TotVAr: PASS
+[2026-09-30 16:23:01] P5-M08 PPV: FAIL
+[2026-09-30 16:23:01] P5-02 TotW: PASS
+[2026-09-30 16:23:01] P5 LAN1 VERDICT: FAIL exit=0

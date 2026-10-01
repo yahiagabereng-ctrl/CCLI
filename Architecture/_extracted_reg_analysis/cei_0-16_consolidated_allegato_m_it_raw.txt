@@ -1,0 +1,278 @@
+﻿===== PDF 317 =====
+NORMA TECNICA   CEI 0 -16:2025 -12 
+ 
+ 
+310 
+ 
+ 
+Allegato M   
+(normativo)  
+ 
+Partecipazione ai piani di difesa  
+M.1 Modalit├á di riduzione della potenza attiva in relazione alla partecipazione degli 
+utenti attivi ai piani di difesa  
+Le prescrizioni qui contenute si applicano a tutti gli impianti di generazione che presentano 
+potenza nominale complessiva dei gruppi di generazione maggiore o uguale a 100 kW.  
+Per garantire la sicurezza di esercizio del SEN, deve essere possibile ridurre la produzione dei 
+suddetti impianti di generazione; in questo modo, il Gestore della rete di trasmissione pu├▓ 
+contrastare situazioni di riduzione di capacit├á regolante del SEN p otenzialmente critiche.  
+Per attuare tali funzionalit├á, ├¿ necessario che il DSO possa inviare segnali ad un opportuno 
+ricevitore GSM/ LTE situato presso lΓÇÖimpianto dellΓÇÖutente attivo; tale ricevitore elaborer├á il 
+segnale ed emetter├á un comando al SPI (cui sar├á collegato ΓÇô ingresso Telescatto) in modo da 
+consentire il distacco e lΓÇÖinibizione dei gruppi di generazione. (1)  
+Qualora siano presenti pi├╣ SPI, dovr├á comunque essere installato un solo ricevitore GSM/ LTE 
+che dovr├á assicurare lΓÇÖinvio del segnale di telescatto a tutti gli SPI presenti.  
+Le funzionalit├á del ricevitore (modem/attuatore) GSM/ LTE sono descritte nel seguito.  
+M.2 Caratteristiche del sistema di comunicazione basato su tecnologia GSM  
+Per consentire il teledistacco da remoto di un gruppo di generazione, lΓÇÖUtente Attivo deve 
+dotarsi di:  
+ΓÇó modem GSM/ LTE con alloggiamento per scheda SIM;  
+ΓÇó antenna GSM/ LTE omnidirezionale;  
+ΓÇó eventuale Modulo di interfaccia verso la protezione di interfaccia (PI), in caso di modem 
+non dotato di ingressi/uscite digitali (DI/DO).  
+Per quanto riguarda la SIM card da utilizzare nel modulo, questa verr├á fornita dal DSO che si 
+preoccuper├á di predisporla in maniera tale da poter integrare il modulo nel suo sistema di 
+comunicazione attivando le opportune misure per la sicurezza informatica (ad. es. 
+disattivazione chiamate vocali, Gruppo chiuso di Utenze, lista chiamanti ab ilitati, etc.).  
+LΓÇÖalimentazione ausiliaria del modem GSM /LTE e dellΓÇÖeventuale modulo di interfacciamento 
+con SPI ├¿ garantita dallo stesso sistema di alimentazione ausiliario che, in assenza 
+dellΓÇÖalimentazione principale, consente il funzionamento del SPI, la tenuta in chiusura del  DDI.  
+In caso di impianto con presenza di pi├╣ di un SPI, il modem da installare ├¿ unico. In questo 
+caso, lΓÇÖunico segnale in uscita dal modem (DO) deve causare lΓÇÖapertura di tutti i DDI. Inoltre, lo 
+stato di aperto di tutti i DDI in logica AND deve essere riporta to al suddetto modem come 
+segnale di ingresso (DI).  
+ΓÇôΓÇôΓÇôΓÇôΓÇôΓÇôΓÇôΓÇôΓÇôΓÇôΓÇôΓÇôΓÇôΓÇô 
+(1) Eventuali modalit├á di implementazione delle prescrizioni differenti da quanto specificato nel presente 
+paragrafo saranno concordate tra il DSO e TERNA e comunicate allΓÇÖUtente in fase di connessione.  
+===== PDF 318 =====
+NORMA TECNICA   CEI 0 -16:2025 -12 
+ 
+ 
+311 
+ 
+ 
+M.3 Caratteristiche del modem GSM/ LTE 
+├ê possibile adottare un modulo GSM/ LTE, completo di SW di decodifica testi SMS, 
+programmazione dei testi SMS da riconoscere, gestione ingressi/uscite, diagnostica, etc 
+implementati nel SW del modem stesso.  
+Il modem deve essere dotato, in alternativa:  
+ΓÇó 1 DI: contatti puliti oppure polarizzati con la tensione di alimentazione del modem;  
+ΓÇó di porta seriale per la connessione con il modulo di interfaccia verso la PI.  
+Detto modulo deve consentire, attraverso unΓÇÖinterfaccia locale:  
+ΓÇó il settaggio attraverso comandi AT, in particolare: invio di SMS a numero predefinito, 
+memorizzazione (su SIM) degli SMS in ricezione con verifica della capacit├á di memoria, 
+lettura degli SMS in memoria;  
+ΓÇó la gestione lista indicativi numerici (CLI) dei chiamanti abilitati (almeno 5 numeri);  
+ΓÇó il rilievo dei valori di copertura della rete cellulare.  
+M.3.1  Caratteristiche di relazione con la PI  
+Nel caso di DI/DO, gli stessi devono avere le seguenti caratteristiche:  
+ΓÇó 1 DI portata ingresso 24├╖48 Vdc/Vac; 115├╖230 Vac/110├╖220 Vdc;  
+ΓÇó 1 DO (contatto libero da tensione), portata contatti rel├⌐: 24...265 V~/ -, 1 A.  
+Nel caso di porta seriale, il modem deve comprendere anche una opportuna interfaccia, 
+costituita da una schedina a microprocessore, dotata di almeno:  
+ΓÇó 1 DI; Portata ingresso contatti rel├⌐: 24├╖48 Vdc/Vac; 115├╖230 Vac/110├╖220 Vdc4(2)A -
+250Vca;  
+ΓÇó 1 DO (contatto libero da tensione), portata contatti rel├⌐: 24...265 V~/ -, 1 A;  
+ΓÇó porta seriale per la connessione con il modem GSM/ LTE. 
+M.4 Programmazione del modulo e SIM CARD  
+Il modem GSM/ LTE, con SIM CARD inserita, andr├á installato nellΓÇÖimpianto dellΓÇÖUtente e dovr├á 
+garantire un funzionamento affidabile della comunicazione.  
+In particolare verranno fornite le seguenti informazioni : 
+ΓÇó stringhe AT per la configurazione del GSM;  
+ΓÇó lista CLI abilitati alla chiamata;  
+ΓÇó contenuto SMS per apertura DO;  
+ΓÇó contenuto SMS di avvenuta apertura DI;  
+ΓÇó contenuti SMS di diagnostica (alive, lettura stato ingressi e uscite, etc).  
+M.5 Modalit├á di installazione  
+Il modem GSM/ LTE, con SIM CARD inserita, andr├á installato nellΓÇÖimpianto dellΓÇÖUtente e dovr├á 
+garantire un funzionamento affidabile della comunicazione.  
+Sia il modem che lΓÇÖeventuale modulo di interfaccia saranno alimentati con la medesima tensione 
+ausiliaria che alimenta SPI e bobina a mancanza di tensione del DDI.
+===== PDF 319 =====
+NORMA TECNICA   CEI 0 -16:2025 -12 
+ 
+ 
+312 
+ 
+ 
+M.5.1  Modem dotato di DI/DO  
+LΓÇÖuscita digitale sar├á connessa allΓÇÖingresso a mancanza di tensione ΓÇ£Scatto da segnale esternoΓÇ¥ 
+della PI.  
+Per il DI, le possibili soluzioni realizzative sono le seguenti:  
+ΓÇó Contatto ausiliario del DDI;  
+ΓÇó Rel├¿ di corrente posto in serie al circuito a mancanza di tensione che determina lΓÇÖapertura 
+del DDI (vedi figura); soluzione ammessa per impianti esistenti;  
+ΓÇó Contatto ausiliario dalla protezione di interfaccia; soluzione ammessa per impianti esistenti.  
+ 
+ ΓÇô Schema per modem dotato di DI/DO 
+M.5.2  Modem dotato di porta seriale  
+LΓÇÖinterfaccia verso la PI andr├á connessa al modem GSM tramite la porta seriale apposita.  
+LΓÇÖuscita digitale sar├á connessa allΓÇÖingresso a lancio di tensione ΓÇ£Scatto da segnale esternoΓÇ¥ 
+della PI.  
+LΓÇÖingresso digitale sar├á connesso ad un rel├¿ di tensione posto in serie al circuito a mancanza 
+che determina lΓÇÖapertura del DDI. In alternativa la conferma di apertura pu├▓ essere ricevuta 
+tramite la posizione dei contatti ausiliari del DDI.  
+Per il DI, le possibili soluzioni realizzative sono le seguenti:  
+ΓÇó Contatto ausiliario del DDI;  
+ΓÇó Rel├¿ di corrente posto in serie al circuito a mancanza di tensione che determina lΓÇÖapertura 
+del DDI (vedi figura); soluzione ammessa per impianti esistenti;  
+ΓÇó Contatto ausiliario dalla protezione di interfaccia; soluzione ammessa per impianti esistenti.  
+Bobina a 
+mancanza 
+DI 
+GSM 
+Comando 
+Apertura 
+Circuito a 
+mancanza 
+apertura DI 
+Conferma Apertura 
+PI 
+===== PDF 320 =====
+NORMA TECNICA   CEI 0 -16:2025 -12 
+ 
+ 
+313 
+ 
+ 
+ 
+  ΓÇô Schema per modem dotato di porta seriale 
+M.6 Modalit├á di funzionamento  
+Il funzionamento ├¿ basato sullo scambio di opportuni messaggi SMS tra il modulo di Interfaccia 
+e il sistema centrale di gestione del DSO. 
+M.6.1  Distacco del generatore  
+Considerando un Utente Attivo avente codice POD = x, il distacco del generatore avverr├á con 
+la seguenti modalit├á:  
+DSO  =>  ΓÇ£DISTACCO utenza xΓÇ¥ 
+Il modulo di interfaccia interpreta il messaggio (confrontandolo con quello memorizzato al suo 
+interno secondo le indicazioni del DSO) e attiva lΓÇÖuscita digitale con segnale a livello collegata 
+alla protezione di interfaccia; detto segnale permane nello stato di attivazione fino a quando 
+non verr├á ricevuto il messaggio di ripristino, determinando lΓÇÖapertura del DDI ed inibendone la 
+chiu sura fino al ripristino (1). 
+La PI aprir├á il circuito ΓÇ£a mancanzaΓÇ¥ che determina lΓÇÖapertura del DI, con conseguente 
+attivazione dellΓÇÖinput digitale del modulo di interfaccia;  
+QuestΓÇÖultimo invia al DSO, tramite il GSM, lΓÇÖSMS di avvenuta apertura, confermando la 
+riuscita dellΓÇÖoperazione.  
+UTENTE ATTIVO  =>  ΓÇ£utenza x distaccata - Input=K ΓÇô Ouput= YΓÇ¥ΓÇ¥ 
+M.6.2  Ripristino del generatore  
+Al cessare delle condizioni di rete critiche il DSO invier├á un SMS opportuno al cliente per 
+consentire lΓÇÖavvio delle procedure di riconnessione dellΓÇÖunit├á di generazione alla rete:  
+DSO  => : ΓÇ£RIPRISTINO utenza xΓÇ¥ 
+Alla ricezione di detto segnale, il modulo di interfaccia disattiver├á lΓÇÖuscita digitale che pilota lo 
+scatto della PI, riabilitando lΓÇÖimpianto alla riconnessione (la riconnessione avverr├á a cura 
+dellΓÇÖutente attivo secondo le modalit├á definite nella Norma).  
+ΓÇôΓÇôΓÇôΓÇôΓÇôΓÇôΓÇôΓÇôΓÇôΓÇôΓÇôΓÇôΓÇôΓÇô 
+(1) Tale prescrizione si ritiene soddisfatta se, a fronte dello stato alto del DO del modem, il contatto di uscita 
+della PI rimane in posizione aperto impedendo la chiusura del DDI.  
+Conferma Apertura 
+Circuito a 
+mancanza 
+apertura DDI 
+PI 
+GS
+M 
+Interfaccia PI 
+IN OUT 
+Cavo seriale Comando 
+Apertura 
+Bobina a 
+mancanza 
+DDI 
+===== PDF 321 =====
+NORMA TECNICA   CEI 0 -16:2025 -12 
+ 
+ 
+314 
+ 
+ 
+UTENTE ATTIVO  =>  ΓÇ£utenza x ripristinata - Input=K ΓÇô Ouput= YΓÇ¥ 
+K=1 => Ingresso attivo; K=0 => ingresso disattivo. 
+Y=1 => Uscita attiva; K=0 => uscita disattiva. 
+M.6.3  Diagnostica  
+Devono essere implementati anche alcuni messaggi di diagnostica al fine di risolvere eventuali 
+problemi di funzionamento del sistema. In particolare:  
+2) Messaggio di Diagnostica per verificare la connessione in rete del GSM e lo stato degli 
+ingressi e uscite verso PI:  
+DSO  => : ΓÇ£utenza x stato Input - OutputΓÇ¥ 
+ 
+UTENTE ATTIVO  =>  ΓÇ£utenza x stato - Input=K ΓÇô Ouput= YΓÇ¥ 
+3) Messaggio di RESET interfaccia verso PI  
+DSO  => : ΓÇ£RESET utenza xΓÇ¥ 
+Alla ricezione di questo SMS lΓÇÖinterfaccia deve resettarsi, effettuare lΓÇÖautodiagnostica e porsi 
+nelle condizioni di riposo iniziali (uscita disattiva), quindi inviare il seguente messaggio:  
+UTENTE ATTIVO  =>  ΓÇ£utenza x RESET OK/KO - Input=K ΓÇô Output =YΓÇ¥ 
+M.7 Verifiche funzionali  
+Una volta predisposto il sistema, il DSO dovr├á poter procedere ad una prova  funzionale di 
+distacco reale, avvalendosi della possibilit├á di inviare proprio personale o personale qualificato 
+presso lΓÇÖimpianto del Produttore. Le prove verranno eseguite:  
+ΓÇó allΓÇÖatto della messa in servizio del tele distacco;  
+ΓÇó su evento o periodicamente (ogni due anni) per verificare il corretto funzionamento del 
+sistema.  
+M.7.1  Messa in servizio del tele distacco  
+La prova funzionale ├¿ articolata sui seguenti test:  
+ΓÇó verifica connessione GSM/ LTE; 
+ΓÇó invio di un comando di distacco ed inibizione con misurazione dei tempi di attuazione (tempo 
+massimo ammissibile 1ΓÇÖ) da sistema remoto e riscontro effettiva apertura dellΓÇÖinterruttore;  
+ΓÇó verifica della permanenza inibizione sul comando di chiusura dellΓÇÖinterruttore;  
+ΓÇó invio comando di ripristino;  
+ΓÇó spegnimento interfaccia locale e verifica comparsa allarme da remoto;  
+ΓÇó accensione modem e richiesta reset da remoto.  
+M.7.2  Prove su evento o cicliche  
+Le prove su evento vengono eseguite in caso di manifeste anomalie del sistema o in caso di 
+sostituzione/riconfigurazione di parti del dispositivo di riduzione della potenza; le prove cicliche 
+invece vengono definite dal  DSO con cadenza tale da consentire una verifica periodica del 
+corretto funzionamento del sistema. Le prove di cui sopra possono essere parte o totalit├á del 
+set definito al Paragrafo  M.7. 
+===== PDF 322 =====
+NORMA TECNICA   CEI 0 -16:2025 -12 
+ 
+ 
+315 
+ 
+ 
+Allegato N   
+(normativo)  
+ 
+Prove sui generatori statici, eolici FC e DFIG  
+Il presente allegato contiene i protocolli di test direttamente applicabili ai generatori statici, 
+totalmente privi di parti in movimento (tipicamente FV) connessi alla rete mediante 
+interposizione di sistemi di raddrizzamento/inversione (inverter lato ret e) e le indicazioni per la 
+esecuzione di analoghe prove in campo oppure, ove applicabile, su banco di prova in 
+laboratorio, per i generatori di tipo Eolico Full Converter (FC) ed Eolico Double Fed Induction 
+Generator (DFIG).  
+N.1 Esecuzione delle prove  
+N.1.1  Accreditamento  
+Le prove sui generatori statici ed eolici sono tipicamente eseguite pres so un laboratorio 
+accreditato  secondo la Norma CEI UNI EN ISO/IEC 17025. Tale laboratorio deve possedere, 
+nel proprio elenco prove accreditate, il riferimento alla presente norma.  
+In alternativa, le prove possono essere realizzate presso altre strutture non accreditate oppure 
+presso i costruttori, oppure direttamente in campo, purch├⌐:  
+ΓÇó le attrezzature utilizzate rispettino i requisiti riportati nel presente allegato  
+ΓÇó le prove siano eseguite sotto la supervisione diretta del personale del laboratorio 
+accreditato secondo la Norma  CEI UNI EN ISO/IEC 17025, il quale ├¿ responsabile per la 
+verifica della correttezza delle procedure e per la stesura del rapporto di prova. In 
+particolare, gli strumenti e le attrezzature appartenenti alle strutture non accreditate, 
+utilizzate ai fini del la verifica di conformit├á alla presente norma, sono tarati prima dellΓÇÖuso 
+da centri di taratura ACCREDIA LAT (o equivalenti) oppure mediante tar ature eseguite dal 
+laboratorio accreditato. Le tarature riguardano tutti i parametri richiesti dalla presente 
+norma. Le copie dei rapporti di taratura della suddetta strumentazione e attrezzature, 
+completi di tutti i dati rilevati, sono riportate nei rappo rti di prova.  
+Le misure devono essere effettuate ai terminali del generatore o sulla rete MT nel caso di 
+funzioni implementate nel sistema di controllo di impianto. Restano valide anche per questi 
+generatori le condizioni riportate sopra alle lettere a) e b).  
+Per tutti i tipi di generatori si precisa inoltre che le prove eseguite su un dato tipo di generatore 
+sono ritenute valide in caso di varianti nella composizione dei componenti interni, se equivalenti 
+ai fini del comportamento elettrico verso la rete, a fr onte di unΓÇÖadeguata documentazione 
+tecnica a supporto  
+A questo proposito la identificazione dei componenti interni del generatore, rilevanti per le 
+prescrizioni che sono oggetto della presente norma, dovr├á essere riportata nel rapporto di prova 
+di tipo emesso dal laboratorio.  
+N.1.2  Estensione dei risultati  
+Alcune semplificazioni al processo di prova sono applicabili nel caso di convertitori statici delle 
+seguenti tipologie:  
+ΓÇó Caso A: generatori che condividono la stessa elettronica di controllo, con lo stesso 
+firmware, con le stesse soluzioni costruttive inclusa anche la parte di potenza, con lo stesso 
+numero di fasi, con lΓÇÖelettronica di potenza, i filtri ed i trasduttori dime nsionati su taglie 
+diverse di tensione e/o corrente.  
+ΓÇó Caso B: generatori modulari, costituiti da un elemento base che viene ripetuto N volte nelle 
+taglie pi├╣ grandi 

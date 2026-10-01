@@ -1,0 +1,16 @@
+Questa è una configurazione minima realistica.
+1) Ethernet: obbligatorie 2 porte
+- ETH_A → Comunicazione verso DSO (obbligatoria)- ETH_B → Operatore remoto / Aggregatore
+2) Ethernet verso gli elementi di impianto (esempio: inverter FV, BESS, PLC, contatori, RTU)+2 porte EthernetETH1 DSOETH2 Operatore remotoETH3 LAN impiantoETH4 LAN impianto
+3) RS-485 / RS-232
+4) 1x USB
+La CEI 0-16 richiede una porta per configurazione/manutenzione locale, che può essere seriale o USB
+5) 1x GPS
+Il Raspberry Pi 5 non integra un'interfaccia RS-485 nativa. Ha invece diverse UART TTL a 3,3 V, che possono essere convertite in RS-485 aggiungendo un transceiver esterno. Il firmware del Pi 5 supporta anche la gestione automatica della direzione di trasmissione (RTS) per RS-485, il che semplifica molto l'implementazione.
+La cosa importante è capire che il CM5 non ha una porta RS-485 integrata: ha solo UART TTL a livello logico (1,8 V o 3,3 V). Serve quindi un transceiver RS-485 esterno.
+L'eMMC è molto più affidabile della microSD.
+Un CCI lavora:
+24 ore su 24
+365 giorni l'anno
+registra continuamente dati
+Le microSD prima o poi si corrompono. L'eMMC dura molti più anni.

@@ -1,0 +1,5 @@
+Host testbench-eth
+    HostName 192.168.10.20
+    User yahia
+    IdentityFile ~/.ssh/id_ed25519_testbench
+    IdentitiesOnly yes

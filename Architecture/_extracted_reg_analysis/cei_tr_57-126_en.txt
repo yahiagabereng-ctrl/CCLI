@@ -1,0 +1,1945 @@
+--- PAGE 1 ---
+CEI TR 57-126 
+2024-11 
+Abstract 
+This technical report proposes an example of a CID file of configuration of the Central Plant Controller in 
+accordance with the requirements expressed in Annex T of CEI 0-16 standard, regarding the mandatory 
+performance (observability) and optional (controllability) functional performances.
+Example of SCL file for IEC 61850 communication of the CCI, 
+according to CEI 0-16 Annex T  
+Esempio di file SCL per la comunicazione IEC 61850 del CCI, secondo
+CEI 0-16 Allegato T
+TECHNICAL REPORT 
+
+--- PAGE 2 ---
+© CEI COMITATO ELETTROTECNICO ITALIANO - Milano 2024. Riproduzione vietata 
+T u t t i  i  d i r i t t i  s o n o  r i s e r v a t i .  N e s s u n a  p a r t e  d e l  p r e s e n t e  D o c u m e n t o  p u ò  e s s e r e  r i p r o d o t t a ,  m e s s a  i n  r e t e  o  d i f f u s a  c o n  
+u n  m e z z o  q u a l s i a s i  s e n z a  i l  c o n s e n s o  s c r i t t o  d e l  C E I .  C o n c e s s i o n e  p e r  u t e n t e  s i n g o l o .  L e  N o r m e  C E I  s o n o  r e v i s i o n a t e ,
+q u a n d o  n e c e s s a r i o ,  c o n  l a  p u b b l i c a z i o n e  s i a  d i  n u o v e  e d i z i o n i  s i a  d i  v a r i a n t i .  È  i m p o r t a n t e  p e r t a n t o  c h e  g l i  u t e n t i  d e l l e
+s t e s s e  s i  a c c e r t i n o  d i  e s s e r e  i n  p o s s e s s o  d e l l ’u l t i m a  e d i z i o n e  o  v a r i a n t e .
+CEI IDENTIFICATION DATA
+Italian Standard CEI TR 57-126 
+Categorization CEI 57-126 
+LINKS/RELATIONSHIPS BETWEEN DOCUMENTS
+Nationals PRJ-CEI 3515 
+Europeans 
+International 
+Reading Key 
+PUBLISHING INFORMATION
+Document Type 
+Publication Status
+Effective Date
+Issue Number 
+Previous Edition Issue
+Technical Committee
+TECHNICAL REPORT 
+In Force 
+01-11-2022  
+25413 
+CT 57 - Power systems management and associated information exchange 
+Identical to
+Approved by President of CEI On Date 10-10-2022  
+Subjected to Close on Date
+ICS 33.040.60
+--- PAGE 3 ---
+TECHNICAL REPORT  CEI TR 50 -126:2024 -11 
+3 
+Summary  
+This TR proposes an example of a CID file of configuration of the Central Plant Controller in  
+accordance with the requirements expressed in Annex T of CEI 0 -16 standard, regarding the 
+mandatory performance (observability) and optional (controllability) functional performances.  
+--- PAGE 4 ---
+TECHNICAL REPORT  CEI TR 50 -126:2024 -11 
+4 
+INDEX  
+1 Introduction  ................................ ................................ ................................ ....................  5
+2 Scope  ................................ ................................ ................................ ............................  5
+3 Terms and definitions  ................................ ................................ ................................ .....  6
+4 Normative references  ................................ ................................ ................................ .....  7
+5 The engineering of the CPC according to Annex T to CEI 0 -16 ................................ ........  7
+5.1 General Information  ................................ ................................ ..............................  7
+5.2 The CPC Data Model  ................................ ................................ ............................  7
+5.3 The communication of the CPC according to Annex T to CEI 0 -16 .........................  9
+6 Use Case of Plant and relevant CPC  ................................ ................................ .............  11
+6.1 Description of the Use Case ................................ ................................ .................  11
+6.2 Example of Configurations  ................................ ................................ ...................  13
+Annex  A SCL File of the CPC  ................................ ................................ ..............................  16
+--- PAGE 5 ---
+TECHNICAL REPORT   CEI TR 50 -126:2024 -11 
+ 
+ 
+ 
+5 
+ 
+ 
+1 Introduction  
+This TR offers guidance on the engineering of the Central Plant Controller and its application 
+to a Use Case (an example of a plant with a well -defined internal structure and meeting the 
+requirements of IEC 0 -16), arriving at the realization of the SCL fil e of the CPC configuration.  
+The functional performances covered by this TR are those that are mandatory (Observability) 
+and optional ones (Controllability).  
+2 Scope  
+CEI 0-16 has chosen, among various available technologies, the use of the IEC 61850 standard 
+for the  communication between CPC and DSO1. Since this standard is very broad in its structure 
+and in its applicability to various areas of the (electrical) power world, we aim to provide a 
+practical example of implementation of the Data Model and Communication in compliance with 
+Annex O of CEI 0 -16:2022 -03 and Annex T of CEI 0 -16;V3 . 
+This TR is intended to facilitate the implementation uniformity of the IEC 61850 interface at the 
+CPC terminals for the purpose of high interoperability between IEDs CPC with the role of IEC 
+61850 Server on the DER plant side, IEC 61850 Client on the DSO s ide of different 
+manufacturers, present in DER plants and  DSO 1) substations, minimization of potential 
+errors/implementation gaps due to possible interpretations of the national standard.  
+It is also believed that this TR can be useful in a technical discussion among the parties involved 
+in the implementation of Smart Grid systems connected to the MV grid.  
+  
+ 
+ 
+1) Annex T refers to the possible use of the IEC 61850 standard also for communication between CPCs and other  
+Enabled Remote Actors.  
+--- PAGE 6 ---
+TECHNICAL REPORT   CEI TR 50 -126:2024 -11 
+ 
+ 
+ 
+6 
+ 
+ 
+3 Terms and definitions  
+3.1 
+Configured IED Description (CID)  
+SCL file of engineering an IED with the instantiation of both the data models and the 
+communication for the commissioning of the device  
+3.2 
+Central Plant Controller (CPC)  
+Apparatus whose main functions are plant monitoring, data exchange between the plant and 
+the DSO and any additional enabled remote actors, as well as the regulation and control of the 
+plant itself  
+3.3 
+Data Object (DO)  
+Part of an LN object that represents specific information, e.g., status or measurements  
+3.4 
+Distribution System Operator (DSO)  
+Electric power distribution utility  
+3.5 
+Adjustment Function (AF)  
+CPC function related to PF2  
+3.6 
+Intelligent Electronic Device (IED)  
+Any device that incorporates one or more processors with the ability to receive/send 
+data/control from/to an external source (e.g., multifunction electronic meters, relays digital, 
+controllers)  
+3.7 
+Interoperability  
+Ability of two or more FDI from the same or different suppliers to exchange information and use 
+that information for the proper execution of specific functions  
+3.8 
+Logical Node (LN)  
+The smallest part of a function that exchanges data. An LN is an object defined by its data and 
+methods  
+3.9 
+Logical Device (LD)  
+Virtual device that exists to allow aggregation of related logical nodes  
+3.10  
+Physical Device (PD)  
+equivalent to an FDI as used in the context of the IEC 61850 standard  
+3.11  
+Functional Performance (FP)  
+Set of functions aggregated according to the classification proposed in Annex O: Mandatory  
+(FP1 - Observability), Optional (FP2 - Controllability), Optional (FP3 - MSD)  
+3.12  
+Single Generation Group (SGG)  
+Generator whose Nominal Power exceeds the observability threshold provided in O.8.4  
+3.13  
+Substation/System Configuration Language (SCL)  
+System (formerly Substation) Configuration description Language is the format specified by IEC 
+61850 for the configuration of electrical station/plant devices and systems.   
+--- PAGE 7 ---
+TECHNICAL REPORT   CEI TR 50 -126:2024 -11 
+ 
+ 
+ 
+7 
+ 
+ 
+4 Normative references  
+CEI Standard 0 -16 “Reference technical rule for the connection of active and passive users to 
+the HV and MV networks of power distributors” (current version).  
+IEC series 61850 “Communication networks and systems for power utility automation”  
+5 The engineering of the CPC according to Annex T to CEI 0 -16 
+5.1 General Information  
+The description of the example plant to which to apply what is discussed in the sections of this  
+Chapter can be found in Chapter 6 (with reference also to Figure 1 and Figure 2).  
+The CPC, as a server, implements the IEC 61850 Ed.2.0 standard and related SCL and scheme  
+(reference to T.3.2.1).  
+The name of the CPC, to be used within the CID file, will be assigned according to a convention  
+agreed between the DSO and the organization to which the plant belongs and respecting the 
+constraints  provided by the IEC 61850 scheme (length, characters allowed), shall be unique for 
+the client of the DSO to which it connects and thus allow unambiguous information exchange 
+at all levels of the Data Model.  
+5.2 The CPC Data Model  
+The CPC Data Model, for all functional benefits/performances (mandatory and optional) is 
+implemented by instantiating the data classes provided in T.3.3.1 (and sub -clauses) and, as 
+prescribed, will be organized within a single Logical Device LD_Plant.  
+Having Annex T already defined the prefixes and distinguished the types of LNs in order to 
+highlight the different DO compositions within LNs of the same class, in the next paragraphs it 
+is considered useful to evidence only those sections of the CID file that require specialization 
+by the configurator 2) based on the structural/construction characteristics of the individual plant.  
+The parts that are, on the other hand, common for any installation, thus already well defined in 
+Annex T, will be directly implemented in the CID file without further description.  
+5.2.1  Functional Performance PF1 (Observability)  
+The Data Model concerning the Observability is based on the classes prescribed in T.3.3.1.1 
+and relevant  sub-clauses.  
+5.2.1.1  FDI License Plate Information  
+With reference to T.3.3.1.1.2, the configurator shall:  
+‒ LPHD/PhyNam/Vendor -> enter the name of the Manufacturer of the CPC,  
+‒ LPHD/PhyNam/swRev -> enter the SW Version of the CPC,  
+‒ LPHD/PhyNam/location -> enter the Identifier of the CP (POD).  
+5.2.1.2  Operating characteristics at the point of connection (vector of characteristic 
+powers)  
+With reference to T.3.3.1.1.3, the configurator shall:  
+‒ CP_WiDPCC/WRtg/setMag/f -> enter the value of the maximum active power in input (kW) 
+of the plant,  
+‒ CP_WaDPCC/WRtg/setMag/f -> enter the value of the maximum active Power in absorption 
+(kW) of the plant,  
+ 
+ 
+2) The TR does not go into the type/technology/nature of the configurator adopted by the CPC manufacturer.  
+--- PAGE 8 ---
+TECHNICAL REPORT   CEI TR 50 -126:2024 -11 
+ 
+ 
+ 
+8 
+ 
+ 
+‒ CP_QiDPCC/VArRtg/setMag/f -> enter the value of the maximum inductive reactive power 
+(kVAr) of the plant,  
+‒ CP_QcDPCC/VArRtg/setMag/f -> enter the value of the maximum capacitive reactive power 
+(kVAr) of the plant,  
+‒ CP_VADPCC/VARtg/setMag/f -> enter the value of the maximum apparent power (kVA) of 
+plant .  
+5.2.1.3  Phase Current Measurements at the CP at 4 sec.  
+With reference to T.3.3.1.1.7, the configurator may  
+‒ enter in the LN type MMXU1 dedicated to plant measurements at the delivery point the <DO 
+name="A" type= "WYExxx" />  
+if the plant will make this optional information available to the DSO.  
+5.2.1.4  Measurements  of P for Single Generation Group at 4 sec.  
+With reference to T.3.3.1.1.7, the configurator shall  
+‒ enter into the CID file a number N (1..99) instances (inst="1"... "N") of the LN SGGMMXU, 
+one 
+for each SGG whose size (Active Power) is significant for observability purposes.  
+5.2.1.5  Plant Operating Status - Single Generation Group  
+With reference to T.3.3.1.1.9, the configurator shall:  
+‒ enter into the CID file a number N (1..99)of instances (inst="1"... "N") of the LN SSGGDGEN, 
+one 
+for each SINGLE GENERATION GROUP whose size (Active Power) is significant for 
+observability purposes;  
+‒ SSGGDGEN/GnGrId/stVal -> enter N, Identifier of the SINGLE GENERATION GROUP, 
+equal to the instance number of the LN that includes it.  
+NOTE The value N must be the same as the one used in 5.2.1.4 so that the information of Operational Status and P 
+measurements are consistently referred to the same SINGLE GENERATION GROUP observed.  
+5.2.2  PF2 Functional Performance (Controllability)  
+The Data Model relevant to Controllability is based on the classes prescribed in T.3.3.1.2 and  
+Sub-clauses.  
+The Controllability Functions are optional, however the CPC will have the Data Model capability  
+able of instantiating all of them. According to the Operating Rules (Annex U), the DSO will be  
+aware of only those FRs that can be enabled and parameterized during the plant control 
+process.  
+For each i -th Regulatory Function (FRi) among the regulated ones:  
+1) active power limitation (reference T.3.3.1.2.1),  
+2) modulation of active power input/absorption to the CP ( reference T.3.3.1.2.2),  
+3) voltage regulation with delivery of  reactive Inductive/Capacitive power (reference 
+T.3.3.1.2.3),  
+4) power factor set point (reference T.3.3.1.2.4),  
+5) Q(V) (reference T.3.3.1.2.5),  
+6) cosϕ = f(P) (reference T.3.3.1.2.6),  
+  
+--- PAGE 9 ---
+TECHNICAL REPORT   CEI TR 50 -126:2024 -11 
+ 
+ 
+ 
+9 
+ 
+ 
+the configurator will need to:  
+‒ FRi/Beh -> enter the default value of the operational status (1 (on) = Operational, 5 (off) 
+=Non -operational);  
+‒ FRi/Mod -> enter the default value of the operating mode activation status (1 (on) = Active, 
+5 (off) = Inactive);  
+‒ FRi/Setpoint -specific -> enter the default value applied to FRi activation until re -
+parameterization by the DSO;  
+In illustrative terms, active power modulation will be considered available in  input/absorption to 
+the CP. Of this we will highlight the aspects regarding control  (DSO) and engineering 
+(configurator).  
+5.3 The communication of the CPC according to Annex T to CEI 0 -16 
+Annex T is eminently focused  and in detail on data modeling yet  keeping conceptual levels 
+with regard to  
+‒ protocol services (reference T.3.3.2),  
+‒ performance classes and data exchange modes (reference T.3.2.1)  
+• Requests (reading/writing) by the client directly,  
+• Spontaneous reporting on variations,  
+• Periodic reporting,  
+suitable for information exchange between the CPC and the DSO 3) without going into the details 
+(for generality) about how the data are organized inside the messages on the communication 
+interface.  
+In this document, however, also this aspect is specified and implemented by taking cue from 
+the specifications expressed in T.3.3.1.4, Table 98.  
+5.3.1  Communication section  
+The IP addressing of the CPC, to be used within the CID file, will be statically assigned 
+according to an addressing plan assigned by the DSO; it will have to be unique to enable an 
+unambiguous information exchange at all levels of the data model.  
+Alternatively, the DSO may offer a DHCP service for dynamic assignment of the address of the 
+CPC.  
+The sub -network bitrate will reflect the characteristics of the dedicated communication port 
+(reference O.13.1.1.1) and the communication infrastructure to which the device is connected.  
+5.3.2  Information flows from/to the DSO  
+This information exchange takes the form of a Client/Server interaction based on 
+communication services whose protocol stack rests on MMS over TCP/IP (with reference to 
+T.3.3.3).  
+5.3.2.1  Reporting to the DSO (Client)  
+With reference to T.3.3.2, the Server (CPC) implements reporting towards the Client (of the 
+DSO)  involving both Buffered and Unbuffered messages. The following conventions are 
+adopted:  
+‒ Data Set for a Report - has the prefix "DS_R_" followed by the descriptive name of the Data 
+Set;  
+ 
+ 
+3) And additional possible Remote Enabled Actors as mentioned in Note 1.  
+--- PAGE 10 ---
+TECHNICAL REPORT   CEI TR 50 -126:2024 -11 
+ 
+ 
+ 
+10 
+ 
+ 
+‒ Control Block for Buffered Report - has the prefix "brcb_" followed by the descriptive name  
+of the Data Set,  
+‒ Control Block for Unbuffered Report - has the prefix "urcb_" followed by the descriptive 
+name  of the Data Set,  
+‒ Data Set and Control Block are defined within LLN0.  
+Starting from T.3.3.1.4, Table 98, the following implementations take place  
+‒ to communicate Alarm Status and CPC Signals.  
+• DataSet DS_R_Status_Alarms_Signals;  
+o add an FCDA related to SSGGDGEN/Health (with lnInst = N) for each Individual  
+Generation Group;  
+o this example also includes the operational status and the activation status,  operating 
+modes of each Adjustment Function;  
+o the related Buffered Report brcb_Status_Alarms_Signals with transmission causes  
+DataChange, Quality Change, and General Interrogation;  
+‒ to communicate Measurements to the CP at 4sec of the CPC  
+• DataSet DS_R_CP_Mis4sec; optionally add an FCDA for "A" (current measurements);  
+o the related Unbuffered Report urcb_CP_Mis4sec with transmission causes 
+periodicity  
+and General Interrogation;  
+‒ to report 4sec Measurements per Generation Source and Accumulation of the CPC  
+• DataSet DS_R_GenAcc_Mis4sec; measurements, by generation source, are present or  
+not depending on the type of Generators installed in the plant: only the implemented 
+sources  will be included in the DataSet;  
+o the related Unbuffered Report urcb_GenAcc_Mis4sec with causes of 
+transmission periodicity and General Interrogation.  
+• to communicate 4sec Measurements per Single Generator of the CPC  
+o DataSet DS_R_SingGen_Mis4sec; add a couple of FCDAs [SGGMMXU/TotW  
++ SSGGDGEN/GnGrId] (with lnInst = N) for each Individual Generation Group;  
+o the related Unbuffered Report urcb_SingGen_Mis4sec with causes of 
+transmission  
+Periodicity and General Interrogation.  
+NOTE As expressed in 5.2.1.4 and 5.2.1.5, the N value shall be that used in the Operational Status model  and 
+Measuresments of P so that they are consistently referred to the same SINGLE GENERATION GROUP observed.  
+5.3.3  Commands and Configurations to the CPC (Server)  
+With reference to T.3.3.2, the Client (of the DSO) implements a communication to the Server  
+(CPC) allowing direct access to specific parts of the model (LD, LN, DO, DA) as well as  to 
+structures such as the Control Block, DataSet, etc. as prescribed by the standard for the  specific 
+information element and according to access privileges defined by Annex T.  
+--- PAGE 11 ---
+TECHNICAL REPORT   CEI TR 50 -126:2024 -11 
+ 
+ 
+ 
+11 
+ 
+ 
+In the example of the CPC of this document, the DSO Client will be able to:  
+‒ to read values (e.g. the IED Information Label);  
+‒ to carry out SBOw type control operations, thanks to the IEDs remote location and, for better 
+(functional) security,  to access sensitive CPC resources;  
+‒ to run calibrations of functional parameters.  
+6 Use Case of Plant and relevant CPC  
+6.1 Description of the Use Case  
+In order to give evidence of the Data Models and of the Communication from/to the DSO on the 
+base of the  Plant characteristics,  we assume the presence of the following information/features.  
+(in order, as represented in Figure 1 and Figure 2).  
+1) Observability  
+‒ CPC information label;  
+‒ Characteristic power vector (polygonal curve) of the plant;  
+‒ Information about the availability to implement adjustments; for PF1  
+• at plant level = Not available,  
+• of the generation macro -block = Not available,  
+• of the storage macro -block = Not Available;  
+‒ DG for which the switch position is sent;  
+‒ two photovoltaic generators  
+• GenPV (1) of proper size for Observability (reference CEI 0 -16, O.8.4), for which  the 
+single Generator measurements are sent,  
+o operational status,  
+o the identifier = 1;  
+• GenPV (2) under size proper for Observability (reference CEI 0 -16, O.8.4), which 
+contributes to the aggregate measurement for the source “PV” only;  
+‒ two thermoelectric generators  
+• GenTher (1) of proper size  for Observability (reference CEI 0 -16, O.8.4), for which  the 
+single Generator measurements are sent,  
+o operational status,  
+o the identifier = 2;  
+• GenTher (2) under size proper for Observability (reference CEI 0 -16, O.8.4), which 
+contributes to the aggregate measurement for the source “Ther” only;  
+‒ A Hydroelectric Generator GenHydr(1) under size proper for Observability (reference  CEI 
+0-16, O.8.4), contributing to the aggregate measurement for "Hydr" source only;  
+‒ No Wind Generator;  
+‒ A Storage system under size proper for Observability (reference  CEI 0 -16, O.8.4), 
+contributing to the aggregate measurement for "St" source only;  
+‒ "CP" measurements at the Connection Points.  
+--- PAGE 12 ---
+TECHNICAL REPORT   CEI TR 50 -126:2024 -11 
+ 
+ 
+ 
+12 
+ 
+ 
+ 
+Figure 1 – Plant scheme for PF1  
+2) Controllability  
+‒ Information about availability to implement adjustments; for PF2  
+• at  plant level = Available,  
+• of the generation macro -block = Available,  
+• of the storage macro -block = Available;  
+‒ All the adjustment functions provided in Annex O which, each with their own characteristics, 
+contemplate information exchanges for command / set -point / status. Only the modulation 
+function of active power in input/absorption at the CP (Set point of activ e power from DSO) 
+is available.  
+ 
+ 
+Figure 2 – Plant scheme for PF2  
+
+--- PAGE 13 ---
+TECHNICAL REPORT   CEI TR 50 -126:2024 -11 
+ 
+ 
+ 
+13 
+ 
+ 
+6.2 Example of Configurations  
+The following Table 1 shows the example values for configuring the CPC related to the Use 
+Case.  
+Table 1 - Example of parameterizations  
+Parameter/Information  Value  NOTES  
+FDI name  CCI016_01   
+IP address  192.168.8.167   
+netmask  255.255.255.0   
+default gateway  192.168.8.1   
+Subnetwork description  CCI -DSO bus   
+Vendor  Abcd_01   
+swRev  1.0   
+location  IT000E123456789  POD  
+Maximum active power input  200  kW 
+Maximum active power absorption  200  kW 
+Maximum inductive reactive power  50 kVAr  
+Maximum capacitive reactive Power  50 kVAr  
+Maximum apparent plant power  210  kVA  
+Availability for regulation at plant level  1 (on) = Available   
+Availability for regulation at generation macro -block 
+level  
+1 (on) = Available   
+Availability for regulation at storage macro -block level  1 (on) = Available   
+ 
+The system provides 4 -sec measurement of the  
+Currents at the PoC  
+ 
+Not applicabile  
+Optional measure according to 
+T.3.3.1.1.7 and introduced in 
+the Data Model of this example  
+The plant provides the P -Measurement of the Single  
+Photovoltaic Generation Group GenPV(1)  
+GnGrId =1   
+The plant provides the P-Measurement of the Single  
+Thermoelectric Generation Group GenTer(1)  
+GnGrId =2   
+--- PAGE 14 ---
+TECHNICAL REPORT   CEI TR 50 -126:2024 -11 
+ 
+ 
+ 
+14 
+ 
+ 
+The plant provides the Operational Status of the 
+Single  
+Photovoltaic Generation Group GenPV(1)  
+GnGrId =1   
+The plant provides the Operational Status of the 
+Single Thermoelectric Generation Group GenTer(1)  
+GnGrId =2   
+Operating status active power limitation (Wlim)  5 (off) = Not operative  The expected values of 
+FctOpStAuto and FctOpSt will 
+be 'Not available'.  Wlim activation  5 (off) = Inactive  
+Operating status of active power input/output 
+modulation at the PdC (WSd)  
+1 (on) = Operative   
+The expected value of FctOpSt  
+will be "Served  WSd activation  1 (on) = Active  
+ 
+Default nominal value WSptPct  
+ 
+20 
+(percentage, with sign, in 
+relation to the maximum 
+apparent power of the system 
+Smax)  
+ 
+Operating state voltage regulation with 
+inductive/capacitive reactive power supply (VArSd)  
+ 
+ 
+5 (off) = Not operative  
+ 
+The expected value of FctOpSt  
+will be 'Not available'.  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+--- PAGE 15 ---
+TECHNICAL REPORT   CEI TR 50 -126:2024 -11 
+ 
+ 
+ 
+15 
+ 
+ 
+Parametro/Informazione  Valore  NOTE  
+VArSd activation  5 (off) = Inactive   
+Operational Status (PFSP)  5 (off) = Not operative  The expected value of FctOpSt  
+will be 'Not available'.  PFSP Activation  5 (off) =  Inactive  
+Operational Status Q(V) (VArV)  5 (off) = Not operative  The configuration of Beh is propagated to the 
+LN instances DPMC and DECP which model, 
+as a whole, the FR.  
+ 
+The expected value of FctOpSt  
+will be 'Not Available'.  
+ 
+ 
+VArV activation  
+ 
+ 
+ 
+5 (off) = Inactive  
+Operating state cosϕ = f(P) (PFW)  5 (off) = Not operative  The expected value of FctOpSt  
+will be 'Not Available'.  PFW activation  5 (off) =  Inactive  
+ 
+ 
+--- PAGE 16 ---
+ 
+ 
+Annex  A  
+CC SCL file  
+ 
+Example of CCI CID file implementing, according to IEC 61850 SCL, the Use Case described in Chapter  6. 
+ 
+<?xml version="1.0" encoding="UTF-8"?> 
+<SCL xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:sxy="http://www.iec.ch/61850/2003/SCLcoordinates" xsi:schemaLocation="http://www.iec.ch/61850/2003/SCL SCL.xsd" version="2007" revision="B" release="4" xmlns="http://www.iec.ch/61850/2003/SCL"> 
+<Header id="CCI_Oss_Contr" version="1" revision="1" toolID="" nameStructure="IEDName"> 
+<History> 
+<Hitem version="1" revision="1" when="05/08/2022 12:00:00" what="Esempio CID CCI Osservab. + Controllab." who="RMS" why="Per TR 57-126 relativo a Allegato T CEI 0-16" /> 
+</History> 
+</Header> 
+<Communication> 
+<SubNetwork name="subnetwork1" type="8-MMS" desc=""> 
+<Text>CCI-DSO bus</Text> 
+<BitRate unit="b/s">100000</BitRate> 
+<ConnectedAP iedName="CCI016_01" apName="accessPoint1"> 
+<Address> 
+<P  type="IP">192.168.8.167</P> 
+<P type="IP-SUBNET">255.255.255.0</P> 
+<P type="IP-GATEWAY">192.168.8.1</P> 
+<P type="OSI-TSEL">0001</P> 
+<P type="OSI-PSEL">00000001</P> 
+<P type="OSI-SSEL">0001</P> 
+<P type="OSI-AP-Title">000</P> 
+<P type="OSI-AE-Qualifier">000</P> 
+</Address> 
+</ConnectedAP> 
+</SubNetwork> 
+</Communication> 
+<IED name="CCI016_01" engRight="full" originalSclRevision="B" originalSclVersion="2007"> 
+<Services nameLength="32"> 
+<DynAssociation /> 
+<GetDirectory /> 
+<GetDataObjectDefinition /> 
+<GetDataSetValue /> 
+<DataSetDirectory /> 
+<ConfDataSet max="10" maxAttributes="200" modify="false" /> 
+<ReadWrite /> 
+<ConfReportControl max="10" bufMode="both" bufConf="false" /> 
+<GetCBValues /> 
+<ConfLogControl max="1" /> 
+<GOOSE max="5" /> 
+<FileHandling /> 
+<GSEDir /> 
+<TimerActivatedControl /> 
+<ClientServices bufReport="true" goose="true" readLog="true" unbufReport="true" supportsLdName="true" maxAttributes="200" maxReports="10" maxGOOSE="5" /> 
+<DataObjectDirectory /> 
+<ReportSettings cbName="Fix" datSet="Fix" rptID="Fix" optFields="Fix" bufTime="Fix" trgOps="Fix" intgPd="Fix" resvTms="false" owner="false" /> 
+<GSESettings cbName="Fix" datSet="Fix" appID="Fix" /> 
+<ConfLNs fixPrefix="true" fixLnInst="true" /> 
+<ConfLdName /> 
+<SupSubscription maxGo="10" maxSv="0" /> 
+<TimeSyncProt sntp="true" c37_238="false" other="true" /> 
+</Services> 
+<AccessPoint name="accessPoint1" desc=""> 
+<Server desc="CCI CEI 0-16 Oss. e Contr."> 
+<Authentication /> 
+<LDevice inst="LD_Plant" desc=""> 
+<LN0 lnClass="LLN0" lnType="LLN01" inst=""> 
+TECHNICAL REPORT CEI TR 50-126:2024-11 
+16 
+--- PAGE 17 ---
+ 
+ 
+ 
+ 
+ 
+<DataSet name="DS_R_Stato_Allarmi_Segnali" desc="Stato Allarmi e Segnali del CCI"> 
+<FCDA ldInst="LD_Plant" lnClass="DECP" fc="ST" lnInst="1" prefix="DisFR" doName="Beh" /> 
+<FCDA ldInst="LD_Plant" lnClass="DGEN" fc="ST" lnInst="1" prefix="DisFR" doName="Beh" /> 
+<FCDA ldInst="LD_Plant" lnClass="DSTO" fc="ST" lnInst="1" prefix="DisFR" doName="Beh" /> 
+<FCDA ldInst="LD_Plant" lnClass="XCBR" fc="ST" lnInst="1" prefix="IDG" doName="Pos" /> 
+<FCDA ldInst="LD_Plant" lnClass="DGEN" fc="ST" lnInst="1" prefix="SSGG" doName="Health" /> 
+<FCDA ldInst="LD_Plant" lnClass="DGEN" fc="ST" lnInst="2" prefix="SSGG" doName="Health" /> 
+<FCDA ldInst="LD_Plant" lnClass="DWMX" fc="ST" lnInst="1" prefix="Wlim" doName="Beh" /> 
+<FCDA ldInst="LD_Plant" lnClass="DWMX" fc="ST" lnInst="1" prefix="Wlim" doName="FctOpStAuto" /> 
+<FCDA ldInst="LD_Plant" lnClass="DWMX" fc="ST" lnInst="1" prefix="Wlim" doName="FctOpStEx" /> 
+<FCDA ldInst="LD_Plant" lnClass="DAGC" fc="ST" lnInst="1" prefix="WSd" doName="Beh" /> 
+<FCDA ldInst="LD_Plant" lnClass="DAGC" fc="ST" lnInst="1" prefix="WSd" doName="FctOpSt" /> 
+<FCDA ldInst="LD_Plant" lnClass="DVAR" fc="ST" lnInst="1" prefix="VArSd" doName="Beh" /> 
+<FCDA ldInst="LD_Plant" lnClass="DVAR" fc="ST" lnInst="1" prefix="VArSd" doName="FctOpSt" /> 
+<FCDA ldInst="LD_Plant" lnClass="DFPF" fc="ST" lnInst="1" prefix="PFSP" doName="Beh" /> 
+<FCDA ldInst="LD_Plant" lnClass="DFPF" fc="ST" lnInst="1" prefix="PFSP" doName="FctOpSt" /> 
+<FCDA ldInst="LD_Plant" lnClass="DVVR" fc="ST" lnInst="1" prefix="VArV" doName="Beh" /> 
+<FCDA ldInst="LD_Plant" lnClass="DVVR" fc="ST" lnInst="1" prefix="VArV" doName="FctOpSt" /> 
+<FCDA ldInst="LD_Plant" lnClass="DPFW" fc="ST" lnInst="1" prefix="PFW" doName="Beh" /> 
+<FCDA ldInst="LD_Plant" lnClass="DPFW" fc="ST" lnInst="1" prefix="PFW" doName="FctOpSt" /> 
+</DataSet> 
+<DataSet name="DS_R_PdC_Mis4sec" desc="Misure al PdC a 4sec del CCI"> 
+<FCDA ldInst="LD_Plant" lnClass="MMXU" fc="MX" lnInst="1" prefix="PdC" doName="TotW" /> 
+<FCDA ldInst="LD_Plant" lnClass="MMXU" fc="MX" lnInst="1" prefix="PdC" doName="TotVAr" /> 
+<FCDA ldInst="LD_Plant" lnClass="MMXU" fc="MX" lnInst="1" prefix="PdC" doName="PPV" /> 
+<FCDA ldInst="LD_Plant" lnClass="MMXU" fc="MX" lnInst="1" prefix="PdC" doName="A" /> 
+</DataSet> 
+<DataSet name="DS_R_GenAcc_Mis4sec" desc="Misure a 4sec per Tipo Generazione e Accumulo del CCI"> 
+<FCDA ldInst="LD_Plant" lnClass="MMXU" fc="MX" lnInst="1" prefix="GenPV" doName="TotW" /> 
+<FCDA ldInst="LD_Plant" lnClass="MMXU" fc="MX" lnInst="1" prefix="GenTer" doName="TotW" /> 
+<FCDA ldInst="LD_Plant" lnClass="MMXU" fc="MX" lnInst="1" prefix="GenIdr" doName="TotW" /> 
+<FCDA ldInst="LD_Plant" lnClass="MMXU" fc="MX" lnInst="1" prefix="St" doName="TotW" /> 
+</DataSet> 
+<DataSet name="DS_R_SingGen_Mis4sec" desc="Misure a 4sec per Singolo Generatore del CCI"> 
+<FCDA ldInst="LD_Plant" lnClass="MMXU" fc="MX" lnInst="1" prefix="SGG" doName="TotW" /> 
+<FCDA ldInst="LD_Plant" lnClass="DGEN" fc="ST" lnInst="1" prefix="SSGG" doName="GnGrId" /> 
+<FCDA ldInst="LD_Plant" lnClass="MMXU" fc="MX" lnInst="2" prefix="SGG" doName="TotW" /> 
+<FCDA ldInst="LD_Plant" lnClass="DGEN" fc="ST" lnInst="2" prefix="SSGG" doName="GnGrId" /> 
+</DataSet> 
+<ReportControl name="brcb_Stato_Allarmi_Segnali" confRev="1" datSet="DS_R_Stato_Allarmi_Segnali" rptID="CCI016_01LD_Plant/LLN0.brcb_Stato_Allarmi_Segnali" buffered="true" intgPd="0" bufTime="250" desc="Stato Allarmi e Segnali del CCI"> 
+<TrgOps dchg="true" qchg="true" gi="true" /> 
+<OptFields seqNum="true" timeStamp="true" dataSet="true" reasonCode="true" dataRef="true" entryID="true" configRef="true" bufOvfl="true" /> 
+<RptEnabled max="2" desc="Client DSO" /> 
+</ReportControl> 
+<ReportControl name="urcb_PdC_Mis4sec" confRev="1" datSet="DS_R_PdC_Mis4sec" rptID="CCI016_01LD_Plant/LLN0.urcb_PdC_Mis4sec" intgPd="4000" bufTime="0" desc="Misure al PdC a 4sec del CCI"> 
+<TrgOps period="true" gi="true" /> 
+<OptFields seqNum="true" timeStamp="true" dataSet="true" reasonCode="true" dataRef="true" entryID="true" configRef="true" /> 
+<RptEnabled max="2" desc="Client DSO" /> 
+</ReportControl> 
+<ReportControl name="urcb_GenAcc_Mis4sec" confRev="1" datSet="DS_R_GenAcc_Mis4sec" rptID="CCI016_01LD_Plant/LLN0.urcb_GenAcc_Mis4sec" intgPd="4000" bufTime="0" desc="Misure a 4sec per Tipo Generazione e Accumulo del CCI"> 
+<TrgOps period="true" gi="true" /> 
+<OptFields seqNum="true" timeStamp="true" dataSet="true" reasonCode="true" dataRef="true" entryID="true" configRef="true" /> 
+<RptEnabled max="2" desc="Client DSO" /> 
+</ReportControl> 
+<ReportControl name="urcb_SingGen_Mis4sec" confRev="1" datSet="DS_R_SingGen_Mis4sec" rptID="CCI016_01LD_Plant/LLN0.urcb_SingGen_Mis4sec" intgPd="4000" bufTime="0" desc="Misure a 4sec per Singolo Generatore del CCI"> 
+<TrgOps period="true" gi="true" /> 
+<OptFields seqNum="true" timeStamp="true" dataSet="true" reasonCode="true" dataRef="true" entryID="true" configRef="true" /> 
+<RptEnabled max="2" desc="Client DSO" /> 
+</ReportControl> 
+<DOI name="Mod" desc=""> 
+<DAI name="stVal"> 
+<Val>on</Val> 
+</DAI> 
+<DAI name="ctlModel"> 
+<Val>status-only</Val> 
+</DAI> 
+</DOI> 
+TECHNICAL REPORT 
+ 
+CEI TR 50-126:2024-11 
+ 
+15 
+--- PAGE 18 ---
+ 
+ 
+ 
+ 
+ 
+<DOI name="Beh" desc=""> 
+<DAI name="stVal"> 
+<Val>on</Val> 
+</DAI> 
+</DOI> 
+<DOI name="Health" desc=""> 
+<DAI name="stVal"> 
+<Val>Ok</Val> 
+</DAI> 
+</DOI> 
+<DOI name="NamPlt" desc=""> 
+<DAI name="ldNs" desc=""> 
+<Val>IEC 61850-7-4:2010</Val> 
+</DAI> 
+</DOI> 
+</LN0> 
+<LN lnClass="LPHD" lnType="LPHD1" inst="1" prefix=""> 
+<DOI name="PhyHealth" desc=""> 
+<DAI name="stVal"> 
+<Val>Ok</Val> 
+</DAI> 
+</DOI> 
+<DOI name="PhyNam"> 
+<DAI name="vendor"> 
+<Val>Abcd_01</Val> 
+</DAI> 
+<DAI name="swRev"> 
+<Val>1.0</Val> 
+</DAI> 
+<DAI name="location"> 
+<Val>IT000E123456789</Val> 
+</DAI> 
+</DOI> 
+</LN> 
+<LN lnClass="DPCC" lnType="DPCC1" inst="1" prefix="PdC_Wi"> 
+<DOI name="NamPlt"> 
+<DAI name="lnNs"> 
+<Val>IEC 61850-7-420:2019A</Val> 
+</DAI> 
+</DOI> 
+<DOI name="Beh" desc=""> 
+<DAI name="stVal"> 
+<Val>on</Val> 
+</DAI> 
+</DOI> 
+<DOI name="WRtg" desc="PdC - Potenza attiva massima in immissione (kW)"> 
+<SDI name="setMag" desc=""> 
+<DAI name="f" desc="Valore caratteristico di Impianto"> 
+<Val>200</Val> 
+</DAI> 
+</SDI> 
+</DOI> 
+</LN> 
+<LN lnClass="DPCC" lnType="DPCC1" inst="1" prefix="PdC_Wa"> 
+<DOI name="NamPlt"> 
+<DAI name="lnNs"> 
+<Val>IEC 61850-7-420:2019A</Val> 
+</DAI> 
+</DOI> 
+<DOI name="Beh" desc=""> 
+<DAI name="stVal"> 
+<Val>on</Val> 
+</DAI> 
+</DOI> 
+<DOI name="WRtg" desc="PdC - Potenza attiva massima in assorbimento (kW)"> 
+<SDI name="setMag" desc=""> 
+<DAI name="f" desc="Valore caratteristico di Impianto"> 
+TECHNICAL REPORT 
+ 
+CEI TR 50-126:2024-11 
+ 
+16 
+--- PAGE 19 ---
+ 
+ 
+ 
+ 
+ 
+<Val>200</Val> 
+</DAI> 
+</SDI> 
+</DOI> 
+</LN> 
+<LN lnClass="DPCC" lnType="DPCC2" inst="1" prefix="PdC_Qi"> 
+<DOI name="NamPlt"> 
+<DAI name="lnNs"> 
+<Val>IEC 61850-7-420:2019A</Val> 
+</DAI> 
+</DOI> 
+<DOI name="Beh" desc=""> 
+<DAI name="stVal"> 
+<Val>on</Val> 
+</DAI> 
+</DOI> 
+<DOI name="VArRtg" desc="PdC - Potenza reattiva induttiva massima (kVAr)"> 
+<SDI name="setMag" desc=""> 
+<DAI name="f" desc="Valore caratteristico di Impianto"> 
+<Val>50</Val> 
+</DAI> 
+</SDI> 
+</DOI> 
+</LN> 
+<LN lnClass="DPCC" lnType="DPCC2" inst="1" prefix="PdC_Qc"> 
+<DOI name="NamPlt"> 
+<DAI name="lnNs"> 
+<Val>IEC 61850-7-420:2019A</Val> 
+</DAI> 
+</DOI> 
+<DOI name="Beh" desc=""> 
+<DAI name="stVal"> 
+<Val>on</Val> 
+</DAI> 
+</DOI> 
+<DOI name="VArRtg" desc="PdC - Potenza reattiva capacitiva massima (kVAr)"> 
+<SDI name="setMag" desc=""> 
+<DAI name="f" desc="Valore caratteristico di Impianto"> 
+<Val>50</Val> 
+</DAI> 
+</SDI> 
+</DOI> 
+</LN> 
+<LN lnClass="DPCC" lnType="DPCC3" inst="1" prefix="PdC_VA"> 
+<DOI name="NamPlt"> 
+<DAI name="lnNs"> 
+<Val>IEC 61850-7-420:2019A</Val> 
+</DAI> 
+</DOI> 
+<DOI name="Beh" desc=""> 
+<DAI name="stVal"> 
+<Val>on</Val> 
+</DAI> 
+</DOI> 
+<DOI name="VARtg" desc="PdC - Potenza apparente massima di Impianto (kVA)"> 
+<SDI name="setMag" desc=""> 
+<DAI name="f" desc="Inserire il valore caratteristico di Impianto"> 
+<Val>210</Val> 
+</DAI> 
+</SDI> 
+</DOI> 
+</LN> 
+<LN lnClass="DECP" lnType="DECP1" inst="1" prefix="DisFR"> 
+<DOI name="NamPlt"> 
+<DAI name="lnNs"> 
+<Val>IEC 61850-7-420:2019A</Val> 
+</DAI> 
+TECHNICAL REPORT 
+ 
+CEI TR 50-126:2024-11 
+ 
+17 
+--- PAGE 20 ---
+ 
+ 
+ 
+ 
+ 
+</DOI> 
+<DOI name="Beh" desc=""> 
+<DAI name="stVal"> 
+<Val>on</Val> 
+</DAI> 
+</DOI> 
+</LN> 
+<LN lnClass="DGEN" lnType="DGEN1" inst="1" prefix="DisFR"> 
+<DOI name="NamPlt"> 
+<DAI name="lnNs"> 
+<Val>IEC 61850-7-420:2019A</Val> 
+</DAI> 
+</DOI> 
+<DOI name="Beh" desc=""> 
+<DAI name="stVal"> 
+<Val>on</Val> 
+</DAI> 
+</DOI> 
+</LN> 
+<LN lnClass="DSTO" lnType="DSTO1" inst="1" prefix="DisFR"> 
+<DOI name="NamPlt"> 
+<DAI name="lnNs"> 
+<Val>IEC 61850-7-420:2019A</Val> 
+</DAI> 
+</DOI> 
+<DOI name="Beh" desc=""> 
+<DAI name="stVal"> 
+<Val>on</Val> 
+</DAI> 
+</DOI> 
+</LN> 
+<LN lnClass="MMXU" lnType="MMXU1" inst="1" prefix="PdC"> 
+<DOI name="Beh" desc=""> 
+<DAI name="stVal"> 
+<Val>on</Val> 
+</DAI> 
+</DOI> 
+</LN> 
+<LN lnClass="MMXU" lnType="MMXU2" inst="1" prefix="GenPV"> 
+<DOI name="Beh" desc=""> 
+<DAI name="stVal"> 
+<Val>on</Val> 
+</DAI> 
+</DOI> 
+</LN> 
+<LN lnClass="MMXU" lnType="MMXU2" inst="1" prefix="GenWi"> 
+<DOI name="Beh" desc=""> 
+<DAI name="stVal"> 
+<Val>on</Val> 
+</DAI> 
+</DOI> 
+</LN> 
+<LN lnClass="MMXU" lnType="MMXU2" inst="1" prefix="GenTer"> 
+<DOI name="Beh" desc=""> 
+<DAI name="stVal"> 
+<Val>on</Val> 
+</DAI> 
+</DOI> 
+</LN> 
+<LN lnClass="MMXU" lnType="MMXU2" inst="1" prefix="GenIdr"> 
+<DOI name="Beh" desc=""> 
+<DAI name="stVal"> 
+<Val>on</Val> 
+</DAI> 
+</DOI> 
+</LN> 
+<LN lnClass="MMXU" lnType="MMXU2" inst="1" prefix="St"> 
+TECHNICAL REPORT 
+ 
+CEI TR 50-126:2024-11 
+ 
+18 
+--- PAGE 21 ---
+ 
+ 
+ 
+ 
+ 
+<DOI name="Beh" desc=""> 
+<DAI name="stVal"> 
+<Val>on</Val> 
+</DAI> 
+</DOI> 
+</LN> 
+<LN lnClass="MMXU" lnType="MMXU2" inst="1" prefix="SGG" desc="Misura di P Singolo Gruppo di Generazione GenPV(1)"> 
+<DOI name="Beh" desc=""> 
+<DAI name="stVal"> 
+<Val>on</Val> 
+</DAI> 
+</DOI> 
+</LN> 
+<LN lnClass="MMXU" lnType="MMXU2" inst="2" prefix="SGG" desc="Misura di P Singolo Gruppo di Generazione GenTer(1)"> 
+<DOI name="Beh" desc=""> 
+<DAI name="stVal"> 
+<Val>on</Val> 
+</DAI> 
+</DOI> 
+</LN> 
+<LN lnClass="XCBR" lnType="XCBR1" inst="1" prefix="IDG"> 
+<DOI name="Beh" desc=""> 
+<DAI name="stVal"> 
+<Val>on</Val> 
+</DAI> 
+</DOI> 
+<DOI name="Pos" desc=""> 
+<DAI name="ctlModel"> 
+<Val>status-only</Val> 
+</DAI> 
+</DOI> 
+<DOI name="BlkOpn" desc=""> 
+<DAI name="ctlModel"> 
+<Val>status-only</Val> 
+</DAI> 
+</DOI> 
+<DOI name="BlkCls" desc=""> 
+<DAI name="ctlModel"> 
+<Val>status-only</Val> 
+</DAI> 
+</DOI> 
+</LN> 
+<LN lnClass="DGEN" lnType="DGEN2" inst="1" prefix="SSGG" desc="Singolo Gruppo di Generazione GenPV(1)"> 
+<DOI name="NamPlt"> 
+<DAI name="lnNs"> 
+<Val>(Tr)IEC 61850-CEI016:2022</Val> 
+</DAI> 
+</DOI> 
+<DOI name="Beh" desc=""> 
+<DAI name="stVal"> 
+<Val>on</Val> 
+</DAI> 
+</DOI> 
+<DOI name="Health" desc="Stato Operativo"> 
+<DAI name="stVal"> 
+<Val>Ok</Val> 
+</DAI> 
+</DOI> 
+<DOI name="GnGrId" desc="Numero Identificativo"> 
+<DAI name="stVal"> 
+<Val>1</Val> 
+</DAI> 
+</DOI> 
+</LN> 
+<LN lnClass="DGEN" lnType="DGEN2" inst="2" prefix="SSGG" desc="Singolo Gruppo di Generazione GenTer(1)"> 
+<DOI name="NamPlt"> 
+<DAI name="lnNs"> 
+TECHNICAL REPORT 
+ 
+CEI TR 50-126:2024-11 
+ 
+19 
+--- PAGE 22 ---
+ 
+ 
+ 
+ 
+ 
+<Val>(Tr)IEC 61850-CEI016:2022</Val> 
+</DAI> 
+</DOI> 
+<DOI name="Beh" desc=""> 
+<DAI name="stVal"> 
+<Val>on</Val> 
+</DAI> 
+</DOI> 
+<DOI name="Health" desc="Stato Operativo "> 
+<DAI name="stVal"> 
+<Val>Ok</Val> 
+</DAI> 
+</DOI> 
+<DOI name="GnGrId" desc="Numero Identificativo"> 
+<DAI name="stVal"> 
+<Val>2</Val> 
+</DAI> 
+</DOI> 
+</LN> 
+<LN lnClass="DWMX" lnType="DWMX1" inst="1" prefix="Wlim" desc="Fz. di Regolazione - limitazione della W - da DSO"> 
+<DOI name="NamPlt"> 
+<DAI name="lnNs"> 
+<Val>(Tr)IEC 61850-CEI016:2022</Val> 
+</DAI> 
+</DOI> 
+<DOI name="Beh" desc=""> 
+<DAI name="stVal"> 
+<Val>off</Val> 
+</DAI> 
+</DOI> 
+<DOI name="WMaxSptPct" desc="Setpoint limite di W in generazione (percentuale con segno rispetto a Smax di Impianto) [0..100]"> 
+<DAI name="ctlModel"> 
+<V al >sbo-with-en han ced-secu rity</V al > 
+</DAI> 
+</DOI> 
+<DOI name="Mod" desc="Attivazione/disattivazione funzionamento [5 = Inattiva, 1 = Attiva]"> 
+<DAI name="stVal"> 
+<Val>off</Val> 
+</DAI> 
+<DAI name="ctlModel"> 
+<V al >sbo-with-en han ced-secu rity</V al > 
+</DAI> 
+</DOI> 
+</LN> 
+<LN lnClass="DAGC" lnType="DAGC1" inst="1" prefix="WSd" desc="Fz. di Regolazione - modulazione di W in immissione/assorbimento al PdC - da DSO"> 
+<DOI name="NamPlt"> 
+<DAI name="lnNs"> 
+<Val>(Tr)IEC 61850-CEI016:2022</Val> 
+</DAI> 
+</DOI> 
+<DOI name="Beh" desc=""> 
+<DAI name="stVal"> 
+<Val>on</Val> 
+</DAI> 
+</DOI> 
+<DOI name="WSptPct" desc="Setpoint modulazione W in immissione/assorbimento al PdC (percentuale con segno rispetto alla Smax di Impianto) [0..100]"> 
+<DAI name="ctlModel"> 
+<V al >sbo-with-en han ced-secu rity</V al > 
+</DAI> 
+<SDI name="mxVal" desc="Setpoint W in immissione/assorbimento al PdC (percentuale con segno rispetto a Smax di Impianto) [0..100]"> 
+<DAI name="f" desc="Valore default set-point"> 
+<Val>20</Val> 
+</DAI> 
+</SDI> 
+</DOI> 
+<DOI name="Mod" desc="Attivazione/disattivazione funzionamento - [5 = Inattiva, 1 = Attiva]"> 
+<DAI name="stVal"> 
+TECHNICAL REPORT 
+ 
+CEI TR 50-126:2024-11 
+ 
+20 
+--- PAGE 23 ---
+ 
+ 
+ 
+ 
+ 
+<Val>on</Val> 
+</DAI> 
+<DAI name="ctlModel"> 
+<V al >sbo-with-en han ced-secu rity</V al > 
+</DAI> 
+</DOI> 
+</LN> 
+<LN lnClass="DVAR" lnType="DVAR1" inst="1" prefix="VArSd" desc="Fz. di Regolazione - regolazione di tensione con erogazione di potenza reattiva Induttiva/Capacitiva - da DSO"> 
+<DOI name="NamPlt"> 
+<DAI name="lnNs"> 
+<Val>(Tr)IEC 61850-CEI016:2022</Val> 
+</DAI> 
+</DOI> 
+<DOI name="Beh" desc=""> 
+<DAI name="stVal"> 
+<Val>off</Val> 
+</DAI> 
+</DOI> 
+<DOI name="VArTgtSptPct" desc="Setpoint VAr induttiva/capacitiva (percentuale con segno rispetto a Smax di Impianto) [0..100]"> 
+<DAI name="ctlModel"> 
+<V al >sbo-with-en han ced-secu rity</V al > 
+</DAI> 
+</DOI> 
+<DOI name="Mod" desc="Attivazione/disattivazione funzionamento [5 = Inattiva, 1 = Attiva]"> 
+<DAI name="stVal"> 
+<Val>off</Val> 
+</DAI> 
+<DAI name="ctlModel"> 
+<V al >sbo-with-en han ced-secu rity</V al > 
+</DAI> 
+</DOI> 
+</LN> 
+<LN lnClass="DFPF" lnType="DFPF1" inst="1" prefix="PFSP" desc="Fz. di Regolazione - set point del fattore di potenza - da DSO"> 
+<DOI name="NamPlt"> 
+<DAI name="lnNs"> 
+<Val>(Tr)IEC 61850-CEI016:2022</Val> 
+</DAI> 
+</DOI> 
+<DOI name="Beh" desc=""> 
+<DAI name="stVal"> 
+<Val>off</Val> 
+</DAI> 
+</DOI> 
+<DOI name="PFGnTgtSpt" desc="Setpoint FdP in caso di generazione di potenza attiva [-1,00..0,00]"> 
+<DAI name="ctlModel"> 
+<V al >sbo-with-en han ced-secu rity</V al > 
+</DAI> 
+</DOI> 
+<DOI name="PFLodTgtSpt" desc="Setpoint di FdP in caso di assorbimento di potenza attiva [0,00..1,00]"> 
+<DAI name="ctlModel"> 
+<V al >sbo-with-en han ced-secu rity</V al > 
+</DAI> 
+</DOI> 
+<DOI name="Mod" desc="Attivazione/disattivazione funzionamento [5 = Inattiva, 1 = Attiva]"> 
+<DAI name="stVal"> 
+<Val>off</Val> 
+</DAI> 
+<DAI name="ctlModel"> 
+<V al >sbo-with-en han ced-secu rity</V al > 
+</DAI> 
+</DOI> 
+</LN> 
+<LN lnClass="DVVR" lnType="DVVR1" inst="1" prefix="VArV" desc="Fz. di Regolazione - Q(V) - da DSO"> 
+<DOI name="NamPlt"> 
+<DAI name="lnNs"> 
+<Val>(Tr)IEC 61850-CEI016:2022</Val> 
+</DAI> 
+TECHNICAL REPORT 
+ 
+CEI TR 50-126:2024-11 
+ 
+21 
+--- PAGE 24 ---
+ 
+ 
+ 
+ 
+ 
+</DOI> 
+<DOI name="Beh" desc=""> 
+<DAI name="stVal"> 
+<Val>off</Val> 
+</DAI> 
+</DOI> 
+<DOI name="Mod" desc="Attivazione/disattivazione funzionamento [5 = Inattiva, 1 = Attiva]"> 
+<DAI name="stVal"> 
+<Val>off</Val> 
+</DAI> 
+<DAI name="ctlModel"> 
+<V al >sbo-with-en han ced-secu rity</V al > 
+</DAI> 
+</DOI> 
+<DOI name="K" desc="Parametro K della funzione Q(V) [-1.00..1.00]" /> 
+</LN> 
+<LN lnClass="DPMC" lnType="DPMC1" inst="1" prefix="VArV" desc="Fz. di Regolazione - Q(V) - da DSO"> 
+<DOI name="NamPlt"> 
+<DAI name="lnNs"> 
+<Val>IEC 61850-7-420:2019A</Val> 
+</DAI> 
+</DOI> 
+<DOI name="Beh" desc=""> 
+<DAI name="stVal"> 
+<Val>off</Val> 
+</DAI> 
+</DOI> 
+<DOI name="WSpt1" desc="Potenza di Lock-in della funzione Q(V) - [0.00..max] della PNominale (P.U.)"> 
+<DAI name="ctlModel"> 
+<V al >sbo-with-en han ced-secu rity</V al > 
+</DAI> 
+</DOI> 
+</LN> 
+<LN lnClass="DPMC" lnType="DPMC1" inst="2" prefix="VArV" desc="Fz. di Regolazione - Q(V) - da DSO"> 
+<DOI name="NamPlt"> 
+<DAI name="lnNs"> 
+<Val>IEC 61850-7-420:2019A</Val> 
+</DAI> 
+</DOI> 
+<DOI name="Beh" desc=""> 
+<DAI name="stVal"> 
+<Val>off</Val> 
+</DAI> 
+</DOI> 
+<DOI name="WSpt1" desc="Potenza di Lock-out della funzione Q(V) - [0.00..max] della PNominale (P.U.)"> 
+<DAI name="ctlModel"> 
+<V al >sbo-with-en han ced-secu rity</V al > 
+</DAI> 
+</DOI> 
+</LN> 
+<LN lnClass="DECP" lnType="DECP2" inst="1" prefix="VArV" desc="Fz. di Regolazione - Q(V) - da DSO"> 
+<DOI name="NamPlt"> 
+<DAI name="lnNs"> 
+<Val>IEC 61850-7-420:2019A</Val> 
+</DAI> 
+</DOI> 
+<DOI name="Beh" desc=""> 
+<DAI name="stVal"> 
+<Val>off</Val> 
+</DAI> 
+</DOI> 
+<DOI name="VMax" desc="Tensione superiore 1 della funzione Q(V) [0.00..max] della VNominale (P.U.)" /> 
+<DOI name="VMin" desc="Tensione inferiore 1 della funzione Q(V) [0.00..max] della VNominale (P.U.)" /> 
+</LN> 
+<LN lnClass="DECP" lnType="DECP2" inst="2" prefix="VArV" desc="Fz. di Regolazione - Q(V) - da DSO"> 
+<DOI name="NamPlt"> 
+<DAI name="lnNs"> 
+TECHNICAL REPORT 
+ 
+CEI TR 50-126:2024-11 
+ 
+22 
+--- PAGE 25 ---
+ 
+ 
+ 
+ 
+ 
+<Val>IEC 61850-7-420:2019A</Val> 
+</DAI> 
+</DOI> 
+<DOI name="Beh" desc=""> 
+<DAI name="stVal"> 
+<Val>off</Val> 
+</DAI> 
+</DOI> 
+<DOI name="VMax" desc="Tensione superiore 2 della funzione Q(V) [0.00..max] della VNominale (P.U.)" /> 
+<DOI name="VMin" desc="Tensione inferiore 2 della funzione Q(V) [0.00..max] della VNominale (P.U.)" /> 
+</LN> 
+<LN lnClass="DPFW" lnType="DPFW1" inst="1" prefix="PFW" desc="Fz. di Regolazione - cosfi = f(P) - da DSO"> 
+<DOI name="NamPlt"> 
+<DAI name="lnNs"> 
+<Val>(Tr)IEC 61850-CEI016:2022</Val> 
+</DAI> 
+</DOI> 
+<DOI name="Beh" desc=""> 
+<DAI name="stVal"> 
+<Val>off</Val> 
+</DAI> 
+</DOI> 
+<DOI name="Mod" desc="Attivazione/disattivazione funzionamento [5 = Inattiva, 1 = Attiva]"> 
+<DAI name="stVal"> 
+<Val>off</Val> 
+</DAI> 
+<DAI name="ctlModel"> 
+<V al >sbo-with-en han ced-secu rity</V al > 
+</DAI> 
+</DOI> 
+<DOI name="WSetA" desc="Valore P (punto A) [0.00..max] della PNominale (P.U.)" /> 
+<DOI name="PFSetA" desc="Valore cosfi (punto A) [-1.00..1.00]" /> 
+<DOI name="WSetB" desc="Valore P (punto B) [0.00..max] della PNominale (P.U.)" /> 
+<DOI name="PFSetB" desc="Valore cosfi (punto B) [-1.00..1.00]" /> 
+<DOI name="WSetC" desc="Valore P (punto C) [0.00..max] della PNominale (P.U.)" /> 
+<DOI name="PFSetC" desc="Valore cosfi (punto C) [-1.00..1.00]" /> 
+<DOI name="VLkIn" desc="Tensione di Lock-in della funzione cosfi = f(P) [1.00..1.10] della VNominale (P.U.)" /> 
+<DOI name="VLkOut" desc="Tensione di Lock-out della funzione cosfi = f(P) [0.90..1.00] della VNominale (P.U.)" /> 
+</LN> 
+</LDevice> 
+</Server> 
+</AccessPoint> 
+</IED> 
+<DataTypeTemplates> 
+<LNodeType id="LLN01" lnClass="LLN0"> 
+<DO name="Mod" type="ENC_1_Mod" /> 
+<DO name="Beh" type="ENS_2_Beh" /> 
+<DO name="Health" type="ENS_1_Health" /> 
+<DO name="NamPlt" type="LPL_5_NamPlt" /> 
+</LNodeType> 
+<LNodeType id="LPHD1" lnClass="LPHD"> 
+<DO name="PhyNam" type="DPL_1_PhyNam" /> 
+<DO name="PhyHealth" type="ENS_1_PhyHealth" /> 
+<DO name="Proxy" type="SPS_1_Proxy" /> 
+</LNodeType> 
+<LNodeType id="DPCC1" lnClass="DPCC"> 
+<DO name="NamPlt" type="LPL_5_NamPlt" /> 
+<DO name="Beh" type="ENS_2_Beh" /> 
+<DO name="AreaEpsEcpId" type="VSG_2_AreaEpsEcp" /> 
+<DO name="AreaEpsWMax" type="ASG_2_WMaxSet" /> 
+<DO name="VRef" type="ASG_2_WMaxSet" /> 
+<DO name="WRtg" type="ASG_2_WMaxSet" /> 
+<DO name="RefFrm" type="SPG_2_RefFrm" /> 
+<DO name="ElcRefId" type="VSG_2_AreaEpsEcp" /> 
+</LNodeType> 
+<LNodeType id="DPCC2" lnClass="DPCC"> 
+<DO name="NamPlt" type="LPL_5_NamPlt" /> 
+TECHNICAL REPORT 
+ 
+CEI TR 50-126:2024-11 
+ 
+23 
+--- PAGE 26 ---
+ 
+ 
+ 
+ 
+ 
+<DO name="Beh" type="ENS_2_Beh" /> 
+<DO name="AreaEpsEcpId" type="VSG_2_AreaEpsEcp" /> 
+<DO name="AreaEpsWMax" type="ASG_2_WMaxSet" /> 
+<DO name="VRef" type="ASG_2_WMaxSet" /> 
+<DO name="VArRtg" type="ASG_2_WMaxSet" /> 
+<DO name="RefFrm" type="SPG_2_RefFrm" /> 
+<DO name="ElcRefId" type="VSG_2_AreaEpsEcp" /> 
+</LNodeType> 
+<LNodeType id="DPCC3" lnClass="DPCC"> 
+<DO name="NamPlt" type="LPL_5_NamPlt" /> 
+<DO name="Beh" type="ENS_2_Beh" /> 
+<DO name="AreaEpsEcpId" type="VSG_2_AreaEpsEcp" /> 
+<DO name="AreaEpsWMax" type="ASG_2_WMaxSet" /> 
+<DO name="VRef" type="ASG_2_WMaxSet" /> 
+<DO name="VARtg" type="ASG_2_WMaxSet" /> 
+<DO name="RefFrm" type="SPG_2_RefFrm" /> 
+<DO name="ElcRefId" type="VSG_2_AreaEpsEcp" /> 
+</LNodeType> 
+<LNodeType id="DECP1" lnClass="DECP"> 
+<DO name="NamPlt" type="LPL_5_NamPlt" /> 
+<DO name="Beh" type="ENS_2_Beh" /> 
+<DO name="VRef" type="ASG_2_WMaxSet" /> 
+<DO name="RefFrm" type="SPG_2_RefFrm" /> 
+<DO name="ElcRefId" type="VSG_2_AreaEpsEcp" /> 
+</LNodeType> 
+<LNodeType id="DGEN1" lnClass="DGEN"> 
+<DO name="NamPlt" type="LPL_5_NamPlt" /> 
+<DO name="DEROpSt" type="ENS_2_DEROpSt" /> 
+<DO name="Beh" type="ENS_2_Beh" /> 
+<DO name="WMaxRtg" type="ASG_2_WMaxSet" /> 
+<DO name="VMaxRtg" type="ASG_2_WMaxSet" /> 
+<DO name="WMax" type="ASG_2_WMaxSet" /> 
+<DO name="WRmp" type="ASG_2_WMaxSet" /> 
+<DO name="VMax" type="ASG_2_WMaxSet" /> 
+<DO name="OutEcpRef" type="ORG_2_ElcMsRef" /> 
+<DO name="PhsConnTyp" type="ENG_2_PhsConnTyp" /> 
+<DO name="DERTyp" type="ENG_2_DERTyp" /> 
+</LNodeType> 
+<LNodeType id="DSTO1" lnClass="DSTO"> 
+<DO name="NamPlt" type="LPL_5_NamPlt" /> 
+<DO name="DEROpSt" type="ENS_2_DEROpSt" /> 
+<DO name="Beh" type="ENS_2_Beh" /> 
+<DO name="EffWh" type="MV_2_CtbWPct" /> 
+<DO name="EffWhPct" type="MV_2_CtbWPct" /> 
+<DO name="EqSto" type="ORG_2_ElcMsRef" /> 
+<DO name="ChaWMax" type="ASG_2_WMaxSet" /> 
+<DO name="OutEcpRef" type="ORG_2_ElcMsRef" /> 
+<DO name="PhsConnTyp" type="ENG_2_PhsConnTyp" /> 
+<DO name="DERTyp" type="ENG_2_DERTyp" /> 
+</LNodeType> 
+<LNodeType id="MMXU1" lnClass="MMXU"> 
+<DO name="Beh" type="ENS_2_Beh" /> 
+<DO name="TotW" type="MV_2_CtbWPct" /> 
+<DO name="TotVAr" type="MV_2_CtbWPct" /> 
+<DO name="PPV" type="DEL_1_PPV" /> 
+<DO name="A" type="WYE_1_A" /> 
+</LNodeType> 
+<LNodeType id="MMXU2" lnClass="MMXU"> 
+<DO name="Beh" type="ENS_2_Beh" /> 
+<DO name="TotW" type="MV_2_CtbWPct" /> 
+</LNodeType> 
+<LNodeType id="XCBR1" lnClass="XCBR"> 
+<DO name="Beh" type="ENS_2_Beh" /> 
+<DO name="Loc" type="SPS_1_Proxy" /> 
+<DO name="OpCnt" type="INS_1_OpCnt" /> 
+<DO name="Pos" type="DPC_1_Pos" /> 
+<DO name="BlkOpn" type="SPC_1_BlkOpn" /> 
+TECHNICAL REPORT 
+ 
+CEI TR 50-126:2024-11 
+ 
+24 
+--- PAGE 27 ---
+ 
+ 
+ 
+ 
+ 
+<DO name="BlkCls" type="SPC_1_BlkOpn" /> 
+</LNodeType> 
+<LNodeType id="DGEN2" lnClass="DGEN"> 
+<DO name="NamPlt" type="LPL_5_NamPlt" /> 
+<DO name="DEROpSt" type="ENS_2_DEROpSt" /> 
+<DO name="Beh" type="ENS_2_Beh" /> 
+<DO name="Health" type="ENS_1_Health" /> 
+<DO name="WMaxRtg" type="ASG_2_WMaxSet" /> 
+<DO name="VMaxRtg" type="ASG_2_WMaxSet" /> 
+<DO name="WMax" type="ASG_2_WMaxSet" /> 
+<DO name="WRmp" type="ASG_2_WMaxSet" /> 
+<DO name="VMax" type="ASG_2_WMaxSet" /> 
+<DO name="OutEcpRef" type="ORG_2_ElcMsRef" /> 
+<DO name="PhsConnTyp" type="ENG_2_PhsConnTyp" /> 
+<DO name="DERTyp" type="ENG_2_DERTyp" /> 
+<DO name="GnGrId" type="INS_1_OpCnt" /> 
+</LNodeType> 
+<LNodeType id="DWMX1" lnClass="DWMX"> 
+<DO name="NamPlt" type="LPL_5_NamPlt" /> 
+<DO name="Beh" type="ENS_2_Beh" /> 
+<DO name="WMaxSptPct" type="APC_1_WMaxSpt" /> 
+<DO name="Mod" type="ENC_2_Mod" /> 
+<DO name="RmpRteUse" type="SPG_2_RefFrm" /> 
+<DO name="InEcpRef" type="ORG_2_ElcMsRef" /> 
+<DO name="FctOpStAuto" type="ENS_2_FctOpSt" /> 
+<DO name="FctOpStEx" type="ENS_2_FctOpSt" /> 
+</LNodeType> 
+<LNodeType id="DAGC1" lnClass="DAGC"> 
+<DO name="NamPlt" type="LPL_5_NamPlt" /> 
+<DO name="Beh" type="ENS_2_Beh" /> 
+<DO name="ReqW" type="MV_2_CtbWPct" /> 
+<DO name="WSptPct" type="APC_1_WMaxSpt" /> 
+<DO name="Mod" type="ENC_2_Mod" /> 
+<DO name="RmpRteUse" type="SPG_2_RefFrm" /> 
+<DO name="InEcpRef" type="ORG_2_ElcMsRef" /> 
+<DO name="FctOpSt" type="ENS_2_FctOpSt" /> 
+</LNodeType> 
+<LNodeType id="DVAR1" lnClass="DVAR"> 
+<DO name="NamPlt" type="LPL_5_NamPlt" /> 
+<DO name="Beh" type="ENS_2_Beh" /> 
+<DO name="ReqVAr" type="MV_2_CtbWPct" /> 
+<DO name="VArTgtSptPct" type="APC_1_WMaxSpt" /> 
+<DO name="Mod" type="ENC_2_Mod" /> 
+<DO name="RmpRteUse" type="SPG_2_RefFrm" /> 
+<DO name="InEcpRef" type="ORG_2_ElcMsRef" /> 
+<DO name="FctOpSt" type="ENS_2_FctOpSt" /> 
+</LNodeType> 
+<LNodeType id="DFPF1" lnClass="DFPF"> 
+<DO name="NamPlt" type="LPL_5_NamPlt" /> 
+<DO name="ReqPFExt" type="SPS_1_Proxy" /> 
+<DO name="Beh" type="ENS_2_Beh" /> 
+<DO name="ReqPF" type="MV_2_CtbWPct" /> 
+<DO name="PFGnTgtSpt" type="APC_1_WMaxSpt" /> 
+<DO name="PFLodTgtSpt" type="APC_1_WMaxSpt" /> 
+<DO name="Mod" type="ENC_2_Mod" /> 
+<DO name="RmpRteUse" type="SPG_2_RefFrm" /> 
+<DO name="InEcpRef" type="ORG_2_ElcMsRef" /> 
+<DO name="FctOpSt" type="ENS_2_FctOpSt" /> 
+</LNodeType> 
+<LNodeType id="DVVR1" lnClass="DVVR"> 
+<DO name="NamPlt" type="LPL_5_NamPlt" /> 
+<DO name="Beh" type="ENS_2_Beh" /> 
+<DO name="VRefEsp" type="MV_2_CtbWPct" /> 
+<DO name="ReqVAr" type="MV_2_CtbWPct" /> 
+<DO name="VArTgtSptPct" type="APC_1_WMaxSpt" /> 
+<DO name="Mod" type="ENC_2_Mod" /> 
+<DO name="VVArCrvDel" type="CSG_1_VVArCrv" /> 
+TECHNICAL REPORT 
+ 
+CEI TR 50-126:2024-11 
+ 
+25 
+--- PAGE 28 ---
+ 
+ 
+ 
+ 
+ 
+<DO name="RmpRteUse" type="SPG_2_RefFrm" /> 
+<DO name="InEcpRef" type="ORG_2_ElcMsRef" /> 
+<DO name="FctOpSt" type="ENS_2_FctOpSt" /> 
+<DO name="K" type="ASG_2_WMaxSet" /> 
+</LNodeType> 
+<LNodeType id="DPMC1" lnClass="DPMC"> 
+<DO name="NamPlt" type="LPL_5_NamPlt" /> 
+<DO name="Beh" type="ENS_2_Beh" /> 
+<DO name="WSpt1" type="APC_1_WMaxSpt" /> 
+<DO name="DERRef" type="ORG_2_ElcMsRef" /> 
+<DO name="OutEcpRef" type="ORG_2_ElcMsRef" /> 
+</LNodeType> 
+<LNodeType id="DECP2" lnClass="DECP"> 
+<DO name="NamPlt" type="LPL_5_NamPlt" /> 
+<DO name="Beh" type="ENS_2_Beh" /> 
+<DO name="VRef" type="ASG_2_WMaxSet" /> 
+<DO name="VMax" type="ASG_2_WMaxSet" /> 
+<DO name="VMin" type="ASG_2_WMaxSet" /> 
+<DO name="RefFrm" type="SPG_2_RefFrm" /> 
+<DO name="ElcRefId" type="VSG_2_AreaEpsEcp" /> 
+</LNodeType> 
+<LNodeType id="DPFW1" lnClass="DPFW"> 
+<DO name="NamPlt" type="LPL_5_NamPlt" /> 
+<DO name="Beh" type="ENS_2_Beh" /> 
+<DO name="FctOpSt" type="ENS_2_FctOpSt" /> 
+<DO name="Mod" type="ENC_2_Mod" /> 
+<DO name="WSetA" type="ASG_2_WMaxSet" /> 
+<DO name="PFSetA" type="ASG_2_WMaxSet" /> 
+<DO name="WSetB" type="ASG_2_WMaxSet" /> 
+<DO name="PFSetB" type="ASG_2_WMaxSet" /> 
+<DO name="WSetC" type="ASG_2_WMaxSet" /> 
+<DO name="PFSetC" type="ASG_2_WMaxSet" /> 
+<DO name="VLkIn" type="ASG_2_WMaxSet" /> 
+<DO name="VLkOut" type="ASG_2_WMaxSet" /> 
+<DO name="RmpRteUse" type="SPG_2_RefFrm" /> 
+<DO name="InEcpRef" type="ORG_2_ElcMsRef" /> 
+</LNodeType> 
+<DOType id="ENC_1_Mod" cdc="ENC"> 
+<DA name="stVal" type="Mod" bType="Enum" fc="ST" dchg="true" /> 
+<DA name="q" bType="Quality" fc="ST" qchg="true" /> 
+<DA name="t" bType="Timestamp" fc="ST" /> 
+<DA name="ctlModel" type="CtlModelKind" bType="Enum" fc="CF" /> 
+</DOType> 
+<DOType id="ENS_2_Beh" cdc="ENS"> 
+<DA name="stVal" type="Beh" bType="Enum" fc="ST" dchg="true" dupd="true" /> 
+<DA name="q" bType="Quality" fc="ST" qchg="true" /> 
+<DA name="t" bType="Timestamp" fc="ST" /> 
+</DOType> 
+<DOType id="ENS_1_Health" cdc="ENS"> 
+<DA name="stVal" type="Health" bType="Enum" fc="ST" dchg="true" dupd="true" /> 
+<DA name="q" bType="Quality" fc="ST" qchg="true" /> 
+<DA name="t" bType="Timestamp" fc="ST" /> 
+</DOType> 
+<DOType id="DPL_1_PhyNam" cdc="DPL"> 
+<DA name="vendor" bType="VisString255" fc="DC" /> 
+<DA name="swRev" bType="VisString255" fc="DC" /> 
+<DA name="location" bType="VisString255" fc="DC" /> 
+</DOType> 
+<DOType id="ENS_1_PhyHealth" cdc="ENS"> 
+<DA name="stVal" type="PhyHealth" bType="Enum" fc="ST" dchg="true" dupd="true" /> 
+<DA name="q" bType="Quality" fc="ST" qchg="true" /> 
+<DA name="t" bType="Timestamp" fc="ST" /> 
+</DOType> 
+<DOType id="SPS_1_Proxy" cdc="SPS"> 
+<DA name="stVal" bType="BOOLEAN" fc="ST" dchg="true" /> 
+<DA name="q" bType="Quality" fc="ST" qchg="true" /> 
+<DA name="t" bType="Timestamp" fc="ST" /> 
+TECHNICAL REPORT 
+ 
+CEI TR 50-126:2024-11 
+ 
+26 
+--- PAGE 29 ---
+ 
+ 
+ 
+ 
+ 
+</DOType> 
+<DOType id="LPL_5_NamPlt" cdc="LPL"> 
+<DA name="vendor" bType="VisString255" fc="DC" /> 
+<DA name="swRev" bType="VisString255" fc="DC" /> 
+<DA name="ldNs" bType="VisString255" fc="EX"/> 
+<DA name="lnNs" bType="VisString255" fc="EX"/> 
+</DOType> 
+<DOType id="VSG_2_AreaEpsEcp" cdc="VSG"> 
+<DA name="setVal" bType="VisString255" fc="SP" dchg="true" /> 
+</DOType> 
+<DOType id="ASG_2_WMaxSet" cdc="ASG"> 
+<DA name="setMag" type="AnalogueValue_1" bType="Struct" fc="SP" dchg="true" /> 
+</DOType> 
+<DOType id="ENG_2_PhsConnTyp" cdc="ENG"> 
+<DA name="setVal" type="PhaseKind" bType="Enum" fc="SP" dchg="true" /> 
+</DOType> 
+<DOType id="ENG_2_DERTyp" cdc="ENG"> 
+<DA name="setVal" type="DERUnitKind" bType="Enum" fc="SP" dchg="true" /> 
+</DOType> 
+<DOType id="ORG_2_ElcMsRef" cdc="ORG"> 
+<DA name="setSrcRef" bType="VisString129" fc="SP" dchg="true" /> 
+</DOType> 
+<DOType id="SPG_2_RefFrm" cdc="SPG"> 
+<DA name="setVal" bType="BOOLEAN" fc="SP" dchg="true" /> 
+</DOType> 
+<DOType id="MV_2_CtbWPct" cdc="MV"> 
+<DA name="mag" type="AnalogueValue_1" bType="Struct" fc="MX" dchg="true" dupd="true" /> 
+<DA name="q" bType="Quality" fc="MX" qchg="true" /> 
+<DA name="t" bType="Timestamp" fc="MX" /> 
+</DOType> 
+<DOType id="ENS_2_DEROpSt" cdc="ENS"> 
+<DA name="stVal" type="DERStateKind" bType="Enum" fc="ST" dchg="true" dupd="true" /> 
+<DA name="q" bType="Quality" fc="ST" qchg="true" /> 
+<DA name="t" bType="Timestamp" fc="ST" /> 
+</DOType> 
+<DOType id="DEL_1_PPV" cdc="DEL"> 
+<SDO name="phsAB" type="CMV_1_phsAB" /> 
+<SDO name="phsBC" type="CMV_1_phsAB" /> 
+<SDO name="phsCA" type="CMV_1_phsAB" /> 
+</DOType> 
+<DOType id="CMV_1_phsAB" cdc="CMV"> 
+<DA name="cVal" type="Vector_1" bType="Struct" fc="MX" dchg="true" dupd="true" /> 
+<DA name="q" bType="Quality" fc="MX" qchg="true" /> 
+<DA name="t" bType="Timestamp" fc="MX" /> 
+</DOType> 
+<DOType id="WYE_1_A" cdc="WYE"> 
+<SDO name="phsA" type="CMV_1_phsAB" /> 
+<SDO name="phsB" type="CMV_1_phsAB" /> 
+<SDO name="phsC" type="CMV_1_phsAB" /> 
+</DOType> 
+<DOType id="INS_1_OpCnt" cdc="INS"> 
+<DA name="stVal" bType="INT32" fc="ST" dchg="true" dupd="true" /> 
+<DA name="q" bType="Quality" fc="ST" qchg="true" /> 
+<DA name="t" bType="Timestamp" fc="ST" /> 
+</DOType> 
+<DOType id="DPC_1_Pos" cdc="DPC"> 
+<DA name="stVal" bType="Dbpos" fc="ST" dchg="true" /> 
+<DA name="q" bType="Quality" fc="ST" qchg="true" /> 
+<DA name="t" bType="Timestamp" fc="ST" /> 
+<DA name="ctlModel" type="CtlModelKind" bType="Enum" fc="CF" dchg="true" /> 
+</DOType> 
+<DOType id="SPC_1_BlkOpn" cdc="SPC"> 
+<DA name="stVal" bType="BOOLEAN" fc="ST" dchg="true" /> 
+<DA name="q" bType="Quality" fc="ST" qchg="true" /> 
+<DA name="t" bType="Timestamp" fc="ST" /> 
+<DA name="ctlModel" type="CtlModelKind" bType="Enum" fc="CF" dchg="true" /> 
+</DOType> 
+TECHNICAL REPORT 
+ 
+CEI TR 50-126:2024-11 
+ 
+27 
+--- PAGE 30 ---
+ 
+ 
+ 
+ 
+ 
+<DOType id="APC_1_WMaxSpt" cdc="APC"> 
+<DA name="Cancel" type="APCCancel_1" bType="Struct" fc="CO" /> 
+<DA name="Oper" type="APCOperate_1" bType="Struct" fc="CO" /> 
+<DA name="SBOw" type="APCSelectWithValue_1" bType="Struct" fc="CO" /> 
+<DA name="ctlModel" type="CtlModelKind" bType="Enum" fc="CF" /> 
+<DA name="mxVal" type="AnalogueValue_1" bType="Struct" fc="MX" dchg="true" /> 
+<DA name="q" bType="Quality" fc="MX" qchg="true" /> 
+<DA name="t" bType="Timestamp" fc="MX" /> 
+</DOType> 
+<DOType id="ENC_2_Mod" cdc="ENC"> 
+<DA name="stVal" type="Mod" bType="Enum" fc="ST" dchg="true" /> 
+<DA name="q" bType="Quality" fc="ST" qchg="true" /> 
+<DA name="t" bType="Timestamp" fc="ST" /> 
+<DA name="ctlModel" type="CtlModelKind" bType="Enum" fc="CF" /> 
+<DA name="SBOw" type="ENCSelectWithValue_1" bType="Struct" fc="CO" /> 
+<DA name="Oper" type="ENCOperate_1" bType="Struct" fc="CO" /> 
+<DA name="Cancel" type="ENCCancel_1" bType="Struct" fc="CO" /> 
+</DOType> 
+<DOType id="ENS_2_FctOpSt" cdc="ENS"> 
+<DA name="stVal" type="DERFunctionState" bType="Enum" fc="ST" dchg="true" dupd="true" /> 
+<DA name="q" bType="Quality" fc="ST" qchg="true" /> 
+<DA name="t" bType="Timestamp" fc="ST" /> 
+</DOType> 
+<DOType id="CSG_1_VVArCrv" cdc="CSG"> 
+<DA name="numPts" bType="INT16U" fc="SP" /> 
+<DA name="crvPts" type="Point_2" bType="Struct" count="16" fc="SP" /> 
+<DA name="xUnits" type="Unit_3" bType="Struct" fc="CF" /> 
+<DA name="yUnits" type="Unit_3" bType="Struct" fc="CF" /> 
+<DA name="maxPts" bType="INT16U" fc="CF" /> 
+<DA name="xD" bType="VisString255" fc="DC" /> 
+<DA name="yD" bType="VisString255" fc="DC" /> 
+</DOType> 
+<DAType id="Vector_1"> 
+<BDA name="mag" type="AnalogueValue_1" bType="Struct" /> 
+<BDA name="ang" type="AnalogueValue_1" bType="Struct" /> 
+</DAType> 
+<DAType id="Point_2"> 
+<BDA name="xVal" bType="FLOAT32" /> 
+<BDA name="yVal" bType="FLOAT32" /> 
+</DAType> 
+<DAType id="Unit_3"> 
+<BDA name="SIUnit" type="SIUnitKind" bType="Enum" /> 
+</DAType> 
+<DAType id="APCCancel_1"> 
+<BDA name="ctlVal" type="AnalogueValue_1" bType="Struct" /> 
+<BDA name="origin" type="Originator_1" bType="Struct" /> 
+<BDA name="ctlNum" bType="INT8U" /> 
+<BDA name="T" bType="Timestamp" /> 
+<BDA name="Test" bType="BOOLEAN" /> 
+</DAType> 
+<DAType id="APCOperate_1"> 
+<BDA name="ctlVal" type="AnalogueValue_1" bType="Struct" /> 
+<BDA name="origin" type="Originator_1" bType="Struct" /> 
+<BDA name="ctlNum" bType="INT8U" /> 
+<BDA name="T" bType="Timestamp" /> 
+<BDA name="Test" bType="BOOLEAN" /> 
+<BDA name="Check" bType="Check" /> 
+</DAType> 
+<DAType id="APCSelectWithValue_1"> 
+<BDA name="ctlVal" type="AnalogueValue_1" bType="Struct" /> 
+<BDA name="origin" type="Originator_1" bType="Struct" /> 
+<BDA name="ctlNum" bType="INT8U" /> 
+<BDA name="T" bType="Timestamp" /> 
+<BDA name="Test" bType="BOOLEAN" /> 
+<BDA name="Check" bType="Check" /> 
+</DAType> 
+<DAType id="ENCSelectWithValue_1"> 
+TECHNICAL REPORT 
+ 
+CEI TR 50-126:2024-11 
+ 
+28 
+--- PAGE 31 ---
+ 
+ 
+ 
+ 
+ 
+<BDA name="ctlVal" type="Mod" bType="Enum" /> 
+<BDA name="origin" type="Originator_1" bType="Struct" /> 
+<BDA name="ctlNum" bType="INT8U" /> 
+<BDA name="T" bType="Timestamp" /> 
+<BDA name="Test" bType="BOOLEAN" /> 
+<BDA name="Check" bType="Check" /> 
+</DAType> 
+<DAType id="ENCOperate_1"> 
+<BDA name="ctlVal" type="Mod" bType="Enum" /> 
+<BDA name="origin" type="Originator_1" bType="Struct" /> 
+<BDA name="ctlNum" bType="INT8U" /> 
+<BDA name="T" bType="Timestamp" /> 
+<BDA name="Test" bType="BOOLEAN" /> 
+<BDA name="Check" bType="Check" /> 
+</DAType> 
+<DAType id="ENCCancel_1"> 
+<BDA name="ctlVal" type="Mod" bType="Enum" /> 
+<BDA name="origin" type="Originator_1" bType="Struct" /> 
+<BDA name="ctlNum" bType="INT8U" /> 
+<BDA name="T" bType="Timestamp" /> 
+<BDA name="Test" bType="BOOLEAN" /> 
+</DAType> 
+<DAType id="Originator_1"> 
+<BDA name="orCat" type="OriginatorCategoryKind" bType="Enum" /> 
+<BDA name="orIdent" bType="Octet64" /> 
+</DAType> 
+<DAType id="AnalogueValue_1"> 
+<BDA name="f" bType="FLOAT32" desc="The value of f shall be the FLOAT representation of the measured value. f shall represent the technological value in SI units." /> 
+</DAType> 
+<EnumType id="Mod"> 
+<EnumVal ord="1">on</EnumVal> 
+<EnumVal ord="2">on-blocked</EnumVal> 
+<EnumVal ord="3">test</EnumVal> 
+<EnumVal ord="4">test/blocked</EnumVal> 
+<EnumVal ord="5">off</EnumVal> 
+</EnumType> 
+<EnumType id="CtlModelKind"> 
+<E numV al ord="0">statu s-o n ly</E numVal > 
+<E numV al ord="1">d irect-with-n o rmal-secu rity</E numV al > 
+<E numV al ord="2">sbo-with-n o rmal-secu rity</E numV al > 
+<E numV al ord="3">d irect-with-en h an ced-secu rity</E numV al> 
+<E numV al ord="4">sbo-with-en h an ced-secu rity</E numV al > 
+</EnumType> 
+<EnumType id="Beh"> 
+<EnumVal ord="1">on</EnumVal> 
+<EnumVal ord="2">on-blocked</EnumVal> 
+<EnumVal ord="3">test</EnumVal> 
+<EnumVal ord="4">test/blocked</EnumVal> 
+<EnumVal ord="5">off</EnumVal> 
+</EnumType> 
+<EnumType id="Health"> 
+<EnumVal ord="1">Ok</EnumVal> 
+<EnumVal ord="2">Warning</EnumVal> 
+<EnumVal ord="3">Alarm</EnumVal> 
+</EnumType> 
+<EnumType id="PhyHealth"> 
+<EnumVal ord="1">Ok</EnumVal> 
+<EnumVal ord="2">Warning</EnumVal> 
+<EnumVal ord="3">Alarm</EnumVal> 
+</EnumType> 
+<EnumType id="DERStateKind"> 
+<EnumVal ord="1">on but disconnected and not ready</EnumVal> 
+<EnumVal ord="2">starting up</EnumVal> 
+<EnumVal ord="3">disconnected and available</EnumVal> 
+<EnumVal ord="4">disconnected and authorized</EnumVal> 
+<EnumVal ord="5">synchronizing</EnumVal> 
+<EnumVal ord="6">running</EnumVal> 
+TECHNICAL REPORT 
+ 
+CEI TR 50-126:2024-11 
+ 
+29 
+--- PAGE 32 ---
+ 
+ 
+ 
+ 
+ 
+<EnumVal ord="7">stopping and disconnecting under emergency conditions</EnumVal> 
+<EnumVal ord="8">stopping</EnumVal> 
+<EnumVal ord="9">disconnected and blocked</EnumVal> 
+<EnumVal ord="10">disconnected and in maintenance</EnumVal> 
+<EnumVal ord="11">failed</EnumVal> 
+<EnumVal ord="98">Not applicable or not known</EnumVal> 
+</EnumType> 
+<EnumType id="PhaseKind"> 
+<EnumVal ord="1">Single phase to neutral</EnumVal> 
+<EnumVal ord="2">Split phase</EnumVal> 
+<EnumVal ord="3">2-phase</EnumVal> 
+<EnumVal ord="4">3-phase delta</EnumVal> 
+<EnumVal ord="5">3-phase wye / 4-wires</EnumVal> 
+<EnumVal ord="6">3-phase wye / 5-wires</EnumVal> 
+<EnumVal ord="9">DC</EnumVal> 
+<EnumVal ord="98">Not applicable or not known</EnumVal> 
+</EnumType> 
+<EnumType id="DERUnitKind"> 
+<EnumVal ord="1">Diesel / gas engine</EnumVal> 
+<EnumVal ord="2">Gas Turbine engine</EnumVal> 
+<EnumVal ord="3">PV</EnumVal> 
+<EnumVal ord="4">PV plus Storage</EnumVal> 
+<EnumVal ord="5">Lithium Ion Battery Storage</EnumVal> 
+<EnumVal ord="6">Fuel cell</EnumVal> 
+<EnumVal ord="7">Hydro generator</EnumVal> 
+<EnumVal ord="8">Wind turbine</EnumVal> 
+<EnumVal ord="9">Flow battery storage</EnumVal> 
+<EnumVal ord="10">Air compression storage</EnumVal> 
+<EnumVal ord="11">Flywheel storage</EnumVal> 
+<EnumVal ord="12">Capacitor storage</EnumVal> 
+<EnumVal ord="13">Vehicle-to-Grid (V2G)</EnumVal> 
+<EnumVal ord="50">Mixed, hybrid DER</EnumVal> 
+<EnumVal ord="98">Not applicable or not known</EnumVal> 
+</EnumType> 
+<EnumType id="OriginatorCategoryKind"> 
+<E numV al ord="0">no t-su pp orted</E numVal > 
+<E numV al ord="1">bay-con tro l</E numV al > 
+<E numV al ord="2">statio n-con tro l</E numVal > 
+<E numV al ord="3">remo te-con tro l</E numVal > 
+<E numV al ord="4">au to matic-bay</E numV al > 
+<E numV al ord="5">au to matic-statio n</E numV al > 
+<E numV al ord="6">au to matic-remo te</E numVal > 
+<EnumVal ord="7">maintenance</EnumVal> 
+<EnumVal ord="8">process</EnumVal> 
+</EnumType> 
+<EnumType id="DERFunctionState"> 
+<EnumVal ord="0">Not Available</EnumVal> 
+<EnumVal ord="1">Autonomous</EnumVal> 
+<EnumVal ord="2">Slave</EnumVal> 
+</EnumType> 
+<EnumType id="SIUnitKind"> 
+<EnumVal ord="1" /> 
+<EnumVal ord="10">rad</EnumVal> 
+<EnumVal ord="11">sr</EnumVal> 
+<EnumVal ord="2">m</EnumVal> 
+<EnumVal ord="21">Gy</EnumVal> 
+<EnumVal ord="22">Bq</EnumVal> 
+<EnumVal ord="23">°C</EnumVal> 
+<EnumVal ord="24">Sv</EnumVal> 
+<EnumVal ord="25">F</EnumVal> 
+<EnumVal ord="26">C</EnumVal> 
+<EnumVal ord="27">S</EnumVal> 
+<EnumVal ord="28">H</EnumVal> 
+<EnumVal ord="29">V</EnumVal> 
+<EnumVal ord="3">kg</EnumVal> 
+<EnumVal ord="30">ohm</EnumVal> 
+<EnumVal ord="31">J</EnumVal> 
+TECHNICAL REPORT 
+ 
+CEI TR 50-126:2024-11 
+ 
+30 
+--- PAGE 33 ---
+TECHNICAL REPORT  CEI TR 50 -126:2024 -11 
+33 
+<EnumVal ord="32">N</EnumVal> 
+<EnumVal ord="33">Hz</EnumVal> 
+<EnumVal ord="34">Ix</EnumVal> 
+<EnumVal ord="35">Lm</EnumVal> 
+<EnumVal ord="36">Wb</EnumVal> 
+<EnumVal ord="37">T</EnumVal> 
+<EnumVal ord="38">W</EnumVal> 
+<EnumVal ord="39">Pa</EnumVal> 
+<EnumVal ord="4">s</EnumVal> 
+<EnumVal ord="41">m²</EnumVal> 
+<EnumVal ord="42">m³</EnumVal> 
+<EnumVal ord="43">m/s</EnumVal> 
+<EnumVal ord="44">m/s²</EnumVal> 
+<EnumVal ord="45">m³/s</EnumVal> 
+<EnumVal ord="46">m/m³</EnumVal> 
+<EnumVal ord="47">M</EnumVal> 
+<EnumVal ord="48">kg/m³</EnumVal> 
+<EnumVal ord="49">m²/s</EnumVal> 
+<EnumVal ord="5">A</EnumVal> 
+<EnumVal ord="50">W/m K</EnumVal> 
+<EnumVal ord="51">J/K</EnumVal> 
+<EnumVal ord="52">ppm</EnumVal> 
+<EnumVal ord="53">1/s</EnumVal> 
+<EnumVal ord="54">rad/s</EnumVal> 
+<EnumVal ord="55">W/m²</EnumVal> 
+<EnumVal ord="56">J/m²</EnumVal> 
+<EnumVal ord="57">S/m</EnumVal> 
+<EnumVal ord="58">K/s</EnumVal> 
+<EnumVal ord="59">Pa/s</EnumVal> 
+<EnumVal ord="60">J/kg K</EnumVal> 
+<EnumVal ord="6">K</EnumVal> 
+<EnumVal ord="61">VA</EnumVal> 
+<EnumVal ord="62">Watts</EnumVal> 
+<EnumVal ord="63">VAr</EnumVal> 
+<EnumVal ord="64">phi</EnumVal> 
+<EnumVal ord="65">cos(phi)</EnumVal> 
+<EnumVal ord="66">Vs</EnumVal> 
+<EnumVal ord="67">V²</EnumVal> 
+<EnumVal ord="68">As</EnumVal> 
+<EnumVal ord="69">A²</EnumVal> 
+<EnumVal ord="7">mol</EnumVal> 
+<EnumVal ord="70">A²t</EnumVal> 
+<EnumVal ord="71">VAh</EnumVal> 
+<EnumVal ord="72">Wh</EnumVal> 
+<EnumVal ord="73">VArh</EnumVal> 
+<EnumVal ord="74">V/Hz</EnumVal> 
+<EnumVal ord="75">Hz/s</EnumVal> 
+<EnumVal ord="76">char</EnumVal> 
+<EnumVal ord="77">char/s</EnumVal> 
+<EnumVal ord="78">kgm²</EnumVal> 
+<EnumVal ord="79">dB</EnumVal> 
+<EnumVal ord="80">J/Wh</EnumVal> 
+<EnumVal ord="81">W/s</EnumVal> 
+<EnumVal ord="82">l/s</EnumVal> 
+<EnumVal ord="83">dBm</EnumVal> 
+<EnumVal ord="8">cd</EnumVal> 
+<EnumVal ord="9">deg</EnumVal> 
+</EnumType> 
+</DataTypeTemplates> 
+</SCL> 
+--- PAGE 34 ---
+ 
+TECHNICAL REPORT CEI TR 57-126 
+This Standard has been compiled by the Comitato Elettrotecnico Italiano  and benefits from recognition under Law No. 186 of 
+1 March 1968. 
+Published by CEI, Comitato Elettrotecnico Italiano, Milan  
+Via Saccardo, 9 
+20134 Milano 
+Tel. 02.21006.1 
+www.ceinorme.it  
+info @ceinorme.it  
+CEI-Comitato Elettrotecnico Italiano @CEInorme CEI-Comitato Elettrotecnico Italiano 
+ 
+Technical Committee 
+CT 57 - Power systems management and associated information exchange 

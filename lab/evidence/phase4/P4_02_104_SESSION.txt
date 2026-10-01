@@ -1,0 +1,36 @@
+# P4-02 — IEC 60870-5-104 session (STARTDT + GI + reconnect)
+# Date: 2026-09-30 14:16 UTC+2
+# Tool: lab/104/p4_cs104_client (lib60870 v2.3.5)
+# Target: 192.168.1.130:2404 CA=1 IOA TotW=1001 (M_ME_NC_1)
+
+=== P4-02 CS104 client (lib60870) ===
+target=192.168.1.130:2404 ca=1 ioa_tot_w=1001
+P4: connection OPEN
+P4: GI sent CA=1, waiting 6000 ms
+P4: STARTDT_CON received
+P4: ASDU C_IC_NA_1(100) cot=7 ca=1 n=1
+P4: ASDU M_ME_NC_1(13) cot=20 ca=1 n=1
+P4: M_ME_NC_1 IOA=1001 value=0.000 kW
+P4: ASDU C_IC_NA_1(100) cot=10 ca=1 n=1
+P4: ASDU M_ME_NC_1(13) cot=1 ca=1 n=1
+P4: M_ME_NC_1 IOA=1001 value=0.000 kW
+P4: session summary startdt=YES totw_ioa1001=YES value=0.000
+P4: reconnect test after 2s
+P4: connection OPEN
+P4: STARTDT_CON received
+P4: ASDU M_ME_NC_1(13) cot=20 ca=1 n=1
+P4: M_ME_NC_1 IOA=1001 value=0.000 kW
+P4: session summary startdt=YES totw_ioa1001=YES value=0.000
+P4: VERDICT PASS (session1=PASS session2=PASS)
+
+## Pass criteria
+- [x] TCP connect :2404
+- [x] STARTDT act/con
+- [x] General Interrogation (QOI station) → M_ME_NC_1 IOA 1001
+- [x] Spontaneous/periodic M_ME_NC_1 after GI
+- [x] Reconnect + second session PASS
+
+## Note
+TotW=0 kW — lab mock / no plant meter; value presence is sufficient for protocol gate.
+
+## VERDICT: PASS

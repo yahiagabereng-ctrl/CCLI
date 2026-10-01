@@ -1,0 +1,15 @@
+Grado di protezione:
+Foglio Tipo di Documento RevisioneDescrizione
+5 3-PSU1 Alimentatore 24Vdc con funzione UPSDRC-60B
+5 3-BATTERIA 2 Batteria per alimentazione di backup 12V 7.2Ah
+5 3-BATTERIA 1 Batteria per alimentazione di backup 12V 7.2Ah
+6 2-MT1 Convertitore di misuraAx M22
+8 5-CV1 Convertitore fibra rame
+ALIMENTAZIONE CONVERTITORE DI MISURAALIMENTAZIONE CONTROLLORECENTRALED'IMPIANTO (CCI)ALIMENTAZIONE CONVERTITOREFIBRA / RAME
+DI MISURA
+Al CCI, porta seriale RS-485
+VOLTAGE INPUTS
+POWERSUPPLY MOD_BUS
+seriale meter
+Alimentazione
+ethernet al CCI

@@ -1,0 +1,2 @@
+/usr/bin/ar qc libccli_services.a CMakeFiles/ccli_services.dir/services/svc_pf2.cpp.o CMakeFiles/ccli_services.dir/services/svc_modbus.cpp.o CMakeFiles/ccli_services.dir/services/svc_mms.cpp.o CMakeFiles/ccli_services.dir/services/svc_io.c.o
+/usr/bin/ranlib libccli_services.a

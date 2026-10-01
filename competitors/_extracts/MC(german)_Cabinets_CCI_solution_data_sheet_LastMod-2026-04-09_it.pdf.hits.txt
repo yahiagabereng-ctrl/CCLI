@@ -1,0 +1,34 @@
+Massimizza il potenziale del blue'Log XC con il Cabinet CCI di meteocontrol.
+Informazioni di base
+Il Controllore Centrale di Impianto (CCI), abbinato al blue'Log XC di meteocontrol, offrono una soluzione completa e sicura conforme
+al codice di rete italiano. Progettato per impianti in MT a partire da 100 kW fino a 500 kW, da 500 kW fino a 1 MW e maggiori di 1MW,
+Questo lo rende la soluzione ideale per il controllo delle piante secondo Allegato A.72 della norma CEI 0-16 e Delibera ARERA
+Misura di P, Q e V al punto di connessione alla rete (PdC).
+Misura di P e Q aggregate per fonte di generazione.
+Misura di P da ciascuna unità di generazione/accumulo.
+Stato del dispositivo generale (DG) e del dispositivo di unità (DDG).
+Segnali di stato relativi alla funzionalità di regolazione e controllo.
+Prestazioni di regolazione e controllo dell’impianto sul punto di connessione alla rete secondo le modalità definite dalla normativa in
+Partecipazione al Mercato dei Servizi di Dispacciamento (MSD).
+Alimentazione 230 V AC / 16 A
+Grado di protezione IP IP 55
+Max temperatura ambiente di
+Tipo di installazione Installazione a parete
+Alimentazione di tensione interna 24 VDC
+Presa di servizio Sì
+Relè di interfaccia 6x
+Input digitali (DI) 16x
+Accuratezza convertitore di misura V-
+Unità di elaborazione e regolazione Supporto completo delle funzionalità PF1, PF2 e PF3
+Antenna GPS Sì
+Protocollo di sincronizzazione oraria (S)NTP
+Datalogger (unità di
+Interfaccia di comunicazione
+Interfaccia di rete 2x Ethernet rame
+1x Ethernet rame/fibra ottica
+Protocollo di comunicazione con
+IEC 61850 «sicuro» (conforme a IEC 62351)
+Protocolli di comunicazione con
+MODBUS TCP
+Protocolli di comunicazione opzionali IEC 60870-5-104 client/server
+Principio di funzionamento

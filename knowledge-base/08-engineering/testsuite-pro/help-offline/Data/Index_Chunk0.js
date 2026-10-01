@@ -1,0 +1,1 @@
+define({'Features':{e:{'new':{l:[{u:'/Content/WhatsNew.htm#kanchor1',t:'What\u0027s New'}]}}},'New features':{l:[{u:'/Content/WhatsNew.htm#kanchor1',t:'What\u0027s New'}]}});

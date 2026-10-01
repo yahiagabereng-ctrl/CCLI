@@ -1,0 +1,23 @@
+P3-07 deploy + run check — 2026-09-29 ~14:35 local
+
+=== PC ===
+IPv4: 192.168.10.10 (Ethernet)
+TcpTestSucceeded 192.168.10.1:3782 = True
+
+=== DUT after deploy ===
+Binary: /usr/sbin/ccli (7556280 bytes, -rwxr-xr-x)
+strings: mms: iso session CONNECT / iso session error  (SESSION FIX PRESENT)
+
+Process: /usr/sbin/ccli --config /etc/ccli/lab.yaml (pid 16448)
+Listen:  192.168.10.1:3782 -> ccli
+
+Startup log:
+  mms: AARE 62351-4 responder auth ready (cert=869 octets)
+  mms: listening on 192.168.10.1:3782 tls=on ...
+
+Note: /etc/init.d/ccli start returns "Permission denied" on this image;
+      use direct /usr/sbin/ccli --config ... & (deploy-ccli-dut.sh updated).
+
+=== Next ===
+TSP System Status -> Connect once.
+Then: ssh root@192.168.10.1 "grep -E 'iso session|ACSE auth|CONNECT|DISCONNECT' /tmp/ccli.log | tail -20"

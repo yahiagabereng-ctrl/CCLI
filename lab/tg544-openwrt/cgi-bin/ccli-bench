@@ -1,0 +1,54 @@
+#!/bin/sh
+# CGI API for CCLI regulation mock UI (TesPro TG544 / uhttpd)
+# Install: /www/cgi-bin/ccli-bench
+
+. /lib/functions.sh 2>/dev/null || true
+
+echo "Content-Type: application/json"
+echo "Cache-Control: no-store"
+echo ""
+
+ACTION=""
+case "$QUERY_STRING" in
+  *action=status*) ACTION=status ;;
+  *action=regulation_live*) ACTION=regulation_live ;;
+  *action=regulation*) ACTION=regulation ;;
+  *action=apply*) ACTION=apply ;;
+esac
+
+CFG="/etc/ccli/lab.yaml"
+
+if [ "$REQUEST_METHOD" = "POST" ] && [ "$ACTION" = "apply" ]; then
+  TMP="/tmp/ccli-lab.yaml"
+  if [ -n "$CONTENT_LENGTH" ]; then
+    dd bs=1 count="$CONTENT_LENGTH" 2>/dev/null > "$TMP"
+  else
+    cat > "$TMP"
+  fi
+  if /usr/sbin/ccli --bench-write-config "$CFG" < "$TMP"; then
+    /etc/init.d/ccli restart 2>/dev/null
+    echo '{"ok":true,"restarted":true}'
+  else
+    echo '{"ok":false,"error":"bench-write-config failed"}'
+  fi
+  exit 0
+fi
+
+case "$ACTION" in
+  status)
+    /usr/sbin/ccli --bench-status --json 2>/dev/null || echo '{"error":"start ccli service"}'
+    ;;
+  regulation_live)
+    /etc/init.d/ccli stop 2>/dev/null
+    sleep 1
+    OUT=$(/usr/sbin/ccli --regulation-check --live --live-watch 6 --json --config "$CFG" 2>/dev/null)
+    /etc/init.d/ccli start 2>/dev/null
+    echo "$OUT"
+    ;;
+  regulation)
+    /usr/sbin/ccli --regulation-check --json --config "$CFG" 2>/dev/null
+    ;;
+  *)
+    echo '{"error":"unknown action","hint":"status|apply|regulation|regulation_live"}'
+    ;;
+esac

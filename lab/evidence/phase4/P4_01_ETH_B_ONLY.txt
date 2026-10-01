@@ -1,0 +1,27 @@
+# P4-01 — Operator 104 on Eth_B only (O.13.1.1.1)
+# Date: 2026-09-30 14:16 UTC+2
+# DUT: TG544 · ccli 0.1.0-r17 (P4-104-eth-b)
+# PC: 192.168.1.183/24 on LAN2
+
+## PC
+- Ethernet: 192.168.1.183/24 PASS
+- ping 192.168.1.130: PASS
+
+## DUT listen (netstat -tlnp)
+```
+tcp  0  0  192.168.10.1:3782   0.0.0.0:*  LISTEN  (MMS Eth_A)
+tcp  0  0  192.168.1.130:2404  0.0.0.0:*  LISTEN  (104 Eth_B)
+```
+
+## P4-01 criteria
+- [x] :2404 bound to 192.168.1.130 (Eth_B)
+- [x] NO :2404 on 192.168.10.1 (Eth_A)
+- [x] :3782 remains on 192.168.10.1 (DSO MMS unchanged)
+
+## ccli
+```
+ccli 0.1.0-r17 (P4-104-eth-b)
+/usr/sbin/ccli running
+```
+
+## VERDICT: PASS

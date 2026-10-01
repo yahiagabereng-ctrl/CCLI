@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" class="_Skins_TMW_Skin" data-mc-search-type="Stem" data-mc-help-system-file-name="Default.xml" data-mc-path-to-help-system="../../" data-mc-has-content-body="True" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic;Default" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>Substation Demo with DTM and TSP </title>
+        <link href="../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" />
+        <link href="../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
+        <link href="../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
+        <link href="../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" />
+        <link href="../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" />
+        <link href="../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" />
+        <link href="../../Skins/Fluid/Stylesheets/foundation.6.2.3.css" rel="stylesheet" />
+        <link href="../../Skins/Fluid/Stylesheets/Styles.css" rel="stylesheet" />
+        <link href="../../Skins/Fluid/Stylesheets/Tablet.css" rel="stylesheet" />
+        <link href="../../Skins/Fluid/Stylesheets/Mobile.css" rel="stylesheet" />
+        <link href="../Resources/Stylesheets/TMW_Stylesheet.css" rel="stylesheet" />
+        <script src="../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../Resources/Scripts/require.min.js" defer="defer">
+        </script>
+        <script src="../../Resources/Scripts/require.config.js" defer="defer">
+        </script>
+        <script src="../../Resources/Scripts/foundation.6.2.3_custom.js" defer="defer">
+        </script>
+        <script src="../../Resources/Scripts/plugins.min.js" defer="defer">
+        </script>
+        <script src="../../Resources/Scripts/MadCapAll.js" defer="defer">
+        </script>
+    </head>
+    <body>
+        <div class="foundation-wrap off-canvas-wrapper">
+            <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper="">
+                <aside class="off-canvas position-right" role="navigation" id="offCanvas" data-off-canvas="" data-position="right" data-mc-ignore="true">
+                    <ul class="off-canvas-accordion vertical menu off-canvas-list" data-accordion-menu="" data-mc-back-link="Back" data-mc-css-tree-node-expanded="is-accordion-submenu-parent" data-mc-css-tree-node-collapsed="is-accordion-submenu-parent" data-mc-css-sub-menu="vertical menu is-accordion-submenu nested" data-mc-include-indicator="False" data-mc-include-icon="False" data-mc-include-parent-link="True" data-mc-include-back="False" data-mc-defer-expand-event="True" data-mc-expand-event="click.zf.accordionMenu" data-mc-toc="True">
+                    </ul>
+                </aside>
+                <div class="off-canvas-content inner-wrap" data-off-canvas-content="">
+                    <div data-sticky-container="" class="title-bar-container">
+                        <nav class="title-bar tab-bar sticky" data-sticky="" data-options="marginTop:0" style="width:100%" data-sticky-on="only screen and (max-width: 1279px)" data-mc-ignore="true"><a class="skip-to-content fluid-skip showOnFocus" href="#">Skip To Main Content</a>
+                            <div class="middle title-bar-section outer-row clearfix">
+                                <div class="menu-icon-container relative clearfix">
+                                    <div class="central-dropdown" style="display:none;" id="#centralSmallScreen"><a class="central-account-drop"><span class="central-account-image"></span><span class="central-account-text">Account</span></a>
+                                        <div class="central-dropdown-content"><a class="MCCentralLink central-dropdown-content-settings">Settings</a>
+                                            <hr class="central-separator" /><a class="MCCentralLink central-dropdown-content-logout">Logout</a>
+                                        </div>
+                                    </div>
+                                    <button class="menu-icon" aria-label="Show Navigation Panel" data-toggle="offCanvas"><span></span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="title-bar-layout outer-row">
+                                <div class="logo-wrapper"><a class="logo" href="Overview of Test Suite Pro.htm" alt="Logo"></a>
+                                </div>
+                                <div class="navigation-wrapper nocontent">
+                                    <ul class="navigation clearfix" data-mc-css-tree-node-has-children="has-children" data-mc-css-sub-menu="sub-menu" data-mc-expand-event="mouseenter" data-mc-top-nav-menu="True" data-mc-max-depth="3" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                                        <li class="placeholder" style="visibility:hidden"><a>placeholder</a>
+                                        </li>
+                                    </ul>
+                                    <div class="central-dropdown" style="display:none;" id="#centralTop"><a class="central-account-drop"><span class="central-account-image"></span><span class="central-account-text">Account</span></a>
+                                        <div class="central-dropdown-content"><a class="MCCentralLink central-dropdown-content-settings">Settings</a>
+                                            <hr class="central-separator" /><a class="MCCentralLink central-dropdown-content-logout">Logout</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="nav-search-wrapper">
+                                    <div class="nav-search row">
+                                        <form class="search" action="#">
+                                            <div class="search-bar search-bar-container needs-pie">
+                                                <input class="search-field needs-pie" type="search" aria-label="Search Field" placeholder="Search" />
+                                                <div class="search-filter-wrapper"><span class="invisible-label" id="search-filters-label">Filter: </span>
+                                                    <div class="search-filter" aria-haspopup="true" aria-controls="sf-content" aria-expanded="false" aria-label="Search Filter" title="All Files" role="button" tabindex="0">
+                                                    </div>
+                                                    <div class="search-filter-content" id="sf-content">
+                                                        <ul>
+                                                            <li>
+                                                                <button class="mc-dropdown-item" aria-labelledby="search-filters-label filterSelectorLabel-00001"><span id="filterSelectorLabel-00001">All Files</span>
+                                                                </button>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="search-submit-wrapper" dir="ltr">
+                                                    <div class="search-submit" title="Search" role="button" tabindex="0"><span class="invisible-label">Submit Search</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="central-dropdown" style="display:none;"><a class="central-account-drop"><span class="central-account-image"></span><span class="central-account-text">Account</span></a>
+                                        <div class="central-dropdown-content"><a class="MCCentralLink central-dropdown-content-settings">Settings</a>
+                                            <hr class="central-separator" /><a class="MCCentralLink central-dropdown-content-logout">Logout</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </nav>
+                    </div>
+                    <div class="main-section">
+                        <div class="row outer-row sidenav-layout">
+                            <nav class="sidenav-wrapper">
+                                <div class="sidenav-container">
+                                    <ul class="off-canvas-accordion vertical menu sidenav" data-accordion-menu="" data-mc-css-tree-node-expanded="is-accordion-submenu-parent" data-mc-css-tree-node-collapsed="is-accordion-submenu-parent" data-mc-css-sub-menu="vertical menu accordion-menu is-accordion-submenu nested" data-mc-include-indicator="False" data-mc-include-icon="False" data-mc-include-parent-link="False" data-mc-include-back="False" data-mc-defer-expand-event="True" data-mc-expand-event="click.zf.accordionMenu" data-mc-toc="True" data-mc-side-nav-menu="True">
+                                    </ul>
+                                </div>
+                            </nav>
+                            <div class="body-container">
+                                <div data-mc-content-body="True">
+                                    <table style="width: 100%;">
+                                        <col />
+                                        <col style="width: 150px;" />
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                </td>
+                                                <td style="padding-bottom: 10px;border-bottom-style: solid;border-bottom-width: 0px;text-align: right;"><a href="Overview of Test Suite Pro.htm" title="Go back to online help homepage" alt="Go back to online help homepage" style="font-size: 10pt;">Support Home</a>
+                                                </td>
+                                            </tr>
+                                            <tr style="line-height: 1px;">
+                                                <td colspan="2" style="border-top-style: solid;border-top-width: 1px;">&#160;</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <div role="main" id="mc-main-content">
+                                        <h1 data-mc-autonum=" "><span class="autonumber"><span> </span></span>
+                                            <MadCap:conditionalText data-mc-conditions="General.Online Only">Substation Demo with DTM and TSP</MadCap:conditionalText> </h1>
+                                        <p class="p_23">Distributed Test Manager (DTM) is a Windows® application that can simulate the SCADA communications in the substation and perform automated tests to confirm system or individual device behavior.  TSP and DTM are both part of the System Toolkit that facilitates the IEC 61850 Engineering Process as explained in this <a href="https://www.trianglemicroworks.com/video/product-features">video</a>.  If you do not already have DTM installed, download an evaluation version of DTM <a href="https://www.trianglemicroworks.com/products/testing-and-configuration-tools/dtm-pages">HERE</a>. If the trial license does not install automatically, you may request a Trial Activation Key by sending an email to: <a href="mailto:support@trianglemicroworks.com">support@trianglemicroworks.com</a> .</p>
+                                        <h2>The Demo Substation</h2>
+                                        <p>The substation in the demo is the high voltage part of a substation with two lines and two transformer bays connecting to a single busbar. In each bay, we have a protection device and a bay control unit.</p>
+                                        <p>The bay control unit implements the control and interface to the breakers and switches and provides the measurements. It receives trips from the protection using GOOSE. The protection device implements the protection functions including breaker failure and trips the breakers through the bay control unit. For the line bay, the protection device is as well implementing the synchrocheck and reclosing function.</p>
+                                        <h2>Setup</h2>
+                                        <p class="p_5">First, run the DTM Configuration Tool and set your Adapters. Make sure to select a GOOSE adapter. <b>It is important to select an adapter that is on a network where GOOSE messages will not interfere with other machines or devices.</b> A good option is to use a loopback adapter for GOOSE messaging so the GOOSE messages do not flood onto the network. This entire example can be run loopback on the same machine between DTM and TSP.</p>
+                                        <p class="p_5"><a class="MCPopupThumbnailLink MCPopupThumbnailPopup" href="../Resources/Images/TSP and DTM Substation Goose Demo - Flare/Substation Demo with DTM and.png"><img class="MCPopupThumbnail img imgimg_122" data-mc-width="650" data-mc-height="340" src="../Resources/Images/TSP and DTM Substation Goose Demo - Flare/Substation Demo with DTM and_thumb_0_1080.png" style="visibility: visible;mso-wrap-style: square;width: 500px;height: 200px;mc-thumbnail-max-height: 1080px;mc-thumbnail: popup;" tabindex="" /></a>
+                                        </p>
+                                        <p class="p_5">Next, open DTM and click on Load Sample Workspace from the DTM Start Page:</p>
+                                        <p class="p_5"><a class="MCPopupThumbnailLink MCPopupThumbnailPopup" href="../Resources/Images/TSP and DTM Substation Goose Demo - Flare/Substation Demo with DTM and_1.png"><img class="MCPopupThumbnail img imgimg_123" data-mc-width="396" data-mc-height="275" src="../Resources/Images/TSP and DTM Substation Goose Demo - Flare/Substation Demo with DTM and_1_thumb_0_720.png" style="visibility: visible;mso-wrap-style: square;width: 300px;height: 200px;mc-thumbnail-max-height: 720px;mc-thumbnail: popup;" tabindex="" /></a> </p>
+                                        <p class="p_5">Then select the workspace named “IEC 61850 Substation Demo”:</p>
+                                        <p class="p_5"><a class="MCPopupThumbnailLink MCPopupThumbnailPopup" href="../Resources/Images/TSP and DTM Substation Goose Demo - Flare/Substation Demo with DTM and_2.png"><img class="MCPopupThumbnail img imgimg_124" data-mc-width="1125" data-mc-height="750" src="../Resources/Images/TSP and DTM Substation Goose Demo - Flare/Substation Demo with DTM and_2_thumb_0_720.png" style="visibility: visible;mso-wrap-style: square;width: 683px;height: 329px;mc-thumbnail-max-height: 720px;mc-thumbnail: popup;" tabindex="" /></a>
+                                        </p>
+                                        <p class="p_5">From there, allow the workspace to fully load. Keep in mind that you will likely have warning messages that none of the devices are connected:</p>
+                                        <p class="p_5"><a class="MCPopupThumbnailLink MCPopupThumbnailPopup" href="../Resources/Images/TSP and DTM Substation Goose Demo - Flare/Substation Demo with DTM and_3.png"><img class="MCPopupThumbnail img imgimg_125" data-mc-width="838" data-mc-height="783" src="../Resources/Images/TSP and DTM Substation Goose Demo - Flare/Substation Demo with DTM and_3_thumb_0_720.png" style="visibility: visible;mso-wrap-style: square;width: 500px;height: 400px;mc-thumbnail-max-height: 720px;mc-thumbnail: popup;" tabindex="" /></a> </p>
+                                        <p class="p_5">In DTM, right-click on the Script named “Start Simulation.js” in the workspace and select "Start/Execute Scripts".</p>
+                                        <p class="p_5">
+                                            <img src="../Resources/Images/strt_smltn.png" />
+                                        </p>
+                                        <p class="p_5">Now open TSP and select the workspace named “Substation GOOSE Demo for TSP – Loopback”:</p>
+                                        <p class="p_5">
+                                            <img src="../Resources/Images/TSP and DTM Substation Goose Demo - Flare/Substation Demo with DTM and_4_680x566.png" class="img_126" style="width: 680;height: 566;" />
+                                        </p>
+                                        <p class="p_5">In TSP, navigate to the Signal Flow Display on the right. Make sure the "Recloser Operation" layout is selected, as shown here:</p>
+                                        <p class="p_5"><a class="MCPopupThumbnailLink MCPopupThumbnailPopup" href="../Resources/Images/sgnl_flw_dsp_rght.png"><img class="MCPopupThumbnail img" data-mc-width="2256" data-mc-height="1943" src="../Resources/Images/sgnl_flw_dsp_rght_thumb_0_720.png" style="visibility: visible;mso-wrap-style: square;width: 900px;height: 800px;mc-thumbnail-max-height: 720px;mc-thumbnail: popup;" tabindex="" /></a>
+                                        </p>
+                                        <p class="p_5">In TSP, click on the Record button to start recording signals. *You may receive a message that some of the signals did not have initial values. This is ok.</p>
+                                        <p class="p_5">Now in DTM, click on the PDIF1 button to initiate a fault. This will create an operate of the protection differential element, which will result in a trip generated by PTRC. The trip will be sent with a GOOSE message to the LN XCBR in the bay controller which will open the breaker. At the same time, the trip was internally sent as a initiate signal to the reclosing and the breaker failure function. After a while, the reclosing function will reclose the breaker through the LN CSWI (note the assumption here is, that the reclosing needs to be done with synchrocheck). If release from synchrocheck (LN RSYN) is true, the CSWI will reclose the breaker through the LN XCBR. By default, the fault is assumed to not be permanent, so the reclosing will be successful. You can activate the checkbox next to the PDIF1 button in DTM, which will make the fault permanent. Following a permanent fault which makes the reclose to fail, you can reset the simulation pushing the reset simulation button in DTM.</p>
+                                        <p class="p_5">Over in TSP, you will see that Signal Flow has 12 events. Stop the recording and step through the events one at a time using the button to the right of the stop button. Hover the mouse over each event on the Timeline to read a description or hover over a signal to see a list of events for that signal.</p>
+                                        <p>
+                                            <img src="../Resources/Images/TSP and DTM Substation Goose Demo - Flare/Substation Demo with DTM and_8_624x551.png" alt="null" class="img_130" style="width: 624;height: 551;" />
+                                        </p>
+                                        <p class="p_5">To learn more about the Signal Flow Display, please click <a href="../Signal Flow/Introduction.htm">HERE</a>.</p>
+                                        <p class="p_5">You can also do this same simulation with the Logic Analyzer Display, to record signals on the wire. Please see below:</p>
+                                        <p class="p_5">
+                                            <img src="../Resources/Images/TSP and DTM Substation Goose Demo - Flare/Substation Demo with DTM and_9_624x507.png" class="img_131" style="width: 624;height: 507;" />
+                                        </p>
+                                        <p class="p_5">To learn more about the Logic Analyzer, please click <a href="../Testing Substations/View Events in Logic Analyzer.htm">HERE</a>.</p>
+                                        <p class="p_5">As well, you can view the lines and setup in a single line diagram via the Custom Display:</p>
+                                        <p class="p_5">
+                                            <img src="../Resources/Images/cstm_dsply_updt_scrnsht_900x800.png" style="width: 900;height: 800;" />
+                                        </p>
+                                        <p>To learn more about the Custom Display, click <a href="../Custom Display/Introduction.htm">HERE.</a></p>
+                                    </div>
+                                    <p>&#160;</p>
+                                    <table style="width: 100%;">
+                                        <col />
+                                        <col style="width: 150px;" />
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                </td>
+                                                <td style="padding-bottom: 10px;border-bottom-style: solid;border-bottom-width: 0px;">&#160;</td>
+                                            </tr>
+                                            <tr style="line-height: 1px;">
+                                                <td colspan="2" style="border-top-style: solid;border-top-width: 1px;">&#160;</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <div>
+                                        <table style="width: 100%;" data-mc-conditions="General.Online Only">
+                                            <col style="width: 260px;" />
+                                            <col style="width: 260px;" />
+                                            <col />
+                                            <tbody>
+                                                <tr style="height: 65px;">
+                                                    <td style="vertical-align: top;">
+                                                        <div>
+                                                            <p style="margin-bottom: 0.12em;margin-top: 0.12em;"><b style="font-size: 1.1em;"><span style="color: #696969;">Sales:&#160;</span>+1 919.870.5101</b>
+                                                            </p>
+                                                            <p style="margin-top: 0;margin-bottom: 0;color: #ffffff;"><a href="mailto:sales@trianglemicroworks.com?subject=Sales Inquiry">sales@trianglemicroworks.com</a>
+                                                            </p>
+                                                            <p style="margin-top: 0;margin-bottom: 0;color: #ffffff;"><a href="http://www.trianglemicroworks.com/products/testing-and-configuration-tools/61850-test-suite-pages/test-suite/hammer-pages">Learn more about 61850 Test Suite Pro</a>
+                                                            </p>
+                                                        </div>
+                                                    </td>
+                                                    <td style="vertical-align: top;">
+                                                        <p style="text-align: left;margin-bottom: 0.12em;margin-top: 0.12em;"><b style="font-size: 1.1em;"><span style="color: #696969;">Support:</span>&#160;+1 919.781.1931</b>
+                                                        </p>
+                                                        <p style="margin-top: 0;margin-bottom: 0;"><a href="mailto:support@trianglemicroworks.com?subject=Support Questions">support@trianglemicroworks.com</a>
+                                                        </p>
+                                                        <p style="margin-top: 0;margin-bottom: 0;"><a href="http://www.trianglemicroworks.com/support/test-suite">Submit a Support Request Online</a>
+                                                        </p>
+                                                    </td>
+                                                    <td style="vertical-align: top;text-align: right;">
+                                                        <p style="text-align: right;margin-top: 0.12em;"><a href="http://www.trianglemicroworks.com/" style="font-weight: bold; font-size: 1.1em; color: #000000;"> Triangle MicroWorks, Inc.</a>
+                                                        </p>
+                                                        <p style="text-align: right;"><a href="https://www.linkedin.com/company/triangle-microworks-inc."><img src="../Resources/Images/linkedin logo_115x29.png" style="width: 115;height: 29;" /></a><a href="https://www.youtube.com/c/Trianglemicroworks"><img src="../Resources/Images/youtube logo_75x30.png" style="width: 75;height: 30;" /></a>
+                                                        </p>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <div style="width: 500px; height: 50px;">
+                                            <p style="text-align: left;color: #ffffff;"><span style="color: #696969;"><span style="color: #000000;"><span class="GeneralCopyright and Company">© 2021 Triangle MicroWorks, Inc. All rights reserved.</span></span><![CDATA[  ]]></span>All rights reserved.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><a data-close="true"></a>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

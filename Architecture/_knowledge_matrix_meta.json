@@ -1,0 +1,70 @@
+{
+  "generated_at": "2026-08-10T15:37:26.326359+00:00",
+  "generator": "scripts/build-sk0146-knowledge-matrix.py",
+  "test_bench": "C:\\Yahia\\projects\\Test Bench",
+  "sk0146_zone_level": 0,
+  "rag_probes": {
+    "sk0146-schematic-index": {
+      "ingested": true,
+      "retrieved": 3
+    },
+    "sk0146-blk_ref_a_rs485": {
+      "ingested": true,
+      "retrieved": 2
+    },
+    "sk0146-blk_ref_a_digital_in": {
+      "ingested": true,
+      "retrieved": 2
+    },
+    "sk0146-blk_ref_a_digital_out": {
+      "ingested": true,
+      "retrieved": 2
+    },
+    "sk0146-blk_ref_b_keyboard": {
+      "ingested": true,
+      "retrieved": 2
+    },
+    "sk0146-blk_ref_a_sensors": {
+      "ingested": true,
+      "retrieved": 2
+    },
+    "sk0146-blk_ref_a_gsm": {
+      "ingested": true,
+      "retrieved": 2
+    },
+    "sk0146-blk_ref_b_ir": {
+      "ingested": true,
+      "retrieved": 2
+    },
+    "sk0146-blk_ref_a_power": {
+      "ingested": true,
+      "retrieved": 2
+    },
+    "sk0146-blk_ref_a_driver_ev": {
+      "ingested": true,
+      "retrieved": 2
+    },
+    "ccli-validation-strategy": {
+      "ingested": true,
+      "retrieved": 57
+    },
+    "ccli-prototype-bom": {
+      "ingested": true,
+      "retrieved": 56
+    },
+    "ccli-cci-module-regs-class": {
+      "ingested": true,
+      "retrieved": 100
+    },
+    "ccli-soc-freeze": {
+      "ingested": true,
+      "retrieved": 10
+    },
+    "ccli-tg500-lab-platform": {
+      "ingested": true,
+      "retrieved": 48
+    }
+  },
+  "primary_leak": "SK0146 schematic corpus NOT_IN_RAG (15 markdown files on disk)",
+  "output": "C:\\Yahia\\projects\\CCLI\\Architecture\\Knowledge_Matrix.xlsx"
+}

@@ -1,0 +1,16 @@
+===== P3 Step 2 — Lab CID Eth_A IP =====
+Date: 2026-09-25
+Clause: Annex T §T.3 (single AP) · TR 57-126 example SCL · P3-02 PART
+
+FROM: apps/ccli/config/icd/cei-tr-57-126-example.cid
+      IP 192.168.8.167 / GW 192.168.8.1
+
+TO:   apps/ccli/config/icd/lab_tg544_eth_a.cid
+      IP 192.168.10.1 / SUBNET 255.255.255.0 / GW 192.168.10.1
+      = TG544 LAN1 Eth_A as-built (Phase 2)
+
+PC lab: 192.168.10.10 → http://192.168.10.1 LuCI PASS (2026-09-25)
+
+Next: Step 4 — MMS server Eth_A (libiec61850) load lab CID · prove urcb 4s (P3-03)
+
+===== END =====

@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" class="_Skins_TMW_Skin" data-mc-search-type="Stem" data-mc-help-system-file-name="Default.xml" data-mc-path-to-help-system="../../" data-mc-has-content-body="True" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic;Default" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Use Cases|Testing Substations|Finding Data in Substation">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>Using the Data Miner</title>
+        <link href="../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" />
+        <link href="../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
+        <link href="../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
+        <link href="../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" />
+        <link href="../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" />
+        <link href="../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" />
+        <link href="../../Skins/Fluid/Stylesheets/foundation.6.2.3.css" rel="stylesheet" />
+        <link href="../../Skins/Fluid/Stylesheets/Styles.css" rel="stylesheet" />
+        <link href="../../Skins/Fluid/Stylesheets/Tablet.css" rel="stylesheet" />
+        <link href="../../Skins/Fluid/Stylesheets/Mobile.css" rel="stylesheet" />
+        <link href="../Resources/Stylesheets/TMW_Stylesheet.css" rel="stylesheet" />
+        <script src="../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../Resources/Scripts/require.min.js" defer="defer">
+        </script>
+        <script src="../../Resources/Scripts/require.config.js" defer="defer">
+        </script>
+        <script src="../../Resources/Scripts/foundation.6.2.3_custom.js" defer="defer">
+        </script>
+        <script src="../../Resources/Scripts/plugins.min.js" defer="defer">
+        </script>
+        <script src="../../Resources/Scripts/MadCapAll.js" defer="defer">
+        </script>
+    </head>
+    <body>
+        <div class="foundation-wrap off-canvas-wrapper">
+            <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper="">
+                <aside class="off-canvas position-right" role="navigation" id="offCanvas" data-off-canvas="" data-position="right" data-mc-ignore="true">
+                    <ul class="off-canvas-accordion vertical menu off-canvas-list" data-accordion-menu="" data-mc-back-link="Back" data-mc-css-tree-node-expanded="is-accordion-submenu-parent" data-mc-css-tree-node-collapsed="is-accordion-submenu-parent" data-mc-css-sub-menu="vertical menu is-accordion-submenu nested" data-mc-include-indicator="False" data-mc-include-icon="False" data-mc-include-parent-link="True" data-mc-include-back="False" data-mc-defer-expand-event="True" data-mc-expand-event="click.zf.accordionMenu" data-mc-toc="True">
+                    </ul>
+                </aside>
+                <div class="off-canvas-content inner-wrap" data-off-canvas-content="">
+                    <div data-sticky-container="" class="title-bar-container">
+                        <nav class="title-bar tab-bar sticky" data-sticky="" data-options="marginTop:0" style="width:100%" data-sticky-on="only screen and (max-width: 1279px)" data-mc-ignore="true"><a class="skip-to-content fluid-skip showOnFocus" href="#">Skip To Main Content</a>
+                            <div class="middle title-bar-section outer-row clearfix">
+                                <div class="menu-icon-container relative clearfix">
+                                    <div class="central-dropdown" style="display:none;" id="#centralSmallScreen"><a class="central-account-drop"><span class="central-account-image"></span><span class="central-account-text">Account</span></a>
+                                        <div class="central-dropdown-content"><a class="MCCentralLink central-dropdown-content-settings">Settings</a>
+                                            <hr class="central-separator" /><a class="MCCentralLink central-dropdown-content-logout">Logout</a>
+                                        </div>
+                                    </div>
+                                    <button class="menu-icon" aria-label="Show Navigation Panel" data-toggle="offCanvas"><span></span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="title-bar-layout outer-row">
+                                <div class="logo-wrapper"><a class="logo" href="Overview of Test Suite Pro.htm" alt="Logo"></a>
+                                </div>
+                                <div class="navigation-wrapper nocontent">
+                                    <ul class="navigation clearfix" data-mc-css-tree-node-has-children="has-children" data-mc-css-sub-menu="sub-menu" data-mc-expand-event="mouseenter" data-mc-top-nav-menu="True" data-mc-max-depth="3" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                                        <li class="placeholder" style="visibility:hidden"><a>placeholder</a>
+                                        </li>
+                                    </ul>
+                                    <div class="central-dropdown" style="display:none;" id="#centralTop"><a class="central-account-drop"><span class="central-account-image"></span><span class="central-account-text">Account</span></a>
+                                        <div class="central-dropdown-content"><a class="MCCentralLink central-dropdown-content-settings">Settings</a>
+                                            <hr class="central-separator" /><a class="MCCentralLink central-dropdown-content-logout">Logout</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="nav-search-wrapper">
+                                    <div class="nav-search row">
+                                        <form class="search" action="#">
+                                            <div class="search-bar search-bar-container needs-pie">
+                                                <input class="search-field needs-pie" type="search" aria-label="Search Field" placeholder="Search" />
+                                                <div class="search-filter-wrapper"><span class="invisible-label" id="search-filters-label">Filter: </span>
+                                                    <div class="search-filter" aria-haspopup="true" aria-controls="sf-content" aria-expanded="false" aria-label="Search Filter" title="All Files" role="button" tabindex="0">
+                                                    </div>
+                                                    <div class="search-filter-content" id="sf-content">
+                                                        <ul>
+                                                            <li>
+                                                                <button class="mc-dropdown-item" aria-labelledby="search-filters-label filterSelectorLabel-00001"><span id="filterSelectorLabel-00001">All Files</span>
+                                                                </button>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="search-submit-wrapper" dir="ltr">
+                                                    <div class="search-submit" title="Search" role="button" tabindex="0"><span class="invisible-label">Submit Search</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="central-dropdown" style="display:none;"><a class="central-account-drop"><span class="central-account-image"></span><span class="central-account-text">Account</span></a>
+                                        <div class="central-dropdown-content"><a class="MCCentralLink central-dropdown-content-settings">Settings</a>
+                                            <hr class="central-separator" /><a class="MCCentralLink central-dropdown-content-logout">Logout</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </nav>
+                    </div>
+                    <div class="main-section">
+                        <div class="row outer-row sidenav-layout">
+                            <nav class="sidenav-wrapper">
+                                <div class="sidenav-container">
+                                    <ul class="off-canvas-accordion vertical menu sidenav" data-accordion-menu="" data-mc-css-tree-node-expanded="is-accordion-submenu-parent" data-mc-css-tree-node-collapsed="is-accordion-submenu-parent" data-mc-css-sub-menu="vertical menu accordion-menu is-accordion-submenu nested" data-mc-include-indicator="False" data-mc-include-icon="False" data-mc-include-parent-link="False" data-mc-include-back="False" data-mc-defer-expand-event="True" data-mc-expand-event="click.zf.accordionMenu" data-mc-toc="True" data-mc-side-nav-menu="True">
+                                    </ul>
+                                </div>
+                            </nav>
+                            <div class="body-container">
+                                <div data-mc-content-body="True">
+                                    <table style="width: 100%;">
+                                        <col />
+                                        <col style="width: 150px;" />
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <div class="nocontent">
+                                                        <div class="MCBreadcrumbsBox_0 breadcrumbs" role="navigation" aria-label="Breadcrumbs" data-mc-breadcrumbs-divider=" &gt; " data-mc-breadcrumbs-count="3" data-mc-toc="True"><span class="MCBreadcrumbsPrefix">You are here: </span>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td style="padding-bottom: 10px;border-bottom-style: solid;border-bottom-width: 0px;text-align: right;"><a href="Overview of Test Suite Pro.htm" title="Go back to online help homepage" alt="Go back to online help homepage" style="font-size: 10pt;">Support Home</a>
+                                                </td>
+                                            </tr>
+                                            <tr style="line-height: 1px;">
+                                                <td colspan="2" style="border-top-style: solid;border-top-width: 1px;">&#160;</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <div role="main" id="mc-main-content">
+                                        <h1 data-mc-autonum=" "><span class="autonumber"><span> </span></span>Using the Data Miner</h1>
+                                        <p>The Data Miner is a powerful tool to find the data you need across multiple IEDs. </p>
+                                        <ul>
+                                            <li value="1">Each row in the Data Miner is a data object in an IED</li>
+                                            <li value="2">Each column can be filtered, grouped, or sorted by value</li>
+                                            <li value="3">Any  data objects can be viewed in a <a href="../Testing Substations/Create a Single Line Display.htm" data-mc-conditions="General.Online Only">Custom Display</a>, in a table view called the <MadCap:conditionalText data-mc-conditions="General.Online Only"><a href="../Testing Substations/View a List of Object Data.htm">Data Monitor</a></MadCap:conditionalText>, or in the  <a href="../Testing IEDs/View IED Data Model.htm" data-mc-conditions="General.Online Only">Advanced Client</a> tool.</li>
+                                        </ul>
+                                        <p>
+                                            <img src="../Resources/Images/DataMiner/DataMiner_Columns.png" />
+                                        </p>
+                                        <p class="note"><b>Note:</b>&#160;The Data Miner shows data objects across all of the IEDs in the workspace. Data objects are complex objects that contain multiple data attributes. For example, the data object Pos in the example above may contain stVal (status value), q (quality), and t (time). Values for data attributes can be viewed in the <a href="../Testing Substations/Create a Single Line Display.htm">Custom Display</a>, <a href="../Testing Substations/View a List of Object Data.htm">Data Monitor</a>, or <a href="../Testing IEDs/View IED Data Model.htm">Advanced Client</a>.</p>
+                                        <table style="width: 100%;">
+                                            <col style="width: 504px;" />
+                                            <col style="width: 1450px;" />
+                                            <tbody>
+                                                <tr>
+                                                    <td style="vertical-align: top;">
+                                                        <h2>Finding Data Objects</h2>
+                                                        <p>Three  techniques can be used to find data objects in the Data&#160;Miner:</p>
+                                                        <ul>
+                                                            <li value="1"><a href="#Pre-Filt">Pre-filtering with the Data Source</a>
+                                                            </li>
+                                                            <li value="2"><a href="#Filterin">Filtering data by columns</a>
+                                                            </li>
+                                                            <li value="3"><a href="#Grouping">Grouping data by columns</a>
+                                                            </li>
+                                                        </ul>
+                                                    </td>
+                                                    <td style="vertical-align: top;">
+                                                        <h2>Viewing Data Object Values</h2>
+                                                        <p>Data values can be viewed in three different ways:</p>
+                                                        <ul>
+                                                            <li value="1"><a href="../Testing Substations/Create a Single Line Display.htm">Custom Display</a>
+                                                            </li>
+                                                            <li value="2"><a href="../Testing Substations/View a List of Object Data.htm">Data Monitor</a>
+                                                            </li>
+                                                            <li value="3"><a href="../Testing IEDs/View IED Data Model.htm">Advanced Client</a>
+                                                            </li>
+                                                        </ul>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <h2><a name="Pre-Filt"></a>Pre-Filtering with Data Source</h2>
+                                        <p>The Data Source is a global pre-filter that is applied to the SCL Files  when creating a workspace. This pre-filter limits the amount of data to a manageable size. This is necessary because some IEC 61850 SCL Files can contain millions of data attributes, some of which are not necessary for the testing you are doing.</p>
+                                        <p><a href="Pre-Filtering Data Models with Data Miner.htm" data-mc-conditions="General.Online Only">Learn more about pre-filtering here.</a>
+                                        </p>
+                                        <p>
+                                            <img src="../Resources/Images/DataMiner/DataMiner_Data_Source.png" />
+                                        </p>
+                                        <h2><a name="Filterin"></a>Filtering Data by Columns</h2>
+                                        <p>Any of the columns in the table view in the Data Miner can be filtered or grouped to find IED data objects. Column filters that are active are highlighted in red.</p>
+                                        <p><a href="How to Use Filters and Grouping.htm" data-mc-conditions="General.Online Only">Learn more about column filtering here.</a>
+                                        </p>
+                                        <p class="example"><b>Example 1:</b>&#160; Data can be filtered by Logical Node Class (CSWI, PTRC, MMXU, etc.) as seen below.</p>
+                                        <p>
+                                            <img src="../Resources/Images/DataMiner/DataMiner_Filter_By_LN.png" />
+                                        </p>
+                                        <p class="example"><b>Example 2:</b>&#160; Data can be filtered to only show data contained in GOOSE messages. The same type of filter can be setup to show data available from Reports.</p>
+                                        <p>
+                                            <img src="../Resources/Images/DataMiner/DataMiner_Filter_By_GOOSE.png" />
+                                        </p>
+                                        <h2><a name="Grouping"></a>Grouping Data by Columns</h2>
+                                        <p>Data objects can be grouped by any column. For example, all the data objects can be grouped by IED Name or Logical Node Prefix to group the data according to substation bays.</p>
+                                        <p><a href="How to Use Filters and Grouping.htm" data-mc-conditions="General.Online Only">Learn more about grouping here.</a>
+                                        </p>
+                                        <p class="example"><b>Example:</b> Data can be grouped by IED&#160;Name.</p>
+                                        <p>
+                                            <img src="../Resources/Images/DataMiner/DataMiner_Grouping.png" />
+                                        </p>
+                                        <h2>Select Which Data Columns to View</h2>
+                                        <p>Several different columns can be displayed for data objects in the Data&#160;Miner:</p>
+                                        <p class="p_indent"><b>Column Selection</b> - columns can be added or removed from the table view.</p>
+                                        <p>
+                                            <img src="../Resources/Images/DataMiner/DataMiner_Column_Selection.png" />
+                                        </p>
+                                        <h2>Viewing Data Values</h2>
+                                        <p>Data values for data attributes can be viewed in the Custom Display or the Data Monitor:</p>
+                                        <p class="p_indent"><b>Custom Display</b> - for a graphical view of data, drag data objects to the <a href="../Testing Substations/Create a Single Line Display.htm">Custom Display</a>. For many data objects, this will create a graphical view of the data.</p>
+                                        <p class="p_indent"><b>Data Monitor</b> - for a table view of data, drag data objects to the <a href="../Testing Substations/View a List of Object Data.htm">Data Monitor</a>. This will create a table view of the data attributes in the data objects.</p>
+                                        <p class="p_indent"><b>Advanced Client</b> - for a detailed view of the IED data model, right click  on the data object and select "<a href="../Testing IEDs/View IED Data Model.htm">Open in Advanced Client</a>". This opens the data object in the full IED data model. This view is the same as the original Hammer data model view in previous version of the 61850 Test Suite.</p>
+                                        <p>&#160;</p>
+                                        <p>
+                                            <p>&#160;</p>
+                                        </p>
+                                        <p style="text-align: center;">
+                                            <MadCap:conditionalText data-mc-conditions="General.Online Only"> <b>NEXT:</b> <a href="Pre-Filtering Data Models with Data Miner.htm" class="MCXref xref">Pre-Filtering Data Models with Data Miner</a></MadCap:conditionalText>
+                                        </p>
+                                    </div>
+                                    <p>&#160;</p>
+                                    <table style="width: 100%;">
+                                        <col />
+                                        <col style="width: 150px;" />
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <div class="nocontent">
+                                                        <div class="MCBreadcrumbsBox_0 breadcrumbs" role="navigation" aria-label="Breadcrumbs" data-mc-breadcrumbs-divider=" &gt; " data-mc-breadcrumbs-count="3" data-mc-toc="True"><span class="MCBreadcrumbsPrefix">You are here: </span>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td style="padding-bottom: 10px;border-bottom-style: solid;border-bottom-width: 0px;">&#160;</td>
+                                            </tr>
+                                            <tr style="line-height: 1px;">
+                                                <td colspan="2" style="border-top-style: solid;border-top-width: 1px;">&#160;</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <div>
+                                        <table style="width: 100%;" data-mc-conditions="General.Online Only">
+                                            <col style="width: 260px;" />
+                                            <col style="width: 260px;" />
+                                            <col />
+                                            <tbody>
+                                                <tr style="height: 65px;">
+                                                    <td style="vertical-align: top;">
+                                                        <div>
+                                                            <p style="margin-bottom: 0.12em;margin-top: 0.12em;"><b style="font-size: 1.1em;"><span style="color: #696969;">Sales:&#160;</span>+1 919.870.5101</b>
+                                                            </p>
+                                                            <p style="margin-top: 0;margin-bottom: 0;color: #ffffff;"><a href="mailto:sales@trianglemicroworks.com?subject=Sales Inquiry">sales@trianglemicroworks.com</a>
+                                                            </p>
+                                                            <p style="margin-top: 0;margin-bottom: 0;color: #ffffff;"><a href="http://www.trianglemicroworks.com/products/testing-and-configuration-tools/61850-test-suite-pages/test-suite/hammer-pages">Learn more about 61850 Test Suite Pro</a>
+                                                            </p>
+                                                        </div>
+                                                    </td>
+                                                    <td style="vertical-align: top;">
+                                                        <p style="text-align: left;margin-bottom: 0.12em;margin-top: 0.12em;"><b style="font-size: 1.1em;"><span style="color: #696969;">Support:</span>&#160;+1 919.781.1931</b>
+                                                        </p>
+                                                        <p style="margin-top: 0;margin-bottom: 0;"><a href="mailto:support@trianglemicroworks.com?subject=Support Questions">support@trianglemicroworks.com</a>
+                                                        </p>
+                                                        <p style="margin-top: 0;margin-bottom: 0;"><a href="http://www.trianglemicroworks.com/support/test-suite">Submit a Support Request Online</a>
+                                                        </p>
+                                                    </td>
+                                                    <td style="vertical-align: top;text-align: right;">
+                                                        <p style="text-align: right;margin-top: 0.12em;"><a href="http://www.trianglemicroworks.com/" style="font-weight: bold; font-size: 1.1em; color: #000000;"> Triangle MicroWorks, Inc.</a>
+                                                        </p>
+                                                        <p style="text-align: right;"><a href="https://www.linkedin.com/company/triangle-microworks-inc."><img src="../Resources/Images/linkedin logo_115x29.png" style="width: 115;height: 29;" /></a><a href="https://www.youtube.com/c/Trianglemicroworks"><img src="../Resources/Images/youtube logo_75x30.png" style="width: 75;height: 30;" /></a>
+                                                        </p>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <div style="width: 500px; height: 50px;">
+                                            <p style="text-align: left;color: #ffffff;"><span style="color: #696969;"><span style="color: #000000;"><span class="GeneralCopyright and Company">© 2021 Triangle MicroWorks, Inc. All rights reserved.</span></span><![CDATA[  ]]></span>All rights reserved.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><a data-close="true"></a>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

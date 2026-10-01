@@ -1,0 +1,34 @@
+===== P2 LTE APN FIX (SSH) =====
+Date: 2026-09-25
+DUT: TR500 / Quectel EC200U CDC usb0
+SIM: 1NCE ICCID 89882280666900497532 IMSI 901405190049753
+Radio: vodafone IT
+
+ROOT CAUSE (LuCI Slot Management / TesPro sim-manager)
+-----------------------------------------------------
+TesPro: when apn_auto=0, modem uses slot_N.apn_user as the real APN.
+LuCI "Custom APN" → apn_user; "Current APN" label often lagged on
+slot_N.apn='internet.it' so Apply looked broken.
+
+FIX (SSH) — final
+-----------------
+uci set sim_manager.slot_1.apn_auto='0'
+uci set sim_manager.slot_1.apn_user='iot.1nce.net'
+uci set sim_manager.slot_1.apn='iot.1nce.net'
+uci commit sim_manager
+AT+CGDCONT=1,"IP","iot.1nce.net"  → OK (modem confirmed)
+/etc/init.d/sim-manager restart
+
+VERIFY
+------
+uci apn + apn_user → iot.1nce.net  [PASS]
+AT+CGDCONT? → IP,"iot.1nce.net"   [PASS]
+CEREG still 0,2 / 搜索中 / usb0 no IP yet — wait or 1NCE portal
+Evidence: lab/evidence/P2_lte_apn_at_LATEST.log
+
+NOTE
+----
+SSH used factory default root password (change ASAP).
+Host key: SHA256:4N84xpdiJRUiipactNbXLdVa2+A4eCCrUurVDrz3qoE
+
+===== END =====

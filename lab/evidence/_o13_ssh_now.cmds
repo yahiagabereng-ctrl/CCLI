@@ -1,0 +1,26 @@
+echo "=== DATE ==="
+date
+echo "=== BRIDGE ==="
+brctl show 2>/dev/null || bridge link
+echo "=== DSA / CARRIER ==="
+ip -br link show | grep -E 'lan|br-|eth'
+echo "=== ADDRESSES ==="
+ip -4 addr show br-lan; ip -4 addr show lan_sec 2>/dev/null; ip -4 addr show lan2 2>/dev/null
+echo "=== UCI network ==="
+uci show network.lan; uci show network.lan_sec 2>/dev/null; uci show network.@device[0] 2>/dev/null
+echo "=== firewall zones ==="
+uci show firewall | grep -E "name=|network=|input=|forward=|output=" | head -40
+echo "=== DHCP leases ==="
+cat /tmp/dhcp.leases 2>/dev/null || true
+echo "=== dnsmasq lease files ==="
+ls -la /tmp/dhcp.leases /var/dhcp.leases 2>/dev/null
+echo "=== neigh br-lan / lan_sec ==="
+ip neigh show | grep -E '192\.168\.(0|1)\.'
+echo "=== DROPBEAR / SSH sessions ==="
+netstat -tn 2>/dev/null | grep ':22 ' || ss -tn | grep ':22 '
+echo "=== ping eng->lan_sec sample ==="
+ping -c 2 -W 1 192.168.1.183 2>&1 | tail -5
+echo "=== ping from DUT to first .0 lease if any ==="
+LEASE0=$(awk '/192\.168\.0\./{print $3; exit}' /tmp/dhcp.leases 2>/dev/null)
+if [ -n "$LEASE0" ]; then echo "lease0=$LEASE0"; ping -c 2 -W 1 "$LEASE0" 2>&1 | tail -5; else echo "no 192.168.0.x lease"; fi
+echo "=== DONE ==="

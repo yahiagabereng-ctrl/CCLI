@@ -1,0 +1,3 @@
+Verdict: P3-03 PASS · MMS client ~4 s TotW · avg 3961 ms · 2026-09-25
+Evidence: lab/evidence/O13_1_isolation_2026-09-25/P3_03_MMS_CLIENT_STEP5.txt
+Log: lab/evidence/O13_1_isolation_2026-09-25/P3_03_MMS_CLIENT_STEP5.log

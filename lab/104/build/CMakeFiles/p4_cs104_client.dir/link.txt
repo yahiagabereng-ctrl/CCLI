@@ -1,0 +1,1 @@
+/usr/bin/cc -O3 -DNDEBUG -Wl,--dependency-file=CMakeFiles/p4_cs104_client.dir/link.d CMakeFiles/p4_cs104_client.dir/p4_cs104_client.c.o -o p4_cs104_client  lib60870-build/src/liblib60870.a -lpthread -lm -lrt

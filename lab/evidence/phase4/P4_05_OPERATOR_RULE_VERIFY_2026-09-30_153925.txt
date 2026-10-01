@@ -1,0 +1,43 @@
+[2026-09-30 15:39:25] # P4-05 - O.14 command audit with parameters (reject + accept)
+[2026-09-30 15:39:25] Build: ccli-0.1.0-r20 | DUT=192.168.1.130
+[2026-09-30 15:39:25] Phase A: monitor_only --reject-test ...
+[2026-09-30 15:39:25] Restart ccli: lab_tr400_phase4_eth_b.yaml
+[2026-09-30 15:39:30] iec104: operator command rejected type=50 mode=monitor_only allow_commands=0 [O.14 / Operating Rule]
+[2026-09-30 15:39:31] 
+[2026-09-30 15:39:31] === Reject-test client ===
+[2026-09-30 15:39:31] === P4 CS104 client (lib60870) ===
+[2026-09-30 15:39:31] target=192.168.1.130:2404 ca=1 ioa=1001 tls=on
+[2026-09-30 15:39:31] P4: connection FAILED
+[2026-09-30 15:39:31] P4-05: connect failed
+[2026-09-30 15:39:31] P4-05: reject-test commands sent=no GÇö check DUT log for O.14 result=reject
+[2026-09-30 15:39:33] 
+[2026-09-30 15:39:33] === DUT log (reject) ===
+[2026-09-30 15:39:33] --- P4-05 reject-test marker ---
+[2026-09-30 15:39:33] --- P4-05 reject-test marker ---
+[2026-09-30 15:39:33] iec104: O.14 type=45 ioa=2001 state=1 select=0 result=reject
+[2026-09-30 15:39:33] iec104: O.14 type=45 ioa=2001 state=1 select=0 result=reject
+[2026-09-30 15:39:33] iec104: O.14 type=103 result=reject
+[2026-09-30 15:39:33] iec104: O.14 type=50 ioa=3001 value=42.500 select=0 result=reject
+[2026-09-30 15:39:33] iec104: O.14 type=50 ioa=3001 value=42.500 select=0 result=reject
+[2026-09-30 15:39:33] Phase B: command mode --accept-test (IOA 3001, 42.5 kW) ...
+[2026-09-30 15:39:33] Restart ccli: lab_tr400_phase4_eth_b_command.yaml
+[2026-09-30 15:39:38] iec104: operator command rejected type=50 mode=monitor_only allow_commands=0 [O.14 / Operating Rule]
+[2026-09-30 15:39:38] 
+[2026-09-30 15:39:38] === Accept-test client ===
+[2026-09-30 15:39:38] === P4 CS104 client (lib60870) ===
+[2026-09-30 15:39:38] target=192.168.1.130:2404 ca=1 ioa=1001 tls=on
+[2026-09-30 15:39:38] P4: connection FAILED
+[2026-09-30 15:39:38] P4-05: accept-test connect failed
+[2026-09-30 15:39:39] P4-05: accept-test MSD SP sent=no GÇö check DUT log for O.14 result=accept
+[2026-09-30 15:39:41] 
+[2026-09-30 15:39:41] === DUT log (accept) ===
+[2026-09-30 15:39:41] iec104: O.14 type=45 ioa=2001 state=1 select=0 result=reject
+[2026-09-30 15:39:41] iec104: O.14 type=45 ioa=2001 state=1 select=0 result=reject
+[2026-09-30 15:39:41] iec104: O.14 type=103 result=reject
+[2026-09-30 15:39:41] iec104: O.14 type=50 ioa=3001 value=42.500 select=0 result=reject
+[2026-09-30 15:39:41] iec104: O.14 type=50 ioa=3001 value=42.500 select=0 result=reject
+[2026-09-30 15:39:41] Restoring monitor_only lab.yaml on DUT ...
+[2026-09-30 15:39:41] Restart ccli: lab_tr400_phase4_eth_b.yaml
+[2026-09-30 15:39:46] iec104: operator command rejected type=50 mode=monitor_only allow_commands=0 [O.14 / Operating Rule]
+[2026-09-30 15:39:46] 
+[2026-09-30 15:39:46] P4-05 VERDICT: FAIL rejectExit=1 acceptExit=1 rejectParams=True acceptParams=False msdStub=False

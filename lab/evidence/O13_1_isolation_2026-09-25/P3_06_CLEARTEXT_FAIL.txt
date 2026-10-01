@@ -1,0 +1,7 @@
+===== P3-06 cleartext probe =====
+Date: 2026-09-25
+Command: mms_lab_client 192.168.10.1 102
+Result: CONNECT FAIL err=5
+Pass rule: no cleartext MMS on Eth_A when TLS-only server is up
+VERDICT: PASS — :102 not serving MMS
+===== END =====

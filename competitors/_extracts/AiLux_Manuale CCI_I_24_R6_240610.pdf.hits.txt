@@ -1,0 +1,120 @@
+Controllore Centrale di Impianto CEI 0-16 allegati O-T
+CCI - CEI 0-16 allegati O-T – Istruzioni d’uso CCI_I_24_R6_G_p2
+Limitazione di responsabilità
+AiLux S.r.l. si riserva il diritto di apportare modifiche alle presenti istruzioni senza alcun preavviso. È
+ATTENZIONE! Qualora l’apparecchiatura sia adoperata in un modo diverso da
+Nota per gli utilizzatori di “Apparecchiature Elettroniche”
+utilizzabile solo dopo essere stata integrata in un'altra apparecchiatura elettrica di comando e
+controllo per sistemi di distribuzione elettrica; il costruttore dell’apparecchiatura finale dovrà
+l’apparecchiatura AiLux in essa incorporata, secondo la legislazione specifica in materia di rifiuti
+©2018–2024 di AiLux s.r.l. Tutti i diritti riservati
+Fatta eccezione per una copia di riserva, non è consentita alcuna duplicazione in forma cartacea o elettronica delle presenti
+CCI - CEI 0-16 allegati O-T – Istruzioni d’uso CCI_I_24_R6_G_p3
+2.3 Gestione protocolli di comunicazione............................................................................................................... . 16
+2.5 Istruzioni di installazione ai fini EMC................................................................................................................. . 17
+CCI - CEI 0-16 allegati O-T – Istruzioni d’uso CCI_I_24_R6_G_p4
+da custodire accuratamente per tutta la durata di vita della stessa; dovrà inoltre essere
+proprietario in caso di cessione, vendita, ecc. dell’apparecchiatura.
+elettronica del CD-ROM al solo scopo di back-up.
+L’apparecchiatura ha passato le prove di validazione per essere conforme alle Direttive
+documento è severamente vietato.
+Il presente documento dovrà essere utilizzato in modo tale da non danneggiare tutto od in parte il
+suo contenuto; è fatto divieto di asportare, strappare o riscrivere, qualsiasi sua parte.
+(ufficiotecnico@ailux.eu), il quale potrà informarVi circa costi e tempi di consegna del nuovo
+Per la versione delle istruzioni d’uso su supporto CD-ROM attenersi alle regole di buona
+conservazione dei supporti informatici di tale tipo.
+attentamente prima di operare sul macchinario stesso.
+autorizzati ad operare sulla apparecchiatura dal proprio datore di lavoro.
+CCI - CEI 0-16 allegati O-T – Istruzioni d’uso CCI_I_24_R6_G_p5
+ Gli ultimi 2 numeri dell’anno di redazione delle istruzioni d’uso (ad es. 23)
+Esempio di codice del documento: CCI_I_23_R0_G_p5
+Prima di utilizzare o operare manutenzione sull’apparecchiatura è necessario leggere con la
+massima attenzione l’intero contenuto delle presenti istruzioni. In particolare, quando sulla
+apparecchiatura è presente il simbolo grafico il manuale deve essere consultato allo scopo di
+Eventuali ALLEGATI al presente documento sono, a tutti gli effetti, parte integrante di queste
+evidenziare situazioni di pericolo; il significato dei simboli grafici utilizzati è indicato di seguito:
+PERICOLO! Questo avviso segnala la possibile presenza di tensione pericolosa
+ATTENZIONE! Questa avvertenza segnala il possibile verificarsi di un evento che
+CCI - CEI 0-16 allegati O-T – Istruzioni d’uso CCI_I_24_R6_G_p6
+Il peso complessivo dell’apparecchiatura è di 1 Kg e pertanto non sono richiesti mezzi di
+contattare il servizio di assistenza tecnica AiLux.
+istruzioni d’uso sotto forma di QRCode: recuperare le istruzioni d’uso, leggerle
+CCI - CEI 0-16 allegati O-T – Istruzioni d’uso CCI_I_24_R6_G_p7
+Il CCI è un Gateway per il monitoraggio di impianti di Produzione di Energia Elettrica. Apparato
+prescritto da ARERA con delibera 36/2020/R/EEL e descritto dalla norma CEI 0-16 V1 del 2020 e
+modo sicuro al distributore (DSO) o ad un altro Operatore abilitato. Per ottemperare al
+regolamento le prestazioni del CCI, secondo la specifica funzionale, devono svilupparsi come
+ prestazioni funzionali “opzionali”, inerenti la regolazione di tensione e la limitazione di
+potenza al Punto di Consegna dell'impianto;
+servizi del Dispacciamento, la gestione ottimale dell'impianto, RiGeDi, ecc.
+ N° 1 Antenna 4G/LTE, vedi 2.2.2 Installazione cavi antenna
+ N° 1 Antenna GPS, vedi 2.2.2 Installazione cavi antenna
+CCI - CEI 0-16 allegati O-T – Istruzioni d’uso CCI_I_24_R6_G_p8
+CCI - CEI 0-16 allegati O-T – Istruzioni d’uso CCI_I_24_R6_G_p9
+Temperatura di funzionamento: -5°C, …, +45°C
+Temperatura di stoccaggio: -10°C, …, +55°C
+Categoria di sovratensione: Non connessa a rete
+Grado di inquinamento: 2
+Grado di protezione: IP20
+Tensione nominale alimentazione: 12 – 24Vdc
+Potenza Trasmissione 4G/LTE: Classe 3
+Bande di frequenza 4G/LTE: B1/ 3/ 7/ 8/ 20/ 28 B38/ 40/ 41
+Bande di frequenza GPS: GPS L1 1574.397 – 1576.443MHz
+Normative conformi: CEI 0-16 2022-03
+CCI - CEI 0-16 allegati O-T – Istruzioni d’uso CCI_I_24_R6_G_p10
+Il dispositivo è provvisto di aggancio a barra DIN. Il dispositivo deve essere montato su barra DIN
+L’installatore dovrà provvedere a fornire e collegare i conduttori di alimentazione
+dell’apparecchiatura e degli ingressi e uscite digitali se previsti.
+essere inseriti negli stessi esclusivamente utilizzando puntali a compressione.
+temperatura di esercizio superiore a +70°C e temperatura minima -10°C (assenza
+di sollecitazioni meccaniche).
+CCI - CEI 0-16 allegati O-T – Istruzioni d’uso CCI_I_24_R6_G_p11
+PERICOLO! Sulla apparecchiatura può essere presente tensione sugli ingressi o
+uscite digitali anche con apparecchiatura disalimentata. Durante l’installazione
+sincerarsi che tutte le possibili fonti di tensione siano disconnesse prima di
+ATTENZIONE! Per alimentare l’apparato, installare esclusivamente alimentatori
+ATTENZIONE! In caso di guasto a una qualsiasi parte dell’apparato CCI è
+dalla batteria comporta la perdita dei dati programmati ogni volta che
+l’apparecchiatura viene spenta o quando cade alimentazione.
+alimentazione. Si rende quindi necessaria l’installazione di un interruttore
+automatico o di un sezionatore nell’impianto elettrico. Tale interruttore,
+opportunamente dimensionato per fungere da dispositivo di protezione contro le
+e marcato come dispositivo di sezionamento dell’apparecchio.
+ATTENZIONE! Le uscite digitali della apparecchiatura CCI sono destinate al
+comando o alla diagnostica dei sistemi di controllo della rete elettrica: la
+responsabilità dell’uso corretto delle uscite di comando rispetto alla
+CCI - CEI 0-16 allegati O-T – Istruzioni d’uso CCI_I_24_R6_G_p12
+Le connessioni del dispositivo devono essere svolte secondo le seguenti specifiche:
+ Ingresso Alimentatore 12-24Vdc SELV
+ Due porte Seriali optoisolate con connessione RS-232 e RS-485 su connettori RJ45 8/8
+standard ModBus (vedi Figura 5)
+ Due Porte USB 2.0 per connessioni agli Elementi di Impianto
+ Una porta USB 2.0 per Consolle di Configurazione e Manutenzione Locale.
+ Una porta Ethernet 10/100 Mbps(1)(2) dedicata a DSO (ETH_A)
+ Una porta Ethernet 10/100 Mbps(1)(2) dedicata a Operatore Abilitato (ETH_B).
+ Due porte Ethernet 10/100 Mbps(1)(2) per connessioni agli Elementi di Impianto.
+ Tre uscite digitali in contatto pulito NA 3A a 24Vac / 3A a 30Vdc
+CCI - CEI 0-16 allegati O-T – Istruzioni d’uso CCI_I_24_R6_G_p13
+ Cinque ingressi digitali polarizzati e optoisolati da 10Vdc…24Vdc da energizzare con
+alimentazione ESTERNA
+ Modulo GPS/GLONASS integrato per sincronia oraria da costellazione satellitare. Connettore
+di cavo RG174.
+ Modem integrato per connessioni 2G/3G/4G/LTE Cat. 1. Connettore SMA Femmina per
+(1) A partire da Rev3, la velocità della porta Ethernet è 10/100/1000 Mbps. In caso di Revisione
+(2) In caso di Rev2, la velocità della porta Ethernet è possibile aumentarla a 1000Mbps
+utilizzando lo speciale cavo adattatore “Cavo Rev2”. Contattare il servizio clienti Ailux.
+Figura 5: Descrizione connessione porte seriali RS232 e RS485
+CCI - CEI 0-16 allegati O-T – Istruzioni d’uso CCI_I_24_R6_G_p14
+Figura 6: Specifiche Cablaggio Bus di Campo RS-485
+CCI - CEI 0-16 allegati O-T – Istruzioni d’uso CCI_I_24_R6_G_p15
+Il dispositivo CCI necessita dell’installazione dell’antenna GPS e GPRS (LTE).
+ATTENZIONE! Cablare e posizionare l’antenna GPS vista cielo 360° per una
+Sono disponibili per la vendita tre versioni di antenne:
+N° 1 Antenna 4G/LTE Omnidirezionale connettore SMA Maschio
+N° 1 Antenna GPS con 5 mt di cavo coassiale connettore SMA Maschio
+N° 1 Antenna 4G/LTE Omnidirezionale con attacco cavo 20m connettore SMA
+N° 1 Antenna GPS marina con prolunga 20m connettore SMA Maschio
+Di seguito le immagini delle soluzioni antenne appena descritte:
+ATTENZIONE! Collegare un antenna 4G/LTE con guadagno massimo > 3,95dBi.
+Collegare un antenna GPS con guadagno massimo > 18dBi.
+CCI - CEI 0-16 allegati O-T – Istruzioni d’uso CCI_I_24_R6_G_p16

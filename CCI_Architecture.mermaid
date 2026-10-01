@@ -1,0 +1,41 @@
+flowchart TB
+    subgraph PLANT["Plant Elements"]
+        INV[Inverters / Generators]
+        BESS[Storage System BESS]
+        WT[Wind Turbines]
+    end
+
+    subgraph METER["Measurements"]
+        MT1[Energy Analyzer]
+    end
+
+    subgraph CCI["CCI - Original Design Prototype"]
+        SOM[SoM Compute Module\nEmbedded Linux]
+        SW[4-port Ethernet Switch]
+        RS[RS-485/232 Isolated x2]
+        GNSS[GNSS Module]
+        LTE[LTE Modem]
+        DIO[DI/DO Conditioning]
+        SE[Secure Element + Secure Boot]
+        USB[USB Local Console]
+    end
+
+    subgraph EXT["External"]
+        DSO[DSO - Grid Operator]
+        OP[Authorized Operator]
+    end
+
+    PLANT -->|Ethernet Plant Ports| SW
+    METER -->|Modbus RTU| RS
+    RS --> SOM
+    SW --> SOM
+    GNSS --> SOM
+    LTE --> SOM
+    DIO -->|DO: PF2 curtailment command| PLANT
+    PLANT -->|DI: status| DIO
+    DIO --> SOM
+    SE --- SOM
+    USB --- SOM
+
+    SOM -->|Eth_A - IEC 61850 MMS/GOOSE| DSO
+    SOM -->|Eth_B| OP

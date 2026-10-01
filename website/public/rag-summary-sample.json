@@ -1,0 +1,2148 @@
+﻿{
+    "tenant_id":  "telematry",
+    "bot_id":  "default",
+    "total_chunks":  46403,
+    "unreviewed_chunks":  37490,
+    "other_chunks":  25838,
+    "other_ratio":  0.5568174471478137,
+    "chunk_type_counts":  {
+                              "table_of_contents":  1699,
+                              "safety_warning":  1228,
+                              "system_description":  264,
+                              "other":  25838,
+                              "diagnostic_information":  1843,
+                              "system_operation":  9677,
+                              "specification_table":  2158,
+                              "maintenance_policy":  1690,
+                              "design_specification":  946,
+                              "connector_info":  191,
+                              "pin_function_table":  803,
+                              "wiring_diagram":  42,
+                              "connector_endview":  24
+                          },
+    "sources":  [
+                    {
+                        "source_id":  "ds-mcu-stm32l4-rm0394",
+                        "total_chunks":  3766,
+                        "chunk_type_counts":  {
+                                                  "table_of_contents":  157,
+                                                  "safety_warning":  73,
+                                                  "system_operation":  407,
+                                                  "other":  2934,
+                                                  "diagnostic_information":  107,
+                                                  "pin_function_table":  7,
+                                                  "specification_table":  46,
+                                                  "connector_endview":  8,
+                                                  "system_description":  12,
+                                                  "connector_info":  12,
+                                                  "maintenance_policy":  3
+                                              },
+                        "other_chunks":  2934,
+                        "other_ratio":  0.7790759426447159
+                    },
+                    {
+                        "source_id":  "jung-op-amp-handbook",
+                        "total_chunks":  2905,
+                        "chunk_type_counts":  {
+                                                  "table_of_contents":  7,
+                                                  "safety_warning":  77,
+                                                  "system_operation":  342,
+                                                  "other":  2234,
+                                                  "specification_table":  132,
+                                                  "diagnostic_information":  36,
+                                                  "pin_function_table":  50,
+                                                  "connector_info":  19,
+                                                  "system_description":  6,
+                                                  "maintenance_policy":  2
+                                              },
+                        "other_chunks":  2234,
+                        "other_ratio":  0.7690189328743545
+                    },
+                    {
+                        "source_id":  "ccli-yocto-overview",
+                        "total_chunks":  4240,
+                        "chunk_type_counts":  {
+                                                  "safety_warning":  88,
+                                                  "table_of_contents":  3,
+                                                  "system_operation":  2082,
+                                                  "diagnostic_information":  578,
+                                                  "other":  1403,
+                                                  "maintenance_policy":  61,
+                                                  "connector_info":  4,
+                                                  "pin_function_table":  8,
+                                                  "system_description":  7,
+                                                  "specification_table":  6
+                                              },
+                        "other_chunks":  1403,
+                        "other_ratio":  0.33089622641509436
+                    },
+                    {
+                        "source_id":  "ds-fudan-microelectronics-fm33a0xxev-user-manual-v1-6",
+                        "total_chunks":  2144,
+                        "chunk_type_counts":  {
+                                                  "table_of_contents":  290,
+                                                  "system_description":  16,
+                                                  "other":  1344,
+                                                  "system_operation":  236,
+                                                  "specification_table":  152,
+                                                  "pin_function_table":  6,
+                                                  "diagnostic_information":  98,
+                                                  "safety_warning":  2
+                                              },
+                        "other_chunks":  1344,
+                        "other_ratio":  0.6268656716417911
+                    },
+                    {
+                        "source_id":  "ds-mcu-fm33a0-ev-legacy",
+                        "total_chunks":  2144,
+                        "chunk_type_counts":  {
+                                                  "table_of_contents":  290,
+                                                  "system_description":  16,
+                                                  "other":  1344,
+                                                  "system_operation":  236,
+                                                  "specification_table":  152,
+                                                  "pin_function_table":  6,
+                                                  "diagnostic_information":  98,
+                                                  "safety_warning":  2
+                                              },
+                        "other_chunks":  1344,
+                        "other_ratio":  0.6268656716417911
+                    },
+                    {
+                        "source_id":  "newnes-analog-digital-control-2005",
+                        "total_chunks":  1392,
+                        "chunk_type_counts":  {
+                                                  "table_of_contents":  37,
+                                                  "safety_warning":  9,
+                                                  "system_operation":  114,
+                                                  "other":  1110,
+                                                  "specification_table":  47,
+                                                  "connector_info":  11,
+                                                  "pin_function_table":  45,
+                                                  "wiring_diagram":  13,
+                                                  "diagnostic_information":  3,
+                                                  "maintenance_policy":  3
+                                              },
+                        "other_chunks":  1110,
+                        "other_ratio":  0.7974137931034483
+                    },
+                    {
+                        "source_id":  "newnes-sensor-handbook-2005",
+                        "total_chunks":  1675,
+                        "chunk_type_counts":  {
+                                                  "table_of_contents":  17,
+                                                  "safety_warning":  44,
+                                                  "system_operation":  408,
+                                                  "other":  1105,
+                                                  "specification_table":  41,
+                                                  "diagnostic_information":  15,
+                                                  "pin_function_table":  24,
+                                                  "connector_endview":  1,
+                                                  "system_description":  12,
+                                                  "maintenance_policy":  4,
+                                                  "connector_info":  4
+                                              },
+                        "other_chunks":  1105,
+                        "other_ratio":  0.6597014925373135
+                    },
+                    {
+                        "source_id":  "en-60079-0",
+                        "total_chunks":  1184,
+                        "chunk_type_counts":  {
+                                                  "table_of_contents":  76,
+                                                  "safety_warning":  38,
+                                                  "other":  728,
+                                                  "system_operation":  276,
+                                                  "specification_table":  42,
+                                                  "system_description":  14,
+                                                  "diagnostic_information":  8,
+                                                  "maintenance_policy":  2
+                                              },
+                        "other_chunks":  728,
+                        "other_ratio":  0.6148648648648649
+                    },
+                    {
+                        "source_id":  "sinclair-sensors-transducers-3e",
+                        "total_chunks":  671,
+                        "chunk_type_counts":  {
+                                                  "other":  667,
+                                                  "system_operation":  4
+                                              },
+                        "other_chunks":  667,
+                        "other_ratio":  0.9940387481371088
+                    },
+                    {
+                        "source_id":  "newnes-electromagnetics-explained",
+                        "total_chunks":  763,
+                        "chunk_type_counts":  {
+                                                  "safety_warning":  15,
+                                                  "table_of_contents":  1,
+                                                  "system_operation":  85,
+                                                  "other":  635,
+                                                  "pin_function_table":  5,
+                                                  "specification_table":  17,
+                                                  "connector_info":  4,
+                                                  "diagnostic_information":  1
+                                              },
+                        "other_chunks":  635,
+                        "other_ratio":  0.8322411533420708
+                    },
+                    {
+                        "source_id":  "iec-60079-11",
+                        "total_chunks":  1232,
+                        "chunk_type_counts":  {
+                                                  "table_of_contents":  82,
+                                                  "safety_warning":  118,
+                                                  "specification_table":  88,
+                                                  "other":  566,
+                                                  "diagnostic_information":  160,
+                                                  "system_operation":  190,
+                                                  "pin_function_table":  4,
+                                                  "system_description":  14,
+                                                  "maintenance_policy":  8,
+                                                  "connector_info":  2
+                                              },
+                        "other_chunks":  566,
+                        "other_ratio":  0.4594155844155844
+                    },
+                    {
+                        "source_id":  "en-14236-2007",
+                        "total_chunks":  945,
+                        "chunk_type_counts":  {
+                                                  "table_of_contents":  21,
+                                                  "safety_warning":  15,
+                                                  "other":  564,
+                                                  "system_description":  39,
+                                                  "system_operation":  270,
+                                                  "specification_table":  36
+                                              },
+                        "other_chunks":  564,
+                        "other_ratio":  0.5968253968253968
+                    },
+                    {
+                        "source_id":  "newnes-short-range-wireless",
+                        "total_chunks":  834,
+                        "chunk_type_counts":  {
+                                                  "table_of_contents":  10,
+                                                  "safety_warning":  18,
+                                                  "other":  555,
+                                                  "specification_table":  71,
+                                                  "system_operation":  152,
+                                                  "pin_function_table":  12,
+                                                  "connector_info":  4,
+                                                  "maintenance_policy":  4,
+                                                  "system_description":  3,
+                                                  "diagnostic_information":  5
+                                              },
+                        "other_chunks":  555,
+                        "other_ratio":  0.6654676258992805
+                    },
+                    {
+                        "source_id":  "orcad-pspice-manual",
+                        "total_chunks":  953,
+                        "chunk_type_counts":  {
+                                                  "table_of_contents":  46,
+                                                  "safety_warning":  42,
+                                                  "system_operation":  143,
+                                                  "specification_table":  68,
+                                                  "other":  548,
+                                                  "diagnostic_information":  88,
+                                                  "connector_info":  10,
+                                                  "pin_function_table":  7,
+                                                  "system_description":  1
+                                              },
+                        "other_chunks":  548,
+                        "other_ratio":  0.5750262329485835
+                    },
+                    {
+                        "source_id":  "iec-60079-10",
+                        "total_chunks":  718,
+                        "chunk_type_counts":  {
+                                                  "table_of_contents":  24,
+                                                  "safety_warning":  44,
+                                                  "other":  546,
+                                                  "specification_table":  22,
+                                                  "system_operation":  82
+                                              },
+                        "other_chunks":  546,
+                        "other_ratio":  0.7604456824512534
+                    },
+                    {
+                        "source_id":  "hickman-analog-circuit-cookbook",
+                        "total_chunks":  799,
+                        "chunk_type_counts":  {
+                                                  "safety_warning":  10,
+                                                  "other":  534,
+                                                  "specification_table":  43,
+                                                  "system_operation":  179,
+                                                  "wiring_diagram":  20,
+                                                  "pin_function_table":  11,
+                                                  "connector_endview":  1,
+                                                  "connector_info":  1
+                                              },
+                        "other_chunks":  534,
+                        "other_ratio":  0.6683354192740926
+                    },
+                    {
+                        "source_id":  "cei-0-16-allegato-t",
+                        "total_chunks":  824,
+                        "chunk_type_counts":  {
+                                                  "table_of_contents":  20,
+                                                  "safety_warning":  28,
+                                                  "other":  528,
+                                                  "system_operation":  72,
+                                                  "specification_table":  120,
+                                                  "diagnostic_information":  32,
+                                                  "system_description":  4,
+                                                  "maintenance_policy":  20
+                                              },
+                        "other_chunks":  528,
+                        "other_ratio":  0.6407766990291263
+                    },
+                    {
+                        "source_id":  "newnes-pe-handbook-3e",
+                        "total_chunks":  867,
+                        "chunk_type_counts":  {
+                                                  "safety_warning":  15,
+                                                  "other":  510,
+                                                  "pin_function_table":  6,
+                                                  "system_operation":  285,
+                                                  "specification_table":  26,
+                                                  "diagnostic_information":  23,
+                                                  "connector_info":  1,
+                                                  "connector_endview":  1
+                                              },
+                        "other_chunks":  510,
+                        "other_ratio":  0.5882352941176471
+                    },
+                    {
+                        "source_id":  "iec-60079-14",
+                        "total_chunks":  842,
+                        "chunk_type_counts":  {
+                                                  "table_of_contents":  44,
+                                                  "safety_warning":  78,
+                                                  "other":  484,
+                                                  "system_operation":  172,
+                                                  "diagnostic_information":  38,
+                                                  "specification_table":  10,
+                                                  "system_description":  10,
+                                                  "connector_info":  4,
+                                                  "maintenance_policy":  2
+                                              },
+                        "other_chunks":  484,
+                        "other_ratio":  0.5748218527315915
+                    },
+                    {
+                        "source_id":  "iec-61000-4-2",
+                        "total_chunks":  644,
+                        "chunk_type_counts":  {
+                                                  "table_of_contents":  40,
+                                                  "safety_warning":  14,
+                                                  "system_operation":  34,
+                                                  "specification_table":  60,
+                                                  "other":  478,
+                                                  "maintenance_policy":  4,
+                                                  "pin_function_table":  4,
+                                                  "diagnostic_information":  2,
+                                                  "connector_info":  8
+                                              },
+                        "other_chunks":  478,
+                        "other_ratio":  0.7422360248447205
+                    },
+                    {
+                        "source_id":  "bulletproof-wireless-gsm-security",
+                        "total_chunks":  793,
+                        "chunk_type_counts":  {
+                                                  "table_of_contents":  19,
+                                                  "safety_warning":  29,
+                                                  "system_operation":  257,
+                                                  "other":  465,
+                                                  "pin_function_table":  5,
+                                                  "specification_table":  2,
+                                                  "maintenance_policy":  8,
+                                                  "connector_info":  4,
+                                                  "diagnostic_information":  4
+                                              },
+                        "other_chunks":  465,
+                        "other_ratio":  0.5863808322824716
+                    },
+                    {
+                        "source_id":  "newnes-telecom-circuits-2000",
+                        "total_chunks":  882,
+                        "chunk_type_counts":  {
+                                                  "safety_warning":  18,
+                                                  "other":  452,
+                                                  "specification_table":  145,
+                                                  "system_operation":  200,
+                                                  "pin_function_table":  39,
+                                                  "maintenance_policy":  6,
+                                                  "wiring_diagram":  8,
+                                                  "connector_endview":  1,
+                                                  "connector_info":  13
+                                              },
+                        "other_chunks":  452,
+                        "other_ratio":  0.5124716553287982
+                    },
+                    {
+                        "source_id":  "newnes-power-supply-cookbook",
+                        "total_chunks":  789,
+                        "chunk_type_counts":  {
+                                                  "safety_warning":  23,
+                                                  "system_operation":  285,
+                                                  "other":  422,
+                                                  "diagnostic_information":  9,
+                                                  "specification_table":  42,
+                                                  "pin_function_table":  8
+                                              },
+                        "other_chunks":  422,
+                        "other_ratio":  0.5348542458808618
+                    },
+                    {
+                        "source_id":  "cei-0-16-allegato-o",
+                        "total_chunks":  512,
+                        "chunk_type_counts":  {
+                                                  "system_operation":  60,
+                                                  "other":  420,
+                                                  "diagnostic_information":  20,
+                                                  "connector_info":  4,
+                                                  "pin_function_table":  4,
+                                                  "specification_table":  4
+                                              },
+                        "other_chunks":  420,
+                        "other_ratio":  0.8203125
+                    },
+                    {
+                        "source_id":  "bowick-rf-design",
+                        "total_chunks":  641,
+                        "chunk_type_counts":  {
+                                                  "safety_warning":  7,
+                                                  "diagnostic_information":  1,
+                                                  "other":  365,
+                                                  "pin_function_table":  128,
+                                                  "connector_info":  6,
+                                                  "specification_table":  63,
+                                                  "system_operation":  71
+                                              },
+                        "other_chunks":  365,
+                        "other_ratio":  0.5694227769110765
+                    },
+                    {
+                        "source_id":  "iec-61000-4-3",
+                        "total_chunks":  432,
+                        "chunk_type_counts":  {
+                                                  "table_of_contents":  22,
+                                                  "safety_warning":  5,
+                                                  "system_operation":  31,
+                                                  "specification_table":  13,
+                                                  "other":  357,
+                                                  "system_description":  4
+                                              },
+                        "other_chunks":  357,
+                        "other_ratio":  0.8263888888888888
+                    },
+                    {
+                        "source_id":  "eu-2018-2001-red",
+                        "total_chunks":  465,
+                        "chunk_type_counts":  {
+                                                  "safety_warning":  8,
+                                                  "other":  351,
+                                                  "system_operation":  26,
+                                                  "diagnostic_information":  53,
+                                                  "pin_function_table":  1,
+                                                  "maintenance_policy":  17,
+                                                  "specification_table":  9
+                                              },
+                        "other_chunks":  351,
+                        "other_ratio":  0.7548387096774194
+                    },
+                    {
+                        "source_id":  "carr-antenna-toolkit-2e",
+                        "total_chunks":  486,
+                        "chunk_type_counts":  {
+                                                  "safety_warning":  14,
+                                                  "other":  339,
+                                                  "pin_function_table":  6,
+                                                  "system_operation":  92,
+                                                  "connector_info":  16,
+                                                  "specification_table":  12,
+                                                  "system_description":  4,
+                                                  "maintenance_policy":  1,
+                                                  "connector_endview":  2
+                                              },
+                        "other_chunks":  339,
+                        "other_ratio":  0.6975308641975309
+                    },
+                    {
+                        "source_id":  "iec-60079-2",
+                        "total_chunks":  606,
+                        "chunk_type_counts":  {
+                                                  "table_of_contents":  48,
+                                                  "safety_warning":  70,
+                                                  "other":  320,
+                                                  "system_operation":  150,
+                                                  "specification_table":  14,
+                                                  "maintenance_policy":  2,
+                                                  "diagnostic_information":  2
+                                              },
+                        "other_chunks":  320,
+                        "other_ratio":  0.528052805280528
+                    },
+                    {
+                        "source_id":  "eu-2024-2847-cra",
+                        "total_chunks":  430,
+                        "chunk_type_counts":  {
+                                                  "safety_warning":  20,
+                                                  "specification_table":  42,
+                                                  "other":  303,
+                                                  "system_operation":  37,
+                                                  "system_description":  12,
+                                                  "maintenance_policy":  13,
+                                                  "diagnostic_information":  3
+                                              },
+                        "other_chunks":  303,
+                        "other_ratio":  0.7046511627906977
+                    },
+                    {
+                        "source_id":  "iec-60079-7",
+                        "total_chunks":  840,
+                        "chunk_type_counts":  {
+                                                  "table_of_contents":  16,
+                                                  "safety_warning":  36,
+                                                  "system_operation":  208,
+                                                  "other":  234,
+                                                  "maintenance_policy":  288,
+                                                  "pin_function_table":  2,
+                                                  "system_description":  10,
+                                                  "specification_table":  26,
+                                                  "diagnostic_information":  18,
+                                                  "connector_info":  2
+                                              },
+                        "other_chunks":  234,
+                        "other_ratio":  0.2785714285714286
+                    },
+                    {
+                        "source_id":  "iec-60079-1",
+                        "total_chunks":  794,
+                        "chunk_type_counts":  {
+                                                  "table_of_contents":  56,
+                                                  "safety_warning":  26,
+                                                  "other":  218,
+                                                  "maintenance_policy":  282,
+                                                  "system_operation":  188,
+                                                  "specification_table":  20,
+                                                  "diagnostic_information":  4
+                                              },
+                        "other_chunks":  218,
+                        "other_ratio":  0.27455919395465994
+                    },
+                    {
+                        "source_id":  "iec-60079-25",
+                        "total_chunks":  580,
+                        "chunk_type_counts":  {
+                                                  "table_of_contents":  46,
+                                                  "safety_warning":  32,
+                                                  "other":  192,
+                                                  "maintenance_policy":  262,
+                                                  "system_operation":  20,
+                                                  "diagnostic_information":  20,
+                                                  "specification_table":  6,
+                                                  "system_description":  2
+                                              },
+                        "other_chunks":  192,
+                        "other_ratio":  0.3310344827586207
+                    },
+                    {
+                        "source_id":  "ccli-nxp-imx8m-dqlq-cec",
+                        "total_chunks":  476,
+                        "chunk_type_counts":  {
+                                                  "system_operation":  38,
+                                                  "specification_table":  222,
+                                                  "pin_function_table":  16,
+                                                  "other":  174,
+                                                  "connector_info":  8,
+                                                  "maintenance_policy":  14,
+                                                  "safety_warning":  4
+                                              },
+                        "other_chunks":  174,
+                        "other_ratio":  0.36554621848739494
+                    },
+                    {
+                        "source_id":  "iec-60079-18",
+                        "total_chunks":  452,
+                        "chunk_type_counts":  {
+                                                  "table_of_contents":  36,
+                                                  "safety_warning":  6,
+                                                  "other":  162,
+                                                  "specification_table":  24,
+                                                  "maintenance_policy":  162,
+                                                  "system_operation":  18,
+                                                  "system_description":  12,
+                                                  "diagnostic_information":  32
+                                              },
+                        "other_chunks":  162,
+                        "other_ratio":  0.3584070796460177
+                    },
+                    {
+                        "source_id":  "en-301-489-1",
+                        "total_chunks":  272,
+                        "chunk_type_counts":  {
+                                                  "table_of_contents":  32,
+                                                  "system_operation":  32,
+                                                  "other":  156,
+                                                  "maintenance_policy":  20,
+                                                  "specification_table":  24,
+                                                  "pin_function_table":  6,
+                                                  "system_description":  2
+                                              },
+                        "other_chunks":  156,
+                        "other_ratio":  0.5735294117647058
+                    },
+                    {
+                        "source_id":  "en-14236",
+                        "total_chunks":  483,
+                        "chunk_type_counts":  {
+                                                  "safety_warning":  9,
+                                                  "system_operation":  273,
+                                                  "other":  129,
+                                                  "specification_table":  36,
+                                                  "system_description":  33,
+                                                  "pin_function_table":  3
+                                              },
+                        "other_chunks":  129,
+                        "other_ratio":  0.2670807453416149
+                    },
+                    {
+                        "source_id":  "altium-course-module-03-schematic-editor",
+                        "total_chunks":  218,
+                        "chunk_type_counts":  {
+                                                  "safety_warning":  7,
+                                                  "system_operation":  109,
+                                                  "other":  98,
+                                                  "connector_info":  4
+                                              },
+                        "other_chunks":  98,
+                        "other_ratio":  0.44954128440366975
+                    },
+                    {
+                        "source_id":  "cei-0-16-cci-manual-ailux",
+                        "total_chunks":  216,
+                        "chunk_type_counts":  {
+                                                  "system_operation":  120,
+                                                  "other":  96
+                                              },
+                        "other_chunks":  96,
+                        "other_ratio":  0.4444444444444444
+                    },
+                    {
+                        "source_id":  "ds-sk0xx-umu-sensor",
+                        "total_chunks":  288,
+                        "chunk_type_counts":  {
+                                                  "table_of_contents":  12,
+                                                  "safety_warning":  9,
+                                                  "other":  81,
+                                                  "diagnostic_information":  135,
+                                                  "specification_table":  42,
+                                                  "maintenance_policy":  9
+                                              },
+                        "other_chunks":  81,
+                        "other_ratio":  0.28125
+                    },
+                    {
+                        "source_id":  "iec-60079-0",
+                        "total_chunks":  480,
+                        "chunk_type_counts":  {
+                                                  "table_of_contents":  50,
+                                                  "safety_warning":  42,
+                                                  "system_operation":  130,
+                                                  "specification_table":  20,
+                                                  "other":  80,
+                                                  "maintenance_policy":  146,
+                                                  "system_description":  4,
+                                                  "diagnostic_information":  8
+                                              },
+                        "other_chunks":  80,
+                        "other_ratio":  0.16666666666666666
+                    },
+                    {
+                        "source_id":  "iec-60079-16",
+                        "total_chunks":  234,
+                        "chunk_type_counts":  {
+                                                  "table_of_contents":  4,
+                                                  "safety_warning":  38,
+                                                  "other":  78,
+                                                  "system_operation":  24,
+                                                  "maintenance_policy":  86,
+                                                  "system_description":  4
+                                              },
+                        "other_chunks":  78,
+                        "other_ratio":  0.3333333333333333
+                    },
+                    {
+                        "source_id":  "en-301-511",
+                        "total_chunks":  114,
+                        "chunk_type_counts":  {
+                                                  "table_of_contents":  20,
+                                                  "system_operation":  4,
+                                                  "other":  76,
+                                                  "maintenance_policy":  2,
+                                                  "safety_warning":  2,
+                                                  "connector_info":  4,
+                                                  "specification_table":  4,
+                                                  "system_description":  2
+                                              },
+                        "other_chunks":  76,
+                        "other_ratio":  0.6666666666666666
+                    },
+                    {
+                        "source_id":  "hp-66332a-manual",
+                        "total_chunks":  188,
+                        "chunk_type_counts":  {
+                                                  "safety_warning":  13,
+                                                  "system_operation":  42,
+                                                  "other":  76,
+                                                  "diagnostic_information":  19,
+                                                  "pin_function_table":  10,
+                                                  "specification_table":  18,
+                                                  "connector_info":  7,
+                                                  "maintenance_policy":  3
+                                              },
+                        "other_chunks":  76,
+                        "other_ratio":  0.40425531914893614
+                    },
+                    {
+                        "source_id":  "ds-quectel-eg915u",
+                        "total_chunks":  322,
+                        "chunk_type_counts":  {
+                                                  "table_of_contents":  46,
+                                                  "system_operation":  120,
+                                                  "specification_table":  42,
+                                                  "other":  70,
+                                                  "connector_info":  4,
+                                                  "pin_function_table":  4,
+                                                  "diagnostic_information":  24,
+                                                  "system_description":  2,
+                                                  "connector_endview":  4,
+                                                  "maintenance_policy":  6
+                                              },
+                        "other_chunks":  70,
+                        "other_ratio":  0.21739130434782608
+                    },
+                    {
+                        "source_id":  "ccli-toradex-carrier-guide",
+                        "total_chunks":  381,
+                        "chunk_type_counts":  {
+                                                  "table_of_contents":  23,
+                                                  "system_operation":  148,
+                                                  "other":  65,
+                                                  "pin_function_table":  93,
+                                                  "connector_info":  11,
+                                                  "specification_table":  26,
+                                                  "diagnostic_information":  11,
+                                                  "system_description":  4
+                                              },
+                        "other_chunks":  65,
+                        "other_ratio":  0.17060367454068243
+                    },
+                    {
+                        "source_id":  "iec-60079-15",
+                        "total_chunks":  506,
+                        "chunk_type_counts":  {
+                                                  "table_of_contents":  56,
+                                                  "safety_warning":  32,
+                                                  "specification_table":  30,
+                                                  "other":  56,
+                                                  "system_operation":  174,
+                                                  "maintenance_policy":  146,
+                                                  "diagnostic_information":  8,
+                                                  "system_description":  4
+                                              },
+                        "other_chunks":  56,
+                        "other_ratio":  0.11067193675889328
+                    },
+                    {
+                        "source_id":  "ccli-igate-850-manual",
+                        "total_chunks":  138,
+                        "chunk_type_counts":  {
+                                                  "table_of_contents":  12,
+                                                  "system_operation":  58,
+                                                  "diagnostic_information":  12,
+                                                  "other":  56
+                                              },
+                        "other_chunks":  56,
+                        "other_ratio":  0.4057971014492754
+                    },
+                    {
+                        "source_id":  "altium-course-polygon-pour",
+                        "total_chunks":  79,
+                        "chunk_type_counts":  {
+                                                  "other":  55,
+                                                  "diagnostic_information":  2,
+                                                  "system_operation":  14,
+                                                  "pin_function_table":  8
+                                              },
+                        "other_chunks":  55,
+                        "other_ratio":  0.6962025316455697
+                    },
+                    {
+                        "source_id":  "altium-course-module-01-getting-started",
+                        "total_chunks":  69,
+                        "chunk_type_counts":  {
+                                                  "system_operation":  14,
+                                                  "other":  54,
+                                                  "diagnostic_information":  1
+                                              },
+                        "other_chunks":  54,
+                        "other_ratio":  0.782608695652174
+                    },
+                    {
+                        "source_id":  "ccli-stm32l151rct",
+                        "total_chunks":  108,
+                        "chunk_type_counts":  {
+                                                  "system_operation":  60,
+                                                  "other":  48
+                                              },
+                        "other_chunks":  48,
+                        "other_ratio":  0.4444444444444444
+                    },
+                    {
+                        "source_id":  "altium-course-module-09-pcb-setup",
+                        "total_chunks":  75,
+                        "chunk_type_counts":  {
+                                                  "system_operation":  25,
+                                                  "other":  47,
+                                                  "pin_function_table":  1,
+                                                  "diagnostic_information":  2
+                                              },
+                        "other_chunks":  47,
+                        "other_ratio":  0.6266666666666667
+                    },
+                    {
+                        "source_id":  "altium-course-module-17-library-linking",
+                        "total_chunks":  103,
+                        "chunk_type_counts":  {
+                                                  "system_operation":  45,
+                                                  "other":  42,
+                                                  "diagnostic_information":  10,
+                                                  "connector_info":  6
+                                              },
+                        "other_chunks":  42,
+                        "other_ratio":  0.4077669902912621
+                    },
+                    {
+                        "source_id":  "altium-course-module-08-pcb-editor",
+                        "total_chunks":  79,
+                        "chunk_type_counts":  {
+                                                  "system_operation":  33,
+                                                  "other":  40,
+                                                  "diagnostic_information":  6
+                                              },
+                        "other_chunks":  40,
+                        "other_ratio":  0.5063291139240507
+                    },
+                    {
+                        "source_id":  "project-sk0148-rev01",
+                        "total_chunks":  68,
+                        "chunk_type_counts":  {
+                                                  "pin_function_table":  24,
+                                                  "other":  40,
+                                                  "diagnostic_information":  4
+                                              },
+                        "other_chunks":  40,
+                        "other_ratio":  0.5882352941176471
+                    },
+                    {
+                        "source_id":  "altium-course-module-04-schematic-capture",
+                        "total_chunks":  83,
+                        "chunk_type_counts":  {
+                                                  "system_operation":  37,
+                                                  "other":  37,
+                                                  "diagnostic_information":  9
+                                              },
+                        "other_chunks":  37,
+                        "other_ratio":  0.4457831325301205
+                    },
+                    {
+                        "source_id":  "iec-60079-19",
+                        "total_chunks":  256,
+                        "chunk_type_counts":  {
+                                                  "table_of_contents":  12,
+                                                  "safety_warning":  16,
+                                                  "maintenance_policy":  84,
+                                                  "diagnostic_information":  62,
+                                                  "other":  34,
+                                                  "system_operation":  42,
+                                                  "specification_table":  6
+                                              },
+                        "other_chunks":  34,
+                        "other_ratio":  0.1328125
+                    },
+                    {
+                        "source_id":  "ccli-toradex-verdin-family",
+                        "total_chunks":  101,
+                        "chunk_type_counts":  {
+                                                  "system_description":  6,
+                                                  "connector_endview":  3,
+                                                  "other":  33,
+                                                  "specification_table":  15,
+                                                  "system_operation":  25,
+                                                  "connector_info":  7,
+                                                  "pin_function_table":  12
+                                              },
+                        "other_chunks":  33,
+                        "other_ratio":  0.32673267326732675
+                    },
+                    {
+                        "source_id":  "altium-course-module-18-routing-polygons",
+                        "total_chunks":  164,
+                        "chunk_type_counts":  {
+                                                  "safety_warning":  4,
+                                                  "system_operation":  108,
+                                                  "diagnostic_information":  18,
+                                                  "other":  32,
+                                                  "maintenance_policy":  2
+                                              },
+                        "other_chunks":  32,
+                        "other_ratio":  0.1951219512195122
+                    },
+                    {
+                        "source_id":  "assistant-pdf-lmr38020-mr38bata",
+                        "total_chunks":  110,
+                        "chunk_type_counts":  {
+                                                  "table_of_contents":  5,
+                                                  "safety_warning":  3,
+                                                  "system_operation":  45,
+                                                  "specification_table":  17,
+                                                  "other":  32,
+                                                  "maintenance_policy":  4,
+                                                  "pin_function_table":  2,
+                                                  "diagnostic_information":  2
+                                              },
+                        "other_chunks":  32,
+                        "other_ratio":  0.2909090909090909
+                    },
+                    {
+                        "source_id":  "ds-lmr38020",
+                        "total_chunks":  110,
+                        "chunk_type_counts":  {
+                                                  "table_of_contents":  5,
+                                                  "safety_warning":  3,
+                                                  "system_operation":  45,
+                                                  "specification_table":  17,
+                                                  "other":  32,
+                                                  "maintenance_policy":  4,
+                                                  "pin_function_table":  2,
+                                                  "diagnostic_information":  2
+                                              },
+                        "other_chunks":  32,
+                        "other_ratio":  0.2909090909090909
+                    },
+                    {
+                        "source_id":  "altium-course-module-15-sch-lib",
+                        "total_chunks":  53,
+                        "chunk_type_counts":  {
+                                                  "system_operation":  19,
+                                                  "other":  31,
+                                                  "pin_function_table":  2,
+                                                  "diagnostic_information":  1
+                                              },
+                        "other_chunks":  31,
+                        "other_ratio":  0.5849056603773585
+                    },
+                    {
+                        "source_id":  "altium-course-module-02-help-dx-system",
+                        "total_chunks":  40,
+                        "chunk_type_counts":  {
+                                                  "system_operation":  8,
+                                                  "other":  30,
+                                                  "connector_info":  1,
+                                                  "diagnostic_information":  1
+                                              },
+                        "other_chunks":  30,
+                        "other_ratio":  0.75
+                    },
+                    {
+                        "source_id":  "ccli-toradex-verdin-devboard",
+                        "total_chunks":  136,
+                        "chunk_type_counts":  {
+                                                  "other":  30,
+                                                  "system_description":  4,
+                                                  "system_operation":  37,
+                                                  "pin_function_table":  50,
+                                                  "specification_table":  2,
+                                                  "connector_info":  3,
+                                                  "diagnostic_information":  8,
+                                                  "connector_endview":  2
+                                              },
+                        "other_chunks":  30,
+                        "other_ratio":  0.22058823529411764
+                    },
+                    {
+                        "source_id":  "altium-course-module-10-global-editing",
+                        "total_chunks":  85,
+                        "chunk_type_counts":  {
+                                                  "system_operation":  55,
+                                                  "other":  29,
+                                                  "diagnostic_information":  1
+                                              },
+                        "other_chunks":  29,
+                        "other_ratio":  0.3411764705882353
+                    },
+                    {
+                        "source_id":  "altium-course-module-16-pcb-lib",
+                        "total_chunks":  55,
+                        "chunk_type_counts":  {
+                                                  "system_operation":  25,
+                                                  "other":  29,
+                                                  "diagnostic_information":  1
+                                              },
+                        "other_chunks":  29,
+                        "other_ratio":  0.5272727272727272
+                    },
+                    {
+                        "source_id":  "altium-course-module-05-multi-sheet",
+                        "total_chunks":  43,
+                        "chunk_type_counts":  {
+                                                  "system_operation":  11,
+                                                  "other":  28,
+                                                  "diagnostic_information":  4
+                                              },
+                        "other_chunks":  28,
+                        "other_ratio":  0.6511627906976745
+                    },
+                    {
+                        "source_id":  "altium-course-module-19-cam-output",
+                        "total_chunks":  87,
+                        "chunk_type_counts":  {
+                                                  "system_operation":  59,
+                                                  "diagnostic_information":  5,
+                                                  "other":  22,
+                                                  "system_description":  1
+                                              },
+                        "other_chunks":  22,
+                        "other_ratio":  0.25287356321839083
+                    },
+                    {
+                        "source_id":  "assistant-pdf-job2-mr1ufr2f",
+                        "total_chunks":  40,
+                        "chunk_type_counts":  {
+                                                  "pin_function_table":  16,
+                                                  "system_operation":  2,
+                                                  "other":  22
+                                              },
+                        "other_chunks":  22,
+                        "other_ratio":  0.55
+                    },
+                    {
+                        "source_id":  "assistant-pdf-job2-mr1umf34",
+                        "total_chunks":  40,
+                        "chunk_type_counts":  {
+                                                  "pin_function_table":  16,
+                                                  "system_operation":  2,
+                                                  "other":  22
+                                              },
+                        "other_chunks":  22,
+                        "other_ratio":  0.55
+                    },
+                    {
+                        "source_id":  "assistant-pdf-job2-mr1x5bqh",
+                        "total_chunks":  40,
+                        "chunk_type_counts":  {
+                                                  "pin_function_table":  16,
+                                                  "system_operation":  2,
+                                                  "other":  22
+                                              },
+                        "other_chunks":  22,
+                        "other_ratio":  0.55
+                    },
+                    {
+                        "source_id":  "assistant-pdf-job2-mr1x6ud1",
+                        "total_chunks":  40,
+                        "chunk_type_counts":  {
+                                                  "pin_function_table":  16,
+                                                  "system_operation":  2,
+                                                  "other":  22
+                                              },
+                        "other_chunks":  22,
+                        "other_ratio":  0.55
+                    },
+                    {
+                        "source_id":  "assistant-pdf-job2-mr23b4mo",
+                        "total_chunks":  40,
+                        "chunk_type_counts":  {
+                                                  "pin_function_table":  16,
+                                                  "system_operation":  2,
+                                                  "other":  22
+                                              },
+                        "other_chunks":  22,
+                        "other_ratio":  0.55
+                    },
+                    {
+                        "source_id":  "assistant-pdf-job2-mr27c5pb",
+                        "total_chunks":  40,
+                        "chunk_type_counts":  {
+                                                  "pin_function_table":  16,
+                                                  "system_operation":  2,
+                                                  "other":  22
+                                              },
+                        "other_chunks":  22,
+                        "other_ratio":  0.55
+                    },
+                    {
+                        "source_id":  "assistant-pdf-job2-mr27itqf",
+                        "total_chunks":  40,
+                        "chunk_type_counts":  {
+                                                  "pin_function_table":  16,
+                                                  "system_operation":  2,
+                                                  "other":  22
+                                              },
+                        "other_chunks":  22,
+                        "other_ratio":  0.55
+                    },
+                    {
+                        "source_id":  "assistant-pdf-job2-mr28ilmq",
+                        "total_chunks":  40,
+                        "chunk_type_counts":  {
+                                                  "pin_function_table":  16,
+                                                  "system_operation":  2,
+                                                  "other":  22
+                                              },
+                        "other_chunks":  22,
+                        "other_ratio":  0.55
+                    },
+                    {
+                        "source_id":  "assistant-pdf-job2-mr28jwcz",
+                        "total_chunks":  40,
+                        "chunk_type_counts":  {
+                                                  "pin_function_table":  16,
+                                                  "system_operation":  2,
+                                                  "other":  22
+                                              },
+                        "other_chunks":  22,
+                        "other_ratio":  0.55
+                    },
+                    {
+                        "source_id":  "ds-sk0xx-mosfet-leakage",
+                        "total_chunks":  79,
+                        "chunk_type_counts":  {
+                                                  "table_of_contents":  5,
+                                                  "safety_warning":  3,
+                                                  "system_operation":  29,
+                                                  "other":  20,
+                                                  "specification_table":  12,
+                                                  "diagnostic_information":  3,
+                                                  "pin_function_table":  4,
+                                                  "maintenance_policy":  3
+                                              },
+                        "other_chunks":  20,
+                        "other_ratio":  0.25316455696202533
+                    },
+                    {
+                        "source_id":  "ccli-clone-re-option",
+                        "total_chunks":  28,
+                        "chunk_type_counts":  {
+                                                  "system_operation":  8,
+                                                  "other":  19,
+                                                  "diagnostic_information":  1
+                                              },
+                        "other_chunks":  19,
+                        "other_ratio":  0.6785714285714286
+                    },
+                    {
+                        "source_id":  "altium-course-module-06-building-project",
+                        "total_chunks":  34,
+                        "chunk_type_counts":  {
+                                                  "safety_warning":  1,
+                                                  "system_operation":  17,
+                                                  "other":  15,
+                                                  "diagnostic_information":  1
+                                              },
+                        "other_chunks":  15,
+                        "other_ratio":  0.4411764705882353
+                    },
+                    {
+                        "source_id":  "altium-course-module-11-pcb-design-flow",
+                        "total_chunks":  56,
+                        "chunk_type_counts":  {
+                                                  "system_operation":  38,
+                                                  "diagnostic_information":  4,
+                                                  "other":  14
+                                              },
+                        "other_chunks":  14,
+                        "other_ratio":  0.25
+                    },
+                    {
+                        "source_id":  "arduino-a000066-datasheet",
+                        "total_chunks":  40,
+                        "chunk_type_counts":  {
+                                                  "safety_warning":  5,
+                                                  "other":  12,
+                                                  "system_operation":  22,
+                                                  "connector_info":  1
+                                              },
+                        "other_chunks":  12,
+                        "other_ratio":  0.3
+                    },
+                    {
+                        "source_id":  "ccli-som-comparison",
+                        "total_chunks":  38,
+                        "chunk_type_counts":  {
+                                                  "other":  12,
+                                                  "system_operation":  23,
+                                                  "wiring_diagram":  1,
+                                                  "maintenance_policy":  1,
+                                                  "safety_warning":  1
+                                              },
+                        "other_chunks":  12,
+                        "other_ratio":  0.3157894736842105
+                    },
+                    {
+                        "source_id":  "ds-fudan-microelectronics-fm33a0610ev",
+                        "total_chunks":  12,
+                        "chunk_type_counts":  {
+                                                  "other":  11,
+                                                  "pin_function_table":  1
+                                              },
+                        "other_chunks":  11,
+                        "other_ratio":  0.9166666666666666
+                    },
+                    {
+                        "source_id":  "gds-1152a-u-manual",
+                        "total_chunks":  24,
+                        "chunk_type_counts":  {
+                                                  "maintenance_policy":  4,
+                                                  "other":  10,
+                                                  "pin_function_table":  2,
+                                                  "specification_table":  5,
+                                                  "system_operation":  3
+                                              },
+                        "other_chunks":  10,
+                        "other_ratio":  0.4166666666666667
+                    },
+                    {
+                        "source_id":  "assistant-pdf-sk0148-rev01-mr3770b3",
+                        "total_chunks":  17,
+                        "chunk_type_counts":  {
+                                                  "pin_function_table":  6,
+                                                  "other":  10,
+                                                  "diagnostic_information":  1
+                                              },
+                        "other_chunks":  10,
+                        "other_ratio":  0.5882352941176471
+                    },
+                    {
+                        "source_id":  "assistant-pdf-sk0148-rev01-mr37dp0s",
+                        "total_chunks":  17,
+                        "chunk_type_counts":  {
+                                                  "pin_function_table":  6,
+                                                  "other":  10,
+                                                  "diagnostic_information":  1
+                                              },
+                        "other_chunks":  10,
+                        "other_ratio":  0.5882352941176471
+                    },
+                    {
+                        "source_id":  "assistant-pdf-sk0148-rev01-mr38wci3",
+                        "total_chunks":  17,
+                        "chunk_type_counts":  {
+                                                  "pin_function_table":  6,
+                                                  "other":  10,
+                                                  "diagnostic_information":  1
+                                              },
+                        "other_chunks":  10,
+                        "other_ratio":  0.5882352941176471
+                    },
+                    {
+                        "source_id":  "assistant-pdf-sk0148-rev01-mr3h7cuo",
+                        "total_chunks":  17,
+                        "chunk_type_counts":  {
+                                                  "pin_function_table":  6,
+                                                  "other":  10,
+                                                  "diagnostic_information":  1
+                                              },
+                        "other_chunks":  10,
+                        "other_ratio":  0.5882352941176471
+                    },
+                    {
+                        "source_id":  "altium-course-module-12-design-rules",
+                        "total_chunks":  38,
+                        "chunk_type_counts":  {
+                                                  "system_operation":  25,
+                                                  "other":  8,
+                                                  "diagnostic_information":  4,
+                                                  "safety_warning":  1
+                                              },
+                        "other_chunks":  8,
+                        "other_ratio":  0.21052631578947367
+                    },
+                    {
+                        "source_id":  "raspberry-pi-4-datasheet",
+                        "total_chunks":  19,
+                        "chunk_type_counts":  {
+                                                  "connector_endview":  1,
+                                                  "specification_table":  7,
+                                                  "pin_function_table":  1,
+                                                  "connector_info":  1,
+                                                  "safety_warning":  1,
+                                                  "other":  8
+                                              },
+                        "other_chunks":  8,
+                        "other_ratio":  0.42105263157894735
+                    },
+                    {
+                        "source_id":  "altium-course-toc",
+                        "total_chunks":  8,
+                        "chunk_type_counts":  {
+                                                  "table_of_contents":  3,
+                                                  "other":  5
+                                              },
+                        "other_chunks":  5,
+                        "other_ratio":  0.625
+                    },
+                    {
+                        "source_id":  "altium-course-module-07-transfer-to-pcb",
+                        "total_chunks":  13,
+                        "chunk_type_counts":  {
+                                                  "system_operation":  7,
+                                                  "other":  5,
+                                                  "diagnostic_information":  1
+                                              },
+                        "other_chunks":  5,
+                        "other_ratio":  0.38461538461538464
+                    },
+                    {
+                        "source_id":  "altium-course-module-13-classes-rooms",
+                        "total_chunks":  34,
+                        "chunk_type_counts":  {
+                                                  "system_operation":  28,
+                                                  "other":  5,
+                                                  "diagnostic_information":  1
+                                              },
+                        "other_chunks":  5,
+                        "other_ratio":  0.14705882352941177
+                    },
+                    {
+                        "source_id":  "ds-mornsun-b0505xt-1wr2",
+                        "total_chunks":  9,
+                        "chunk_type_counts":  {
+                                                  "system_operation":  5,
+                                                  "other":  4
+                                              },
+                        "other_chunks":  4,
+                        "other_ratio":  0.4444444444444444
+                    },
+                    {
+                        "source_id":  "sk0148-testbench-declaration",
+                        "total_chunks":  48,
+                        "chunk_type_counts":  {
+                                                  "pin_function_table":  6,
+                                                  "other":  4,
+                                                  "system_operation":  30,
+                                                  "connector_info":  4,
+                                                  "diagnostic_information":  4
+                                              },
+                        "other_chunks":  4,
+                        "other_ratio":  0.08333333333333333
+                    },
+                    {
+                        "source_id":  "ccli-moxa-mgate-5119",
+                        "total_chunks":  16,
+                        "chunk_type_counts":  {
+                                                  "specification_table":  10,
+                                                  "other":  4,
+                                                  "maintenance_policy":  2
+                                              },
+                        "other_chunks":  4,
+                        "other_ratio":  0.25
+                    },
+                    {
+                        "source_id":  "altium-course-module-14-placement",
+                        "total_chunks":  20,
+                        "chunk_type_counts":  {
+                                                  "system_operation":  17,
+                                                  "other":  3
+                                              },
+                        "other_chunks":  3,
+                        "other_ratio":  0.15
+                    },
+                    {
+                        "source_id":  "ds-display-gdh-1670wp",
+                        "total_chunks":  3,
+                        "chunk_type_counts":  {
+                                                  "other":  3
+                                              },
+                        "other_chunks":  3,
+                        "other_ratio":  1.0
+                    },
+                    {
+                        "source_id":  "altium-course-module-20-3d-mechanical",
+                        "total_chunks":  10,
+                        "chunk_type_counts":  {
+                                                  "system_operation":  6,
+                                                  "other":  2,
+                                                  "connector_info":  1,
+                                                  "diagnostic_information":  1
+                                              },
+                        "other_chunks":  2,
+                        "other_ratio":  0.2
+                    },
+                    {
+                        "source_id":  "ds-er34615m",
+                        "total_chunks":  8,
+                        "chunk_type_counts":  {
+                                                  "system_operation":  3,
+                                                  "safety_warning":  3,
+                                                  "other":  1,
+                                                  "specification_table":  1
+                                              },
+                        "other_chunks":  1,
+                        "other_ratio":  0.125
+                    },
+                    {
+                        "source_id":  "ds-prodigi-cg2410b",
+                        "total_chunks":  10,
+                        "chunk_type_counts":  {
+                                                  "system_operation":  3,
+                                                  "safety_warning":  5,
+                                                  "other":  1,
+                                                  "specification_table":  1
+                                              },
+                        "other_chunks":  1,
+                        "other_ratio":  0.1
+                    },
+                    {
+                        "source_id":  "assistant-pdf-bomsk0148-rev01-n01-mr3hi7e5",
+                        "total_chunks":  4,
+                        "chunk_type_counts":  {
+                                                  "other":  1,
+                                                  "diagnostic_information":  3
+                                              },
+                        "other_chunks":  1,
+                        "other_ratio":  0.25
+                    },
+                    {
+                        "source_id":  "sk0xx-blk_cpu",
+                        "total_chunks":  4,
+                        "chunk_type_counts":  {
+                                                  "design_specification":  4
+                                              },
+                        "other_chunks":  0,
+                        "other_ratio":  0.0
+                    },
+                    {
+                        "source_id":  "sk0xx-blk_hmi",
+                        "total_chunks":  4,
+                        "chunk_type_counts":  {
+                                                  "design_specification":  4
+                                              },
+                        "other_chunks":  0,
+                        "other_ratio":  0.0
+                    },
+                    {
+                        "source_id":  "sk0xx-blk_measurement",
+                        "total_chunks":  4,
+                        "chunk_type_counts":  {
+                                                  "design_specification":  4
+                                              },
+                        "other_chunks":  0,
+                        "other_ratio":  0.0
+                    },
+                    {
+                        "source_id":  "sk0xx-blk_memory",
+                        "total_chunks":  4,
+                        "chunk_type_counts":  {
+                                                  "design_specification":  4
+                                              },
+                        "other_chunks":  0,
+                        "other_ratio":  0.0
+                    },
+                    {
+                        "source_id":  "sk0xx-blk_modem_lora",
+                        "total_chunks":  4,
+                        "chunk_type_counts":  {
+                                                  "design_specification":  4
+                                              },
+                        "other_chunks":  0,
+                        "other_ratio":  0.0
+                    },
+                    {
+                        "source_id":  "sk0xx-blk_modem_lte",
+                        "total_chunks":  4,
+                        "chunk_type_counts":  {
+                                                  "design_specification":  4
+                                              },
+                        "other_chunks":  0,
+                        "other_ratio":  0.0
+                    },
+                    {
+                        "source_id":  "sk0xx-blk_modem_nb",
+                        "total_chunks":  4,
+                        "chunk_type_counts":  {
+                                                  "design_specification":  4
+                                              },
+                        "other_chunks":  0,
+                        "other_ratio":  0.0
+                    },
+                    {
+                        "source_id":  "sk0xx-blk_power_lora",
+                        "total_chunks":  4,
+                        "chunk_type_counts":  {
+                                                  "design_specification":  4
+                                              },
+                        "other_chunks":  0,
+                        "other_ratio":  0.0
+                    },
+                    {
+                        "source_id":  "sk0xx-blk_power_lte",
+                        "total_chunks":  4,
+                        "chunk_type_counts":  {
+                                                  "design_specification":  4
+                                              },
+                        "other_chunks":  0,
+                        "other_ratio":  0.0
+                    },
+                    {
+                        "source_id":  "sk0xx-blk_power_metrology",
+                        "total_chunks":  4,
+                        "chunk_type_counts":  {
+                                                  "design_specification":  4
+                                              },
+                        "other_chunks":  0,
+                        "other_ratio":  0.0
+                    },
+                    {
+                        "source_id":  "sk0xx-blk_power_nb",
+                        "total_chunks":  4,
+                        "chunk_type_counts":  {
+                                                  "design_specification":  4
+                                              },
+                        "other_chunks":  0,
+                        "other_ratio":  0.0
+                    },
+                    {
+                        "source_id":  "sk0xx-blk_power_rs485",
+                        "total_chunks":  4,
+                        "chunk_type_counts":  {
+                                                  "design_specification":  4
+                                              },
+                        "other_chunks":  0,
+                        "other_ratio":  0.0
+                    },
+                    {
+                        "source_id":  "sk0xx-blk_rs485",
+                        "total_chunks":  4,
+                        "chunk_type_counts":  {
+                                                  "design_specification":  4
+                                              },
+                        "other_chunks":  0,
+                        "other_ratio":  0.0
+                    },
+                    {
+                        "source_id":  "sk0xx-blk_valve",
+                        "total_chunks":  4,
+                        "chunk_type_counts":  {
+                                                  "design_specification":  4
+                                              },
+                        "other_chunks":  0,
+                        "other_ratio":  0.0
+                    },
+                    {
+                        "source_id":  "sk0xx-blk_ref_sk0146_a_cpu",
+                        "total_chunks":  3,
+                        "chunk_type_counts":  {
+                                                  "design_specification":  3
+                                              },
+                        "other_chunks":  0,
+                        "other_ratio":  0.0
+                    },
+                    {
+                        "source_id":  "sk0xx-blk_ref_sk0146_a_digital_in",
+                        "total_chunks":  3,
+                        "chunk_type_counts":  {
+                                                  "design_specification":  3
+                                              },
+                        "other_chunks":  0,
+                        "other_ratio":  0.0
+                    },
+                    {
+                        "source_id":  "sk0xx-blk_ref_sk0146_a_digital_out",
+                        "total_chunks":  3,
+                        "chunk_type_counts":  {
+                                                  "design_specification":  3
+                                              },
+                        "other_chunks":  0,
+                        "other_ratio":  0.0
+                    },
+                    {
+                        "source_id":  "sk0xx-blk_ref_sk0146_a_driver_ev",
+                        "total_chunks":  3,
+                        "chunk_type_counts":  {
+                                                  "design_specification":  3
+                                              },
+                        "other_chunks":  0,
+                        "other_ratio":  0.0
+                    },
+                    {
+                        "source_id":  "sk0xx-blk_ref_sk0146_a_expansion",
+                        "total_chunks":  3,
+                        "chunk_type_counts":  {
+                                                  "design_specification":  3
+                                              },
+                        "other_chunks":  0,
+                        "other_ratio":  0.0
+                    },
+                    {
+                        "source_id":  "sk0xx-blk_ref_sk0146_a_gsm",
+                        "total_chunks":  3,
+                        "chunk_type_counts":  {
+                                                  "design_specification":  3
+                                              },
+                        "other_chunks":  0,
+                        "other_ratio":  0.0
+                    },
+                    {
+                        "source_id":  "sk0xx-blk_ref_sk0146_a_power",
+                        "total_chunks":  3,
+                        "chunk_type_counts":  {
+                                                  "design_specification":  3
+                                              },
+                        "other_chunks":  0,
+                        "other_ratio":  0.0
+                    },
+                    {
+                        "source_id":  "sk0xx-blk_ref_sk0146_a_rs485",
+                        "total_chunks":  3,
+                        "chunk_type_counts":  {
+                                                  "design_specification":  3
+                                              },
+                        "other_chunks":  0,
+                        "other_ratio":  0.0
+                    },
+                    {
+                        "source_id":  "sk0xx-blk_ref_sk0146_a_sensors",
+                        "total_chunks":  3,
+                        "chunk_type_counts":  {
+                                                  "design_specification":  3
+                                              },
+                        "other_chunks":  0,
+                        "other_ratio":  0.0
+                    },
+                    {
+                        "source_id":  "sk0xx-blk_ref_sk0146_b_display",
+                        "total_chunks":  3,
+                        "chunk_type_counts":  {
+                                                  "design_specification":  3
+                                              },
+                        "other_chunks":  0,
+                        "other_ratio":  0.0
+                    },
+                    {
+                        "source_id":  "sk0xx-blk_ref_sk0146_b_ir",
+                        "total_chunks":  3,
+                        "chunk_type_counts":  {
+                                                  "design_specification":  3
+                                              },
+                        "other_chunks":  0,
+                        "other_ratio":  0.0
+                    },
+                    {
+                        "source_id":  "sk0xx-blk_ref_sk0146_b_keyboard",
+                        "total_chunks":  3,
+                        "chunk_type_counts":  {
+                                                  "design_specification":  3
+                                              },
+                        "other_chunks":  0,
+                        "other_ratio":  0.0
+                    },
+                    {
+                        "source_id":  "sk0xx-blk_ref_sk0146_c_power",
+                        "total_chunks":  3,
+                        "chunk_type_counts":  {
+                                                  "design_specification":  3
+                                              },
+                        "other_chunks":  0,
+                        "other_ratio":  0.0
+                    },
+                    {
+                        "source_id":  "sk0xx-blk_ref_sk0146_d_batt",
+                        "total_chunks":  3,
+                        "chunk_type_counts":  {
+                                                  "design_specification":  3
+                                              },
+                        "other_chunks":  0,
+                        "other_ratio":  0.0
+                    },
+                    {
+                        "source_id":  "sk0xx-sk0146-reference-index",
+                        "total_chunks":  1,
+                        "chunk_type_counts":  {
+                                                  "design_specification":  1
+                                              },
+                        "other_chunks":  0,
+                        "other_ratio":  0.0
+                    },
+                    {
+                        "source_id":  "sk0xx-sk0xx-altium-projects",
+                        "total_chunks":  6,
+                        "chunk_type_counts":  {
+                                                  "design_specification":  6
+                                              },
+                        "other_chunks":  0,
+                        "other_ratio":  0.0
+                    },
+                    {
+                        "source_id":  "sk0xx-sk0xx-block-templates",
+                        "total_chunks":  26,
+                        "chunk_type_counts":  {
+                                                  "design_specification":  26
+                                              },
+                        "other_chunks":  0,
+                        "other_ratio":  0.0
+                    },
+                    {
+                        "source_id":  "sk0xx-sk0xx-canonical-library",
+                        "total_chunks":  3,
+                        "chunk_type_counts":  {
+                                                  "design_specification":  3
+                                              },
+                        "other_chunks":  0,
+                        "other_ratio":  0.0
+                    },
+                    {
+                        "source_id":  "sk0xx-sk0xx-pcb-constraints",
+                        "total_chunks":  2,
+                        "chunk_type_counts":  {
+                                                  "design_specification":  2
+                                              },
+                        "other_chunks":  0,
+                        "other_ratio":  0.0
+                    },
+                    {
+                        "source_id":  "sk0xx-sk0xx-validation-blocks-index",
+                        "total_chunks":  2,
+                        "chunk_type_counts":  {
+                                                  "design_specification":  2
+                                              },
+                        "other_chunks":  0,
+                        "other_ratio":  0.0
+                    },
+                    {
+                        "source_id":  "pcb-lib-blk_cpu",
+                        "total_chunks":  1,
+                        "chunk_type_counts":  {
+                                                  "design_specification":  1
+                                              },
+                        "other_chunks":  0,
+                        "other_ratio":  0.0
+                    },
+                    {
+                        "source_id":  "pcb-lib-blk_hmi",
+                        "total_chunks":  1,
+                        "chunk_type_counts":  {
+                                                  "design_specification":  1
+                                              },
+                        "other_chunks":  0,
+                        "other_ratio":  0.0
+                    },
+                    {
+                        "source_id":  "pcb-lib-blk_measurement",
+                        "total_chunks":  1,
+                        "chunk_type_counts":  {
+                                                  "design_specification":  1
+                                              },
+                        "other_chunks":  0,
+                        "other_ratio":  0.0
+                    },
+                    {
+                        "source_id":  "pcb-lib-blk_memory",
+                        "total_chunks":  1,
+                        "chunk_type_counts":  {
+                                                  "design_specification":  1
+                                              },
+                        "other_chunks":  0,
+                        "other_ratio":  0.0
+                    },
+                    {
+                        "source_id":  "pcb-lib-blk_modem_lora",
+                        "total_chunks":  1,
+                        "chunk_type_counts":  {
+                                                  "design_specification":  1
+                                              },
+                        "other_chunks":  0,
+                        "other_ratio":  0.0
+                    },
+                    {
+                        "source_id":  "pcb-lib-blk_modem_lte",
+                        "total_chunks":  1,
+                        "chunk_type_counts":  {
+                                                  "design_specification":  1
+                                              },
+                        "other_chunks":  0,
+                        "other_ratio":  0.0
+                    },
+                    {
+                        "source_id":  "pcb-lib-blk_modem_nb",
+                        "total_chunks":  1,
+                        "chunk_type_counts":  {
+                                                  "design_specification":  1
+                                              },
+                        "other_chunks":  0,
+                        "other_ratio":  0.0
+                    },
+                    {
+                        "source_id":  "pcb-lib-blk_power_lora",
+                        "total_chunks":  1,
+                        "chunk_type_counts":  {
+                                                  "design_specification":  1
+                                              },
+                        "other_chunks":  0,
+                        "other_ratio":  0.0
+                    },
+                    {
+                        "source_id":  "pcb-lib-blk_power_lte",
+                        "total_chunks":  1,
+                        "chunk_type_counts":  {
+                                                  "design_specification":  1
+                                              },
+                        "other_chunks":  0,
+                        "other_ratio":  0.0
+                    },
+                    {
+                        "source_id":  "pcb-lib-blk_power_metrology",
+                        "total_chunks":  1,
+                        "chunk_type_counts":  {
+                                                  "design_specification":  1
+                                              },
+                        "other_chunks":  0,
+                        "other_ratio":  0.0
+                    },
+                    {
+                        "source_id":  "pcb-lib-blk_power_nb",
+                        "total_chunks":  1,
+                        "chunk_type_counts":  {
+                                                  "design_specification":  1
+                                              },
+                        "other_chunks":  0,
+                        "other_ratio":  0.0
+                    },
+                    {
+                        "source_id":  "pcb-lib-blk_power_rs485",
+                        "total_chunks":  1,
+                        "chunk_type_counts":  {
+                                                  "design_specification":  1
+                                              },
+                        "other_chunks":  0,
+                        "other_ratio":  0.0
+                    },
+                    {
+                        "source_id":  "pcb-lib-blk_rs485",
+                        "total_chunks":  1,
+                        "chunk_type_counts":  {
+                                                  "design_specification":  1
+                                              },
+                        "other_chunks":  0,
+                        "other_ratio":  0.0
+                    },
+                    {
+                        "source_id":  "pcb-lib-blk_valve",
+                        "total_chunks":  1,
+                        "chunk_type_counts":  {
+                                                  "design_specification":  1
+                                              },
+                        "other_chunks":  0,
+                        "other_ratio":  0.0
+                    },
+                    {
+                        "source_id":  "pcb-lib-block-templates",
+                        "total_chunks":  1,
+                        "chunk_type_counts":  {
+                                                  "design_specification":  1
+                                              },
+                        "other_chunks":  0,
+                        "other_ratio":  0.0
+                    },
+                    {
+                        "source_id":  "pcb-lib-calc-equations",
+                        "total_chunks":  52,
+                        "chunk_type_counts":  {
+                                                  "design_specification":  52
+                                              },
+                        "other_chunks":  0,
+                        "other_ratio":  0.0
+                    },
+                    {
+                        "source_id":  "pcb-lib-canonical-library",
+                        "total_chunks":  1,
+                        "chunk_type_counts":  {
+                                                  "design_specification":  1
+                                              },
+                        "other_chunks":  0,
+                        "other_ratio":  0.0
+                    },
+                    {
+                        "source_id":  "pcb-lib-pcb-constraints",
+                        "total_chunks":  1,
+                        "chunk_type_counts":  {
+                                                  "design_specification":  1
+                                              },
+                        "other_chunks":  0,
+                        "other_ratio":  0.0
+                    },
+                    {
+                        "source_id":  "pcb-lib-pcb-layout",
+                        "total_chunks":  1,
+                        "chunk_type_counts":  {
+                                                  "design_specification":  1
+                                              },
+                        "other_chunks":  0,
+                        "other_ratio":  0.0
+                    },
+                    {
+                        "source_id":  "pcb-lib-shitek-catalog",
+                        "total_chunks":  1,
+                        "chunk_type_counts":  {
+                                                  "design_specification":  1
+                                              },
+                        "other_chunks":  0,
+                        "other_ratio":  0.0
+                    },
+                    {
+                        "source_id":  "pcb-lib-validation-blocks-index",
+                        "total_chunks":  1,
+                        "chunk_type_counts":  {
+                                                  "design_specification":  1
+                                              },
+                        "other_chunks":  0,
+                        "other_ratio":  0.0
+                    },
+                    {
+                        "source_id":  "mid-ske075-welmec-7-2-rev01",
+                        "total_chunks":  82,
+                        "chunk_type_counts":  {
+                                                  "design_specification":  82
+                                              },
+                        "other_chunks":  0,
+                        "other_ratio":  0.0
+                    },
+                    {
+                        "source_id":  "fw-porting-sk0xx-overview",
+                        "total_chunks":  34,
+                        "chunk_type_counts":  {
+                                                  "design_specification":  34
+                                              },
+                        "other_chunks":  0,
+                        "other_ratio":  0.0
+                    },
+                    {
+                        "source_id":  "fw-legacy-lcd-gdh-1467wp",
+                        "total_chunks":  28,
+                        "chunk_type_counts":  {
+                                                  "design_specification":  28
+                                              },
+                        "other_chunks":  0,
+                        "other_ratio":  0.0
+                    },
+                    {
+                        "source_id":  "fw-lcd-gdh-1670wp-fm33",
+                        "total_chunks":  27,
+                        "chunk_type_counts":  {
+                                                  "design_specification":  27
+                                              },
+                        "other_chunks":  0,
+                        "other_ratio":  0.0
+                    },
+                    {
+                        "source_id":  "sk0xx-battery-life",
+                        "total_chunks":  14,
+                        "chunk_type_counts":  {
+                                                  "design_specification":  14
+                                              },
+                        "other_chunks":  0,
+                        "other_ratio":  0.0
+                    },
+                    {
+                        "source_id":  "sk0xx-battery-life-equations",
+                        "total_chunks":  63,
+                        "chunk_type_counts":  {
+                                                  "design_specification":  63
+                                              },
+                        "other_chunks":  0,
+                        "other_ratio":  0.0
+                    },
+                    {
+                        "source_id":  "sk0xx-drv5032-sensor-currents",
+                        "total_chunks":  6,
+                        "chunk_type_counts":  {
+                                                  "design_specification":  6
+                                              },
+                        "other_chunks":  0,
+                        "other_ratio":  0.0
+                    },
+                    {
+                        "source_id":  "sk0148-functional-test",
+                        "total_chunks":  45,
+                        "chunk_type_counts":  {
+                                                  "design_specification":  45
+                                              },
+                        "other_chunks":  0,
+                        "other_ratio":  0.0
+                    },
+                    {
+                        "source_id":  "sk0148-rpi-harness",
+                        "total_chunks":  21,
+                        "chunk_type_counts":  {
+                                                  "design_specification":  21
+                                              },
+                        "other_chunks":  0,
+                        "other_ratio":  0.0
+                    },
+                    {
+                        "source_id":  "sk0148-dut-hub-design",
+                        "total_chunks":  32,
+                        "chunk_type_counts":  {
+                                                  "design_specification":  32
+                                              },
+                        "other_chunks":  0,
+                        "other_ratio":  0.0
+                    },
+                    {
+                        "source_id":  "sk0148-dut-hub-altium",
+                        "total_chunks":  18,
+                        "chunk_type_counts":  {
+                                                  "design_specification":  15,
+                                                  "system_operation":  3
+                                              },
+                        "other_chunks":  0,
+                        "other_ratio":  0.0
+                    },
+                    {
+                        "source_id":  "sk0148-dut-hub-readme",
+                        "total_chunks":  24,
+                        "chunk_type_counts":  {
+                                                  "design_specification":  24
+                                              },
+                        "other_chunks":  0,
+                        "other_ratio":  0.0
+                    },
+                    {
+                        "source_id":  "sk0148-dut-hub-native",
+                        "total_chunks":  14,
+                        "chunk_type_counts":  {
+                                                  "design_specification":  14
+                                              },
+                        "other_chunks":  0,
+                        "other_ratio":  0.0
+                    },
+                    {
+                        "source_id":  "sk0148-altium-projects",
+                        "total_chunks":  1,
+                        "chunk_type_counts":  {
+                                                  "design_specification":  1
+                                              },
+                        "other_chunks":  0,
+                        "other_ratio":  0.0
+                    },
+                    {
+                        "source_id":  "ccli-project-roadmap",
+                        "total_chunks":  40,
+                        "chunk_type_counts":  {
+                                                  "design_specification":  40
+                                              },
+                        "other_chunks":  0,
+                        "other_ratio":  0.0
+                    },
+                    {
+                        "source_id":  "ccli-architecture",
+                        "total_chunks":  2,
+                        "chunk_type_counts":  {
+                                                  "design_specification":  2
+                                              },
+                        "other_chunks":  0,
+                        "other_ratio":  0.0
+                    },
+                    {
+                        "source_id":  "ccli-nxp-imx8m-dqlq-cec-precise",
+                        "total_chunks":  17,
+                        "chunk_type_counts":  {
+                                                  "design_specification":  17
+                                              },
+                        "other_chunks":  0,
+                        "other_ratio":  0.0
+                    },
+                    {
+                        "source_id":  "ccli-yocto-bsp-notes",
+                        "total_chunks":  12,
+                        "chunk_type_counts":  {
+                                                  "design_specification":  12
+                                              },
+                        "other_chunks":  0,
+                        "other_ratio":  0.0
+                    },
+                    {
+                        "source_id":  "ccli-knowledge-base-brief",
+                        "total_chunks":  64,
+                        "chunk_type_counts":  {
+                                                  "design_specification":  64
+                                              },
+                        "other_chunks":  0,
+                        "other_ratio":  0.0
+                    },
+                    {
+                        "source_id":  "ccli-cci-module-regs-class",
+                        "total_chunks":  46,
+                        "chunk_type_counts":  {
+                                                  "design_specification":  46
+                                              },
+                        "other_chunks":  0,
+                        "other_ratio":  0.0
+                    },
+                    {
+                        "source_id":  "ccli-bitbake-manual",
+                        "total_chunks":  17,
+                        "chunk_type_counts":  {
+                                                  "design_specification":  13,
+                                                  "table_of_contents":  4
+                                              },
+                        "other_chunks":  0,
+                        "other_ratio":  0.0
+                    },
+                    {
+                        "source_id":  "ccli-vendor-selection",
+                        "total_chunks":  27,
+                        "chunk_type_counts":  {
+                                                  "design_specification":  25,
+                                                  "diagnostic_information":  2
+                                              },
+                        "other_chunks":  0,
+                        "other_ratio":  0.0
+                    },
+                    {
+                        "source_id":  "ccli-nxp-yocto-ug",
+                        "total_chunks":  58,
+                        "chunk_type_counts":  {
+                                                  "design_specification":  55,
+                                                  "table_of_contents":  2,
+                                                  "system_operation":  1
+                                              },
+                        "other_chunks":  0,
+                        "other_ratio":  0.0
+                    },
+                    {
+                        "source_id":  "ccli-github-yocto-refs",
+                        "total_chunks":  56,
+                        "chunk_type_counts":  {
+                                                  "design_specification":  56
+                                              },
+                        "other_chunks":  0,
+                        "other_ratio":  0.0
+                    },
+                    {
+                        "source_id":  "ds-er26500",
+                        "total_chunks":  2,
+                        "chunk_type_counts":  {
+                                                  "safety_warning":  2
+                                              },
+                        "other_chunks":  0,
+                        "other_ratio":  0.0
+                    }
+                ]
+}

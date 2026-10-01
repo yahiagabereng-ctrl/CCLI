@@ -1,0 +1,32 @@
+{
+  "config": "/etc/ccli/lab.yaml",
+  "rows": [
+    {"id":"R01","clause":"O.8.2","name":"Smax polygon nameplate","expected":"~206.15 (TR plant corners)","actual":"206.16","unit":"kVA","status":"PASS","notes":"Smax yaml=210.00 kVA used=210.00"},
+    {"id":"R02","clause":"O.9.2.2","name":"Wlim WMaxSptPct mock","expected":"WMaxSptPct Eq (2)","actual":"off","unit":"-","status":"PASS","notes":"TR Table 1 Wlim inactive"},
+    {"id":"R03","clause":"O.9.2.3","name":"WSd WSptPct mock","expected":"20.00 % → 42.00 kW","actual":"42.00 kW","unit":"kW","status":"PASS","notes":"Eq (4) import WSptPct not in FSM"},
+    {"id":"R04","clause":"O.9.2.1","name":"110% Vn autonomous P cap","expected":"w110_pct when active","actual":"off","unit":"-","status":"PASS","notes":"TR Table 1 w110 inactive"},
+    {"id":"R05","clause":"O.11","name":"Active P min() combination","expected":"min(export caps)","actual":"42.00","unit":"kW","status":"PASS","notes":"Eq (5)(6)"},
+    {"id":"R06","clause":"O.7.3.1","name":"TsP ±5% settling band","expected":"±5% @ TsP≤60s","actual":"settled_within_band_kw() unit PASS","unit":"-","status":"PASS","notes":"dso_phase1_test Eq (7)(8)"},
+    {"id":"R07","clause":"O.7.3.3","name":"3 s min between set-points","expected":"≥3 s between set-points","actual":"MMS deferred","unit":"-","status":"N/A","notes":"Phase 3+ Annex T"},
+    {"id":"R08","clause":"O.13.1.2","name":"DSO Eth_A loss / Operating Rule","expected":"comm loss → safe (lab stale)","actual":"stale_data_s=10 s","unit":"-","status":"PASS","notes":"O.13.2 fail-safe; full Annex U Phase 3+"},
+    {"id":"R09","clause":"O.8.3","name":"TotW 4 s measurement blocks","expected":"poll_ms=4000","actual":"poll_ms=4000","unit":"-","status":"PASS","notes":"O.8.3 TotW block period (Phase 1 Modbus poll)"},
+    {"id":"R10","clause":"O.9.1","name":"Reactive VArV","expected":"inactive (TR Table 1)","actual":"N/A Figura 2","unit":"-","status":"N/A","notes":"Reactive paths Phase 3+"},
+    {"id":"R11","clause":"O.9.1","name":"Reactive PFW","expected":"inactive (TR Table 1)","actual":"N/A Figura 2","unit":"-","status":"N/A","notes":"Reactive paths Phase 3+"},
+    {"id":"R12","clause":"O.9.1","name":"Reactive PFSP","expected":"inactive (TR Table 1)","actual":"N/A Figura 2","unit":"-","status":"N/A","notes":"Reactive paths Phase 3+"},
+    {"id":"R13","clause":"Annex T","name":"MMS reactive set-points","expected":"inactive (TR Table 1)","actual":"N/A Figura 2","unit":"-","status":"N/A","notes":"Reactive paths Phase 3+"},
+    {"id":"R14","clause":"O.14","name":"Data logger capacity","expected":"≥2048","actual":"2048","unit":"-","status":"PASS","notes":"EventRing capacity"},
+    {"id":"R15","clause":"Annex M","name":"Teledistacco DIO inhibit","expected":"Annex M DIO3 inhibit","actual":"lab: DIO1/DIO2 only","unit":"-","status":"N/A","notes":"Phase 4 wiring"},
+    {"id":"L01","clause":"L01","name":"PF2 enter threshold + debounce","expected":"42.00","actual":"42.00","unit":"kW","status":"PASS","notes":"debounce_s=30"},
+    {"id":"L02","clause":"L02","name":"PF2 release hysteresis","expected":"37.00","actual":"37.00","unit":"kW","status":"PASS","notes":"Eq (13)–(17)"},
+    {"id":"L03","clause":"L03","name":"Stale meter fail-safe","expected":"10","actual":"10","unit":"s","status":"PASS","notes":"Eq (13)–(17)"},
+    {"id":"L04","clause":"L04","name":"Modbus slave P ramp mock","expected":"400–950 kW ramp","actual":"modbus_rtu_slave.py --ramp","unit":"-","status":"PASS","notes":"Eq (18)"},
+    {"id":"TR-T1","clause":"TR 57-126 Table 1","name":"Smax Table 1","expected":"210","actual":"210.00","unit":"kVA","status":"PASS","notes":""},
+    {"id":"PLANT","clause":"O.8.2","name":"Plant yaml mock","expected":"P/Q corners","actual":"200.00/200.00 kW 50.00/50.00 kVAr","unit":"-","status":"PASS","notes":""},
+    {"id":"MOCK","clause":"yaml","name":"DSO parameter mock","expected":"w110/wlim/wsd","actual":"w110=0@100.00% wlim=0@0.00% wsd=1@20.00%","unit":"-","status":"PASS","notes":"tr57126_table1"},
+    {"id":"CFG","clause":"yaml","name":"dso.enabled && use_dso_mock","expected":"both true → Eq→kW","actual":"true / true","unit":"-","status":"PASS","notes":""},
+    {"id":"IO-DI","clause":"REQ-LAB-003","name":"Permissive","expected":"active_low @ gd32=1","actual":"active_low","unit":"-","status":"PASS","notes":""},
+    {"id":"IO-byp","clause":"Lab","name":"permissive_bypass","expected":"false","actual":"false","unit":"-","status":"PASS","notes":""},
+    {"id":"REQ-61850","clause":"Annex T","name":"MMS live","expected":"Eth_A","actual":"yaml active-P mock","unit":"-","status":"N/A","notes":"Phase 3 MMS"}
+  ],
+  "live": { "valid": false }
+}

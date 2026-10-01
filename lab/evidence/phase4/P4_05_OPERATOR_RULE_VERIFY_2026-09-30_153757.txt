@@ -1,0 +1,251 @@
+[2026-09-30 15:37:57] # P4-05 - O.14 command audit with parameters (reject + accept)
+[2026-09-30 15:37:57] Build: ccli-0.1.0-r20 | DUT=192.168.1.130
+[2026-09-30 15:37:57] Deploying r20 + monitor_only lab.yaml ...
+[2026-09-30 15:38:00] @{IPAddress=192.168.1.183; InterfaceAlias=Ethernet}
+[2026-09-30 15:38:07] @{PingSucceeded=True}
+[2026-09-30 15:38:07] 
+[2026-09-30 15:38:07] ccli-bin                  | 4 kB |   4.0 kB/s | ETA: 00:31:19 |   0%
+[2026-09-30 15:38:07] ccli-bin                  | 7523 kB | 7523.3 kB/s | ETA: 00:00:00 | 100%
+[2026-09-30 15:38:08] 
+[2026-09-30 15:38:08] deploy-ccli-dut.sh        | 1 kB |   1.5 kB/s | ETA: 00:00:00 | 100%
+[2026-09-30 15:38:08] 
+[2026-09-30 15:38:08] CCLI_DEPLOY_0.1.0-r20_202 | 1 kB |   1.2 kB/s | ETA: 00:00:00 | 100%
+[2026-09-30 15:38:08] 
+[2026-09-30 15:38:08] root_CA.pem               | 1 kB |   1.2 kB/s | ETA: 00:00:00 | 100%
+[2026-09-30 15:38:08] 
+[2026-09-30 15:38:08] server.pem                | 1 kB |   1.1 kB/s | ETA: 00:00:00 | 100%
+[2026-09-30 15:38:08] 
+[2026-09-30 15:38:08] server_tls.pem            | 1 kB |   1.1 kB/s | ETA: 00:00:00 | 100%
+[2026-09-30 15:38:08] 
+[2026-09-30 15:38:08] server.key                | 1 kB |   1.6 kB/s | ETA: 00:00:00 | 100%
+[2026-09-30 15:38:08] 
+[2026-09-30 15:38:08] server_acse.key           | 1 kB |   1.6 kB/s | ETA: 00:00:00 | 100%
+[2026-09-30 15:38:08] 
+[2026-09-30 15:38:08] server_combined.pem       | 1 kB |   1.1 kB/s | ETA: 00:00:00 | 100%
+[2026-09-30 15:38:09] 
+[2026-09-30 15:38:09] server_combined.key       | 1 kB |   1.6 kB/s | ETA: 00:00:00 | 100%
+[2026-09-30 15:38:09] 
+[2026-09-30 15:38:09] client.pem                | 1 kB |   1.1 kB/s | ETA: 00:00:00 | 100%
+[2026-09-30 15:38:09] 
+[2026-09-30 15:38:09] client_tls.pem            | 1 kB |   1.1 kB/s | ETA: 00:00:00 | 100%
+[2026-09-30 15:38:09] 
+[2026-09-30 15:38:09] client.key                | 1 kB |   1.6 kB/s | ETA: 00:00:00 | 100%
+[2026-09-30 15:38:09] 
+[2026-09-30 15:38:09] viewer.pem                | 1 kB |   1.1 kB/s | ETA: 00:00:00 | 100%
+[2026-09-30 15:38:09] 
+[2026-09-30 15:38:09] viewer_tls.pem            | 1 kB |   1.1 kB/s | ETA: 00:00:00 | 100%
+[2026-09-30 15:38:09] 
+[2026-09-30 15:38:09] viewer.key                | 1 kB |   1.6 kB/s | ETA: 00:00:00 | 100%
+[2026-09-30 15:38:09] 
+[2026-09-30 15:38:09] revoked.pem               | 1 kB |   1.1 kB/s | ETA: 00:00:00 | 100%
+[2026-09-30 15:38:09] 
+[2026-09-30 15:38:10] revoked_tls.pem           | 1 kB |   1.1 kB/s | ETA: 00:00:00 | 100%
+[2026-09-30 15:38:10] 
+[2026-09-30 15:38:10] lab_crl.pem               | 0 kB |   0.6 kB/s | ETA: 00:00:00 | 100%
+[2026-09-30 15:38:10] 
+[2026-09-30 15:38:10] lab_tr400_phase4_eth_b.ya | 2 kB |   2.7 kB/s | ETA: 00:00:00 | 100%
+[2026-09-30 15:38:47] === tls deployed ===
+[2026-09-30 15:38:47] drwxr-xr-x    2 root     root             0 Sep 30 21:38 .
+[2026-09-30 15:38:47] drwxr-xr-x    3 root     root             0 Sep 30 21:22 ..
+[2026-09-30 15:38:47] -rw-r--r--    1 root     root          1675 Sep 30 21:38 client.key
+[2026-09-30 15:38:47] -rw-r--r--    1 root     root          1108 Sep 30 21:38 client.pem
+[2026-09-30 15:38:47] -rw-r--r--    1 root     root          1173 Sep 30 21:38 client_tls.pem
+[2026-09-30 15:38:47] -rw-r--r--    1 root     root           642 Sep 30 21:38 lab_crl.pem
+[2026-09-30 15:38:47] -rw-r--r--    1 root     root          1704 Sep 25 23:22 revoked.key
+[2026-09-30 15:38:47] -rw-r--r--    1 root     root          1173 Sep 30 21:38 revoked.pem
+[2026-09-30 15:38:47] -rw-r--r--    1 root     root          1173 Sep 30 21:38 revoked_tls.pem
+[2026-09-30 15:38:47] -rw-r--r--    1 root     root          1184 Sep 30 21:38 root_CA.pem
+[2026-09-30 15:38:47] -rw-r--r--    1 root     root          1679 Sep 30 21:38 server.key
+[2026-09-30 15:38:47] -rw-r--r--    1 root     root          1108 Sep 30 21:38 server.pem
+[2026-09-30 15:38:47] -rw-r--r--    1 root     root          1675 Sep 30 21:38 server_acse.key
+[2026-09-30 15:38:47] -rw-r--r--    1 root     root          1679 Sep 30 21:38 server_combined.key
+[2026-09-30 15:38:47] -rw-r--r--    1 root     root          1108 Sep 30 21:38 server_combined.pem
+[2026-09-30 15:38:47] -rw-r--r--    1 root     root          1169 Sep 30 21:38 server_tls.pem
+[2026-09-30 15:38:47] -rw-r--r--    1 root     root          1671 Sep 30 21:38 viewer.key
+[2026-09-30 15:38:47] -rw-r--r--    1 root     root          1165 Sep 30 21:38 viewer.pem
+[2026-09-30 15:38:47] -rw-r--r--    1 root     root          1165 Sep 30 21:38 viewer_tls.pem
+[2026-09-30 15:38:47] subject=2.5.4.106=1.1.1.999.1.12
+[2026-09-30 15:38:47] X509v3 Key Usage: critical
+[2026-09-30 15:38:47]     Digital Signature, Key Agreement
+[2026-09-30 15:38:47] === deploy manifest ===
+[2026-09-30 15:38:47] n++# CCLI deploy manifest +óGé¼GÇ¥ 0.1.0-r20
+[2026-09-30 15:38:47] 
+[2026-09-30 15:38:47] | Field | Value |
+[2026-09-30 15:38:47] |-------|-------|
+[2026-09-30 15:38:47] | **Date (UTC)** | 2026-09-30 15:38:00 UTC |
+[2026-09-30 15:38:47] | **Operator** | yahia |
+[2026-09-30 15:38:47] | **Target DUT** | TG544 @ 192.168.1.130 |
+[2026-09-30 15:38:47] | **Version** | **0.1.0-r20** |
+[2026-09-30 15:38:47] | **Codename** | P4-104-o14-params |
+[2026-09-30 15:38:47] | **Binary** | `C:\Yahia\projects\CCLI\lab\tg544-openwrt\ccli-bin` |
+[2026-09-30 15:38:47] | **SHA256** | `9328fe6cbd7fc3ae5b707ef077a69fb83404557c0bf5cee8707ce6a71f6944df` |
+[2026-09-30 15:38:47] | **Size (bytes)** | 7703888 |
+[2026-09-30 15:38:47] | **Lab yaml** | `lab_tr400_phase4_eth_b.yaml` |
+[2026-09-30 15:38:47] 
+[2026-09-30 15:38:47] ## Changes in this deploy
+[2026-09-30 15:38:47] 
+[2026-09-30 15:38:47] - O.14 audit detail type+ioa+value+result
+[2026-09-30 15:38:47] - command mode MSD stub O.10.3.1
+[2026-09-30 15:38:47] - lab_tr400_phase4_eth_b_command.yaml
+[2026-09-30 15:38:47] 
+[2026-09-30 15:38:47] === ccli version (binary) ===
+[2026-09-30 15:38:47] ccli 0.1.0-r20 (P4-104-o14-params)
+[2026-09-30 15:38:47]   semver:   0.1.0
+[2026-09-30 15:38:47]   release:  r20
+[2026-09-30 15:38:47]   git:      unknown
+[2026-09-30 15:38:47]   built:    2026-06-29T12:59:20Z UTC
+[2026-09-30 15:38:47]   platform: tg500
+[2026-09-30 15:38:47] === sha256 /usr/sbin/ccli ===
+[2026-09-30 15:38:47] 9328fe6cbd7fc3ae5b707ef077a69fb83404557c0bf5cee8707ce6a71f6944df  /usr/sbin/ccli
+[2026-09-30 15:38:51] === process ===
+[2026-09-30 15:38:51]  1164 root      3604 S    /usr/sbin/ccli --config /etc/ccli/lab.yaml
+[2026-09-30 15:38:51] 32640 root      1332 S    sh /tmp/deploy-ccli-dut.sh
+[2026-09-30 15:38:51] === listen (3782 Eth_A, 2404 Eth_B) ===
+[2026-09-30 15:38:51] tcp        0      0 192.168.10.1:3782       0.0.0.0:*               LISTEN      1164/ccli
+[2026-09-30 15:38:51] tcp        0      0 192.168.1.130:2404      0.0.0.0:*               LISTEN      1164/ccli
+[2026-09-30 15:38:51] === log tail ===
+[2026-09-30 15:38:51] io: curtail_do=OFF permissive=BLOCKED
+[2026-09-30 15:38:51] mms: time_quality chrony offset_ms=0 within_pm100=yes leap=Normal ref=5E107A98 gnss_fix=0 clockNotSynchronized=1 (T.3.3.4.5)
+[2026-09-30 15:38:51] modbus: FC3 ReadHoldingRegisters unit=1 addr=40001 qty=4 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+[2026-09-30 15:38:51] modbus: FC3 ReadHoldingRegisters unit=1 addr=40001 qty=4 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+[2026-09-30 15:38:51] modbus: FC3 ReadHoldingRegisters unit=1 addr=40001 qty=4 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+[2026-09-30 15:38:51] mms: time_quality chrony offset_ms=0 within_pm100=yes leap=Normal ref=5E107A98 gnss_fix=0 clockNotSynchronized=1 (T.3.3.4.5)
+[2026-09-30 15:38:51] modbus: FC3 ReadHoldingRegisters unit=1 addr=40001 qty=4 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+[2026-09-30 15:38:51] ccli stopping
+[2026-09-30 15:38:51] ccli config loaded from /etc/ccli/lab.yaml
+[2026-09-30 15:38:51] hal_gpio_ll: TesPro dido_v2 via ubus (gd32.read_di + set_mode)
+[2026-09-30 15:38:51] svc_io: ready do_curtail=GPIO1(active_low) di_permissive=GPIO2(active_low)
+[2026-09-30 15:38:51] dso-phase1: O.8.2/O.11 mock GÇö Smax_calc=206.155 Smax_used=210 kVA p_w110=0 p_wlim=0 p_wsd=42 p_eff=42 kW GåÆ pf2 enter=42 release=37 kW
+[2026-09-30 15:38:51] mms: TLS CRL loaded /etc/ccli/tls/lab_crl.pem
+[2026-09-30 15:38:51] mms: AARE 62351-4 responder auth ready (cert=779 octets)
+[2026-09-30 15:38:51] mms: AARE responding titles AP=1.1.1.999.1 AE=12
+[2026-09-30 15:38:51] mms: listening on 192.168.10.1:3782 tls=on acse_tls_auth=on rbac=on crl=on fallback_s=15 gnss_poll_s=15 chrony=on discipline=off (IED CCI016_01/LD_Plant WlimDWMX1+WSdDAGC1+stubs+PdCMMXU1)
+[2026-09-30 15:38:51] iec104: listening 192.168.1.130:2404 CA=1 tls=on [IEC 60870-5-104 / O.13.1.1.1]
+[2026-09-30 15:38:51] iec104: Operating Rule mode=monitor_only allow_commands=no gi=yes monitor: TotW@1001=on [O.14]
+[2026-09-30 15:38:51] ccli 0.1.0-r20 (unknown) starting config=/etc/ccli/lab.yaml
+[2026-09-30 15:38:51] ccli 0.1.0-r20 started. config=/etc/ccli/lab.yaml
+[2026-09-30 15:38:51] Phase A: monitor_only --reject-test ...
+[2026-09-30 15:38:51] killall ccli 2>/dev/null; sleep 1; /usr/sbin/ccli --config /etc/ccli/lab.yaml >>/tmp/ccli.log 2>&1 & sleep 3; grep 'Operating Rule' /tmp/ccli.log | tail -1
+[2026-09-30 15:38:56] 
+[2026-09-30 15:38:56] === Reject-test client ===
+[2026-09-30 15:38:56] TLS: Verify cert: depth 1
+[2026-09-30 15:38:56] TLS:    flags: 00000000
+[2026-09-30 15:38:56] TLS:   cert. version     : 3
+[2026-09-30 15:38:56]   serial number     : 42:54:6F:79:FE:8A:9A:98
+[2026-09-30 15:38:56]   issuer name       : C=IT, O=HiTEKS, OU=CCLI-Lab, CN=CCLI_Lab_Root_CA
+[2026-09-30 15:38:56]   subject name      : C=IT, O=HiTEKS, OU=CCLI-Lab, CN=CCLI_Lab_Root_CA
+[2026-09-30 15:38:56]   issued  on        : 2026-09-29 19:36:09
+[2026-09-30 15:38:56]   expires on        : 2036-09-26 19:36:09
+[2026-09-30 15:38:56]   signed using      : RSA with SHA-256
+[2026-09-30 15:38:56]   RSA key size      : 2048 bits
+[2026-09-30 15:38:56]   basic constraints : CA=true
+[2026-09-30 15:38:56]   key usage         : Digital Signature, Key Cert Sign, CRL Sign
+[2026-09-30 15:38:56] System.Management.Automation.RemoteException
+[2026-09-30 15:38:56] TLS: Verify cert: depth 0
+[2026-09-30 15:38:56] TLS:    flags: 00000000
+[2026-09-30 15:38:56] TLS:   cert. version     : 3
+[2026-09-30 15:38:56]   serial number     : 69:1B:6D:54:0A:8C:E3:9E
+[2026-09-30 15:38:56]   issuer name       : C=IT, O=HiTEKS, OU=CCLI-Lab, CN=CCLI_Lab_Root_CA
+[2026-09-30 15:38:56]   subject name      : C=IT, O=HiTEKS, OU=CCLI-Lab, CN=CCI016_01
+[2026-09-30 15:38:57]   issued  on        : 2026-09-29 19:36:09
+[2026-09-30 15:38:57]   expires on        : 2029-01-01 19:36:09
+[2026-09-30 15:38:57]   signed using      : RSA with SHA-256
+[2026-09-30 15:38:57]   RSA key size      : 2048 bits
+[2026-09-30 15:38:57]   basic constraints : CA=false
+[2026-09-30 15:38:57]   key usage         : Digital Signature, Key Encipherment
+[2026-09-30 15:38:57] System.Management.Automation.RemoteException
+[2026-09-30 15:38:57] TLS: Check against list of allowed certs
+[2026-09-30 15:38:57] TLS: Compare With:
+[2026-09-30 15:38:57] TLS:      cert. version     : 3
+[2026-09-30 15:38:57]      serial number     : 69:1B:6D:54:0A:8C:E3:9E
+[2026-09-30 15:38:57]      issuer name       : C=IT, O=HiTEKS, OU=CCLI-Lab, CN=CCLI_Lab_Root_CA
+[2026-09-30 15:38:57]      subject name      : C=IT, O=HiTEKS, OU=CCLI-Lab, CN=CCI016_01
+[2026-09-30 15:38:57]      issued  on        : 2026-09-29 19:36:09
+[2026-09-30 15:38:57]      expires on        : 2029-01-01 19:36:09
+[2026-09-30 15:38:57]      signed using      : RSA with SHA-256
+[2026-09-30 15:38:57]      RSA key size      : 2048 bits
+[2026-09-30 15:38:57]      basic constraints : CA=false
+[2026-09-30 15:38:57]      key usage         : Digital Signature, Key Encipherment
+[2026-09-30 15:38:57] System.Management.Automation.RemoteException
+[2026-09-30 15:38:57] === P4 CS104 client (lib60870) ===
+[2026-09-30 15:38:57] target=192.168.1.130:2404 ca=1 ioa=1001 tls=on
+[2026-09-30 15:38:57] P4: connection OPEN
+[2026-09-30 15:38:57] P4: STARTDT_CON received
+[2026-09-30 15:38:57] P4-05: C_SC_NA_1(45) IOA=2001 sent=yes
+[2026-09-30 15:38:57] P4-05: C_CS_NA_1(103) clock sync sent=yes
+[2026-09-30 15:38:57] P4: ASDU C_SC_NA_1(45) cot=7 ca=1 n=1
+[2026-09-30 15:38:57] P4: ASDU M_ME_NC_1(13) cot=1 ca=1 n=1
+[2026-09-30 15:38:57] P4: M_ME_NC_1 IOA=1001 value=0.000 kW
+[2026-09-30 15:38:57] P4: connection CLOSED
+[2026-09-30 15:38:57] P4-05: reject-test commands sent=yes GÇö check DUT log for O.14 result=reject
+[2026-09-30 15:38:59] 
+[2026-09-30 15:38:59] === DUT log (reject) ===
+[2026-09-30 15:38:59] --- P4-05 reject-test marker ---
+[2026-09-30 15:38:59] --- P4-05 reject-test marker ---
+[2026-09-30 15:38:59] iec104: O.14 type=45 ioa=2001 state=1 select=0 result=reject
+[2026-09-30 15:38:59] iec104: O.14 type=45 ioa=2001 state=1 select=0 result=reject
+[2026-09-30 15:38:59] iec104: O.14 type=103 result=reject
+[2026-09-30 15:38:59] Phase B: command mode --accept-test (IOA 3001, 42.5 kW) ...
+[2026-09-30 15:38:59] killall ccli 2>/dev/null; sleep 1; /usr/sbin/ccli --config /etc/ccli/lab.yaml >>/tmp/ccli.log 2>&1 & sleep 3; grep 'Operating Rule' /tmp/ccli.log | tail -1
+[2026-09-30 15:39:02] 
+[2026-09-30 15:39:02] === Accept-test client ===
+[2026-09-30 15:39:02] TLS: Verify cert: depth 1
+[2026-09-30 15:39:02] TLS:    flags: 00000000
+[2026-09-30 15:39:02] TLS:   cert. version     : 3
+[2026-09-30 15:39:02]   serial number     : 42:54:6F:79:FE:8A:9A:98
+[2026-09-30 15:39:02]   issuer name       : C=IT, O=HiTEKS, OU=CCLI-Lab, CN=CCLI_Lab_Root_CA
+[2026-09-30 15:39:02]   subject name      : C=IT, O=HiTEKS, OU=CCLI-Lab, CN=CCLI_Lab_Root_CA
+[2026-09-30 15:39:02]   issued  on        : 2026-09-29 19:36:09
+[2026-09-30 15:39:02]   expires on        : 2036-09-26 19:36:09
+[2026-09-30 15:39:02]   signed using      : RSA with SHA-256
+[2026-09-30 15:39:02]   RSA key size      : 2048 bits
+[2026-09-30 15:39:02]   basic constraints : CA=true
+[2026-09-30 15:39:02]   key usage         : Digital Signature, Key Cert Sign, CRL Sign
+[2026-09-30 15:39:02] System.Management.Automation.RemoteException
+[2026-09-30 15:39:02] TLS: Verify cert: depth 0
+[2026-09-30 15:39:02] TLS:    flags: 00000000
+[2026-09-30 15:39:02] TLS:   cert. version     : 3
+[2026-09-30 15:39:02]   serial number     : 69:1B:6D:54:0A:8C:E3:9E
+[2026-09-30 15:39:02]   issuer name       : C=IT, O=HiTEKS, OU=CCLI-Lab, CN=CCLI_Lab_Root_CA
+[2026-09-30 15:39:03]   subject name      : C=IT, O=HiTEKS, OU=CCLI-Lab, CN=CCI016_01
+[2026-09-30 15:39:03]   issued  on        : 2026-09-29 19:36:09
+[2026-09-30 15:39:03]   expires on        : 2029-01-01 19:36:09
+[2026-09-30 15:39:03]   signed using      : RSA with SHA-256
+[2026-09-30 15:39:03]   RSA key size      : 2048 bits
+[2026-09-30 15:39:03]   basic constraints : CA=false
+[2026-09-30 15:39:03]   key usage         : Digital Signature, Key Encipherment
+[2026-09-30 15:39:03] System.Management.Automation.RemoteException
+[2026-09-30 15:39:03] TLS: Check against list of allowed certs
+[2026-09-30 15:39:03] TLS: Compare With:
+[2026-09-30 15:39:03] TLS:      cert. version     : 3
+[2026-09-30 15:39:03]      serial number     : 69:1B:6D:54:0A:8C:E3:9E
+[2026-09-30 15:39:03]      issuer name       : C=IT, O=HiTEKS, OU=CCLI-Lab, CN=CCLI_Lab_Root_CA
+[2026-09-30 15:39:03]      subject name      : C=IT, O=HiTEKS, OU=CCLI-Lab, CN=CCI016_01
+[2026-09-30 15:39:03]      issued  on        : 2026-09-29 19:36:09
+[2026-09-30 15:39:03]      expires on        : 2029-01-01 19:36:09
+[2026-09-30 15:39:03]      signed using      : RSA with SHA-256
+[2026-09-30 15:39:03]      RSA key size      : 2048 bits
+[2026-09-30 15:39:03]      basic constraints : CA=false
+[2026-09-30 15:39:03]      key usage         : Digital Signature, Key Encipherment
+[2026-09-30 15:39:03] System.Management.Automation.RemoteException
+[2026-09-30 15:39:03] === P4 CS104 client (lib60870) ===
+[2026-09-30 15:39:03] target=192.168.1.130:2404 ca=1 ioa=1001 tls=on
+[2026-09-30 15:39:03] P4: connection OPEN
+[2026-09-30 15:39:03] P4: STARTDT_CON received
+[2026-09-30 15:39:03] P4: ASDU M_ME_NC_1(13) cot=1 ca=1 n=1
+[2026-09-30 15:39:03] P4: M_ME_NC_1 IOA=1001 value=0.000 kW
+[2026-09-30 15:39:03] P4-05: C_SE_NC_1(50) IOA=3001 value=42.500 kW sent=yes
+[2026-09-30 15:39:03] P4: ASDU C_SE_NC_1(50) cot=7 ca=1 n=1
+[2026-09-30 15:39:03] P4: connection CLOSED
+[2026-09-30 15:39:03] P4-05: accept-test MSD SP sent=yes GÇö check DUT log for O.14 result=accept
+[2026-09-30 15:39:05] 
+[2026-09-30 15:39:05] === DUT log (accept) ===
+[2026-09-30 15:39:05] iec104: O.14 type=45 ioa=2001 state=1 select=0 result=reject
+[2026-09-30 15:39:05] iec104: O.14 type=45 ioa=2001 state=1 select=0 result=reject
+[2026-09-30 15:39:05] iec104: O.14 type=103 result=reject
+[2026-09-30 15:39:05] iec104: O.14 type=50 ioa=3001 value=42.500 select=0 result=reject
+[2026-09-30 15:39:05] iec104: O.14 type=50 ioa=3001 value=42.500 select=0 result=reject
+[2026-09-30 15:39:05] Restoring monitor_only lab.yaml on DUT ...
+[2026-09-30 15:39:05] killall ccli 2>/dev/null; sleep 1; /usr/sbin/ccli --config /etc/ccli/lab.yaml >>/tmp/ccli.log 2>&1 & sleep 3; grep 'Operating Rule' /tmp/ccli.log | tail -1
+[2026-09-30 15:39:05] 
+[2026-09-30 15:39:05] P4-05 VERDICT: FAIL rejectExit=0 acceptExit=0 rejectParams=True acceptParams=False msdStub=False

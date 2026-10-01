@@ -1,0 +1,42 @@
+%% PF2 regulation — parameters & equations dataflow
+%% Canonical: Flowcharts/PARAMETERS_AND_EQUATIONS.md
+
+flowchart TD
+    subgraph INPUTS["Inputs"]
+        YAML["yaml plant: + dso:<br/>p_imm, smax_kva, wspt_pct, ..."]
+        MMS["MMS Operate Eth_A<br/>WlimDWMX1 / WSdDAGC1"]
+        MB["Modbus RTU<br/>register 40001 → p_kw"]
+    end
+
+    subgraph EQ["core/dso equations"]
+        E1["Eq 1: Smax calc<br/>plant_envelope.hpp"]
+        E2["Eq 2: pct → kW<br/>pct_smax_to_kw"]
+        E56["Eq 5-6: O.11 min<br/>derive_active_power_kw"]
+        APPLY["apply_dso_to_pf2_config<br/>apply_live_dso_commands_to_pf2"]
+    end
+
+    subgraph PF2["core/pf2"]
+        FSM["Pf2Fsm<br/>threshold / release / debounce"]
+        STALE["stale_data_s → safe"]
+    end
+
+    subgraph OUT["Actuation"]
+        DIO["DIO1 curtailment"]
+        TOTW["PdCMMXU1.TotW publish"]
+    end
+
+    YAML --> E1
+    E1 --> E2
+    YAML --> E56
+    MMS --> APPLY
+    E2 --> E56
+    E56 --> APPLY
+    APPLY --> FSM
+    MB --> FSM
+    MB --> TOTW
+    FSM --> STALE
+    FSM --> DIO
+
+    style E1 fill:#e7f1ff
+    style E56 fill:#e7f1ff
+    style FSM fill:#fff3cd

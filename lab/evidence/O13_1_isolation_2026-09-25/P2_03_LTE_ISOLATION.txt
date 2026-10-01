@@ -1,0 +1,25 @@
+===== P2-03 LTE/WAN ↛ DSO (REQ-NET-002) =====
+Date: 2026-09-25
+DUT: TR500 · Quectel EC200U · usb0 WWAN 10.43.46.209/24 (1NCE / vodafone IT)
+Evidence log: lab/evidence/P2_03_LTE_ISOLATION_LATEST.log
+SSH cmds: lab/evidence/_p2_03_lte_isolation.cmds
+
+FIREWALL POLICY
+---------------
+Only inter-zone forwarding: src=lan dest=wan
+NO forwarding wan/wwan → lan1_sec / lan_sec / lan2_sec
+wan zone covers: wan, wan6, wwan; forward=DROP; input=REJECT; masq=1
+nft: iifname {wan,usb0} → forward_wan → drop_to_wan (no accept to lan1)
+
+LIVE TESTS
+----------
+[PASS] ping 8.8.8.8                 4/4 replies (LTE data up)
+[PASS] ping -I usb0 192.168.10.1    0/4 (100% loss) — no path LTE iface → DSO GW
+[PASS] ping -I usb0 192.168.10.10   0/4 (100% loss) — no path LTE iface → DSO PC
+[PASS] ping 192.168.10.10           0/4 (100% loss) — DSO host unreachable
+
+VERDICT
+-------
+P2-03 = PASS — LTE/WWAN backup cannot reach Eth_A / DSO domain
+
+===== END =====

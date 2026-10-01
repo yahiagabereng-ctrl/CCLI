@@ -1,0 +1,141 @@
+# TesPro TR400 / TG544 lab DUT — Phase 0 confirmed 2026-09-15 via SSH.
+# Device: hostname TG544, model Tespro TR500, TesproOS 32-2.1.0, 192.168.1.130/24 on br-lan.
+# OS: OpenWrt 25.12 (DISTRIB_RELEASE), Linux 6.12 (MediaTek). SDK: lab/tg544-openwrt/
+# DIO: GD32 coprocessor via ubus dido_v2 (NOT SoC libgpiod). HAL TBD in platform_tg500.
+# DIO bench PASS 2026-09-15: ch1 OFF=1.5V ON=0V vs GND; ch2 DI open=0 short-GND=1.
+# HW I/O map (2026-09-22): DIO1=ch1 DO · DIO2=ch2 DI · Modbus RTU **A2/B2**=/dev/ttyS2 — lab/TR400_HW_IO_CONFIG.md
+# UCI mirror: /etc/config/ccli (future loader).
+platform: tg500
+lab:
+  hostname: TG544
+  model: tespro,tr500
+  address: 192.168.1.130/24
+  bridge: br-lan
+  pc_port: lan2          # link up during discovery
+interfaces:
+  eth_a:
+    device: br-lan        # Phase 2: dedicated lan1 + VLAN; today all LAN bridged
+    address: 192.168.20.20/24
+    role: dso
+  eth_b:
+    device: br-lan        # Phase 2: dedicated lan2 or lan3
+    address: 192.168.30.20/24
+    role: operator
+  plant:
+    device: br-lan        # lab: share bridge until extra LAN wired
+    role: plant
+  wan:
+    device: wan           # separate from br-lan; no carrier in lab
+    role: uplink
+serial:
+  usb_rs485:
+    device: /dev/ttyUSB0   # USB-RS485 dongle on TG544 USB port — Phase 1 lab (2026-09-17)
+    baud: 9600
+    parity: N
+  rs485_a:
+    device: /dev/ttyS1    # terminal A1/B1 (RS485-1 per TR400 manual) — CONFIRMED
+    baud: 9600
+    parity: N
+    termination: false    # short lab cable — enable if bus unstable
+  rs485_b:
+    device: /dev/ttyS2         # terminal A2/B2 (screw block) — CONFIRMED
+    tespro_ui: /dev/rs485_2_uart  # UI label "RS485-2" (on TG544 → ttyUSB1, not A2/B2)
+    baud: 9600
+    parity: N
+    termination: false
+  rs232:
+    device: /dev/ttyS0    # CONFIRMED
+modbus:
+  # backend: simulator | rtu  — rtu reads holding regs via libmodbus (Phase 1 lab)
+  backend: rtu
+  mode: rtu              # transport label only (not a backend override)
+  # Phase 1 bench: PC slave on screw terminals A2/B2 → /dev/ttyS2.
+  # UI path /dev/rs485_2_uart is NOT A2/B2 on TG544 (resolves to ttyUSB1).
+  device: /dev/ttyS2
+  baud: 9600
+  parity: N
+  slave_id: 1
+  poll_ms: 1000
+  timeout_ms: 2000
+  retries: 3
+pf2:
+  threshold_kw: 900
+  debounce_s: 30
+  release_threshold_kw: 850
+  min_on_s: 60
+  min_off_s: 30
+  stale_data_s: 10
+  use_dso_mock: false
+plant:
+  p_imm_kw: 200
+  p_ass_kw: 200
+  q_ind_kvar: 50
+  q_cap_kvar: 50
+  smax_kva: 210
+dso:
+  enabled: false
+  profile: custom
+  w110_active: false
+  w110_pct: 100
+  wlim_active: false
+  wmax_spt_pct: 0
+  wsd_active: false
+  wspt_pct: 20
+  release_delta_kw: 50
+io:
+  backend: ubus_dido_v2   # ubus call dido_v2 set_relay / read_di / set_mode
+  # Set true only when DIO2 GD32 input is faulted (di[] stuck 0). NOT for production.
+  permissive_bypass: false
+  # Policy: all 4 DIO reserved for PF2 / CEI; UPS via analog only (DRC-60A).
+  do_curtail:
+    gpio: 1               # DIO1 / ubus ch1 — K1 curtailment relay
+    active_high: false    # bench: OFF=1.5V ON=0V vs GND (open-drain)
+  di_permissive:
+    gpio: 2               # DIO2 / ubus ch2 — UCI channel_2.mode=di
+    active_low: true      # TG544 HAL: gd32 state 1 = permit (12V key closed or GND-short bench)
+  di_pf2_spare:
+    gpio: 3               # DIO3 — PF2 spare (e.g. PI trip, external alarm)
+    active_low: true
+  do_pf2_spare:
+    gpio: 4               # DIO4 — PF2 spare (e.g. curtailment ack, annunciator)
+    active_high: false
+analog:
+  # 10-pin block: AI1 AI2 AO1 AO2 AOG GND — NOT bench-tested 2026-09-15.
+  # Firmware may label first AI as "AI0" in vendor API; silkscreen = AI1.
+  ai_battery_v:
+    pin: AI1              # Divider from DRC-60A Bat+ (see ups.divider)
+    scale_v_per_count: null   # calibrate after first ADC read
+    full_scale_v: 16.0    # nominal 12 V AGM + charge headroom
+  ai_ups_status:
+    pin: AI2              # Resistor ladder from AC OK + Bat low contacts
+    mode: ladder          # or derive from ai_battery_v in software
+  ao_load_shed:
+    pin: AO1              # 0–10 V → NPN → K2 in +V feed (optional)
+    default_v: 0.0        # fail-safe: relay de-energised = power ON
+    max_v: 10.0
+  ao_spare:
+    pin: AO2
+  analog_gnd: AOG         # tie to Bat− / divider return
+ups:
+  model: MEAN_WELL_DRC-60A
+  # "BMS" in lab context = UPS/charger unit, not Modbus lithium BMS.
+  input:
+    tb2_pin_2: +V         # DRC-60A TB2 → TG544 12–30 V DC input
+    tb2_pin_1: "-V"
+  battery:
+    tb2_pin_3: Bat+
+    tb2_pin_4: Bat-
+    chemistry: AGM_12V
+    low_threshold_v: 11.0 # per DRC-60A datasheet
+  alarm_contacts:
+    ac_ok: "5-6"          # relay closed when AC present
+    battery_low: "7-8"    # relay closed when Vbat < 11 V
+  divider:
+    r1_ohm: 120000        # Bat+ → AI1
+    r2_ohm: 39000         # AI1 → AOG
+    c_filter_nf: 100
+    zener_v: 3.3          # optional clamp at AI1
+  load_shed:
+    relay: K2             # 5 V coil, breaks +V feed before TG544 input
+    driver: 2N2222        # AO1 → base via 10 kΩ
+    enabled: false        # enable after AO bench test

@@ -1,0 +1,39 @@
+%% CCLI Fig 4 — Software requirements (portable + TR400 HAL)
+%% Source: knowledge-base/08-engineering/CCI_62443_Zones.md
+%% Render: https://mermaid.live
+
+flowchart TB
+  subgraph SW_PF2["PF2 / CEI Allegato O"]
+    PF1["REQ-PF2-001 FSM debounce min on/off"]
+    PF2["REQ-PF2-002 stale meter safe state"]
+    PF3["REQ-PF2-003 permissive gates DO"]
+    PF4["REQ-PF2-004 timestamped events"]
+    PF5["REQ-MET-007 MC200 200ms blocks"]
+    PF6["REQ-MET-008 PF1 4s blocks"]
+  end
+  subgraph SW_PROTO["Protocols"]
+    PR1["REQ-61850-001 MMS Eth_A libiec61850"]
+    PR2["REQ-104-001 104 Eth_B lib60870"]
+    PR3["REQ-SER-001 Modbus RTU libmodbus"]
+    PR4["REQ-SW-001 disable DLMS OPC DNP"]
+  end
+  subgraph SW_NET["Network policy"]
+    N1["REQ-NET-001 no Eth bridge"]
+    N2["REQ-NET-002 WAN backup only"]
+    N3["core/policy net rules"]
+  end
+  subgraph SW_SEC["Security / audit"]
+    SC1["REQ-SEC-003 62351 DSO/OA"]
+    SC2["REQ-SEC-004 62443-4-2 CR set"]
+    SC3["REQ-SEC-005 audit trail 62351-14"]
+    SC4["REQ-BLD-002 procd ipk package/ccli"]
+  end
+  subgraph SW_HAL["TR400 HAL platform_tg500"]
+    HAL1["libgpiod DIO1 DIO2"]
+    HAL2["ttyS1/S2 serial"]
+    HAL3["eth bind lab_tr400.yaml"]
+  end
+  SW_HAL --> SW_PF2
+  SW_HAL --> SW_PROTO
+  SW_NET --> SW_PROTO
+  SW_SEC --> SW_PROTO

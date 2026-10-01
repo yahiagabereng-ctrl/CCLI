@@ -1,0 +1,131 @@
+[2026-09-30 15:48:37] # P5-M07 - PdCMMXU1.TotVAr (Eth_A MMS TLS)
+[2026-09-30 15:48:37] Gate: T.3.1.3 / O.8.3 - Q at POC every 4 s
+[2026-09-30 15:48:37] Deploying ccli r21 via Eth_B (192.168.1.130) ...
+[2026-09-30 15:48:40] @{IPAddress=192.168.1.183; InterfaceAlias=Ethernet}
+[2026-09-30 15:48:46] @{PingSucceeded=True}
+[2026-09-30 15:48:46] 
+[2026-09-30 15:48:47] ccli-bin                  | 4 kB |   4.0 kB/s | ETA: 00:31:19 |   0%
+[2026-09-30 15:48:47] ccli-bin                  | 5180 kB | 5180.0 kB/s | ETA: 00:00:00 |  68%
+[2026-09-30 15:48:47] ccli-bin                  | 7523 kB | 7523.4 kB/s | ETA: 00:00:00 | 100%
+[2026-09-30 15:48:47] 
+[2026-09-30 15:48:47] deploy-ccli-dut.sh        | 1 kB |   1.5 kB/s | ETA: 00:00:00 | 100%
+[2026-09-30 15:48:47] 
+[2026-09-30 15:48:47] CCLI_DEPLOY_0.1.0-r21_202 | 1 kB |   1.2 kB/s | ETA: 00:00:00 | 100%
+[2026-09-30 15:48:47] 
+[2026-09-30 15:48:47] root_CA.pem               | 1 kB |   1.2 kB/s | ETA: 00:00:00 | 100%
+[2026-09-30 15:48:47] 
+[2026-09-30 15:48:47] server.pem                | 1 kB |   1.1 kB/s | ETA: 00:00:00 | 100%
+[2026-09-30 15:48:48] 
+[2026-09-30 15:48:48] server_tls.pem            | 1 kB |   1.1 kB/s | ETA: 00:00:00 | 100%
+[2026-09-30 15:48:48] 
+[2026-09-30 15:48:48] server.key                | 1 kB |   1.6 kB/s | ETA: 00:00:00 | 100%
+[2026-09-30 15:48:48] 
+[2026-09-30 15:48:48] server_acse.key           | 1 kB |   1.6 kB/s | ETA: 00:00:00 | 100%
+[2026-09-30 15:48:48] 
+[2026-09-30 15:48:48] server_combined.pem       | 1 kB |   1.1 kB/s | ETA: 00:00:00 | 100%
+[2026-09-30 15:48:48] 
+[2026-09-30 15:48:48] server_combined.key       | 1 kB |   1.6 kB/s | ETA: 00:00:00 | 100%
+[2026-09-30 15:48:48] 
+[2026-09-30 15:48:48] client.pem                | 1 kB |   1.1 kB/s | ETA: 00:00:00 | 100%
+[2026-09-30 15:48:48] 
+[2026-09-30 15:48:48] client_tls.pem            | 1 kB |   1.1 kB/s | ETA: 00:00:00 | 100%
+[2026-09-30 15:48:48] 
+[2026-09-30 15:48:48] client.key                | 1 kB |   1.6 kB/s | ETA: 00:00:00 | 100%
+[2026-09-30 15:48:48] 
+[2026-09-30 15:48:48] viewer.pem                | 1 kB |   1.1 kB/s | ETA: 00:00:00 | 100%
+[2026-09-30 15:48:49] 
+[2026-09-30 15:48:49] viewer_tls.pem            | 1 kB |   1.1 kB/s | ETA: 00:00:00 | 100%
+[2026-09-30 15:48:49] 
+[2026-09-30 15:48:49] viewer.key                | 1 kB |   1.6 kB/s | ETA: 00:00:00 | 100%
+[2026-09-30 15:48:49] 
+[2026-09-30 15:48:49] revoked.pem               | 1 kB |   1.1 kB/s | ETA: 00:00:00 | 100%
+[2026-09-30 15:48:49] 
+[2026-09-30 15:48:49] revoked_tls.pem           | 1 kB |   1.1 kB/s | ETA: 00:00:00 | 100%
+[2026-09-30 15:48:49] 
+[2026-09-30 15:48:49] lab_crl.pem               | 0 kB |   0.6 kB/s | ETA: 00:00:00 | 100%
+[2026-09-30 15:48:49] 
+[2026-09-30 15:48:49] lab_tr400_phase4_eth_b.ya | 2 kB |   2.7 kB/s | ETA: 00:00:00 | 100%
+[2026-09-30 15:49:31] === tls deployed ===
+[2026-09-30 15:49:31] drwxr-xr-x    2 root     root             0 Sep 30 21:49 .
+[2026-09-30 15:49:31] drwxr-xr-x    3 root     root             0 Sep 30 21:38 ..
+[2026-09-30 15:49:31] -rw-r--r--    1 root     root          1675 Sep 30 21:49 client.key
+[2026-09-30 15:49:31] -rw-r--r--    1 root     root          1108 Sep 30 21:49 client.pem
+[2026-09-30 15:49:31] -rw-r--r--    1 root     root          1173 Sep 30 21:49 client_tls.pem
+[2026-09-30 15:49:31] -rw-r--r--    1 root     root           642 Sep 30 21:49 lab_crl.pem
+[2026-09-30 15:49:31] -rw-r--r--    1 root     root          1704 Sep 25 23:22 revoked.key
+[2026-09-30 15:49:31] -rw-r--r--    1 root     root          1173 Sep 30 21:49 revoked.pem
+[2026-09-30 15:49:31] -rw-r--r--    1 root     root          1173 Sep 30 21:49 revoked_tls.pem
+[2026-09-30 15:49:31] -rw-r--r--    1 root     root          1184 Sep 30 21:49 root_CA.pem
+[2026-09-30 15:49:31] -rw-r--r--    1 root     root          1679 Sep 30 21:49 server.key
+[2026-09-30 15:49:31] -rw-r--r--    1 root     root          1108 Sep 30 21:49 server.pem
+[2026-09-30 15:49:31] -rw-r--r--    1 root     root          1675 Sep 30 21:49 server_acse.key
+[2026-09-30 15:49:31] -rw-r--r--    1 root     root          1679 Sep 30 21:49 server_combined.key
+[2026-09-30 15:49:31] -rw-r--r--    1 root     root          1108 Sep 30 21:49 server_combined.pem
+[2026-09-30 15:49:31] -rw-r--r--    1 root     root          1169 Sep 30 21:49 server_tls.pem
+[2026-09-30 15:49:31] -rw-r--r--    1 root     root          1671 Sep 30 21:49 viewer.key
+[2026-09-30 15:49:31] -rw-r--r--    1 root     root          1165 Sep 30 21:49 viewer.pem
+[2026-09-30 15:49:31] -rw-r--r--    1 root     root          1165 Sep 30 21:49 viewer_tls.pem
+[2026-09-30 15:49:31] subject=2.5.4.106=1.1.1.999.1.12
+[2026-09-30 15:49:31] X509v3 Key Usage: critical
+[2026-09-30 15:49:31]     Digital Signature, Key Agreement
+[2026-09-30 15:49:31] === deploy manifest ===
+[2026-09-30 15:49:31] n++# CCLI deploy manifest +óGé¼GÇ¥ 0.1.0-r21
+[2026-09-30 15:49:31] 
+[2026-09-30 15:49:31] | Field | Value |
+[2026-09-30 15:49:31] |-------|-------|
+[2026-09-30 15:49:31] | **Date (UTC)** | 2026-09-30 15:48:39 UTC |
+[2026-09-30 15:49:31] | **Operator** | yahia |
+[2026-09-30 15:49:31] | **Target DUT** | TG544 @ 192.168.1.130 |
+[2026-09-30 15:49:31] | **Version** | **0.1.0-r21** |
+[2026-09-30 15:49:31] | **Codename** | P5-TotVAr |
+[2026-09-30 15:49:31] | **Binary** | `C:\Yahia\projects\CCLI\lab\tg544-openwrt\ccli-bin` |
+[2026-09-30 15:49:31] | **SHA256** | `1618f0b97bab97c69a81aa0eee1e28dba7aaff296f6390f0d89e355992943553` |
+[2026-09-30 15:49:31] | **Size (bytes)** | 7703968 |
+[2026-09-30 15:49:31] | **Lab yaml** | `lab_tr400_phase4_eth_b.yaml` |
+[2026-09-30 15:49:31] 
+[2026-09-30 15:49:31] ## Changes in this deploy
+[2026-09-30 15:49:31] 
+[2026-09-30 15:49:31] - P5-M07 TotVAr MMS DO
+[2026-09-30 15:49:31] - DS_R_PdC_Mis4sec + TotVAr member
+[2026-09-30 15:49:31] - update_totvar_kvar from Modbus q_kvar
+[2026-09-30 15:49:31] 
+[2026-09-30 15:49:31] === ccli version (binary) ===
+[2026-09-30 15:49:31] ccli 0.1.0-r21 (P5-TotVAr)
+[2026-09-30 15:49:31]   semver:   0.1.0
+[2026-09-30 15:49:31]   release:  r21
+[2026-09-30 15:49:31]   git:      unknown
+[2026-09-30 15:49:31]   built:    2026-06-29T12:59:20Z UTC
+[2026-09-30 15:49:31]   platform: tg500
+[2026-09-30 15:49:31] === sha256 /usr/sbin/ccli ===
+[2026-09-30 15:49:31] 1618f0b97bab97c69a81aa0eee1e28dba7aaff296f6390f0d89e355992943553  /usr/sbin/ccli
+[2026-09-30 15:49:35] === process ===
+[2026-09-30 15:49:35] 15765 root      1332 S    sh /tmp/deploy-ccli-dut.sh
+[2026-09-30 15:49:35] 16580 root      3068 S    /usr/sbin/ccli --config /etc/ccli/lab.yaml
+[2026-09-30 15:49:35] === listen (3782 Eth_A, 2404 Eth_B) ===
+[2026-09-30 15:49:35] WARN no 3782/2404
+[2026-09-30 15:49:35] === log tail ===
+[2026-09-30 15:49:35] modbus: FC3 ReadHoldingRegisters unit=1 addr=40001 qty=4 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+[2026-09-30 15:49:35] modbus: FC3 ReadHoldingRegisters unit=1 addr=40001 qty=4 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+[2026-09-30 15:49:35] mms: time_quality chrony offset_ms=0 within_pm100=yes leap=Normal ref=5E107A98 gnss_fix=0 clockNotSynchronized=1 (T.3.3.4.5)
+[2026-09-30 15:49:35] modbus: FC3 ReadHoldingRegisters unit=1 addr=40001 qty=4 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+[2026-09-30 15:49:35] modbus: FC3 ReadHoldingRegisters unit=1 addr=40001 qty=4 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+[2026-09-30 15:49:35] io: curtail_do=OFF permissive=BLOCKED
+[2026-09-30 15:49:35] modbus: FC3 ReadHoldingRegisters unit=1 addr=40001 qty=4 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+[2026-09-30 15:49:35] modbus: FC3 ReadHoldingRegisters unit=1 addr=40001 qty=4 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+[2026-09-30 15:49:35] mms: time_quality chrony offset_ms=0 within_pm100=yes leap=Normal ref=5E107A98 gnss_fix=0 clockNotSynchronized=1 (T.3.3.4.5)
+[2026-09-30 15:49:35] iec104: P4-04 Eth_B comms-loss fallback
+[2026-09-30 15:49:35] modbus: FC3 ReadHoldingRegisters unit=1 addr=40001 qty=4 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+[2026-09-30 15:49:35] modbus: FC3 ReadHoldingRegisters unit=1 addr=40001 qty=4 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+[2026-09-30 15:49:35] modbus: FC3 ReadHoldingRegisters unit=1 addr=40001 qty=4 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+[2026-09-30 15:49:35] mms: time_quality chrony offset_ms=0 within_pm100=yes leap=Normal ref=5E107A98 gnss_fix=0 clockNotSynchronized=1 (T.3.3.4.5)
+[2026-09-30 15:49:35] modbus: FC3 ReadHoldingRegisters unit=1 addr=40001 qty=4 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+[2026-09-30 15:49:35] ccli stopping
+[2026-09-30 15:49:35] ccli config loaded from /etc/ccli/lab.yaml
+[2026-09-30 15:49:35] hal_gpio_ll: TesPro dido_v2 via ubus (gd32.read_di + set_mode)
+[2026-09-30 15:49:35] svc_io: ready do_curtail=GPIO1(active_low) di_permissive=GPIO2(active_low)
+[2026-09-30 15:49:35] dso-phase1: O.8.2/O.11 mock GÇö Smax_calc=206.155 Smax_used=210 kVA p_w110=0 p_wlim=0 p_wsd=42 p_eff=42 kW GåÆ pf2 enter=42 release=37 kW
+[2026-09-30 15:49:50] Eth_A reachability (192.168.10.1): False
+[2026-09-30 15:49:50] 
+[2026-09-30 15:49:50] SKIP MMS client - PC not on LAN1 (need 192.168.10.10/24 cable to DUT LAN1).
+[2026-09-30 15:49:50] After cable swap: re-run with -SkipDeploy to verify TotVAr read.
+[2026-09-30 15:49:50] P5-M07 VERDICT: PART (r21 deployed; MMS read pending LAN1)

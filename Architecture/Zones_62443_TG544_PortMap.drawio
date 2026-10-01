@@ -1,0 +1,81 @@
+<mxfile host="app.diagrams.net" modified="2026-09-25T07:20:00.000Z" agent="CCLI-Architect" version="22.1.0" type="device">
+  <diagram name="1-Annex-AsBuilt-P2" id="zones-annex-asbuilt-p2">
+    <mxGraphModel dx="1400" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <mxCell id="title" value="IEC 62443-3-2 / CEI O.13.1 — TG544 Phase 2 port map (annex as-built)" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=18;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="16" width="1200" height="28" as="geometry"/>
+        </mxCell>
+        <mxCell id="sub" value="Evidence: lab/evidence/P2_port_map_ssh_LATEST.log · 2026-09-25 · DUT TG544 · Doc CCLI-SEC-62443-001 Rev 1.6" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=11;fontColor=#475569;" vertex="1" parent="1">
+          <mxGeometry x="40" y="44" width="1200" height="22" as="geometry"/>
+        </mxCell>
+
+        <!-- External -->
+        <mxCell id="z1e" value="Z1 DSO&#xa;Eth_A · C1 · SL-T 2&#xa;(61850 later)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DBEAFE;strokeColor=#1E40AF;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="90" width="160" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="z2e" value="Z2 Operator&#xa;Eth_B · C2 · SL-T 2&#xa;PC Yahia .1.183" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DBEAFE;strokeColor=#1E40AF;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="200" width="160" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="z3e" value="Z3 Plant&#xa;C3 · SL-T 1&#xa;Inverter TCP&#xa;(+ RS485-TCP opt.)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEE2E2;strokeColor=#991B1B;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="310" width="160" height="90" as="geometry"/>
+        </mxCell>
+        <mxCell id="z4e" value="Z4 Eng&#xa;C4 · LuCI/SSH&#xa;192.168.0.1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DCFCE7;strokeColor=#166534;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="430" width="160" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="z5e" value="Z5 WAN/LTE&#xa;C5 · no→Eth_A" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F3F4F6;strokeColor=#64748B;fontSize=11;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="540" width="160" height="70" as="geometry"/>
+        </mxCell>
+
+        <!-- Z0 -->
+        <mxCell id="z0" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF7ED;strokeColor=#C2410C;strokeWidth=3;" vertex="1" parent="1">
+          <mxGeometry x="260" y="80" width="980" height="620" as="geometry"/>
+        </mxCell>
+        <mxCell id="z0t" value="Z0 — CCI core TG544 / TesproOS / MT798X · SL-T 2 · NO L2 bridge between role ports" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=14;fontStyle=1;fontColor=#9A3412;" vertex="1" parent="1">
+          <mxGeometry x="280" y="90" width="940" height="28" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="p1" value="LAN1&#xa;device lan1&#xa;UCI lan1_sec&#xa;192.168.10.1/24&#xa;zone lan1_sec&#xa;DSO Eth_A" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DBEAFE;strokeColor=#1E40AF;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="300" y="140" width="170" height="130" as="geometry"/>
+        </mxCell>
+        <mxCell id="p2" value="LAN2&#xa;device lan2&#xa;UCI lan_sec&#xa;192.168.1.130/24&#xa;zone lan_sec&#xa;Operator Eth_B&#xa;DHCP .150–.199" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DBEAFE;strokeColor=#1E40AF;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="500" y="140" width="170" height="130" as="geometry"/>
+        </mxCell>
+        <mxCell id="p3" value="LAN3&#xa;device lan3&#xa;UCI lan2_sec&#xa;192.168.30.1/24&#xa;zone lan2_sec&#xa;PLANT&#xa;(name→plant later)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEE2E2;strokeColor=#991B1B;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="700" y="140" width="170" height="130" as="geometry"/>
+        </mxCell>
+        <mxCell id="p4" value="ENG (no LAN4 on TR500)&#xa;br-lan empty / USB&#xa;UCI lan&#xa;192.168.0.1/24&#xa;zone lan&#xa;O.13.1.1.2 local cfg&#xa;LuCI also via OA lab*" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DCFCE7;strokeColor=#166534;fontSize=10;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="900" y="140" width="170" height="130" as="geometry"/>
+        </mxCell>
+        <mxCell id="pw" value="WAN&#xa;zone wan&#xa;input REJECT&#xa;masq ON" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F3F4F6;strokeColor=#64748B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1100" y="140" width="110" height="100" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="fw" value="Firewall: defaults forward=REJECT · role zones forward=REJECT · no eth_a↔eth_b↔plant↔eng forwarding&#xa;Plant: Modbus TCP inverters on .30.x · Meter RS485 or RS485–TCP gateway on plant LAN only" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEF3C7;strokeColor=#B45309;fontSize=11;align=left;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="300" y="300" width="910" height="70" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="tbl" value="&lt;b&gt;Port ↔ zone binding (as-built 2026-09-25 SSH)&lt;/b&gt;&lt;br&gt;&lt;table style=&quot;width:100%;border-collapse:collapse;font-size:10px;&quot;&gt;&lt;tr style=&quot;background:#E2E8F0;&quot;&gt;&lt;th align=&quot;left&quot;&gt;Port&lt;/th&gt;&lt;th align=&quot;left&quot;&gt;Role&lt;/th&gt;&lt;th align=&quot;left&quot;&gt;UCI&lt;/th&gt;&lt;th align=&quot;left&quot;&gt;IP&lt;/th&gt;&lt;th align=&quot;left&quot;&gt;FW zone&lt;/th&gt;&lt;th align=&quot;left&quot;&gt;62443&lt;/th&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;LAN1&lt;/td&gt;&lt;td&gt;DSO Eth_A&lt;/td&gt;&lt;td&gt;lan1_sec / lan1&lt;/td&gt;&lt;td&gt;192.168.10.1/24&lt;/td&gt;&lt;td&gt;lan1_sec&lt;/td&gt;&lt;td&gt;Z1 / C1&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;LAN2&lt;/td&gt;&lt;td&gt;Operator Eth_B&lt;/td&gt;&lt;td&gt;lan_sec / lan2&lt;/td&gt;&lt;td&gt;192.168.1.130/24&lt;/td&gt;&lt;td&gt;lan_sec&lt;/td&gt;&lt;td&gt;Z2 / C2&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;LAN3&lt;/td&gt;&lt;td&gt;Plant&lt;/td&gt;&lt;td&gt;lan2_sec / lan3&lt;/td&gt;&lt;td&gt;192.168.30.1/24&lt;/td&gt;&lt;td&gt;lan2_sec&lt;/td&gt;&lt;td&gt;Z3 / C3&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;(no LAN4)&lt;/td&gt;&lt;td&gt;Eng&lt;/td&gt;&lt;td&gt;lan / empty br-lan or USB&lt;/td&gt;&lt;td&gt;192.168.0.1/24&lt;/td&gt;&lt;td&gt;lan&lt;/td&gt;&lt;td&gt;Z4 / C4&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;WAN&lt;/td&gt;&lt;td&gt;Backup&lt;/td&gt;&lt;td&gt;wan&lt;/td&gt;&lt;td&gt;—&lt;/td&gt;&lt;td&gt;wan&lt;/td&gt;&lt;td&gt;Z5 / C5&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#C2410C;align=left;verticalAlign=top;spacing=6;" vertex="1" parent="1">
+          <mxGeometry x="300" y="390" width="910" height="180" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="gaps" value="Open before Phase 2 hard-gate PASS: Wi-Fi still on br-lan (REQ-NET-005) · role-zone masq should be OFF · eng forward REJECT · P2-01 cross-ping matrix · P2-03 WAN↛DSO · rename lan2_sec→plant" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEF9C3;strokeColor=#A16207;fontSize=11;align=left;spacing=6;" vertex="1" parent="1">
+          <mxGeometry x="300" y="590" width="910" height="50" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="sig" value="ENGINEERING SIGN-OFF (P2-05 refresh) — HiTEKS Senior System Architect · Scope: annex port map LAN1 DSO / LAN2 OA / LAN3 Plant / LAN4 Eng · Date: 2026-09-25 · Status: PART (map HAVE; isolation tests + Wi-Fi still open)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEF9C3;strokeColor=#A16207;fontSize=11;align=left;spacing=6;" vertex="1" parent="1">
+          <mxGeometry x="40" y="740" width="1200" height="60" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#1E40AF;strokeWidth=2;fontSize=10;" edge="1" parent="1" source="z1e" target="p1" value="C1"/>
+        <mxCell id="e2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#1E40AF;strokeWidth=2;fontSize=10;" edge="1" parent="1" source="z2e" target="p2" value="C2"/>
+        <mxCell id="e3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#991B1B;strokeWidth=2;fontSize=10;" edge="1" parent="1" source="z3e" target="p3" value="C3"/>
+        <mxCell id="e4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#166534;strokeWidth=2;fontSize=10;" edge="1" parent="1" source="z4e" target="p4" value="C4"/>
+        <mxCell id="e5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#64748B;dashed=1;fontSize=10;" edge="1" parent="1" source="z5e" target="pw" value="C5"/>
+        <mxCell id="eb" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#DC2626;strokeWidth=2;dashed=1;fontSize=10;fontColor=#DC2626;endArrow=block;startArrow=block;" edge="1" parent="1" source="p1" target="p2" value="NO FWD"/>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

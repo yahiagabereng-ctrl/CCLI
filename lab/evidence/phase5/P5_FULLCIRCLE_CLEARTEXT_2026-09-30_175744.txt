@@ -1,0 +1,252 @@
+[2026-09-30 17:57:44] # P5 full circle - cleartext MMS :102 (TSP lab bypass)
+[2026-09-30 17:57:45] NOTE: Product TLS path remains :3782 - see P5_MMS_TLS.pcapng
+[2026-09-30 17:57:45] DUT target: 192.168.10.1:102 tls=off
+[2026-09-30 17:57:45] PC IPv4: 192.168.10.10
+[2026-09-30 17:57:56] Ping 192.168.10.1: True
+[2026-09-30 17:57:56] Deploying cleartext lab yaml via LAN1 ...
+[2026-09-30 17:57:58] @{IPAddress=192.168.10.10; InterfaceAlias=Ethernet}
+[2026-09-30 17:58:08] @{PingSucceeded=True}
+[2026-09-30 17:58:09] 
+[2026-09-30 17:58:09] ccli-bin                  | 4 kB |   4.0 kB/s | ETA: 00:31:22 |   0%
+[2026-09-30 17:58:09] ccli-bin                  | 7532 kB | 7532.4 kB/s | ETA: 00:00:00 | 100%
+[2026-09-30 17:58:09] 
+[2026-09-30 17:58:09] deploy-ccli-dut.sh        | 1 kB |   1.5 kB/s | ETA: 00:00:00 | 100%
+[2026-09-30 17:58:10] 
+[2026-09-30 17:58:10] CCLI_DEPLOY_0.1.0-r23_202 | 1 kB |   1.2 kB/s | ETA: 00:00:00 | 100%
+[2026-09-30 17:58:10] 
+[2026-09-30 17:58:10] root_CA.pem               | 1 kB |   1.2 kB/s | ETA: 00:00:00 | 100%
+[2026-09-30 17:58:10] 
+[2026-09-30 17:58:10] server.pem                | 1 kB |   1.1 kB/s | ETA: 00:00:00 | 100%
+[2026-09-30 17:58:10] 
+[2026-09-30 17:58:10] server_tls.pem            | 1 kB |   1.1 kB/s | ETA: 00:00:00 | 100%
+[2026-09-30 17:58:10] 
+[2026-09-30 17:58:10] server.key                | 1 kB |   1.6 kB/s | ETA: 00:00:00 | 100%
+[2026-09-30 17:58:10] 
+[2026-09-30 17:58:10] server_acse.key           | 1 kB |   1.6 kB/s | ETA: 00:00:00 | 100%
+[2026-09-30 17:58:10] 
+[2026-09-30 17:58:10] server_combined.pem       | 1 kB |   1.1 kB/s | ETA: 00:00:00 | 100%
+[2026-09-30 17:58:11] 
+[2026-09-30 17:58:11] server_combined.key       | 1 kB |   1.6 kB/s | ETA: 00:00:00 | 100%
+[2026-09-30 17:58:11] 
+[2026-09-30 17:58:11] client.pem                | 1 kB |   1.1 kB/s | ETA: 00:00:00 | 100%
+[2026-09-30 17:58:11] 
+[2026-09-30 17:58:11] client_tls.pem            | 1 kB |   1.1 kB/s | ETA: 00:00:00 | 100%
+[2026-09-30 17:58:11] 
+[2026-09-30 17:58:11] client.key                | 1 kB |   1.6 kB/s | ETA: 00:00:00 | 100%
+[2026-09-30 17:58:11] 
+[2026-09-30 17:58:11] viewer.pem                | 1 kB |   1.1 kB/s | ETA: 00:00:00 | 100%
+[2026-09-30 17:58:11] 
+[2026-09-30 17:58:11] viewer_tls.pem            | 1 kB |   1.1 kB/s | ETA: 00:00:00 | 100%
+[2026-09-30 17:58:11] 
+[2026-09-30 17:58:11] viewer.key                | 1 kB |   1.6 kB/s | ETA: 00:00:00 | 100%
+[2026-09-30 17:58:11] 
+[2026-09-30 17:58:11] revoked.pem               | 1 kB |   1.1 kB/s | ETA: 00:00:00 | 100%
+[2026-09-30 17:58:12] 
+[2026-09-30 17:58:12] revoked_tls.pem           | 1 kB |   1.1 kB/s | ETA: 00:00:00 | 100%
+[2026-09-30 17:58:12] 
+[2026-09-30 17:58:12] lab_crl.pem               | 0 kB |   0.6 kB/s | ETA: 00:00:00 | 100%
+[2026-09-30 17:58:12] 
+[2026-09-30 17:58:12] lab_tr400_cleartext_tsp.y | 2 kB |   2.3 kB/s | ETA: 00:00:00 | 100%
+[2026-09-30 17:58:12] 
+[2026-09-30 17:58:12] lab_tg544_eth_a.cfg       | 4 kB |   4.0 kB/s | ETA: 00:00:06 |  13%
+[2026-09-30 17:58:12] lab_tg544_eth_a.cfg       | 29 kB |  29.5 kB/s | ETA: 00:00:00 | 100%
+[2026-09-30 17:58:55] === tls deployed ===
+[2026-09-30 17:58:55] drwxr-xr-x    2 root     root             0 Sep 30 23:58 .
+[2026-09-30 17:58:55] drwxr-xr-x    4 root     root             0 Sep 30 23:58 ..
+[2026-09-30 17:58:55] -rw-r--r--    1 root     root          1675 Sep 30 23:58 client.key
+[2026-09-30 17:58:55] -rw-r--r--    1 root     root          1108 Sep 30 23:58 client.pem
+[2026-09-30 17:58:55] -rw-r--r--    1 root     root          1173 Sep 30 23:58 client_tls.pem
+[2026-09-30 17:58:55] -rw-r--r--    1 root     root           642 Sep 30 23:58 lab_crl.pem
+[2026-09-30 17:58:55] -rw-r--r--    1 root     root          1704 Sep 25 23:22 revoked.key
+[2026-09-30 17:58:55] -rw-r--r--    1 root     root          1173 Sep 30 23:58 revoked.pem
+[2026-09-30 17:58:55] -rw-r--r--    1 root     root          1173 Sep 30 23:58 revoked_tls.pem
+[2026-09-30 17:58:55] -rw-r--r--    1 root     root          1184 Sep 30 23:58 root_CA.pem
+[2026-09-30 17:58:55] -rw-r--r--    1 root     root          1679 Sep 30 23:58 server.key
+[2026-09-30 17:58:55] -rw-r--r--    1 root     root          1108 Sep 30 23:58 server.pem
+[2026-09-30 17:58:55] -rw-r--r--    1 root     root          1675 Sep 30 23:58 server_acse.key
+[2026-09-30 17:58:55] -rw-r--r--    1 root     root          1679 Sep 30 23:58 server_combined.key
+[2026-09-30 17:58:55] -rw-r--r--    1 root     root          1108 Sep 30 23:58 server_combined.pem
+[2026-09-30 17:58:55] -rw-r--r--    1 root     root          1169 Sep 30 23:58 server_tls.pem
+[2026-09-30 17:58:55] -rw-r--r--    1 root     root          1671 Sep 30 23:58 viewer.key
+[2026-09-30 17:58:55] -rw-r--r--    1 root     root          1165 Sep 30 23:58 viewer.pem
+[2026-09-30 17:58:55] -rw-r--r--    1 root     root          1165 Sep 30 23:58 viewer_tls.pem
+[2026-09-30 17:58:55] subject=2.5.4.106=1.1.1.999.1.12
+[2026-09-30 17:58:55] X509v3 Key Usage: critical
+[2026-09-30 17:58:55]     Digital Signature, Key Agreement
+[2026-09-30 17:58:55] === deploy manifest ===
+[2026-09-30 17:58:55] n++# CCLI deploy manifest +óGé¼GÇ¥ 0.1.0-r23
+[2026-09-30 17:58:55] 
+[2026-09-30 17:58:55] | Field | Value |
+[2026-09-30 17:58:55] |-------|-------|
+[2026-09-30 17:58:55] | **Date (UTC)** | 2026-09-30 17:57:58 UTC |
+[2026-09-30 17:58:55] | **Operator** | yahia |
+[2026-09-30 17:58:55] | **Target DUT** | TG544 @ 192.168.10.1 |
+[2026-09-30 17:58:55] | **Version** | **0.1.0-r23** |
+[2026-09-30 17:58:55] | **Codename** | P5-FULL-CID |
+[2026-09-30 17:58:55] | **Binary** | `C:\Yahia\projects\CCLI\lab\tg544-openwrt\ccli-bin` |
+[2026-09-30 17:58:55] | **SHA256** | `56b37dc7d8f01e34a3f2c6621869990fc268c5110746627aede9e23ee5207e1b` |
+[2026-09-30 17:58:55] | **Size (bytes)** | 7713136 |
+[2026-09-30 17:58:55] | **Lab yaml** | `lab_tr400_cleartext_tsp.yaml` |
+[2026-09-30 17:58:55] 
+[2026-09-30 17:58:55] ## Changes in this deploy
+[2026-09-30 17:58:55] 
+[2026-09-30 17:58:55] - P5 full circle cleartext TSP
+[2026-09-30 17:58:55] - mms tcp_port 102 tls_enabled false
+[2026-09-30 17:58:55] - permissive_bypass true for actuation
+[2026-09-30 17:58:55] 
+[2026-09-30 17:58:55] === ccli version (binary) ===
+[2026-09-30 17:58:55] ccli 0.1.0-r23 (P5-FULL-CID)
+[2026-09-30 17:58:55]   semver:   0.1.0
+[2026-09-30 17:58:55]   release:  r23
+[2026-09-30 17:58:55]   git:      unknown
+[2026-09-30 17:58:55]   built:    2026-06-29T12:59:20Z UTC
+[2026-09-30 17:58:55]   platform: tg500
+[2026-09-30 17:58:55] === sha256 /usr/sbin/ccli ===
+[2026-09-30 17:58:55] 56b37dc7d8f01e34a3f2c6621869990fc268c5110746627aede9e23ee5207e1b  /usr/sbin/ccli
+[2026-09-30 17:58:59] === process ===
+[2026-09-30 17:58:59]  5648 root      1332 S    sh /tmp/deploy-ccli-dut.sh
+[2026-09-30 17:58:59]  6686 root      4472 S    /usr/sbin/ccli --config /etc/ccli/lab.yaml
+[2026-09-30 17:58:59] === listen (3782 Eth_A, 2404 Eth_B) ===
+[2026-09-30 17:58:59] tcp        0      0 192.168.1.130:2404      0.0.0.0:*               LISTEN      6686/ccli
+[2026-09-30 17:58:59] === log tail ===
+[2026-09-30 17:58:59] io: curtail_do=ON permissive=OK
+[2026-09-30 17:58:59] modbus: FC3 ReadHoldingRegisters unit=1 addr=40001 qty=4 -> P=450kW Q=45kvar raw=0x43e1 0x0000 0x4234 0x0000 P=450kW pf2=p_above_threshold curtail=yes DO=ON
+[2026-09-30 17:58:59] modbus: FC3 ReadHoldingRegisters unit=1 addr=40001 qty=4 -> P=450kW Q=45kvar raw=0x43e1 0x0000 0x4234 0x0000 P=450kW pf2=p_above_threshold curtail=yes DO=ON
+[2026-09-30 17:58:59] io: curtail_do=ON permissive=OK
+[2026-09-30 17:58:59] modbus: FC3 ReadHoldingRegisters unit=1 addr=40001 qty=4 -> P=450kW Q=45kvar raw=0x43e1 0x0000 0x4234 0x0000 P=450kW pf2=p_above_threshold curtail=yes DO=ON
+[2026-09-30 17:58:59] mms: time_quality chrony offset_ms=1 within_pm100=yes leap=Normal ref=5E107A98 gnss_fix=0 clockNotSynchronized=1 (T.3.3.4.5)
+[2026-09-30 17:58:59] modbus: FC3 ReadHoldingRegisters unit=1 addr=40001 qty=4 -> P=450kW Q=45kvar raw=0x43e1 0x0000 0x4234 0x0000 P=450kW pf2=p_above_threshold curtail=yes DO=ON
+[2026-09-30 17:58:59] io: curtail_do=ON permissive=OK
+[2026-09-30 17:58:59] ccli stopping
+[2026-09-30 17:58:59] ccli config loaded from /etc/ccli/lab.yaml
+[2026-09-30 17:58:59] hal_gpio_ll: TesPro dido_v2 via ubus (gd32.read_di + set_mode)
+[2026-09-30 17:58:59] svc_io: ready do_curtail=GPIO1(active_low) di_permissive=GPIO2(active_low)
+[2026-09-30 17:58:59] io: WARNING permissive_bypass=on GÇö DI gate disabled (lab only)
+[2026-09-30 17:58:59] dso-phase1: O.8.2/O.11 mock GÇö Smax_calc=206.155 Smax_used=210 kVA p_w110=0 p_wlim=0 p_wsd=42 p_eff=42 kW GåÆ pf2 enter=42 release=37 kW
+[2026-09-30 17:58:59] mms: full CID model loaded from /etc/ccli/icd/lab_tg544_eth_a.cfg
+[2026-09-30 17:58:59] mms: listening on 192.168.10.1:102 tls=off acse_tls_auth=off rbac=off crl=off fallback_s=15 gnss_poll_s=15 chrony=on discipline=off model=full_cid_cfg
+[2026-09-30 17:58:59] iec104: listening 192.168.1.130:2404 CA=1 tls=on [IEC 60870-5-104 / O.13.1.1.1]
+[2026-09-30 17:58:59] iec104: Operating Rule mode=monitor_only allow_commands=no gi=yes monitor: TotW@1001=on [O.14]
+[2026-09-30 17:58:59] ccli 0.1.0-r23 (unknown) starting config=/etc/ccli/lab.yaml
+[2026-09-30 17:58:59] ccli 0.1.0-r23 started. config=/etc/ccli/lab.yaml
+[2026-09-30 17:59:02] --- DUT listen + modbus (plink) ---
+[2026-09-30 17:59:02] ccli 0.1.0-r23 (P5-FULL-CID)
+[2026-09-30 17:59:02]   semver:   0.1.0
+[2026-09-30 17:59:02]   release:  r23
+[2026-09-30 17:59:02]   git:      unknown
+[2026-09-30 17:59:02]   built:    2026-06-29T12:59:20Z UTC
+[2026-09-30 17:59:02]   platform: tg500
+[2026-09-30 17:59:02] iec104: listening 192.168.1.130:2404 CA=1 tls=on [IEC 60870-5-104 / O.13.1.1.1]
+[2026-09-30 17:59:02] mms: listening on 192.168.10.1:102 tls=off acse_tls_auth=off rbac=off crl=off fallback_s=15 gnss_poll_s=15 chrony=on discipline=off model=full_cid_cfg
+[2026-09-30 17:59:02] iec104: listening 192.168.1.130:2404 CA=1 tls=on [IEC 60870-5-104 / O.13.1.1.1]
+[2026-09-30 17:59:02] modbus: FC3 ReadHoldingRegisters unit=1 addr=40001 qty=4 -> P=450kW Q=45kvar raw=0x43e1 0x0000 0x4234 0x0000 P=450kW pf2=p_above_threshold curtail=yes DO=ON
+[2026-09-30 17:59:02] modbus: FC3 ReadHoldingRegisters unit=1 addr=40001 qty=4 -> P=450kW Q=45kvar raw=0x43e1 0x0000 0x4234 0x0000 P=450kW pf2=p_above_threshold curtail=yes DO=ON
+[2026-09-30 17:59:02] modbus: FC3 ReadHoldingRegisters unit=1 addr=40001 qty=4 -> P=450kW Q=45kvar raw=0x43e1 0x0000 0x4234 0x0000 P=450kW pf2=p_above_threshold curtail=yes DO=ON
+[2026-09-30 17:59:02] modbus: FC3 ReadHoldingRegisters unit=1 addr=40001 qty=4 -> P=450kW Q=45kvar raw=0x43e1 0x0000 0x4234 0x0000 P=450kW pf2=debounce curtail=no DO=OFF
+[2026-09-30 17:59:02] modbus: FC3 ReadHoldingRegisters unit=1 addr=40001 qty=4 -> P=450kW Q=45kvar raw=0x43e1 0x0000 0x4234 0x0000 P=450kW pf2=debounce curtail=no DO=OFF
+[2026-09-30 17:59:02] PASS: DUT :102 listen seen
+[2026-09-30 17:59:13] Test-NetConnection 192.168.10.1:102 TcpTestSucceeded=True
+[2026-09-30 17:59:13] --- mms_lab_client browse + 4s report (16s) ---
+[2026-09-30 17:59:13] === CCLI MMS lab client (Step 5) ===
+[2026-09-30 17:59:13] host=192.168.10.1 port=102 listen_sec=16
+[2026-09-30 17:59:13] CONNECT OK
+[2026-09-30 17:59:13] Logical devices:
+[2026-09-30 17:59:13]   CCI016_01LD_Plant
+[2026-09-30 17:59:13] LN under LD_Plant:
+[2026-09-30 17:59:13]   DisFRDECP1
+[2026-09-30 17:59:13]   DisFRDGEN1
+[2026-09-30 17:59:13]   DisFRDSTO1
+[2026-09-30 17:59:13]   GenIdrMMXU1
+[2026-09-30 17:59:13]   GenPVMMXU1
+[2026-09-30 17:59:13]   GenTerMMXU1
+[2026-09-30 17:59:13]   GenWiMMXU1
+[2026-09-30 17:59:13]   IDGXCBR1
+[2026-09-30 17:59:13]   LLN0
+[2026-09-30 17:59:13]   LPHD1
+[2026-09-30 17:59:13]   PdCMMXU1
+[2026-09-30 17:59:13]   PdC_QcDPCC1
+[2026-09-30 17:59:13]   PdC_QiDPCC1
+[2026-09-30 17:59:13]   PdC_VADPCC1
+[2026-09-30 17:59:13]   PdC_WaDPCC1
+[2026-09-30 17:59:13]   PdC_WiDPCC1
+[2026-09-30 17:59:13]   PFSPDFPF1
+[2026-09-30 17:59:13]   PFWDPFW1
+[2026-09-30 17:59:13]   SGGMMXU1
+[2026-09-30 17:59:13]   SGGMMXU2
+[2026-09-30 17:59:13]   SSGGDGEN1
+[2026-09-30 17:59:13]   SSGGDGEN2
+[2026-09-30 17:59:13]   StMMXU1
+[2026-09-30 17:59:13]   VArSdDVAR1
+[2026-09-30 17:59:13]   VArVDECP1
+[2026-09-30 17:59:13]   VArVDECP2
+[2026-09-30 17:59:13]   VArVDPMC1
+[2026-09-30 17:59:13]   VArVDPMC2
+[2026-09-30 17:59:13]   VArVDVVR1
+[2026-09-30 17:59:13]   WlimDWMX1
+[2026-09-30 17:59:13]   WSdDAGC1
+[2026-09-30 17:59:13] READ OK   CCI016_01LD_Plant/PdCMMXU1.TotW.mag.f = 450.000000
+[2026-09-30 17:59:13] READ OK   CCI016_01LD_Plant/PdCMMXU1.TotVAr.mag.f = 45.000000
+[2026-09-30 17:59:13] READ OK   CCI016_01LD_Plant/PdCMMXU1.TotW (MX) = {{450.000000},1100000001000,20260930155912.456Z}
+[2026-09-30 17:59:13] DataSet members:
+[2026-09-30 17:59:13]   CCI016_01LD_Plant/PdCMMXU1.TotW[MX]
+[2026-09-30 17:59:13]   CCI016_01LD_Plant/PdCMMXU1.TotVAr[MX]
+[2026-09-30 17:59:13]   CCI016_01LD_Plant/PdCMMXU1.PPV[MX]
+[2026-09-30 17:59:13]   CCI016_01LD_Plant/PdCMMXU1.A[MX]
+[2026-09-30 17:59:13] DataSet read OK
+[2026-09-30 17:59:13] getRCBValues FAIL CCI016_01LD_Plant/LLN0.RP.urcb_PdC_Mis4sec err=22
+[2026-09-30 17:59:13] retry getRCBValues CCI016_01LD_Plant/LLN0.urcb_PdC_Mis4sec err=22
+[2026-09-30 17:59:13] === SUMMARY ===
+[2026-09-30 17:59:13] reports_received=0
+[2026-09-30 17:59:13] VERDICT: FAIL GÇö no reports (browse may still be OK above)
+[2026-09-30 17:59:13] --- mms_wlim_client Wlim Operate 10pct ---
+[2026-09-30 17:59:14] === CCLI MMS Wlim client (P3-04) ===
+[2026-09-30 17:59:14] host=192.168.10.1 port=102 WMaxSptPct=10.0 Mod=1 (Active)
+[2026-09-30 17:59:14] CONNECT OK
+[2026-09-30 17:59:14] OPERATE FAIL CCI016_01LD_Plant/WlimDWMX1.WMaxSptPct
+[2026-09-30 17:59:14] OPERATE FAIL CCI016_01LD_Plant/WlimDWMX1.Mod
+[2026-09-30 17:59:14] READ Mod.stVal=5
+[2026-09-30 17:59:14] VERDICT: FAIL GÇö operate rejected (check ctlModel / server handlers)
+[2026-09-30 17:59:14] --- DUT actuation excerpt ---
+[2026-09-30 17:59:14] mms: WlimDWMX1.Mod ctlVal=1 GåÆ wlim_active=true [O.9.2.2]
+[2026-09-30 17:59:14] mmsGåÆpf2: Wlim=on@10% WSd=off@0% p_wlim=21 p_wsd=0 p_eff=21 kW GåÆ enter=21 release=16 kW
+[2026-09-30 17:59:14] mms: P3-05 Operating Rule fallback GÇö live Wlim/WSd cleared after 15 s no-comms
+[2026-09-30 17:59:14] mmsGåÆpf2: Wlim=off@0% WSd=off@0% p_wlim=0 p_wsd=0 p_eff=210 kW GåÆ enter=210 release=205 kW
+[2026-09-30 17:59:15] mms: P3-05 Operating Rule fallback GÇö live Wlim/WSd cleared after 15 s no-comms
+[2026-09-30 17:59:15] mmsGåÆpf2: Wlim=off@0% WSd=off@0% p_wlim=0 p_wsd=0 p_eff=210 kW GåÆ enter=210 release=205 kW
+[2026-09-30 17:59:15] mms: P3-05 Operating Rule fallback GÇö live Wlim/WSd cleared after 15 s no-comms
+[2026-09-30 17:59:15] mmsGåÆpf2: Wlim=off@0% WSd=off@0% p_wlim=0 p_wsd=0 p_eff=210 kW GåÆ enter=210 release=205 kW
+[2026-09-30 17:59:15] modbus: FC3 ReadHoldingRegisters unit=1 addr=40001 qty=4 -> P=450kW Q=45kvar raw=0x43e1 0x0000 0x4234 0x0000 P=450kW pf2=debounce curtail=no DO=OFF
+[2026-09-30 17:59:15] io: curtail_do=OFF permissive=OK
+[2026-09-30 17:59:15] modbus: FC3 ReadHoldingRegisters unit=1 addr=40001 qty=4 -> P=450kW Q=45kvar raw=0x43e1 0x0000 0x4234 0x0000 P=450kW pf2=debounce curtail=no DO=OFF
+[2026-09-30 17:59:15] io: curtail_do=OFF permissive=OK
+[2026-09-30 17:59:15] modbus: FC3 ReadHoldingRegisters unit=1 addr=40001 qty=4 -> P=450kW Q=45kvar raw=0x43e1 0x0000 0x4234 0x0000 P=450kW pf2=debounce curtail=no DO=OFF
+[2026-09-30 17:59:15] {
+[2026-09-30 17:59:15] 	"running": true,
+[2026-09-30 17:59:15] 	"northbound_count": 0,
+[2026-09-30 17:59:15] 	"channels": [
+[2026-09-30 17:59:15] 		{
+[2026-09-30 17:59:15] 			"channel": 1,
+[2026-09-30 17:59:15] 			"name": "DIO-1",
+[2026-09-30 17:59:15] 			"enabled": true,
+[2026-09-30 17:59:15] 			"mode": "DO",
+[2026-09-30 17:59:15] 			"report_key": "relay_1",
+[2026-09-30 17:59:15] 			"state": 0,
+[2026-09-30 17:59:15] 			"memory_state": false
+[2026-09-30 17:59:15] 		},
+[2026-09-30 17:59:15] 		{
+[2026-09-30 17:59:15] 			"channel": 2,
+[2026-09-30 17:59:15] 			"name": "DIO-2",
+[2026-09-30 17:59:15] 			"enabled": true,
+[2026-09-30 17:59:15] 			"mode": "DI",
+[2026-09-30 17:59:15] 			"report_key": "relay_2",
+[2026-09-30 17:59:15] 			"state": 0,
+[2026-09-30 17:59:15] 
+[2026-09-30 17:59:15] === Test Suite Pro (manual) ===
+[2026-09-30 17:59:15]   IP: 192.168.10.1  Port: 102  TLS: OFF
+[2026-09-30 17:59:15]   CID: apps\ccli\config\icd\lab_tg544_eth_a.cid
+[2026-09-30 17:59:15]   Matrix: lab\evidence\phase5\P5_LN_VALUE_MATRIX.md
+[2026-09-30 17:59:15]   LN+Wireshark: lab\tg544-openwrt\run-p5-cleartext-ln-capture.ps1
+[2026-09-30 17:59:15]   Sequencer: lab\evidence\testsuite-pro\inbox\TSP_P5_FULLCIRCLE_SEQUENCER.md
+[2026-09-30 17:59:15]   Save log: lab\evidence\testsuite-pro\inbox\TSP_P5_FULLCIRCLE_CLEARTEXT_2026-09-30_175744.txt
+[2026-09-30 17:59:15]   Guide: lab\evidence\phase5\P5_TSP_CLEARTEXT_README.md
+[2026-09-30 17:59:15] P5 FULL CIRCLE: FAIL port=True lab=False wlim=False

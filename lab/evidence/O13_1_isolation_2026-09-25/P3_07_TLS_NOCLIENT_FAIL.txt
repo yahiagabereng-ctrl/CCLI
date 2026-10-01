@@ -1,0 +1,29 @@
+TLS: Verify cert: depth 1
+TLS:    flags: 00000000
+TLS:   cert. version     : 3
+  serial number     : 27:2B:13:00:E0:AA:13:72:1A:34:ED:50:82:D3:8F:C4:CA:BA:33:C1
+  issuer name       : C=DE, ST=BW, L=Freiburg, O=MZ Automation GmbH, OU=R&D, CN=root_CA
+  subject name      : C=DE, ST=BW, L=Freiburg, O=MZ Automation GmbH, OU=R&D, CN=root_CA
+  issued  on        : 2022-03-18 09:27:10
+  expires on        : 2032-03-15 09:27:10
+  signed using      : RSA with SHA-256
+  RSA key size      : 2048 bits
+  basic constraints : CA=true
+
+TLS: Verify cert: depth 0
+TLS:    flags: 00000000
+TLS:   cert. version     : 1
+  serial number     : 54:C9:90:80:84:22:27:66:9E:B8:AC:20:5C:59:F7:D2:8A:2E:10:C8
+  issuer name       : C=DE, ST=BW, L=Freiburg, O=MZ Automation GmbH, OU=R&D, CN=root_CA
+  subject name      : C=DE, ST=BW, L=Freiburg, O=MZ Automation GmbH, OU=R&D, CN=server1
+  issued  on        : 2022-05-26 10:47:44
+  expires on        : 2030-08-12 10:47:44
+  signed using      : RSA with SHA-256
+  RSA key size      : 2048 bits
+
+TLS:  mbedtls_ssl_read returned -0x7180
+TLS: mbedtls_ssl_close_notify returned -0x1
+=== CCLI MMS TLS negative (no client cert) P3-07 ===
+host=192.168.10.1 port=3782 ca=/mnt/c/Yahia/projects/CCLI/apps/ccli/config/tls/root_CA.pem
+CONNECT FAIL err=5 (expected — no client cert)
+VERDICT: PASS — association rejected without client certificate

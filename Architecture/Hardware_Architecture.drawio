@@ -1,0 +1,73 @@
+<mxfile host="app.diagrams.net" modified="2026-07-26T01:53:00.423154+00:00" agent="CCLI-RAG" version="22.1.0" type="device">
+  <diagram name="Page-1" id="ccli-Hardware-Architecture">
+    <mxGraphModel dx="1400" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="900" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="t" value="Hardware Architecture — SoM + carrier (field CCI)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=18;fontStyle=1;" vertex="1" parent="1">
+  <mxGeometry x="180" y="20" width="1040" height="36" as="geometry"/>
+</mxCell>
+<mxCell id="som_g" value="Verdin SoM 0063 (i.MX8M Plus IT)" style="swimlane;startSize=28;fillColor=#F8FAFC;strokeColor=#64748B;fontStyle=1;fontSize=12;" vertex="1" parent="1">
+  <mxGeometry x="60" y="90" width="280" height="340" as="geometry"/>
+</mxCell>
+<mxCell id="cpu" value="Quad A53 + M7
+2x GbE MAC
+HAB / CAAM" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#334155;fontSize=10;" vertex="1" parent="som_g">
+  <mxGeometry x="20" y="40" width="240" height="70" as="geometry"/>
+</mxCell>
+<mxCell id="ddr" value="4GB LPDDR4 IT
+eMMC" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#334155;fontSize=10;" vertex="1" parent="som_g">
+  <mxGeometry x="20" y="130" width="240" height="50" as="geometry"/>
+</mxCell>
+<mxCell id="se" value="Secure element path
+(verify SKU TPM)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#334155;fontSize=10;" vertex="1" parent="som_g">
+  <mxGeometry x="20" y="200" width="240" height="50" as="geometry"/>
+</mxCell>
+<mxCell id="som_if" value="MXM3 edge connector
+→ carrier" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#334155;fontSize=10;" vertex="1" parent="som_g">
+  <mxGeometry x="20" y="270" width="240" height="50" as="geometry"/>
+</mxCell>
+<mxCell id="car_g" value="Custom carrier (product)" style="swimlane;startSize=28;fillColor=#F8FAFC;strokeColor=#64748B;fontStyle=1;fontSize=12;" vertex="1" parent="1">
+  <mxGeometry x="400" y="90" width="520" height="520" as="geometry"/>
+</mxCell>
+<mxCell id="sw" value="Switch / PHY x4
+Eth_A Eth_B Plant1 Plant2" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DBEAFE;strokeColor=#334155;fontSize=10;" vertex="1" parent="car_g">
+  <mxGeometry x="20" y="40" width="220" height="70" as="geometry"/>
+</mxCell>
+<mxCell id="485" value="2x isolated RS485
+Modbus RTU RJ45" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEE2E2;strokeColor=#334155;fontSize=10;" vertex="1" parent="car_g">
+  <mxGeometry x="260" y="40" width="220" height="70" as="geometry"/>
+</mxCell>
+<mxCell id="dio" value="DI opto x5
+DO relay x3" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEE2E2;strokeColor=#334155;fontSize=10;" vertex="1" parent="car_g">
+  <mxGeometry x="20" y="130" width="220" height="70" as="geometry"/>
+</mxCell>
+<mxCell id="gnss" value="GNSS module + SMA" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEE2E2;strokeColor=#334155;fontSize=10;" vertex="1" parent="car_g">
+  <mxGeometry x="260" y="130" width="220" height="50" as="geometry"/>
+</mxCell>
+<mxCell id="lte" value="LTE modem (opt rev A)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F3F4F6;strokeColor=#334155;fontSize=10;" vertex="1" parent="car_g">
+  <mxGeometry x="260" y="200" width="220" height="50" as="geometry"/>
+</mxCell>
+<mxCell id="pwr" value="12-24V DC-DC
+sequencing / protection" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEE2E2;strokeColor=#334155;fontSize=10;" vertex="1" parent="car_g">
+  <mxGeometry x="20" y="220" width="220" height="60" as="geometry"/>
+</mxCell>
+<mxCell id="term" value="Field terminals
+DIN rail" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#334155;fontSize=10;" vertex="1" parent="car_g">
+  <mxGeometry x="20" y="300" width="460" height="50" as="geometry"/>
+</mxCell>
+<mxCell id="kit" value="Eval kit 99991105
+(LAB — not shipped)
+2x GbE · RS485 DB9" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF4E6;strokeColor=#B45309;fontSize=11;" vertex="1" parent="1">
+  <mxGeometry x="980" y="90" width="280" height="120" as="geometry"/>
+</mxCell>
+<mxCell id="e_som_car" value="MXM3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;" edge="1" parent="1" source="som_g" target="car_g">
+  <mxGeometry relative="1" as="geometry"/>
+</mxCell>
+<mxCell id="e_kit" value="SoM socket" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;" edge="1" parent="1" source="kit" target="som_g">
+  <mxGeometry relative="1" as="geometry"/>
+</mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

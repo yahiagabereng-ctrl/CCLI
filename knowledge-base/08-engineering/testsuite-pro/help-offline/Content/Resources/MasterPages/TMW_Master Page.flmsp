@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd">
+    <head>
+    </head>
+    <body>
+        <table style="width: 100%;">
+            <col />
+            <col style="width: 150px;" />
+            <tbody>
+                <tr>
+                    <td>
+                        <MadCap:breadcrumbsProxy />
+                    </td>
+                    <td style="padding-bottom: 10px;border-bottom-style: solid;border-bottom-width: 0px;text-align: right;"><a href="../../Getting Started/Overview of Test Suite Pro.htm" title="Go back to online help homepage" alt="Go back to online help homepage" style="font-size: 10pt;">Support Home</a>
+                    </td>
+                </tr>
+                <tr style="line-height: 1px;">
+                    <td colspan="2" style="border-top-style: solid;border-top-width: 1px;">&#160;</td>
+                </tr>
+            </tbody>
+        </table>
+        <MadCap:bodyProxy />
+        <p>&#160;</p>
+        <table style="width: 100%;">
+            <col />
+            <col style="width: 150px;" />
+            <tbody>
+                <tr>
+                    <td>
+                        <MadCap:breadcrumbsProxy />
+                    </td>
+                    <td style="padding-bottom: 10px;border-bottom-style: solid;border-bottom-width: 0px;">&#160;</td>
+                </tr>
+                <tr style="line-height: 1px;">
+                    <td colspan="2" style="border-top-style: solid;border-top-width: 1px;">&#160;</td>
+                </tr>
+            </tbody>
+        </table>
+        <div>
+            <table style="width: 100%;" MadCap:conditions="General.Online Only">
+                <col style="width: 260px;" />
+                <col style="width: 260px;" />
+                <col />
+                <tbody>
+                    <tr style="height: 65px;">
+                        <td style="vertical-align: top;">
+                            <div>
+                                <p style="margin-bottom: 0.12em;margin-top: 0.12em;"><b style="font-size: 1.1em;"><span style="color: #696969;">Sales:&#160;</span>+1 919.870.5101</b>
+                                </p>
+                                <p style="margin-top: 0;margin-bottom: 0;color: #ffffff;"><a href="mailto:sales@trianglemicroworks.com?subject=Sales Inquiry">sales@trianglemicroworks.com</a>
+                                </p>
+                                <p style="margin-top: 0;margin-bottom: 0;color: #ffffff;"><a href="http://www.trianglemicroworks.com/products/testing-and-configuration-tools/61850-test-suite-pages/test-suite/hammer-pages">Learn more about 61850 Test Suite Pro</a>
+                                </p>
+                            </div>
+                        </td>
+                        <td style="vertical-align: top;">
+                            <p style="text-align: left;margin-bottom: 0.12em;margin-top: 0.12em;"><b style="font-size: 1.1em;"><span style="color: #696969;">Support:</span>&#160;+1 919.781.1931</b>
+                            </p>
+                            <p style="margin-top: 0;margin-bottom: 0;"><a href="mailto:support@trianglemicroworks.com?subject=Support Questions">support@trianglemicroworks.com</a>
+                            </p>
+                            <p style="margin-top: 0;margin-bottom: 0;"><a href="http://www.trianglemicroworks.com/support/test-suite">Submit a Support Request Online</a>
+                            </p>
+                        </td>
+                        <td style="vertical-align: top;text-align: right;">
+                            <p style="text-align: right;margin-top: 0.12em;"><a href="http://www.trianglemicroworks.com/" style="font-weight: bold; font-size: 1.1em; color: #000000;"> Triangle MicroWorks, Inc.</a>
+                            </p>
+                            <p style="text-align: right;"><a href="https://www.linkedin.com/company/triangle-microworks-inc."><img src="../Images/linkedin logo.png" style="width: 115px;height: 29px;" /></a><a href="https://www.youtube.com/c/Trianglemicroworks"><img src="../Images/youtube logo.png" style="width: 75px;height: 30px;" /></a>
+                            </p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div style="width: 500px; height: 50px;">
+                <p style="text-align: left;color: #ffffff;"><span style="color: #696969;"><span style="color: #000000;"><MadCap:variable name="General.Copyright and Company" /></span><![CDATA[  ]]></span>All rights reserved.</p>
+            </div>
+        </div>
+    </body>
+</html>

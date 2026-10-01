@@ -1,0 +1,21 @@
+﻿mms: listening on 192.168.10.1:3782 tls=on acse_tls_auth=on rbac=on crl=on fallback_s=15 gnss_poll_s=15 (IED CCI016_01 / LD_Plant)
+mms: time_quality GNSS clock STEP offset_was=3139 ms (T.3.3.4.5 ┬▒100 ms)
+mms: time_quality GNSS fix sats=21 utc=2026-09-25 16:10:03 offset_ms=96 within_pm100=yes clockNotSynchronized=0 (T.3.3.4.5)
+mms: time_quality GNSS clock STEP offset_was=317 ms (T.3.3.4.5 ┬▒100 ms)
+mms: time_quality GNSS clock STEP offset_was=322 ms (T.3.3.4.5 ┬▒100 ms)
+mms: time_quality GNSS fix sats=21 utc=2026-09-25 16:10:41 offset_ms=-904 within_pm100=no clockNotSynchronized=1 (T.3.3.4.5)
+mms: time_quality GNSS clock STEP offset_was=370 ms (T.3.3.4.5 ┬▒100 ms)
+===MEASURE===
+sys_before=1790352651
+sys_after=1790352658
+sys_mid=1790352654
+rmc_raw=161100.00 A 250926
+status=A hhmmss=161100.00 ddmmyy=250926
+gnss_utc=2026-09-25T16:11:00.00Z
+gnss_epoch_ms=1790352660000
+sys_after_ms=1790352658000
+ubus_rtt_s=7
+offset_ms=-2000  (sys - gnss; + means system ahead)
+abs_offset_ms=2000
+limit_ms=100
+VERDICT: FAIL ΓÇö |offset|=2000 ms > 100 ms

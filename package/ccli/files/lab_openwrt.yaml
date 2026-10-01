@@ -1,0 +1,41 @@
+# OpenWrt on Raspberry Pi 4 — lab defaults (single eth0 / br-lan).
+# UCI mirror: /etc/config/ccli (PF2/io options for future uci loader).
+platform: pi
+interfaces:
+  eth_a:
+    device: eth0
+    address: 192.168.10.20/24
+    role: dso
+  eth_b:
+    device: eth0
+    address: 192.168.10.20/24
+    role: operator
+  plant:
+    device: eth0
+    role: plant
+serial:
+  rs485_a:
+    device: /dev/ttyUSB0
+    baud: 9600
+    parity: N
+    termination: true
+modbus:
+  mode: tcp
+  host: 192.168.30.10
+  port: 5020
+  slave_id: 1
+  poll_ms: 1000
+pf2:
+  threshold_kw: 900
+  debounce_s: 30
+  release_threshold_kw: 850
+  min_on_s: 60
+  min_off_s: 30
+  stale_data_s: 10
+io:
+  do_curtail:
+    gpio: 5
+    active_high: false
+  di_permissive:
+    gpio: 27
+    active_low: true

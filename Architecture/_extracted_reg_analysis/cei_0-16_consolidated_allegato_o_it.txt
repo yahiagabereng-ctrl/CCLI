@@ -1,0 +1,2979 @@
+--- PDF page 480 ---
+NORMA TECNICA   CEI 0 -16:2025 -12 
+ 
+ 
+473 
+ 
+ 
+Allegato O   
+(normativo)  
+Controllore Centrale di Impianto (CCI)  
+O.1 Oggetto e Scopo del lavoro  
+L'oggetto principale di questo Allegato O è il Controllore Centrale di Impianto (nel seguito CCI), 
+ossia quell'apparato, definito in maniera specifica nel successivo Articolo  O.3 (Descrizione 
+generale del CCI), i cui compiti principali sono:  
+• coordinare il funzionamento dei diversi elementi costituenti l'impianto affinché l’impianto 
+stesso operi, nel suo complesso, in maniera da soddisfare sia le richieste del DSO al punto 
+di connessione con la rete elettrica sia quelle di eventuali ulteriori operatori (regolazione e 
+controllo);  
+• raccogliere dall’impianto informazioni utili al fine della “osservabilità” della rete e 
+convogliarle verso il DSO (scambio dati).  
+In questa maniera il CCI consente di presentare l’impianto verso il DSO o altro operatore come 
+costituito da un singolo “generatore equivalente” visto dal Punto di Consegna (PdC), senza 
+tuttavia precludere l’osservabilità dei diversi elementi costituenti l'impianto.  
+Scopo del lavoro è quello di definire la specifica funzionale del CCI stabilendo i requisiti minimi 
+che il CCI deve rispettare in accordo a quanto richiesto da:  
+• Norma CEI 0 -16 in vigore, tenendo conto delle condizioni oggi esistenti per quanto concerne 
+lo stato delle “smart grid” sulle reti di distribuzione MT;  
+• Delibera zione  ARERA 36/2020/R/ EEL in merito allo scambio dati fra gli impianti di 
+produzione e Terna, scambio che deve avvenire primariamente per il tramite del DSO che 
+gestisce la rete cui i medesimi impianti di produzione sono connessi (il quale pu ò avvalersi 
+anche di un DSO terzo per l’espletamento del servizio (1)), secondo quanto specificato 
+nell'allegato A.6 al Codice di rete di Terna, in accordo al Regolamento UE 2017/1485 (di 
+seguito Regolamento SOGL – System Operation Guidelines).  
+• Deliberazione ARERA 385/2025/R/EEL  verifica di conformità delle modifiche all’allegato 
+A.72 al Codice di rete di TERNA s.p.a. e definizione degli ulteriori interventi relativi agli 
+impianti di generazione distribuita finalizzati a garantire la sicurezza del Sistema Elettrico 
+Nazionale . 
+Proprio per ottemperare ai dettami del Regolamento SOGL secondo quanto previsto dalla 
+delibera ARERA 36/2020 /R/ EEL la specifica funzionale del CCI in termini di prestazioni si 
+sviluppa secondo le seguenti modalità:  
+• prestazioni funzionali “obbligatorie”, inerenti lo scambio dati fra produttore e DSO 
+(osservabilità);  
+• prestazioni funzionali “opzionali”, inerenti la regolazione di tensione e la limitazione di 
+potenza al PdC dell'impianto;  
+• prestazioni funzionali “facoltative”, inerenti la partecipazione dell'impianto al Mercato dei 
+servizi del Dispacciamento, la gestione ottimale dell'impianto, ecc.  
+Le tempistiche secondo cui anche le funzioni attualmente opzionali e/o facoltative diventeranno 
+obbligatorie saranno stabilite successivamente da ARERA con appropriate delibere.  
+Dal punto di vista costruttivo (hardware) il CCI può essere realizzato come dispositivo integrato 
+in cui le funzioni di controllo si integrano con quelle di monitoraggio (osservabilit à̀) o in 
+–––––––––––––– 
+(1) La delibera prevede che i DSO possano avvalersi anche di un DSO terzo per l'espletamento del servizio 
+scambio dati . In presenza di esplicita e motivata rinuncia da parte del DSO competente, ivi inclusa la motivata 
+impossibilit à di avvalersi di un DSO terzo, I’invio di detti dati deve avvenire direttamente a Terna. Questa 
+alternativa è però da considerarsi come soluzione di ultima istanza.  
+--- PDF page 481 ---
+NORMA TECNICA   CEI 0 -16:2025 -12 
+ 
+ 
+474 
+ 
+ 
+alternativa in forma modulare con la funzione monitoraggio realizzata come sotto -componente 
+del CCI.  
+Le funzioni del CCI possono essere anche integrate in uno degli altri apparati costituenti 
+l’impianto purchè sia possibile provare le funzionalità dei suddetti dispositivi secondo le 
+indicazioni del presente Allegato.  
+L'Allegato O  specifica il CCI in forma integrata in cui però le funzioni legate alla osservabilit à̀ 
+della rete devono essere implementate obbligatoriamente e con priorit à̀ rispetto alle altre 
+funzioni.  
+In ogni cas o, nel formulare le prescrizioni di questo allegato si è evitato di porre vincoli alla 
+possibilità di ampliare in futuro le prestazioni funzionali del CCI e, ove già fattibile, si è 
+esplicitata nel testo la possibilità di un più estensivo utilizzo dello st esso, per quanto concerne 
+sia l'interfaccia con il DSO o con altri eventuali operatori sia la gestione ottimale dell'impianto 
+di utenza.  
+Con riferimento alla gestione dell'interfaccia sembra quanto mai ragionevole, nella prospettiva 
+dello sviluppo delle smart grid ed in presenza di un cana le di comunicazione standard 
+EN 61850, prevedere già in questa specifica la possibilità da parte del CCI di essere 
+predisposto per utilizzare al meglio questa potenzialità.  
+Ad esempio, la possibilità di ricevere sul CCI impostazioni di configurazione da remoto tramite 
+il canale di comunicazione anziché configurarle sullo stesso solo a livello locale.  
+Analogo ragionamento può essere applicato per altre funzioni che dovessero essere in futuro 
+veicolate attraverso il canale di comunicazione: tali funzioni, quando richieste, saranno 
+opportunamente prescritte nella norma CEI 0 -16 e l’allegato O verrà conseg uentemente 
+aggiornato, ove necessario, per adeguare ad essa i requisiti funzionali del CCI.  
+Sono invece già presenti in questo documento i requisiti per alcune prestazioni funzionali 
+facoltative, in particolare quelle necessarie per consentire anche alla generazione distribuita 
+l’accesso, su base aggregata (UVA), al Mercato per il Servizio di Dis pacciamento (MSD) per il 
+tramite di un soggetto aggregatore (Balance Service Provider - BSP, nel seguito Aggregatore ) 
+in accordo agli ultimi orientamenti di ARERA come espressi nella delibera 300/2017/R/ EEL, 
+come integrata dalle successive delibere 422/2018/R/ EEL e 153/2020/R/ EEL.  
+Quelle  stesse  dovranno  poi essere  aggiornate  e/o integrate  al termine  della  sperimentazione  
+avviata  da Terna  in accordo  alla  delibera  AEEGSI  583/2017 /R/EEL che prevede  una prima  
+apertura  della  generazione  distribuita  a MSD,  attraverso  progetti  pilota.   
+Il presente allegato è comunque completo per supportare la speri mentazione dei progetti pilota.  
+Per quanto riguarda la gestione ottimale dell'impianto (altra prestazione funzionale 
+“facoltativa”), questa è, invece, lasciata con piena libertà all'Utente, che potrà sviluppare 
+l'architettura del CCI secondo le proprie necessità, con il risultato non sec ondario di poter 
+conseguire anche un più proficuo utilizzo del CCI (e di conseguenza di risposta del proprio 
+impianto) rispetto alle prescrizioni di regolazione oggi richieste dalla Norma. Senza dimenticare 
+che predisporre già oggi un’architettura più sofi sticata sia del CCI sia della rete di 
+comunicazione interna all’impianto è un investimento necessario per poter partecipare un 
+domani al servizio di dispacciamento.  
+La gestione ottimale dell'impianto potrebbe inoltre attuarsi non solo tramite il controllo delle 
+unità di generazione/accumulo, ma anche con il contributo del carico interno. Quest'ultima 
+possibilità potrebbe diventare utile nella prospettiva di nuove funz ioni che coinvolgano, ad 
+esempio, la modulazione dei carichi, secondo modelli inspirati alle UVAM, già presenti nella 
+Delibera ARERA  300/17/R/ EEL e successive delibere  422/2018 /R/ EEL e 153/2020 /R/ EEL. 
+Il tema dei carichi non è trattato nell' Allegato O , trattandosi di argomenti ancora allo studio.  
+Le prescrizioni riportate nel presente Allegato O  fanno, pertanto, riferimento ad un CCI che 
+coordina, controlla e monitora le sole unità di generazione e di accumulo.  
+--- PDF page 482 ---
+NORMA TECNICA   CEI 0 -16:2025 -12 
+ 
+ 
+475 
+ 
+ 
+Il presente allegato disciplina anche le prescrizioni relative alla cybersecurity del componente 
+hardware (1). 
+Le problematiche di “cybersecurity” devono essere tenute in debito conto dai responsabili dei 
+canali di comunicazione e dell’impianto. Il progettista del CCI deve predisporre l'apparato in 
+modo da essere idoneo a gestire quanto su tale tema viene specifica to sia nel presente allegato, 
+sia nell’ Allegato T  alla Norma CEI 0 -16. 
+O.2 Campo di applicazione  
+Il presente allegato si applica a (2): 
+a) nuove connessioni  di impianti di produzione connessi alla rete MT (SGU -Significant Grid 
+User (3)- afferenti al perimetro standard (4)) in cui la somma delle potenze nominali dei singoli 
+generatori aggregate per fonte di almeno un aggregato è uguale o superiore a 1000 kW   ad 
+eccezione degli impianti di produzione eolici e fotovoltaici  per i quali il campo di applicazione 
+è definito al punto b) . 
+b) nuove connessioni di impianti di produzione eolici e fotovoltaici in cui la somma delle 
+potenze nominali dei singoli generatori aggregate per fonte  eolica o fotovoltaica  di almeno 
+un aggregato  è uguale o superiore a 100 kW connessi alla rete MT . 
+c) nuove connessioni  di impianti connessi alla rete MT partecipanti ai servizi di 
+dispacciamento, qualunque sia la loro potenza complessiva.  
+Se il CCI è installato, le sue funzionalità si applicano al complesso di tutti gli impianti di 
+produzione connessi allo stesso PdC, indipendentemente dalla potenza nominale di ogni 
+singolo impianto di produzione.  
+Le prescrizioni del presente allegato sono suddivise in obbligatorie, opzionali e facoltative, 
+come meglio descritto al successivo  Articolo  O.6.  
+Le prescrizioni del presente allegato si applicano e sono ad oggi obbligatorie per le funzioni di 
+Monitoraggio e Scambio Dati come richiesto dalla delibera ARERA 36/2020 /R/EEL e come 
+precisato nel successivo Articolo  O.8. Per gli imp ianti di produzione eolici e fotovoltaici di 
+potenza uguale o superiore a 100 kW la funzione PF 2 “Limitazione  potenza attiva su comando 
+del DSO” descritta nel successivo  Articolo  O.9 è, ai sensi della deliberazione ARERA 
+385/2025/R/eel , obbligatoria.  
+Ai fini del presente allegato sono considerati impianti di produzione gli impianti dotati di unità 
+di generazione, qualsiasi sia la sorgente primaria, ed i sistemi di accumulo  se connessi nella 
+parte di impianto in corrente alternata (vedi paragrafi 12.1.4; 12.1.4.2; 12.1.4.3; 12.1.4.4). Gli 
+impianti di produzione nei quali l’eventuale sistema di accumulo è connesso nella parte di 
+impianto in corrente continua (vedi paragrafo 12 .1.4.1) sono parimenti inclusi e rimangono 
+riferiti alla fonte di generazione pr imaria utilizzata (5). 
+Nel caso di impianti dotati sia di unità di generazione/accumulo che di carico, il presente 
+Allegato è prescrittivo esclusivamente per il controllo delle unità di generazione e di accumulo.  
+I carichi modulabili ed i dispositivi di rifasamento, se presenti nell'impianto, possono essere 
+gestiti anch'essi dal CCI nei casi in cui l’Utente lo ritenga utile ai fini di una gestione ottimale 
+dell'impianto.  
+Questo aspetto esula dalle prescrizioni del presente allegato..  
+–––––––––––––– 
+(1) Le prescrizioni di “cybersecurity” relative alla comunicazione dall'esterno verso il CCI e dal CCI verso l'esterno  
+sono oggetto dell’ Allegato T  
+(2) Condizioni e modalità per l’applicazione dell’Allegato a nuove connessioni non ricadenti nei punti a), b) e c), 
+nonché a connessioni di impianti esistenti (“retrofit”) sono stabilite da ARERA  
+(3) Come definiti dal regolamento SOGL ed elencati all'articolo 2 del regolamento RfG  
+(4) Come definito nella delibera ARERA 36/2020 /R/ EEL 
+(5) In tali  condizioni la potenza del sistema di accumulo deve essere sommata alla potenza della fonte primaria 
+a cui essa è riferita  
+--- PDF page 483 ---
+NORMA TECNICA   CEI 0 -16:2025 -12 
+ 
+ 
+476 
+ 
+ 
+Il CCI non deve svolgere nessuna funzione di protezione, né quella di protezione generale né 
+quella di protezione di interfaccia, come pure non deve svolgere le funzioni di protezione delle 
+unità di generazione. Tutte queste funzioni devono essere svolte d a dispositivi autonomi come 
+specificato nella presente norma (punti 7.5.12 , 7.7.2 , 8.5.12 , 8.8.1 , 8.8.5 , Allegato D , Allegato 
+E, Allegato Z ).  
+Così pure in presenza di transitori di sovra o sottofrequenza originatisi sulla rete il CCI NON 
+deve attuare alcuna azione di regolazione di quelle previste dai punti 8.8.6.3.2 (“Limitazione 
+della potenza attiva per transitori di sovra -frequenza originatisi sulla rete”) e 8.8.6.3.3  
+(“Aumento della potenza attiva per transitori di sottofrequenza originatisi sulla rete”) della 
+Norma CEI 0 -16 in vigore.  
+O.3 Descrizione generale del CCI  
+Il CCI è un apparato i cui compiti principali sono:  
+• Svolgere la funzione di monitoraggio dell'impianto con lo scopo di raccogliere informazioni 
+dall’impianto e dalle unità di generazione/accumulo utili ai fini della “osservabilità” della 
+rete (1) (funzionalità per il monitoraggio).  
+• Coordinare il funzionamento dei diversi elementi costituenti l'impianto, affinché l’impianto 
+stesso operi, nel suo complesso, in maniera da soddisfare al le prescrizioni della Norma 
+CEI 0-16, riportate al punto di connessione con la rete (nel seguito PdC), nel rispetto delle 
+capability prescritte dalla stessa Norma per le singole unità di generazione e di accumulo 
+(funzionalità di regolazione e comando);  
+• Consentire lo scambio di informazioni fra l’impianto ed il DSO (e tra l’impianto ed il TSO per 
+il tramite del DSO cui l’impianto è sotteso) utilizzando l o standard di comunicazione 
+IEC 61850 e reti di trasmissione dati, nonché fra l’impianto ed eventuali ulteriori attori 
+abilitati, secondo le modalità disciplinate nel presente allegato e nell’ Allegato T  alla Norma 
+CEI 0 -16 (funzionalità di scambio dati).  
+Il CCI nel suo complesso raggiunge l’obiettivo di presentare alla rete del DSO, nel PdC, 
+l’impianto come costituito da un singolo generatore equivalente, che tiene conto delle 
+caratteristiche dei singoli sistemi di generazione e di accumulo, nonché della rete di impianto. 
+Non è peraltro preclusa l’osservabilità dei diversi elementi costituenti l’impianto.  
+Inoltre il CCI costituisce anche l’unico punto di interfaccia per lo scambio di informazioni fra le 
+unità di generazione/accumulo costituenti l’impianto ed il DSO. 
+In presenza di un canale di comunicazione fra DSO ed Utente, il CCI rende disponibili verso il 
+DSO caratteristiche, segnali e misure relative all’impianto sotteso e, nel contempo, può ricevere 
+comandi e parametri inviati dal DSO all’impianto, utilizzando per la comunicazione lo standard 
+IEC 61850 opportunamente “securizzato” conformemente alla serie IEC 62351 secondo quanto 
+definito nell’ Allegato T . 
+Nel caso l’impianto partecipi ai servizi del MSD tramite intermediari per l’aggregazione, tali 
+intermediari potranno acquisire informazioni dall’impianto ed inviare comandi alle unità di 
+generazione/accumulo solo per tramite del CCI, indipendentemente dall a modalità con cui viene 
+trasmessa l’informazione fra l’Aggregatore e l’impianto (vedi successivo punto O.13.1.3 ). 
+O.4 Caratteristiche principali del CCI  
+Il CCI deve essere in grado di acquisire e processare tutte le informazioni necessarie per la 
+gestione delle interfacce relative a:  
+• il DSO; 
+• gli elementi costituenti l'impianto;  
+–––––––––––––– 
+(1) Tali  informazioni sono inviate, per il tramite del DSO cui l'impianto è connesso, verso il TSO per la gestione 
+in sicurezza del sistema di trasmissione  
+--- PDF page 484 ---
+NORMA TECNICA   CEI 0 -16:2025 -12 
+ 
+ 
+477 
+ 
+ 
+• gli eventuali ulteriori Attori abilitati (1) 
+in accordo a quanto specificato nella descrizione di cui al punto O.3. 
+Da un punto di vista realizzativo nel CCI si possono individuare almeno le seguenti “unità 
+funzionali”:  
+• unità di interscambio di informazioni con il DSO e gli ulteriori Attori abilitati  
+• unità di acquisizione grandezze al PdC  (misure e segnali)  
+• unità di elaborazione  
+• unità di regolazione degli elementi di impianto (2) 
+• unità di interscambio di informazioni con gli elementi di impianto (3) 
+• unità di memorizzazione (data logger).  
+La separazione in unità funzionali è puramente indicativa: nella realizzazione del CCI esse 
+possono essere tutte o in parte integrate fra loro, come possono non essere tutte sviluppate 
+contemporaneamente, in relazione alle priorità delle funzioni che il CC I deve rendere attive 
+secondo quanto previsto dalle delibere ARERA.  
+Le funzioni del CCI possono essere anche integrate come funzionalità aggiuntiva in uno degli 
+altri apparati costituenti l’impianto (es. controllore di una unità di generazione operante come 
+Master per tutte le altre unità, sistema centralizzato di controll o, dispositivi di protezione, ecc.) 
+purché non vengano compromesse le rispettive funzionalità.  
+Altre unità funzionali utili alla gestione ottimale dell'impianto possono essere presenti e 
+implementate nel CCI. Prescrizioni relative a queste unità funzionali esulano, come già 
+precisato, dal presente allegato.  
+O.5 Modalità di funzionamento del CCI  
+Il CCI è predisposto per assolvere le funzionalità di monitoraggio e scambio dati e le funzionalità 
+di controllo, regolazione e comando.  
+Nella modalità di funzionamento di solo monitoraggio, il CCI non attua alcuna azione di 
+regolazione sugli elementi d’impianto sottesi.  
+Per contro, il CCI, nella sua funzionalità di controllo, deve svolgere azioni di regolazione sugli 
+elementi di impianto sottesi.  
+In questa funzionalità, il CCI deve prevedere una modalità di controllo autonoma  ed una 
+modalità di controllo asservita , alternative una all’altra: la modalità asservita ha priorità rispetto 
+alla modalità autonoma.  
+Nella modalità di controllo autonoma, il CCI deve attuare le funzioni di regolazione previste 
+dalla Norma CEI 0 -16, utilizzando i parametri (di default) stabiliti dalla stessa Norma per ciascun 
+tipo di funzione o definite dal DSO contestualmente al Regolamento di esercizio sulla base delle 
+caratteristiche dello specifico impianto.  
+La funzione da attuare e i relativi parametri devono essere impostati dall’Utente e/o progettista 
+dell’impianto agendo sul CCI tramite terminale di configurazione locale oppure tramite terminale 
+d’utente remoto.  
+Nella modalità di controllo asservita, il CCI deve operare secondo le funzioni di regolazione 
+comunicate dal DSO tramite canale logico di comunicazione secondo standard EN  61850 e 
+–––––––––––––– 
+(1) L’Utente e l’eventuale Aggregatore  
+(2) La presenza dell’unità di regolazione degli elementi di impianto è correlata alle funzionalità che il CCI dovrà 
+assolvere  
+(3) Le informazioni scambiate con gli elementi di impianto dipendono dalle caratteristiche dell’impianto stesso e 
+dalle funzionalità che il CCI dovrà assolvere  
+--- PDF page 485 ---
+NORMA TECNICA   CEI 0 -16:2025 -12 
+ 
+ 
+478 
+ 
+ 
+definite utilizzando i parametri anch'essi inviati dal DSO tramite lo stesso canale per tali 
+regolazioni.  
+Nel caso di partecipazione ai servizi del MSD, le corrispondenti funzioni del CCI dovranno 
+operare, nel rispetto delle priorità definite per le singole funzioni (vedi successivo O.11 ), in 
+accordo alle richieste dell’Aggregatore, che comunicherà con il CCI anch’esso attraverso un 
+canale logico di comunicazione. (1)  
+Nel caso non sia presente alcun canale di comunicazione tra il CCI e gli operatori esterni le 
+funzioni definite come “asservite” devono poter essere configurate e rese operative 
+direttamente sul CCI nella modalità di funzionamento autonoma.   
+Il monitoraggio e/o il comando del CCI tramite terminale locale da parte dell'Utente deve essere 
+realizzato utilizzando canali di comunicazione fisicamente indipendenti e logicamente non 
+correlati rispetto al canale di comunicazione con gli operatori ester ni. 
+Prescrizioni più complete in merito alle interfacce di comunicazione sono indicate nel 
+Paragrafo O.13.1 . 
+O.6 Prestazioni funzionali  
+Come già detto, il CCI deve presentare tre tipologie di prestazioni funzionali:  
+PF1.  obbligatorie, ossia funzionalità sempre presenti in ogni tipologia di CCI  
+PF2.  opzionali, ossia funzionalità aggiuntive che il CCI deve svolgere a supporto del sistema 
+elettrico  
+PF3.  facoltative, ossia funzionalità la cui implementazione dipende dall’iniziativa del 
+produttore, nei modi e nei tempi indicati da ARERA.  
+Le prestazioni obbligatorie PF1 sono relative ai servizi di monitoraggio e scambio dati; le 
+prestazioni opzionali PF2 sono relative ai servizi di limitazione della potenza immessa e 
+regolazione della tensione al PdC; le prestazioni facoltative PF3 sono rel ative alla gestione 
+ottimizzata dell'impianto ed alla partecipazione al Mercato dei Servizi di Dispacciamento, come 
+estensivamente descritto nei relativi paragrafi a seguire. Tutto quanto nel presente allegato non 
+sia specificamente associato alle funziona lità opzionali PF2 o facoltative PF3 si intende 
+obbligatorio.  
+Come richiamato nel Articolo  O.2, le tipologie di impianti e le condizioni a cui debbano applicarsi 
+le prestazioni funzionali PF1, PF2 e le condizioni a cui possono applicarsi le prestazioni 
+funzionali PF3 per quanto concerne la partecipazione al Mercato dei servizi di Dispacciamento 
+sono stabilite da ARERA.  
+O.6.0  Prestazioni Funzionali PF1 (obbligatorie)  
+Ai fini della conoscenza dello stato dell'impianto per il funzionamento in sicurezza del sistema 
+elettrico, il CCI deve rendere disponibili una serie di informazioni (misure e stati) relative 
+all'impianto, in accordo a quanto prescritto dal Codice di Rete,  Allegato A. 6, e dalla norma 
+CEI 0-16 al punto 8.10, come specificato nei successivi Paragrafo  “O.8.3 ”, “ O.8.4 ” “O.8.6 ”). 
+Le caratteristiche del CCI e degli elementi costituenti l’impianto, nonché della rete interna di 
+impianto, devono essere adeguate a poter assicurare il dettaglio, la precisione, la frequenza di 
+aggiornamento e la vetustà prescritte nei citati documenti.  
+O.6.1  Prestazioni Funzionali PF2 (opzionali /obbligatorie ) 
+Il CCI deve assicurare le seguenti prestazioni funzionali minime:  
+–––––––––––––– 
+(1) Lo s tandard di comunicazione tra CCI e aggregatore potrà essere definito a valle della sperimentazione dei 
+progetti pilota.  
+--- PDF page 486 ---
+NORMA TECNICA   CEI 0 -16:2025 -12 
+ 
+ 
+479 
+ 
+ 
+• partecipazione dell'impianto alla regolazione della tensione nel punto di connessione alla 
+rete, in accordo al punto 8.8.6.2  (“Partecipazione al controllo della tensione”) della Norma 
+CEI 0 -16 (vedi successivi punti “O.8.2 ”); 
+• partecipazione dell'impianto alla limitazione della potenza attiva, in accordo ai punti 
+8.8.6.3.1  (“Limitazione della potenza attiva per valori di tensione prossimi al 110% di Un”) 
+e 8.8.6.3.4  (“Limitazione della potenza attiva su comando esterno proveniente dal DSO”) 
+della Norma CEI 0 -16 (vedi successivi punti “ O.8.2 ”, “ O.9.2 ”). 
+Tutte queste prestazioni funzionali devono fare riferimento alle grandezze al PdC ed operare 
+nel rispetto delle capability degli elementi costituenti l’impianto.  
+La prestazion e funzional e PF2 “Limitazione della potenza attiva su comando esterno 
+proveniente dal DSO”  ai sensi dell’All. A72 di cui alla Deliberazione  385/2025/R/EEL è 
+obbli gatori a per gli impianti di produzione  eolici e fotovoltaici di potenza  uguale o  superiore a 
+100 kW  . 
+O.6.2  Prestazioni Funzionali PF3 (facoltative)  
+Il CCI  può implementare anche le seguenti prestazioni funzionali:  
+• prestazioni per la gestione dell’impianto;  
+• prestazioni per la partecipazione al mercato dei servizi di dispacciamento.  
+Anche queste prestazioni funzionali facoltative devono fare riferimento alle grandezze al PdC 
+ed operare nel rispetto delle capability degli elementi costituenti l’impianto.  
+O.6.2.1  Prestazioni per la gestione dell’impianto  
+Le prestazioni funzionali per la gestione dell’impianto sono:  
+• avviamento e ri -avviamento dell'impianto con una presa di carico a gradiente specificato, 
+come da punto 8.8.4  (“Avviamento, sincronizzazione e presa di carico”) della Norma  
+CEI 0 -16 in vigore (vedi successivo punto O.10.1 ); 
+• riconnessione dell'impianto dopo distacco dalla rete, a frequenza e tensione stabilizzata 
+(vedi successivo punto O.10.2 ); 
+• gestione ottimizzata dell'impianto dal punto di vista energetico o sulla base di altri criteri 
+selezionati dall'Utente e/o progettista dell’impianto (vedi successivo punto O.10.4 . 
+O.6.2.2  Prestazioni per la partecipazione al Mercat o dei Servizi di Dispacciamento (1) 
+In previsione della possibile partecipazione al Mercato per i Servizi di Dispacciamento (MSD) 
+degli impianti connessi alla rete MT, il CCI può essere sviluppato con funzionalità aggiuntive 
+studiate per permettere ai soggetti Aggregatori di utilizzare le ri sorse d’impianto per soddisfare 
+i requisiti richiesti dal Mercato stesso.  
+Per fornire il supporto ai soggetti Aggregatori deve essere implementata nel CCI una funzione 
+aggiuntiva in grado di ricevere ed elaborare un comando di “Set -Point di Potenza attiva” (vedi 
+successivo punto O.10.3 , nonché i successivi punti O.8.2 , O.8.5 ), veicolati tramite un 
+appropriato canale logico di comunicazione fra Aggregatori (2) e CCI.  
+I servizi sottesi ai meccanismi del Mercato per il Servizio di Dispacciamento sono:  
+• Servizi di Bilanciamento;  
+• Regolazione terziaria di potenza;  
+–––––––––––––– 
+(1) Le prescrizioni per la partecipazione a MSD potranno in prospettiva essere estese a quanto delineato dal 
+Paragrafo  5.2.2.2  della Norma CEI 0 -16 “Funzionamento di porzioni di rete MT di distribuzione in isola 
+intenzionale”  
+(2) Tale  canale può essere fisicamente realizzato tramite provider pubblico di servizi di telecomunicazione 
+oppure veicolato tramite il servizio di comunicazione realizzato dal Distributore o altro ancora. In merito si 
+pronuncerà l’ARERA.  
+--- PDF page 487 ---
+NORMA TECNICA   CEI 0 -16:2025 -12 
+ 
+ 
+480 
+ 
+ 
+• Regolazione secondaria di potenza.  
+Ciascuno dei tre servizi ha requisiti specifici, descritti nel Codice di Rete di Terna.  
+Il CCI, gli elementi d’impianto, la rete di comunicazione fra il CCI e gli elementi d’impianto, il 
+canale di comunicazione (diretto o indiretto) fra CCI ed Aggregatore devono tutti essere 
+progettati al fine di soddisfare i requisiti dei tempi di risposta d ei comandi di set -point della 
+potenza attiva relativi ai servizi di mercato a cui l’impianto intende partecipare (1). 
+In funzione delle prestazioni dinamiche degli elementi costituenti l'impianto, l'impianto stesso 
+potrà essere idoneo e quindi abilitato a supportare l’Aggregatore per tutti e tre i servizi oppure 
+solo per alcuni di essi.  
+La validazione dell'idoneità dell'impianto a fornire determinati servizi deve avvenire attraverso 
+appropriati test non oggetto di questo allegato.   
+Il CCI deve anche disporre della capability funzionale atta a ricevere ed attuare il comando di 
+set-point di potenza reattiva (vedi successivo punto O.10.3.1  Funzione Set -Point della Potenza 
+Reattiva su comando esterno”).  
+O.7 Schema generale del sistema  
+O.7.1  Schema delle interfacce  
+La Figura 121  dà una visione generale semplificata del CCI correlato con le diverse interfacce 
+con cui deve comunicare per scambiare informazioni e ricevere o trasmettere comandi.  
+Nello schema generale sono anche prospettate evoluzioni future dell'intero sistema con ulteriori 
+prestazioni funzionali concernenti anche i carichi.  
+La figura. è puramente indicativa ed è utilizzata per contestualizzare le funzioni del CCI rispetto 
+agli altri elementi con cui esso deve o può interfacciarsi. Tale figura rappresenta in modo 
+funzionale i singoli “scambi informativi” (“servizi logici” nel seguito) de l CCI; non definisce né le 
+singole interfacce di tipo fisico, né le loro caratteristiche.  
+A riguardo, vedasi il successivo Paragrafo  O.13.1  (2). 
+–––––––––––––– 
+(1) Ad oggi sole unità di generazione  e di accumulo  
+(2) In generale, i servizi di comunicazione possono utilizzare le infrastrutture di provider pubblici di servizi di 
+comunicazione. Per ragioni di cybersecurity non devono essere previste comunicazioni esposte su internet; 
+la comunicazione pertanto deve avvenire sempre e soltanto attraverso rete privata (VPN) attraverso la quale 
+devono transitare le informazioni che interessano i vari attori. Essi devono essere dotati di appropriato 
+certificato di autenticazione, validato da un server accessibile dalla VPN. Nella prospettiva dello sviluppo 
+delle smart grid, deve considerarsi anche la possibile presenza di un canale fisico diretto di comunicazione 
+fra Distributore e Utente.  
+--- PDF page 488 ---
+NORMA TECNICA   CEI 0 -16:2025 -12 
+ 
+ 
+481 
+ 
+ 
+ 
+ 
+ – Schema generale del sistema CCI con relative interfacce funzionali  
+O.7.2  Schema di principio della funzione di regolazione del CCI  
+La Figura 122  riporta uno schema di principio del CCI, allo scopo di illustrare in maniera 
+semplificata le modalità operative dello stesso nelle sue funzioni di regolazione.  
+Lo schema è da intendersi come puramente indicativo.  
+
+--- PDF page 489 ---
+NORMA TECNICA   CEI 0 -16:2025 -12 
+ 
+ 
+482 
+ 
+ 
+ 
+ – Schema a blocchi degli anelli di regolazione da implementare nel CCI 
+Nello schema si individuano due anelli di regolazione:  
+• anello di “regolazione rapida” (o anello di “regolazione impianto”)  
+• anello di “regolazione lenta” (o anello di “analisi curve di regolazione”)  
+Con anello di “ regolazione rapida ” si deve intendere quella parte del sistema di regolazione 
+preposta a definire lo specifico punto di lavoro di ogni singolo elemento di impianto coordinato 
+dal CCI (da cui il sinonimo di “ anello di regolazione impianto ”), al fine di raggiungere 
+complessivamente al PdC il punto di lavoro richiesto all'impianto (punto di “ lavoro atteso ” 
+individuato dal “ set-point interno ” nella figura).  
+Tale anello di “ regolazione rapida ” deve confrontare il punto di lavoro al PdC rispetto al “ punto 
+di lavoro atteso ” e deve correggere gli scostamenti derivanti dalla dinamica dell’impianto o dalla 
+variazione delle condizioni di rete, mediante modifica coordinata del punto di lavoro dei singoli 
+elementi d’impianto, nel rispetto delle loro rispettive capability e dei li miti imposti dalla norma 
+riguardo i valori e le rampe al PdC, ove presenti.  
+Il punto di “ lavoro atteso ”, ossia il set -point interno viene veicolato all'ingresso dell'anello di 
+“regolazione rapida ” o direttamente attraverso un comando esterno oppure indirettamente come 
+comando in uscita risultante dal calcolo dell'anello di “ regolazione lenta ”. 
+L'anello di “ regolazione lenta ”, infatti, è quella parte del sistema di regolazione preposta a 
+calcolare il punto di lavoro atteso al PdC  quando l'impianto è chiamato a partecipare al controllo 
+della tensione della rete MT, secondo quanto prescritto dalla norma al punto 8.8.6.2  attraverso 
+le curve di regolazione specificate nell' Allegato I  (da qui il sinonimo di “ anello di analisi delle 
+curve di regolazione ”). 
+
+--- PDF page 490 ---
+NORMA TECNICA   CEI 0 -16:2025 -12 
+ 
+ 
+483 
+ 
+ 
+L’anello di “ regolazione lenta ” determina una modifica del punto di lavoro atteso dell’impianto 
+solo quando lo scostamento fra il nuovo punto di lavoro calcolato e quello precedente è 
+maggiore di un valore predefinito (“ banda morta ” - vedi successivo Articolo  O.9). 
+In sintesi il punto di lavoro atteso che si traduce poi nel set -point interno di ingresso all'anello 
+di “ regolazione rapida ” viene definito attraverso una delle seguenti tre modalità:  
+i. stabilito dall’Utente responsabile dell’impianto con uno specifico set -point di potenza attiva 
+(P) o di potenza reattiva (Q);  
+ii. imposto da un set -point esterno, ancora o di potenza attiva (P) o di potenza reattiva (Q);  
+iii. calcolato dall'anello di “regolazione lenta”, come set -point di Q=Q(V) o cosfi=cosfi(P).  
+I primi due sono comandi in arrivo dall'esterno; il terzo è un valore generato all'interno del CCI.  
+La selezione fra queste tre modalità deve essere effettuata secondo criteri di priorità, stabiliti 
+al successivo Paragrafo  O.11 . 
+La nuova condizione di funzionamento determinata dal punto di lavoro selezionato (set -point 
+interno) che il CCI deve imporre agli elementi di impianto da esso coordinati (nuovi punti di 
+lavoro per ciascun elemento controllato) deve avvenire con la trasmiss ione, attraverso la rete 
+di comunicazione interna, di opportuni segnali di controllo che potranno essere di tipo 
+incrementale (aumenta -diminuisci) oppure di tipo assoluto, di tipo percentuale o in p.u. (set 
+point, segnali di livello, ecc).  
+A seconda della complessità costruttiva dell’impianto (ad esempio presenza di più unità di 
+generazione di differente tipologia – fotovoltaica, eolica, idraulica, accumulo, ecc – e/o di 
+diversa taglia) e delle esigenze dell'Utente (ottimizzazione dell'eserc izio dell'impianto), i nuovi 
+punti di lavoro per i singoli elementi d’impianto possono essere uguali per tutti o specifici per 
+ciascuno di essi (ovvero elaborati rispettivamente con algoritmi semplificati o con algoritmi più 
+complessi) in dipendenza dal li vello di “intelligenza” integrato nel sistema (vedi O.10.4 ). 
+Queste specifiche situazioni richiedono che al CCI siano rese disponibili opportune misure 
+rilevate ai terminali dei singoli elementi di impianto coordinati dal CCI, misure che possono 
+essere acquisite tramite il canale di comunicazione fra CCI ed elemento  d’impianto (come 
+riportato in modo indicativo sullo schema).  
+La scelta di una soluzione realizzativa più complessa è lasciata all’Utente e/o progettista 
+d’impianto; nella prospettiva di partecipazione dell’impianto a futuri servizi di rete è opportuno 
+privilegiare da subito soluzioni che consentano il puntuale contr ollo dei singoli elementi 
+assoggettati al CCI.  
+O.7.3  Tempi caratteristici per le funzioni di regolazione  
+Il sistema di regolazione del CCI deve rispettare i tempi caratteristici definiti nei paragrafi 
+successivi.  
+Alcuni valori, laddove indicato, sono stabiliti dal DSO nel regolamento di esercizio e non 
+possono essere modificati senza nuova indicazione del DSO. 
+O.7.3.1  Dinamica dell'anello di “regolazione rapida”  
+L'anello di “ regolazione rapida ” deve coordinare i singoli elementi d’impianto sottesi 
+assicurando all'intero impianto i tempi di assestamento massimi (Ts) (1) non superiori a:  
+• TsP= 60 s, per le variazioni del set -point interno di potenza attiva di qualsiasi entità,  
+• TsQ = 10 s, per le variazioni del setpoint  interno di potenza reattiva di qualsiasi entità.
+–––––––––––––– 
+(1) I valori indicati scaturiscono da quanto previsto nella Norma CEI 0 -16 Allegato N , punto N.7.4.1 per la P ed 
+I.3; N.6.2.3  per la Q . 
+--- PDF page 491 ---
+NORMA TECNICA   CEI 0 -16:2025 -12 
+ 
+ 
+484 
+ 
+ 
+dove per tempo di assestamento Ts (o settling time) si deve intendere l’intervallo di tempo che 
+intercorre dall’istante To di applicazione del nuovo set -point all’istante in cui la grandezza 
+controllata al PdC rientra stabilmente in una fascia di tolleranza pari al ±5% rispetto al valore 
+atteso.  
+Il CCI e l’impianto da esso coordinato possono essere realizzati in modo da raggiungere il 
+valore atteso in tempi inferiori ai massimi qui prescritti (1). 
+Per la verifica del raggiungimento del valore atteso da parte dell’anello di regolazione rapida, 
+si devono utilizzare gli stessi criteri definiti negli allegati N.7.4.1  (“Verifica del tempo di 
+assestamento ad un comando di riduzione di potenza ”) e N.6.2.3  (“Tempo di risposta ad una 
+variazione a gradino del livello assegnato ”) della Norma CEI 0 -16, rispettivamente per la 
+potenza attiva e reattiva.  
+O.7.3.2  Dinamica dell'anello di “regolazione lenta”  
+L'anello di “ regolazione lenta ”, che lavora attraverso le curve di regolazione, deve operare con 
+una dinamica caratterizzata da un Tempo di ciclo ΔT che deve essere impostabile fra 10 s e 
+600 s, tramite impostazione dei parametri di funzionamento del CCI.  
+Il valore di default è di 60 secondi , salvo diversa prescrizione del DSO riportata nel 
+regolamento di esercizio.  
+Il nuovo set -point calcolato al termine del ciclo ΔT, se ammesso dalle regole di priorità, deve 
+modificare il set -point interno verso l'impianto, anche se il precedente valore atteso al PdC non 
+è stato ancora raggiunto.  
+Il CCI deve essere in grado di processare comandi esterni di modifica delle funzioni di 
+regolazione in modo da potere recepire i parametri ed elaborare le nuove curve di regolazione 
+entro il ΔT successivo al recepimento del comando.  
+Comandi di modifica che pervengano con intervalli di tempo inferiori a ΔT vengono rifiutati.  
+O.7.3.3  Dinamica dei Set Point esterni  
+Il CCI deve essere in grado di processare i comandi di set -point esterni in modo da potere 
+recepire ed elaborare aggiornamenti del set -point che pervengano con intervalli di tempo non 
+inferiori a 3 s rispetto all’ultimo set -point processato.  
+Comandi di aggiornamento che pervengano con intervalli di tempo inferiori ai 3 secondi 
+vengono rifiutati.  
+O.7.4  Riferimento di misura per gli anelli di regolazione  
+Gli anelli di regolazione, per il loro funzionamento, devono operare a partire da misure elaborate 
+conformemente a quanto definito nella norma IEC 61557 -12, in accordo alle classi di precisione 
+definite in O.13.2.1 , con il metodo dell’intervallo a blocco fisso (vedi allegato B alla  
+IEC 61557 -12).  
+Le misure elaborate con intervallo di durata pari a 200ms sono indicate come M C200 . Le misure 
+elaborate con intervallo di durata pari a ΔT (come definito al punto O.7.3.2), sono indicate come 
+MCΔT. 
+I campioni riferiti alle tensioni ed alle correnti devono essere campionati in modo sincrono.  
+L'anello di “regolazione rapida” deve operare utilizzando i suddetti valori M C200 . 
+L’anello di “regolazione lenta” deve operare utilizzando i suddetti valori M CΔT. 
+–––––––––––––– 
+(1) Qualora l'impianto partecipasse ai meccanismi di mercato per la regolazione secondaria di potenza (vedi 
+punto O.6.2.2), il tempo di assestamento massimo per la potenza attiva deve consentire all’impianto di seguire le 
+rampe prescritte dal Codice di Rete de ll’operatore del sistema di Trasmissione  
+--- PDF page 492 ---
+NORMA TECNICA   CEI 0 -16:2025 -12 
+ 
+ 
+485 
+ 
+ 
+Tali valori devono essere utilizzati nell'anello di “regolazione lenta ” sia per il calcolo del punto 
+di lavoro atteso, sia per la valutazione delle soglie di lock -in e lock -out necessarie per abilitare 
+le diverse funzioni di regolazione, ove richiesto.  
+Per le caratteristiche di precisione della misura al PdC, vedasi il successivo punto O.10.3 . 
+Per le caratteristiche di precisione delle misure acquisiste dai singoli elementi d’impianto, 
+queste, quando necessarie, devono essere rilevate ed utilizzate dal CCI in modo da non 
+degradare la precisione complessiva del sistema di controllo e comunque nel  rispetto delle 
+prescrizioni minime previse per le funzioni di monitoraggio di cui al Paragrafo  O.8.1 . 
+O.8 Monitoraggio dell'impianto e scambio dati  
+O.8.1  Generalità  
+Ai fini della conoscenza dello stato dell'impianto per il funzionamento in sicurezza della rete il 
+produttore deve rendere disponibili una serie di informazioni relative all'impianto, in accordo a 
+quanto prescritto dalla norma CEI 0 -16 in vigore al punto 8.10  ed a quanto previsto dalla 
+delibera ARERA 36/2020/R/EEL con riferimento all'Allegato A.6 del Codice di Rete di Terna, 
+secondo quanto precisato nei paragrafi che seguono.   
+Il CCI deve, nella sua architettura, acquisire queste informazioni e renderle disponibili, 
+corredate di elementi anagrafici identificativi (1), per il trasferimento verso il DSO tramite 
+appropriato canale di comunicazione (2) con protocollo EN 61850, in accordo alle modalità 
+previste nell'allegato T della Norma CEI 0 -16. In assenza del canale di comunicazione i format 
+per la raccolta delle informazioni e le modalità di trasmissione saranno definiti nel Regolamento 
+di esercizio . 
+Anche in questo paragrafo  ciascuna tipologia di informazioni è contraddistinta come: 
+“obbligatoria (PF1)”, “opzionale (PF2)”, “facoltativa (PF3)”.  
+O.8.2  Caratteristica poligonale d’impianto (PF2, PF3)  
+In accordo a quanto prescritto dalla norma CEI 0 -16 in vigore al punto 8.10, l'Utente attivo deve 
+mettere a disposizione del DSO le prestazioni in potenza dei diversi elementi di impianto.  
+A partire da questi dati vengono definite nel regolamento di esercizio le seguenti grandezze 
+relative alla parte di impianto che include le sole unità di generazione ed accumulo (carichi 
+esclusi), calcolate secondo quanto indicato nella sottostante nota (3)  
+• Potenza attiva massima in assorbimento (Pass);  
+• Potenza attiva massima in immissione (Pimm);  
+• Potenza reattiva capacitiva massima (Qcap);  
+• Potenza reattiva induttiva massima (Qind).  
+Questi valori sono poi utilizzati per disegnare una curva convenzionale propria dell'impianto 
+riferita al PdC (“caratteristica poligonale di impianto” - vedi successive Figura 123 ) che, nella 
+sostanza, definisce un’area in cui l'impianto, qualunque sia la sua condizione di regolazione, si 
+troverà sempre ad operare.  
+ 
+–––––––––––––– 
+(1) Quali POD, versione HW e FW del CCI, come dettagliato nell’Allegato T  
+(2) La tipologia del canale di comunicazione verso il DSO è stabilita da ARERA  
+(3) In assenza di diversa indicazione da parte del Distributore, le grandezze possono essere calcolate come 
+semplice sovrapposizione degli effetti dei singoli elementi d’impianto (unità di generazione e di accumulo, carichi 
+esclusi), considerati, per ognuna dell e grandezze richieste, agenti contemporaneamente, ciascuno al massimo 
+della propria capability.  
+--- PDF page 493 ---
+NORMA TECNICA   CEI 0 -16:2025 -12 
+ 
+ 
+486 
+ 
+ 
+Al fine di un uso proficuo di tale poligonale, è opportuno stabilire, a partire dai valori massimi 
+sopra indicati, una seconda grandezza convenzionale, definita come Potenza Apparente 
+Massima dell'impianto Sma x (1), sempre riferita al PdC, e calcolata come:  
+𝑆𝑚𝑎𝑥 = √max(𝑃𝑖𝑚𝑚
+2 , 𝑃𝑎𝑠𝑠2 ) + 𝑚𝑎𝑥(𝑄𝑖𝑛𝑑
+2 , 𝑄𝑐𝑎𝑝2 ) 
+Questa grandezza deve essere assunta dal CCI come base cui rapportare le grandezze 
+elettriche espresse in p.u.: in questa maniera per lo scambio biunivoco di informazioni in p.u. 
+(ad esempio i set - point) attraverso il CCI d’impianto si utilizzerà un rifer imento condiviso, senza 
+possibilità di errore.  
+Il valore della potenza apparente massima deve essere indicata nel Regolamento di Esercizio 
+per essere impostata poi nel CCI.  
+Nelle Figura 123  e Figura 124  sono riportati di due esempi di curva poligonale, di cui la prima 
+fa riferimento a un impianto composto da unità di generazione e sistemi di accumulo, mentre la 
+seconda si riferisce a un impianto composto da unità di generazione e carico.  
+In questo secondo caso, come risulta dalla caratteristica poligonale, la potenza attiva massima 
+in assorbimento è nulla, in quanto nel calcolo della poligonale la potenza assorbita dal carico 
+non deve essere presa in considerazione (2). 
+Il CCI deve configurare  nella sua architettura interna la curva poligonale, così da potere rendere 
+disponibile questa informazione al DSO o ad altri eventuali operatori abilitati attraverso 
+l’interfaccia di comunicazione. L’azione di inserimento e/o modifica dei parametri elettrici 
+caratteristici dell'impianto deve anche essere memorizzata nel data logger del CCI (vedi 
+punto  O.14 ). 
+Il CCI dovrà anche provvedere all’aggiornamento delle prestazioni in potenza degli elementi di 
+impianto (gruppi di generazione raggruppati per fonte primaria, sistemi di accumulo) per  
+tenere conto di fuori servizio per manutenzione di parte degli elementi di impianto controllati. 
+La Figura 125  rappresenta un esempio di modifica della curva poligonale per un impianto 
+costituito da unità di generazione e sistema di accumulo, in caso di fuori servizio per guasto o 
+manutenzione del sistema di accumulo.  
+L’aggiornamento delle prestazioni in potenza deve essere eseguito utilizzando una curva 
+poligonale specifica per ogni sezione d’impianto (gruppi di generazione raggruppati per fonte 
+primaria, sistemi di accumulo), aggiornata per ogni variazione non correla ta alla disponibilità 
+della fonte primaria (escluso quindi l’aggiornamento in caso di variazione dell’irraggiamento 
+solare, riduzione della forza del vento, ecc.).  
+Questi aggiornamenti non modificano il valore Smax precedentemente definito: esso è infatti 
+espresso con riferimento alle prestazioni massime e resta come riferimento per le grandezze 
+espresse in p.u..  
+–––––––––––––– 
+(1) La potenza apparente massima è una costruzione matematica definita per essere maggiore di qualsiasi 
+valore di potenza attiva o reattiva scambiata dall’impianto con la rete nei limiti della propria capability.  
+(2) La Norma non prescrive di utilizzare il carico come parte attiva delle funzioni di regolazione.  
+--- PDF page 494 ---
+NORMA TECNICA   CEI 0 -16:2025 -12 
+ 
+ 
+487 
+ 
+ 
+ 
+ – Esempio di caratteristica poligonale e relative grandezze elettriche per un 
+impianto con unità di generazione e sistema di accumulo 
+ 
+ – Esempio di caratteristica poligonale e relative grandezze elettriche per un 
+impianto con unità di generazione e carico 
+
+--- PDF page 495 ---
+NORMA TECNICA   CEI 0 -16:2025 -12 
+ 
+ 
+488 
+ 
+ 
+ 
+ – Esempio di caratteristica poligonale e relative grandezze elettriche per l’impianto 
+di cui alla Figura 123 in caso di indisponibilità del sistema. di accumulo per guasto  
+O.8.3  Misure per la stima dei ﬂussi di potenza della rete MT di interesse del 
+distributore DSO (PF1)  
+Oltre alle prestazioni in potenza dell'impianto di cui al punto precedente, sempre in accordo a 
+quanto prescritto dalla norma CEI 0 -16 in vigore al punto 8.10, il CCI deve essere predisposto 
+per acquisire e trasmettere verso il DSO le principali grandezze elettriche dell’impianto (P, Q, 
+V) al punto di connessione (PdC) per permettere allo stesso di tenere sotto controllo sia i flussi 
+di potenza verso la propria rete sia la tensione al PdC:  
+Le misure di P, Q e V relative al PdC devono essere elaborate conformemente a quanto definito 
+nella norma IEC 61557 -12, in accordo alle classi di precisione definite in O.13.2.1 , con il metodo 
+dell’intervallo a blocco fisso di durata pari a 4 secondi (vedi Allegato B  alla IEC 61557 -12).  
+Le misure dovranno essere rese disponibili immediatamente a valle del periodo di 
+aggregazione, complete di marca temporale ed indicazione di qualità.  
+La modalità di trasmissione di queste misure deve rendere fruibile il dato di misura all’interfaccia 
+del CCI verso il DSO con periodicità di 04 secondi.  La scadenza di ogni periodo deve essere 
+sincrona con gli istanti a 00, 04, 08, … secondi di ogni minuto primo.  
+O.8.4  Misure per l’osservabilità della rete MT di interesse del TSO (PF1)  
+Ai fini dell'osservabilità della rete MT per la sicurezza del sistema elettrico, il CCI deve essere 
+predisposto per acquisire dall’impianto e trasmettere verso il TSO per il tramite del DSO cui 
+l’impianto è sotteso (1) le seguenti informazioni, in coerenza con l’Allegato A.6 al Codice di Rete, 
+come stabilito dalla delibera 36/2020/R/ EEL di ARERA:  
+–––––––––––––– 
+(1) I DSO possono avvalersi anche di un DSO terzo per l'espletamento del servizio. In presenza di esplicita e 
+motivata rinuncia da parte del DSO competente, ivi inclusa la motivata impossibilit à di avvalersi di un DSO terzo , 
+l'invio di detti dati deve essere diretto a Terna. In questi casi il Produttore deve applicare quanto specificato 
+nell'Allegato A.13 del codice di rete.  
+
+--- PDF page 496 ---
+NORMA TECNICA   CEI 0 -16:2025 -12 
+ 
+ 
+489 
+ 
+ 
+a) le misure della potenza attiva (P) e della potenza reattiva (Q) relative al PdC come identificate 
+al Paragrafo O.8.3  
+b) misure delle potenze attive (P) prodotte dall’impianto, agg regate per fonte di generazione (1) 
+Limitatamente agli impianti di produzione eolici e fotovoltaici di potenza compresa fra 100 kW e 
+inferiore a 500 kW aventi consumo dovuto solo ai servizi ausiliari propri, non è obbligatorio 
+rilevare la potenza aggregata per fonte . 
+c) Limitatamente ai soli impianti di produzione di potenza non inferiore a 1 MW , misure della potenza 
+attiva (P)  prodotta da ciascuna unità di generazione di taglia e tecnologia definita, prelevata ai 
+morsetti della stessa unità . Devono essere prese in considerazione le seguenti tre tipologie di 
+unità di generazione:  
+i. inverter (2) di generazione di potenza P nominale >= 170 kW  
+ii. inverter di sistemi di accumulo di potenza P nominale >= 50 kW  
+iii.  generatori rotanti di potenza P nominale >= 250 kW  
+Le misure di cui ai punti b) e c) possono essere ottenute:  
+• tramite acquisizione diretta delle grandezze elettriche da parte del CCI; 
+• tramite elaborazione numerica a partire dalle misure rese disponibili dai singoli elementi d’impianto;  
+• come combinazione delle due tecniche precedenti. 
+Il CCI nell'eseguire queste funzioni agisce come “concentratore” che acquisisce:  
+• direttamente le misure di P e Q aggregate o sub-aggregate per fonte (se l'impianto nella sua 
+realizzazione lo consente)  
+• in alternativa le misure dalle singole unità generatrici per aggregarle per fonte  
+• le misure di P delle unità generatrici di taglia definita 
+per convogliarle verso il DSO rendendole così disponibili per l'invio secondo lo standard IEC 61850, 
+come disciplinato in Allegato T.  
+La modalità di trasmissione di tutte queste misure deve rendere fruibile il dato di misura all’interfaccia 
+del CCI verso il DSO con periodicità di 04 secondi.  
+La scadenza di ogni periodo deve essere sincrona con gli istanti a 00, 04, 08, … secondi di ogni 
+minuto primo.  
+Le misure devono essere quindi aggiornate ogni 4 secondi; ogni nuova misura andrà a sovrascriversi 
+sulla precedente: non è prevista alcuna memorizzazione all’interfaccia.  
+Le misure così rilevate devono essere anche in questo caso complete di marca temporale ed 
+indicazione di qualità. La marca temporale deve essere riferita al momento nel quale la misura è resa 
+disponibile all’interfaccia di comunicazione verso il DSO, definendone l’istante iniziale di disponibilità.  
+La accuratezza delle misure, sia quelle prelevate ai terminali delle unità generatrici che quelle totali 
+di impianto aggregate per fonte, deve essere in accordo a quanto prescritto nell'Allegato  A.6 al Codice 
+di rete ( Tab. 5 e Tab. 6 ). 
+Le misure relative alle singole unità di generazione, secondo le tipologie in taglia e tecnologia sopra 
+definita, devono essere acquisite in modo tale da poterle poi trasmettere correlate all’anagrafica della 
+macchina generatrice da cui provengono, secondo  quanto specificato nell’ Allegato T . 
+–––––––––––––– 
+(1) Le fonti di generazione da prendere in considerazione sono: eolico (di qualunque tipo), fotovoltaico, termoelettrico 
+(di qualunque tipo), idroelettrico (di qualunque tipo), accumulo (se connesso nella parte di impianto in corrente 
+alternata) . 
+(2) Incluso  anche l'eolico che si connette alla rete tramite inverter  
+--- PDF page 497 ---
+NORMA TECNICA   CEI 0 -16:2025 -12 
+ 
+ 
+490 
+ 
+ 
+È ammesso aggregare misure acquisite dagli elementi d’impianto in momenti non sincroni tra loro, 
+purché ogni misura componente l’aggregato sia acquisita ed aggregata all’interno della finestra 
+temporale di 4 secondi immediatamente precedente la messa a dis posizione della misura 
+all’interfaccia di comunicazione del CCI.  
+Per soddisfare a tutti i requisiti sopra indicati sia in termini di accuratezza della misura sia in termini 
+di frequenza di campionamento anche l'architettura della rete di comunicazione interna all'impianto 
+deve presentare caratteristiche prestazionali ad eguate.  
+O.8.5  Misure per la partecipazione al MSD (PF3)  
+Qualora l’impianto voglia partecipare ai meccanismi di mercato (vedi punto O.6.2.2 ), il CCI deve essere 
+predisposto per acquisire e trasmettere verso l’Aggregatore la misura “istantanea” della Potenza Attiva 
+(P) sempre al punto di connessione (PdC).  
+In questa maniera il CCI costituisce l’apparecchiatura in grado di rilevare e inviare in “tempo reale” 
+all’aggregatore le misure della generazione totale al punto di connessione, come richiesto dal 
+Regolamento Terna MSD UVAP approvato dalla delibera dell’A RERA 583/2017/R/eel (1) e dal regolamento 
+UVAM (2) approvato dalla delibera ARERA 482/2018/R/ EEL. 
+Il CCI deve anche disporre della capability funzionale atta ad acquisire e trasmettere verso l’Aggregatore 
+la misura “istantanea” della Potenza Reattiva (Q).  
+La misura della Potenza Attiva e della Potenza Reattiva coincide con quella identificata al Paragrafo  
+O.8.4 . 
+Le misure così rilevate devono essere anche ora complete di marca temporale ed indicazione di qualità. 
+La marca temporale deve essere riferita al momento nel quale la misura è resa disponibile all’interfaccia 
+di comunicazione, definendone l’istante inizial e di disponibilità.  
+La modalità di trasmissione prevede che queste misure siano poi rese disponibili ogni 4 s. La scadenza 
+di ogni periodo deve essere sincrona con gli istanti a 00, 04, 08, ecc. secondi di ogni minuto primo.  
+O.8.6  Segnali relativi allo stato dell'impianto (PF1)  
+Sempre ai fini dell’osservabilità della rete, il CCI, nella sua funzione di monitoraggio e scambio dati, 
+deve acquisire e trasmettere i seguenti segnali:  
+• stato del dispositivo generale (DG, come da norma CEI 0 -16, punto 3.22 ) secondo quanto 
+prescritto dalla Norma CEI 0 -16 al Paragrafo  8.10  
+• stato dei dispositivi di unità (DDG, come da norma CEI 0 -16 punto 3.18) o segnale equivalente 
+atto a conoscere lo stato di funzionamento della singola unità, secondo quanto richiesto 
+dall’Allegato A.6 al Codice di Rete  
+Ogni variazione dello stato di questi elementi deve essere acquisito dal CCI e reso disponibile 
+all’interfaccia di comunicazione per la notifica in un tempo massimo di 4 s dal verificarsi dell’evento.  
+Quando il CCI opera in funzionalità di regolazione e controllo, altri segnali di stato devono essere 
+acquisiti allo scopo di conoscere:  
+• se l’impianto nel suo complesso è in grado di rendere disponibili le funzioni di regolazione,  
+• se almeno un elemento di generazione può essere utilizzato per le funzioni di regolazione,  
+• se almeno un elemento di accumulo può essere utilizzato per le funzioni di regolazione,  
+• lo stato operativo di ogni singola funzione di regolazione (3). 
+ 
+–––––––––––––– 
+(1) Altre misure utili all’aggregatore per predisporre i piani di partecipazione ai servizi MSD per le varie unità di 
+produzione aggregate come UVAP saranno meglio definite al termine della sperimentazione dei progetti pilota.  
+(2) UVAM = Unità Virtuali Abilitate Miste (vedi Delibera ARERA 300/2017/R/eel e s.m.i.)  
+(3) Si consulti l’Appendice A.1 di questo Allegato per un approfondimento sugli stati assunti dalle funzioni di regolazione.   
+--- PDF page 498 ---
+NORMA TECNICA   CEI 0 -16:2025 -12 
+ 
+ 
+491 
+ 
+ 
+L'insieme di queste ulteriori informazioni consente di conoscere la potenzialità operativa del CCI 
+riguardo la possibilità di controllare gli elementi di impianto ad esso sottesi (1). 
+Nel caso il CCI preveda la sola funzionalità di monitoraggio, questi segnali di stato dovranno 
+comunque essere implementati sull’interfaccia di comunicazione in modo da segnalare l’assenza 
+delle potenzialità di regolazione.  
+Qualora il CCI dovesse essere predisposto per il controllo dei carichi utilizzatori, si suggerisce di 
+predisporre anche il relativo segnale di stato, in previsione di un eventuale futuro utilizzo.  
+O.9 Regolazione della tensione e limitazione della potenza attiva  
+O.9.1  Regolazione di Tensione (PF2)  
+La partecipazione alla regolazione della tensione di rete al punto di connessione (PdC) deve 
+prevedere le seguenti modalità di funzionamento:  
+i. funzionamento in erogazione di potenza reattiva a fattore di potenza (cosfi) fisso e impostabile 
+(come da Norma CEI 0 -16 Paragrafo  I.2); 
+ii. funzionamento in erogazione di potenza reattiva a fattore di potenza in funzione della potenza 
+attiva: cosfi = f(P) (come da Norma CEI 0 -16 Figura 66  Paragrafo  I.2); 
+iii. funzionamento in erogazione automatica di potenza reattiva secondo una curva caratteristica 
+Q=f(V) (come da Norma CEI 0 -16 Figura 67  – Paragrafo  I.3); 
+iv. funzionamento in erogazione di potenza reattiva su comando esterno da DSO (come da Norma 
+CEI 0 -16 Paragrafo  I.4). 
+Il CCI deve prevedere pertanto tutte e quattro le funzioni di regolazione sopra elencate.  
+Le funzioni i., ii, iii sono da considerarsi, in assenza di un canale di comunicazione con il DSO, 
+funzioni di regolazione autonome (basate su sole misure al PdC), mentre la funzione iv è una funzione 
+asservita . 
+Le quattro modalità di funzionamento sono mutuamente esclusive.  
+La selezione di una delle prime tre può avvenire da parte dell'Utente a livello locale (sul posto) o 
+tramite terminale di comando remoto; la quarta modalità, essendo una modalità asservita, è 
+selezionabile solo tramite comando esterno di attivazione del DSO ed è prioritaria rispetto alle altre 
+funzioni come indicato nel Paragrafo  I.4 e come meglio precisato al successivo punto O.9.1.4 . 
+Di base sul CCI non è attiva alcuna funzione di regolazione (condizione “OFF”); condizioni di 
+funzionamento diverse sono concordate con il DSO, contestualmente alla sottoscrizione del 
+regolamento di esercizio, e abilitate, se previsto, alla messa in servizio dell'impianto (condizione 
+“ON”).  
+In presenza del servizio di comunicazione con il DSO secondo standard IEC 61850, le funzioni i, ii, 
+iii, nonché iv, diventano tutte funzioni di regolazione asservite, sia per la loro attivazione sia per 
+l’impostazione dei parametri operativi. L‘attivazione e la disattivazione di ciascuna di esse avverrà 
+tramite comando esterno dal DSO, secondo le modalità indicate nell’allegato T.  
+Il CCI deve già essere previsto a tal fine nella sua architettura.  
+In caso di interruzione del servizio di comunicazione con il DSO (2), il CCI deve ripristinare 
+automaticamente la condizione di funzionamento predefinita indicata nel regolamento di esercizio ( i, 
+oppure ii, oppure iii, oppure nessuna funzione attiva).  
+–––––––––––––– 
+(1) Ad esempio, qualora le rete di comunicazione fra il CCI e gli elementi di impianto da esso controllati risultasse fuori 
+servizio, il CCI, pur mantenendo la possibilità di comunicare verso l’esterno, non potrebbe assolvere ad alcuna funzione 
+di regolazione.  
+(2) Si veda anche il punto O.13.1.2 . 
+--- PDF page 499 ---
+NORMA TECNICA   CEI 0 -16:2025 -12 
+ 
+ 
+492 
+ 
+ 
+Qualunque sia la funzionalità abilitata e attiva, il CCI dovrà imporre agli elementi da lui coordinati la 
+condizione di funzionamento atta a far sì che l'impianto nel suo complesso fornisca al PdC quanto 
+richiesto dalla modalità di funzionamento abilitata,  nel rispetto della curva di capability di ciascuna 
+unità di generazione e/o accumulo.  
+Se le condizioni operative dell’impianto non consentono di raggiungere al PdC i valori imposti dalle 
+funzioni di regolazione attiva, il sistema si porterà nella condizione operativa più prossima, 
+rispettando le priorità definite in fase di attivazione dell e funzioni di regolazione (vedi successivo 
+punto O.11 ). 
+O.9.1.1  Funzionamento in erogazione di potenza reattiva con valore di cosﬁ costante  
+La funzione di regolazione per l’erogazione di potenza reattiva con valore del cos( ϕ) costante 
+ottempera alla funzione prevista al Paragrafo  I.2 della presente Norma CEI 0 -16.  
+Il riferimento di cosfi è espresso al PdC e può essere sia induttivo che capacitivo.  
+In presenza di smart grid sulle reti di distribuzione, il valore di cosfi dovrà essere acquisito 
+direttamente dal CCI attraverso il canale di comunicazione EN 61850.  
+La modalità di ripartizione della potenza reattiva richiesta dal DSO al PdC fra i diversi elementi di 
+impianto è lasciata all’Utente e/o progettista dell'impianto.  
+Qualora le condizioni operative dell’impianto non consentissero di raggiungere i valori imposti dalla 
+richiesta pervenuta dal DSO, l'impianto si porterà nella condizione operativa più prossima a quella 
+richiesta.  
+O.9.1.2  Funzionamento con regolazione del cosﬁ in funzione della potenza attiva  
+La funzione di regolazione a cosfi=f(P) deve essere realizzata in accordo alla curva della Figura 66  
+– Paragrafo  I.2 della presente norma CEI 0 -16 e deve essere di tipo parametrico.  
+I riferimenti di cosfi, P, e V per la funzione di regolazione a cosfi=f(P) realizzata nel CCI sono da 
+intendersi al PdC.  
+Il CCI deve consentire di impostare i valori delle soglie di lock -in e lock -out di tensione, che devono 
+essere sempre riferiti al PdC.  
+La verifica che le soglie di lock -in e lock -out per la tensione siano state superate deve essere 
+effettuata sui valori mediati su ΔT. 
+Curve caratteristiche diverse da quelle standard possono essere richieste dal  DSO, come previsto 
+nel Paragrafo  I.2 della norma, e dovranno poter essere impostate ed attuate dal CCI.  
+Anche in questo caso, in presenza di smart grid sulle reti di distribuzione, i parametri che 
+caratterizzano le curve potranno essere acquisiti direttamente dal CCI attraverso il canale di 
+comunicazione EN 61850.  
+Con riferimento allo schema a blocchi di Figura 122 , nella condizione di funzionamento con 
+erogazione di potenza reattiva secondo la curva cosfi=f(P), il CCI, attraverso l'anello di regolazione 
+lenta, calcolerà con cadenza ΔT, il valore di cosfi (cosfi calcolato) in funzione del valore mediato della 
+P misurata rapportato al valore della Potenza attiva massima in immissione ( PImm ), ai parametri 
+della curva di regolazione e alle soglie di lock -in e lock -out di tensione.  
+Il valore di cosfi così calcolato verrà confrontato con l'ultimo valore trasmesso verso l'anello di 
+“regolazione rapida ” e se la variazione fra i due valori soddisferà alla relazione:  
+|cosficalcolato – cosfisp interno| >= δcosfi (dove δcosfi = α)(1)  
+–––––––––––––– 
+(1) α deve  essere regolabile: di base α =0,02  
+--- PDF page 500 ---
+NORMA TECNICA   CEI 0 -16:2025 -12 
+ 
+ 
+493 
+ 
+ 
+Esso verrà trasmesso verso l'anello di regolazione rapido al fine di realizzare la nuova 
+condizione di funzionamento richiesta dalla funzione di regolazione (vedi Figura 126 ). 
+ 
+ – Funzionamento con regolazione del cosfi in funzione della  
+potenza attiva [cosfi =f(P)] 
+O.9.1.3  Funzionamento in erogazione automatica di potenza reattiva secondo la curva 
+Q=f(V)  
+La funzione di regolazione Q=f(V) deve essere realizzata in accordo alle curve di Figura 67  - 
+Paragrafo  I.3 della presente Norma CEI 0 -16; le curve devono essere di tipo parametrico.  
+I riferimenti di Q e V per la funzione di regolazione Q=F(V) realizzata nel CCI sono da intendersi 
+al PdC.  
+Il CCI deve consentire di impostare:  
+• i valori delle soglie di lock -in e lock -out per la potenza attiva;  
+• i valori V1i, V2i, V1s, V2s, per la tensione che caratterizzano la curva;  
+• il parametro k, variabile fra -1 e +1.  
+La verifica delle soglie di lock -in (0,2 PImm) e lock -out (0,05 PImm) per la potenza attiva deve 
+essere effettuata sui valori mediati su ΔT. Curve caratteristiche diverse da quelle standard 
+possono essere richieste dal DSO, come previsto nel Paragrafo  I.3 della presente norma, e 
+dovranno poter essere impostate ed attuate dal CCI.  
+Anche in questo caso in presenza di smart grid sulle reti di distribuzione i parametri che 
+caratterizzano le curve potranno essere acquisiti direttamente dal CCI attraverso il canale di 
+comunicazione EN  61850.  
+Con riferimento allo schema a blocchi in Figura 122 , nel funzionamento a Q=f(V) il CCI, 
+attraverso l'anello di “ regolazione lenta ”, calcolerà con cadenza ΔT il valore di Q ( Qcalcolata) 
+in funzione del valore mediato della V misurata, dei parametri della curva di regolazione e delle 
+soglie di lock -in e lock -out se applicabili.  
+
+--- PDF page 501 ---
+NORMA TECNICA   CEI 0 -16:2025 -12 
+ 
+ 
+494 
+ 
+ 
+Il valore di Q così calcolato verrà confrontato con l'ultimo valore trasmesso verso l'anello di 
+regolazione rapida e se la variazione fra i due valori soddisferà la relazione:  
+|(Qcalcolata – Qsp interno)|>= δQ (dove δQ= σ)(1) 
+ 
+Il set -point interno sarà trasmesso verso l'anello di regolazione rapida al fine di realizzare la 
+nuova condizione di funzionamento che la funzione di regolazione richiede (vedi Figura 127 ). 
+ 
+ – Funzionamento in erogazione automatica di potenza 
+reattiva secondo la curva Q=f(V) 
+. 
+–––––––––––––– 
+(1) σ deve essere regolabile. Di base σ = 5%Qmax  
+
+--- PDF page 502 ---
+NORMA TECNICA   CEI 0 -16:2025 -12 
+ 
+ 
+495 
+ 
+ 
+O.9.1.4  Funzionamento in regolazione di tensione con erogazione di potenza reattiva 
+su comando esterno proveniente dal DSO 
+La funzione di regolazione per l’erogazione di potenza reattiva su comando esterno deve 
+ottemperare alla funzione prevista nell’Allegato I punto 4 della presente Norma CEI 0 -16. 
+Il riferimento di Q è espresso al PdC e può essere sia induttivo che capacitivo. La funzione 
+agisce in presenza di un comando trasmesso dal DSO, veicolato tramite canale di 
+comunicazione IEC 61850, che richieda l’erogazione di potenza reattiva da parte dell'impianto. 
+Trattasi, pertanto, di una funzione asservita.  
+La modalità di ripartizione della potenza reattiva richiesta dal  DSO al PdC fra i diversi elementi 
+di impianto è lasciata all’Utente e/o progettista dell'impianto.  
+Anche in questo caso qualora le condizioni operative dell’impianto non consentissero di 
+raggiungere i valori imposti dalla richiesta pervenuta dal DSO, l'impianto si porterà nella 
+condizione operativa più prossima a quella richiesta.  
+O.9.2  Limitazione  della Potenza attiva (PF2)  
+La funzione di limitazione della potenza attiva immessa al punto di connessione (PdC) deve 
+essere predisposta nel CCI per fronteggiare i due seguenti casi, non esclusivi:  
+• limitazione per valori di tensione prossimi al 110% di Un (punto 8.8.6.3.1  della Norma  
+CEI 0-16);  
+• limitazione su comando esterno proveniente dal DSO (punto 8.8.6.3.4  della Norma  
+CEI 0 -16) 
+ 
+In entrambi i casi, la limitazione, di base, deve avvenire attraverso una riduzione della potenza 
+immessa in rete dalle diverse unità di generazione presenti nell’impianto (modalità i).  
+--- PDF page 503 ---
+NORMA TECNICA   CEI 0 -16:2025 -12 
+ 
+ 
+496 
+ 
+ 
+Se l'impianto è dotato di sistema di accumulo, la limitazione della potenza attiva in immissione 
+può essere conseguita anche attraverso l’assorbimento di potenza attiva da parte del sistema 
+di accumulo, se compatibile con il suo stato di carica (modalità i i). L'architettura del CCI deve 
+essere predisposta a tal fine.  
+In dipendenza della tipologia dell'impianto (presenza di unità di generazione e sistemi di 
+accumulo) e di come è sviluppata l'architettura del CCI, le due possibilità tecniche (i) ed (ii) di 
+limitazione della potenza attiva immessa in rete possono essere u tilizzate in alternativa una 
+all'altra o mediante una opportuna combinazione delle due.  
+La scelta fra le due possibilità è, in questi casi, lasciata al progettista dell'impianto (CCI): non 
+devono in ogni caso essere previsti gradini di ampiezza superiore a quanto previsto in Norma.  
+O.9.2.1  Limitazione della Potenza attiva immessa per valori di tensione prossimi al 
+110% di Un  
+La funzione mira a prevenire la disconnessione per sovratensione dalla rete per intervento della 
+protezione di interfaccia per valori di tensione al PdC prossimi al 110% Un, come previsto al 
+punto 8.8.6.3.1  della presente Norma CEI 0 -16 (1). 
+La funzione è una funzione autonoma. Essa deve essere attivabile su decisione dell'Utente, 
+esclusivamente tramite il terminale d’Utente o sul posto o tramite terminale di comando remoto.  
+Sia l'attivazione della funzione di limitazione sia il suo l'intervento devono essere segnalate e 
+memorizzate all'interno del CCI (vedi punto O.14 ). 
+Per evitare instabilità fra le seguenti due funzioni di regolazione:  
+• limitazione di potenza attiva per tensione al PdC prossimo a 1.1 Vn;  
+• regolazione di tensione secondo la curva Q=Q(V);  
+la valutazione e la selezione dei valori V1s, V2s, V1i e V2i della curva di Figura 67  - Paragrafo  
+I.3 della Norma CEI 0 -16 deve essere svolta con particolare attenzione, in relazione alle 
+specifiche caratteristiche dell’impianto ed alle caratteristiche della rete del DSO al PdC.  
+O.9.2.2  Limitazione della Potenza attiva immessa al PdC su comando esterno 
+proveniente dal DSO 
+Questa funzione è attivata da un comando proveniente dal DSO per esigenze proprie dello 
+stesso DSO o per i casi previsti per la partecipazione ai piani di difesa (vedi O.9.3), essa è 
+pertanto una funzione asservita . 
+Tale funzione riduce la potenza mantenendola al di sotto del valore di soglia ricevuto 
+compatibilmente con le caratteristiche delle Unità di Generazione . 
+In assenza del canale di comunicazione con il DSO, riduzioni o distacchi di potenza potranno 
+comunque essere richiesti dal DSO mediante procedura predefinita prevista nel Regolamento 
+di esercizio (vedi punto 8.8.6.3.4  della Norma CEI 0 -16).  
+In questo caso l’attuazione di tale richiesta deve essere effettuata dall’Utente o sul posto o 
+tramite terminale di comando remoto.  
+O.9.2.3  Modulazione della Potenza attiva immessa al PdC su comando esterno 
+proveniente dal DSO 
+Questa funzione è predisposta per essere attivata da un comando proveniente dal DSO per 
+esigenze proprie dello stesso DSO: essa è pertanto una funzione asservita. La funzione 
+–––––––––––––– 
+(1) Se la protezione di interfaccia fosse distante dal PdC, la tensione ai singoli elementi di impianto potrebbe 
+superare il limite del 110% anche se al PdC tale limite non è stato raggiunto. Il controllo ed il rispetto dei livelli di 
+tensione per i singoli elem enti costituenti l’impianto è cura dell’Utente e/o del progettista, che possono decidere 
+di avvalersi del controllore d’impianto per tale funzione.  
+--- PDF page 504 ---
+NORMA TECNICA   CEI 0 -16:2025 -12 
+ 
+ 
+497 
+ 
+ 
+“Modulazione della Potenza attiva su comando esterno” è identica nell’implementazione alla 
+funzione O.10.3.1  “Funzione Set -Point della Potenza Attiva su comando esterno”.  
+O.9.3  Partecipazione ai piani di difesa  
+Il punto 8.8.6.5  della Norma CEI 0 -16 prescrive che tutti gli impianti di generazione debbano 
+partecipare ai piani di difesa del SEN (Sistema Elettrico Nazionale) attraverso la riduzione 
+parziale o totale della produzione ottenuta per mezzo di telesegnali inviati da un cen tro remoto 
+di controllo.  
+Il CCI è in grado di operare la riduzione parziale o totale della produzione tramite il comando di 
+limitazione della potenza attiva, che opera con la dinamica prevista al pa . O.7.3.3 . Tuttavia, il 
+CCI non può assolvere alle funzioni di distacco delle unità di generazione/accumulo come 
+richiesto dalla norma nell’ Allegato M , in quanto, come indicato al punto O.2, il CCI non deve 
+interfacciarsi con la protezione di interfaccia per funzioni di protezione.  
+Pertanto, per governare la funzione “partecipazione ai piani di difesa”, è comunque necessario 
+installare il dispositivo prescritto nell’ Allegato M .  Tale dispositivo deve essere opportunamente  
+interfacciato con il CCI affinché questo ne rilevi l’azione di distacco e non attui alcuna altra  
+azione in contrasto  (1). A tal scopo il CCI deve essere dotato di idonee connessioni fisiche.  
+Per gli impianti di produzione fotovoltaici ed eolici di potenza uguale o superiore a 100 kW la 
+modalità PF2 di limitazione regolazione della potenza attiva su comando del DSO è 
+obbligatoria. La limitazione della potenza su comando del DSO con la dinamica prevista al pa. 
+O.7.3.3   assolve a quanto richiesto dal paragrafo 8.8.6.5 della Norma CEI 0 -16 sulla 
+partecipazione ai piani di difesa.  
+Tuttavia, ai sensi della Deliberazione 385/2025 e fino a successiva variante regolatoria, le prescrizioni 
+di cui all’Allegato M continuano ad essere valide per tutti gli impianti di generazione di potenza uguale 
+o superiore a 100 kW.  
+O.10  Gestione dell'impianto e partecipazione al Mercato dei Servizi di Dispacciamento  
+Il CCI può essere utilizzato, a discrezione dell’Utente o del progettista d’impianto, per eseguire 
+le seguenti ulteriori funzioni:  
+• presa di carico graduale in avviamento  
+• presa di carico graduale in caso di ri -connessione  
+così come definite nella presente Norma CEI 0 -16 rispettivamente ai punti 8.8.4  ed 8.8.7.2 . 
+Esso può inoltre essere predisposto anche per svolgere le funzioni necessarie per:  
+• partecipare al Mercato dei Servizi di Dispacciamento;  
+• soddisfare esigenze specifiche del produttore, quali, ad esempio, la gestione ottimizzata 
+dell’impianto.  
+O.10.1  Presa di carico in avviamento (PF3)  
+Questa funzionalità può essere realizzata o sulle singole unità o all'interno del CCI. La scelta è 
+lasciata all'Utente/progettista.  
+L'operazione di presa di carico centralizzata nel CCI deve avvenire con un gradiente positivo  
+della potenza non superiore al 20%Pn/min, nel rispetto di quanto prescritto dalla presente 
+Norma CEI  0-16 al Paragrafo  8.8.4  (Avviamento, sincronizzazione e presa di carico). Per 
+realizzare questa specifica funzionalità il CCI può operare avviando le diverse unità di 
+generazione secondo una sequenza temporale appropriata oppure imponendo a ciascuna unità 
+la rampa opportuna, com unque garantendo la presa di carico al PdC entro i limiti sopra indicati.  
+–––––––––––––– 
+(1) In generale,  le azioni  di distacco  dell’impianto,  anche  quando  effettuate  da dispositivi  di protezione,  devono  
+essere  monitorate  dal CCI  affinché  questi  possa  agire  nel  modo  più appropriato  rispetto  alle  condizioni  
+dell’impianto   
+--- PDF page 505 ---
+NORMA TECNICA   CEI 0 -16:2025 -12 
+ 
+ 
+498 
+ 
+ 
+O.10.2  Presa di carico in caso di ri -connessione (PF3)  
+In caso di rientro dell'impianto a seguito di uno scatto della protezione di interfaccia, la presa 
+di carico deve avvenire secondo quanto già previsto nel caso di avviamento dell'impianto. Il 
+CCI, se equipaggiato della funzione, abiliterà il rientro dell'i mpianto solo quando le condizioni 
+della rete in termini di tensione e frequenza soddisfino alle condizioni di cui al punto 8.8.7.2  
+(Condizioni di rientro a seguito di uno scatto della protezione di interfaccia) della presente 
+Norma CEI 0 -16. 
+O.10.3  Partecipazione al Mercato dei Servizi di Dispacciamento (PF3)  
+Per la partecipazione dell’impianto alla fornitura di servizi per MSD, il CCI deve implementare 
+le seguenti funzionalità:  
+• una funzione in grado di ricevere un comando esterno per il Set -Point della Potenza Attiva, 
+con le caratteristiche prescritte al punto O.10.3.1 ; 
+• le misure della Potenza Attiva al PdC per il monitoraggio dell’impianto con le caratteristiche 
+prescritte al punto O.8.5 ; 
+• i servizi logici per la comunicazione (1) (diretta o indiretta) dei comandi e misure sopra 
+definiti.  
+Il CCI deve anche disporre della capability funzionale atta a ricevere ed attuare il comando di 
+set-point di Potenza Reattiva (vedi successivo punto O.10.3.2 ) nonché della capability 
+funzionale atta ad acquisire e trasmettere la misura “istantanea” della Potenza Reattiva (Q), 
+come già previsto al punto O.8.5 . 
+Per la partecipazione al MSD è necessario che siano presenti ed attive le funzionalità di 
+regolazione e controllo secondo i principi di cui al Paragrafo  O.7.2  e seguenti.  
+O.10.3.1  Funzione Set -Point della Potenza Attiva su comando esterno  
+La funzione “Set -Point della Potenza Attiva”, una volta attivata a seguito di comando esterno, 
+obbliga l’impianto, nei limiti tecnici della capability dei suoi elementi, ad immettere al PdC il 
+valore di potenza attiva richiesta (2). La funzione può essere attivata, nel rispetto della priorità 
+fra le funzioni di regolazione, solo in presenza del canale di comunicazione: essa è pertanto 
+una funzione asservita . 
+La funzione, di base, agisce attraverso la regolazione della potenza generata dalle diverse unità 
+di generazione presenti nell'impianto, al fine di ottenere la potenza attiva richiesta al PdC.  
+Se l'impianto è dotato di sistema di accumulo, la regolazione della potenza attiva in immissione 
+può essere conseguita anche attraverso la modulazione della potenza attiva da parte del 
+sistema di accumulo, se compatibile con il suo stato di carica. L'archi tettura del CCI può anche 
+essere predisposta a tal fine.  
+In ogni caso, il CCI deve portare la potenza attiva al PdC al valore richiesto entro il tempo 
+prescritto al punto O.7.3.1 . 
+Si consideri che il valore del Set -Point della potenza attiva è dotato di segno (segno “+” per la 
+Potenza Attiva in immissione; segno “ -“ per la Potenza Attiva in assorbimento) e che 
+l’aggiornamento del suo valore deve avvenire nel rispetto dei tempi minim i di aggiornamento 
+prescritti al punto O.7.3.3 . 
+–––––––––––––– 
+(1) Il presente allegato non disciplina attualmente la modalità con la quale vengono trasportate le comunicazioni 
+per i servizi di partecipazione al MSD. Esigenze di specificare un CCI che “ non debba essere sostituito ogni volta 
+che dovesse cambiare l’Aggregatore, tutelando in tal senso i produttori e favorendo la concorrenza ” (vedi ARERA 
+“DOCUMENTO PER LA CONSULTAZIONE 298/2016/R/EEL), potrebbero portare a diverso orientamento.  
+(2) La funzione è distinta rispetto alla funzione obbligatoria per la limitazione della potenza attiva, funzione 
+quest’ultima intesa a definire il valore massimo di potenza immessa al PdC che non deve essere superato, 
+lasciando libero l’impianto di immettere v alori di potenza inferiori  
+--- PDF page 506 ---
+NORMA TECNICA   CEI 0 -16:2025 -12 
+ 
+ 
+499 
+ 
+ 
+O.10.3.2  Funzione Set -Point della Potenza Reattiva su comando esterno  
+Questa funzione è predisposta per essere attivata da un comando esterno proveniente 
+dall’Aggregatore per esigenze proprie dello stesso. La funzione “Set -Point della Potenza 
+Reattiva su comando esterno” è identica nell’implementazione alla funzione O.9.1.4  
+“Funzionamento in regolazione di tensione con erogazione di potenza reattiva su comando 
+esterno proveniente dal DSO”. 
+O.10.4  Gestione ottimizzata dell'impianto (PF3)  
+Il CCI può, nella sua architettura, prevedere anche la gestione di tutti gli elementi di impianto, 
+nell'ottica di una gestione ottimale delle risorse energetiche o in accordo ad altri criteri 
+selezionati dall'Utente e/o progettista dell'impianto.  
+La gestione ottimizzata dell'impianto potrebbe coinvolgere non solo la gestione delle unità di 
+generazione, ma anche quella eventuale del carico interno.  
+In ogni caso questi aspetti esulano dalle prescrizioni del presente allegato; lo sviluppo di questa 
+funzione è lasciata alla decisione dell’Utente e/o progettista dell’impianto.  
+O.11  Compatibilità e priorità fra le funzioni di regolazione del CCI  
+Alcune delle funzioni di regolazione possono essere potenzialmente attivabili in 
+contemporanea, purché siano fra di loro funzionalmente compatibili:  
+o Le funzioni che agiscono sulla potenza attiva sono funzionalmente compatibili con le 
+funzioni che agiscono sulla potenza reattiva;  
+o Le funzioni che agiscono sulla potenza reattiva sono reciprocamente incompatibili;  
+o Le funzioni che agiscono sul set -point della potenza attiva (“Modulazione della Potenza 
+attiva immessa al PdC su comando esterno proveniente dal DSO”, Funzione Set -Point della 
+Potenza Attiva su comando esterno) sono reciprocamente incompatibili;  
+o Le funzioni che agiscono sulla limitazione della potenza attiva possono essere attive 
+contemporaneamente alle altre; infatti, le funzioni intese a limitare la potenza attiva (“Limite 
+di potenza attiva per V≈110%Vn” e “Limitazione della Potenza attiva immes sa al PdC su 
+comando esterno proveniente dal DSO”) diventano effettivamente esecutive solo quando 
+esplicano l’azione di limitazione. Il valore di potenza attiva risultante è quello determinato 
+considerando l’ordine di priorità esecutiva delle funzioni di regolazione (1). 
+La priorità esecutiva fra le funzioni di regolazione è disciplinata nella Tabella 1 . 
+(indipendentemente dal fatto che la funzione sia stata attivata in modo asservito o autonomo)  
+–––––––––––––– 
+(1)  Ad esempio:  
+• se la funzione Set -Point P è attiva ed il suo valore è impostato a 50% Smax e la funzione Limite P è attiva 
+ed il suo valore è impostato a 70% Smax, il CCI agirà per ottenere al PdC il valore di potenza attiva pari a 
+P=50% Smax (compatibilmente con la disp onibilità della fonte primaria).  
+• se, invece, la funzione Set -Point P è attiva ed il suo valore è impostato a 80% Smax e la funzione Limite P 
+è attiva ed il suo valore è sempre impostato a 70% Smax, il CCI agirà per ottenere al PdC un valore di 
+potenza attiva pari a P=70% Smax (compatibilm ente con la disponibilità della fonte primaria).  
+Similmente: 
+- se la funzione Limite di P per V≈110%Vn è attiva ed il suo valore è impostato a 50% Smax e la funzione Limite P è attiva 
+ed il suo valore è impostato a 70% Smax, il CCI agirà per ottenere al PdC il valore di potenza attiva pari a P=50% Smax 
+(compatibilmente con la disponibilità della fonte primaria).  
+- se, invece, la funzione Limite di P per V≈110%Vn è attiva ed il suo valore è impostato a 80% Smax e la funzione Limite 
+P è attiva ed il suo valore è sempre impostato a 70% Smax, il CCI agirà per ottenere al PdC un valore di potenza attiva 
+pari a P=70% Smax (compatibilmente con la disponibilità della fonte primaria 
+--- PDF page 507 ---
+NORMA TECNICA   CEI 0 -16:2025 -12 
+ 
+ 
+500 
+ 
+ 
+Tabella 75 – Priorità fra le funzioni di regolazione  
+Funzioni di regolazione  Indice di 
+Priorità  
+Intervento del limite di potenza attiva per V≈110%VN ( O.9.2.1 ) 1 
+Limitazione potenza attiva su comando esterno del DSO (O.9.2.2 ) 2 
+Modulazione della Potenza attiva immessa al PdC su comando esterno 
+proveniente dal DSO (O.9.2.3 ) 3 
+Funzione Set -Point della Potenza Attiva su comando esterno ( O.10.3.1  4 
+Funzionamento in regolazione di tensione con erogazione di potenza reattiva 
+su comando esterno proveniente dal DSO (O.9.1.4 ) 5 
+Set point Fattore di potenza (Set -point Cos φ) (O.9.1.1 ) 6 
+Regolazione Q=f(V) ( O.9.1.3 ) 6 
+Regolazione Cos φ=f(P) O.9.1.2 ) 6 
+Funzione Set -Point della Potenza Reattiva su comando esterno  (O.10.3.2 ) 7 
+Gli indici numerici in colonna rappresentano la priorità di attivazione fra più funzioni. Più è 
+basso l'indice più è alta la priorità. Qualora venga richiesta l’attivazione di una funzione mentre 
+un’altra funzione non compatibile risulta già attiva, il CCI dovrà disciplinare la situazione 
+adottando il seguente comportamento:  
+• se la nuova funzione ha priorità esecutiva maggiore o uguale (ovvero indice numerico 
+minore o uguale) alla funzione già attiva la nuova funzione viene attivata con contestuale 
+disattivazione della precedente funzione;  
+• se la nuova funzione ha priorità minore (indice numerico maggiore) della funzione già attiva 
+la nuova funzione non viene attivata  
+Qualora venisse richiesta l’attivazione di una funzione mentre un’altra funzione compatibile  
+risulta già attiva e il soddisfacimento contemporaneo di queste due richieste risultasse 
+impossibile per raggiunti limiti tecnici dell'impianto il CCI dovrà disciplinare questa situazione 
+applicando quanto prescritto al paragrafo 8.8.6. Ad esempio se un i mpianto FV si trova ad 
+operare al massimo della potenza attiva e riceve un servizio di rete relativo ad uno scambio di 
+potenza reattiva, il suddetto impianto deve r idurre la potenza attiva immessa in modo da 
+soddisfare la richiesta di scambio di potenza reattiva  
+Se una grandezza elettrica non è soggetta all’azione di alcuna funzione di regolazione, la stessa 
+si porta alle condizioni di funzionamento nominali definite per lo specifico impianto.  
+Le funzioni di limitazione di potenza attiva in presenza di transitori di sovrafrequenza e/o di 
+aumento di potenza attiva in presenza di transitori di sottofrequenza  originatisi sulla rete (vedi 
+punti 8.8.6.3.2  e 8.8.6.3.3  della norma CEI 0 -16) che sono implementate a livello di singola 
+macchina sono prioritarie  rispetto a qualsiasi altra funzione di regolazione, autonoma o 
+asservita. Pertanto, se la suddetta funzione diventa operativa, il controllore proprio di ciascuna 
+macchina dovrà dare priorità al controllo della frequenza.  
+Nell'ambito della partecipazione ai piani di difesa, analoga priorità ha la funzione di teledistacco, 
+e la limitazione della potenza attiva su comando del DSO .  
+L'impostazione delle priorità deve essere prevista a logica variabile, al fine di permettere la 
+modifica dell'ordine delle stesse qualora si rendesse necessario cambiarlo, per ragioni dettate 
+o da problematiche di rete o da evoluzione nei servizi di mercat o. 
+Ogni variazione delle impostazioni deve essere registrata nei log dell’apparato.  
+--- PDF page 508 ---
+NORMA TECNICA   CEI 0 -16:2025 -12 
+ 
+ 
+501 
+ 
+ 
+O.12  Schemi di installazione del CCI  
+Nelle figure che seguono sono riportati alcuni schemi semplificati di possibili soluzioni 
+impiantistiche del CCI: essi devono essere considerati solo come esempi per facilitare la 
+comprensione del presente allegato.  
+Lo schema di Figura 128  fa riferimento al caso in cui il DG e il DI coincidano; la Figura 129  fa 
+invece riferimento al caso in cui DG e DI siano separati e posizionati in punti differenti 
+dell'impianto.  
+Infine la Figura 130  fa riferimento a una tipica configurazione di impianto fotovoltaico con più 
+unità generatrici sottese a un solo trasformatore. Ciascuna unità generatrice è dotata di 
+proprio  DI. 
+ 
+ – Schema semplificato della soluzione impiantistica nel caso: DG=DI  
+ 
+ 
+Controllori di unità
+Rete di comunicazione interna
+PdC
+–~ –~
+DG = DDI
+PG PI
+SPI (V,f,Vo)SPG (   ,I)
+Interfaccia 
+(IEC 61850)
+RETE ELE 
+DSO
+(1) - Le misure in ingresso al controllore sono prelevate da nuclei di misura (TA) o 
+avvolgimenti di misura (TV) già presenti in impianto; non possono essere prelevate 
+dai trasduttori dedicati alle misure “fiscali”
+(2) – Predisposizione per teledistacco (CEI 016 - 8.8.7.1)
+CONTROLLORE CENTRALE 
+DI IMPIANTO
+(1)
+DSO
+UNITA' FUNZIONALI 
+ACQUISIZIONE , 
+ELABORAZIONE, 
+COMANDO, 
+MEMORIZZAZIONE
+INTERFACCIA
+IEC 61850
+(2)
+--- PDF page 509 ---
+NORMA TECNICA   CEI 0 -16:2025 -12 
+ 
+ 
+502 
+ 
+ 
+ 
+ – Schema semplificato della soluzione impiantistica nel caso: DG≠DI 
+ 
+Controllori di unità
+–~ –~
+Rete di comunicazione interna
+PdC
+DG
+PG
+Misure 
+SPG (    ,I)
+RETE ELE 
+DSO
+DDI
+PI
+Misure 
+SPI (V,f,Vo)
+Interfaccia 
+(IEC 61850)
+CONTROLLORE CENTRALE 
+DI IMPIANTO
+(1)
+UNITA' FUNZIONALI 
+ACQUISIZIONE , 
+ELABORAZIONE, 
+COMANDO, 
+MEMORIZZAZIONE
+INTERFACCIA
+IEC 61850
+DSO
+(2)
+(1) - Le misure in ingresso al controllore sono prelevate da nuclei di misura (TA) o 
+avvolgimenti di misura (TV) già presenti in impianto; non possono essere prelevate 
+dai trasduttori dedicati alle misure “fiscali”
+(2) – Predisposizione per teledistacco (CEI 016 - 8.8.7.1)
+--- PDF page 510 ---
+NORMA TECNICA   CEI 0 -16:2025 -12 
+ 
+ 
+503 
+ 
+ 
+ 
+ – Schema semplificato della soluzione impiantistica per un impianto di 
+generazione con più unità generatrici e più DI sottese a un solo trasformatore  
+O.13  Principali caratteristiche tecniche del CCI  
+È richiesto che il CCI sia un componente di tipo industriale che rispetti le caratteristiche di 
+robustezza, isolamento, compatibilità ambientale, compatibilità elettromagnetica, nonché ogni 
+altra prescrizione di buona norma tecnica riferibile all’ambiente e d alle modalità in cui il 
+dispositivo dovrà operare.  
+O.13.1  Interfacce  
+Il CCI deve disporre di distinte interfacce di rete destinate ai servizi di comunicazione fra il CCI, 
+il DSO ed eventuali ulteriori operatori esterni abilitati al controllo da remoto. La comunicazione 
+verso gli elementi costituenti l’impianto deve essere predisposta su interfacce separate (1). 
+Devono essere assicurati tutti gli aspetti di sicurezza (cybersecurity) secondo le indicazioni 
+fornite nell’ Allegato T  della presente Norma CEI 0 -16. 
+Le modalità di integrazione del CCI nell’architettura della rete di comunicazione esulano dalle 
+prescrizioni di questo Allegato. Si veda comunque quanto precisato nella nota (2). 
+Il traffico dati fra le interfacce del CCI deve essere escluso, ovvero nessun servizio interno al 
+CCI deve consentire l’inoltro del traffico dati fra le interfacce di comunicazione. Il CCI non deve 
+attuare funzioni di switch o di bridge rispetto al traffic o dati transitante sulle proprie interfacce 
+e deve essere progettato in modo da assicurare il rispetto di questa condizione.  
+–––––––––––––– 
+(1) L’eventuale utilizzo di apparati di networking (router, switch, ecc.) a causa di complessità impiantistica e/o da 
+esigenze di comunicazioni con attori esterni dovrà opportunamente integrarsi con il CCI senza degradare le 
+prestazioni del CCI.  
+ 
+Controllori di unità
+–~ –~
+Rete di comunicazione interna
+PdC
+DG
+PG
+SPG (     ,I)
+RETE ELE 
+DSO
+DDI
+DDI
+DDI
+PI
+Misure 
+SPI (V,f,Vo)
+Interfaccia 
+(IEC 61850)
+PI
+Misure 
+SPI (V,f,Vo)
+Interfaccia 
+(IEC 61850)
+PI
+Misure 
+SPI (V,f,Vo)
+Interfaccia 
+(IEC 61850)
+CONTROLLORE CENTRALE 
+DI IMPIANTO
+(1)
+UNITA' FUNZIONALI 
+ACQUISIZIONE , 
+ELABORAZIONE, 
+COMANDO, 
+MEMORIZZAZIONE
+INTERFACCIA
+IEC 61850
+DSO
+(2)
+(1) - Le misure in ingresso al controllore sono prelevate da nuclei di misura (TA) o 
+avvolgimenti di misura (TV) già presenti in impianto; non possono essere prelevate 
+dai trasduttori dedicati alle misure “fiscali”
+(2) – Predisposizione per teledistacco (CEI 016 - 8.8.7.1)
+--- PDF page 511 ---
+NORMA TECNICA   CEI 0 -16:2025 -12 
+ 
+ 
+504 
+ 
+ 
+O.13.1.1  Caratteristiche ﬁsiche delle interfacce  
+Il CCI deve disporre di:  
+• due distinte interfacce di rete verso l’esterno dell’impianto (vedi  O.13.1.1.1 ); 
+• di una interfaccia per i servizi di configurazione e manutenzione (vedi O.13.1.1.2 ); 
+• di ulteriori interfacce secondo le esigenze per la connessione agli elementi d’impianto  
+la cui caratterizzazione è riportata nei paragrafi a seguire.  
+O.13.1.1.1  Interfacce di rete verso l’esterno  
+Per la gestione delle comunicazioni verso l’esterno il CCI deve prevedere due distinte interfacce 
+di rete, di tipologia ethernet conforme allo standard IEEE 802.3 -2015, in modo da distinguere 
+in modo chiaro i servizi ad esse associate.  
+Le interfacce di rete devono essere così distinte:  
+Eth_A) Comunicazione verso il DSO 
+Eth_B) Comunicazione verso ulteriori attori abilitati alla connessione remota (1) 
+La suddetta interfaccia di rete Eth _B deve essere di ba se del tipo 10BaseT / 100BaseTX  auto 
+negotiation, auto MDI/MDIX (2)  
+L’interfaccia di rete Eth_A deve essere del tipo 100BaseFX, realizzata con tecnologia di tipo 
+ottico con connettore doppio LC per fibra multimodale 1310 nm.  
+Le interfacce di rete devono inoltre supportare servizi di comunicazione basati su:  
+• protocolli TCP/ IPv4 (obbligatorio) ed eventualmente IPv6 (facoltativo)  
+• protocolli della famiglia IEC 61850 (MMS, GOOSE)  
+• SSL client e server (con supporto TLS 1.2 e superiori in accordo con gli standard  
+CEI EN IEC 62351 -3, -8 e -9) 
+• funzionalità DHCP e DNS Forwarding  
+Lo stato di queste due interfacce di rete (stato del link fisico e del link dati) deve essere reso 
+disponibile nei log di apparato (vedi punto O.15 ). La verifica del link dati deve consentire di 
+rilevare la presenza o l’assenza del servizio logico di comunicazione.  
+Per entrambe le interfacce l’accesso ai servizi logici deve rispondere ai criteri di sicurezza 
+(cyber security) definiti in Allegato T.  
+O.13.1.1.2  Interfaccia per i servizi locali di Configurazione e Manutenzione del CCI  
+L’interfaccia è dedicata alle attività di prima configurazione o manutenzione di apparato in caso 
+di recovery  
+Questa interfaccia può essere realizzata con tecnologia seriale o porta USB.  
+È esclusa la tecnologia di comunicazione IP per ragioni di sicurezza.  
+Su tale porta devono essere implementate tecnologie per il riconoscimento degli utenti che 
+chiedono l’accesso all’apparato, al fine di assicurare una efficace protezione contro gli accessi 
+non autorizzati.  
+–––––––––––––– 
+(1) Utente Remoto e/o Aggregatore  
+(2) La port a può essere predisposta come modulo transceiver innestabile di tipo small form -factor pluggable 
+(SFP).  
+--- PDF page 512 ---
+NORMA TECNICA   CEI 0 -16:2025 -12 
+ 
+ 
+505 
+ 
+ 
+O.13.1.2  Servizi logici di comunicazione con il DSO 
+L'interfaccia di rete Eth_A verso il DSO deve rendere possibile l'interscambio di informazioni 
+(misure, segnali e comandi) attraverso un canale logico di comunicazione secondo standard 
+EN 61850, con le modalità previste nell'Allegato T e sommariamente richiamate in Appendice 
+O-1 (Interscambio di informazioni e comandi fra DSO e CCI).  
+Tali segnali di interscambio devono interagire solo col CCI: nessuna interazione diretta con le 
+apparecchiature e i dispositivi di manovra/protezione dell'impianto deve essere prevista.  
+La disponibilità del canale di comunicazione consente di rendere tutte le funzioni di regolazione 
+idonee al funzionamento asservito. I parametri che caratterizzano le funzioni di regolazione 
+nonché lo stato di attivazione/disattivazione delle stesse devono  essere acquisiti direttamente 
+dal CCI, sempre attraverso il canale di comunicazione EN 61850.  
+L’aggiornamento di qualsiasi dato previsto nel data model descritto in Allegato T , 
+indipendentemente dalla causa che ha portato alla modifica del dato, deve essere reso 
+tempestivamente disponibile ai servizi logici di comunicazione verso il DSO ed ai servizi logici 
+di comunicazione verso gli attori abilitati alla connessione remota.  
+Nel caso il CCI assolva funzionalità di controllo e si verifichi la perdita della comunicazione con 
+il DSO, il CCI deve automaticamente passare ad una modalità di funzionamento preconfigurata. 
+Il passaggio a tale modalità di regolazione autonoma dovrà avvenire non prima di un tempo 
+predefinito, sufficiente ad assicurarsi che la perdita della comunicazione sia definitiva. Nel 
+momento in cui la comunicazione viene ripristinata, il CCI deve tornare ad attuare quanto 
+richiesto dal DSO. 
+Le modalità di funzionamento preconfigurate nonché il tempo di attesa per il passaggio a tale 
+modalità sono concordate con il DSO attraverso il regolamento di esercizio (1). 
+Si deve altresì tener conto di quanto indicato nell’ Allegato T  riguardo alle prescrizioni di 
+cybersecurity relative ai suddetti servizi.  
+O.13.1.3  Servizi logici di comunicazione con attori abilitati alla connessione remota  
+L’interfaccia di rete Eth_B è dedicata ai servizi logici di comunicazione verso gli attori abilitati 
+alla connessione remota. Fatte salve le prescrizioni già richiamate al punto O.13.1.1 .1 e nel 
+resto del presente allegato per quanto applicabile al servizio di comunicazione con gli attori 
+esterni abilitati, questo allegato non disciplina le modalità di scambio dati attraverso questa 
+interfaccia. Si deve comunque tener conto comunque di quant o indicato nell’ Allegato T  riguardo 
+alle prescrizioni di cybersecurity relative ai suddetti servizi, applicabili a protocolli normati da 
+enti o organismi internazionali, quali IEC, ITU -T, IETF.  
+L’aggiornamento di qualsiasi dato previsto nel data model descritto in Allegato T , 
+indipendentemente dalla causa che ha portato alla modifica del dato, deve essere reso 
+tempestivamente disponibile ai servizi logici di comunicazione verso il DSO ed ai servizi logici 
+di comunicazione verso gli attori abilitati alla connessione remota.  
+Qualora vengano attivate le funzionalità per la partecipazione al Mercato dei Servizi di 
+Dispacciamento (vedi Paragrafo  O.10.4 ) i servizi logici di comunicazione con l’Aggregatore  
+sono associati di base alla stessa interfaccia di rete Eth_B (2).  
+In caso di perdita della comunicazione con l’Aggregatore, il CCI deve automaticamente passare 
+ad una modalità di funzionamento pre -configurata. Il passaggio a tale modalità di regolazione 
+autonoma dovrà avvenire non prima di un tempo predefinito, sufficien te ad assicurarsi che la 
+perdita della comunicazione sia definitiva. Nel momento in cui la comunicazione viene 
+ripristinata, il CCI rende nuovamente disponibili i servizi logici di comunicazione con 
+l’Aggregatore.
+–––––––––––––– 
+(1) Il DSO, tramite Regolamento di Esercizio, stabilisce  quali funzioni debbano essere configurate per attivarsi 
+in modalità autonoma in caso di perdita della comunicazione. Queste funzioni si attiveranno rispettando le regole 
+di priorità già definite in O.11  e resteranno attive sino al ritorno della comunicazione.  
+(2) Il modello attualmente considerato esclude che vi siano più Aggregatori contemporaneamente interfacciati 
+alla medesima risorsa di GD  
+--- PDF page 513 ---
+NORMA TECNICA   CEI 0 -16:2025 -12 
+ 
+ 
+506 
+ 
+ 
+La modalità di funzionamento pre -configurata nonché il tempo di attesa per il passaggio a tale 
+modalità sono concordate con l’Aggregatore, previa verifica con il DSO (1). 
+O.13.1.4  Interfaccia del CCI con gli elementi di impianto  
+L'interfaccia verso gli elementi dell'impianto coordinati dal CCI deve permettere l'interscambio 
+di informazioni con gli stessi attraverso una (o più) reti di comunicazione interne (hardwired, 
+seriale, ethernet), che trasportano informazioni tramite protoc olli industriali (modbus RTU, 
+modbus TCP, 61850, ecc.) idonei per caratteristiche ad assicurare le prestazioni richieste.  
+La scelta della tipologia e l'architettura delle reti di comunicazione interne all'impianto è lasciata 
+all’Utente, in funzione delle prestazioni funzionali a cui il CCI dovrà rispondere (2). 
+In nessun caso potranno essere utilizzate le interfacce di rete riservate Eth_A ed Eth_B.  
+La presenza di comunicazione fra il CCI e gli elementi di impianto deve essere costantemente 
+monitorata dal CCI.  
+O.13.1.5  Interfaccia degli elementi di impianto verso il CCI  
+Gli elementi di impianto, per potere essere monitorati e coordinati dal CCI, devono prevedere 
+una interfaccia per consentire l'interscambio di informazioni fra gli elementi di impianto e il CCI.  
+La presenza di comunicazione fra gli elementi di impianto ed il CCI deve essere costantemente 
+monitorata dagli stessi elementi.  
+Quando il CCI è operativo ed il canale di comunicazione è attivo, gli elementi da lui coordinati 
+devono operare in modalità di funzionamento assoggettata al CCI. (3) 
+In caso contrario, gli elementi di impianto operano secondo le funzioni di regolazione previste 
+nella presente Norma CEI 0 -16 per i singoli apparati.  
+In questo modo, pur venendo meno la funzione di regolazione delle grandezze al punto di 
+connessione secondo la logica di controllo governata dal CCI, è possibile, grazie alle logiche 
+implementate sui singoli elementi, utilizzare le capability di supporto a lla rete integrate negli 
+stessi elementi, come previste dalla presente Norma CEI 0 -16. 
+O.13.2  Ingressi di misura  
+Il CCI deve essere dotato, direttamente o per il tramite di opportuni dispositivi di trasduzione, 
+acquisizione e misura, di un numero adeguato di ingressi atti a ricevere segnali per le misure 
+di V, P, Q al PdC richieste al capitolo O.8.3, nonché delle misur e richieste ai capitoli O.8.4 e al 
+capitolo O.8.5, in tutti i casi rispettando i requisiti ivi prescritti in termini di accuratezza delle 
+misure, frequenza di aggiornamento e tipologia di misur e. 
+O.13.2.1  Prescrizioni relative ai trasduttori ed ai convertitori di misura  
+Sono richieste le seguenti prestazioni:  
+• Classe di precisione del convertitore di misura <= 0,2;  
+• Classe di precisione per i TA e TV: <= 0.5;  
+• Prestazione nominale (ove applicabile): 5 o 10 VA.
+–––––––––––––– 
+(1) L’aggregatore  stabilisce, in accordo con il proprietario dell’impianto  ed il DSO, quali funzioni debbano essere 
+configurate per attivarsi in modalità autonoma in caso di perdita della comunicazione. Queste funzioni si 
+attiveranno rispettando le regole di priorità già definite in O.10  e resteranno attive sino al ritorno della 
+comunicazione.  
+(2) Ad esempio, se l'impianto deve partecipare ai Mercato dei Servizi di Dispacciamento (Funzione Set -Point 
+della Potenza Attiva su comando esterno) la rete di comunicazione interna deve presentare caratteristiche 
+prestazionali, coerenti con i servizi richiest i e con le tempistiche necessarie.  
+(3) Deve  comunque essere preservata la sicurezza dell’impianto; di conseguenza deve essere garantita al 
+produttore la gestione dell’impianto in accordo con i relativi vincoli di sicurezza e corretto funzionamento,  
+--- PDF page 514 ---
+NORMA TECNICA   CEI 0 -16:2025 -12 
+ 
+ 
+507 
+ 
+ 
+Il rilevamento delle misure si potrà effettuare anche mediante l’utilizzo di trasduttori non 
+convenzionali conformi alle prescrizioni della presente Norma ed alla classe di precisione sopra 
+indicata.  
+Nel caso vengano utilizzati trasduttori di misura comuni ad altri servizi, quali misura o 
+protezione, deve essere assicurata l’assenza di interferenze fra i rispettivi utilizzi, adottando, 
+se necessario, avvolgimenti o nuclei dedicati. È esclusa la possibi lità di utilizzare i TA e TV 
+dedicati alle misure di tipo fiscale. Per le misure di P prodotta dall’impianto aggregata per fonte 
+e per le misure di P delle unità di generazione indicate al Paragrafo  O.8.4  comma c), laddove 
+fossero necessari TA, TV e Convertitori  di misura, questi devono avere le stesse caratteristiche 
+indicate per le misure al PdC.  
+Con tali prestazioni si ottempera ai requisiti di accuratezza richiesti dall'Allegato A.6 al Codice 
+di rete, Tabelle 5 e 6. Prestazioni differenti sono accettabili purché l’accuratezza delle misure 
+da rendere disponibili all'interfaccia del CCI con il DSO  siano congruenti con quanto richiesto 
+da detto allegato.  
+Ai sensi dell’ All. A.72 al Codice di rete , per gli impianti di produzione fotovoltaici ed eolici di 
+potenza compresa fra 100 kW e inferiori a 500 kW  è consentita un’accuratezza con errore non 
+superiore al 5% .  
+ 
+O.13.3  Alimentazione  
+I circuiti di alimentazione del CCI e degli associati apparati per la comunicazione dati devono 
+essere alimentati da una sorgente di tensione ausiliaria, la cui disponibilità deve essere 
+garantita da un UPS o batterie in tampone per almeno un’ora (1). 
+O.13.4  Aggiornamento firmware/software  
+Il CCI deve prevedere l’aggiornamento del proprio firmware/software  attraverso appropriata 
+procedura al fine di correggere errori e/o vulnerabilità dello stesso.  
+L’attività di aggiornamento del firmware/software  potrebbe comportare disservizi nelle 
+funzionalità del CCI (ad esempio interruzione delle funzioni di monitoraggio e regolazione), 
+nonché causare malfunzionamenti (ad esempio comportamenti anomali o mancato riavvio 
+dell’apparato).  
+Il CCI deve quindi permettere l’aggiornamento del proprio firmware/software  solo a valle di una 
+procedura che:  
+i. disattivi le funzionalità del CCI in modo controllato,  
+ii. certifichi la piena integrità ed originalità del nuovo firmware/software  mediante procedura 
+di verifica della firma digitale dello stesso, basata su certificato del Costruttore 
+dell’apparato  
+iii.  controlli, mediante le modalità di autenticazione descritte nell’ Allegato T  (sezione 
+T.3.3.4.8) , le credenziali e le autorizzazioni dell’Utente che attiva la procedura di 
+aggiornamento.  
+La procedura (2) deve essere attivata solo dall’Utente, previa comunicazione informativa al DSO 
+(ed ad eventuali ulteriori operatori esterni abilitati). Le modalità e le tempistiche con cui 
+–––––––––––––– 
+(1) Nel caso b) la prescrizione riguarda la sezion e di apparato deputata a fornire le funzionalità del CCI.  
+(2) Al fine di assicurare un processo di aggiornamento sicuro, sarebbe opportuno che la procedura definita 
+dall’Utente, in coordinamento con il Costruttore dell’apparato, preveda di:  
+• proteggere il processo di aggiornamento attraverso una procedura di autenticazione delle entità coinvolte 
+basata su infrastruttura a chiave pubblica;  
+• proteggere opportunamente le immagini di backup a riposo su repository dedicate accessibili solo previa 
+autenticazione;  
+• proteggere il processo di trasporto dell’immagine attraverso un opportuno canale cifrato;  
+• proteggere le credenziali di autenticazione dell’Utente che attiva la procedura di aggiornamento, 
+attraverso un’area sicura del device, permettendo di cambiarle.  
+--- PDF page 515 ---
+NORMA TECNICA   CEI 0 -16:2025 -12 
+ 
+ 
+508 
+ 
+ 
+effettuare tale informativa saranno concordate con il DSO e riportate nel Regolamento di 
+esercizio.  
+L’attività di aggiornamento del firmware/software  deve essere registrata nel Data logger di 
+sistema. Nessuna fase della procedura deve cancellare i dati presenti nel suddetto Data logger.  
+Ulteriori prescrizioni relative alla cybersecurity sono contemplate nell’ Allegato T . 
+O.13.5  Orologio interno e sincronizzazione  
+Il CCI deve essere dotato di un ricevitore GPS al fine di acquisire e mantenere sincronizzato 
+l’orario.  
+L’orario sarà espresso con riferimento al tempo UTC (Coordinated Universal Time), fuso orario 
+di Greenwich (1) . L’incertezza del riferimento temporale non può essere superiore a +/ - 100 ms.  
+In assenza momentanea di sincronismo esterno o in caso di disalimentazione, l’orologio interno 
+del CCI dovrà mantenere l’orario con una deriva massima ammessa di 1s/giorno in tutto 
+l’intervallo delle temperature di funzionamento ammesse.  
+Nel caso il ricevitore GPS non fosse direttamente integrato nel CCI, il protocollo di 
+comunicazione per la sincronizzazione temporale ed i relativi aspetti di cyber security vengono 
+trattati nell’ Allegato T . 
+O.13.6  Autodiagnostica  
+Il CCI deve includere le funzioni di autodiagnostica necessarie a rilevare e segnalare le 
+eventuali anomalie di funzionamento interne al sistema o localizzabili nell'interfaccia con i 
+sistemi con cui si interconnette, anomalie che possono compromettere il normale svolgimento 
+delle funzioni cui il CCI è destinato.  
+In caso di anomalie sulle interfacce (inclusa l'assenza di comunicazione) la funzione di 
+autodiagnostica deve prevedere una procedura di controllo che, una volta rilevata l'anomalia, 
+disattivi la modalità di funzionamento asservita e/o le funzioni di regol azione eventualmente 
+attive e attivi le funzioni di regolazione autonome, utilizzando i parametri specificamente definiti 
+per tali regolazioni in fase di configurazione.  
+Qualora venga autodiagnosticata una anomalia nell’hardware o nel software del CCI tale da 
+rendere la funzione di regolazione non operativa alle condizioni di specifica, la funzionalità del 
+CCI deve essere disattivata automaticamente, così che gli elementi di impianto da esso 
+controllati possano passare a funzionare nella loro modalità autonoma.  
+In caso di anomalie relative alle funzionalità di monitoraggio, le indicazioni di qualità associate 
+alle misure devono essere appropriatamente valorizzate.  
+Nel caso di intervento della funzione di autodiagnostica con conseguente fuori servizio del CCI, 
+deve essere previsto appropriato segnale di allarme da registrare nel Data Logger completo di 
+ogni indicazione diagnostica disponibile (vedi O.14 ). 
+O.13.7  Cybersecurity Hardware  
+Il CCI non deve esporre porte fisiche di test attive.  
+Il CCI deve inoltre essere protetto contro possibili manomissioni con soluzioni appropriate quali 
+ad esempio:  
+• Circuiti che invalidano la NVRAM quando viene aperto l’involucro  
+• Sensori che bruciano fusibili di sicurezza quando viene rilevata la luce  
+• Sensori che attivano un avviso quando viene modificata la posizione del dispositivo  
+• Copertura epossidica dei componenti del circuito core  
+–––––––––––––– 
+(1) In coerenza a quanto previsto nel Codice di Rete, allegato A.13, paragrafo 6.1.3.4  
+--- PDF page 516 ---
+NORMA TECNICA   CEI 0 -16:2025 -12 
+ 
+ 
+509 
+ 
+ 
+• Avvisi generati quando componenti interni vengono rimossi dal dispositivo  
+O.13.7.1  Bootloader  
+Devono essere disabilitate le funzionalità interattive di avvio offerte dal bootloader e deve 
+essere preclusa la possibilità di modificare le configurazioni dello stesso bootloader.  
+Qualora fosse utilizzata una password di blocco del bootloader, questa protezione non deve 
+essere aggirata facilmente.  Inoltre, il Bootloader deve essere archiviato in una partizione sicura 
+che non deve essere sovrascritta in fase di aggiornamen to del firmware o accessibile/ modificata 
+dalla partizione del firmware stesso.  
+O.13.7.2  Asset Inventory  
+Il CCI deve essere predisposto per essere interfacciabile ad un’infrastruttura di Asset Inventory, 
+come indicato nell’ Allegato T  alla presente Norma.  
+Inoltre, deve poter essere configurato al fine di rendere disponibile un elenco aggiornato dei 
+campi utili alla sua identificazione univoca, attraverso il supporto di Application Programming 
+Interfaces (API) dedicate.  
+O.13.10  Affidabilità  
+Devono essere rispettati i requisiti di affidabilità, intesi come disponibilità (“Availability”), 
+espressi al Codice di Rete, Allegato A.13 Paragrafo  6.2, ai quali deve ottemperare il soggetto 
+a cui è attribuita la responsabilità dell’installazione e manutenzione degli apparati IED e del 
+relativo collegamento verso il DSO. 
+ 
+O.14  Data logger  
+Deve essere prevista una funzione di memorizzazione degli eventi (data logger), con lo scopo 
+di permettere la verifica della corretta disponibilità del CCI e del suo stato di funzionamento.  
+Il controllo del corretto funzionamento del CCI deve avvenire con la verifica di:  
+• presenza dell'alimentazione del CCI  
+• presenza/assenza della comunicazione verso il DSO 
+• presenza/assenza della comunicazione verso gli operatori esterni (stato del link fisico e del 
+link dati)  
+• presenza/assenza della comunicazione verso gli elementi di impianto coordinati dal CCI 
+(stato del link fisico e del link dati)  
+• funzionalità del CCI  
+• funzionalità dei dispositivi per la misura  
+L’esito della verifica deve essere registrato nel log del CCI.  
+Devono inoltre essere memorizzate le seguenti informazioni:  
+• stato (Ap/Ch) del dispositivo generale (DG)  
+• stato (Ap/Ch ) del/dei dispositivo di interfaccia (DI)  
+• accensione/spegnimento (e relativa causa) del CCI  
+• aggiornamento firmware (compresa versione) ed aggiornamenti del firmware non riusciti;  
+• Connessioni e/o disconnessioni alla rete di comunicazione ad intervalli irregolari.  
+• Connessione a endpoint di servizio anomali o connessione a endpoint di servizio in momenti 
+inappropriati.  
+--- PDF page 517 ---
+NORMA TECNICA   CEI 0 -16:2025 -12 
+ 
+ 
+510 
+ 
+ 
+• Una fingerprint del traffico di rete significativamente diversa dal normale (ad es. tali da 
+connotare casi di port scanning, deep scanning, etc)  
+• Messaggi mal formati ed errori di verifica dell'autenticità dei messaggi  
+• Tentativi di autenticazione falliti  
+• Autenticazioni riuscite  
+• Modifica dell'ora del sistem a 
+• Tentativi di modifica delle chiavi o delle credenziali non riusciti  
+• Modifiche a chiavi o credenziali.  
+• Ripristino dei registri di allarme o di errore;  
+Qualora fosse utilizzata una password di blocco del bootloader (secondo O.13.7.1 ), devono 
+essere aggiunti i seguenti eventi:  
+• Tentativi di autenticazione al boot non riusciti  
+• Autenticazioni al boot riuscite;  
+Inoltre  devono essere memorizzate le seguenti ulteriori informazioni:  
+• stato di avvio/arresto/attivazione delle funzioni di regolazione (1) 
+• eventi che hanno causato l’emissione di comandi dal CCI verso gli elementi d’impianto da 
+esso coordinati (quali superamento soglia 110% Vn, intervento di una funzione di 
+regolazione, attuazione di un set -point, ecc)  
+• comandi da parte del DSO, con relativi parametri  
+• comandi da parte di eventuali ulteriori attori abilitati, con relativi parametri  
+• intervento della protezione generale (PG)  
+• intervento della protezione di interfaccia (PI)  
+• intervento della funzione che attua il piano di difesa (Teledistacco Allegato M)  
+• intervento della regolazione di sovra (e sotto frequenza) da parte delle macchine/unità 
+controllate  
+La memorizzazione degli eventi sopra citati completi di data e ora (yyyy/mm/gg hh:mm:ss,d) 
+deve estendersi per non meno di 2048 eventi e deve avvenire su un supporto interno non 
+sovrascrivibile dall’Utente; deve essere consentita la lettura e l’esportazion e dei dati in memoria 
+mediante un'interfaccia resa disponibile dal costruttore del CCI (per esempio, software fornito 
+a corredo).  
+L’accesso al data logger deve essere protetto con le usuali procedure (username/password, ecc.).  
+Per quanto concerne le logiche associate alla diagnostica dei circuiti Amperometrici/Volmetrici 
+si rimanda a quanto già stabilito per il data logger associato alla PG ai punti C.3.2.9  e C.3.2.10  
+di questa Norma.  
+Il CCI deve consentire all’Utente la lettura remota dei file di log utilizzando un protocollo 
+standard (ad esempio, utilizzando un sistema SIEM -Security Information Event Management - 
+tramite protocollo syslog, secondo la RFC 5424  e RFC 5425  come indicato in T.3.3.4.6.1 ). 
+O.15  Prove  
+Le prove da eseguire sul CCI al fine di verificare la conformità del CCI a quanto specificato in 
+questo Allegato O sono:  
+• prove funzionali ( O.15.1 ) 
+–––––––––––––– 
+(1) Si veda l’ O.1 per una descrizione degli stati operativi delle funzioni di regolazione  
+--- PDF page 518 ---
+NORMA TECNICA   CEI 0 -16:2025 -12 
+ 
+ 
+511 
+ 
+ 
+• prove di conformità generale ( O.15.2 ) 
+• prove relative alla cybersecurity  hardware  (O.15.3 ) 
+Qualora il CCI sia realizzato come funzionalità integrata in altri elementi d’impianto (ad esempio 
+integrato come funzionalità aggiuntiva nel controllore dell’inverter di una unità di generazione 
+operante come Master per le altre unità oppure funzionalità integrata in un dispositivo di 
+protezione) le prove funzionali e le prove relative alla cybersecurity devono essere effettuate 
+mantenendo abilitate le funzionalità di entrambi i dispositivi (funzionalità proprie del CCI e 
+funzionalità del dispositivo integ rante); le prove funzionali riguarderanno le funzionalità proprie 
+del CCI assicurando nel contempo l’assenza di interferenze rispetto alle funzionalità previste 
+per il dispositivo integrante e viceversa.  
+O.15.1  Prove funzionali  
+Lo scopo delle prove funzionali descritte nel presente paragrafo è quello di verificare la capacità 
+del solo CCI di operare in accordo alle prescrizioni funzionali prescritte in base alle funzionalità 
+che il CCI deve assolvere (1) (vedi Articolo  O.6). 
+Deve essere verificata l’accuratezza della misura in accordo alla classe di precisione del 
+convertitore di misura, l’immunità alle grandezze di disturbo ed il rispetto delle periodicità di 
+aggiornamento.  
+Deve essere verificata la corretta comunicazione del CCI secondo standard IEC 61850, in base 
+a quanto indicato nell’ Allegato T , sia per la trasmissione dei segnali e delle misure che per la 
+ricezione ed attuazione dei comandi.  
+Deve essere verificata la funzionalità di autodiagnostica di cui al punto O.13.6, verificando che 
+vengano eseguite correttamente le procedure previste sia in caso di perdita di comunicazione  
+IEC 61850 che in caso di degrado operativo del CCI.  
+Devono essere anche verificate le funzionalità del data logging come previste al punto O.14, 
+nonché ogni altra funzionalità prescritta nel presente allegato in base alle funzionalità che il 
+CCI deve assolvere.  
+Per le prestazioni di regolazione e controllo, sia in modalità autonoma che asservita, deve 
+essere verificato, per ogni funzionalità del CCI, che modificando i parametri di opportuni segnali 
+in ingresso al CCI caratterizzanti le singole funzioni che devono  essere verificate, si presentino 
+alle uscite comandi di controllo coerenti con la funzione richiesta.  
+Deve inoltre essere verificato che al decadere di ogni funzione imposta, il CCI ri -attivi la 
+funzione di regolazione pre -configurata di default e presenti in uscita segnali ad essa coerenti  
+Si deve infine verificare che in caso di interruzione della comunicazione dati il CCI, dopo il time -
+out di attesa stabilito, ri -attivi la funzione pre -configurata.  
+O.15.2  Prove di conformità generale  
+Le prove di conformità generale sono quelle di cui alla norma CEI EN 61557 -12 (2). Esse 
+dovranno verificarne le prescrizioni con le modalità ivi previste.  
+La classe di temperatura di riferimento non deve essere inferiore a K55, come definita nella 
+CEI EN 61557 -12. Non è richiesta la qualifica di PMD -A. 
+Per i dispositivi integrati, valutando che le tematiche inerenti la sicurezza sono preminenti nel 
+dispositivo ospitante (che è atteso presentare maggiore superfici esposte, propri input ed output, 
+ecc) è necessario che l’integrazione del CCI avvenga nel qu adro di riferimento della normativa 
+del dispositivo integrante, rispettando nel contempo le prescrizioni della CEI  EN 61557 -12 per 
+quanto applicabili ed utilizzando i livelli più severi in caso di sovrapposizione.   
+–––––––––––––– 
+(1) L’ Allegato O  prevede sia funzioni obbligatorie (PF1) sia funzioni opzionali (PF2) sia funzioni facoltative 
+(PF3): il CCI deve essere verificato rispetto a tutte le funzioni PF1, PF2, PF3.  
+(2) La norma CEI EN 61557 -12 richiama, fra le altre, la norma IEC 61010 -1 e le parti applicabili della stessa 
+serie, fra le quali, considerando il ruolo di controllore svolto dal CCI, si ritiene opportuno segnalare la  
+IEC 61010 -2-201 
+--- PDF page 519 ---
+NORMA TECNICA   CEI 0 -16:2025 -12 
+ 
+ 
+512 
+ 
+ 
+O.15.3  Prove relative alla Cybersecurity Hardware  
+Per quanto concerne gli aspetti relativi alla cybersecurity hardware del CCI, per il componente 
+crittografico deve essere certificato almeno il livello 3 del grado di resistenza alla manomissione 
+attraverso certificazioni standard del settore ( Federal Information Processing Standards - FIPS 
+140-2 “Security Requirements for Cryptographic Modules” ) ottenute da entità indipendenti.  
+O.15.4  Conformità dell'apparecchiatura  
+Il CCI deve essere dotato di marcatura CE.  
+La rispondenza ai requisiti elencati nei punti precedenti deve essere attestata da “Dichiarazione 
+di conformit à̀” dell’apparecchiatura. Tale Dichiarazione di conformit à deve essere emessa a 
+cura e responsabilit à̀ del Costruttore, nella forma di autocertif icazione da parte del Costruttore 
+medesimo, redatta ai sensi dell’ Articolo  47 del DPR 28 dicembre 2000, n. 445, e deve essere 
+resa disponibile dall’Utente al Distributore all’atto della connessione.  
+La documentazione attestante il superamento delle prove (rapporti di prova) deve essere 
+conservata dal costruttore per almeno 20 anni dall’ultima produzione. La medesima 
+documentazione deve comunque essere resa disponibile al Distributore a cura del Co struttore 
+sul proprio sito web.  
+La “Dichiarazione di conformità” dell’apparecchiatura deve contenere tutte le informazioni 
+necessarie all’identificazione del dispositivo. Le prove possono in alternativa avvenire:  
+a) presso un laboratorio di terza parte accreditato secondo la Norma CEI UNI EN 
+ISO/IEC 17025, oppure  
+b)  presso i laboratori del costruttore, o laboratori esterni non accreditati sotto la sorveglianza 
+di un ente di certificazione accreditato secondo la Norma CEI UNI EN ISO/IEC 17065 . 
+Si deve inoltre prevedere l’attestazione che la produzione del dispositivo avviene in regime di 
+qualit à̀ (secondo ISO 9001, ed. 2000 [e s.m.i.]). Tale attestazione deve essere parimenti 
+emessa a cura e responsabilit à̀ del Costruttore e deve essere consegna ta, su richiesta, 
+dall’Utente al Distributore all’atto della connessione.  
+Le certificazioni di conformità agli standard della serie IEC 61850 devono essere rilasciate da 
+un laboratorio accreditato dallo UCA User Group.  
+I test di conformità del profilo di trasporto sicuro definito dallo standard IEC 62351 -3 sono 
+descritti nella specifica tecnica IEC 62351 -100-3 “Conformance test cases for IEC 62351 -3, the 
+secure communication extension for profiles including TCP/IP ”. La certificazione di conformità 
+alla Norma IEC 62351 -100-3 è richiesta per il profilo di trasporto sicuro IEC 62351 -3 delle 
+interfacce di comunicazione del CCI basate su protocollo IEC 61850. Il relativo certificato di 
+conformità deve essere rilasciato da un e nte di certificazione accreditato.  
+Per la sicurezza del prodotto CCI è richiesta la certificazione  di conformità alle norme IEC 
+62443 -4-1 “Security for industrial automation and control systems - Part 4 -1: Secure product 
+development lifecycle requirements” e IEC 62443 -4-2 “Security for industrial automation and 
+control  systems – Part  4-2: Technical security requirements for IACS components”.  
+Il dispositivo CCI nel suo complesso richiede la certificazione di conformità alle Norme ISA/IEC 
+62443 - 4-1 e ISA/IEC 62443 -4-2 con Capability Security Level 1 (SL1). In aggiunta alla 
+certificazione SL1 dell’apparato, il costruttore deve produrre una proce dura di assessment, 
+eseguita preferibilmente a cura dell’ente certificatore o, in subordine, da altro ente accreditato, 
+che per i requisiti sotto indicati attesti la rispondenza del CCI a Livelli di Sicurezza superiori, in 
+particolare:  
+• Requisito FR1: livello minimo SL2  
+• Requisito FR2: livello minimo SL2  
+• Requisito FR3: livello minimo SL2, mantenendo il livello SL1 per le porte locali verso il 
+campo  
+--- PDF page 520 ---
+NORMA TECNICA   CEI 0 -16:2025 -12 
+ 
+ 
+513 
+ 
+ 
+• Requisito FR7: livello minimo SL3.  
+Per la certificazione è ammessa l’applicazione di entrambi gli schemi di certificazione 
+ISASecure Component Security Assurance (CSA) 1.0.0 e IEC -EE. 
+Nel caso di applicazione dello schema IEC -EE è richiesta la certificazione di conformità alla 
+Norma ISA/IEC 62443 -4-1 con livello minimo di maturità ML3.  
+Gli attestati di prova, le certificazioni e le dichiarazioni di conformità devono essere specifiche 
+per le diverse funzionalità del CCI e devono essere disponibili in accordo alla priorità 
+determinat e dall e deliber e ARERA 36/2020/R/ EEL  e 385/ 2025/R/ EEL . 
+O.15.5  Prove di commissioning  
+Tali prove hanno lo scopo di verificare:  
+• che l'insieme CCI, rete di comunicazione interna di impianto, controllori e dispositivi di misura 
+delle singole unità di generazione, sia configurato correttamente;  
+• che l'interfaccia fra CCI e DSO sia configurata in maniera da assicurare sia il trasferimento 
+delle informazioni verso DSO sia il recepimento dei comandi da DSO (interoperabilità  e 
+cybersecurity ). 
+Il piano delle prove di commissioning relative all'interoperabilità ed alla  cybersecurity deve 
+essere concordato con il DSO di pertinenza e pianificato in relazione alle funzionalità attive sul 
+CCI secondo le priorità stabilite da ARERA.  
+Nel caso in cui la procedura del processo di aggiornamento del firmware non sia stata in grado 
+di proteggere le entità basate su certificati, devono essere eseguite dette prove e/o altre prove 
+funzionali che si rendessero necessarie atte a verificare la co rretta operabilità del CCI.
+--- PDF page 521 ---
+NORMA TECNICA   CEI 0 -16:2025 -12 
+ 
+ 
+514 
+ 
+ 
+APPENDICE App.O -1 
+(informativa)  
+ 
+Interscambio  di informazioni fra DSO e CCI  
+App. O-1.1 Generalità  
+Lo scambio informativo con il DSO secondo standard EN 61850 è disciplinato nell’allegato T.  
+Al fine di esplicitare come associare le informazioni richieste nell’ Allegato T  ai dati disponibili 
+al CCI, vengono qui forniti alcuni esempi.  
+Lo scambio delle informazioni può avvenire su richiesta, oppure su base periodica.  
+I messaggi informativi sono concettualmente raggruppati in base al contenuto informativo 
+trasportato nelle categorie indicate nella Tabella 1  dell' Allegato T  qui ripresa nella seguente 
+tabella App.  
+Tabella App.O -1 - 1: Organizzazione dei messaggi da scambiare  
+Messaggi relativi alle caratteristiche dell’impianto  Informazioni provenienti dall’impianto e riguardano la 
+configurazione, le caratteristiche e le capacità nominali.  
+Queste informazioni derivano dall’impianto e non sono 
+oggetto di modifica da parte di processi remoti.  
+Trattasi dei dati della corrispondente sezione 
+dell'allegato T da compilare sulla base di informazioni 
+essenzialmente ricavabili dal Regolamento di Esercizio.  
+Le informazioni sono divise in tre parti (macro -blocchi):  
+− Caratteristiche Generali di Impianto;  
+− Caratteristiche dell’insieme dei Generatori;  
+− Caratteristiche dell’insieme dei Sistemi di accumulo.  
+Sono dati da immettere contestualmente con il 
+Regolamento di esercizio ed essendo relativi alle 
+caratteristiche statiche dell'impianto essi vanno 
+aggiornati solo in presenza di modifiche di elementi di 
+impianto che ne alterino le caratteristiche complessiv e. 
+Sono anche i dati che permettono al DSO di calcolare le 
+grandezze relative all'intero impianto e di costruire la 
+caratteristica poligonale corrispondente.  
+Per quanto riguarda la sezione “Funzioni di Regolazione 
+disponibili” presente nel macro -blocco “Caratteristiche 
+Generali di Impianto”, si precisa che per i nuovi impianti, 
+le funzioni di regolazione elencate sono tutte disponibili 
+sul CCI in entrambi i mod i previsti (Autonomo, Asservito) 
+in quanto tale è la prescrizione della presente Norma. 
+Nella tabella esse pertanto vanno dichiarate con 
+l'acronimo: “Entrambi”.  
+Qualora il CCI fosse usato su impianti già esistenti che 
+non consentano di attivare una specifica funzione o che 
+non ne consentano l’utilizzo autonomo o asservito, tale 
+informazione deve essere dichiarata utilizzando 
+l’appropriato acronimo (NA=Non disponib ile; Auton=solo 
+autonomo; Asservito=solo asservito).  
+--- PDF page 522 ---
+NORMA TECNICA   CEI 0 -16:2025 -12 
+ 
+ 
+515 
+ 
+ 
+Messaggi relativi allo stato operativo dell’impianto  Informazioni che riguardano lo stato operativo 
+dell’impianto e degli apparati fisici presenti in impianto, 
+quali ad esempio le posizioni degli interruttori.  
+Lo stato può modificarsi a seguito di eventi in impianto 
+o a seguito di comando remoti.  
+Trattasi dei dati che consentono al DSO di conoscere in 
+tempo reale in quale condizione operativa si trovi 
+l'impianto (in servizio o fuori servizio, in modalità di 
+regolazione e quale) sia nel suo complesso sia negli 
+elementi raggruppati per categorie.  
+Sono dati che devono essere aggiornati ogni qual volta 
+si presenta un cambiamento nelle condizioni operative 
+di impianto.  
+Sono quindi informazioni “dinamiche” non “statiche”.  
+Trattasi di segnalazioni relative a stati logici  
+La corrispondenza tra il “modo operativo” e gli acronimi 
+utilizzati nell'Allegato T è il seguente:  
+- Attivo 
+WAIT: funzione attivata, in attesa del controllo 
+priorità 
+READY: funzione attivata, in attesa del controllo 
+soglie 
+WORKING: funzione attivata, in servizio 
+ACT: funzione attivata, in azione regolante effettiva 
+- Inattivo 
+STOP: funzione inattiva, ferma in attesa di 
+attivazione 
+KO: funzione inattiva, ferma per guasto tecnico 
+- Spento 
+OFF: funzione non disponibile, spenta sull’impianto 
+Per una migliore comprensione dell'uso di questi 
+acronimi si rimanda alla figura APPENDICE App.O -1 
+Messaggi relativi alle misure dell’impianto  Valori analogici misurati direttamente o determinati 
+tramite elaborazione di grandezze misurate, quali 
+tensioni, correnti, potenze, ecc.  
+Trattasi delle misure delle principali grandezze 
+elettriche dell’impianto (P, Q, V) al punto di consegna, 
+nonché le misure di potenza attiva (P) e potenza reattiva 
+(Q) delle diverse unità di generazione suddivise e 
+aggregate per fonte di generazione primar ia (solare, 
+eolico, accumulo, altre fonti, ecc.).  
+Messaggi relativi ai valori dei parametri operativi  Valori di riferimento necessari per l’operatività delle 
+funzioni e degli algoritmi.  
+I parametri sono impostati in fase di inizializzazione 
+dell’apparato e possono successivamente essere 
+modificati da remoto  
+Trattasi delle informazioni che permettono di conoscere 
+i parametri che caratterizzano le diverse funzioni di 
+regolazione.  
+Sono essenzialmente informazioni di tipo statico (i 
+parametri caratterizzanti le funzioni sono inseriti 
+contestualmente al regolamento di esercizio e, salvo 
+modifiche chieste dal DSO, non vengono più modificati).  
+--- PDF page 523 ---
+NORMA TECNICA   CEI 0 -16:2025 -12 
+ 
+ 
+516 
+ 
+ 
+I comandi di attivazione/disattivazione delle funzioni di 
+regolazione richieste dal DSO  vengono veicolati in 
+questo gruppo di messaggi  
+ 
+App. O -1.2. Esempio applicativo  
+Si faccia riferimento alla funzione di regolazione della potenza reattiva secondo la curva Q=Q(V).  
+Nella Figura 121  è rappresentato il caso di un impianto cui il DSO, a causa dell'innalzamento 
+della tensione al PdC, chiede di attivare la funzione di regolazione Q=Q(V)  
+ 
+ – Esempio semplificato illustrante l'informazione da trasmettere attraverso il canale 
+di comunicazione EN 61850 relativa al cambio di stato della funzione di regolazione Q=Q (V) con 
+l'uso degli acronimi utilizzati nell'Allegato T 
+La funzione passa al momento della richiesta del DSO dallo stato Inattivo STOP (OFF in figura) 
+allo stato Attivo WAIT (ON in figura): se sono verificate le condizioni di priorità (passaggio allo 
+stato READY) e di P attiva superiore alla soglia di lock -in (passaggio allo stato WORKING) e la 
+tensione continua a crescere sino a superare il valore V1s, la funzione agisce (passaggio allo 
+stato ACT) al fine di fare aumentare l'assorbimento di potenza reattiva dall'impianto secondo la 
+curva prestabilita Q=f(V).  
+L'assorbimento di potenza reattiva continua a crescere sino a che la tensione si mantiene al di 
+sopra del valore V1s (sino a raggiungere la sua massima capacità ( -Qmax ) qualora la tensione 
+raggiungesse il valore V2s).  
+Quando la tensione comincia a scendere l'assorbimento di potenza reattiva diminuisce secondo 
+la curva Q=Q(V) per poi cessare quando la tensione scende sotto il valore V1s (condizione che 
+determina il cambio di stato da ACT a ON).  
+Quando la tensione si stabilisce sotto il valore V1s e il DSO valuta non più necessaria l'azione di 
+regolazione lo stato della funzione passa dalla condizione ON a OFF.  
+
+--- PDF page 524 ---
+NORMA TECNICA   CEI 0 -16:2025 -12 
+ 
+ 
+517 
+ 
+ 
+Dai grafici in figura si individuano facilmente le informazioni di tipo dinamico dei parametri 
+operativi dell'impianto che devono essere acquisiti dal CCI secondo quanto indicato nell' Allegato 
+T, modificati in funzione delle condizioni operative e resi disponibili al DSO sul canale di 
+comunicazione standard EN 61850.  
+ 
+App. O-1.3. Riepilogo funzioni  
+Si riepilogano per comodità le funzioni di regolazione, la modalità di funzionamento e l’operatore 
+che ha facoltà di governare lo stato ed i parametri delle funzioni.  
+App. O-1.3.1  Caso a: assenza di canale di comunicazione fra CCI, DSO ed eventuale 
+Aggregatore.  
+Funzione di regolazione  Attivazione  
+Intervento del limite di potenza attiva per V≈110%VN  Autonoma, a cura Utente  
+Limitazione potenza attiva su comando esterno del DSO  Autonoma, a cura Utente su indicazione del DSO  
+tramite regolamento di esercizio  
+Modulazione della Potenza attiva immessa al PdC su 
+comando esterno proveniente dal DSO  
+Non ammessa  
+Set -Point potenza attiva su comando esterno  Non ammessa  
+Funzionamento in regolazione di tensione con erogazione di 
+potenza reattiva su comando esterno proveniente dal DSO  
+Autonoma, a cura Utente su indicazione del DSO  
+tramite regolamento di esercizio  
+Set point Fattore di potenza (Set -point Cos φ) Autonoma, a cura Utente su indicazione del DSO  
+tramite regolamento di esercizio  
+Regolazione Q=f(V)  Autonoma, a cura Utente su indicazione del DSO  
+tramite regolamento di esercizio  
+Regolazione Cosφ=f(P)  Autonoma, a cura Utente su indicazione del DSO  
+tramite regolamento di esercizio  
+Funzione Set -Point della Potenza Reattiva su comando 
+esterno  
+Non ammessa  
+--- PDF page 525 ---
+NORMA TECNICA   CEI 0 -16:2025 -12 
+ 
+ 
+518 
+ 
+ 
+App. O -1.3.2  Caso b: presenza di canale di comunicazione fra CCI, DSO ed eventuale 
+Aggregatore.  
+Funzione di regolazione  Attivazione  
+Intervento del limite di potenza attiva per V≈110%VN  Autonoma, a cura Utente  
+Limitazione potenza attiva su comando esterno del DSO  Asservita, con azione remota del DSO  
+Modulazione della Potenza attiva immessa al PdC su 
+comando esterno proveniente dal DSO  
+Asservita, con azione remota del DSO  
+Set -Point potenza attiva su comando esterno  Asservita, con azione remota dell’Aggregatore (1) 
+Funzionamento in regolazione di tensione con erogazione di 
+potenza reattiva su comando esterno proveniente dal DSO  
+Asservita, con azione remota del  DSO  
+Set point Fattore di potenza (Set -point Cos φ) Asservita, con azione remota del DSO  
+Regolazione Q=f(V)  Asservita, con azione remota del DSO  
+Regolazione Cosφ=f(P)  Asservita, con azione remota del DSO  
+Funzione Set -Point della Potenza Reattiva su comando 
+esterno  
+Asservita, con azione remota dell’Aggregatore (2) 
+ 
+–––––––––––––– 
+(1) Funzionalità di natura sperimentale.  
+(2) Funzionalità predisposta per eventuale utilizzo futuro  
+--- PDF page 526 ---
+NORMA TECNICA   CEI 0 -16:2025 -12 
+ 
+ 
+519 
+ 
+ 
+Allegato P   
+(informativo)  
+ 
+Nella misura di correnti armoniche in alcuni casi potrebbero essere attribuiti al generatore delle 
+emissioni causate in realtà da altri utenti connessi alla rete elettrica.  
+Idealmente, solo il contributo effettivamente causato dal generatore dovrebbe essere incluso 
+nel rapporto di prova. Tuttavia, se a causa della presenza di particolari carichi/impianti nelle 
+vicinanze del punto di misura, è possibile identificare una strate gia per isolare il contributo del 
+generatore, questa può essere adottata purché venga opportunamente documentata nel test 
+report. Quando non è possibile una valutazione per la separazione dei contributi armonici, deve 
+essere adottato un approccio di tipo c onservativo, eventualmente sovrastimando il valore delle 
+correnti armoniche effettivamente prodotte dal solo generatore.  
+È possibile quindi scorporare dal contenuto armonico rilevato solo quello imputabile al generatore 
+in prova. Nel presente allegato, vengono proposte alcune modalità per realizzare tale scopo.  
+I seguenti punti possono fornire utili indicazioni nel considerare e valutare le armoniche  
+(i metodi utilizzati devono essere documentati nel rapporto di prova).  
+P.1 Flusso di potenza associato alle componenti armoniche  
+Alle componenti armoniche sono associabili opportune direzioni del flusso di potenza. Se 
+durante il funzionamento del generatore viene evidenziato un cambiamento nella direzione del 
+flusso di potenza, allora potrebbe essere già presente in rete un contribu to attribuibile alla 
+specifica armonica (il cui flusso di potenza associato cambia direzione). La valutazione 
+vettoriale (modulo e fase) della corrente può fornire utili indicazioni.  
+P.2 Filtri  
+Mentre il generatore è spento possono essere impiegati dei filtri, per determinare la presenza 
+di armoniche, osservando il cambiamento del contenuto armonico quando il filtro viene attivato 
+o disattivato. Un'indicazione può essere ottenuta con filtro appli cato su un generatore non 
+attivo, mentre un generatore vicino continua a fornire energia alla rete durante le operazioni di 
+misura. Le armoniche misurate sono impiegate come base per la valutazione del contributo 
+armonico prodotto dal generatore in prova. Nel caso si utilizzi questa strategia, è necessario 
+indicare nel rapporto di prova la risposta in frequenza del filtro/dei filtri utilizzato.  
+P.3 Osservazione diurna/notturna  
+Se con generatore funzionante (sono esclusi da questi i generatori fotovoltaici) è identificabile 
+un certo contributo armonico solo nelle ore diurne, questo può essere usato per identificare il 
+contributo fornito da utenti vicini che insistono nello stesso  punto del generatore in prova, 
+purché il comportamento del generatore sia esclusivamente dipendente dalla disponibilità di 
+energia primaria (il vento) e non dall'ora del giorno (per questo non si applica tale criterio ai 
+sistemi fotovoltaici).Se non è pos sibile identificare chiaramente una differenza nel contenuto 
+armonico della corrente nel passaggio tra le ore diurne e notturne, non è da escludere che sia 
+presente una certa distorsione armonica a causa di altri utenti nelle vicinanze.  
+P.4 Arresto di generatori o carichi nelle vicinanze  
+Se vi è il sospetto che alcune armoniche rilevate siano dovute alla presenza di altri utenti in 
+rete, può essere d’aiuto il confronto tra le armoniche rilevate con le utenze vicine accese e 
+quelle rilevate con le utenze vicine spente.  
+P.5 Uso di un simulatore di rete  
+Per potenze modeste, può essere impiegato un simulatore di rete, di cui siano note le 
+caratteristiche delle armoniche di tensione e il THD.  
+P.6 Cambio di sito di prova  
+Se non è possibile identificare le armoniche presenti in rete, può essere presa in considerazione 
+la misura effettuata in un altro sito di test.  
+--- PDF page 527 ---
+NORMA TECNICA   CEI 0 -16:2025 -12 
+ 
+ 
+520 
+ 
+ 
+Allegato Q   
+(informativo)  
+ 
+Sorgente DC quale fonte primaria simulata per le verifiche di laboratorio 
+sui generatori fotovoltaici  
+Q.1 Convertitori fotovoltaici e caratteristiche rilevanti per la rete elettrica  
+A differenza dei generatori eolici, i generatori fotovoltaici non sono in genere installati dai 
+costruttori dei componenti, quanto piuttosto assiemati da installatori o integratori di sistema 
+combinando i moduli fotovoltaici con gli inverter e gli altri co mponenti del sistema (il BOS = 
+Balance of System Components).  
+La composizione del sistema è specifica per ogni singola applicazione, tuttavia al fine di 
+individuare e valutare le proprietà elettriche che hanno rilevanza e impatto per la rete elettrica 
+è sufficiente caratterizzare il comportamento dei soli inverter. L a tipologia e il numero di moduli 
+fotovoltaici installati, nonché la loro configurazione in stringhe e sottocampi non ha 
+praticamente influenza sul comportamento del sistema verso la rete di distribuzione.  
+Pertanto le verifiche sulle caratteristiche che hanno rilevanza per la rete possono essere 
+effettuate utilizzando una sorgente DC a tensione variabile, anziché una combinazione 
+serie/parallelo di moduli fotovoltaici. Questa soluzione consente di svincolars i dalla sorgente 
+primaria e di ridurre notevolmente la complessità sia logistica che tecnica per la esecuzione in 
+campo del protocollo di verifiche previsto e dettagliato nell’ Allegato N . 
+In questo allegato vengono fornite alcune indicazioni sui requisiti minimi per il dimensionamento 
+di sorgenti DC idonee alla simulazione della sorgente primaria fotovoltaica, affinché si possano 
+effettuare tutte le prove previste in Allegato N , garantendo che siano riprodotte con adeguata 
+fedeltà le proprietà della sorgente reale che più hanno influenza sul comportamento del 
+convertitore nel funzionamento in parallelo con la rete elettrica.  
+La sorgente utilizzata può essere un singolo dispositivo, oppure una combinazione di più 
+sorgenti, ciascuna idonea all’utilizzo in una o più sequenze di test come previste nei vari 
+paragrafi dell’ Allegato N . 
+Q.2 Requisiti tecnici della sorgente DC simulata  
+Q.2.1  Taglia di potenza  
+Per verificare la massima potenza erogabile dal convertitore in prova la sorgente DC deve 
+essere progettata per garantire una disponibilità di potenza ai morsetti di ingresso del 
+generatore pari a 1,1* Pn. 
+È preferibile che la sorgente sia progettata in modo da rendere la tensione di uscita regolabile 
+tramite un comando esterno.  
+La sorgente deve poter operare senza restrizioni su tutto l’intervallo di potenza attiva di 
+funzionamento del generatore in prova 0 ... 1,1* Pn, con tensioni di uscita rese disponibili ai 
+morsetti di ingresso del generatore in prova fino al limite inferiore del campo di funzionamento 
+in MPPT dichiarato dal costruttore (MPPT = Maximum Power Point Tracking).  
+Q.2.2  Tensione di uscita  
+La sorgente DC deve fornire una tensione regolabile nel campo di funzionamento in MPPT del 
+convertitore in prova. L’intera dinamica di potenza deve poter essere erogata all’interno del 
+campo di tensione del generatore. Come minimo requisito la sorgente sim ulata deve poter 
+erogare la potenza nel campo 0 ... 1,1* Pn su almeno 3 tensioni: rispettivamente i valori di Umpp 
+minima (Umpp_min), massima (Umpp_max) e quella “tipica” o nominale dichiarata dal 
+costruttore (qualora non sia fornito un dato tipico, si pren derà il valore medio tra Umpp_min e 
+Umpp_max).  
+--- PDF page 528 ---
+NORMA TECNICA   CEI 0 -16:2025 -12 
+ 
+ 
+521 
+ 
+ 
+Q.2.3  Controllo della sorgente DC  
+Ove disponibile, una sorgente che consenta il funzionamento del generatore in prova in 
+modalità a controllo di tensione è preferibile. In tal caso la sorgente DC controlla come minimo 
+la sola tensione a vuoto (tensione a circuito aperto di un generatore fo tovoltaico). Esistono 
+tuttavia sorgenti programmabili che consentono di memorizzare profili di irraggiamento e di 
+emulare con grande accuratezza la curva potenza -tensione tipica di un generatore fotovoltaico. 
+L’utilizzo di questi “simulatori di pannello” è  consentito ma non assolutamente indispensabile 
+per gli scopi di questa normativa (vedi ad esempio CEI 82 -35 CEI EN 50530:2010 -12).  
+Q.2.4  Risposta dinamica  
+Le prestazioni dinamiche della sorgente DC utilizzata devono consentire di riprodurre i transitori 
+della sorgente primaria, ovvero le variazioni di potenza conseguenti alle variazioni di irradianza, 
+affinché possano operare correttamente i sistemi di inseg uimento MPPT implementati nei 
+generatori in prova. In base a quanto riportato nella Norma CEI  EN 50530:2010 -12, la sorgente 
+DC deve essere in grado di erogare secondo un gradiente minimo pari a 10%*Pn/s, ove Pn 
+rappresenta la potenza attiva nominale del ge neratore in prova.  
+Q.3 Impostazione della sorgente per la esecuzione delle prove sui generatori  
+La sorgente DC simulata deve consentire la esecuzione delle prove di cui in Allegato  N 
+seguendo le impostazioni riportate di seguito.  
+Q.3.1  Misure per la qualità della tensione ( N.3) 
+Correnti armoniche:  
+La sorgente DC viene regolata su tutto campo di funzionamento del generatore in prova agli 11 
+livelli di potenza [0±5]%; [10±5]%; ...; [100±5]% della potenza apparente nominale. Le 
+componenti armoniche sono misurate come indicato in N.3.1 . La tensione di ingresso al 
+generatore in prova può essere regolata al valore nominale (o valore medio nell’intervallo di 
+Vmpp dichiarato dal costruttore). Il valore di tensione deve essere documentato nel rapporto di 
+prova.  
+Fluttuazioni di tensione dovute a manovre di sezionamento/separazione:  
+La sorgente DC viene regolata in sequenza rispettivamente al 10% e 100% della potenza 
+nominale del generatore. In quanto alla tensione, questa dovrà essere regolata al valore 
+nominale o ad altro valore interno al campo Vmpp. Lo stesso valore sarà utilizzat o per tutte le 
+sequenze di commutazione e opportunamente registrato nel rapporto di prova. Il valore di 
+tensione deve essere documentato nel rapporto di prova.  
+Flicker:  
+La sorgente DC viene regolata su tutto campo di funzionamento del generatore per gradini di 
+potenza di ampiezza del 5 -10% di Pn. Deve essere misurato un numero minimo di 12 coppie di 
+valori di Pst, dei quali almeno una coppia per ciascun gradino di potenza del 10%* Pn 
+nell’intervallo 0% ... 90%* Pn ed un minimo di 3 per potenza superiori a 90%* Pn fino a Pmax. I 
+valori di flicker in ciascun punto di funzionamento devono essere misurati come riportato in 
+N.3.3 . La tensione di ingresso al generatore in prova può essere regolata al valore nominale (o 
+valore medio nell’intervallo di Vmpp dichiarato dal costruttore). Il valore di tensione deve essere 
+documentato nel rapporto di prova.  
+--- PDF page 529 ---
+NORMA TECNICA   CEI 0 -16:2025 -12 
+ 
+ 
+522 
+ 
+ 
+Q.3.2  Verifica del campo di funzionamento in tensione e frequenza ( N.4) 
+La sorgente DC viene regolata in modo da rendere disponibile la massima potenza erogabile 
+dal generatore in prova, fino a 1,1*Pn (o la massima potenza che il simulatore di rete può 
+gestire nel caso di prove a potenza ridotta). Per quanto riguarda la tensio ne, questa deve 
+essere regolata al valore nominale o tipico specificato dal costruttore. Inoltre è preferibile 
+ripetere le prove anche regolando la tensione del simulatore affinché  il generatore possa 
+operare rispettivamente al valore minimo Vmpp_min e mas simo Vmpp_max del campo di 
+funzionamento di tensione di ingresso. Il valore (o i valori) di tensione deve essere documentato 
+nel rapporto di prova.  
+Q.3.3  Verifica delle condizioni di avviamento, sincronizzazione e presa di carico ( N.5) 
+La sorgente DC viene regolata in modo da rendere disponibile la massima potenza erogabile 
+dal generatore in prova, fino a 1,1* Pn (o la massima potenza che il simulatore di rete può gestire 
+nel caso di prove a potenza ridotta). Per quanto riguarda la tensione, questa deve essere 
+regolata al valore nominale o tipico specificato dal costruttore. Il valore di tensione deve essere 
+docum entato nel rapporto di prova.  
+Q.3.4  Verifica dei requisiti costruttivi circa lo scambio di potenza reattiva ( N.6) 
+Capability – diagramma P -Q: 
+La sorgente DC viene regolata su tutto campo di funzionamento del generatore in prova agli 11 
+livelli di potenza [0±5]%; [10±5]%; ...; [100±5]% della potenza apparente nominale. In 
+alternativa la sorgente DC viene impostata in modo da rendere disponibile l a massima potenza 
+erogabile dal generatore in prova e si agirà su quest’ultimo per definire gli 11 livelli di potenza 
+a cui effettuare i rilievi della massima potenza reattiva erogata o assorbita. Per quanto riguarda 
+la tensione, questa deve essere regolat a al valore nominale o tipico specificato dal costruttore. 
+Il valore di tensione deve essere documentato nel rapporto di prova.  
+Scambio di potenza reattiva secondo un livello assegnato e tempo di risposta:  
+La sorgente DC viene regolata in modo da rendere disponibile la massima potenza erogabile 
+dal generatore in prova, fino a 1,1* Pn. Per quanto riguarda la tensione, questa deve essere 
+regolata al valore nominale o tipico specificato dal costruttore. Il valore di tensione deve essere 
+documentato nel rapporto di prova.  
+Verifica della curva standard di erogazione cos φ = f(P):  
+La sorgente DC viene regolata sul campo di funzionamento del generatore in prova per gradini 
+di potenza del 10%* Pn a partire dal 20%*Pn fino al 100%* Pn. In alternativa la sorgente DC viene 
+impostata in modo da rendere disponibile la massima potenza erogabile dal generatore in prova 
+e si agirà su quest’ultimo per definire i livelli di potenza a cui effettuare i rilievi del cos φ per 
+tracciare la curva cos φ=f(P). Per quanto riguarda la tensione, questa deve essere regolata al 
+valore nominale o tipico specifica to dal costruttore. Il valore di tensione deve essere 
+documentato nel rapporto di prova.  
+Verifica della curva standard di erogazione Q = f(V):  
+La sorgente DC viene regolata sul campo di funzionamento del generatore in prova per gradini 
+di potenza del 10%*Pn a partire dal 20%* Pn fino al 100%* Pn. Inoltre dovrà essere possibile 
+regolare la potenza a valori appena al di sotto del 20%* Pn (per la verifica della funzione di lock -
+in in potenza) e al di sotto del 5%* Pn (per verificare il limite di lock -out). In alternativa la sorgente 
+DC viene impostata in modo da rendere disponibile la massima potenza erogabile dal 
+generatore in prova e si agirà su quest’ ultimo per definire i livelli di potenza a cui effettuare i 
+rilievi della potenza reattiva per tracciare la curva Q=f(V). Per quanto riguarda la tensione, 
+questa deve essere regolata al valore nominale o tipico specificato dal costruttore. Il valore di 
+tensione deve essere documentato nel rapporto di prova.  
+--- PDF page 530 ---
+NORMA TECNICA   CEI 0 -16:2025 -12 
+ 
+ 
+523 
+ 
+ 
+Q.3.5  Verifica dei requisiti costruttivi circa la regolazione di potenza attiva ( N.7) 
+Limitazione in logica locale, per tensioni AC prossime a 110%*Vn:  
+La sorgente DC viene regolata in modo da rendere disponibile la massima potenza erogabile 
+dal generatore in prova, fino a 1,1* Pn. Per quanto riguarda la tensione, questa deve essere 
+regolata al valore nominale o tipico specificato dal costruttore. Il valore di tensione deve essere 
+documentato nel rapporto di prova.  
+Riduzione della potenza attiva in presenza di transitori di sovrafrequenza sulla rete:  
+La sorgente DC viene regolata in modo da rendere disponibile rispettivamente la potenza 
+nominale erogabile dal generatore in prova Pn (per la sequenza A) ed il 50%* Pn (sequenza B). 
+Per quanto riguarda la tensione, questa deve essere regolata al valore nominale o tipico 
+specificato dal costruttore. Il valore di tensione deve essere documentato nel rapporto di prova.  
+Limitazione da comando esterno e tempo di assestamento:  
+La sorgente DC viene regolata in modo da rendere disponibile la massima potenza erogabile 
+dal generatore in prova, fino a 1,1* Pn. Per quanto riguarda la tensione, questa deve essere 
+regolata al valore nominale o tipico specificato dal costruttore. Il valore di tensione deve essere 
+documentato nel rapporto di prova.  
+Q.3.6  Verifica della insensibilità agli abbassamenti di tensione ( UVRT capability) ( N.8) 
+La sorgente DC viene regolata in modo da rendere disponibile rispettivamente una potenza 
+nell’intervallo 10%*Pn 30%* Pn e maggiore di 90%* Pn. Per quanto riguarda la tensione, questa 
+deve essere regolata al valore nominale o tipico specificato dal costruttore. Il valore di tensione 
+deve essere documentato nel rapporto di prova  
+Q.3.7  Verifica della insensibilità agli abbassamenti di tensione ( UVRT capability) ( N.9) 
+La sorgente DC viene regolata in modo da rendere disponibile la massima potenza erogabile 
+dal generatore in prova, fino a 1,1* Pn. Per quanto riguarda la tensione, questa deve essere 
+regolata al valore nominale o tipico specificato dal costruttore. Il valore di tensione deve essere 
+documentato nel rapporto di prova.  
+ 
+--- PDF page 531 ---
+NORMA TECNICA   CEI 0 -16:2025 -12 
+ 
+ 
+524 
+ 
+ 
+Allegato R   
+(informativo)  
+ 
+Calcolo del valore di tensione da utilizzare nella LVFRT  
+R.1 Scopo  
+Calcolare la terna di tensioni che si manifesta ai capi del generatore in prova durante i test di 
+simulazione del profilo LVFRT prescritti dall’ Allegato N  (Art N.8), con particolare riguardo alle 
+sequenze di test dei guasti asimmetrici bifase riportati in Tabella 59 , quando il generatore opera 
+con interposto un trasformatore MT/BT del tipo Dy e la prova si effettua simulando il guasto sul 
+lato MT tramite il simulatore di cortocircuito di Figura 51  (Paragrafo  N.8.3.1 , detto anche 
+“circuito delle impedenze”).  
+Il calcolo in ampiezza e fase della terna di tensioni previste sul lato BT del trasformatore, 
+direttamente ai morsetti di uscita del generatore, durante la simulazione dei guasti asimmetrici 
+bifase lato MT (sequenze 1a/2a/3a e 4a di Tabella 59 ), consente di stabilire i parametri con cui 
+impostare il simulatore di rete per la esecuzione di analoghe prove secondo le modalità 
+alternative descritte in N.8.3.2  (“Metodi di prova alternativi – simulatore di rete”, definizione dei 
+valori riportati in Tabella 59 ) e di allineare le condizioni di funzionamento del generatore durante 
+la esecuzione dei test secondo i due schemi di prova proposti in N.8.3 . 
+R.2 Calcolo della corrente di guasto  
+Il calcolo delle tensioni di fase che si manifestano ai capi del trasformatore MT/BT durante i 
+test asimmetrici (bifase) di  LVFRT è eseguito risolvendo lo schema elettrico circuitale 
+equivalente del simulatore di cortocircuito.  
+Supponendo un cortocircuito bifase tra la fase s e la fase t in condizioni di potenza esportata 
+nulla dal generatore statico, lo schema di  Figura 132  relativo all’inserzione del simulatore di 
+cortocircuito si riduce al semplice circuito a parametri concentrati di  Figura 133 . 
+ 
+ – Inserzione del simulatore di corto circuito 
+ 
+ – Circuito a parametri concentrati
+Vcc 
+--- PDF page 532 ---
+NORMA TECNICA   CEI 0 -16:2025 -12 
+ 
+ 
+525 
+ 
+ 
+I componenti presenti nel circuito di Figura 133  sono espressi in per -unit facendo riferimento, 
+come grandezze di base, alla tensione a vuoto e all’impedenza di cortocircuito Z rete  della rete 
+MT. Queste sono determinate considerando una rete MT avente una tensione fase -terra pari a 
+15kV/√3 e una potenza di cortocircuito sul punto di consegna di 100MVA. Ne consegue che, i 
+valori corrispondenti alla tensione fase -fase Vst e all’impede nza di rete Zrete equivalgono 
+rispettivamente a: V st=√3; Zrete =1. 
+Le linee guida per il dimensionamento dell’impedenza Z 1 sono descritte nel Paragrafo  N.8.3.1 . 
+Qui è prescritto che l’impedenza Z 1 sia pari a circa venti volte il valore dell’impedenza di 
+cortocircuito Zrete . Lo scopo è di salvaguardare la qualità del servizio elettrico sul lato rete MT 
+a seguito dell’intervento del simulatore di cortocircuito. Così si garantisce una caduta di 
+tensione nel punto di consegna non superiore al 5% della tensione nominale. Il valo re espresso 
+in per -unit di Z1 è quindi pari a Z1=20.  
+Nell’ Allegato N  sono presenti anche le linee guida per il dimensionamento dell’impedenza Z2. 
+Quest’ultima è dimensionata fissando il valore della tensione di cortocircuito ( Vcc) alla quale si 
+vuole realizzare la prova e applicando le relazioni del partitore di tensione alla serie di 
+impedenze Z1, Z2 e Zrete . Z2 è quindi ottenuta come:  
+ 
+La corrente di guasto circolante nelle impedenze Z1, Z2 e Zrete  è ottenuta attraverso l’equazione 
+di equilibrio elettrico del circuito di Figura 84  Ig è ottenuta come:  
+ 
+Sostituendo nella relazione i valori in per -unit delle impedenze e delle tensioni sopra riportati e 
+ipotizzando le prime composte dalla sola componente reattiva si ottiene, per i vari valori delle 
+tensioni residue stabilite in Tabella 60 , le seguenti correnti di guasto:  
+− Tensione cortocircuito fase -fase del 75%  
+ 
+− Tensione cortocircuito fase -fase del 50%  
+ 
+− Tensione cortocircuito fase -fase del 25%  
+ 
+− Tensione cortocircuito fase -fase del 10%  
+ 
+( )
+residuast
+1retecc
+2
+VV
+ZZVZ
+−
++=
+( )21rete
+st
+g
+2 ZZZ
+VI
+++
+=
+( 
+ ) 
+ ( 
+ ) 
+ 
+− 
+ 
+ 
+− 
+= 
++ 
++ 
+= 
++ 
++ 
+= 
+ 150 
+90 
+60 
+2 
+1 
+rete 
+st 
+g 
+ 0,0371 
+2,3333 
+20 
+1 
+2 
+2 
+i 
+i 
+i 
+e 
+e 
+e 
+3 
+Z 
+Z 
+Z 
+V 
+I 
+( 
+ ) 
+ ( 
+ ) 
+ 
+− 
+ 
+ 
+− 
+= 
++ 
++ 
+= 
++ 
++ 
+= 
+ 150 
+90 
+60 
+2 
+1 
+rete 
+st 
+g 
+ 0,0309 
+ 
+7 
+20 
+1 
+2 
+2 
+i 
+i 
+i 
+e 
+e 
+e 
+3 
+Z 
+Z 
+Z 
+V 
+I 
+( 
+ ) 
+ ( 
+ ) 
+ 
+− 
+ 
+ 
+− 
+= 
++ 
++ 
+= 
++ 
++ 
+= 
+ 150 
+90 
+60 
+2 
+1 
+rete 
+st 
+g 
+ 0,0206 
+21 
+20 
+1 
+2 
+2 
+i 
+i 
+i 
+e 
+e 
+e 
+3 
+Z 
+Z 
+Z 
+V 
+I 
+( 
+ ) 
+ ( 
+ ) 
+ 
+− 
+ 
+ 
+− 
+= 
++ 
++ 
+= 
++ 
++ 
+= 
+ 150 
+90 
+60 
+2 
+1 
+rete 
+st 
+g 
+ 0,0103 
+63 
+20 
+1 
+2 
+2 
+i 
+i 
+i 
+e 
+e 
+e 
+3 
+Z 
+Z 
+Z 
+V 
+I 
+--- PDF page 533 ---
+NORMA TECNICA   CEI 0 -16:2025 -12 
+ 
+ 
+526 
+ 
+ 
+R.3 Calcolo delle tensioni di cortocircuito  
+Il calcolo delle tensioni di cortocircuito che si manifestano tra fase e terra sul lato MT del 
+trasformatore, avviene calcolando le cadute di tensione su ogni singola fase prodotte dalle 
+correnti di guasto sopra calcolate per le tensioni di cortocircuito p rese in esame dalla normativa. 
+Per la procedura di calcolo si deve comunque ricordare che la fase r non è interessata dalla 
+corrente di guasto e che quindi la tensione presente tra questa fase e terra corrisponde 
+esattamente a quella presente sul punto di consegna. La relazione cui fare riferimento per il 
+calcolo delle restanti tensioni di cortocircuito è ottenuta scrivendo l’equazione di equilibrio 
+elettrico su una fase ed è eguale a:  
+Ecc = E – (Zrete  + Z1) Ig 
+Dove E corrisponde alla tensione fase -terra nel punto di consegna mentre E cc corrisponde alla 
+tensione fase -terra nel nodo di cortocircuito sul lato MT del trasformatore. Ig corrisponde invece 
+alla corrente di fase presente durante il cortocircuito. È bene rilevare come la corrente sulla 
+fase s e la corrente sulla fase t siano in controfase per tutta la durata del guasto. Sotto sono 
+riportate le relazioni da utilizzare per il  calcolo delle tensioni esclusivamente nel caso di 
+tensione di cortocircuito fase -fase pari al 75% del valore nominale. I restanti valori sono riportati 
+in Tabella 76 . 
+Eccr = E r –(Zrete +Z1)Igr =1ei30° – (1+20)  0 = Er = 1ei30°  
+Eccs = Es – (Zrete +Z1) Igr =1ei150° – (1+20)  0,0103 ei150°  = 0,8197 ei97,59°  
+Ecct = Et – (Zrete +Z1)Igr =1ei90°  – (1+20)  0,0103 ei150°  = 0,8197 ei157,59°  
+Tabella 76 – Vettori di fase sul lato MT in presenza di guasti asimmetrici bifase simulati 
+in base alle sequenze di Tabella 59  con il circuito di Figura 132  
+Prova No.  
+ 
+V/Vnom  
+(lato MT)  
+Tensioni fase -terra (lato BT)  Angoli di fase  
+  u1/u 1,nom  u2/u 2,nom  u3/u 3,nom  φu1 φu2 φu3 
+1a 0,10 ± 0,05  0,8675  0,8675  0,100  26,69°  -146,7°  120°  
+2a 0,25 ± 0,05  0,875  0,875  0,25  21,8°  -141,8°  120°  
+3a 0,50 ± 0,05  0,9014 8 0,9014  0,500  13,9°  -133,9°  120°  
+4a 0,75 ± 0,05  0,9437  0,937  0,75  6,6°  -126,6 ° 120°  
+condizioni normali  1 1 1 1 0° -120°  120°  
+Per risalire alle tensioni ai capi del generatore sul lato BT è necessario conoscere la tipologia 
+di trasformatore utilizzato con il relativo rapporto spire. La soluzione più comune consiste 
+nell’utilizzo di un trasformatore abbassatore triangolo -stella DY 11. Tale tipologia di 
+trasformatore è caratterizzata da un rapporto tra le tensioni fase -fase sul lato MT e le tensioni 
+fase -fase sul lato BT pari a:  
+ 
+Dove K è il rapporto spire. Ne deriva che il modulo della tensione fase -fase sul lato BT è pari 
+al modulo della tensione fase -fase sul lato MT diviso per il coefficiente  , mentre la fase della 
+tensione fase -fase sul lato BT è 30° in ritardo rispetto alla tensione fase -fase sul lato MT.  
+−= 30
+fase- 2fase
+fase - fase 1
+3
+ieK
+V
+ V
+2 3
+K
+--- PDF page 534 ---
+NORMA TECNICA   CEI 0 -16:2025 -12 
+ 
+ 
+527 
+ 
+ 
+Prendendo in considerazione le tensioni fase -terra sul lato BT e applicando quanto detto in 
+precedenza per le tensioni fase -fase, si possono ricavare i seguenti valori di tensioni fase -terra 
+sul lato di BT:  
+Tabella 77 – Vettori di fase sul lato BT di un trasformatore Dy11 in presenza di guasti 
+asimmetrici bifase sul lato primario in MT simulati in base alle sequenze di Tabella 59  
+con il circuito di Figura 132  
+Prova No.   
+V/V nom 
+(lato MT)  
+Tensioni fase -terra (lato BT)  Angoli di fase  
+u1/u 1,nom  u2/u 2,nom  u3/u 3,nom  φu1 φu2 φu3 
+1a 0,10 ± 0,05  0,8675  0,8675  0,100  26,69°  -146,7°  120°  
+2a 0,25 ± 0,05  0,875  0,875  0,25 21,8° -141 ,8° 120°  
+3a 0,50 ± 0,05  0,9014  0,9014  0,500  13,9° -133 ,9° 120°  
+4a 0,75 ± 0,05  0,943 7 0,937 4  0,75  6,6°  -126,6 ° 120°  
+condizioni normali  1 1 1 1 0° -120°  120°  
+Con gli opportuni arrotondamenti è possibile utilizzare i valori riportati in Tabella 77  come 
+riferimento per la impostazione di ampiezza e relazione di fase tra le tensioni della terna da 
+impostare in uscita al simulatore di rete per la esecuzione delle prove relative ai guasti 
+asimmetrici bifase (sequenze 1a/2a/2a/4a in  Tabella 59 ) qualora si utilizzi il metodo di prova 
+alternativo riportato in N.8.3.2 , questo al fine di fornire un set di condizioni univoche e ripetibili. 
+Si veda a questo proposito quanto riportato in Tabella 60  di N.8.3.2 . 
+Nei diagrammi fasoriali seguenti sono rappresentati i fasori delle tensioni fase -terra sul lato MT 
+e sul lato BT che si manifestano durante i guasti asimmetrici con le tensioni di cortocircuito 
+prese in esame nell’ Allegato N , Figura 32 . Sul lato MT si osserva come il valore della tensione 
+ai capi del trasformatore durante il cortocircuito sulla fase non interessata dal guasto (nel nostro 
+caso la fase r) sia lo stesso presente nella condizione che precede il cortocircuito. Questo è 
+vero ne ll’ipotesi in cui la caratterizzazione del circuito sia eseguita in condizioni di erogazione 
+nulla di potenza da parte del generatore statico. Per le tensioni fase -terra relative alle fasi 
+interessate dal guasto si ottiene una riduzione dell’ampiezza propo rzionale dovuta alla caduta 
+di tensione su Zrete  e Z1 e una conseguente riduzione del loro sfasamento reciproco.  
+Sul lato BT si ha invece una riduzione delle ampiezze delle tensioni su tutte le fasi. Tale 
+riduzione e il valore dello sfasamento reciproco che ne consegue sono entrambi funzione del 
+tipo di trasformatore MT/BT utilizzato. Nel caso in esame si è ipotizzat o una connessione 
+D/Y11. Interessante notare come tutte le tensioni sul lato BT durante le simulazioni di 
+cortocircuito bifase (lato MT) subiscano un’attenuazione durante il guasto poiché sono funzioni 
+delle tensioni fase -fase presenti sul lato MT.  
+--- PDF page 535 ---
+NORMA TECNICA   CEI 0 -16:2025 -12 
+ 
+ 
+528 
+ 
+ 
+• Tensione di cortocircuito bifase m pari al 75%:  
+ 
+  
+• Tensione di cortocircuito bifase pari al 50%:  
+ 
+  
+ 
+Lato MT 
+ Lato BT 
+Lato MT 
+ Lato BT 
+
+--- PDF page 536 ---
+NORMA TECNICA   CEI 0 -16:2025 -12 
+ 
+ 
+529 
+ 
+ 
+• Tensione di cortocircuito bifase pari al 25%:  
+ 
+  
+• Tensione di cortocircuito bifase pari al 10%:  
+ 
+  
+ 
+Lato MT 
+ Lato BT 
+Lato MT 
+ Lato BT 
+
+--- PDF page 537 ---
+NORMA TECNICA   CEI 0 -16:2025 -12 
+ 
+ 
+530 
+ 
+ 
+Allegato S   
+(informativo)  
+ 
+Calcolo del valore efficace della tensione su 10 minuti  
+ai fini della soglia 59.S1  
+La prima soglia della funzione di massima tensione deve essere basata sulla misura 
+dell’aggregazione di 10 minuti delle tensioni, con aggiornamento ogni 3 s, secondo uno dei due 
+metodi alternativi ed equivalenti di seguito indicati:  
+S.1 METODO A  
+• Si calcolano i valori efficaci U(i) di ciascuna della tre tensioni d’ingresso su un intervallo di 
+0,2 s;  
+• Separatamente per ciascuna fase, i valori U(i) vengono aggregati su 10 min (600 s) 
+eseguendo la radice quadrata della media aritmetica degli ultimi 600/0,2=3000 valori U(i) al 
+quadrato. L’aggregazione su 10 min deve essere aggiornata ogni 3 s.  
+ aggregazione su 10 min con aggiornamento ogni 3 s  
+L’avviamento del temporizzatore t> della prima soglia di massima tensione si verifica 
+nell’istante in cui, in almeno una fase, la tensione Um come sopra misurata supera la soglia 
+regolata U>.  
+Se in almeno una fase la condizione Um > U> si mantiene sempre soddisfatta per 3 s, trascorsi 
+3 s dall’istante di avviamento si ha lo scatto della prima soglia di massima tensione.  
+S.2 METODO B  
+• Si calcolano i valori efficaci U(i) di ciascuna della tre tensioni d’ingresso su un intervallo di 
+0,2 s;  
+• separatamente per ciascuna fase i valori U(i) ogni 0,2 s vengono aggregati su 3 s 
+eseguendo la radice quadrata della media aritmetica degli ultimi 15 valori U(i) al quadrato:  
+ aggregazione su 3 s con aggiornamento ogni 0,2 s  
+• Separatamente per ciascuna fase i valori  ogni 3 s vengono aggregati su 10 min (600 
+s) eseguendo la radice quadrata della media aritmetica degli ultimi 200 valori  al 
+quadrato:  
+ aggregazione su 10 min con aggiornamento ogni 3 s  
+L’avviamento del temporizzatore t> della prima soglia di massima tensione si verifica 
+nell’istante in cui, in almeno una fase, la tensione Um come sopra misurata supera la soglia 
+regolata U>.  
+Se in almeno una fase la condizione Um > U> si mantiene sempre soddisfatta per 3 s, trascorsi 
+3 s dall’istante di avviamento si ha lo scatto della prima soglia di massima tensione.  
+A fronte di una variazione a gradino di ampiezza unitaria della tensione d’ingresso U (con 
+tensione Um inizialmente già stabilizzata al valore di U), la tensione Um ha un andamento 
+transitorio con legge quadratica come evidenziato nella  Figura 138  ed il tempo necessario per 
+raggiungere il valore finale di U è pari a 600 s.  
+=
+=
+3000
+1
+2
+m )(
+3000
+1
+i
+iUU
+=
+=
+15
+1
+*
+m 15
+1
+i
+iUU
+2)(
+)(m jU*
+)(m jU*
+=
+=
+200
+1m
+2*
+m )(
+200
+1
+j
+iUU
+--- PDF page 538 ---
+NORMA TECNICA   CEI 0 -16:2025 -12 
+ 
+ 
+531 
+ 
+ 
+ 
+ – Andamento della tensione Um 
+Il tempo di avviamento della soglia dipende fortemente dal valore iniziale e finale della tensione 
+d’ingresso. Con una regolazione della soglia U> pari a 1,1 Un, nelle figure seguenti si riportano 
+a titolo esemplificativo l’andamento nel tempo della misura  Um a fronte di una variazione a 
+gradino della tensione d’ingresso U:  
+• nella Figura 139  con valore iniziale 0,9 U> (0,9x1,1=0,99 Un) e valore finale 1,1 U> (1,1x1,1 
+Un = 1,21 Un)  
+• nella Figura 140 , con valore iniziale 0 e valore finale 1,1 U> (1,1x1,1 Un=1,21 Un)  
+Le figure evidenziano inoltre i tempi di avviamento ed intervento.  
+ 
+Valore iniziale gradino [p.u. Un] 0,99 
+Valore finale gradino [p.u. Un] 1,21 
+Soglia U> [p.u. Un] 1,1 
+Tempo di avviamento [s] 285 
+Ritardo d'intervento (dopo avviamento) [s] 3 
+Tempo di intervento (tempo avviamento+ritardo d'intervento) [s] 288 
+ – Andamento nel tempo della misura Um a fronte di una variazione a gradino della 
+tensione d’ingresso U (caso 1) 
+0
+0,2
+0,4
+0,6
+0,8
+1
+1,2
+-200,0 -100,0 0,0 100,0 200,0 300,0 400,0 500,0 600,0
+[s]
+[p.u. Un]
+U
+Um
+
+--- PDF page 539 ---
+NORMA TECNICA   CEI 0 -16:2025 -12 
+ 
+ 
+532 
+ 
+ 
+ 
+Valore iniziale gradino [p.u. Un] 0 
+Valore finale gradino [p.u. Un] 1,21 
+Soglia U> [p.u. Un] 1,1 
+Tempo di avviamento [s] 498 
+Ritardo d'intervento (dopo avviamento) [s] 3 
+Tempo di intervento (tempo avviamento+ritardo d'intervento) [s] 501 
+ – Andamento nel tempo della misura Um a fronte di una variazione a gradino della 
+tensione d’ingresso U (caso 2) 
+La precisione del tempo di avviamento è influenzata dalla precisione della misura di tensione. 
+Ad esempio le due figure seguenti evidenziano l’errore che consegue per il tempo di avviamento 
+a causa dell’errore del +5% sulla tensione d’ingresso. Queste due figure sono ottenute a parità 
+di condizioni delle due figure precedenti, con la sola maggiorazione del +5% sul valore finale 
+della tensione d’ingresso (1,05x1,1x1,1 Un=1,27 Un).  
+Nel caso della Figura 141  l’errore del tempo di avviamento risulta in valore assoluto di  
+285-219=66 s ed in valore relativo del 100*(285 -219)/285=23%.  
+Nel caso della Figura 14 2Errore. L'origine riferimento non è stata trovata.  l’errore del tempo 
+di avviamento risulta in valore assoluto di  
+498-450=48 s ed in valore relativo del 100*(498 -450)/498=9,6%.  
+Tali errori risultano superiori a quelli specificati per i tempi di intervento (3% ± 20 ms).  
+ 
+Valore iniziale gradino [p.u. Un] 0,99 
+Valore finale gradino [p.u. Un] 1,27 
+Soglia U> [p.u. Un] 1,1 
+Tempo di avviamento [s] 219 
+Ritardo d'intervento (dopo avviamento) [s] 3 
+Tempo di intervento (tempo avviamento+ritardo d'intervento) [s] 222 
+ – Errore che consegue per il tempo di avviamento a causa dell’errore del +5% sulla 
+tensione d’ingresso (caso 1) 
+
+--- PDF page 540 ---
+NORMA TECNICA   CEI 0 -16:2025 -12 
+ 
+ 
+533 
+ 
+ 
+ 
+Valore iniziale gradino [p.u. Un] 0 
+Valore finale gradino [p.u. Un] 1,27 
+Soglia U> [p.u. Un] 1,1 
+Tempo di avviamento [s] 450 
+Ritardo d'intervento (dopo avviamento) [s] 3 
+ – Errore che consegue per il tempo di avviamento a causa dell’errore del +5% sulla 
+tensione d’ingresso (caso 2) 

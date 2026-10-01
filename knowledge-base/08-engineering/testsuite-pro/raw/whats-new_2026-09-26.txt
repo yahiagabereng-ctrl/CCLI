@@ -1,0 +1,35 @@
+# Triangle MicroWorks 61850 Test Suite Pro — What's New (raw excerpt)
+# Captured: 2026-09-26
+# Source: https://www.trianglemicroworks.com/products/testing-and-configuration-tools/61850-test-suite-pro-pages/whats-new
+
+Current Release: v4.7.4 — August 2025
+
+v4.7.4 highlights (CCLI-relevant):
+- IgnoreRCBOwner field for RCB reservation (default True); global attributes editable on workspace screen
+- GOOSE Tracker warns when not running / adapter not selected
+- Streamlined Enable/Disable Report Control Blocks in Advanced Client (Ed 2.1 report reservation)
+- Better multi-access-point server simulation
+
+v4.7.3:
+- NDIS driver → Windows 11 compatibility
+- Abort Connections on server simulator
+
+v4.7.1 CCLI-relevant:
+- Advanced Client: Select and Operate on data object
+- Test Sequencer: change IEDs associated with a test
+- Logic Analyzer CSV import/export
+
+v4.7:
+- Strict/Legacy SCL parser option
+- Auto-connect disabled by default (File | Options | Client Configuration)
+- Option to disable background polling
+- Sniffer can start without workspace; CTRL+Start Sniffer to change adapters
+
+v4.0:
+- Online product documentation: https://trianglemicroworks.com/help/6tsp
+
+Methodology (vendor, from v4.5.1 notes):
+1. Connect TSP to network (or DTM simulation) and load SCL
+2. Resolve/Acknowledge System Status errors/warnings
+3. Find signals in Data Miner → Signal Flow / Logic Analyzer
+4. Automated functional tests with Test Sequencer

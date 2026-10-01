@@ -1,0 +1,20 @@
+===== TSP Output (user report 2026-09-29) =====
+
+#  Type  Description                                              Category  Source
+1  APP   CCI016_01: Initiate Response Failed: Transport connection closed  GENERAL  CCI016_01
+
+===== TSP profile (user screenshots) =====
+
+IED IP:       192.168.10.1
+Local IP:     192.168.10.10
+Access Point: accessPoint1
+Port:         3782 (Advanced)
+MMS Security: Certificate
+  CA:         C:\CCLI_tls\root_CA.pem
+  Client:     C:\CCLI_tls\client.pem
+  Key:        C:\CCLI_tls\client_tsp.key
+  CRL:        C:\CCLI_tls\lab_crl.pem
+  Directory to CA: C:\CCLI_tls\root_CA.pem  *** FIX: must be EMPTY ***
+Transport TLS: ON
+  TLS v1.3:   OFF
+  Sisco:      OFF

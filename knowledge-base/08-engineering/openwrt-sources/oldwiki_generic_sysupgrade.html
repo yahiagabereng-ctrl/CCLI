@@ -1,0 +1,1165 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="no-js">
+<head>
+    <meta charset="utf-8" />
+    <title>OpenWrt OS upgrade procedure (LuCI or sysupgrade) [Old OpenWrt Wiki]</title>
+    <script>(function(H){H.className=H.className.replace(/\bno-js\b/,'js')})(document.documentElement)</script>
+    <meta name="generator" content="DokuWiki"/>
+<meta name="robots" content="index,follow"/>
+<meta name="keywords" content="doc,howto,generic.sysupgrade"/>
+<link rel="search" type="application/opensearchdescription+xml" href="https://oldwiki.archive.openwrt.org/lib/exe/opensearch.php" title="Old OpenWrt Wiki"/>
+<link rel="start" href="https://oldwiki.archive.openwrt.org/"/>
+<link rel="contents" href="https://oldwiki.archive.openwrt.org/doc/howto/generic.sysupgrade?do=index" title="Sitemap"/>
+<link rel="manifest" href="https://oldwiki.archive.openwrt.org/lib/exe/manifest.php"/>
+<link rel="alternate" type="application/rss+xml" title="Recent Changes" href="https://oldwiki.archive.openwrt.org/feed.php"/>
+<link rel="alternate" type="application/rss+xml" title="Current namespace" href="https://oldwiki.archive.openwrt.org/feed.php?mode=list&amp;ns=doc:howto"/>
+<link rel="alternate" type="text/html" title="Plain HTML" href="https://oldwiki.archive.openwrt.org/_export/xhtml/doc/howto/generic.sysupgrade"/>
+<link rel="alternate" type="text/plain" title="Wiki Markup" href="https://oldwiki.archive.openwrt.org/_export/raw/doc/howto/generic.sysupgrade"/>
+<link rel="canonical" href="https://oldwiki.archive.openwrt.org/doc/howto/generic.sysupgrade"/>
+<link rel="stylesheet" href="https://oldwiki.archive.openwrt.org/lib/exe/css.php?t=openwrt&amp;tseed=5112b50d26fd41c4c590f536835f659e"/>
+<!--[if gte IE 9]><!-->
+<script >/*<![CDATA[*/var NS='doc:howto';var JSINFO = {"plugin_folded":{"hide":"hide","reveal":"reveal"},"move_renameokay":false,"schemes":["http","https","telnet","gopher","wais","ftp","ed2k","irc","ldap"],"plugins":{"vshare":{"youtube":"youtube\\.com\/.*[&?]v=([a-z0-9_\\-]+)","vimeo":"vimeo\\.com\\\/(\\d+)","slideshare":"slideshare.*id=(\\d+)","dailymotion":"dailymotion\\.com\/video\/([a-z0-9]+)","archiveorg":"archive\\.org\/(?:embed|details)\/([a-zA-Z0-9_\\-]+)","soundcloud":"soundcloud\\.com\/([\\w-]+\/[\\w-]+)","niconico":"nicovideo\\.jp\/watch\/(sm[0-9]+)","bitchute":"bitchute\\.com\\\/video\\\/([a-zA-Z0-9_\\-]+)","coub":"coub\\.com\\\/view\\\/([a-zA-Z0-9_\\-]+)","odysee":"odysee\\.com\/\\$\/(?:embed|download)\/([-%_?=\/a-zA-Z0-9]+)","youku":"v\\.youku\\.com\/v_show\/id_([0-9A-Za-z=]+)\\.html","bilibili":"bilibili\\.com\\\/video\\\/(BV[0-9A-Za-z]+)","msoffice":"(?:office\\.com.*[&?]videoid=([a-z0-9\\-]+))","msstream":"microsoftstream\\.com\\\/video\\\/([a-f0-9\\-]{36})"}},"id":"doc:howto:generic.sysupgrade","namespace":"doc:howto","ACT":"show","useHeadingNavigation":1,"useHeadingContent":0};
+/*!]]>*/</script>
+<script charset="utf-8" src="https://oldwiki.archive.openwrt.org/lib/exe/jquery.php?tseed=34a552433bc33cc9c3bc32527289a0b2"></script>
+<script charset="utf-8" src="https://oldwiki.archive.openwrt.org/lib/exe/js.php?t=openwrt&amp;tseed=5112b50d26fd41c4c590f536835f659e"></script>
+<script type="text/javascript" charset="utf-8">/*<![CDATA[*/jQuery(function(){
+	for ( i=0; i < document.forms.length; i++ ) {
+		if (document.forms[i].method == 'post') {
+			var myElement = document.createElement('input');
+			myElement.setAttribute('type', 'hidden');
+			myElement.name = 'bb2_screener_';
+			myElement.value = '1788767354 78.210.12.157';
+			document.forms[i].appendChild(myElement);
+		}
+	}
+});
+/*!]]>*/</script>
+<!--<![endif]-->
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link rel="shortcut icon" href="https://oldwiki.archive.openwrt.org/lib/tpl/openwrt/images/favicon.ico" />
+<link rel="apple-touch-icon" href="https://oldwiki.archive.openwrt.org/lib/tpl/openwrt/images/apple-touch-icon.png" />
+    </head>
+
+<body>
+    <!--[if lte IE 7 ]><div id="IE7"><![endif]--><!--[if IE 8 ]><div id="IE8"><![endif]-->
+    <div id="dokuwiki__site" class="page_doc page_howto page_generic.sysupgrade"><div id="dokuwiki__top" class="site dokuwiki mode_show tpl_openwrt     ">
+
+        
+<!-- ********** HEADER ********** -->
+<div id="dokuwiki__header"><div style="background:#ffb;border:1px solid #500;border-radius:.5em;box-shadow:.2em .2em .7em 0 #777;padding:.5em;margin:1em 0;color:#500">This are <strong>read only contents</strong> of the former OpenWrt wiki system. The pages are provided for archival purposes only. Refer to <strong><a style="color:#b00" href="https://openwrt.org/">https://openwrt.org/</a></strong> for up-to-date information.</div><div class="pad group">
+
+    
+    <div class="headings group">
+        <ul class="a11y skip">
+            <li><a href="#dokuwiki__content">skip to content</a></li>
+        </ul>
+
+        <h1><a href="https://openwrt.org/"  accesskey="h" title="[H]"><img src="https://oldwiki.archive.openwrt.org/lib/tpl/openwrt/images/logo.png" width="386" height="98" alt="" /> <span>Old OpenWrt Wiki</span></a></h1>
+            </div>
+
+    <div class="tools group">
+        <!-- USER TOOLS -->
+                    <div id="dokuwiki__usertools">
+                <h3 class="a11y">User Tools</h3>
+                <ul>
+                    <li><a href="https://oldwiki.archive.openwrt.org/doc/howto/generic.sysupgrade?do=admin"  class="action admin" rel="nofollow" title="Admin">Admin</a></li><li><a href="https://oldwiki.archive.openwrt.org/doc/howto/generic.sysupgrade?do=register"  class="action register" rel="nofollow" title="Register">Register</a></li><li><a href="https://oldwiki.archive.openwrt.org/doc/howto/generic.sysupgrade?do=login&amp;sectok="  class="action login" rel="nofollow" title="Log In">Log In</a></li>                </ul>
+            </div>
+        
+        <!-- SITE TOOLS -->
+        <div id="dokuwiki__sitetools">
+            <h3 class="a11y">Site Tools</h3>
+            <form action="https://oldwiki.archive.openwrt.org/start" method="get" role="search" class="search doku_form" id="dw__search" accept-charset="utf-8"><input type="hidden" name="do" value="search" /><input type="hidden" name="id" value="doc:howto:generic.sysupgrade" /><div class="no"><input name="q" type="text" class="edit" title="[F]" accesskey="f" placeholder="Search" autocomplete="on" id="qsearch__in" value="" /><button value="1" type="submit" title="Search">Search</button><div id="qsearch__out" class="ajax_qsearch JSpopup"></div></div></form>            <div class="mobileTools">
+                <form action="https://oldwiki.archive.openwrt.org/doku.php" method="get" accept-charset="utf-8"><div class="no"><input type="hidden" name="id" value="doc:howto:generic.sysupgrade" /><select name="do" class="edit quickselect" title="Tools"><option value="">Tools</option><optgroup label="Page Tools"><option value="edit">Show pagesource</option><option value="revisions">Old revisions</option><option value="backlink">Backlinks</option></optgroup><optgroup label="Site Tools"><option value="recent">Recent Changes</option><option value="media">Media Manager</option><option value="index">Sitemap</option></optgroup><optgroup label="User Tools"><option value="register">Register</option><option value="login">Log In</option></optgroup></select><button type="submit">&gt;</button></div></form>            </div>
+            <ul>
+                <li><a href="https://oldwiki.archive.openwrt.org/doc/howto/generic.sysupgrade?do=recent"  class="action recent" accesskey="r" rel="nofollow" title="Recent Changes [R]">Recent Changes</a></li><li><a href="https://oldwiki.archive.openwrt.org/doc/howto/generic.sysupgrade?do=media&amp;ns=doc%3Ahowto"  class="action media" rel="nofollow" title="Media Manager">Media Manager</a></li><li><a href="https://oldwiki.archive.openwrt.org/doc/howto/generic.sysupgrade?do=index"  class="action index" accesskey="x" rel="nofollow" title="Sitemap [X]">Sitemap</a></li>            </ul>
+        </div>
+
+    </div>
+
+    <!-- BREADCRUMBS -->
+            <div class="breadcrumbs">
+                            <div class="youarehere"><span class="bchead">You are here: </span><span class="home"><bdi><a href="https://oldwiki.archive.openwrt.org/start" class="wikilink1" title="start" data-wiki-id="start">Old OpenWrt Wiki</a></bdi></span> » <bdi><a href="https://oldwiki.archive.openwrt.org/doc/start" class="wikilink1" title="doc:start" data-wiki-id="doc:start">Welcome to OpenWrt</a></bdi> » <bdi><a href="https://oldwiki.archive.openwrt.org/doc/howto/start" class="wikilink1" title="doc:howto:start" data-wiki-id="doc:howto:start">HOWTOs</a></bdi> » <bdi><a href="https://oldwiki.archive.openwrt.org/doc/howto/generic.sysupgrade" class="wikilink1" title="doc:howto:generic.sysupgrade" data-wiki-id="doc:howto:generic.sysupgrade">OpenWrt OS upgrade procedure (LuCI or sysupgrade)</a></bdi></div>
+                                    <div class="plugin_multilingual">
+        <ul>
+          <li>
+            <div class="li">
+              <div class="flag_not_exists">
+                <a href="https://oldwiki.archive.openwrt.org/cz/doc/howto/generic.sysupgrade" class="media" title="cz:doc:howto:generic.sysupgrade" data-wiki-id="cz:doc:howto:generic.sysupgrade">flags</a>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="li">
+              <a href="https://oldwiki.archive.openwrt.org/de/doc/howto/generic.sysupgrade" class="media" title="de:doc:howto:generic.sysupgrade" data-wiki-id="de:doc:howto:generic.sysupgrade"><img src="https://oldwiki.archive.openwrt.org/lib/exe/fetch.php?cache=&amp;tok=3878d9&amp;media=https%3A%2F%2Foldwiki.archive.openwrt.org%2Flib%2Fplugins%2Fmultilingual%2Fflags%2Fde.gif" class="media" title="Deutsch (German)" alt="Deutsch (German)" /></a>
+            </div>
+          </li>
+          <li>
+            <div class="li">
+              <div class="flag_not_exists">
+                <a href="https://oldwiki.archive.openwrt.org/en/doc/howto/generic.sysupgrade" class="media" title="en:doc:howto:generic.sysupgrade" data-wiki-id="en:doc:howto:generic.sysupgrade"><img src="https://oldwiki.archive.openwrt.org/lib/exe/fetch.php?cache=&amp;tok=0d7b3e&amp;media=https%3A%2F%2Foldwiki.archive.openwrt.org%2Flib%2Fplugins%2Fmultilingual%2Fflags%2Fgb.gif" class="media" title="English" alt="English" /></a>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="li">
+              <div class="flag_not_exists">
+                <a href="https://oldwiki.archive.openwrt.org/es/doc/howto/generic.sysupgrade" class="media" title="es:doc:howto:generic.sysupgrade" data-wiki-id="es:doc:howto:generic.sysupgrade"><img src="https://oldwiki.archive.openwrt.org/lib/exe/fetch.php?cache=&amp;tok=3d7c10&amp;media=https%3A%2F%2Foldwiki.archive.openwrt.org%2Flib%2Fplugins%2Fmultilingual%2Fflags%2Fmx.gif" class="media" title="Español (Spanish, Mexico)" alt="Español (Spanish, Mexico)" /></a>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="li">
+              <a href="https://oldwiki.archive.openwrt.org/fr/doc/howto/generic.sysupgrade" class="media" title="fr:doc:howto:generic.sysupgrade" data-wiki-id="fr:doc:howto:generic.sysupgrade"><img src="https://oldwiki.archive.openwrt.org/lib/exe/fetch.php?cache=&amp;tok=f427db&amp;media=https%3A%2F%2Foldwiki.archive.openwrt.org%2Flib%2Fplugins%2Fmultilingual%2Fflags%2Ffr.gif" class="media" title="Français (French)" alt="Français (French)" /></a>
+            </div>
+          </li>
+          <li>
+            <div class="li">
+              <div class="flag_not_exists">
+                <a href="https://oldwiki.archive.openwrt.org/hu/doc/howto/generic.sysupgrade" class="media" title="hu:doc:howto:generic.sysupgrade" data-wiki-id="hu:doc:howto:generic.sysupgrade">flags</a>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="li">
+              <div class="flag_not_exists">
+                <a href="https://oldwiki.archive.openwrt.org/jp/doc/howto/generic.sysupgrade" class="media" title="jp:doc:howto:generic.sysupgrade" data-wiki-id="jp:doc:howto:generic.sysupgrade">flags</a>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="li">
+              <div class="flag_not_exists">
+                <a href="https://oldwiki.archive.openwrt.org/pl/doc/howto/generic.sysupgrade" class="media" title="pl:doc:howto:generic.sysupgrade" data-wiki-id="pl:doc:howto:generic.sysupgrade"><img src="https://oldwiki.archive.openwrt.org/lib/exe/fetch.php?cache=&amp;tok=f7f403&amp;media=https%3A%2F%2Foldwiki.archive.openwrt.org%2Flib%2Fplugins%2Fmultilingual%2Fflags%2Fpl.gif" class="media" title="Poliski (Polish)" alt="Poliski (Polish)" /></a>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="li">
+              <div class="flag_not_exists">
+                <a href="https://oldwiki.archive.openwrt.org/pt-br/doc/howto/generic.sysupgrade" class="media" title="pt-br:doc:howto:generic.sysupgrade" data-wiki-id="pt-br:doc:howto:generic.sysupgrade"><img src="https://oldwiki.archive.openwrt.org/lib/exe/fetch.php?cache=&amp;tok=6f4451&amp;media=https%3A%2F%2Foldwiki.archive.openwrt.org%2Flib%2Fplugins%2Fmultilingual%2Fflags%2Fbr.gif" class="media" title="Português brasileiro (Portuguese, Brasil)" alt="Português brasileiro (Portuguese, Brasil)" /></a>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="li">
+              <a href="https://oldwiki.archive.openwrt.org/ru/doc/howto/generic.sysupgrade" class="media" title="ru:doc:howto:generic.sysupgrade" data-wiki-id="ru:doc:howto:generic.sysupgrade"><img src="https://oldwiki.archive.openwrt.org/lib/exe/fetch.php?cache=&amp;tok=8ac213&amp;media=https%3A%2F%2Foldwiki.archive.openwrt.org%2Flib%2Fplugins%2Fmultilingual%2Fflags%2Fru.gif" class="media" title="Русский (Russsian)" alt="Русский (Russsian)" /></a>
+            </div>
+          </li>
+          <li>
+            <div class="li">
+              <div class="flag_not_exists">
+                <a href="https://oldwiki.archive.openwrt.org/tr/doc/howto/generic.sysupgrade" class="media" title="tr:doc:howto:generic.sysupgrade" data-wiki-id="tr:doc:howto:generic.sysupgrade"><img src="https://oldwiki.archive.openwrt.org/lib/exe/fetch.php?cache=&amp;tok=edc91c&amp;media=https%3A%2F%2Foldwiki.archive.openwrt.org%2Flib%2Fplugins%2Fmultilingual%2Fflags%2Ftr.gif" class="media" title="Tϋrkçe (Turkish)" alt="Tϋrkçe (Turkish)" /></a>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="li">
+              <div class="flag_not_exists">
+                <a href="https://oldwiki.archive.openwrt.org/zh-cn/doc/howto/generic.sysupgrade" class="media" title="zh-cn:doc:howto:generic.sysupgrade" data-wiki-id="zh-cn:doc:howto:generic.sysupgrade">flags</a>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="li">
+              <div class="flag_not_exists">
+                <a href="https://oldwiki.archive.openwrt.org/zh-tw/doc/howto/generic.sysupgrade" class="media" title="zh-tw:doc:howto:generic.sysupgrade" data-wiki-id="zh-tw:doc:howto:generic.sysupgrade">flags</a>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+        </div>
+    
+    
+    <hr class="a11y" />
+</div></div><!-- /header -->
+
+        <div class="wrapper group">
+
+            
+            <!-- ********** CONTENT ********** -->
+            <div id="dokuwiki__content"><div class="pad group">
+
+                <div class="pageId"><span>doc:howto:generic.sysupgrade</span></div>
+
+                <div class="page group">
+                                                            <!-- wikipage start -->
+                    <!-- TOC START -->
+<div id="dw__toc" class="dw__toc">
+<h3 class="toggle">Table of Contents</h3>
+<div>
+
+<ul class="toc">
+<li class="level1"><div class="li"><a href="#preparing_for_an_openwrt_upgrade">Preparing for an OpenWrt upgrade</a></div>
+<ul class="toc">
+<li class="level2"><div class="li"><a href="#how_the_openwrt_os_upgrade_works">How the OpenWrt OS upgrade works</a></div></li>
+<li class="level2"><div class="li"><a href="#identifying_customizations">Identifying customizations</a></div>
+<ul class="toc">
+<li class="level3"><div class="li"><a href="#list_user-installed_packages_identified_in_the_opkg_package_database">List user-installed packages identified in the opkg package database</a></div></li>
+<li class="level3"><div class="li"><a href="#list_all_packages_associated_with_any_user-modified_file">List all packages associated with any user-modified file</a></div></li>
+</ul>
+</li>
+<li class="level2"><div class="li"><a href="#ensure_desired_configuration_files_will_be_saved">Ensure desired configuration files will be saved</a></div>
+<ul class="toc">
+<li class="level3"><div class="li"><a href="#luci_method">LuCI method</a></div></li>
+<li class="level3"><div class="li"><a href="#command-line_method">Command-line method</a></div></li>
+</ul>
+</li>
+<li class="level2"><div class="li"><a href="#legacyluci_flash_keep_section_ofetcconfigluci">Legacy: LuCI flash_keep section of /etc/config/luci</a></div></li>
+<li class="level2"><div class="li"><a href="#identifying_the_openwrt_upgrade_image">Identifying the OpenWrt upgrade image</a></div>
+<ul class="toc">
+<li class="level3"><div class="li"><a href="#openwrt_on_x86">OpenWrt on x86</a></div></li>
+</ul>
+</li>
+<li class="level2"><div class="li"><a href="#downloading_the_openwrt_upgrade_image">Downloading the OpenWrt upgrade image</a></div>
+<ul class="toc">
+<li class="level3"><div class="li"><a href="#for_luci-based_upgrades">For LuCI-based upgrades</a></div></li>
+<li class="level3"><div class="li"><a href="#for_sysupgrade-based_upgrades">For sysupgrade-based upgrades</a></div></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="level1"><div class="li"><a href="#luci_web_interface_upgrade_procedure">LuCI web interface upgrade procedure</a></div></li>
+<li class="level1"><div class="li"><a href="#sysupgrade_sshterminal_upgrade_procedure">sysupgrade SSH/terminal upgrade procedure</a></div>
+<ul class="toc">
+<li class="level2"><div class="li"><a href="#troubleshooting">Troubleshooting</a></div></li>
+</ul>
+</li>
+<li class="level1"><div class="li"><a href="#additional_configuration_after_an_openwrt_upgrade">Additional configuration after an OpenWrt upgrade</a></div>
+<ul class="toc">
+<li class="level2"><div class="li"><a href="#verify_the_new_os_version">Verify the new OS version</a></div></li>
+<li class="level2"><div class="li"><a href="#check_for_any_upgradable_packages">Check for any upgradable packages</a></div></li>
+<li class="level2"><div class="li"><a href="#reinstall_user-installed_packages">Reinstall user-installed packages</a></div></li>
+<li class="level2"><div class="li"><a href="#configure_user-installed_packages">Configure user-installed packages</a></div></li>
+<li class="level2"><div class="li"><a href="#enable_and_start_user-installed_packages">Enable and start user-installed packages</a></div></li>
+<li class="level2"><div class="li"><a href="#do_a_test_reboot">Do a test reboot</a></div></li>
+</ul>
+</li>
+<li class="level1"><div class="li"><a href="#alternative_os_upgrade_procedures_to_luci_or_sysupgrade">Alternative OS upgrade procedures to LuCI or sysupgrade</a></div>
+<ul class="toc">
+<li class="level2"><div class="li"><a href="#mtd">mtd</a></div></li>
+<li class="level2"><div class="li"><a href="#netcat">netcat</a></div>
+<ul class="toc">
+<li class="level3"><div class="li"><a href="#direct_method">Direct method</a></div></li>
+<li class="level3"><div class="li"><a href="#indirect_method">Indirect method</a></div></li>
+<li class="level3"><div class="li"><a href="#some_useful_links_for_netcat">Some useful links for netcat</a></div></li>
+</ul>
+</li>
+<li class="level2"><div class="li"><a href="#scp">scp</a></div>
+<ul class="toc">
+<li class="level3"><div class="li"><a href="#copy_your_firmware_to_your_router">Copy your firmware to your router</a></div></li>
+<li class="level3"><div class="li"><a href="#write_the_firmware_to_your_router">Write the firmware to your router</a></div></li>
+<li class="level3"><div class="li"><a href="#note">Note</a></div></li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+</div>
+<!-- TOC END -->
+
+<h1 class="sectionedit1" id="openwrt_os_upgrade_procedure_luci_or_sysupgrade">OpenWrt OS upgrade procedure (LuCI or sysupgrade)</h1>
+<div class="level1">
+<ul>
+<li class="level1 node"><div class="li"> Related pages:</div>
+<ul>
+<li class="level2"><div class="li"> <a href="https://oldwiki.archive.openwrt.org/doc/techref/flash.layout" class="wikilink1" title="doc:techref:flash.layout" data-wiki-id="doc:techref:flash.layout">Flash Layout</a>: provides background on how OpenWrt uses device storage space</div>
+</li>
+<li class="level2"><div class="li"> Forum post <a href="https://forum.openwrt.org/viewtopic.php?id=42739" class="urlextern" title="https://forum.openwrt.org/viewtopic.php?id=42739" rel="ugc nofollow">Identify packages to be re-installed after system upgrade</a> (contains a promising script by forum members mforkel and Rafciq that automates package re-installation)</div>
+</li>
+</ul>
+</li>
+</ul>
+
+<p>
+An OpenWrt upgrade will replace the entire current OpenWrt installation with a new version. This includes the Linux kernel, the SquashFS partition and the JFFS2 partition.
+</p>
+
+<p>
+The common upgrade paths below will automatically preserve much of the OpenWrt <abbr title="Operating System">OS</abbr> configuration by saving and then restoring configuration files in specific common locations (including /etc/config). This will preserve things like OpenWrt network settings, WiFi settings, the device hostname, and so on.
+</p>
+
+<p>
+The first part of the upgrade process is to prepare for the upgrade. This includes documenting programs and settings that will need to be re-installed or restored after the upgrade, locating and downloading the correct OpenWrt upgrade image for your hardware.
+</p>
+
+<p>
+Next is the actual upgrade. There are two common upgrade paths to actually perform the upgrade. One uses the LuCI web interface &quot;Flash new firmware image&quot; command and one uses the command-line <code>sysupgrade</code> command. You can use either approach.
+</p>
+
+<p>
+After the <abbr title="Operating System">OS</abbr> upgrade, there are usually some additional configuration steps required to re-install additional packages not part of the base OpenWrt install, to configure new OpenWrt functionality or to update configuration files to reflect new settings or updated packages. Please see the section below with more details.
+</p>
+
+</div>
+
+<h2 class="sectionedit2" id="preparing_for_an_openwrt_upgrade">Preparing for an OpenWrt upgrade</h2>
+<div class="level2">
+
+</div>
+
+<h3 class="sectionedit3" id="how_the_openwrt_os_upgrade_works">How the OpenWrt OS upgrade works</h3>
+<div class="level3">
+
+<p>
+Both the LuCI and sysupgrade upgrade procedures work by saving specified configuration files, <strong>wiping the entire file system</strong>, installing the new version of OpenWrt and then restoring back the saved configuration files. <strong>This means that any parts of the file system that are not specifically saved will be lost.</strong>
+</p>
+
+<p>
+In particular, any manually installed software packages you may have installed after the initial OpenWrt installation have to be reinstalled after an OpenWrt upgrade. That way everything will match, e.g. the updated Linux kernel and any installed kernel modules.
+</p>
+
+<p>
+Any configuration files or data files placed in locations not specifically listed as being preserved below will also be lost in an OpenWrt upgrade. Be sure to check any files you have added or customized from a default OpenWrt install to back up these items before an upgrade.
+</p>
+
+</div>
+
+<h3 class="sectionedit4" id="identifying_customizations">Identifying customizations</h3>
+<div class="level3">
+
+</div>
+
+<h4 class="sectionedit5" id="list_user-installed_packages_identified_in_the_opkg_package_database">List user-installed packages identified in the opkg package database</h4>
+<div class="level4">
+
+<p>
+This script is from forum member gsenna and was originally posted in the forum discussion &quot;Default packages attitude 12.09rc2 tplink 1043nd&quot; at <a href="https://forum.openwrt.org/viewtopic.php?id=43480" class="urlextern" title="https://forum.openwrt.org/viewtopic.php?id=43480" rel="ugc nofollow">https://forum.openwrt.org/viewtopic.php?id=43480</a>
+</p>
+<ul>
+<li class="level1"><div class="li"> Create the script</div>
+</li>
+</ul>
+
+<p>
+<pre class="code bash"><span class="kw2">vi</span> <span class="sy0">/</span>tmp<span class="sy0">/</span>listuserpackages.sh</pre>
+
+</p>
+
+<p>
+<pre class="code bash"><span class="co0">#!/bin/ash</span>
+<span class="kw3">echo</span> <span class="sy0">&gt;&amp;</span><span class="nu0">2</span> User-installed packages are the following:
+<span class="kw2">sed</span> <span class="re5">-ne</span> <span class="st_h">'/^Package:[[:blank:]]*/ {
+	s///
+	h
+}
+/user installed/ {
+	g
+	p
+}'</span> <span class="sy0">/</span>usr<span class="sy0">/</span>lib<span class="sy0">/</span>opkg<span class="sy0">/</span>status</pre>
+
+</p>
+<ul>
+<li class="level1"><div class="li"> Run the script</div>
+</li>
+</ul>
+
+<p>
+<pre class="code bash"><span class="sy0">/</span>bin<span class="sy0">/</span><span class="kw2">ash</span> <span class="sy0">/</span>tmp<span class="sy0">/</span>listuserpackages.sh</pre>
+
+</p>
+<ul>
+<li class="level1"><div class="li"> Example output:</div>
+</li>
+</ul>
+
+<p>
+<pre class="code">User-installed packages are the following:
+snmpd-static</pre>
+
+</p>
+
+<p>
+Note that the script may list several packages that are part of the default OpenWrt install and will have their changed configuration files automatically backed up and restored. In addition, packages installed as dependences of other packages may show here. <strong>It is only important to note the names of packages that you directly installed manually.</strong> Any dependencies of these packages will automatically be reinstalled when the primary package is reinstalled.
+</p>
+
+<p>
+An alternative script, that uses awk instead of sed/grep and is much shorter (provided by user valentijn):
+</p>
+<ul>
+<li class="level1"><div class="li"> Create the script</div>
+</li>
+</ul>
+
+<p>
+<pre class="code bash"><span class="kw2">vi</span> <span class="sy0">/</span>tmp<span class="sy0">/</span>listuserpackages.awk</pre>
+
+</p>
+
+<p>
+<pre class="code awk"><span class="sy3">/^</span>Package<span class="sy5">:</span><span class="sy3">/</span><span class="br0">&#123;</span>PKG= <span class="re0">$2</span><span class="br0">&#125;</span>
+<span class="sy3">/^</span>Status<span class="sy5">:</span> .<span class="sy3">*</span>user installed<span class="sy3">/</span><span class="br0">&#123;</span><span class="kw5">print</span> PKG<span class="br0">&#125;</span></pre>
+
+</p>
+<ul>
+<li class="level1"><div class="li"> Run the script</div>
+</li>
+</ul>
+
+<p>
+<pre class="code bash"><span class="kw2">awk</span> <span class="re5">-f</span> <span class="sy0">/</span>tmp<span class="sy0">/</span>listuserpackages.awk <span class="sy0">/</span>usr<span class="sy0">/</span>lib<span class="sy0">/</span>opkg<span class="sy0">/</span>status</pre>
+
+</p>
+
+<p>
+This script will only output a list of user (and default) installed packages.
+</p>
+
+</div>
+
+<h4 class="sectionedit6" id="list_all_packages_associated_with_any_user-modified_file">List all packages associated with any user-modified file</h4>
+<div class="level4">
+
+<p>
+This is an alternative to the script above. This command will list all packages related to any file in the whole file system that has changed from the default OpenWrt default version.
+</p>
+
+<p>
+Note that the script may list several packages that are part of the default OpenWrt install and will have their changed configuration files automatically backed up and restored. In addition, packages installed as dependences of other packages may show here. <strong>It is only important to note the names of packages that you directly installed manually.</strong> Any dependencies of these packages will automatically be reinstalled when the primary package is reinstalled.
+</p>
+
+<p>
+<pre class="code bash"><span class="co0"># this version is for OpenWrt 14.07 &quot;Barrier Breaker&quot; or earlier</span>
+<span class="kw2">find</span> <span class="sy0">/</span>overlay<span class="sy0">/</span> <span class="sy0">|</span> <span class="kw2">sed</span> s:<span class="sy0">/</span>overlay::g <span class="sy0">|</span> <span class="kw1">while</span> <span class="kw3">read</span> <span class="kw2">file</span>; <span class="kw1">do</span> opkg search <span class="re1">$file</span>; <span class="kw1">done</span> <span class="sy0">|</span> <span class="kw2">awk</span> <span class="st_h">'{print $1}'</span> <span class="sy0">|</span> <span class="kw2">sort</span> <span class="sy0">|</span> <span class="kw2">uniq</span>
+&nbsp;
+<span class="co0"># this command is for OpenWrt 15.05</span>
+<span class="kw2">find</span> <span class="sy0">/</span>overlay<span class="sy0">/</span>upper<span class="sy0">/</span> <span class="sy0">|</span> <span class="kw2">sed</span> s:<span class="sy0">/</span>overlay<span class="sy0">/</span>upper::g <span class="sy0">|</span> <span class="kw1">while</span> <span class="kw3">read</span> <span class="kw2">file</span>; <span class="kw1">do</span> opkg search <span class="re1">$file</span>; <span class="kw1">done</span> <span class="sy0">|</span> <span class="kw2">awk</span> <span class="st_h">'{print $1}'</span> <span class="sy0">|</span> <span class="kw2">sort</span> <span class="sy0">|</span> <span class="kw2">uniq</span></pre>
+
+</p>
+
+</div>
+
+<h3 class="sectionedit7" id="ensure_desired_configuration_files_will_be_saved">Ensure desired configuration files will be saved</h3>
+<div class="level3">
+<ul>
+<li class="level1 node"><div class="li"> Related pages:</div>
+<ul>
+<li class="level2"><div class="li"> <code><a href="https://oldwiki.archive.openwrt.org/doc/howto/notuci.config#etcsysupgradeconf" class="wikilink1" title="doc:howto:notuci.config" data-wiki-id="doc:howto:notuci.config">/etc/sysupgrade.conf</a></code></div>
+</li>
+</ul>
+</li>
+</ul>
+
+<p>
+The LuCI and <code>sysupgrade</code> upgrades will preserve configuration files:
+</p>
+<ul>
+<li class="level1"><div class="li"> listed by</div>
+</li>
+</ul>
+
+<p>
+<pre class="code">opkg list-changed-conffiles</pre>
+
+</p>
+<ul>
+<li class="level1"><div class="li"> files listed within the text files in <code>/lib/upgrade/keep.d/</code> (for example, /lib/upgrade/keep.d/base-file-essential)</div>
+</li>
+<li class="level1"><div class="li"> files listed in /etc/sysupgrade.conf</div>
+</li>
+</ul>
+
+<p>
+Based on the list of user-installed packages identified above, you may know that you have <strong>other</strong> configuration or data files that need to be preserved and that are not included in the default set of files to save. Your new files should be added to /etc/sysupgrade.conf. By default, this file just has comments in it.
+</p>
+
+</div>
+
+<h4 class="sectionedit8" id="luci_method">LuCI method</h4>
+<div class="level4">
+
+<p>
+Go to System &gt; Backup/Flash Firmware &gt; Configuration tab. This will display the current contents of /etc/sysupgrade.conf file and the edit window can be used to add additional lines to the file. Click &quot;Submit&quot; when done editing.
+</p>
+
+<p>
+To view all the configuration files that will be saved on an upgrade, click the &quot;Open list…&quot; button.
+</p>
+
+</div>
+
+<h4 class="sectionedit9" id="command-line_method">Command-line method</h4>
+<div class="level4">
+
+<p>
+Edit /etc/sysupgrade.conf with an editor. For example:
+</p>
+
+<p>
+<pre class="code bash"><span class="kw2">vi</span> <span class="sy0">/</span>etc<span class="sy0">/</span>sysupgrade.conf</pre>
+
+</p>
+
+<p>
+<pre class="code">## This file contains files and directories that should
+## be preserved during an upgrade.
+
+# /etc/example.conf
+# /etc/openvpn/
+
+## customization: preserve sudo files
+/etc/sudoers
+/etc/sudoers.d/</pre>
+
+</p>
+
+</div>
+
+<h3 class="sectionedit10" id="legacyluci_flash_keep_section_ofetcconfigluci">Legacy: LuCI flash_keep section of /etc/config/luci</h3>
+<div class="level3">
+
+<p>
+Luci has a separate set of settings in the &quot;config extern &#039;flash_keep&#039;&quot; section of the file /etc/config/luci relating to configuration files that should be preserved.
+</p>
+
+<p>
+In the past, it appears this list was used by LuCI (see <a href="https://forum.openwrt.org/viewtopic.php?pid=100739#p100739" class="urlextern" title="https://forum.openwrt.org/viewtopic.php?pid=100739#p100739" rel="ugc nofollow">https://forum.openwrt.org/viewtopic.php?pid=100739#p100739</a>). However, at least as of OpenWrt 14.07, the LuCI OpenWrt upgrade procedure actually calls the sysupgrade script and so it appears the flash_keep settings in /etc/config/luci are now ignored.
+</p>
+
+</div>
+
+<h3 class="sectionedit11" id="identifying_the_openwrt_upgrade_image">Identifying the OpenWrt upgrade image</h3>
+<div class="level3">
+<ul>
+<li class="level1"><div class="li"> Only the <strong>&quot;…-sysupgrade.bin&quot;</strong> version of the OpenWrt download image should be used for OpenWrt upgrades. The &quot;…-factory.bin&quot; file is for switching from the vendor-default firmware to OpenWrt and is not used for OpenWrt-to-OpenWrt upgrades.</div>
+</li>
+<li class="level1"><div class="li"> Locate the correct &quot;…-sysupgrade.bin&quot; upgrade file for your particular device hardware in the OpenWrt download area</div>
+</li>
+</ul>
+
+</div>
+
+<h4 class="sectionedit12" id="openwrt_on_x86">OpenWrt on x86</h4>
+<div class="level4">
+
+<p>
+<img src="https://oldwiki.archive.openwrt.org/lib/images/smileys/icon_exclaim.gif" class="icon" alt=":!:" /> For x86 systems there is no &quot;sysupgrade&quot; image, just be sure to use the new firmware image has the same family of filesystem (if the current firmware uses squashfs then the new will use squashfs as well and if the current has ext the new will use ext filesystem. Note that an upgrade from ext2 [10.03.1] to ext4 [12.09] seems not working. Tested 10.03.1 squashfs to 12.09 squashfs, working ; 10.03.1 squashfs to 12.09 ext4 failed; 10.03.1 ext2 to 12.09 ext4 failed)
+</p>
+
+</div>
+
+<h3 class="sectionedit13" id="downloading_the_openwrt_upgrade_image">Downloading the OpenWrt upgrade image</h3>
+<div class="level3">
+
+</div>
+
+<h4 class="sectionedit14" id="for_luci-based_upgrades">For LuCI-based upgrades</h4>
+<div class="level4">
+<ul>
+<li class="level1"><div class="li"> Download the desired upgrade file to your PC using a web browser</div>
+</li>
+<li class="level1"><div class="li"> Proceed to the LuCI upgrade procedure, below</div>
+</li>
+</ul>
+
+</div>
+
+<h4 class="sectionedit15" id="for_sysupgrade-based_upgrades">For sysupgrade-based upgrades</h4>
+<div class="level4">
+<ul>
+<li class="level1"><div class="li"> Download the desired upgrade file to the local /tmp RAM drive on your OpenWrt system. The <code>/tmp</code> directory is stored in RAM (using <a href="https://en.wikipedia.org/wiki/tmpfs" class="interwiki iw_wp" title="https://en.wikipedia.org/wiki/tmpfs">tmpfs</a>), not in the permanent flash storage.</div>
+</li>
+</ul>
+
+<p>
+<pre class="code bash"><span class="co0"># example downloading the OpenWrt 15.05 upgrade image for a TP-LINK TL-WR1043ND ver. 1.x router</span>
+<span class="kw3">cd</span> <span class="sy0">/</span>tmp
+<span class="kw2">wget</span> http:<span class="sy0">//</span>downloads.openwrt.org<span class="sy0">/</span>chaos_calmer<span class="sy0">/</span><span class="nu0">15.05</span><span class="sy0">/</span>ar71xx<span class="sy0">/</span>generic<span class="sy0">/</span>openwrt-<span class="nu0">15.05</span>-ar71xx-generic-tl-wr1043nd-v1-squashfs-sysupgrade.bin
+&nbsp;
+<span class="co0"># check the integrity of the image file</span>
+<span class="kw2">wget</span> http:<span class="sy0">//</span>downloads.openwrt.org<span class="sy0">/</span>chaos_calmer<span class="sy0">/</span><span class="nu0">15.05</span><span class="sy0">/</span>ar71xx<span class="sy0">/</span>generic<span class="sy0">/</span>md5sums
+<span class="co0"># the desired result is that the downloaded firmware filename is listed with &quot;OK&quot; afterwards</span>
+md5sum <span class="re5">-c</span> md5sums <span class="nu0">2</span><span class="sy0">&gt;</span> <span class="sy0">/</span>dev<span class="sy0">/</span>null <span class="sy0">|</span> <span class="kw2">grep</span> OK</pre>
+
+</p>
+<ul>
+<li class="level1"><div class="li"> Proceed to the &quot;Ensure desired configuration files will be saved&quot; section, below</div>
+</li>
+</ul>
+
+</div>
+
+<h5 class="sectionedit16" id="troubleshootingtmp_is_too_small_to_hold_the_downloaded_file">Troubleshooting: /tmp is too small to hold the downloaded file</h5>
+<div class="level5">
+
+<p>
+If your device&#039;s /tmp filesystem is not large enough to store the OpenWrt upgrade image, this section provides tips to temporarily free up RAM.
+</p>
+
+<p>
+First check memory usage with the <code>free</code> or <code>top</code> or <code>cat /proc/meminfo</code> commands; proceed if you have as much free RAM as the image is in size plus an some additional MiB of free memory.
+</p>
+<div class="table sectionedit17"><table class="inline">
+	<tr class="row0">
+		<td class="col0"><code>root@openwrt:/$ free
+             total         used         free       shared      buffers
+Mem:         29540        18124        <strong>11416</strong>         0         1248
+-/+ buffers:              16876        12664
+Swap:            0            0            0</code></td>
+	</tr>
+</table></div>
+
+<p>
+In this example there are precisely 11416 KiB of RAM unused. All the rest 32768 - 11416 = 21352 KiB are used somehow and a portion of it can and will be made available by the kernel, if it be needed, the problem is, we do not know how much exactly that is. Make sure <em>enough</em> is available. Free space in /tmp also counts towards free memory. Therefore with:
+</p>
+<div class="table sectionedit18"><table class="inline">
+	<tr class="row0">
+		<td class="col0"><code>root@openwrt:/$ free
+Mem:         13388        12636          752            0         1292
+Swap:            0            0            0
+Total:       13388        12636          752</code></td>
+	</tr>
+</table></div>
+<div class="table sectionedit19"><table class="inline">
+	<tr class="row0">
+		<td class="col0"><code>root@openwrt:/$ df
+Filesystem           1K-blocks      Used Available Use% Mounted on
+/dev/root                 2304      2304         0 100% /rom
+tmpfs                     6696        60      6636   1% /tmp
+tmpfs                      512         0       512   0% /dev
+/dev/mtdblock3             576       288       288  50% /overlay
+mini_fo:/overlay          2304      2304         0 100% /</code></td>
+	</tr>
+</table></div>
+
+<p>
+One has actually 752+6636 KiB of free memory available.
+</p>
+<ul>
+<li class="level1"><div class="li"> quickest and safest way to free up, some RAM is to delete the <code><a href="https://oldwiki.archive.openwrt.org/doc/techref/opkg" class="wikilink1" title="doc:techref:opkg" data-wiki-id="doc:techref:opkg">opkg</a></code> packages file:</div>
+</li>
+</ul>
+
+<p>
+<pre class="code bash"><span class="kw2">rm</span> <span class="re5">-r</span> <span class="sy0">/</span>tmp<span class="sy0">/</span>opkg-lists<span class="sy0">/</span></pre>
+
+</p>
+<ul>
+<li class="level1"><div class="li"> drop caches:</div>
+</li>
+</ul>
+
+<p>
+<pre class="code bash"><span class="kw2">sync</span> <span class="sy0">&amp;&amp;</span> <span class="kw3">echo</span> <span class="nu0">3</span> <span class="sy0">&gt;</span> <span class="sy0">/</span>proc<span class="sy0">/</span>sys<span class="sy0">/</span>vm<span class="sy0">/</span>drop_caches</pre>
+
+</p>
+<ul>
+<li class="level1"><div class="li"> prevent wireless drivers to be loaded at next boot and then reboot:</div>
+</li>
+</ul>
+
+<p>
+<pre class="code bash"><span class="kw2">rm</span> <span class="sy0">/</span>etc<span class="sy0">/</span>modules.d<span class="sy0">/*</span><span class="nu0">80211</span><span class="sy0">*</span>
+<span class="kw2">rm</span> <span class="sy0">/</span>etc<span class="sy0">/</span>modules.d<span class="sy0">/*</span>ath9k<span class="sy0">*</span>
+<span class="kw2">rm</span> <span class="sy0">/</span>etc<span class="sy0">/</span>modules.d<span class="sy0">/</span>b43<span class="sy0">*</span>
+reboot</pre>
+
+</p>
+
+<p>
+The wireless drivers, usually take up quite some amount of RAM and are not required (unless you are connected via wireless of course <img src="https://oldwiki.archive.openwrt.org/lib/images/smileys/icon_wink.gif" class="icon" alt=";-)" />), so an easy way to free up some RAM is to delete the symlinks in <code>etc/modules.d</code> so these are not loaded into memory at the next reboot.
+</p>
+
+</div>
+
+<h2 class="sectionedit20" id="luci_web_interface_upgrade_procedure">LuCI web interface upgrade procedure</h2>
+<div class="level2">
+<ul>
+<li class="level1"><div class="li"> Log in to the LuCI web interface of the router (default: <a href="http://192.168.1.1" class="urlextern" title="http://192.168.1.1" rel="ugc nofollow">http://192.168.1.1</a>)</div>
+</li>
+<li class="level1 node"><div class="li"> Select <em>System</em> ⇒ <em>Backup / Flash Firmware</em> ⇒ <em>Configuration</em> to edit <code>/etc/sysupgrade.conf</code> (Attitude Adjustment)</div>
+<ul>
+<li class="level2"><div class="li"> Select <em>System</em> ⇒ <em>System</em> ⇒ <em>Custom Files</em> to edit <code>/etc/sysupgrade.conf</code> (Previous versions)</div>
+</li>
+</ul>
+</li>
+<li class="level1 node"><div class="li"> Select <em>System</em> ⇒ <em>Backup / Flash Firmware</em> ⇒ <em>Actions</em> (Attitude Adjustment)</div>
+<ul>
+<li class="level2"><div class="li"> Select <em>System</em> ⇒ <em>Flash Firmware</em> (Previous versions)</div>
+</li>
+</ul>
+</li>
+<li class="level1"><div class="li"> Upload the OpenWrt upgrade image file you downloaded</div>
+</li>
+<li class="level1"><div class="li"> LuCI will calculate the MD5 checksum of the file, if it&#039;s correct, you are green to go</div>
+</li>
+</ul>
+<ul>
+<li class="level1"><div class="li"> Wait until the router comes back online</div>
+</li>
+<li class="level1"><div class="li"> After the automatic reboot, the system should come up the same configuration settings as before: the same network IP addresses, same SSH password, etc.</div>
+</li>
+<li class="level1"><div class="li"> Proceed to the &quot;Additional configuration after an OpenWrt upgrade&quot; section, below</div>
+</li>
+</ul>
+
+<p>
+<a href="https://oldwiki.archive.openwrt.org/_detail/doc/howto/luci.sysupgrade.conf.png?id=doc%3Ahowto%3Ageneric.sysupgrade" class="media" title="doc:howto:luci.sysupgrade.conf.png"><img src="https://oldwiki.archive.openwrt.org/_media/doc/howto/luci.sysupgrade.conf.png?w=200&amp;tok=73d851" class="media" alt="" width="200" /></a>
+<a href="https://oldwiki.archive.openwrt.org/_detail/doc/howto/luci.sysupgrade.png?id=doc%3Ahowto%3Ageneric.sysupgrade" class="media" title="doc:howto:luci.sysupgrade.png"><img src="https://oldwiki.archive.openwrt.org/_media/doc/howto/luci.sysupgrade.png?w=200&amp;tok=82601a" class="media" alt="" width="200" /></a>
+</p>
+
+</div>
+
+<h2 class="sectionedit21" id="sysupgrade_sshterminal_upgrade_procedure">sysupgrade SSH/terminal upgrade procedure</h2>
+<div class="level2">
+<ul>
+<li class="level1 node"><div class="li"> Related pages:</div>
+<ul>
+<li class="level2"><div class="li"> <a href="https://oldwiki.archive.openwrt.org/doc/techref/sysupgrade" class="wikilink1" title="doc:techref:sysupgrade" data-wiki-id="doc:techref:sysupgrade">sysupgrade command – Technical Reference</a></div>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="level1"><div class="li"> Use the following command to upgrade:</div>
+</li>
+</ul>
+
+<p>
+<pre class="code bash">sysupgrade <span class="re5">-v</span> <span class="sy0">/</span>tmp<span class="sy0">/</span>filename-of-downloaded-sysupgrade.bin</pre>
+
+</p>
+<ul>
+<li class="level1"><div class="li"> The verbose-option should give some output similar to this. The list of configuration files saved will change depending on what packages you have installed and which files you have configured to be saved, as per above.</div>
+</li>
+</ul>
+
+<p>
+<pre class="code">Saving config files...
+etc/config/dhcp
+etc/config/dropbear
+etc/config/firewall
+etc/config/luci
+etc/config/network
+etc/config/snmpd
+etc/config/system
+etc/config/ubootenv
+etc/config/ucitrack
+etc/config/uhttpd
+etc/config/wireless
+etc/dropbear/authorized_keys
+etc/dropbear/dropbear_dss_host_key
+etc/dropbear/dropbear_rsa_host_key
+etc/firewall.user
+etc/group
+etc/hosts
+etc/inittab
+etc/passwd
+etc/profile
+etc/rc.local
+etc/shadow
+etc/shells
+etc/sudoers
+etc/sudoers.d/custom
+etc/sysctl.conf
+etc/sysupgrade.conf
+killall: watchdog: no process killed
+Sending TERM to remaining processes ... ubusd askfirst logd logread netifd odhcpd snmpd uhttpd ntpd dnsmasq
+Sending KILL to remaining processes ... askfirst
+Switching to ramdisk...
+Performing system upgrade...
+Unlocking firmware ...
+
+Writing from &lt;stdin&gt; to firmware ...  [w]
+Appending jffs2 data from /tmp/sysupgrade.tgz to firmware...TRX header not found
+Error fixing up TRX header
+Upgrade completed
+Rebooting system...</pre>
+
+</p>
+
+<p>
+Note: The &quot;TRX header not found&quot; and &quot;Error fixing up TRX header&quot; errors are not a problem as per OpenWrt developer jow&#039;s post at <a href="https://dev.openwrt.org/ticket/8623" class="urlextern" title="https://dev.openwrt.org/ticket/8623" rel="ugc nofollow">https://dev.openwrt.org/ticket/8623</a>
+</p>
+<ul>
+<li class="level1"><div class="li"> Wait until the router comes back online</div>
+</li>
+<li class="level1"><div class="li"> After the automatic reboot, the system should come up the same configuration settings as before: the same network IP addresses, same SSH password, etc.</div>
+</li>
+<li class="level1"><div class="li"> Proceed to the &quot;Additional configuration after an OpenWrt upgrade&quot; section, below</div>
+</li>
+</ul>
+
+</div>
+
+<h3 class="sectionedit22" id="troubleshooting">Troubleshooting</h3>
+<div class="level3">
+<ul>
+<li class="level1 node"><div class="li"> In case it does not, try a <a href="https://en.wikipedia.org/wiki/Booting#Hard_reboot" class="interwiki iw_wp" title="https://en.wikipedia.org/wiki/Booting#Hard_reboot">cold reset</a> (= interrupt the electrical current to the device, wait a couple of seconds and then connect it again). </div>
+<ul>
+<li class="level2"><div class="li"> Be careful about /etc/opkg.conf as explained here: <a href="https://dev.openwrt.org/ticket/13309" class="urlextern" title="https://dev.openwrt.org/ticket/13309" rel="ugc nofollow">https://dev.openwrt.org/ticket/13309</a></div>
+</li>
+</ul>
+</li>
+</ul>
+<div class="table sectionedit23"><table class="inline">
+	<tr class="row0">
+		<td class="col0"> <img src="https://oldwiki.archive.openwrt.org/_media/meta/icons/tango/48px-dialog-warning.svg.png" class="media" alt="" /> </td><td class="col1 leftalign"> For unknown reasons such a cold reset has often been reported to be necessary after a sysupgrade. This is very very bad in case you performed this remotely!  </td>
+	</tr>
+</table></div>
+
+</div>
+
+<h2 class="sectionedit24" id="additional_configuration_after_an_openwrt_upgrade">Additional configuration after an OpenWrt upgrade</h2>
+<div class="level2">
+
+</div>
+
+<h3 class="sectionedit25" id="verify_the_new_os_version">Verify the new OS version</h3>
+<div class="level3">
+<ul>
+<li class="level1"><div class="li"> In LuCI, go to Status &gt; Overview to verify you are running the new OpenWrt release</div>
+</li>
+<li class="level1"><div class="li"> In SSH, the login banner has the release information</div>
+</li>
+</ul>
+
+</div>
+
+<h3 class="sectionedit26" id="check_for_any_upgradable_packages">Check for any upgradable packages</h3>
+<div class="level3">
+
+<p>
+After the initial update, it is good to check for any updated packages released after the base <abbr title="Operating System">OS</abbr> firmware image was built.
+</p>
+<ul>
+<li class="level1"><div class="li"> List any available upgradable packages</div>
+</li>
+</ul>
+
+<p>
+<pre class="code bash">opkg update
+opkg list-upgradable</pre>
+
+</p>
+<ul>
+<li class="level1 node"><div class="li"> Upgrade any packages listed (if any were listed) – more than one package can be included</div>
+<ul>
+<li class="level2"><div class="li"> Note: on a device with only 4MB of NVRAM, these updates may not fit – check free space on / first with &quot;df -h /&quot; and ensure there is at least 600KB or so free</div>
+</li>
+<li class="level2"><div class="li"> Note: the updates below were the OpenWrt 15.05 updates available as of Sept. 12, 2015</div>
+</li>
+</ul>
+</li>
+</ul>
+
+<p>
+<pre class="code bash">opkg upgrade luci-lib-ip luci-theme-bootstrap luci-app-firewall luci-proto-ppp luci-mod-admin-full luci-base luci-proto-ipv6 luci-lib-nixio luci</pre>
+
+</p>
+<ul>
+<li class="level1"><div class="li"> Verify no more packages can be upgraded; the command should display no output now</div>
+</li>
+</ul>
+
+<p>
+<pre class="code bash">opkg list-upgradable</pre>
+
+</p>
+
+</div>
+
+<h3 class="sectionedit27" id="reinstall_user-installed_packages">Reinstall user-installed packages</h3>
+<div class="level3">
+
+<p>
+After a successful upgrade, you will need to reinstall all previously installed packages. You made a list of these above. Package configuration files should have been preserved due to steps above, but not the actual packages themselves.
+</p>
+<ul>
+<li class="level1"><div class="li"> For example:</div>
+</li>
+</ul>
+
+<p>
+<pre class="code bash">opkg update
+opkg <span class="kw2">install</span> snmpd-static</pre>
+
+</p>
+
+</div>
+
+<h3 class="sectionedit28" id="configure_user-installed_packages">Configure user-installed packages</h3>
+<div class="level3">
+
+<p>
+The new package installations will have installed new, default versions of package configuration files. As your existing configuration files were already in place, opkg would have displayed a warning about this and saved the new configuration file versions under …-opkg filenames.
+</p>
+
+<p>
+The new package-provided configuration files should be compared with your older customized files to merge in any new options or changes of syntax in these files.
+</p>
+
+<p>
+The <code>diffutils</code> program is helpful for this.
+</p>
+
+<p>
+For example:
+</p>
+
+<p>
+<pre class="code bash"><span class="co0"># install diffutils</span>
+opkg <span class="kw2">install</span> diffutils
+&nbsp;
+<span class="co0"># locate all -opkg files</span>
+<span class="kw2">find</span> <span class="sy0">/</span>etc <span class="re5">-name</span> <span class="sy0">*</span>-opkg
+&nbsp;
+<span class="co0"># compare old customized /etc/config/snmpd with new generic file /etc/config/snmpd-opkg</span>
+<span class="kw2">diff</span> <span class="sy0">/</span>etc<span class="sy0">/</span>config<span class="sy0">/</span>snmpd <span class="sy0">/</span>etc<span class="sy0">/</span>config<span class="sy0">/</span>snmpd-opkg
+&nbsp;
+<span class="co0"># merge in any needed changes to the active version of the configuration file</span>
+<span class="kw2">vi</span> <span class="sy0">/</span>etc<span class="sy0">/</span>config<span class="sy0">/</span>snmpd
+<span class="co0"># and clean up by removing the package manager-version of the configuration file</span>
+<span class="kw2">rm</span> <span class="sy0">/</span>etc<span class="sy0">/</span>config<span class="sy0">/</span>snmpd-opkg
+&nbsp;
+<span class="co0"># or if the new version provided by the package maintainer should just replace the old config file then just swap it in</span>
+<span class="kw2">mv</span> <span class="sy0">/</span>etc<span class="sy0">/</span>config<span class="sy0">/</span>snmpd-opkg <span class="sy0">/</span>etc<span class="sy0">/</span>config<span class="sy0">/</span>snmpd</pre>
+
+</p>
+
+</div>
+
+<h3 class="sectionedit29" id="enable_and_start_user-installed_packages">Enable and start user-installed packages</h3>
+<div class="level3">
+<ul>
+<li class="level1"><div class="li"> Finally, the newly installed packages should be enabled and started (if they need this; many do)</div>
+</li>
+</ul>
+
+<p>
+<pre class="code bash"><span class="sy0">/</span>etc<span class="sy0">/</span>init.d<span class="sy0">/</span>snmpd <span class="kw3">enable</span>
+<span class="sy0">/</span>etc<span class="sy0">/</span>init.d<span class="sy0">/</span>snmpd start</pre>
+
+</p>
+
+</div>
+
+<h3 class="sectionedit30" id="do_a_test_reboot">Do a test reboot</h3>
+<div class="level3">
+
+<p>
+The upgrade is fully complete now. It is a good idea to do a test reboot and ensure all expected functionality is working as before.
+</p>
+
+<p>
+<pre class="code">reboot</pre>
+
+</p>
+
+</div>
+
+<h2 class="sectionedit31" id="alternative_os_upgrade_procedures_to_luci_or_sysupgrade">Alternative OS upgrade procedures to LuCI or sysupgrade</h2>
+<div class="level2">
+
+<p>
+The <abbr title="Operating System">OS</abbr> upgrade options are much more manual than using either LuCI or sysupgrade. They are only needed in unusual circumstances.
+</p>
+
+</div>
+
+<h3 class="sectionedit32" id="mtd">mtd</h3>
+<div class="level3">
+<ol>
+<li class="level1"><div class="li"> If <code>sysupgrade</code> is not supported for your embedded device, you should use <code><a href="https://oldwiki.archive.openwrt.org/doc/techref/mtd" class="wikilink1" title="doc:techref:mtd" data-wiki-id="doc:techref:mtd">mtd</a></code> instead:<pre class="code">mtd -r write /tmp/openwrt-ar71xx-generic-wzr-hp-ag300h-squashfs-sysupgrade.bin firmware</pre>
+</div>
+</li>
+</ol>
+
+</div>
+
+<h3 class="sectionedit33" id="netcat">netcat</h3>
+<div class="level3">
+
+</div>
+
+<h4 class="sectionedit34" id="direct_method">Direct method</h4>
+<div class="level4">
+
+<p>
+Netcat could be employed if you cannot free <strong>enough RAM</strong>. See <a href="http://man.cx/netcat" class="interwiki iw_man" title="http://man.cx/netcat">netcat</a>. Netcat needs to be installed first.
+</p>
+<div class="table sectionedit35"><table class="inline">
+	<tr class="row0">
+		<td class="col0"> <img src="https://oldwiki.archive.openwrt.org/_media/meta/icons/tango/48px-dialog-warning.svg.png" class="media" alt="" /> </td><td class="col1"> This method is <strong>NOT</strong> recommended! </td>
+	</tr>
+</table></div>
+<ol>
+<li class="level1"><div class="li"> On your Linux PC run:<pre class="code">nc -q0 192.168.1.1 1234 &lt; openwrt-ar71xx-tl-wr1043nd-v1-squashfs-sysupgrade.bin</pre>
+</div>
+</li>
+<li class="level1"><div class="li"> On the router run:<pre class="code">nc -l -p 1234 | mtd write - firmware</pre>
+</div>
+</li>
+</ol>
+
+</div>
+
+<h4 class="sectionedit36" id="indirect_method">Indirect method</h4>
+<div class="level4">
+<div class="table sectionedit37"><table class="inline">
+	<tr class="row0">
+		<td class="col0"> <a href="https://oldwiki.archive.openwrt.org/_detail/meta/icons/tango/dialog-information.png?id=doc%3Ahowto%3Ageneric.sysupgrade" class="media" title="meta:icons:tango:dialog-information.png"><img src="https://oldwiki.archive.openwrt.org/_media/meta/icons/tango/dialog-information.png" class="media" alt="" /></a> </td><td class="col1"> This method is much <strong>SAFER</strong> if you have <strong>enough RAM</strong>. </td>
+	</tr>
+</table></div>
+
+<p>
+<strong> This method is fine for self built firmwares.</strong>
+</p>
+
+<p>
+You should check how much RAM you have currently available.(In case you do not have enough left, consult <a href="#free_up_ram" title="doc:howto:generic.sysupgrade ↵" class="wikilink1">Free up RAM</a>.)<pre class="code">free</pre>
+
+</p>
+
+</div>
+
+<h5 class="sectionedit38" id="transferring_image_file_to_a_temporary_location">Transferring image file to a temporary location</h5>
+<div class="level5">
+<ol>
+<li class="level1"><div class="li"> On your Linux PC run:<pre class="code">cat [specified firmware].bin | pv -b | nc -l -p 3333</pre>
+</div>
+</li>
+<li class="level1"><div class="li"> On the router run:<pre class="code">nc 192.168.1.111 3333 &gt; /tmp/[specified firmware].bin </pre>
+</div>
+</li>
+</ol>
+
+<p>
+The port 3333 an IP address 192.168.1.111 are just examples. The command &#039;pv -b&#039; is optional for tracking progress but maybe you have to install pv to your system previously.
+</p>
+
+</div>
+
+<h5 class="sectionedit39" id="write_it_to_flash">Write it to flash</h5>
+<div class="level5">
+<ul>
+<li class="level1"><div class="li"> sysupgrade:<pre class="code">sysupgrade -v /tmp/[specified firmware].bin </pre>
+</div>
+</li>
+</ul>
+<div class="table sectionedit40"><table class="inline">
+	<tr class="row0">
+		<td class="col0"><strong>OR</strong></td>
+	</tr>
+</table></div>
+<ul>
+<li class="level1"><div class="li"> mtd:<pre class="code">mtd -r write /tmp/[specified firmware].bin firmware</pre>
+</div>
+</li>
+</ul>
+
+<p>
+I have tested under Ubuntu 11.10.
+</p>
+
+</div>
+
+<h4 class="sectionedit41" id="some_useful_links_for_netcat">Some useful links for netcat</h4>
+<div class="level4">
+<ul>
+<li class="level1"><div class="li"> <a href="http://www.g-loaded.eu/2006/11/06/netcat-a-couple-of-useful-examples/" class="urlextern" title="http://www.g-loaded.eu/2006/11/06/netcat-a-couple-of-useful-examples/" rel="ugc nofollow">http://www.g-loaded.eu/2006/11/06/netcat-a-couple-of-useful-examples/</a></div>
+</li>
+<li class="level1"><div class="li"> <a href="http://www.screenage.de/blog/2007/12/30/using-netcat-and-tar-for-network-file-transfer/" class="urlextern" title="http://www.screenage.de/blog/2007/12/30/using-netcat-and-tar-for-network-file-transfer/" rel="ugc nofollow">http://www.screenage.de/blog/2007/12/30/using-netcat-and-tar-for-network-file-transfer/</a></div>
+</li>
+<li class="level1"><div class="li"> <a href="https://help.ubuntu.com/community/BackupYourSystem/TAR" class="urlextern" title="https://help.ubuntu.com/community/BackupYourSystem/TAR" rel="ugc nofollow">https://help.ubuntu.com/community/BackupYourSystem/TAR</a></div>
+</li>
+<li class="level1"><div class="li"> <a href="http://www.aboutdebian.com/tar-backup.htm" class="urlextern" title="http://www.aboutdebian.com/tar-backup.htm" rel="ugc nofollow">http://www.aboutdebian.com/tar-backup.htm</a></div>
+</li>
+</ul>
+
+</div>
+
+<h3 class="sectionedit42" id="scp">scp</h3>
+<div class="level3">
+
+<p>
+Make sure your router has enough memory.
+<pre class="code">root@OpenWrt:/# free</pre>
+
+</p>
+
+<p>
+Make sure you have set the password for your router (you must set a password for your router to enable the SSH). See <a href="https://oldwiki.archive.openwrt.org/doc/howto/firstlogin" class="wikilink1" title="doc:howto:firstlogin" data-wiki-id="doc:howto:firstlogin">First Login</a> for more details.
+</p>
+
+</div>
+
+<h4 class="sectionedit43" id="copy_your_firmware_to_your_router">Copy your firmware to your router</h4>
+<div class="level4">
+
+<p>
+On your Linux PC run:
+<pre class="code">linux$ scp openwrt-ar71xx-tl-wr1043nd-v1-squashfs-sysupgrade.bin root@192.168.1.1:/tmp</pre>
+
+Input &#039;yes&#039; to estabilish authenticity, then input the password of your router. Wait <code>scp</code> command finished.
+Now you can see your firmware in /tmp directory.
+</p>
+
+</div>
+
+<h4 class="sectionedit44" id="write_the_firmware_to_your_router">Write the firmware to your router</h4>
+<div class="level4">
+
+<p>
+<pre class="code">root@OpenWrt:/# sysupgrade -v /tmp/[specified firmware].bin </pre>
+
+</p>
+
+</div>
+
+<h4 class="sectionedit45" id="note">Note</h4>
+<div class="level4">
+
+<p>
+<strong>192.168.1.1</strong> is the ip address(may be called GateWay) of your router. Check by run:
+<pre class="code">linux$ ip r </pre>
+
+or you can check the the /etc/config/network file, 127.0.0.1 is the loopback ipaddress, the other one is the ip address of your router.
+<pre class="code">root@OpenWrt:/# grep ipaddr /etc/config/network </pre>
+
+</p>
+
+</div>
+
+                    <!-- wikipage stop -->
+                                    </div>
+
+                <div class="docInfo"><bdi>doc/howto/generic.sysupgrade.txt</bdi> · Last modified: 2017/12/19 23:22 by <bdi>tmomas</bdi></div>
+
+                            </div></div><!-- /content -->
+
+            <hr class="a11y" />
+
+            <!-- PAGE ACTIONS -->
+            <div id="dokuwiki__pagetools">
+                <h3 class="a11y">Page Tools</h3>
+                <div class="tools">
+                    <ul>
+                        <li><a href="https://oldwiki.archive.openwrt.org/doc/howto/generic.sysupgrade?do=edit"  class="action source" accesskey="v" rel="nofollow" title="Show pagesource [V]"><span>Show pagesource</span></a></li><li><a href="https://oldwiki.archive.openwrt.org/doc/howto/generic.sysupgrade?do=revisions"  class="action revs" accesskey="o" rel="nofollow" title="Old revisions [O]"><span>Old revisions</span></a></li><li><a href="https://oldwiki.archive.openwrt.org/doc/howto/generic.sysupgrade?do=backlink"  class="action backlink" rel="nofollow" title="Backlinks"><span>Backlinks</span></a></li><li class="plugin_move_page"><a href=""><span>Rename Page</span></a></li><li><a href="#dokuwiki__top"  class="action top" accesskey="t" rel="nofollow" title="Back to top [T]"><span>Back to top</span></a></li>                    </ul>
+                </div>
+            </div>
+        </div><!-- /wrapper -->
+
+        
+<!-- ********** FOOTER ********** -->
+<div id="dokuwiki__footer"><div class="pad">
+    <div class="license">Except where otherwise noted, content on this wiki is licensed under the following license: <bdi><a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" rel="license" class="urlextern">CC Attribution-Noncommercial-Share Alike 4.0 International</a></bdi></div>
+    <div class="buttons">
+        <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" rel="license"><img src="https://oldwiki.archive.openwrt.org/lib/images/license/button/cc-by-nc-sa.png" alt="CC Attribution-Noncommercial-Share Alike 4.0 International" /></a>        <a href="http://www.dokuwiki.org/donate" title="Donate" ><img
+            src="https://oldwiki.archive.openwrt.org/lib/tpl/openwrt/images/button-donate.gif" width="80" height="15" alt="Donate" /></a>
+        <a href="http://www.php.net" title="Powered by PHP" ><img
+            src="https://oldwiki.archive.openwrt.org/lib/tpl/openwrt/images/button-php.gif" width="80" height="15" alt="Powered by PHP" /></a>
+        <a href="http://validator.w3.org/check/referer" title="Valid HTML5" ><img
+            src="https://oldwiki.archive.openwrt.org/lib/tpl/openwrt/images/button-html5.png" width="80" height="15" alt="Valid HTML5" /></a>
+        <a href="http://jigsaw.w3.org/css-validator/check/referer?profile=css3" title="Valid CSS" ><img
+            src="https://oldwiki.archive.openwrt.org/lib/tpl/openwrt/images/button-css.png" width="80" height="15" alt="Valid CSS" /></a>
+        <a href="http://dokuwiki.org/" title="Driven by DokuWiki" ><img
+            src="https://oldwiki.archive.openwrt.org/lib/tpl/openwrt/images/button-dw.png" width="80" height="15" alt="Driven by DokuWiki" /></a>
+    </div>
+</div></div><!-- /footer -->
+
+    </div></div><!-- /site -->
+
+    <div class="no"><img src="https://oldwiki.archive.openwrt.org/lib/exe/taskrunner.php?id=doc%3Ahowto%3Ageneric.sysupgrade&amp;1788767354" width="2" height="1" alt="" /></div>
+    <div id="screen__mode" class="no"></div>    <!--[if ( lte IE 7 | IE 8 ) ]></div><![endif]-->
+</body>
+</html>

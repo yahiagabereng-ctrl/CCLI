@@ -1,0 +1,75 @@
+﻿
+========== P3-07 STEP 7 - TSP AARE signature verify ==========
+
+Time: 2026-09-29T22:16:37.7203408+02:00
+DUT: 192.168.10.1:3782
+Verify cert: server_combined.pem
+
+Step 7 = Test Suite Pro validates responding-authentication-value in AARE.
+Steps 1-6 must already be OK: TLS, Session, AARQ, AARE emission.
+
+========== DUT live pull ==========
+
+Ping 192.168.10.1: OK
+
+========== Offline Step 7 crypto independent of TSP ==========
+
+Hex file: C:\Yahia\projects\CCLI\lab\tmp_tx_step7_latest.hex
+=== P3-07 failure locator: tmp_tx_step7_latest.hex ===
+SPDU total length: 1269 octets
+
+## 1. Protocol layer (outside ΓåÆ inside)
+
+| Layer | Status | Detail |
+|-------|--------|--------|
+| TCP :3782 | OK (prior captures) | TLS wraps everything below |
+| TLS handshake | OK (prior captures) | Mutual cert auth complete before ACSE |
+| Session SPDU | OK | tag **0x0e** = **ACCEPT** @ 0 |
+| ACSE AARE | OK | AARE PDU @ **0x0048** |
+| responding-authentication-value | OK | MMS auth inner @ **0x009b** (cert=780 B, sig=256 B) |
+| MMS Initiate | **NOT REACHED** | TSP aborts after AARE verify |
+
+## 2. ┬º11.2.2 field decode (embedded in AARE)
+
+| Field | Offset | Value |
+|-------|--------|-------|
+| authentication-Certificate [0] | 0x009b+ | 780 octets DER |
+| time [1] GeneralizedTime | ΓÇö | `20260929200216.` (15 B) |
+| signature [2] | ΓÇö | 256 octets, prefix `5fd51b26` |
+| signed payload (normative) | ΓÇö | `81 0f` + GT = `810f32303236303932393230303231362e` |
+
+## 3. Offline crypto verify (where DUT vs TSP diverge)
+
+| Signed octets | OpenSSL/cryptography verify |
+|---------------|----------------------------|
+| time_tlv_81 (┬º11.2.2) | **PASS** |
+| time_raw_gt | **FAIL** |
+| time_tlv_18 | **FAIL** |
+| Embedded cert == `server_combined.pem` | **YES** |
+
+## 4. Exact failure point (TSP symptom)
+
+**DUT encoding + RSA signature are valid** for ┬º11.2.2 `time_tlv_81` with the embedded cert key (`server_combined.pem`).
+
+TSP error `Unable to verify signature (+)` therefore occurs **inside Test Suite Pro**, after receiving a structurally valid AARE, ~2ΓÇô5 ms post-AARE (TLS Encrypted Alert).
+
+Likely TSP-side causes (in order):
+1. TSP verifies a **different byte string** than ┬º11.2.2 literal (not reproduced offline).
+2. TSP uses **wrong public key** (e.g. TLS peer cert vs embedded auth cert) ΓÇö ruled out for Solution C if same cert.
+3. TSP **client AARQ** self-check mis-reported as server signature error.
+4. TSP / stack **version defect** (TMW V12.3.2 MMS auth verify bug class).
+
+**Not the failure layer:** TLS, Session ACCEPT LI, AARE presence, cert decodability, raw RSA over normative payload.
+
+========== Live Step 7 confirmation with TSP plus Wireshark ==========
+
+1. Terminal A: .\scripts\capture-mms-tsp.ps1 -DurationSec 60
+2. Terminal B: TSP System Status -> Connect
+3. Wireshark: TLS decrypt with server.key for 192.168.10.1:3782
+4. Look for AARE app data then Encrypted Alert 2-5 ms later = Step 7 reject
+5. TSP log must show: Unable to verify signature (+)
+
+========== Step 7 verdict ==========
+
+Offline PASS + TSP FAIL sig = Step 7 is inside Test Suite Pro
+Offline FAIL + TSP FAIL sig = fix DUT mms_aare_auth.cpp

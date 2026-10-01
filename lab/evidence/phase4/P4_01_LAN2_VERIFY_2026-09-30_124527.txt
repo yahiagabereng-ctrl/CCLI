@@ -1,0 +1,8 @@
+[12:45:27] === P4-01 LAN2 / Eth_B verify ===
+[12:45:27] DUT=192.168.1.130 PC=192.168.1.183
+[12:45:27] --- PC Ethernet ---
+[12:45:27]   192.168.10.10/24 on Ethernet
+[12:45:28] FAIL: PC Ethernet not on 192.168.1.0/24 (got '192.168.10.10').
+[12:45:28]       Run lab\set_pc_lan2_oa.cmd as Administrator, or use DHCP on LAN2.
+[12:45:28] --- Ping DUT ---
+[12:45:47] === end ===

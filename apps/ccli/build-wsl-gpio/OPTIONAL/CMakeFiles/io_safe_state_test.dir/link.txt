@@ -1,0 +1,1 @@
+/usr/bin/cc -Wl,--dependency-file=CMakeFiles/io_safe_state_test.dir/link.d CMakeFiles/io_safe_state_test.dir/io_safe_state_test.c.o CMakeFiles/io_safe_state_test.dir/mock_gpio_ll.c.o CMakeFiles/io_safe_state_test.dir/__/__/adapters/io/drv_gpio.c.o CMakeFiles/io_safe_state_test.dir/__/__/services/svc_io.c.o -o io_safe_state_test

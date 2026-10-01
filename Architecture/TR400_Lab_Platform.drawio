@@ -1,0 +1,594 @@
+<mxfile host="Electron" agent="CCLI" pages="6">
+  <diagram name="1-System-Block" id="tr400-system-block">
+    <mxGraphModel dx="3517" dy="1043" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1800" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="t1" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=18;fontStyle=1;" value="TR400 / TG544 — System Block + Interface Devices" vertex="1">
+          <mxGeometry height="36" width="1400" x="200" y="16" as="geometry" />
+        </mxCell>
+        <mxCell id="sub1" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=11;" value="Solid = lab CONFIRMED · Dashed = product PLANNED · See page 5 for full device catalogue" vertex="1">
+          <mxGeometry height="24" width="1400" x="200" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="ext_grid" parent="1" style="swimlane;startSize=28;fillColor=#EFF6FF;strokeColor=#1A365D;fontStyle=1;fontSize=12;" value="External — Grid / Operator (Z1 · Z2)" vertex="1">
+          <mxGeometry height="340" width="300" x="-170" y="170" as="geometry" />
+        </mxCell>
+        <mxCell id="dev_dso" parent="ext_grid" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DBEAFE;strokeColor=#1A365D;fontSize=10;dashed=1;" value="DSO SCADA / RTU&#xa;61850 MMS client&#xa;→ LAN1 (Eth_A)&#xa;[PLANNED Ph3]" vertex="1">
+          <mxGeometry height="70" width="260" x="20" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="dev_op" parent="ext_grid" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DBEAFE;strokeColor=#1A365D;fontSize=10;dashed=1;" value="Operatore Abilitato&#xa;IEC 60870-5-104&#xa;→ LAN2/3 (Eth_B)&#xa;[PLANNED Ph4]" vertex="1">
+          <mxGeometry height="70" width="260" x="20" y="130" as="geometry" />
+        </mxCell>
+        <mxCell id="dev_lte" parent="ext_grid" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F3F4F6;strokeColor=#334155;fontSize=10;dashed=1;" value="4G LTE network&#xa;→ WAN (Z5 backup)&#xa;[down in lab]" vertex="1">
+          <mxGeometry height="60" width="260" x="20" y="220" as="geometry" />
+        </mxCell>
+        <mxCell id="ext_plant" parent="1" style="swimlane;startSize=28;fillColor=#FEF2F2;strokeColor=#991B1B;fontStyle=1;fontSize=12;" value="External — Plant (Z3)" vertex="1">
+          <mxGeometry height="420" width="300" x="1460" y="90" as="geometry" />
+        </mxCell>
+        <mxCell id="dev_meter" parent="ext_plant" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEE2E2;strokeColor=#991B1B;fontSize=10;fontStyle=1;" value="Energy analyzer&#xa;Modbus RTU slave&#xa;← A1/B1 (ttyS1)&#xa;[lab: PC pymodbus sim]" vertex="1">
+          <mxGeometry height="70" width="260" x="20" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="dev_inv" parent="ext_plant" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#334155;fontSize=10;dashed=1;" value="Inverters / generators&#xa;Modbus TCP or RTU&#xa;[PLANNED]" vertex="1">
+          <mxGeometry height="60" width="260" x="20" y="130" as="geometry" />
+        </mxCell>
+        <mxCell id="dev_bess" parent="ext_plant" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#334155;fontSize=10;dashed=1;" value="BESS / storage BMS&#xa;Modbus&#xa;[PLANNED]" vertex="1">
+          <mxGeometry height="55" width="260" x="20" y="210" as="geometry" />
+        </mxCell>
+        <mxCell id="dev_plant_lan" parent="ext_plant" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F4FC;strokeColor=#334155;fontSize=10;dashed=1;" value="Plant LAN devices&#xa;Modbus TCP → LAN3/4&#xa;[PLANNED Ph2+]" vertex="1">
+          <mxGeometry height="60" width="260" x="20" y="280" as="geometry" />
+        </mxCell>
+        <mxCell id="dev_curtail" parent="ext_plant" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEE2E2;strokeColor=#991B1B;fontSize=10;fontStyle=1;" value="Plant curtailment contact&#xa;via relay dry contacts&#xa;← DIO1 DO&#xa;[lab: relay module]" vertex="1">
+          <mxGeometry height="55" width="260" x="20" y="355" as="geometry" />
+        </mxCell>
+        <mxCell id="ext_lab" parent="1" style="swimlane;startSize=28;fillColor=#FFF4E6;strokeColor=#B45309;fontStyle=1;fontSize=12;" value="External — Lab / Commissioning (Z4)" vertex="1">
+          <mxGeometry height="200" width="1720" x="50" y="670" as="geometry" />
+        </mxCell>
+        <mxCell id="dev_pc" parent="ext_lab" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DBEAFE;strokeColor=#1A365D;fontSize=10;fontStyle=1;" value="Engineering PC&#xa;192.168.1.x&#xa;SSH · LuCI · pymodbus&#xa;→ LAN2" vertex="1">
+          <mxGeometry height="80" width="180" x="30" y="45" as="geometry" />
+        </mxCell>
+        <mxCell id="dev_usb485" parent="ext_lab" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DBEAFE;strokeColor=#1A365D;fontSize=10;fontStyle=1;" value="USB-RS485 adapter&#xa;on PC · pymodbus RTU slave&#xa;P kW register · id=1&#xa;→ A1/B1/GND" vertex="1">
+          <mxGeometry height="80" width="200" x="240" y="45" as="geometry" />
+        </mxCell>
+        <mxCell id="dev_relay" parent="ext_lab" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEE2E2;strokeColor=#991B1B;fontSize=10;fontStyle=1;" value="Relay module&#xa;IN ← DIO1 · +5V ext&#xa;DO → plant contact sim" vertex="1">
+          <mxGeometry height="80" width="180" x="470" y="45" as="geometry" />
+        </mxCell>
+        <mxCell id="dev_perm" parent="ext_lab" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEE2E2;strokeColor=#991B1B;fontSize=10;fontStyle=1;" value="Permissive switch&#xa;or jumper DIO2→GND&#xa;10-pin block" vertex="1">
+          <mxGeometry height="80" width="180" x="680" y="45" as="geometry" />
+        </mxCell>
+        <mxCell id="dev_psu" parent="ext_lab" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEE2E2;strokeColor=#334155;fontSize=10;" value="12–30 V DC PSU&#xa;bench supply&#xa;→ power terminals" vertex="1">
+          <mxGeometry height="80" width="160" x="890" y="45" as="geometry" />
+        </mxCell>
+        <mxCell id="dev_usb_laptop" parent="ext_lab" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F3F4F6;strokeColor=#334155;fontSize=10;" value="Service laptop&#xa;USB storage / tools&#xa;→ USB 3.0 [Z4]" vertex="1">
+          <mxGeometry height="80" width="180" x="1080" y="45" as="geometry" />
+        </mxCell>
+        <mxCell id="dev_tf" parent="ext_lab" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F3F4F6;strokeColor=#334155;fontSize=10;" value="MicroSD (TF)&#xa;optional logs&#xa;[spare]" vertex="1">
+          <mxGeometry height="80" width="140" x="1290" y="45" as="geometry" />
+        </mxCell>
+        <mxCell id="box_gw" parent="1" style="swimlane;startSize=32;fillColor=#F8FAFC;strokeColor=#64748B;fontStyle=1;fontSize=13;" value="TesPro TR500 Gateway (TG544)" vertex="1">
+          <mxGeometry height="400" width="1150" x="160" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="soc" parent="box_gw" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DBEAFE;strokeColor=#1A365D;fontSize=10;fontStyle=1;" value="MediaTek MT798X (SoC)&#xa;TesproOS 32 · Linux 6.12&#xa;procd · ubus · UCI · LuCI" vertex="1">
+          <mxGeometry height="72" width="200" x="20" y="48" as="geometry" />
+        </mxCell>
+        <mxCell id="eth_g" parent="box_gw" style="swimlane;startSize=24;fillColor=#EFF6FF;strokeColor=#334155;fontSize=11;" value="Ethernet (5× GE)" vertex="1">
+          <mxGeometry height="170" width="320" x="240" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="wan" parent="eth_g" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F3F4F6;strokeColor=#334155;fontSize=10;" value="WAN&#xa;wan (Z5 uplink)&#xa;[down in lab]" vertex="1">
+          <mxGeometry height="60" width="160" x="20" y="36" as="geometry" />
+        </mxCell>
+        <mxCell id="brlan" parent="eth_g" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DBEAFE;strokeColor=#334155;fontSize=10;" value="LAN1–LAN4 → br-lan&#xa;192.168.1.130/24&#xa;[all bridged today]" vertex="1">
+          <mxGeometry height="70" width="100" x="200" y="36" as="geometry" />
+        </mxCell>
+        <mxCell id="wifi" parent="eth_g" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF4E6;strokeColor=#B45309;fontSize=10;" value="Wi-Fi APs on br-lan&#xa;(disable in product)" vertex="1">
+          <mxGeometry height="50" width="250" x="20" y="110" as="geometry" />
+        </mxCell>
+        <mxCell id="io_g" parent="box_gw" style="swimlane;startSize=24;fillColor=#FEF2F2;strokeColor=#334155;fontSize=11;" value="I/O (10-pin) — GD32" vertex="1">
+          <mxGeometry height="170" width="220" x="840" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="dio1" parent="io_g" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEE2E2;strokeColor=#334155;fontSize=10;fontStyle=1;" value="DIO1 ch1 DO&#xa;Curtailment relay" vertex="1">
+          <mxGeometry height="44" width="240" x="20" y="36" as="geometry" />
+        </mxCell>
+        <mxCell id="dio2" parent="io_g" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEE2E2;strokeColor=#334155;fontSize=10;fontStyle=1;" value="DIO2 ch2 DI&#xa;Permissive interlock" vertex="1">
+          <mxGeometry height="44" width="240" x="20" y="86" as="geometry" />
+        </mxCell>
+        <mxCell id="dio_spare" parent="io_g" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#334155;fontSize=10;" value="DIO3/4 PF2 spare · AI/AO → DRC-60A&#xa;see page 6" vertex="1">
+          <mxGeometry height="44" width="240" x="20" y="136" as="geometry" />
+        </mxCell>
+        <mxCell id="gd32" parent="box_gw" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF4E6;strokeColor=#B45309;fontSize=9;fontStyle=1;" value="GD32 MCU · ubus dido_v2" vertex="1">
+          <mxGeometry height="44" width="220" x="840" y="220" as="geometry" />
+        </mxCell>
+        <mxCell id="tespro_sw" parent="box_gw" style="swimlane;startSize=24;fillColor=#F3F4F6;strokeColor=#64748B;fontSize=11;" value="TesPro services" vertex="1">
+          <mxGeometry height="90" width="320" x="240" y="220" as="geometry" />
+        </mxCell>
+        <mxCell id="dido_svc" parent="tespro_sw" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#334155;fontSize=10;" value="didoservice_v2&#xa;ubus dido_v2" vertex="1">
+          <mxGeometry height="50" width="160" x="20" y="36" as="geometry" />
+        </mxCell>
+        <mxCell id="modbus_svc" parent="tespro_sw" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#334155;fontSize=10;" value="modbusservice&#xa;modbus-proto-tespro" vertex="1">
+          <mxGeometry height="50" width="100" x="200" y="36" as="geometry" />
+        </mxCell>
+        <mxCell id="ccli_g" parent="box_gw" style="swimlane;startSize=24;fillColor=#DCFCE7;strokeColor=#166534;fontSize=11;fontStyle=1;" value="apps/ccli (HiTEKS)" vertex="1">
+          <mxGeometry height="120" width="200" x="20" y="220" as="geometry" />
+        </mxCell>
+        <mxCell id="ccli_pf2" parent="ccli_g" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#166534;fontSize=9;" value="PF2 FSM" vertex="1">
+          <mxGeometry height="36" width="85" x="10" y="32" as="geometry" />
+        </mxCell>
+        <mxCell id="ccli_mb" parent="ccli_g" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#166534;fontSize=9;" value="Modbus RTU" vertex="1">
+          <mxGeometry height="36" width="85" x="105" y="32" as="geometry" />
+        </mxCell>
+        <mxCell id="ccli_io" parent="ccli_g" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF4E6;strokeColor=#B45309;fontSize=9;" value="IO HAL [TODO]" vertex="1">
+          <mxGeometry height="36" width="85" x="10" y="76" as="geometry" />
+        </mxCell>
+        <mxCell id="ccli_mms" parent="ccli_g" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F3F4F6;strokeColor=#334155;fontSize=9;dashed=1;" value="61850 STUB" vertex="1">
+          <mxGeometry height="36" width="85" x="105" y="76" as="geometry" />
+        </mxCell>
+        <mxCell id="usb" parent="box_gw" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F3F4F6;strokeColor=#334155;fontSize=9;" value="USB 3.0" vertex="1">
+          <mxGeometry height="40" width="100" x="610" y="340" as="geometry" />
+        </mxCell>
+        <mxCell id="pwr" parent="box_gw" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEE2E2;strokeColor=#334155;fontSize=9;" value="12–30 V DC" vertex="1">
+          <mxGeometry height="40" width="100" x="700" y="280" as="geometry" />
+        </mxCell>
+        <mxCell id="ccli_104" parent="box_gw" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F3F4F6;strokeColor=#334155;fontSize=9;dashed=1;" value="IEC104 STUB" vertex="1">
+          <mxGeometry height="36" width="100" x="510" y="360" as="geometry" />
+        </mxCell>
+        <mxCell id="e_soc_eth" edge="1" parent="box_gw" source="soc" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=10;" target="brlan">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_mb_pf2" edge="1" parent="box_gw" source="ccli_mb" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=10;" target="ccli_pf2" value="P kW">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_pf2_io" edge="1" parent="box_gw" source="ccli_pf2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=10;" target="ccli_io" value="curtail">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_io_dido" edge="1" parent="box_gw" source="ccli_io" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=10;" target="dido_svc" value="ubus">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_dido_gd32" edge="1" parent="box_gw" source="dido_svc" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=10;" target="gd32">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_gd32_dio" edge="1" parent="box_gw" source="gd32" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=10;" target="dio1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ser_g" parent="box_gw" style="swimlane;startSize=24;fillColor=#EFF6FF;strokeColor=#334155;fontSize=11;" value="Serial (7-pin block)" vertex="1">
+          <mxGeometry height="200" width="270" x="590" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ttys0" parent="ser_g" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F3F4F6;strokeColor=#334155;fontSize=10;" value="ttyS0 RS232&#xa;RXD/TXD/GND" vertex="1">
+          <mxGeometry height="44" width="240" x="20" y="36" as="geometry" />
+        </mxCell>
+        <mxCell id="ttys1" parent="ser_g" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEE2E2;strokeColor=#334155;fontSize=10;fontStyle=1;" value="ttyS1 RS485-1&#xa;A1/B1 · Modbus RTU" vertex="1">
+          <mxGeometry height="44" width="240" x="20" y="86" as="geometry" />
+        </mxCell>
+        <mxCell id="ttys2" parent="ser_g" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEE2E2;strokeColor=#334155;fontSize=10;" value="ttyS2 RS485-2&#xa;A2/B2 · spare plant" vertex="1">
+          <mxGeometry height="44" width="240" x="20" y="136" as="geometry" />
+        </mxCell>
+        <mxCell id="e_soc_s1" edge="1" parent="box_gw" source="soc" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=10;" target="ttys1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="xe_dso" edge="1" parent="box_gw" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=9;dashed=1;" value="LAN1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="195.06" y="199.06" />
+              <mxPoint x="195.06" y="130" />
+            </Array>
+            <mxPoint x="-50" y="199.06" as="sourcePoint" />
+            <mxPoint x="440" y="130.0011764705883" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="xe_op" edge="1" parent="1" source="dev_op" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=9;dashed=1;" target="brlan" value="LAN2/3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="xe_lte" edge="1" parent="1" source="dev_lte" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=9;dashed=1;" target="wan" value="WAN">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="500" y="440" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="xe_meter" edge="1" parent="1" source="dev_meter" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=9;strokeWidth=2;" target="ttys1" value="RS485 A1/B1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="xe_plant" edge="1" parent="1" source="dev_plant_lan" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=9;dashed=1;" target="brlan" value="LAN3/4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="xe_curtail" edge="1" parent="1" source="dev_curtail" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=9;strokeWidth=2;" target="dio1" value="relay DO">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="xe_pc" edge="1" parent="1" source="dev_pc" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=9;strokeWidth=2;" target="brlan" value="Ethernet">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="xe_usb485" edge="1" parent="1" source="dev_usb485" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=9;strokeWidth=2;" target="ttys1" value="A/B/G">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="xe_relay" edge="1" parent="1" source="dev_relay" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=9;strokeWidth=2;" target="dio1" value="DIO1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="xe_perm" edge="1" parent="1" source="dev_perm" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=9;strokeWidth=2;" target="dio2" value="DIO2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="xe_psu" edge="1" parent="1" source="dev_psu" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=9;" target="pwr" value="power">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="xe_usb" edge="1" parent="1" source="dev_usb_laptop" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=9;" target="usb" value="USB">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="xe_pc_usb" edge="1" parent="1" source="dev_pc" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=8;dashed=1;" target="dev_usb485">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="xe_relay_curt" edge="1" parent="1" source="dev_relay" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=8;dashed=1;" target="dev_curtail">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="leg1" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=10;fontColor=#64748B;" value="Solid = lab CONFIRMED · Dashed = PLANNED · Page 5 = device catalogue · Page 6 = full DIO/AIO + DRC-60A UPS" vertex="1">
+          <mxGeometry height="24" width="900" x="40" y="680" as="geometry" />
+        </mxCell>
+        <mxCell id="cfg1" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=10;fontStyle=2;" value="Config: apps/ccli/config/lab_tr400.yaml → /etc/ccli/lab.yaml" vertex="1">
+          <mxGeometry height="24" width="600" x="40" y="710" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="2-Bench-Wiring" id="tr400-bench-wiring">
+    <mxGraphModel grid="1" page="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" pageScale="1" pageWidth="1600" pageHeight="900" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="t2" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=18;fontStyle=1;" value="Phase 1 Bench Wiring — TG544 @ 192.168.1.130" vertex="1">
+          <mxGeometry height="36" width="1200" x="200" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="pc" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DBEAFE;strokeColor=#1A365D;fontSize=12;fontStyle=1;" value="Engineering PC&#xa;192.168.1.x&#xa;SSH · LuCI · pymodbus" vertex="1">
+          <mxGeometry height="80" width="200" x="80" y="200" as="geometry" />
+        </mxCell>
+        <mxCell id="usb485" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DBEAFE;strokeColor=#1A365D;fontSize=11;" value="USB-RS485 adapter&#xa;Modbus RTU slave&#xa;slave_id=1 · P kW reg" vertex="1">
+          <mxGeometry height="80" width="200" x="80" y="380" as="geometry" />
+        </mxCell>
+        <mxCell id="relay" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEE2E2;strokeColor=#334155;fontSize=11;" value="Relay module&#xa;external +5V supply&#xa;IN ← DIO1" vertex="1">
+          <mxGeometry height="70" width="200" x="80" y="540" as="geometry" />
+        </mxCell>
+        <mxCell id="perm" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEE2E2;strokeColor=#334155;fontSize=11;" value="Permissive switch&#xa;or jumper&#xa;DIO2 → GND" vertex="1">
+          <mxGeometry height="70" width="200" x="80" y="660" as="geometry" />
+        </mxCell>
+        <mxCell id="tg544" parent="1" style="swimlane;startSize=32;fillColor=#F8FAFC;strokeColor=#64748B;fontStyle=1;fontSize=13;" value="TG544 / Tespro TR500&#xa;192.168.1.130/24&#xa;TesproOS 32-2.1.0" vertex="1">
+          <mxGeometry height="640" width="520" x="480" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="lan2" parent="tg544" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DBEAFE;strokeColor=#334155;fontSize=11;fontStyle=1;" value="LAN2 (PC cable)&#xa;→ br-lan" vertex="1">
+          <mxGeometry height="60" width="200" x="40" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="a1b1" parent="tg544" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEE2E2;strokeColor=#334155;fontSize=11;fontStyle=1;" value="A1 / B1 / GND&#xa;/dev/ttyS1&#xa;9600 8N1" vertex="1">
+          <mxGeometry height="60" width="200" x="280" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="dio1p" parent="tg544" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEE2E2;strokeColor=#334155;fontSize=11;fontStyle=1;" value="DIO1 (DO ch1)&#xa;Curtailment&#xa;active-low sink" vertex="1">
+          <mxGeometry height="70" width="200" x="40" y="200" as="geometry" />
+        </mxCell>
+        <mxCell id="dio2p" parent="tg544" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEE2E2;strokeColor=#334155;fontSize=11;fontStyle=1;" value="DIO2 (DI ch2)&#xa;Permissive&#xa;active-low" vertex="1">
+          <mxGeometry height="70" width="200" x="280" y="200" as="geometry" />
+        </mxCell>
+        <mxCell id="gndp" parent="tg544" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#334155;fontSize=11;" value="GND (10-pin block)" vertex="1">
+          <mxGeometry height="40" width="200" x="160" y="320" as="geometry" />
+        </mxCell>
+        <mxCell id="ccli_box" parent="tg544" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DCFCE7;strokeColor=#166534;fontSize=11;dashed=1;" value="ccli (future)&#xa;lab_tr400.yaml&#xa;PF2 + Modbus + ubus DIO" vertex="1">
+          <mxGeometry height="60" width="440" x="40" y="420" as="geometry" />
+        </mxCell>
+        <mxCell id="note_pass" parent="tg544" style="shape=note;whiteSpace=wrap;html=1;fillColor=#FFF4E6;strokeColor=#B45309;fontSize=10;align=left;" value="DIO smoke PASS 2026-09-15&#xa;DIO1: OFF 1.5V ON 0V vs GND&#xa;DIO2: open=0 short-GND=1" vertex="1">
+          <mxGeometry height="80" width="440" x="40" y="520" as="geometry" />
+        </mxCell>
+        <mxCell id="e_pc_lan" edge="1" parent="1" source="pc" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=10;strokeWidth=2;" target="lan2" value="Ethernet&#xa;Cat5/6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_pc_usb" edge="1" parent="1" source="pc" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=10;" target="usb485">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_usb_a1" edge="1" parent="1" source="usb485" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=10;strokeWidth=2;" target="a1b1" value="A/B/G">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_dio1_rel" edge="1" parent="1" source="dio1p" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=10;strokeWidth=2;" target="relay" value="signal">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_dio2_perm" edge="1" parent="1" source="dio2p" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=10;strokeWidth=2;" target="perm" value="DI">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_perm_gnd" edge="1" parent="1" source="perm" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=10;dashed=1;" target="gndp" value="to GND">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="tbl_w" parent="1" style="text;html=1;strokeColor=#334155;fillColor=#FFFFFF;align=left;verticalAlign=top;spacing=4;" value="&lt;table style=&quot;width:100%;border-collapse:collapse;font-size:11px;&quot;&gt;&lt;tr style=&quot;background:#E2E8F0;&quot;&gt;&lt;th&gt;Signal&lt;/th&gt;&lt;th&gt;Terminal&lt;/th&gt;&lt;th&gt;Linux / API&lt;/th&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Engineering&lt;/td&gt;&lt;td&gt;LAN2&lt;/td&gt;&lt;td&gt;br-lan · SSH/LuCI&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Modbus RTU&lt;/td&gt;&lt;td&gt;A1/B1/GND&lt;/td&gt;&lt;td&gt;/dev/ttyS1 · 9600 8N1&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Curtail DO&lt;/td&gt;&lt;td&gt;DIO1&lt;/td&gt;&lt;td&gt;ubus ch1 set_relay&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Permissive DI&lt;/td&gt;&lt;td&gt;DIO2&lt;/td&gt;&lt;td&gt;ubus ch2 read_di&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;PF2 spare DIO&lt;/td&gt;&lt;td&gt;DIO3/4&lt;/td&gt;&lt;td&gt;ubus ch3/4 · page 6&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;UPS analog&lt;/td&gt;&lt;td&gt;AI1/2 AO1&lt;/td&gt;&lt;td&gt;DRC-60A · page 6&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" vertex="1">
+          <mxGeometry height="140" width="420" x="1080" y="200" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="3-Network-Zones" id="tr400-network-zones">
+    <mxGraphModel grid="1" page="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" pageScale="1" pageWidth="1600" pageHeight="900" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="t3" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=18;fontStyle=1;" value="Network Architecture — Lab TODAY vs Target PRODUCT (REQ-NET-001)" vertex="1">
+          <mxGeometry height="36" width="1360" x="120" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="lab_g" parent="1" style="swimlane;startSize=28;fillColor=#FFF4E6;strokeColor=#B45309;fontStyle=1;fontSize=12;" value="LAB TODAY (Phase 0 — CONFIRMED)" vertex="1">
+          <mxGeometry height="360" width="680" x="60" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="lab_br" parent="lab_g" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEF3C7;strokeColor=#B45309;fontSize=11;fontStyle=1;" value="br-lan 192.168.1.0/24&#xa;ALL LAN1–4 + Wi-Fi bridged&#xa;Single L2 domain" vertex="1">
+          <mxGeometry height="70" width="600" x="40" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="lab_l1" parent="lab_g" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DBEAFE;strokeColor=#334155;fontSize=10;" value="LAN1" vertex="1">
+          <mxGeometry height="40" width="120" x="40" y="150" as="geometry" />
+        </mxCell>
+        <mxCell id="lab_l2" parent="lab_g" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DBEAFE;strokeColor=#334155;fontSize=10;fontStyle=1;" value="LAN2 + PC" vertex="1">
+          <mxGeometry height="40" width="120" x="180" y="150" as="geometry" />
+        </mxCell>
+        <mxCell id="lab_l3" parent="lab_g" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DBEAFE;strokeColor=#334155;fontSize=10;" value="LAN3" vertex="1">
+          <mxGeometry height="40" width="120" x="320" y="150" as="geometry" />
+        </mxCell>
+        <mxCell id="lab_l4" parent="lab_g" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DBEAFE;strokeColor=#334155;fontSize=10;" value="LAN4" vertex="1">
+          <mxGeometry height="40" width="120" x="460" y="150" as="geometry" />
+        </mxCell>
+        <mxCell id="lab_wan" parent="lab_g" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F3F4F6;strokeColor=#334155;fontSize=10;" value="WAN (separate · down)" vertex="1">
+          <mxGeometry height="50" width="200" x="40" y="230" as="geometry" />
+        </mxCell>
+        <mxCell id="lab_warn" parent="lab_g" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=11;fontColor=#B45309;fontStyle=1;" value="REQ-NET-001 NOT MET — no zone isolation yet" vertex="1">
+          <mxGeometry height="30" width="600" x="40" y="300" as="geometry" />
+        </mxCell>
+        <mxCell id="e_lab1" edge="1" parent="lab_g" source="lab_l1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" target="lab_br">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_lab2" edge="1" parent="lab_g" source="lab_l2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" target="lab_br">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="tgt_g" parent="1" style="swimlane;startSize=28;fillColor=#DCFCE7;strokeColor=#166534;fontStyle=1;fontSize=12;" value="TARGET PRODUCT (Phase 2+ — PLANNED)" vertex="1">
+          <mxGeometry height="360" width="720" x="800" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="z1" parent="tgt_g" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DBEAFE;strokeColor=#1A365D;fontSize=11;" value="Z1 Eth_A · LAN1&#xa;192.168.20.20/24&#xa;IEC 61850 MMS (DSO)" vertex="1">
+          <mxGeometry height="80" width="200" x="40" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="z2" parent="tgt_g" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DBEAFE;strokeColor=#1A365D;fontSize=11;" value="Z2 Eth_B · LAN2&#xa;192.168.30.20/24&#xa;IEC 60870-5-104" vertex="1">
+          <mxGeometry height="80" width="200" x="260" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="z3" parent="tgt_g" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F4FC;strokeColor=#1A365D;fontSize=11;" value="Z3 Plant · LAN3/4&#xa;Modbus TCP" vertex="1">
+          <mxGeometry height="80" width="200" x="480" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="z5" parent="tgt_g" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F3F4F6;strokeColor=#1A365D;fontSize=11;" value="Z5 WAN / LTE&#xa;backup only&#xa;NO route to Eth_A" vertex="1">
+          <mxGeometry height="80" width="200" x="40" y="170" as="geometry" />
+        </mxCell>
+        <mxCell id="z3s" parent="tgt_g" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEE2E2;strokeColor=#1A365D;fontSize=11;" value="Z3 RS485&#xa;ttyS1 · ttyS2&#xa;Modbus RTU" vertex="1">
+          <mxGeometry height="80" width="200" x="260" y="170" as="geometry" />
+        </mxCell>
+        <mxCell id="fw" parent="tgt_g" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DCFCE7;strokeColor=#166534;fontSize=11;" value="Firewall / VLAN / net policy&#xa;apps/ccli/core/policy" vertex="1">
+          <mxGeometry height="80" width="200" x="480" y="170" as="geometry" />
+        </mxCell>
+        <mxCell id="tgt_ok" parent="tgt_g" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=11;fontColor=#166534;fontStyle=1;" value="REQ-NET-001 · REQ-NET-002 enforced" vertex="1">
+          <mxGeometry height="30" width="640" x="40" y="300" as="geometry" />
+        </mxCell>
+        <mxCell id="im_g" parent="1" style="swimlane;startSize=28;fillColor=#F8FAFC;strokeColor=#64748B;fontStyle=1;fontSize=12;" value="Interface matrix (CCLI roles)" vertex="1">
+          <mxGeometry height="320" width="1460" x="60" y="480" as="geometry" />
+        </mxCell>
+        <mxCell id="im_tbl" parent="im_g" style="text;html=1;strokeColor=#334155;fillColor=#FFFFFF;align=left;verticalAlign=top;spacing=2;" value="&lt;table style=&quot;width:100%;border-collapse:collapse;font-size:10px;&quot;&gt;&lt;tr style=&quot;background:#E2E8F0;&quot;&gt;&lt;th&gt;Interface&lt;/th&gt;&lt;th&gt;Silkscreen&lt;/th&gt;&lt;th&gt;Linux&lt;/th&gt;&lt;th&gt;Zone&lt;/th&gt;&lt;th&gt;Protocol&lt;/th&gt;&lt;th&gt;Phase&lt;/th&gt;&lt;th&gt;Status&lt;/th&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Eth_A DSO&lt;/td&gt;&lt;td&gt;LAN1&lt;/td&gt;&lt;td&gt;lan1@eth0&lt;/td&gt;&lt;td&gt;Z1&lt;/td&gt;&lt;td&gt;IEC 61850 MMS&lt;/td&gt;&lt;td&gt;3&lt;/td&gt;&lt;td&gt;STUB&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Eth_B operator&lt;/td&gt;&lt;td&gt;LAN2&lt;/td&gt;&lt;td&gt;lan2@eth0&lt;/td&gt;&lt;td&gt;Z2&lt;/td&gt;&lt;td&gt;IEC 60870-5-104&lt;/td&gt;&lt;td&gt;4&lt;/td&gt;&lt;td&gt;STUB&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Plant LAN&lt;/td&gt;&lt;td&gt;LAN3/4&lt;/td&gt;&lt;td&gt;lan3/4@eth0&lt;/td&gt;&lt;td&gt;Z3&lt;/td&gt;&lt;td&gt;Modbus TCP&lt;/td&gt;&lt;td&gt;2+&lt;/td&gt;&lt;td&gt;PLANNED&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Plant serial&lt;/td&gt;&lt;td&gt;A1/B1&lt;/td&gt;&lt;td&gt;/dev/ttyS1&lt;/td&gt;&lt;td&gt;Z3&lt;/td&gt;&lt;td&gt;Modbus RTU 9600&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;CONFIG&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Spare RS485&lt;/td&gt;&lt;td&gt;A2/B2&lt;/td&gt;&lt;td&gt;/dev/ttyS2&lt;/td&gt;&lt;td&gt;Z3&lt;/td&gt;&lt;td&gt;Modbus RTU&lt;/td&gt;&lt;td&gt;2+&lt;/td&gt;&lt;td&gt;CONFIRMED&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;DO curtail&lt;/td&gt;&lt;td&gt;DIO1&lt;/td&gt;&lt;td&gt;ubus ch1&lt;/td&gt;&lt;td&gt;Z0&lt;/td&gt;&lt;td&gt;dido_v2&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;HAL TODO&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;DI permissive&lt;/td&gt;&lt;td&gt;DIO2&lt;/td&gt;&lt;td&gt;ubus ch2&lt;/td&gt;&lt;td&gt;Z0&lt;/td&gt;&lt;td&gt;dido_v2&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;HAL TODO&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;PF2 spare DI/DO&lt;/td&gt;&lt;td&gt;DIO3/4&lt;/td&gt;&lt;td&gt;ubus ch3/4&lt;/td&gt;&lt;td&gt;Z0&lt;/td&gt;&lt;td&gt;dido_v2&lt;/td&gt;&lt;td&gt;1+&lt;/td&gt;&lt;td&gt;UNTESTED&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;UPS battery V&lt;/td&gt;&lt;td&gt;AI1&lt;/td&gt;&lt;td&gt;vendor ADC&lt;/td&gt;&lt;td&gt;Z0&lt;/td&gt;&lt;td&gt;analog&lt;/td&gt;&lt;td&gt;1+&lt;/td&gt;&lt;td&gt;NOT TESTED&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;UPS load-shed&lt;/td&gt;&lt;td&gt;AO1&lt;/td&gt;&lt;td&gt;vendor AO&lt;/td&gt;&lt;td&gt;Z0&lt;/td&gt;&lt;td&gt;0–10V&lt;/td&gt;&lt;td&gt;2+&lt;/td&gt;&lt;td&gt;PLANNED&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Uplink&lt;/td&gt;&lt;td&gt;WAN&lt;/td&gt;&lt;td&gt;wan&lt;/td&gt;&lt;td&gt;Z5&lt;/td&gt;&lt;td&gt;LTE/IP&lt;/td&gt;&lt;td&gt;2&lt;/td&gt;&lt;td&gt;down lab&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Commission&lt;/td&gt;&lt;td&gt;USB&lt;/td&gt;&lt;td&gt;—&lt;/td&gt;&lt;td&gt;Z4&lt;/td&gt;&lt;td&gt;SSH/HTTPS&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;HAVE&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" vertex="1">
+          <mxGeometry height="260" width="1420" x="20" y="40" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="4-CCLI-Config" id="tr400-ccli-config">
+    <mxGraphModel grid="1" page="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" pageScale="1" pageWidth="1600" pageHeight="900" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="t4" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=18;fontStyle=1;" value="CCLI Configuration &amp; ubus DIO API — lab_tr400.yaml" vertex="1">
+          <mxGeometry height="36" width="1200" x="200" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="yaml_g" parent="1" style="swimlane;startSize=28;fillColor=#DCFCE7;strokeColor=#166534;fontStyle=1;fontSize=12;" value="apps/ccli/config/lab_tr400.yaml → deploy /etc/ccli/lab.yaml" vertex="1">
+          <mxGeometry height="760" width="720" x="60" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="yaml_txt" parent="yaml_g" style="text;html=1;strokeColor=#166534;fillColor=#FFFFFF;align=left;verticalAlign=top;fontFamily=Courier New;fontSize=11;spacing=8;" value="platform: tg500&#xa;&#xa;lab: TG544 · tespro,tr500 · 192.168.1.130/24&#xa;serial: ttyS1/ttyS2/ttyS0 · modbus RTU ttyS1&#xa;pf2: threshold 900 kW · debounce/min timers&#xa;&#xa;io: (all DIO = PF2)&#xa;  backend: ubus_dido_v2&#xa;  do_curtail:     ch1 active_high false&#xa;  di_permissive:  ch2 active_low true&#xa;  di_pf2_spare:   ch3 active_low true&#xa;  do_pf2_spare:   ch4 active_high false&#xa;&#xa;analog: (DRC-60A UPS)&#xa;  ai_battery_v: AI1 · divider 120k/39k&#xa;  ai_ups_status: AI2 · AC OK + bat low&#xa;  ao_load_shed: AO1 → K2 optional&#xa;  analog_gnd: AOG → Bat−&#xa;&#xa;ups: MEAN_WELL_DRC-60A · TB2 +V/−V → TG544 input" vertex="1">
+          <mxGeometry height="700" width="680" x="20" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="uci_g" parent="1" style="swimlane;startSize=28;fillColor=#EFF6FF;strokeColor=#334155;fontStyle=1;fontSize=12;" value="/etc/config/ccli (UCI mirror — TR400 values)" vertex="1">
+          <mxGeometry height="280" width="700" x="820" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="uci_txt" parent="uci_g" style="text;html=1;strokeColor=#334155;fillColor=#FFFFFF;align=left;verticalAlign=top;fontFamily=Courier New;fontSize=10;spacing=6;" value="config ccli &#39;main&#39;&#xa;  option enabled &#39;1&#39;&#xa;  option config_file &#39;/etc/ccli/lab.yaml&#39;&#xa;&#xa;config pf2 &#39;pf2&#39;&#xa;  option threshold_kw &#39;900&#39;&#xa;  option release_threshold_kw &#39;850&#39;&#xa;  option debounce_s &#39;30&#39;&#xa;  option stale_data_s &#39;10&#39;&#xa;  option min_on_s &#39;60&#39;&#xa;  option min_off_s &#39;30&#39;&#xa;&#xa;config io &#39;plant&#39;&#xa;  option do_curtail_gpio &#39;1&#39;      ← DIO1 ubus ch&#xa;  option do_curtail_active_high &#39;0&#39;&#xa;  option di_permissive_gpio &#39;2&#39;   ← DIO2 ubus ch&#xa;  option di_permissive_active_low &#39;1&#39;&#xa;  option gpio_lab_blink &#39;0&#39;       ← MUST stay 0 field" vertex="1">
+          <mxGeometry height="220" width="660" x="20" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ubus_g" parent="1" style="swimlane;startSize=28;fillColor=#FEF2F2;strokeColor=#334155;fontStyle=1;fontSize=12;" value="ubus dido_v2 API (GD32 — CONFIRMED bench)" vertex="1">
+          <mxGeometry height="440" width="700" x="820" y="400" as="geometry" />
+        </mxCell>
+        <mxCell id="ubus_prep" parent="ubus_g" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF4E6;strokeColor=#B45309;fontSize=10;align=left;fontFamily=Courier New;" value="Prep (once):&#xa;uci set didoservice_v2.channel_2.mode=di&#xa;uci commit didoservice_v2&#xa;/etc/init.d/didoservice_v2 restart" vertex="1">
+          <mxGeometry height="70" width="660" x="20" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ubus_cmds" parent="ubus_g" style="text;html=1;strokeColor=#334155;fillColor=#FFFFFF;align=left;verticalAlign=top;fontFamily=Courier New;fontSize=10;spacing=6;" value="DO curtail (DIO1 / ch1):&#xa;  ubus call dido_v2 set_relay &#39;{&quot;channel&quot;:1,&quot;value&quot;:1}&#39;&#xa;  ubus call dido_v2 set_relay &#39;{&quot;channel&quot;:1,&quot;value&quot;:0}&#39;  ← safe&#xa;&#xa;DI permissive (DIO2 / ch2):&#xa;  ubus call dido_v2 read_di &#39;{&quot;channel&quot;:2}&#39;&#xa;&#xa;Status:&#xa;  ubus call dido_v2 status" vertex="1">
+          <mxGeometry height="140" width="660" x="20" y="130" as="geometry" />
+        </mxCell>
+        <mxCell id="map_tbl" parent="ubus_g" style="text;html=1;strokeColor=#334155;fillColor=#FFFFFF;align=left;verticalAlign=top;" value="&lt;table style=&quot;width:100%;border-collapse:collapse;font-size:9px;&quot;&gt;&lt;tr style=&quot;background:#FEE2E2;&quot;&gt;&lt;th&gt;Silk&lt;/th&gt;&lt;th&gt;Ch&lt;/th&gt;&lt;th&gt;Mode&lt;/th&gt;&lt;th&gt;Domain&lt;/th&gt;&lt;th&gt;CCLI key&lt;/th&gt;&lt;th&gt;Bench&lt;/th&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;DIO1&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;DO&lt;/td&gt;&lt;td&gt;PF2 curtail K1&lt;/td&gt;&lt;td&gt;io.do_curtail&lt;/td&gt;&lt;td&gt;PASS&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;DIO2&lt;/td&gt;&lt;td&gt;2&lt;/td&gt;&lt;td&gt;DI&lt;/td&gt;&lt;td&gt;PF2 permissive&lt;/td&gt;&lt;td&gt;io.di_permissive&lt;/td&gt;&lt;td&gt;PASS&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;DIO3&lt;/td&gt;&lt;td&gt;3&lt;/td&gt;&lt;td&gt;DI&lt;/td&gt;&lt;td&gt;PF2 spare&lt;/td&gt;&lt;td&gt;io.di_pf2_spare&lt;/td&gt;&lt;td&gt;—&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;DIO4&lt;/td&gt;&lt;td&gt;4&lt;/td&gt;&lt;td&gt;DO&lt;/td&gt;&lt;td&gt;PF2 spare&lt;/td&gt;&lt;td&gt;io.do_pf2_spare&lt;/td&gt;&lt;td&gt;—&lt;/td&gt;&lt;/tr&gt;&lt;tr style=&quot;background:#EFF6FF;&quot;&gt;&lt;td&gt;AI1&lt;/td&gt;&lt;td&gt;—&lt;/td&gt;&lt;td&gt;AI&lt;/td&gt;&lt;td&gt;DRC-60A Vbat&lt;/td&gt;&lt;td&gt;analog.ai_battery_v&lt;/td&gt;&lt;td&gt;—&lt;/td&gt;&lt;/tr&gt;&lt;tr style=&quot;background:#EFF6FF;&quot;&gt;&lt;td&gt;AI2&lt;/td&gt;&lt;td&gt;—&lt;/td&gt;&lt;td&gt;AI&lt;/td&gt;&lt;td&gt;AC OK / bat low&lt;/td&gt;&lt;td&gt;analog.ai_ups_status&lt;/td&gt;&lt;td&gt;—&lt;/td&gt;&lt;/tr&gt;&lt;tr style=&quot;background:#EFF6FF;&quot;&gt;&lt;td&gt;AO1&lt;/td&gt;&lt;td&gt;—&lt;/td&gt;&lt;td&gt;AO&lt;/td&gt;&lt;td&gt;Load-shed K2&lt;/td&gt;&lt;td&gt;analog.ao_load_shed&lt;/td&gt;&lt;td&gt;—&lt;/td&gt;&lt;/tr&gt;&lt;tr style=&quot;background:#EFF6FF;&quot;&gt;&lt;td&gt;AO2&lt;/td&gt;&lt;td&gt;—&lt;/td&gt;&lt;td&gt;AO&lt;/td&gt;&lt;td&gt;Spare&lt;/td&gt;&lt;td&gt;analog.ao_spare&lt;/td&gt;&lt;td&gt;—&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;AOG&lt;/td&gt;&lt;td&gt;—&lt;/td&gt;&lt;td&gt;GND&lt;/td&gt;&lt;td&gt;Bat− return&lt;/td&gt;&lt;td&gt;analog.analog_gnd&lt;/td&gt;&lt;td&gt;—&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" vertex="1">
+          <mxGeometry height="200" width="660" x="20" y="290" as="geometry" />
+        </mxCell>
+        <mxCell id="deploy" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=11;fontStyle=2;" value="Deploy: TesPro SDK → ccli_*.apk → LuCI upload or apk add /tmp/ccli.apk · procd /etc/init.d/ccli" vertex="1">
+          <mxGeometry height="24" width="1460" x="60" y="860" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="5-Interface-Devices" id="tr400-interface-devices">
+    <mxGraphModel grid="1" page="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" pageScale="1" pageWidth="1800" pageHeight="1000" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="t5" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=18;fontStyle=1;" value="Interface Device Catalogue — TG544 / TR500 / CCLI" vertex="1">
+          <mxGeometry height="36" width="1400" x="200" y="16" as="geometry" />
+        </mxCell>
+        <mxCell id="sub5" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=10;" value="Each row: External device → TG544 port → CCLI adapter → Protocol · Source: lab_tr400.yaml + Phase 0 SSH + TR400 manual" vertex="1">
+          <mxGeometry height="24" width="1600" x="100" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="gw5" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F8FAFC;strokeColor=#64748B;fontSize=12;fontStyle=1;" value="TG544 Gateway (centre)" vertex="1">
+          <mxGeometry height="120" width="280" x="760" y="380" as="geometry" />
+        </mxCell>
+        <mxCell id="z1g" parent="1" style="swimlane;startSize=24;fillColor=#DBEAFE;strokeColor=#1A365D;fontStyle=1;fontSize=11;" value="Z1 — DSO (Eth_A)" vertex="1">
+          <mxGeometry height="200" width="340" x="40" y="90" as="geometry" />
+        </mxCell>
+        <mxCell id="z1d1" parent="z1g" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#1A365D;fontSize=10;dashed=1;" value="DSO SCADA / RTU&#xa;61850 MMS client&#xa;TLS (62351-4)" vertex="1">
+          <mxGeometry height="55" width="300" x="20" y="36" as="geometry" />
+        </mxCell>
+        <mxCell id="z1p" parent="z1g" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DCFCE7;strokeColor=#166534;fontSize=9;" value="Port: LAN1 → lan1@eth0&#xa;Target: 192.168.20.20/24&#xa;CCLI: svc_mms · libiec61850" vertex="1">
+          <mxGeometry height="55" width="300" x="20" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="z2g" parent="1" style="swimlane;startSize=24;fillColor=#DBEAFE;strokeColor=#1A365D;fontStyle=1;fontSize=11;" value="Z2 — Operator (Eth_B)" vertex="1">
+          <mxGeometry height="200" width="340" x="40" y="310" as="geometry" />
+        </mxCell>
+        <mxCell id="z2d1" parent="z2g" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#1A365D;fontSize=10;dashed=1;" value="Operatore Abilitato&#xa;IEC 60870-5-104 master" vertex="1">
+          <mxGeometry height="55" width="300" x="20" y="36" as="geometry" />
+        </mxCell>
+        <mxCell id="z2d2" parent="z2g" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DBEAFE;strokeColor=#1A365D;fontSize=10;fontStyle=1;" value="Engineering PC [LAB]&#xa;SSH · LuCI · 192.168.1.x&#xa;CONFIRMED on LAN2" vertex="1">
+          <mxGeometry height="55" width="300" x="20" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="z3g" parent="1" style="swimlane;startSize=24;fillColor=#FEF2F2;strokeColor=#991B1B;fontStyle=1;fontSize=11;" value="Z3 — Plant" vertex="1">
+          <mxGeometry height="420" width="340" x="1420" y="90" as="geometry" />
+        </mxCell>
+        <mxCell id="z3d1" parent="z3g" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#991B1B;fontSize=10;dashed=1;" value="Energy analyzer [PRODUCT]&#xa;Modbus RTU slave&#xa;P · Q · PF registers" vertex="1">
+          <mxGeometry height="55" width="300" x="20" y="36" as="geometry" />
+        </mxCell>
+        <mxCell id="z3d2" parent="z3g" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEE2E2;strokeColor=#991B1B;fontSize=10;fontStyle=1;" value="pymodbus RTU slave [LAB]&#xa;USB-RS485 on PC&#xa;CONFIRMED bench sim" vertex="1">
+          <mxGeometry height="55" width="300" x="20" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="z3d3" parent="z3g" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#334155;fontSize=10;dashed=1;" value="Inverters / BESS BMS&#xa;Modbus TCP or RTU&#xa;[PLANNED]" vertex="1">
+          <mxGeometry height="50" width="300" x="20" y="165" as="geometry" />
+        </mxCell>
+        <mxCell id="z3d4" parent="z3g" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEE2E2;strokeColor=#991B1B;fontSize=10;fontStyle=1;" value="Plant curtailment contact&#xa;via relay dry contacts&#xa;[LAB: relay module]" vertex="1">
+          <mxGeometry height="55" width="300" x="20" y="225" as="geometry" />
+        </mxCell>
+        <mxCell id="z3d5" parent="z3g" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEE2E2;strokeColor=#991B1B;fontSize=10;fontStyle=1;" value="Permissive field switch&#xa;10–120 V class (product)&#xa;[LAB: jumper DIO2→GND]" vertex="1">
+          <mxGeometry height="55" width="300" x="20" y="290" as="geometry" />
+        </mxCell>
+        <mxCell id="z3p" parent="z3g" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DCFCE7;strokeColor=#166534;fontSize=9;" value="Ports: A1/B1 ttyS1 · A2/B2 ttyS2 · LAN3/4&#xa;CCLI: svc_modbus · libmodbus" vertex="1">
+          <mxGeometry height="50" width="300" x="20" y="355" as="geometry" />
+        </mxCell>
+        <mxCell id="z5g" parent="1" style="swimlane;startSize=24;fillColor=#F3F4F6;strokeColor=#334155;fontStyle=1;fontSize=11;" value="Z5 — Uplink" vertex="1">
+          <mxGeometry height="120" width="340" x="40" y="530" as="geometry" />
+        </mxCell>
+        <mxCell id="z5d1" parent="z5g" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#334155;fontSize=10;dashed=1;" value="4G LTE network / modem&#xa;→ WAN · no path to Eth_A&#xa;[down in lab]" vertex="1">
+          <mxGeometry height="55" width="300" x="20" y="36" as="geometry" />
+        </mxCell>
+        <mxCell id="z4g" parent="1" style="swimlane;startSize=24;fillColor=#FFF4E6;strokeColor=#B45309;fontStyle=1;fontSize=11;" value="Z4 — Commissioning" vertex="1">
+          <mxGeometry height="160" width="340" x="40" y="670" as="geometry" />
+        </mxCell>
+        <mxCell id="z4d1" parent="z4g" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#B45309;fontSize=10;" value="Service laptop · USB 3.0&#xa;out of cert data path" vertex="1">
+          <mxGeometry height="45" width="300" x="20" y="36" as="geometry" />
+        </mxCell>
+        <mxCell id="z4d2" parent="z4g" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEE2E2;strokeColor=#334155;fontSize=10;" value="12–30 V DC bench PSU&#xa;→ power terminals" vertex="1">
+          <mxGeometry height="45" width="300" x="20" y="90" as="geometry" />
+        </mxCell>
+        <mxCell id="z0g" parent="1" style="swimlane;startSize=24;fillColor=#FEF2F2;strokeColor=#991B1B;fontStyle=1;fontSize=11;" value="Z0 — Internal I/O (GD32)" vertex="1">
+          <mxGeometry height="300" width="300" x="420" y="530" as="geometry" />
+        </mxCell>
+        <mxCell id="z0d1" parent="z0g" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEE2E2;strokeColor=#991B1B;fontSize=10;fontStyle=1;" value="Relay module IN&#xa;← DIO1 DO ch1 ubus&#xa;CONFIRMED smoke PASS" vertex="1">
+          <mxGeometry height="55" width="260" x="20" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="z0d2" parent="z0g" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEE2E2;strokeColor=#991B1B;fontSize=10;fontStyle=1;" value="Permissive DI&#xa;← DIO2 ch2 ubus&#xa;CONFIRMED smoke PASS" vertex="1">
+          <mxGeometry height="55" width="260" x="20" y="105" as="geometry" />
+        </mxCell>
+        <mxCell id="z0d3" parent="z0g" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#334155;fontSize=10;" value="DIO3/4 PF2 spare&#xa;AI/AO → DRC-60A UPS (p.6)" vertex="1">
+          <mxGeometry height="45" width="260" x="20" y="170" as="geometry" />
+        </mxCell>
+        <mxCell id="z0p" parent="z0g" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DCFCE7;strokeColor=#166534;fontSize=9;" value="CCLI: io.backend ubus_dido_v2&#xa;HAL platform_tg500 [TODO]" vertex="1">
+          <mxGeometry height="45" width="260" x="20" y="230" as="geometry" />
+        </mxCell>
+        <mxCell id="dev_tbl" parent="1" style="text;html=1;strokeColor=#334155;fillColor=#FFFFFF;align=left;verticalAlign=top;spacing=2;" value="&lt;table style=&quot;width:100%;border-collapse:collapse;font-size:9px;&quot;&gt;&lt;tr style=&quot;background:#E2E8F0;&quot;&gt;&lt;th&gt;External device&lt;/th&gt;&lt;th&gt;TG544 port&lt;/th&gt;&lt;th&gt;Linux / API&lt;/th&gt;&lt;th&gt;CCLI module&lt;/th&gt;&lt;th&gt;Protocol&lt;/th&gt;&lt;th&gt;Lab/Product&lt;/th&gt;&lt;th&gt;Status&lt;/th&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Engineering PC&lt;/td&gt;&lt;td&gt;LAN2&lt;/td&gt;&lt;td&gt;br-lan&lt;/td&gt;&lt;td&gt;—&lt;/td&gt;&lt;td&gt;SSH/HTTPS&lt;/td&gt;&lt;td&gt;LAB&lt;/td&gt;&lt;td&gt;HAVE&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;USB-RS485 + pymodbus&lt;/td&gt;&lt;td&gt;A1/B1/GND&lt;/td&gt;&lt;td&gt;/dev/ttyS1&lt;/td&gt;&lt;td&gt;svc_modbus&lt;/td&gt;&lt;td&gt;Modbus RTU&lt;/td&gt;&lt;td&gt;LAB&lt;/td&gt;&lt;td&gt;CONFIG&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Relay module&lt;/td&gt;&lt;td&gt;DIO1&lt;/td&gt;&lt;td&gt;ubus ch1&lt;/td&gt;&lt;td&gt;io HAL / PF2&lt;/td&gt;&lt;td&gt;dido_v2&lt;/td&gt;&lt;td&gt;LAB&lt;/td&gt;&lt;td&gt;PASS&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Permissive switch&lt;/td&gt;&lt;td&gt;DIO2&lt;/td&gt;&lt;td&gt;ubus ch2&lt;/td&gt;&lt;td&gt;io HAL / PF2&lt;/td&gt;&lt;td&gt;dido_v2&lt;/td&gt;&lt;td&gt;LAB&lt;/td&gt;&lt;td&gt;PASS&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Energy analyzer&lt;/td&gt;&lt;td&gt;A1/B1&lt;/td&gt;&lt;td&gt;/dev/ttyS1&lt;/td&gt;&lt;td&gt;svc_modbus&lt;/td&gt;&lt;td&gt;Modbus RTU&lt;/td&gt;&lt;td&gt;PRODUCT&lt;/td&gt;&lt;td&gt;PLANNED&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;DSO SCADA&lt;/td&gt;&lt;td&gt;LAN1&lt;/td&gt;&lt;td&gt;lan1@eth0&lt;/td&gt;&lt;td&gt;svc_mms&lt;/td&gt;&lt;td&gt;IEC 61850&lt;/td&gt;&lt;td&gt;PRODUCT&lt;/td&gt;&lt;td&gt;STUB&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Operator RTU&lt;/td&gt;&lt;td&gt;LAN2/3&lt;/td&gt;&lt;td&gt;lan2/3@eth0&lt;/td&gt;&lt;td&gt;svc_104&lt;/td&gt;&lt;td&gt;IEC 104&lt;/td&gt;&lt;td&gt;PRODUCT&lt;/td&gt;&lt;td&gt;STUB&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Plant Modbus TCP&lt;/td&gt;&lt;td&gt;LAN3/4&lt;/td&gt;&lt;td&gt;br-lan→split&lt;/td&gt;&lt;td&gt;svc_modbus&lt;/td&gt;&lt;td&gt;Modbus TCP&lt;/td&gt;&lt;td&gt;PRODUCT&lt;/td&gt;&lt;td&gt;PLANNED&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;LTE network&lt;/td&gt;&lt;td&gt;WAN&lt;/td&gt;&lt;td&gt;wan / wwan&lt;/td&gt;&lt;td&gt;net policy&lt;/td&gt;&lt;td&gt;IP uplink&lt;/td&gt;&lt;td&gt;PRODUCT&lt;/td&gt;&lt;td&gt;down&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Bench PSU&lt;/td&gt;&lt;td&gt;12–30V&lt;/td&gt;&lt;td&gt;—&lt;/td&gt;&lt;td&gt;—&lt;/td&gt;&lt;td&gt;DC power&lt;/td&gt;&lt;td&gt;LAB&lt;/td&gt;&lt;td&gt;HAVE&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;DRC-60A UPS&lt;/td&gt;&lt;td&gt;TB2 +V/−V&lt;/td&gt;&lt;td&gt;12–30V in&lt;/td&gt;&lt;td&gt;analog/ups&lt;/td&gt;&lt;td&gt;DC UPS&lt;/td&gt;&lt;td&gt;LAB&lt;/td&gt;&lt;td&gt;PLANNED&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;12 V AGM&lt;/td&gt;&lt;td&gt;Bat+/Bat−&lt;/td&gt;&lt;td&gt;AI1 divider&lt;/td&gt;&lt;td&gt;analog.ai_battery_v&lt;/td&gt;&lt;td&gt;Backup&lt;/td&gt;&lt;td&gt;LAB&lt;/td&gt;&lt;td&gt;PLANNED&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Load-shed K2&lt;/td&gt;&lt;td&gt;AO1&lt;/td&gt;&lt;td&gt;vendor AO&lt;/td&gt;&lt;td&gt;analog.ao_load_shed&lt;/td&gt;&lt;td&gt;0–10V drive&lt;/td&gt;&lt;td&gt;LAB&lt;/td&gt;&lt;td&gt;PLANNED&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" vertex="1">
+          <mxGeometry height="290" width="1000" x="760" y="540" as="geometry" />
+        </mxCell>
+        <mxCell id="e5_z1" edge="1" parent="1" source="z1d1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;" target="gw5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5_z2" edge="1" parent="1" source="z2d2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" target="gw5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5_z3" edge="1" parent="1" source="z3d2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" target="gw5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5_z0" edge="1" parent="1" source="z0d1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" target="gw5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="6-DRC60A-UPS-Full-IO-Map" id="tr400-drc60a-full-io">
+    <mxGraphModel dx="1084" dy="659" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1800" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="p6-0" />
+        <mxCell id="p6-1" parent="p6-0" />
+        <mxCell id="p6t" parent="p6-1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=16;fontStyle=1;" value="Full DIO / AIO Map + MEAN WELL DRC-60A UPS — TG544 Lab&#xa;Policy: DIO1–4 = PF2 only · UPS on AI/AO · Config lab_tr400.yaml · Runbook lab/DRC60A_UPS_WIRING.md" vertex="1">
+          <mxGeometry height="48" width="1720" x="40" y="16" as="geometry" />
+        </mxCell>
+        <mxCell id="p6map" parent="p6-1" style="text;html=1;strokeColor=#334155;fillColor=#FFFFFF;align=left;verticalAlign=top;spacing=2;" value="&lt;table style=&quot;width:100%;border-collapse:collapse;font-size:10px;&quot;&gt;&lt;tr style=&quot;background:#E2E8F0;&quot;&gt;&lt;th&gt;Silk&lt;/th&gt;&lt;th&gt;ubus/API&lt;/th&gt;&lt;th&gt;Mode&lt;/th&gt;&lt;th&gt;Domain&lt;/th&gt;&lt;th&gt;Function&lt;/th&gt;&lt;th&gt;CCLI key&lt;/th&gt;&lt;th&gt;External&lt;/th&gt;&lt;th&gt;Status&lt;/th&gt;&lt;/tr&gt;&lt;tr style=&quot;background:#FEE2E2;&quot;&gt;&lt;td&gt;DIO1&lt;/td&gt;&lt;td&gt;ch 1&lt;/td&gt;&lt;td&gt;DO&lt;/td&gt;&lt;td&gt;PF2&lt;/td&gt;&lt;td&gt;Curtailment relay drive&lt;/td&gt;&lt;td&gt;io.do_curtail&lt;/td&gt;&lt;td&gt;K1 module IN&lt;/td&gt;&lt;td&gt;PASS&lt;/td&gt;&lt;/tr&gt;&lt;tr style=&quot;background:#FEE2E2;&quot;&gt;&lt;td&gt;DIO2&lt;/td&gt;&lt;td&gt;ch 2&lt;/td&gt;&lt;td&gt;DI&lt;/td&gt;&lt;td&gt;PF2&lt;/td&gt;&lt;td&gt;Permissive interlock&lt;/td&gt;&lt;td&gt;io.di_permissive&lt;/td&gt;&lt;td&gt;Switch → GND&lt;/td&gt;&lt;td&gt;PASS&lt;/td&gt;&lt;/tr&gt;&lt;tr style=&quot;background:#FEE2E2;&quot;&gt;&lt;td&gt;DIO3&lt;/td&gt;&lt;td&gt;ch 3&lt;/td&gt;&lt;td&gt;DI&lt;/td&gt;&lt;td&gt;PF2&lt;/td&gt;&lt;td&gt;Spare — PI trip / alarm&lt;/td&gt;&lt;td&gt;io.di_pf2_spare&lt;/td&gt;&lt;td&gt;Field contact&lt;/td&gt;&lt;td&gt;UNTESTED&lt;/td&gt;&lt;/tr&gt;&lt;tr style=&quot;background:#FEE2E2;&quot;&gt;&lt;td&gt;DIO4&lt;/td&gt;&lt;td&gt;ch 4&lt;/td&gt;&lt;td&gt;DO&lt;/td&gt;&lt;td&gt;PF2&lt;/td&gt;&lt;td&gt;Spare — ack / annunciator&lt;/td&gt;&lt;td&gt;io.do_pf2_spare&lt;/td&gt;&lt;td&gt;Indicator relay&lt;/td&gt;&lt;td&gt;UNTESTED&lt;/td&gt;&lt;/tr&gt;&lt;tr style=&quot;background:#DBEAFE;&quot;&gt;&lt;td&gt;AI1&lt;/td&gt;&lt;td&gt;AI0?&lt;/td&gt;&lt;td&gt;AI&lt;/td&gt;&lt;td&gt;UPS&lt;/td&gt;&lt;td&gt;Battery voltage&lt;/td&gt;&lt;td&gt;analog.ai_battery_v&lt;/td&gt;&lt;td&gt;R1 120k / R2 39k from Bat+&lt;/td&gt;&lt;td&gt;NOT TESTED&lt;/td&gt;&lt;/tr&gt;&lt;tr style=&quot;background:#DBEAFE;&quot;&gt;&lt;td&gt;AI2&lt;/td&gt;&lt;td&gt;—&lt;/td&gt;&lt;td&gt;AI&lt;/td&gt;&lt;td&gt;UPS&lt;/td&gt;&lt;td&gt;AC OK + battery low&lt;/td&gt;&lt;td&gt;analog.ai_ups_status&lt;/td&gt;&lt;td&gt;Contacts 5–6, 7–8 + ladder&lt;/td&gt;&lt;td&gt;NOT TESTED&lt;/td&gt;&lt;/tr&gt;&lt;tr style=&quot;background:#DBEAFE;&quot;&gt;&lt;td&gt;AO1&lt;/td&gt;&lt;td&gt;—&lt;/td&gt;&lt;td&gt;AO&lt;/td&gt;&lt;td&gt;UPS&lt;/td&gt;&lt;td&gt;Load-shed (optional)&lt;/td&gt;&lt;td&gt;analog.ao_load_shed&lt;/td&gt;&lt;td&gt;0–10V → Q1 → K2 +V break&lt;/td&gt;&lt;td&gt;NOT TESTED&lt;/td&gt;&lt;/tr&gt;&lt;tr style=&quot;background:#DBEAFE;&quot;&gt;&lt;td&gt;AO2&lt;/td&gt;&lt;td&gt;—&lt;/td&gt;&lt;td&gt;AO&lt;/td&gt;&lt;td&gt;—&lt;/td&gt;&lt;td&gt;Spare&lt;/td&gt;&lt;td&gt;analog.ao_spare&lt;/td&gt;&lt;td&gt;—&lt;/td&gt;&lt;td&gt;—&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;AOG&lt;/td&gt;&lt;td&gt;—&lt;/td&gt;&lt;td&gt;GND&lt;/td&gt;&lt;td&gt;UPS&lt;/td&gt;&lt;td&gt;Analog return&lt;/td&gt;&lt;td&gt;analog.analog_gnd&lt;/td&gt;&lt;td&gt;Bat− / divider return&lt;/td&gt;&lt;td&gt;—&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;GND&lt;/td&gt;&lt;td&gt;—&lt;/td&gt;&lt;td&gt;GND&lt;/td&gt;&lt;td&gt;Common&lt;/td&gt;&lt;td&gt;Digital reference&lt;/td&gt;&lt;td&gt;—&lt;/td&gt;&lt;td&gt;DIO / K1 return&lt;/td&gt;&lt;td&gt;PASS&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" vertex="1">
+          <mxGeometry height="220" width="990" x="40" y="72" as="geometry" />
+        </mxCell>
+        <mxCell id="p6pf2" parent="p6-1" style="swimlane;startSize=26;fillColor=#FEF2F2;strokeColor=#334155;fontStyle=1;fontSize=12;" value="PF2 — Digital I/O (DIO1–4)" vertex="1">
+          <mxGeometry height="360" width="520" x="40" y="310" as="geometry" />
+        </mxCell>
+        <mxCell id="p6k1" parent="p6pf2" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEE2E2;strokeColor=#334155;fontSize=10;fontStyle=1;" value="K1 — Curtailment relay module&#xa;Coil: external +5 V + GND&#xa;IN ← DIO1 (ch1 DO)&#xa;active-low sink · PASS 2026-09-15" vertex="1">
+          <mxGeometry height="70" width="480" x="20" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="p6perm" parent="p6pf2" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEE2E2;strokeColor=#334155;fontSize=10;" value="Permissive switch&#xa;DIO2 (ch2 DI) → GND&#xa;UCI channel_2.mode=di" vertex="1">
+          <mxGeometry height="60" width="480" x="20" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="p6d3" parent="p6pf2" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#334155;fontSize=10;dashed=1;" value="DIO3 spare DI — PI trip / external alarm&#xa;UCI channel_3.mode=di · io.di_pf2_spare" vertex="1">
+          <mxGeometry height="50" width="480" x="20" y="190" as="geometry" />
+        </mxCell>
+        <mxCell id="p6d4" parent="p6pf2" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#334155;fontSize=10;dashed=1;" value="DIO4 spare DO — curtail ack / annunciator&#xa;io.do_pf2_spare · active_high false" vertex="1">
+          <mxGeometry height="50" width="480" x="20" y="250" as="geometry" />
+        </mxCell>
+        <mxCell id="p6note" parent="p6pf2" style="text;html=1;strokeColor=none;fillColor=#FFF4E6;align=center;fontSize=10;fontStyle=2;" value="Modbus PF2 plant data: A1/B1 → /dev/ttyS1 (unchanged)" vertex="1">
+          <mxGeometry height="36" width="480" x="20" y="310" as="geometry" />
+        </mxCell>
+        <mxCell id="p6ups" parent="p6-1" style="swimlane;startSize=26;fillColor=#EFF6FF;strokeColor=#1A365D;fontStyle=1;fontSize=12;" value="DRC-60A UPS / Charger (TB2)" vertex="1">
+          <mxGeometry height="360" width="420" x="580" y="310" as="geometry" />
+        </mxCell>
+        <mxCell id="p6drc" parent="p6ups" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DBEAFE;strokeColor=#1A365D;fontSize=11;fontStyle=1;" value="MEAN WELL DRC-60A&#xa;AC in → 12 V AGM backup&#xa;Alarm relays ≤ 30 V / 1 A" vertex="1">
+          <mxGeometry height="60" width="380" x="20" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="p6tb2" parent="p6ups" style="text;html=1;strokeColor=#334155;fillColor=#FFFFFF;align=left;verticalAlign=top;fontSize=10;spacing=4;" value="TB2 pinout&#xa;1 −V → TG544 DC − / AOG&#xa;2 +V → K2 NC → TG544 DC +&#xa;3 Bat+ → divider R1 → AI1&#xa;4 Bat− → AOG&#xa;5–6 AC OK relay&#xa;7–8 Battery low (&amp;lt; 11 V)" vertex="1">
+          <mxGeometry height="120" width="380" x="20" y="110" as="geometry" />
+        </mxCell>
+        <mxCell id="p6bat" parent="p6ups" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#334155;fontSize=10;" value="12 V AGM (BAT1)&#xa;Bat+ / Bat− on TB2 pins 3–4" vertex="1">
+          <mxGeometry height="50" width="380" x="20" y="240" as="geometry" />
+        </mxCell>
+        <mxCell id="p6tg" parent="p6ups" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F8FAFC;strokeColor=#64748B;fontSize=10;fontStyle=1;" value="TG544 power input&#xa;12–30 V DC from DRC-60A +V/−V" vertex="1">
+          <mxGeometry height="44" width="380" x="20" y="300" as="geometry" />
+        </mxCell>
+        <mxCell id="p6aio" parent="p6-1" style="swimlane;startSize=26;fillColor=#DCFCE7;strokeColor=#166534;fontStyle=1;fontSize=12;" value="Analog circuits (10-pin block)" vertex="1">
+          <mxGeometry height="360" width="740" x="1020" y="310" as="geometry" />
+        </mxCell>
+        <mxCell id="p6div" parent="p6aio" style="text;html=1;strokeColor=#166534;fillColor=#FFFFFF;align=left;verticalAlign=top;fontSize=10;spacing=4;fontFamily=Courier New;" value="AI1 — Battery voltage divider&#xa;Bat+ — R1 120kΩ —┬— AI1&#xa;                    R2 39kΩ — AOG&#xa;                    100nF · optional 3.3V zener&#xa;V(AI1) ≈ 0.245 × Vbat · calibrate in CCLI" vertex="1">
+          <mxGeometry height="90" width="700" x="20" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="p6lad" parent="p6aio" style="text;html=1;strokeColor=#166534;fillColor=#FFFFFF;align=left;verticalAlign=top;fontSize=10;spacing=4;" value="AI2 — Status ladder (optional)&#xa;AC OK (5–6) + Bat low (7–8) → pull-ups from PS1 +5V&#xa;Fallback: derive bat_low from AI1 in software" vertex="1">
+          <mxGeometry height="60" width="700" x="20" y="140" as="geometry" />
+        </mxCell>
+        <mxCell id="p6ao" parent="p6aio" style="text;html=1;strokeColor=#166534;fillColor=#FFFFFF;align=left;verticalAlign=top;fontSize=10;spacing=4;fontFamily=Courier New;" value="AO1 — Load-shed (optional, fail-safe)&#xa;AO1 — 10kΩ — base Q1 (2N2222) — GND&#xa;K2 coil via PS1 +5V · NC in +V path&#xa;AO1=0 → K2 off → power ON (default)" vertex="1">
+          <mxGeometry height="80" width="700" x="20" y="210" as="geometry" />
+        </mxCell>
+        <mxCell id="p6warn" parent="p6aio" style="shape=note;whiteSpace=wrap;html=1;fillColor=#FFF4E6;strokeColor=#B45309;fontSize=10;align=left;" value="⚠ Bench AI/AO NOT TESTED — run V-01 (DMM at AI1 node) before wire-up" vertex="1">
+          <mxGeometry height="44" width="700" x="20" y="330" as="geometry" />
+        </mxCell>
+        <mxCell id="p6bom" parent="p6-1" style="text;html=1;strokeColor=#334155;fillColor=#FFFFFF;align=left;verticalAlign=top;spacing=2;" value="&lt;table style=&quot;width:100%;border-collapse:collapse;font-size:10px;&quot;&gt;&lt;tr style=&quot;background:#E2E8F0;&quot;&gt;&lt;th&gt;Ref&lt;/th&gt;&lt;th&gt;Function&lt;/th&gt;&lt;th&gt;Part&lt;/th&gt;&lt;th&gt;Net / pin&lt;/th&gt;&lt;th&gt;Status&lt;/th&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;K1&lt;/td&gt;&lt;td&gt;PF2 curtailment&lt;/td&gt;&lt;td&gt;5V relay module&lt;/td&gt;&lt;td&gt;DIO1&lt;/td&gt;&lt;td&gt;HAVE&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;UPS1&lt;/td&gt;&lt;td&gt;UPS/charger&lt;/td&gt;&lt;td&gt;DRC-60A&lt;/td&gt;&lt;td&gt;TB2 → TG544 in&lt;/td&gt;&lt;td&gt;PLANNED&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;BAT1&lt;/td&gt;&lt;td&gt;Backup&lt;/td&gt;&lt;td&gt;12V AGM&lt;/td&gt;&lt;td&gt;Bat+/Bat−&lt;/td&gt;&lt;td&gt;PLANNED&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;R1,R2,C1&lt;/td&gt;&lt;td&gt;Vbat sense&lt;/td&gt;&lt;td&gt;120k, 39k, 100nF&lt;/td&gt;&lt;td&gt;AI1&lt;/td&gt;&lt;td&gt;PLANNED&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;K2,Q1,D1&lt;/td&gt;&lt;td&gt;Load-shed&lt;/td&gt;&lt;td&gt;SRD-05VDC, 2N2222, 1N4148&lt;/td&gt;&lt;td&gt;AO1, +V&lt;/td&gt;&lt;td&gt;PLANNED&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;PS1&lt;/td&gt;&lt;td&gt;Coil / ladder&lt;/td&gt;&lt;td&gt;+5V bench&lt;/td&gt;&lt;td&gt;K1,K2,AI2&lt;/td&gt;&lt;td&gt;HAVE&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" vertex="1">
+          <mxGeometry height="160" width="520" x="40" y="690" as="geometry" />
+        </mxCell>
+        <mxCell id="p6net" parent="p6-1" style="text;html=1;strokeColor=#334155;fillColor=#FFFFFF;align=left;verticalAlign=top;spacing=2;" value="&lt;table style=&quot;width:100%;border-collapse:collapse;font-size:10px;&quot;&gt;&lt;tr style=&quot;background:#E2E8F0;&quot;&gt;&lt;th&gt;From&lt;/th&gt;&lt;th&gt;To&lt;/th&gt;&lt;th&gt;Signal&lt;/th&gt;&lt;th&gt;Notes&lt;/th&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;DRC-60A TB2-2&lt;/td&gt;&lt;td&gt;TG544 VIN+&lt;/td&gt;&lt;td&gt;+V&lt;/td&gt;&lt;td&gt;Via K2 NC if load-shed&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;DRC-60A TB2-1&lt;/td&gt;&lt;td&gt;TG544 VIN−&lt;/td&gt;&lt;td&gt;−V&lt;/td&gt;&lt;td&gt;Common with AOG&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Bat+&lt;/td&gt;&lt;td&gt;AI1&lt;/td&gt;&lt;td&gt;Vbat div&lt;/td&gt;&lt;td&gt;R1/R2 per yaml&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;AC OK 5–6&lt;/td&gt;&lt;td&gt;AI2&lt;/td&gt;&lt;td&gt;Status&lt;/td&gt;&lt;td&gt;Optional ladder&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Bat low 7–8&lt;/td&gt;&lt;td&gt;AI2&lt;/td&gt;&lt;td&gt;Alarm&lt;/td&gt;&lt;td&gt;&amp;lt; 11 V per datasheet&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;AO1&lt;/td&gt;&lt;td&gt;Q1 base&lt;/td&gt;&lt;td&gt;Load-shed&lt;/td&gt;&lt;td&gt;Default 0 V = ON&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;DIO1&lt;/td&gt;&lt;td&gt;K1 IN&lt;/td&gt;&lt;td&gt;Curtail&lt;/td&gt;&lt;td&gt;PASS smoke test&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;DIO2&lt;/td&gt;&lt;td&gt;GND&lt;/td&gt;&lt;td&gt;Permissive&lt;/td&gt;&lt;td&gt;Via switch&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" vertex="1">
+          <mxGeometry height="160" width="860" x="900" y="690" as="geometry" />
+        </mxCell>
+        <mxCell id="p6e1" edge="1" parent="p6-1" source="p6bat" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;strokeColor=#64748B;" target="p6div">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p6e2" edge="1" parent="p6-1" source="p6tb2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;strokeColor=#64748B;" target="p6lad">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p6e3" edge="1" parent="p6-1" source="p6tg" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;strokeColor=#64748B;" target="p6ao">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p6e4" edge="1" parent="p6-1" source="p6k1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#334155;" target="p6drc">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="560" y="375" />
+              <mxPoint x="560" y="375" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="p6leg" parent="p6-1" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=10;fontColor=#64748B;fontStyle=2;" value="Runbook: lab/DRC60A_UPS_WIRING.md · Corpus: CCI_TR500_IO_Peripheral.md · DIO smoke: lab/TR400_DIO_SMOKE_TEST.md" vertex="1">
+          <mxGeometry height="24" width="1200" x="40" y="1060" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

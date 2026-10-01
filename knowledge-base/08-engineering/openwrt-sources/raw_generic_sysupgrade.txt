@@ -1,0 +1,485 @@
+====== OpenWrt OS upgrade procedure (LuCI or sysupgrade) ======
+
+  * Related pages:
+    * [[doc:techref:flash.layout|Flash Layout]]: provides background on how OpenWrt uses device storage space
+    * Forum post [[https://forum.openwrt.org/viewtopic.php?id=42739|Identify packages to be re-installed after system upgrade]] (contains a promising script by forum members mforkel and Rafciq that automates package re-installation)
+
+An OpenWrt upgrade will replace the entire current OpenWrt installation with a new version. This includes the Linux kernel, the SquashFS partition and the JFFS2 partition.
+
+The common upgrade paths below will automatically preserve much of the OpenWrt OS configuration by saving and then restoring configuration files in specific common locations (including /etc/config). This will preserve things like OpenWrt network settings, WiFi settings, the device hostname, and so on.
+
+The first part of the upgrade process is to prepare for the upgrade. This includes documenting programs and settings that will need to be re-installed or restored after the upgrade, locating and downloading the correct OpenWrt upgrade image for your hardware.
+
+Next is the actual upgrade. There are two common upgrade paths to actually perform the upgrade. One uses the LuCI web interface "Flash new firmware image" command and one uses the command-line ''sysupgrade'' command. You can use either approach.
+
+After the OS upgrade, there are usually some additional configuration steps required to re-install additional packages not part of the base OpenWrt install, to configure new OpenWrt functionality or to update configuration files to reflect new settings or updated packages. Please see the section below with more details.
+
+===== Preparing for an OpenWrt upgrade =====
+
+==== How the OpenWrt OS upgrade works ====
+
+Both the LuCI and sysupgrade upgrade procedures work by saving specified configuration files, **wiping the entire file system**, installing the new version of OpenWrt and then restoring back the saved configuration files. **This means that any parts of the file system that are not specifically saved will be lost.**
+
+In particular, any manually installed software packages you may have installed after the initial OpenWrt installation have to be reinstalled after an OpenWrt upgrade. That way everything will match, e.g. the updated Linux kernel and any installed kernel modules.
+
+Any configuration files or data files placed in locations not specifically listed as being preserved below will also be lost in an OpenWrt upgrade. Be sure to check any files you have added or customized from a default OpenWrt install to back up these items before an upgrade.
+
+==== Identifying customizations ====
+
+=== List user-installed packages identified in the opkg package database ===
+
+This script is from forum member gsenna and was originally posted in the forum discussion "Default packages attitude 12.09rc2 tplink 1043nd" at [[https://forum.openwrt.org/viewtopic.php?id=43480]]
+
+  * Create the script
+
+<code bash>
+vi /tmp/listuserpackages.sh
+</code>
+
+<code bash>
+#!/bin/ash
+echo >&2 User-installed packages are the following:
+sed -ne '/^Package:[[:blank:]]*/ {
+	s///
+	h
+}
+/user installed/ {
+	g
+	p
+}' /usr/lib/opkg/status
+</code>
+
+  * Run the script
+
+<code bash>
+/bin/ash /tmp/listuserpackages.sh
+</code>
+
+  * Example output:
+
+<code>
+User-installed packages are the following:
+snmpd-static
+</code>
+
+Note that the script may list several packages that are part of the default OpenWrt install and will have their changed configuration files automatically backed up and restored. In addition, packages installed as dependences of other packages may show here. **It is only important to note the names of packages that you directly installed manually.** Any dependencies of these packages will automatically be reinstalled when the primary package is reinstalled.
+
+An alternative script, that uses awk instead of sed/grep and is much shorter (provided by user valentijn):
+
+  * Create the script
+
+<code bash>
+vi /tmp/listuserpackages.awk
+</code>
+
+<code awk>
+/^Package:/{PKG= $2}
+/^Status: .*user installed/{print PKG}
+</code>
+
+  * Run the script
+
+<code bash>
+awk -f /tmp/listuserpackages.awk /usr/lib/opkg/status
+</code>
+
+This script will only output a list of user (and default) installed packages.
+
+=== List all packages associated with any user-modified file ===
+
+This is an alternative to the script above. This command will list all packages related to any file in the whole file system that has changed from the default OpenWrt default version.
+
+Note that the script may list several packages that are part of the default OpenWrt install and will have their changed configuration files automatically backed up and restored. In addition, packages installed as dependences of other packages may show here. **It is only important to note the names of packages that you directly installed manually.** Any dependencies of these packages will automatically be reinstalled when the primary package is reinstalled.
+
+<code bash>
+# this version is for OpenWrt 14.07 "Barrier Breaker" or earlier
+find /overlay/ | sed s:/overlay::g | while read file; do opkg search $file; done | awk '{print $1}' | sort | uniq
+
+# this command is for OpenWrt 15.05
+find /overlay/upper/ | sed s:/overlay/upper::g | while read file; do opkg search $file; done | awk '{print $1}' | sort | uniq
+</code>
+
+==== Ensure desired configuration files will be saved ====
+
+  * Related pages:
+    * ''[[doc/howto/notuci.config#etcsysupgrade.conf|/etc/sysupgrade.conf]]''
+
+The LuCI and ''sysupgrade'' upgrades will preserve configuration files:
+
+  * listed by
+<code>opkg list-changed-conffiles</code>
+
+  * files listed within the text files in ''/lib/upgrade/keep.d/'' (for example, /lib/upgrade/keep.d/base-file-essential)
+  * files listed in /etc/sysupgrade.conf
+
+Based on the list of user-installed packages identified above, you may know that you have **other** configuration or data files that need to be preserved and that are not included in the default set of files to save. Your new files should be added to /etc/sysupgrade.conf. By default, this file just has comments in it.
+
+=== LuCI method ===
+
+Go to System > Backup/Flash Firmware > Configuration tab. This will display the current contents of /etc/sysupgrade.conf file and the edit window can be used to add additional lines to the file. Click "Submit" when done editing.
+
+To view all the configuration files that will be saved on an upgrade, click the "Open list..." button.
+
+=== Command-line method ===
+
+Edit /etc/sysupgrade.conf with an editor. For example:
+
+<code bash>
+vi /etc/sysupgrade.conf
+</code>
+
+<code>
+## This file contains files and directories that should
+## be preserved during an upgrade.
+
+# /etc/example.conf
+# /etc/openvpn/
+
+## customization: preserve sudo files
+/etc/sudoers
+/etc/sudoers.d/
+</code>
+
+==== Legacy: LuCI flash_keep section of /etc/config/luci ====
+
+Luci has a separate set of settings in the "config extern 'flash_keep'" section of the file /etc/config/luci relating to configuration files that should be preserved.
+
+In the past, it appears this list was used by LuCI (see [[https://forum.openwrt.org/viewtopic.php?pid=100739#p100739]]). However, at least as of OpenWrt 14.07, the LuCI OpenWrt upgrade procedure actually calls the sysupgrade script and so it appears the flash_keep settings in /etc/config/luci are now ignored.
+
+==== Identifying the OpenWrt upgrade image ====
+
+  * Only the **"...-sysupgrade.bin"** version of the OpenWrt download image should be used for OpenWrt upgrades. The "...-factory.bin" file is for switching from the vendor-default firmware to OpenWrt and is not used for OpenWrt-to-OpenWrt upgrades.
+  * Locate the correct "...-sysupgrade.bin" upgrade file for your particular device hardware in the OpenWrt download area
+
+=== OpenWrt on x86 ===
+
+:!: For x86 systems there is no "sysupgrade" image, just be sure to use the new firmware image has the same family of filesystem (if the current firmware uses squashfs then the new will use squashfs as well and if the current has ext the new will use ext filesystem. Note that an upgrade from ext2 [10.03.1] to ext4 [12.09] seems not working. Tested 10.03.1 squashfs to 12.09 squashfs, working ; 10.03.1 squashfs to 12.09 ext4 failed; 10.03.1 ext2 to 12.09 ext4 failed)
+
+==== Downloading the OpenWrt upgrade image ====
+
+=== For LuCI-based upgrades ===
+
+  * Download the desired upgrade file to your PC using a web browser
+  * Proceed to the LuCI upgrade procedure, below
+
+=== For sysupgrade-based upgrades ===
+
+  * Download the desired upgrade file to the local /tmp RAM drive on your OpenWrt system. The ''/tmp'' directory is stored in RAM (using [[wp>tmpfs]]), not in the permanent flash storage.
+
+<code bash>
+# example downloading the OpenWrt 15.05 upgrade image for a TP-LINK TL-WR1043ND ver. 1.x router
+cd /tmp
+wget http://downloads.openwrt.org/chaos_calmer/15.05/ar71xx/generic/openwrt-15.05-ar71xx-generic-tl-wr1043nd-v1-squashfs-sysupgrade.bin
+
+# check the integrity of the image file
+wget http://downloads.openwrt.org/chaos_calmer/15.05/ar71xx/generic/md5sums
+# the desired result is that the downloaded firmware filename is listed with "OK" afterwards
+md5sum -c md5sums 2> /dev/null | grep OK
+</code>
+
+  * Proceed to the "Ensure desired configuration files will be saved" section, below
+
+== Troubleshooting: /tmp is too small to hold the downloaded file ==
+
+If your device's /tmp filesystem is not large enough to store the OpenWrt upgrade image, this section provides tips to temporarily free up RAM.
+
+First check memory usage with the ''free'' or ''top'' or ''cat /proc/meminfo'' commands; proceed if you have as much free RAM as the image is in size plus an some additional MiB of free memory.
+
+|''root@openwrt:/$ free
+             total         used         free       shared      buffers
+Mem:         29540        18124        **11416**         0         1248
+-/+ buffers:              16876        12664
+Swap:            0            0            0''|
+
+In this example there are precisely 11416 KiB of RAM unused. All the rest 32768 - 11416 = 21352 KiB are used somehow and a portion of it can and will be made available by the kernel, if it be needed, the problem is, we do not know how much exactly that is. Make sure //enough// is available. Free space in /tmp also counts towards free memory. Therefore with: 
+|''root@openwrt:/$ free
+Mem:         13388        12636          752            0         1292
+Swap:            0            0            0
+Total:       13388        12636          752''|
+
+|''root@openwrt:/$ df
+Filesystem           1K-blocks      Used Available Use% Mounted on
+/dev/root                 2304      2304         0 100% /rom
+tmpfs                     6696        60      6636   1% /tmp
+tmpfs                      512         0       512   0% /dev
+/dev/mtdblock3             576       288       288  50% /overlay
+mini_fo:/overlay          2304      2304         0 100% /''|
+One has actually 752+6636 KiB of free memory available.
+
+  * quickest and safest way to free up, some RAM is to delete the ''[[doc:techref:opkg]]'' packages file:
+
+<code bash>
+rm -r /tmp/opkg-lists/
+</code>
+
+  * drop caches:
+<code bash>
+sync && echo 3 > /proc/sys/vm/drop_caches
+</code>
+
+  * prevent wireless drivers to be loaded at next boot and then reboot:
+
+<code bash>
+rm /etc/modules.d/*80211*
+rm /etc/modules.d/*ath9k*
+rm /etc/modules.d/b43*
+reboot
+</code>
+
+The wireless drivers, usually take up quite some amount of RAM and are not required (unless you are connected via wireless of course ;-)), so an easy way to free up some RAM is to delete the symlinks in ''etc/modules.d'' so these are not loaded into memory at the next reboot.
+
+===== LuCI web interface upgrade procedure =====
+
+  * Log in to the LuCI web interface of the router (default: http://192.168.1.1)
+  * Select //System// => //Backup / Flash Firmware// => //Configuration// to edit ''/etc/sysupgrade.conf'' (Attitude Adjustment)
+    * Select //System// => //System// => //Custom Files// to edit ''/etc/sysupgrade.conf'' (Previous versions)
+  * Select //System// => //Backup / Flash Firmware// => //Actions// (Attitude Adjustment)
+    * Select //System// => //Flash Firmware// (Previous versions)
+  * Upload the OpenWrt upgrade image file you downloaded
+  * LuCI will calculate the MD5 checksum of the file, if it's correct, you are green to go
+
+  * Wait until the router comes back online
+  * After the automatic reboot, the system should come up the same configuration settings as before: the same network IP addresses, same SSH password, etc.
+  * Proceed to the "Additional configuration after an OpenWrt upgrade" section, below
+
+{{:doc:howto:luci.sysupgrade.conf.png?200}}
+{{:doc:howto:luci.sysupgrade.png?200}}
+
+===== sysupgrade SSH/terminal upgrade procedure =====
+
+  * Related pages:
+    * [[doc/techref/sysupgrade|sysupgrade command – Technical Reference]]
+
+  * Use the following command to upgrade:
+
+<code bash>
+sysupgrade -v /tmp/filename-of-downloaded-sysupgrade.bin
+</code>
+
+  * The verbose-option should give some output similar to this. The list of configuration files saved will change depending on what packages you have installed and which files you have configured to be saved, as per above.
+
+<code>
+Saving config files...
+etc/config/dhcp
+etc/config/dropbear
+etc/config/firewall
+etc/config/luci
+etc/config/network
+etc/config/snmpd
+etc/config/system
+etc/config/ubootenv
+etc/config/ucitrack
+etc/config/uhttpd
+etc/config/wireless
+etc/dropbear/authorized_keys
+etc/dropbear/dropbear_dss_host_key
+etc/dropbear/dropbear_rsa_host_key
+etc/firewall.user
+etc/group
+etc/hosts
+etc/inittab
+etc/passwd
+etc/profile
+etc/rc.local
+etc/shadow
+etc/shells
+etc/sudoers
+etc/sudoers.d/custom
+etc/sysctl.conf
+etc/sysupgrade.conf
+killall: watchdog: no process killed
+Sending TERM to remaining processes ... ubusd askfirst logd logread netifd odhcpd snmpd uhttpd ntpd dnsmasq
+Sending KILL to remaining processes ... askfirst
+Switching to ramdisk...
+Performing system upgrade...
+Unlocking firmware ...
+
+Writing from <stdin> to firmware ...  [w]
+Appending jffs2 data from /tmp/sysupgrade.tgz to firmware...TRX header not found
+Error fixing up TRX header
+Upgrade completed
+Rebooting system...
+</code>
+
+Note: The "TRX header not found" and "Error fixing up TRX header" errors are not a problem as per OpenWrt developer jow's post at https://dev.openwrt.org/ticket/8623
+
+  * Wait until the router comes back online
+  * After the automatic reboot, the system should come up the same configuration settings as before: the same network IP addresses, same SSH password, etc.
+  * Proceed to the "Additional configuration after an OpenWrt upgrade" section, below
+
+==== Troubleshooting ====
+
+  * In case it does not, try a [[wp>Booting#Hard_reboot|cold reset]] (= interrupt the electrical current to the device, wait a couple of seconds and then connect it again). 
+    * Be careful about /etc/opkg.conf as explained here: https://dev.openwrt.org/ticket/13309
+
+| {{:meta:icons:tango:48px-dialog-warning.svg.png?nolink}} | For unknown reasons such a cold reset has often been reported to be necessary after a sysupgrade. This is very very bad in case you performed this remotely!  |
+
+===== Additional configuration after an OpenWrt upgrade =====
+
+==== Verify the new OS version ====
+
+  * In LuCI, go to Status > Overview to verify you are running the new OpenWrt release
+  * In SSH, the login banner has the release information
+
+==== Check for any upgradable packages ====
+
+After the initial update, it is good to check for any updated packages released after the base OS firmware image was built.
+
+  * List any available upgradable packages
+
+<code bash>
+opkg update
+opkg list-upgradable
+</code>
+
+  * Upgrade any packages listed (if any were listed) -- more than one package can be included
+    * Note: on a device with only 4MB of NVRAM, these updates may not fit -- check free space on / first with "df -h /" and ensure there is at least 600KB or so free
+    * Note: the updates below were the OpenWrt 15.05 updates available as of Sept. 12, 2015
+
+<code bash>
+opkg upgrade luci-lib-ip luci-theme-bootstrap luci-app-firewall luci-proto-ppp luci-mod-admin-full luci-base luci-proto-ipv6 luci-lib-nixio luci
+</code>
+
+  * Verify no more packages can be upgraded; the command should display no output now
+
+<code bash>
+opkg list-upgradable
+</code>
+
+==== Reinstall user-installed packages ====
+
+After a successful upgrade, you will need to reinstall all previously installed packages. You made a list of these above. Package configuration files should have been preserved due to steps above, but not the actual packages themselves.
+
+  * For example:
+
+<code bash>
+opkg update
+opkg install snmpd-static
+</code>
+
+==== Configure user-installed packages ====
+
+The new package installations will have installed new, default versions of package configuration files. As your existing configuration files were already in place, opkg would have displayed a warning about this and saved the new configuration file versions under ...-opkg filenames.
+
+The new package-provided configuration files should be compared with your older customized files to merge in any new options or changes of syntax in these files.
+
+The ''diffutils'' program is helpful for this.
+
+For example:
+
+<code bash>
+# install diffutils
+opkg install diffutils
+
+# locate all -opkg files
+find /etc -name *-opkg
+
+# compare old customized /etc/config/snmpd with new generic file /etc/config/snmpd-opkg
+diff /etc/config/snmpd /etc/config/snmpd-opkg
+
+# merge in any needed changes to the active version of the configuration file
+vi /etc/config/snmpd
+# and clean up by removing the package manager-version of the configuration file
+rm /etc/config/snmpd-opkg
+
+# or if the new version provided by the package maintainer should just replace the old config file then just swap it in
+mv /etc/config/snmpd-opkg /etc/config/snmpd
+</code>
+
+==== Enable and start user-installed packages ====
+
+  * Finally, the newly installed packages should be enabled and started (if they need this; many do)
+
+<code bash>
+/etc/init.d/snmpd enable
+/etc/init.d/snmpd start
+</code>
+
+==== Do a test reboot ====
+
+The upgrade is fully complete now. It is a good idea to do a test reboot and ensure all expected functionality is working as before.
+
+<code>
+reboot
+</code>
+
+===== Alternative OS upgrade procedures to LuCI or sysupgrade =====
+
+The OS upgrade options are much more manual than using either LuCI or sysupgrade. They are only needed in unusual circumstances.
+
+==== mtd ====
+
+  - If ''sysupgrade'' is not supported for your embedded device, you should use ''[[doc:techref:mtd]]'' instead:<code>
+mtd -r write /tmp/openwrt-ar71xx-generic-wzr-hp-ag300h-squashfs-sysupgrade.bin firmware</code>
+
+==== netcat ====
+
+=== Direct method ===
+
+Netcat could be employed if you cannot free **enough RAM**. See [[man>netcat]]. Netcat needs to be installed first.
+| {{:meta:icons:tango:48px-dialog-warning.svg.png?nolink}} | This method is **NOT** recommended! |
+
+  - On your Linux PC run:<code>
+nc -q0 192.168.1.1 1234 < openwrt-ar71xx-tl-wr1043nd-v1-squashfs-sysupgrade.bin
+</code>
+  - On the router run:<code>
+nc -l -p 1234 | mtd write - firmware
+</code>
+
+=== Indirect method ===
+
+| {{:meta:icons:tango:dialog-information.png|}} | This method is much **SAFER** if you have **enough RAM**. |
+** This method is fine for self built firmwares.**
+
+You should check how much RAM you have currently available.(In case you do not have enough left, consult [[#Free up RAM]].)<code>free</code>
+
+== Transferring image file to a temporary location ==
+
+  - On your Linux PC run:<code>cat [specified firmware].bin | pv -b | nc -l -p 3333</code>
+  - On the router run:<code>nc 192.168.1.111 3333 > /tmp/[specified firmware].bin </code>
+The port 3333 an IP address 192.168.1.111 are just examples. The command 'pv -b' is optional for tracking progress but maybe you have to install pv to your system previously.
+
+== Write it to flash ==
+
+  * sysupgrade:<code>sysupgrade -v /tmp/[specified firmware].bin </code>
+
+|**OR**|
+
+  * mtd:<code>mtd -r write /tmp/[specified firmware].bin firmware</code>
+
+I have tested under Ubuntu 11.10.
+
+=== Some useful links for netcat ===
+
+  * [[http://www.g-loaded.eu/2006/11/06/netcat-a-couple-of-useful-examples/]]
+  * [[http://www.screenage.de/blog/2007/12/30/using-netcat-and-tar-for-network-file-transfer/]]
+  * [[https://help.ubuntu.com/community/BackupYourSystem/TAR]]
+  * [[http://www.aboutdebian.com/tar-backup.htm]]
+
+==== scp ====
+
+Make sure your router has enough memory.
+<code>
+root@OpenWrt:/# free
+</code>
+
+Make sure you have set the password for your router (you must set a password for your router to enable the SSH). See [[doc:howto:firstlogin|First Login]] for more details.
+
+=== Copy your firmware to your router ===
+On your Linux PC run:
+<code>
+linux$ scp openwrt-ar71xx-tl-wr1043nd-v1-squashfs-sysupgrade.bin root@192.168.1.1:/tmp
+</code>
+Input 'yes' to estabilish authenticity, then input the password of your router. Wait ''scp'' command finished.
+Now you can see your firmware in /tmp directory.
+
+=== Write the firmware to your router ===
+
+<code>root@OpenWrt:/# sysupgrade -v /tmp/[specified firmware].bin </code>
+
+=== Note ===
+
+**192.168.1.1** is the ip address(may be called GateWay) of your router. Check by run:
+<code>linux$ ip r </code>
+or you can check the the /etc/config/network file, 127.0.0.1 is the loopback ipaddress, the other one is the ip address of your router.
+<code>root@OpenWrt:/# grep ipaddr /etc/config/network </code>

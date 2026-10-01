@@ -1,0 +1,92 @@
+CCI TG-500 Knowledge Tree
+
+|-- K0  Corpus & RAG governance
+|       [5 HAVE]
+|   |-- [+] K0.1  Single-silicon rule (no alternate SoC in active corpus)   (ccli-soc-freeze; gate D2)
+|   |-- [+] K0.2  OpenWrt OS freeze; Yocto removed; Pi test path   (ccli-openwrt-freeze; gate D6)
+|   |-- [+] K0.3  Knowledge/risk matrices regenerate from one corpus module   (scripts/knowledge_risks_corpus.py)
+|   |-- [+] K0.4  SK0146 schematic corpus (15 sheets) ingested   (sk0146-blk_ref_*)
+|   `-- [+] K0.5  RAG service reachable for ingest + probes
+|
+|-- K1  Platform & silicon
+|       [4 HAVE · 4 PART · 1 DEF]
+|   |-- [+] K1.1  MT798X freeze — Cortex-A53 dual 1.6 GHz, HW NAT   (ccli-soc-freeze; gate D2)
+|   |-- [+] K1.2  TG-524 hardware spec (RAM/eMMC/ports/temp)   (ccli-tespro-tg500-ds; gate D5)
+|   |-- [+] K1.3  12–36 V DC input class (C10)   (ccli-tg500-lab-platform)
+|   |-- [~] K1.4  Thermal −40…+75 °C vs cabinet budget   (ccli-tespro-tg500-ds)
+|   |-- [~] K1.5  Vendor response form vs datasheet deltas   (ccli-tespro-tg424-response, ccli-tespro-supplier-correspondence; gate D5)
+|   |-- [~] K1.6  SKU confirmation TG-424 Pro vs TG-524 (written)   (ccli-tespro-supplier-correspondence; gate D3)
+|   |-- [~] K1.7  MT798X reference manual / GPIO + pinmux detail   (ccli-mt7986a-datasheet, ccli-mt7986a-datasheet-extract)
+|   |-- [.] K1.8  Field cabinet / DIN mounting (C9)
+|   `-- [+] K1.9  TR-400 OEM user manual (port map, DI/DO, RS485 pinout)   (ccli-tr400-user-manual, ccli-tr400-user-manual-extract; gate D5  49 pp.; confirm SKU vs TG-424 Pro on label)
+|
+|-- K2  OS, build & boot toolchain — critical path
+|       [1 HAVE · 2 PART · 4 MISS]
+|   |-- [+] K2.1  Raspberry Pi test build (platform_pi) — active validation path   (ccli-openwrt-freeze)
+|   |-- [!] K2.2  TesPro OpenWrt SDK / cross-toolchain + sysroot   (gate D6 P0)
+|   |-- [~] K2.3  OpenWrt build system fundamentals (feeds, menuconfig)   (ccli-tespro-supplier-correspondence, ccli-openwrt-freeze; gate D6)
+|   |-- [!] K2.4  .ipk packaging + procd init for CCI services   (gate D6)
+|   |-- [!] K2.5  UCI config model + overlay persistence policy
+|   |-- [~] K2.6  Boot chain: bootloader → kernel → OpenWrt rootfs   (ccli-tg500-lab-platform)
+|   `-- [!] K2.7  Signed / A-B firmware update path on OpenWrt
+|
+|-- K3  Network & segmentation
+|       [1 HAVE · 4 PART · 2 MISS]
+|   |-- [~] K3.1  Port map: WAN/LAN1-4 → Eth_A / Eth_B / plant   (ccli-tr400-user-manual-extract, ccli-tg500-lab-platform; gate D4 P0  ip link on TR400)
+|   |-- [!] K3.2  Port-to-port galvanic isolation proof
+|   |-- [~] K3.3  No-L2-bridge firewall policy (REQ-NET-LAB-001)   (ccli-validation-strategy; gate D4)
+|   |-- [~] K3.4  LTE/WAN backup + VPN posture (no bridge to Eth_A)   (ccli-tg500-lab-platform)
+|   |-- [~] K3.5  GNSS time source via modem   (ccli-tg500-lab-platform)
+|   |-- [!] K3.6  IEEE 1588 / PTP need + capability
+|   `-- [+] K3.7  Lab profile disables Wi-Fi / OPC / DLMS extras   (ccli-tg500-lab-platform)
+|
+|-- K4  Protocols & application firmware
+|       [2 HAVE · 5 PART · 3 MISS]
+|   |-- [~] K4.1  IEC 61850 MMS server (libiec61850)   (ccli-github-protocol-libs)
+|   |-- [!] K4.2  IEC 61850 GOOSE publish/subscribe + L2 timing
+|   |-- [+] K4.3  Allegato T ICD / data model for CCI   (cei-tr-57-126; gate cei-tr-57-126-example.cid)
+|   |-- [~] K4.4  Modbus RTU/TCP master (libmodbus)   (ccli-github-protocol-libs, ccli-tespro-supplier-correspondence)
+|   |-- [!] K4.5  Energy analyzer register map (real model)   (ccli-modbus-analyzer-map; gate D8 P1)
+|   |-- [~] K4.6  IEC 60870-5-104 on Eth_B (lib60870)   (ccli-github-protocol-libs)
+|   |-- [~] K4.7  PF2 / observability curtailment FSM (new C/C++)   (ccli-app-structure)
+|   |-- [+] K4.8  Commissioning AT shell syntax + coding rules   (fw-sk0146-*)
+|   |-- [!] K4.9  libiec61850 commercial licence (MZ quote)   (ccli-project-roadmap)
+|   `-- [~] K4.10  61557-12 fixed-block aggregation + EPMF measurement path   (ccli-61557-12-extract)
+|
+|-- K5  Field I/O & serial
+|       [3 PART · 2 MISS · 1 DEF]
+|   |-- [~] K5.1  2× RS485 electrical behaviour + isolation (C2)   (ccli-tg500-lab-platform)
+|   |-- [~] K5.2  RS485 termination / TVS / connector craft   (sk0146-blk_ref_a_rs485)
+|   |-- [!] K5.3  DI 10–120 Vdc conditioning for plant class (C4)
+|   |-- [!] K5.4  DO dry-contact / relay rating for curtailment (C4)
+|   |-- [~] K5.5  Wave B fixture to reach 5 DI / 3 DO on Pi   (ccli-mocking-bench-bom)
+|   `-- [.] K5.6  2× CAN interfaces
+|
+|-- K6  Security & cyber compliance
+|       [1 HAVE · 2 PART · 1 MISS]
+|   |-- [~] K6.1  Secure Boot chain verified on receipt   (ccli-soc-freeze)
+|   |-- [~] K6.2  TPM 2.0 presence + tpm2_tools access   (ccli-soc-freeze, ccli-tespro-supplier-correspondence)
+|   |-- [+] K6.6  EU CRA 2024/2847 obligations   (eu-2024-2847-cra)
+|   `-- [!] K6.7  Vulnerability handling / SBOM process
+|
+|-- K7  Regulation & certification
+|       [4 HAVE · 3 PART]
+|   |-- [+] K7.1  CEI 0-16 Allegato O (interface protection)   (cei-0-16-allegato-o)
+|   |-- [+] K7.2  CEI 0-16 Allegato T (CCI communication)   (cei-0-16-allegato-t)
+|   |-- [+] K7.3  Module regulation classification   (ccli-cci-module-regs-class)
+|   |-- [+] K7.4  ARERA 540/2021   (arera-540-2021)
+|   |-- [~] K7.5  DSO demo / conformance route for CCI   (ccli-project-roadmap, ccli-tespro-supplier-correspondence)
+|   |-- [~] K7.6  EMC / CE for a field product   (ccli-tespro-supplier-correspondence)
+|   `-- [~] K7.7  CEI EN 61557-12 metrology (P/Q/V, Annex D fixed blocks)   (ccli-61557-12-extract)
+|
+`-- K8  Verification & lab operations
+        [3 HAVE · 3 PART]
+    |-- [+] K8.1  Validation & mocking strategy (waves A/B)   (ccli-validation-strategy)
+    |-- [+] K8.2  Mocking bench BOM   (ccli-mocking-bench-bom)
+    |-- [+] K8.3  SK0146 bench crosswalk (what transfers, what does not)   (Knowledge_Matrix.xlsx)
+    |-- [~] K8.4  Pi ↔ TR400 identical test vectors   (ccli-app-structure, lab_tr400.yaml)
+    |-- [~] K8.5  Evidence pack + records schema per REQ   (Test Bench/records.py)
+    `-- [~] K8.6  Verification matrix REQ → test → pass criteria   (ccli-architecture-framework; gate D0)
+
+Legend: [+] HAVE  [~] PART  [!] MISS  [.] DEF  [X] BLOCK
+Total: 21 HAVE · 26 PART · 12 MISS · 2 DEF (61 leaf nodes)

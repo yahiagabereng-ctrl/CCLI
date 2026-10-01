@@ -1,0 +1,31 @@
+===== P3-07 Security association (62351-4 / Annex T) =====
+Date: 2026-09-25
+DUT: TG544/TR500 · ccli 0.1.0-r8
+Clause: Annex T · IEC 62351-4 (lab MVP) · checklist P3-07
+Pass criteria: Mutual cert auth
+
+IMPLEMENTED (lab MVP)
+---------------------
+1) Transport: TLS 1.2+ on :3782 (P3-06) + client cert allowlist
+2) Association: IedServer_setAuthenticator requires ACSE_AUTH_TLS + non-empty cert
+Server log: mms: listening ... tls=on acse_tls_auth=on
+Server log: mms: ACSE auth ACCEPT — TLS cert (863 octets)
+
+POSITIVE
+--------
+mms_tls_client + client.key/pem → CONNECT OK · Mod.stVal read
+Evidence: P3_07_TLS_MUTUAL_OK.txt
+
+NEGATIVE
+--------
+mms_tls_noclient (CA only, no client key) → CONNECT FAIL err=5
+Evidence: P3_07_TLS_NOCLIENT_FAIL.txt
+
+DEFERRED (product / later)
+--------------------------
+- Full 62351-4 §13 native E2E (HandshakeReq/ClearToken / e2eMmsAC)
+- Dual TLS vs E2E end-entity certs (Annex G.2)
+- Logged as PART for complete native mode; mutual cert association PASS for checklist gate
+
+VERDICT: P3-07 PASS (mutual cert association lab)
+===== END =====

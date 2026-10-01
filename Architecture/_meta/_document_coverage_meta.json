@@ -1,0 +1,9 @@
+{
+  "generated_at": "2026-07-26T02:36:56.740660+00:00",
+  "excel": "C:\\Yahia\\projects\\CCLI\\Architecture\\Document_Coverage_Matrix.xlsx",
+  "markdown": "C:\\Yahia\\projects\\CCLI\\Architecture\\Document_Coverage_Matrix.md",
+  "subsystems": 16,
+  "missing_docs": 25,
+  "p0": 9,
+  "knowledge_risks": 14
+}

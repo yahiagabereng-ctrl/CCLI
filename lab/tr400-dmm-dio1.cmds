@@ -1,0 +1,9 @@
+echo === STEP 1: DIO1 OFF safe - read DMM V_off ===
+ubus call dido_v2 set_relay '{"channel":1,"value":0}'
+sleep 8
+echo === STEP 2: DIO1 ON - read DMM V_on ===
+ubus call dido_v2 set_relay '{"channel":1,"value":1}'
+sleep 8
+echo === STEP 3: DIO1 OFF safe - confirm V_off ===
+ubus call dido_v2 set_relay '{"channel":1,"value":0}'
+echo === DONE - reply with V_off and V_on ===

@@ -1,0 +1,302 @@
+CCI — Software Architecture and Development Environment
+EPIC 1 — Infrastruttura e Ambiente di sviluppo
+Preparazione architettura software
+Prepared by: Masomeh
+Project: CCI (Controllore Centrale di Impianto)
+Document status: Draft for review
+Table of Contents
+1. Definizione architettura CCI3
+2. Definizione moduli software5
+3. Definizione configurazioni7
+4. Definizione logging9
+5. Definizione struttura IEC6185011
+6. Definizione macchina a stati13
+List of Tables
+Table 1. Architectural layers and their regulatory drivers3
+Table 2. Module dependencies6
+Table 3. Configuration categories7
+Table 4. System operational states13
+Table 5. System operational state transitions13
+Table 6. Device connection states14
+Table 7. Device connection state transitions14
+1. Definizione architettura CCI
+Overview
+The CCI software architecture is organized into distinct functional layers, separating hardware access, protocol communication, domain data modeling, system state management, alarm handling, configuration, persistence, logging, security, and upstream/diagnostic communication. This separation allows each concern to evolve independently and ensures traceability to the applicable regulatory requirements (CEI 0-16 Allegati O/T, NIS2).
+Layers
+Table 1. Architectural layers and their regulatory drivers
+Layer
+Responsibility
+Regulatory driver
+1. Hardware interface
+Physical connectivity: Ethernet ports, serial (RS232/RS485), CAN bus, digital I/O, cellular modem, hardware security elements
+Root of trust for security requirements
+2. Protocol/communication
+Translates raw I/O into structured protocol data (Modbus, IEC 61850, IEC 60870-5-104, and other supported protocols)
+Allegato T communication/timing specifications
+3. Device/domain model
+Represents field devices and plant elements, and their measured/controlled values
+Allegato O measurement accuracy requirements
+4. System state
+Tracks overall plant/system operational status
+Allegato O control-loop/timing alignment
+5. Alarm
+Detects, tracks, and manages alarm conditions
+Allegato O/T alarm condition requirements
+6. Configuration
+Loads and manages system and device settings
+—
+7. Persistence
+Stores measurement and event data for later retrieval/audit
+Allegato O data logger minimums
+8. Logging
+Records system and diagnostic activity
+Allegato O audit trail; NIS2 incident detection/reporting
+9. Diagnostic/interface
+Local or remote technician access, status/dashboard visibility
+Access governed by security layer
+10. Security
+Encryption, authentication, key/certificate management
+Allegato T cybersecurity requirements; NIS2
+11. Upstream communication
+Connectivity to DSO and Operatore Abilitato, cellular as primary/backup path
+Allegato T VPN/private-network requirements
+Data flow
+A typical data path through the system flows as follows:
+1. Hardware interface layer receives raw signals from a field device (e.g., a Modbus register update over RS485, or a GOOSE message over Ethernet).
+2. Protocol/communication layer decodes this raw data into structured values using the relevant protocol library (libmodbus, libiec61850, lib60870).
+3. Device/domain model layer receives the decoded values and updates the corresponding internal representation of that field device (its current reading, online/offline status).
+4. Updated device data may trigger the alarm layer to evaluate conditions (e.g., a threshold exceeded) and activate or deactivate specific alarms.
+5. Device updates and alarm state changes are written to the persistence layer (for the CEI 0-16 audit trail) and reported through the logging layer (for system/diagnostic visibility).
+6. The system state layer reflects the aggregate effect of device and alarm conditions on the plant's overall operational status.
+7. Current data, alarms, and system state are made available through the diagnostic/interface layer for local technician access, and forwarded through the upstream communication layer to the DSO and/or Operatore Abilitato, subject to the protections defined in the security layer.
+8. The configuration layer underlies all of the above, supplying each layer with its operating parameters at startup and, where supported, at runtime.
+This flow can also run in reverse for command/control operations (e.g., a command originating from the DSO or Operatore Abilitato passing back down through security, upstream communication, protocol/communication, and hardware interface, to the physical field device).
+2. Definizione moduli software
+Purpose
+This section defines the software modules that implement the CCI application. Each module is described by its responsibility, the category of data it manages, the nature of the operations it exposes, and its relationship to other modules. The architectural layer each module belongs to (Section 1) is noted for traceability.
+Design principles governing module structure
+Base module with specialization. Where multiple modules share common data and behavior, a common base module defines the shared interface; specialized modules extend it to add category-specific behavior.
+Manager and managed object. Where the system must track a collection of like items, a dedicated manager module owns and coordinates the collection. External components interact with the collection through the manager's interface, by identifier, rather than through direct references to individual items.
+Module definitions
+Hardware Driver modules  (Hardware interface layer)
+Provide raw read/write access to each physical interface type — serial, Ethernet, CAN, digital I/O, cellular. These modules contain no protocol-level logic; their responsibility is limited to correct, low-level interaction with the physical port, isolating the rest of the system from hardware-specific details.
+Protocol modules  (Protocol/communication layer)
+One module per supported communication protocol (Modbus, IEC 61850, IEC 60870-5-104, and others). Each module manages the connection lifecycle for its protocol and translates between raw data from the hardware driver modules and structured values usable by the rest of the system.
+Device Base module  (Device/domain model layer)
+Defines the identity and status information common to every field device: an identifier, a descriptive name, and a connection status, along with the operations needed to query and update them.
+Device Specialization modules  (Device/domain model layer)
+Extend the Device Base module for each category of field element the CCI interacts with — for example, measurement devices, control devices, or environmental sensors — adding category-specific data and behavior while inheriting common identity and status handling.
+Device Manager module  (Device/domain model layer)
+Owns the complete set of active device instances and provides the means to register, look up, and iterate over them. Other modules access device data exclusively through this manager.
+State module  (System state layer)
+Represents the plant's current operational condition as a defined, limited set of states, and exposes controlled operations to transition between them. The complete state set and transition rules are defined in Section 6.
+Alarm module  (Alarm layer)
+Represents a single alarm condition: an identifier, a description, a severity classification, and its current activation status.
+Alarm Manager module  (Alarm layer)
+Owns the catalog of alarms defined for the system and provides the means to activate, deactivate, and query them by identifier, as well as to obtain aggregate information such as the number of currently active alarms.
+Configuration module  (Configuration layer)
+Responsible for loading, validating, and providing access to system and device settings at startup and, where supported, at runtime. The configuration format and content are defined in Section 3.
+Persistence module  (Persistence layer)
+Responsible for recording measurement and event data in durable storage and retrieving it for reporting and audit purposes.
+Logging module  (Logging layer)
+Provides a common interface for reporting system and diagnostic activity, categorized by severity, used throughout the application. Details are defined in Section 4.
+Diagnostic/API module  (Diagnostic/interface layer)
+Exposes current system and device status to local or remote clients over a network interface. Reads system state exclusively through the Device Manager, Alarm Manager, and State modules.
+Authentication and Access-Control modules  (Security layer)
+Responsible for verifying the identity of clients accessing the Diagnostic/API module and the upstream communication channels, and for enforcing permitted operations per client.
+Key and Certificate Management module  (Security layer)
+Responsible for managing the cryptographic material required to establish and maintain encrypted communication channels.
+Upstream Channel modules  (Upstream communication layer)
+One module per upstream connection — DSO, Operatore Abilitato, cellular/backup — each responsible for formatting, transmitting, and receiving data for its destination, coordinating with the Authentication and Access-Control modules.
+Module dependency summary
+Table 2. Module dependencies
+Module
+Depends on
+Protocol modules
+Hardware Driver modules
+Device Base / Specialization modules
+Protocol modules
+Device Manager module
+Device Base / Specialization modules
+Alarm Manager module
+Alarm module, Device Manager module
+State module
+Device Manager module, Alarm Manager module
+Diagnostic/API module
+Device Manager, Alarm Manager, State module, Authentication and Access-Control modules
+Upstream Channel modules
+Key and Certificate Management module, Authentication and Access-Control modules
+The Configuration module and the Logging module are used throughout the module set and are omitted from the table above as dependencies, since their use is not specific to any one module.
+3. Definizione configurazioni
+Purpose
+This section defines how the CCI application's operating parameters are structured, stored, loaded, and validated — the configuration system itself, not the specific values it holds. Configuration allows the same compiled application to be deployed across different plant installations by separating installation-specific settings from application logic.
+Configuration scope
+Table 3. Configuration categories
+Category
+Content
+Network identity
+Interface role assignment (DSO/Operatore Abilitato/plant elements), IP addressing
+Serial interface settings
+Baud rate, parity, stop bits, role per RS232/RS485 channel
+Protocol enablement and parameters
+Active protocols, protocol-specific addressing and register/data-model mapping
+Device registry
+Field devices the CCI communicates with, their identifiers and connection parameters
+Control-function parameters
+Adjustable thresholds and deadbands for implemented control functions
+Alarm thresholds and severity mapping
+Trigger values and severity classification per alarm
+Timing and reporting intervals
+Polling/reporting cadence, control-loop cycle times
+Time synchronization
+Time server addresses, redundancy configuration
+Upstream connection parameters
+DSO/Operatore Abilitato endpoints, cellular/backup parameters, VPN settings
+Security parameters
+TLS/certificate configuration references, access-control policy references
+Logging and persistence settings
+Log verbosity, retention policy, data retention parameters
+Constrained vs. free parameters
+Bounded parameters: settings where CEI 0-16 (Annex O/T) fixes a mandatory value, a default, or a permissible range. The configuration module must validate that any set value falls within the mandated bound. Examples include control-loop cycle times, TLS parameters, and data logger retention — the specific mandatory values are documented in the Annex O/T compliance documentation and are not repeated here.
+Free parameters: settings with no regulatory constraint (e.g., device naming, network addressing within the installation's own scheme), left to installation-specific choice.
+Format
+Configuration is expressed in a structured, hierarchical, human-readable text format, allowing it to be inspected, version-controlled, and edited without specialized tooling. The format must support nested structures — for example, a list of field devices each with their own parameters — and must be straightforward to parse and validate within the OpenWrt/C++ environment. Where configuration needs overlap with settings already managed by OpenWrt's native configuration system (e.g., network interface assignment), the Configuration module coordinates with that system rather than duplicating it.
+Loading and validation
+Configuration is loaded once at application startup, before any dependent module begins operating. Loading includes structural and content validation — type checking and, for bounded parameters, range checking against the applicable regulatory limits. The application does not proceed to normal operation if required configuration is missing or invalid; this condition is reported through the logging module.
+Where supported, specific configuration categories — for example, alarm thresholds — may be updated at runtime through the Diagnostic/API module, subject to the access-control policy defined in the security layer. Configuration changes affecting communication or device registration require a controlled reload procedure rather than silent application. The local configuration/maintenance interface must be accessible only via serial or USB connectivity; IP-based access to this interface is excluded by requirement (Annex O, O.13.1.1.2).
+Relationship to other sections
+The Configuration module (Section 2) is the sole point of access to configuration content for the rest of the system. The specific mandatory numerical values referenced above as "bounded parameters" are fully detailed in the Annex O/T compliance documentation; the logging-specific settings are detailed in Section 4; the IEC 61850 data model configuration is detailed in Section 5.
+4. Definizione logging
+Purpose
+This section defines the CCI's system and diagnostic logging design: the logging mechanism, severity levels, log format, storage, and retention behavior. Logging is distinct from the persistence layer (Section 2/7), which stores plant measurement and event data; logging records the internal behavior of the software itself, including the security and operational event categories CEI 0-16 mandates as part of the plant controller's audit trail.
+Logging mechanism
+System logging is implemented using spdlog, a C++ logging library chosen for its low overhead and asynchronous logging support, suited to an embedded, resource-constrained OpenWrt environment where logging must not block time-critical operations such as protocol communication or control-loop timing (Section 1). Every module defined in Section 2 reports through the Logging module's common interface rather than writing log output independently.
+Log levels
+Log entries are categorized by standard severity levels — DEBUG, INFO, WARNING, ERROR, and CRITICAL — allowing verbosity to be tuned per deployment without code changes. Routine operational events are logged at DEBUG or INFO; degraded but non-critical conditions at WARNING; failures affecting correct operation at ERROR; and conditions requiring immediate attention at CRITICAL. Log verbosity is a runtime-configurable parameter (Section 3).
+Log format
+Each entry contains, at minimum: timestamp, severity level, originating module, and message text. A structured format is preferred over free-form text, so that log content can be filtered, searched, and forwarded programmatically.
+Relationship to the CEI 0-16 audit trail
+Beyond general diagnostic logging, CEI 0-16 (Annex O, O.14; Annex T §8.7) imposes specific, mandatory requirements on a subset of logged activity — a defined minimum retention (2048 non-overwritable events), a fixed timestamp format, specific event categories that must be captured, and remote read-out via Syslog over TLS. Where a logged event falls into one of these mandated categories, the Logging module must apply these constraints rather than the general-purpose defaults described above. The full list of mandated event categories and their exact regulatory sourcing is maintained in the Annex O/T compliance documentation and is referenced here rather than repeated.
+Storage and retention, and relationship to the persistence layer (SQLite)
+The logging layer and the persistence layer (Section 2, Persistence module) serve different purposes but may share the same underlying storage engine. SQLite, already adopted for storing plant measurement and event data (Section 1), is also a suitable store for the CEI 0-16 audit-trail log: it provides structured, queryable storage with transactional guarantees, supporting the non-overwritable, sequential-access requirement more directly than a flat text log file would.
+General diagnostic logging (spdlog) — day-to-day system/diagnostic output, configurable verbosity, retained according to the general retention policy defined in Section 3. May be written to a local file or console output.
+Security/audit-trail logging — the mandatory event categories, written to a dedicated SQLite table, enforcing the circular-buffer, minimum-2048-event, non-overwritable behavior at the data layer, and queried by the Diagnostic/API module and remote Syslog forwarding through the Persistence module.
+This means the Logging module (Section 2) has two output paths: general-purpose entries routed through spdlog, and audit-trail-mandated entries routed through the Persistence module into SQLite. Both paths are triggered through the same logging interface, so callers do not need to know which entries are audit-relevant — the Logging module determines the routing based on event category.
+Relationship to other sections
+The Logging module (Section 2) implements the mechanism described here and coordinates with the Persistence module for audit-trail storage. Log verbosity and retention settings are configuration items defined in Section 3. Mandatory audit-trail event categories and their regulatory sourcing are detailed in the Annex O/T compliance documentation.
+5. Definizione struttura IEC61850
+Purpose
+This section defines the structure of the IEC 61850 data model implemented by the CCI's IEC 61850 Protocol module (Section 2), and the categories of service it exposes to communicating parties. IEC 61850 governs the CCI's information exchange with the DSO and the Operatore Abilitato (Section 1, Upstream communication layer); it is the standard through which the CCI represents plant data and accepts external commands in a vendor-neutral, interoperable form.
+Modeling approach
+Logical Device (LD) — the top-level container representing the CCI itself as an addressable entity on the network. The CCI exposes its complete set of plant data through a single Logical Device, consistent with its role as the single point of information exchange between the plant and the DSO/Operatore Abilitato.
+Logical Node (LN) — a standardized functional grouping within the Logical Device, each representing one category of function or data: physical device identity, measurement, status, and control.
+Data Object (DO) and Data Attribute (DA) — within each Logical Node, the actual data points and their individual values, each carrying standardized attributes including a quality indicator and a timestamp, consistent with the time-synchronization behavior defined in Section 3.
+Mapping to the CCI's domain model
+The IEC 61850 data model is not a separate representation of plant data maintained independently — it is the external, standardized view of the same data already held by the Device/domain model layer (Section 1) and its Device Manager module (Section 2). The IEC 61850 Protocol module reads current values from the Device Manager and State module and exposes them through the appropriate Logical Node, and conversely, translates incoming IEC 61850 control requests into operations on the corresponding Device or State module.
+Identity information — device and plant identification, exposed through a dedicated identity-focused Logical Node.
+Measurement data — values produced by measurement-category Device Specialization modules, exposed through measurement-focused Logical Nodes, at the periodicity defined in Section 3.
+Status information — plant and device operational status, sourced from the State module and the Device Manager, exposed through status-focused Logical Nodes.
+Control data — set-points and commands accepted from the DSO/Operatore Abilitato, exposed through control-focused Logical Nodes and routed to the corresponding control-category Device Specialization modules or configuration parameters.
+Services exposed
+Discovery services, allowing a connecting client to enumerate the Logical Device's structure, its Logical Nodes, and their Data Objects.
+Read/write services, allowing authorized clients to retrieve current values and, for control-eligible Data Objects, submit new values or commands.
+Dataset and reporting services, allowing clients to group related data points and receive updates according to a defined reporting behavior, rather than polling each value individually.
+Each service category is governed by the Authentication and Access-Control modules (Section 2): which services and Data Objects a given client may use depends on that client's assigned role, with no implicit escalation beyond its assigned privileges.
+Role-based access
+Access to the IEC 61850 server is governed by role-based access control, consistent with the Security layer (Section 1) and the Authentication and Access-Control modules (Section 2). Each authenticated client is assigned a role defining the specific services and Data Objects it may access — distinguishing, at minimum, the DSO, the Operatore Abilitato, and any other authorized party — with credentials and role assignment managed by the Key and Certificate Management module and validated at connection time.
+Relationship to other sections
+The IEC 61850 Protocol module (Section 2) implements the data model and services defined here. The specific Logical Nodes, Data Objects, and role definitions applicable to the CCI, together with the governing regulatory timing and periodicity requirements, are specified in the CEI 0-16 Annex T compliance documentation. Access-token and certificate handling are implemented by the Security layer's modules, with configuration parameters defined in Section 3.
+6. Definizione macchina a stati
+Purpose
+This section defines the state machine governing the CCI's operational behavior: the set of states the system can occupy, the events that cause transitions between them, and the rules constraining which transitions are valid.
+Scope
+System operational state — the overall condition of the CCI and the plant it controls, tracked by the State module (Section 2).
+Device connection state — the condition of each individual field device's communication link, tracked per device by the Device Manager module (Section 2).
+These are kept independent because a single device becoming unreachable does not necessarily change the plant's overall operational state, and the plant's operational state depends on the aggregate condition of many devices, not any one device in isolation.
+System operational state machine
+Table 4. System operational states
+State
+Description
+Initializing
+The CCI has powered on and is loading configuration, establishing internal module dependencies, and has not yet attempted communication with field devices or upstream parties.
+Normal Operation
+Configuration has loaded successfully, required field devices are reachable, and communication with the DSO/Operatore Abilitato is established.
+Degraded
+The system is operating, but one or more non-critical field devices or communication channels are unavailable.
+Fault
+A condition affecting correct or safe operation has occurred. The system restricts or suspends affected functions and raises the corresponding alarm(s).
+Maintenance
+The system has been placed into a controlled state for local configuration or servicing.
+Stopped
+The system is not performing control, measurement, or reporting functions, due to orderly shutdown or an unrecoverable condition.
+Table 5. System operational state transitions
+From
+To
+Trigger
+Initializing
+Normal Operation
+Configuration loaded successfully; required devices and upstream channels reachable
+Initializing
+Fault
+Configuration invalid or missing; a required module fails to initialize
+Normal Operation
+Degraded
+A non-critical device or channel becomes unreachable
+Degraded
+Normal Operation
+The previously unreachable device or channel is restored
+Normal Operation / Degraded
+Fault
+A critical device, control function, or security condition fails
+Fault
+Normal Operation / Degraded
+The fault condition is resolved and verified, and the corresponding alarm is cleared
+Normal Operation / Degraded
+Maintenance
+Maintenance mode is deliberately entered via the local configuration/maintenance interface
+Maintenance
+Normal Operation / Degraded
+Maintenance mode is exited, and reachability is re-verified before resuming
+Any state
+Stopped
+An orderly shutdown is initiated, or an unrecoverable condition is detected
+No transition bypasses Initializing on power-up, and no transition from Fault to Normal Operation occurs automatically without the triggering condition being verified as resolved.
+Device connection state machine
+Table 6. Device connection states
+State
+Description
+Disconnected
+No communication has been established with the device since the CCI started or since the last disconnection.
+Connecting
+A connection attempt is in progress, using the protocol and parameters defined in the device's configuration entry.
+Connected
+The device is reachable and responding; its data is current and available to the Device Manager.
+Error
+A communication attempt failed, or a previously connected device stopped responding.
+Table 7. Device connection state transitions
+From
+To
+Trigger
+Disconnected
+Connecting
+A connection attempt is initiated, either at startup or on a retry schedule
+Connecting
+Connected
+The connection attempt succeeds and the device responds correctly
+Connecting
+Error
+The connection attempt fails or times out
+Connected
+Error
+The device stops responding or returns a communication fault
+Error
+Connecting
+A retry attempt is scheduled, subject to a defined retry interval and maximum retry count
+Error / Connecting
+Disconnected
+The device is administratively removed, or retries are exhausted without success
+Repeated transitions into Error for a given device are reported through the Logging module (Section 4) and, depending on the device's criticality, may contribute to a transition of the system operational state machine from Normal Operation to Degraded, or from Degraded to Fault if the device is critical to a control function.
+Relationship between the two state machines
+The Device Manager module aggregates the connection state of all registered devices and reports this aggregate condition to the State module. The System operational state machine does not track individual device states directly; it responds to changes in the aggregate condition reported by the Device Manager, and to conditions raised through the Alarm Manager module, preserving the separation of responsibility established in Section 1.
+Relationship to other sections
+The State module and Device Manager module (Section 2) implement the state machines defined here. Transitions into and out of Maintenance depend on the Authentication and Access-Control modules and the local configuration/maintenance interface constraints defined in Section 3. Fault and Error conditions are reported through the Alarm Manager and Logging modules respectively.

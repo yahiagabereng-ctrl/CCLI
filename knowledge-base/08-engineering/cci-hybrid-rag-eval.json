@@ -1,0 +1,88 @@
+{
+  "doc_id": "CCLI-RAG-EVAL-001",
+  "title": "Hybrid RAG eval set (CCI)",
+  "revision": "1.1",
+  "questions": [
+    {
+      "id": "q01",
+      "query": "What CCI controls does TesPro TG-524 not cover for full field CCI?",
+      "expect_source_ids": ["ccli-tg500-lab-platform", "ccli-soc-freeze"],
+      "expect_entities": ["tg524", "mt798x"],
+      "expect_match_types": ["keyword", "graph"],
+      "expect_graph_predicates": ["MISSING", "PARTIAL"]
+    },
+    {
+      "id": "q02",
+      "query": "Map TPM Secure Boot on TG-524 to IEC 62443 and CRA.",
+      "expect_source_ids": ["ccli-cci-module-regs-class", "eu-2024-2847-cra", "ccli-soc-freeze"],
+      "expect_entities": ["tpm", "secure_boot", "iec_62443", "cra"],
+      "expect_match_types": ["vector", "keyword", "graph"],
+      "expect_missing_or_partial": ["iec-62443-4-1", "iec-62443-4-2"]
+    },
+    {
+      "id": "q03",
+      "query": "Eth_A vs Eth_B requirements from CEI 0-16 Annex O and T.",
+      "expect_source_ids": ["cei-0-16-allegato-o", "cei-0-16-allegato-t"],
+      "expect_entities": ["eth_a", "eth_b", "cei_0_16"],
+      "expect_match_types": ["keyword", "vector"]
+    },
+    {
+      "id": "q04",
+      "query": "Which norms are MISSING for Italian market and metrology Pack D?",
+      "expect_source_ids": ["ccli-cci-module-regs-class"],
+      "expect_entities": ["arera_540_2021"],
+      "expect_missing_or_partial": ["arera-540-2021", "cei-en-61557-12-2018"]
+    },
+    {
+      "id": "q05",
+      "query": "Does TG-524 have isolated RS-485 for Modbus plant serial?",
+      "expect_source_ids": ["ccli-tg500-lab-platform", "ccli-tespro-tg500-ds"],
+      "expect_entities": ["rs485", "modbus"],
+      "expect_graph_predicates": ["PARTIAL"]
+    },
+    {
+      "id": "q06",
+      "query": "IEC 61850 on Eth_A and need for IEC 62351 security parts.",
+      "expect_source_ids": ["ccli-cci-module-regs-class", "cei-0-16-allegato-t"],
+      "expect_entities": ["iec_61850", "iec_62351", "eth_a"],
+      "expect_missing_or_partial": ["iec-62351-3", "iec-62351-4", "iec-62351-6"]
+    },
+    {
+      "id": "q07",
+      "query": "OpenWrt Secure Boot and TPM path on TesPro TG-524 lab gateway.",
+      "expect_source_ids": ["ccli-tg500-lab-platform", "ccli-tespro-tg500-ds"],
+      "expect_entities": ["openwrt", "secure_boot", "tpm"]
+    },
+    {
+      "id": "q08",
+      "query": "libiec61850 GPLv3 shipping risk for closed CCI product.",
+      "expect_source_ids": ["ccli-project-roadmap", "ccli-github-protocol-libs"],
+      "expect_entities": ["libiec61850", "iec_61850"]
+    },
+    {
+      "id": "q09",
+      "query": "GNSS time sync requirement for CCI product vs TG-524 lab.",
+      "expect_source_ids": ["ccli-tg500-lab-platform"],
+      "expect_entities": ["gnss"],
+      "expect_graph_predicates": ["PARTIAL"]
+    },
+    {
+      "id": "q10",
+      "query": "CRA Cyber Resilience Act obligations for products with digital elements.",
+      "expect_source_ids": ["eu-2024-2847-cra"],
+      "expect_entities": ["cra"]
+    },
+    {
+      "id": "q11",
+      "query": "What is the frozen lab SoC and CPU for Phase 1?",
+      "expect_source_ids": ["ccli-soc-freeze", "ccli-tg500-lab-platform"],
+      "expect_entities": ["mt798x", "cortex-a53"]
+    },
+    {
+      "id": "q12",
+      "query": "Architecture Freeze gate: lab SDK and port map for TG-524.",
+      "expect_source_ids": ["ccli-prototype-bom", "ccli-soc-freeze"],
+      "expect_entities": ["tg524", "openwrt"]
+    }
+  ]
+}

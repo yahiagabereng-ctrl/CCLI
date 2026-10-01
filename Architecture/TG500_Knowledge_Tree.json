@@ -1,0 +1,556 @@
+{
+  "generated_at": "2026-09-16T09:31:01.603426+00:00",
+  "source": "knowledge-base/08-engineering/CCI_TG500_Knowledge_Tree.md",
+  "totals": {
+    "HAVE": 21,
+    "PART": 26,
+    "MISS": 12,
+    "DEF": 2,
+    "BLOCK": 0
+  },
+  "leaf_count": 61,
+  "branches": [
+    {
+      "id": "K0",
+      "title": "Corpus & RAG governance",
+      "nodes": [
+        {
+          "id": "K0.1",
+          "item": "Single-silicon rule (no alternate SoC in active corpus)",
+          "status": "HAVE",
+          "source_id": "ccli-soc-freeze",
+          "risk": "KR-015",
+          "gate": "D2"
+        },
+        {
+          "id": "K0.2",
+          "item": "OpenWrt OS freeze; Yocto removed; Pi test path",
+          "status": "HAVE",
+          "source_id": "ccli-openwrt-freeze",
+          "risk": "",
+          "gate": "D6"
+        },
+        {
+          "id": "K0.3",
+          "item": "Knowledge/risk matrices regenerate from one corpus module",
+          "status": "HAVE",
+          "source_id": "scripts/knowledge_risks_corpus.py",
+          "risk": "",
+          "gate": ""
+        },
+        {
+          "id": "K0.4",
+          "item": "SK0146 schematic corpus (15 sheets) ingested",
+          "status": "HAVE",
+          "source_id": "sk0146-blk_ref_*",
+          "risk": "KL-001",
+          "gate": ""
+        },
+        {
+          "id": "K0.5",
+          "item": "RAG service reachable for ingest + probes",
+          "status": "HAVE",
+          "source_id": "",
+          "risk": "",
+          "gate": ""
+        }
+      ]
+    },
+    {
+      "id": "K1",
+      "title": "Platform & silicon",
+      "nodes": [
+        {
+          "id": "K1.1",
+          "item": "MT798X freeze — Cortex-A53 dual 1.6 GHz, HW NAT",
+          "status": "HAVE",
+          "source_id": "ccli-soc-freeze",
+          "risk": "KR-015",
+          "gate": "D2"
+        },
+        {
+          "id": "K1.2",
+          "item": "TG-524 hardware spec (RAM/eMMC/ports/temp)",
+          "status": "HAVE",
+          "source_id": "ccli-tespro-tg500-ds",
+          "risk": "",
+          "gate": "D5"
+        },
+        {
+          "id": "K1.3",
+          "item": "12–36 V DC input class (C10)",
+          "status": "HAVE",
+          "source_id": "ccli-tg500-lab-platform",
+          "risk": "",
+          "gate": ""
+        },
+        {
+          "id": "K1.4",
+          "item": "Thermal −40…+75 °C vs cabinet budget",
+          "status": "PART",
+          "source_id": "ccli-tespro-tg500-ds",
+          "risk": "KR-013",
+          "gate": ""
+        },
+        {
+          "id": "K1.5",
+          "item": "Vendor response form vs datasheet deltas",
+          "status": "PART",
+          "source_id": "ccli-tespro-tg424-response, ccli-tespro-supplier-correspondence",
+          "risk": "R-TG-004",
+          "gate": "D5"
+        },
+        {
+          "id": "K1.6",
+          "item": "SKU confirmation TG-424 Pro vs TG-524 (written)",
+          "status": "PART",
+          "source_id": "ccli-tespro-supplier-correspondence",
+          "risk": "R-TG-004",
+          "gate": "D3"
+        },
+        {
+          "id": "K1.7",
+          "item": "MT798X reference manual / GPIO + pinmux detail",
+          "status": "PART",
+          "source_id": "ccli-mt7986a-datasheet, ccli-mt7986a-datasheet-extract",
+          "risk": "R-SOC-001, R-SOC-006",
+          "gate": ""
+        },
+        {
+          "id": "K1.8",
+          "item": "Field cabinet / DIN mounting (C9)",
+          "status": "DEF",
+          "source_id": "",
+          "risk": "",
+          "gate": ""
+        },
+        {
+          "id": "K1.9",
+          "item": "TR-400 OEM user manual (port map, DI/DO, RS485 pinout)",
+          "status": "HAVE",
+          "source_id": "ccli-tr400-user-manual, ccli-tr400-user-manual-extract",
+          "risk": "R-TG-004",
+          "gate": "D5  49 pp.; confirm SKU vs TG-424 Pro on label"
+        }
+      ]
+    },
+    {
+      "id": "K2",
+      "title": "OS, build & boot toolchain — critical path",
+      "nodes": [
+        {
+          "id": "K2.1",
+          "item": "Raspberry Pi test build (platform_pi) — active validation path",
+          "status": "HAVE",
+          "source_id": "ccli-openwrt-freeze",
+          "risk": "",
+          "gate": ""
+        },
+        {
+          "id": "K2.2",
+          "item": "TesPro OpenWrt SDK / cross-toolchain + sysroot",
+          "status": "MISS",
+          "source_id": "",
+          "risk": "R-SOC-001, R-TG-003",
+          "gate": "D6 P0"
+        },
+        {
+          "id": "K2.3",
+          "item": "OpenWrt build system fundamentals (feeds, menuconfig)",
+          "status": "PART",
+          "source_id": "ccli-tespro-supplier-correspondence, ccli-openwrt-freeze",
+          "risk": "KR-004",
+          "gate": "D6"
+        },
+        {
+          "id": "K2.4",
+          "item": ".ipk packaging + procd init for CCI services",
+          "status": "MISS",
+          "source_id": "",
+          "risk": "",
+          "gate": "D6"
+        },
+        {
+          "id": "K2.5",
+          "item": "UCI config model + overlay persistence policy",
+          "status": "MISS",
+          "source_id": "",
+          "risk": "",
+          "gate": ""
+        },
+        {
+          "id": "K2.6",
+          "item": "Boot chain: bootloader → kernel → OpenWrt rootfs",
+          "status": "PART",
+          "source_id": "ccli-tg500-lab-platform",
+          "risk": "KR-004",
+          "gate": ""
+        },
+        {
+          "id": "K2.7",
+          "item": "Signed / A-B firmware update path on OpenWrt",
+          "status": "MISS",
+          "source_id": "",
+          "risk": "KR-005",
+          "gate": ""
+        }
+      ]
+    },
+    {
+      "id": "K3",
+      "title": "Network & segmentation",
+      "nodes": [
+        {
+          "id": "K3.1",
+          "item": "Port map: WAN/LAN1-4 → Eth_A / Eth_B / plant",
+          "status": "PART",
+          "source_id": "ccli-tr400-user-manual-extract, ccli-tg500-lab-platform",
+          "risk": "KR-007",
+          "gate": "D4 P0  ip link on TR400"
+        },
+        {
+          "id": "K3.2",
+          "item": "Port-to-port galvanic isolation proof",
+          "status": "MISS",
+          "source_id": "",
+          "risk": "KR-007",
+          "gate": ""
+        },
+        {
+          "id": "K3.3",
+          "item": "No-L2-bridge firewall policy (REQ-NET-LAB-001)",
+          "status": "PART",
+          "source_id": "ccli-validation-strategy",
+          "risk": "KR-011",
+          "gate": "D4"
+        },
+        {
+          "id": "K3.4",
+          "item": "LTE/WAN backup + VPN posture (no bridge to Eth_A)",
+          "status": "PART",
+          "source_id": "ccli-tg500-lab-platform",
+          "risk": "R-TG-005",
+          "gate": ""
+        },
+        {
+          "id": "K3.5",
+          "item": "GNSS time source via modem",
+          "status": "PART",
+          "source_id": "ccli-tg500-lab-platform",
+          "risk": "KR-009",
+          "gate": ""
+        },
+        {
+          "id": "K3.6",
+          "item": "IEEE 1588 / PTP need + capability",
+          "status": "MISS",
+          "source_id": "",
+          "risk": "KR-008",
+          "gate": ""
+        },
+        {
+          "id": "K3.7",
+          "item": "Lab profile disables Wi-Fi / OPC / DLMS extras",
+          "status": "HAVE",
+          "source_id": "ccli-tg500-lab-platform",
+          "risk": "R-TG-005",
+          "gate": ""
+        }
+      ]
+    },
+    {
+      "id": "K4",
+      "title": "Protocols & application firmware",
+      "nodes": [
+        {
+          "id": "K4.1",
+          "item": "IEC 61850 MMS server (libiec61850)",
+          "status": "PART",
+          "source_id": "ccli-github-protocol-libs",
+          "risk": "KR-001",
+          "gate": ""
+        },
+        {
+          "id": "K4.2",
+          "item": "IEC 61850 GOOSE publish/subscribe + L2 timing",
+          "status": "MISS",
+          "source_id": "",
+          "risk": "KR-002",
+          "gate": ""
+        },
+        {
+          "id": "K4.3",
+          "item": "Allegato T ICD / data model for CCI",
+          "status": "HAVE",
+          "source_id": "cei-tr-57-126",
+          "risk": "KR-001",
+          "gate": "cei-tr-57-126-example.cid"
+        },
+        {
+          "id": "K4.4",
+          "item": "Modbus RTU/TCP master (libmodbus)",
+          "status": "PART",
+          "source_id": "ccli-github-protocol-libs, ccli-tespro-supplier-correspondence",
+          "risk": "",
+          "gate": ""
+        },
+        {
+          "id": "K4.5",
+          "item": "Energy analyzer register map (real model)",
+          "status": "MISS",
+          "source_id": "ccli-modbus-analyzer-map",
+          "risk": "",
+          "gate": "D8 P1"
+        },
+        {
+          "id": "K4.6",
+          "item": "IEC 60870-5-104 on Eth_B (lib60870)",
+          "status": "PART",
+          "source_id": "ccli-github-protocol-libs",
+          "risk": "KR-010",
+          "gate": ""
+        },
+        {
+          "id": "K4.7",
+          "item": "PF2 / observability curtailment FSM (new C/C++)",
+          "status": "PART",
+          "source_id": "ccli-app-structure",
+          "risk": "KR-002",
+          "gate": ""
+        },
+        {
+          "id": "K4.8",
+          "item": "Commissioning AT shell syntax + coding rules",
+          "status": "HAVE",
+          "source_id": "fw-sk0146-*",
+          "risk": "",
+          "gate": ""
+        },
+        {
+          "id": "K4.9",
+          "item": "libiec61850 commercial licence (MZ quote)",
+          "status": "MISS",
+          "source_id": "ccli-project-roadmap",
+          "risk": "",
+          "gate": ""
+        },
+        {
+          "id": "K4.10",
+          "item": "61557-12 fixed-block aggregation + EPMF measurement path",
+          "status": "PART",
+          "source_id": "ccli-61557-12-extract",
+          "risk": "R-MET-001",
+          "gate": ""
+        }
+      ]
+    },
+    {
+      "id": "K5",
+      "title": "Field I/O & serial",
+      "nodes": [
+        {
+          "id": "K5.1",
+          "item": "2× RS485 electrical behaviour + isolation (C2)",
+          "status": "PART",
+          "source_id": "ccli-tg500-lab-platform",
+          "risk": "",
+          "gate": ""
+        },
+        {
+          "id": "K5.2",
+          "item": "RS485 termination / TVS / connector craft",
+          "status": "PART",
+          "source_id": "sk0146-blk_ref_a_rs485",
+          "risk": "KL-002",
+          "gate": ""
+        },
+        {
+          "id": "K5.3",
+          "item": "DI 10–120 Vdc conditioning for plant class (C4)",
+          "status": "MISS",
+          "source_id": "",
+          "risk": "KL-003",
+          "gate": ""
+        },
+        {
+          "id": "K5.4",
+          "item": "DO dry-contact / relay rating for curtailment (C4)",
+          "status": "MISS",
+          "source_id": "",
+          "risk": "KL-004",
+          "gate": ""
+        },
+        {
+          "id": "K5.5",
+          "item": "Wave B fixture to reach 5 DI / 3 DO on Pi",
+          "status": "PART",
+          "source_id": "ccli-mocking-bench-bom",
+          "risk": "R-TG-002",
+          "gate": ""
+        },
+        {
+          "id": "K5.6",
+          "item": "2× CAN interfaces",
+          "status": "DEF",
+          "source_id": "",
+          "risk": "",
+          "gate": ""
+        }
+      ]
+    },
+    {
+      "id": "K6",
+      "title": "Security & cyber compliance",
+      "nodes": [
+        {
+          "id": "K6.1",
+          "item": "Secure Boot chain verified on receipt",
+          "status": "PART",
+          "source_id": "ccli-soc-freeze",
+          "risk": "KR-005",
+          "gate": ""
+        },
+        {
+          "id": "K6.2",
+          "item": "TPM 2.0 presence + tpm2_tools access",
+          "status": "PART",
+          "source_id": "ccli-soc-freeze, ccli-tespro-supplier-correspondence",
+          "risk": "KR-005",
+          "gate": ""
+        },
+        {
+          "id": "K6.6",
+          "item": "EU CRA 2024/2847 obligations",
+          "status": "HAVE",
+          "source_id": "eu-2024-2847-cra",
+          "risk": "",
+          "gate": ""
+        },
+        {
+          "id": "K6.7",
+          "item": "Vulnerability handling / SBOM process",
+          "status": "MISS",
+          "source_id": "",
+          "risk": "KR-012",
+          "gate": ""
+        }
+      ]
+    },
+    {
+      "id": "K7",
+      "title": "Regulation & certification",
+      "nodes": [
+        {
+          "id": "K7.1",
+          "item": "CEI 0-16 Allegato O (interface protection)",
+          "status": "HAVE",
+          "source_id": "cei-0-16-allegato-o",
+          "risk": "",
+          "gate": ""
+        },
+        {
+          "id": "K7.2",
+          "item": "CEI 0-16 Allegato T (CCI communication)",
+          "status": "HAVE",
+          "source_id": "cei-0-16-allegato-t",
+          "risk": "",
+          "gate": ""
+        },
+        {
+          "id": "K7.3",
+          "item": "Module regulation classification",
+          "status": "HAVE",
+          "source_id": "ccli-cci-module-regs-class",
+          "risk": "KR-012",
+          "gate": ""
+        },
+        {
+          "id": "K7.4",
+          "item": "ARERA 540/2021",
+          "status": "HAVE",
+          "source_id": "arera-540-2021",
+          "risk": "",
+          "gate": ""
+        },
+        {
+          "id": "K7.5",
+          "item": "DSO demo / conformance route for CCI",
+          "status": "PART",
+          "source_id": "ccli-project-roadmap, ccli-tespro-supplier-correspondence",
+          "risk": "R-TG-001",
+          "gate": ""
+        },
+        {
+          "id": "K7.6",
+          "item": "EMC / CE for a field product",
+          "status": "PART",
+          "source_id": "ccli-tespro-supplier-correspondence",
+          "risk": "KR-014",
+          "gate": ""
+        },
+        {
+          "id": "K7.7",
+          "item": "CEI EN 61557-12 metrology (P/Q/V, Annex D fixed blocks)",
+          "status": "PART",
+          "source_id": "ccli-61557-12-extract",
+          "risk": "R-MET-005",
+          "gate": ""
+        }
+      ]
+    },
+    {
+      "id": "K8",
+      "title": "Verification & lab operations",
+      "nodes": [
+        {
+          "id": "K8.1",
+          "item": "Validation & mocking strategy (waves A/B)",
+          "status": "HAVE",
+          "source_id": "ccli-validation-strategy",
+          "risk": "",
+          "gate": ""
+        },
+        {
+          "id": "K8.2",
+          "item": "Mocking bench BOM",
+          "status": "HAVE",
+          "source_id": "ccli-mocking-bench-bom",
+          "risk": "",
+          "gate": ""
+        },
+        {
+          "id": "K8.3",
+          "item": "SK0146 bench crosswalk (what transfers, what does not)",
+          "status": "HAVE",
+          "source_id": "Knowledge_Matrix.xlsx",
+          "risk": "KL-003/004",
+          "gate": ""
+        },
+        {
+          "id": "K8.4",
+          "item": "Pi ↔ TR400 identical test vectors",
+          "status": "PART",
+          "source_id": "ccli-app-structure, lab_tr400.yaml",
+          "risk": "",
+          "gate": ""
+        },
+        {
+          "id": "K8.5",
+          "item": "Evidence pack + records schema per REQ",
+          "status": "PART",
+          "source_id": "Test Bench/records.py",
+          "risk": "KL-017",
+          "gate": ""
+        },
+        {
+          "id": "K8.6",
+          "item": "Verification matrix REQ → test → pass criteria",
+          "status": "PART",
+          "source_id": "ccli-architecture-framework",
+          "risk": "",
+          "gate": "D0"
+        }
+      ]
+    }
+  ]
+}

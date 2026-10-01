@@ -1,0 +1,420 @@
+{
+  "doc_id": "CCLI-BOM-001",
+  "source_id": "ccli-prototype-bom",
+  "revision": "1.1",
+  "date": "2026-07-25",
+  "budget_eur_target": 1000,
+  "lead_kit_pn": "99991105",
+  "document_gate": [
+    {
+      "id": "D0",
+      "title": "Architecture diagram",
+      "status": "HAVE"
+    },
+    {
+      "id": "D1",
+      "title": "Project roadmap",
+      "status": "HAVE",
+      "source_id": "ccli-project-roadmap"
+    },
+    {
+      "id": "D2",
+      "title": "Vendor selection C1-C10",
+      "status": "HAVE",
+      "source_id": "ccli-vendor-selection"
+    },
+    {
+      "id": "D3",
+      "title": "Pin budget / connector map",
+      "status": "MISSING",
+      "target_source_id": "ccli-pin-budget"
+    },
+    {
+      "id": "D4",
+      "title": "Carrier block diagram freeze",
+      "status": "MISSING",
+      "target_source_id": "ccli-carrier-block"
+    },
+    {
+      "id": "D5",
+      "title": "Verdin Plus IT SoM datasheet",
+      "status": "HAVE",
+      "source_id": "ccli-toradex-verdin-plus-som"
+    },
+    {
+      "id": "D5b",
+      "title": "NXP i.MX 8M Plus IEC SoC datasheet",
+      "status": "MISSING",
+      "target_source_id": "ccli-nxp-imx8m-plus-iec"
+    },
+    {
+      "id": "D5a",
+      "title": "NXP i.MX 8M Plus CEC SoC datasheet",
+      "status": "HAVE",
+      "source_id": "ccli-nxp-imx8m-plus-cec"
+    },
+    {
+      "id": "D6",
+      "title": "Longevity PCN letter",
+      "status": "MISSING"
+    },
+    {
+      "id": "D7",
+      "title": "Altium ActiveBOM export",
+      "status": "MISSING"
+    },
+    {
+      "id": "D8",
+      "title": "Energy analyzer Modbus map",
+      "status": "MISSING",
+      "target_source_id": "ccli-modbus-analyzer-map"
+    },
+    {
+      "id": "D9",
+      "title": "GNSS module datasheet",
+      "status": "MISSING"
+    },
+    {
+      "id": "D10",
+      "title": "LTE module datasheet (CCI MPN)",
+      "status": "PARTIAL"
+    },
+    {
+      "id": "D11",
+      "title": "Relay + opto DI/DO datasheets",
+      "status": "MISSING"
+    },
+    {
+      "id": "D12",
+      "title": "Ethernet switch/PHY datasheets",
+      "status": "MISSING"
+    },
+    {
+      "id": "D13",
+      "title": "Isolated RS-485 transceiver datasheet",
+      "status": "MISSING"
+    },
+    {
+      "id": "D14",
+      "title": "Power tree datasheets",
+      "status": "MISSING"
+    },
+    {
+      "id": "D15",
+      "title": "TPM/SE datasheet if discrete",
+      "status": "MISSING"
+    },
+    {
+      "id": "D16",
+      "title": "Anti-tamper switch + accel",
+      "status": "MISSING"
+    },
+    {
+      "id": "D17",
+      "title": "OLED HMI datasheet",
+      "status": "MISSING"
+    },
+    {
+      "id": "D18",
+      "title": "DIN-rail enclosure drawing",
+      "status": "MISSING"
+    },
+    {
+      "id": "D19",
+      "title": "RJ45 plant connector family",
+      "status": "PARTIAL"
+    }
+  ],
+  "subsystems": [
+    {
+      "id": "architecture",
+      "title": "Architecture & system",
+      "lines": [
+        {
+          "ref": "ARCH",
+          "desc": "Functional CCI interfaces",
+          "doc_status": "HAVE"
+        },
+        {
+          "ref": "REGS",
+          "desc": "Regulations classification",
+          "doc_status": "HAVE"
+        },
+        {
+          "ref": "PIN",
+          "desc": "Pin budget",
+          "doc_status": "MISSING"
+        }
+      ]
+    },
+    {
+      "id": "compute",
+      "title": "SoM + eval kit",
+      "lines": [
+        {
+          "ref": "U-SOM",
+          "desc": "Verdin iMX8M Plus IT",
+          "qty": 1,
+          "est_eur": "150-350",
+          "mpn": "TBD",
+          "doc_status": "MISSING"
+        },
+        {
+          "ref": "KIT",
+          "desc": "Verdin Dev Board",
+          "qty": 1,
+          "est_eur": 300,
+          "mpn": "99991105",
+          "doc_status": "HAVE",
+          "source_id": "ccli-toradex-verdin-devboard"
+        },
+        {
+          "ref": "SOC-MPCEC",
+          "desc": "NXP i.MX 8M Plus CEC SoC datasheet",
+          "doc_status": "HAVE",
+          "source_id": "ccli-nxp-imx8m-plus-cec",
+          "path": "reference/IMX8MPCEC.pdf"
+        },
+        {
+          "ref": "SOC-MPIEC",
+          "desc": "NXP i.MX 8M Plus industrial IEC SoC datasheet",
+          "doc_status": "MISSING",
+          "target_source_id": "ccli-nxp-imx8m-plus-iec"
+        },
+        {
+          "ref": "SOC-DQLQ",
+          "desc": "NXP i.MX 8M Dual/QuadLite CEC SoC datasheet",
+          "doc_status": "HAVE",
+          "source_id": "ccli-nxp-imx8m-dqlq-cec",
+          "path": "reference/IMX8MDQLQCEC-1280316.pdf"
+        }
+      ]
+    },
+    {
+      "id": "ethernet",
+      "title": "Ethernet C1",
+      "cci_control": "C1",
+      "lines": [
+        {
+          "ref": "SW1",
+          "desc": "Switch IC or extra PHYs for plant ports",
+          "qty": 1,
+          "est_eur": "8-20",
+          "mpn": "TBD",
+          "doc_status": "MISSING"
+        },
+        {
+          "ref": "J-ETH",
+          "desc": "RJ45 magjack x4 Eth_A/B/plant",
+          "qty": 4,
+          "est_eur": "4-10",
+          "mpn": "TBD",
+          "doc_status": "MISSING"
+        }
+      ]
+    },
+    {
+      "id": "serial",
+      "title": "RS-485 Modbus C2 signals",
+      "cci_control": "C2",
+      "lines": [
+        {
+          "ref": "U-485",
+          "desc": "Opto-isolated RS-485 transceiver",
+          "qty": 2,
+          "est_eur": "10-15",
+          "mpn": "TBD",
+          "doc_status": "MISSING"
+        },
+        {
+          "ref": "MAP",
+          "desc": "Energy analyzer Modbus register map",
+          "doc_status": "MISSING",
+          "target_source_id": "ccli-modbus-analyzer-map"
+        }
+      ]
+    },
+    {
+      "id": "dido",
+      "title": "DI signals and DO relays C4",
+      "cci_control": "C4",
+      "lines": [
+        {
+          "ref": "U-DI",
+          "desc": "DI conditioner 10-120 Vdc x5",
+          "qty": 5,
+          "est_eur": "8-15",
+          "mpn": "TBD",
+          "doc_status": "MISSING"
+        },
+        {
+          "ref": "K-DO",
+          "desc": "Relay DO 250 Vac 3A class x3",
+          "qty": 3,
+          "est_eur": "5-12",
+          "mpn": "TBD",
+          "doc_status": "MISSING"
+        },
+        {
+          "ref": "J-IO",
+          "desc": "Field terminal blocks",
+          "qty": 1,
+          "est_eur": "3-8",
+          "mpn": "TBD",
+          "doc_status": "MISSING"
+        }
+      ]
+    },
+    {
+      "id": "gnss",
+      "title": "GNSS time sync C5",
+      "cci_control": "C5",
+      "lines": [
+        {
+          "ref": "U-GNSS",
+          "desc": "GPS/GLONASS module",
+          "qty": 1,
+          "est_eur": "20-35",
+          "mpn": "TBD",
+          "doc_status": "MISSING"
+        },
+        {
+          "ref": "ANT-G",
+          "desc": "Active GNSS antenna SMA",
+          "qty": 1,
+          "est_eur": "5-15",
+          "mpn": "TBD",
+          "doc_status": "MISSING"
+        }
+      ]
+    },
+    {
+      "id": "lte",
+      "title": "LTE optional",
+      "lines": [
+        {
+          "ref": "U-LTE",
+          "desc": "LTE Cat.1 module",
+          "qty": 0,
+          "est_eur": "25-40",
+          "mpn": "TBD",
+          "doc_status": "PARTIAL"
+        }
+      ]
+    },
+    {
+      "id": "security",
+      "title": "Secure boot / TPM C6",
+      "cci_control": "C6",
+      "lines": [
+        {
+          "ref": "HAB",
+          "desc": "HAB/signed boot docs",
+          "doc_status": "HAVE"
+        },
+        {
+          "ref": "U-TPM",
+          "desc": "Discrete TPM if needed",
+          "qty": 0,
+          "mpn": "TBD",
+          "doc_status": "MISSING"
+        }
+      ]
+    },
+    {
+      "id": "power",
+      "title": "Power C10",
+      "cci_control": "C10",
+      "lines": [
+        {
+          "ref": "U-PWR",
+          "desc": "12-24 Vdc power tree",
+          "qty": 1,
+          "est_eur": "10-25",
+          "mpn": "TBD",
+          "doc_status": "MISSING"
+        }
+      ]
+    },
+    {
+      "id": "mechanical",
+      "title": "PCB fab mechanical HMI",
+      "lines": [
+        {
+          "ref": "PCB",
+          "desc": "4-layer carrier proto lot",
+          "est_eur": "50-150",
+          "doc_status": "MISSING"
+        },
+        {
+          "ref": "ENC",
+          "desc": "DIN-rail enclosure",
+          "est_eur": "15-40",
+          "doc_status": "MISSING"
+        }
+      ]
+    }
+  ],
+  "next_actions": [
+    "Lock Verdin Plus IT SKU and download SoM datasheet",
+    "Author CCI_Pin_Budget.md",
+    "Author CCI_Carrier_Block_Diagram.md",
+    "Select MPNs: RS-485 isolator, DI opto, DO relay, Ethernet switch/PHY, GNSS",
+    "Obtain energy analyzer Modbus map",
+    "Export Altium ActiveBOM into 08-engineering/"
+  ],
+  "lead_som_pn": "0063",
+  "downloaded_datasheets": [
+    {
+      "path": "Toradex_Verdin_iMX8M_Plus_IT_Datasheet.pdf",
+      "source_id": "ccli-toradex-verdin-plus-som",
+      "status": "INGESTED"
+    },
+    {
+      "path": "Toradex_Verdin_Development_Board_V1.1_Datasheet.pdf",
+      "source_id": "ccli-toradex-verdin-devboard",
+      "status": "INGESTED"
+    },
+    {
+      "path": "Toradex_Verdin_Carrier_Board_Design_Guide.pdf",
+      "source_id": "ccli-toradex-carrier-guide",
+      "status": "INGESTED"
+    },
+    {
+      "path": "Toradex_Verdin_Family_Specification.pdf",
+      "source_id": "ccli-toradex-verdin-family",
+      "status": "INGESTED"
+    },
+    {
+      "path": "reference/IMX8MPCEC.pdf",
+      "source_id": "ccli-nxp-imx8m-plus-cec",
+      "status": "INGESTED"
+    },
+    {
+      "path": "reference/IMX8MDQLQCEC-1280316.pdf",
+      "source_id": "ccli-nxp-imx8m-dqlq-cec",
+      "status": "INGESTED"
+    },
+    {
+      "path": "reference/vendor-validate/Variscite_DART-MX8M-PLUS_Datasheet.pdf",
+      "source_id": "ccli-variscite-dart-mx8m-plus",
+      "status": "INGESTED"
+    },
+    {
+      "path": "reference/vendor-validate/Variscite_VAR-DT8MCustomBoard_Datasheet.pdf",
+      "source_id": "ccli-variscite-dt8m-customboard",
+      "status": "INGESTED"
+    },
+    {
+      "path": "reference/vendor-validate/Compulab_IOT-GATE-iMX8_Reference_Guide.pdf",
+      "source_id": "ccli-compulab-iot-gate-ref",
+      "status": "INGESTED"
+    }
+  ],
+  "still_missing_p0": [
+    "IMX8MPIEC",
+    "PCN longevity letter 0063",
+    "CCI_Pin_Budget.md",
+    "CCI_Carrier_Block_Diagram.md"
+  ]
+}

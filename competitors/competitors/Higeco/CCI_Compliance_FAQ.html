@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CCI Compliance FAQ</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap');
+
+  :root{
+    --bg:#eef1f5;
+    --surface:#ffffff;
+    --ink:#16202a;
+    --muted:#5b6b7a;
+    --line:#d7dee5;
+    --amber:#c9711a;
+    --amber-soft:#fdf1e2;
+    --teal:#0f7a6c;
+    --teal-soft:#e6f4f1;
+    --navy:#2e4a7a;
+    --navy-soft:#e9eef8;
+    --plum:#8a3a68;
+    --plum-soft:#f7e9f1;
+    --shadow: 0 1px 2px rgba(22,32,42,.06), 0 8px 20px -12px rgba(22,32,42,.18);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#0d1420; --surface:#131c2a; --ink:#e8edf2; --muted:#93a3b3; --line:#243040;
+      --amber:#f2a34d; --amber-soft:#2a2013;
+      --teal:#4fd6bf; --teal-soft:#0f2624;
+      --navy:#8fb0ee; --navy-soft:#16233c;
+      --plum:#e07fb8; --plum-soft:#2c1723;
+      --shadow: 0 1px 2px rgba(0,0,0,.4), 0 10px 24px -14px rgba(0,0,0,.6);
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#0d1420; --surface:#131c2a; --ink:#e8edf2; --muted:#93a3b3; --line:#243040;
+    --amber:#f2a34d; --amber-soft:#2a2013;
+    --teal:#4fd6bf; --teal-soft:#0f2624;
+    --navy:#8fb0ee; --navy-soft:#16233c;
+    --plum:#e07fb8; --plum-soft:#2c1723;
+    --shadow: 0 1px 2px rgba(0,0,0,.4), 0 10px 24px -14px rgba(0,0,0,.6);
+  }
+
+  *{box-sizing:border-box;}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'IBM Plex Sans', system-ui, sans-serif;
+    padding-inline:20px;
+    padding-block:40px;
+    line-height:1.5;
+  }
+  .wrap{max-width:1080px; margin:0 auto;}
+
+  header{
+    display:flex; flex-direction:column; gap:10px;
+    margin-bottom:34px;
+    padding-bottom:26px;
+    border-bottom:2px solid var(--line);
+  }
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px; font-weight:600; letter-spacing:.08em; text-transform:uppercase;
+    color:var(--teal);
+  }
+  h1{
+    font-family:'Archivo', sans-serif;
+    font-weight:800;
+    font-size:clamp(28px, 4.2vw, 42px);
+    line-height:1.08;
+    margin:0;
+    text-wrap:balance;
+    letter-spacing:-.01em;
+  }
+  .sub{
+    color:var(--muted);
+    font-size:15px;
+    max-width:62ch;
+  }
+  .sub a{color:var(--navy); text-decoration:underline; text-underline-offset:2px;}
+
+  .legend{
+    display:flex; flex-wrap:wrap; gap:10px 16px;
+    margin-top:6px;
+  }
+  .legend-item{
+    display:flex; align-items:center; gap:6px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11.5px; font-weight:600; letter-spacing:.03em;
+    color:var(--muted);
+  }
+  .dot{width:9px; height:9px; border-radius:2px; flex:none;}
+
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill, minmax(300px,1fr));
+    gap:18px;
+  }
+
+  .card{
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-radius:10px;
+    box-shadow:var(--shadow);
+    padding:20px 22px 22px;
+    display:flex; flex-direction:column; gap:10px;
+    border-left:5px solid var(--cat-color, var(--teal));
+  }
+  .card-top{
+    display:flex; align-items:center; justify-content:space-between; gap:10px;
+  }
+  .num{
+    font-family:'IBM Plex Mono', monospace;
+    font-weight:600; font-size:12.5px;
+    color:var(--muted);
+  }
+  .tag{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10.5px; font-weight:600; letter-spacing:.05em; text-transform:uppercase;
+    padding:3px 8px; border-radius:999px;
+    background:var(--cat-soft, var(--teal-soft));
+    color:var(--cat-color, var(--teal));
+    white-space:nowrap;
+  }
+  .q{
+    font-family:'Archivo', sans-serif;
+    font-weight:700; font-size:16.5px;
+    line-height:1.32;
+    text-wrap:balance;
+  }
+  .a{
+    font-size:14.5px;
+    color:var(--ink);
+  }
+  .a strong{color:var(--cat-color, var(--teal)); font-weight:600;}
+  .a q, .a em{font-style:normal;}
+
+  .cat-obligation{--cat-color:var(--amber); --cat-soft:var(--amber-soft);}
+  .cat-measurement{--cat-color:var(--teal); --cat-soft:var(--teal-soft);}
+  .cat-control{--cat-color:var(--navy); --cat-soft:var(--navy-soft);}
+  .cat-certification{--cat-color:var(--plum); --cat-soft:var(--plum-soft);}
+
+  footer{
+    margin-top:40px;
+    padding-top:20px;
+    border-top:2px solid var(--line);
+    font-size:12.5px;
+    color:var(--muted);
+    display:flex; flex-direction:column; gap:6px;
+  }
+  footer a{color:var(--navy);}
+
+  @media (max-width:480px){
+    body{padding-inline:16px;}
+    .grid{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <span class="eyebrow">CEI 0-16 · Central Plant Controller</span>
+    <h1>CCI Compliance FAQ</h1>
+    <p class="sub">Fifteen questions and answers on the CCI (Controllore Centrale di Impianto), sourced from Higeco More's public FAQ for the Senergy CCI product — <a href="https://higecomore.com/en/cci-central-plant-controller/" target="_blank" rel="noopener">higecomore.com</a>.</p>
+    <div class="legend">
+      <span class="legend-item"><span class="dot" style="background:var(--amber)"></span>Obligation &amp; scope</span>
+      <span class="legend-item"><span class="dot" style="background:var(--teal)"></span>Measurement &amp; data</span>
+      <span class="legend-item"><span class="dot" style="background:var(--navy)"></span>Control &amp; integration</span>
+      <span class="legend-item"><span class="dot" style="background:var(--plum)"></span>Certification &amp; security</span>
+    </div>
+  </header>
+
+  <div class="grid">
+
+    <div class="card cat-obligation">
+      <div class="card-top"><span class="num">Q01</span><span class="tag">Obligation</span></div>
+      <div class="q">For which systems is the CCI mandatory?</div>
+      <div class="a">Per Resolution 385/25/R/eel and 564/25/R/eel: <strong>photovoltaic and wind plants with nominal power ≥ 100 kW</strong>, always connected at medium voltage (MT).</div>
+    </div>
+
+    <div class="card cat-obligation">
+      <div class="card-top"><span class="num">Q02</span><span class="tag">Obligation</span></div>
+      <div class="q">For which power plant technologies is CCI mandatory?</div>
+      <div class="a">For plants <strong>≥ 1 MW on medium voltage</strong>, the obligation applies to all technologies, without distinction. Below 1 MW on MV, only photovoltaic and wind require a CCI.</div>
+    </div>
+
+    <div class="card cat-obligation">
+      <div class="card-top"><span class="num">Q03</span><span class="tag">Obligation</span></div>
+      <div class="q">For which power plants is the bonus foreseen?</div>
+      <div class="a">Only for <strong>existing plants under 1 MW</strong>: financial contributions from <strong>€3,000 to €10,000</strong>, depending on submission timing and plant size.</div>
+    </div>
+
+    <div class="card cat-obligation">
+      <div class="card-top"><span class="num">Q04</span><span class="tag">Obligation</span></div>
+      <div class="q">What functions must the CCI have? Are they all mandatory?</div>
+      <div class="a">Per CEI 0-16 Annexes O and T, the CCI must support functional performances <strong>PF1, PF2, and PF3</strong> — but which are mandatory to actually activate varies by the specific regulation in force.</div>
+    </div>
+
+    <div class="card cat-control">
+      <div class="card-top"><span class="num">Q05</span><span class="tag">Control</span></div>
+      <div class="q">Is NTP time synchronization compliant with Annex O?</div>
+      <div class="a"><strong>No.</strong> Time sync must come either from a GPS receiver integrated into the CCI, or via <strong>NTS</strong> — the secure, authenticated version of NTP.</div>
+    </div>
+
+    <div class="card cat-certification">
+      <div class="card-top"><span class="num">Q06</span><span class="tag">Certification</span></div>
+      <div class="q">Does the CCI need to be connected to the internet?</div>
+      <div class="a"><strong>"It better be."</strong> The CCI's PKI management benefits from cloud-based certificate lifecycle management and remote updates.</div>
+    </div>
+
+    <div class="card cat-measurement">
+      <div class="card-top"><span class="num">Q07</span><span class="tag">Measurement</span></div>
+      <div class="q">What data must be collected by the CCI?</div>
+      <div class="a">At the delivery point: <strong>P, Q, V</strong> (and optionally I), plus device status. Per generator: power measurements and status above specified thresholds.</div>
+    </div>
+
+    <div class="card cat-measurement">
+      <div class="card-top"><span class="num">Q08</span><span class="tag">Measurement</span></div>
+      <div class="q">How should P, Q and V measurements be made at the delivery point?</div>
+      <div class="a">MV measurements must be taken <strong>directly by the CCI's own measurement unit</strong>, preferably with Class 0.2 (or better) converters and Class 0.5 (or better) CT/VT.</div>
+    </div>
+
+    <div class="card cat-measurement">
+      <div class="card-top"><span class="num">Q09</span><span class="tag">Measurement</span></div>
+      <div class="q">Can I read voltage from the PI and current from the PG?</div>
+      <div class="a"><strong>No.</strong> Protective-relay CTs (used by the PI/PG protection devices) <strong>cannot guarantee the accuracy required</strong> for CCI measurement.</div>
+    </div>
+
+    <div class="card cat-measurement">
+      <div class="card-top"><span class="num">Q10</span><span class="tag">Measurement</span></div>
+      <div class="q">Can I install Rogowski probes instead of measuring CTs?</div>
+      <div class="a">Yes, but they are <strong>less precise than CTs</strong> — CEI 0-16 requires total measurement error on P and Q to stay <strong>below 2.2%</strong>.</div>
+    </div>
+
+    <div class="card cat-control">
+      <div class="card-top"><span class="num">Q11</span><span class="tag">Control</span></div>
+      <div class="q">How does the CCI control the plant?</div>
+      <div class="a">Via <strong>closed-loop regulators</strong> that read the delivery-point measurements and compare them against set points — either received (servo mode) or calculated (autonomous mode).</div>
+    </div>
+
+    <div class="card cat-control">
+      <div class="card-top"><span class="num">Q12</span><span class="tag">Control</span></div>
+      <div class="q">Can the CCI communicate with inverters via an existing monitoring system?</div>
+      <div class="a">Yes, provided the connection still meets the standard's requirements — including <strong>≥ 99% annual availability</strong> and the specified response times.</div>
+    </div>
+
+    <div class="card cat-certification">
+      <div class="card-top"><span class="num">Q13</span><span class="tag">Certification</span></div>
+      <div class="q">Who must perform the CCI certification?</div>
+      <div class="a">Manufacturers may issue a <strong>self-declaration of conformity</strong> after testing. A <strong>third-party accredited body</strong> can additionally certify against these annexes.</div>
+    </div>
+
+    <div class="card cat-certification">
+      <div class="card-top"><span class="num">Q14</span><span class="tag">Certification</span></div>
+      <div class="q">What cybersecurity certifications are required?</div>
+      <div class="a"><strong>IEC 62443-4-1</strong> (IsaSecure SDLA) and <strong>IEC 62443-4-2</strong> (IsaSecure CSA), plus cryptographic components certified to <strong>FIPS 140-2, level 3</strong>.</div>
+    </div>
+
+    <div class="card cat-certification">
+      <div class="card-top"><span class="num">Q15</span><span class="tag">Certification</span></div>
+      <div class="q">Can CCI compliance tests be carried out in any laboratory?</div>
+      <div class="a"><strong>No.</strong> Insulation, EMC, noise immunity and climate tests need an <strong>ISO 17025</strong> accredited lab; functional tests need an <strong>ISO 17065</strong> accredited inspection body.</div>
+    </div>
+
+  </div>
+
+  <footer>
+    <span>Source: Higeco More — <a href="https://higecomore.com/en/cci-central-plant-controller/" target="_blank" rel="noopener">CCI Central Plant Controller FAQ</a> (Senergy CCI product page). Content reproduced from a third-party vendor's public FAQ, not an official CEI/ARERA text — verify against the primary regulation before relying on it for compliance decisions.</span>
+  </footer>
+</div>
+</body>
+</html>

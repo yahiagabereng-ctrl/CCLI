@@ -1,0 +1,21 @@
+echo "=== DATE ==="
+date
+echo "=== WIFI ==="
+wifi status 2>/dev/null | head -80
+echo "=== BRIDGE ==="
+brctl show 2>/dev/null
+echo "=== LINK ==="
+ip link 2>/dev/null | grep -E '^[0-9]+:|lan|br-|phy|wan' || ifconfig -a 2>/dev/null | head -5
+echo "=== ADDR ==="
+ip -4 addr 2>/dev/null || ifconfig | grep -E 'inet |Link'
+echo "=== UCI network devices/ifaces ==="
+uci show network 2>/dev/null | grep -E "device=|ports=|ifname=|ipaddr=|proto=|type=|name="
+echo "=== UCI wireless ==="
+uci show wireless 2>/dev/null | grep -E "disabled=|device=|network=|mode=|ssid=" | head -40
+echo "=== FIREWALL zones ==="
+uci show firewall 2>/dev/null | grep -E "@zone|name=|network=|input=|output=|forward=|@forwarding"
+echo "=== DHCP ==="
+uci show dhcp 2>/dev/null | grep -E "interface=|ignore=|start=|limit=|leasetime=" | head -40
+echo "=== LEASES ==="
+cat /tmp/dhcp.leases 2>/dev/null
+echo "=== DONE ==="

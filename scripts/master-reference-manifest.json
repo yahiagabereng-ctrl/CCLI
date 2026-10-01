@@ -1,0 +1,56 @@
+{
+  "document_id": "CCLI-MASTER-REF-001",
+  "title": "CEI 0-16 Central Plant Controller — Master Reference",
+  "subtitle": "HiTEKS CCI Programme · Phase 1 documentation baseline",
+  "revision": "1.6",
+  "sections": [
+    {
+      "part": "Programme overview",
+      "files": [
+        { "path": "CCI_Project_Roadmap.md", "label": "Project roadmap" },
+        { "path": "knowledge-base/README.md", "label": "Knowledge base brief" }
+      ]
+    },
+    {
+      "part": "Lab platform & SoC freeze",
+      "files": [
+        { "path": "knowledge-base/08-engineering/CCI_SOC_Freeze.md", "label": "SoC freeze — MediaTek MT798X" },
+        { "path": "knowledge-base/08-engineering/CCI_TG500_Lab_Platform.md", "label": "TG-524 lab platform freeze" },
+        { "path": "knowledge-base/08-engineering/CCI_Prototype_BOM.md", "label": "Prototype BOM & missing index" },
+        { "path": "knowledge-base/08-engineering/CCI_Architecture_Framework.md", "label": "Architecture framework (PF2 methodology)" }
+      ]
+    },
+    {
+      "part": "Regulations & protocols",
+      "files": [
+        { "path": "knowledge-base/07-protocols/CCI_Module_Regulations_Classification.md", "label": "Module regulations classification" }
+      ]
+    },
+    {
+      "part": "Engineering infrastructure",
+      "files": [
+        { "path": "knowledge-base/08-engineering/CCI_Industrial_RAG_Architecture.md", "label": "Industrial RAG architecture" },
+        { "path": "knowledge-base/DOWNLOADS.md", "label": "Master download index" }
+      ]
+    },
+    {
+      "part": "Validation & test",
+      "files": [
+        { "path": "knowledge-base/08-engineering/CCI_Validation_and_Mocking_Strategy.md", "label": "PF2 validation & mocking strategy" },
+        { "path": "knowledge-base/08-engineering/CCI_Mocking_Bench_BOM.md", "label": "Mocking / PF2 bench BOM" }
+      ]
+    },
+    {
+      "part": "Protocol libraries (OpenWrt lab)",
+      "files": [
+        { "path": "knowledge-base/07-protocols/CCI_GitHub_Protocol_Libraries.md", "label": "GitHub protocol library index" }
+      ]
+    },
+    {
+      "part": "Lab platform (TG-500)",
+      "files": [
+        { "path": "knowledge-base/08-engineering/CCI_TG500_Lab_Platform.md", "label": "TG-524 lab platform freeze" }
+      ]
+    }
+  ]
+}

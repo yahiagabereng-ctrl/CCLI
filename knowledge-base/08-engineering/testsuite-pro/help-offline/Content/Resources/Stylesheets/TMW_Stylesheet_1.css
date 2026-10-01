@@ -1,0 +1,865 @@
+/*<meta />*/
+
+@import url('TMW Welcome_Stylesheet.css');
+
+@import url('Generic Styles_Do Not Edit.css');
+
+@namespace MadCap url(http://www.madcapsoftware.com/Schemas/MadCap.xsd);
+
+body
+{
+	font-family: Arial;
+	font-size: 13px;
+	line-height: 1.7em;
+	margin: 17px;
+	max-width: 750px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6
+{
+	font-weight: bold;
+	color: #749AB6;
+}
+
+p.example
+{
+	color: #546C7F;
+	border: solid 1px #BECFDC;
+	background-color: #DEE8F0;
+	-moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
+	border-radius: 6px;
+	padding: 14px 20px;
+}
+
+p.note
+{
+	color: #616E14;
+	border: solid 1px #BFD62F;
+	background-color: #DAE691;
+	-moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
+	border-radius: 6px;
+	padding: 14px 20px;
+}
+
+a
+{
+	color: #1e90ff;
+}
+
+MadCap|expanding
+{
+	mc-open-image: url('resources:Images/WebHelp/minus.png');
+	mc-closed-image: url('resources:Images/WebHelp/plus.png');
+	mc-image-position: left;
+}
+
+MadCap|dropDown
+{
+	mc-open-image: url('resources:Images/WebHelp/minus.png');
+	mc-closed-image: url('resources:Images/WebHelp/plus.png');
+	font-family: Corbel;
+}
+
+MadCap|toggler
+{
+	mc-open-image: url('resources:Images/WebHelp/minus.png');
+	mc-closed-image: url('resources:Images/WebHelp/plus.png');
+	color: inherit;
+}
+
+MadCap|popupHead
+{
+	color: #5B8EC1;
+}
+
+MadCap|popupBody
+{
+	color: #EBEBEB;
+	border: none;
+	background-color: rgba(0, 0, 0, .85);
+	padding: 11px 15px;
+}
+
+MadCap|glossaryTerm
+{
+	
+}
+
+MadCap|glossaryTerm.Expanding
+{
+	color: inherit;
+	font-weight: inherit;
+}
+
+MadCap|glossaryTerm.Hyperlink
+{
+	color: #5B8EC1;
+	font-weight: inherit;
+}
+
+MadCap|glossaryTerm.Popup
+{
+	color: #5B8EC1;
+	font-weight: normal;
+}
+
+MadCap|conceptLink
+{
+	color: #000000;
+}
+
+MadCap|keywordLink
+{
+	color: #000000;
+}
+
+MadCap|relatedTopics
+{
+	color: #000000;
+}
+
+MadCap|helpControlMenu
+{
+	color: #707070;
+	background-color: #FFFFFF;
+	border: none;
+}
+
+MadCap|helpControlMenuItem
+{
+	color: inherit;
+	font-size: inherit;
+	font-family: inherit;
+}
+
+MadCap|helpControlMenuItem.Highlighted
+{
+	color: #000000;
+	background-color: #E5EFF7;
+}
+
+h1
+{
+	color: #696969;
+	font-family: Corbel;
+	font-size: 16pt;
+	font-weight: bolder;
+	mc-heading-level: 3;
+	margin-top: 15px;
+}
+
+h2
+{
+	color: #696969;
+	font-family: Corbel;
+	font-size: 14pt;
+	font-weight: bolder;
+	mc-heading-level: 4;
+	margin-top: 10px;
+}
+
+h3
+{
+	color: #696969;
+	font-family: Corbel;
+	mc-heading-level: 0;
+}
+
+p.tip
+{
+	color: #006400;
+	border: solid 1px #006400;
+	border-radius: 6px;
+	padding: 14px 20px;
+	background-color: #bef8be;
+}
+
+h4
+{
+	font-weight: normal;
+	color: #696969;
+	mc-heading-level: 0;
+}
+
+h5
+{
+	color: #696969;
+	mc-heading-level: 0;
+}
+
+h6
+{
+	color: #696969;
+	mc-heading-level: 0;
+}
+
+img
+{
+	mc-float: outside-left;
+	text-indent: 10px;
+}
+
+p
+{
+	font-family: Corbel;
+	padding-left: 20px;
+}
+
+MadCap|breadcrumbsProxy
+{
+	font-family: Corbel;
+	border-bottom-width: 0;
+}
+
+li
+{
+	font-family: Corbel;
+	color: #000000;
+	font-size: 10pt;
+}
+
+MadCap|xref
+{
+	text-decoration: none;
+	font-family: Corbel;
+	padding-left: 10px;
+	font-size: 12pt;
+	font-weight: bold;
+	color: #696969;
+}
+
+MadCap|xref:hover
+{
+	text-decoration: underline;
+	color: #a21c3e;
+}
+
+div.NewRowClass1	/*This is a custom responsive layout row style (div class) in your stylesheet. To provide your own description for this style: (1) Open the stylesheet; (2) Find and select the div class with this name; and (3) In the Comment field, replace this text with your own. For more information on adding comments to styles, see the online Help.*/
+{
+	mc-grid-row: true;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+div.NewRowClass1::before
+{
+	content: ' ';
+	display: table;
+}
+
+div.NewRowClass1::after
+{
+	content: ' ';
+	display: table;
+	clear: both;
+}
+
+div.NewRowClass1 > div
+{
+	float: left;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+div.NewRowClass1 > div:nth-child(1)
+{
+	width: 33.33333%;
+	margin-left: 0%;
+}
+
+div.NewRowClass1 > div:nth-child(2)
+{
+	width: 33.33333%;
+	margin-left: 0%;
+}
+
+div.NewRowClass1 > div:nth-child(3)
+{
+	width: 33.33333%;
+	margin-left: 0%;
+}
+
+div.NewRowClass1 > div:nth-child(4)
+{
+	width: 8.3333%;
+	margin-left: 0%;
+}
+
+div.NewRowClass1 > div:nth-child(5)
+{
+	width: 8.3333%;
+	margin-left: 0%;
+}
+
+div.NewRowClass1 > div:nth-child(6)
+{
+	width: 8.3333%;
+	margin-left: 0%;
+}
+
+div.NewRowClass1 > div:nth-child(7)
+{
+	width: 8.3333%;
+	margin-left: 0%;
+}
+
+div.NewRowClass1 > div:nth-child(8)
+{
+	width: 8.3333%;
+	margin-left: 0%;
+}
+
+div
+{
+	color: #000000;
+	font-family: Corbel;
+	background-color: transparent;
+}
+
+div.NewRowClass2	/*This is a custom responsive layout row style (div class) in your stylesheet. To provide your own description for this style: (1) Open the stylesheet; (2) Find and select the div class with this name; and (3) In the Comment field, replace this text with your own. For more information on adding comments to styles, see the online Help.*/
+{
+	mc-grid-row: true;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+div.NewRowClass2::before
+{
+	content: ' ';
+	display: table;
+}
+
+div.NewRowClass2::after
+{
+	content: ' ';
+	display: table;
+	clear: both;
+}
+
+div.NewRowClass2 > div
+{
+	float: left;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+div.NewRowClass2 > div:nth-child(1)
+{
+	width: 33.333%;
+	margin-left: 0%;
+}
+
+div.NewRowClass2 > div:nth-child(2)
+{
+	width: 33.333%;
+	margin-left: 0%;
+}
+
+div.NewRowClass2 > div:nth-child(3)
+{
+	width: 33.333%;
+	margin-left: 0%;
+}
+
+a:hover
+{
+	color: #a21c3e;
+	text-transform: inherit;
+	text-decoration: none;
+	font-weight: bolder;
+}
+
+table
+{
+	background-color: transparent;
+}
+
+div.NewRowClass3	/*This is a custom responsive layout row style (div class) in your stylesheet. To provide your own description for this style: (1) Open the stylesheet; (2) Find and select the div class with this name; and (3) In the Comment field, replace this text with your own. For more information on adding comments to styles, see the online Help.*/
+{
+	mc-grid-row: true;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+div.NewRowClass3::before
+{
+	content: ' ';
+	display: table;
+}
+
+div.NewRowClass3::after
+{
+	content: ' ';
+	display: table;
+	clear: both;
+}
+
+div.NewRowClass3 > div
+{
+	float: left;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+div.NewRowClass3 > div:nth-child(1)
+{
+	width: 66.66667%;
+	margin-left: 0%;
+}
+
+div.NewRowClass3 > div:nth-child(2)
+{
+	width: 33.33333%;
+	margin-left: 0%;
+}
+
+div.NewRowClass4	/*This is a custom responsive layout row style (div class) in your stylesheet. To provide your own description for this style: (1) Open the stylesheet; (2) Find and select the div class with this name; and (3) In the Comment field, replace this text with your own. For more information on adding comments to styles, see the online Help.*/
+{
+	mc-grid-row: true;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+div.NewRowClass4::before
+{
+	content: ' ';
+	display: table;
+}
+
+div.NewRowClass4::after
+{
+	content: ' ';
+	display: table;
+	clear: both;
+}
+
+div.NewRowClass4 > div
+{
+	float: left;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+div.NewRowClass4 > div:nth-child(1)
+{
+	width: 66.66667%;
+	margin-left: 0%;
+}
+
+div.NewRowClass4 > div:nth-child(2)
+{
+	width: 33.33333%;
+	margin-left: 0%;
+}
+
+div.NewRowClass4 > div:nth-child(3)
+{
+	width: 8.3333%;
+	margin-left: 0%;
+}
+
+div.NewRowClass5	/*This is a custom responsive layout row style (div class) in your stylesheet. To provide your own description for this style: (1) Open the stylesheet; (2) Find and select the div class with this name; and (3) In the Comment field, replace this text with your own. For more information on adding comments to styles, see the online Help.*/
+{
+	mc-grid-row: true;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+div.NewRowClass5::before
+{
+	content: ' ';
+	display: table;
+}
+
+div.NewRowClass5::after
+{
+	content: ' ';
+	display: table;
+	clear: both;
+}
+
+div.NewRowClass5 > div
+{
+	float: left;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+div.NewRowClass5 > div:nth-child(1)
+{
+	width: 50%;
+	margin-left: 0%;
+}
+
+div.NewRowClass5 > div:nth-child(2)
+{
+	width: 50%;
+	margin-left: 0%;
+}
+
+div.NewRowClass6	/*This is a custom responsive layout row style (div class) in your stylesheet. To provide your own description for this style: (1) Open the stylesheet; (2) Find and select the div class with this name; and (3) In the Comment field, replace this text with your own. For more information on adding comments to styles, see the online Help.*/
+{
+	mc-grid-row: true;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+div.NewRowClass6::before
+{
+	content: ' ';
+	display: table;
+}
+
+div.NewRowClass6::after
+{
+	content: ' ';
+	display: table;
+	clear: both;
+}
+
+div.NewRowClass6 > div
+{
+	float: left;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+div.NewRowClass6 > div:nth-child(1)
+{
+	width: 33.33333%;
+	margin-left: 0%;
+}
+
+div.NewRowClass6 > div:nth-child(2)
+{
+	width: 33.33333%;
+	margin-left: 0%;
+}
+
+div.NewRowClass6 > div:nth-child(3)
+{
+	width: 33.33333%;
+	margin-left: 0%;
+}
+
+p.ListOf
+{
+	text-indent: 40px;
+}
+
+MadCap|dropDownHead
+{
+	font-family: Corbel;
+}
+
+@media only screen and (max-width: 1279px)
+{
+	div.NewRowClass1 > div:nth-child(1)
+	{
+		width: 33.33333%;
+		margin-left: 0%;
+	}
+
+	div.NewRowClass1 > div:nth-child(2)
+	{
+		width: 33.33333%;
+		margin-left: 0%;
+	}
+
+	div.NewRowClass1 > div:nth-child(3)
+	{
+		width: 33.33333%;
+		margin-left: 0%;
+	}
+
+	div.NewRowClass1 > div:nth-child(4)
+	{
+		width: 8.3333%;
+		margin-left: 0%;
+	}
+
+	div.NewRowClass1 > div:nth-child(5)
+	{
+		width: 8.3333%;
+		margin-left: 0%;
+	}
+
+	div.NewRowClass1 > div:nth-child(6)
+	{
+		width: 8.3333%;
+		margin-left: 0%;
+	}
+
+	div.NewRowClass1 > div:nth-child(7)
+	{
+		width: 8.3333%;
+		margin-left: 0%;
+	}
+
+	div.NewRowClass1 > div:nth-child(8)
+	{
+		width: 8.3333%;
+		margin-left: 0%;
+	}
+
+	div.NewRowClass2 > div:nth-child(1)
+	{
+		width: 33.33333%;
+		margin-left: 0%;
+	}
+
+	div.NewRowClass2 > div:nth-child(2)
+	{
+		width: 33.33333%;
+		margin-left: 0%;
+	}
+
+	div.NewRowClass2 > div:nth-child(3)
+	{
+		width: 33.33333%;
+		margin-left: 0%;
+	}
+
+	div.NewRowClass3 > div:nth-child(1)
+	{
+		width: 66.66667%;
+		margin-left: 0%;
+	}
+
+	div.NewRowClass3 > div:nth-child(2)
+	{
+		width: 33.33333%;
+		margin-left: 0%;
+	}
+
+	div.NewRowClass4 > div:nth-child(1)
+	{
+		width: 66.66667%;
+		margin-left: 0%;
+	}
+
+	div.NewRowClass4 > div:nth-child(2)
+	{
+		width: 33.33333%;
+		margin-left: 0%;
+	}
+
+	div.NewRowClass4 > div:nth-child(3)
+	{
+		width: 8.3333%;
+		margin-left: 0%;
+	}
+
+	div.NewRowClass5 > div:nth-child(1)
+	{
+		width: 50%;
+		margin-left: 0%;
+	}
+
+	div.NewRowClass5 > div:nth-child(2)
+	{
+		width: 50%;
+		margin-left: 0%;
+	}
+
+	div.NewRowClass6 > div:nth-child(1)
+	{
+		width: 33.33333%;
+		margin-left: 0%;
+	}
+
+	div.NewRowClass6 > div:nth-child(2)
+	{
+		width: 33.33333%;
+		margin-left: 0%;
+	}
+
+	div.NewRowClass6 > div:nth-child(3)
+	{
+		width: 33.33333%;
+		margin-left: 0%;
+	}
+}
+
+@media only screen and (max-width: 767px)
+{
+	div.NewRowClass1 > div:nth-child(1)
+	{
+		width: 100%;
+		margin-left: 0%;
+	}
+
+	div.NewRowClass1 > div:nth-child(2)
+	{
+		width: 100%;
+		margin-left: 0%;
+	}
+
+	div.NewRowClass1 > div:nth-child(3)
+	{
+		width: 100%;
+		margin-left: 0%;
+	}
+
+	div.NewRowClass1 > div:nth-child(4)
+	{
+		width: 8.3333%;
+		margin-left: 0%;
+	}
+
+	div.NewRowClass1 > div:nth-child(5)
+	{
+		width: 8.3333%;
+		margin-left: 0%;
+	}
+
+	div.NewRowClass1 > div:nth-child(6)
+	{
+		width: 8.3333%;
+		margin-left: 0%;
+	}
+
+	div.NewRowClass1 > div:nth-child(7)
+	{
+		width: 8.3333%;
+		margin-left: 0%;
+	}
+
+	div.NewRowClass1 > div:nth-child(8)
+	{
+		width: 8.3333%;
+		margin-left: 0%;
+	}
+
+	div.NewRowClass2 > div:nth-child(1)
+	{
+		width: 100%;
+		margin-left: 0%;
+	}
+
+	div.NewRowClass2 > div:nth-child(2)
+	{
+		width: 100%;
+		margin-left: 0%;
+	}
+
+	div.NewRowClass2 > div:nth-child(3)
+	{
+		width: 100%;
+		margin-left: 0%;
+	}
+
+	div.NewRowClass3 > div:nth-child(1)
+	{
+		width: 100%;
+		margin-left: 0%;
+	}
+
+	div.NewRowClass3 > div:nth-child(2)
+	{
+		width: 100%;
+		margin-left: 0%;
+	}
+
+	div.NewRowClass4 > div:nth-child(1)
+	{
+		width: 100%;
+		margin-left: 0%;
+	}
+
+	div.NewRowClass4 > div:nth-child(2)
+	{
+		width: 100%;
+		margin-left: 0%;
+	}
+
+	div.NewRowClass4 > div:nth-child(3)
+	{
+		width: 8.3333%;
+		margin-left: 0%;
+	}
+
+	div.NewRowClass5 > div:nth-child(1)
+	{
+		width: 100%;
+		margin-left: 0%;
+	}
+
+	div.NewRowClass5 > div:nth-child(2)
+	{
+		width: 100%;
+		margin-left: 0%;
+	}
+
+	div.NewRowClass6 > div:nth-child(1)
+	{
+		width: 100%;
+		margin-left: 0%;
+	}
+
+	div.NewRowClass6 > div:nth-child(2)
+	{
+		width: 100%;
+		margin-left: 0%;
+	}
+
+	div.NewRowClass6 > div:nth-child(3)
+	{
+		width: 100%;
+		margin-left: 0%;
+	}
+}
+
+ul.indented_format
+{
+	
+}
+
+p.p_indent
+{
+	mc-leader-indent: 2pt;
+	margin-left: 50px;
+	text-indent: 11px;
+}
+
+img.img_float
+{
+	mc-float: outside-frame-top;
+	mc-thumbnail: popup;
+	mc-image-position: left;
+	right: 10px;
+	box-sizing: content-box;
+	clear: both;
+}
+
+h1.PrintTOC1
+{
+	font-weight: bold;
+	color: #749AB6;
+	color: #696969;
+	font-family: Corbel;
+	font-size: 16pt;
+	font-weight: bolder;
+	mc-heading-level: 1;
+	margin-top: 30px;
+}
+
+h2.PrintTOC2
+{
+	font-weight: bold;
+	color: #749AB6;
+	color: #696969;
+	font-family: Corbel;
+	font-size: 14pt;
+	font-weight: bolder;
+	mc-heading-level: 2;
+	margin-top: 20px;
+}
+

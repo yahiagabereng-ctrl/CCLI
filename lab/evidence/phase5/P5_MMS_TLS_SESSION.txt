@@ -1,0 +1,34 @@
+TLS: Verify cert: depth 1
+TLS:    flags: 00000000
+TLS:   cert. version     : 3
+  serial number     : 42:54:6F:79:FE:8A:9A:98
+  issuer name       : C=IT, O=HiTEKS, OU=CCLI-Lab, CN=CCLI_Lab_Root_CA
+  subject name      : C=IT, O=HiTEKS, OU=CCLI-Lab, CN=CCLI_Lab_Root_CA
+  issued  on        : 2026-09-29 19:36:09
+  expires on        : 2036-09-26 19:36:09
+  signed using      : RSA with SHA-256
+  RSA key size      : 2048 bits
+  basic constraints : CA=true
+  key usage         : Digital Signature, Key Cert Sign, CRL Sign
+System.Management.Automation.RemoteException
+TLS: Verify cert: depth 0
+TLS:    flags: 00000000
+TLS:   cert. version     : 3
+  serial number     : 69:1B:6D:54:0A:8C:E3:9E
+  issuer name       : C=IT, O=HiTEKS, OU=CCLI-Lab, CN=CCLI_Lab_Root_CA
+  subject name      : C=IT, O=HiTEKS, OU=CCLI-Lab, CN=CCI016_01
+  issued  on        : 2026-09-29 19:36:09
+  expires on        : 2029-01-01 19:36:09
+  signed using      : RSA with SHA-256
+  RSA key size      : 2048 bits
+  basic constraints : CA=false
+  key usage         : Digital Signature, Key Encipherment
+System.Management.Automation.RemoteException
+=== CCLI MMS TLS client (P3-06) ===
+host=192.168.10.1 port=3782 cert_dir=.
+CONNECT OK (TLS)
+READ Mod.stVal=5
+READ OK TotW.mag.f=450.000
+READ OK TotVAr.mag.f=45.000
+READ OK PPV.phsAB.cVal.mag.f=20.000
+VERDICT: TLS MMS session OK GÇö cleartext :102 should be closed on DUT

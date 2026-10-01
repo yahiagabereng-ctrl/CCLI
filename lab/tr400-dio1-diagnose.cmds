@@ -1,0 +1,14 @@
+echo === status before ===
+ubus call dido_v2 status
+echo === OFF ===
+ubus call dido_v2 set_relay '{"channel":1,"value":0}'
+ubus call dido_v2 status
+echo === ON ===
+ubus call dido_v2 set_relay '{"channel":1,"value":1}'
+ubus call dido_v2 status
+echo === OFF safe ===
+ubus call dido_v2 set_relay '{"channel":1,"value":0}'
+ubus call dido_v2 gd32.set_do '{"channel":1,"value":1}'
+sleep 2
+ubus call dido_v2 status
+ubus call dido_v2 set_relay '{"channel":1,"value":0}'

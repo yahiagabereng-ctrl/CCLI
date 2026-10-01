@@ -1,0 +1,329 @@
+% CCI Clone / Reverse-Engineering Option — Risk & Strategy Brief
+% Document ID: CCLI-CLONE-RE-001  |  Revision 1.0
+% Companion to: CCLI-ROADMAP-001 (Original Design track)
+% Build: pdflatex CCI_Clone_RE_Option.tex (×2 for TOC)
+
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{geometry}
+\geometry{margin=22mm}
+
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{eurosym}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue!60!black,
+  citecolor=blue!60!black,
+  urlcolor=blue!60!black,
+  pdftitle={CCI Clone Reverse-Engineering Option},
+  pdfauthor={CCLI}
+}
+
+\definecolor{riskred}{RGB}{185,28,28}
+\definecolor{riskbg}{RGB}{254,242,242}
+\definecolor{warnamber}{RGB}{180,83,9}
+\definecolor{warnbg}{RGB}{255,251,235}
+\definecolor{okgreen}{RGB}{22,101,52}
+\definecolor{okbg}{RGB}{240,253,244}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small CCLI-CLONE-RE-001 rev.\ 1.0}
+\fancyhead[R]{\small Clone / RE Option Brief}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+\newcommand{\file}[1]{\texttt{#1}}
+\newcommand{\docref}[1]{\textbf{#1}}
+
+\title{%
+  \textbf{Option B: Clone via Reverse Engineering}\\[0.4em]
+  \large Risk, scope, and comparison with the original-design track
+}
+\author{Document ID: CCLI-CLONE-RE-001 \quad Revision: 1.0\\
+Companion to \docref{CCLI-ROADMAP-001}}
+\date{2026-07-24}
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+\begin{abstract}
+This document describes \textbf{Option~B} for the CCI project: reverse engineering an existing commercial CCI-class product
+(AiLux, Selta, Energy Team, Higeco, or similar) with the intent to reproduce hardware layout, firmware behavior, or
+proprietary stack integration as closely as possible. It is a \emph{separate} planning track from the primary roadmap
+(\docref{CCLI-ROADMAP-001}), which targets an \textbf{original} SoM + carrier design driven by publicly documented CEI~0-16
+functional requirements.
+
+Option~B may appear faster on paper but carries material intellectual-property, legal, certification, and long-term
+maintenance risk. Read this brief before committing budget or schedule to a clone path.
+\end{abstract}
+
+\begin{center}
+\begin{minipage}{0.95\linewidth}
+\colorbox{riskbg}{%
+  \parbox{\dimexpr\linewidth-2\fboxsep\relax}{%
+    \small
+    \textbf{\textcolor{riskred}{Not legal advice.}}
+    This document is an engineering and project-planning summary only.
+    Clone/reverse-engineering decisions require review by qualified IP and commercial counsel in your jurisdiction
+    before purchase, teardown, or reproduction.
+  }%
+}
+\end{minipage}
+\end{center}
+
+\tableofcontents
+\newpage
+
+%==============================================================================
+\section{Two project tracks at a glance}
+%==============================================================================
+
+\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{30mm}X X@{}}
+\toprule
+ & \textbf{Option A --- Original design} & \textbf{Option B --- Clone / RE} \\
+ & (\docref{CCLI-ROADMAP-001}) & (this document) \\
+\midrule
+Goal &
+CEI~0-16 compliant CCI from first principles; original schematic, carrier, firmware architecture &
+Reproduce a known commercial unit's HW/FW behavior with minimum functional deviation \\
+Primary inputs &
+CEI Annex~O/T, public interface specs, datasheets, your architecture choices &
+Purchased reference unit, manuals, teardown, protocol capture, binary/firmware analysis \\
+Prototype cost &
+\textasciitilde{}\EUR{}440--900 (single unit) &
+Reference unit purchase + RE tooling + likely respins when differences are found \\
+Time to first demo &
+\textasciitilde{}10--12 weeks (balanced) &
+Can look faster if reference is stable; often slips once hidden dependencies surface \\
+IP / legal posture &
+Lower --- you own the design lineage &
+Higher --- layout, BOM choices, firmware, and tooling may be protected \\
+Certification story &
+Clean SDLC boundary; ATEX QMS/NB already in place; remaining scope is CEI/grid/cyber &
+Harder to prove independent design; lab scope may expand if behavior is ``too similar'' \\
+Long-term margin &
+Amortize certification over your own BOM at volume &
+You may still pay commercial-grade BOM \emph{and} carry RE/legal exposure \\
+\bottomrule
+\end{tabularx}
+
+%==============================================================================
+\section{What ``clone via reverse engineering'' actually means}
+%==============================================================================
+
+Option~B is not the same as reading a user manual. In practice it usually spans some or all of the following workstreams.
+
+\subsection{Hardware reverse engineering}
+
+\begin{itemize}[leftmargin=*]
+  \item \textbf{Non-destructive survey:} enclosure, connectors, labels, port count, isolation strategy, power input range.
+  \item \textbf{Destructive teardown:} PCB photography, layer count, stackup inference, BOM extraction from markings.
+  \item \textbf{Netlist / layout reconstruction:} redrawing schematic and PCB to match routing topology, impedance profiles,
+        isolation barriers, and protection networks.
+  \item \textbf{``Same look'' carrier:} connector pinout, mechanical footprint, and silkscreen placement copied to ease
+        field swap-in at MT plants.
+\end{itemize}
+
+\textbf{Risk:} PCB artwork, component placement for EMC/isolation, and some protection networks can be trade-secret or
+design-right protected even when the \emph{function} (``4 Ethernet ports + RS-485 + DI/DO'') is industry-standard.
+
+\subsection{Firmware and software reverse engineering}
+
+\begin{itemize}[leftmargin=*]
+  \item \textbf{Image extraction:} flash readout, eMMC dump, update-package capture, secure-boot bypass attempts.
+  \item \textbf{Static/dynamic analysis:} disassembly, symbol recovery, configuration file formats, IEC~61850 logical node mapping.
+  \item \textbf{Behavior cloning:} reproduce MMS data sets, GOOSE timing, PF2 curtailment state machine, Modbus maps, alarm semantics.
+  \item \textbf{Stack replication:} if the reference uses a commercial IEC~61850 stack with vendor-specific integration, cloning behavior
+        may effectively replicate proprietary glue code.
+\end{itemize}
+
+\textbf{Risk:} software copyright, license terms (GPL/commercial stack redistribution), and anti-circumvention rules around
+secure boot or encryption can all apply independently of whether the hardware ``works the same.''
+
+\subsection{Integration and field-behavior cloning}
+
+\begin{itemize}[leftmargin=*]
+  \item \textbf{DSO-side expectations:} some DSO test environments are tuned to specific vendor behaviors (reporting cadence,
+        object naming, fault codes).
+  \item \textbf{Commissioning tooling:} web UI flows, parameter sets, and project files may be vendor-specific.
+  \item \textbf{Spare-part / service model:} a clone marketed as drop-in replacement can trigger unfair-competition or trademark issues
+        even when CEI conformance is technically met.
+\end{itemize}
+
+%==============================================================================
+\section{Key risks (why this is the risky option)}
+%==============================================================================
+
+\subsection{Intellectual property and legal}
+
+\begin{tabularx}{\linewidth}{@{}lX@{}}
+\toprule
+\textbf{Risk area} & \textbf{Typical concern} \\
+\midrule
+Copyright &
+Firmware, UI assets, documentation, and sometimes PCB artwork are protected expression. \\
+Patents &
+Power-stage, isolation, or protocol-handling methods may be patented in EU/IT even if CEI function is standardized. \\
+Trade secrets &
+BOM tuning, calibration data, and manufacturing know-how discovered by teardown are not automatically free to reuse. \\
+Contract / license &
+Reference unit purchase, software updates, and protocol stacks may prohibit reverse engineering in EULA or supply terms. \\
+Trademarking / passing off &
+Similar enclosure, labeling, or marketing as ``compatible replacement'' can create separate commercial-law exposure. \\
+Export / security law &
+Breaking secure boot or extracting keys may intersect with cybersecurity regulations beyond product compliance. \\
+\bottomrule
+\end{tabularx}
+
+\subsection{Certification and audit}
+
+\begin{itemize}[leftmargin=*]
+  \item \textbf{IEC~62443-4-1} audits your \emph{development process}. A clone program built from stolen or unlicensed reference
+        artifacts is difficult to document cleanly.
+  \item \textbf{IEC~62443-4-2 / IEC~62351} scope grows if you cannot explain security architecture independently of the reference product.
+  \item \textbf{IEC~61850 conformance} proves protocol behavior, not ownership. Passing a conformance suite does not cure IP problems.
+  \item \textbf{DSO acceptance} is partly political: utilities may reject a device that appears to be an unauthorized copy even if lab tests pass.
+\end{itemize}
+
+\subsection{Engineering and business}
+
+\begin{itemize}[leftmargin=*]
+  \item \textbf{Hidden dependencies:} calibration, factory scripts, cloud keys, or licensed modules may not be visible until late in replication.
+  \item \textbf{Update fragility:} when the reference vendor ships a firmware revision, your clone can break in the field unless you re-RE each time.
+  \item \textbf{No cost advantage at low volume:} commercial CCIs are expensive because certification and liability are bundled in --- cloning does not
+        remove certification cost; it often \emph{adds} RE cost on top.
+  \item \textbf{Support burden:} you inherit every undocumented edge case the original vendor already learned over years of deployments.
+\end{itemize}
+
+%==============================================================================
+\section{What is usually safe to reuse (even on Option~B)}
+%==============================================================================
+
+\begin{center}
+\begin{minipage}{0.95\linewidth}
+\colorbox{okbg}{%
+  \parbox{\dimexpr\linewidth-2\fboxsep\relax}{%
+    \small
+    \textbf{\textcolor{okgreen}{Generally lower-risk inputs:}}
+    public standards (CEI~0-16, IEC~61850, IEC~62351, IEC~62443), datasheet-level component choices,
+    publicly documented interface requirements, and \emph{functional} observations (port count, voltage class, protocol types)
+    without copying expression of the implementation.
+  }%
+}
+\end{minipage}
+\end{center}
+
+\begin{itemize}[leftmargin=*]
+  \item CEI~0-16 Annex~O/T/M text and publicly published FAQ interpretations.
+  \item Open-source stacks used under their license (e.g.\ \file{libiec61850} under \textbf{GPLv3}; commercial license from MZ Automation required to ship a closed product).
+  \item Commodity blocks (SoM, PHY, RS-485 transceiver, GNSS module) selected from public datasheets.
+  \item Black-box interface testing: observe \emph{what} appears on Eth\_A/Eth\_B/RS-485 without copying internal code.
+\end{itemize}
+
+This overlap is why \textbf{Option~A} can reach the same field behavior without Option~B's legal surface area.
+
+%==============================================================================
+\section{Option~B workflow (if you still pursue it)}
+%==============================================================================
+
+\begin{enumerate}[leftmargin=*]
+  \item \textbf{Legal gate 0:} written IP review; confirm purchase/EULA terms on the reference unit and any software images.
+  \item \textbf{Reference acquisition:} buy at least one production-revision unit; log serial, firmware version, and options.
+  \item \textbf{Non-destructive characterization:} photos, port map, power draw, boot logs, network capture on a isolated bench VLAN.
+  \item \textbf{Controlled teardown:} document layers and BOM; do \emph{not} assume 1:1 layout reproduction is permitted.
+  \item \textbf{Functional matrix:} spreadsheet mapping every CEI~0-16 requirement to observed reference behavior vs.\ your planned implementation.
+  \item \textbf{Clean-room split (strongly recommended):} one team/person set exposed to reference internals; a separate team implements from specs only.
+  \item \textbf{Original artifacts only in deliverables:} new schematic sheets, new PCB, new source tree, new ICD/CID files --- not traced copies.
+  \item \textbf{Certification planning in parallel:} scope 62443/61850/62351 assuming you must defend independent design.
+\end{enumerate}
+
+%==============================================================================
+\section{Rough effort and cost (Option~B only)}
+%==============================================================================
+
+\begin{tabularx}{\linewidth}{@{}lX>{\raggedright\arraybackslash}X@{}}
+\toprule
+\textbf{Workstream} & \textbf{Indicative effort} & \textbf{Notes} \\
+\midrule
+Reference hardware + spares & \EUR{}2{,}000--8{,}000+ & Depends on vendor, lead time, and whether MT/POC configuration is required \\
+RE tooling (scope, logic analyzer, JTAG/flash tools) & \EUR{}500--3{,}000 & Often already owned in a HW lab \\
+HW teardown + documentation & 2--6 weeks & Photography, BOM, interface map \\
+Schematic/PCB ``similarity'' layout & 4--10 weeks & High IP risk if copied; faster but legally dangerous \\
+FW/protocol capture + behavior model & 6--16 weeks & IEC~61850 + PF2 logic is non-trivial \\
+Clean re-implementation & 8--20 weeks & Parallel to above if clean-room enforced \\
+Certification (same as Option~A) & \EUR{}50{,}000--120{,}000 & Not avoided by cloning; may increase if independence cannot be shown \\
+Legal / IP counsel & \EUR{}5{,}000--25{,}000+ & Should be budgeted up front, not after a cease-and-desist \\
+\midrule
+\textbf{Realistic incremental cost vs Option~A} &
+\textbf{\EUR{}10{,}000--40{,}000+ before certification} &
+Plus schedule risk and ongoing re-RE tax on vendor updates \\
+\bottomrule
+\end{tabularx}
+
+%==============================================================================
+\section{Decision guide}
+%==============================================================================
+
+\textbf{Choose Option~A (original design)} if you want:
+\begin{itemize}[noitemsep]
+  \item a defensible product line you can certify, sell, and maintain independently;
+  \item lower IP exposure and a clearer IEC~62443-4-1 story;
+  \item freedom to optimize BOM for your target cost at volume.
+\end{itemize}
+
+\textbf{Option~B only makes sense as a time-boxed investigation} if:
+\begin{itemize}[noitemsep]
+  \item you legally own or have licensed the reference artifacts;
+  \item a customer explicitly requires bit-compatible behavior and accepts the liability;
+  \item you use RE output strictly to populate a \emph{functional requirements matrix}, then discard traceable copies before implementation;
+  \item counsel signs off on clean-room boundaries and go-to-market positioning (not ``fake AiLux'').
+\end{itemize}
+
+\begin{center}
+\begin{minipage}{0.95\linewidth}
+\colorbox{warnbg}{%
+  \parbox{\dimexpr\linewidth-2\fboxsep\relax}{%
+    \small
+    \textbf{\textcolor{warnamber}{Recommended project default:}}
+    treat Option~B as a \emph{restricted research spike} (4--6 weeks max) producing a requirements and risk report ---
+    not as the main product architecture. Implement on Option~A unless legal and commercial gates explicitly approve otherwise.
+  }%
+}
+\end{minipage}
+\end{center}
+
+%==============================================================================
+\section{Suggested deliverables if Option~B is authorized}
+%==============================================================================
+
+\begin{enumerate}[leftmargin=*]
+  \item \textbf{CCLI-RE-IF-001} --- Interface \& port survey (non-destructive).
+  \item \textbf{CCLI-RE-BOM-001} --- Component class list (\emph{functional equivalents}, not 1:1 part numbers copied from silkscreen unless public datasheet parts).
+  \item \textbf{CCLI-RE-PROT-001} --- Protocol capture report (MMS/GOOSE/Modbus/PF2 observations).
+  \item \textbf{CCLI-RE-RISK-001} --- IP/legal red-flag memo from counsel.
+  \item \textbf{Handoff to Option~A} --- update \docref{CCLI-ROADMAP-001} pin budget and firmware boundary; \emph{no} traced schematic imports.
+\end{enumerate}
+
+%==============================================================================
+\section{Related documents}
+%==============================================================================
+
+\begin{itemize}[noitemsep]
+  \item \docref{CCLI-ROADMAP-001} --- \file{CCI\_Project\_Roadmap.tex / .pdf} (primary track: original design)
+  \item \file{CCI\_Architecture.mermaid} --- functional block diagram (English)
+  \item Telematry RAG sources: \file{cei-0-16-allegato-o}, \file{cei-0-16-allegato-t}, \file{cei-0-16-cci-manual-ailux}
+\end{itemize}
+
+\end{document}

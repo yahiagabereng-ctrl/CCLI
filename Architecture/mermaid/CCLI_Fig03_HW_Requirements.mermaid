@@ -1,0 +1,38 @@
+%% CCLI Fig 3 — Hardware requirements (TR400 binding)
+%% Source: knowledge-base/08-engineering/CCI_62443_Zones.md
+%% Render: https://mermaid.live
+
+flowchart TB
+  subgraph HW_ETH["C1 Ethernet"]
+    H1["REQ-HW-ETH-001: 1 WAN + 4 LAN"]
+    H2["REQ-NET-003: silkscreen ↔ eth* OPEN"]
+    H3["REQ-NET-004: 192.168.0.1 lab default HAVE"]
+    H4["REQ-NET-005: Wi-Fi disable OPEN"]
+  end
+  subgraph HW_SER["C2 Serial"]
+    S1["REQ-HW-SER-001: A1/B1 A2/B2 HAVE"]
+    S2["REQ-SER-001: ttyS1 Modbus PART"]
+    S3["REQ-HW-SER-003: isolation OPEN"]
+    S4["ttyS0 RS232 service only"]
+  end
+  subgraph HW_IO["C4 Digital I/O"]
+    I1["REQ-HW-IO-001: 4x DIO HAVE"]
+    I2["REQ-IO-001 DIO1 DO OPEN"]
+    I3["REQ-IO-002 DIO2 DI OPEN"]
+    I4["REQ-IO-004: 5DI/3DO AiLux GAP"]
+    I5["REQ-IO-003: safe DO CR 3.6 PART"]
+  end
+  subgraph HW_SEC["C6 Security · C10 Power"]
+    SEC1["REQ-SEC-001 Secure Boot OPEN"]
+    SEC2["REQ-SEC-002 TPM 2.0 OPEN"]
+    SEC3["REQ-PWR-001: 12-30V HAVE"]
+    SEC4["REQ-HW-COM-001 USB 3.0 HAVE"]
+  end
+  subgraph HW_PLAT["Platform"]
+    P1["REQ-HW-001 MT798X TR400 FROZEN"]
+    P2["REQ-BLD-001 OpenWrt SDK MISSING"]
+  end
+  HW_PLAT --> HW_ETH
+  HW_PLAT --> HW_SER
+  HW_PLAT --> HW_IO
+  HW_PLAT --> HW_SEC

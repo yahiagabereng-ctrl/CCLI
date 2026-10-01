@@ -1,0 +1,1087 @@
+--- PDF page 1 ---
+ 
+ 
+ 1 
+DELIBERAZIONE 30 NOVEMBRE 2021 
+540/2021/R/EEL 
+ 
+REGOLAZIONE DELLO SCAMBIO DATI TRA TERNA S .P.A., IMPRESE DISTRIBUTRICI E 
+SIGNIFICANT GRID USER S AI FINI DELL ’ESERCIZIO IN SICUREZZA DEL SISTEMA 
+ELETTRICO NAZIONALE 
+ 
+ 
+L’AUTORITÀ DI REGOLAZIONE PER ENERGIA 
+RETI E AMBIENTE 
+ 
+ 
+Nella 1183a riunione del 30 novembre 2021 
+ 
+VISTI: 
+ 
+• la direttiva 2019/944/CE del Parlamento europeo e del Consiglio del 5 giugno 2009;  
+• il regolamento (UE) 2015/1222 della Commissione europea del 24 luglio 2015; 
+• il regolamento (UE) 2016/1719 della Commissione europea del 26 settembre 2016; 
+• il regolamento (UE) 2016/631 della Commissione europea del 14 aprile 2016 (di 
+seguito: regolamento RfG – Requirements for Generators); 
+• il regolamento (UE) 2016/1388 della Commissione europea del 17 agosto 2016 (di 
+seguito: regolamento DCC – Demand Connection Code); 
+• il regolamento (UE) 2016/1447 della Commissione europea del 26 agosto 2016; 
+• il regolamento (UE) 2017/1485 della Commissione del 2 agosto 2017 (di seguito: 
+regolamento SOGL – System Operation Guideline); 
+• il regolamento (UE) 2017/2196 della Commissione europea del 24 novembre 2017; 
+• il regolamento (EU) 2019/941 del Parlamento europeo e del Consiglio del 5 giugno 
+2019; 
+• il regolamento (EU) 2019/943 del Parlamento europeo e del Consiglio del 5 giugno 
+2019; 
+• la legge 14 novembre 1995, n. 481; 
+• il decreto legislativo 16 marzo 1999, n. 79; 
+• il decreto legislativo 1 giugno 2011, n. 93; 
+• il decreto del Presidente della Repubblica 28 dicembre 2000, n.  445 (di seguito: 
+D.P.R. 445/00); 
+• il decreto del Presidente del Consiglio dei Ministri 11 maggio 2004 (di seguito: 
+D.P.C.M. 11 maggio 2004); 
+• la deliberazione dell ’Autorità di Regolazione per Energia Reti e Am biente (di 
+seguito: Autorità) 9 giugno 2009, n. 111/06; 
+• la deliberazione dell’Autorità 23 luglio 2008, ARG/elt 99/08, e il relativo Allegato A 
+(di seguito: Testo Integrato Connessioni Attive o TICA); 
+--- PDF page 2 ---
+ 
+ 
+ 2 
+• la deliberazione dell’Autorità 30 luglio 2009, ARG/elt 107/09, e il relativo Allegato 
+A; 
+• la deliberazione dell’Autorità 23 dicembre 2014, 649/2014/A, e il relativo Allegato 
+A; 
+• la deliberazione dell ’Autorità 12 novembre 2015, 539/2015/R/eel, e il relativo 
+Allegato A; 
+• la deliberazione dell’Autorità 26 maggio 2016, 264/2016/A; 
+• la deliberazione dell’Autorità 16 febbraio 2017, 67/2017/R/eel; 
+• la deliberazione dell ’Autorità 20 novembre 2018, 592/2018/R/eel (di seguito: 
+deliberazione 592/2018/R/eel); 
+• la deliberazione dell ’Autorità 5 dicembre 2018, 628/2018/R/ eel (di seguito: 
+deliberazione 628/2018/R/eel); 
+• la deliberazione dell’Autorità 2 7 dicembre 2019, 56 8/2019/R/eel (di seguito: 
+deliberazione 568/2019/R/eel), e, in particolare, il relativo Allegato A; 
+• la deliberazione dell ’Autorità 11 febbraio 2020, 36/2020/ R/eel (di seguito: 
+deliberazione 36/2020/R/eel); 
+• la deliberazione dell’Autorità 3 marzo 2020, 53/2020/A; 
+• il documento per la consultazione dell’Autorità 6 ottobre 2020, 361/2020/R/eel  (di 
+seguito: documento per la consultazione 361/2020/R/eel), e le relati ve osservazioni 
+pervenute; 
+• il documento per la consultazione dell’Autorità 18 ottobre 2021, 435/2021/R/eel (di 
+seguito: documento per la consultazione 435/2021/R/eel); 
+• il Codice di trasmissione, dispacciamento, sviluppo e sicurezza della rete di cui  
+all’articolo 1, comma 4, del D.P.C.M. 11 maggio 2004 (di seguito: Codice di rete); 
+• la Norma del Comitato Elettrotecnico Italiano CEI 0 -16 (di seguito: Norma CEI 0 -
+16) e le relative Variante V1 e Variante V2; 
+• la comunicazione del Politecnico di Milano del 22 ottobre 2021, prot. Autorità 39690 
+(di seguito: comunicazione del Politecnico di Milano del 22 ottobre 2021); 
+• la lettera della Federazione ANIE del 19 novembre 2021, prot. Autorità 43620 (di 
+seguito: lettera della Federazione ANIE del 19 novembre 2021). 
+ 
+CONSIDERATO CHE: 
+ 
+• già nelle fasi di preparazione del quinto periodo regolatorio, l’Autorità aveva 
+individuato la necessità, da parte di Terna S.p.A. (di seguito anche: Terna) in qualità 
+di concessionario del servizio di dispacciamento, di sviluppare una maggiore 
+osservabilità dei flussi di energia nelle reti di distribuzione e dello stato delle risorse 
+diffuse; 
+• a livello del quadro regolatorio europeo il tema dell’osservabilità rientra nell’ambito 
+dello scambio dati che si prefigge lo scopo di garantire ai gestori di rete una serie di 
+informazioni inerenti il funzionamento del Sistema Elettrico Nazionale (di seguito: 
+SEN), utili per la sua gestione in sicurezza; in particolare , le disposizioni in materia 
+sono contenute nel regolamento RfG (entrato in vigore il 17 maggio 2016 e con effetti 
+--- PDF page 3 ---
+ 
+ 
+ 3 
+dal 27 aprile 2019 per i “nuovi” gruppi di generazione  come meglio dettagliato 
+nell’articolo 3 del medesimo regolamento ) e nel Regola mento SOGL (entrato in 
+vigore il 14 settembre 2017 e con effetti, per quanto riguarda lo scambio dati, dal 14 
+marzo 2019); 
+• il r egolamento RfG, nel definire le condizioni tecniche per la connessione degli  
+impianti di produzione alle reti elettriche, distingue i gruppi di generazione in quattro 
+categorie (A, B, C e D); in particolare , ai sensi dell ’articolo 5 del  medesimo 
+regolamento, ciascun Transmission System Operator (di seguito: TSO) propone alla 
+competente Autorità nazionale le soglie di potenza per la classificazione delle diverse 
+categorie di gruppi di generazione (tipo A, B, C e D) entro i limiti massimi di potenza 
+stabiliti dal medesimo articolo 5; 
+• con la deliberazione 592/2018/R/eel l ’Autorità ha approvato la proposta di Terna  
+relativa alle soglie di potenza ma ssima per la classificazione delle diverse categorie  
+di gruppi di generazione di cui al precedente punto; per quanto qui  rileva, la soglia 
+di potenza tra i gruppi di generazione di tipo A e i gruppi di generazione di tipo B è 
+stata fissata pari a 11,08 kW; 
+• il regolamento RfG prevede che i “nuovi” gruppi di generazione di tipo B, C e D  
+siano in grado di scambiare informazioni con il pertinente gestore di rete o con il 
+TSO in tempo reale o periodicamente con marcatura temporale, secondo quanto  
+specificato dal medesimo gestore o dal TSO; tali obblighi non trovano  applicazione 
+per i gruppi di generazione di tipo A; 
+• il regolamento SOGL, si applica ai seguenti Significant Grid User (di seguito: SGU), 
+come elencati all’articolo 2(1) del medesimo regolamento: 
+- gruppi di generazione esistenti e nuovi, classificati come gruppi di tipo B, C, e  
+D ai sensi dei criteri approvati a seguito dell ’implementazione del regolamento 
+RfG; 
+- impianti di consumo esistenti e nuovi connessi al sistema di trasmissione; 
+- Sistemi di Distribuzione Chiusi (di seguito: SDC) esistenti e nuovi connessi al 
+sistema di trasmissione; 
+- impianti di consumo esistenti e nuovi, sistemi di distribuzione chiusi e terze parti 
+se forniscono servizi di gestione attiva della domanda o demand side response 
+direttamente al TSO secondo i criteri previsti dall’articolo 27 del regolamento 
+DCC; 
+- gruppi di generazione e impianti di consumo aggregati i cui gestori forniscono 
+risorse per il redispacciamento e ai soggetti fornitori del servizio di riserva d i 
+potenza attiva; 
+- sistemi in alta tensione in corrente continua (sistemi HVDC) esistenti e nuovi; 
+• il regolamento SOGL, agli articoli da 40 a 53, definisce disposizioni concernenti  lo 
+scambio dati tra TSO, Distribution System Operator (di seguito: DSO o, in sede di 
+applicazione nazionale,  impresa distributrice ) e  SGU, ai fini della gestione in 
+sicurezza del sistema di trasmissione dell ’energia elettrica; in particolare, l’articolo 
+40 del medesimo regolamento fissa criteri generali di carattere procedurale, mentre 
+gli articoli successivi individuano un insieme minimo di dati che devono essere messi 
+a disposizione dei gestori di rete, identificato sulla base delle esigenze comuni a tutti 
+--- PDF page 4 ---
+ 
+ 
+ 4 
+i TSO europei ; in sede di implementazione nazionale  è comunque possibile 
+incrementare i dati da mettere a disposizione; 
+• l’implementazione delle disposizioni relative allo scambio dati a livello nazionale  
+prevede che:  
+- ciascun TSO de bba determinare, in coordinamento con DSO e SGU, 
+l’applicabilità e la portata dello scambio dati, distinguendo tra dati strutturali, dati 
+di programmazione e  previsione e dati in tempo reale  (articolo 40(5) del 
+regolamento SOGL); 
+- ciascun TSO debba concordare con i DSO le modalità procedurali del medesimo 
+scambio dati, definendo processi efficaci, efficienti e proporzionati per effettuare 
+e gestire gli scambi di dati tra di loro (articolo 40(7) del regolamento SOGL); 
+- ciascun TSO debba, procedere con l’implementazione effettiva dello scambio 
+dati, dando attuazione agli articoli da 41 a 53 del regolamento SOGL, 
+considerando le seguenti regole generali: 
+i. tutti i SGU elencati nell’articolo 2(1) del medesimo regolamento sono tenuti 
+all’invio delle informazioni richieste; 
+ii. alcuni SGU connessi alle reti di distribuzione possono essere esentati 
+dall’invio dei dati in tempo reale; in tale caso TSO e DSO devono 
+concordare quali dati  aggregati inerenti ai medesimi SGU debbano essere 
+inviati al TSO. 
+ 
+CONSIDERATO CHE: 
+ 
+• l’Autorità, con la deliberazione 628/2018/R/eel , ha avviato un procedimento 
+finalizzato all ’implementazione della regolazione dello  scambio dati tra Terna, 
+imprese distributrici e SGU ai fini dell’esercizio in sicurezza del SEN; 
+• la deliberazione 628/2018/R/eel ha previsto, tra l’altro, che, ai fini dello svolgimento 
+del medesimo procedimento: 
+- siano avviate da Terna una o più consultazioni finalizzate alla definizione: 
+a) dello scopo e dell ’applicabilità dello scambio dati (ivi inclusa 
+l’individuazione dei soggetti che inviano e che ricevono i dati), dando 
+attuazione a quanto previsto dall’articolo 40(5) del regolamento SOGL, ivi 
+incluso il coordinamento del TSO con i DSO; in tale definizione rientra 
+anche l ’individuazione dei SGU, conness i alla rete di distribuzione, che 
+possono essere dispensati dall ’invio dei dati in tempo reale al TSO, nel 
+rispetto della possibilità esplicitamente concessa dall ’articolo 50(2) del 
+regolamento SOGL; 
+b) delle modalità per lo scambio dati, prevedendo , ove possibile, l’utilizzo di 
+piattaforme centralizzate e sistemi in cloud  che consentano l ’accesso 
+contestuale ai dati da parte dei soggetti autorizzati a riceverli (TSO e DSO 
+in primis), tenendo conto di quanto previsto in merito dall’articolo 40(7) del 
+regolamento SOGL in materia di accordo con i DSO; 
+--- PDF page 5 ---
+ 
+ 
+ 5 
+c) della tipologia e del contenuto dettagliato dei dati oggetto di scambio, 
+nonché la marcatura temporale e la frequenza di comunicazione degli stessi, 
+nel rispetto del regolamento SOGL, 
+e che i documenti che ne derivino siano sottoposti all ’Autorità, per 
+approvazione; 
+- siano avviate dall ’Autorità una o più consultazioni finalizzate a presentare gli 
+orientamenti in merito: 
+a) all’individuazione, anche per il tramite di gruppi di lavoro presso il 
+Comitato Elettrotec nico Italiano (di seguito: CEI), delle soluzioni 
+tecnologiche più opportune ai fini dell ’acquisizione, della raccolta e del 
+trasferimento dei dati, tenendo conto delle valutazioni di Terna in merito 
+all’utilizzo di piattaforme centralizzate e sistemi in cloud; al riguardo, il CEI 
+ha previsto la predisposizione dell’Allegato O alla Norma CEI 0-16 relativo 
+alle prescrizioni tecniche per il Controllore Centrale di Impianto (di seguito: 
+CCI) e dell’Allegato T alla medesima Norma CEI 0-16 relativo ai requisiti 
+tecnici/funzionali delle interfacce di comunicazione del dispositivo CCI; 
+b) alla definizione della responsabilità dello sviluppo e della manutenzione 
+delle soluzioni di cui alla precedente lettera a); 
+c) alle tempistiche di implementazione dello scamb io dati, nonché alle 
+tempistiche per l ’eventuale adeguamento nella responsabilità di  SGU 
+esistenti e alle relative modalità di copertura dei costi; 
+- il responsabile del procedimento, possa avvalersi, ove occorra, dell ’apporto di 
+esperti per gli approfondimenti più opportuni in materia; 
+• l’Autorità, con la deliberazione 36/2020/R/eel, ha verificato positivamente, con 
+alcune modifiche puntuali, le proposte di Terna di modifica del Codice di rete e dei 
+relativi Allegati A.6, A.7, A.13 e A.65, finalizzate alla definizione dell’applicabilità 
+e della portata dello scambio dati ai sensi dell’articolo 40(5) del regolamento SOGL, 
+nonché delle relative modalità per effettuare lo scambio dati ai sensi dell ’articolo 
+40(7) del medesimo regolamento; 
+• in sintesi, con la deliberazione 36/2020/R/eel, è stato previsto che: 
+- i dati strutturali siano inviati da tutti gli impianti di produzione, da tutti i sistemi 
+HVDC e da  tutti gli impianti di consumo connessi alla rete di trasmissione 
+nazionale e da quelli connessi alle reti di distribuzione che erogano il servizio di 
+interrompibilità del carico; 
+- con riferimenti ai dati di programmazione e previsione, non sia necessario 
+apportare modifiche alle disposizioni già previste in materia di scambio dati nel 
+Codice di rete; 
+- i dati in tempo reale, non validati, debbano essere resi disponibili da: 
+a) tutti gli impianti di produzione connessi alle reti di media tensione e con 
+potenza uguale o maggiore a 1  MW (cd. “perimetro standard”) ; p iù in 
+dettaglio, in relazione a tali impianti di produzione, Terna prevede che siano 
+raccolti i dati relativi all’energia elettrica attiva e reattiva prodotta a livello 
+di impianto di produzione, nonché i dati relativi all ’energia elettrica attiva 
+prodotta a livello di sin golo gruppo di generazione qualora di potenza 
+--- PDF page 6 ---
+ 
+ 
+ 6 
+maggiore di 50  kW per i sistemi di accumulo, di potenza maggiore di 
+170 kW per impianti di produzione con inverter e di potenza maggiore di 
+250 kW per i generatori rotanti; 
+b) un sottoinsieme, di ampiezza da definire, di impianti di produzione connessi 
+alle reti di media e bassa tensione e di potenza minore di 1  MW, 
+rappresentativi dell ’intera generazione distribuita di potenza minore di 
+1 MW (cd. “perimetro esteso”); più in dettaglio, in relazione a tali impianti 
+di produzione, Terna prevede che, nel caso di connessioni alle reti di media 
+tensione, siano raccolti i dati relativi all ’energia elettrica attiva e reattiva 
+prodotta a livello di impianto di produzione, mentre, nel caso di connessioni 
+alle reti di bassa tensione, siano raccolti i dati relativi all ’energia elettrica 
+attiva prodotta a livello di impianto di produzione; 
+- l’intervallo di campionamento dei dati in tempo reale sia pari a 4  s nel caso di 
+impianti di produzione connessi alle reti di media tensione e sia pari a 20  s nel 
+caso di impianti di produzione connessi alle reti di bassa tensione; 
+- con riferimento alle modalità per effettuare lo scambio dati ai sensi dell’articolo 
+40(7) del regolamento SOGL, l’invio dei predetti dati in tempo reale relativi agli 
+impianti di produzione afferenti al perimetro standard e al perimetro esteso 
+debba avvenire primariamente per il tramite del DSO (che acquisirà tali dati 
+dagli impianti di produzione tramite il protocollo di comunicazione IEC 61850 
+internazionalmente riconosciuto come standard per le smart grid): a tale scopo, 
+il DSO alla cui rete s iano connessi gli impianti di produzione oggetto di 
+osservabilità potrà avvalersi anche di un DSO terzo per l ’espletamento de l 
+servizio. I SGU dovranno inviare i predetti dati direttamente a Terna (tramite il 
+protocollo di comunicazione IEC 60870-5-104 con riferimento agli impianti di 
+produzione connessi in media tensione e, presumibilmente e a seguito di 
+opportuni approfondimen ti, tramite lo smart meter  2G con riferimento agli 
+impianti di produzione connessi in bassa tensione)  come soluzione di ultima 
+istanza a seguito di esplicita e motivata rinuncia da parte del DSO competent e, 
+ivi inclusa la motivata impossibilità di avvalersi di un DSO terzo; 
+- qualora i dati siano raccolti dal DSO, sia cura del medesimo DSO metterli a 
+disposizione di Terna tramite canali dedicati con protocollo di comunicazione  
+IEC 60870-5-104; 
+• i dati raccolti in tempo reale saranno utilizzati da Terna per alimentare un algoritmo 
+centrale di stima della produzione in tempo reale per ciascuna fonte . Il predetto 
+algoritmo, basato su un approccio di tipo statistico -probabilistico, sarà alimentato, 
+oltre che dalle misure in tempo reale d egli impianti  di produzione oggetto di 
+osservabilità, anche dai dati sulla diffusione degli impianti di generazione distribuita, 
+dai dati storici di alcune grandezze elettriche (quali l’energia elettrica prodotta dagli 
+impianti di produzione connessi in bassa e in media tensione e lo scambio di potenza 
+attiva e reattiva nelle Cabine Primarie), nonché da dati metereologici;  
+• l’Autorità, contestualmente alla verifica positiva della proposta presentata da  Terna 
+e come evidenziato nella parte introduttiva della  medesima deliberazione  
+--- PDF page 7 ---
+ 
+ 
+ 7 
+36/2020/R/eel, ha ritenuto opportuno effettuare ulteriori approfondimenti in  merito 
+ai seguenti argomenti: 
+- la mancata previsione dell’invio dei dati in tempo reale dell’energia elettrica  
+scambiata nel punto di connessione nel caso degli impianti di produzione oggetto 
+di “osservabilità”, in quanto potrebbe non essere pienamente coerente  con il 
+dettato del regolamento SOGL (che, seppur a titolo d’esempio,  richiama 
+esplicitamente tali dati); 
+- gli adeguamenti necessari, dal punto di vista  tecnico ed economico, nel caso  
+degli impianti di produzione esistenti per i quali Terna prevede anche l’invio dei 
+dati in tempo reale afferenti ai “singoli gruppi di generazione”, tenendo conto  
+dell’esistente architettura di campo. 
+ 
+CONSIDERATO CHE: 
+ 
+• l’Autorità, con il documento per la consultazione 361/2020/R/eel, ha definito gli 
+orientamenti di propria competenza ai fini dell ’implementazione della regolazione 
+dello scambio dati tra Terna, le imprese distributrici e i SGU ai fini dell’esercizio in 
+sicurezza del SEN , in coerenza con quanto previsto dalla deliberazione 
+628/2018/R/eel, individuando: 
+- le responsabilità per lo sviluppo e la manutenzione delle soluzioni tecnologiche 
+necessarie per lo scambio dati; 
+- le tempistiche di implementazione dello scambio dati e dei necessari 
+adeguamenti da parte dei SGU; 
+- la relativa modalità di copertura dei costi; 
+• il documento per la consultazione 361/2020/R/eel, in particolare, evidenzia 
+l’opportunità di implementare inizialmente lo scambio dati nel tempo reale per i soli 
+impianti di produzione appartenenti al perimetro standard; il medesimo documento 
+evidenzia altresì che l’estensione dei requisiti per lo scambio dati al perimetro esteso 
+debba, invece, essere effettuata in modo progressivo, considerando l’evoluzione delle 
+esigenze del SEN, previa individuazione degli impianti di produzione afferenti a tale 
+perimetro sulla base di criteri non discriminatori e il più possibile oggettivi;  
+• le responsabilità per lo scambio dati e le relative modalità di implementazione sono 
+pertanto proposte solamente per gli impianti di produzione inseriti nel perimetro 
+standard; in particolare, il documento per la consultazione 361/2020/R/eel propone: 
+i. che siano classificati come impianti di produzione esistenti gli impianti entrati 
+in esercizio entro una data specificatamente individuata dall’Autorità; 
+ii. che il CCI (e in particolare la parte Monitoratore Centrale di Impianto – MCI, 
+avente funzione di monitoraggio) sia una soluzione tecnologica efficiente per lo 
+scambio dati; 
+iii. che il CCI debba essere presente alla data di entrata in esercizio per gli impianti 
+di produzione di nuova realizzazione , mentre , per gli impianti di produzione 
+esistenti, sia definito un percorso di adeguamento ad hoc; 
+iv. con riferimento agli impianti di produzione  nuovi, che  la responsabilità 
+dell’installazione e della manutenzione degli apparati tecnici in campo, necessari 
+--- PDF page 8 ---
+ 
+ 
+ 8 
+ai fini dello scambio dati (CCI /MCI e relativi canali di  comunicazione interni 
+agli impianti di produzione), sia a carico dei produttori, in quanto sinergica con 
+la realizzazione dell’impianto stesso; 
+v. con riferimento agli impianti di produzione esistenti, che la responsabilità degli 
+interventi di adeguamento relativi all ’installazione e alla  manutenzione degli 
+apparati tecnici in campo, necessari per lo scambio dati, sia anche in questo caso 
+da assegnare ai singoli produttori, al fine di promuovere la rapidità 
+dell’attuazione degli interventi tecnici  necessari presso gli impianti di 
+produzione; 
+vi. che la responsabilità della gestione delle misure rilevan ti ai fini dello scambio 
+dati sia in capo all’impresa distributrice competente; 
+vii. che, con riferimento alle p rocedure per l ’adeguamento degli impianti di 
+produzione esistenti , siano individuate una serie di s cadenze intermedie 
+progressive che, se rispettate, comportino il riconoscimento ai  produttori, da 
+parte delle imprese distributrici,  di un contributo forfetario progressivamente 
+decrescente. Tale contributo non ha la finalità di una piena copertura dei cos ti, 
+ma di promuovere l’adeguamento tempestivo degli impianti coinvolti; 
+viii. che il contributo forfetario “base” sia definito a partire dai risultati dell’indagine 
+indicativa preliminare commissionata al Dipartimento di Energia del Politecnico 
+di Milano con la collaborazione della Società Ricerca sul Sistema Energetico 
+S.p.A. (di seguito: Studio preliminare del Politecnico di Milano), tenendo conto 
+dei soli costi di installazione dell ’apparato di campo e  del relativo sistema di 
+comunicazione a livello di  impianto di produzione  riferiti allo scenario 
+cosiddetto “ a vincoli rilassati ” (caratterizzato dall’ipotesi di utilizzo della 
+componentistica già disponibile sul mercato e di gestione del router a cura del 
+DSO), stimabili fra un minimo di 6.814 € e un massimo di 10.961 € per impianto. 
+Non sono stati considerati altri costi in quanto si presume che i costi di 
+realizzazione della rete interna di comunicazione fra i diversi gruppi di 
+generazione siano già assorbiti nei costi per l’installazione dell’apparato di 
+campo o che comunque detta rete sia già stata installata dal produttore per 
+esigenze di gestione intelligente del proprio impianto di produzione ; non sono 
+stati considerati nemmeno i costi della gestione del servizio di comunicazione, 
+in quanto detto servizio è attribuito direttamente al DSO; 
+ix. che il contributo forfetario “base” sia convenzionalmente assunto pari a 4.500 € 
+per impianto di produzione esistente oggetto di adeguamento e che il contributo 
+effettivamente erogato sia strutturato in mani era decrescente in funzione de lle 
+tempistiche di realizzazione degli interventi di adeguamento degli impianti di 
+produzione esistenti (con valori, rispettivamente, pari a 4.500 €, 3.000 €, 2.000 € 
+e 1.000 €);  
+x. che tutti gli interventi di adeguamento degli impianti di produzione esistenti 
+siano conclusi nell’arco temporale di circa un anno; 
+• il documento per la consultazione 361/2020/R/eel ipotizza altresì alcuni adempimenti 
+in capo alle imprese distributrici, prevedendo, in particolare, che le medesime: 
+--- PDF page 9 ---
+ 
+ 
+ 9 
+i. completino in tempi brevi  le attività di  propria competenza finalizzate a 
+consentire l ’osservabilità degli impianti di  produzione e l ’interlocuzione con 
+Terna; 
+ii. mettano a disposizione di  Terna le misure disponibili dell ’energia elettrica 
+prodotta dagli impianti di produzione connessi in media e bassa tensione relative 
+agli ultimi 5 anni, ivi comprese le misure puntuali dell’energia elettrica immessa 
+dagli impianti di  produzione in scambio sul posto di potenza non superiore a 
+55 kW; 
+• con riferimento agli aspetti su cui l’Autorità, con la deliberazione 36/2020/R/eel, ha 
+ritenuto opportuno effettuare ulteriori approfondimenti, il documento per la 
+consultazione 361/2020/R/eel ha: 
+- verificato che la richiesta di Terna di disporre dei dati in tempo reale dell’energia 
+elettrica prodotta e non anche dell’energia elettrica scambiata nel punto di 
+connessione (peraltro formulata in accordo con le imprese distributrici) non è in 
+contraddizione con quanto previsto dal  regolamento SOGL , poiché i dati in 
+tempo reale relat ivi all’energia elettrica prodotta dagli impianti di produzione 
+oggetto di osservabilità  rappresentano un dettaglio ulteriore rispetto ai dati 
+relativi all’energia scambiata nel punto di connessione, in coerenza  con quanto 
+previsto dal regolamento SOGL; 
+- ipotizzato che, nel caso di adeguamento degli impianti di produzione esistenti, 
+non si debba implementare la parte della proposta di Terna relativa alle misure 
+dell’energia elettrica attiva prodotta anche a livello di singolo gruppo di 
+generazione oltre ch e a livello di impianto  di produzione , in quanto appare 
+probabile che i maggiori elevati costi di adeguamento  (stimati, nello studio 
+preliminare del Politecnico di Milano, variabili tra 1.620 € e 3.330 €, nell’ipotesi 
+di soluzione implementativa meno onerosa con utilizzo di protocolli di 
+comunicazione già esistenti all’interno dell’impianto) che ne deriverebbero non 
+si giustifichino alla luce del beneficio (presumibilmente limitato) che i dati di 
+misura in tempo reale per gruppo di generazione potrebbero comportare  in 
+aggiunta ai dati di misura in tempo reale per impianto di produzione; infatti, tali 
+dati sarebbero utilizzati per alimentare l’algoritmo di stima della produzi one 
+complessiva degli impianti di generazione distribuita nel tempo reale, stima che 
+è già comunque inevitabilmente affetta da una serie di approssimazioni; sul tema 
+appare comunque opportuno svolgere una nuova valutazione con Terna; 
+• diversi soggetti inter essati, soprattutto gestori di rete, produttori e rispettive 
+associazioni di categoria, hanno fornito i propri contributi in risposta al documento 
+per la consultazione 361/2020/R/eel, evidenziando in particolare quanto di seguito 
+descritto: 
+- per alcuni soggetti sarebbe più opportuno, ai fini della definizione di “impianto 
+di produzione esistente”, fare riferimento alla data di presentazione della 
+richiesta di connessione ai sensi del TICA e non alla data di entrata in esercizio, 
+essendo quest’ultima non semp re facilmente ipotizzabile e potenzialmente 
+dipendente anche da attività non di competenza del produttore (ivi compresi 
+--- PDF page 10 ---
+ 
+ 
+ 10 
+eventuali ritardi dipendenti dalle imprese distributrici ovvero da soggetti diversi 
+dai soggetti richiedenti la connessione); 
+- per la maggior parte dei soggetti le tempistiche indicate nel documento per la 
+consultazione ai fini dell ’adeguamento degli impianti di produzione esistenti 
+dovrebbero essere riviste e posticipate: in particolare dovrebbero decorrere da 
+quando sarà disponibile in commercio il CCI/MCI; 
+- la maggior parte dei soggetti condivide che, con riferimento agli impianti di 
+produzione esistenti, debba essere posta in capo ai produttori la responsabilità 
+degli interventi di adeguamento relativi all ’installazione e alla manutenzione 
+degli apparati tecnici in campo (CCI/MCI) , fermo restando che siano 
+adeguatamente perimetrate le attività in capo ai medesimi produttori e le attività 
+in capo alle imprese distributrici ai fini dell’implementazione dello scambio dati; 
+- in generale sono state condivise le procedure per l’adeguamento degli impianti 
+di produzione esistenti, ivi compresa la serie di scadenze intermedie progressive, 
+ma alcuni soggetti hanno evidenziato che il contributo forfetario dovrebbe essere 
+maggiore rispetto a quello indicato nel documento per la consultazione 
+361/2020/R/eel, anche perché, a differenza di quanto evidenziato nello Studio 
+preliminare del Politecnico di Milano, si dovrebbero considerare ulteriori 
+elementi e variabili (ad esempio, specificità e/o ve tustà di alcuni impianti di 
+produzione, variabilità dei costi derivante dalla specificità degli impianti di 
+produzione, costi per la realizzazione della rete di comunicazione interna, 
+adeguamenti per l’utilizzo del protocollo di comunicazione IEC 61850); 
+- alcuni soggetti concordano con la proposta dell ’Autorità di  svolgere ulteriori 
+valutazioni in merito alla  necessità di disporre anche dei dati in tempo reale 
+afferenti ai singoli gruppi di generazione che compongono l ’impianto di 
+produzione; 
+- con riferimento  alle responsabilità in merito allo scambio dati  in capo alle 
+imprese distributrici, è stato evidenziato che dovrebbero essere maggiormente 
+specificate e dettagliate le responsabilità delle medesime, anche nel caso in cui 
+l’impresa distributrice dovesse decidere di avvalersi di un’impresa distributrice 
+terza per l’espletamento del servizio; 
+- è stato richiesto che gli impianti di produzione connessi a d un  SDC siano 
+esonerati dall’applicazione dello scambio dati, per evitare costi eccessivi, in capo 
+ai gestori di SDC, rispetto al potenziale beneficio atteso; 
+- con riferimento all ’eventuale implementazione dell ’osservabilità e dello 
+scambio dati anche a impianti di produzione afferenti a l perimetro esteso, la 
+maggior parte dei soggetti concorda con gli orientamenti espressi dall’Autorità 
+e, in particolare, con l’opportunità di definirne le modalità in un secondo 
+momento tenendo conto delle esigenze del SEN , previa individuazione degli 
+impianti di produzione  afferenti a tale perimetro sulla base di criteri no n 
+discriminatori e il più possibile oggettivi; inoltre, alcuni soggetti hanno ribadito 
+l’opportunità di approfondire le potenzialità dell’utilizzo dello smart meter 2G 
+per la rilevazione dei dati in tempo reale nel caso di impianti di produzione 
+connessi alle reti di bassa tensione, in coerenza con quanto già evidenziato nelle 
+--- PDF page 11 ---
+ 
+ 
+ 11 
+proposte di modifica al Codice di Rete verificate positivamente dall’Autorità con 
+la deliberazione 36/2020/R/eel; 
+- con riferimento all ’eventuale utilizzo dei dati di misura puntuali de ll’energia 
+elettrica immessa dagli impianti di produzione in scambio sul posto di potenza 
+non superiore a 55 kW, potenzialmente inseribili nel perimetro esteso , è stata 
+evidenziata la necessità di prevedere un coordinamento tra imprese distributrici, 
+Terna e Gestore dei Servizi Energetici S.p.A., al fine di ridurre e ottimizzare le 
+diverse attività in capo ai medesimi soggetti nonché di evitare l ’eventuale 
+duplicazione di flussi di misura e/o dati di misura; 
+- alcuni soggetti hanno infine richiesto di completare la regolazione prospettata 
+con il documento per la consultazione 361/2020/R/eel solo a seguito del 
+completamento, da parte del CEI, dell’aggiornamento della Norma CEI 0-16 e, 
+in particolare, dei relativi Allegati O e T. 
+ 
+CONSIDERATO CHE: 
+ 
+• il CCI, oggetto di normazione tecnica da parte del CEI a seguito di richiesta da parte 
+dell’Autorità nell’ambito del procedimento avviato con la deliberazione 
+628/2018/R/eel, è l’apparato che consente di: 
+- rilevare dall’impianto di produzione le informazioni utili per rispondere alle 
+esigenze di osservabilità e convogliare tali informazioni verso il DSO (funzione 
+di osservabilità); la parte del CCI che consente tale funzione è anche chiamata 
+MCI; 
+- scambiare informazioni, ulteriori a q uelle strettamente  necessarie ai fini 
+dell’osservabilità, tra l’impianto di produzione e il DSO  (ovvero tra l’impianto 
+di produzione e il TSO per il tramite del DSO che gestisce la rete a cui è connesso 
+il medesimo impianto di produzione), nonché  tra l’impianto di produzione ed  
+eventuali ulteriori operatori; 
+- coordinare il funzionamento dei diversi elementi costituenti l’impianto di 
+produzione affinché il medesimo impianto di produzione operi, nel proprio 
+complesso, in modo da soddisfare sia le esigenze del DSO al punto di 
+connessione con la rete con obbligo di connessione di terzi (funzione di 
+regolazione e controllo per le esigenze di sicurezza della rete), sia le esigenze di 
+eventuali ulteriori operatori (funzione di gestione ottimizzata dell’impianto di 
+produzione e di partecipazione al Mercato per il Servizio di Dispacciamento – 
+MSD) inclusi i Balancing Service Providers (di seguito: BSP); 
+• il CCI (e in particolare la propria parte denominata MCI) consente , quindi, 
+all’impianto di produzione di essere “vis to” dal DSO, dal TSO e dagli ulteriori  
+operatori come costituito da un singolo “generatore equivalente” che tiene conto  
+delle caratteristiche dei singoli gruppi di generazione e/o dei singoli sistemi di  
+accumulo, nonché della rete di collegamento tra essi ; esso è dotato di due porte di 
+comunicazione, una da utilizzarsi per la comunicazione  verso il DSO e un ’altra da 
+utilizzarsi per comunicazioni verso altri operatori (inclusi i BSP); 
+--- PDF page 12 ---
+ 
+ 
+ 12 
+• al fine di ottemperare alle disposizioni tecniche e regolatorie previste d al 
+regolamento SOGL e  dal Codice di rete nella versione risultante a seguito della  
+deliberazione 36/2020/R/eel, la specifica funzionale del CCI in termini di prestazioni 
+si sviluppa secondo le seguenti modalità: 
+- prestazioni funzionali “obbligatorie”, inerenti allo scambio dati fra produttore e 
+DSO (funzione di osservabilità); 
+- prestazioni funzionali “opzionali”, inerenti alla regolazione di tensione e alla 
+limitazione di potenza al punto di connessione dell’impianto di produzione; 
+- prestazioni funzionali “facoltative”, inerenti alla partecipazione dell’impianto di 
+produzione a MSD, alla gestione ottimale dell’impianto di produzione, etc.; 
+• poiché, come evidenziato dal CEI, l ’impatto economico dell ’hardware del CCI  
+sembra non dipendente dal fatto che il dispositivo sia realizzato nella forma integrata 
+(cioè predisposto per tutte le prestazioni funzionali obbligatorie, opzionali e 
+facoltative) o che il dispositivo sia realizzato nella forma differenziata  (ossia con le 
+sole prestazioni funzionali obbligatorie), l’Allegato O alla Norma CEI 0-16 definisce 
+il CCI nella forma integrata, prevedendo che le  prestazioni funzionali obbligatorie  
+relative all’osservabilità debbano essere implementate con priorità rispetto alle altre 
+funzioni; 
+• con par ticolare riferimento ai protocolli di comunicazione e ai relativi canali di 
+comunicazione previsti per il CCI/MCI, coerentemente con la versione del Codice di 
+rete risultante dal la deliberazione 36/2020/R/eel e considerando la prospettiva  di 
+sviluppo delle smart grid: 
+- si prevede l’utilizzo del protocollo di comunicazione IEC 61850 in relazione al 
+canale di comunicazione con il DSO; 
+- non si definiscono specifiche tecniche in relazione al secondo canale 
+comunicativo il cui utilizzo dipende dalle libere scelte dei produttori; 
+• il CEI ha proposto l’obbligatorietà di installazione e utilizzo del CCI per: 
+- nuove connessioni di impianti di produzione di potenza nominale  complessiva 
+uguale o maggiore a 1 MW alle reti di media tensione (sono , de facto, i nuovi 
+impianti di produzione rientranti nel perimetro standard  come evidenziati nel 
+documento per la consultazione 361/2020/R/eel); 
+- nuove connessioni di impianti di produzione con qualsiasi valore di potenza  
+nominale complessiva alle reti di media tensione i cui produttori intendano 
+partecipare a MSD; 
+• il CEI non ha indicato alcuna previsione in relazione all ’installazione e all’utilizzo 
+del CCI nel caso degli impianti di produzione esistenti e degli impianti di produzione 
+nuovi diversi da quelli di cui al precedente punto; 
+• nel mese di dicembre 2020, il CEI  ha pubblicato la Variante V1 alla Norma CEI 0-
+16 comprensiva, per quanto qui rileva, dell’Allegato O  “Controllore Centrale di 
+Impianto” recante le prescrizioni funzionali del CCI relativamente allo scambio delle 
+informazioni fra le unità di generazione/accumulo costituenti l’impianto ed il DSO 
+ai fini dell’osservabilità; 
+• nel mese di giugno 2021, il CEI  ha pubblicato la Variante V2 alla Norma CEI 0 -16 
+comprensiva dell’Allegato T “scambio informativo basato su standard IEC 61850”  
+--- PDF page 13 ---
+ 
+ 
+ 13 
+recante i requisiti tecnici/funzionali delle interfacce di comunicazione del CCI per lo 
+scambio dati. 
+ 
+CONSIDERATO CHE: 
+ 
+• il Politecnico di Milano, con la comunicazione del 22 ottobre 2021, ha trasmesso 
+all’Autorità l’aggiornamento del proprio Studio pubblicato congiuntamente al  
+documento per la consultazione 361/2020/R/eel; 
+• tale aggiornamento, allegato al presente provvedimento,  è stato effettuato tenendo 
+conto della pubblicazione, da parte del CEI, degli Allegati O e T alla Norma CEI 0 -
+16, nonché della maggiore maturità industriale nell’ingegnerizzazione degli apparati 
+necessari al monitoraggio dei SGU (di seguito: Studio aggiornato del Politecnico di 
+Milano); 
+• lo Studio aggiornato del Politecnico di Milano supera i due scenari (cosiddetti con 
+“vincoli rigidi” da cui derivavano costi più elevati e con “vincoli rilassati”  da cui 
+derivavano costi inferiori ) per la stima dei costi di adeguamento degli impianti di 
+produzione esistenti che, nello Studio preliminare del Politecnico di Milano,  erano 
+stati ipotizzati a ottobre 2020 nelle more del completamento dell’attività in corso 
+presso il CEI; 
+• in sintesi, lo Studio aggiornato del Politecnico di Milano evidenzia quanto segue: 
+- con riferimento all’installazione dell’apparato di campo e del relativo sistema di 
+comunicazione a livello di impianto di produzione, i costi di adeguamento 
+variano da un minimo di 10.275 € a un massimo di  16.105 € per impianto di 
+produzione. La variabilità dei costi è correlata alla complessità di ogni  
+configurazione impiantistica, il che rende impossibile definire valori più 
+puntuali. Tale nuova stima, pur collocandosi tra i due scenari ipotizzati a ottobre 
+2020, appare più prossima alla stima afferente allo scenario con “vincoli 
+rilassati” che era stata utilizzata dall’Autorità per la stima del contributo 
+forfetario base nel documento per la consultazione 361/2020/R/eel; 
+- con riferimento al l’eventuale necessità di disporre anche del le misure 
+dell’energia elettrica attiva prodotta a livello d i singolo gruppo di generazione  
+(ove previste ), pur nell’ipotesi di adottare come riferimento la soluzione 
+implementativa meno  costosa (cioè quella caratterizzata dall’utilizzo di 
+protocolli di comunicazione  tipicamente già presenti negli apparati di 
+generazione e dal MCI che interfaccia  direttamente l’elettronica del 
+componente), i costi aggiuntivi di adeguamento necessari variano, in funzione 
+delle diverse scelte  tecnologiche, tra 1.620  € e 3.330  € per singolo gruppo di 
+generazione. Essi non sono stati ri visti rispetto a quanto indicato nello Studio 
+preliminare non essendo intervenuti nuovi elementi di rilievo; 
+- con riferimento a i costi da sostenere per realizzare la rete di comunicazione 
+interna all’impianto di produzione o per utilizzare canali di comunic azione già 
+presenti al fine di veicolare al CCI/MCI i dati e le misure necessarie ai fini 
+dell’osservabilità, lo Studio aggiornato del Politecnico di Milano non ha 
+riportato elementi innovativi rispetto a quanto già evidenziato nell’ottobre 2020;  
+--- PDF page 14 ---
+ 
+ 
+ 14 
+- infine, il Politecnico ha stimato i costi di gestione del servizio di comunicazione 
+con il DSO, senza apportare elementi innovativi rispetto a quanto già evidenziato 
+nell’ottobre 2020. 
+ 
+CONSIDERATO, INFINE, CHE: 
+ 
+• con la lettera del 19 novembre 2021, la Federazione ANIE ha evidenziato che i CCI, 
+realizzati dai costruttori e certificati (con le dovute eccezioni secondo quanto indicato 
+dal CEI), nel rispetto della Norma CEI 0 -16 comprensiva dell’Allegato O e 
+dell’Allegato T, potranno esse re disponibili sul mercato e consegnati a partire 
+dall’inizio di ottobre 2022. 
+ 
+RITENUTO OPPORTUNO: 
+ 
+• definire, nell’ambito del procedimento avviato con la deliberazione 628/2018/R/eel 
+e in coerenza con il Regolamento SOGL: 
+- le responsabilità per lo sviluppo e la manutenzione delle soluzioni tecnologiche 
+necessarie per lo scambio dati  tra Terna, le imprese distributrici e SGU ai fini 
+dell’esercizio in sicurezza del SEN; 
+- le tempistiche di i mplementazione dello scambio dati e dei necessari 
+adeguamenti da parte dei SGU; 
+- la relativa modalità di copertura dei costi, 
+per gli impianti di produzione afferenti al cosiddetto “perimetro standard”, cioè gli 
+impianti di produzione connessi alle reti di media tensione di potenza uguale o 
+maggiore a 1 MW; 
+• rinviare a successive valutazioni l’estensione della regolazione dello scambio dati al 
+cosiddetto “perimetro esteso” , prevedendo che , prima di procedere a detta 
+implementazione, Terna fornisca  all’Autorità una o più relazioni dettagliate che 
+descrivano, distinguendo tra il perimetro esteso MT e il perimetro esteso BT, i criteri, 
+non discriminatori e il più possibile oggettivi, con i quali saranno individuati gli 
+impianti di produzione da includere in tale perimetro (quali, ad esempio, criteri che 
+tengano conto delle caratteristiche delle diverse fonti, della presenza nelle vicinanze 
+di altri impianti di produzione già rientranti nel perimetro standard, della presenza di 
+dati già nella disponibili tà delle imprese distributrici in merito alla disponibilità in 
+tempo reale della fonte). Tali criteri devono essere individuati coinvolgendo le 
+imprese distributrici, anche tramite specifiche consultazioni; inoltre, possono essere 
+presentate opzioni alternative, valutandone costi e benefici; 
+• specificare che la regolazione dello scambio dati per gli impianti di produzione 
+afferenti al cosiddetto “perimetro standard” trovi applicazione anche nel caso degli 
+impianti di produzione connessi a SDC, in quanto anche tali sistemi sono a tutti gli 
+effetti sistemi di distribuzione per i quali trovano applicazione le condizioni tecniche 
+per la connessione vigenti per le reti pubbliche con obbligo di connessione di terzi . 
+Peraltro, le disposizioni de l Codice di rete di T erna in materia ( approvate con la 
+deliberazione 36/2020/R/eel ) già prevedono la possibilità che un’impresa 
+--- PDF page 15 ---
+ 
+ 
+ 15 
+distributrice si avvalga di altre imprese distributrici per l e attività di propria 
+competenza relative allo scambio dati, per cui non assumono rilievo le osservazioni 
+pervenute durante la consultazione in merito ai presunti maggiori oneri per i gestori 
+di tali sistemi, in quanto essi potranno avvalersi di imprese più strutturate e con 
+maggiori economie di scala; 
+• prevedere che ai fini dello scambio dati per impianti di produzione connessi alle reti 
+di media tensione si utilizzi il CCI come definito dalla Norma CEI 0-16, ivi inclusi i 
+relativi Allegati O e T , in quanto, come già evidenziato nel documento per la 
+consultazione 361/2020/R/eel, esso appare la soluzione tecnologica più efficiente per 
+la gestione dello scambio dati e tale da garantire una armonizzazione fra tutti i SGU; 
+• definire, in coerenza con quanto già proposto nel documento per la consultazione 
+361/2020/R/eel, quali impianti di produzione connessi alle reti di media tensione e di 
+potenza uguale o maggiore a 1  MW siano considerati “nuovi” e quali impianti di 
+produzione siano considerati “esistenti” ai fini dell’ applicazione delle disposizioni 
+previste dal presente provvedimento, facendo riferimento alla data di entrata in 
+esercizio dei medesimi impianti di produzione  anziché alla data di richiesta della 
+connessione come suggerito da alcuni operatori. Si ritiene, infatti, che gli impianti di 
+produzione non ancora in esercizio debbano essere  connessi alle reti di media 
+tensione solo se rispettano tutte le disposizioni previste dalla versione più aggiornata 
+della Norma CEI 0 -16 evitando successivi adeguamenti; in più , gli interventi 
+afferenti allo scambio dati non appaiono tali da alterare il business plan di impianti 
+di produzione di potenza uguale o maggiore a 1 MW per i quali è già stata presentata 
+la richiesta di connessione pur non essendo ancora entrati in esercizio; 
+• definire la data , a partire dalla quale gli impianti di produzione che entrano in 
+esercizio vengono classificati come “impianti nuovi” ai fini del presente 
+provvedimento, tenendo conto delle tempistiche, comunicate dalla Federazione 
+ANIE, necessarie ai costruttori per rendere disponibili i CCI (ottobre 2022) e delle 
+tempistiche necessarie per la loro installazione (assunte pari ad almeno due mesi);   
+• prevedere che, ai fini dell’applicazione delle disposizioni previs te dal presente 
+provvedimento: 
+- gli “impianti di produzione nuovi” siano tutti gli impianti di produzione connessi 
+alle reti di media tensione e di potenza uguale o maggiore a 1  MW che entrano 
+in esercizio dalla data dell’1 dicembre 2022; 
+- gli “impianti di p roduzione esistenti” siano tutti gli impianti di produzione 
+connessi alle reti di media tensione e di potenza uguale o maggiore a 1 MW che 
+entrano in esercizio entro la data del 30 novembre 2022; 
+• prevedere, in coerenza con quanto proposto nel documento per  la consultazione 
+361/2020/R/eel, che l’installazione e la manutenzione dei dispositivi necessari per lo 
+scambio dati sia sempre effettuata dai singoli produttori, sia nel caso di nuovi 
+impianti di produzione, sia nel caso di impianti di produzione esisten ti connessi (o 
+da connettere) alle reti di media tensione e di potenza uguale o maggiore di 1 MW; 
+• prevedere, più in dettaglio, che: 
+- sia in capo ai produttori la responsabilità dell’installazione e manutenzione 
+dell’apparato di campo e del relativo sistema di comunicazione a livello di 
+--- PDF page 16 ---
+ 
+ 
+ 16 
+impianto di produzione ai fini del la rilevazione dai dati oggetto di scambio ai 
+sensi del Codice di rete di Terna, come risultante dalle modifiche approvate con 
+la deliberazione 36/2020/R/eel e aggiornate per effetto del presente 
+provvedimento, secondo le modalità disciplinate dagli Allegati O e T alla Norma 
+CEI 0-16; 
+- sia in capo alle imprese distributrici la responsabilità della r ilevazione dei dati 
+oggetto di scambio ai sensi del Codice di rete di Terna  (di cui al precedente 
+alinea), nonché la loro gestione e messa a disposizione di Terna secondo le 
+modalità concordate tra TSO e DSO e previste dal medesimo Codice di rete; 
+- le imprese distributrici che, nel rispetto di quanto previsto dal Codice di rete di 
+Terna come approvato con la deliberazione 36/2020/R/eel, non effettuano 
+l’attività di rilevazione dei dati di cui al presente provvedimento nemmeno 
+avvalendosi, allo scopo , di altre imprese distributrici (quali, ad esempio, le 
+imprese distributrici di riferimento  oppure, nel caso di SDC, le imprese 
+distributrici concessionarie nel territorio in cui operano) , ne diano tempestiva 
+comunicazione a Terna  affinché vi sia la possib ilità di valutare soluzioni 
+alternative. Tali imprese distributrici devono trasmettere a Terna e all’Autorità 
+una comunicazione recante esplicita e motivata rinuncia, dando evidenza di non 
+aver nemmeno potuto individuare un’impresa distributrice terza di cui avvalersi 
+per lo svolgimento dell’attività; 
+• prevedere che l’adeguamento de gli “impianti di produzione esistenti” alle 
+disposizioni di cui al presente provvedimento si completi entro il 31 gennaio 2024; 
+decorsa tale data, i produttori sono considerati inadempienti; 
+• prevedere che, nel caso di adeguamento degli impianti di produzione esistenti, non 
+debbano essere rilevate le misure nel tempo reale dell’energia elettrica attiva prodotta 
+a livello di singolo gruppo di  generazione, confermando quando ipotizzato con il 
+documento per la consultazione 361/2020/R/eel . Si ritiene , in particolare , che i 
+correlati costi aggiuntivi di adeguamento degli impianti di produzione esistenti (costi 
+che, si evidenzia, sono riferiti a ogni singolo gruppo di generazione da cui l’impianto 
+di produzione è composto), come stimati nello Studio aggiornato del Politecnico di 
+Milano e come confermati nella versione aggiornata dello stesso, non si giustifichino 
+alla luce del beneficio (presumibilmente limitato) che i dati di misura in tempo reale 
+per gruppo di generazione potrebbero comportare , anche considerate le inevitabili 
+approssimazioni presenti nell’algoritmo di stima che tali dati andrebbero ad 
+alimentare; 
+• prevedere che, nel solo caso di adeguamento degli “impianti di produzione esistenti”, 
+sia definito un contributo forfetario , avente valore  decrescente in funzione de lle 
+tempistiche di adeguamento, da riconoscere ai produttori che effettu ano tali 
+interventi entro il 31 gennaio 2024. Il contributo forfetario ha la finalità di 
+promuovere la rapidità degli interventi di adeguamento  (da effettuare comunque 
+entro l’ultima scadenza oltre la quale i produttori saranno considerati inadempienti), 
+tenendo anche conto sia dei possibili maggior i oneri che tale  anticipo potrebbe 
+comportare per i produttori in relazione all’approvvigionamento  delle soluzioni 
+tecnologiche funzionali all’adeguamento degli impianti  di produzione , sia dei  
+--- PDF page 17 ---
+ 
+ 
+ 17 
+benefici sistemici connessi all’erogazione anticipata dei sudde tti servizi . Tale 
+contributo riduce inoltre gli effetti legati al fatto che l’obbligo si applica ad un 
+sottoinsieme degli impianti; 
+• prevedere che il valore “base” del contributo forfetario sia convenzionalmente 
+definito a partire dai costi medi di adeguamento identificati nello Studio aggiornato 
+del Politecnico di Milano e, in particolare, come già anticipato nel documento per la 
+consultazione 361/2020/R/eel, prevedere di: 
+- tenere conto dei costi medi relativi all’installazione dell’apparato di campo e del 
+relativo sistema di comunicazione a livello di impianto di produzione; 
+- non tenere conto dei costi di adeguamento per disporre delle misure dell’energia 
+elettrica attiva prodotta a livello di singolo gruppo di generazione, in quanto tale 
+intervento non è previsto per gli impianti di produzione esistenti; 
+- non tenere conto de i costi da sostenere per realizzare la rete di  comunicazione 
+interna all’impianto di produzione o per utilizzare canali di  comunicazione già 
+presenti al fine di veicolare al CCI/MCI i dati e le misure  necessarie ai fini 
+dell’osservabilità, in quanto essi sono essenzialmente già ricompresi nei costi 
+relativi alla realizzazione  dell’apparato di campo e tenendo conto che, 
+mediamente, un produttore efficiente già dispone di canali comunicativi interni, 
+utilizzati ad esempio per monitorare lo  stato di funzionamento del proprio 
+impianto di produzione; 
+- non tenere conto de i costi di gestione del servizio di comunicazione  con le 
+imprese distributrici, in quanto la responsabilità della rilevazione e gestione dei 
+dati oggetto di scambio è in capo alle imprese distributrici e non ai produttori; 
+• prevedere che il valore “base” del contributo forfetario sia convenzionalmente 
+assunto prossimo al valore minimo , individuato nello Studio aggiornato del 
+Politecnico di Milano, dei costi medi relativi all’installazione dell’apparato di campo 
+e del relativo sistema di comunicazione a livello di impianto di produzione (anziché 
+pari alla metà della media aritmetica dei costi estremi, come ipotizzato nel documento 
+per la consultazione 361/2020/R/eel), accogliendo parzialmente alcune osservazioni 
+degli operatori . Ciò consente di promuovere la realizzazione delle soluzioni di 
+adeguamento più efficienti, tenendo conto al contempo di eventuali riduzioni di costo 
+che potrebbero registrarsi nei prossimi anni; 
+• prevedere, pertanto, che il valore “base” del contributo forfetario  sia posto pari a 
+10.000 € per ciascun impianto di produzione oggetto di adeguamento;  
+• prevedere che il contributo effettivamente riconosciuto sia pari al valore “base” di 
+cui al precedente punto moltiplicato per un coefficiente oggetto di riduzione lineare 
+su base trimestrale, pari a: 
+- 1 nel caso di interventi di adeguamento completati entro il 31 marzo 2023; 
+- 0,75 nel caso di interventi di adeguamento completati entro il 30 giugno 2023; 
+- 0,50 nel caso di interventi di adeguamento completati entro il 30 settembre 2023; 
+- 0,25 nel caso di interventi di adeguamento completati entro il 31 gennaio 2024; 
+• prevedere che la data di completamento degli interventi di adeguamento  in capo ai 
+produttori, che assume rilievo anche ai fini della quantificazione del contributo 
+--- PDF page 18 ---
+ 
+ 
+ 18 
+forfetario spettante, sia la data di invio della comunicazione di avvenuto 
+adeguamento come attestata da strumenti di tracciamento; 
+• prevedere che le imprese distributrici effettuino verifiche da remoto, accompagnate 
+da sopralluoghi a campione presso gli  impianti di produzione oggetto di 
+adeguamento, al fine di verificare l’avvenuta installazione dei dispositivi previsti e 
+la piena operatività dello scambio dati  (ivi inclusa la relativa integr azione con i 
+sistemi delle imprese distributrici ); e che  alle imprese distributrici sia riconosciuto 
+un corrispettivo pari a 200 € per ciascuno dei predetti sopralluoghi  il cui esito sia 
+riportato in specifici verbali, in deroga agli strumenti tariffari normalmente utilizzati 
+per la remunerazione delle medesime imprese distributrici; 
+• prevedere che i corrispettivi riconosciuti ai produttori per gli adeguamenti e i 
+corrispettivi riconosciuti alle imprese distributrici per i sopralluoghi  siano post i a 
+valere sul Fondo per eventi eccezionali, resilienza e altri progetti speciali istituito 
+dall’articolo 5, comma 5.13, della deliberazione 568/2019/R/eel  e destinato anche a 
+finanziare iniziative a sostegno degli utenti MT; 
+• prevedere che le imprese distr ibutrici realizzino e rendano operative prima del l’1 
+dicembre 2022 (data da cui gli impianti di produzione devono entrare in esercizio già 
+adeguati agli Allegati O e T alla Norma CEI 0-16) le infrastrutture di comunicazione 
+e i relativi canali di comunicaz ione funzionali a dare piena attuazione allo scambio 
+dati tra Terna, imprese distributrici e SGU ai fini dell’esercizio in sicurezza del SEN; 
+• prevedere che gli oneri relativi alle attività di cui al precedente punto svolte dalle 
+imprese distributrici siano  coperti tramite gli strumenti tariffari normalmente 
+utilizzati per la remunerazione dell’attività di distribuzione di energia elettrica; 
+• prevedere che le imprese distributrici mettano a disposizione di Terna le misure 
+disponibili dell’energia elettrica prodotta dagli impianti di produzione connessi in 
+media e bassa tensione relative agli ultimi 5 anni ; prevedere, altresì, che le imprese 
+distributrici mettano a disposizione di  Terna, secondo modalità da quest’ultima 
+definite, le misure validate dell’energia elettrica prodotta dai medesimi impianti  di 
+produzione. Tali dati  potrebbero, infatti,  essere utili per verificare e migliorare 
+l’algoritmo di stima della produzione da generazione distribuita sviluppato da Terna; 
+• rinviare ai seguiti del documento per la consultazione 435/2021/R/eel, recante 
+aggiornamenti della regolazione del settlement, la messa a disposizione dei dati 
+puntuali relativi all’energia elettrica immessa da impianti di produzione in scambio 
+sul posto di potenza non superiore a 55 kW (dati che, attualmente, sono trasmessi a 
+Terna dalle imprese distributrici solo su base aggregata per area di riferimento) 
+ 
+ 
+ 
+ 
+ 
+ 
+DELIBERA 
+ 
+ 
+--- PDF page 19 ---
+ 
+ 
+ 19 
+Articolo 1 
+Ambito di applicazione e definizioni 
+1.1 Il presente provvedimento, nell’ambito del procedimento avviato con la 
+deliberazione 628/2018/R/eel, ha l’obiettivo di disciplinare: 
+a) le responsabilità per lo sviluppo e la manutenzione delle soluzioni tecnologiche 
+necessarie per lo scambio dati tra Terna, le imprese distributrici e i SGU ai fini 
+dell’esercizio in sicurezza del SEN; 
+b) le tempistiche di implementazione dello scambio dati e dei necessari 
+adeguamenti da parte dei SGU; 
+c) la relativa modalità di copertura dei costi, 
+nel caso di impianti di produzione di energia elettrica di potenza uguale o maggiore 
+a 1 MW connessi o da connettere alle reti di media tensione. 
+1.2 Ai fini dell’applicazione del presente provvedimento: 
+a) “impianti di produzione e sistenti” sono gli impianti di produzione di energia 
+elettrica connessi alle reti di media tensione, di potenza uguale o maggiore a 
+1 MW ed entrati in esercizio entro il 30 novembre 2022; 
+b) “impianti di produzione nuovi ” sono gli impianti di produzione di en ergia 
+elettrica connessi alle reti di media tensione, di potenza uguale o maggiore a 
+1 MW ed entrati in esercizio dal 1 dicembre 2022; 
+c) “Codice di rete di Terna” è la versione del Codice di Rete come risultante dalle 
+modifiche approvate con la deliberazione 36/2020/R/eel e aggiornate per 
+effetto del presente provvedimento. 
+ 
+ 
+Articolo 2 
+Responsabilità 
+2.1 I produttori che gestiscono gli impianti di produzione di cui al comma 1. 1 sono 
+responsabili dell’installazione e manutenzione dell’apparato di campo e del relativo 
+sistema di comunicazione a livello di impianto di produzione che consentono la 
+rilevazione dai dati oggetto di scambio ai sensi del Codice di rete di Terna, secondo 
+le modalità disciplinate dagli Allegati O e T alla Norma CEI 0 -16. Allo scopo, le 
+disposizioni relative alla rilevazione del le misure nel tempo reale dell’energia 
+elettrica attiva prodotta a livello di singolo gruppo di genera zione trovano 
+applicazione solo per impianti di produzione nuovi. 
+2.2 Le imprese distributrici  sono responsabili della rilevazione dei dati oggetto di 
+scambio ai sensi del Codice di rete di Terna, nonché della loro gestione e messa a 
+disposizione di Terna secondo le modalità concordate tra TSO e DSO e previste dal 
+medesimo Codice di rete. Allo scopo, le imprese distributrici a cui è intestata tale 
+responsabilità possono avvalersi di altre imprese distributrici  secondo modalità 
+pattuite tra le parti. Nel caso in cui le imprese distributrici che, nel rispetto di quanto 
+previsto dal Codice di rete di Terna, non effettuano l’attività di rilevazione dei dati 
+--- PDF page 20 ---
+ 
+ 
+ 20 
+di cui al presente provvedimento nemmeno avvalendosi, allo scopo, di altre imprese 
+distributrici, trova applicazione quanto previsto dal comma 5.1. 
+ 
+Articolo 3 
+Disposizioni nel caso di impianti di produzione nuovi 
+3.1 Nel caso di impianti di produzione nuovi, i produttori installano i dispositivi di cui 
+al comma 2.1 entro la data di entrata in esercizio dei medesimi impianti  di 
+produzione, dandone comunicazione all’impresa distributrice  entro la data di 
+attivazione della connessione ai sensi del TICA. 
+3.2 La mancata installazione dei dispositivi di cui al comma 2.1 è condizione sufficiente 
+per sospendere l’attivazione della connessione ai sensi del TICA. 
+ 
+Articolo 4 
+Disposizioni nel caso di impianti di produzione esistenti 
+4.1 Nel caso di impianti di produzione esistenti , i produttori adeguano gli impianti di 
+produzione di cui sono responsabili, installando i dispositivi di cui al comma 2.1, e 
+comunicano entro il 31 gennaio 202 4 l’avvenuto adeguamento  all’impresa 
+distributrice secondo le modalità previste dal presente articolo. 
+4.2 Ciascuna impresa distributrice provvede tempestivamente a dare informazione in 
+merito a quanto previsto dal presente provvedimento per il tramite del proprio sito 
+internet e dei portali informatici finalizzati alla gestione della connessione ai sensi 
+del TICA qualora disponibili , nonché a mettere a disposizione un format per la 
+comunicazione di avvenuto adeguamento. Inoltre, ciascuna impresa distributrice è 
+tenuta a informare, entro il 3 1 maggio 2022, tramite modalità che garanti scano il 
+ricevimento della comunicazione, tutti i produttori responsabili della gestione di 
+impianti di produzione esistenti e connessi alla propria rete in relazione a quanto 
+previsto dal presente provvedimento. Le imprese distributrici sono altresì tenut e a 
+inviare ai produttori, entro il 30 settembre  2022, il regolamento di esercizio 
+aggiornato ai sensi del presente provvedimento. 
+4.3 Dopo aver terminato le attività di propria competenza, i produttori trasmettono 
+all’impresa distributrice, entro il 31 ge nnaio 2024, la comunicazione di avvenuto 
+adeguamento degli impianti di produzione esistenti alle prescrizioni di cui al 
+presente provvedimento nonché il nuovo regolamento di esercizio sottoscritto , 
+allegando una dichiarazione redatta, ai sensi del D.P.R. 4 45/00, da un tecnico 
+abilitato non dipendente del produttore stesso  in cui si attesta che l’impianto di 
+produzione è stato adeguato alle prescrizioni del Codice di rete di Terna e della 
+Norma CEI 0-16 in materia di osservabilità (Allegati O e T). 
+4.4 I produttori che hanno adeguato gli impianti e adempiuto a quanto previsto al 
+comma 4.3 hanno diritto, per ciascun impianto di produzione oggetto di 
+--- PDF page 21 ---
+ 
+ 
+ 21 
+adeguamento, al contributo forfetario per l’adeguamento, pari al prodotto tra un 
+valore “base” pari a 10.000 € e un coefficiente pari a: 
+a) 1, nel caso d i invio entro il 31 marzo 202 3 della comunicazione di avvenuto 
+adeguamento; 
+b) 0,75, nel caso di invio  tra il 1 aprile 202 3 e il 30 giugno 202 3 della 
+comunicazione di avvenuto adeguamento; 
+c) 0,50, nel caso di invio  tra il 1 luglio 202 3 e il 30 settembre 202 3 della 
+comunicazione di avvenuto adeguamento; 
+d) 0,25, nel caso di invio tra il 1 ottobre 202 3 e il 31 gennaio 202 4 della 
+comunicazione di avvenuto adeguamento. 
+4.5 Entro due mesi dalla data di ricevimento della com unicazione di avvenuto 
+adeguamento degli impianti di produzione esistenti e del nuovo regolamento di 
+esercizio sottoscritto dal produttore di cui al comma 4.3, l’impresa distributrice  
+effettua verifiche da remoto, accompagnate da sopralluoghi a campione pr esso gli 
+impianti di produzione esistenti oggetto di adeguamento, al fine di verificare: 
+a) l’avvenuta e corretta installazione dei dispositivi previsti; 
+b) la piena operatività dello scambio dati , anche  effettuando prove di 
+comunicazione con le infrastrutture dell’impresa distributrice tramite i canali 
+messi a disposizione dalla medesima. 
+4.6 Nel caso in cui le verifiche di cui al comma 4.5 abbiano esito negativo per cause 
+non imputabili all’impresa distributrice, la medesima ne dà evidenza al produttore, 
+dando indicazioni in merito agli interventi correttivi necessari  e prevedendo una 
+scadenza di almeno due mesi per la loro effettuazione. Al termine di tali interventi 
+correttivi, il produttore ne dà comunicazione all’impresa distributrice che  
+programma una nuova verifica entro il mese successivo alla data di ricevimento 
+della comunicazione. Qualora l’esito delle verifiche continui a essere negativo per 
+cause non imputabili all’impresa distributrice e qualora sia decorsa la data del 31 
+gennaio 2024, la medesima impresa distributrice inserisce il produttore, in relazione 
+a tale impianto di produzione, tra gli inadempienti al presente provvedimento ai fini 
+della comunicazione di cui al comma 5.3. 
+4.7 Nel caso in cui le verifiche previste dal comma 4. 5 abbiano esito positivo, il 
+contributo forfetario per l’adeguamento è erogato dall’impresa distributrice entro 
+tre mesi dalla data di ricevimento, da parte della medesima impresa distributrice, 
+della comunicazione di cui al comma 4.3. Nei casi di cui al comma 4.6, il contributo 
+forfetario per l’adeguamento è erogato dall’impresa distributrice entro il mese 
+successivo alla data della verifica con esito positivo. Il produttore perde il diritto al 
+contributo forfetario in relazione a un dato impianto di produzione nei casi in cui, 
+per tale impianto, venga inserito tra gli inadempienti in attuazione al comma 4.6.  
+4.8 Per le finalità di cui al presente articolo: 
+– la data di invio di una comunicazione è definita dall’articolo 1, comma 1.1, 
+lettera i), del TICA;  
+--- PDF page 22 ---
+ 
+ 
+ 22 
+– la data di ricevimento d i una comunicazione è definita dall’articolo 1, comma 
+1.1, lettera k), del TICA.  
+4.9 Per ciascun sopralluogo di cui al comma 4.5, il cui esito sia riportato in specifici 
+verbali, è riconosciuto alle imprese distributrici un corrispettivo pari a 200 €. 
+ 
+Articolo 5 
+Disposizioni per le imprese distributrici e per Terna 
+5.1 Le imprese distributrici che non effettua no l’attività di rilevazione e gestione dei 
+dati di cui al presente provvedimento devono trasmettere a Terna e all’Autorità, 
+entro il 31 gennaio 2022, una comunicazione recante esplicita e motivata rinuncia, 
+dando evidenza di non aver nemmeno potuto individu are un’impresa distributrice 
+terza di cui avvalersi per lo svolgimento dell’attività . Decorso tale termine , tale 
+attività rimane nella responsabilità dell’impresa distributrice competente 
+5.2 Le imprese distributrici realizzano e rendono operative, entro il 30 novembre 2022, 
+le infrastrutture di comunicazione e i relativi canali di comunicazione  di cui al 
+comma 2.2, necessari per dare piena attuazione alla regolazione dello scambio dati 
+ai sensi del presente provvedimento. 
+5.3 Le imprese d istributrici, entro la fine di ogni trimestre  a decorrere dal 30 giugno 
+2023, trasmettono a Terna, secondo modalità definite dalla medesima: 
+a) l’elenco degli impianti di produzione esistenti adeguati per i quali l’esito finale 
+delle verifiche effettuate da remoto e dell’eventuale sopralluogo è positivo; 
+b) l’elenco degli impianti di produzione esistenti adeguati per i quali l’esito finale 
+delle verifiche effettuate da remoto e dell’eventuale sopralluogo è negativo e 
+sono in corso i conseguenti interventi correttivi necessari; 
+c) l’elenco degli impianti di produzione esistenti adeguati per i quali l’esito finale 
+delle verifiche effettuate da remoto e dell’eventuale sopralluogo è 
+definitivamente negativo (decorsa la scadenza ultima del 31 gennaio 2024); 
+d) l’elenco degli impianti di produzione esistenti non adeguati, 
+indicando almeno la data di comunicazione dell’avvenuto adeguamento  (ove 
+effettuato), il codice CENSIMP e il codice POD dell’impianto di produz ione, la 
+provincia in cui è ubicato l’impianto di produzione esistente e la relativa potenza. 
+5.4 Terna, entro il 31 ottobre 2023 ed entro il 31 marzo 2024, trasmette all’Autorità una 
+sintesi dei dati raccolti ai sensi del comma 5.3. In particolare, entro il 31 marzo 
+2024, Terna dà evidenza all’Autorità dei produttori inadempienti. 
+5.5 Le imprese distributrici mettono a disposizione di Terna, secondo modalità da 
+quest’ultima definite, le misure disponibili dell’energia elettrica prodotta dagli 
+impianti di produzione connessi in media e bassa tensione relative agli ultimi 5 anni. 
+5.6 Le imprese distributrici mettono a disposizione di Terna, secondo modalità da 
+quest’ultima definite, le misure validate dell’energia elettrica prodotta da gli 
+impianti di produzione connessi in media e bassa tensione.  
+--- PDF page 23 ---
+ 
+ 
+ 23 
+ 
+Articolo 6 
+Copertura dei costi 
+6.1 I contributi forfetari per l’adeguamento degli impianti di produzione esistenti di cui 
+al comma 4.4 e i corrispettivi di cui al comma 4.9 per i sopralluoghi effettuati dalle 
+imprese distributrici sono posti a valere sul Fondo per eventi eccezionali, resilienza 
+e altri progetti speciali istituito dall’articolo 5, comma 5.13, della deliberazione 
+568/2019/R/eel e destinato anche a finanziare iniziative a sostegno degli utenti MT. 
+Al fine di ottenere l’erogazione, da parte di Cassa per i servizi energetici e 
+ambientali (CSEA), di quanto spettante, le imprese distributrici sono tenut e a dare 
+evidenza alla medesima CSEA, secondo modalità definite dalla stessa: 
+a) dell’avvenuto versament o dei contributi forfetari per l’adeguamento degli 
+impianti di produzione esistenti e della trasmissione a Terna dell’elenco dei 
+singoli impianti di produzione esistenti adeguati,  comprensivo delle 
+informazioni di cui al comma 5.3; 
+b) dei sopralluoghi effettu ati ai sensi del comma 4.5, il cui esito deve essere 
+riportato in specifici verbali. 
+6.2 Gli oneri sostenuti dalle imprese distributrici per le attività svolte ai sensi del 
+comma 5.2 trovano copertura tramite gli strumenti tariffari utilizzati per la 
+remunerazione dell’attività di distribuzione di energia elettrica. Nel caso di gestori 
+di SDC, gli oneri sostenuti per le attività svolte ai sensi del comma 5.2 trovano 
+copertura tramite le tariffe autonomamente definite dai medesimi gestori. 
+ 
+Articolo 7 
+Disposizioni finali 
+7.1 Terna aggiorna il proprio Codice di rete tenendo conto delle disposizioni di cui al 
+presente provvedimento , nonché al fine di garantire l’allineamento con le 
+disposizioni di dettaglio disciplinate dagli Allegati O e T alla Norma CEI 0-16. 
+7.2 Terna fornisc e all’Autorità una o più relazioni dettagliate che descrivano, 
+distinguendo tra il perimetro esteso MT e il perimetro esteso BT, i criteri, non 
+discriminatori e il più possibile oggettivi, con i quali saranno individuati gli impianti 
+di produzione da includere in tale perimetro (quali, ad esempio, criteri che tengano 
+conto delle caratteristiche delle diverse fonti, della presenza nelle vicinanze di altri 
+impianti di produzione già rientranti nel perimetro standard, della presenza di dati 
+già nella disponibilità delle imprese distributrici in merito alla disponibilità in 
+tempo reale della fonte). Tali criteri devono essere individuati coinvolgendo le 
+imprese distributrici, anche tramite specifiche consultazioni; inoltre, possono essere 
+presentate opzioni alternative, valutandone costi e benefici. 
+7.3 Per le finalità di cui al presente provvedimento e fatto salvo ove diversamente 
+indicato, le disposizioni in capo alle imprese distributrici trovano applicazione 
+anche per i gestori di SDC. 
+--- PDF page 24 ---
+ 
+ 
+ 24 
+7.4 La presente deliberazione è trasmessa a Terna S.p.A. e a Cassa per i servizi 
+energetici e ambientali. 
+7.5 La presente deliberazione è pubblicata nel sito internet dell’Autorità www.arera.it. 
+ 
+ 
+30 novembre 2021  IL PRESIDENTE 
+ Stefano Besseghini 

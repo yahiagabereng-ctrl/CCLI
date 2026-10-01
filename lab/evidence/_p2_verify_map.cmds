@@ -1,0 +1,18 @@
+echo "=== DATE ==="
+date
+echo "=== BRIDGE ==="
+brctl show 2>/dev/null
+echo "=== ADDR ==="
+ip -4 addr 2>/dev/null | grep -E '^[0-9]+:|inet '
+echo "=== UCI network ==="
+uci show network 2>/dev/null | grep -E "device=|ports=|ipaddr=|proto=|name=|netmask="
+echo "=== WIFI disabled? ==="
+uci get wireless.radio0.disabled 2>/dev/null; uci get wireless.radio1.disabled 2>/dev/null
+wifi status 2>/dev/null | grep -E '"disabled"|ssid|ifname' | head -30
+echo "=== FIREWALL ==="
+uci show firewall 2>/dev/null | grep -E "@zone|name=|network=|input=|output=|forward=|masq=|@forwarding"
+echo "=== DHCP ==="
+uci show dhcp 2>/dev/null | grep -E "interface=|start=|limit=|ignore="
+echo "=== LEASES ==="
+cat /tmp/dhcp.leases 2>/dev/null
+echo "=== DONE ==="

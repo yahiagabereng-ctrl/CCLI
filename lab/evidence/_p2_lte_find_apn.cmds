@@ -1,0 +1,11 @@
+echo "=== FIND APN CONFIG ==="
+ls /etc/config
+uci show 2>/dev/null | grep -i apn || true
+ls /etc/config | while read f; do grep -li apn /etc/config/$f 2>/dev/null && echo "FILE=$f"; done
+find /etc -iname '*sim*' -o -iname '*modem*' -o -iname '*cell*' -o -iname '*quectel*' 2>/dev/null | head -40
+ls /usr/lib/lua/luci/controller 2>/dev/null | head -30
+ls /usr/libexec 2>/dev/null | head -20
+ps w | grep -iE 'modem|sim|cell|quectel|mmcli' | grep -v grep
+echo "=== network.wwan ==="
+uci show network.wwan
+echo "=== DONE FIND ==="

@@ -1,0 +1,86 @@
+
+----- PAGE 1 -----
+I L P R O D O T T O
+S T C E - S G C C I è u n C o n t r o l l o r e C e n t r a l e
+d ’ I m p i a n t o b a s a t o s u R T U , c o n f i g u r a b i l e i n m o d o
+d a m a n t e n e r e u n a l i n e a d i c o n t r o l l o c o s t a n t e e
+a f f i d a b i l e t r a i l p u n t o d i c o n s e g n a d e l l ’ i m p i a n t o e i l
+T S O , s v o l g e n d o l e f u n z i o n i d i m o n i t o r a g g i o p r e v i s t e
+d a n o r m a t i v a , q u a l i m i s u r e d i r e t t e s u l l o s t a t o d i
+a n d a m e n t o d e g l i i m p i a n t i , c o m u n i c a n d o l e a l D S O
+s u p r o t o c o l l o I E C 6 1 8 5 0 ( m i s u r e d i p o t e n z a a t t i v a e
+r e a t t i v a d e l l ’ i m p i a n t o ) . I l C C I è i n g r a d o d i s v o l g e r e
+a n c h e f u n z i o n i d i r e g o l a z i o n e d e l l a p o t e n z a a t t i v a e
+r e a t t i v a d e l l ’ i m p i a n t o a l p u n t o d i c o n s e g n a , i n
+m o d o a u t o n o m o o a s s e r v i t o ( c o m a n d o i n v i a t o d a l
+D S O ) . S T C E - S G C C I r i s p e t t a i p i ù a l t i s t a n d a r d d i
+s i c u r e z z a e s s e n d o b a s a t o s u u n f r a m e w o r k d i
+s i c u r e z z a b y - d e s i g n . G r a z i e a l l a s u a m o d u l a r i t à ,
+l ’ a p p a r a t o p u ò e s s e r e u t i l i z z a t o a n c h e i n t e g r a n d o
+e l e m e n t i g i à e s i s t e n t i i n i m p i a n t o , c o m e
+a n a l i z z a t o r i d i r e t e , d i s p o s i t i v i G P S e r o u t e r . I n o l t r e ,
+p u ò e s s e r e e s t e s o i n m o d o f l e s s i b i l e n e l t e m p o c o n
+c a p a c i t à e f u n z i o n a l i t à a g g i u n t i v e r i s p e t t o a l l a
+r i c h i e s t a b a s e d i T e r n a .
+Q U A D R O N O R M A T I V O
+C o n f o r m e a l l a n o r m a C E I 0 - 1 6 
+ a l l e g a t i O e T
+C o n f o r m e a l C o d i c e d i R e t e T e r n a
+A l l e g a t o A 7 2 r e v 0 2
+S o d d i s f a l a d e l i b e r a A R E R A
+3 8 5 / 2 0 2 5 / R / e e l
+S T C E - S G C C I
+C O N T R O L L O R E
+C E N T R A L E
+D ’ I M P I A N T O
+E L E V A T I S T A N D A R D D I
+S I C U R E Z Z A
+F r a m e w o r k d i s i c u r e z z a b y - d e s i g n
+C o n f o r m e a i p r o t o c o l l i I E C 6 2 3 5 1 e
+I E C 6 2 4 4 3
+
+----- PAGE 2 -----
+m o d u l a r i t à ( 1 6 d i g i t a l i n p u t , 4 a n a l o g i n p u t , 8 d i g i t a l o u t p u t , p o w e r m e t e r , g p s ) 
+p r o t o c o l l i l a t o c e n t r o : I E C 6 0 8 7 0 - 5 - 1 0 4 / I E C 6 2 3 5 1 e I E C 6 1 8 5 0 
+f u n z i o n i R T U e m o n i t o r a g g i o a v a n z a t o 
+i n t e r f a c c i a m e n t o l a t o c a m p o ( i n v e r t e r , P L C , s e n s o r i ) v i a M o d b u s , I / O w i r e d 
+f u n z i o n i d i a u t o m a z i o n e P L C
+c o n f i g u r a z i o n e e d i a g n o s t i c a d a r e m o t o t r a m i t e m o d e m d e d i c a t o
+e s e c u z i o n e d i a u t o m a z i o n i l o c a l i b a s a t e s u l o g i c a p r o g r a m m a b i l e I E C 6 1 1 3 1 
+s e c u r i t y b y - d e s i g n e I o T - r e a d y ( M Q T T )
+G r a z i e a d u n ’ e s p e r i e n z a v e n t e n n a l e c o n l ’ I E C 6 1 8 5 0 e a l l a
+p r e s e n z a s u l m e r c a t o C C I d a l 2 0 2 1 , p e r r is p o n d e r e a d iv e r s e
+e s i g e n z e D i g i t a l P l a t f o r m s p r o p o n e u n a s o l u z io n e i n d u e v e r s i o n i
+d i f f e r e n t i : 
+C C I S T C E - S G d a c o n f i g u r a r e s u b a r r a D I N a c u r a d e g l i o p e r a t o r i e
+m a n u t e n t o r i s p e c i a l i z z a t i , p e r i l m a s s i m o d e l l a f l e s s i b i l i t à e p e r
+a d e g u a r s i a q u a l s i a s i i m p i a n t o , a n c h e a i p i ù c o m p l e s s i;
+C C I S T C E - S G c o m p l e t o i n q u a d r o c a b l a t o , u n a s o l u z i o n e 
+a l l - i n - o n e , p r o n t a p e r i l c o l l e g a m e n t o i n c a m p o .
+I l C C I d i D i g i t a l P l a t f o r m s , u t i l i z z a t o a n c h e n e l p r o g e t t o S m a r t G r i d
+E u r o p e o e F o r t , è c o n f o r m e a l l ’ a l l e g a t o O d e l l a n o r m a C E I e h a l e
+s e g u e n t i f u n z i o n a l i t à p r i n c i p a l i : 
+O U R S T O R Y
+a c q u i s i z i o n e d i s e g n a l i a n a l o g i c i e d i g i t a l i ;
+i m p o s i z i o n e d i c o m a n d i e s e t p o i n t ;
+i n t e r f a c c i a m e n t o l a t o c a m p o ( i n v e r t e r , P L C , s e n s o r i, ) v i a M o d b u s ,
+ I / O w i r e d ;
+i n t e r f a c c i a m e n t o l a t o c e n t r o : I E C 6 1 8 5 0 ;
+f u n z i o n a l i t à P F 1 e P F 2 b a s a t e s u l o g i c a p r o g r a m m a b il e I E C 6 1 1 3 1 ;
+p r o n t o p e r l e n u o v e f u n z i o n a l i t à P F 3 M S D t r a m it e B S P .
+A d e g u a m e n t i n o r m a t i v i r i c h i e s t i
++ 3 9 0 5 2 3 5 0 1 6 1
+V i a A n d r e a N o a l e , 3 5 1 , 0 0 1 5 5 R o m a
+w w w . d p l a t f o r m s . i t
+i n f o @ d p l a t f o r m s . i t
+L A S O L U Z I O N E D P
+I n b a s e a l l e d e l i b e r e A R E R A 3 8 5 / 2 0 2 5 / R / E E L e 5 6 4 / 2 0 2 5 / R / E E L , p e r i m p i a n t i f o t o v o l t a i c i e d
+e o l i c i , è s t a t o i n t r o d o t t o l ’ o b b l i g o d i im p l e m e n t a z io n e d e l l a r e g o l a z i o n e d e l l a p o t e n z a a t t iv a d a
+c o m a n d o d a D S O ( P F 2 ) , s u g l i i m p i a n t i c o n p o t e n z a ≥ 1 0 0 k W . 
+P e r l ’ a d e g u a m e n t o d i i m p i a n t i d i p r o d u z io n e e s is t e n t i , l e s c a d e n z e i m p o s t e d a l l a d e l ib e r a
+s o n o l e s e g u e n t i :
+p e r i m p i a n t i c o n p o t e n z a s u p e r i o r e o u g u a l e a 1 M W : 3 1 / 1 2 / 2 0 2 6
+p e r i m p i a n t i c o n p o t e n z a u g u a l e o m a g g i o r e d i 5 0 0 k W e m in o r e d i 1 M W : 3 1 / 1 2 / 2 0 2 7
+p e r i m p i a n t i c o n p o t e n z a u g u a l e o m a g g i o r e d i 1 0 0 k W e m in o r e d i 5 0 0 k W : 3 1 / 0 3 / 2 0 2 8
+C A R A T T E R I S T I C H E T E C N I C H E
+C O N T A T T I

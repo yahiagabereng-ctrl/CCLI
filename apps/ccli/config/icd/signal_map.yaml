@@ -1,0 +1,375 @@
+# CCLI — IEC 61850 object map (Figura 2 / Annex O+T)
+# Date: 2026-09-26
+# Status: PRODUCT freeze — hierarchy + clauses; runtime IMPL status per object
+# Norm:  CEI 0-16 Allegato O · Allegato T · TR 57-126 Figura 2
+# CID:   lab_tg544_eth_a.cid | cei-tr-57-126-example.cid (reference)
+#
+# Hierarchy (Annex T T.3.3.1):
+#   IED CCI016_01
+#     └─ LD LD_Plant
+#          ├─ LLN0                    reports / common
+#          ├─ WlimDWMX1               O.9.2.2 lim W     (Figura 2)
+#          ├─ WSdDAGC1                O.9.2.3 s.p. W    (Figura 2 green)
+#          ├─ WSaDAGC1                O.10.3.1 MSD      (discretionary)
+#          ├─ VArSdDVAR1              O.9.1.4 s.p. Q
+#          ├─ PFSPDFPF1               O.9.1   s.p. cosφ
+#          ├─ VArVDVVR1               O.9.1.3 Q(V)
+#          ├─ PFWDPFW1                O.9.1.2 Cosφ(P)
+#          └─ PdCMMXU1                O.8.3 / T.3.1.3 measurements @ PdC
+#
+# Naming: prefix + LN class + instance  (e.g. Wlim + DWMX + 1 → WlimDWMX1)
+# Italian Tab. ↔ EN Table: Wlim Tab.84/EN85 · WSd Tab.85/EN86 · WSa Tab.86/EN87
+
+meta:
+  ied_name: CCI016_01
+  ld_inst: LD_Plant
+  access_point: accessPoint1
+  eth_role: Eth_A
+  eth_ip: 192.168.10.1
+  namespace: "(Tr) IEC 61850-CEI016:2022"
+  figura2_source: "CEI TR 57-126 §6.2 Table 1 / Figura 2"
+  code_runtime: apps/ccli/adapters/iec61850_mms/mms_adapter.cpp
+  code_math: apps/ccli/core/dso/
+  code_actuation: apps/ccli/core/pf2/pf2_fsm.cpp
+  notes:
+    - "O.11 priority: W110 > Wlim > WSd > WSa > reactive (min of simultaneous export caps in Phase-1 arbiter)."
+    - "W110 is autonomous (O.9.2.1); exposed as yaml/math, not a separate DSO LN in Allegato T tables."
+    - "Product ctlModel: SBO-with-enhanced-security; lab uses DIRECT_ENHANCED."
+    - "Roadmap: TotVAr/PPV + O.9.1 reactive → Phase 5 (P5-M / P5-R). See lab/CCI_Reactive_Roadmap_Gap_Report.md."
+
+# ---------------------------------------------------------------------------
+# Figura 2 — lim W — O.9.2.2 / T Table 85 (EN) — LN DWMX prefix Wlim
+# ---------------------------------------------------------------------------
+controls:
+  wlim:
+    figura2: lim_W
+    clause: [O.9.2.2, T.3.1.4, T.3.3.1.2.1]
+    annex_t_table: "EN Table 85 / IT Tab. 84"
+    o11_priority: 2
+    ln_class: DWMX
+    ln_type: DWMX1
+    prefix: Wlim
+    ln_inst: "1"
+    reference_base: LD_Plant/WlimDWMX1
+    runtime_status: IMPL
+    objects:
+      - id: Wlim.Mod
+        do: Mod
+        fc: ST
+        cdc: ENC
+        role: enable
+        desc: "5=Inactive, 1=Active (default 5)"
+        range: [5, 1]
+        default: 5
+        mms_path: LD_Plant/WlimDWMX1.Mod
+        maps_to:
+          struct: DsoActivePowerCommands
+          field: wlim_active
+          transform: "ctlVal 1 → true; 5 → false"
+          code: "mms_adapter.cpp on_control → wlim.wlim_active"
+
+      - id: Wlim.WMaxSptPct
+        do: WMaxSptPct
+        fc: CO
+        cdc: APC
+        role: setpoint_pct_smax
+        desc: "Generation limit % of plant Smax [0..100]"
+        range: [0, 100]
+        default: 0
+        unit: percent_Smax
+        mms_path: LD_Plant/WlimDWMX1.WMaxSptPct
+        maps_to:
+          struct: DsoActivePowerCommands
+          field: wmax_spt_pct
+          transform: "p_wlim_kw = pct/100 * smax_kva"
+          code: "dso_active_power.cpp derive_active_power_kw"
+
+    actuation_path: >
+      MMS → DsoLiveCommand → apply_live_dso_commands_to_pf2 →
+      Pf2Fsm::set_thresholds → DIO1 (hal_gpio_ll / dido_v2)
+
+  # ---------------------------------------------------------------------------
+  # Figura 2 — s.p. W (green) — O.9.2.3 / T Table 86 (EN) — LN DAGC prefix WSd
+  # ---------------------------------------------------------------------------
+  wsd:
+    figura2: s.p._W
+    clause: [O.9.2.3, O.10.3.1, T.3.1.4, T.3.3.1.2.2]
+    annex_t_table: "EN Table 86 / IT Tab. 85"
+    o11_priority: 3
+    ln_class: DAGC
+    ln_type: DAGC1
+    prefix: WSd
+    ln_inst: "1"
+    reference_base: LD_Plant/WSdDAGC1
+    runtime_status: IMPL
+    tr57126_figura2: "Operative / Active · WSptPct=+20 % Smax (example)"
+    objects:
+      - id: WSd.Mod
+        do: Mod
+        fc: ST
+        cdc: ENC
+        role: enable
+        desc: "5=Inactive, 1=Active (default 5; TR Figura 2 uses Active)"
+        range: [5, 1]
+        default: 5
+        mms_path: LD_Plant/WSdDAGC1.Mod
+        maps_to:
+          struct: DsoActivePowerCommands
+          field: wsd_active
+          transform: "ctlVal 1 → true; 5 → false"
+          code: "mms_adapter.cpp on_control → live.wsd_active"
+
+      - id: WSd.WSptPct
+        do: WSptPct
+        fc: CO
+        cdc: APC
+        role: setpoint_pct_smax_signed
+        desc: "Feed-in (+) / feed-out (−) % Smax; Phase-1 FSM uses export max(0,pct)"
+        range: [-100, 100]
+        default: 100
+        unit: percent_Smax
+        mms_path: LD_Plant/WSdDAGC1.WSptPct
+        maps_to:
+          struct: DsoActivePowerCommands
+          field: wspt_pct
+          transform: "p_wsd_kw = max(0,pct)/100 * smax_kva"
+          code: "dso_active_power.cpp derive_active_power_kw"
+
+    actuation_path: >
+      MMS → DsoLiveCommand → apply_live_dso_commands_to_pf2 →
+      Pf2Fsm thresholds (O.11 min with Wlim/W110)
+
+  # ---------------------------------------------------------------------------
+  # Figura 2 — lim W110 — O.9.2.1 (autonomous; not a separate DSO LN)
+  # ---------------------------------------------------------------------------
+  w110:
+    figura2: lim_W110
+    clause: [O.9.2.1, O.11]
+    o11_priority: 1
+    runtime_status: PART
+    note: >
+      Autonomous voltage near 110 % Un. Allegato T lists status on Wlim table
+      (Limit function status P 110%), not a dedicated LN. Coded as yaml/math only.
+    maps_to:
+      struct: DsoActivePowerCommands
+      fields: [w110_active, w110_pct]
+      code: "dso_active_power.cpp · ccli_config dso.w110_*"
+      missing: "PdC voltage input to arm automatically"
+
+  # ---------------------------------------------------------------------------
+  # Figura 2 — s.p. Q — O.9.1.4 / T Table 88 — LN DVAR prefix VArSd
+  # ---------------------------------------------------------------------------
+  varsd:
+    figura2: s.p._Q
+    clause: [O.9.1.4, T.3.1.4, T.3.3.1.2.3]
+    annex_t_table: "EN Table 88"
+    o11_priority: 5
+    ln_class: DVAR
+    prefix: VArSd
+    reference_base: LD_Plant/VArSdDVAR1
+    runtime_status: IMPL
+    objects:
+      - id: VArSd.Mod
+        do: Mod
+        cdc: ENC
+        default: 5
+        mms_path: LD_Plant/VArSdDVAR1.Mod
+        maps_to: dso_live.varsd_active
+        code: "mms_adapter.cpp · ccli_main varsd plant path"
+      - id: VArSd.VArTgtSptPct
+        do: VArTgtSptPct
+        cdc: APC
+        mms_path: LD_Plant/VArSdDVAR1.VArTgtSptPct
+        maps_to: modbus FC16 Q @40003 (lab) / Sun2000 TBD
+        code: "dso_reactive_power.cpp · modbus_adapter.write_reactive_kvar"
+
+  # ---------------------------------------------------------------------------
+  # Figura 2 — s.p. cosφ — O.9.1 / T Table 90 — LN DFPF prefix PFSP
+  # ---------------------------------------------------------------------------
+  pfsp:
+    figura2: s.p._cosphi
+    clause: [O.9.1.1, T.3.1.4]
+    annex_t_table: "EN Table 90"
+    o11_priority: 6
+    ln_class: DFPF
+    prefix: PFSP
+    reference_base: LD_Plant/PFSPDFPF1
+    runtime_status: STUB
+    objects:
+      - id: PFSP.Mod
+        do: Mod
+        default: 5
+        mms_path: LD_Plant/PFSPDFPF1.Mod
+        maps_to: null
+      - id: PFSP.PFSpt
+        do: PFSpt
+        mms_path: LD_Plant/PFSPDFPF1.PFSpt
+        maps_to: null
+        missing: "cosφ set-point write + plant path"
+
+  # ---------------------------------------------------------------------------
+  # Figura 2 — Q(V) — O.9.1.3 / T Table 91 — LN DVVR prefix VArV
+  # ---------------------------------------------------------------------------
+  varv:
+    figura2: Q_V
+    clause: [O.9.1.3, O.7.3.2, T.3.1.4]
+    annex_t_table: "EN Table 91"
+    o11_priority: 6
+    ln_class: DVVR
+    prefix: VArV
+    reference_base: LD_Plant/VArVDVVR1
+    runtime_status: STUB
+    note: "Slow ring ΔT 10–600 s; δQ default 5 % Qmax"
+    objects:
+      - id: VArV.Mod
+        do: Mod
+        default: 5
+        mms_path: LD_Plant/VArVDVVR1.Mod
+        maps_to: null
+        missing: "curve breakpoints V1i..V2s + ΔT scheduler"
+
+  # ---------------------------------------------------------------------------
+  # Figura 2 — Cosφ(P) — O.9.1.2 / T Table 92 — LN DPFW prefix PFW
+  # ---------------------------------------------------------------------------
+  pfw:
+    figura2: Cosphi_P
+    clause: [O.9.1.2, O.7.3.2, T.3.1.4]
+    annex_t_table: "EN Table 92"
+    o11_priority: 6
+    ln_class: DPFW
+    prefix: PFW
+    reference_base: LD_Plant/PFWDPFW1
+    runtime_status: STUB
+    note: "δcosφ default α=0.02"
+    objects:
+      - id: PFW.Mod
+        do: Mod
+        default: 5
+        mms_path: LD_Plant/PFWDPFW1.Mod
+        maps_to: null
+
+  # ---------------------------------------------------------------------------
+  # MSD WSa — O.10.3.1 / T Table 87 — discretionary (not on Figura 2 TR example)
+  # ---------------------------------------------------------------------------
+  wsa:
+    figura2: null
+    clause: [O.10.3.1, T.3.1.4]
+    annex_t_table: "EN Table 87 / IT Tab. 86"
+    o11_priority: 4
+    ln_class: DAGC
+    prefix: WSa
+    reference_base: LD_Plant/WSaDAGC1
+    runtime_status: STUB
+    objects:
+      - id: WSa.Mod
+        do: Mod
+        default: 5
+        mms_path: LD_Plant/WSaDAGC1.Mod
+        maps_to: null
+
+# ---------------------------------------------------------------------------
+# Measurements — T.3.1.3 / O.8.3 — PdC MMXU
+# ---------------------------------------------------------------------------
+measurements:
+  pdc:
+    clause: [O.8.3, O.8.4, T.3.1.3, T.3.2.1]
+    ln_class: MMXU
+    prefix: PdC
+    reference_base: LD_Plant/PdCMMXU1
+    period_s: 4
+    runtime_status: PART
+    note: "TotW+TotVAr+PPV.phsAB IMPL r22; A deferred"
+    objects:
+      - id: PdC.TotW
+        do: TotW
+        fc: MX
+        cdc: MV
+        presence: mandatory
+        unit: kW
+        mms_path: LD_Plant/PdCMMXU1.TotW
+        runtime_status: IMPL
+        maps_to:
+          struct: MeasurementStore
+          field: p_kw
+          code: "mms_adapter.cpp update_tot_w_kw ← modbus_adapter / MeasurementStore"
+      - id: PdC.TotVAr
+        do: TotVAr
+        fc: MX
+        cdc: MV
+        presence: mandatory
+        unit: kVAr
+        mms_path: LD_Plant/PdCMMXU1.TotVAr
+        runtime_status: IMPL
+        maps_to:
+          struct: MeasurementStore
+          field: q_kvar
+          code: "mms_adapter.cpp update_totvar_kvar ← modbus_adapter / MeasurementStore"
+      - id: PdC.PPV
+        do: PPV
+        fc: MX
+        cdc: DEL
+        presence: mandatory
+        unit: kV
+        sdo: phsAB.cVal.mag.f
+        runtime_status: IMPL
+        mms_path: LD_Plant/PdCMMXU1.PPV.phsAB
+        maps_to:
+          struct: PlantConfig
+          field: poc_ppv_kv
+          code: "mms_adapter.cpp update_ppv_kv — lab yaml until meter reg (P5-06)"
+          gap: "Real analyzer PPV register not mapped on Modbus yet"
+      - id: PdC.A
+        do: A
+        presence: optional
+        runtime_status: DEFERRED
+        maps_to: null
+
+# ---------------------------------------------------------------------------
+# Reports — T.3.2.1 Type 3 integrity 4 s
+# ---------------------------------------------------------------------------
+reports:
+  - id: urcb_PdC_Mis4sec
+    clause: T.3.2.1
+    type: URCB
+    intgPd_ms: 4000
+    dataset: DS_R_PdC_Mis4sec
+    mms_path: LD_Plant/LLN0.urcb_PdC_Mis4sec
+    runtime_status: IMPL
+    members: [PdC.TotW, PdC.TotVAr, PdC.PPV.phsAB]
+
+# ---------------------------------------------------------------------------
+# Nameplate Smax — T.3.1 Table 80 / O.8.2
+# ---------------------------------------------------------------------------
+nameplate:
+  smax:
+    clause: [O.8.2, T.3.1]
+    annex_t_table: "Table 80"
+    id: PdC_VA.VARtg
+    unit: kVA
+    lab_yaml: plant.smax_kva
+    code: "plant_envelope.hpp smax_kva_effective()"
+    runtime_status: PART
+    note: "Authoritative Smax from Operating Rule; % setpoints refer to this base"
+
+# ---------------------------------------------------------------------------
+# Plant-element MMXU2 (Figura 2 GenPV / GenTer / GenIdr / Accumulo)
+# ---------------------------------------------------------------------------
+plant_elements:
+  clause: [O.8.4, T.3.3.1.1.7]
+  runtime_status: DEFERRED
+  note: "Prefixes GenPV, GenTer, GenIdr, St, SGG — instance per plant design"
+  deferred:
+    - GenPV MMXU2 TotW
+    - GenTer MMXU2 TotW
+    - GenIdr MMXU2 TotW
+    - St MMXU2 TotW (Accumulo)
+    - SGG MMXU2 TotW N=1..99
+    - XCBR1.IDG Pos (breaker)
+
+# ---------------------------------------------------------------------------
+# Status legend
+# ---------------------------------------------------------------------------
+# IMPL     — LN present + control/publish wired to core/dso + PF2
+# PART     — maths/yaml or partial DO only
+# STUB     — LN Mod present at Inactive(5); no ctlVal → plant path yet
+# DEFERRED — not in runtime model; document only

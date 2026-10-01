@@ -1,0 +1,11 @@
+/mnt/c/Yahia/projects/CCLI/apps/ccli/build-tg500/CMakeFiles/ccli_core.dir
+/mnt/c/Yahia/projects/CCLI/apps/ccli/build-tg500/CMakeFiles/ccli_adapters.dir
+/mnt/c/Yahia/projects/CCLI/apps/ccli/build-tg500/CMakeFiles/ccli_services.dir
+/mnt/c/Yahia/projects/CCLI/apps/ccli/build-tg500/CMakeFiles/ccli_platform.dir
+/mnt/c/Yahia/projects/CCLI/apps/ccli/build-tg500/CMakeFiles/ccli.dir
+/mnt/c/Yahia/projects/CCLI/apps/ccli/build-tg500/CMakeFiles/edit_cache.dir
+/mnt/c/Yahia/projects/CCLI/apps/ccli/build-tg500/CMakeFiles/rebuild_cache.dir
+/mnt/c/Yahia/projects/CCLI/apps/ccli/build-tg500/CMakeFiles/list_install_components.dir
+/mnt/c/Yahia/projects/CCLI/apps/ccli/build-tg500/CMakeFiles/install.dir
+/mnt/c/Yahia/projects/CCLI/apps/ccli/build-tg500/CMakeFiles/install/local.dir
+/mnt/c/Yahia/projects/CCLI/apps/ccli/build-tg500/CMakeFiles/install/strip.dir

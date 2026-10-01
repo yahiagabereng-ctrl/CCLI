@@ -1,0 +1,22 @@
+# L1 comm fault vectors — validation strategy §2.1
+schema: ccli-test-vector/v1
+vectors:
+  - id: L1-C-01
+    req: REQ-PF2-*
+    stimulus:
+      modbus_fault: timeout
+    expect:
+      quality: stale
+      pf2_state: safe_state
+  - id: L1-C-02
+    stimulus:
+      modbus_fault: exception
+    expect:
+      quality: invalid
+      event: diagnostic
+  - id: L1-C-03
+    stimulus:
+      modbus_fault: bad_crc
+    expect:
+      crc_errors_increment: true
+      no_stale_as_valid: true

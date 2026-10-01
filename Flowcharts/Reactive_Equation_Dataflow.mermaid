@@ -1,0 +1,46 @@
+%% Reactive regulation — parameters & equations dataflow (Phase 5)
+%% Canonical: Flowcharts/PARAMETERS_AND_EQUATIONS.md §10
+
+flowchart TD
+    subgraph INPUTS["Inputs"]
+        YAML["yaml plant: q_ind/cap, smax_kva<br/>dso reactive stubs (Phase 5)"]
+        MMS_DSO["MMS Operate Eth_A<br/>VArSdDVAR1.VArSptPct"]
+        MMS_MSD["MMS / 104 Eth_B<br/>VArSaDVAR1.VArSptPct"]
+        MB["Modbus / MMXU<br/>q_kvar, v_pu → MeasurementStore"]
+    end
+
+    subgraph EQ["core/dso reactive (Phase 5 — planned)"]
+        E1["Eq 1: Smax base<br/>plant_envelope.hpp"]
+        E3["Eq 3: VArSptPct → kVAr<br/>pct_smax_to_kvar (planned)"]
+        E10["Eq 10: Q(V) slow ring<br/>VArVDVVR1 + δQ 5%"]
+        E11["Eq 11: cosφ(P) slow ring<br/>PFWDPFW1 + δcosφ"]
+        E12["Eq 12: PFSP direct cosφ<br/>PFSPDFPF1"]
+        O11Q["O.11 reactive tier<br/>indices 5–7 vs 6 mutex"]
+        E78Q["Eq 7-8: TsQ ±5%<br/>settled_within_band_kvar (planned)"]
+    end
+
+    subgraph OUT["Actuation + publish"]
+        INV["Plant Q command<br/>Modbus / GOOSE / vendor"]
+        TOTVAR["PdCMMXU1.TotVAr publish<br/>P5-M"]
+    end
+
+    YAML --> E1
+    E1 --> E3
+    MMS_DSO --> E3
+    MMS_MSD --> E3
+    MB --> E10
+    MB --> E11
+    E3 --> O11Q
+    E10 --> O11Q
+    E11 --> O11Q
+    E12 --> O11Q
+    O11Q --> E78Q
+    E78Q --> INV
+    MB --> TOTVAR
+    INV --> TOTVAR
+
+    style E3 fill:#e7f1ff
+    style E10 fill:#f3e8fd
+    style E11 fill:#f3e8fd
+    style E12 fill:#f3e8fd
+    style O11Q fill:#e8f5e9

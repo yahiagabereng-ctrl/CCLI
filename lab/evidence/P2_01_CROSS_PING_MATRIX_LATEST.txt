@@ -1,0 +1,2 @@
+See: lab/evidence/O13_1_isolation_2026-09-25/P2_01_CROSS_PING_MATRIX.txt
+Verdict: P2-01 PASS · P2-02 PASS · Date 2026-09-25

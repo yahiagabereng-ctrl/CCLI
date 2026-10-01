@@ -1,0 +1,22 @@
+===== DUT connection extracts (/tmp/ccli.log) =====
+Pull: 2026-09-29 ~19:56 CST · PID 26370 · 192.168.10.1:3782
+
+--- startup ---
+mms: AARE 62351-4 responder auth ready (cert=869 octets)
+mms: listening on 192.168.10.1:3782 tls=on acse_tls_auth=on rbac=on crl=on ...
+
+--- TSP attempt #1 (representative; pattern repeats 3×) ---
+TLS: Verify cert: depth 0 … CN=DSO_OPERATOR … OK
+TLS: Check against list of allowed certs … serial 0E:69:22:FE… MATCH
+mms: client CONNECT count=1
+mms: client DISCONNECT count=0
+mms: no clients — Operating Rule fallback armed (15 s)
+
+--- NOT present in any attempt ---
+mms: iso presentation connect failed
+mms: acse AARQ auth failed
+mms: acse AARQ user-information invalid
+mms: ACSE auth ACCEPT
+mms: iso acse association failed
+
+VERDICT: TLS OK · association aborts before ACSE auth callback logs

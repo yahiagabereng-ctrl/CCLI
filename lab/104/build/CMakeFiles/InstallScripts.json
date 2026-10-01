@@ -1,0 +1,9 @@
+{
+	"InstallScripts" : 
+	[
+		"/mnt/c/Yahia/projects/CCLI/lab/104/build/cmake_install.cmake",
+		"/mnt/c/Yahia/projects/CCLI/lab/104/build/lib60870-build/cmake_install.cmake",
+		"/mnt/c/Yahia/projects/CCLI/lab/104/build/lib60870-build/src/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

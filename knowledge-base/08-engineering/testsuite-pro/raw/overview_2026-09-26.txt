@@ -1,0 +1,71 @@
+# Triangle MicroWorks 61850 Test Suite Pro — raw harvest
+# Captured: 2026-09-26
+# Source: https://www.trianglemicroworks.com/products/testing-and-configuration-tools/61850-test-suite-pro-pages/overview
+# License: vendor public web page — for CCLI lab RAG only; not redistributable as TMW product.
+
+Product: 61850 Test Suite Pro
+Vendor: Triangle MicroWorks
+Editions supported: IEC 61850 Edition 1, Edition 2, Edition 2.1
+Platform: Windows application (laptop or lab PC)
+
+Use cases (vendor):
+- Utility/System Integrator: engineering process, virtual isolation GOOSE testing, SCADA deploy, individual IED validation
+- Equipment Developer: test client/server implementation (in-house or source-code library); prepare for formal conformance testing
+
+Related lower-cost product: Test Suite Lite
+
+Tool modules named on overview:
+- Test Sequencer
+- Signal Flow
+- Logic Analyzer
+- GOOSE Testing / GOOSE Tracker
+- Compare Model
+- RiseClipse OCL Engine
+- Data Miner
+- Test Client / Advanced Client
+- IED Simulator
+- Custom Display
+- Report Viewer
+- Log Services
+- File Services
+- Online Help
+- What's New
+- System Requirements
+- IEC 61850 Services
+- SCL Verify (via SCL troubleshooting section)
+
+UI layout notes:
+- System Status tools (left): Errors / Warnings — acknowledge expected ones
+- Displays (right): drag Data Objects from Advanced Client / Data Miner
+- Context help: "?" on each window; tooltips on columns
+- Quickstart references DTM example Substation Simulation workspace
+
+Test Sequencer:
+- Repeatable commands against workspace
+- Test Explorer: Test Plans and Groups
+- Test Builder, Commands, Step Details, Execution Log
+
+Compare Model:
+- Discover each IED vs SCL; notify conflicts
+- Diff at each model hierarchy level; group/filter by category
+
+SCL Verify:
+- Report SCL errors known to cause target-system problems
+- Group by Severity, Test, or Message
+- Select error → SCL Viewer line
+
+Data Miner:
+- Grid of objects; group/sort/filter; presets
+- Drag DO to displays for live DA values
+
+Displays:
+- Signal Flow, Logic Analyzer, Custom Mode, Group Mode, Data Monitor
+- Report Viewer, GOOSE Viewer, SCL Viewer, Server Data Simulation
+
+Downloads / eval:
+- https://trianglemicroworks.com/products/downloads
+- https://www.trianglemicroworks.com/sales/evals
+
+Online help entry:
+- Product page Online Help link
+- Documented public help URL (What's New): https://trianglemicroworks.com/help/6tsp

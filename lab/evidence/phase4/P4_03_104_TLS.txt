@@ -1,0 +1,287 @@
+[14:29:06] === P4-03 TLS capture + test ===
+[14:29:06] DUT=192.168.1.130:2404 iface=Ethernet
+[14:29:06] Capture filter: host 192.168.1.130 and port 2404
+[14:29:06] Writing: C:\Yahia\projects\CCLI\lab\evidence\phase4\P4_03_104_TLS_2026-09-30_142906.pcapng
+[14:29:08] Running TLS client (--tls)...
+[14:29:22] === P4-03 TLS capture + test ===
+[14:29:22] DUT=192.168.1.130:2404 iface=Ethernet
+[14:29:22] Capture filter: host 192.168.1.130 and port 2404
+[14:29:22] Writing: C:\Yahia\projects\CCLI\lab\evidence\phase4\P4_03_104_TLS_2026-09-30_142922.pcapng
+[14:29:24] Running TLS client (--tls)...
+[14:30:36] === P4-03 TLS capture + test ===
+[14:30:36] DUT=192.168.1.130:2404 iface=Ethernet
+[14:30:36] Capture filter: host 192.168.1.130 and port 2404
+[14:30:36] Writing: C:\Yahia\projects\CCLI\lab\evidence\phase4\P4_03_104_TLS_2026-09-30_143036.pcapng
+[14:30:38] Running TLS client (--tls)...
+[14:36:00] === P4-03 TLS capture + test ===
+[14:36:00] DUT=192.168.1.130:2404 iface=Ethernet
+[14:36:00] Capture filter: host 192.168.1.130 and port 2404
+[14:36:00] Writing: C:\Yahia\projects\CCLI\lab\evidence\phase4\P4_03_104_TLS_2026-09-30_143600.pcapng
+[14:36:02] Running TLS client (--tls)...
+[14:36:19] === P4-03 TLS capture + test ===
+[14:36:19] DUT=192.168.1.130:2404 iface=Ethernet
+[14:36:19] Capture filter: host 192.168.1.130 and port 2404
+[14:36:19] Writing: C:\Yahia\projects\CCLI\lab\evidence\phase4\P4_03_104_TLS_2026-09-30_143619.pcapng
+[14:36:21] Running TLS client (--tls)...
+[14:36:38] TLS: Verify cert: depth 1
+[14:36:38] TLS:    flags: 00000000
+[14:36:38] TLS:   cert. version     : 3
+[14:36:38]   serial number     : 42:54:6F:79:FE:8A:9A:98
+[14:36:38]   issuer name       : C=IT, O=HiTEKS, OU=CCLI-Lab, CN=CCLI_Lab_Root_CA
+[14:36:38]   subject name      : C=IT, O=HiTEKS, OU=CCLI-Lab, CN=CCLI_Lab_Root_CA
+[14:36:38]   issued  on        : 2026-09-29 19:36:09
+[14:36:38]   expires on        : 2036-09-26 19:36:09
+[14:36:38]   signed using      : RSA with SHA-256
+[14:36:38]   RSA key size      : 2048 bits
+[14:36:38]   basic constraints : CA=true
+[14:36:38]   key usage         : Digital Signature, Key Cert Sign, CRL Sign
+[14:36:38] System.Management.Automation.RemoteException
+[14:36:38] TLS: Verify cert: depth 0
+[14:36:38] TLS:    flags: 00000000
+[14:36:38] TLS:   cert. version     : 3
+[14:36:38]   serial number     : 69:1B:6D:54:0A:8C:E3:9E
+[14:36:38]   issuer name       : C=IT, O=HiTEKS, OU=CCLI-Lab, CN=CCLI_Lab_Root_CA
+[14:36:38]   subject name      : C=IT, O=HiTEKS, OU=CCLI-Lab, CN=CCI016_01
+[14:36:38]   issued  on        : 2026-09-29 19:36:09
+[14:36:38]   expires on        : 2029-01-01 19:36:09
+[14:36:38]   signed using      : RSA with SHA-256
+[14:36:38]   RSA key size      : 2048 bits
+[14:36:38]   basic constraints : CA=false
+[14:36:38]   key usage         : Digital Signature, Key Encipherment
+[14:36:38] System.Management.Automation.RemoteException
+[14:36:38] TLS: Check against list of allowed certs
+[14:36:38] TLS: Compare With:
+[14:36:38] TLS:      cert. version     : 3
+[14:36:38]      serial number     : 69:1B:6D:54:0A:8C:E3:9E
+[14:36:38]      issuer name       : C=IT, O=HiTEKS, OU=CCLI-Lab, CN=CCLI_Lab_Root_CA
+[14:36:38]      subject name      : C=IT, O=HiTEKS, OU=CCLI-Lab, CN=CCI016_01
+[14:36:38]      issued  on        : 2026-09-29 19:36:09
+[14:36:38]      expires on        : 2029-01-01 19:36:09
+[14:36:38]      signed using      : RSA with SHA-256
+[14:36:38]      RSA key size      : 2048 bits
+[14:36:38]      basic constraints : CA=false
+[14:36:38]      key usage         : Digital Signature, Key Encipherment
+[14:36:38] System.Management.Automation.RemoteException
+[14:36:38] TLS: Verify cert: depth 1
+[14:36:38] TLS:    flags: 00000000
+[14:36:38] TLS:   cert. version     : 3
+[14:36:38]   serial number     : 42:54:6F:79:FE:8A:9A:98
+[14:36:38]   issuer name       : C=IT, O=HiTEKS, OU=CCLI-Lab, CN=CCLI_Lab_Root_CA
+[14:36:38]   subject name      : C=IT, O=HiTEKS, OU=CCLI-Lab, CN=CCLI_Lab_Root_CA
+[14:36:38]   issued  on        : 2026-09-29 19:36:09
+[14:36:38]   expires on        : 2036-09-26 19:36:09
+[14:36:38]   signed using      : RSA with SHA-256
+[14:36:38]   RSA key size      : 2048 bits
+[14:36:38]   basic constraints : CA=true
+[14:36:38]   key usage         : Digital Signature, Key Cert Sign, CRL Sign
+[14:36:38] System.Management.Automation.RemoteException
+[14:36:38] TLS: Verify cert: depth 0
+[14:36:38] TLS:    flags: 00000000
+[14:36:38] TLS:   cert. version     : 3
+[14:36:38]   serial number     : 69:1B:6D:54:0A:8C:E3:9E
+[14:36:38]   issuer name       : C=IT, O=HiTEKS, OU=CCLI-Lab, CN=CCLI_Lab_Root_CA
+[14:36:38]   subject name      : C=IT, O=HiTEKS, OU=CCLI-Lab, CN=CCI016_01
+[14:36:38]   issued  on        : 2026-09-29 19:36:09
+[14:36:38]   expires on        : 2029-01-01 19:36:09
+[14:36:38]   signed using      : RSA with SHA-256
+[14:36:38]   RSA key size      : 2048 bits
+[14:36:38]   basic constraints : CA=false
+[14:36:38]   key usage         : Digital Signature, Key Encipherment
+[14:36:38] System.Management.Automation.RemoteException
+[14:36:38] TLS: Check against list of allowed certs
+[14:36:38] TLS: Compare With:
+[14:36:38] TLS:      cert. version     : 3
+[14:36:38]      serial number     : 69:1B:6D:54:0A:8C:E3:9E
+[14:36:38]      issuer name       : C=IT, O=HiTEKS, OU=CCLI-Lab, CN=CCLI_Lab_Root_CA
+[14:36:38]      subject name      : C=IT, O=HiTEKS, OU=CCLI-Lab, CN=CCI016_01
+[14:36:38]      issued  on        : 2026-09-29 19:36:09
+[14:36:38]      expires on        : 2029-01-01 19:36:09
+[14:36:38]      signed using      : RSA with SHA-256
+[14:36:38]      RSA key size      : 2048 bits
+[14:36:38]      basic constraints : CA=false
+[14:36:38]      key usage         : Digital Signature, Key Encipherment
+[14:36:39] System.Management.Automation.RemoteException
+[14:36:39] === P4 CS104 client (lib60870) ===
+[14:36:39] target=192.168.1.130:2404 ca=1 ioa=1001 tls=on
+[14:36:39] P4: TLS mode (62351-3)
+[14:36:39] P4: connection OPEN
+[14:36:39] P4: STARTDT_CON received
+[14:36:39] P4: ASDU M_ME_NC_1(13) cot=1 ca=1 n=1
+[14:36:39] P4: M_ME_NC_1 IOA=1001 value=0.000 kW
+[14:36:39] P4: GI sent CA=1, waiting 6000 ms
+[14:36:39] P4: ASDU C_IC_NA_1(100) cot=7 ca=1 n=1
+[14:36:39] P4: ASDU M_ME_NC_1(13) cot=20 ca=1 n=1
+[14:36:39] P4: M_ME_NC_1 IOA=1001 value=0.000 kW
+[14:36:39] P4: ASDU C_IC_NA_1(100) cot=10 ca=1 n=1
+[14:36:39] P4: ASDU M_ME_NC_1(13) cot=1 ca=1 n=1
+[14:36:39] P4: M_ME_NC_1 IOA=1001 value=0.000 kW
+[14:36:39] P4: connection CLOSED
+[14:36:39] P4: session summary startdt=YES totw_ioa1001=YES value=0.000
+[14:36:39] P4: reconnect after 2s
+[14:36:39] P4: TLS mode (62351-3)
+[14:36:39] P4: connection OPEN
+[14:36:39] P4: STARTDT_CON received
+[14:36:39] P4: ASDU M_ME_NC_1(13) cot=1 ca=1 n=1
+[14:36:39] P4: M_ME_NC_1 IOA=1001 value=0.000 kW
+[14:36:39] P4: GI sent CA=1, waiting 4000 ms
+[14:36:39] P4: ASDU C_IC_NA_1(100) cot=7 ca=1 n=1
+[14:36:39] P4: ASDU M_ME_NC_1(13) cot=20 ca=1 n=1
+[14:36:39] P4: M_ME_NC_1 IOA=1001 value=0.000 kW
+[14:36:39] P4: ASDU C_IC_NA_1(100) cot=10 ca=1 n=1
+[14:36:39] P4: connection CLOSED
+[14:36:39] P4: session summary startdt=YES totw_ioa1001=YES value=0.000
+[14:36:39] P4: VERDICT PASS
+[14:38:37] === P4-03 TLS capture + test ===
+[14:38:37] DUT=192.168.1.130:2404 iface=8
+[14:38:37] Capture filter: host 192.168.1.130 and port 2404
+[14:38:37] Writing: C:\Yahia\projects\CCLI\lab\evidence\phase4\P4_03_104_TLS_2026-09-30_143837.pcapng
+[14:38:39] Running TLS client (--tls)...
+[14:38:55] TLS: Verify cert: depth 1
+[14:38:55] TLS:    flags: 00000000
+[14:38:55] TLS:   cert. version     : 3
+[14:38:55]   serial number     : 42:54:6F:79:FE:8A:9A:98
+[14:38:55]   issuer name       : C=IT, O=HiTEKS, OU=CCLI-Lab, CN=CCLI_Lab_Root_CA
+[14:38:55]   subject name      : C=IT, O=HiTEKS, OU=CCLI-Lab, CN=CCLI_Lab_Root_CA
+[14:38:55]   issued  on        : 2026-09-29 19:36:09
+[14:38:55]   expires on        : 2036-09-26 19:36:09
+[14:38:55]   signed using      : RSA with SHA-256
+[14:38:55]   RSA key size      : 2048 bits
+[14:38:55]   basic constraints : CA=true
+[14:38:55]   key usage         : Digital Signature, Key Cert Sign, CRL Sign
+[14:38:55] TLS: Verify cert: depth 0
+[14:38:55] TLS:    flags: 00000000
+[14:38:55] TLS:   cert. version     : 3
+[14:38:55]   serial number     : 69:1B:6D:54:0A:8C:E3:9E
+[14:38:55]   issuer name       : C=IT, O=HiTEKS, OU=CCLI-Lab, CN=CCLI_Lab_Root_CA
+[14:38:55]   subject name      : C=IT, O=HiTEKS, OU=CCLI-Lab, CN=CCI016_01
+[14:38:55]   issued  on        : 2026-09-29 19:36:09
+[14:38:55]   expires on        : 2029-01-01 19:36:09
+[14:38:55]   signed using      : RSA with SHA-256
+[14:38:55]   RSA key size      : 2048 bits
+[14:38:55]   basic constraints : CA=false
+[14:38:55]   key usage         : Digital Signature, Key Encipherment
+[14:38:55] TLS: Check against list of allowed certs
+[14:38:55] TLS: Compare With:
+[14:38:55] TLS:      cert. version     : 3
+[14:38:55]      serial number     : 69:1B:6D:54:0A:8C:E3:9E
+[14:38:55]      issuer name       : C=IT, O=HiTEKS, OU=CCLI-Lab, CN=CCLI_Lab_Root_CA
+[14:38:55]      subject name      : C=IT, O=HiTEKS, OU=CCLI-Lab, CN=CCI016_01
+[14:38:55]      issued  on        : 2026-09-29 19:36:09
+[14:38:55]      expires on        : 2029-01-01 19:36:09
+[14:38:55]      signed using      : RSA with SHA-256
+[14:38:55]      RSA key size      : 2048 bits
+[14:38:55]      basic constraints : CA=false
+[14:38:55]      key usage         : Digital Signature, Key Encipherment
+[14:38:55] TLS: Verify cert: depth 1
+[14:38:55] TLS:    flags: 00000000
+[14:38:55] TLS:   cert. version     : 3
+[14:38:55]   serial number     : 42:54:6F:79:FE:8A:9A:98
+[14:38:55]   issuer name       : C=IT, O=HiTEKS, OU=CCLI-Lab, CN=CCLI_Lab_Root_CA
+[14:38:56]   subject name      : C=IT, O=HiTEKS, OU=CCLI-Lab, CN=CCLI_Lab_Root_CA
+[14:38:56]   issued  on        : 2026-09-29 19:36:09
+[14:38:56]   expires on        : 2036-09-26 19:36:09
+[14:38:56]   signed using      : RSA with SHA-256
+[14:38:56]   RSA key size      : 2048 bits
+[14:38:56]   basic constraints : CA=true
+[14:38:56]   key usage         : Digital Signature, Key Cert Sign, CRL Sign
+[14:38:56] TLS: Verify cert: depth 0
+[14:38:56] TLS:    flags: 00000000
+[14:38:56] TLS:   cert. version     : 3
+[14:38:56]   serial number     : 69:1B:6D:54:0A:8C:E3:9E
+[14:38:56]   issuer name       : C=IT, O=HiTEKS, OU=CCLI-Lab, CN=CCLI_Lab_Root_CA
+[14:38:56]   subject name      : C=IT, O=HiTEKS, OU=CCLI-Lab, CN=CCI016_01
+[14:38:56]   issued  on        : 2026-09-29 19:36:09
+[14:38:56]   expires on        : 2029-01-01 19:36:09
+[14:38:56]   signed using      : RSA with SHA-256
+[14:38:56]   RSA key size      : 2048 bits
+[14:38:56]   basic constraints : CA=false
+[14:38:56]   key usage         : Digital Signature, Key Encipherment
+[14:38:56] TLS: Check against list of allowed certs
+[14:38:56] TLS: Compare With:
+[14:38:56] TLS:      cert. version     : 3
+[14:38:56]      serial number     : 69:1B:6D:54:0A:8C:E3:9E
+[14:38:56]      issuer name       : C=IT, O=HiTEKS, OU=CCLI-Lab, CN=CCLI_Lab_Root_CA
+[14:38:56]      subject name      : C=IT, O=HiTEKS, OU=CCLI-Lab, CN=CCI016_01
+[14:38:56]      issued  on        : 2026-09-29 19:36:09
+[14:38:56]      expires on        : 2029-01-01 19:36:09
+[14:38:56]      signed using      : RSA with SHA-256
+[14:38:56]      RSA key size      : 2048 bits
+[14:38:56]      basic constraints : CA=false
+[14:38:56]      key usage         : Digital Signature, Key Encipherment
+[14:38:56] === P4 CS104 client (lib60870) ===
+[14:38:56] target=192.168.1.130:2404 ca=1 ioa=1001 tls=on
+[14:38:56] P4: TLS mode (62351-3)
+[14:38:56] P4: connection OPEN
+[14:38:56] P4: STARTDT_CON received
+[14:38:56] P4: ASDU M_ME_NC_1(13) cot=1 ca=1 n=1
+[14:38:56] P4: M_ME_NC_1 IOA=1001 value=0.000 kW
+[14:38:56] P4: GI sent CA=1, waiting 6000 ms
+[14:38:56] P4: ASDU C_IC_NA_1(100) cot=7 ca=1 n=1
+[14:38:56] P4: ASDU M_ME_NC_1(13) cot=20 ca=1 n=1
+[14:38:56] P4: M_ME_NC_1 IOA=1001 value=0.000 kW
+[14:38:56] P4: ASDU C_IC_NA_1(100) cot=10 ca=1 n=1
+[14:38:56] P4: ASDU M_ME_NC_1(13) cot=1 ca=1 n=1
+[14:38:56] P4: M_ME_NC_1 IOA=1001 value=0.000 kW
+[14:38:56] P4: connection CLOSED
+[14:38:56] P4: session summary startdt=YES totw_ioa1001=YES value=0.000
+[14:38:56] P4: reconnect after 2s
+[14:38:56] P4: TLS mode (62351-3)
+[14:38:56] P4: connection OPEN
+[14:38:56] P4: STARTDT_CON received
+[14:38:56] P4: ASDU M_ME_NC_1(13) cot=1 ca=1 n=1
+[14:38:56] P4: M_ME_NC_1 IOA=1001 value=0.000 kW
+[14:38:56] P4: GI sent CA=1, waiting 4000 ms
+[14:38:56] P4: ASDU C_IC_NA_1(100) cot=7 ca=1 n=1
+[14:38:56] P4: ASDU M_ME_NC_1(13) cot=20 ca=1 n=1
+[14:38:56] P4: M_ME_NC_1 IOA=1001 value=0.000 kW
+[14:38:56] P4: ASDU C_IC_NA_1(100) cot=10 ca=1 n=1
+[14:38:56] P4: connection CLOSED
+[14:38:56] P4: session summary startdt=YES totw_ioa1001=YES value=0.000
+[14:38:56] P4: VERDICT PASS
+[14:39:09] PCAP size: 30372 bytes
+[14:39:09] --- tshark TLS handshake summary ---
+[14:39:09] --- tshark TLS record types ---
+[14:39:09] --- cleartext 104 start byte 0x68 (should be 0 after TLS) ---
+[14:39:09] PASS: no cleartext IEC104 0x68 APDU on wire
+[14:39:09] --- frame list ---
+[14:39:09] 1	0.000000000	192.168.1.183	192.168.1.130	0x0002		TCP
+[14:39:09] 2	0.000023000	192.168.1.183	192.168.1.130	0x0002		TCP
+[14:39:09] 3	0.000050000	192.168.1.183	192.168.1.130	0x0002		TCP
+[14:39:09] 4	0.000846000	192.168.1.130	192.168.1.183	0x0012		TCP
+[14:39:09] 5	0.001073000	192.168.1.183	192.168.1.130	0x0010		TCP
+[14:39:09] 6	0.001093000	192.168.1.183	192.168.1.130	0x0010		TCP
+[14:39:09] 7	0.001116000	192.168.1.183	192.168.1.130	0x0010		TCP
+[14:39:09] 8	0.003673000	192.168.1.183	192.168.1.130	0x0018		IEC 60870-5-104
+[14:39:09] 9	0.003693000	192.168.1.183	192.168.1.130	0x0018		TCP
+[14:39:09] 10	0.003721000	192.168.1.183	192.168.1.130	0x0018		TCP
+[14:39:09] 11	0.004366000	192.168.1.130	192.168.1.183	0x0010		TCP
+[14:39:09] 12	1.626777000	192.168.1.130	192.168.1.183	0x0018		IEC 60870-5-104
+[14:39:09] 13	1.626777000	192.168.1.130	192.168.1.183	0x0018		IEC 60870-5-104
+[14:39:09] 14	1.627208000	192.168.1.183	192.168.1.130	0x0010		TCP
+[14:39:09] 15	1.627208000	192.168.1.183	192.168.1.130	0x0010		TCP
+[14:39:09] 16	1.627241000	192.168.1.183	192.168.1.130	0x0010		TCP
+[14:39:09] 17	1.627265000	192.168.1.183	192.168.1.130	0x0010		TCP
+[14:39:09] 18	1.627286000	192.168.1.183	192.168.1.130	0x0010		TCP
+[14:39:09] 19	1.627321000	192.168.1.183	192.168.1.130	0x0010		TCP
+[14:39:09] 20	1.645257000	192.168.1.130	192.168.1.183	0x0018		IEC 60870-5-104
+[14:39:09] 21	1.645257000	192.168.1.130	192.168.1.183	0x0018		IEC 60870-5-104
+[14:39:09] 22	1.645526000	192.168.1.183	192.168.1.130	0x0010		TCP
+[14:39:09] 23	1.645526000	192.168.1.183	192.168.1.130	0x0010		TCP
+[14:39:10] 24	1.645559000	192.168.1.183	192.168.1.130	0x0010		TCP
+[14:39:10] 25	1.645583000	192.168.1.183	192.168.1.130	0x0010		TCP
+[14:39:10] 26	1.645604000	192.168.1.183	192.168.1.130	0x0010		TCP
+[14:39:10] 27	1.645622000	192.168.1.183	192.168.1.130	0x0010		TCP
+[14:39:10] 28	1.645916000	192.168.1.183	192.168.1.130	0x0018		IEC 60870-5-104
+[14:39:10] 29	1.645916000	192.168.1.183	192.168.1.130	0x0018		IEC 60870-5 ASDU
+[14:39:10] 30	1.645983000	192.168.1.183	192.168.1.130	0x0018		TCP
+[14:39:10] 31	1.646030000	192.168.1.183	192.168.1.130	0x0018		TCP
+[14:39:10] 32	1.646073000	192.168.1.183	192.168.1.130	0x0018		TCP
+[14:39:10] 33	1.646116000	192.168.1.183	192.168.1.130	0x0018		TCP
+[14:39:10] 34	1.646684000	192.168.1.130	192.168.1.183	0x0010		TCP
+[14:39:10] 35	1.646684000	192.168.1.130	192.168.1.183	0x0010		TCP
+[14:39:10] 36	1.647874000	192.168.1.183	192.168.1.130	0x0018		IEC 60870-5-104
+[14:39:10] 37	1.647896000	192.168.1.183	192.168.1.130	0x0018		TCP
+[14:39:10] 38	1.647918000	192.168.1.183	192.168.1.130	0x0018		TCP
+[14:39:10] 39	1.648119000	192.168.1.183	192.168.1.130	0x0018		IEC 60870-5-104
+[14:39:10] 40	1.648137000	192.168.1.183	192.168.1.130	0x0018		TCP
+[14:39:10] P4-03 VERDICT: PASS (TLS client + capture)

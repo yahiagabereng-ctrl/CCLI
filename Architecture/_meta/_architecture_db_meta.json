@@ -1,0 +1,15 @@
+{
+  "db": "C:\\Yahia\\projects\\CCLI\\Architecture\\architecture.db",
+  "schema": "C:\\Yahia\\projects\\CCLI\\Architecture\\schema.sql",
+  "queries": "C:\\Yahia\\projects\\CCLI\\Architecture\\queries.sql",
+  "dashboard": {
+    "requirements": 13,
+    "hw_blocks": 12,
+    "interfaces": 12,
+    "open_gaps": 17,
+    "open_risks": 8,
+    "pending_verification": 9,
+    "rag_gaps": 11,
+    "untraced_requirements": 0
+  }
+}

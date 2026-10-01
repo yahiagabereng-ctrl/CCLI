@@ -1,0 +1,3 @@
+ubus call dido_v2 read_di '{"channel":2}'
+ubus call dido_v2 gd32.read_di '{}'
+ubus call dido_v2 status

@@ -1,0 +1,18 @@
+echo "=== P2-03 LTE not to DSO ==="
+date
+echo "=== FIREWALL forwarding ==="
+uci show firewall | grep -E 'forwarding|@zone|name=|network=|forward=|masq='
+echo "=== WWAN / usb0 ==="
+ip -4 addr show usb0 2>/dev/null || true
+ifstatus wwan 2>/dev/null | head -35
+echo "=== TEST1 ping 8.8.8.8 (LTE outbound) ==="
+ping -c 4 -W 3 8.8.8.8; echo "ping88_exit=$?"
+echo "=== TEST2 ping -I usb0 192.168.10.1 (TG DSO IP via LTE iface) ==="
+ping -I usb0 -c 4 -W 3 192.168.10.1; echo "ping_dso_gw_usb0_exit=$?"
+echo "=== TEST3 ping -I usb0 192.168.10.10 (DSO PC) ==="
+ping -I usb0 -c 4 -W 3 192.168.10.10; echo "ping_dso_pc_usb0_exit=$?"
+echo "=== TEST4 ping 192.168.10.10 (default route - may local) ==="
+ping -c 4 -W 3 192.168.10.10; echo "ping_dso_pc_default_exit=$?"
+echo "=== IPTABLES/NFT forward wan->lan hint ==="
+nft list ruleset 2>/dev/null | grep -iE 'forward|wan|lan1' | head -40 || iptables -L FORWARD -n -v 2>/dev/null | head -30
+echo "=== DONE ==="

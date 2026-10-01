@@ -1,0 +1,41 @@
+===== P3 Step 5 — MMS client browse + 4 s TotW (P3-03) =====
+Date: 2026-09-25
+Clause: T.3.2.1 · P3-03
+Client: lab/mms_lab_client.c → lab/tg544-openwrt/mms_lab_client
+Host: 192.168.10.1:102 (Eth_A)
+
+CONNECT
+-------
+[PASS] IedConnection_connect → OK
+
+BROWSE
+------
+[PASS] LogicalDevice: CCI016_01LD_Plant
+[PASS] LN: LLN0, PdCMMXU1, WlimDWMX1
+[PASS] DataSet DS_R_PdC_Mis4sec → PdCMMXU1.TotW[MX]
+[PASS] RCB urcb_PdC_Mis4sec IntgPd=4000
+
+READ
+----
+[PASS] CCI016_01LD_Plant/PdCMMXU1.TotW.mag.f = 0.000000
+       (0.0 = no Modbus P yet / simulator idle — value present)
+
+REPORTING (20 s listen)
+-----------------------
+[PASS] GI + integrity reports received
+reports_received = 6
+avg_interval_ms  = 3961  (expect ~4000; band 3000–5500)
+
+Sample deltas (ms): 0 (GI), 3798, 4001, 4002, 4002, 4000
+
+Log: lab/evidence/O13_1_isolation_2026-09-25/P3_03_MMS_CLIENT_STEP5.log
+
+VERDICT
+-------
+P3-03 = PASS — client sees periodic TotW at ~4 s (Type 3 / intgPd)
+
+NEXT
+----
+Step 6/7: non-zero TotW from Modbus; Wlim SBO → PF2 → DIO1 (P3-04)
+
+===== END =====

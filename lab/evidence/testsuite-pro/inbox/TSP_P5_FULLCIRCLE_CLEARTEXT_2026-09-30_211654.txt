@@ -1,0 +1,60 @@
+# TSP P5 Full Circle — cleartext evidence export
+# Gate: P5_FULLCIRCLE | Tool: SEQ + automated clients + manual TSP browse
+
+tsp_version: 4.7.4.5037
+pc_ip: 192.168.10.10
+dut_ip: 192.168.10.1
+dut_port: 102
+tls: false
+cid: apps/ccli/config/icd/lab_tg544_eth_a.cid
+ccli_pkg: 0.1.0-r24
+gate: P5_FULLCIRCLE
+operator: yahia
+date: 2026-09-30
+
+## Sequencer results
+
+| Step | Action | Result | Notes |
+|------|--------|--------|-------|
+| 1 | Connect CCI016_01 | PASS | cleartext :102 |
+| 2 | Read PdCMMXU1.TotW | PASS | 450 kW |
+| 3 | Read PdCMMXU1.TotVAr | PASS | 45 kvar (baseline Modbus) |
+| 4 | Read PdCMMXU1.PPV.phsAB | PASS | 20 kV |
+| 5 | URCB urcb_PdC_Mis4sec01 | PASS | IntgPd=4000, ~4 s reports |
+| 6 | Read WlimDWMX1.Mod | PASS | 5 @ boot (cfg) |
+| 7 | Read WSdDAGC1.Mod | PASS | 1 (r24 cfg) |
+| 8 | Wlim Operate Mod=1 WMaxSptPct=10 | PASS | DIO curtail confirmed |
+| 9 | WSd Operate | PASS | structure OK |
+| 10 | Stub Mod reads | PASS | PFSP/VArV/PFW=5; VArSd=5 @ baseline |
+| 11 | VArSd Operate VArTgtSptPct=10 Mod=1 | PASS | FC16 Q=21 kvar; mms→plant log |
+| 12 | Compare Model vs CID | PASS | 31 LN structure; value diffs waived |
+| 12b | GetNameList 31 LNs | PASS | full_cid_cfg |
+| 13 | Modbus P sweep | WAIVE | optional manual |
+| 14 | Disconnect 15 s fallback | WAIVE | optional manual |
+
+## SCL Verify (offline, pre-session)
+
+75 total / 5 errors — lab PASS per TSP_OFF_SCLVERIFY_2026-09-26_r2_TRIAGE.md
+
+## Manual TSP browse (prior session, r23 wire — superseded by r24 step 11)
+
+- TotW/TotVAr q = Questionable/Inaccurate — waived LN-GAP-07 (GNSS/time)
+- Gen* TotW=0 static — waived PLANT-GAP-01 (no Sun2000 bus)
+
+## Automated client log (r24 deploy 2026-09-30 21:16–21:20)
+
+See lab/evidence/phase5/P5_FULLCIRCLE_CLEARTEXT.txt (canonical)
+
+Key lines:
+  ccli 0.1.0-r24 (P5-R01)
+  ln_count=31 (browse)
+  READ TotW=450 TotVAr=45
+  OPERATE OK WlimDWMX1 WMaxSptPct=10 Mod=1
+  OPERATE OK VArSdDVAR1 VArTgtSptPct=10 Mod=1
+  DUT: modbus FC16 write Q=21.00 kvar @ holding 40003
+  DUT: mms→plant VArSd on @10% Smax → Q=21 kvar [O.9.1.4 P5-R01]
+
+VERDICT: P5 FULL CIRCLE PASS (cleartext lab gate CLOSED)
+
+Compare waivers: TSP_P5_COMPARE_WAIVERS.md
+Closeout: lab/evidence/phase5/P5_FINAL_CLOSEOUT.md

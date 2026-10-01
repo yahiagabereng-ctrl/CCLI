@@ -1,0 +1,120 @@
+Il TC-CCI è il Controllore Centrale di Impianto sviluppato da Tesmec
+0-16, rispondendo ai requisiti obbligatori per gli impianti connessi
+stack applicativo IEC 61850 e soddisfa i più rigorosi standard di
+diverse esigenze operative, offrendo beneﬁci come autodiagnostica,
+conﬁgurazione web-based e protocolli di comunicazione avanzati,
+Il nostro TC-CCI è conforme alla nuova normativa CEI 0-16 che
+Punto di ConnessionePrincipali CaratteristicheIl Contesto Il Dispositivo
+L 'installazione del CCI al punto di consegna dell'impianto
+è obbligatoria per impianti di produzione nuovi ed esistenti
+lo rende adattabile a qualsiasi tipologia di impianto. Dispone
+di una porta Ethernet dedicata per l'interfaccia con gli
+elementi di impianto e garantisce la compatibilità EMC per
+di comunicazione sicuri conformi allo standard IEC 62351
+e soddisfa i requisiti dei più stringenti standard di cyber-
+oraria tramite NTP/SNTP e include un event log per la
+In risposta alle necessità di una maggiore osservabilità e
+controllo dei cosiddetti Signiﬁcant Grid Users, l’Autorità di
+nuove disposizioni per la connessione di impianti di produzione
+Centrale di Impianto (CCI).
+di dati tra Terna, le imprese distributrici e i Signiﬁcant Grid
+nazionale per tramite del dispositivo CCI e attraverso il
+protocollo di comunicazione IEC 61850 secondo quanto
+prescritto dalla norma tecnica CEI 0-16, allegato O e T.
+Il dispositivo TC-CCI di Tesmec Automation si presenta
+completao di ogni accessorio e funzionalità richiesta per
+norma CEI 0-16.
+Da un punto di vista hardware, l'architettura PLC modulare
+necessità di qualsiasi tipologia di impianto da adeguare.
+real-time da cui il server 61850 preleva le informazioni
+da scambiare tramite servizi di Report e GOOSE. La
+piattaforma, incluso lo stack basato su IEC 61850 TLS , è
+1. Controllore CPU + I/O
+2. Media converter rame/ﬁbra
+4. Ricevitore GNSS & Time server NTP
+5. Switch Ethernet
+Livello del Sistema Flusso di dati Funzionalità Componenti / Cablaggio
+Rete di Controllo
+(o Terna, tramite il DSO) invia ordini di
+attiva (Pattiva) all'impianto, in ottica di
+(procedura RiGeDi).
+di Potenza (P , Q), Tensione (V) e stato
+dei Dispositivi di Interfaccia (DI).
+Protocollo Esterno: IEC 61850.
+Logica di controllo (Algoritmi PF2): Il
+CCI riceve la funzione di regolazione
+descritte dalla CEI 0-16 Allegato O.
+Logica di monitoraggio (PF1): Raccoglie,
+elabora e archivia i dati di campo e di rete.
+attraverso comandi IEC 61850.
+Acquisizione di:
+Punto di Connessione (PdC).
+e dei Dispositivi di Interfaccia (DI).
+singoli gruppi di generazione.
+ai Trasformatori di Corrente (TA) e
+stati (ON/OFF) del DG/DI.
+Cablaggio fonti e gruppi: interfacce di
+rete ethernet/seriali verso sistemi di
+conformi CEI 0-16.
+PF2 / Attuazione: Il CCI invia i comandi
+di limitazione di potenza (es. 50% della
+unità di generazione.
+Protocollo inverter: Modbus RTU
+(via RS-485) o Modbus TCP (via
+Ethernet), Proﬁnet o altri protocolli di
+rete su Bus di Campo separato dalle
+Cablaggio RS‑485: Utilizzo di cavo
+di generazione (inverter) invia al CCI i
+propri dati di produzione (P , stato DDG)
+Cablaggio: Rete RS-485 o Ethernet
+(Bus di Campo).
+Interazione e Comunicazione nel Sistema CCI: Monitoraggio e Controllo di Potenza
+La tabella seguente riassume le principali differenze di interazione tra CCI e unità di generazione nei contesti fotovoltaico
+ed eolico: tipologia di unità, modalità di controllo PF2, protocolli di comunicazione specifici e verifiche di pilotabilità/
+di generatori rotanti, generalmente
+di potenza, così da ottimizzare la
+Il CCI si interfaccia ai sistemi di controllo degli
+inverter (centralizzati o di stringa) e distribuisce
+i setpoint di limitazione della potenza attiva,
+utilizzando protocolli industriali interoperabili quali
+Modbus RTU/TCP per un’applicazione uniforme e
+Protocollo Esterno: IEC 61850.
+Comunicazione standard IEC 61850 su
+canale di rete dedicato (ad es. fibra ottica),
+con protezioni di cybersecurity basate su
+Protocollo di campo
+Modbus RTU/TCP: protocollo ampiamente adottato
+di turbine e parchi eolici, oltre ai protocolli
+IEC 61850 per l’interoperabilità a livello di
+Gli inverter devono essere ‘pilotabili’, cioè in grado
+di ricevere comandi remoti per la riduzione della
+Il controllore della turbina o il PLC di campo
+deve poter ricevere i comandi dal CCI e
+regolare la potenza agendo sugli attuatori
+richiesta evidenza della capacità di controllo
+Grado di protezione IP55
+Tensione di alimentazione 230Vac; 110Vdc
+Unità di calcolo centrale
+Interfacce di rete come da CEI 0-16
+- 1 porta Ethernet di tipo 100BaseFX, realizzata con
+ulteriori attori abilitati
+- 2 porte 100BaseTX spare dedicate esclusivamente
+Ingressi digitali
+Numero ingressi espandibile ﬁno a 16
+Livelli di acquisizione 110Vdc nom. (min 80.3Vdc - max 165Vdc)
+Circuito di protezione Relè di separazione dal campo, sostituibili con i
+livelli di tensione disponibili.
+Sincronizzazione GPS
+Interfaccia SMA GNSS
+Standard GNSS GPS, GLONASS, GALILEO
+Numero canali GNSS 32
+Tecnologia Ingressi Corrente
+Denominazione ingresso Ingresso di misurazione della tensione V1, V2, V3
+Range tensione d'ingresso diretto 35 V AC - 690 V AC (Fase/fase)
+Range tensione d'ingresso mediante convertitore esterno60 V AC - 2000000 V AC (primaria)
+Tecnologia Ingressi Tensione
+Denominazione ingresso Misurazione corrente I1, I2, I3
+Corrente d'ingresso (conﬁgurabile) 1 A (secondaria)
+Campo di misura corrente 1 A - 20000 A (primaria)
+Soglia di eccitazione del valore nominale del
+campo di misura

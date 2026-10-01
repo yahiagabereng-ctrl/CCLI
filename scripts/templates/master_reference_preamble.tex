@@ -1,0 +1,134 @@
+% CCI Master Reference — generated preamble (do not edit by hand)
+\documentclass[11pt,a4paper]{report}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{geometry}
+\geometry{margin=20mm, top=28mm, bottom=25mm}
+\setlength{\headheight}{22pt}
+
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{longtable}
+\usepackage{ragged2e}
+\usepackage{xurl}
+\usepackage{hyperref}
+\urlstyle{same}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{eurosym}
+\usepackage{titlesec}
+\usepackage{float}
+\usepackage{microtype}
+\usepackage{needspace}
+
+\setlength{\parskip}{0.28em plus 0.06em minus 0.03em}
+\setlength{\parindent}{0pt}
+\titlespacing*{\chapter}{0pt}{0pt}{1.0em}
+\titlespacing*{\section}{0pt}{0.75em}{0.35em}
+\titlespacing*{\subsection}{0pt}{0.55em}{0.25em}
+\titlespacing*{\subsubsection}{0pt}{0.45em}{0.2em}
+% Keep tables from overflowing the text block when many columns are present.
+\setlength{\tabcolsep}{3pt}
+\setlength{\extrarowheight}{1pt}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=HiteksNavy!80!black,
+  citecolor=HiteksNavy!80!black,
+  urlcolor=HiteksOrange,
+  pdftitle={CEI 0-16 Central Plant Controller Master Reference},
+  pdfauthor={HiTEKS / CCLI Programme}
+}
+
+\definecolor{HiteksNavy}{RGB}{10,22,40}
+\definecolor{HiteksOrange}{RGB}{232,119,34}
+\definecolor{warnamber}{RGB}{180,83,9}
+\definecolor{warnbg}{RGB}{255,251,235}
+\definecolor{okgreen}{RGB}{22,101,52}
+\definecolor{okbg}{RGB}{240,253,244}
+\definecolor{leadbg}{RGB}{239,246,255}
+\definecolor{missred}{RGB}{153,27,27}
+\definecolor{missbg}{RGB}{254,242,242}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\textcolor{HiteksNavy}{%%DOC_ID%% rev.\ %%REVISION%%}}
+\fancyhead[R]{\small\textcolor{HiteksNavy}{HiTEKS CCI Master Reference}}
+\fancyfoot[C]{\small\textcolor{gray}{\thepage}}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{HiteksOrange}\leaders\hrule height \headrulewidth\hfill}}
+
+\titleformat{\part}{\normalfont\Huge\bfseries\color{HiteksNavy}}{\thepart}{1em}{}
+\titleformat{\section}{\normalfont\Large\bfseries\color{HiteksNavy}}{\thesection}{0.8em}{}
+\titleformat{\subsection}{\normalfont\large\bfseries\color{HiteksNavy!90!black}}{\thesubsection}{0.6em}{}
+\titleformat{\subsubsection}{\normalfont\normalsize\bfseries\color{HiteksNavy!80!black}}{\thesubsubsection}{0.5em}{}
+
+\newcommand{\docref}[1]{\textbf{#1}}
+\newcommand{\file}[1]{\texttt{#1}}
+\newcommand{\statushave}{\textcolor{okgreen}{\textbf{HAVE}}}
+\newcommand{\statusingested}{\textcolor{okgreen}{\textbf{INGESTED}}}
+\newcommand{\statusmissing}{\textcolor{missred}{\textbf{MISSING}}}
+\newcommand{\statuspartial}{\textcolor{warnamber}{\textbf{PARTIAL}}}
+\newcommand{\leadbox}[1]{%
+  \noindent\colorbox{leadbg}{\parbox{\dimexpr\linewidth-2\fboxsep\relax}{\small\textbf{\textcolor{HiteksNavy}{Lead path:}} #1}}%
+}
+
+\setlist[itemize]{noitemsep, topsep=2pt}
+\setlist[enumerate]{noitemsep, topsep=2pt}
+
+\begin{document}
+
+% --- Cover ---
+\begin{titlepage}
+\thispagestyle{empty}
+\noindent\textcolor{HiteksOrange}{\rule{\linewidth}{3pt}}\\[0.6em]
+{\fontsize{28}{32}\selectfont\textbf{\textcolor{HiteksNavy}{%%TITLE%%}}}\\[0.35em]
+{\Large\textcolor{HiteksNavy!70!black}{%%SUBTITLE%%}}\\[2.2em]
+
+\noindent\colorbox{HiteksNavy}{%
+  \parbox{\dimexpr\linewidth-2\fboxsep\relax}{%
+    \vspace{0.4em}
+    \color{white}
+    \textbf{Document ID:} %%DOC_ID%% \hfill \textbf{Revision:} %%REVISION%%\\
+    \textbf{Build date:} %%BUILD_DATE%% \hfill \textbf{Sources:} %%SOURCE_COUNT%% files\\
+    \vspace{0.4em}
+  }%
+}\\[1.5em]
+
+\leadbox{Toradex Verdin Development Board \textbf{99991105} + SoM \textbf{0063} (i.MX8M Plus Quad 4GB IT, no Wi-Fi). Eval kit is BSP/lab only — field CCI requires custom carrier for C1 remainder, C2, C4, C5, C10.}
+
+\vspace{1em}
+\noindent\colorbox{warnbg}{%
+  \parbox{\dimexpr\linewidth-2\fboxsep\relax}{%
+    \small
+    \textbf{\textcolor{warnamber}{Living document:}} edit canonical Markdown under \file{knowledge-base/} and programme root, then run \file{scripts/build-master-reference.ps1} to regenerate this PDF. Do not edit the generated \file{.tex} by hand.
+  }%
+}\\[1.2em]
+
+\begin{tabular}{@{}ll@{}}
+\textbf{Target product} & CEI~0-16 Annex~O/T/M Central Plant Controller (100\,kW--6\,MW MT) \\
+\textbf{Phase 1 budget} & \textasciitilde{}\EUR{}1{,}000 prototype (single unit) \\
+\textbf{Lead vendor score} & Toradex \textbf{84} · Variscite \textbf{67} · NXP \textbf{60} (post Wave~1) \\
+\textbf{RAG corpus} & Telematry \file{ingest-ccli.ps1} · hybrid vector + keyword + graph \\
+\textbf{Companion site} & \file{website/} (Chapters 01--10) \\
+\end{tabular}
+
+\vfill
+{\small
+\textbf{Included in this edition}\\[0.3em]
+Programme roadmap · KB structure · vendor C1--C10 matrix · Wave~1 scorecard · kit catalog · prototype BOM \& missing-doc index · regulations classification · RAG architecture · download index.
+}
+
+\vspace{1em}
+\noindent\textcolor{HiteksOrange}{\rule{\linewidth}{1pt}}\\
+{\small HiTEKS · Original CCI-class design track (Option~A) · Not a vendor kit product brief}
+\end{titlepage}
+
+\tableofcontents
+\clearpage

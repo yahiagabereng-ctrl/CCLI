@@ -1,0 +1,31 @@
+%% CCLI Fig 5 — Regulatory corpus map (Italy P0)
+%% Source: knowledge-base/08-engineering/CCI_62443_Zones.md
+%% Render: https://mermaid.live
+
+flowchart LR
+  subgraph GRID["GRID-IT P0"]
+    AO["CEI 0-16 Allegato O<br/>PF2 observability"]
+    AT["CEI 0-16 Allegato T<br/>61850 exchange"]
+    AL["AiLux manual<br/>behaviour reference"]
+  end
+  subgraph CYBER["CYBER P0-P1"]
+    C62443["IEC 62443-3-2 zones<br/>4-1 SDLC · 4-2 CR"]
+    C62351["IEC 62351-3/4/5/14<br/>TLS · audit"]
+    CRA["EU CRA 2024/2847"]
+  end
+  subgraph METRO["METROLOGY P1"]
+    M61557["CEI EN 61557-12<br/>fixed blocks"]
+  end
+  subgraph PROTO["PROTO P1"]
+    P104["IEC 60870-5-104"]
+    PMOD["Modbus RTU/TCP"]
+    P61850["IEC 61850 MMS"]
+  end
+  subgraph REG["REGULATOR P0"]
+    ARERA["ARERA 540/2021 MISSING"]
+  end
+  GRID --> Z0MAP["TR400 Z0 apps/ccli"]
+  CYBER --> Z0MAP
+  METRO --> Z0MAP
+  PROTO --> Z0MAP
+  REG --> Z0MAP

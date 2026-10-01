@@ -1,0 +1,145 @@
+[2026-09-30 15:40:56] # P4-05 - O.14 command audit with parameters (reject + accept)
+[2026-09-30 15:40:56] Build: ccli-0.1.0-r20 | DUT=192.168.1.130
+[2026-09-30 15:40:56] Phase A: monitor_only --reject-test ...
+[2026-09-30 15:40:56] Restart ccli: lab_tr400_phase4_eth_b.yaml
+[2026-09-30 15:41:02] iec104: Operating Rule mode=monitor_only allow_commands=no gi=yes monitor: TotW@1001=on [O.14]
+[2026-09-30 15:41:07] 
+[2026-09-30 15:41:07] === Reject-test client ===
+[2026-09-30 15:41:07] TLS: Verify cert: depth 1
+[2026-09-30 15:41:07] TLS:    flags: 00000000
+[2026-09-30 15:41:07] TLS:   cert. version     : 3
+[2026-09-30 15:41:07]   serial number     : 42:54:6F:79:FE:8A:9A:98
+[2026-09-30 15:41:07]   issuer name       : C=IT, O=HiTEKS, OU=CCLI-Lab, CN=CCLI_Lab_Root_CA
+[2026-09-30 15:41:07]   subject name      : C=IT, O=HiTEKS, OU=CCLI-Lab, CN=CCLI_Lab_Root_CA
+[2026-09-30 15:41:07]   issued  on        : 2026-09-29 19:36:09
+[2026-09-30 15:41:07]   expires on        : 2036-09-26 19:36:09
+[2026-09-30 15:41:07]   signed using      : RSA with SHA-256
+[2026-09-30 15:41:07]   RSA key size      : 2048 bits
+[2026-09-30 15:41:07]   basic constraints : CA=true
+[2026-09-30 15:41:07]   key usage         : Digital Signature, Key Cert Sign, CRL Sign
+[2026-09-30 15:41:07] System.Management.Automation.RemoteException
+[2026-09-30 15:41:07] TLS: Verify cert: depth 0
+[2026-09-30 15:41:07] TLS:    flags: 00000000
+[2026-09-30 15:41:07] TLS:   cert. version     : 3
+[2026-09-30 15:41:07]   serial number     : 69:1B:6D:54:0A:8C:E3:9E
+[2026-09-30 15:41:07]   issuer name       : C=IT, O=HiTEKS, OU=CCLI-Lab, CN=CCLI_Lab_Root_CA
+[2026-09-30 15:41:07]   subject name      : C=IT, O=HiTEKS, OU=CCLI-Lab, CN=CCI016_01
+[2026-09-30 15:41:07]   issued  on        : 2026-09-29 19:36:09
+[2026-09-30 15:41:07]   expires on        : 2029-01-01 19:36:09
+[2026-09-30 15:41:07]   signed using      : RSA with SHA-256
+[2026-09-30 15:41:07]   RSA key size      : 2048 bits
+[2026-09-30 15:41:07]   basic constraints : CA=false
+[2026-09-30 15:41:07]   key usage         : Digital Signature, Key Encipherment
+[2026-09-30 15:41:07] System.Management.Automation.RemoteException
+[2026-09-30 15:41:07] TLS: Check against list of allowed certs
+[2026-09-30 15:41:07] TLS: Compare With:
+[2026-09-30 15:41:07] TLS:      cert. version     : 3
+[2026-09-30 15:41:07]      serial number     : 69:1B:6D:54:0A:8C:E3:9E
+[2026-09-30 15:41:07]      issuer name       : C=IT, O=HiTEKS, OU=CCLI-Lab, CN=CCLI_Lab_Root_CA
+[2026-09-30 15:41:07]      subject name      : C=IT, O=HiTEKS, OU=CCLI-Lab, CN=CCI016_01
+[2026-09-30 15:41:07]      issued  on        : 2026-09-29 19:36:09
+[2026-09-30 15:41:07]      expires on        : 2029-01-01 19:36:09
+[2026-09-30 15:41:07]      signed using      : RSA with SHA-256
+[2026-09-30 15:41:07]      RSA key size      : 2048 bits
+[2026-09-30 15:41:07]      basic constraints : CA=false
+[2026-09-30 15:41:07]      key usage         : Digital Signature, Key Encipherment
+[2026-09-30 15:41:07] System.Management.Automation.RemoteException
+[2026-09-30 15:41:07] === P4 CS104 client (lib60870) ===
+[2026-09-30 15:41:07] target=192.168.1.130:2404 ca=1 ioa=1001 tls=on
+[2026-09-30 15:41:07] P4: connection OPEN
+[2026-09-30 15:41:07] P4: STARTDT_CON received
+[2026-09-30 15:41:07] P4: ASDU M_ME_NC_1(13) cot=1 ca=1 n=1
+[2026-09-30 15:41:07] P4: M_ME_NC_1 IOA=1001 value=0.000 kW
+[2026-09-30 15:41:07] P4-05: C_SC_NA_1(45) IOA=2001 sent=yes
+[2026-09-30 15:41:07] P4: ASDU C_SC_NA_1(45) cot=7 ca=1 n=1
+[2026-09-30 15:41:07] P4-05: C_CS_NA_1(103) clock sync sent=yes
+[2026-09-30 15:41:07] P4: ASDU C_CS_NA_1(103) cot=7 ca=1 n=1
+[2026-09-30 15:41:07] P4: connection CLOSED
+[2026-09-30 15:41:07] P4-05: reject-test commands sent=yes GÇö check DUT log for O.14 result=reject
+[2026-09-30 15:41:09] 
+[2026-09-30 15:41:09] === DUT log (reject) ===
+[2026-09-30 15:41:09] --- P4-05 reject-test marker ---
+[2026-09-30 15:41:09] --- P4-05 reject-test marker ---
+[2026-09-30 15:41:09] iec104: O.14 type=45 ioa=2001 state=1 select=0 result=reject
+[2026-09-30 15:41:09] iec104: O.14 type=45 ioa=2001 state=1 select=0 result=reject
+[2026-09-30 15:41:09] iec104: O.14 type=103 result=reject
+[2026-09-30 15:41:10] iec104: O.14 type=50 ioa=3001 value=42.500 select=0 result=reject
+[2026-09-30 15:41:10] iec104: O.14 type=50 ioa=3001 value=42.500 select=0 result=reject
+[2026-09-30 15:41:10] iec104: O.14 type=50 ioa=3001 value=42.500 select=0 result=accept
+[2026-09-30 15:41:10] iec104: O.14 type=45 ioa=2001 state=1 select=0 result=reject
+[2026-09-30 15:41:10] iec104: O.14 type=45 ioa=2001 state=1 select=0 result=reject
+[2026-09-30 15:41:10] iec104: O.14 type=103 result=reject
+[2026-09-30 15:41:10] Phase B: command mode --accept-test (IOA 3001, 42.5 kW) ...
+[2026-09-30 15:41:10] Restart ccli: lab_tr400_phase4_eth_b_command.yaml
+[2026-09-30 15:41:16] iec104: Operating Rule mode=command allow_commands=yes gi=yes monitor: TotW@1001=on MSD_SP@3001 [O.10.3.1] [O.14]
+[2026-09-30 15:41:20] 
+[2026-09-30 15:41:20] === Accept-test client ===
+[2026-09-30 15:41:20] TLS: Verify cert: depth 1
+[2026-09-30 15:41:20] TLS:    flags: 00000000
+[2026-09-30 15:41:20] TLS:   cert. version     : 3
+[2026-09-30 15:41:20]   serial number     : 42:54:6F:79:FE:8A:9A:98
+[2026-09-30 15:41:20]   issuer name       : C=IT, O=HiTEKS, OU=CCLI-Lab, CN=CCLI_Lab_Root_CA
+[2026-09-30 15:41:20]   subject name      : C=IT, O=HiTEKS, OU=CCLI-Lab, CN=CCLI_Lab_Root_CA
+[2026-09-30 15:41:20]   issued  on        : 2026-09-29 19:36:09
+[2026-09-30 15:41:20]   expires on        : 2036-09-26 19:36:09
+[2026-09-30 15:41:20]   signed using      : RSA with SHA-256
+[2026-09-30 15:41:20]   RSA key size      : 2048 bits
+[2026-09-30 15:41:20]   basic constraints : CA=true
+[2026-09-30 15:41:20]   key usage         : Digital Signature, Key Cert Sign, CRL Sign
+[2026-09-30 15:41:20] System.Management.Automation.RemoteException
+[2026-09-30 15:41:20] TLS: Verify cert: depth 0
+[2026-09-30 15:41:20] TLS:    flags: 00000000
+[2026-09-30 15:41:20] TLS:   cert. version     : 3
+[2026-09-30 15:41:20]   serial number     : 69:1B:6D:54:0A:8C:E3:9E
+[2026-09-30 15:41:20]   issuer name       : C=IT, O=HiTEKS, OU=CCLI-Lab, CN=CCLI_Lab_Root_CA
+[2026-09-30 15:41:20]   subject name      : C=IT, O=HiTEKS, OU=CCLI-Lab, CN=CCI016_01
+[2026-09-30 15:41:20]   issued  on        : 2026-09-29 19:36:09
+[2026-09-30 15:41:20]   expires on        : 2029-01-01 19:36:09
+[2026-09-30 15:41:20]   signed using      : RSA with SHA-256
+[2026-09-30 15:41:20]   RSA key size      : 2048 bits
+[2026-09-30 15:41:20]   basic constraints : CA=false
+[2026-09-30 15:41:20]   key usage         : Digital Signature, Key Encipherment
+[2026-09-30 15:41:20] System.Management.Automation.RemoteException
+[2026-09-30 15:41:20] TLS: Check against list of allowed certs
+[2026-09-30 15:41:20] TLS: Compare With:
+[2026-09-30 15:41:20] TLS:      cert. version     : 3
+[2026-09-30 15:41:20]      serial number     : 69:1B:6D:54:0A:8C:E3:9E
+[2026-09-30 15:41:20]      issuer name       : C=IT, O=HiTEKS, OU=CCLI-Lab, CN=CCLI_Lab_Root_CA
+[2026-09-30 15:41:20]      subject name      : C=IT, O=HiTEKS, OU=CCLI-Lab, CN=CCI016_01
+[2026-09-30 15:41:20]      issued  on        : 2026-09-29 19:36:09
+[2026-09-30 15:41:20]      expires on        : 2029-01-01 19:36:09
+[2026-09-30 15:41:20]      signed using      : RSA with SHA-256
+[2026-09-30 15:41:20]      RSA key size      : 2048 bits
+[2026-09-30 15:41:20]      basic constraints : CA=false
+[2026-09-30 15:41:20]      key usage         : Digital Signature, Key Encipherment
+[2026-09-30 15:41:20] System.Management.Automation.RemoteException
+[2026-09-30 15:41:20] === P4 CS104 client (lib60870) ===
+[2026-09-30 15:41:20] target=192.168.1.130:2404 ca=1 ioa=1001 tls=on
+[2026-09-30 15:41:20] P4: connection OPEN
+[2026-09-30 15:41:20] P4: STARTDT_CON received
+[2026-09-30 15:41:20] P4: ASDU M_ME_NC_1(13) cot=1 ca=1 n=1
+[2026-09-30 15:41:20] P4: M_ME_NC_1 IOA=1001 value=0.000 kW
+[2026-09-30 15:41:20] P4-05: C_SE_NC_1(50) IOA=3001 value=42.500 kW sent=yes
+[2026-09-30 15:41:20] P4: ASDU C_SE_NC_1(50) cot=7 ca=1 n=1
+[2026-09-30 15:41:20] P4: ASDU C_SE_NC_1(50) cot=10 ca=1 n=1
+[2026-09-30 15:41:20] P4: connection CLOSED
+[2026-09-30 15:41:20] P4-05: accept-test MSD SP sent=yes GÇö check DUT log for O.14 result=accept
+[2026-09-30 15:41:23] 
+[2026-09-30 15:41:23] === DUT log (accept) ===
+[2026-09-30 15:41:23] iec104: O.14 type=45 ioa=2001 state=1 select=0 result=reject
+[2026-09-30 15:41:23] iec104: O.14 type=45 ioa=2001 state=1 select=0 result=reject
+[2026-09-30 15:41:23] iec104: O.14 type=103 result=reject
+[2026-09-30 15:41:23] iec104: O.14 type=50 ioa=3001 value=42.500 select=0 result=reject
+[2026-09-30 15:41:23] iec104: O.14 type=50 ioa=3001 value=42.500 select=0 result=reject
+[2026-09-30 15:41:23] iec104: O.10.3.1 MSD set-point accepted ioa=3001 value=42.500 kW [lab stub]
+[2026-09-30 15:41:23] iec104: O.14 type=50 ioa=3001 value=42.500 select=0 result=accept
+[2026-09-30 15:41:23] iec104: O.14 type=45 ioa=2001 state=1 select=0 result=reject
+[2026-09-30 15:41:23] iec104: O.14 type=45 ioa=2001 state=1 select=0 result=reject
+[2026-09-30 15:41:23] iec104: O.14 type=103 result=reject
+[2026-09-30 15:41:23] iec104: O.10.3.1 MSD set-point accepted ioa=3001 value=42.500 kW [lab stub]
+[2026-09-30 15:41:23] iec104: O.14 type=50 ioa=3001 value=42.500 select=0 result=accept
+[2026-09-30 15:41:23] Restoring monitor_only lab.yaml on DUT ...
+[2026-09-30 15:41:23] Restart ccli: lab_tr400_phase4_eth_b.yaml
+[2026-09-30 15:41:29] iec104: Operating Rule mode=monitor_only allow_commands=no gi=yes monitor: TotW@1001=on [O.14]
+[2026-09-30 15:41:29] 
+[2026-09-30 15:41:29] P4-05 VERDICT: PASS (O.14 params on reject + accept; MSD lab stub)

@@ -1,0 +1,15 @@
+# TR500 board: only lan1 lan2 lan3 ? no lan4. Eng = empty br-lan (LuCI via role ports or USB).
+uci set network.@device[0].name='br-lan'
+uci set network.@device[0].type='bridge'
+uci delete network.@device[0].ports 2>/dev/null || true
+uci set network.@device[0].bridge_empty='1'
+uci set network.lan.device='br-lan'
+uci set network.lan.proto='static'
+uci set network.lan.ipaddr='192.168.0.1/24'
+uci set network.lan.force_link='1'
+uci commit network
+/etc/init.d/network reload
+sleep 4
+ip -4 addr show br-lan
+ifstatus lan | head -20
+echo OK

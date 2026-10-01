@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" class="_Skins_TMW_Skin" data-mc-search-type="Stem" data-mc-help-system-file-name="Default.xml" data-mc-path-to-help-system="../../" data-mc-has-content-body="True" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic;Default" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Use Cases|Testing Substations|Viewing Substation Data">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>View Events in Logic Analyzer</title>
+        <link href="../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" />
+        <link href="../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
+        <link href="../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
+        <link href="../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" />
+        <link href="../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" />
+        <link href="../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" />
+        <link href="../../Skins/Fluid/Stylesheets/foundation.6.2.3.css" rel="stylesheet" />
+        <link href="../../Skins/Fluid/Stylesheets/Styles.css" rel="stylesheet" />
+        <link href="../../Skins/Fluid/Stylesheets/Tablet.css" rel="stylesheet" />
+        <link href="../../Skins/Fluid/Stylesheets/Mobile.css" rel="stylesheet" />
+        <link href="../Resources/Stylesheets/TMW_Stylesheet.css" rel="stylesheet" />
+        <script src="../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../Resources/Scripts/require.min.js" defer="defer">
+        </script>
+        <script src="../../Resources/Scripts/require.config.js" defer="defer">
+        </script>
+        <script src="../../Resources/Scripts/foundation.6.2.3_custom.js" defer="defer">
+        </script>
+        <script src="../../Resources/Scripts/plugins.min.js" defer="defer">
+        </script>
+        <script src="../../Resources/Scripts/MadCapAll.js" defer="defer">
+        </script>
+    </head>
+    <body>
+        <div class="foundation-wrap off-canvas-wrapper">
+            <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper="">
+                <aside class="off-canvas position-right" role="navigation" id="offCanvas" data-off-canvas="" data-position="right" data-mc-ignore="true">
+                    <ul class="off-canvas-accordion vertical menu off-canvas-list" data-accordion-menu="" data-mc-back-link="Back" data-mc-css-tree-node-expanded="is-accordion-submenu-parent" data-mc-css-tree-node-collapsed="is-accordion-submenu-parent" data-mc-css-sub-menu="vertical menu is-accordion-submenu nested" data-mc-include-indicator="False" data-mc-include-icon="False" data-mc-include-parent-link="True" data-mc-include-back="False" data-mc-defer-expand-event="True" data-mc-expand-event="click.zf.accordionMenu" data-mc-toc="True">
+                    </ul>
+                </aside>
+                <div class="off-canvas-content inner-wrap" data-off-canvas-content="">
+                    <div data-sticky-container="" class="title-bar-container">
+                        <nav class="title-bar tab-bar sticky" data-sticky="" data-options="marginTop:0" style="width:100%" data-sticky-on="only screen and (max-width: 1279px)" data-mc-ignore="true"><a class="skip-to-content fluid-skip showOnFocus" href="#">Skip To Main Content</a>
+                            <div class="middle title-bar-section outer-row clearfix">
+                                <div class="menu-icon-container relative clearfix">
+                                    <div class="central-dropdown" style="display:none;" id="#centralSmallScreen"><a class="central-account-drop"><span class="central-account-image"></span><span class="central-account-text">Account</span></a>
+                                        <div class="central-dropdown-content"><a class="MCCentralLink central-dropdown-content-settings">Settings</a>
+                                            <hr class="central-separator" /><a class="MCCentralLink central-dropdown-content-logout">Logout</a>
+                                        </div>
+                                    </div>
+                                    <button class="menu-icon" aria-label="Show Navigation Panel" data-toggle="offCanvas"><span></span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="title-bar-layout outer-row">
+                                <div class="logo-wrapper"><a class="logo" href="../Getting Started/Overview of Test Suite Pro.htm" alt="Logo"></a>
+                                </div>
+                                <div class="navigation-wrapper nocontent">
+                                    <ul class="navigation clearfix" data-mc-css-tree-node-has-children="has-children" data-mc-css-sub-menu="sub-menu" data-mc-expand-event="mouseenter" data-mc-top-nav-menu="True" data-mc-max-depth="3" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                                        <li class="placeholder" style="visibility:hidden"><a>placeholder</a>
+                                        </li>
+                                    </ul>
+                                    <div class="central-dropdown" style="display:none;" id="#centralTop"><a class="central-account-drop"><span class="central-account-image"></span><span class="central-account-text">Account</span></a>
+                                        <div class="central-dropdown-content"><a class="MCCentralLink central-dropdown-content-settings">Settings</a>
+                                            <hr class="central-separator" /><a class="MCCentralLink central-dropdown-content-logout">Logout</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="nav-search-wrapper">
+                                    <div class="nav-search row">
+                                        <form class="search" action="#">
+                                            <div class="search-bar search-bar-container needs-pie">
+                                                <input class="search-field needs-pie" type="search" aria-label="Search Field" placeholder="Search" />
+                                                <div class="search-filter-wrapper"><span class="invisible-label" id="search-filters-label">Filter: </span>
+                                                    <div class="search-filter" aria-haspopup="true" aria-controls="sf-content" aria-expanded="false" aria-label="Search Filter" title="All Files" role="button" tabindex="0">
+                                                    </div>
+                                                    <div class="search-filter-content" id="sf-content">
+                                                        <ul>
+                                                            <li>
+                                                                <button class="mc-dropdown-item" aria-labelledby="search-filters-label filterSelectorLabel-00001"><span id="filterSelectorLabel-00001">All Files</span>
+                                                                </button>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="search-submit-wrapper" dir="ltr">
+                                                    <div class="search-submit" title="Search" role="button" tabindex="0"><span class="invisible-label">Submit Search</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="central-dropdown" style="display:none;"><a class="central-account-drop"><span class="central-account-image"></span><span class="central-account-text">Account</span></a>
+                                        <div class="central-dropdown-content"><a class="MCCentralLink central-dropdown-content-settings">Settings</a>
+                                            <hr class="central-separator" /><a class="MCCentralLink central-dropdown-content-logout">Logout</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </nav>
+                    </div>
+                    <div class="main-section">
+                        <div class="row outer-row sidenav-layout">
+                            <nav class="sidenav-wrapper">
+                                <div class="sidenav-container">
+                                    <ul class="off-canvas-accordion vertical menu sidenav" data-accordion-menu="" data-mc-css-tree-node-expanded="is-accordion-submenu-parent" data-mc-css-tree-node-collapsed="is-accordion-submenu-parent" data-mc-css-sub-menu="vertical menu accordion-menu is-accordion-submenu nested" data-mc-include-indicator="False" data-mc-include-icon="False" data-mc-include-parent-link="False" data-mc-include-back="False" data-mc-defer-expand-event="True" data-mc-expand-event="click.zf.accordionMenu" data-mc-toc="True" data-mc-side-nav-menu="True">
+                                    </ul>
+                                </div>
+                            </nav>
+                            <div class="body-container">
+                                <div data-mc-content-body="True">
+                                    <table style="width: 100%;">
+                                        <col />
+                                        <col style="width: 150px;" />
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <div class="nocontent">
+                                                        <div class="MCBreadcrumbsBox_0 breadcrumbs" role="navigation" aria-label="Breadcrumbs" data-mc-breadcrumbs-divider=" &gt; " data-mc-breadcrumbs-count="3" data-mc-toc="True"><span class="MCBreadcrumbsPrefix">You are here: </span>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td style="padding-bottom: 10px;border-bottom-style: solid;border-bottom-width: 0px;text-align: right;"><a href="../Getting Started/Overview of Test Suite Pro.htm" title="Go back to online help homepage" alt="Go back to online help homepage" style="font-size: 10pt;">Support Home</a>
+                                                </td>
+                                            </tr>
+                                            <tr style="line-height: 1px;">
+                                                <td colspan="2" style="border-top-style: solid;border-top-width: 1px;">&#160;</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <div role="main" id="mc-main-content">
+                                        <h1 data-mc-autonum=" "><span class="autonumber"><span> </span></span>View Events in Logic Analyzer</h1>
+                                        <h2>Using the Logic Analyzer</h2>
+                                        <p>The Logic Analyzer can be used to chart the real time values of up to eight data attributes found in IEDs in the current workspace.  Charted values can be saved as part of the workspace for later viewing and can be exported as data files.</p>
+                                        <h2>Data Sources for the Logic Analyzer</h2>
+                                        <p>To view a data attribute in the Logic Analyzer, the attribute value must be retrieved through GOOSE or a report.  If the value is retrieved as part of a report, the timestamp of the data change must be included in the report.  The Logic Analyzer charts attribute values against time based on timestamps received in reported data from IEDs and GOOSE headers from publishers.  The time plotted in the chart is not the local PC time at which the signal was received by the application. They are the timestamps from the signals received from the IED (GOOSE/Report).</p>
+                                        <h2>Adding Data Objects and Data Attributes to the Logic Analyzer</h2>
+                                        <p>1) Select the <a href="../Getting Started/Using the Data Miner.htm">Data Miner</a> tool on the left side and select data objects</p>
+                                        <p>2) Select the Custom Display on the right side</p>
+                                        <p>3) Drag data objects from the Data Miner onto the Logic Analyzer. The data objects will be deconstructed into data attributes which will be added to the Signal Path list.</p>
+                                        <p>4) The first eight attributes added to the Signal Path list will automatically have a chart created.</p>
+                                        <p>5) The value and timestamp (and quality if available) for the data attribute is retrieved using GOOSE or reports based on how the <a href="../Testing IEDs/Sources of Data.htm">Data Retrieval Method</a> is set.  Note that adding polled data attributes will be reported as an error.</p>
+                                        <p>&#160;</p>
+                                        <p>This Figure shows the POS data object for a CSWI being dragged onto the Logic Analyzer.  The object can be dropped onto the chart area or on the Signal Path list.</p>
+                                        <p>
+                                            <img src="../Resources/Images/Logic Analyzer/Logic Analyzer - Add object.png" />
+                                        </p>
+                                        <p>After the object is dropped, it’s corresponding stVal attribute is added to the Signal Path list and a chart is created for the value.  Test Suite Pro will open a connection to the IED and subscribe to the appropriate control blocks to prepare to acquire data for the attribute.</p>
+                                        <p>
+                                            <img src="../Resources/Images/Logic Analyzer/Logic Analyzer - Signal List.png" />
+                                        </p>
+                                        <p>A large number of signal paths can be added to the Logic Analyzer, however only eight charts can be displayed at any time.  The check boxes in the column labeled “Graph?” determine which paths are charted.  When data acquisition is started, data is collected for all attributes in the Signal Path list, not just the ones that are currently charted.  Because of this, charts for any of the signals can be reviewed at any time by clicking the “Graph?” checkbox to view the data even after data collection is stopped.</p>
+                                        <h2>Acquiring Data</h2>
+                                        <p>To begin collecting data for the attributes in the Signal Path list, click on the red Start Recording button in the Logic Analyzer control bar.</p>
+                                        <p>
+                                            <img src="../Resources/Images/Logic Analyzer/Logic Analyzer - Acquire Events.png" />
+                                        </p>
+                                        <p>When acquisition begins, the control bar will turn green and the Start Time and Time Elapsed values become active.</p>
+                                        <p>
+                                            <img src="../Resources/Images/Logic Analyzer/Logic Analyzer - Recording Active.png" />
+                                        </p>
+                                        <p>The figure above shows the Logic Analyzer collecting data for three data attributes.  In this example, the top two attributes experienced a state change about 30 seconds after the data collection began.</p>
+                                        <h2>Cursors</h2>
+                                        <p>The orange, vertical line running across the three charts is a cursor.  The cursor can be moved with the mouse and can be turned off with the orange hand icon next to the Start Recording button.  A second cursor can be turned on by clicking on the second cursor icon.  When both cursors are turned on, the time delta between the cursor positions is displayed in the control bar below the elapsed time value.</p>
+                                        <p>
+                                            <img src="../Resources/Images/Logic Analyzer/Logic Analyzer - Cursors.png" />
+                                        </p>
+                                        <h2>Interacting with the Charts</h2>
+                                        <p>While data is being collected, by default the new values will be displayed on the right side of the charts.  This is called Autoscrolling.  This behavior can be stopped by unchecking the Autoscoll checkbox in the control bar or by moving the chart with mouse which will disable the Autoscroll function.  Autoscrolling can be started again by clicking the Autoscroll checkbox.  The number of seconds of data shown in the window is controlled by the Data Window slider.  By default, 30 seconds of data is shown.  The Data Window slider only works while Autoscroll is enabled.  When Autoscroll is disabled, the zoom function controls the amount of data shown in the window.</p>
+                                        <p>The charts can be zoomed by using the scroll wheel on a mouse or by pressing the ‘+’ and ‘-’ keys.  Additional functions can be found on the context menu for the charts.  Right clicking on a chart will show the context menu.</p>
+                                        <p>
+                                            <img src="../Resources/Images/Logic Analyzer/Logic Analyzer - Find Prev Event.png" />
+                                        </p>
+                                        <p>The Find Next/Previous Event menu items will reposition the charts so that the next/previous change in the attribute’s value is centered in the display.  The Move Up/Down menu items will reorder the charts on the screen.</p>
+                                        <h2>Archiving and Recalling Chart Sets</h2>
+                                        <p>The current set of charts displayed in the Logic Analyzer as well as the data collected for all of the attributes in the Signal Path list can be saved as a named chart set.   To archive this set of data, select the Archive Chart Set from the Logic Analyzer menu.  Then provide a unique name for the chart set and click the check mark to accept it.</p>
+                                        <p>
+                                            <img src="../Resources/Images/Logic Analyzer/Logic Analyzer - Archive Chart_350x175.png" style="width: 350;height: 175;" />
+                                            <img src="../Resources/Images/Logic Analyzer/Logic Analyzer - Name Chart Set_350x175.png" style="width: 350;height: 175;" />
+                                        </p>
+                                        <p>The new name of the chart set will be displayed at the top of the Logic Analyzer display in a drop down box.  This box is used to select the archived chart set to view.  When viewing an archived chart set, most of the tools are available to manipulate the chart such as zooming and panning however the Start Recording and Autoscroll functions are disabled.</p>
+                                        <p>To prepare to start collecting new data, select the item “Record New Chart Set” from the drop down list. This will reset the Logic Analyzer and allow the Start Recording button to work.  The Signal Path list is prepopulated with the attributes that were present in the last Archived Chart Set.  If these attributes are not correct, delete individual attributes by selecting them then right clicking and selecting “Delete Selected Signals” or delete all of the attributes by clicking the Clear All button at the top of the Signal Path list.</p>
+                                        <p>
+                                            <img src="../Resources/Images/Logic Analyzer/Logic Analyzer - Recall Chart.png" />
+                                        </p>
+                                        <h2>Exporting Data</h2>
+                                        <p>The values plotted on the Logic Analyzer can be exported to a file using a comma separated value (CSV) format.  The Export functions are found on the Logic Analyzer menu and are only accessible when data has been collected and the Logic Analyzer is not currently collecting data.  There are two options for exporting data.  The data for all attributes in the Signal Path list can be exported or the data for just the attributes currently displayed in charts can be exported.</p>
+                                        <p>
+                                            <img src="../Resources/Images/Logic Analyzer/Logic Analyzer - Export Data.png" />
+                                        </p>
+                                        <p>In either case, Test Suite Pro will request the user to identify a file name and directory location for the export file.  By default, the file will be given a file extension of “.csv” if no file extension is provided as part of the file name.  The first line of the exported file contains column headers which describe the meaning of the values in each of the following rows.  </p>
+                                        <h2>Understanding the Charts</h2>
+                                        <p>The Logic Analyzer charts are designed to show the value of attributes in an object model as they change over time.  The values are those received by the IEC 61850 client running within Test Suite Pro.  The client in Test Suite Pro subscribes to reports and GOOSE as need to receive the attributes requested by the user.   Charts are organized into charts sets that contain an unlimited number of attribute paths for which up to eight charts can be plotted at a time.  When an attribute is charted, the values collected for the attribute are displayed from the time the “Start Recording” button was clicked to the time the “Stop Recording” button was clicked.</p>
+                                        <p>The X axis on each chart represents the number of milliseconds that passed from the time that the user clicked the “Start Recording” button until the timestamp included with the received data value.  This means that the PC on which Test Suite Pro is running should be time synchronized with the network on which the IEDs are running.  Since the data is plotted using timestamp values, all relative measurements between events will be accurate even if the PC is not synchronized; however, an unsynchronized PC could result in values being missed if the local PC clock is well ahead of the network clock since the charts will not plot values that have timestamps that occurred before the time that the user clicked the “Start Recording” button.</p>
+                                        <p>Each chart clearly shows the full path of the data attribute that is being plotted.  At the end of the path, the source of the data is listed in parenthesis as “Report” or “GOOSE”.  If the data is coming from Reports, then the timestamps are read from the dataset in the report.  Attribute values can only be charted in the Logic Analyzer if the dataset includes the timestamp and the quality of the signal.   If the data is coming from GOOSE, then the timestamp will be read from the dataset if it is available.  If the timestamp is not in the dataset, then the timestamp from the header of the GOOSE message will be used.</p>
+                                        <p>A number of line styles are used to plot values on the charts.  A solid blue line indicates that a value has been received with a “good” quality indicator.  A solid yellow line indicates that a value has been received with a quality indicator other than “good”.  The cursor will display the quality values for a yellow line.</p>
+                                        <p>
+                                            <img src="../Resources/Images/Logic Analyzer/Logic Analyzer - Quality.png" />
+                                        </p>
+                                        <p>A dotted line indicates that a value has been received in the past and no new information has been received; therefore, the value is assumed to be saved as the last received value.  When a new Report or GOOSE value is received, the dotted line is replaced with a solid line indicating the value is now confirmed.</p>
+                                        <p>Continuity of data is maintained in GOOSE messages with a state change number which is part of the GOOSE header.  The continuity of data in buffered reports is indicated by a buffer overflow flag which is in the report header.  If Test Suite Pro receives GOOSE data where the state change number is not properly incremented or receives report data with the buffer overflow flag set, the new data values are shown on the graph but a gap in the line (no line drawn) will appear where the missing data occurred.</p>
+                                    </div>
+                                    <p>&#160;</p>
+                                    <table style="width: 100%;">
+                                        <col />
+                                        <col style="width: 150px;" />
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <div class="nocontent">
+                                                        <div class="MCBreadcrumbsBox_0 breadcrumbs" role="navigation" aria-label="Breadcrumbs" data-mc-breadcrumbs-divider=" &gt; " data-mc-breadcrumbs-count="3" data-mc-toc="True"><span class="MCBreadcrumbsPrefix">You are here: </span>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td style="padding-bottom: 10px;border-bottom-style: solid;border-bottom-width: 0px;">&#160;</td>
+                                            </tr>
+                                            <tr style="line-height: 1px;">
+                                                <td colspan="2" style="border-top-style: solid;border-top-width: 1px;">&#160;</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <div>
+                                        <table style="width: 100%;" data-mc-conditions="General.Online Only">
+                                            <col style="width: 260px;" />
+                                            <col style="width: 260px;" />
+                                            <col />
+                                            <tbody>
+                                                <tr style="height: 65px;">
+                                                    <td style="vertical-align: top;">
+                                                        <div>
+                                                            <p style="margin-bottom: 0.12em;margin-top: 0.12em;"><b style="font-size: 1.1em;"><span style="color: #696969;">Sales:&#160;</span>+1 919.870.5101</b>
+                                                            </p>
+                                                            <p style="margin-top: 0;margin-bottom: 0;color: #ffffff;"><a href="mailto:sales@trianglemicroworks.com?subject=Sales Inquiry">sales@trianglemicroworks.com</a>
+                                                            </p>
+                                                            <p style="margin-top: 0;margin-bottom: 0;color: #ffffff;"><a href="http://www.trianglemicroworks.com/products/testing-and-configuration-tools/61850-test-suite-pages/test-suite/hammer-pages">Learn more about 61850 Test Suite Pro</a>
+                                                            </p>
+                                                        </div>
+                                                    </td>
+                                                    <td style="vertical-align: top;">
+                                                        <p style="text-align: left;margin-bottom: 0.12em;margin-top: 0.12em;"><b style="font-size: 1.1em;"><span style="color: #696969;">Support:</span>&#160;+1 919.781.1931</b>
+                                                        </p>
+                                                        <p style="margin-top: 0;margin-bottom: 0;"><a href="mailto:support@trianglemicroworks.com?subject=Support Questions">support@trianglemicroworks.com</a>
+                                                        </p>
+                                                        <p style="margin-top: 0;margin-bottom: 0;"><a href="http://www.trianglemicroworks.com/support/test-suite">Submit a Support Request Online</a>
+                                                        </p>
+                                                    </td>
+                                                    <td style="vertical-align: top;text-align: right;">
+                                                        <p style="text-align: right;margin-top: 0.12em;"><a href="http://www.trianglemicroworks.com/" style="font-weight: bold; font-size: 1.1em; color: #000000;"> Triangle MicroWorks, Inc.</a>
+                                                        </p>
+                                                        <p style="text-align: right;"><a href="https://www.linkedin.com/company/triangle-microworks-inc."><img src="../Resources/Images/linkedin logo_115x29.png" style="width: 115;height: 29;" /></a><a href="https://www.youtube.com/c/Trianglemicroworks"><img src="../Resources/Images/youtube logo_75x30.png" style="width: 75;height: 30;" /></a>
+                                                        </p>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <div style="width: 500px; height: 50px;">
+                                            <p style="text-align: left;color: #ffffff;"><span style="color: #696969;"><span style="color: #000000;"><span class="GeneralCopyright and Company">© 2021 Triangle MicroWorks, Inc. All rights reserved.</span></span><![CDATA[  ]]></span>All rights reserved.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><a data-close="true"></a>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

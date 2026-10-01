@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" style="mc-master-page: url('../Resources/MasterPages/TMW_Master Page.flmsp');" MadCap:onlyLocalStylesheets="False">
+    <head>
+    </head>
+    <body>
+        <h1 MadCap:conditions="General.Print Only" class="PrintTOC1">Getting Started</h1>
+        <h2 MadCap:conditions="General.Print Only" class="PrintTOC2">IEC&#160;61850 Example</h2>
+        <h1>Using the Example Workspace and Servers</h1>
+        <p>An example workspace is included to help you learn how the tools and displays work. The example workspace is used with the example IED Servers to provide an example of how to enable reports and how to sniff and subscribe to GOOSE.</p>
+        <p>Follow these steps to load the example:</p><b>1) Start the Example Servers</b>
+        <p>
+            <img src="../Resources/Images/startexservers.png" />
+        </p><b>2) Open the Example Workspace</b>
+        <p>
+            <img src="../Resources/Images/openworkspace.png" title="Image showing how to load a workspace" />
+        </p>
+        <p class="note"><b>Note:</b> The <a href="Open the Demo Workspace.htm">example workspace</a> connects to the example IED servers.  The path to the SCD configuration file for the example IED servers can be found by hovering the mouse over the TMW&#160;Example Workspace.
+		<img src="../Resources/Images/Example/Example_Servers_SCD_File_Path.png" /></p><b>Using the Example Servers</b>
+        <p>Here are some things that you can test with the example servers:</p>
+        <table style="width: 100%;">
+            <col />
+            <col />
+            <tbody>
+                <tr>
+                    <td>
+                        <img src="../Resources/Images/Example/Example_Servers.png" style="width: 298px;height: 550px;" />
+                    </td>
+                    <td>
+                        <h3>Connect to Servers</h3>
+                        <p>You can open the <MadCap:conditionalText MadCap:conditions="General.Print Only">TMW Example Workspace</MadCap:conditionalText> <MadCap:conditionalText MadCap:conditions="General.Online Only"><a href="Open the Demo Workspace.htm">open the TMW&#160;Example Workspace</a></MadCap:conditionalText> which is setup to connect to the example servers.</p>
+                        <p>OR</p>
+                        <p>You can <MadCap:conditionalText MadCap:conditions="General.Print Only">create your own workspace</MadCap:conditionalText> <a href="Create a Workspace.htm" MadCap:conditions="General.Online Only">create your own workspace</a> to connect to the example IED Servers. You should use the SCD file for the example IED Servers. The path to the SCD file can be found by hovering the mouse over the TMW&#160;Example Workspace.
+						</p>
+                        <h3>View Reports</h3>
+                        <p>Data change events are automatically created by the Example Servers which will cause <MadCap:conditionalText MadCap:conditions="General.Print Only">reports</MadCap:conditionalText> <a href="../Testing Reports/Testing Reports.htm" MadCap:conditions="General.Online Only">reports</a> to be generated. The level of the currents and voltages can be adjusted with the slider bars.</p>
+                        <h3>Monitor GOOSE</h3>
+                        <p>The Example Servers publish GOOSE streams which can be viewed with the <a href="../GOOSE Tracker/GOOSETracker_Topics.htm">GOOSE Tracker.</a></p>
+                        <h3>View GOOSE Trip Event</h3>
+                        <p>If the current slider goes over the "Trip" level, then a GOOSE event will be generated with PIOC.Op.general=true. This can be seen in the <a href="../Testing GOOSE/View GOOSE Events.htm">GOOSE Event Viewer</a>.</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table><b>Setting the GOOSE&#160;Adapter for Example Servers</b>
+        <p>The GOOSE adapter for the example servers is automatically selected when the servers start based on which loopback address is being used for the MMS client/server connection. </p>
+        <p>To manually set the GOOSE adapter:</p>
+        <p>1) Hold the CTRL button and click on "Start Example Servers"</p>
+        <p>2) Select one of the network adapters on the local PC</p>
+        <p>
+            <img src="../Resources/Images/Example/Start_Example_Servers_CTRL.png" />
+            <img src="../Resources/Images/Example/Example_Servers_Adapter.png" style="width: 600px;height: 350px;" />
+        </p><b>Workspace Overview</b>
+        <p>Workspaces are used to organize which IEDs will be tested, monitored, or analyzed. Multiple workspaces can be created and saved in <MadCap:variable name="General.Product"></MadCap:variable>. For example, saved workspace may be configured to test IEDs at a particular substation or to run a particular test.</p>
+        <p>Workspaces can be opened, copied, edited, or deleted from the <a href="#Workspac">workspace list</a>.</p><b>Custom Display Overview</b>
+        <p>The Custom Display can be used to create a single line diagram or visualize other substation data from multiple IEDs.</p>
+        <p>Multiple custom displays can be created for a workspace. These custom displays are saved as part of the workspace so that they can be loaded with the workspace.</p><b>GOOSE Tracker Overview</b>
+        <div>The GOOSE Tracker monitors all the GOOSE streams defined in the SCL file(s) for the workspace and any additional GOOSE streams found on the network. The GOOSE Tracker can be used for the following purposes:</div>
+        <ul style="list-style-type: disc">
+            <li>Find all the GOOSE Streams on a given network </li>
+            <li> Identify GOOSE Streams that are missing in the SCL file(s) or missing on the network </li>
+            <li>Find the health of the GOOSE Stream using various parameters like ‘Timeouts’, ‘Missed’ or out-of-order packets, etc.</li>
+            <li>Find duplicate and simulated GOOSE streams on the network</li>
+            <li>Verify GOOSE Dataset definition on the server</li>
+        </ul><b>GOOSE Viewer Overview</b>
+        <p>GOOSE messages can be viewed in the GOOSE Event Viewer display.  Any GOOSE Control Block that has been subscribed to (either from the <a href="../Testing IEDs/View IED Data Model.htm">Advanced Client</a>, <a href="Using the Data Miner.htm">Data Miner</a>, or <a href="../GOOSE Tracker/GOOSETracker_Topics.htm">GOOSE&#160;Tracker</a>) will be displayed in the GOOSE&#160;Event Viewer.</p><b>Reports Overview</b>
+        <p>Information reports in IEC 61850 allow a server to provide information to a client based on configured conditions. The information sent in a particular report is based on a <a href="../Testing IEDs/What Are DataSets.htm">dataset</a>. The conditions upon which the data is set are configured in a report control block.  The General Integrity trigger allows a client to request a complete snapshot of the dataset, but otherwise the server sends reports per configuration, either on a periodic timer (Integrity report) or based on a change in the value or quality of the dataset members.</p>
+    </body>
+</html>

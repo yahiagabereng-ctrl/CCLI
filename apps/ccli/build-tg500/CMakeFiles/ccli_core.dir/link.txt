@@ -1,0 +1,2 @@
+/usr/bin/ar qc libccli_core.a CMakeFiles/ccli_core.dir/core/pf2/pf2_fsm.cpp.o CMakeFiles/ccli_core.dir/core/measurement/measurement_store.cpp.o CMakeFiles/ccli_core.dir/core/event/event_ring.cpp.o CMakeFiles/ccli_core.dir/core/policy/net_policy.cpp.o CMakeFiles/ccli_core.dir/core/config/ccli_config.cpp.o
+/usr/bin/ranlib libccli_core.a

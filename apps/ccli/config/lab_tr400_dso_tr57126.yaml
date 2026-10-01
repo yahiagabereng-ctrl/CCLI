@@ -1,0 +1,34 @@
+# TG544 lab — CEI TR 57-126 Table 1 / Figura 2 (WSd=20%, Wlim off)
+# Phase 1 equation mock: O.8.2 Smax + O.9.2.3 WSd → pf2 threshold ~42 kW
+# Usage: ccli --config config/lab_tr400_dso_tr57126.yaml --lab-demo
+pf2:
+  threshold_kw: 900
+  debounce_s: 30
+  release_threshold_kw: 850
+  min_on_s: 60
+  min_off_s: 30
+  stale_data_s: 10
+  use_dso_mock: true
+plant:
+  p_imm_kw: 200
+  p_ass_kw: 200
+  q_ind_kvar: 50
+  q_cap_kvar: 50
+  smax_kva: 210
+dso:
+  enabled: true
+  profile: tr57126_table1
+  release_delta_kw: 5
+modbus:
+  backend: simulator
+  poll_ms: 4000
+  timeout_ms: 2000
+  retries: 3
+io:
+  permissive_bypass: true
+  do_curtail:
+    gpio: 1
+    active_high: false
+  di_permissive:
+    gpio: 2
+    active_low: true

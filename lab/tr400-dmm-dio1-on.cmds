@@ -1,0 +1,5 @@
+echo === DIO1 ON - read DMM now - 15 seconds ===
+ubus call dido_v2 set_relay '{"channel":1,"value":1}'
+sleep 15
+echo === DIO1 OFF safe ===
+ubus call dido_v2 set_relay '{"channel":1,"value":0}'

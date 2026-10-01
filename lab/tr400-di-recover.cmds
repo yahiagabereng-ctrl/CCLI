@@ -1,0 +1,32 @@
+echo === Stop ccli ===
+/etc/init.d/ccli stop 2>/dev/null || true
+killall ccli 2>/dev/null || true
+
+echo === GD32 reset ===
+ubus call dido_v2 gd32.reset '{}'
+sleep 2
+
+echo === DIO2 as DI - UCI + ubus ===
+uci set didoservice_v2.channel_2.mode=di
+uci set didoservice_v2.channel_1.mode=do
+uci set didoservice_v2.channel_3.mode=do
+uci set didoservice_v2.channel_4.mode=do
+uci commit didoservice_v2
+/etc/init.d/didoservice_v2 restart
+sleep 3
+
+ubus call dido_v2 set_mode '{"channel":2,"mode":"DI"}'
+ubus call dido_v2 gd32.set_mode '{"channel":2,"mode":"DI"}'
+sleep 1
+
+echo === With NO wires on DIO2 - should be LOW / di[1]=0 ===
+ubus call dido_v2 gd32.read_di '{}'
+ubus call dido_v2 read_di '{"channel":2}'
+
+echo === NOW jumper DIO2 screw to GND screw on 10-pin block ===
+echo === Press Enter in PuTTY when jumper is on, then run: ===
+echo ===   ubus call dido_v2 gd32.read_di '{}' ===
+echo === Expected: di[1]=1  LuCI HIGH ===
+
+ubus call dido_v2 gd32.status '{}'
+ubus call dido_v2 status

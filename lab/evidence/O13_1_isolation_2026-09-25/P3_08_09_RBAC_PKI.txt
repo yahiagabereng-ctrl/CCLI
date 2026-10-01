@@ -1,0 +1,27 @@
+=== P3-08 DSO write expect OK ===
+=== CCLI MMS TLS Wlim client (P3-08/09) ===
+host=192.168.10.1 port=3782 identity=dso mode=write cert=client.pem
+CONNECT OK
+OPERATE OK CCI016_01LD_Plant/WlimDWMX1.WMaxSptPct = 12.00
+OPERATE OK CCI016_01LD_Plant/WlimDWMX1.Mod = 1
+VERDICT: DSO write OK
+
+=== P3-08 VIEWER write expect DENY ===
+=== CCLI MMS TLS Wlim client (P3-08/09) ===
+host=192.168.10.1 port=3782 identity=viewer mode=write cert=viewer.pem
+CONNECT OK
+OPERATE FAIL CCI016_01LD_Plant/WlimDWMX1.WMaxSptPct = 12.00
+OPERATE FAIL CCI016_01LD_Plant/WlimDWMX1.Mod = 1
+VERDICT: VIEWER write denied expected — PASS (denied)
+
+=== P3-08 VIEWER read expect OK ===
+=== CCLI MMS TLS Wlim client (P3-08/09) ===
+host=192.168.10.1 port=3782 identity=viewer mode=read cert=viewer.pem
+CONNECT OK
+READ Mod.stVal=1
+VERDICT: OK
+
+=== P3-09 revoked expect CONNECT FAIL ===
+=== CCLI MMS TLS Wlim client (P3-08/09) ===
+host=192.168.10.1 port=3782 identity=revoked mode=write cert=revoked.pem
+CONNECT FAIL err=5

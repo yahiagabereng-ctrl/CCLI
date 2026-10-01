@@ -1,0 +1,155 @@
+<mxfile host="Electron" agent="Codex">
+  <diagram id="cci-p110-function" name="P limit near 110% Un">
+    <mxGraphModel dx="3768" dy="1682" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1760" pageHeight="2130" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="heading" parent="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=2;fontSize=20;fontColor=#253044;spacing=10;" value="&lt;b&gt;O.9.2.1 | Active-power injection limit near 110% U&lt;sub&gt;n&lt;/sub&gt;&lt;/b&gt;&lt;br&gt;Autonomous CCI function at PdC · plant-specific parameters are configurable · output is a P ceiling" vertex="1">
+          <mxGeometry height="82" width="1720" x="35" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="user" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=2;fontSize=15;fontColor=#253044;spacing=10;;fillColor=#FFF2CC;strokeColor=#D6B656;strokeWidth=2;" value="&lt;b&gt;USER ACTIVATION — FIXED REQUIREMENT&lt;/b&gt;&lt;br&gt;The User enables/disables this autonomous function via the User terminal, on site or remotely.&lt;br&gt;Define retained state after restart in the implementation." vertex="1">
+          <mxGeometry height="128" width="435" x="35" y="148" as="geometry" />
+        </mxCell>
+        <mxCell id="params" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=2;fontSize=15;fontColor=#253044;spacing=10;;fillColor=#FFF2CC;strokeColor=#D6B656;strokeWidth=2;" value="&lt;b&gt;PLANT CONFIGURATION — ENTER APPROVED VALUES&lt;/b&gt;&lt;br&gt;U&lt;sub&gt;n&lt;/sub&gt; at PdC: configurable from plant data.&lt;br&gt;P&lt;sub&gt;n&lt;/sub&gt; of each generating unit: configurable from unit data.&lt;br&gt;Overvoltage protection settings: reference for coordination." vertex="1">
+          <mxGeometry height="150" width="435" x="35" y="300" as="geometry" />
+        </mxCell>
+        <mxCell id="meter" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=2;fontSize=15;fontColor=#253044;spacing=10;;fillColor=#FFF2CC;strokeColor=#D6B656;strokeWidth=2;" value="&lt;b&gt;PdC MEASUREMENT CONFIGURATION&lt;/b&gt;&lt;br&gt;Voltage source and evaluated voltage quantity: configurable for the plant.&lt;br&gt;Measurement validity/freshness criteria: define for the device." vertex="1">
+          <mxGeometry height="130" width="435" x="35" y="482" as="geometry" />
+        </mxCell>
+        <mxCell id="note1" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fillColor=#f5f5f5;strokeColor=#999999;strokeWidth=2;fontSize=15;fontColor=#253044;spacing=10;" value="&lt;b&gt;PARAMETER SOURCES&lt;/b&gt;&lt;br&gt;Plant design / as-built data: U&lt;sub&gt;n&lt;/sub&gt;, unit P&lt;sub&gt;n&lt;/sub&gt;, voltage meter and protection settings.&lt;br&gt;Commissioning approval: intervention rule, P(V) curve and Q(V) coordination." vertex="1">
+          <mxGeometry height="152" width="480" x="1790" y="113" as="geometry" />
+        </mxCell>
+        <mxCell id="note2" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fillColor=#f5f5f5;strokeColor=#999999;strokeWidth=2;fontSize=15;fontColor=#253044;spacing=10;" value="&lt;b&gt;[CEI] SCOPE&lt;/b&gt;&lt;br&gt;Autonomous limitation near 110% U&lt;sub&gt;n&lt;/sub&gt;. Independent interface/unit overvoltage protection still acts separately." vertex="1">
+          <mxGeometry height="132" width="480" x="1790" y="309" as="geometry" />
+        </mxCell>
+        <mxCell id="enable" parent="1" style="rhombus;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=2;fontSize=16;fontColor=#253044;spacing=10;;fillColor=#FFF2CC;strokeColor=#D6B656;strokeWidth=2;" value="&lt;b&gt;ENABLED AND AVAILABLE?&lt;/b&gt;&lt;br&gt;User enable state and device availability." vertex="1">
+          <mxGeometry height="105" width="540" x="570" y="155" as="geometry" />
+        </mxCell>
+        <mxCell id="1j3YTbN2HrMu0jg6AcCc-1" edge="1" parent="1" source="inactive" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;;strokeColor=#9673a6;dashed=1;endArrow=block;endFill=1;" target="candidate" value="disabled: no ceiling">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="inactive" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fillColor=#e1d5e7;strokeColor=#9673a6;strokeWidth=2;fontSize=15;fontColor=#253044;spacing=10;" value="&lt;b&gt;INACTIVE&lt;/b&gt;&lt;br&gt;Ceiling from this function: none.&lt;br&gt;Signal/log activation state." vertex="1">
+          <mxGeometry height="120" width="480" x="1270" y="492" as="geometry" />
+        </mxCell>
+        <mxCell id="valid" parent="1" style="rhombus;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=2;fontSize=16;fontColor=#253044;spacing=10;;fillColor=#FFF2CC;strokeColor=#D6B656;strokeWidth=2;" value="&lt;b&gt;VOLTAGE MEASUREMENT VALID?&lt;/b&gt;&lt;br&gt;Apply configured source and defined freshness/quality checks." vertex="1">
+          <mxGeometry height="105" width="540" x="570" y="355" as="geometry" />
+        </mxCell>
+        <mxCell id="fault" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=2;fontSize=15;fontColor=#253044;spacing=10;;fillColor=#FFF2CC;strokeColor=#D6B656;strokeWidth=2;" value="&lt;b&gt;INVALID OR STALE VOLTAGE&lt;/b&gt;&lt;br&gt;Fallback action, alarm and resumption rule: &lt;b&gt;TO DEFINE&lt;/b&gt; in the implementation and commissioning procedure." vertex="1">
+          <mxGeometry height="160" width="480" x="1270" y="650" as="geometry" />
+        </mxCell>
+        <mxCell id="hysteresis" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=2;fontSize=15;fontColor=#253044;spacing=10;;fillColor=#FFF2CC;strokeColor=#D6B656;strokeWidth=2;" value="&lt;b&gt;INTERVENTION — COMMISSIONING CONFIGURATION&lt;/b&gt;&lt;br&gt;V&lt;sub&gt;start&lt;/sub&gt; and V&lt;sub&gt;release&lt;/sub&gt;: configurable; coordinate with actual overvoltage protection.&lt;br&gt;Hysteresis / dwell: configurable if used. O.9.2.1 gives no universal numerical thresholds." vertex="1">
+          <mxGeometry height="152" width="540" x="570" y="520" as="geometry" />
+        </mxCell>
+        <mxCell id="active" parent="1" style="rhombus;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=2;fontSize=16;fontColor=#253044;spacing=10;;fillColor=#FFF2CC;strokeColor=#D6B656;strokeWidth=2;" value="&lt;b&gt;IS LIMITATION INTERVENING?&lt;/b&gt;&lt;br&gt;Evaluate the configured intervention rule." vertex="1">
+          <mxGeometry height="106" width="540" x="570" y="730" as="geometry" />
+        </mxCell>
+        <mxCell id="1j3YTbN2HrMu0jg6AcCc-7" edge="1" parent="1" source="release" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="candidate">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="329.97" y="1312.48" />
+              <mxPoint x="569.97" y="1312.48" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="release" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=2;fontSize=15;fontColor=#253044;spacing=10;;fillColor=#FFF2CC;strokeColor=#D6B656;strokeWidth=2;" value="&lt;b&gt;NO INTERVENTION / RELEASE&lt;/b&gt;&lt;br&gt;Use the configured release rule; remove this function’s ceiling smoothly.&lt;br&gt;Other active-power requests remain applicable." vertex="1">
+          <mxGeometry height="130" width="480" x="80" y="902" as="geometry" />
+        </mxCell>
+        <mxCell id="curve" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=2;fontSize=15;fontColor=#253044;spacing=10;;fillColor=#FFF2CC;strokeColor=#D6B656;strokeWidth=2;" value="&lt;b&gt;CALCULATE P CEILING — COMMISSIONING CONFIGURATION&lt;/b&gt;&lt;br&gt;P&lt;sub&gt;110,cap&lt;/sub&gt;(V): configurable continuous law for this plant.&lt;br&gt;Configure breakpoints, power base and minimum after engineering approval." vertex="1">
+          <mxGeometry height="145" width="540" x="570" y="896" as="geometry" />
+        </mxCell>
+        <mxCell id="ramp" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=2;fontSize=15;fontColor=#253044;spacing=10;;fillColor=#FFF2CC;strokeColor=#D6B656;strokeWidth=2;" value="&lt;b&gt;ENFORCE SMOOTH REDUCTION — FIXED REQUIREMENT&lt;/b&gt;&lt;br&gt;No power steps; reduction no faster than 0.33 P&lt;sub&gt;n&lt;/sub&gt;/s.&lt;br&gt;Apply against the relevant unit rating; define recovery behavior." vertex="1">
+          <mxGeometry height="145" width="540" x="570" y="1060" as="geometry" />
+        </mxCell>
+        <mxCell id="candidate" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=2;fontSize=15;fontColor=#253044;spacing=10;;fillColor=#FFF2CC;strokeColor=#D6B656;strokeWidth=2;" value="&lt;b&gt;FUNCTION OUTPUT TO O.11&lt;/b&gt;&lt;br&gt;If intervening: configured P&lt;sub&gt;110,cap&lt;/sub&gt;(V) ceiling.&lt;br&gt;Otherwise: no ceiling from this function; expose intervention state." vertex="1">
+          <mxGeometry height="132" width="540" x="570" y="1250" as="geometry" />
+        </mxCell>
+        <mxCell id="log" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=2;fontSize=15;fontColor=#253044;spacing=10;;fillColor=#FFF2CC;strokeColor=#D6B656;strokeWidth=2;" value="&lt;b&gt;ACTIVATION / INTERVENTION — FIXED REQUIREMENT&lt;/b&gt;&lt;br&gt;Signal and store activation and intervention separately in the CCI data logger (O.14).&lt;br&gt;Map fields and event timestamps in implementation." vertex="1">
+          <mxGeometry height="142" width="480" x="1240" y="1430" as="geometry" />
+        </mxCell>
+        <mxCell id="priority" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fillColor=#e8f5e9;strokeColor=#2e7d32;strokeWidth=2;fontSize=15;fontColor=#253044;spacing=10;" value="&lt;b&gt;O.11 PRIORITY / FEASIBILITY&lt;/b&gt;&lt;br&gt;Table 75 default: index 1 when intervening; use configurable priorities. Combine with DSO P limit and P setpoint; apply the feasible ceiling. Q functions may coexist." vertex="1">
+          <mxGeometry height="145" width="540" x="570" y="1430" as="geometry" />
+        </mxCell>
+        <mxCell id="fast" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=2;fontSize=15;fontColor=#253044;spacing=10;;fillColor=#FFF2CC;strokeColor=#D6B656;strokeWidth=2;" value="&lt;b&gt;SHARED FAST CONTROL RING&lt;/b&gt;&lt;br&gt;Track resolved P at PdC and command plant elements.&lt;br&gt;Unit allocation uses configured capabilities; storage use depends on plant equipment and SoC." vertex="1">
+          <mxGeometry height="160" width="540" x="570" y="1620" as="geometry" />
+        </mxCell>
+        <mxCell id="feedback" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fillColor=#e1d5e7;strokeColor=#9673a6;strokeWidth=2;fontSize=15;fontColor=#253044;spacing=10;" value="&lt;b&gt;PLANT + PdC FEEDBACK&lt;/b&gt;&lt;br&gt;Issue unit commands; use fresh PdC P and V for feedback and monitoring. Check the applicable settling and gradient requirements at the PdC." vertex="1">
+          <mxGeometry height="140" width="540" x="570" y="1822" as="geometry" />
+        </mxCell>
+        <mxCell id="note3" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=2;fontSize=15;fontColor=#253044;spacing=10;;fillColor=#FFF2CC;strokeColor=#D6B656;strokeWidth=2;" value="&lt;b&gt;Q(V) COORDINATION — COMMISSIONING CONFIGURATION&lt;/b&gt;&lt;br&gt;V1s, V2s, V1i, V2i: configure for the plant’s Q(V) curve.&lt;br&gt;Review interaction with P limiting and validate stability." vertex="1">
+          <mxGeometry height="165" width="480" x="1790" y="710" as="geometry" />
+        </mxCell>
+        <mxCell id="note4" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fillColor=#f5f5f5;strokeColor=#999999;strokeWidth=2;fontSize=15;fontColor=#253044;spacing=10;" value="&lt;b&gt;WHAT THE CCI IMPLEMENTS&lt;/b&gt;&lt;br&gt;Store and validate approved plant configuration. This function proposes a P ceiling; O.11 resolves concurrent requests; the shared fast ring commands units. Record the approved values at commissioning." vertex="1">
+          <mxGeometry height="174" width="480" x="1790" y="485" as="geometry" />
+        </mxCell>
+        <mxCell id="e01" edge="1" parent="1" source="user" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#596579;fontSize=14;fontColor=#344054;labelBackgroundColor=#ffffff;entryX=0;entryY=0.5;" target="enable" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e02" edge="1" parent="1" source="params" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#596579;fontSize=14;fontColor=#344054;labelBackgroundColor=#ffffff;entryX=0;entryY=0.5;" target="hysteresis" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e03" edge="1" parent="1" source="meter" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#596579;fontSize=14;fontColor=#344054;labelBackgroundColor=#ffffff;entryX=0;entryY=0.5;" target="valid" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e04" edge="1" parent="1" source="enable" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#596579;fontSize=14;fontColor=#344054;labelBackgroundColor=#ffffff;" target="valid" value="yes">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e05" edge="1" parent="1" source="enable" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#596579;fontSize=14;fontColor=#344054;labelBackgroundColor=#ffffff;exitX=1;exitY=0.5;entryX=0.5;entryY=0;" target="inactive" value="no">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e06" edge="1" parent="1" source="valid" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#596579;fontSize=14;fontColor=#344054;labelBackgroundColor=#ffffff;" target="hysteresis" value="yes">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e07" edge="1" parent="1" source="valid" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#596579;fontSize=14;fontColor=#344054;labelBackgroundColor=#ffffff;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" target="fault" value="no">
+          <mxGeometry relative="1" x="0.0558" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="1200" y="404.03" />
+              <mxPoint x="1200" y="710.03" />
+            </Array>
+            <mxPoint x="1110" y="404" as="sourcePoint" />
+            <mxPoint x="1270" y="710" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e08" edge="1" parent="1" source="hysteresis" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#596579;fontSize=14;fontColor=#344054;labelBackgroundColor=#ffffff;" target="active" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e09" edge="1" parent="1" source="active" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#596579;fontSize=14;fontColor=#344054;labelBackgroundColor=#ffffff;" target="curve" value="yes">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e10" edge="1" parent="1" source="active" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#596579;fontSize=14;fontColor=#344054;labelBackgroundColor=#ffffff;exitX=0;exitY=0.5;entryX=0.5;entryY=0;exitDx=0;exitDy=0;" target="release" value="no">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e11" edge="1" parent="1" source="curve" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#596579;fontSize=14;fontColor=#344054;labelBackgroundColor=#ffffff;" target="ramp" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e12" edge="1" parent="1" source="ramp" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#596579;fontSize=14;fontColor=#344054;labelBackgroundColor=#ffffff;" target="candidate" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e14" edge="1" parent="1" source="candidate" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#596579;fontSize=14;fontColor=#344054;labelBackgroundColor=#ffffff;" target="priority" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e15" edge="1" parent="1" source="priority" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#596579;fontSize=14;fontColor=#344054;labelBackgroundColor=#ffffff;" target="fast" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e16" edge="1" parent="1" source="fast" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#596579;fontSize=14;fontColor=#344054;labelBackgroundColor=#ffffff;" target="feedback" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e17" edge="1" parent="1" source="feedback" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#5572ae;fontSize=14;fontColor=#344054;labelBackgroundColor=#ffffff;dashed=1;dashPattern=8 5;exitX=0;exitY=0.5;entryX=0.5;entryY=1;" target="meter" value="next measurement">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="60" y="1892" />
+              <mxPoint x="60" y="700" />
+              <mxPoint x="252.5" y="700" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e18" edge="1" parent="1" source="candidate" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#d79b00;fontSize=14;fontColor=#344054;labelBackgroundColor=#ffffff;dashed=1;dashPattern=8 5;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" target="log" value="state and events">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e21" edge="1" parent="1" source="fault" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#b85450;fontSize=14;fontColor=#344054;labelBackgroundColor=#ffffff;dashed=1;dashPattern=8 5;exitX=0.5;exitY=1;entryX=1;entryY=0.5;" target="candidate" value="approved fault policy">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

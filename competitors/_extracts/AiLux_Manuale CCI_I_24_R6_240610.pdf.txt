@@ -1,0 +1,581 @@
+
+----- PAGE 1 -----
+ 
+CCI AiLux
+Controllore Centrale di Impianto CEI 0-16 allegati O-T
+AiLux s.r.l., www. a ilux.eu 
+V ia Cavalier Faustino Ghidini 54, Torbole Casaglia (BS) 
+1
+
+
+----- PAGE 2 -----
+CCI - CEI 0-16 allegati O-T – Istruzioni d’uso CCI_I_24_R6_G_p2
+Limitazione di responsabilità 
+AiLux S.r.l. si riserva il diritto di apportare modifiche alle presenti istruzioni senza alcun preavviso. È 
+assolutamente vietato utilizzare l’apparecchiatura per usi diversi da quelli indicati nelle presenti istruzioni.
+ATTENZIONE! Qualora l’apparecchiatura sia adoperata in un modo diverso da 
+quanto specificato nelle presenti istruzioni, la protezione prevista 
+dall’apparecchiatura potrebbe essere compromessa.
+Qualsiasi parte dell’impianto che risulti difettosa o guasta dovrà essere sostituita solo e soltanto 
+con parti fornite da AiLux ; qualora ciò non fosse rispettato AiLux declina ogni responsabilità per 
+qualsiasi conseguente malfunzionamento o danno a cose o persone.
+Nota per gli utilizzatori di “Apparecchiature Elettroniche” 
+L’apparecchiatura AiLux presentata in questo manuale è una apparecchiatura elettronica 
+utilizzabile solo dopo essere stata integrata in un'altra apparecchiatura elettrica di comando e 
+controllo per sistemi di distribuzione elettrica; il costruttore dell’apparecchiatura finale dovrà 
+provvedere al trattamento e allo smaltimento della sua apparecchiatura, ivi incluso 
+l’apparecchiatura AiLux in essa incorporata, secondo la legislazione specifica in materia di rifiuti 
+elettrici/elettronici.
+Revisioni documento:
+Rev. Data Autore Descrizione
+0 16/03/2023 Maioli Marco Prima emissione
+1 09/05/2023 Ferrari Manuele Integrazione e aggiornamenti
+2 14/08/2023 Ferrari Manuele Integrazione RED
+3 18/08/2023 Ferrari Manuele Aggiornamento nomi kit antenne
+4 25/1072023 Giacomo Aggiornamento protocolli
+5 03/01/2024 Maioli Marco Aggiornamento immagine cablaggio
+6 10/06/2024 Ferrari Manuele Aggiornamento DIN DOUT
+©2018–2024 di AiLux s.r.l. Tutti i diritti riservati
+Il marchio AiLux s.r.l. non può essere utilizzato senza autorizzazione scritta rilasciata da AiLux S.r.L.
+Fatta eccezione per una copia di riserva, non è consentita alcuna duplicazione in forma cartacea o elettronica delle presenti 
+istruzioni d’uso senza approvazione scritta rilasciata della AiLux S.r.l.
+Il testo ufficiale del presente documento approvato da AiLux è solo quello redatto nella lingua italiana.
+AiLux s.r.l., www. a ilux.eu 
+Via Cavalier Faustino Ghidini 54, Torbole Casaglia (BS)
+2
+
+----- PAGE 3 -----
+CCI - CEI 0-16 allegati O-T – Istruzioni d’uso CCI_I_24_R6_G_p3
+Indice 
+0. Introduzione............................................................................................................................................................... . 4
+0.0 Come consultare ed utilizzare le istruzioni d’uso................................................................................................ . 4
+0.1 Importanza delle istruzioni.................................................................................................................................. . 4
+0.2 Conservazione delle istruzioni d’uso................................................................................................................... . 4
+0.3 Destinatari delle istruzioni d’uso......................................................................................................................... . 4
+0.4 Consultazione delle istruzioni d’uso.................................................................................................................... . 5
+0.5 Simboli grafici utilizzati........................................................................................................................................ . 5
+0.6 Trasporto e disimballaggio.................................................................................................................................. . 6
+1. Destinazione d’uso dell’apparecchiatura.................................................................................................................... .7
+1.1 Composizione della fornitura.............................................................................................................................. . 7
+1.2 Identificazione apparecchiatura.......................................................................................................................... . 8
+2. Caratteristiche Tecniche Generali Apparato............................................................................................................... . 9
+2.1 Dimensioni meccaniche Assieme....................................................................................................................... .10
+2.2 Installazione e collegamenti.............................................................................................................................. . 10
+2.2.1 Connessioni elettriche............................................................................................................................... . 12
+2.2.2 Installazione cavi antenna......................................................................................................................... . 15
+2.3 Gestione protocolli di comunicazione............................................................................................................... . 16
+2.4 Diagnostica e segnalazioni................................................................................................................................. . 17
+2.5 Istruzioni di installazione ai fini EMC................................................................................................................. . 17
+3. Prima Accensione..................................................................................................................................................... . 18
+3.1 Operazioni preliminari....................................................................................................................................... . 18
+4. Manutenzione ordinaria........................................................................................................................................... . 20
+5. Risoluzione dei problemi.......................................................................................................................................... . 21
+6. Stoccaggio e smantellamento................................................................................................................................... . 22
+7. Garanzia.................................................................................................................................................................... . 23
+AiLux s.r.l., www. a ilux.eu 
+Via Cavalier Faustino Ghidini 54, Torbole Casaglia (BS)
+3
+
+----- PAGE 4 -----
+CCI - CEI 0-16 allegati O-T – Istruzioni d’uso CCI_I_24_R6_G_p4
+0. Introduzione 
+0.0 Come consultare ed utilizzare le istruzioni d’uso
+0.1 Importanza delle istruzioni
+Le presenti istruzioni costituiscono la guida all’uso dell’apparecchiatura CCI.
+È necessario seguire scrupolosamente tutte le indicazioni contenute in queste istruzioni d’uso in 
+quanto il funzionamento sicuro e la durata per la vita prevista dell’apparecchiatura dipendono 
+dall’uso corretto in conformità alle indicazioni ivi riportate.
+Il presente documento è da considerarsi a tutti gli effetti parte integrante dell’apparecchiatura ed è 
+da custodire accuratamente per tutta la durata di vita della stessa; dovrà inoltre essere 
+accuratamente conservato nonché fornito, compresi gli eventuali aggiornamenti, ad un successivo 
+proprietario in caso di cessione, vendita, ecc. dell’apparecchiatura.
+Per la versione CD-ROM del presente documento, AiLux s.r.l. consente all’utente una sola copia 
+elettronica del CD-ROM al solo scopo di back-up.
+L’apparecchiatura ha passato le prove di validazione per essere conforme alle Direttive 
+dell’Unione europea ad essa applicabili, ed è risultata conforme alle norme tecniche indicate nel 
+presente documento. L’utilizzo del macchinario per scopi diversi rispetto a quelli previsti in questo 
+documento è severamente vietato. 
+0.2 Conservazione delle istruzioni d’uso
+Il presente documento dovrà essere utilizzato in modo tale da non danneggiare tutto od in parte il 
+suo contenuto; è fatto divieto di asportare, strappare o riscrivere, qualsiasi sua parte.
+Conservare questo documento in zone protette da umidità e calore. Qualora il documento sia 
+danneggiato o smarrito, è possibile richiederne una copia all’ Ufficio Tecnico AiLux S.r.l. 
+(ufficiotecnico@ailux.eu), il quale potrà informarVi circa costi e tempi di consegna del nuovo 
+documento.
+Per la versione delle istruzioni d’uso su supporto CD-ROM attenersi alle regole di buona 
+conservazione dei supporti informatici di tale tipo. 
+0.3 Destinatari delle istruzioni d’uso
+Le presenti istruzioni sono destinate ai responsabili e agli operatori addetti all'esercizio, 
+installazione e manutenzione dell’apparecchiatura in questione e dovranno essere lette 
+attentamente prima di operare sul macchinario stesso.
+L’utilizzo dell’apparato è consentito solo ad operatori addestrati nei confronti dei rischi elettrici ed 
+autorizzati ad operare sulla apparecchiatura dal proprio datore di lavoro.
+AiLux s.r.l., www. a ilux.eu 
+Via Cavalier Faustino Ghidini 54, Torbole Casaglia (BS)
+4
+
+----- PAGE 5 -----
+CCI - CEI 0-16 allegati O-T – Istruzioni d’uso CCI_I_24_R6_G_p5
+0.4 Consultazione delle istruzioni d’uso
+Ogni singola pagina delle istruzioni d’uso è contraddistinta da un codice (riportato sul margine 
+superiore destro) che ha il seguente significato:
+ Identificazione apparecchiatura (ad es. CCI)
+ Lettera identificativa della lingua delle istruzioni (I: italiano; E: inglese; ecc.)
+ Gli ultimi 2 numeri dell’anno di redazione delle istruzioni d’uso (ad es. 23)
+ Revisione istruzioni (ad es. R0)
+ Tipologia istruzioni (C: complete; E: solo parte elettrica; N: solo parte non elettrica; G: 
+generali senza uso del software; S: uso del software, ecc.)
+ Lettera “p” seguita dal numero progressivo della pagina (ad es. p5)
+Esempio di codice del documento: CCI_I_23_R0_G_p5
+Prima di utilizzare o operare manutenzione sull’apparecchiatura è necessario leggere con la 
+massima attenzione l’intero contenuto delle presenti istruzioni. In particolare, quando sulla 
+apparecchiatura è presente il simbolo grafico il manuale deve essere consultato allo scopo di 
+individuare la natura dei potenziali pericoli e le eventuali azioni che devono essere intraprese per 
+evitarli. 
+Eventuali ALLEGATI al presente documento sono, a tutti gli effetti, parte integrante di queste 
+istruzioni in quanto racchiudono le informazioni tecniche dei componenti costituenti 
+l’apparecchiatura. 
+0.5 Simboli grafici utilizzati 
+Nelle presenti istruzioni d’uso alcune parti sono evidenziate da simboli grafici per richiamare 
+l'attenzione del lettore, così come sulla apparecchiatura sono riportati dei segni grafici per 
+evidenziare situazioni di pericolo; il significato dei simboli grafici utilizzati è indicato di seguito: 
+PERICOLO! Questo avviso segnala la possibile presenza di tensione pericolosa 
+sui terminali contrassegnati.
+ATTENZIONE! Questa avvertenza segnala il possibile verificarsi di un evento che 
+può causare un incidente grave o danni considerevoli. Ogni volta che 
+sull’apparecchiatura si trova questo simbolo si deve consultare il presente 
+manuale per individuare la natura del pericolo.
+INFORMAZIONE. Questo simbolo indica informazioni importanti che devono 
+essere lette attentamente.
+I seguenti simboli sono spesso riportati sui prodotti: 
+AiLux s.r.l., www. a ilux.eu 
+Via Cavalier Faustino Ghidini 54, Torbole Casaglia (BS)
+5
+
+
+----- PAGE 6 -----
+CCI - CEI 0-16 allegati O-T – Istruzioni d’uso CCI_I_24_R6_G_p6
+Corrente continua
+0.6 Trasporto e disimballaggio
+L’apparecchiatura viene fornita per il trasporto in un imballo protettivo. Durante il trasporto 
+dell’apparecchiatura evitare che sia soggetta ad urti o esposta ad intemperie.
+Il peso complessivo dell’apparecchiatura è di 1 Kg e pertanto non sono richiesti mezzi di 
+sollevamento specifici per la sua movimentazione; prestare comunque attenzione affinché durante 
+la movimentazione della apparecchiatura questa non possa cadere e danneggiarsi.
+INFORMAZIONE. All'apertura dell’imballo verificare che l’apparto e le antenne 
+non abbiano subito danni durante il trasporto. Se questi risultano danneggiati, 
+contattare il servizio di assistenza tecnica AiLux.
+ATTENZIONE! All'interno dell’imballo insieme all’apparecchiatura sono inserite le 
+istruzioni d’uso sotto forma di QRCode: recuperare le istruzioni d’uso, leggerle 
+attentamente e conservarle accuratamente come indicato all’art. 0.2.
+AiLux s.r.l., www. a ilux.eu 
+Via Cavalier Faustino Ghidini 54, Torbole Casaglia (BS)
+6
+
+
+----- PAGE 7 -----
+CCI - CEI 0-16 allegati O-T – Istruzioni d’uso CCI_I_24_R6_G_p7
+1. Destinazione d’uso dell’apparecchiatura 
+Il CCI è un Gateway per il monitoraggio di impianti di Produzione di Energia Elettrica. Apparato 
+prescritto da ARERA con delibera 36/2020/R/EEL e descritto dalla norma CEI 0-16 V1 del 2020 e 
+V2 del 2021 negli allegati O e T. Raccoglie tutte le informazioni dell’impianto e le trasmette in 
+modo sicuro al distributore (DSO) o ad un altro Operatore abilitato. Per ottemperare al 
+regolamento le prestazioni del CCI, secondo la specifica funzionale, devono svilupparsi come 
+segue:
+ prestazioni funzionali “obbligatorie”, inerenti lo scambio dati fra produttore e DSO 
+(osservabilità);
+ prestazioni funzionali “opzionali”, inerenti la regolazione di tensione e la limitazione di 
+potenza al Punto di Consegna dell'impianto;
+ prestazioni funzionali “facoltative”, inerenti la partecipazione dell'impianto al Mercato dei 
+servizi del Dispacciamento, la gestione ottimale dell'impianto, RiGeDi, ecc.
+1.1 Composizione della fornitura
+La fornitura è composta dalle seguenti parti:
+ N° 1 dispositivo CCI
+ N° 1 Antenna 4G/LTE, vedi 2.2.2 Installazione cavi antenna
+ N° 1 Antenna GPS, vedi 2.2.2 Installazione cavi antenna
+ N° 1 SIM
+ N° 1 MicroSD card 32GB
+ N° 1 Batteria litio a bottone CR2032
+AiLux s.r.l., www. a ilux.eu 
+Via Cavalier Faustino Ghidini 54, Torbole Casaglia (BS)
+7
+
+----- PAGE 8 -----
+CCI - CEI 0-16 allegati O-T – Istruzioni d’uso CCI_I_24_R6_G_p8
+1.2 Identificazione apparecchiatura
+L’apparato è identificato mediante la seguente targa identificativa posizionata sul retro del case:
+Figura 1: Etichetta prodotto
+Figura 2: Vista Frontale CCI
+AiLux s.r.l., www. a ilux.eu 
+Via Cavalier Faustino Ghidini 54, Torbole Casaglia (BS)
+8
+
+----- PAGE 9 -----
+CCI - CEI 0-16 allegati O-T – Istruzioni d’uso CCI_I_24_R6_G_p9
+2. Caratteristiche Tecniche Generali Apparato
+Ambiente uso apparecchiatura: Interno
+Ambiente EMC: Industriale
+Temperatura di funzionamento: -5°C, …, +45°C
+Temperatura di stoccaggio: -10°C, …, +55°C
+Altitudine: 2000m s.l.m.
+Umidità relativa: 95% a +30°C
+Categoria di sovratensione: Non connessa a rete
+Grado di inquinamento: 2
+Grado di protezione: IP20
+Tensione nominale alimentazione: 12 – 24Vdc
+Tensione residua: max 5%
+Potenza massima: 5 W
+Potenza Trasmissione 4G/LTE: Classe 3
+Bande di frequenza 4G/LTE: B1/ 3/ 7/ 8/ 20/ 28 B38/ 40/ 41
+Bande di frequenza GPS: GPS L1 1574.397 – 1576.443MHz
+GLONASS G1 1598.0625 – 1605.375MHz
+Normative conformi: CEI 0-16 2022-03
+CEI EN 61557-12:2018
+ARERA 36/2020/R/EEL
+FIPS 140-2
+IEC 62351-3/-4/-5/-6
+IEC 61326-1:2006+EC2008
+IEC 60068-2-1/-2/-6/-30
+IEC 61010-1:2001+CORR:2002
+AiLux s.r.l., www. a ilux.eu 
+Via Cavalier Faustino Ghidini 54, Torbole Casaglia (BS)
+9
+
+----- PAGE 10 -----
+CCI - CEI 0-16 allegati O-T – Istruzioni d’uso CCI_I_24_R6_G_p10
+2.1 Dimensioni meccaniche Assieme
+Figura 3: Dimensioni meccaniche
+2.2 Installazione e collegamenti
+Il dispositivo è provvisto di aggancio a barra DIN. Il dispositivo deve essere montato su barra DIN 
+collegata correttamente a terra. 
+L’installatore dovrà provvedere a fornire e collegare i conduttori di alimentazione 
+dell’apparecchiatura e degli ingressi e uscite digitali se previsti.
+ATTENZIONE! I conduttori destinati al collegamento con i morsetti dovranno 
+essere inseriti negli stessi esclusivamente utilizzando puntali a compressione. 
+La loro sezione deve essere compresa tra 0.2 e 0.75 mm 2. Utilizzare cavi con 
+temperatura di esercizio superiore a +70°C e temperatura minima -10°C (assenza 
+di sollecitazioni meccaniche).
+AiLux s.r.l., www. a ilux.eu 
+Via Cavalier Faustino Ghidini 54, Torbole Casaglia (BS)
+10
+
+----- PAGE 11 -----
+CCI - CEI 0-16 allegati O-T – Istruzioni d’uso CCI_I_24_R6_G_p11
+PERICOLO! Sulla apparecchiatura può essere presente tensione sugli ingressi o 
+uscite digitali anche con apparecchiatura disalimentata. Durante l’installazione 
+sincerarsi che tutte le possibili fonti di tensione siano disconnesse prima di 
+operare.
+ATTENZIONE! Per alimentare l’apparato, installare esclusivamente alimentatori 
+SELV certificati, con tensione 12 - 24Vdc e corrente massima 2.5A autoprotetti.
+ATTENZIONE! La sicurezza del sistema in cui l’apparecchiatura CCI sarà 
+incorporata ricade sotto la responsabilità dell’assemblatore del sistema.
+ATTENZIONE! In caso di guasto a una qualsiasi parte dell’apparato CCI è 
+necessario contattare AiLux per l’eventuale sostituzione della parte danneggiata. 
+Per maggiori dettagli fare riferimento alla sezione “RISOLUZIONE DEI 
+PROBLEMI”.
+ATTENZIONE! Mettere in servizio l’apparecchiatura senza rimuovere la linguetta 
+dalla batteria comporta la perdita dei dati programmati ogni volta che 
+l’apparecchiatura viene spenta o quando cade alimentazione.
+ATTENZIONE! l’apparecchiatura CCI è permanentemente collegata alla sua 
+alimentazione. Si rende quindi necessaria l’installazione di un interruttore 
+automatico o di un sezionatore nell’impianto elettrico. Tale interruttore, 
+opportunamente dimensionato per fungere da dispositivo di protezione contro le 
+sovracorrenti, dovrà essere adeguatamente posizionato, facilmente raggiungibile 
+e marcato come dispositivo di sezionamento dell’apparecchio.
+ATTENZIONE! Le uscite digitali della apparecchiatura CCI sono destinate al 
+comando o alla diagnostica dei sistemi di controllo della rete elettrica: la 
+responsabilità dell’uso corretto delle uscite di comando rispetto alla 
+conseguente azione sul sistema automatizzato ricade sotto la Responsabilità 
+dell’utilizzatore in base alla propria specifica applicazione.
+AiLux s.r.l., www. a ilux.eu 
+Via Cavalier Faustino Ghidini 54, Torbole Casaglia (BS)
+11
+
+----- PAGE 12 -----
+CCI - CEI 0-16 allegati O-T – Istruzioni d’uso CCI_I_24_R6_G_p12
+2.2.1 Connessioni elettriche
+Le connessioni del dispositivo devono essere svolte secondo le seguenti specifiche:
+Figura 4: Connessioni
+Descrizione connessioni:
+ Ingresso Alimentatore 12-24Vdc SELV
+ Due porte Seriali optoisolate con connessione RS-232 e RS-485 su connettori RJ45 8/8 
+standard ModBus (vedi Figura 5)
+ Due Porte USB 2.0 per connessioni agli Elementi di Impianto
+ Una porta USB 2.0 per Consolle di Configurazione e Manutenzione Locale.
+ Una porta Ethernet 10/100 Mbps(1)(2) dedicata a DSO (ETH_A) 
+ Una porta Ethernet 10/100 Mbps(1)(2) dedicata a Operatore Abilitato (ETH_B). 
+ Due porte Ethernet 10/100 Mbps(1)(2) per connessioni agli Elementi di Impianto.
+ Tre uscite digitali in contatto pulito NA 3A a 24Vac / 3A a 30Vdc
+AiLux s.r.l., www. a ilux.eu 
+Via Cavalier Faustino Ghidini 54, Torbole Casaglia (BS)
+12
+
+
+----- PAGE 13 -----
+CCI - CEI 0-16 allegati O-T – Istruzioni d’uso CCI_I_24_R6_G_p13
+ Cinque ingressi digitali polarizzati e optoisolati da 10Vdc…24Vdc da energizzare con 
+alimentazione ESTERNA
+ Modulo GPS/GLONASS integrato per sincronia oraria da costellazione satellitare. Connettore 
+SMA Femmina per connessione antenna attiva esterna (5Vdc OUT). Antenna fornita con 5 m 
+di cavo RG174.
+ Modem integrato per connessioni 2G/3G/4G/LTE Cat. 1. Connettore SMA Femmina per 
+connessione antenna stilo esterna.
+ Slot per MicroSD card fino a 32Gb per Storage e Log files.
+Note:
+(1) A partire da Rev3, la velocità della porta Ethernet è 10/100/1000 Mbps. In caso di Revisione 
+HW Rev3, sul display nella schermata del SN appare la scritta “Rev3”.
+(2) In caso di Rev2, la velocità della porta Ethernet è possibile aumentarla a 1000Mbps 
+utilizzando lo speciale cavo adattatore “Cavo Rev2”. Contattare il servizio clienti Ailux.
+AiLux s.r.l., www. a ilux.eu 
+Via Cavalier Faustino Ghidini 54, Torbole Casaglia (BS)
+13
+Figura 5: Descrizione connessione porte seriali RS232 e RS485
+
+----- PAGE 14 -----
+CCI - CEI 0-16 allegati O-T – Istruzioni d’uso CCI_I_24_R6_G_p14
+Figura 6: Specifiche Cablaggio Bus di Campo RS-485
+AiLux s.r.l., www. a ilux.eu 
+Via Cavalier Faustino Ghidini 54, Torbole Casaglia (BS)
+14
+
+----- PAGE 15 -----
+CCI - CEI 0-16 allegati O-T – Istruzioni d’uso CCI_I_24_R6_G_p15
+2.2.2 Installazione cavi antenna
+Il dispositivo CCI necessita dell’installazione dell’antenna GPS e GPRS (LTE).
+ATTENZIONE! Cablare e posizionare l’antenna GPS vista cielo 360° per una 
+ottimale ricezione.
+Sono disponibili per la vendita tre versioni di antenne:
+Nessun antenna fornita
+Kit 
+Locale
+N° 1 Antenna 4G/LTE Omnidirezionale connettore SMA Maschio
+N° 1 Antenna GPS con 5 mt di cavo coassiale connettore SMA Maschio
+Kit 
+Remote
+N° 1 Antenna 4G/LTE Omnidirezionale con attacco cavo 20m connettore SMA 
+Maschio
+N° 1 Antenna GPS marina con prolunga 20m connettore SMA Maschio
+Di seguito le immagini delle soluzioni antenne appena descritte:
+Figura 7: Kit antenne Locale Figura 8: Kit antenne Remote
+ATTENZIONE! Collegare un antenna 4G/LTE con guadagno massimo > 3,95dBi.
+Collegare un antenna GPS con guadagno massimo > 18dBi.
+AiLux s.r.l., www. a ilux.eu 
+Via Cavalier Faustino Ghidini 54, Torbole Casaglia (BS)
+15
+
+----- PAGE 16 -----
+CCI - CEI 0-16 allegati O-T – Istruzioni d’uso CCI_I_24_R6_G_p16
+2.3 Gestione protocolli di comunicazione
+Porte seriali configurate come RS232 o RS485:
+ IEC 61158-15 ModBus-RTU.
+ IEC 60870-5-101 Balance and Unbalance. 
+ IEC 60870-5-103
+Porte Ethernet:
+ IEC 60870-5-104 Slave/Reverse/Redundancy (Gestione Armamenti con Multicast e Unicast). 
+ IEC-61850 Server/Client/Goose. 
+ IEC 61158-15 ModBus-TCP/IP Master and/or Slave. 
+ DNP 3.
+ S7-Comm. 
+ OPC-UA Client. 
+ C37.118 Client. 
+ IEC 62056-21 (DLMS/COSEM). 
+Protocolli sicuri:
+ IEC 62351 (crypto/cyber security)
+ Parte 3 per IEC-60870-5-101/4, IEC 61850 e DNP3. 
+ Parte 4 per IEC 61850
+ Parte 5 per IEC-60870-5-101/4 e DNP3. 
+ Parte 6 per IEC 61850
+ Parte 7 per SNMP
+ Parte 8,9 per IEC-60870-5-101/4, IEC61850 e DNP3
+ Parte 14 Syslog 
+Servizi:
+ http(s), sftp, ssh, snmp v2, v3 trap. 
+ ntpd, client-ptp o server-ptp (IEEE-1588) (power profile).
+ redundancy cover system. 
+ Firewall. 
+ Accesso con RBAC.
+ Tasks ladder IEC 61131-3. 
+ Web Interface per diagnostica, gestione logs, SCADA.
+AiLux s.r.l., www. a ilux.eu 
+Via Cavalier Faustino Ghidini 54, Torbole Casaglia (BS)
+16
+
+----- PAGE 17 -----
+CCI - CEI 0-16 allegati O-T – Istruzioni d’uso CCI_I_24_R6_G_p17
+2.4 Diagnostica e segnalazioni
+Descrizione LED e display bordo macchina per la diagnostica:
+ Display OLED 1” per diagnostica e segnalazioni locali
+ LED “POWER ON” verde fisso presenza +5Vdc
+ LED “RESET” rosso acceso in caso di Reset, normalmente spento
+ LED “1PPS” verde lampeggiante con frequenza 1 secondo quando vengono individuati 
+almeno 3 satelliti
+ LED “RUN”, verde fisso funzionamento ok
+2.5 Istruzioni di installazione ai fini EMC
+Per garantire il rispetto delle norme EMC durante il cablaggio ed il montaggio dell’apparecchiatura 
+si deve rispettare quanto segue:
+ Installare l’apparecchiatura all’interno di un quadro elettrico metallico posizionandola distante 
+da apparecchiature di potenza fonte di potenziali disturbi 
+ Prestare attenzione a separare i conduttori dei segnali destinati all’apparecchiatura CCI dagli 
+altri conduttori del quadro elettrico che la contiene, in canali dedicati distanti almeno 200 mm 
+dagli altri canali. Questa prescrizione deve essere osservata anche all’esterno del quadro 
+elettrico.
+ Per aumentare l’isolamento tra il quadro elettrico ed il campo, alimentare con una tensione 
+DC 24 V il comune delle uscite a relè del CCI e collegare ciascuna uscita ad un relè di 
+separazione. Il contatto del relè così alimentato dovrà essere usato come comando di uscita 
+verso il campo.
+AiLux s.r.l., www. a ilux.eu 
+Via Cavalier Faustino Ghidini 54, Torbole Casaglia (BS)
+17
+
+----- PAGE 18 -----
+CCI - CEI 0-16 allegati O-T – Istruzioni d’uso CCI_I_24_R6_G_p18
+3. Prima Accensione 
+Per effettuare la prima accensione del dispositivo rispettare le seguenti istruzioni al fine della 
+corretta messa in servizio della apparecchiatura.
+L’accensione deve essere effettuata da personale specializzato e con competenza sulla 
+macchina. 
+3.1 Operazioni preliminari
+Verificare che la linea di alimentazione dell’apparecchiatura sia collegata ai morsetti ingresso 
+alimentazione apparato e che il conduttore di protezione PE esterno sia collegato alla barra DIN 
+dove è fissato il CCI . Pr ima di accendere l’interruttore verificare con un apposito misuratore di 
+tensione che la tensione di alimentazione sia conforme a quanto prescritto per l’apparecchiatura.
+Rimuovere linguetta per attivare batteria tampone.
+Si verifichi inoltre che i segnali di ingresso, uscita e digitali se previsti per la specifica applicazione 
+siano stati collegati nelle rispettive morsettiere di collegamento con l’apparecchiatura.
+PERICOLO! Verificare l’integrità di tutti i conduttori prima di alimentare 
+l’apparecchiatura. In caso i conduttori siano danneggiati provvedere alla loro 
+sostituzione prima di alimentare l’apparecchiatura.
+Verificata la correttezza della tensione, accendere l’interruttore verificando che:
+ Il LED verde “Power On” sia acceso,
+ Il LED rosso “Reset” dopo alcuni secondi si spenga 
+ Sul display dopo circa 30s appaiano tre schermate in sequenza:
+ CCI-n.n.n-n
+SN1: nnnnnn
+SN2: nnnnnnnn
+ Date-Time
+dd/mm/aaaa
+nn:nn:nn
+ Digital I/O
+IN: 00000
+OUT: 000
+AiLux s.r.l., www. a ilux.eu 
+Via Cavalier Faustino Ghidini 54, Torbole Casaglia (BS)
+18
+
+----- PAGE 19 -----
+CCI - CEI 0-16 allegati O-T – Istruzioni d’uso CCI_I_24_R6_G_p19
+Terminate le suddette verifiche procedere al caricamento della configurazione della 
+apparecchiatura per la specifica applicazione in conformità alle istruzioni indicate nel documento 
+Configurato re CCI .
+INFORMAZIONE. Dopo il caricamento della configurazione, in funzione della 
+stessa le porte seriali potrebbero segnalare la loro abilitazione accendendo un 
+LED verde lampeggiante collocato sulle porte stesse.
+ATTENZIONE! Prima di iniziare ad utilizzare dell’apparecchiatura, collegare alle 
+porte Ethernet i cavi di rete previsti per la specifica configurazione.
+AiLux s.r.l., www. a ilux.eu 
+Via Cavalier Faustino Ghidini 54, Torbole Casaglia (BS)
+19
+
+----- PAGE 20 -----
+CCI - CEI 0-16 allegati O-T – Istruzioni d’uso CCI_I_24_R6_G_p20
+4. Manutenzione ordinaria 
+L’apparecchiatura non necessita di particolare manutenzione se utilizzata come indicato nelle 
+presenti istruzioni d’uso.
+È consigliata una verifica a vista dello stato della integrità apparecchiatura ogni mese e comunque 
+non oltre 6 mesi.
+Salvo che le verifiche di cui sopra non evidenzino la necessità di un intervento anticipato, è 
+richiesta una pulizia della apparecchiatura ogni 12 mesi mediante soffiatura con aria secca.
+PERICOLO! Prima di operare qualsiasi manutenzione sezionare tutte le 
+alimentazioni di energia dell’apparecchiatura, incluso le alimentazioni presenti 
+sugli ingressi o sulle uscite digitali.
+Sostituzione delle batterie tampone 
+La batteria tampone inserita nell’apparato deve essere sostituita periodicamente per non rischiare 
+di perdere i dati quando manca tensione o viene spenta l’apparecchiatura. Al fine di evitare 
+disservizi alla apparecchiatura CCI sostituire la batteria ogni 5 anni con una nuova batteria del tipo 
+CR2032.
+ATTENZIONE! Prima di operare alla rimozione della batteria è necessario ricevere 
+autorizzazione allo spegnimento del CCI dal DSO.
+Per sostituire la batteria procedere come segue:
+ Spegnere il CCI, sezionare le alimentazioni sugli ingressi e uscite digitali e svitare le 4 viti 
+laterali del coperchio. 
+ Rimuovere i cavi collegati al CCI per poter rimuovere il coperchio.
+ Rimuovere la batteria da sostituire 
+ Installare la nuova batteria avendo cura rispettare la polarità riportata sulla serigrafia della 
+scheda. 
+ Richiudere il coperchio, ricollegare i vari cavi rimossi dal coperchio e riaccendere il CCI 
+AiLux s.r.l., www. a ilux.eu 
+Via Cavalier Faustino Ghidini 54, Torbole Casaglia (BS)
+20
+
+----- PAGE 21 -----
+CCI - CEI 0-16 allegati O-T – Istruzioni d’uso CCI_I_24_R6_G_p21
+5. Risoluzione dei problemi
+Di seguito sono indicati, in modo non esaustivo, alcuni problemi o anomalie che si possono riscontrare nel 
+corso di esercizio del sistema, indicando le probabili cause e le possibili azioni per risolvere il problema.
+La presente sezione non ha la pretesa di indicare tutti i possibili guasti ma solo dare supporto per la ricerca 
+della causa dei malfunzionamenti. 
+Problema Possibile causa Azione
+LED 1PPS non lampeggia
+Rottura antenna GPS o 
+antenna non installata 
+correttamente
+Sostituire l’antenna o 
+installarla correttamente vedi
+2.2.2 Installazione cavi
+ antenna
+LED POWER ON spento Mancanza di alimentazione Controllare alimentazione sui 
+morsetti
+LED RESET rosso fisso Gravi problemi alla CCI Contattare il fornitore per la
+In caso di interruzione di funzionalità, contattare supportocci@ailux.eu
+ATTENZIONE! L’intervento per il ripristino della funzionalità dell’apparecchiatura 
+è riservato al personale tecnico autorizzato.
+AiLux s.r.l., www. a ilux.eu 
+Via Cavalier Faustino Ghidini 54, Torbole Casaglia (BS)
+21
+
+----- PAGE 22 -----
+CCI - CEI 0-16 allegati O-T – Istruzioni d’uso CCI_I_24_R6_G_p22
+6. Stoccaggio e smantellamento 
+Stoccaggio apparecchiatura o sosta prolungata 
+Qualora l’apparecchiatura non venga utilizzata o stoccata per lunghi periodi, verificare la sua integrità 
+prima dell’uso.
+In caso di stoccaggio collocare l’apparecchiatura in luoghi al chiuso in assenza di atmosfera corrosiva al 
+fine di non compromettere la sua funzionalità. La temperatura di stoccaggio è indicata nella tabella delle 
+Caratteristiche Tecniche dell’Apparato a pagina 9.
+Il riavvio da una sosta prolungata richiede il controllo e in alcuni casi la rimozione di ossidazioni e 
+polveri depositate anche all’interno dell’apparecchiatura. 
+Smantellamento, dismissione e smaltimento 
+AiLux NON risponde dello smaltimento dell’apparecchiatura (display, cavi, batterie, ecc…) per cui è 
+necessario che il Cliente provveda allo smaltimento di tali sostanze potenzialmente nocive all’ambiente 
+secondo le norme vigenti nel paese d’installazione. 
+Qualora l’apparecchiatura venga smantellata è necessario attenersi alle norme vigenti nel paese di 
+destinazione e in ogni caso evitare di provocare qualunque tipo di inquinamento. 
+Smaltire i diversi materiali con cui sono composti i particolari dell’apparecchiatura in discariche adatte 
+allo scopo. 
+AiLux s.r.l., www. a ilux.eu 
+Via Cavalier Faustino Ghidini 54, Torbole Casaglia (BS)
+22
+
+----- PAGE 23 -----
+CCI - CEI 0-16 allegati O-T – Istruzioni d’uso CCI_I_24_R6_G_p23
+7. Garanzia
+Per ogni apparecchiatura di nuova fornitura utilizzata nelle condizioni d’uso previste, AiLux fornisce la 
+garanzia per difetti di materiale e fabbricazione per un periodo di 12 (dodici) mesi impegnandosi a 
+riparare o sostituire gratuitamente le parti difettose, riservandosi comunque la possibilità di sostituire 
+l’intera apparecchiatura difettosa con altra apparecchiatura di uguali o pari caratteristiche.
+La garanzia si intende valida se sono verificate le seguenti condizioni:
+- L’apparecchiatura guasta sia nelle condizioni in cui è stata consegnata da AiLux all’utilizzatore
+- Il guasto sia segnalato dall’utilizzatore entro dodici mesi dalla consegna dell’apparecchiatura 
+- Il guasto non sia stato causato da:
+o manomissioni, riparazioni o modifiche non operate da AiLux 
+o incuria o esecuzione della manutenzione non corretta
+o non rispetto delle modalità d’uso indicate nelle istruzioni d’uso
+o rotture dovute ad urti o cadute della apparecchiatura
+AiLux fornisce garanzia solo per quanto sopra indicato e non per quanto riguarda le circostanze 
+correlate al mancato funzionamento dell’apparecchiatura o di una delle sue parte.
+Il materiale in garanzia dovrà essere spedito o consegnato presso la sede di AiLux a carico del cliente 
+che risponde di eventuali danneggiamenti o perdita della apparecchiatura spedita. Resta inteso che i 
+materiali sostituiti sono di proprietà di AiLux.
+AiLux s.r.l., www. a ilux.eu 
+Via Cavalier Faustino Ghidini 54, Torbole Casaglia (BS)
+23

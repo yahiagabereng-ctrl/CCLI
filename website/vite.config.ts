@@ -1,0 +1,19 @@
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
+
+export default defineConfig({
+  plugins: [react()],
+  server: {
+    host: true,
+    port: 5177,
+    // Allow ngrok / mobile tunnels (Host header differs from localhost)
+    allowedHosts: true,
+    proxy: {
+      "/api/rag": {
+        target: "http://localhost:8001",
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api\/rag/, ""),
+      },
+    },
+  },
+});

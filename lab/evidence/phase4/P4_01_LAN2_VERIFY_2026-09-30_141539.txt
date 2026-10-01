@@ -1,0 +1,21 @@
+[14:15:39] === P4-01 LAN2 / Eth_B verify ===
+[14:15:39] DUT=192.168.1.130 PC=192.168.1.183
+[14:15:39] --- PC Ethernet ---
+[14:15:39]   192.168.1.183/24 on Ethernet
+[14:15:39] PASS: PC on operator subnet (192.168.1.183).
+[14:15:39] --- Ping DUT ---
+[14:15:42] PASS: ping 192.168.1.130
+[14:15:42] --- LuCI (Eth_B) ---
+[14:15:42]   http://192.168.1.130/cgi-bin/luci
+[14:15:42]   http://192.168.1.130/ccli/mock_console.html
+[14:15:42] --- SSH root@192.168.1.130 ---
+[14:15:43] === DUT LAN2 / Eth_B
+[14:15:43] --- ip addr lan2 ---
+[14:15:43] ash: date
+[14:15:43] : not found
+[14:15:43] --- UCI network.lan_sec ---
+[14:15:43] ip: can't find device 'lan2
+[14:15:43] '
+[14:15:43] ash: syntax error: unexpected word (expecting ")")
+[14:15:43] FAIL: SSH exit 2
+[14:15:43] === end ===

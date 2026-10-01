@@ -1,0 +1,16 @@
+﻿{
+    "codename":  "P4-104-eth-b",
+    "changes":  [
+                    "CS104 slave bind 192.168.1.130:2404",
+                    "lab_tr400_phase4_eth_b.yaml deployed",
+                    "Version 0.1.0-r17 aarch64 SDK build"
+                ],
+    "release":  17,
+    "timestamp_utc":  "2026-09-30T11:28:43.1156433Z",
+    "version_full":  "0.1.0-r17",
+    "lab_yaml":  "C:\\Yahia\\projects\\CCLI\\apps\\ccli\\config\\lab_tr400_phase4_eth_b.yaml",
+    "sha256":  "7b7cf11574f36f7478247fb523c57df558b4832d35d4b80c49d5b6ff7d2d72e9",
+    "binary":  "C:\\Yahia\\projects\\CCLI\\lab\\tg544-openwrt\\ccli-bin",
+    "host":  "192.168.1.130",
+    "semver":  "0.1.0"
+}

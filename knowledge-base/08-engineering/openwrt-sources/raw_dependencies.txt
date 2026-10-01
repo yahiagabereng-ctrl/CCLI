@@ -1,0 +1,70 @@
+====== Using Dependencies ======
+
+Source: https://openwrt.org/docs/guide-developer/dependencies#using_dependencies
+Captured: 2026-09-07 (archive raw export + live wiki parity)
+
+===== Topic =====
+
+A typical package Makefile will contain a section like:
+
+define Package/tcpdump/default
+  SECTION:=net
+  CATEGORY:=Network
+  DEPENDS:=+libpcap
+  TITLE:=Network monitoring and data acquisition tool
+  URL:=http://www.tcpdump.org/
+endef
+
+This page talks about what the DEPENDS:= line should look like.
+
+===== Dependency types =====
+
+ * package (no prefix) — current package cannot be selected unless named package is already enabled
+   DEPENDS:=libpcap
+
+ * +package — if current package is selected, auto-select named package (runtime dep for opkg)
+   DEPENDS:=+libpcap
+
+ * +PACKAGE_packageb:packagec — packagec selected only if packageb enabled when current package selected
+   DEPENDS:=+PACKAGE_arpd:libpcap
+
+ * +!BUSYBOX_CONFIG_X:package — select package only if busybox applet not built in
+   DEPENDS:=+!BUSYBOX_CONFIG_HOSTNAME:net-tools-hostname
+
+ * @SYMBOL — package hidden unless CONFIG_SYMBOL defined (e.g. @USB_SUPPORT, @GPIO_SUPPORT)
+   DEPENDS:=@USB_SUPPORT
+
+ * +@SYMBOL — selecting package sets CONFIG_SYMBOL (image build only; NOT checked by opkg on device)
+   DEPENDS:=+@KERNEL_DEBUG_FS
+
+ * AVOID: +@!PACKAGE_x:BUSYBOX_CONFIG_Y — creates unresolvable opkg dep on CONFIG symbol
+
+==== PKG_BUILD_DEPENDS vs DEPENDS ====
+
+ * PKG_BUILD_DEPENDS — build-time only (headers/tools); not in .ipk runtime deps
+ * DEPENDS — runtime; appears in opkg metadata
+
+==== Package/package-name/config directives ====
+
+define Package/foo/config
+  select bar
+  select bar if packageb
+  select bar if SYMBOL
+  depends packageb
+  depends packageb if packagec
+  select SYMBOL
+  select SYMBOL if packageb
+  select SYMBOL if SYMBOL2
+endef
+
+Note: select in config builds bar but does NOT add opkg runtime dep or build order — use DEPENDS for that.
+
+===== Caveats =====
+
+ * No circular dependencies (A→B→A breaks menuconfig)
+ * +SYMBOL:package boolean ops: ! negates whole condition; && > ||; parentheses ignored in +() form
+ * +@SYMBOL deps not enforced on opkg install — use +package for field installs
+
+===== Bugs =====
+
+Report with relevant portions of $TOPDIR/tmp/.config-package.in

@@ -1,0 +1,1020 @@
+--- page 1 ---
+ 
+© 2015 - 2022 MediaTek Inc. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Version: 1.15 
+Release date: 2022-05-29 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+MT7986A Datasheet for BPI-R3 
+
+--- page 2 ---
+ MT7986A 
+WiFi AP Router 
+ 
+ © 2015 - 2022 MediaTek Inc. Page 2 of 23                Page 2 of 51 
+ 
+Overview 
+MT7986A is a highly integrated wireless network router system-on-chip 
+used for high wireless performance, home entertainment, and home  
+automation and so on. 
+MT7986A is fabricated with advanced silicon process and integrates a 
+Quad-core ARM® Cortex -A53 MPCoreTM ope rating up to 2.0GHz and 
+more DRAM bandwidth. This SoC also includes a variety of peripherals , 
+including one USB3.0/USB2.0 (Host), one USB2.0 (Host) , and one 
+PCIE2.0 2lane (RC) ports. To support popular network applications, MT7986A also implements two 2.5Gbps 
+HSGMII Ethernet interface. MT7986A combines with two RF chips, they can provide dual-band concurrent 
+chipset solution for WIFI6E AX6000 wireless router platform. User also can create tri -band solution by 
+connecting wireless NIC card thru its PCIe port.  
+Besides the connectivity features, the hardware -based NAT engine with QoS embedded in MT7986A 
+transporting the audio/video streams in higher priority than other non-timely services also enriches the home 
+entertainment application. The SFQ separating P2P sessions from audio/video ones so that MT7986A 
+guarantees the streaming service. 
+With the advanced technology and abundant features, MT7986A is well positioned to be the core of next -
+generation Smart WiFi AP router, and home gateway systems. 
+ 
+ Key Features
+▪ Embedded Quad-core ARM® Cortex-A53 
+MPCore operating at 2.0GHz 
+− 32KB L1 I-Cache and 32KB L1 D-Cache 
+− 512KB unified L2 Cache 
+− NEON/FPU 
+▪ Discrete 16-bit DDR3/4 chip 
+▪ NOR (SPI), NAND Flash (SPI, SLC), 
+eMMC5.1 
+▪ USB3.0/USB2.0 Host x1 
+▪ USB2.0 Host x1 
+▪ PCIE2.0 2-lane HOST x1 
+▪ Audio PCM interface x1 
+▪ SPI, I2C, UART Lite, JTAG, MDC, MDIO, 
+GPIO, PWM 
+▪ Two HSGMII(2.5Gbps) interfaces 
+▪ WiFi 
+− Lead in 4x4+4x4 WIFI6E integration  
+− Airtime Fairness 
+− Spectrum Analyzer 
+ 
+ 
+▪ HW NAT 
+− Etherent/WiFi 
+− Wired speed 
+− IPv4 routing, NAT, NAPT 
+− IPv6 routing, DS-Lite, 6RD 
+▪ HW QoS 
+− 128 hardware queues to guarantee the 
+min/max bandwidth of each flow.  
+− Seamlessly co-work with HW NAT engine. 
+− SFQ w/ 1k queues. 
+▪ Security 
+− Secure boot 
+− Crypto Suite 
+− Anti Clone 
+▪ Green 
+− Intelligent Clock Scaling (exclusive) 
+− DDR: ODT off, Self-refresh mode 
+ 
+ 
+  
+M
+e
+d
+i
+a
+T
+e
+k 
+C
+o
+n
+f
+i
+d
+e
+n
+t
+i
+a
+l 
+A 
+Applications: 
+▪ Internet Service Router 
+▪ Wireless Router 
+▪ Wireless Repeater 
+▪ Home Security Gateway 
+▪ Home Automation 
+▪ NAS Devices 
+
+--- page 3 ---
+ MT7986A 
+WiFi AP Router 
+ 
+ © 2015 - 2022 MediaTek Inc. Page 3 of 23                Page 3 of 51 
+ 
+Functional Block Diagram 
+ 
+           
+
+
+--- page 4 ---
+ MT7986A 
+WiFi AP Router 
+ 
+ © 2015 - 2022 MediaTek Inc. Page 4 of 23                Page 4 of 51 
+ 
+Document Revision History 
+V1.15 
+Me
+dia
+Tek 
+Co
+nfid
+enti
+al A 
+
+--- page 5 ---
+ MT7986A 
+WiFi AP Router 
+ 
+ © 2015 - 2022 MediaTek Inc. Page 5 of 23                Page 5 of 51 
+ 
+Table of Contents 
+Overview ................................................................................................................................................ 2 
+Key Features .......................................................................................................................................... 2 
+Functional Block Diagram .................................................................................................................... 3 
+Document Revision History ........................................................................................................................ 4 
+Table of Contents .................................................................................................................................. 5 
+1 General Features ......................................................................................................................... 7 
+1.1 Platform Features ................................................................................................................ 7 
+1.2 Wireless Connectivity Features ........................................................................................... 8 
+1.2.1 Wi-Fi MAC ........................................................................................................... 8 
+1.2.2 WLAN Baseband ................................................................................................. 8 
+1.3 Wired Ethernet Features ..................................................................................................... 9 
+1.4 Main Features Summary ................................................................................................... 10 
+2 Pin ............................................................................................................................................... 11 
+2.1 Pin Sharing Schemes ........................................................................................................ 12 
+2.1.1 Pin share scheme .............................................................................................. 12 
+2.2 Strapping Options .............................................................................................................. 15 
+3 Electrical Characteristics ......................................................................................................... 16 
+3.1 Absolute Maximum Ratings ............................................................................................... 16 
+3.2 Recommended Operating Range ...................................................................................... 17 
+3.3 Thermal Characteristics ..................................................................................................... 18 
+3.4 Current Consumption ........................................................................................................ 18 
+3.5 Storage Conditions ............................................................................................................ 18 
+3.6 AC Electrical Characteristics ............................................................................................. 19 
+3.6.1 UART Interface .................................................................................................. 19 
+3.6.2 SPI Interface ...................................................................................................... 19 
+3.6.3 SMI Interface ..................................................................................................... 20 
+3.6.4 WRI Interface .................................................................................................... 21 
+3.6.5 I2C Interface ...................................................................................................... 21 
+3.7 DC Electrical Characteristics ............................................................................................. 22 
+3.7.1 3.3V IO .............................................................................................................. 22 
+3.7.2 1.8V IO .............................................................................................................. 22 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Lists of Tables and Figures 
+
+--- page 6 ---
+ MT7986A 
+WiFi AP Router 
+ 
+ © 2015 - 2022 MediaTek Inc. Page 6 of 23                Page 6 of 51 
+ 
+Table 1-1 Main Features ....................................................................................................................... 10 
+Table 2-5 Pin Share ............................................................................................................................... 12 
+Table 2-6 Strapping ............................................................................................................................... 15 
+Table 3-1 Absolute Maximum Ratings ................................................................................................... 16 
+Table 3-2 Recommended Operating Range ......................................................................................... 17 
+Table 3-3 Thermal Characteristics ........................................................................................................ 18 
+Table 3-4 SPI Master Electrical Specifications ...................................................................................... 20 
+Table 3-5 SMI Interface Diagram Key ................................................................................................... 21 
+Table 3-6 WRI Interface Diagram Key .................................................................................................. 21 
+Table 3-7 I2C Interface Diagram Key .................................................................................................... 21 
+Table 3-8 3.3V IO Electrical Characteristics .......................................................................................... 22 
+Table 3-9 1.8V IO Electrical Characteristics .......................................................................................... 22 
+ 
+Figure 3-1 UART Timing........................................................................................................................ 19 
+Figure 3-2 SPI Master Timing Diagrams ............................................................................................... 19 
+Figure 3-3 SMI MDIO Timing ................................................................................................................ 20 
+Figure 3-4 WRI Timing .......................................................................................................................... 21 
+Figure 3-5 I2C Timing ............................................................................................................................ 21 
+ 
+ 
+
+--- page 7 ---
+ MT7986A 
+WiFi AP Router 
+ 
+ © 2015 - 2022 MediaTek Inc. Page 7 of 23                Page 7 of 51 
+ 
+1 General Features 
+1.1 Platform Features 
+⚫ AP MCU subsystem  
+− Quad-core ARM®  Cortex-A53 
+MPCoreTM operating at 2.0 GHz  
+− NEON processing engine with 
+Advanced SIMD and Floating-point 
+Extension  
+− 32KB L1 I-cache and 32KB L1 D-
+cache  
+− 512KB unified L2 cache  
+− Cryptography Extension 
+ 
+⚫ WIFI MCU subsystem  
+− Andes processor with I/D cache  
+ 
+⚫ Memory interface  
+− Supports discrete DDR3/4 chip 
+− 16-bit data bus width  
+− Memory speed up to DDR3-2133 and 
+DDR4-3200 
+− Supports self-refresh/partial self-
+refresh mode  
+− Programmable slew rate for memory 
+controller’s IO pads  
+− Advanced bandwidth arbitration 
+control  
+ 
+⚫ External interface  
+− 1 USB3.0/USB2.0 (Host) 
+− 1 USB2.0 (Host) 
+− 1 PCIE2.0 2lane (Host) 
+− UART for external devices and 
+debugging interfaces  
+− SPI master for external devices 
+− SPI NOR flash interface 
+− SPI NAND flash interface 
+− eMMC v5.1 inferface 
+− I2C to control peripheral devices 
+− General Purpose Input/Output  
+− PWM (Pulse Width Modulation) 
+− Audio PCM interface 
+ 
+ 
+ 
+ 
+ 
+ 
+⚫ Operating conditions  
+− Logic voltage: 0.85V 
+− CPU voltage: 1.023V 
+− I/O voltage: 1.8V/3.3V  
+− DDR DRAM Interface: 1.2/1.5V/1.8V 
+− Clock source: 40MHz 
+ 
+⚫ Package  
+− MFC VFBGA 16.85x16.85mm 570 
+balls 
+− Ball pitch: 0.65mm  
+
+--- page 8 ---
+ MT7986A 
+WiFi AP Router 
+ 
+ © 2015 - 2022 MediaTek Inc. Page 8 of 23                Page 8 of 51 
+ 
+1.2 Wireless Connectivity 
+Features 
+1.2.1 Wi-Fi MAC 
+1.2.1.1 Features 
+Wi-Fi MAC supports the following features: 
+◼ Support Dual band Dual Concurrent 
+◼ Support all date rates of 
+802.11a/b/g/n/ac/ax 
+◼ Support short GI and all data rates of 
+802.11n including MCS0 to MCS7 
+◼ Support 802.11ac MCS0 to MCS9 
+◼ Support 802.11ax MCS0 to MCS11 
+◼ AMPDU/AMSDU RX (de -aggregation) 
+and TX (aggregation) support 
+◼ TX beamformer and RX beamformee 
+◼ TX rate adaptation 
+◼ TX power control 
+◼ Security 
+◼ 64-bit WEP (WEP -40) and 128 -bit 
+WEP (WEP -104) encryption with 
+hardware TKIP and CKIP 
+processing 
+◼ AES-CCMP hardware processing 
+◼ GCMP hardware processing 
+◼ Management/control frame filtering 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+1.2.2 WLAN Baseband  
+1.2.2.1 Features 
+Wi-Fi baseband supports the following features: 
+◼ Support Dual band Dual Concurrent 
+◼ 20/40/80/160 MHz channels 
+◼ HE MCS0-11 BW20/40/80/160MHz with 
+Nss=1~4 
+◼ Short Guard Interval 
+◼ Space-time block code (STBC) 
+◼ Low Density Parity check (LDPC) 
+◼ Support digital pre -distortion to enhance 
+PA performance 
+◼ Smoothing (channel estimation) 
+extension to MIMO case  
+◼ Support radar detection 
+◼ Beamformer (explicit/implicit) 
+◼ Eecoded BW20/40/80/160 up to 4x4 
+BF matrix apply 
+◼ Beamformee  
+◼ Decoded BW20/40/80/160 up to 4x3 
+MU matrix feedback 
+◼ UL OFDMA / MU-MIMO  
+◼ DL OFDMA / MU-MIMO 
+◼ Max RU number in 2G band is 8 
+◼ Max RU number in 5/6G band is 16 
+
+--- page 9 ---
+ MT7986A 
+WiFi AP Router 
+ 
+ © 2015 - 2022 MediaTek Inc. Page 9 of 23                Page 9 of 51 
+ 
+1.3 Wired Ethernet Features 
+⚫ Frame Engine 
+− Packet DMA (PDMA) 
+◼ 4 Tx descriptor and 4 Rx descriptor 
+rings 
+◼ Scattter/Gather DMA 
+◼ Configurable 4/8/16/32 32-bit burst 
+legnth and delayed interrupt 
+◼ Support LRO and TSO 
+− QoS DMA (QDMA) 
+◼ Supports 128 Tx physical queues 
+and 4 sets of scheduler 
+◼ Per Tx queue forward/drop packet 
+accounting 
+◼ Per Tx queue forward byte 
+accounting 
+◼ Supports Tx queue min/max rate 
+control and SP/WFQ egress 
+scheduler 
+◼ Supports up to 1024 virtual queues 
+for 8 sets of SFQ 
+− Packet Switch Engine (PSE) 
+◼ Wire-speed NAT/NAPT routing 
+◼ Egress rate limiting/shaping 
+◼ IP/TCP/UDP checksum offload  
+◼ IP/TCP/UDP checksum generaton 
+◼ VLAN & PPPoE header insertion 
+◼ TCP segmentation offload  
+− Packet Process Engine (PPE) 
+◼ IPv4 NAP/NAPT, IPv6 Routing and 
+Tunnel IP (DS-Lite, 6RD, MAPE/T) 
+◼ 1/2/4/8/16/32K session/flow 
+◼ Flow offloading technology for 
+flexible/high performance packet 
+L3/L4 packet processing 
+◼ Support NAT/NAPT wire-speed 
+within 128 flows for any packet size 
+Note that PPE features mentioned 
+above require software porting to 
+function.  
+ 
+ 
+ 
+⚫ WiFi WARP 
+− Ethernet/WiFi offlaod, forwarding 
+packet directly 
+− Dynamic buffer allocate and release 
+ 
+⚫ GigaMAC (GMAC) 
+− Support IEEE 802.3x full duplex flow 
+control 
+− Support HSGMII interface 
+◼ HSGMII supports 
+10/100/1000Mbps speed change 
+through auto negotiation and 
+configurable 2.5Gbps SerDes link 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ 
+ 
+
+--- page 10 ---
+ MT7986A 
+WiFi AP Router 
+ 
+ © 2015 - 2022 MediaTek Inc. Page 10 of 23                Page 10 of 51 
+ 
+1.4 Main Features Summary 
+The following table covers the main features offered by MT7986A.  
+Table 1-1 Main Features 
+Feature Description 
+CPU ARM CA53 (2.0GHz, Quad-core) 
+I-Cache, D-Cache 32kB, 32kB per core 
+L2 Cache 512KB 
+Security Support 2* 256-bit Multi-key on OTP efuse 
+Support 64 versions OTP efuse for Anti-roll back 
+DRAM data width 16bit 
+DRAM type 
+DDR3-2133:256MB/512MB (2Gb/4Gb support) 
+DDR4-3200:512MB/1GB/2GB (4Gb/8Gb/16Gb support) 
+DDR4-2666:512MB/1GB/2GB (4Gb/8Gb/16Gb support) 
+WIFI 
+4x4 11ax 2.4GHz + 4x4 11ax 5GHz 
+Integrated PA, LNA and TR-SW 20/40/80/160MHz  bandwidth  
+Support up to 1024QAM 
+Support external LNA and PA support  (option)   
+Ethernet HSGMII x2 
+HNAT/HQoS  HQoS 128 queues, SFQ 1K queues 
+HNAT (IPv4, IPv6 routing, DS-Lite, 6RD) 
+USB USB3.0/2.0 x1, USB2.0 x1 
+PCIE PCIe2.0 2lane HOST 
+SPI NAND Flash ECC (BCH code) acceleration capable of 24-bit error correction  
+(w/. ECC engine) 
+SPI Flash (NOR) 
+Max 52MHz 
+data bit width x1/x2/x4 
+Support 4-byte address mode compatible with 3-byte address mode 
+eMMC eMMC v5.1 @104MHz 1.8V 
+I2C 
+I2C x 1 
+Max 400kHz 
+Support 7/10-bit addressing 
+SPI SPI x 1 
+Support DMA and FIFO mode  
+UART UART-Lite(2-pins) x 1  
+UART(4-pins) x2 
+PCM Audio output PCM interface x1 
+Package 16.85 x 16.85 mm, MFC VFBGA-570B 
+ 
+
+--- page 11 ---
+ MT7986A 
+WiFi AP Router 
+ 
+ © 2015 - 2022 MediaTek Inc. Page 11 of 23                Page 11 of 51 
+ 
+2 Pin  
+
+--- page 12 ---
+ MT7986A 
+WiFi AP Router 
+ 
+ © 2015 - 2022 MediaTek Inc. Page 12 of 23                Page 12 of 51 
+ 
+2.1 Pin Sharing Schemes 
+Some pins are shared with GPIO to provide maximum flexibility for system designers. User can 
+configure register to specify the pin function.  
+2.1.1 Pin share scheme 
+Table 2-1 Pin Share 
+Pin Name Aux Func.0 Aux Func.1 Aux Func.2 Aux Func.3 Aux Func.4 
+SYS_WATCHDOG GPIO0 SYS_WATCHDOG    
+WF2G_LED GPIO1 WF2G_LED    
+WF5G_LED GPIO2 WF5G_LED    
+I2C_SCL GPIO3 I2C_SCL SGMII1_PHY_I2C_SCL U3_PHY_I2C_SCL  
+I2C_SDA GPIO4 I2C_SDA SGMII1_PHY_I2C_SDA U3_PHY_I2C_SDA  
+GPIO_0 GPIO5 PCIE_PHY_I2C_SCL SGMII0_PHY_I2C_SCL   
+GPIO_1 GPIO6 PCIE_PHY_I2C_SDA SGMII0_PHY_I2C_SDA   
+GPIO_2 GPIO7 DRV_VBUS CONN0_UART_TXD0 UART1_RXD  
+GPIO_3 GPIO8 DRV_VBUS_1P CONN0_UART_TXD1 UART1_TXD  
+GPIO_4 GPIO9 PCIE_CLK_REQ  UART1_CTS  
+GPIO_5 GPIO10 PCIE_WAKE_N  UART1_RTS  
+GPIO_6 GPIO11   SPIC_CLK  
+GPIO_7 GPIO12   SPIC_MOSI  
+GPIO_8 GPIO13   SPIC_MISO  
+GPIO_9 GPIO14   SPIC_CS  
+GPIO_10 GPIO15     
+GPIO_11 GPIO16  CONN_ICE0_0   
+GPIO_12 GPIO17  CONN_ICE0_1   
+GPIO_13 GPIO18  CONN_ICE1_0   
+GPIO_14 GPIO19  CONN_ICE1_1   
+GPIO_15 GPIO20  PWM1   
+PWM0 GPIO21 PWM0    
+PWM1 GPIO22 PWM1 EMMC_RSTB NET_WO0_UART_TXD NET_WO1_UART_TXD 
+SPI0_CLK GPIO23 SNFI_CLK EMMC_DATA_0 SPIC_CLK UART1_RXD 
+SPI0_MOSI GPIO24 SNFI_MOSI EMMC_DATA_1 SPIC_MOSI UART1_TXD 
+SPI0_MISO GPIO25 SNFI_MISO EMMC_DATA_2 SPIC_MISO UART1_CTS 
+SPI0_CS GPIO26 SNFI_CS EMMC_DATA_3 SPIC_CS UART1_RTS 
+SPI0_HOLD GPIO27 SNFI_HOLD EMMC_DATA_4   
+SPI0_WP GPIO28 SNFI_WP EMMC_DATA_5   
+SPI1_CLK GPIO29 SPIC_CLK EMMC_DATA_6 UART1_RXD UART2_RXD 
+SPI1_MOSI GPIO30 SPIC_MOSI EMMC_DATA_7 UART1_TXD UART2_TXD 
+SPI1_MISO GPIO31 SPIC_MISO EMMC_CMD UART1_CTS UART2_CTS 
+SPI1_CS GPIO32 SPIC_CS EMMC_CK UART1_RTS UART2_RTS 
+SPI2_CLK GPIO33 SPI0_CLK  UART2_RXD SPIC_CLK 
+SPI2_MOSI GPIO34 SPI0_MOSI  UART2_TXD SPIC_MOSI 
+SPI2_MISO GPIO35 SPI0_MISO UART1_RXD UART2_CTS SPIC_MISO 
+SPI2_CS GPIO36 SPI0_CS UART1_TXD UART2_RTS SPIC_CS 
+
+--- page 13 ---
+ MT7986A 
+WiFi AP Router 
+ 
+ © 2015 - 2022 MediaTek Inc. Page 13 of 23                Page 13 of 51 
+ 
+Pin Name Aux Func.0 Aux Func.1 Aux Func.2 Aux Func.3 Aux Func.4 
+SPI2_HOLD GPIO37 SPI0_HOLD UART1_CTS   
+SPI2_WP GPIO38 SPI0_WP UART1_RTS   
+UART0_RXD GPIO39 UART0_RXD    
+UART0_TXD GPIO40 UART0_TXD    
+PCIE_PERESET_N GPIO41 PCIE_PERESET_N    
+UART1_RXD GPIO42 UART1_RXD UART_PTA_RXD   
+UART1_TXD GPIO43 UART1_TXD UART_PTA_TXD   
+UART1_CTS GPIO44 UART1_CTS EXT_IF0_0   
+UART1_RTS GPIO45 UART1_RTS EXT_IF0_1   
+UART2_RXD GPIO46 UART2_RXD EXT_IF0_2   
+UART2_TXD GPIO47 UART2_TXD EXT_IF1_0   
+UART2_CTS GPIO48 UART2_CTS EXT_IF1_1   
+UART2_RTS GPIO49 UART2_RTS EXT_IF1_2   
+EMMC_DATA_0 GPIO50 EMMC_DATA_0    
+EMMC_DATA_1 GPIO51 EMMC_DATA_1    
+EMMC_DATA_2 GPIO52 EMMC_DATA_2    
+EMMC_DATA_3 GPIO53 EMMC_DATA_3    
+EMMC_DATA_4 GPIO54 EMMC_DATA_4    
+EMMC_DATA_5 GPIO55 EMMC_DATA_5    
+EMMC_DATA_6 GPIO56 EMMC_DATA_6    
+EMMC_DATA_7 GPIO57 EMMC_DATA_7    
+EMMC_CMD GPIO58 EMMC_CMD    
+EMMC_CK GPIO59 EMMC_CK    
+EMMC_DSL GPIO60 EMMC_DSL    
+EMMC_RSTB GPIO61 EMMC_RSTB    
+PCM_DTX GPIO62 PCM_DTX    
+PCM_DRX GPIO63 PCM_DRX    
+PCM_CLK GPIO64 PCM_CLK    
+PCM_FS GPIO65 PCM_FS    
+MT7531_INT GPIO66 MT7531_INT    
+SMI_MDC GPIO67 SMI_MDC    
+SMI_MDIO GPIO68 SMI_MDIO    
+WF0_DIG_RESETB GPIO69 WF0_DIG_RESETB    
+WF0_CBA_RESETB GPIO70 WF0_CBA_RESETB    
+WF0_XO_REQ GPIO71 WF0_XO_REQ    
+WF0_TOP_CLK GPIO72 WF0_TOP_CLK    
+WF0_TOP_DATA GPIO73 WF0_TOP_DATA    
+WF0_HB1 GPIO74 WF0_HB1 WF0_HB1 WF0_MODE_SEL_1  
+WF0_HB2 GPIO75 WF0_HB2 WF0_HB2 WF0_MODE_SEL_2  
+WF0_HB3 GPIO76 WF0_HB3 WF0_HB3 WF0_XTAL_SEL_0  
+WF0_HB4 GPIO77 WF0_HB4 WF0_HB4 WF0_XTAL_SEL_1  
+WF0_HB0 GPIO78 WF0_O_HB0 WF0_O_HB0 WF0_MODE_SEL_0  
+WF0_HB0_B GPIO79 WF0_HB0_B WF1_O_HB0   
+
+--- page 14 ---
+ MT7986A 
+WiFi AP Router 
+ 
+ © 2015 - 2022 MediaTek Inc. Page 14 of 23                Page 14 of 51 
+ 
+Pin Name Aux Func.0 Aux Func.1 Aux Func.2 Aux Func.3 Aux Func.4 
+WF0_HB5 GPIO80 WF0_HB5 WF1_HB1 WF0_XTAL_SEL_2  
+WF0_HB6 GPIO81 WF0_HB6 WF1_HB2   
+WF0_HB7 GPIO82 WF0_HB7 WF1_HB3   
+WF0_HB8 GPIO83 WF0_HB8 WF1_HB4   
+WF0_HB9 GPIO84 WF0_HB9 WF1_HB5   
+WF0_HB10 GPIO85 WF0_HB10 WF1_HB6   
+WF1_DIG_RESETB GPIO86 WF1_DIG_RESETB    
+WF1_CBA_RESETB GPIO87 WF1_CBA_RESETB    
+WF1_XO_REQ GPIO88 WF1_XO_REQ    
+WF1_TOP_CLK GPIO89 WF1_TOP_CLK    
+WF1_TOP_DATA GPIO90 WF1_TOP_DATA    
+WF1_HB1 GPIO91 WF1_HB1 WF1_MODE_SEL_1   
+WF1_HB2 GPIO92 WF1_HB2 WF1_MODE_SEL_2   
+WF1_HB3 GPIO93 WF1_HB3 WF1_XTAL_SEL_0   
+WF1_HB4 GPIO94 WF1_HB4 WF1_XTAL_SEL_1   
+WF1_HB0 GPIO95 WF1_O_HB0 WF1_MODE_SEL_0   
+WF1_HB0_B GPIO96 WF1_HB0_B    
+WF1_HB5 GPIO97 WF1_HB5 WF1_XTAL_SEL_2   
+WF1_HB6 GPIO98 WF1_HB6    
+WF1_HB7 GPIO99 WF1_HB7    
+WF1_HB8 GPIO100 WF1_HB8    
+ 
+ 
+ 
+ 
+
+--- page 15 ---
+ MT7986A 
+WiFi AP Router 
+ 
+ © 2015 - 2022 MediaTek Inc. Page 15 of 23                Page 15 of 51 
+ 
+2.2 Strapping Options 
+Table 2-2 Strapping 
+Pin Name Strapping Name Description 
+{GPIO_1, GPIO_0} Boot Mode 
+00 : SPI-NOR 
+01 : SPI-NAND 
+10 : EMMC 
+11 : SNAND(SNFI) 
+GPIO_3 A-Die Mode 0: Two A-Die 
+UART0_TXD Second A-Die XTAL mode select 0 : XTAL mode 
+1 : Buffer mode 
+PWM0 A-Die Crystal 1 : 40MHz XTAL 
+SYS_WATCHDOG CPU voltage select 1 : 1.023V 
+
+--- page 16 ---
+ MT7986A 
+WiFi AP Router 
+ 
+ © 2015 - 2022 MediaTek Inc. Page 16 of 23                Page 16 of 51 
+ 
+3 Electrical Characteristics  
+3.1 Absolute Maximum Ratings  
+Table 3-1 Absolute Maximum Ratings 
+Symbol or Pin name Description Min. Max. Unit 
+DVDD_CORE 0.85V supply voltage -0.3 0.935 V 
+DVDD_PROC_L 1.023V CPU supply voltage -0.3 1.125 V 
+SG0_AVDD09_SSUSB 
+SG1_AVDD09_SSUSB 
+U3_AVDD09_SSUSB 
+AVDD09_PCIE 
+0.9V supply voltage -0.3 0.990 V 
+AFE0_AVDD12_WBG 
+AFE1_AVDD12_WBG 
+AVDD12_CKSQ 
+U2_0_AVDD12_USB 
+U2_1_AVDD12_USB 
+1.2V supply voltage -0.3 1.320 V 
+AVDDQ_EMI0 
+AVDDQ_EMI0_CA 1.5V/1.2V supply voltage -0.3 
+-0.3 
+1.575 
+1.320 V 
+DVDD18IO_LB 
+DVDD18IO_LT 
+DVDD18IO_RB_C0 
+DVDD18IO_RB_C1 
+DVDD18IO_RT_C0 
+DVDD18IO_RT_C2 
+DVDD18IO_WF0 
+DVDD18IO_WF1 
+AFE0_AVDD18_WBG 
+AFE1_AVDD18_WBG 
+AVDD18_CKSQ 
+AVDD18_POR 
+AVDD18_AP 
+AVDD18_PLLGP 
+AVDD18_EMI0 
+SG0_AVDD18_SSUSB 
+SG1_AVDD18_SSUSB 
+U2_0_AVDD18_USB 
+U2_1_AVDD18_USB 
+U3_AVDD18_SSUSB 
+AVDD18_PCIE 
+VQPS 
+1.8V supply voltage -0.3 1.980 V 
+DVDD33IO_LB 
+DVDD33IO_LT 
+DVDD33IO_RB_C0 
+DVDD33IO_RB_C1 
+DVDD33IO_RT_C0 
+U2_0_AVDD33_USB 
+U2_1_AVDD33_USB 
+3.3V supply voltage -0.3 3.630 V 
+ 
+ 
+ 
+ 
+ 
+
+--- page 17 ---
+ MT7986A 
+WiFi AP Router 
+ 
+ © 2015 - 2022 MediaTek Inc. Page 17 of 23                Page 17 of 51 
+ 
+3.2 Recommended Operating Range 
+Table 3-2 Recommended Operating Range 
+Symbol or Pin name Description Min. Typ. Max. Unit 
+DVDD_CORE 0.85V supply voltage 0.808 0.85 0.935 V 
+DVDD_PROC_L 1.023V CPU supply voltage 0.972 1.023 1.125 V 
+SG0_AVDD09_SSUSB 
+SG1_AVDD09_SSUSB 
+U3_AVDD09_SSUSB 
+AVDD09_PCIE 
+0.9V supply voltage 0.855 0.9 0.945 V 
+AFE0_AVDD12_WBG 
+AFE1_AVDD12_WBG 
+AVDD12_CKSQ 
+U2_0_AVDD12_USB 
+U2_1_AVDD12_USB 
+1.2V supply voltage 1.140 1.2 1.260 V 
+AVDDQ_EMI0 
+AVDDQ_EMI0_CA 1.5V/1.2V supply voltage 1.425 
+1.140 
+1.5 
+1.2 
+1.575 
+1.260 V 
+DVDD18IO_LB 
+DVDD18IO_LT 
+DVDD18IO_RB_C0 
+DVDD18IO_RB_C1 
+DVDD18IO_RT_C0 
+DVDD18IO_RT_C2 
+DVDD18IO_WF0 
+DVDD18IO_WF1 
+AFE0_AVDD18_WBG 
+AFE1_AVDD18_WBG 
+AVDD18_CKSQ 
+AVDD18_POR 
+AVDD18_AP 
+AVDD18_PLLGP 
+AVDD18_EMI0 
+SG0_AVDD18_SSUSB 
+SG1_AVDD18_SSUSB 
+U2_0_AVDD18_USB 
+U2_1_AVDD18_USB 
+U3_AVDD18_SSUSB 
+AVDD18_PCIE 
+VQPS 
+1.8V supply voltage 1.710 1.8 1.890 V 
+DVDD33IO_LB 
+DVDD33IO_LT 
+DVDD33IO_RB_C0 
+DVDD33IO_RB_C1 
+DVDD33IO_RT_C0 
+U2_0_AVDD33_USB 
+U2_1_AVDD33_USB 
+3.3V supply voltage 2.970 3.3 3.630 V 
+TAMBIENT Ambient temperature -10 - 70 °C 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+--- page 18 ---
+ MT7986A 
+WiFi AP Router 
+ 
+ © 2015 - 2022 MediaTek Inc. Page 18 of 23                Page 18 of 51 
+ 
+3.3 Thermal Characteristics 
+Thermal characteristics when stationary without an external heat sink in an air-conditioned environment. 
+Table 3-3 Thermal Characteristics 
+Symbol Description 
+Performance 
+Typ Unit 
+TJ  Maximum Junction Temperature (Plastic Package)  125 °C  
+θJA  Junction to ambient temperature thermal resistance[1] for JEDEC 4L PCB  10.6 °C/W  
+θJC  Junction to case temperature thermal resistance  3.4 °C/W  
+θJB  Junction to case temperature thermal resistance  4.57 °C/W  
+ψJt  Junction to the package thermal resistance for JEDEC 4L PCB  0.45 °C/W  
+Note: JEDEC 51-9 system FR4 PCB size: 101.5 x 114.5 mm (4”x4.5”)  
+3.4 Current Consumption 
+Please reference to Application note. 
+ 
+3.5 Storage Conditions 
+The calculated shelf life in a sealed bag is 12 months if stored between 5 °C and 40 °C at less than 
+90% relative humidity (RH). After the bag is opened, devices that are subjected to solder reflow or other 
+high temperature processes must be handled in the following manner: 
+▪ Mounted within 168 hours of factory conditions, i.e. < 30 °C at 60% RH. 
+▪ Storage humidity needs to maintained at < 10% RH. 
+▪ Baking is necessary if the customer exposes the component to air for over 168 hrs, baking conditions: 125 
+° C for 8 hrs. 
+ 
+ 
+ 
+ 
+ 
+
+--- page 19 ---
+ MT7986A 
+WiFi AP Router 
+ 
+ © 2015 - 2022 MediaTek Inc. Page 19 of 23                Page 19 of 51 
+ 
+3.6 AC Electrical Characteristics 
+3.6.1 UART Interface 
+MT7986A utilizes the Universal Asynchronous Receiver Transmitter (UART) interface as its host  
+control interface. The electrical timing characteristic for the UART interface is illustrated below. 
+< 0.1Tbaud
+Tbaud Tbaud
+< 0.1Tbaud
+90%
+10%
+ 
+Figure 3-1 UART Timing 
+3.6.2 SPI Interface 
+CSB
+SCK
+MOSI
+MISO
+tCS_SU tCS_HD
+tMOSI_SU
+tSCKH
+tSCKL
+tMOSI_HD tMISO_SU
+tMISO_HD
+ 
+Figure 3-2 SPI Master Timing Diagrams 
+ 
+ 
+ 
+ 
+
+--- page 20 ---
+ MT7986A 
+WiFi AP Router 
+ 
+ © 2015 - 2022 MediaTek Inc. Page 20 of 23                Page 20 of 51 
+ 
+Table 3-4 SPI Master Electrical Specifications 
+Symbol Description Performance Units Min. Typ. Max. 
+fSCK SPI Master SCK Clock frequency - - 52 MHz 
+tMOSI_SU MOSI to SCK Rising setup Time 6.6 - - ns 
+tMOSI_HD SCK Rising to MOSI hold Time 6.6 - - ns 
+tSCKL SCK Low Pulse 7.2 - - ns 
+tSCKH SCK High Pulse 7.2 - - ns 
+tCSB_SU1 CSB Falling to SCK Rising Setup Time 1.8 - - ns 
+tCSB_HD1 SCK Falling to CSB Rising Hold Time 1.8 - - ns 
+tMISO_SU2 MISO to SCK Rising Setup Time  
+requirement 0 - - ns 
+tMISO_HD3 SCK Rising to MISO Hold Time  
+requirement 0 - - ns 
+ 
+Notes:  
+1. In CS GPIO mode, SPI_CS handled by SW. SW should pull down SPI_CS pin before SPI starts transferring 
+and pull up SPI_CS pin when SPI completes the transaction. Based on the sequence above, the minimum 
+specification of tCSB_SU and tCSB_HD time can be satisfied. 
+2. To achieve the min value of tMISO_SU, the internal sample clock delay of SPI master should be adjusted.  
+3. MISO data valid time should be one cycle of fSCK. 
+4. For dual mode or quad mode, all the output data pins can refer to the MOSI tim ing parameters, and all the 
+input data pins can refer to the MISO timing parameters. 
+ 
+3.6.3 SMI Interface 
+ 
+SMI_MDC
+SMI_MDIO
+t_RX_HDt_RX_SU
+SMI_MDIO
+t_TX_delay
+t_MDC
+SMI_MDC
+t_MDC
+MDIO sourced 
+by MAC
+MDIO sourced 
+by PHY
+ 
+Figure 3-3 SMI MDIO Timing 
+
+--- page 21 ---
+ MT7986A 
+WiFi AP Router 
+ 
+ © 2015 - 2022 MediaTek Inc. Page 21 of 23                Page 21 of 51 
+ 
+ 
+Table 3-5 SMI Interface Diagram Key 
+Symbol Description Min Max Unit 
+t_TX_delay Clock to output delay from the PHY  0 300 ns 
+t_RX_SU Setup time referenced to the rising edge of SMI_MDC 10 - ns 
+t_RX_HD Hold time referenced to the rising edge of SMI_MDC 10 - ns 
+Note: For 2.5 MHz SMI_MDC 
+ 
+3.6.4 WRI Interface 
+ 
+ 
+Figure 3-4 WRI Timing 
+ 
+Table 3-6 WRI Interface Diagram Key 
+Symbol Description Min Max Unit 
+tDVCH Data in Setup Time 2 - ns 
+tCHDX Data In Hold Time 2 - ns 
+ 
+3.6.5 I2C Interface 
+ 
+ 
+Figure 3-5 I2C Timing 
+ 
+Table 3-7 I2C Interface Diagram Key 
+
+
+--- page 22 ---
+ MT7986A 
+WiFi AP Router 
+ 
+ © 2015 - 2022 MediaTek Inc. Page 22 of 23                Page 22 of 51 
+ 
+Symbol Description Standard mode Fast mode Unit 
+Min Max Min Max  
+fSCL SCL clock frequency 0 100 0 400 kHz 
+tBUF Bus free time between a STOP and 
+START 
+4.7 - 1.3 - us 
+tHD condition - - - - us 
+tLOW Hold time (repeated) START condition.  4.7 - 1.3 - us 
+tHIGH After this period, the first clock pulse is 
+generated 
+4.0  0.6  us 
+tSU:STA LOW period of the SCL clock 4.7 - 0.6 - us 
+THD:DAT HIGH period of the SCL clock - - - - us 
+tSU:DAT Setup time for a repeated START 
+condition 
+250 - 100 - ns 
+tr Data hold time: - 1000 20 300 ns 
+tf Data setup time - 300 20 300 ns 
+tSU:STO Rise time of both SDA and SCL signals 4.0 - 0.6 - us 
+ 
+ 
+3.7 DC Electrical Characteristics  
+3.7.1 3.3V IO 
+Table 3-8 3.3V IO Electrical Characteristics 
+Symbol Parameter Min Typ Max Unit 
+VIL Input low voltage -0.30 - 0.83 V 
+VIH Input high voltage 2.06 - 3.63 V 
+VOL Output low voltage -0.30 - 0.41 V 
+VOH Output high voltage 2.48 - 3.63 V 
+RPU Input pull-up resistance 10 50 100 KΩ 
+RPD Input pull-down resistance 5 7.5 10 KΩ  
+ 
+3.7.2 1.8V IO 
+Table 3-9 1.8V IO Electrical Characteristics 
+Symbol Parameter Min Typ Max Unit 
+VIL Input low voltage -0.30 - 0.63 V 
+VIH Input high voltage 1.17 - 2.10 V 
+
+--- page 23 ---
+ MT7986A 
+WiFi AP Router 
+ 
+ © 2015 - 2022 MediaTek Inc. Page 23 of 23                Page 23 of 51 
+ 
+VOL Output low voltage - - 0.45 V 
+VOH Output high voltage 1.35 - - V 
+RPU Input pull-up resistance 40 75 190 KΩ 
+RPD Input pull-down resistance 40 75 190 KΩ  
+ 
+ 

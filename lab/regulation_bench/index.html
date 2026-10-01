@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>CCLI Regulation Bench — CEI / TR 57-126 vs config</title>
+  <style>
+    :root { --pass:#0a6; --fail:#c22; --pend:#c90; --na:#888; --ni:#666; }
+    body { font-family: system-ui, sans-serif; margin: 1.5rem; max-width: 1200px; }
+    h1 { font-size: 1.35rem; }
+    h2 { font-size: 1.1rem; margin-top: 1.5rem; }
+    .toolbar { margin: 1rem 0; display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
+    .summary { display: flex; gap: 1.5rem; flex-wrap: wrap; margin: 1rem 0; padding: 0.75rem 1rem; background: #eef6ff; border-radius: 8px; }
+    .summary span { font-weight: 600; }
+    table { border-collapse: collapse; width: 100%; font-size: 0.9rem; margin-bottom: 1rem; }
+    th, td { border: 1px solid #ccc; padding: 0.4rem 0.5rem; text-align: left; vertical-align: top; }
+    th { background: #f0f0f0; }
+    tr.pass td.status { color: var(--pass); font-weight: 600; }
+    tr.fail td.status { color: var(--fail); font-weight: 600; }
+    tr.pend td.status { color: var(--pend); }
+    tr.na td.status, tr.ni td.status { color: var(--na); }
+    .ref { background: #f9f9fc; padding: 1rem; margin: 1rem 0; border-radius: 6px; font-size: 0.85rem; }
+    code { background: #eee; padding: 0.1rem 0.3rem; }
+    #modbusPanel { display: none; }
+    .mono { font-family: ui-monospace, monospace; font-size: 0.82rem; }
+  </style>
+</head>
+<body>
+  <h1>CCLI regulation bench</h1>
+  <p>Compare <strong>standards-derived</strong> values with <strong>yaml + live Modbus/DIO</strong> from <code>ccli --regulation-check --live</code>.</p>
+
+  <div class="toolbar">
+    <label>Import CLI JSON: <input type="file" id="file" accept="application/json,.json" /></label>
+    <span id="meta"></span>
+  </div>
+
+  <div id="summary" class="summary" style="display:none"></div>
+
+  <div class="ref">
+    <strong>Live bus:</strong> PC <code>modbus_rtu_slave.py --trace</code> ↔ TG544 A2/B2 · CCLI <code>modbus.trace: true</code> or <code>--regulation-check --live --live-watch 8</code><br />
+    <strong>Runbook:</strong> <code>lab/MODBUS_LIVE_VIEW.md</code> · <code>lab/modbus-ccli-live-bench.ps1</code>
+  </div>
+
+  <h2>Regulation rows</h2>
+  <table id="tbl">
+    <thead>
+      <tr>
+        <th>ID</th><th>Clause</th><th>Name</th><th>Expected</th><th>Actual</th><th>Unit</th><th>Status</th><th>Notes</th>
+      </tr>
+    </thead>
+    <tbody id="body"></tbody>
+  </table>
+
+  <div id="modbusPanel">
+    <h2>Live Modbus (CCLI master → PC slave)</h2>
+    <p id="liveSnap" class="mono"></p>
+    <table id="mbTbl">
+      <thead><tr><th>#</th><th>Command</th><th>Raw</th><th>P kW</th><th>OK</th></tr></thead>
+      <tbody id="mbBody"></tbody>
+    </table>
+  </div>
+
+  <script>
+    const REF = [
+      { id:"TR-T1", clause:"TR Table 1", name:"Smax nameplate", expected:"210", actual:"(yaml)", unit:"kVA", status:"PEND", notes:"" },
+      { id:"R03", clause:"O.9.2.3", name:"WSd 20% → kW", expected:"42", actual:"(DSO)", unit:"kW", status:"PEND", notes:"" },
+    ];
+
+    function statusClass(s) {
+      const u = (s||"").toUpperCase();
+      if (u === "PASS") return "pass";
+      if (u === "FAIL") return "fail";
+      if (u === "PEND" || u === "PART") return "pend";
+      if (u === "NOT_IMPL") return "ni";
+      return "na";
+    }
+
+    function esc(s) {
+      return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/"/g,"&quot;");
+    }
+
+    function renderSummary(rows) {
+      const el = document.getElementById("summary");
+      const counts = { PASS:0, FAIL:0, PART:0, NA:0, NOT_IMPL:0 };
+      rows.forEach(r => {
+        const k = (r.status||"").toUpperCase().replace("/","_");
+        if (counts[k] !== undefined) counts[k]++;
+        else if (k === "N/A") counts.NA++;
+      });
+      el.style.display = "flex";
+      el.innerHTML = `<span>Finalize:</span> PASS ${counts.PASS} · FAIL ${counts.FAIL} · PART ${counts.PART} · N/A ${counts.NA}`;
+    }
+
+    function renderModbus(live) {
+      const panel = document.getElementById("modbusPanel");
+      const mbBody = document.getElementById("mbBody");
+      const snap = document.getElementById("liveSnap");
+      if (!live || !live.valid) {
+        panel.style.display = "none";
+        return;
+      }
+      panel.style.display = "block";
+      snap.textContent = `P=${live.p_kw} kW · p_eff=${live.p_effective_export_kw} · enter=${live.pf2_enter_kw} kW · DO=${live.do_curtail_on} · poll_ms=${live.modbus_poll_ms}`;
+      mbBody.innerHTML = "";
+      const log = live.modbus_log && live.modbus_log.length ? live.modbus_log : (live.modbus_last ? [live.modbus_last] : []);
+      log.forEach((m, i) => {
+        const tr = document.createElement("tr");
+        tr.innerHTML = `<td>${i+1}</td><td class="mono">${esc(m.command||"")}</td><td class="mono">${esc(m.raw_regs_hex||"")}</td><td>${m.p_kw!=null?Number(m.p_kw).toFixed(2):""}</td><td>${m.success?"OK":"FAIL"}</td>`;
+        mbBody.appendChild(tr);
+      });
+    }
+
+    function render(rows, config, live) {
+      const body = document.getElementById("body");
+      body.innerHTML = "";
+      rows.forEach(r => {
+        const tr = document.createElement("tr");
+        tr.className = statusClass(r.status);
+        tr.innerHTML = `<td>${esc(r.id)}</td><td>${esc(r.clause)}</td><td>${esc(r.name)}</td>
+          <td>${esc(r.expected)}</td><td>${esc(r.actual)}</td><td>${esc(r.unit)}</td>
+          <td class="status">${esc(r.status)}</td><td>${esc(r.notes||"")}</td>`;
+        body.appendChild(tr);
+      });
+      document.getElementById("meta").textContent = config ? "config: " + config : "Static reference — import JSON from --regulation-check --live --json";
+      renderSummary(rows);
+      renderModbus(live);
+    }
+
+    document.getElementById("file").addEventListener("change", e => {
+      const f = e.target.files[0];
+      if (!f) return;
+      const rd = new FileReader();
+      rd.onload = () => {
+        try {
+          const j = JSON.parse(rd.result);
+          render(j.rows || [], j.config || "", j.live);
+        } catch (err) {
+          alert("Invalid JSON: " + err.message);
+        }
+      };
+      rd.readAsText(f);
+    });
+
+    render(REF, null, null);
+  </script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+===== PHASE 2 PREFLIGHT vs ANNEX STEPS =====
+Date: 2026-09-24 (SSH live)
+DUT: TG544 @ 192.168.1.130 (from PC 192.168.1.183 LAN2)
+Evidence: lab/evidence/P2_preflight_LATEST.log
+
+A. Stay connected
+  [HAVE] SSH via LAN2 lan_sec works
+  [NEED] Move operator PC to LAN4 eng before peel (avoid lockout)
+
+B. Wi-Fi off (REQ-NET-005)
+  [FAIL] radio0/radio1 UP; disabled=0
+  [FAIL] phy0.0-ap0 + phy0.1-ap0 still on br-lan
+  [FAIL] SSIDs TR500-2.4G / TR500-5G joined to network "lan"
+  ACTION: uci set wireless.radio0.disabled=1; wireless.radio1.disabled=1;
+          wireless.default_radio0.disabled=1; default_radio1.disabled=1; wifi down; wifi reload
+
+C. Annex 4-role Ethernet peel
+  [PART] LAN2 peeled = lan_sec 192.168.1.130 (today = generic sep, not named eth_b)
+  [FAIL] br-lan still has lan1 + lan3 (+ lan4 in UCI) + Wi-Fi
+  [FAIL] No eth_a (LAN1 / 192.168.10.1)
+  [FAIL] No plant (LAN3 / 192.168.30.1)
+  [FAIL] No dedicated eng-only (LAN4 alone) — eng is whole br-lan 192.168.0.1
+  ACTION: peel lan1->eth_a, lan2 rename lan_sec->eth_b, lan3->plant, lan4-only eng
+
+D. Firewall
+  [PART] defaults forward=REJECT; lan_sec forward=REJECT
+  [FAIL] zone "lan" forward=ACCEPT (too open for eng/plant mix)
+  [FAIL] No zones eth_a / eth_b / plant / eng
+  [FAIL] wan->lan forwarding exists (lan->wan); P2-03 wan↛eth_a not proven
+  [PART] lan_sec has masq=1 (odd for isolated role — review)
+
+E. Plant devices (wiring/config later)
+  [NEED] Meter RTU RS485-1 /dev/ttyS1
+  [NEED] Inverter Modbus TCP on LAN3 plant subnet
+
+F. Isolation tests P2-01..03
+  [PART] Yahia(LAN2)->192.168.0.1 FAIL (old 2-domain only)
+  [FAIL] Full Eth_A/B/plant matrix not possible until C done
+  [FAIL] P2-03 WAN path not tested (wan NO-CARRIER)
+
+G. Paper
+  [PART] P2-05 zones signed but labels Z2-lab/Z4 not DSO/OA/plant
+  [NEED] Redraw after peel; REQ-NET-003 photo table; refresh lab_tr400.yaml
+
+HARD GATES before Phase 2 finalize: B + C + D + F (P2-01,02,03) = PASS
+===== END =====

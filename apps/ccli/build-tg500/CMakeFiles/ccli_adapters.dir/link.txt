@@ -1,0 +1,2 @@
+/usr/bin/ar qc libccli_adapters.a CMakeFiles/ccli_adapters.dir/adapters/modbus_master/modbus_adapter.cpp.o CMakeFiles/ccli_adapters.dir/adapters/iec61850_mms/mms_adapter.cpp.o CMakeFiles/ccli_adapters.dir/adapters/iec60870_104/iec104_adapter.cpp.o CMakeFiles/ccli_adapters.dir/adapters/io/drv_gpio.c.o
+/usr/bin/ranlib libccli_adapters.a

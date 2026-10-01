@@ -1,0 +1,23 @@
+echo "=== BEFORE ==="
+uci show sim_manager
+echo "=== SET 1NCE APN ==="
+uci set sim_manager.slot_1.apn='iot.1nce.net'
+uci set sim_manager.slot_1.apn_auto='0'
+uci set sim_manager.slot_1.apn_user=''
+uci -q delete sim_manager.slot_1.apn_pass 2>/dev/null || uci set sim_manager.slot_1.apn_pass=''
+uci commit sim_manager
+echo "=== AFTER UCI ==="
+uci show sim_manager.slot_1
+echo "=== RESTART sim-manager ==="
+/etc/init.d/sim-manager restart
+sleep 3
+echo "=== RESTART wwan ==="
+ifup wwan 2>/dev/null || true
+ubus call network.interface.wwan down 2>/dev/null || true
+sleep 1
+ubus call network.interface.wwan up 2>/dev/null || true
+sleep 5
+echo "=== STATUS ==="
+uci get sim_manager.slot_1.apn
+ip -4 addr show usb0 2>/dev/null || true
+echo "=== DONE ==="

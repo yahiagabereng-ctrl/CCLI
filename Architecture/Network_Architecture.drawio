@@ -1,0 +1,64 @@
+<mxfile host="app.diagrams.net" modified="2026-07-26T01:53:00.423187+00:00" agent="CCLI-RAG" version="22.1.0" type="device">
+  <diagram name="Page-1" id="ccli-Network-Architecture">
+    <mxGraphModel dx="1400" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="900" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="t" value="Network Architecture — logical &amp; physical separation" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=18;fontStyle=1;" vertex="1" parent="1">
+  <mxGeometry x="120" y="20" width="1160" height="36" as="geometry"/>
+</mxCell>
+<mxCell id="n" value="CEI O.13.1.1: separate outside interfaces · Eth_A DSO · Eth_B Operator · plant ports" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=10;" vertex="1" parent="1">
+  <mxGeometry x="120" y="56" width="1160" height="24" as="geometry"/>
+</mxCell>
+<mxCell id="etha" value="Eth_A → DSO
+Dedicated PHY/port
+IEC 61850 MMS/GOOSE
+No plant bridge" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DBEAFE;strokeColor=#1A365D;fontSize=11;" vertex="1" parent="1">
+  <mxGeometry x="60" y="140" width="240" height="100" as="geometry"/>
+</mxCell>
+<mxCell id="ethb" value="Eth_B → Operator
+Dedicated PHY/port
+61850 / 60870-104" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DBEAFE;strokeColor=#1A365D;fontSize=11;" vertex="1" parent="1">
+  <mxGeometry x="60" y="280" width="240" height="100" as="geometry"/>
+</mxCell>
+<mxCell id="sw" value="Managed switch or
+2x SoM GbE + 2x PHY
+(kit: 2x GbE only)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF4E6;strokeColor=#1A365D;fontSize=11;" vertex="1" parent="1">
+  <mxGeometry x="400" y="200" width="260" height="100" as="geometry"/>
+</mxCell>
+<mxCell id="p1" value="Plant port 1
+Modbus TCP / LAN" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F4FC;strokeColor=#1A365D;fontSize=11;" vertex="1" parent="1">
+  <mxGeometry x="760" y="140" width="220" height="80" as="geometry"/>
+</mxCell>
+<mxCell id="p2" value="Plant port 2
+spare / HMI" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F4FC;strokeColor=#1A365D;fontSize=11;" vertex="1" parent="1">
+  <mxGeometry x="760" y="260" width="220" height="80" as="geometry"/>
+</mxCell>
+<mxCell id="fw" value="Linux net policy
+VLAN · firewall · 62351 TLS
+Audit logging" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DCFCE7;strokeColor=#1A365D;fontSize=11;" vertex="1" parent="1">
+  <mxGeometry x="400" y="380" width="260" height="80" as="geometry"/>
+</mxCell>
+<mxCell id="svc" value="USB console
+(out of cert path)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F3F4F6;strokeColor=#1A365D;fontSize=11;" vertex="1" parent="1">
+  <mxGeometry x="760" y="400" width="220" height="60" as="geometry"/>
+</mxCell>
+<mxCell id="n1" value="isolated" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;" edge="1" parent="1" source="etha" target="sw">
+  <mxGeometry relative="1" as="geometry"/>
+</mxCell>
+<mxCell id="n2" value="isolated" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;" edge="1" parent="1" source="ethb" target="sw">
+  <mxGeometry relative="1" as="geometry"/>
+</mxCell>
+<mxCell id="n3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;" edge="1" parent="1" source="sw" target="p1">
+  <mxGeometry relative="1" as="geometry"/>
+</mxCell>
+<mxCell id="n4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;" edge="1" parent="1" source="sw" target="p2">
+  <mxGeometry relative="1" as="geometry"/>
+</mxCell>
+<mxCell id="n5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;" edge="1" parent="1" source="sw" target="fw">
+  <mxGeometry relative="1" as="geometry"/>
+</mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

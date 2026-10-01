@@ -1,0 +1,44 @@
+===== P3-04 Wlim → PF2 → DIO1 (actuator path) =====
+Date: 2026-09-25
+DUT: TG544 · Eth_A 192.168.10.1:102 · ccli 0.1.0-r6
+Lab client: lab/tg544-openwrt/mms_wlim_client (host x86_64)
+
+PASS CRITERIA (CCI_Phase_Regulation_Checklists P3-04)
+  Write Wlim → same P1 PF2 actuator path (thresholds + DIO1)
+
+PROCEDURE
+  1. Deploy ccli-bin r6 (Wlim PerformCheck + Control handlers + poll_wlim → apply_live)
+  2. Start: /usr/sbin/ccli --config /etc/ccli/lab.yaml --lab-demo
+     (lab-demo = simulated P ramp so Modbus slave not required)
+  3. permissive_bypass=true for this lab run (DI gate open)
+  4. Client: mms_wlim_client 192.168.10.1 102 10
+     Operate WMaxSptPct=10 then Mod=1 (Active)
+
+RESULTS
+  [PASS] CONNECT OK · OPERATE OK WMaxSptPct=10 · OPERATE OK Mod=1 · Mod.stVal=1
+         Evidence: P3_04_WLIM_CLIENT.txt
+
+  [PASS] Server handlers
+         mms: Wlim.WMaxSptPct (struct) ctlVal=10.00
+         mms: Wlim.Mod ctlVal=1 → wlim_active=true
+         Evidence: P3_04_CCLI_SERVER.log
+
+  [PASS] Live DSO → PF2 thresholds (O.9.2.2)
+         mms→pf2: Wlim active=yes WMaxSptPct=10% p_wlim=21 p_eff=21 kW
+                   → enter=21 release=16 kW
+         (Smax_used=210 kVA · 10% → 21 kW; binds below WSd 42 kW)
+
+  [PASS] Actuator DIO1
+         io: DO curtail_on
+         pf2=p_above_threshold curtail=yes DO=ON
+         ubus dido_v2 channel 1 state=1
+         Evidence: P3_04_DIO1_STATUS.txt · P3_04_CCLI_SERVER.log
+
+LAB CAVEATS (documented, not blockers for P3-04 path)
+  - ctlModel = DIRECT_ENHANCED (lab); product intent remains SBO
+  - permissive_bypass=on for this run (DI not closed)
+  - --lab-demo simulated P (Modbus RTU slave optional / skipped)
+  - Cleartext MMS (P3-06 TLS still OPEN)
+
+VERDICT: P3-04 PASS
+===== END =====

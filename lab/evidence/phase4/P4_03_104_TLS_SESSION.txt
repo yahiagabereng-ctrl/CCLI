@@ -1,0 +1,108 @@
+TLS: Verify cert: depth 1
+TLS:    flags: 00000000
+TLS:   cert. version     : 3
+  serial number     : 42:54:6F:79:FE:8A:9A:98
+  issuer name       : C=IT, O=HiTEKS, OU=CCLI-Lab, CN=CCLI_Lab_Root_CA
+  subject name      : C=IT, O=HiTEKS, OU=CCLI-Lab, CN=CCLI_Lab_Root_CA
+  issued  on        : 2026-09-29 19:36:09
+  expires on        : 2036-09-26 19:36:09
+  signed using      : RSA with SHA-256
+  RSA key size      : 2048 bits
+  basic constraints : CA=true
+  key usage         : Digital Signature, Key Cert Sign, CRL Sign
+System.Management.Automation.RemoteException
+TLS: Verify cert: depth 0
+TLS:    flags: 00000000
+TLS:   cert. version     : 3
+  serial number     : 69:1B:6D:54:0A:8C:E3:9E
+  issuer name       : C=IT, O=HiTEKS, OU=CCLI-Lab, CN=CCLI_Lab_Root_CA
+  subject name      : C=IT, O=HiTEKS, OU=CCLI-Lab, CN=CCI016_01
+  issued  on        : 2026-09-29 19:36:09
+  expires on        : 2029-01-01 19:36:09
+  signed using      : RSA with SHA-256
+  RSA key size      : 2048 bits
+  basic constraints : CA=false
+  key usage         : Digital Signature, Key Encipherment
+System.Management.Automation.RemoteException
+TLS: Check against list of allowed certs
+TLS: Compare With:
+TLS:      cert. version     : 3
+     serial number     : 69:1B:6D:54:0A:8C:E3:9E
+     issuer name       : C=IT, O=HiTEKS, OU=CCLI-Lab, CN=CCLI_Lab_Root_CA
+     subject name      : C=IT, O=HiTEKS, OU=CCLI-Lab, CN=CCI016_01
+     issued  on        : 2026-09-29 19:36:09
+     expires on        : 2029-01-01 19:36:09
+     signed using      : RSA with SHA-256
+     RSA key size      : 2048 bits
+     basic constraints : CA=false
+     key usage         : Digital Signature, Key Encipherment
+System.Management.Automation.RemoteException
+TLS: Verify cert: depth 1
+TLS:    flags: 00000000
+TLS:   cert. version     : 3
+  serial number     : 42:54:6F:79:FE:8A:9A:98
+  issuer name       : C=IT, O=HiTEKS, OU=CCLI-Lab, CN=CCLI_Lab_Root_CA
+  subject name      : C=IT, O=HiTEKS, OU=CCLI-Lab, CN=CCLI_Lab_Root_CA
+  issued  on        : 2026-09-29 19:36:09
+  expires on        : 2036-09-26 19:36:09
+  signed using      : RSA with SHA-256
+  RSA key size      : 2048 bits
+  basic constraints : CA=true
+  key usage         : Digital Signature, Key Cert Sign, CRL Sign
+System.Management.Automation.RemoteException
+TLS: Verify cert: depth 0
+TLS:    flags: 00000000
+TLS:   cert. version     : 3
+  serial number     : 69:1B:6D:54:0A:8C:E3:9E
+  issuer name       : C=IT, O=HiTEKS, OU=CCLI-Lab, CN=CCLI_Lab_Root_CA
+  subject name      : C=IT, O=HiTEKS, OU=CCLI-Lab, CN=CCI016_01
+  issued  on        : 2026-09-29 19:36:09
+  expires on        : 2029-01-01 19:36:09
+  signed using      : RSA with SHA-256
+  RSA key size      : 2048 bits
+  basic constraints : CA=false
+  key usage         : Digital Signature, Key Encipherment
+System.Management.Automation.RemoteException
+TLS: Check against list of allowed certs
+TLS: Compare With:
+TLS:      cert. version     : 3
+     serial number     : 69:1B:6D:54:0A:8C:E3:9E
+     issuer name       : C=IT, O=HiTEKS, OU=CCLI-Lab, CN=CCLI_Lab_Root_CA
+     subject name      : C=IT, O=HiTEKS, OU=CCLI-Lab, CN=CCI016_01
+     issued  on        : 2026-09-29 19:36:09
+     expires on        : 2029-01-01 19:36:09
+     signed using      : RSA with SHA-256
+     RSA key size      : 2048 bits
+     basic constraints : CA=false
+     key usage         : Digital Signature, Key Encipherment
+System.Management.Automation.RemoteException
+=== P4 CS104 client (lib60870) ===
+target=192.168.1.130:2404 ca=1 ioa=1001 tls=on
+P4: TLS mode (62351-3)
+P4: connection OPEN
+P4: STARTDT_CON received
+P4: ASDU M_ME_NC_1(13) cot=1 ca=1 n=1
+P4: M_ME_NC_1 IOA=1001 value=0.000 kW
+P4: GI sent CA=1, waiting 6000 ms
+P4: ASDU C_IC_NA_1(100) cot=7 ca=1 n=1
+P4: ASDU M_ME_NC_1(13) cot=20 ca=1 n=1
+P4: M_ME_NC_1 IOA=1001 value=0.000 kW
+P4: ASDU C_IC_NA_1(100) cot=10 ca=1 n=1
+P4: ASDU M_ME_NC_1(13) cot=1 ca=1 n=1
+P4: M_ME_NC_1 IOA=1001 value=0.000 kW
+P4: connection CLOSED
+P4: session summary startdt=YES totw_ioa1001=YES value=0.000
+P4: reconnect after 2s
+P4: TLS mode (62351-3)
+P4: connection OPEN
+P4: STARTDT_CON received
+P4: ASDU M_ME_NC_1(13) cot=1 ca=1 n=1
+P4: M_ME_NC_1 IOA=1001 value=0.000 kW
+P4: GI sent CA=1, waiting 4000 ms
+P4: ASDU C_IC_NA_1(100) cot=7 ca=1 n=1
+P4: ASDU M_ME_NC_1(13) cot=20 ca=1 n=1
+P4: M_ME_NC_1 IOA=1001 value=0.000 kW
+P4: ASDU C_IC_NA_1(100) cot=10 ca=1 n=1
+P4: connection CLOSED
+P4: session summary startdt=YES totw_ioa1001=YES value=0.000
+P4: VERDICT PASS

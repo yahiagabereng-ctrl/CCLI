@@ -1,0 +1,51 @@
+﻿ 3856 root      1276 S    /usr/sbin/chronyd -f /etc/chrony/chrony.conf
+ 3880 root       216 S    /usr/sbin/gnss_chrony_sock /var/run/chrony.gnss.sock
+ 3881 root      3276 S    /usr/sbin/ccli --config /etc/ccli/lab.yaml
+===
+Reference ID    : 4E2FB884 (time.markusweber.de)
+Stratum         : 3
+Ref time (UTC)  : Fri Sep 25 16:40:44 2026
+System time     : 0.007730871 seconds slow of NTP time
+Last offset     : -0.009323299 seconds
+RMS offset      : 0.009323299 seconds
+Frequency       : 14.892 ppm fast
+Residual freq   : -104.943 ppm
+Skew            : 1000000.000 ppm
+Root delay      : 0.093473531 seconds
+Root dispersion : 5.410713673 seconds
+Update interval : 64.0 seconds
+Leap status     : Normal
+===
+ccli config loaded from /etc/ccli/lab.yaml
+hal_gpio_ll: TesPro dido_v2 via ubus (gd32.read_di + set_mode)
+svc_io: ready do_curtail=GPIO1(active_low) di_permissive=GPIO2(active_low)
+dso-phase1: O.8.2/O.11 mock ΓÇö Smax_calc=206.155 Smax_used=210 kVA p_w110=0 p_wlim=0 p_wsd=42 p_eff=42 kW ΓåÆ pf2 enter=42 release=37 kW
+mms: TLS CRL loaded /etc/ccli/tls/lab_crl.pem
+mms: listening on 192.168.10.1:3782 tls=on acse_tls_auth=on rbac=on crl=on fallback_s=15 gnss_poll_s=15 chrony=on discipline=off (IED CCI016_01 / LD_Plant)
+ccli started. config=/etc/ccli/lab.yaml
+mms: time_quality chrony offset_ms=0 within_pm100=yes leap=Normal ref=74CBDA6D gnss_fix=1 clockNotSynchronized=0 (T.3.3.4.5)
+io: curtail_do=OFF permissive=BLOCKED
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40001 qty=4 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40001 qty=4 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40001 qty=4 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40001 qty=4 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40001 qty=4 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40001 qty=4 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40001 qty=4 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40001 qty=4 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40001 qty=4 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+===
+501 Not authorised
+Reference ID    : 4E2FB884 (time.markusweber.de)
+Stratum         : 3
+Ref time (UTC)  : Fri Sep 25 16:40:44 2026
+System time     : 0.007091552 seconds slow of NTP time
+Last offset     : -0.009323299 seconds
+RMS offset      : 0.009323299 seconds
+Frequency       : 14.892 ppm fast
+Residual freq   : -104.943 ppm
+Skew            : 1000000.000 ppm
+Root delay      : 0.093473531 seconds
+Root dispersion : 7.417552471 seconds
+Update interval : 64.0 seconds
+Leap status     : Normal

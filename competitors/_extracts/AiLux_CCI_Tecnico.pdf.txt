@@ -1,0 +1,139 @@
+
+----- PAGE 1 -----
+CCI Controllore Centrale di Impianto CEI 0-16 allegati O-T
+Il CCI è un Gateway per il monitoraggio di impianti di Produzione di Energia Elettrica .
+Apparato prescritto da ARERA con delibera 36/2020/R/EEL e descritto dalla vigente norma
+CEI 0-16 negli allegati O e T. Raccoglie tutte le informazione dell’impianto e le trasmette in
+modo sicuro al Distributore (DSO) o ad altro Operatore abilitato. Per ottemperare al
+regolamento le prestazioni del CCI secondo la specifica funzionale devono svilupparsi come
+segue:
+• prestazioni funzionali “obbligatorie”, inerenti lo scambio dati fra produttore e DSO 
+(osservabilità);
+• prestazioni funzionali “opzionali”, inerenti la regolazione di tensione e la limitazione di 
+potenza al Punto di Consegna dell'impianto;
+• prestazioni funzionali “facoltative”, inerenti la partecipazione dell'impianto al Mercato 
+dei servizi del Dispacciamento, la gestione ottimale dell'impianto, RiGeDi, ecc.
+
+
+----- PAGE 2 -----
+Meccanica base DIN Plastica:
+
+
+----- PAGE 3 -----
+Meccanica base DIN Metallica:
+
+
+----- PAGE 4 -----
+Connessioni:
+
+
+----- PAGE 5 -----
+Opzioni di cablaggio per i Connettori Seriali:
+
+
+----- PAGE 6 -----
+Schema delle connessioni e Interfacce Funzionali:
+
+
+----- PAGE 7 -----
+Descrizione Moduli:
+Di seguito la descrizione dei moduli del CCI:
+• CPU iMX6D ARM Cortex-A9, 1GB DDR3, 4GByte eMMC, 800Mhz, CAAM, CSU, A-HAB 
+SHA-256.
+• Cyber Security: Secur Boot, Trusted Platform Module 2.0, FIPS 140-2 Level 3, RBAC, 
+TRNG.
+• Anti-Tamper hardware con switch collegato alla copertura e accelerometro X-Y-Z 
+antimanomissione.
+• Conforme a quanto previsto da IEC-62443-4-1/2 
+• Ethernet Switch a 4 porte 10/100 Mbps:
+ 
+• Una porta dedicata a DSO (ETH_A) e una porta dedicata a Operatore Abilitato 
+(ETH_B). 
+• Due porte per connessioni agli Elementi di Impianto.
+• Connettori RJ45 8/8.
+• Due porte Seriali optoisolate con connessione RS-232 e RS-485 su connettori RJ45 8/8 
+standard ModBus.
+• Una porta USB 2.0 per Consolle di Configurazione e Manutenzione Locale.
+• Due Porte USB 2.0 per connessioni agli Elementi di Impianto.
+Protocolli gestiti (Porte seriali configurate come RS232 o RS485):
+• IEC 61158-15 ModBus-RTU.
+• IEC 60870-5-101 Balance and Unbalance. 
+• IEC 60870-5-103. 
+Protocolli gestiti (Porte Ethernet):
+• IEC 60870-5-104 Slave/Reverse/Redundancy (Gestione Armamenti con Multicast e
+Unicast). 
+• IEC-61850 Server/Client/Goose. 
+• IEC 61158-15 ModBus-TCP/IP Master and/or Slave. 
+• DNP 3.
+• S7-Comm. 
+• OPC-UA Client. 
+• C37.118 Client. 
+• IEC 62056-21 (DLMS/COSEM). 
+
+----- PAGE 8 -----
+Protocolli sicuri:
+• IEC 62351 (crypto/cyber security)
+• Parte 3 per IEC-60870-5-101/4 e DNP3. 
+• Parte 4 per IEC 61850
+• Parte 5 per IEC-60870-5-101/4 e DNP3. 
+• Parte 6 per IEC 61850
+• Parte 7 per SNMP
+• Parte 8,9 per IEC-60870-5-101/4, IEC61850 e DNP3
+• Parte 14 Syslog 
+Servizi:
+ 
+• http(s), sftp, ssh, snmp v2, v3 trap. 
+• ntpd, client-ptp o server-ptp (IEEE-1588) (power profile).
+• redundancy cover system. 
+• Firewall. 
+• Accesso con RBAC.
+• Tasks ladder IEC 61131-3. 
+• Web Interface per diagnostica, gestione logs, SCADA.
+Altro:
+• N° 5 Ingressi Digitali optoisolati 10Vdc...120Vdc, da energizzare con alimentazione 
+ESTERNA (fornita dal campo).
+• N° 3 Uscite Digitali a relè 250Vac 3A.
+• Modulo GPS/GLONASS integrato per sincronia oraria da satelliti. Connettore SMA 
+Femmina per connessione antenna attiva esterna (5Vdc OUT). Antenna fornita con 5 m di 
+cavo RG174.
+• Modem integrato per connessioni 2G/3G/4G/LTE Cat. 1. Connettore SMA Femmina per 
+connessione antenna stilo esterna.
+• Display OLED 1” per diagnostica locale.
+• Slot per MicroSD card fino a 32Gb per Storage e Log files.
+• Alimentazione in ingresso da 12Vdc a 24Vdc +/- 20% 5W.
+• Temperatura di esercizio -5°C ...+45°C.
+Normative di riferimento:
+• CEI 0-16 allegati O-T
+• CEI EN 61557-12:2018
+• ARERA 540/2021
+• FIPS 140-2
+• IEC 62351-3/-4/-5/-6
+
+----- PAGE 9 -----
+Revisioni documento:
+Rev. N° Data Autore Descrizione
+0 02/12/21 M.Maioli Prima stesura, descrizione prototipo e connessioni
+1 24/02/22 M.Maioli Revisione documento
+2 22/04/22 M.Maioli Aggiornamento
+3 20/05/22 G.Vianelli Refusi sui protocollo e servizi
+4 15/07/22 M.Maioli Aggiornamento immagini
+5 29/09/22 M.Maioli Aggiornamento normative
+6 21/11/22 M.Maioli Revisione polarizzazione Ingressi Digitali
+7 04/02/23 M.Maioli Aggiornamento immagini e codice ordine
+8 11/04/23 M.Maioli Correzione connettori SMA e temperatura
+9 08/06/23 M.
+Bianchetti
+Aggiornamento normative/riferimenti
+RDO:
+Codice Descrizione
+AP-KIT-CCI-CEI-016 marco.bianchetti@ailux.eu
+Le informazioni contenute nel presente documento sono da considerarsi strettamente
+riservate. Manufactured by AiLux Srl ®.
+Contatto per supporto email: supportocci@ailux.eu
+Contatti azienda:
+AiLux Srl, 
+via Cav. F. Ghidini 54
+25030 Torbole Casaglia (BS) 
+www.ailux.eu
+info @ailux.eu 
+Tel: +39 0303539165

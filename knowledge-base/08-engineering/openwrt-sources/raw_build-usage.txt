@@ -1,0 +1,355 @@
+====== OpenWrt build system – Usage ======
+| -> go back to [[obtain.firmware]] or read ->[[about:toolchain|OpenWrt build system – About]] |
+
+===== Prerequisites =====
+to generate an [[doc:howto:generic.flashing|installable]] OpenWrt firmware image file with a size of e.g. 8MB:
+  - **[[buildroot.exigence|Install OpenWrt build system and its prerequisites]]** on your OS.
+  - ca. 3-4 GB of available hard disk space
+  - environment variables:
+    * ''SED'' should not be set.  If it is, run ''`unset SED`'' before compiling. (See [[https://dev.openwrt.org/ticket/10612|Ticket 10612]].)
+    * ''GREP_OPTIONS'' should not have ''--initial-tab'' or other options affecting its output
+    * Add ''<buildroot dir>/staging_dir/host/bin'' and ''<buildroot dir>/staging_dir/toolchain-<platform>-<gcc_ver>-<libc_ver>/bin'' in front of your ''PATH'' variable in ''~/.bashrc''. The staging directory is created shortly after starting the build and the toolchain directory is created when the toolchain build begins. The build spawns multiple shells, some of which expect the toolchain binaries to be present in the ''PATH''.
+
+===== Procedure =====
+| {{:meta:icons:tango:48px-emblem-important.svg.png?nolink}} | 1. Do everything as //non//-root user\\ 2. Issue all commands in the ''<buildroot dir>'' directory, e.g. ''~/openwrt/trunk/'' |
+
+  - Update OpenWrt sources.
+  - Update and install package feeds.
+  - Configure the firmware image you want to obtain.
+  - Start the build. This will automatically compile toolchain, cross-compile sources, package packages, and finally generate an image ready to be flashed.
+  - Proceed to [[generic.flashing|Installing OpenWrt]]
+
+Stages 1 & 2 can be performed with a <del>[[https://gist.github.com/RantyDave/de4ef4b447ab2c35a8ae094a5449333a|Dockerfile]]</del>
+==== Checking out source ====
+
+If you want to use trunk, use the below line.
+<code>
+git clone https://www.github.com/openwrt/openwrt
+</code>
+
+If you want to use a release source, use this:
+
+<code>
+git clone https://www.github.com/openwrt/openwrt -b chaos_calmer
+</code>
+
+(Verify the release name on Github.)
+
+==== Updating Sources with Git ====
+
+:!: OpenWrt sources change frequently. It is recommended that you work with the latest sources.
+
+<code>
+git pull
+</code>
+
+==== Updating Feeds ====
+
+see [[doc:devel:feeds]]
+
+:!: //Installing// in context of ''./scripts/feeds'' script means "making package available in ''make menuconfig''" rather than really installing or compiling package.
+
+  - Update feeds: <code>./scripts/feeds update -a</code>
+  - Make downloaded package/packages available in ''make menuconfig'':
+    * single package:<code>./scripts/feeds install <PACKAGENAME></code>
+    * all packages:<code>./scripts/feeds install -a</code> \\ This may take extra time and is required if you intend to create your own repository of the packages/
+
+
+===== Image Configuration =====
+
+Typical actions:
+  - run ''make menuconfig'' and set "Target System", "Subtarget", "Target Profile";
+  - run ''make defconfig'';
+  - run ''make menuconfig'' and modify set of package;
+  - run ''scripts/diffconfig.sh >mydiffconfig'' (save your changes in the text file ''mydiffconfig'');
+  - run ''make download'' (download all dependency source files before final make, enables multi-core compilation);
+  - run ''make V=s'' (build OpenWRT with console logging, you can see where build failed.).
+==== Make menuconfig ====
+The **OpenWrt build system configuration interface** handles the selection of the target platform, packages to be compiled, packages to be included in the firmware file, some kernel options, etc. \\ Start the OpenWrt build system configuration interface by issuing the following command:\\
+<code>
+make menuconfig
+</code>
+
+This will update the dependencies of your existing configuration automatically, and you can now proceed to build your updated images. 
+
+
+You have three options:
+''y'', ''m'', ''n'' which are represented as follows:
+  * pressing ''**y**'' sets the ''**<*>**'' built-in label\\ This package will be compiled and included in the firmware image file.
+  * pressing ''**m**'' sets the ''**<M>**'' package label\\ This package will be compiled, but **not** included in the firmware image file. (E.g. to be installed with ''[[doc:techref:opkg]]'' after [[doc:howto:generic.flashing|flashing]] the firmware image file to the device.)
+  * pressing ''**n**'' sets the ''**< >**'' excluded label\\ The source code will not be processed.
+
+When you save your configuration, the file **''<buildroot dir>/.config''** will be created according to your configuration.
+
+=== Explanations ===
+It has been the intention from the beginning, with the development of ''menuconfig'', to create a simple, yet powerful, environment for the configuration of individual OpenWrt builds. ''menuconfig'' is more or less self-explanatory, and even the most specialized configuration requirements can be met by using it. Depending on the particular target platform, package requirements and kernel module needs, the standard configuration process will include modifying:
+
+  - Target system
+  - Package selection
+  - Build system settings
+  - Kernel modules
+
+Target system is selected from the extensive list of supported platforms, with the numerous target profiles – ranging from specific devices to generic profiles, all depending on the particular device at hand. Package selection has the option of either 'selecting all package', which might be un-practical in certain situation, or relying on the default set of packages will be adequate or make an individual selection. It is here needed to mention that some package combinations might break the build process, so it can take some experimentation before the expected result is reached. Added to this, the OpenWrt developers are themselves only maintaining a smaller set of packages – which includes all default packages – but, the feeds-script makes it very simple to handle a locally maintained set of packages and integrate them in the build-process.
+
+The final step before the process of compiling the intended image(s) is to exit ''menuconfig'' – this also includes the option to save a specific configuration or load an already existing, and pre-configured, version.
+
+Exit the TUI, and choose to ''save'' your settings.
+
+==== Kernel configuration (optional)====
+Note that ''make kernel_menuconfig'' modifies the Kernel configuration templates of the build tree and clearing the build_dir will not revert them.
+
+While you won't typically need to do this (unless you have specific requirements such as [[Building Kernels for Debian Binaries|building kernels for Debian binaries]]), you can do it:
+<code>
+make kernel_menuconfig CONFIG_TARGET=subtarget
+</code>
+CONFIG_TARGET allows you to select which config you want to edit. possible options: target, subtarget, env.
+
+:FIXME: (git)
+(GIT) The changes can be reviewed with
+<code>
+git diff target/linux/
+</code>
+and reverted with (SVN)
+<code>
+svn revert -R target/linux/
+</code>
+
+
+=== Source Mirrors ===
+The 'Build system settings' include some efficient options for changing package locations which makes it easy to handle a local package set:
+
+  - Local mirror for source packages
+  - Download folder
+
+In the case of the first option, you simply enter a full URL to the HTTP or FTP server on which the package sources are hosted. Download folder would in the same way be the path to a local folder on the build system (or network). If you have a web/ftp-server hosting the tarballs, the OpenWrt build system will try this one before trying to download from the location(s) mentioned in the Makefiles . Similar if a local 'download folder', residing on the build system, has been specified. 
+
+The 'Kernel modules' option is required if you need specific (non-standard) drivers and so forth – this would typically be things like modules for USB or particular network interface drivers etc.
+
+==== Configure using config diff file ====
+Beside ''make menuconfig'' another way to configure is using a configuration diff file. This file includes only the changes compared to the default configuration. A benefit is that this file can be version controlled with your OpenWRT based project. It's also less affected by OpenWRT updates, because it only contains the changes. 
+
+=== Creating diff file ===
+This file is created using the ''<buildroot dir>/scripts/diffconfig.sh'' script. 
+<code>
+./scripts/diffconfig.sh > diffconfig # write the changes to diffconfig
+</code>
+
+=== Using diff file ===
+These changes can form the basis of a config file (''<buildroot dir>/.config''). By running ''make defconfig'' these changes will be expanded into a full config. 
+<code>
+cp diffconfig .config # write changes to .config
+make defconfig # expand to full config
+</code>
+
+These changes can also be added to the bottom of the config file (''<buildroot dir>/.config''), by running ''make defconfig'' these changes will override the existing configuration.
+<code>
+cat diffconfig >> .config # append changes to bottom of .config
+make defconfig # apply changes
+</code>
+
+==== Patches ====
+OpenWrt build system integrates //[[wp>Quilt (software)|quilt]]// for easy patch management:\\
+->[[doc/devel/patches]]
+
+==== Custom files ====
+| {{:meta:icons:tango:48px-dialog-warning.svg.png?nolink}} | <color red>**Warning! Be carefull!**</color> [[doc/howto/generic.failsafe|OpenWrt failsafe]] relies on 100%-working base files on the [[doc/techref/flash.layout#partitioning.of.squashfs-images|SquashFS-partition]] (i.e. the <color magenta>''/rom''</color>-directory), so in case you mis-configure or misspell something, you will end up with a non-working OpenWrt failsafe and be forced to used more rudimentary methods to [[doc/howto/generic.debrick|debrick]] your device! |
+
+In case you want to include some custom configuration files, the correct place to put them is:
+  * **''<buildroot dir>/files/''**
+
+For example, let's say that you want an image with a custom **''/etc/config/firewall''** or a custom **''etc/sysctl.conf''**, then create this files as:
+  * ''**<buildroot dir>/files/**etc/config/firewall''
+  * ''**<buildroot dir>/files/**etc/sysctl.conf''
+
+E.g. if your <buildroot dir> is ''/openwrt/trunk'' and you want some files to be copied into firmware image's ''/etc/config'' directory, the correct place to put them is ''/openwrt/trunk/files/etc/config'' . 
+
+==== Defconfig ====
+[[https://forum.openwrt.org/viewtopic.php?pid=140470#p140470|select your target before issuing defconfig]]
+<code>
+make defconfig
+</code>
+will produce a general purpose configuration of the build system including a check of dependencies and prerequisites for the build environment etc
+
+will check for dependencies. Install missing and run again.
+
+==== Download sources and multi core compile ====
+Before running final make it is best to issue make download command first, this step will pre-fetch all source code for all dependencies, this enables you compile with more cpu cores (for example, make -j10, for 4 core, 8 thread cpu works great). 
+
+If you try compiling OpenWrt on multiple cores and don't download all source files for all dependency packages it is very likely that your build will fail.
+
+<code>
+make download
+</code>
+ 
+===== Building Images =====
+Everything is now ready for building the image(s), which is done with one single command:
+
+<code>
+make
+</code>
+or
+<code>
+make world
+</code>
+
+This simple command will trigger a cascade of activity. As already stated, it will
+  - compile the toolchain
+  - then crosscompile the sources with this toolchain
+  - create opkg-packages
+  - generate a firmware image file ready to be [[generic.flashing|flashed]].
+
+
+==== Make Tips ====
+
+=== Building in the background ===
+If you intend to use your system while building, you can have the build process use only idle I/O and CPU capacity like this (4 core, 8 thread CPU):
+
+<code>
+make download
+ionice -c 3 nice -n19 make -j 10
+</code>
+
+=== Building single Packages ===
+When developing or packaging software for OpenWrt, it is convenient to be able to build only the package in question (e.g. with package ''cups''):
+
+<code>
+make package/cups/compile V=s
+</code>
+
+For a rebuild:
+<code>
+make package/cups/{clean,compile,install} V=s
+</code>
+
+It doesn't matter what feed the package is located in, this same syntax works for any installed package.
+
+=== Spotting build errors ===
+If for some reason the build fails, the easiest way to spot the error is to do:
+
+<code>
+make V=s 2>&1 | tee build.log | grep -i error
+</code>
+
+The above saves a full verbose copy of the build output (with stdout piped to stderr) in ''/openwrt/trunk/build.log'' and only shows errors on the screen.
+
+Another example:
+
+<code>
+ionice -c 3 nice -n 20 make -j 2 V=s CONFIG_DEBUG_SECTION_MISMATCH=y 2>&1 | tee build.log | egrep -i '(warn|error)'
+</code>
+
+The above saves a full verbose copy of the build output (with stdout piped to stderr) in build.log and outputs only warnings and errors while building using only background resources on a dual core CPU.
+
+Yet another way to focus on the problem without having to wade through tons of output from Make as described above is to check the corresponding log in 'logs' folder.
+IE: if the build fails at "make[3] -C package/kernel/mac80211 compile", then you can go to <buildroot>/logs/package/kernel/mac80211 and view the compile.txt found there.
+
+=== Getting beep notification ===
+Depending on your CPU, the process will take a while, or while longer. If you want an acoustic notification, you could use ''echo -e '\a''':
+
+<code>
+make V=s ; echo -e '\a'
+</code>
+
+=== Skipping failed packages ===
+If you are building everything (not just packages enough to make a flashable image) and build stops on a package you don't care about you can skip failed packages by using //IGNORE_ERRORS=1//
+<code>
+IGNORE_ERRORS=1 make <make options>
+</code>
+===== Locating Images =====
+After a successful build, the freshly built image(s) can be found in the newly created ''<buildroot_dir>/bin'' directory. The compiled files are additionally classified by the target platform, so e.g. a firmware built for an ar71xx device will be located in ''<buildroot_dir>/bin/ar71xx'' directory.
+
+E.g. if your <buildroot_dir> is ''~/openwrt/trunk'', the binaries are in ''~/openwrt/trunk/bin/ar71xx''.
+
+===== Cleaning Up =====
+You might need to clean your //build environment// every now and then. The following ''make''-targets are useful for that job:
+
+==== Clean ====
+<code>
+make clean
+</code>
+
+deletes contents of the directories ''/bin'' and ''/build_dir''.
+make clean does not remove the toolchain,
+it also avoids cleaning architectures/targets other than the one you have selected in your ''.config''
+
+==== Dirclean ====
+<code>
+make dirclean
+</code>
+
+deletes contents of the directories ''/bin'' and ''/build_dir'' and additionally ''/staging_dir'' and ''/toolchain'' (=the cross-compile tools) and ''/logs''. 'Dirclean' is your basic "Full clean" operation.
+
+
+==== Distclean ====
+<code>
+make distclean
+</code>
+
+nukes everything you have compiled or configured and also deletes all downloaded feeds contents and package sources.
+
+
+**CAUTION**: In addition to all else, this will **erase your build configuration (''<buildroot_dir>/.config'')**, your toolchain and all other sources. Use with care!
+
+There are numerous other functionalities in the OpenWrt build system, but the above should have covered some of the fundamentals.
+
+==== Clean small part ====
+In more time, you may not want to clean so many objects, then you can use some of the commands below to do it.
+
+Clean linux objects.
+<code>
+make target/linux/clean
+</code>
+
+Clean package base-files objects.
+<code>
+make package/base-files/clean
+</code>
+
+Clean luci.
+<code>
+make package/luci/clean
+</code>
+
+===== Examples =====
+  * https://forum.openwrt.org/viewtopic.php?pid=129319#p129319
+  * https://forum.openwrt.org/viewtopic.php?id=28267
+
+
+===== Troubleshooting =====
+
+  * Beware of unusual environment variables such as
+     * ''GREP_OPTIONS'' which should not have ''--initial-tab'' or other options affecting its output
+     * **''SED'' should not be set.  If it is, run `unset SED` before compiling.** (See [[https://dev.openwrt.org/ticket/10612|Ticket 10612]].)
+
+  * First get more information on the problem using the make option ''"make V=sc"'' or enable logging.
+
+:!: Read more about make options: [[doc:techref:buildroot|Buildroot Techref]]
+
+:!: [[doc:faq:development|Development FAQ]]
+
+
+==== Missing source code file, due to download problems ====
+First check if the URL path in the make file contains a trailing slash, then try with it removed (helped several times).
+Otherwise try to download the source code manually and put it into "dl" directory.
+
+==== Compilation errors ====
+Try to update the main source and all the feeds (Warning! May result in other problems).
+Check for a related bug in ([[https://dev.openwrt.org/query|TRAC]]), use the filters to find it.
+Otherwise report the problem there, by mentioning the package, the target data (CPU, image, etc.) and the code revisions (main & package).
+Compiling with make -j ... sometimes gives random errors. Try compiling without -j first before reporting the problem.
+
+
+
+
+==== WARNING: skipping <package> -- package not selected ====
+Run ''make menuconfig'' and enable compilation for your package. It should be labeled with ''<*>'' or ''<M>'' to work correctly. Read [[doc:howto:build#image.configuration]] further up in this article.
+
+==== *-factory.bin and *-sysupgrade.bin images for my device do not get generated ====
+When you execute ''make'' to build an OpenWRT image for your device, both a sysupgrade and a factory image should be generated for every board that is linked to the device profile that you have selected via ''make config'' or ''make menuconfig''. For example, when you select the [[toh:tp-link:tl-wr710n|TP-Link WR710N]] [[http://git.openwrt.org/?p=openwrt.git;a=blob;f=target/linux/ar71xx/generic/profiles/tp-link.mk;h=2875290e9901ee4f5772aaa6e20ba5691f1e4612;hb=HEAD#l129|profile]], the should be a seperate sysupgrade and a factory image generated for both the [[http://git.openwrt.org/?p=openwrt.git;a=blob;f=target/linux/ar71xx/image/Makefile;h=0becd24857b9e418fc75e79eaebd09cebd9a6558;hb=HEAD#l541|WR710N-v1]] and the [[http://git.openwrt.org/?p=openwrt.git;a=blob;f=target/linux/ar71xx/image/Makefile;h=0becd24857b9e418fc75e79eaebd09cebd9a6558;hb=HEAD#l549|WR710N-v2]] (the main difference between the two devices is the size of the flash chip: the v1 comes with 8MiB of flash while the v2 only has 4MiB).
+
+If running ''make'' does //not// yield images for one (or even all) of the boards linked to the device profile that you have selected, than you probably have selected/enabled too much stuff, resulting in an image that would be too big to be flashed onto your device. Please note that the OpenWRT buildroot will currently (september 2015) **not** display any warning or error message if an image cannot be created because it would be too big for its designated target board. Please keep in mind that in most cases, you will not be able to use all the flash memory in your device exclusively for your OpenWRT image, because there might be several separate [[doc:techref:flash.layout|flash partitions]] dedicated to things like the boot loader, the calibration data of the devices wifi card or the partition where your configuration data is stored.
+===== Notes =====
+  * [[doc:techref:buildroot|OpenWrt Buildroot – Technical Reference]]
+  * [[http://downloads.openwrt.org/docs/buildroot-documentation.html]]
+  * [[https://dev.openwrt.org/browser/trunk/docs/working.tex]]
+  * [[https://forum.openwrt.org/viewtopic.php?id=35323|Compiler Optimization Tweaks]]

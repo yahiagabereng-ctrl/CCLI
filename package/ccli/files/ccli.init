@@ -1,0 +1,48 @@
+#!/bin/sh /etc/rc.common
+
+START=99
+STOP=10
+USE_PROCD=1
+
+ccli_config_file() {
+	local f
+
+	f=$(uci -q get ccli.main.config_file 2>/dev/null)
+	if [ -n "$f" ] && [ -f "$f" ]; then
+		echo "$f"
+		return 0
+	fi
+
+	echo "/etc/ccli/lab.yaml"
+}
+
+start_service() {
+	local cfg enabled blink extra=""
+
+	enabled=$(uci -q get ccli.main.enabled 2>/dev/null)
+	[ "$enabled" = "0" ] && return 0
+
+	cfg=$(ccli_config_file)
+	# Lab-only relay self-test. MUST default to 0 so a field/product image never
+	# actuates the curtailment contact on boot or procd respawn (IEC 62443 CR 3.6).
+	blink=$(uci -q get ccli.plant.gpio_lab_blink 2>/dev/null)
+	[ -z "$blink" ] && blink=0
+	[ "$blink" -gt 0 ] 2>/dev/null && extra="--gpio-blink $blink"
+
+	procd_open_instance
+	procd_set_param command /usr/sbin/ccli --config "$cfg" $extra
+	procd_set_param respawn 3600 5 5
+	procd_set_param file /etc/config/ccli "$cfg"
+	procd_set_param stdout 1
+	procd_set_param stderr 1
+	procd_close_instance
+}
+
+service_triggers() {
+	procd_add_reload_trigger "ccli"
+}
+
+reload_service() {
+	stop
+	start
+}

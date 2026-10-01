@@ -1,0 +1,431 @@
+﻿{
+    "generated_at":  "2026-07-24T23:59:07.7171712Z",
+    "tenant_id":  "telematry",
+    "bot_id":  "default",
+    "telematry_total":  {
+                            "sources":  183,
+                            "chunks":  53248,
+                            "unreviewed_chunks":  42856,
+                            "other_chunks":  28499,
+                            "other_ratio":  0.535
+                        },
+    "ccli":  {
+                 "sources_ingested":  25,
+                 "chunks":  15293,
+                 "scored_chunks":  13194,
+                 "pdf_files_on_disk":  17,
+                 "md_files_on_disk":  29,
+                 "project_files_md_pdf":  46,
+                 "quality":  {
+                                 "mean":  0.937,
+                                 "median":  0.969,
+                                 "min":  0.0705,
+                                 "max":  1,
+                                 "grade":  "A",
+                                 "bands":  {
+                                               "A":  11343,
+                                               "B":  1054,
+                                               "C":  294,
+                                               "D":  234,
+                                               "F":  269
+                                           },
+                                 "needs_review":  12045,
+                                 "ocr":  {
+                                             "high":  12850,
+                                             "medium":  106,
+                                             "low":  238,
+                                             "unknown":  0
+                                         }
+                             },
+                 "pdf_inventory":  [
+                                       {
+                                           "name":  "CCI_Clone_RE_Option.pdf",
+                                           "path":  "projects/ccli/CCI_Clone_RE_Option.pdf",
+                                           "kb":  215.6
+                                       },
+                                       {
+                                           "name":  "CCI_Project_Roadmap.pdf",
+                                           "path":  "projects/ccli/CCI_Project_Roadmap.pdf",
+                                           "kb":  436.4
+                                       },
+                                       {
+                                           "name":  "CCI_SoM_Comparison.pdf",
+                                           "path":  "projects/ccli/CCI_SoM_Comparison.pdf",
+                                           "kb":  477.2
+                                       },
+                                       {
+                                           "name":  "CELEX_32018L2001_EN_TXT.pdf",
+                                           "path":  "regulations/eu/directive-2018-2001-red/CELEX_32018L2001_EN_TXT.pdf",
+                                           "kb":  1287.2
+                                       },
+                                       {
+                                           "name":  "EstrattoAllegatoO.pdf",
+                                           "path":  "regulations/cei-0-16/allegato-o/EstrattoAllegatoO.pdf",
+                                           "kb":  1409.2
+                                       },
+                                       {
+                                           "name":  "EstrattoAllegatoT.pdf",
+                                           "path":  "regulations/cei-0-16/allegato-t/EstrattoAllegatoT.pdf",
+                                           "kb":  1469.7
+                                       },
+                                       {
+                                           "name":  "iGate-850_V10_UM_EN.pdf",
+                                           "path":  "projects/ccli/reference/iGate-850_V10_UM_EN.pdf",
+                                           "kb":  3733.1
+                                       },
+                                       {
+                                           "name":  "IMX8MDQLQCEC-1280316.pdf",
+                                           "path":  "projects/ccli/reference/IMX8MDQLQCEC-1280316.pdf",
+                                           "kb":  1166.8
+                                       },
+                                       {
+                                           "name":  "Manuale_CCI_I_24_R6_240610.pdf",
+                                           "path":  "regulations/cei-0-16/manuale-cci/Manuale_CCI_I_24_R6_240610.pdf",
+                                           "kb":  1322.8
+                                       },
+                                       {
+                                           "name":  "moxa-mgate-5119-series-datasheet-v1.2.pdf",
+                                           "path":  "projects/ccli/reference/moxa-mgate-5119-series-datasheet-v1.2.pdf",
+                                           "kb":  922.1
+                                       },
+                                       {
+                                           "name":  "NXP_UG10164_iMX_Yocto_Project_Users_Guide.pdf",
+                                           "path":  "projects/ccli/yocto/NXP_UG10164_iMX_Yocto_Project_Users_Guide.pdf",
+                                           "kb":  368.9
+                                       },
+                                       {
+                                           "name":  "OJ_L_202402847_EN_TXT.pdf",
+                                           "path":  "regulations/eu/regulation-2024-2847-cra/OJ_L_202402847_EN_TXT.pdf",
+                                           "kb":  1740.6
+                                       },
+                                       {
+                                           "name":  "STM32L151RCTx.pdf",
+                                           "path":  "projects/ccli/reference/STM32L151RCTx.pdf",
+                                           "kb":  1322.8
+                                       },
+                                       {
+                                           "name":  "Toradex_Verdin_Carrier_Board_Design_Guide.pdf",
+                                           "path":  "projects/ccli/engineering/Toradex_Verdin_Carrier_Board_Design_Guide.pdf",
+                                           "kb":  3669.8
+                                       },
+                                       {
+                                           "name":  "Toradex_Verdin_Development_Board_V1.1_Datasheet.pdf",
+                                           "path":  "projects/ccli/engineering/Toradex_Verdin_Development_Board_V1.1_Datasheet.pdf",
+                                           "kb":  8766.2
+                                       },
+                                       {
+                                           "name":  "Toradex_Verdin_Family_Specification.pdf",
+                                           "path":  "projects/ccli/engineering/Toradex_Verdin_Family_Specification.pdf",
+                                           "kb":  1791.4
+                                       },
+                                       {
+                                           "name":  "yocto-5.0.13-theyoctoproject.pdf",
+                                           "path":  "projects/ccli/yocto/yocto-5.0.13-theyoctoproject.pdf",
+                                           "kb":  13507.9
+                                       }
+                                   ],
+                 "sources":  [
+                                 {
+                                     "source_id":  "ccli-yocto-overview",
+                                     "chunks":  8480,
+                                     "scored_chunks":  7416,
+                                     "mean_quality":  0.9315,
+                                     "median_quality":  0.9705,
+                                     "grade":  "A",
+                                     "other_ratio":  0.331,
+                                     "filenames":  [
+                                                       "yocto-5.0.13-theyoctoproject.pdf"
+                                                   ]
+                                 },
+                                 {
+                                     "source_id":  "cei-0-16-allegato-t",
+                                     "chunks":  1030,
+                                     "scored_chunks":  1010,
+                                     "mean_quality":  0.9421,
+                                     "median_quality":  0.9571,
+                                     "grade":  "A",
+                                     "other_ratio":  0.641,
+                                     "filenames":  [
+                                                       "EstrattoAllegatoT.pdf"
+                                                   ]
+                                 },
+                                 {
+                                     "source_id":  "eu-2018-2001-red",
+                                     "chunks":  930,
+                                     "scored_chunks":  832,
+                                     "mean_quality":  0.9472,
+                                     "median_quality":  0.9698,
+                                     "grade":  "A",
+                                     "other_ratio":  0.755,
+                                     "filenames":  [
+                                                       "CELEX_32018L2001_EN_TXT.pdf"
+                                                   ]
+                                 },
+                                 {
+                                     "source_id":  "eu-2024-2847-cra",
+                                     "chunks":  860,
+                                     "scored_chunks":  730,
+                                     "mean_quality":  0.982,
+                                     "median_quality":  0.9842,
+                                     "grade":  "A",
+                                     "other_ratio":  0.705,
+                                     "filenames":  [
+                                                       "OJ_L_202402847_EN_TXT.pdf"
+                                                   ]
+                                 },
+                                 {
+                                     "source_id":  "ccli-toradex-carrier-guide",
+                                     "chunks":  762,
+                                     "scored_chunks":  754,
+                                     "mean_quality":  0.9455,
+                                     "median_quality":  0.9689,
+                                     "grade":  "A",
+                                     "other_ratio":  0.171,
+                                     "filenames":  [
+                                                       "Toradex_Verdin_Carrier_Board_Design_Guide.pdf"
+                                                   ]
+                                 },
+                                 {
+                                     "source_id":  "ccli-nxp-imx8m-dqlq-cec",
+                                     "chunks":  714,
+                                     "scored_chunks":  705,
+                                     "mean_quality":  0.9548,
+                                     "median_quality":  0.9703,
+                                     "grade":  "A",
+                                     "other_ratio":  0.366,
+                                     "filenames":  [
+                                                       "IMX8MDQLQCEC-1280316.pdf"
+                                                   ]
+                                 },
+                                 {
+                                     "source_id":  "cei-0-16-allegato-o",
+                                     "chunks":  640,
+                                     "scored_chunks":  640,
+                                     "mean_quality":  0.9583,
+                                     "median_quality":  0.9645,
+                                     "grade":  "A",
+                                     "other_ratio":  0.82,
+                                     "filenames":  [
+                                                       "EstrattoAllegatoO.pdf"
+                                                   ]
+                                 },
+                                 {
+                                     "source_id":  "ccli-toradex-verdin-devboard",
+                                     "chunks":  272,
+                                     "scored_chunks":  268,
+                                     "mean_quality":  0.9049,
+                                     "median_quality":  0.9634,
+                                     "grade":  "A",
+                                     "other_ratio":  0.221,
+                                     "filenames":  [
+                                                       "Toradex_Verdin_Development_Board_V1.1_Datasheet.pdf"
+                                                   ]
+                                 },
+                                 {
+                                     "source_id":  "cei-0-16-cci-manual-ailux",
+                                     "chunks":  270,
+                                     "scored_chunks":  190,
+                                     "mean_quality":  0.8874,
+                                     "median_quality":  0.9371,
+                                     "grade":  "B",
+                                     "other_ratio":  0.444,
+                                     "filenames":  [
+                                                       "Manuale_CCI_I_24_R6_240610.pdf"
+                                                   ]
+                                 },
+                                 {
+                                     "source_id":  "ccli-igate-850-manual",
+                                     "chunks":  207,
+                                     "scored_chunks":  192,
+                                     "mean_quality":  0.8913,
+                                     "median_quality":  0.9598,
+                                     "grade":  "B",
+                                     "other_ratio":  0.406,
+                                     "filenames":  [
+                                                       "iGate-850_V10_UM_EN.pdf"
+                                                   ]
+                                 },
+                                 {
+                                     "source_id":  "ccli-toradex-verdin-family",
+                                     "chunks":  202,
+                                     "scored_chunks":  178,
+                                     "mean_quality":  0.9066,
+                                     "median_quality":  0.9629,
+                                     "grade":  "A",
+                                     "other_ratio":  0.327,
+                                     "filenames":  [
+                                                       "Toradex_Verdin_Family_Specification.pdf"
+                                                   ]
+                                 },
+                                 {
+                                     "source_id":  "ccli-nxp-yocto-ug",
+                                     "chunks":  163,
+                                     "scored_chunks":  87,
+                                     "mean_quality":  0.9494,
+                                     "median_quality":  0.965,
+                                     "grade":  "A",
+                                     "other_ratio":  0.264,
+                                     "filenames":  [
+                                                       "NXP_UG10164_iMX_Yocto_Project_Users_Guide.pdf",
+                                                       "NXP_UG10164_iMX_Yocto_Reference.md"
+                                                   ]
+                                 },
+                                 {
+                                     "source_id":  "ccli-stm32l151rct",
+                                     "chunks":  162,
+                                     "scored_chunks":  114,
+                                     "mean_quality":  0.8874,
+                                     "median_quality":  0.9371,
+                                     "grade":  "B",
+                                     "other_ratio":  0.444,
+                                     "filenames":  [
+                                                       "STM32L151RCTx.pdf"
+                                                   ]
+                                 },
+                                 {
+                                     "source_id":  "ccli-github-yocto-refs",
+                                     "chunks":  112,
+                                     "scored_chunks":  0,
+                                     "mean_quality":  null,
+                                     "median_quality":  null,
+                                     "grade":  "-",
+                                     "other_ratio":  0,
+                                     "filenames":  [
+                                                       "CCI_GitHub_Yocto_References.md"
+                                                   ]
+                                 },
+                                 {
+                                     "source_id":  "ccli-knowledge-base-brief",
+                                     "chunks":  80,
+                                     "scored_chunks":  0,
+                                     "mean_quality":  null,
+                                     "median_quality":  null,
+                                     "grade":  "-",
+                                     "other_ratio":  0,
+                                     "filenames":  [
+                                                       "CCI_Knowledge_Base_Brief.md"
+                                                   ]
+                                 },
+                                 {
+                                     "source_id":  "ccli-som-comparison",
+                                     "chunks":  76,
+                                     "scored_chunks":  26,
+                                     "mean_quality":  0.8862,
+                                     "median_quality":  0.9115,
+                                     "grade":  "B",
+                                     "other_ratio":  0.316,
+                                     "filenames":  [
+                                                       "CCI_SoM_Comparison.pdf"
+                                                   ]
+                                 },
+                                 {
+                                     "source_id":  "ccli-cci-module-regs-class",
+                                     "chunks":  73,
+                                     "scored_chunks":  0,
+                                     "mean_quality":  null,
+                                     "median_quality":  null,
+                                     "grade":  "-",
+                                     "other_ratio":  0,
+                                     "filenames":  [
+                                                       "CCI_Module_Regulations_Classification.md"
+                                                   ]
+                                 },
+                                 {
+                                     "source_id":  "ccli-clone-re-option",
+                                     "chunks":  56,
+                                     "scored_chunks":  28,
+                                     "mean_quality":  0.899,
+                                     "median_quality":  0.929,
+                                     "grade":  "B",
+                                     "other_ratio":  0.679,
+                                     "filenames":  [
+                                                       "CCI_Clone_RE_Option.pdf"
+                                                   ]
+                                 },
+                                 {
+                                     "source_id":  "ccli-project-roadmap",
+                                     "chunks":  50,
+                                     "scored_chunks":  0,
+                                     "mean_quality":  null,
+                                     "median_quality":  null,
+                                     "grade":  "-",
+                                     "other_ratio":  0,
+                                     "filenames":  [
+                                                       "CCI_Project_Roadmap.md"
+                                                   ]
+                                 },
+                                 {
+                                     "source_id":  "ccli-vendor-selection",
+                                     "chunks":  41,
+                                     "scored_chunks":  0,
+                                     "mean_quality":  null,
+                                     "median_quality":  null,
+                                     "grade":  "-",
+                                     "other_ratio":  0,
+                                     "filenames":  [
+                                                       "CCI_Vendor_Selection.md"
+                                                   ]
+                                 },
+                                 {
+                                     "source_id":  "ccli-bitbake-manual",
+                                     "chunks":  34,
+                                     "scored_chunks":  0,
+                                     "mean_quality":  null,
+                                     "median_quality":  null,
+                                     "grade":  "-",
+                                     "other_ratio":  0,
+                                     "filenames":  [
+                                                       "bitbake-user-manual-scarthgap-era-extract.md"
+                                                   ]
+                                 },
+                                 {
+                                     "source_id":  "ccli-nxp-imx8m-dqlq-cec-precise",
+                                     "chunks":  34,
+                                     "scored_chunks":  0,
+                                     "mean_quality":  null,
+                                     "median_quality":  null,
+                                     "grade":  "-",
+                                     "other_ratio":  0,
+                                     "filenames":  [
+                                                       "CCI_NXP_IMX8MDQLQCEC_Precision_Extract.md"
+                                                   ]
+                                 },
+                                 {
+                                     "source_id":  "ccli-moxa-mgate-5119",
+                                     "chunks":  24,
+                                     "scored_chunks":  24,
+                                     "mean_quality":  0.9585,
+                                     "median_quality":  0.964,
+                                     "grade":  "A",
+                                     "other_ratio":  0.25,
+                                     "filenames":  [
+                                                       "moxa-mgate-5119-series-datasheet-v1.2.pdf"
+                                                   ]
+                                 },
+                                 {
+                                     "source_id":  "ccli-yocto-bsp-notes",
+                                     "chunks":  18,
+                                     "scored_chunks":  0,
+                                     "mean_quality":  null,
+                                     "median_quality":  null,
+                                     "grade":  "-",
+                                     "other_ratio":  0,
+                                     "filenames":  [
+                                                       "CCI_Yocto_BSP_Notes.md"
+                                                   ]
+                                 },
+                                 {
+                                     "source_id":  "ccli-architecture",
+                                     "chunks":  3,
+                                     "scored_chunks":  0,
+                                     "mean_quality":  null,
+                                     "median_quality":  null,
+                                     "grade":  "-",
+                                     "other_ratio":  0,
+                                     "filenames":  [
+                                                       "CCI_Architecture.md"
+                                                   ]
+                                 }
+                             ]
+             }
+}

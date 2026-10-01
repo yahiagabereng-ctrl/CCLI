@@ -1,0 +1,97 @@
+Analisi Librerie e Scelte Tecniche
+Firmware CCI — Controllore Centrale di Impianto
+1. Scopo
+Il presente documento analizza le scelte tecniche adottate per il firmware del CCI (Controllore Centrale di Impianto), un gateway per il monitoraggio e controllo di impianti di produzione di energia elettrica. Il dispositivo opera su piattaforma Raspberry Pi con Linux embedded e gestisce protocolli industriali (Modbus, IEC 60870-5-104, IEC 61850) su interfacce seriali ed Ethernet dedicate, oltre a ingressi/uscite digitali per la logica di sicurezza e comandi verso il campo.
+L'analisi copre cinque scelte tecnologiche fondamentali dello stack firmware: il linguaggio C++, il controllo di versione Git, il framework web Crow, la libreria di logging spdlog e il motore di storage locale SQLite. Per ciascuna scelta viene fornita la motivazione tecnica e, dove utile al confronto, una tabella con le principali alternative disponibili.
+1.1 Contesto: Stack di Protocollo
+Il firmware gestisce simultaneamente più protocolli di comunicazione industriale, ciascuno con un ruolo distinto. Questo contesto guida direttamente le scelte tecnologiche analizzate nelle sezioni seguenti, in particolare la scelta del linguaggio core.
+Protocollo
+Ruolo
+Interfaccia tipica
+Libreria
+Modbus RTU/TCP
+Interrogazione di dispositivi di campo (contatori, analizzatori)
+Seriale RS485 / Ethernet locale
+libmodbus
+IEC 61850 + GOOSE
+Coordinamento locale tra dispositivi di impianto, con messaggistica rapida per eventi critici
+Ethernet, interfaccia dedicata
+libiec61850
+IEC 60870-5-104
+Telecontrollo verso il centro di controllo remoto (distributore di rete)
+Ethernet, interfaccia dedicata
+lib60870
+IEC 62351
+Livello di sicurezza (TLS, autenticazione) applicato ai protocolli sopra
+Trasversale
+Via libiec61850/lib60870 (OpenSSL/mbedTLS)
+Tabella 1 — Panoramica dello stack di protocollo gestito dal firmware CCI.
+Nota sulla libreria libiec61850: è rilasciata con licenza GPLv3, con una licenza commerciale disponibile presso MZ Automation per un utilizzo in software non-GPL — un aspetto da verificare esplicitamente rispetto al modello di distribuzione del firmware CCI.
+La coesistenza di più protocolli, ciascuno con requisiti temporali e di sicurezza differenti, richiede un linguaggio in grado di garantire prestazioni deterministiche e integrazione diretta con le rispettive librerie: questo è il primo criterio alla base della scelta descritta nella Sezione 2.
+2. Linguaggio Core: C++
+C++ è il linguaggio adottato per l'intero firmware del CCI, incluso il ciclo di controllo principale e il modulo di sicurezza funzionale che gestisce gli ingressi/uscite digitali e la logica di limitazione di potenza (curtailment).
+2.1 Motivazione Tecnica
+Il ciclo di controllo deve reagire a valori di misura ed emettere comandi entro margini temporali definiti: C++ offre esecuzione deterministica e basso overhead, senza le pause impredicibili introdotte da un garbage collector. L'accesso nativo alle API seriali POSIX e alle API di rete di sistema evita strati di traduzione intermedi verso le porte seriali e le interfacce Ethernet del dispositivo. Le principali librerie di protocollo industriale utilizzate nel progetto sono scritte in C/C++: l'uso di C++ per il firmware evita quindi qualsiasi overhead di Foreign Function Interface (FFI) o wrapper, permettendo una chiamata diretta alle funzioni di libreria.
+Per il modulo di sicurezza funzionale, il paradigma RAII (Resource Acquisition Is Initialization) e la tipizzazione forte riducono la classe di errori legati al mancato rilascio di risorse (connessioni, blocchi) in condizioni di errore. La gestione manuale della memoria propria di C++ richiede, per contro, standard di codifica rigorosi su questo modulo specifico — tipicamente un sottoinsieme ispirato a MISRA C++ — e una copertura di test unitari elevata.
+2.2 Sistema di Build
+L'adozione di CMake come sistema di build è coerente con la scelta di C++: consente una gestione portabile delle dipendenze verso le librerie di protocollo, la compilazione incrociata per l'architettura ARM del Raspberry Pi e l'integrazione naturale con la pipeline di test automatizzati e con il flusso di controllo di versione descritto nella sezione successiva.
+3. Controllo di Versione: Git
+Git è lo standard de facto per un codebase embedded multi-contributore. Nel contesto CCI assume anche un ruolo di tracciabilità: l'hash del commit, incorporato nella build firmware, consente di risalire in modo puntuale alla versione di codice responsabile di un determinato comportamento registrato sul dispositivo.
+È opportuno adottare una strategia di branching che separi in modo netto il codice del percorso di controllo critico dagli strumenti di diagnostica e commissioning: un ramo `main` stabile per il codice rilasciato, rami `feature/core-*` per il ciclo di controllo e la logica di sicurezza (soggetti a revisione rigorosa e copertura di test elevata), e rami `feature/tooling-*` per gli strumenti di commissioning e diagnostica, isolati dal core e con un livello di revisione standard. Ogni build firmware rilasciata su dispositivo viene taggata (`vX.Y.Z`), così da associare in modo univoco una versione di codice a un comportamento osservato sul campo.
+Per il codice del percorso critico si raccomanda inoltre una convenzione di commit che referenzi esplicitamente il requisito o il modulo interessato (ad esempio “[curtailment] correzione logica isteresi”), così da rendere immediatamente ricostruibile, dalla sola cronologia Git, quali modifiche abbiano interessato la logica di sicurezza nel tempo.
+4. Framework Web: Crow
+Crow è la libreria adottata per l'interfaccia locale di commissioning e diagnostica, mantenuta esplicitamente al di fuori del percorso di controllo critico. È una libreria C++ header-only e leggera, con un'impronta minima sulle risorse del Raspberry Pi, adatta a esporre rapidamente semplici endpoint REST (stato corrente, stato degli ingressi/uscite digitali, funzioni diagnostiche) senza introdurre un framework web pesante. Un ulteriore vantaggio è il supporto nativo per connessioni WebSocket accanto alle normali route HTTP: la pagina diagnostica può così aggiornarsi automaticamente non appena un valore cambia, senza refresh manuale e senza interrogazioni ripetute — un vantaggio concreto per il personale in fase di commissioning e manutenzione sul campo.
+Crow deve essere eseguito in un thread o processo separato dal ciclo di controllo, con accesso in sola lettura a uno snapshot dello stato del sistema, senza possibilità di richiamare direttamente la logica di controllo. Questo mantiene la superficie di attacco/guasto del percorso critico indipendente dallo strato web. Crow non partecipa direttamente allo stack di protocollo (Modbus, IEC 61850, IEC 60870-5-104) né alle misure IEC 62351: la sua sicurezza risiede proprio in questo isolamento architetturale.
+Poiché l'interfaccia locale non è pensata per l'esposizione pubblica, l'accesso dovrebbe essere limitato alla rete locale di impianto e, dove possibile, protetto da autenticazione di base o vincolato a un'interfaccia di rete dedicata, mantenendo comunque separata questa configurazione dalla logica del percorso di controllo critico.
+5. Logging: spdlog
+spdlog gestisce la registrazione strutturata degli eventi del firmware. Le chiamate di log nel ciclo di controllo non introducono ritardi di I/O bloccante: la scrittura su disco è delegata a un thread in background, mentre il thread principale prosegue immediatamente con l'elaborazione successiva. Per il modulo di sicurezza funzionale, questo garantisce che una scrittura lenta non ritardi mai una decisione con conseguenze elettriche dirette.
+Rispetto ad alternative come Boost.Log (che richiede l'intera libreria Boost come dipendenza), log4cpp o glog, spdlog offre il miglior compromesso per il contesto CCI: è header-only, supporta il logging asincrono in modo nativo e non introduce dipendenze pesanti su un dispositivo a risorse limitate.
+Il supporto nativo per livelli di log e rotazione automatica dei file evita la necessità di una gestione manuale dello spazio di archiviazione, aspetto rilevante su un dispositivo con storage limitato: i file di log più vecchi possono essere automaticamente ruotati o eliminati secondo una politica di dimensione o di età configurabile.
+Il logging assume un ruolo diretto anche sul piano della sicurezza: eventi come un handshake TLS fallito o un tentativo di connessione non autenticato sono candidati naturali per una voce di log, poiché costituiscono il tipo di evidenza rilevante in caso di verifica legata alla CEI 0-16. Resta una distinzione da mantenere rispetto a un eventuale log di sicurezza dedicato (Syslog), che richiede garanzie di integrità più stringenti di quelle fornite da spdlog da solo.
+6. Storage Locale: SQLite
+SQLite gestisce la persistenza locale di misure storiche, eventi e configurazione. È una libreria embedded, serverless e a configurazione zero: non richiede un processo server dedicato, e i dati risiedono in un singolo file gestito direttamente dal processo firmware — una caratteristica particolarmente adatta a un dispositivo single-board a risorse limitate.
+La conformità ACID (Atomicity, Consistency, Isolation, Durability) è particolarmente rilevante per un dispositivo esposto a possibili perdite improvvise di alimentazione: la garanzia di durabilità assicura che i dati scritti sopravvivano anche a un'interruzione di corrente. SQLite non è tuttavia progettato per un'elevata concorrenza di scrittura: in caso di registrazione dati ad alta frequenza è opportuno prevedere scritture aggregate (batching) o un thread dedicato con coda.
+Soluzione
+Processo server
+ACID
+Idoneità al Raspberry Pi
+SQLite
+Non richiesto
+Sì
+Ottima — zero configurazione, file singolo
+PostgreSQL
+Richiesto
+Sì
+Sconsigliata — overhead di servizio dedicato
+MySQL/MariaDB
+Richiesto
+Sì
+Sconsigliata — stesso limite di PostgreSQL
+File flat (CSV/JSON)
+Non richiesto
+No
+Inadeguata — nessuna garanzia di integrità
+Tabella 2 — Confronto tra SQLite e soluzioni di storage alternative.
+Uno schema minimale per il progetto potrebbe articolarsi su tre tabelle principali: misure (timestamp, identificativo del punto di misura, valore), eventi/allarmi (timestamp, categoria, descrizione, stato di acknowledgement) e configurazione (chiave, valore, timestamp dell'ultima modifica) — una struttura semplice, sufficiente a coprire le esigenze di storico e di ripristino dopo un riavvio.
+Lo storico mantenuto da SQLite è direttamente collegato agli obblighi di osservabilità verso il distributore previsti dalla CEI 0-16: i dati riportati verso il centro di controllo remoto devono poter essere ricostruiti e verificati anche a posteriori. Una misura o un evento corrotto o perso a causa di un'interruzione di alimentazione comprometterebbe la tracciabilità richiesta per un dispositivo soggetto a prescrizione ARERA — un aspetto regolatorio, non solo tecnico.
+7. Conclusioni
+Le cinque scelte tecniche analizzate risultano coerenti tra loro e con i vincoli del progetto: un dispositivo embedded a risorse limitate, con un percorso di controllo che richiede garanzie di sicurezza funzionale distinte dagli strumenti di diagnostica. Il principio ricorrente è la netta separazione tra il percorso di controllo critico (C++, logica di sicurezza) e gli strumenti accessori (Crow, spdlog, SQLite), ciascuno scelto per non introdurre dipendenze o overhead sul ciclo di controllo principale.
+Scelta
+Ruolo nel progetto
+Motivazione principale
+C++
+Linguaggio firmware core
+Determinismo, accesso POSIX diretto, RAII
+Git
+Controllo di versione
+Tracciabilità, separazione core/tooling
+Crow
+Interfaccia di commissioning
+Leggerezza, isolamento dal percorso critico
+spdlog
+Logging applicativo
+Logging asincrono, nessun impatto sul controllo
+SQLite
+Storage locale
+Serverless, conformità ACID
+Tabella 3 — Sintesi delle scelte tecniche analizzate.

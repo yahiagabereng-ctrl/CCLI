@@ -1,0 +1,16 @@
+﻿{
+    "codename":  "P5-R01",
+    "changes":  [
+                    "P5 full circle cleartext TSP",
+                    "mms tcp_port 102 tls_enabled false",
+                    "permissive_bypass true for actuation"
+                ],
+    "release":  24,
+    "timestamp_utc":  "2026-09-30T19:17:08.9491898Z",
+    "version_full":  "0.1.0-r24",
+    "lab_yaml":  "C:\\Yahia\\projects\\CCLI\\apps\\ccli\\config\\lab_tr400_cleartext_tsp.yaml",
+    "sha256":  "37d5ea737a6f3b7ef855fdfd64718c9fee58d32a9e4c139ec73a7d5268e717e9",
+    "binary":  "C:\\Yahia\\projects\\CCLI\\lab\\tg544-openwrt\\ccli-bin",
+    "host":  "192.168.10.1",
+    "semver":  "0.1.0"
+}

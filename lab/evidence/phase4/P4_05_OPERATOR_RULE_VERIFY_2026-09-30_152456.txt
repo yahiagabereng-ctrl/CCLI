@@ -1,0 +1,24 @@
+[2026-09-30 15:24:56] # P4-05 - Operating Rule verify (O.14 reject audit + annex parameters)
+[2026-09-30 15:24:56] Build: ccli-0.1.0-r19 | DUT=192.168.1.130 | DeployHost=192.168.1.130
+[2026-09-30 15:24:56] Annex clauses (CEI 0-16 Allegato O):
+[2026-09-30 15:24:56]   O.13.1.1.1  Eth_B operator port only (192.168.1.130 port 2404)
+[2026-09-30 15:24:56]   O.8.3       P/Q at POC with quality (TotW IOA 1001, TotVAr/PPV yaml P5)
+[2026-09-30 15:24:56]   O.10.3.1    Active power set-point commands (C_SC/C_SE reject monitor_only)
+[2026-09-30 15:24:56]   O.13.1.3    Eth_B comms-loss fallback (comms_loss_fallback_s=60)
+[2026-09-30 15:24:56]   O.14        Log external operator commands and parameters (reject audit)
+[2026-09-30 15:24:57] Ping 192.168.1.130: OK
+[2026-09-30 15:24:57] DUT version:
+[2026-09-30 15:24:57] ccli 0.1.0-r19 (P4-104-operator-rule)
+[2026-09-30 15:24:57]   semver:   0.1.0
+[2026-09-30 15:24:57]   release:  r19
+[2026-09-30 15:24:57]   git:      unknown
+[2026-09-30 15:24:57]   built:    2026-06-29T12:59:20Z UTC
+[2026-09-30 15:24:57]   platform: tg500
+[2026-09-30 15:24:57] DUT Operating Rule startup lines:
+[2026-09-30 15:24:58] iec104: P4-04 Eth_B comms-loss fallback
+[2026-09-30 15:24:58] iec104: P4-04 Eth_B comms-loss fallback
+[2026-09-30 15:24:58] iec104: listening 192.168.1.130:2404 CA=1 tls=on [IEC 60870-5-104 / O.13.1.1.1]
+[2026-09-30 15:24:58] iec104: Operating Rule mode=monitor_only allow_commands=no gi=yes monitor: TotW@1001=on [O.14]
+[2026-09-30 15:24:58] iec104: P4-04 Eth_B comms-loss fallback
+[2026-09-30 15:24:58] Mark log before reject-test ...
+[2026-09-30 15:24:58] Running --reject-test --tls ...

@@ -1,0 +1,124 @@
+<mxfile host="Electron" agent="CCLI-RAG">
+  <diagram name="Page-1" id="ccli-Functional-Architecture">
+    <mxGraphModel dx="1212" dy="736" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="900" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="t" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=18;fontStyle=1;" value="Functional Architecture — C1-C10 vs kit coverage" vertex="1">
+          <mxGeometry height="36" width="1100" x="120" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="leg" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=10;" value="&lt;div&gt;Legends&lt;/div&gt;&lt;div&gt;&lt;b&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/b&gt;&lt;/div&gt;&lt;b&gt;&lt;font size=&quot;3&quot;&gt;Green=Full on product ·&lt;/font&gt;&lt;/b&gt;&lt;div&gt;&lt;b&gt;&lt;font size=&quot;3&quot;&gt;&amp;nbsp;Amber=Partial on kit 99991105&amp;nbsp;&lt;/font&gt;&lt;/b&gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;&lt;font size=&quot;3&quot;&gt;· Red=carrier only&lt;/font&gt;&lt;/b&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="110" width="660" x="210" y="620" as="geometry" />
+        </mxCell>
+        <mxCell id="c1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF4E6;strokeColor=#1A365D;fontSize=11;" value="C1 Ethernet Eth_A · Eth_B · Plant x2" vertex="1">
+          <mxGeometry height="70" width="160" x="80" y="130" as="geometry" />
+        </mxCell>
+        <mxCell id="c2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEE2E2;strokeColor=#1A365D;fontSize=11;" value="C2 Serial 2x opto RS485 Modbus" vertex="1">
+          <mxGeometry height="70" width="160" x="870" y="110" as="geometry" />
+        </mxCell>
+        <mxCell id="c3" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DCFCE7;strokeColor=#1A365D;fontSize=11;" value="C3 Protocols 61850 · 60870 · Modbus" vertex="1">
+          <mxGeometry height="70" width="160" x="80" y="220" as="geometry" />
+        </mxCell>
+        <mxCell id="c4" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEE2E2;strokeColor=#1A365D;fontSize=11;" value="C4 Digital I/O DI 10-120V · DO relay" vertex="1">
+          <mxGeometry height="70" width="160" x="860" y="290" as="geometry" />
+        </mxCell>
+        <mxCell id="c5" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEE2E2;strokeColor=#1A365D;fontSize=11;" value="C5 GNSS PPS / NMEA time sync" vertex="1">
+          <mxGeometry height="70" width="160" x="860" y="400" as="geometry" />
+        </mxCell>
+        <mxCell id="c6" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF4E6;strokeColor=#1A365D;fontSize=11;" value="C6 Security HAB · SE · signed boot" vertex="1">
+          <mxGeometry height="70" width="160" x="860" y="190" as="geometry" />
+        </mxCell>
+        <mxCell id="c7" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F3F4F6;strokeColor=#1A365D;fontSize=11;" value="C7 LTE optional backup" vertex="1">
+          <mxGeometry height="70" width="160" x="80" y="400" as="geometry" />
+        </mxCell>
+        <mxCell id="uNW7fBB0K-Uw7q4M_LcH-1" edge="1" parent="1" source="c8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="som">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c8" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DCFCE7;strokeColor=#1A365D;fontSize=11;" value="C8 Console USB commissioning" vertex="1">
+          <mxGeometry height="70" width="170" x="80" y="490" as="geometry" />
+        </mxCell>
+        <mxCell id="c9" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEE2E2;strokeColor=#1A365D;fontSize=11;" value="C9 Mechanical DIN rail enclosure" vertex="1">
+          <mxGeometry height="70" width="160" x="80" y="310" as="geometry" />
+        </mxCell>
+        <mxCell id="c10" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEE2E2;strokeColor=#1A365D;fontSize=11;" value="C10 Power 12-24V isolated DC-DC" vertex="1">
+          <mxGeometry height="70" width="160" x="860" y="490" as="geometry" />
+        </mxCell>
+        <mxCell id="som" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E0E7FF;strokeColor=#1A365D;fontSize=11;" value="Linux SoM Verdin iMX8M Plus 0063" vertex="1">
+          <mxGeometry height="455" width="360" x="390" y="105" as="geometry" />
+        </mxCell>
+        <mxCell id="e_c1" edge="1" parent="1" source="c1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;" target="som">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="320" y="155.06" />
+              <mxPoint x="320" y="332.47" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_c2" edge="1" parent="1" source="c2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;" target="som">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="800" y="145.06" />
+              <mxPoint x="800" y="332.47" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_c3" edge="1" parent="1" source="c3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;" target="som">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="320" y="255.06" />
+              <mxPoint x="320" y="332.47" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_c4" edge="1" parent="1" source="c4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;" target="som">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="820" y="332.47" />
+              <mxPoint x="820" y="332.47" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_c5" edge="1" parent="1" source="c5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;" target="som">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="800" y="435.06" />
+              <mxPoint x="800" y="332.47" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_c6" edge="1" parent="1" source="c6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;" target="som">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="800" y="225.06" />
+              <mxPoint x="800" y="332.47" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_c7" edge="1" parent="1" source="c7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;" target="som">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="320" y="435.06" />
+              <mxPoint x="320" y="332.47" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_c9" edge="1" parent="1" source="c9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;" target="som">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="290" y="332.47" />
+              <mxPoint x="290" y="332.47" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_c10" edge="1" parent="1" source="c10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;" target="som">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="800" y="525.06" />
+              <mxPoint x="800" y="332.47" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

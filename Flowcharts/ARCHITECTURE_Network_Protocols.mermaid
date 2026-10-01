@@ -1,0 +1,37 @@
+%% CCLI TG544 — network, ports, software ownership
+%% Open: https://mermaid.live or VS Code Mermaid preview
+
+flowchart TB
+    subgraph LAN1["LAN1 Eth_A 192.168.10.0/24"]
+        DSO["DSO PC / TSP<br/>192.168.10.10"]
+    end
+
+    subgraph TG544["TG544 gateway"]
+        CCLI["ccli<br/>MMS SERVER"]
+        TESPRO["TesPro 61850<br/>MMS CLIENT"]
+        NB["TesPro northbound<br/>MQTT / TCP"]
+    end
+
+    subgraph LAN2["LAN2 Eth_B 192.168.1.0/24"]
+        OA["Operator PC<br/>104 client future"]
+    end
+
+    subgraph LAN3["LAN3 Plant 192.168.30.0/24"]
+        PLANT["Plant IED sim<br/>192.168.30.10"]
+    end
+
+    subgraph CLOUD["Northbound target"]
+        MQTT["MQTT broker<br/>:8883 / :1883"]
+        TCP["TCP server<br/>:55401 etc."]
+    end
+
+    DSO -->|"TCP :3782 TLS MMS<br/>62351-3/4"| CCLI
+    OA -.->|"TCP :2404 104<br/>Phase 4 planned"| CCLI
+    TESPRO -->|"TCP :102 plain MMS<br/>southbound"| PLANT
+    TESPRO --> NB
+    NB --> MQTT
+    NB --> TCP
+
+    style CCLI fill:#cfe2ff
+    style TESPRO fill:#fff3cd
+    style PLANT fill:#d1e7dd

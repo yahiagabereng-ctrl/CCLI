@@ -1,0 +1,331 @@
+<mxfile host="Electron" pages="3">
+  <diagram id="online" name="1 - DSO P limit function">
+    <mxGraphModel dx="3644" dy="841" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1760" pageHeight="2130" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="heading" parent="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=2;fontSize=20;fontColor=#253044;spacing=10;" value="&lt;b&gt;O.9.2.2 | Active-power injection limit commanded by the DSO&lt;/b&gt;&lt;br&gt;Slaved CCI function at PdC · same ceiling interface as O.9.2.1 · offline User procedure on page 2" vertex="1">
+          <mxGeometry height="82" width="1720" x="35" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="user" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=2;fontSize=15;fontColor=#253044;spacing=10;;fillColor=#FFF2CC;strokeColor=#D6B656;strokeWidth=2;" value="&lt;b&gt;ACCEPTED DSO COMMAND / STORED STATE&lt;/b&gt;&lt;br&gt;A: enabled; L: accepted ceiling in kW.&lt;br&gt;Activate with valid L: A ← 1.&lt;br&gt;Accepted limit update: L ← L&lt;sub&gt;req&lt;/sub&gt;.&lt;br&gt;Release: A ← 0; no new command: retain state." vertex="1">
+          <mxGeometry height="140" width="435" x="30" y="137.5" as="geometry" />
+        </mxCell>
+        <mxCell id="params" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=2;fontSize=15;fontColor=#253044;spacing=10;;fillColor=#FFF2CC;strokeColor=#D6B656;strokeWidth=2;" value="&lt;b&gt;PLANT CONFIGURATION&lt;/b&gt;&lt;br&gt;P&lt;sub&gt;n,plant&lt;/sub&gt;, command scaling and unit capabilities:&lt;br&gt;&lt;b&gt;configurable from approved plant data.&lt;/b&gt;&lt;br&gt;Received DSO threshold is an operating command." vertex="1">
+          <mxGeometry height="150" width="435" x="30" y="297" as="geometry" />
+        </mxCell>
+        <mxCell id="meter" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=2;fontSize=15;fontColor=#253044;spacing=10;;fillColor=#FFF2CC;strokeColor=#D6B656;strokeWidth=2;" value="&lt;b&gt;DSO COMMAND VALIDATION&lt;/b&gt;&lt;br&gt;Validate authority, operation, units and range.&lt;br&gt;&lt;b&gt;Δt = t&lt;sub&gt;now&lt;/sub&gt; − t&lt;sub&gt;last&lt;/sub&gt;&lt;/b&gt;&lt;br&gt;Accept setpoint timing if no prior processed setpoint&lt;br&gt;or Δt ≥ 3 s; otherwise reject (O.7.3.3)." vertex="1">
+          <mxGeometry height="145" width="435" x="10" y="470" as="geometry" />
+        </mxCell>
+        <mxCell id="note1" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fillColor=#f5f5f5;strokeColor=#999999;strokeWidth=2;fontSize=15;fontColor=#253044;spacing=10;" value="&lt;b&gt;VARIABLES / IMPLEMENTATION CONVENTION&lt;/b&gt;&lt;br&gt;A ∈ {0,1}: active state; L: stored ceiling in kW.&lt;br&gt;Positive P = injection at PdC.&lt;br&gt;Superscript ⁺ = value after command processing.&lt;br&gt;P&lt;sub&gt;base&lt;/sub&gt;: requested power before active P ceilings." vertex="1">
+          <mxGeometry height="152" width="480" x="1770" y="137.5" as="geometry" />
+        </mxCell>
+        <mxCell id="note2" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fillColor=#f5f5f5;strokeColor=#999999;strokeWidth=2;fontSize=15;fontColor=#253044;spacing=10;" value="&lt;b&gt;ACCEPTED STATE UPDATE&lt;/b&gt;&lt;br&gt;Value update: L⁺ = L&lt;sub&gt;req&lt;/sub&gt;; otherwise L⁺ = L.&lt;br&gt;Activate: A⁺ = 1; release: A⁺ = 0;&lt;br&gt;otherwise A⁺ = A.&lt;br&gt;Processed setpoint: t&lt;sub&gt;last&lt;/sub&gt;⁺ = t&lt;sub&gt;now&lt;/sub&gt;;&lt;br&gt;otherwise retain t&lt;sub&gt;last&lt;/sub&gt;." vertex="1">
+          <mxGeometry height="175" width="480" x="1770" y="317" as="geometry" />
+        </mxCell>
+        <mxCell id="enable" parent="1" style="rhombus;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=2;fontSize=16;fontColor=#253044;spacing=10;;fillColor=#FFF2CC;strokeColor=#D6B656;strokeWidth=2;" value="&lt;b&gt;DSO LIMIT ENABLED?&lt;/b&gt;&lt;br&gt;A = 1?" vertex="1">
+          <mxGeometry height="105" width="540" x="570" y="155" as="geometry" />
+        </mxCell>
+        <mxCell id="1j3YTbN2HrMu0jg6AcCc-1" edge="1" parent="1" source="inactive" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;;strokeColor=#9673a6;dashed=1;endArrow=block;endFill=1;" target="candidate" value="disabled: no ceiling">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="inactive" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fillColor=#e1d5e7;strokeColor=#9673a6;strokeWidth=2;fontSize=15;fontColor=#253044;spacing=10;" value="&lt;b&gt;INACTIVE — A = 0&lt;/b&gt;&lt;br&gt;No ceiling from O.9.2.2.&lt;br&gt;Other active control functions continue." vertex="1">
+          <mxGeometry height="120" width="480" x="1270" y="492" as="geometry" />
+        </mxCell>
+        <mxCell id="valid" parent="1" style="rhombus;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=2;fontSize=16;fontColor=#253044;spacing=10;;fillColor=#FFF2CC;strokeColor=#D6B656;strokeWidth=2;" value="&lt;b&gt;ACCEPTED CEILING USABLE?&lt;/b&gt;&lt;br&gt;Valid stored L and DSO channel available?" vertex="1">
+          <mxGeometry height="105" width="540" x="570" y="355" as="geometry" />
+        </mxCell>
+        <mxCell id="fault" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=2;fontSize=15;fontColor=#253044;spacing=10;;fillColor=#FFF2CC;strokeColor=#D6B656;strokeWidth=2;" value="&lt;b&gt;CHANNEL LOSS / NO USABLE CEILING&lt;/b&gt;&lt;br&gt;Channel loss: apply agreed delay and fallback; see page 2.&lt;br&gt;Invalid command: reject, preserve valid state.&lt;br&gt;No valid ceiling: do not activate this function." vertex="1">
+          <mxGeometry height="160" width="480" x="1270" y="650" as="geometry" />
+        </mxCell>
+        <mxCell id="hysteresis" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=2;fontSize=15;fontColor=#253044;spacing=10;;fillColor=#FFF2CC;strokeColor=#D6B656;strokeWidth=2;" value="&lt;b&gt;OBTAIN THE DSO POWER CEILING&lt;/b&gt;&lt;br&gt;L = accepted DSO power threshold.&lt;br&gt;If command is s% of nominal plant power:&lt;br&gt;&lt;b&gt;L = (s / 100) × P&lt;sub&gt;n,plant&lt;/sub&gt;&lt;/b&gt;&lt;br&gt;No voltage-dependent P(V) calculation." vertex="1">
+          <mxGeometry height="152" width="540" x="570" y="520" as="geometry" />
+        </mxCell>
+        <mxCell id="active" parent="1" style="rhombus;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=2;fontSize=16;fontColor=#253044;spacing=10;;fillColor=#FFF2CC;strokeColor=#D6B656;strokeWidth=2;" value="&lt;b&gt;DOES THE CEILING REQUIRE LIMITATION?&lt;/b&gt;&lt;br&gt;P&lt;sub&gt;base&lt;/sub&gt; &amp;gt; L?&lt;br&gt;P&lt;sub&gt;base&lt;/sub&gt;: otherwise requested feasible injection." vertex="1">
+          <mxGeometry height="106" width="540" x="570" y="730" as="geometry" />
+        </mxCell>
+        <mxCell id="1j3YTbN2HrMu0jg6AcCc-7" edge="1" parent="1" source="release" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="candidate">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="330" y="1312.5" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="release" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=2;fontSize=15;fontColor=#253044;spacing=10;;fillColor=#FFF2CC;strokeColor=#D6B656;strokeWidth=2;" value="&lt;b&gt;CEILING CURRENTLY NON-BINDING&lt;/b&gt;&lt;br&gt;P&lt;sub&gt;base&lt;/sub&gt; ≤ L: no additional reduction.&lt;br&gt;&lt;b&gt;Keep ceiling L active.&lt;/b&gt;&lt;br&gt;Lower injection is allowed; do not force P up to L." vertex="1">
+          <mxGeometry height="130" width="480" x="80" y="902" as="geometry" />
+        </mxCell>
+        <mxCell id="curve" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=2;fontSize=15;fontColor=#253044;spacing=10;;fillColor=#FFF2CC;strokeColor=#D6B656;strokeWidth=2;" value="&lt;b&gt;LIMITATION REQUIRED&lt;/b&gt;&lt;br&gt;&lt;b&gt;ΔP&lt;sub&gt;curtail&lt;/sub&gt; = max(0, P&lt;sub&gt;base&lt;/sub&gt; − L)&lt;/b&gt;&lt;br&gt;Pass ceiling L to the shared resolver.&lt;br&gt;This quantity expresses the requested curtailment." vertex="1">
+          <mxGeometry height="145" width="540" x="570" y="896" as="geometry" />
+        </mxCell>
+        <mxCell id="ramp" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=2;fontSize=15;fontColor=#253044;spacing=10;;fillColor=#FFF2CC;strokeColor=#D6B656;strokeWidth=2;" value="&lt;b&gt;SHARED UNIT RAMP CONSTRAINT&lt;/b&gt;&lt;br&gt;&lt;b&gt;−R&lt;sub&gt;down,i&lt;/sub&gt; Δt&lt;sub&gt;c&lt;/sub&gt; ≤ P&lt;sub&gt;i,cmd&lt;/sub&gt;[k] − P&lt;sub&gt;i,cmd&lt;/sub&gt;[k−1] ≤ R&lt;sub&gt;up,i&lt;/sub&gt; Δt&lt;sub&gt;c&lt;/sub&gt;&lt;/b&gt;&lt;br&gt;Rates: configured applicable unit gradients (kW/s).&lt;br&gt;Δt&lt;sub&gt;c&lt;/sub&gt;: control-cycle duration (s)." vertex="1">
+          <mxGeometry height="145" width="540" x="570" y="1060" as="geometry" />
+        </mxCell>
+        <mxCell id="candidate" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=2;fontSize=15;fontColor=#253044;spacing=10;;fillColor=#FFF2CC;strokeColor=#D6B656;strokeWidth=2;" value="&lt;b&gt;FUNCTION OUTPUT TO O.11&lt;/b&gt;&lt;br&gt;&lt;b&gt;A = 1 → P&lt;sub&gt;DSO,cap&lt;/sub&gt; = L&lt;/b&gt;&lt;br&gt;&lt;b&gt;A = 0 → no ceiling from this function&lt;/b&gt;&lt;br&gt;Active ceiling persists even when non-binding." vertex="1">
+          <mxGeometry height="132" width="540" x="570" y="1250" as="geometry" />
+        </mxCell>
+        <mxCell id="log" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=2;fontSize=15;fontColor=#253044;spacing=10;;fillColor=#FFF2CC;strokeColor=#D6B656;strokeWidth=2;" value="&lt;b&gt;STATUS / DIAGNOSTICS / LOG&lt;/b&gt;&lt;br&gt;Expose accepted ceiling and function state.&lt;br&gt;O.14: record required communication and functional diagnostics.&lt;br&gt;O.11: record priority changes." vertex="1">
+          <mxGeometry height="142" width="480" x="1240" y="1430" as="geometry" />
+        </mxCell>
+        <mxCell id="priority" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fillColor=#e8f5e9;strokeColor=#2e7d32;strokeWidth=2;fontSize=15;fontColor=#253044;spacing=10;" value="&lt;b&gt;SHARED O.11 PRIORITY / FEASIBILITY&lt;/b&gt;&lt;br&gt;&lt;b&gt;P&lt;sub&gt;bounded&lt;/sub&gt; = min(P&lt;sub&gt;base&lt;/sub&gt;, L&lt;sub&gt;1&lt;/sub&gt;, …, L&lt;sub&gt;m&lt;/sub&gt;)&lt;/b&gt;&lt;br&gt;L&lt;sub&gt;j&lt;/sub&gt;: applicable active ceilings; none → P&lt;sub&gt;bounded&lt;/sub&gt; = P&lt;sub&gt;base&lt;/sub&gt;.&lt;br&gt;Resolve joint P/Q capability and priorities to obtain P&lt;sub&gt;ref&lt;/sub&gt;.&lt;br&gt;Default DSO limit priority: 2 when intervening." vertex="1">
+          <mxGeometry height="145" width="540" x="570" y="1430" as="geometry" />
+        </mxCell>
+        <mxCell id="fast" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=2;fontSize=15;fontColor=#253044;spacing=10;;fillColor=#FFF2CC;strokeColor=#D6B656;strokeWidth=2;" value="&lt;b&gt;SHARED FAST CONTROL RING&lt;/b&gt;&lt;br&gt;Track resolved P at PdC; allocate curtailment to units.&lt;br&gt;Storage absorption is possible if installed and SoC permits.&lt;br&gt;Use configured plant capabilities." vertex="1">
+          <mxGeometry height="160" width="540" x="570" y="1620" as="geometry" />
+        </mxCell>
+        <mxCell id="feedback" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fillColor=#e1d5e7;strokeColor=#9673a6;strokeWidth=2;fontSize=15;fontColor=#253044;spacing=10;" value="&lt;b&gt;SHARED FAST-RING FEEDBACK&lt;/b&gt;&lt;br&gt;&lt;b&gt;e&lt;sub&gt;P&lt;/sub&gt; = P&lt;sub&gt;ref&lt;/sub&gt; − P&lt;sub&gt;PdC,MC200&lt;/sub&gt;&lt;/b&gt;&lt;br&gt;With active ceiling: excess = max(0, P&lt;sub&gt;PdC&lt;/sub&gt; − L).&lt;br&gt;Use valid feedback; monitor tracking and ceiling excess.&lt;br&gt;The shared regulator determines unit-command corrections." vertex="1">
+          <mxGeometry height="140" width="540" x="570" y="1822" as="geometry" />
+        </mxCell>
+        <mxCell id="note3" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=2;fontSize=15;fontColor=#253044;spacing=10;;fillColor=#FFF2CC;strokeColor=#D6B656;strokeWidth=2;" value="&lt;b&gt;NO DSO CHANNEL — SEE PAGE 2&lt;/b&gt;&lt;br&gt;DSO may request reduction / disconnection through the Operating Rule procedure.&lt;br&gt;The User implements it on site or by remote terminal.&lt;br&gt;Automatic fallback is a separate path." vertex="1">
+          <mxGeometry height="165" width="480" x="1770" y="540" as="geometry" />
+        </mxCell>
+        <mxCell id="note4" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fillColor=#f5f5f5;strokeColor=#999999;strokeWidth=2;fontSize=15;fontColor=#253044;spacing=10;" value="&lt;b&gt;RESPONSE CRITERIA&lt;/b&gt;&lt;br&gt;O.7.3.1 fast ring: TsP ≤ 60 s, ±5% settling band.&lt;br&gt;8.8.6.3.4 commanded reduction: within 1 min; ±2.5% P&lt;sub&gt;n&lt;/sub&gt;, with the stated special band for 10% / technical minimum.&lt;br&gt;Apply the relevant test criterion." vertex="1">
+          <mxGeometry height="210" width="480" x="1770" y="770" as="geometry" />
+        </mxCell>
+        <mxCell id="e01" edge="1" parent="1" source="user" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#596579;fontSize=14;fontColor=#344054;labelBackgroundColor=#ffffff;entryX=0;entryY=0.5;" target="enable" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e02" edge="1" parent="1" source="params" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#596579;fontSize=14;fontColor=#344054;labelBackgroundColor=#ffffff;entryX=0;entryY=0.5;" target="hysteresis" value="scaling">
+          <mxGeometry relative="1" x="0.5228" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e03" edge="1" parent="1" source="meter" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#596579;fontSize=14;fontColor=#344054;labelBackgroundColor=#ffffff;entryX=0;entryY=0.5;" target="valid" value="accepted ceiling / channel state">
+          <mxGeometry relative="1" x="0.0385" y="28" as="geometry">
+            <mxPoint x="1" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e04" edge="1" parent="1" source="enable" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#596579;fontSize=14;fontColor=#344054;labelBackgroundColor=#ffffff;" target="valid" value="yes">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e05" edge="1" parent="1" source="enable" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#596579;fontSize=14;fontColor=#344054;labelBackgroundColor=#ffffff;exitX=1;exitY=0.5;entryX=0.5;entryY=0;" target="inactive" value="no">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e06" edge="1" parent="1" source="valid" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#596579;fontSize=14;fontColor=#344054;labelBackgroundColor=#ffffff;" target="hysteresis" value="yes">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e07" edge="1" parent="1" source="valid" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#596579;fontSize=14;fontColor=#344054;labelBackgroundColor=#ffffff;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" target="fault" value="no">
+          <mxGeometry relative="1" x="0.0558" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="1200" y="407.5" />
+              <mxPoint x="1200" y="710" />
+            </Array>
+            <mxPoint x="1110" y="404" as="sourcePoint" />
+            <mxPoint x="1270" y="710" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e08" edge="1" parent="1" source="hysteresis" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#596579;fontSize=14;fontColor=#344054;labelBackgroundColor=#ffffff;" target="active" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e09" edge="1" parent="1" source="active" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#596579;fontSize=14;fontColor=#344054;labelBackgroundColor=#ffffff;" target="curve" value="yes">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e10" edge="1" parent="1" source="active" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#596579;fontSize=14;fontColor=#344054;labelBackgroundColor=#ffffff;exitX=0;exitY=0.5;entryX=0.5;entryY=0;exitDx=0;exitDy=0;" target="release" value="no">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e11" edge="1" parent="1" source="curve" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#596579;fontSize=14;fontColor=#344054;labelBackgroundColor=#ffffff;" target="ramp" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e12" edge="1" parent="1" source="ramp" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#596579;fontSize=14;fontColor=#344054;labelBackgroundColor=#ffffff;" target="candidate" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e14" edge="1" parent="1" source="candidate" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#596579;fontSize=14;fontColor=#344054;labelBackgroundColor=#ffffff;" target="priority" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e15" edge="1" parent="1" source="priority" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#596579;fontSize=14;fontColor=#344054;labelBackgroundColor=#ffffff;" target="fast" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e16" edge="1" parent="1" source="fast" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#596579;fontSize=14;fontColor=#344054;labelBackgroundColor=#ffffff;" target="feedback" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e17" edge="1" parent="1" source="feedback" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#5572ae;fontSize=14;fontColor=#344054;labelBackgroundColor=#ffffff;dashed=1;dashPattern=8 5;exitX=0;exitY=0.5;entryX=0.5;entryY=1;" target="active" value="continuous evaluation">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="60" y="1892" />
+              <mxPoint x="60" y="700" />
+              <mxPoint x="252.5" y="700" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e18" edge="1" parent="1" source="candidate" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#d79b00;fontSize=14;fontColor=#344054;labelBackgroundColor=#ffffff;dashed=1;dashPattern=8 5;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" target="log" value="state and events">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e21" edge="1" parent="1" source="fault" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#b85450;fontSize=14;fontColor=#344054;labelBackgroundColor=#ffffff;dashed=1;dashPattern=8 5;exitX=0.5;exitY=1;entryX=1;entryY=0.5;" target="candidate" value="agreed fallback (page 2)">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="offline" name="2 - Loss of channel and User implementation">
+    <mxGraphModel grid="1" gridSize="10" guides="1" connect="1" arrows="1" page="1" pageScale="1" pageWidth="1740" pageHeight="2230" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="&lt;b&gt;O.9.2.2 — NO DSO COMMUNICATION CHANNEL&lt;/b&gt;&lt;br&gt;Two independent paths: automatic CCI fallback and DSO request implemented by the User" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#D5E8D4;strokeColor=#82B366;strokeWidth=2;fontSize=17;fontFamily=Arial;align=center;verticalAlign=middle;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="40" y="25" width="1660" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="loss" value="&lt;b&gt;DSO CHANNEL UNAVAILABLE&lt;/b&gt;&lt;br&gt;Detect and log the communication state (O.14).&lt;br&gt;The User procedure does not wait for the automatic fallback timer." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#D5E8D4;strokeColor=#82B366;strokeWidth=2;fontSize=17;fontFamily=Arial;align=center;verticalAlign=middle;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="545" y="150" width="650" height="115" as="geometry" />
+        </mxCell>
+        <mxCell id="autoh" value="&lt;b&gt;A. AUTOMATIC CCI BEHAVIOUR — O.13.1.2&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#D5E8D4;strokeColor=#82B366;strokeWidth=2;fontSize=17;fontFamily=Arial;align=center;verticalAlign=middle;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="40" y="330" width="725" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="userh" value="&lt;b&gt;B. DSO REQUEST IMPLEMENTED BY USER — O.9.2.2&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#D5E8D4;strokeColor=#82B366;strokeWidth=2;fontSize=17;fontFamily=Arial;align=center;verticalAlign=middle;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="915" y="330" width="785" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="timer" value="&lt;b&gt;LOSS TIMER / CONFIGURED FALLBACK&lt;/b&gt;&lt;br&gt;On loss transition: t&lt;sub&gt;loss,start&lt;/sub&gt; ← t&lt;sub&gt;now&lt;/sub&gt;.&lt;br&gt;&lt;b&gt;τ&lt;sub&gt;loss&lt;/sub&gt; = t&lt;sub&gt;now&lt;/sub&gt; − t&lt;sub&gt;loss,start&lt;/sub&gt;&lt;/b&gt;&lt;br&gt;Enter fallback if channel remains down and τ&lt;sub&gt;loss&lt;/sub&gt; ≥ T&lt;sub&gt;loss&lt;/sub&gt;.&lt;br&gt;T&lt;sub&gt;loss&lt;/sub&gt;, waiting policy and fallback mode: agreed with DSO." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF2CC;strokeColor=#D6B656;strokeWidth=2;fontSize=17;fontFamily=Arial;align=center;verticalAlign=middle;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="40" y="445" width="725" height="165" as="geometry" />
+        </mxCell>
+        <mxCell id="timeout" value="&lt;b&gt;Channel still down&lt;br&gt;AND τ&lt;sub&gt;loss&lt;/sub&gt; ≥ T&lt;sub&gt;loss&lt;/sub&gt;?&lt;/b&gt;" style="rhombus;whiteSpace=wrap;html=1;fillColor=#FFF2CC;strokeColor=#D6B656;strokeWidth=2;fontSize=17;fontFamily=Arial;align=center;verticalAlign=middle;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="110" y="665" width="585" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="fallback" value="&lt;b&gt;ENTER PRECONFIGURED AUTONOMOUS MODE&lt;/b&gt;&lt;br&gt;Activate the agreed fallback functions through O.11.&lt;br&gt;Continue shared control and communication monitoring.&lt;br&gt;The actual mode is specified by the Operating Rule." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;strokeWidth=2;fontSize=17;fontFamily=Arial;align=center;verticalAlign=middle;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="40" y="890" width="725" height="165" as="geometry" />
+        </mxCell>
+        <mxCell id="autoNote" value="&lt;b&gt;FALLBACK ≠ A NEW DSO REQUEST&lt;/b&gt;&lt;br&gt;Loss of communication does not itself specify a new power threshold or order a disconnection.&lt;br&gt;Which limits remain effective in fallback must follow the agreed configuration." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F5F5F5;strokeColor=#888888;strokeWidth=2;fontSize=17;fontFamily=Arial;align=center;verticalAlign=middle;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="40" y="1110" width="725" height="165" as="geometry" />
+        </mxCell>
+        <mxCell id="req" value="&lt;b&gt;DSO ISSUES AN OFFLINE REQUEST&lt;/b&gt;&lt;br&gt;Reduction or disconnection is requested through the predefined procedure in the Operating Rule (8.8.6.3.4).&lt;br&gt;The exact alternative contact method is specified there." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#D5E8D4;strokeColor=#82B366;strokeWidth=2;fontSize=17;fontFamily=Arial;align=center;verticalAlign=middle;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="915" y="445" width="785" height="165" as="geometry" />
+        </mxCell>
+        <mxCell id="receive" value="&lt;b&gt;USER RECEIVES AND CHECKS THE REQUEST&lt;/b&gt;&lt;br&gt;Apply the Operating Rule procedure to confirm its origin, requested action and applicable conditions.&lt;br&gt;This check is an implementation step of the agreed procedure." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;strokeWidth=2;fontSize=17;fontFamily=Arial;align=center;verticalAlign=middle;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="915" y="665" width="785" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="terminal" value="&lt;b&gt;USER CARRIES OUT THE REQUEST&lt;/b&gt;&lt;br&gt;Either &lt;b&gt;ON SITE&lt;/b&gt; or through a &lt;b&gt;REMOTE CONTROL TERMINAL&lt;/b&gt;.&lt;br&gt;This action is required even though the normal DSO–CCI channel is unavailable." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#D5E8D4;strokeColor=#82B366;strokeWidth=2;fontSize=17;fontFamily=Arial;align=center;verticalAlign=middle;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="915" y="870" width="785" height="155" as="geometry" />
+        </mxCell>
+        <mxCell id="action" value="&lt;b&gt;Requested action?&lt;/b&gt;" style="rhombus;whiteSpace=wrap;html=1;fillColor=#FFF2CC;strokeColor=#D6B656;strokeWidth=2;fontSize=17;fontFamily=Arial;align=center;verticalAlign=middle;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="1030" y="1080" width="570" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="reduction" value="&lt;b&gt;POWER REDUCTION&lt;/b&gt;&lt;br&gt;User applies the requested reduction using the approved plant/terminal procedure.&lt;br&gt;If the CCI implements it: submit the authorised ceiling through the approved User control path to O.11 and the shared fast ring (page 1)." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE6CC;strokeColor=#D79B00;strokeWidth=2;fontSize=17;fontFamily=Arial;align=center;verticalAlign=middle;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="900" y="1280" width="395" height="235" as="geometry" />
+        </mxCell>
+        <mxCell id="disconnect" value="&lt;b&gt;DISCONNECTION&lt;/b&gt;&lt;br&gt;User implements the requested disconnection through the authorised plant procedure/equipment.&lt;br&gt;This diagram does not assign a protection or trip function to the CCI." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE6CC;strokeColor=#D79B00;strokeWidth=2;fontSize=17;fontFamily=Arial;align=center;verticalAlign=middle;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="1335" y="1280" width="365" height="235" as="geometry" />
+        </mxCell>
+        <mxCell id="verify" value="&lt;b&gt;USER / PLANT CONFIRMS IMPLEMENTATION&lt;/b&gt;&lt;br&gt;Verify the resulting power or switching state and perform any reporting required by the Operating Rule.&lt;br&gt;CCI monitors available PdC, unit and switching feedback; avoids actions conflicting with disconnection (O.9.3)." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;strokeWidth=2;fontSize=17;fontFamily=Arial;align=center;verticalAlign=middle;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="915" y="1575" width="785" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="monitor" value="&lt;b&gt;CONTINUOUS CHANNEL MONITORING&lt;/b&gt;&lt;br&gt;Restoration is monitored throughout both paths.&lt;br&gt;No offline request: no action is taken under path B; path A continues according to its configured policy." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F5F5F5;strokeColor=#888888;strokeWidth=2;fontSize=17;fontFamily=Arial;align=center;verticalAlign=middle;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="40" y="1350" width="725" height="175" as="geometry" />
+        </mxCell>
+        <mxCell id="restore" value="&lt;b&gt;WHEN THE DSO CHANNEL IS RESTORED — O.13.1.2&lt;/b&gt;&lt;br&gt;Log restoration and return to implementing DSO requests through the normal interface (page 1).&lt;br&gt;Synchronise command state using the agreed procedure; return of communication is not by itself a reconnection order." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#D5E8D4;strokeColor=#82B366;strokeWidth=2;fontSize=17;fontFamily=Arial;align=center;verticalAlign=middle;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="300" y="1840" width="1140" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="boundary" value="&lt;b&gt;DEFENCE-PLAN BOUNDARY — O.9.3&lt;/b&gt;&lt;br&gt;CCI can implement commanded power reduction. The separate Annex M device remains responsible for the required remote disconnection function. CCI must detect its action and avoid conflicting commands." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F5F5F5;strokeColor=#888888;strokeWidth=2;fontSize=17;fontFamily=Arial;align=center;verticalAlign=middle;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="40" y="2040" width="1660" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="refs" value="&lt;b&gt;Source:&lt;/b&gt; supplied CEI 0-16:2025-12, O.9.2.2, 8.8.6.3.4, O.13.1.2, O.9.3 and O.14. Site procedure and fallback values: configurable / agreed in the Operating Rule." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F5F5F5;strokeColor=#888888;strokeWidth=2;fontSize=17;fontFamily=Arial;align=center;verticalAlign=middle;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="40" y="2170" width="1660" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="a" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeWidth=2;fontSize=14;labelBackgroundColor=#FFFFFF;exitX=0.25;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="loss" target="autoh">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="402" y="295" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="b" value="DSO may still request action" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeWidth=2;fontSize=14;labelBackgroundColor=#FFFFFF;exitX=0.75;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="loss" target="userh">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1307" y="295" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeWidth=2;fontSize=14;labelBackgroundColor=#FFFFFF;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="autoh" target="timer">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="d" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeWidth=2;fontSize=14;labelBackgroundColor=#FFFFFF;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="timer" target="timeout">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ee" value="not yet" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeWidth=2;fontSize=14;labelBackgroundColor=#FFFFFF;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="timeout" target="timer">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="800" y="740" />
+              <mxPoint x="800" y="527" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="f" value="yes" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeWidth=2;fontSize=14;labelBackgroundColor=#FFFFFF;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="timeout" target="fallback">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="g" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeWidth=2;fontSize=14;labelBackgroundColor=#FFFFFF;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="userh" target="req">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="h" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeWidth=2;fontSize=14;labelBackgroundColor=#FFFFFF;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="req" target="receive">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="i" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeWidth=2;fontSize=14;labelBackgroundColor=#FFFFFF;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="receive" target="terminal">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="j" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeWidth=2;fontSize=14;labelBackgroundColor=#FFFFFF;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="terminal" target="action">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="k" value="reduce power" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeWidth=2;fontSize=14;labelBackgroundColor=#FFFFFF;exitX=0.25;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="action" target="reduction">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1097" y="1240" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="l" value="disconnect" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeWidth=2;fontSize=14;labelBackgroundColor=#FFFFFF;exitX=0.75;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="action" target="disconnect">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1517" y="1240" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeWidth=2;fontSize=14;labelBackgroundColor=#FFFFFF;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.25;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="reduction" target="verify">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="n" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeWidth=2;fontSize=14;labelBackgroundColor=#FFFFFF;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.75;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="disconnect" target="verify">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="o" value="on restoration" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeWidth=2;fontSize=14;labelBackgroundColor=#FFFFFF;dashed=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="fallback" target="restore">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="15" y="972" />
+              <mxPoint x="15" y="1915" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="p" value="on restoration" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeWidth=2;fontSize=14;labelBackgroundColor=#FFFFFF;dashed=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.75;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="verify" target="restore">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1307" y="1785" />
+              <mxPoint x="1155" y="1785" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="equations" name="3 - Implementation equations">
+    <mxGraphModel page="1" pageScale="1" pageWidth="1500" pageHeight="1545" grid="1">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="f0" parent="1" vertex="1" value="&lt;b&gt;IMPLEMENTATION EQUATIONS — O.9.2.2&lt;/b&gt;&lt;br&gt;These equations specify the proposed software implementation. CEI clause references identify required behaviour; variable names, data structures and regulator design are implementation choices." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;fontSize=18;align=left;verticalAlign=middle;spacing=16;">
+          <mxGeometry x="40" y="30" width="1420" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="f1" parent="1" vertex="1" value="&lt;b&gt;1. NORMALISE AND VALIDATE THE REQUEST&lt;/b&gt;&lt;br&gt;If nominal-power percentage s is received: L_req = (s / 100) × P_n,plant.&lt;br&gt;If power is received directly: L_req = unit_conversion(received_power).&lt;br&gt;Require a finite value, supported operation and admitted range according to the interface / Operating Rule.&lt;br&gt;Reject invalid input; do not silently clamp a DSO command to a different value." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;fontSize=18;align=left;verticalAlign=middle;spacing=16;">
+          <mxGeometry x="40" y="185" width="1420" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="f2" parent="1" vertex="1" value="&lt;b&gt;2. RATE CHECK AND ATOMIC STATE UPDATE&lt;/b&gt;&lt;br&gt;Use a monotonic clock: Δt = t_now − t_last. No previous processed setpoint → first update is eligible.&lt;br&gt;For an external setpoint update: time_ok = (no_previous_setpoint) OR (Δt ≥ 3 s).&lt;br&gt;Accepted value update: L⁺ = L_req; otherwise L⁺ = L.&lt;br&gt;Accepted activation: A⁺ = 1 (valid ceiling required); release: A⁺ = 0; otherwise A⁺ = A.&lt;br&gt;t_last⁺ = t_now only for a processed external setpoint; otherwise t_last⁺ = t_last.&lt;br&gt;Apply a combined activation/value command atomically. Rejected commands change none of these variables." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;fontSize=18;align=left;verticalAlign=middle;spacing=16;">
+          <mxGeometry x="40" y="390" width="1420" height="235" as="geometry" />
+        </mxCell>
+        <mxCell id="f3" parent="1" vertex="1" value="&lt;b&gt;3. CEILING OUTPUT AND CURTAILMENT&lt;/b&gt;&lt;br&gt;Output = {active: A, ceiling_kW: L}; ignore ceiling_kW when A = 0.&lt;br&gt;For compatible active ceilings: P_bounded = min(P_base, L_1, …, L_m). No active ceilings → P_bounded = P_base.&lt;br&gt;Contribution before other constraints: ΔP_curtail = max(0, P_base − L), when A = 1.&lt;br&gt;Keep the ceiling active when ΔP_curtail = 0; it must constrain any later increase.&lt;br&gt;The shared resolver determines P_ref from P_bounded, joint P/Q capability and applicable priorities." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;fontSize=18;align=left;verticalAlign=middle;spacing=16;">
+          <mxGeometry x="40" y="650" width="1420" height="205" as="geometry" />
+        </mxCell>
+        <mxCell id="f4" parent="1" vertex="1" value="&lt;b&gt;4. SHARED CONTROL — INTERFACE AND CONSTRAINTS&lt;/b&gt;&lt;br&gt;e_P[k] = P_ref[k] − P_PdC,MC200[k]. Positive power means injection at PdC.&lt;br&gt;Active-limit monitoring: P_excess[k] = max(0, P_PdC[k] − L).&lt;br&gt;For each unit i: −R_down,i Δt_c ≤ P_i,cmd[k] − P_i,cmd[k−1] ≤ R_up,i Δt_c.&lt;br&gt;Also enforce unit capability / technical minima. Ramp and capability constraints must be checked jointly.&lt;br&gt;PI gains, allocation weights and saturation/anti-windup logic belong to the shared fast-ring design; O.9.2.2 does not prescribe their formula." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;fontSize=18;align=left;verticalAlign=middle;spacing=16;">
+          <mxGeometry x="40" y="880" width="1420" height="215" as="geometry" />
+        </mxCell>
+        <mxCell id="f5" parent="1" vertex="1" value="&lt;b&gt;5. COMMUNICATION LOSS AND RESTORATION&lt;/b&gt;&lt;br&gt;On a detected up→down transition: t_loss,start = t_now.&lt;br&gt;While down: τ_loss = t_now − t_loss,start.&lt;br&gt;Enter the agreed fallback when τ_loss ≥ T_loss (O.13.1.2). Do not restart the timer every cycle.&lt;br&gt;On restoration: reset the loss timer and resume DSO operation through the agreed synchronisation procedure.&lt;br&gt;Offline DSO requests implemented by the User follow page 2 independently of this timer." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;fontSize=18;align=left;verticalAlign=middle;spacing=16;">
+          <mxGeometry x="40" y="1120" width="1420" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="f6" parent="1" vertex="1" value="&lt;b&gt;COMMISSIONING AND PERSISTENCE&lt;/b&gt;&lt;br&gt;Configure plant ratings, command mapping, unit gradients, communication-loss delay and fallback policy from approved data.&lt;br&gt;Restart state / recovery of stored commands must follow the agreed commissioning policy; do not assume automatic reactivation.&lt;br&gt;The shared fast ring still requires its own complete implementation and validation." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;fontSize=18;align=left;verticalAlign=middle;spacing=16;">
+          <mxGeometry x="40" y="1345" width="1420" height="150" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,0 +1,1 @@
+define({r:0.5,st:'Stem',n:1,t:[0,72,144],m:[],u:['../Content/Analyze Protection and Control.htm'],s:['+','flag','request'],p:[['+',60],['and',55],['build',84],['contain',26],['displayed',32],['for',113],['in',42],['logic',161],['objects',49],['position',3],['schemes',140],['status',12],['the',60],['to',109],['what',2]]});

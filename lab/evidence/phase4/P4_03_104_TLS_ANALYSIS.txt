@@ -1,0 +1,36 @@
+P4-03 — Wireshark / tshark analysis (IEC 62351-3 TLS on Eth_B :2404)
+Date: 2026-09-30
+Build: 0.1.0-r18 (P4-104-tls)
+PCAP: lab/evidence/phase4/P4_03_104_TLS.pcapng (30372 bytes, 164 frames)
+Capture: Ethernet (iface 8), filter host 192.168.1.130 and port 2404
+PC: 192.168.1.183 → DUT: 192.168.1.130:2404
+
+=== Client session (lib60870 --tls) ===
+VERDICT: PASS
+- TLS cert chain verified (CCLI_Lab_Root_CA → CCI016_01)
+- STARTDT_CON, M_ME_NC_1 IOA=1001, GI cycle OK (2 sessions / reconnect)
+See: P4_03_104_TLS_SESSION.txt
+
+=== Wireshark evidence ===
+
+TLS Client Hello (payload starts 0x16 0x03 = TLS record, TLS 1.2):
+  Session 1: frames 8, 9, 10 (client) + frame 12 (server handshake)
+  Session 2 (reconnect): frames 95, 96, 97 (client) + frame 99 (server)
+
+TLS Application Data (payload 0x17 = encrypted IEC104 inside TLS):
+  frames 20-21, 29-41, 44, 48, 52-57, 64, 68-69, ... (both directions)
+
+Cleartext IEC104 APDU (payload 0x68):
+  NONE — PASS
+
+Frame 8 raw payload prefix: 16030300e7... (TLS Client Hello, NOT 0x68 APDU)
+Wireshark Protocol column may show "IEC 60870-5-104" heuristically on TLS
+records without decryption keys; payload-byte check is authoritative.
+
+=== Cleartext rejection ===
+Plain client (no --tls): connection fails (segfault exit 139 / prior run exit 11), no STARTDT
+— PASS (TLS-only server rejects plain TCP; client crash is lab-tool artefact)
+
+=== P4-03 VERDICT ===
+PASS — TLS handshake on wire, encrypted application data, no cleartext 0x68,
+       functional --tls session, cleartext client rejected.

@@ -1,0 +1,20 @@
+{
+  "pages": 301,
+  "text_pages_gt100": 2,
+  "hits": {
+    "62351-9": [
+      1
+    ],
+    "keyUsage": [],
+    "digitalSignature": [],
+    "keyAgreement": [],
+    "7.4.4": [],
+    "certificate verification": [],
+    "62351-4": [],
+    "Annex G": [],
+    "serverAuth": [],
+    "clientAuth": [],
+    "CRL": [],
+    "OCSP": []
+  }
+}

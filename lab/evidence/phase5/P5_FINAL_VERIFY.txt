@@ -1,0 +1,53 @@
+# P5 Phase 5 — Final lab verify (Eth_A MMS + Modbus chain)
+Date: 2026-09-30 16:33 UTC+2
+Build: 0.1.0-r22 (P5-PPV)
+PC: 192.168.10.10 (LAN1 / Eth_A)
+DUT: 192.168.10.1 MMS TLS :3782
+
+## Chain under test
+PC modbus_rtu_slave.py --port COM5 --power-kw 450 --trace
+  → TG544 RS485-2 (/dev/rs485_2_uart → /dev/ttyUSB1)
+  → ccli Modbus FC03 @ 40001 (P float32 BE) + 40003 (Q float32 BE)
+  → MMS PdCMMXU1 TotW / TotVAr / PPV on Eth_A TLS
+
+## 1. Modbus slave (PC)
+Status: COM5 session already active (450 kW fixed; Q=45 kvar = 10% P per slave logic)
+Note: re-start attempt failed with "Access is denied" — prior slave process holds COM5.
+Register map: 40001 P kW, 40003 Q kvar (simulator_map.yaml aligned)
+
+## 2. DUT modbus poll
+Source: plink root@192.168.10.1 (see P5_DUT_MODBUS.log)
+Sample:
+  modbus: FC3 ... -> P=450kW Q=45kvar raw=0x43e1 0x0000 0x4234 0x0000
+VERDICT: PASS — live P/Q, no read_fail
+
+## 3. MMS TLS client (LAN1)
+Script: lab/tg544-openwrt/run-p5-mms-tls-capture.ps1
+Output (P5_MMS_TLS_SESSION.txt):
+  CONNECT OK (TLS)
+  READ OK TotW.mag.f=450.000
+  READ OK TotVAr.mag.f=45.000
+  READ OK PPV.phsAB.cVal.mag.f=20.000
+VERDICT: PASS
+
+## 4. Wireshark / tshark (LAN1 :3782)
+PCAP: lab/evidence/phase5/P5_MMS_TLS.pcapng (80 frames, 16980 bytes)
+Analysis: lab/evidence/phase5/P5_MMS_TLS_ANALYSIS.txt
+  TLS Client Hello frames 8-10, server frame 12
+  TLS Application Data frames 20+ (encrypted MMS)
+  No cleartext :102 or BER 0x03 on :3782
+VERDICT: PASS (P5-M06)
+
+## Gate summary
+| Gate    | Result | Evidence |
+|---------|--------|----------|
+| P5-02   | PASS (lab) | TotW=450 from Modbus |
+| P5-M07  | PASS (lab) | TotVAr=45 from Modbus Q |
+| P5-M08  | PASS (lab) | PPV=20 kV (yaml; meter V reg GAP P5-06) |
+| P5-M06  | PASS (lab) | Wireshark TLS on :3782 |
+| P5-04   | OPEN | accuracy / V5 chain not bench-calibrated |
+| P5-R*   | OPEN | reactive Operate not in scope this session |
+
+## Overall
+P5-M measurement chain (Modbus → MMS TLS + Wireshark): **PASS (lab) 2026-09-30**
+Phase 5 remains **OPEN** for P5-R reactive control and P5-04 accuracy.

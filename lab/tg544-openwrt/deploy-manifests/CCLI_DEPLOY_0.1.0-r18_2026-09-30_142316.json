@@ -1,0 +1,14 @@
+﻿{
+    "codename":  "P4-104-tls",
+    "changes":  [
+                    "CS104 TLS 62351-3 on Eth_B :2404"
+                ],
+    "release":  18,
+    "timestamp_utc":  "2026-09-30T12:23:16.1774974Z",
+    "version_full":  "0.1.0-r18",
+    "lab_yaml":  "r18 lab yaml tls_enabled",
+    "sha256":  "1c8e8616a1fb4502ce291f6cab213453885da7547b80480c5f00d44f68512246",
+    "binary":  "C:\\Yahia\\projects\\CCLI\\lab\\tg544-openwrt\\ccli-bin",
+    "host":  "192.168.1.130",
+    "semver":  "0.1.0"
+}

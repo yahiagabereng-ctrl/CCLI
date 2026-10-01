@@ -1,0 +1,44 @@
+P5-M06 — Wireshark / tshark analysis (IEC 62351-3 TLS on Eth_A :3782)
+Date: 2026-09-30
+Build: 0.1.0-r22 (P5-PPV)
+PCAP: lab/evidence/phase5/P5_MMS_TLS.pcapng (16980 bytes, 80 frames)
+Capture: Ethernet (tshark iface 8), filter host 192.168.10.1 and port 3782
+PC: 192.168.10.10 ? DUT: 192.168.10.1:3782
+
+=== Client session (mms_tls_client) ===
+VERDICT: PASS
+- TLS cert chain verified (CCLI_Lab_Root_CA ? CCI016_01)
+- CONNECT OK (TLS)
+- READ OK TotW.mag.f=450.000  (Modbus P=450 kW live)
+- READ OK TotVAr.mag.f=45.000 (Modbus Q=45 kvar live, 10% of P)
+- READ OK PPV.phsAB.cVal.mag.f=20.000 (yaml plant.poc_ppv_kv)
+See: P5_MMS_TLS_SESSION.txt
+
+=== Wireshark evidence ===
+
+TLS Client Hello (payload starts 0x16 0x03 = TLS record):
+  frames 8, 9, 10 (client 192.168.10.10) + frame 12 (server handshake)
+
+TLS Application Data (payload 0x17 = encrypted MMS inside TLS):
+  frames 20-21, 31-40, 42-45, ... (both directions)
+
+Cleartext IEC61850 port 102:
+  NONE — PASS
+
+Cleartext MMS BER initiate (payload 0x03 on :3782):
+  NONE — PASS (TLS-only transport on product port)
+
+Frame 8: TLSv1.2 Client Hello (content_type 22)
+Frame 12: TLSv1.3 Server Hello (content_type 22/20)
+Wireshark Protocol column shows TLSv1.3 on encrypted records; payload-byte
+check is authoritative (no decryption keys in lab capture).
+
+=== End-to-end chain ===
+PC modbus_rtu_slave.py COM5 P=450 kW (pre-existing session on COM5)
+  ? DUT RS485-2 /dev/ttyUSB1 FC03 40001 qty=4
+  ? ccli log: P=450kW Q=45kvar (see P5_DUT_MODBUS.log)
+  ? MMS TLS read TotW/TotVAr/PPV on Eth_A
+
+=== P5-M06 VERDICT ===
+PASS — TLS handshake on wire, encrypted application data, no cleartext :102,
+       functional MMS TLS session with live Modbus-fed measurements.

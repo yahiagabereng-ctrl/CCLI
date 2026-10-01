@@ -1,0 +1,16 @@
+﻿{
+    "codename":  "P4-104-o14-params",
+    "changes":  [
+                    "O.14 audit detail type+ioa+value+result",
+                    "command mode MSD stub O.10.3.1",
+                    "lab_tr400_phase4_eth_b_command.yaml"
+                ],
+    "release":  20,
+    "timestamp_utc":  "2026-09-30T13:38:00.2805832Z",
+    "version_full":  "0.1.0-r20",
+    "lab_yaml":  "C:\\Yahia\\projects\\CCLI\\apps\\ccli\\config\\lab_tr400_phase4_eth_b.yaml",
+    "sha256":  "9328fe6cbd7fc3ae5b707ef077a69fb83404557c0bf5cee8707ce6a71f6944df",
+    "binary":  "C:\\Yahia\\projects\\CCLI\\lab\\tg544-openwrt\\ccli-bin",
+    "host":  "192.168.1.130",
+    "semver":  "0.1.0"
+}

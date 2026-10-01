@@ -1,0 +1,109 @@
+# Phase 4 — Operator Eth_B (LAN2) + existing Phase 3 MMS on Eth_A (LAN1).
+# Deploy to /etc/ccli/lab.yaml when CS104 slave is implemented in ccli.
+# Until then: network/LuCI only; iec104 section is the target bind (P4-01 / P4-02).
+#
+# PC: lab/set_pc_lan2_oa.cmd (192.168.1.183) · DUT: 192.168.1.130 zone lan_sec
+# Verify: lab/tg544-openwrt/verify-lan2-eth-b.ps1
+
+platform: tg500
+lab:
+  hostname: TG544
+  model: tespro,tr500
+  address: 192.168.1.130/24
+  role: operator_eth_b
+
+modbus:
+  backend: rtu
+  device: /dev/rs485_2_uart
+  baud: 9600
+  parity: N
+  slave_id: 1
+  poll_ms: 4000
+  timeout_ms: 2000
+  retries: 3
+  trace: true
+
+pf2:
+  threshold_kw: 900
+  debounce_s: 30
+  release_threshold_kw: 850
+  min_on_s: 60
+  min_off_s: 30
+  stale_data_s: 10
+  use_dso_mock: true
+
+plant:
+  p_imm_kw: 200
+  p_ass_kw: 200
+  q_ind_kvar: 50
+  q_cap_kvar: 50
+  smax_kva: 210
+
+dso:
+  enabled: true
+  profile: tr57126_table1
+  w110_active: false
+  w110_pct: 100
+  wlim_active: false
+  wmax_spt_pct: 0
+  wsd_active: true
+  wspt_pct: 20
+  release_delta_kw: 5
+
+# Eth_A — CEI Annex T (unchanged from Phase 3)
+mms:
+  enabled: true
+  bind_address: 192.168.10.1
+  tcp_port: 3782
+  comms_loss_fallback_s: 15
+  gnss_poll_s: 15
+  gnss_discipline_clock: false
+  chrony_poll: true
+  tls_enabled: true
+  tls_own_key: /etc/ccli/tls/server.key
+  tls_own_cert: /etc/ccli/tls/server_tls.pem
+  tls_acse_cert: /etc/ccli/tls/server.pem
+  tls_acse_key: /etc/ccli/tls/server_acse.key
+  tls_ca_cert: /etc/ccli/tls/root_CA.pem
+  tls_client_cert: /etc/ccli/tls/client_tls.pem
+  tls_acse_client_cert: /etc/ccli/tls/client.pem
+  tls_viewer_cert: /etc/ccli/tls/viewer_tls.pem
+  tls_revoked_cert: /etc/ccli/tls/revoked_tls.pem
+  tls_crl: /etc/ccli/tls/lab_crl.pem
+  tls_chain_validation: true
+
+# Eth_B — command mode lab profile (O.10.3.1 MSD accept + O.14 param audit)
+# Restore lab_tr400_phase4_eth_b.yaml (monitor_only) after P4-05 command tests.
+iec104:
+  enabled: true
+  bind_address: 192.168.1.130
+  tcp_port: 2404
+  common_address: 1
+  periodic_s: 4
+  comms_loss_fallback_s: 60
+  operator_rule_mode: command
+  operator_allow_commands: true
+  operator_allow_gi: true
+  operator_allow_clock_sync: false
+  operator_monitor_tot_w: true
+  ioa_tot_w: 1001
+  operator_monitor_totvar: false
+  ioa_tot_var: 1002
+  operator_monitor_ppv: false
+  ioa_ppv: 1003
+  operator_ioa_msd_sp: 3001
+  tls_enabled: true
+  tls_own_key: /etc/ccli/tls/server.key
+  tls_own_cert: /etc/ccli/tls/server_tls.pem
+  tls_ca_cert: /etc/ccli/tls/root_CA.pem
+  tls_client_cert: /etc/ccli/tls/client_tls.pem
+
+io:
+  backend: ubus_dido_v2
+  permissive_bypass: false
+  do_curtail:
+    gpio: 1
+    active_high: false
+  di_permissive:
+    gpio: 2
+    active_low: true

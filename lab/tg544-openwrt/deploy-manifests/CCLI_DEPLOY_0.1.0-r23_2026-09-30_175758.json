@@ -1,0 +1,16 @@
+﻿{
+    "codename":  "P5-FULL-CID",
+    "changes":  [
+                    "P5 full circle cleartext TSP",
+                    "mms tcp_port 102 tls_enabled false",
+                    "permissive_bypass true for actuation"
+                ],
+    "release":  23,
+    "timestamp_utc":  "2026-09-30T15:57:58.8628755Z",
+    "version_full":  "0.1.0-r23",
+    "lab_yaml":  "C:\\Yahia\\projects\\CCLI\\apps\\ccli\\config\\lab_tr400_cleartext_tsp.yaml",
+    "sha256":  "56b37dc7d8f01e34a3f2c6621869990fc268c5110746627aede9e23ee5207e1b",
+    "binary":  "C:\\Yahia\\projects\\CCLI\\lab\\tg544-openwrt\\ccli-bin",
+    "host":  "192.168.10.1",
+    "semver":  "0.1.0"
+}

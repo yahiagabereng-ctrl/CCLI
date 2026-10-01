@@ -1,0 +1,2 @@
+See: lab/evidence/O13_1_isolation_2026-09-25/P2_03_LTE_ISOLATION.txt
+Verdict: P2-03 PASS · 2026-09-25

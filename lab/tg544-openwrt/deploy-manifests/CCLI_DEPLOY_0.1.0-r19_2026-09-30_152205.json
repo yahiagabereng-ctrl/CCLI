@@ -1,0 +1,16 @@
+﻿{
+    "codename":  "P4-104-operator-rule",
+    "changes":  [
+                    "Operating Rule yaml (operator_rule_mode monitor_only)",
+                    "O.14 reject audit on command ASDUs",
+                    "iec104_operator_rule.hpp catalog"
+                ],
+    "release":  19,
+    "timestamp_utc":  "2026-09-30T13:22:05.9326081Z",
+    "version_full":  "0.1.0-r19",
+    "lab_yaml":  "C:\\Yahia\\projects\\CCLI\\apps\\ccli\\config\\lab_tr400_phase4_eth_b.yaml",
+    "sha256":  "d34df23e052ac12915fa57cfe666daa7e8b681523a5cf433a91a51984dbc73a1",
+    "binary":  "C:\\Yahia\\projects\\CCLI\\lab\\tg544-openwrt\\ccli-bin",
+    "host":  "192.168.1.130",
+    "semver":  "0.1.0"
+}

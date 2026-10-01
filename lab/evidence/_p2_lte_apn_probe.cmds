@@ -1,0 +1,9 @@
+echo "=== APN / cellular uci ==="
+uci show 2>/dev/null | grep -iE 'apn|sim|cellular|modem|1nce|wwan|quectel' | head -80
+echo "=== network wwan ==="
+uci show network.wwan 2>/dev/null
+echo "=== ls /etc/config ==="
+ls /etc/config | grep -iE 'sim|cell|modem|wwan|quectel|tespro' || ls /etc/config
+echo "=== usb0 addr ==="
+ip -4 addr show usb0 2>/dev/null || true
+echo "=== DONE ==="

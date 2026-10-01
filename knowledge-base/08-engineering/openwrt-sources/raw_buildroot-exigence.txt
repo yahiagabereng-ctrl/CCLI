@@ -1,0 +1,184 @@
+====== OpenWrt build system – Installation ======
+[[about:toolchain|OpenWrt build system]] is the [[wp>toolchain|buildsystem]] for the OpenWrt Linux distribution. OpenWrt build system works on GNU/Linux, BSD or MacOSX operating system. A case-sensitive filesystem is required.
+
+It is recommended that you use a GNU/Linux distribution ([[wp>Debian]]), either a standalone installation or one running in a virtual environment ([[wp>VMware]] or [[wp>Qemu]]).
+
+Ubuntu under [[wp>Windows Subsystem for Linux]] is not an officially supported environment, but it appears to produce good builds. [[wp>Cygwin]](Windows) will not be supported because of the lack of case sensitivity in the file system.
+
+Outdated information for old Buildroot versions, old GNU/Linux variants is archived at: [[doc:howto:buildroot.exigence.old]]
+
+:!: For common problems, benchmarks, common optimizations see [[doc:faq:development]]
+
+===== Prerequisites =====
+To generate an [[doc:howto:generic.flashing|installable]] OpenWrt firmware image file with a size of e.g. 8MB, you need:
+  * ca. 200 MB of hard disk space for OpenWrt build system
+  * ca. 300 MB of hard disk space for OpenWrt build system + OpenWrt Feeds
+  * ca. 2.1 GB of hard disk space for source packages downloaded during build from OpenWrt Feeds
+  * ca. 3-4 GB of available hard disk space to build (i.e. cross-compile) OpenWrt and generate the firmware file
+
+  * ca. 1-4 GB of RAM to build Openwrt.(build x86's img need 4GB RAM)
+
+ {{tag>wip}}
+
+===== Install procedure on GNU/Linux =====
+| ->[[doc:howto:buildroot.exigence.bsd|Procedure on ~BSD]] | ->[[doc:howto:buildroot.exigence.macosx|Procedure on Mac OS X]] |
+ \\
+| {{:meta:icons:tango:48px-emblem-important.svg.png?nolink}} | 1. Do everything as //non//-root user!\\ 2. Issue all OpenWrt build system commands in the ''<buildsystem root>'' directory, e.g. ''~/openwrt/trunk/''\\ 3. Do not build in a directory that has spaces in its full path\\ 4. Change ownership of the directory where you downloaded the OpenWrt to other than root user (''sudo chown -R user:user /openwrt/'')|
+
+| {{:meta:icons:tango:48px-emblem-important.svg.png?nolink}} | **git.openwrt.org contains outdated source code.** Only https://github.com/openwrt/openwrt.git has the current source for Openwrt trunk and Chaos Calmer branch|
+
+  - Install ''[[wp>Git (software)|git]]'' , to conveniently download the OpenWrt source code, and ''[[wp>GNU build system|build tools]]'' to do the cross-compilation process: <code bash>sudo apt-get update
+sudo apt-get install git-core build-essential libssl-dev libncurses5-dev unzip gawk zlib1g-dev</code> Some feeds might not available over git but only via ''[[wp>Apache Subversion|subversion]]'' (short: ''svn'') or ''[[wp>Mercurial|mercurial]]''. If you want to obtain their source-code, you need to install svn and mercurial as well:<code bash>
+sudo apt-get install subversion mercurial</code>
+     * for information about the build tools see ''[[man>make]]'' and [[http://packages.debian.org/wheezy/build-essential|build-essential]]
+     * for information about git see ''[[man>git(7)]]''
+     * for information about the subversion tool see ''[[man>svn]]'' and [[http://svnbook.red-bean.com/index.en.html|subversion documentation (multiple languages)]]
+  - Download the OpenWrt bleeding edge (trunk version) with ''git'' (//see [[#Downloading Sources]] for more options!//):<code bash>
+git clone https://github.com/openwrt/openwrt.git
+</code> this creates a directory 'openwrt', which is the OpenWrt build system build-directory\\ the OpenWrt toolchain "OpenWrt build system" is included\\ alternatively use HTTPS to download zipped sources.\\ filename: openwrt-master.zip\\ current checksums:\\ md5: e450f968e19abd733458a1b3b2fe59c8\\ sha256: 4f268c75c5525c5a9a74766a2e473aa085ed7a1262fda72c0e9575b48414fdba\\
+
+  - (//optional//) Download and install all available "feeds" (//see [[[doc:devel:feeds|OpenWrt Feeds]] for more options!//):<code bash> 
+cd openwrt
+./scripts/feeds update -a
+./scripts/feeds install -a</code>
+  - Make OpenWrt build system check for missing packages on your build-system using **ONE** of the following commands:<code bash>
+make menuconfig (most likely you would like to use this)
+-OR-
+make defconfig
+-OR-
+make prereq
+//Note: If you use these in order, or use more than one, the **compilation will fail**.//
+</code> There you will need to select what you want to compile.
+  - Proceed with [[build]] (i.e. cross-compile the downloaded sources to binaries)\\After the cross-compilation process the ''trunk''-directory contained over 240000 files with a total size of above 3GiB!
+
+
+===== Table of known prerequisites and their corresponding packages =====
+Here's a table with the package name for each prerequisite separated for different GNU/Linux and Unix like distributions.
+
+^ Prerequisite ^ Debian ^ SUSE ^ Red Hat ^ OS X (via MacPorts) ^ Fedora ^ NetBSD ^ Arch ^ Gentoo ^
+| asciidoc         | asciidoc| asciidoc| asciidoc| asciidoc | asciidoc| ?| asciidoc | app-text/asciidoc |
+| [[wp>Bash (Unix shell)|GNU Bash]] | bash |bash| bash | bash | bash| bash| bash| app-shells/bash |
+| [[wp>Bc_(programming_language)#GNU_bc|GNU bc]] | bc| bc| | | bc| | bc| sys-devel/bc |
+| [[wp>GNU Binutils]] | binutils | binutils| binutils| binutils| binutils| ?| binutils| sys-devel/binutils |
+| [[wp>bzip2]]     | bzip2 | bzip2| bzip2| bzip2| bzip2| ?| bzip2| app-arch/bzip2 |
+| fastjar          | fastjar|fastjar| libgcj| fastjar| libgcj| ?| fastjar| app-arch/fastjar |
+| [[wp>flex lexical analyser|flex]]  | flex|flex| flex | flex| flex| ?| flex| sys-devel/flex |
+| [[wp>Git (software)|git]] | git-core| git-core| git | git-core | git | ?| git| dev-vcs/git |
+| [[wp>GNU C++ Compiler]]  | g++| gcc-c++| gcc-c++| ?| gcc-c++| ?| gcc | sys-devel/gcc |
+| [[wp>GNU C Compiler]]    | gcc| gcc| gcc| ?| gcc| ?| gcc| sys-devel/gcc |
+| getopt           | util-linux | util-linux | util-linux | getopt| util-linux | getopt| util-linux | sys-apps/util-linux |
+| [[wp>GNU awk]]   | gawk| gawk| gawk| gawk| gawk| ?| gawk| sys-apps/gawk |
+| gtk2.0-dev       | libgtk2.0-dev| gtk2-devel| gtk2-devel| gtk2| gtk2-devel| ?| gtk2 | x11-libs/gtk+:2 |
+| intltool-update  | intltool| intltool| intltool| intltool| intltool| ?| intltool | dev-util/intltool |
+| jikes            | [[http://packages.debian.org/jessie/jikespg|jikespg]] | jikes| ?| jikes| ---| ?| | dev-java/jikes |
+| libz, libz-dev   | zlib1g-dev | zlib-devel| zlib-devel| zlib| zlib-devel| ?| zlib | sys-libs/zlib |
+| Mercurial / hg   | | mercurial| | | hg | | mercurial | dev-vcs/mercurial |
+| make             | make | make| make | gmake| make| gmake| make | sys-devel/make |
+| mkisofs          | genisoimage | genisoimage| ?| ?| genisoimage| ?| cdrkit | virtual/cdrtools |
+| [[wp>ncurses]]   | libncurses5-dev| ncurses-devel| ncurses-devel| ncurses| ncurses-devel| ?| ncurses | sys-libs/ncurses |
+| openssl/ssl.h    | libssl-dev| libopenssl-devel| openssl-devel| openssl| openssl-devel| ?| openssl | dev-libs/openssl |
+| patch| patch     | patch | patch | patchutils| patch| ?| patch | sys-devel/patch |
+| perl-ExtUtils-MakeMaker| perl-modules | perl-ExtUtils-MakeMaker| perl-ExtUtils-MakeMaker| p5-extutils-makemaker| perl-ExtUtils-MakeMaker| ?| perl-extutils-makemaker | virtual/perl-ExtUtils-MakeMaker |
+| python2.6-dev    | python2.6-dev | python-devel| ?| python26| python-devel | ?| python2 | dev-lang/python:2.6 |
+| rsync            | rsync| rsync| rsync | rsync| rsync| ?| rsync | net-misc/rsync |
+| ruby             | ruby| ruby | ?| ruby| ruby| ?| ruby | dev-lang/ruby |
+| sdcc             | sdcc| sdcc| sdcc| sdcc| sdcc| ?| sdcc | dev-embedded/sdcc |
+| unzip            | unzip| unzip| unzip| unzip| unzip| ?| unzip | app-arch/unzip |
+| [[wp>GNU Wget]]  | wget | wget| wget| wget| wget| ?| wget | net-misc/wget |
+| xgettext         | gettext| gettext-tools| gettext | gettext| gettext| ?| gettext | sys-devel/gettext |
+| xsltproc         | xsltproc| libxslt-tools| ?| libxslt| libxslt| ?| libxslt | dev-libs/libxslt |
+| zlib, zlib-static| zlib1g-dev| zlib-devel, zlib-devel-static| zlib-devel | zlib-devel| zlib-devel,zlib-static | ?| zlib | sys-libs/zlib (USE=static-libs)|
+
+Unfortunately not all dependencies are checked by ''make config'':
+^ Package ^ Prerequisite ^ Debian (8) ^ SUSE ^ Red Hat ^ OS X ^ Fedora ^ NetBSD ^ Arch ^ Gentoo ^
+| boost    | bjam / boost-jam   | libboost1.55-dev   | | | | boost-jam || boost | dev-util/boost-build |
+| intltool | [Perl] XML::Parser | libxml-parser-perl | | perl-XML-Parser | | perl-XML-Parser | | intltool | dev-perl/XML-Parser |
+| libftdi  | libusb-config      | libusb-dev | | | | libusb-devel | | libusb | dev-libs/libusb-compat |
+| lilo     | as86,ld86          | bin86 | | | | dev86 | | bin86 | sys-devel/bin86 |
+| lilo     | bcc                | bcc | | | | dev86 | | [[https://aur.archlinux.org/packages/bcc/|aur/bcc]] | sys-devel/dev86 |
+| lilo     | uudecode           | sharutils | | | | sharutils | | sharutils | app-arch/sharutils |
+| classpath| javac, gcj         | openjdk-7-jdk | | | | java-1.7.0-openjdk-devel | | jdk7-openjdk | dev-java/oracle-jdk-bin, sys-devel/gcc[gcj], and one (or both) of dev-java/icedtea-bin:7 and dev-java/icedtea:7 |
+| mac80211 | b43-fwcutter       | | | | | b43-fwcutter | | b43-fwcutter | net-wireless/b43-fwcutter |
+| jamvm    | zip                | | | | | zip | | | app-arch/zip |
+
+==== Examples of Package Installations ====
+  * **Arch Linux**<code>pacman -S --needed subversion asciidoc bash bc binutils bzip2 fastjar flex git gcc util-linux gawk intltool zlib mercurial make cdrkit ncurses openssl patch perl-extutils-makemaker rsync sdcc unzip wget gettext libxslt boost libusb bin86 sharutils b43-fwcutter findutils</code>
+  * **Debian 7 Wheezy:**<code>apt-get install libncurses5-dev zlib1g-dev gawk</code>
+  * **Debian 8 Jessie:**<code>sudo apt-get install build-essential libncurses5-dev gawk git subversion libssl-dev gettext unzip zlib1g-dev file python</code>
+  * **Fedora 24 - 64Bit** :<code>dnf install -y subversion binutils bzip2 gcc gcc-c++ gawk gettext git-core flex ncurses-devel ncurses-compat-libs zlib-devel zlib-static make patch unzip perl-ExtUtils-MakeMaker perl-Thread-Queue \
+ glibc glibc-devel glibc-static quilt sed sdcc intltool sharutils bison wget openssl-devel</code>
+  * **openSUSE**<code>zypper install --no-recommmends asciidoc bash bc binutils bzip2 fastjar flex gawk gcc gcc-c++ git-core util-linux  gtk2-devel intltool jikes zlib-devel zlib-devel-static mercurial make genisoimage ncurses-devel libopenssl-devel patch perl-ExtUtils-MakeMaker python-devel rsync ruby sdcc unzip wget gettext-tools libxslt-tools subversion</code>
+  * **Ubuntu 12.04LTS:**<code>sudo apt-get install build-essential subversion git-core libncurses5-dev zlib1g-dev gawk flex quilt libssl-dev xsltproc libxml-parser-perl mercurial bzr ecj cvs unzip</code>
+  * **Ubuntu 64bit:**<code>sudo apt-get install build-essential subversion libncurses5-dev zlib1g-dev gawk gcc-multilib flex git-core gettext libssl-dev unzip</code>
+  * **Centos x86-64 (some packages require EPEL):**<code>yum install subversion binutils bzip2 gcc gcc-c++ gawk gettext flex ncurses-devel zlib-devel zlib-static make patch unzip perl-ExtUtils-MakeMaker glibc glibc-devel glibc-static quilt ncurses-libs sed sdcc intltool sharutils bison wget git-core openssl-devel xz</code>
+  * **Gentoo:**<code bash>$ echo \
+    app-arch/{bzip2,fastjar,sharutils,unzip,zip} \
+    app-text/asciidoc dev-java/{icedtea:7,jikes,oracle-jdk-bin} \
+    dev-libs/{libusb-compat,libxslt,openssl} dev-util/intltool \
+    dev-vcs/{git,mercurial} net-misc/{rsync,wget} \
+    net-wireless/b43-fwcutter sys-apps/{gawk,util-linux} \
+    sys-devel/{bc,bin86,binutils,dev86,flex,gcc[gcj],gettext} \
+    sys-libs/{ncurses,zlib} virtual/{cdrtools,perl-ExtUtils-MakeMaker} \
+    x11-libs/gtk+:2 \
+        | sed 's/\s/\n/g' \
+            | sort \
+                | sudo tee /etc/portage/sets/openwrt-prerequisites \
+                    && sudo emerge -DuvNa '@openwrt-prerequisites'</code>
+==== Known variants to be broken ====
+
+  * **alpine linux** uses musl as libc replacement. On alpine 3.6, some programs to compile (ex: u-boot). A list of packages to install: apk add git asciidoc bash bc binutils bzip2 flex gcc g++ gawk make wget perl file ncurses-dev tar findutils coreutils unzip grep zlib-dev patch linux-headers diffutils
+
+
+===== Downloading Sources =====
+
+==== GIT ====
+cloning the Git repository using one of the following commands. Note that the main source repos have all been moved to Github in 2016.
+
+=== master (main development tree) ===
+The development branch (master) contains everything from documentation to <color yellow>**//experimental//**</color> <color red>**//patches//**</color>.
+== Main repository ==
+
+<code bash>git clone git://github.com/openwrt/openwrt.git</code>
+
+Additional packages can be found in several feeds (Luci, packages, routing, management etc.). Let the Openwrt build system to clone the correct feeds into feeds/packages, feeds/luci etc.
+
+=== 15.05 branch (Chaos Calmer) ===
+
+== Main repository ==
+<code bash>git clone -b chaos_calmer git://github.com/openwrt/chaos_calmer.git</code>
+
+Additional packages can be found in several feeds (Luci, packages, routing, management etc.). Let the Openwrt build system to clone the correct feeds into feeds/packages, feeds/luci etc.
+
+=== 14.07 branch (Barrier Breaker) ===
+
+== Main repository ==
+<code bash>git clone -b barrier_breaker git://github.com/openwrt/archive.git</code>
+
+Additional packages can be found in several feeds (Luci, packages, routing, management etc.). Let the Openwrt build system to clone the correct feeds into feeds/packages, feeds/luci etc.
+
+=== 12.09 branch (Attitude Adjustment) ===
+
+== Main repository ==
+<code bash>git clone -b attitude_adjustment git://github.com/openwrt/archive.git</code>
+
+== Packages feed ==
+
+<code bash>git clone git://git.openwrt.org/12.09/packages.git</code>
+
+== Luci feed ==
+
+Note: The location of the Luci feed has not been corrected in feeds.conf.default after the move to Github, so you need to manually edit feeds.conf.default to pull Luci from Github:
+<code bash>src-git luci https://github.com/openwrt/luci.git;luci-0.11</code>
+
+
+=== 10.03 branch (Backfire) ===
+
+== Main repository ==
+<code bash>git clone git://git.openwrt.org/10.03/openwrt.git backfire</code>
+
+== Packages feed ==
+<code bash>git clone git://git.openwrt.org/10.03/packages.git</code>
+
+<WRAP center round info 60%>
+If you wanted to build an old OpenWrt version in a modern GNU/Linux OS based system (i.e bundled with gcc version 5.x or newer) it won't work. You must patch the buildroot, see these [[https://github.com/danitool/openwrt-legacy-buildroot-fixes|available patches]] for Backfire branch.
+</WRAP>

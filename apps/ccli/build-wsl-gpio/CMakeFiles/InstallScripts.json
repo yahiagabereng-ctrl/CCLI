@@ -1,0 +1,8 @@
+{
+	"InstallScripts" : 
+	[
+		"/mnt/c/Yahia/projects/CCLI/apps/ccli/build-wsl-gpio/cmake_install.cmake",
+		"/mnt/c/Yahia/projects/CCLI/apps/ccli/build-wsl-gpio/OPTIONAL/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

@@ -1,0 +1,2 @@
+/usr/bin/ar qc libccli_platform.a CMakeFiles/ccli_platform.dir/platform/platform_tg500/hal_stub.cpp.o CMakeFiles/ccli_platform.dir/platform/platform_tg500/hal_gpio_ll.c.o CMakeFiles/ccli_platform.dir/platform/platform_pi/hal_time.cpp.o CMakeFiles/ccli_platform.dir/platform/platform_tg500/platform_init.cpp.o
+/usr/bin/ranlib libccli_platform.a

@@ -1,0 +1,3 @@
+OpenWrt baseline version: 24.10.5
+The official open-source libmodbus, with an open-source license: LGPLv2.1+
+libiec61850 is an open-source (GPLv3) implementation of an IEC 61850 client and server library implementing the protocols MMS, GOOSE, SV, and R-Session. 

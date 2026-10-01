@@ -1,0 +1,8 @@
+[2026-09-30 20:28:04] # P5 full circle - cleartext MMS :102 (TSP lab bypass)
+[2026-09-30 20:28:04] NOTE: Product TLS path remains :3782 - see P5_MMS_TLS.pcapng
+[2026-09-30 20:28:04] DUT target: 192.168.10.1:102 tls=off
+[2026-09-30 20:28:04] PC IPv4: 192.168.10.10
+[2026-09-30 20:28:15] Ping 192.168.10.1: True
+[2026-09-30 20:28:15] Deploying cleartext lab yaml via LAN1 ...
+[2026-09-30 20:28:21] @{IPAddress=192.168.10.10; InterfaceAlias=Ethernet}
+[2026-09-30 20:28:31] @{PingSucceeded=True}

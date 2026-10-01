@@ -1,0 +1,2 @@
+Verdict: P3-01 PASS · MMS on 192.168.10.1:102 only · 2026-09-25
+Evidence: lab/evidence/O13_1_isolation_2026-09-25/P3_01_MMS_LISTEN_ETH_A.txt

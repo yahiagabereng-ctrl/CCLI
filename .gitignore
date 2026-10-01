@@ -1,0 +1,70 @@
+# LaTeX build artifacts
+*.aux
+*.log
+*.out
+*.toc
+*.synctex.gz
+*.fls
+*.fdb_latexmk
+
+# Knowledge-base build
+knowledge-base/_build/
+
+# Excel locks / Draw.io temps
+~$*.xlsx
+Architecture/.$*
+.**/*.drawio.dtmp
+.**/*.drawio.bkp
+
+# C/C++ build outputs
+apps/ccli/build/
+apps/ccli/build-*/
+apps/ccli/cmake-build-*/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# Node (website)
+website/node_modules/
+website/dist/
+website/ngrok.log
+
+# OpenWrt SDK tarballs / extracted trees (lab)
+lab/pi4-openwrt/openwrt-sdk-*/
+lab/pi4-openwrt/*.tar.zst
+lab/tg544-openwrt/openwrt-sdk-*/
+lab/tg544-openwrt/*.tar.zst
+lab/tg544-openwrt/ccli_*.ipk
+lab/tg544-openwrt/ccli-*.apk
+
+# Secrets / credentials — never commit
+.env
+.env.*
+*.credentials
+apps/ccli/config/tls/
+lab/tmp_*.pem
+
+# Large local reference / corpus — keep on disk, not in git (>100 MB)
+Standards_pdf*/
+Standards_pdf*.zip
+competitors.zip
+_chunk_score/
+*.db
+knowledge-base/**/*.pdf
+Architecture/_extracted_reg_analysis/_pdf_ocr/
+
+# Lab firmware images / prebuilt binaries
+lab/**/*.img.gz
+lab/**/*.ipk
+lab/**/*.apk
+lab/tg544-openwrt/ccli-bin
+lab/tg544-openwrt/libstdc++.so.6
+apps/ccli/build-p4-test/
+apps/ccli/build-mms-host/
+
+# OS
+Thumbs.db
+Desktop.ini
+.DS_Store

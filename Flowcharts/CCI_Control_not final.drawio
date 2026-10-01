@@ -1,0 +1,683 @@
+<mxfile host="Electron" agent="ChatGPT" pages="5">
+  <diagram id="cci-system-overview-v1" name="CCI system overview">
+    <mxGraphModel dx="4713" dy="2803" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2250" pageHeight="1250" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="overview_title" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#14253f;strokeColor=#14253f;fontColor=#ffffff;fontSize=27;fontFamily=Arial;align=center;verticalAlign=middle;spacing=9;arcSize=13;strokeWidth=2;" value="&lt;b&gt;CCI CONTROL SYSTEM  |  Module overview&lt;/b&gt;" vertex="1">
+          <mxGeometry height="73" width="2130" x="60" y="25" as="geometry" />
+        </mxCell>
+        <mxCell id="overview_subtitle" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f7fa;strokeColor=#b4c1d0;fontColor=#526278;fontSize=18;fontFamily=Arial;align=center;verticalAlign=middle;spacing=9;arcSize=13;strokeWidth=2;" value="&lt;b&gt;One-page integration view  ·  priority O.11  ·  fast ring O.7.3.1  ·  slow ring O.7.3.2  ·  measurements O.7.4&lt;/b&gt;" vertex="1">
+          <mxGeometry height="55" width="2130" x="60" y="108" as="geometry" />
+        </mxCell>
+        <mxCell id="plant_user" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#edf3ff;strokeColor=#7295d1;fontColor=#163d73;fontSize=19;fontFamily=Arial;align=center;verticalAlign=middle;spacing=9;arcSize=13;strokeWidth=2;" value="&lt;b&gt;PLANT USER&lt;/b&gt;&lt;br&gt;P or Q request" vertex="1">
+          <mxGeometry height="90" width="300" x="70" y="252" as="geometry" />
+        </mxCell>
+        <mxCell id="external_pq" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#edf3ff;strokeColor=#7295d1;fontColor=#163d73;fontSize=19;fontFamily=Arial;align=center;verticalAlign=middle;spacing=9;arcSize=13;strokeWidth=2;" value="&lt;b&gt;EXTERNAL COMMAND&lt;/b&gt;&lt;br&gt;P or Q set-point" vertex="1">
+          <mxGeometry height="90" width="300" x="70" y="390" as="geometry" />
+        </mxCell>
+        <mxCell id="three_second_gate" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#edf3ff;strokeColor=#7295d1;fontColor=#163d73;fontSize=17;fontFamily=Arial;align=center;verticalAlign=middle;spacing=9;arcSize=13;strokeWidth=2;" value="&lt;b&gt;3 s UPDATE CHECK&lt;/b&gt;&lt;br&gt;from last processed set-point&lt;br&gt;earlier update: reject" vertex="1">
+          <mxGeometry height="102" width="280" x="445" y="384" as="geometry" />
+        </mxCell>
+        <mxCell id="too_soon" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f7fa;strokeColor=#b4c1d0;fontColor=#526278;fontSize=17;fontFamily=Arial;align=center;verticalAlign=middle;spacing=9;arcSize=13;strokeWidth=2;" value="&lt;b&gt;REJECT&lt;/b&gt;&lt;br&gt;keep current command" vertex="1">
+          <mxGeometry height="72" width="280" x="445" y="550" as="geometry" />
+        </mxCell>
+        <mxCell id="p_limit_port" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff3e3;strokeColor=#e0a750;fontColor=#80520d;fontSize=17;fontFamily=Arial;align=center;verticalAlign=middle;spacing=9;arcSize=13;strokeWidth=2;" value="&lt;b&gt;ACTIVE-POWER LIMIT&lt;/b&gt;&lt;br&gt;separate function module&lt;br&gt;effective P ceiling" vertex="1">
+          <mxGeometry height="96" width="300" x="70" y="603" as="geometry" />
+        </mxCell>
+        <mxCell id="priority" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#edf3ff;strokeColor=#7295d1;fontColor=#163d73;fontSize=18;fontFamily=Arial;align=center;verticalAlign=middle;spacing=9;arcSize=13;strokeWidth=2;" value="&lt;b&gt;O.11 PRIORITY ANALYSIS&lt;/b&gt;&lt;br&gt;select allowed P/Q request&lt;br&gt;apply applicable P limits&lt;br&gt;issue expected POC target" vertex="1">
+          <mxGeometry height="164" width="300" x="880" y="360" as="geometry" />
+        </mxCell>
+        <mxCell id="internal_target" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#edf3ff;strokeColor=#7295d1;fontColor=#163d73;fontSize=18;fontFamily=Arial;align=center;verticalAlign=middle;spacing=9;arcSize=13;strokeWidth=2;" value="&lt;b&gt;INTERNAL SET-POINT&lt;/b&gt;&lt;br&gt;selected operating&lt;br&gt;point at the POC" vertex="1">
+          <mxGeometry height="124" width="245" x="1250" y="382" as="geometry" />
+        </mxCell>
+        <mxCell id="fast" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e9f8f0;strokeColor=#69b98b;fontColor=#195b40;fontSize=18;fontFamily=Arial;align=center;verticalAlign=middle;spacing=9;arcSize=13;strokeWidth=2;" value="&lt;b&gt;FAST CONTROL RING&lt;/b&gt;&lt;br&gt;compare MC200 vs target&lt;br&gt;respect capability / POC limits&lt;br&gt;coordinate plant commands" vertex="1">
+          <mxGeometry height="180" width="275" x="1570" y="348" as="geometry" />
+        </mxCell>
+        <mxCell id="plant" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e9f8f0;strokeColor=#69b98b;fontColor=#195b40;fontSize=17;fontFamily=Arial;align=center;verticalAlign=middle;spacing=9;arcSize=13;strokeWidth=2;" value="&lt;b&gt;PLANT ELEMENTS&lt;/b&gt;&lt;br&gt;inverters / storage / units&lt;br&gt;commands + telemetry" vertex="1">
+          <mxGeometry height="144" width="250" x="1940" y="368" as="geometry" />
+        </mxCell>
+        <mxCell id="slow" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f3edff;strokeColor=#a18ad5;fontColor=#50388b;fontSize=17;fontFamily=Arial;align=center;verticalAlign=middle;spacing=9;arcSize=13;strokeWidth=2;" value="&lt;b&gt;SLOW CONTROL RING&lt;/b&gt;&lt;br&gt;selected Q(V) / cosφ(P) module&lt;br&gt;dead band + ΔT scheduler&lt;br&gt;eligible candidate to O.11" vertex="1">
+          <mxGeometry height="140" width="325" x="535" y="846" as="geometry" />
+        </mxCell>
+        <mxCell id="mc_dt" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e8f7fa;strokeColor=#65b6c3;fontColor=#075565;fontSize=17;fontFamily=Arial;align=center;verticalAlign=middle;spacing=9;arcSize=13;strokeWidth=2;" value="&lt;b&gt;POC MCΔT&lt;/b&gt;&lt;br&gt;fixed-block aggregation&lt;br&gt;slow curve + thresholds" vertex="1">
+          <mxGeometry height="126" width="285" x="1040" y="856" as="geometry" />
+        </mxCell>
+        <mxCell id="mc200" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e8f7fa;strokeColor=#65b6c3;fontColor=#075565;fontSize=17;fontFamily=Arial;align=center;verticalAlign=middle;spacing=9;arcSize=13;strokeWidth=2;" value="&lt;b&gt;POC MC200&lt;/b&gt;&lt;br&gt;200 ms fixed-block data&lt;br&gt;fast-loop feedback" vertex="1">
+          <mxGeometry height="126" width="275" x="1570" y="857" as="geometry" />
+        </mxCell>
+        <mxCell id="poc" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e8f7fa;strokeColor=#65b6c3;fontColor=#075565;fontSize=17;fontFamily=Arial;align=center;verticalAlign=middle;spacing=9;arcSize=13;strokeWidth=2;" value="&lt;b&gt;POINT OF CONNECTION&lt;/b&gt;&lt;br&gt;measured P / Q / V&lt;br&gt;actual plant operating point" vertex="1">
+          <mxGeometry height="135" width="250" x="1940" y="853" as="geometry" />
+        </mxCell>
+        <mxCell id="user_to_priority" edge="1" parent="1" source="plant_user" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#2964c2;strokeWidth=3;exitX=1.0000;exitY=0.5333;entryX=-0.006;entryY=0.196;endArrow=block;endFill=1;entryDx=0;entryDy=0;entryPerimeter=0;" target="priority">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="770.03" y="300" />
+              <mxPoint x="770.03" y="392.14" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="external_to_gate" edge="1" parent="1" source="external_pq" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#2964c2;strokeWidth=3;exitX=1.0000;exitY=0.5000;entryX=0.0000;entryY=0.5000;endArrow=block;endFill=1;" target="three_second_gate">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="gate_to_priority" edge="1" parent="1" source="three_second_gate" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#2964c2;strokeWidth=3;exitX=1.0000;exitY=0.5000;entryX=0.0000;entryY=0.4573;endArrow=block;endFill=1;" target="priority">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="gate_to_rejected" edge="1" parent="1" source="three_second_gate" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#8490a0;strokeWidth=3;exitX=0.5000;exitY=1.0000;entryX=0.5000;entryY=0.0000;endArrow=block;endFill=1;dashed=1;dashPattern=8 6;" target="too_soon">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="limit_to_priority" edge="1" parent="1" source="p_limit_port" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#ae7315;strokeWidth=3;exitX=1.0000;exitY=0.5417;entryX=0.001;entryY=0.676;endArrow=block;endFill=1;entryDx=0;entryDy=0;entryPerimeter=0;" target="priority">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="770" y="655" />
+              <mxPoint x="770" y="470.9" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="slow_to_priority" edge="1" parent="1" source="slow" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#7650ad;strokeWidth=3;exitX=0.5077;exitY=0.0000;entryX=0.5000;entryY=1.0000;endArrow=block;endFill=1;" target="priority">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="700" y="737" />
+              <mxPoint x="1030" y="737" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="priority_to_target" edge="1" parent="1" source="priority" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#2964c2;strokeWidth=3;exitX=1.0000;exitY=0.5122;entryX=0.0000;entryY=0.5000;endArrow=block;endFill=1;" target="internal_target">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="target_to_fast" edge="1" parent="1" source="internal_target" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#2964c2;strokeWidth=3;exitX=1.0000;exitY=0.5000;entryX=0.0000;entryY=0.5333;endArrow=block;endFill=1;" target="fast">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="fast_to_plant" edge="1" parent="1" source="fast" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#228455;strokeWidth=3;exitX=1.0000;exitY=0.5333;entryX=0.0000;entryY=0.5278;endArrow=block;endFill=1;" target="plant">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="plant_to_poc" edge="1" parent="1" source="plant" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#228455;strokeWidth=3;exitX=0.5;exitY=1;entryX=0.5;entryY=0;endArrow=block;endFill=1;entryDx=0;entryDy=0;exitDx=0;exitDy=0;" target="poc">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="plant_telemetry" edge="1" parent="1" source="plant" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#8490a0;strokeWidth=3;exitX=0.1600;exitY=1.0000;entryX=0.8909;entryY=1.0000;endArrow=block;endFill=1;dashed=1;dashPattern=8 6;" target="fast">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1980" y="685" />
+              <mxPoint x="1815" y="685" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="poc_to_mc200" edge="1" parent="1" source="poc" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#087d8c;strokeWidth=3;exitX=0.0000;exitY=0.4815;entryX=1.0000;entryY=0.4841;endArrow=block;endFill=1;" target="mc200">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="mc200_to_fast" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#087d8c;strokeWidth=3;exitX=0.1818;exitY=0.0000;entryX=0.1818;entryY=1.0000;endArrow=block;endFill=1;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1707.2649999999999" y="857" as="sourcePoint" />
+            <mxPoint x="1707.2649999999999" y="528" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="poc_to_mcdt" edge="1" parent="1" source="poc" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#087d8c;strokeWidth=3;exitX=0.5;exitY=1;entryX=0.4737;entryY=1.0000;endArrow=block;endFill=1;exitDx=0;exitDy=0;" target="mc_dt">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="2065" y="1090" />
+              <mxPoint x="1175" y="1090" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="mcdt_to_slow" edge="1" parent="1" source="mc_dt" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#087d8c;strokeWidth=3;exitX=0.0000;exitY=0.4444;entryX=1.0000;entryY=0.4714;endArrow=block;endFill=1;" target="slow">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="caption_0" parent="1" style="text;html=1;strokeColor=none;fillColor=none;fontColor=#62738b;fontSize=17;fontFamily=Arial;align=left;verticalAlign=middle;" value="COMMAND SOURCES" vertex="1">
+          <mxGeometry height="29" width="193" x="70" y="207" as="geometry" />
+        </mxCell>
+        <mxCell id="caption_1" parent="1" style="text;html=1;strokeColor=none;fillColor=none;fontColor=#62738b;fontSize=17;fontFamily=Arial;align=left;verticalAlign=middle;" value="SELECT EXPECTED OPERATING POINT" vertex="1">
+          <mxGeometry height="29" width="378" x="880" y="207" as="geometry" />
+        </mxCell>
+        <mxCell id="caption_2" parent="1" style="text;html=1;strokeColor=none;fillColor=none;fontColor=#62738b;fontSize=17;fontFamily=Arial;align=left;verticalAlign=middle;" value="ACTUATE THE PLANT" vertex="1">
+          <mxGeometry height="29" width="216" x="1570" y="207" as="geometry" />
+        </mxCell>
+        <mxCell id="caption_3" parent="1" style="text;html=1;strokeColor=none;fillColor=none;fontColor=#62738b;fontSize=17;fontFamily=Arial;align=left;verticalAlign=middle;" value="POC FEEDBACK AND SLOW CURVE CALCULATION" vertex="1">
+          <mxGeometry height="29" width="470" x="70" y="798" as="geometry" />
+        </mxCell>
+        <mxCell id="caption_4" parent="1" style="text;html=1;strokeColor=none;fillColor=none;fontColor=#62738b;fontSize=15;fontFamily=Arial;align=left;verticalAlign=middle;" value="optional unit feedback" vertex="1">
+          <mxGeometry height="29" width="244" x="1820" y="625" as="geometry" />
+        </mxCell>
+        <mxCell id="caption_5" parent="1" style="text;html=1;strokeColor=none;fillColor=none;fontColor=#087d8c;fontSize=15;fontFamily=Arial;align=left;verticalAlign=middle;" value="MC200" vertex="1">
+          <mxGeometry height="29" width="110" x="1638" y="699" as="geometry" />
+        </mxCell>
+        <mxCell id="caption_6" parent="1" style="text;html=1;strokeColor=none;fillColor=none;fontColor=#7650ad;fontSize=16;fontFamily=Arial;align=left;verticalAlign=middle;" value="Curve / function parameter updates: separate ΔT acceptance check inside slow ring." vertex="1">
+          <mxGeometry height="22" width="600" x="70" y="720" as="geometry" />
+        </mxCell>
+        <mxCell id="caption_7" parent="1" style="text;html=1;strokeColor=none;fillColor=none;fontColor=#45566b;fontSize=17;fontFamily=Arial;align=left;verticalAlign=middle;" value="O.7.3.3: the 3 s check applies to external set-point updates; reject an early update before O.11." vertex="1">
+          <mxGeometry height="29" width="1141" x="70" y="1145" as="geometry" />
+        </mxCell>
+        <mxCell id="caption_8" parent="1" style="text;html=1;strokeColor=none;fillColor=none;fontColor=#45566b;fontSize=17;fontFamily=Arial;align=left;verticalAlign=middle;" value="O.7.4: fast ring uses MC200; slow ring uses MCΔT. Detailed control logic is on the separate ring and priority pages." vertex="1">
+          <mxGeometry height="29" width="1360" x="70" y="1180" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="cci-o11-priority-flow-v2" name="CCI O.11 Priority Flow">
+    <mxGraphModel dx="4040" dy="2403" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2200" pageHeight="2500" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0f172a;fontColor=#ffffff;strokeColor=#0f172a;fontSize=24;fontStyle=1;align=center;verticalAlign=middle;" value="CCI O.11 — Compatibility &amp; Priority Arbitration" vertex="1">
+          <mxGeometry height="60" width="1500" x="300" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="sub" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e2e8f0;fontColor=#334155;strokeColor=#cbd5e1;fontSize=13;align=center;verticalAlign=middle;" value="This page handles activation requests, plant-function availability, O.11 compatibility, configurable priorities, P-limit arbitration and capability conflicts. Communication, measurements, regulation-curve calculations and device allocation belong on separate CCI pages." vertex="1">
+          <mxGeometry height="48" width="1500" x="300" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="start" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;fontColor=#0f172a;strokeColor=#64748b;fontSize=14;fontStyle=1;align=center;verticalAlign=middle;spacing=8;" value="New regulation-function ACTIVATION request" vertex="1">
+          <mxGeometry height="62" width="580" x="760" y="185" as="geometry" />
+        </mxCell>
+        <mxCell id="lookup" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eef2ff;fontColor=#312e81;strokeColor=#6366f1;fontSize=13;fontStyle=1;align=center;verticalAlign=middle;spacing=8;" value="Look up O.11 compatibility against the CURRENT ACTIVE function set&lt;br&gt;&lt;font style=&quot;font-size:11px;&quot;&gt;P ↔ Q compatible · Q functions mutually incompatible · P target/modulation functions mutually incompatible · P-limit functions may coexist&lt;/font&gt;" vertex="1">
+          <mxGeometry height="100" width="720" x="690" y="550" as="geometry" />
+        </mxCell>
+        <mxCell id="incompat" parent="1" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff7ed;fontColor=#0f172a;strokeColor=#f59e0b;fontSize=13;fontStyle=1;align=center;verticalAlign=middle;" value="Is any currently ACTIVE function incompatible with NEW?" vertex="1">
+          <mxGeometry height="130" width="460" x="820" y="705" as="geometry" />
+        </mxCell>
+        <mxCell id="activate_compatible" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ecfdf5;fontColor=#065f46;strokeColor=#10b981;fontSize=13;fontStyle=1;align=center;verticalAlign=middle;spacing=8;" value="NO — Activate NEW and retain all compatible active functions" vertex="1">
+          <mxGeometry height="90" width="500" x="230" y="888" as="geometry" />
+        </mxCell>
+        <mxCell id="read_prio" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;fontColor=#0f172a;strokeColor=#64748b;fontSize=13;fontStyle=1;align=center;verticalAlign=middle;spacing=8;" value="Read CURRENT CONFIGURED executive-priority indices&lt;br&gt;&lt;font style=&quot;font-size:11px;&quot;&gt;Do not assume the default order is permanently hard-coded&lt;/font&gt;" vertex="1">
+          <mxGeometry height="88" width="430" x="835" y="890" as="geometry" />
+        </mxCell>
+        <mxCell id="prio" parent="1" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff7ed;fontColor=#0f172a;strokeColor=#f59e0b;fontSize=13;fontStyle=1;align=center;verticalAlign=middle;" value="Is NEW priority index ≤ incompatible ACTIVE index?" vertex="1">
+          <mxGeometry height="130" width="410" x="845" y="1025" as="geometry" />
+        </mxCell>
+        <mxCell id="replace" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ecfdf5;fontColor=#065f46;strokeColor=#10b981;fontSize=13;fontStyle=1;align=center;verticalAlign=middle;spacing=8;" value="YES — Activate NEW and simultaneously deactivate the previous incompatible function(s)" vertex="1">
+          <mxGeometry height="100" width="500" x="585" y="1215" as="geometry" />
+        </mxCell>
+        <mxCell id="reject" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef2f2;fontColor=#991b1b;strokeColor=#ef4444;fontSize=13;fontStyle=1;align=center;verticalAlign=middle;spacing=8;" value="NO — Reject NEW activation request&lt;br&gt;Existing higher-priority incompatible control remains active" vertex="1">
+          <mxGeometry height="100" width="500" x="1190" y="1215" as="geometry" />
+        </mxCell>
+        <mxCell id="reject_end" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff1f2;fontColor=#881337;strokeColor=#fb7185;fontSize=12;fontStyle=1;align=center;verticalAlign=middle;spacing=8;" value="REQUEST HANDLED — active control set unchanged" vertex="1">
+          <mxGeometry height="68" width="410" x="1235" y="1360" as="geometry" />
+        </mxCell>
+        <mxCell id="active_set" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ecfdf5;fontColor=#065f46;strokeColor=#10b981;fontSize=13;fontStyle=1;align=center;verticalAlign=middle;spacing=8;" value="Accepted ACTIVE function set updated" vertex="1">
+          <mxGeometry height="72" width="500" x="600" y="1370" as="geometry" />
+        </mxCell>
+        <mxCell id="p_arbitration" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eff6ff;fontColor=#1e3a8a;strokeColor=#3b82f6;fontSize=12;fontStyle=1;align=left;verticalAlign=middle;spacing=12;" value="&lt;b&gt;Resolve ACTIVE-P functions&lt;/b&gt;&lt;br&gt;• At most one incompatible P target/modulation function remains active.&lt;br&gt;• Evaluate active P-limit functions O.9.2.1 / O.9.2.2 together with the P target, if any.&lt;br&gt;• The effective P requirement/ceiling is the most restrictive applicable value." vertex="1">
+          <mxGeometry height="135" width="560" x="570" y="1490" as="geometry" />
+        </mxCell>
+        <mxCell id="fallback" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;fontColor=#0f172a;strokeColor=#64748b;fontSize=12;fontStyle=1;align=center;verticalAlign=middle;spacing=8;" value="For each quantity not controlled by any active regulation function, use the nominal/default operating condition defined for the specific plant" vertex="1">
+          <mxGeometry height="90" width="560" x="570" y="1675" as="geometry" />
+        </mxCell>
+        <mxCell id="capability" parent="1" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff7ed;fontColor=#0f172a;strokeColor=#f59e0b;fontSize=12;fontStyle=1;align=center;verticalAlign=middle;" value="Can all simultaneously active compatible P/Q requests be satisfied within current plant and unit technical capability?" vertex="1">
+          <mxGeometry height="145" width="440" x="630" y="1815" as="geometry" />
+        </mxCell>
+        <mxCell id="cap_yes" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ecfdf5;fontColor=#065f46;strokeColor=#10b981;fontSize=12;fontStyle=1;align=center;verticalAlign=middle;spacing=8;" value="YES — Keep the resolved P/Q operating request" vertex="1">
+          <mxGeometry height="80" width="420" x="230" y="2020" as="geometry" />
+        </mxCell>
+        <mxCell id="cap_no" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eef2ff;fontColor=#312e81;strokeColor=#6366f1;fontSize=12;fontStyle=1;align=left;verticalAlign=middle;spacing=10;" value="&lt;b&gt;NO — Apply CEI 0-16 §8.8.6 capability constraints&lt;/b&gt;&lt;br&gt;Move to the nearest feasible operating point while respecting required service priority and the capability limits of the plant elements.&lt;br&gt;Example: reduce active power when necessary to satisfy a reactive-power request." vertex="1">
+          <mxGeometry height="110" width="510" x="1000" y="2005" as="geometry" />
+        </mxCell>
+        <mxCell id="override" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff7ed;fontColor=#7c2d12;strokeColor=#f59e0b;fontSize=12;fontStyle=1;align=center;verticalAlign=middle;spacing=8;" value="Apply higher-level override/interlock check before actuation&lt;br&gt;&lt;font style=&quot;font-size:11px;&quot;&gt;Machine-local over/under-frequency transient controls and defense-plan actions have overriding priority. CCI must not implement the frequency-transient regulation itself or counteract it.&lt;/font&gt;" vertex="1">
+          <mxGeometry height="110" width="580" x="560" y="2160" as="geometry" />
+        </mxCell>
+        <mxCell id="out" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0f172a;fontColor=#ffffff;strokeColor=#0f172a;fontSize=14;fontStyle=1;align=center;verticalAlign=middle;spacing=8;" value="OUTPUT OF THIS PAGE: resolved internal P/Q request + active-function state → Plant Control / Command Allocation page" vertex="1">
+          <mxGeometry height="78" width="640" x="530" y="2305" as="geometry" />
+        </mxCell>
+        <mxCell id="p6title" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#4c1d95;fontColor=#ffffff;strokeColor=#4c1d95;fontSize=15;fontStyle=1;align=center;verticalAlign=middle;" value="SPECIAL CASE — SAME DEFAULT PRIORITY = 6" vertex="1">
+          <mxGeometry height="48" width="500" x="1510" y="215" as="geometry" />
+        </mxCell>
+        <mxCell id="p6a" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f3ff;fontColor=#4c1d95;strokeColor=#8b5cf6;fontSize=12;fontStyle=1;align=center;verticalAlign=middle;spacing=8;" value="Set-point cosφ&lt;br&gt;O.9.1.1" vertex="1">
+          <mxGeometry height="75" width="150" x="1510" y="290" as="geometry" />
+        </mxCell>
+        <mxCell id="p6b" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f3ff;fontColor=#4c1d95;strokeColor=#8b5cf6;fontSize=12;fontStyle=1;align=center;verticalAlign=middle;spacing=8;" value="Q = f(V)&lt;br&gt;O.9.1.3" vertex="1">
+          <mxGeometry height="75" width="150" x="1685" y="290" as="geometry" />
+        </mxCell>
+        <mxCell id="p6c" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f3ff;fontColor=#4c1d95;strokeColor=#8b5cf6;fontSize=12;fontStyle=1;align=center;verticalAlign=middle;spacing=8;" value="cosφ = f(P)&lt;br&gt;O.9.1.2" vertex="1">
+          <mxGeometry height="75" width="150" x="1860" y="290" as="geometry" />
+        </mxCell>
+        <mxCell id="p6note" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f3ff;fontColor=#4c1d95;strokeColor=#8b5cf6;fontSize=12;align=left;verticalAlign=middle;spacing=12;" value="All reactive-power regulation functions are mutually incompatible. Under the default Table 75 ordering, these three functions have index 6. Therefore a new priority-6 request satisfies NEW ≤ ACTIVE and replaces the previously active incompatible priority-6 function. This is a consequence of the general rule, not a separate arbitration algorithm." vertex="1">
+          <mxGeometry height="190" width="500" x="1510" y="395" as="geometry" />
+        </mxCell>
+        <mxCell id="config_note" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fefce8;fontColor=#713f12;strokeColor=#eab308;fontSize=12;align=left;verticalAlign=middle;spacing=12;" value="&lt;b&gt;Priority configuration requirement&lt;/b&gt;&lt;br&gt;The default Table 75 order is the starting configuration, but the CCI priority order must be implemented as variable/configurable logic. Any change to the priority settings must be recorded in the apparatus log. The configuration and logging mechanisms can be detailed on separate pages." vertex="1">
+          <mxGeometry height="175" width="500" x="1510" y="650" as="geometry" />
+        </mxCell>
+        <mxCell id="compat_note" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f0fdfa;fontColor=#134e4a;strokeColor=#14b8a6;fontSize=12;align=left;verticalAlign=middle;spacing=12;" value="&lt;b&gt;Compatibility matrix used by the first decision&lt;/b&gt;&lt;br&gt;• Any P-regulation function is compatible with Q-regulation functions.&lt;br&gt;• Q-regulation functions are mutually incompatible.&lt;br&gt;• DSO P modulation and external P set-point are mutually incompatible.&lt;br&gt;• Active-power LIMIT functions may remain active together with other regulation functions; their effect is applied only when they actually constrain P." vertex="1">
+          <mxGeometry height="205" width="500" x="1510" y="885" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" edge="1" parent="1" source="start" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#475569;" target="lookup">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" edge="1" parent="1" source="lookup" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#475569;" target="incompat">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" edge="1" parent="1" source="incompat" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#475569;" target="activate_compatible" value="NO">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="480" y="770" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e4" edge="1" parent="1" source="incompat" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#475569;" target="read_prio" value="YES">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5" edge="1" parent="1" source="read_prio" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#475569;" target="prio">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e6" edge="1" parent="1" source="prio" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#475569;" target="replace" value="YES — higher or equal priority">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="830.03" y="1090.03" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e7" edge="1" parent="1" source="prio" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#475569;" target="reject" value="NO — lower priority">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1440" y="1090" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e8" edge="1" parent="1" source="reject" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#ef4444;" target="reject_end">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e9" edge="1" parent="1" source="activate_compatible" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#475569;" target="active_set">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="480" y="1405" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e10" edge="1" parent="1" source="replace" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#475569;" target="active_set">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="850" y="1330" />
+              <mxPoint x="850" y="1330" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e11" edge="1" parent="1" source="active_set" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#475569;" target="p_arbitration">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e12" edge="1" parent="1" source="p_arbitration" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#475569;" target="fallback">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e13" edge="1" parent="1" source="fallback" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#475569;" target="capability">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e14" edge="1" parent="1" source="capability" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#475569;" target="cap_yes" value="YES">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="440" y="1885" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e15" edge="1" parent="1" source="capability" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#475569;" target="cap_no" value="NO">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1270.06" y="1887.47" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e16" edge="1" parent="1" source="cap_yes" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#475569;" target="override">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="440" y="2215" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e17" edge="1" parent="1" source="cap_no" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#475569;" target="override">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1270.06" y="2220.06" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e18" edge="1" parent="1" source="override" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#475569;" target="out">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="availability_check" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eef2ff;fontColor=#312e81;strokeColor=#6366f1;fontSize=13;fontStyle=1;align=center;verticalAlign=middle;spacing=8;" value="Check plant function availability / support&lt;br&gt;&lt;font style=&quot;font-size:11px;&quot;&gt;Is the requested regulation function implemented, enabled and applicable for this specific plant configuration?&lt;/font&gt;" vertex="1">
+          <mxGeometry height="82" width="720" x="690" y="285" as="geometry" />
+        </mxCell>
+        <mxCell id="available_q" parent="1" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff7ed;fontColor=#0f172a;strokeColor=#f59e0b;fontSize=13;fontStyle=1;align=center;verticalAlign=middle;" value="Is NEW function available / supported by this plant?" vertex="1">
+          <mxGeometry height="122" width="460" x="820" y="405" as="geometry" />
+        </mxCell>
+        <mxCell id="unavailable" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef2f2;fontColor=#991b1b;strokeColor=#ef4444;fontSize=13;fontStyle=1;align=center;verticalAlign=middle;spacing=8;" value="NO — Do not activate NEW&lt;br&gt;Status: function unavailable / not supported for this plant&lt;br&gt;Active control set unchanged" vertex="1">
+          <mxGeometry height="100" width="470" x="170" y="416" as="geometry" />
+        </mxCell>
+        <mxCell id="e0" edge="1" parent="1" source="start" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#475569;" target="availability_check">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e0b" edge="1" parent="1" source="availability_check" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#475569;" target="available_q">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e0c" edge="1" parent="1" source="available_q" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#475569;" target="lookup" value="YES">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e0d" edge="1" parent="1" source="available_q" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#475569;" target="unavailable" value="NO">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="430" y="466" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="cci-fast-control-ring-v1" name="Fast control ring">
+    <mxGraphModel dx="2357" dy="1402" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2280" pageHeight="1350" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="fast_ring_boundary" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fbff;strokeColor=#9aaec9;fontColor=#14233c;fontSize=16;fontFamily=Arial;align=center;verticalAlign=middle;spacing=10;arcSize=12;strokeWidth=2;dashed=1;dashPattern=8 6;" value="" vertex="1">
+          <mxGeometry height="328" width="1480" x="375" y="636" as="geometry" />
+        </mxCell>
+        <mxCell id="title" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#14233c;strokeColor=#14233c;fontColor=#ffffff;fontSize=27;fontFamily=Arial;align=center;verticalAlign=middle;spacing=10;arcSize=12;strokeWidth=2;" value="FAST CONTROL RING  |  Plant control at the POC" vertex="1">
+          <mxGeometry height="72" width="2110" x="65" y="35" as="geometry" />
+        </mxCell>
+        <mxCell id="subtitle" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e9eef6;strokeColor=#c6d4e5;fontColor=#52647b;fontSize=17;fontFamily=Arial;align=center;verticalAlign=middle;spacing=10;arcSize=12;strokeWidth=2;" value="Figure 123 · CEI 0-16 Annex O, O.7.2 / O.7.3 / O.7.4 · detailed view connected to your O.11 priority page" vertex="1">
+          <mxGeometry height="44" width="2110" x="65" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="source_user" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f3f1ff;strokeColor=#a58cdd;fontColor=#49368a;fontSize=18;fontFamily=Arial;align=center;verticalAlign=middle;spacing=10;arcSize=12;strokeWidth=2;" value="Plant user&lt;br&gt;&lt;b&gt;P or Q setpoint&lt;/b&gt;" vertex="1">
+          <mxGeometry height="82" width="305" x="75" y="205" as="geometry" />
+        </mxCell>
+        <mxCell id="source_external" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f3f1ff;strokeColor=#a58cdd;fontColor=#49368a;fontSize=17;fontFamily=Arial;align=center;verticalAlign=middle;spacing=10;arcSize=12;strokeWidth=2;" value="External P/Q command&lt;br&gt;&lt;b&gt;after 3 s update gate&lt;/b&gt;&lt;br&gt;O.7.3.3 → O.11" vertex="1">
+          <mxGeometry height="95" width="305" x="75" y="309" as="geometry" />
+        </mxCell>
+        <mxCell id="source_slow" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f3f1ff;strokeColor=#a58cdd;fontColor=#49368a;fontSize=17;fontFamily=Arial;align=center;verticalAlign=middle;spacing=10;arcSize=12;strokeWidth=2;" value="&lt;b&gt;SLOW CONTROL RING&lt;/b&gt;&lt;br&gt;Aggregate POC measures (M CΔT)&lt;br&gt;Q(V) or cosφ(P) + dead band&lt;br&gt;candidate setpoint at POC" vertex="1">
+          <mxGeometry height="130" width="305" x="75" y="423" as="geometry" />
+        </mxCell>
+        <mxCell id="arb" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e9f3ff;strokeColor=#4d84d4;fontColor=#164583;fontSize=18;fontFamily=Arial;align=center;verticalAlign=middle;spacing=10;arcSize=12;strokeWidth=2;" value="&lt;b&gt;O.11 PRIORITY / COMPATIBILITY&lt;/b&gt;&lt;br&gt;Select compatible P / Q functions&lt;br&gt;and configured priorities" vertex="1">
+          <mxGeometry height="144" width="340" x="460" y="308" as="geometry" />
+        </mxCell>
+        <mxCell id="target" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e9f3ff;strokeColor=#4d84d4;fontColor=#164583;fontSize=19;fontFamily=Arial;align=center;verticalAlign=middle;spacing=10;arcSize=12;strokeWidth=2;" value="&lt;b&gt;INTERNAL SETPOINT AT POC&lt;/b&gt;&lt;br&gt;Expected P* and/or Q*&lt;br&gt;(cosφ reference when selected)" vertex="1">
+          <mxGeometry height="124" width="350" x="880" y="316" as="geometry" />
+        </mxCell>
+        <mxCell id="poc" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e8f6fb;strokeColor=#36a1b8;fontColor=#075565;fontSize=19;fontFamily=Arial;align=center;verticalAlign=middle;spacing=10;arcSize=12;strokeWidth=2;" value="&lt;b&gt;POC / PdC METER&lt;/b&gt;&lt;br&gt;Grid connection point&lt;br&gt;Synchronously sampled V / I&lt;br&gt;measured P, Q, V" vertex="1">
+          <mxGeometry height="154" width="265" x="70" y="724" as="geometry" />
+        </mxCell>
+        <mxCell id="measure" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e8f6fb;strokeColor=#36a1b8;fontColor=#075565;fontSize=18;fontFamily=Arial;align=center;verticalAlign=middle;spacing=10;arcSize=12;strokeWidth=2;" value="&lt;b&gt;PROCESS POC DATA&lt;/b&gt;&lt;br&gt;Fixed 200 ms blocks (M C200)&lt;br&gt;P_POC, Q_POC, V_POC&lt;br&gt;with freshness / validity" vertex="1">
+          <mxGeometry height="154" width="290" x="420" y="724" as="geometry" />
+        </mxCell>
+        <mxCell id="compare" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eff5ff;strokeColor=#608de2;fontColor=#163f83;fontSize=19;fontFamily=Arial;align=center;verticalAlign=middle;spacing=10;arcSize=12;strokeWidth=2;" value="&lt;b&gt;COMPARE&lt;/b&gt;&lt;br&gt;Expected vs measured&lt;br&gt;POC operating point&lt;br&gt;calculate P / Q deviation" vertex="1">
+          <mxGeometry height="154" width="255" x="780" y="724" as="geometry" />
+        </mxCell>
+        <mxCell id="limits" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff4dc;strokeColor=#e0a02c;fontColor=#81500b;fontSize=19;fontFamily=Arial;align=center;verticalAlign=middle;spacing=10;arcSize=12;strokeWidth=2;" value="&lt;b&gt;CHECK POC LIMITS&lt;/b&gt;&lt;br&gt;Feasible P / Q values&lt;br&gt;and applicable gradients&lt;br&gt;respect active priorities" vertex="1">
+          <mxGeometry height="154" width="285" x="1095" y="724" as="geometry" />
+        </mxCell>
+        <mxCell id="allocation" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e9f8f2;strokeColor=#40aa78;fontColor=#155a42;fontSize=19;fontFamily=Arial;align=center;verticalAlign=middle;spacing=10;arcSize=12;strokeWidth=2;" value="&lt;b&gt;COORDINATE ELEMENTS&lt;/b&gt;&lt;br&gt;Allocate feasible P_i* / Q_i*&lt;br&gt;using unit capability, state&lt;br&gt;and measured response" vertex="1">
+          <mxGeometry height="154" width="355" x="1440" y="724" as="geometry" />
+        </mxCell>
+        <mxCell id="plant" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e9f8f2;strokeColor=#40aa78;fontColor=#155a42;fontSize=19;fontFamily=Arial;align=center;verticalAlign=middle;spacing=10;arcSize=12;strokeWidth=2;" value="&lt;b&gt;PLANT ELEMENTS&lt;/b&gt;&lt;br&gt;Inverters, generators,&lt;br&gt;storage / controllable&lt;br&gt;plant equipment" vertex="1">
+          <mxGeometry height="154" width="270" x="1920" y="724" as="geometry" />
+        </mxCell>
+        <mxCell id="telemetry" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e9f8f2;strokeColor=#8acc9f;fontColor=#155a42;fontSize=17;fontFamily=Arial;align=center;verticalAlign=middle;spacing=10;arcSize=12;strokeWidth=2;" value="&lt;b&gt;Element measurements&lt;/b&gt;&lt;br&gt;Unit P_i / Q_i, status and available&lt;br&gt;capability via internal communications" vertex="1">
+          <mxGeometry height="109" width="395" x="1430" y="1115" as="geometry" />
+        </mxCell>
+        <mxCell id="u_arb" edge="1" parent="1" source="source_user" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#6845bb;strokeWidth=3;endArrow=block;endFill=1;exitX=1.0000;exitY=0.5000;entryX=0.0000;entryY=0.2361;" target="arb">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="425" y="246" />
+              <mxPoint x="425" y="342" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="x_arb" edge="1" parent="1" source="source_external" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#6845bb;strokeWidth=3;endArrow=block;endFill=1;exitX=1.0000;exitY=0.4947;entryX=0.0000;entryY=0.3333;" target="arb">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="s_arb" edge="1" parent="1" source="source_slow" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#6845bb;strokeWidth=3;endArrow=block;endFill=1;exitX=1.0000;exitY=0.3231;entryX=0.0000;entryY=0.7500;" target="arb">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="425" y="465" />
+              <mxPoint x="425" y="416" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="arb_target" edge="1" parent="1" source="arb" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#2363d4;strokeWidth=4;endArrow=block;endFill=1;exitX=1.0000;exitY=0.5000;entryX=0.0000;entryY=0.5161;" target="target">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="target_cmp" edge="1" parent="1" source="target" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#2363d4;strokeWidth=4;endArrow=block;endFill=1;exitX=0.3429;exitY=1.0000;entryX=0.4941;entryY=0.0000;" target="compare">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1000" y="625" />
+              <mxPoint x="906" y="625" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="poc_measure" edge="1" parent="1" source="poc" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#048780;strokeWidth=4;endArrow=block;endFill=1;exitX=1.0000;exitY=0.5000;entryX=0.0000;entryY=0.5000;" target="measure">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="measure_cmp" edge="1" parent="1" source="measure" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#048780;strokeWidth=4;endArrow=block;endFill=1;exitX=1.0000;exitY=0.5000;entryX=0.0000;entryY=0.5000;" target="compare">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="measure_to_slow" edge="1" parent="1" source="measure" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#6845bb;strokeWidth=3;endArrow=block;endFill=1;exitX=0.6207;exitY=0.0000;entryX=0.0000;entryY=0.7462;" target="source_slow">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="600" y="587" />
+              <mxPoint x="36" y="587" />
+              <mxPoint x="36" y="520" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="cmp_limits" edge="1" parent="1" source="compare" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#2363d4;strokeWidth=4;endArrow=block;endFill=1;exitX=1.0000;exitY=0.5000;entryX=0.0000;entryY=0.5000;" target="limits">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="limits_allocate" edge="1" parent="1" source="limits" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#2363d4;strokeWidth=4;endArrow=block;endFill=1;exitX=1.0000;exitY=0.5000;entryX=0.0000;entryY=0.5000;" target="allocation">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="allocate_plant" edge="1" parent="1" source="allocation" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#048780;strokeWidth=5;endArrow=block;endFill=1;exitX=1.0000;exitY=0.2857;entryX=0.0000;entryY=0.2857;" target="plant">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="plant_poc" edge="1" parent="1" source="plant" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#6a8796;strokeWidth=3;endArrow=block;endFill=1;exitX=0.2593;exitY=1.0000;entryX=0.4981;entryY=1.0000;" target="poc">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1990" y="1030" />
+              <mxPoint x="202" y="1030" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="plant_telemetry" edge="1" parent="1" source="plant" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#699e84;strokeWidth=3;endArrow=block;endFill=1;exitX=0.8889;exitY=1.0000;entryX=1.0000;entryY=0.5046;dashed=1;dashPattern=8 6;" target="telemetry">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="2220" y="878" />
+              <mxPoint x="2220" y="1170" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="telemetry_allocate" edge="1" parent="1" source="telemetry" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#699e84;strokeWidth=3;endArrow=block;endFill=1;exitX=0.4937;exitY=0.0000;entryX=0.5211;entryY=1.0000;dashed=1;dashPattern=8 6;" target="allocation">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="annotation_0" parent="1" style="text;html=1;strokeColor=none;fillColor=none;fontColor=#6845bb;fontSize=16;fontStyle=1;align=left;verticalAlign=middle;" value="SETPOINT SOURCES" vertex="1">
+          <mxGeometry height="28" width="380" x="89" y="169" as="geometry" />
+        </mxCell>
+        <mxCell id="annotation_1" parent="1" style="text;html=1;strokeColor=none;fillColor=none;fontColor=#2363d4;fontSize=16;fontStyle=1;align=left;verticalAlign=middle;" value="CONTROL SELECTION" vertex="1">
+          <mxGeometry height="28" width="380" x="470" y="268" as="geometry" />
+        </mxCell>
+        <mxCell id="annotation_2" parent="1" style="text;html=1;strokeColor=none;fillColor=none;fontColor=#14233c;fontSize=16;fontStyle=1;align=left;verticalAlign=middle;" value="FAST RING  ·  CLOSED-LOOP CONTROL" vertex="1">
+          <mxGeometry height="28" width="380" x="1098" y="668" as="geometry" />
+        </mxCell>
+        <mxCell id="annotation_3" parent="1" style="text;html=1;strokeColor=none;fillColor=none;fontColor=#048780;fontSize=16;fontStyle=1;align=left;verticalAlign=middle;" value="INTERNAL COMMANDS" vertex="1">
+          <mxGeometry height="28" width="380" x="1787" y="683" as="geometry" />
+        </mxCell>
+        <mxCell id="annotation_4" parent="1" style="text;html=1;strokeColor=none;fillColor=none;fontColor=#52647b;fontSize=16;fontStyle=1;align=left;verticalAlign=middle;" value="electrical response + network conditions → POC feedback" vertex="1">
+          <mxGeometry height="28" width="870" x="885" y="999" as="geometry" />
+        </mxCell>
+        <mxCell id="annotation_5" parent="1" style="text;html=1;strokeColor=none;fillColor=none;fontColor=#45815e;fontSize=16;fontStyle=1;align=left;verticalAlign=middle;" value="unit telemetry" vertex="1">
+          <mxGeometry height="28" width="380" x="1860" y="1100" as="geometry" />
+        </mxCell>
+        <mxCell id="annotation_6" parent="1" style="text;html=1;strokeColor=none;fillColor=none;fontColor=#52647b;fontSize=14;fontStyle=1;align=left;verticalAlign=middle;" value="Design view of Fig. 123 · POC means point of connection (PdC). Technical capability and applicable POC limits govern all allocated commands." vertex="1">
+          <mxGeometry height="28" width="1100" x="73" y="1290" as="geometry" />
+        </mxCell>
+        <mxCell id="annotation_7" parent="1" style="text;html=1;strokeColor=none;fillColor=none;fontColor=#6845bb;fontSize=16;fontStyle=1;align=left;verticalAlign=middle;" value="POC measurement stream → slow-ring aggregation over ΔT" vertex="1">
+          <mxGeometry height="28" width="630" x="92" y="597" as="geometry" />
+        </mxCell>
+        <mxCell id="annotation_8" parent="1" style="text;html=1;strokeColor=none;fillColor=none;fontColor=#2363d4;fontSize=16;fontStyle=1;align=left;verticalAlign=middle;" value="Whole-plant settling (O.7.3.1): TsP ≤ 60 s · TsQ ≤ 10 s · from T0 until stable within ±5% at POC" vertex="1">
+          <mxGeometry height="28" width="1500" x="425" y="889" as="geometry" />
+        </mxCell>
+        <mxCell id="annotation_9" parent="1" style="text;html=1;strokeColor=none;fillColor=none;fontColor=#2363d4;fontSize=14;fontStyle=1;align=left;verticalAlign=middle;" value="Verification: Annex N.7.4.1 (P) and N.6.2.3 (Q). A new slow target may arrive before settling." vertex="1">
+          <mxGeometry height="28" width="1500" x="425" y="920" as="geometry" />
+        </mxCell>
+        <mxCell id="annotation_10" parent="1" style="text;html=1;strokeColor=none;fillColor=none;fontColor=#52647b;fontSize=14;fontStyle=1;align=left;verticalAlign=middle;" value="Measurement contract (O.7.4): IEC 61557-12 fixed blocks, synchronous V/I, POC accuracy O.13.2.1; element telemetry must preserve control accuracy (O.8.1)." vertex="1">
+          <mxGeometry height="28" width="2100" x="73" y="1255" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="cci-slow-control-ring-v1" name="Slow control ring">
+    <mxGraphModel dx="2020" dy="1201" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2250" pageHeight="1000" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#17283f;strokeColor=#17283f;fontColor=#ffffff;fontSize=25;fontFamily=Arial;align=center;verticalAlign=middle;spacing=10;arcSize=12;strokeWidth=2;" value="SLOW CONTROL RING  |  Reusable curve scheduler" vertex="1">
+          <mxGeometry height="69" width="2140" x="55" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="subtitle" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f7fa;strokeColor=#b3bfce;fontColor=#45566c;fontSize=16;fontFamily=Arial;align=center;verticalAlign=middle;spacing=10;arcSize=12;strokeWidth=2;" value="Annex O O.7.3.2 / O.7.4 · Q(V) and cosφ(P) are function modules · external P/Q and P limits enter O.11 separately" vertex="1">
+          <mxGeometry height="48" width="2140" x="55" y="107" as="geometry" />
+        </mxCell>
+        <mxCell id="poc" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e8f7fb;strokeColor=#70bbc9;fontColor=#075565;fontSize=18;fontFamily=Arial;align=center;verticalAlign=middle;spacing=10;arcSize=12;strokeWidth=2;" value="&lt;b&gt;POC MEASUREMENT STREAM&lt;/b&gt;&lt;br&gt;processed fixed-block data&lt;br&gt;shared with fast ring" vertex="1">
+          <mxGeometry height="125" width="315" x="70" y="255" as="geometry" />
+        </mxCell>
+        <mxCell id="aggregate" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e8f7fb;strokeColor=#70bbc9;fontColor=#075565;fontSize=18;fontFamily=Arial;align=center;verticalAlign=middle;spacing=10;arcSize=12;strokeWidth=2;" value="&lt;b&gt;AGGREGATE OVER ΔT&lt;/b&gt;&lt;br&gt;form MCΔT: averaged P, V&lt;br&gt;for curves AND lock thresholds" vertex="1">
+          <mxGeometry height="125" width="340" x="465" y="255" as="geometry" />
+        </mxCell>
+        <mxCell id="select" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f2edff;strokeColor=#a18ad5;fontColor=#4d3787;fontSize=18;fontFamily=Arial;align=center;verticalAlign=middle;spacing=10;arcSize=12;strokeWidth=2;" value="&lt;b&gt;ACTIVE CURVE MODE&lt;/b&gt;&lt;br&gt;Q(V) or cosφ(P)&lt;br&gt;mutually exclusive Q functions" vertex="1">
+          <mxGeometry height="125" width="335" x="885" y="255" as="geometry" />
+        </mxCell>
+        <mxCell id="function" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f2edff;strokeColor=#a18ad5;fontColor=#4d3787;fontSize=18;fontFamily=Arial;align=center;verticalAlign=middle;spacing=10;arcSize=12;strokeWidth=2;" value="&lt;b&gt;FUNCTION MODULE PORT&lt;/b&gt;&lt;br&gt;eligible Q(V) or cosφ(P) module&lt;br&gt;returns POC candidate + dead band" vertex="1">
+          <mxGeometry height="125" width="340" x="1300" y="255" as="geometry" />
+        </mxCell>
+        <mxCell id="dead" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff3e0;strokeColor=#e4aa52;fontColor=#81500b;fontSize=18;fontFamily=Arial;align=center;verticalAlign=middle;spacing=10;arcSize=12;strokeWidth=2;" value="&lt;b&gt;SELECTED FUNCTION DEADBAND&lt;/b&gt;&lt;br&gt;compare candidate vs last sent&lt;br&gt;using that function’s δ" vertex="1">
+          <mxGeometry height="125" width="380" x="1720" y="255" as="geometry" />
+        </mxCell>
+        <mxCell id="output" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e9f8f2;strokeColor=#69bc91;fontColor=#155a42;fontSize=18;fontFamily=Arial;align=center;verticalAlign=middle;spacing=10;arcSize=12;strokeWidth=2;" value="&lt;b&gt;SLOW CANDIDATE →&amp;nbsp;&lt;/b&gt;&lt;span style=&quot;background-color: transparent;&quot;&gt;&lt;b&gt;O.11 PRIORITY ANALYSIS&lt;/b&gt;&lt;/span&gt;&lt;div&gt;if accepted: fast internal setpoint&lt;br&gt;may replace unfinished fast response&lt;/div&gt;" vertex="1">
+          <mxGeometry height="125" width="390" x="1710" y="610" as="geometry" />
+        </mxCell>
+        <mxCell id="hold" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f7fa;strokeColor=#b3bfce;fontColor=#45566c;fontSize=17;fontFamily=Arial;align=center;verticalAlign=middle;spacing=10;arcSize=12;strokeWidth=2;" value="&lt;b&gt;NO NEW SLOW CANDIDATE&lt;/b&gt;&lt;br&gt;inactive or within dead band&lt;br&gt;O.11 keeps other / current request" vertex="1">
+          <mxGeometry height="115" width="365" x="1260" y="615" as="geometry" />
+        </mxCell>
+        <mxCell id="change" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f2edff;strokeColor=#a18ad5;fontColor=#4d3787;fontSize=17;fontFamily=Arial;align=center;verticalAlign=middle;spacing=10;arcSize=12;strokeWidth=2;" value="&lt;b&gt;FUNCTION / CURVE CHANGE&lt;/b&gt;&lt;br&gt;external activation or params&lt;br&gt;distinct from external P/Q setpoint" vertex="1">
+          <mxGeometry height="120" width="350" x="70" y="645" as="geometry" />
+        </mxCell>
+        <mxCell id="gate" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f2edff;strokeColor=#a18ad5;fontColor=#4d3787;fontSize=17;fontFamily=Arial;align=center;verticalAlign=middle;spacing=10;arcSize=12;strokeWidth=2;" value="&lt;b&gt;ΔT COMMAND GATE&lt;/b&gt;&lt;br&gt;interval shorter than ΔT: reject&lt;br&gt;accepted curve applied by next ΔT" vertex="1">
+          <mxGeometry height="120" width="355" x="485" y="645" as="geometry" />
+        </mxCell>
+        <mxCell id="config" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f2edff;strokeColor=#a18ad5;fontColor=#4d3787;fontSize=17;fontFamily=Arial;align=center;verticalAlign=middle;spacing=10;arcSize=12;strokeWidth=2;" value="&lt;b&gt;CONFIGURED PARAMETERS&lt;/b&gt;&lt;br&gt;DSO-issued settings change only&lt;br&gt;on new DSO instruction" vertex="1">
+          <mxGeometry height="120" width="355" x="885" y="645" as="geometry" />
+        </mxCell>
+        <mxCell id="s1" edge="1" parent="1" source="poc" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#048780;strokeWidth=3;exitX=1.0000;exitY=0.5040;entryX=0.0000;entryY=0.5040;endArrow=block;endFill=1;" target="aggregate">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="s2" edge="1" parent="1" source="aggregate" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#048780;strokeWidth=3;exitX=1.0000;exitY=0.5040;entryX=0.0000;entryY=0.5040;endArrow=block;endFill=1;" target="select">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="s3" edge="1" parent="1" source="select" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#6845bb;strokeWidth=3;exitX=1.0000;exitY=0.5040;entryX=0.0000;entryY=0.5040;endArrow=block;endFill=1;" target="function">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="s4" edge="1" parent="1" source="function" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#6845bb;strokeWidth=3;exitX=1.0000;exitY=0.5040;entryX=0.0000;entryY=0.5040;endArrow=block;endFill=1;" target="dead">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="s5" edge="1" parent="1" source="dead" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#2363d4;strokeWidth=3;exitX=0.5263;exitY=1.0000;entryX=0.5385;entryY=0.0000;endArrow=block;endFill=1;" target="output">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="s6" edge="1" parent="1" source="dead" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#b96a05;strokeWidth=3;exitX=0.0000;exitY=0.7200;entryX=1.0000;entryY=0.4783;endArrow=block;endFill=1;" target="hold">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1670" y="345" />
+              <mxPoint x="1670" y="670" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="s7" edge="1" parent="1" source="select" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#66788e;strokeWidth=3;exitX=0.1343;exitY=1.0000;entryX=0.4932;entryY=0.0000;endArrow=block;endFill=1;dashed=1;dashPattern=8 6;" target="hold">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="930" y="410" />
+              <mxPoint x="1650" y="410" />
+              <mxPoint x="1650" y="580" />
+              <mxPoint x="1440" y="580" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="s8" edge="1" parent="1" source="change" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#6845bb;strokeWidth=3;exitX=1.0000;exitY=0.5000;entryX=0.0000;entryY=0.5000;endArrow=block;endFill=1;" target="gate">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="s9" edge="1" parent="1" source="gate" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#6845bb;strokeWidth=3;exitX=1.0000;exitY=0.5000;entryX=0.0000;entryY=0.5000;endArrow=block;endFill=1;" target="config">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="s10" edge="1" parent="1" source="config" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#6845bb;strokeWidth=3;exitX=0.4930;exitY=0.0000;entryX=0.5000;entryY=1.0000;endArrow=block;endFill=1;dashed=1;dashPattern=8 6;" target="function">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1080" y="530" />
+              <mxPoint x="1470" y="530" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="note_0" parent="1" style="text;html=1;strokeColor=none;fillColor=none;fontColor=#66788e;fontSize=15;fontStyle=1;align=left;verticalAlign=middle;" value="ΔT adjustable 10–600 s; default 60 s unless DSO specifies otherwise (O.7.3.2)." vertex="1">
+          <mxGeometry height="28" width="1990" x="465" y="423" as="geometry" />
+        </mxCell>
+        <mxCell id="note_1" parent="1" style="text;html=1;strokeColor=none;fillColor=none;fontColor=#66788e;fontSize=15;fontStyle=1;align=left;verticalAlign=middle;" value="Measurement basis (O.7.4): IEC 61557-12 fixed blocks, synchronous V/I; fast MC200, slow MCΔT; accuracy O.13.2.1." vertex="1">
+          <mxGeometry height="28" width="1990" x="70" y="846" as="geometry" />
+        </mxCell>
+        <mxCell id="note_2" parent="1" style="text;html=1;strokeColor=none;fillColor=none;fontColor=#66788e;fontSize=15;fontStyle=1;align=left;verticalAlign=middle;" value="Module interface: MCΔT + active mode + curve params → Qcalc or cosφcalc + δ. Active-P limitations and external P/Q commands bypass this ring to O.11." vertex="1">
+          <mxGeometry height="28" width="1990" x="70" y="902" as="geometry" />
+        </mxCell>
+        <mxCell id="note_3" parent="1" style="text;html=1;strokeColor=none;fillColor=none;fontColor=#b96a05;fontSize=14;fontStyle=1;align=left;verticalAlign=middle;" value="NO UPDATE" vertex="1">
+          <mxGeometry height="28" width="1990" x="1500" y="539" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="RXuy8nCwKJR8bW2hi7tk" name="COMMON PLANT CAPABILITY">
+    <mxGraphModel dx="1978" dy="1682" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="NV9Cqq-3Jn1fBgIDUr8G-1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#14233c;strokeColor=#14233c;fontColor=#ffffff;fontSize=27;fontFamily=Arial;align=center;verticalAlign=middle;spacing=10;arcSize=12;strokeWidth=2;" value="&lt;b&gt;COMMON PLANT CAPABILITY &amp;amp; NORMALIZATION  |  AI IMPLEMENTATION SPEC&lt;/b&gt;" vertex="1">
+          <mxGeometry height="72" width="2130" x="1030" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="NV9Cqq-3Jn1fBgIDUr8G-2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f7fa;strokeColor=#b4c1d0;fontColor=#526278;fontSize=18;fontFamily=Arial;align=center;verticalAlign=middle;spacing=9;arcSize=13;strokeWidth=2;" value="&lt;b&gt;[CEI]&lt;/b&gt; = explicit CEI 0-16 requirement/data &amp;nbsp;&amp;nbsp;|&amp;nbsp;&amp;nbsp; &lt;b&gt;[DERIVED]&lt;/b&gt; = direct mathematical implementation &amp;nbsp;&amp;nbsp;|&amp;nbsp;&amp;nbsp; &lt;b&gt;[SW ARCH]&lt;/b&gt; = chosen software architecture" vertex="1">
+          <mxGeometry height="65" width="2130" x="1030" y="115" as="geometry" />
+        </mxCell>
+        <mxCell id="NV9Cqq-3Jn1fBgIDUr8G-3" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eff5ff;strokeColor=#608de2;fontColor=#163f83;fontSize=18;fontFamily=Arial;align=center;verticalAlign=middle;spacing=10;arcSize=12;strokeWidth=2;" value="&lt;b&gt;[CEI] PLANT CONFIGURATION — PdC CAPABILITY&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Pimm&lt;/b&gt; = max active power injection [kW]&lt;br&gt;&lt;b&gt;Pass&lt;/b&gt; = max active power absorption [kW]&lt;br&gt;&lt;b&gt;Qcap&lt;/b&gt; = max capacitive reactive power [kvar]&lt;br&gt;&lt;b&gt;Qind&lt;/b&gt; = max inductive reactive power [kvar]&lt;br&gt;&lt;br&gt;Configured in the Operating Rule; generation/storage capability, loads excluded" vertex="1">
+          <mxGeometry height="300" width="450" x="970" y="205" as="geometry" />
+        </mxCell>
+        <mxCell id="NV9Cqq-3Jn1fBgIDUr8G-4" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff3e0;strokeColor=#e4aa52;fontColor=#81500b;fontSize=18;fontFamily=Arial;align=center;verticalAlign=middle;spacing=10;arcSize=12;strokeWidth=2;" value="&lt;b&gt;[CEI] MAXIMUM APPARENT POWER REFERENCE&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Smax = √[ max(Pimm², Pass²) + max(Qind², Qcap²) ]&lt;/b&gt;&lt;br&gt;&lt;br&gt;Configured in the CCI from the Operating Rule.&lt;br&gt;&lt;b&gt;Smax remains the p.u. reference when available capability changes due to outage/maintenance.&lt;/b&gt;" vertex="1">
+          <mxGeometry height="245" width="650" x="1530" y="232.5" as="geometry" />
+        </mxCell>
+        <mxCell id="NV9Cqq-3Jn1fBgIDUr8G-5" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaf8f2;strokeColor=#3fa27a;fontColor=#176044;fontSize=18;fontFamily=Arial;align=center;verticalAlign=middle;spacing=10;arcSize=12;strokeWidth=2;" value="&lt;b&gt;[DERIVED] NORMALIZATION&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Ppu = P / Smax&lt;/b&gt;&lt;br&gt;&lt;b&gt;Qpu = Q / Smax&lt;/b&gt;&lt;br&gt;&lt;br&gt;Direct mathematical implementation of CEI requirement that Smax is the common p.u. reference" vertex="1">
+          <mxGeometry height="220" width="430" x="2310" y="245" as="geometry" />
+        </mxCell>
+        <mxCell id="NV9Cqq-3Jn1fBgIDUr8G-6" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eff5ff;strokeColor=#608de2;fontColor=#163f83;fontSize=18;fontFamily=Arial;align=center;verticalAlign=middle;spacing=10;arcSize=12;strokeWidth=2;" value="&lt;b&gt;[SW ARCH] CONSUMERS INTERFACE&lt;/b&gt;&lt;br&gt;&lt;br&gt;O.11 priority / feasibility&lt;br&gt;Q(V), cosφ(P), fixed-setpoint modules&lt;br&gt;FastAllocator" vertex="1">
+          <mxGeometry height="220" width="300" x="2840" y="245" as="geometry" />
+        </mxCell>
+        <mxCell id="NV9Cqq-3Jn1fBgIDUr8G-7" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f7fa;strokeColor=#b4c1d0;fontColor=#526278;fontSize=17;fontFamily=Arial;align=center;verticalAlign=middle;spacing=10;arcSize=12;strokeWidth=2;" value="&lt;b&gt;[SW ARCH] DynamicAvailableCapability&lt;/b&gt;&lt;br&gt;&lt;br&gt;Compute / track the currently feasible plant or section capability from element capability and availability.&lt;br&gt;&lt;br&gt;&lt;b&gt;[CEI RULE]&lt;/b&gt; update capability for outage / maintenance.&lt;br&gt;&lt;b&gt;[CEI RULE]&lt;/b&gt; do not change Smax because of these availability updates." vertex="1">
+          <mxGeometry height="240" width="650" x="1530" y="590" as="geometry" />
+        </mxCell>
+        <mxCell id="NV9Cqq-3Jn1fBgIDUr8G-8" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eff5ff;strokeColor=#608de2;fontColor=#163f83;fontSize=18;fontFamily=Arial;align=center;verticalAlign=middle;spacing=10;arcSize=12;strokeWidth=2;" value="&lt;b&gt;[SW ARCH] ElementCapabilityStatus&lt;/b&gt;&lt;br&gt;&lt;br&gt;Per-element inverter / storage / generator:&lt;br&gt;• capability limits / curve&lt;br&gt;• online / available status&lt;br&gt;• current operating state" vertex="1">
+          <mxGeometry height="210" width="360" x="1030" y="605" as="geometry" />
+        </mxCell>
+        <mxCell id="NV9Cqq-3Jn1fBgIDUr8G-9" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaf8f2;strokeColor=#3fa27a;fontColor=#176044;fontSize=18;fontFamily=Arial;align=center;verticalAlign=middle;spacing=10;arcSize=12;strokeWidth=2;" value="&lt;b&gt;[SW ARCH] TO O.11&lt;/b&gt;&lt;br&gt;&lt;br&gt;Expose:&lt;br&gt;• configured Smax / plant references&lt;br&gt;• current feasible capability&lt;br&gt;&lt;br&gt;Used for priority + feasibility resolution" vertex="1">
+          <mxGeometry height="220" width="400" x="2580" y="505" as="geometry" />
+        </mxCell>
+        <mxCell id="NV9Cqq-3Jn1fBgIDUr8G-10" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaf8f2;strokeColor=#3fa27a;fontColor=#176044;fontSize=18;fontFamily=Arial;align=center;verticalAlign=middle;spacing=10;arcSize=12;strokeWidth=2;" value="&lt;b&gt;[SW ARCH] TO FastAllocator&lt;/b&gt;&lt;br&gt;&lt;br&gt;Expose per-element capability / status&lt;br&gt;&lt;br&gt;Used to create feasible Pi* / Qi* commands" vertex="1">
+          <mxGeometry height="240" width="400" x="2580" y="740" as="geometry" />
+        </mxCell>
+        <mxCell id="NV9Cqq-3Jn1fBgIDUr8G-11" parent="1" style="text;html=1;strokeColor=none;fillColor=none;fontColor=#66788e;fontSize=15;fontStyle=1;align=left;verticalAlign=middle;" value="&lt;b&gt;[CEI]&lt;/b&gt; Smax formula + Pimm/Pass/Qcap/Qind + Smax as p.u. reference + dynamic capability update for outage/maintenance." vertex="1">
+          <mxGeometry height="46" width="2070" x="1060" y="965" as="geometry" />
+        </mxCell>
+        <mxCell id="NV9Cqq-3Jn1fBgIDUr8G-12" parent="1" style="text;html=1;strokeColor=none;fillColor=none;fontColor=#66788e;fontSize=15;fontStyle=1;align=left;verticalAlign=middle;" value="&lt;b&gt;[DERIVED]&lt;/b&gt; Ppu=P/Smax, Qpu=Q/Smax &amp;nbsp;&amp;nbsp;|&amp;nbsp;&amp;nbsp; &lt;b&gt;[SW ARCH]&lt;/b&gt; CommonPlantCapability, DynamicAvailableCapability, Consumers, FastAllocator, ElementCapabilityStatus." vertex="1">
+          <mxGeometry height="50" width="2070" x="1060" y="1020" as="geometry" />
+        </mxCell>
+        <mxCell id="NV9Cqq-3Jn1fBgIDUr8G-13" edge="1" parent="1" source="NV9Cqq-3Jn1fBgIDUr8G-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#608de2;strokeWidth=3;endArrow=block;endFill=1;" target="NV9Cqq-3Jn1fBgIDUr8G-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="NV9Cqq-3Jn1fBgIDUr8G-14" edge="1" parent="1" source="NV9Cqq-3Jn1fBgIDUr8G-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#608de2;strokeWidth=3;endArrow=block;endFill=1;" target="NV9Cqq-3Jn1fBgIDUr8G-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="NV9Cqq-3Jn1fBgIDUr8G-15" edge="1" parent="1" source="NV9Cqq-3Jn1fBgIDUr8G-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#608de2;strokeWidth=3;endArrow=block;endFill=1;" target="NV9Cqq-3Jn1fBgIDUr8G-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="NV9Cqq-3Jn1fBgIDUr8G-16" edge="1" parent="1" source="NV9Cqq-3Jn1fBgIDUr8G-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#048780;strokeWidth=3;endArrow=block;endFill=1;" target="NV9Cqq-3Jn1fBgIDUr8G-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="NV9Cqq-3Jn1fBgIDUr8G-17" edge="1" parent="1" source="NV9Cqq-3Jn1fBgIDUr8G-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#048780;strokeWidth=3;endArrow=block;endFill=1;" target="NV9Cqq-3Jn1fBgIDUr8G-9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="NV9Cqq-3Jn1fBgIDUr8G-18" edge="1" parent="1" source="NV9Cqq-3Jn1fBgIDUr8G-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#048780;strokeWidth=3;endArrow=block;endFill=1;" target="NV9Cqq-3Jn1fBgIDUr8G-10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

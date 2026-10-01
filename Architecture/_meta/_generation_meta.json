@@ -1,0 +1,15 @@
+{
+  "generated_at": "2026-07-26T01:53:00.578462+00:00",
+  "generator": "scripts/generate-architecture-from-rag.py",
+  "corpus_sources": [
+    "ccli-vendor-selection",
+    "ccli-prototype-bom",
+    "ccli-architecture-framework",
+    "cei-0-16-allegato-o",
+    "cei-0-16-allegato-t",
+    "ccli-validation-strategy",
+    "ccli-project-roadmap",
+    "ccli-toradex-verdin-devboard"
+  ],
+  "rag_queried": true
+}

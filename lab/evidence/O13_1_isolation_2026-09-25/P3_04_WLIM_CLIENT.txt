@@ -1,0 +1,7 @@
+=== CCLI MMS Wlim client (P3-04) ===
+host=192.168.10.1 port=102 WMaxSptPct=10.0 Mod=1 (Active)
+CONNECT OK
+OPERATE OK CCI016_01LD_Plant/WlimDWMX1.WMaxSptPct = 10.00
+OPERATE OK CCI016_01LD_Plant/WlimDWMX1.Mod = 1
+READ Mod.stVal=1
+VERDICT: Wlim write sent — check TG log for mms→pf2 threshold update

@@ -1,0 +1,59 @@
+{
+  "document_id": "CCLI-BOM-BENCH-001",
+  "revision": "1.0",
+  "date": "2026-07-25",
+  "source_id": "ccli-mocking-bench-bom",
+  "strategy_source_id": "ccli-validation-strategy",
+  "waves": [
+    {
+      "id": "A",
+      "level": "L1+L2",
+      "status": "BUY_NOW",
+      "est_eur_min": 180,
+      "est_eur_max": 350,
+      "goal": "Software Modbus/IEC mock + physical RS-485/Ethernet HIL"
+    },
+    {
+      "id": "B",
+      "level": "L2+C4",
+      "status": "BUY_NEXT",
+      "est_eur_min": 80,
+      "est_eur_max": 180,
+      "goal": "24 V DI fixture + DO lamps"
+    },
+    {
+      "id": "C",
+      "level": "L3",
+      "status": "BUY_NEXT",
+      "est_eur_min": 400,
+      "est_eur_max": 1200,
+      "goal": "Real energy analyzer + register map"
+    },
+    {
+      "id": "D",
+      "level": "L4",
+      "status": "DEFER",
+      "est_eur_min": 10000,
+      "est_eur_max": 100000,
+      "goal": "Power-system HIL rental/capital campaign"
+    }
+  ],
+  "buy_now": [
+    { "ref": "A-USB485", "item": "Isolated USB-to-RS-485 adapter", "qty": 2, "est_eur": "50-120" },
+    { "ref": "A-SW", "item": "5-8 port GbE switch", "qty": 1, "est_eur": "20-60" },
+    { "ref": "A-CAB485", "item": "RS-485 cable + termination + DB9", "qty": 1, "est_eur": "40-80" },
+    { "ref": "A-PSU24", "item": "24 Vdc bench PSU", "qty": 1, "est_eur": "40-90" },
+    { "ref": "A-LAB", "item": "Cable labels", "qty": 1, "est_eur": "10-25" },
+    { "ref": "SW-MB", "item": "pymodbus scenario runner", "qty": 1, "est_eur": "0" },
+    { "ref": "SW-61850", "item": "libiec61850 client tools", "qty": 1, "est_eur": "0" }
+  ],
+  "controller_under_test": {
+    "platform": "tespro-tg524",
+    "family": "TG-500",
+    "mock_until_arrival": "raspberry-pi",
+    "kit_pn": null,
+    "som_pn": null,
+    "reference_only": { "kit_pn": "99991105", "som_pn": "0063", "vendor": "Toradex" },
+    "note": "TG-524 FROZEN lab DUT — see ccli-tg500-lab-platform"
+  }
+}

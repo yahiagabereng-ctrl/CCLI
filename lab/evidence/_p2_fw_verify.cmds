@@ -1,0 +1,22 @@
+echo "=== DATE ==="
+date
+echo "=== ADDR ==="
+ip -4 addr show | grep -E 'lan[123]|br-lan|inet '
+echo "=== CARRIER ==="
+ip link show lan1 | head -2
+ip link show lan2 | head -2
+ip link show lan3 | head -2
+echo "=== UCI FIREWALL ZONES ==="
+uci show firewall | grep -E '@defaults|@zone|@forwarding|masq|forward|input|network|name'
+echo "=== FORWARDING COUNT (must be lan->wan only) ==="
+uci show firewall | grep '@forwarding' || echo "(none beyond grep)"
+echo "=== IPTABLES FORWARD policy ==="
+iptables -L FORWARD -n -v 2>/dev/null | head -40
+echo "=== IPTABLES zone forwards (filter) ==="
+iptables -L -n -v 2>/dev/null | grep -E 'Chain zone_|forwarding_|reject' | head -60
+echo "=== nft / fw4 if present ==="
+nft list ruleset 2>/dev/null | grep -E 'chain forward|jump|lan1_sec|lan_sec|lan2_sec' | head -40 || echo "nft n/a or empty"
+echo "=== NEIGH / leases ==="
+cat /tmp/dhcp.leases 2>/dev/null || true
+ip -4 neigh show | grep -E '192\.168\.(10|1|30)\.' || true
+echo "=== DONE ==="

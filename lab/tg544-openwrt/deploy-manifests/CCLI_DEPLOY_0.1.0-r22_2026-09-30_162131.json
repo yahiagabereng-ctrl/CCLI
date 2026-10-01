@@ -1,0 +1,17 @@
+﻿{
+    "codename":  "P5-PPV",
+    "changes":  [
+                    "P5-PPV r22",
+                    "PdCMMXU1 PPV DEL phsAB",
+                    "TotVAr + ENC stub fix",
+                    "urcb DS_R_PdC_Mis4sec"
+                ],
+    "release":  22,
+    "timestamp_utc":  "2026-09-30T14:21:31.9130523Z",
+    "version_full":  "0.1.0-r22",
+    "lab_yaml":  "C:\\Yahia\\projects\\CCLI\\apps\\ccli\\config\\lab_tr400_phase4_eth_b.yaml",
+    "sha256":  "0592232ce5f3b5b614464accbc16d87f3f517b9f8c7bc0eb2b3587c7b2967be3",
+    "binary":  "C:\\Yahia\\projects\\CCLI\\lab\\tg544-openwrt\\ccli-bin",
+    "host":  "192.168.10.1",
+    "semver":  "0.1.0"
+}

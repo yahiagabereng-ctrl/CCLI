@@ -1,0 +1,33 @@
+echo "=== FIX apn_user (TesPro custom field) ==="
+uci set sim_manager.slot_1.apn_auto='0'
+uci set sim_manager.slot_1.apn_user='iot.1nce.net'
+uci set sim_manager.slot_1.apn='iot.1nce.net'
+uci commit sim_manager
+uci show sim_manager.slot_1 | grep apn
+echo "=== AT CGDCONT ==="
+/usr/lib/sim-manager/at-req.sh 5 'AT+CGDCONT=1,"IP","iot.1nce.net"' 2>&1
+/usr/lib/sim-manager/at-req.sh 5 'AT+CGDCONT?' 2>&1
+echo "=== CFUN restart / COPS ==="
+/usr/lib/sim-manager/at-req.sh 8 'AT+CFUN=0' 2>&1
+sleep 2
+/usr/lib/sim-manager/at-req.sh 15 'AT+CFUN=1' 2>&1
+sleep 5
+/usr/lib/sim-manager/at-req.sh 10 'AT+COPS=0' 2>&1
+sleep 8
+/usr/lib/sim-manager/at-req.sh 5 'AT+CEREG?' 2>&1
+/usr/lib/sim-manager/at-req.sh 5 'AT+CGATT?' 2>&1
+/usr/lib/sim-manager/at-req.sh 5 'AT+CGDCONT?' 2>&1
+echo "=== restart services ==="
+/etc/init.d/sim-manager restart
+sleep 5
+ubus call network.interface.wwan down 2>/dev/null || true
+sleep 1
+ubus call network.interface.wwan up 2>/dev/null || true
+sleep 8
+echo "=== UCI/IP ==="
+uci get sim_manager.slot_1.apn
+uci get sim_manager.slot_1.apn_user
+uci get sim_manager.slot_1.registration_text
+ip -4 addr show usb0 2>/dev/null || true
+ifstatus wwan | head -30
+echo "=== DONE ==="

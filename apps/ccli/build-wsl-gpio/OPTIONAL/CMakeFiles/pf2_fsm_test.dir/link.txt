@@ -1,0 +1,1 @@
+/usr/bin/c++ -Wl,--dependency-file=CMakeFiles/pf2_fsm_test.dir/link.d CMakeFiles/pf2_fsm_test.dir/pf2_fsm_test.cpp.o -o pf2_fsm_test  ../libccli_core.a

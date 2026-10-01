@@ -1,0 +1,44 @@
+CCI Controllore Centrale di Impianto CEI 0-16 allegati O-T
+Il CCI è un Gateway per il monitoraggio di impianti di Produzione di Energia Elettrica .
+CEI 0-16 negli allegati O e T. Raccoglie tutte le informazione dell’impianto e le trasmette in
+modo sicuro al Distributore (DSO) o ad altro Operatore abilitato. Per ottemperare al
+regolamento le prestazioni del CCI secondo la specifica funzionale devono svilupparsi come
+• prestazioni funzionali “opzionali”, inerenti la regolazione di tensione e la limitazione di
+potenza al Punto di Consegna dell'impianto;
+dei servizi del Dispacciamento, la gestione ottimale dell'impianto, RiGeDi, ecc.
+Opzioni di cablaggio per i Connettori Seriali:
+Di seguito la descrizione dei moduli del CCI:
+• CPU iMX6D ARM Cortex-A9, 1GB DDR3, 4GByte eMMC, 800Mhz, CAAM, CSU, A-HAB
+• Anti-Tamper hardware con switch collegato alla copertura e accelerometro X-Y-Z
+• Ethernet Switch a 4 porte 10/100 Mbps:
+• Una porta dedicata a DSO (ETH_A) e una porta dedicata a Operatore Abilitato
+• Due porte per connessioni agli Elementi di Impianto.
+• Due porte Seriali optoisolate con connessione RS-232 e RS-485 su connettori RJ45 8/8
+standard ModBus.
+• Una porta USB 2.0 per Consolle di Configurazione e Manutenzione Locale.
+• Due Porte USB 2.0 per connessioni agli Elementi di Impianto.
+Protocolli gestiti (Porte seriali configurate come RS232 o RS485):
+• IEC 61158-15 ModBus-RTU.
+• IEC 60870-5-101 Balance and Unbalance.
+• IEC 60870-5-103.
+Protocolli gestiti (Porte Ethernet):
+• IEC 60870-5-104 Slave/Reverse/Redundancy (Gestione Armamenti con Multicast e
+• IEC-61850 Server/Client/Goose.
+• IEC 61158-15 ModBus-TCP/IP Master and/or Slave.
+• Parte 3 per IEC-60870-5-101/4 e DNP3.
+• Parte 4 per IEC 61850
+• Parte 5 per IEC-60870-5-101/4 e DNP3.
+• Parte 6 per IEC 61850
+• Parte 8,9 per IEC-60870-5-101/4, IEC61850 e DNP3
+• ntpd, client-ptp o server-ptp (IEEE-1588) (power profile).
+• Firewall.
+• N° 5 Ingressi Digitali optoisolati 10Vdc...120Vdc, da energizzare con alimentazione
+• N° 3 Uscite Digitali a relè 250Vac 3A.
+• Modulo GPS/GLONASS integrato per sincronia oraria da satelliti. Connettore SMA
+Femmina per connessione antenna attiva esterna (5Vdc OUT). Antenna fornita con 5 m di
+• Modem integrato per connessioni 2G/3G/4G/LTE Cat. 1. Connettore SMA Femmina per
+• Alimentazione in ingresso da 12Vdc a 24Vdc +/- 20% 5W.
+• Temperatura di esercizio -5°C ...+45°C.
+Normative di riferimento:
+• CEI 0-16 allegati O-T
+6 21/11/22 M.Maioli Revisione polarizzazione Ingressi Digitali

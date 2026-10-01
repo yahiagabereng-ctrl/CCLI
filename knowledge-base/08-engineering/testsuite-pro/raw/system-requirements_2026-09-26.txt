@@ -1,0 +1,19 @@
+# Triangle MicroWorks 61850 Test Suite Pro — System Requirements (raw)
+# Captured: 2026-09-26
+# Source: https://www.trianglemicroworks.com/products/testing-and-configuration-tools/61850-test-suite-pro-pages/system-requirements
+
+OS supported (vendor page):
+- Windows Server 2012 (64-bit)
+- Windows 10 (32-bit and 64-bit)
+- Windows Server 2016 (64-bit)
+- Windows Server 2019 (64-bit)
+- Virtual machines supported
+- Note from What's New v4.7.3: NDIS driver update for Windows 11 compatibility
+
+Minimum hardware:
+- 1.5 GHz processor (recommended 2.4 GHz multi-core)
+- 2 GB RAM (recommended 4 GB)
+- Windows 7 or higher (not Embedded Compact)
+- Microsoft .NET Framework 4.6.2
+
+Note: minima are for small SCL files; larger models need more RAM/CPU.

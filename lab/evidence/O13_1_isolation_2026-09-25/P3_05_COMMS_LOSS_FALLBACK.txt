@@ -1,0 +1,21 @@
+# P3-05 Operating Rule fallback — lab evidence
+
+**Date:** 2026-09-25  
+**DUT:** TG544 · `ccli-0.1.0-r9` · `comms_loss_fallback_s=15`  
+**Clauses:** O.9.2.2 (no comms → Operating Rule) · Annex U procedure (lab timer)
+
+## Sequence
+
+1. DSO TLS client writes `WMaxSptPct=25` + `Mod=1` → live Wlim applied (`p_wlim=52.5`).
+2. Client disconnect → `Operating Rule fallback armed (15 s)`.
+3. After 15 s with zero MMS clients:
+
+```
+mms: P3-05 Operating Rule fallback — live Wlim cleared after 15 s no-comms
+mms→pf2: P3-05 Operating Rule fallback (Eth_A no-comms)
+mms→pf2: Wlim active=no WMaxSptPct=0% … enter=42 release=37 kW
+```
+
+Thresholds revert to yaml Operating Rule / TR mock (enter 42 / release 37).
+
+**Verdict: PASS (lab)** — product value of delay remains DSO-agreed in Operating Rule (often ≥60 s).

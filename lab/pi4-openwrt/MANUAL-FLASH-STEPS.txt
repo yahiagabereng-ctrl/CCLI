@@ -1,0 +1,39 @@
+OpenWrt Pi 4 — MANUAL FLASH (if scripts show nothing)
+=====================================================
+
+SD card is still Raspberry Pi OS. Image is ready on disk.
+
+IMAGE (copy this path):
+  C:\Yahia\projects\CCLI\lab\pi4-openwrt\openwrt-24.10.5-bcm27xx-bcm2711-rpi-4-squashfs-factory.img.gz
+
+METHOD 1 — Raspberry Pi Imager (easiest)
+----------------------------------------
+1. Press Windows key, type: Raspberry Pi Imager → open it
+   (If missing: install from https://www.raspberrypi.com/software/)
+
+2. Click "Choose device" → Raspberry Pi 4
+
+3. Click "Choose OS" → scroll down → "Use custom image"
+   → select the .img.gz file above
+
+4. Click "Choose storage" → select "Mass Storage Device" (~64 GB)
+   WARNING: NOT your C: drive!
+
+5. Click NEXT → YES to erase → wait until "Write successful"
+
+6. Eject SD → Pi 4 → power on → ssh root@192.168.1.1
+
+
+METHOD 2 — VBS admin flash
+--------------------------
+Double-click:  FLASH-ADMIN.vbs
+Click YES on UAC → wait for Admin PowerShell "FLASH OK"
+
+
+VERIFY after flash (D: boot partition):
+  cmdline.txt must contain:  squashfs
+  (NOT only ext4 / Pi OS)
+
+After OpenWrt boot:
+  ssh root@192.168.1.1
+  (empty password first time)

@@ -1,0 +1,52 @@
+===== P2-01 CROSS-PING MATRIX (O.13.1.1.1) =====
+Date: 2026-09-25
+DUT: TG544 / Tespro TR500
+Regulation: CEI 0-16 Annex O §O.13.1.1.1 — no internal switch/bridge;
+           no data exchange among Eth_A, Eth_B, local config, plant
+Method: ICMP echo between role PCs (NOT TG interface IPs)
+Pass rule: own TG IP = PASS; other-role PC IP = FAIL (timeout/unreachable)
+Note: Ping of other TG IPs (.10.1 / .1.130 / .30.1) may succeed (INPUT) — N/A for P2-01
+
+HOSTS
+-----
+Role        Port   PC / host              IPv4              TG gateway
+DSO Eth_A   LAN1   Lab PC (operator-run)  192.168.10.10     192.168.10.1
+OA Eth_B    LAN2   Yahia                  192.168.1.183     192.168.1.130
+Plant       LAN3   Federico               192.168.30.10     192.168.30.1
+
+FIREWALL POLICY (LuCI + prior SSH harden) — supports P2-02
+----------------------------------------------------------
+Zones lan1_sec / lan_sec / lan2_sec:
+  input=accept  output=accept  forward=reject  masq=0
+  Allow forward to destination zones = unspecified (none)
+Only inter-zone forwarding: lan -> wan
+Evidence screenshots: lab session 2026-09-25 (Firewall Zones + lan_sec edit)
+
+MATRIX RESULTS (operator confirmed 2026-09-25 — all PASS)
+---------------------------------------------------------
+From \ To          | TG own | DSO PC .10.10 | OA PC .1.183 | Plant PC .30.10
+-------------------+--------+---------------+--------------+----------------
+DSO PC             | PASS   | —             | FAIL         | FAIL
+OA PC (Yahia)      | PASS   | FAIL          | —            | FAIL (*)
+Plant PC (Federico)| PASS   | FAIL          | FAIL         | —
+
+(*) Screenshot evidence: Yahia ping 192.168.30.10 → Request timed out
+    OA ipconfig: 192.168.1.183 gw 192.168.1.130
+    Plant ipconfig: 192.168.30.10 gw 192.168.30.1
+
+N/A (do not score)
+------------------
+OA/Plant → TG .10.1 / .1.130 / .30.1 (other interfaces): may reply — INPUT to CCI
+
+VERDICT
+-------
+P2-01 = PASS (O.13.1.1.1 no data exchange between role hosts through CCI)
+P2-02 = PASS (separate L3 domains + no role-zone forwarding)
+
+Still open (not this matrix)
+----------------------------
+P2-03 WAN/LTE ↛ DSO Eth_A
+P2-04 LuCI/eng only on eng/USB (LuCI still reachable on role ports — PART)
+P2-06 link-status logging
+
+===== END =====

@@ -1,0 +1,45 @@
+===== P0 / K6.2 — TPM verify (TesPro TG500 guide §4) =====
+Date: 2026-09-25
+DUT: Tespro TR500 (TG544 class) · TesproOS 32-2.1.0 · mediatek/filogic
+Guide: TG500-TPM-Configuration-Guide.pdf (Infineon SLB9673 · I2C 0x2e)
+SSH: root@192.168.10.1 (Eth_A)
+
+CHECK 1 — device nodes
+-----------------------
+[PASS] crw------- /dev/tpm0
+[PASS] crw------- /dev/tpmrm0
+
+CHECK 2 — driver / dmesg
+------------------------
+[PASS] tpm_tis_i2c 0-002e: 2.0 TPM (device-id 0x1C, rev-id 22)
+Note: self-test error 256 then manual startup — cold-boot path per guide §7.2; recovered.
+
+CHECK 3 — tools + modules
+-------------------------
+[PASS] /usr/bin/tpm2_getrandom
+[PASS] /usr/bin/tpm2_getcap
+[PASS] modules: tpm.ko tpm_tis_core.ko tpm_tis_i2c.ko
+
+CHECK 4 — tpm2_getrandom --hex 16
+---------------------------------
+[PASS] 8b10cf57bb9813d6c9817f14892614e8  (rc=0)
+
+CHECK 5 — tpm2_getcap properties-fixed
+--------------------------------------
+[PASS] FAMILY = 2.0
+[PASS] MANUFACTURER raw=0x49465800 value=IFX (Infineon)
+[PASS] VENDOR_STRING SLB9+673 → SLB9673
+[PASS] MODES includes TPMA_MODES_FIPS_140_2
+
+VERDICT
+-------
+REQ-SEC-002 / K6.2 hardware presence = PASS
+Guide §4 functional checks = PASS
+
+NOT DONE
+--------
+- Persistent signing key (tpm2_evictcontrol)
+- Bind MMS TLS private key to TPM
+- Secure Boot REQ-SEC-001
+
+===== END =====

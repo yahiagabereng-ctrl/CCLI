@@ -1,0 +1,163 @@
+
+[14:44:51] === P4-04 Eth_B comms-loss fallback ===
+[14:44:51] DUT=192.168.1.130:2404 fallback_s=60 (lab yaml iec104.comms_loss_fallback_s)
+[14:44:51] DUT log before test:
+[14:44:51] iec104: P4-04 Eth_B comms-loss fallback
+iec104: P4-04 Eth_B comms-loss fallback
+iec104: P4-04 Eth_B comms-loss fallback
+iec104: P4-04 Eth_B comms-loss fallback
+iec104: P4-04 Eth_B comms-loss fallback
+iec104: P4-04 Eth_B comms-loss fallback
+iec104: P4-04 Eth_B comms-loss fallback
+iec104: P4-04 Eth_B comms-loss fallback
+iec104: P4-04 Eth_B comms-loss fallback
+iec104: P4-04 Eth_B comms-loss fallback
+mms: listening on 192.168.10.1:3782 tls=on acse_tls_auth=on rbac=on crl=on fallback_s=15 gnss_poll_s=15 chrony=on discipline=off (IED CCI016_01/LD_Plant WlimDWMX1+WSdDAGC1+stubs+PdCMMXU1)
+iec104: listening 192.168.1.130:2404 CA=1 IOA TotW=1001 tls=on [IEC 60870-5-104 / O.13.1.1.1]
+iec104: P4-04 Eth_B comms-loss fallback
+iec104: P4-04 Eth_B comms-loss fallback
+iec104: P4-04 Eth_B comms-loss fallback
+iec104: P4-04 Eth_B comms-loss fallback
+iec104: P4-04 Eth_B comms-loss fallback
+iec104: P4-04 Eth_B comms-loss fallback
+iec104: P4-04 Eth_B comms-loss fallback
+iec104: P4-04 Eth_B comms-loss fallback
+iec104: P4-04 Eth_B comms-loss fallback
+iec104: P4-04 Eth_B comms-loss fallback
+iec104: P4-04 Eth_B comms-loss fallback
+iec104: P4-04 Eth_B comms-loss fallback
+iec104: P4-04 Eth_B comms-loss fallback
+[14:44:51] Step 1: TLS connect + STARTDT + disconnect (--once --tls)...
+[14:44:55] TLS: Verify cert: depth 1
+[14:44:55] TLS:    flags: 00000000
+[14:44:55] TLS:   cert. version     : 3
+[14:44:55]   serial number     : 42:54:6F:79:FE:8A:9A:98
+[14:44:55]   issuer name       : C=IT, O=HiTEKS, OU=CCLI-Lab, CN=CCLI_Lab_Root_CA
+[14:44:55]   subject name      : C=IT, O=HiTEKS, OU=CCLI-Lab, CN=CCLI_Lab_Root_CA
+[14:44:55]   issued  on        : 2026-09-29 19:36:09
+[14:44:55]   expires on        : 2036-09-26 19:36:09
+[14:44:55]   signed using      : RSA with SHA-256
+[14:44:55]   RSA key size      : 2048 bits
+[14:44:55]   basic constraints : CA=true
+[14:44:55]   key usage         : Digital Signature, Key Cert Sign, CRL Sign
+[14:44:55] TLS: Verify cert: depth 0
+[14:44:55] TLS:    flags: 00000000
+[14:44:55] TLS:   cert. version     : 3
+[14:44:55]   serial number     : 69:1B:6D:54:0A:8C:E3:9E
+[14:44:55]   issuer name       : C=IT, O=HiTEKS, OU=CCLI-Lab, CN=CCLI_Lab_Root_CA
+[14:44:55]   subject name      : C=IT, O=HiTEKS, OU=CCLI-Lab, CN=CCI016_01
+[14:44:55]   issued  on        : 2026-09-29 19:36:09
+[14:44:55]   expires on        : 2029-01-01 19:36:09
+[14:44:55]   signed using      : RSA with SHA-256
+[14:44:55]   RSA key size      : 2048 bits
+[14:44:55]   basic constraints : CA=false
+[14:44:55]   key usage         : Digital Signature, Key Encipherment
+[14:44:55] TLS: Check against list of allowed certs
+[14:44:55] TLS: Compare With:
+[14:44:55] TLS:      cert. version     : 3
+[14:44:55]      serial number     : 69:1B:6D:54:0A:8C:E3:9E
+[14:44:55]      issuer name       : C=IT, O=HiTEKS, OU=CCLI-Lab, CN=CCLI_Lab_Root_CA
+[14:44:55]      subject name      : C=IT, O=HiTEKS, OU=CCLI-Lab, CN=CCI016_01
+[14:44:55]      issued  on        : 2026-09-29 19:36:09
+[14:44:55]      expires on        : 2029-01-01 19:36:09
+[14:44:55]      signed using      : RSA with SHA-256
+[14:44:55]      RSA key size      : 2048 bits
+[14:44:55]      basic constraints : CA=false
+[14:44:55]      key usage         : Digital Signature, Key Encipherment
+[14:44:55] === P4 CS104 client (lib60870) ===
+[14:44:55] target=192.168.1.130:2404 ca=1 ioa=1001 tls=on
+[14:44:55] P4: TLS mode (62351-3)
+[14:44:55] P4: connection OPEN
+[14:44:55] P4: STARTDT_CON received
+[14:44:55] P4: ASDU M_ME_NC_1(13) cot=1 ca=1 n=1
+[14:44:55] P4: M_ME_NC_1 IOA=1001 value=0.000 kW
+[14:44:55] P4: ASDU M_ME_NC_1(13) cot=1 ca=1 n=1
+[14:44:55] P4: M_ME_NC_1 IOA=1001 value=0.000 kW
+[14:44:55] P4: GI sent CA=1, waiting 2000 ms
+[14:44:55] P4: connection CLOSED
+[14:44:55] P4: session summary startdt=YES totw_ioa1001=YES value=0.000
+[14:44:55] P4: VERDICT PASS (once/disconnect for P4-04)
+[14:44:55] Step 2: wait 68s for fallback timer...
+[14:46:03] Step 3: check DUT log for P4-04 fallback...
+[14:46:03] iec104: P4-04 Eth_B comms-loss fallback
+iec104: P4-04 Eth_B comms-loss fallback
+iec104: P4-04 Eth_B comms-loss fallback
+iec104: P4-04 Eth_B comms-loss fallback
+iec104: P4-04 Eth_B comms-loss fallback
+iec104: P4-04 Eth_B comms-loss fallback
+iec104: P4-04 Eth_B comms-loss fallback
+iec104: P4-04 Eth_B comms-loss fallback
+iec104: P4-04 Eth_B comms-loss fallback
+mms: listening on 192.168.10.1:3782 tls=on acse_tls_auth=on rbac=on crl=on fallback_s=15 gnss_poll_s=15 chrony=on discipline=off (IED CCI016_01/LD_Plant WlimDWMX1+WSdDAGC1+stubs+PdCMMXU1)
+iec104: listening 192.168.1.130:2404 CA=1 IOA TotW=1001 tls=on [IEC 60870-5-104 / O.13.1.1.1]
+iec104: P4-04 Eth_B comms-loss fallback
+iec104: P4-04 Eth_B comms-loss fallback
+iec104: P4-04 Eth_B comms-loss fallback
+iec104: P4-04 Eth_B comms-loss fallback
+iec104: P4-04 Eth_B comms-loss fallback
+iec104: P4-04 Eth_B comms-loss fallback
+iec104: P4-04 Eth_B comms-loss fallback
+iec104: P4-04 Eth_B comms-loss fallback
+iec104: P4-04 Eth_B comms-loss fallback
+iec104: P4-04 Eth_B comms-loss fallback
+iec104: P4-04 Eth_B comms-loss fallback
+iec104: P4-04 Eth_B comms-loss fallback
+iec104: P4-04 Eth_B comms-loss fallback
+iec104: P4-04 Eth_B comms-loss fallback
+[14:46:03] PASS: fallback log seen
+[14:46:03] Step 4: reconnect (--once) to verify restore...
+[14:46:06] TLS: Verify cert: depth 1
+[14:46:06] TLS:    flags: 00000000
+[14:46:06] TLS:   cert. version     : 3
+[14:46:06]   serial number     : 42:54:6F:79:FE:8A:9A:98
+[14:46:06]   issuer name       : C=IT, O=HiTEKS, OU=CCLI-Lab, CN=CCLI_Lab_Root_CA
+[14:46:06]   subject name      : C=IT, O=HiTEKS, OU=CCLI-Lab, CN=CCLI_Lab_Root_CA
+[14:46:06]   issued  on        : 2026-09-29 19:36:09
+[14:46:06]   expires on        : 2036-09-26 19:36:09
+[14:46:06]   signed using      : RSA with SHA-256
+[14:46:06]   RSA key size      : 2048 bits
+[14:46:06]   basic constraints : CA=true
+[14:46:06]   key usage         : Digital Signature, Key Cert Sign, CRL Sign
+[14:46:06] TLS: Verify cert: depth 0
+[14:46:07] TLS:    flags: 00000000
+[14:46:07] TLS:   cert. version     : 3
+[14:46:07]   serial number     : 69:1B:6D:54:0A:8C:E3:9E
+[14:46:07]   issuer name       : C=IT, O=HiTEKS, OU=CCLI-Lab, CN=CCLI_Lab_Root_CA
+[14:46:07]   subject name      : C=IT, O=HiTEKS, OU=CCLI-Lab, CN=CCI016_01
+[14:46:07]   issued  on        : 2026-09-29 19:36:09
+[14:46:07]   expires on        : 2029-01-01 19:36:09
+[14:46:07]   signed using      : RSA with SHA-256
+[14:46:07]   RSA key size      : 2048 bits
+[14:46:07]   basic constraints : CA=false
+[14:46:07]   key usage         : Digital Signature, Key Encipherment
+[14:46:07] TLS: Check against list of allowed certs
+[14:46:07] TLS: Compare With:
+[14:46:07] TLS:      cert. version     : 3
+[14:46:07]      serial number     : 69:1B:6D:54:0A:8C:E3:9E
+[14:46:07]      issuer name       : C=IT, O=HiTEKS, OU=CCLI-Lab, CN=CCLI_Lab_Root_CA
+[14:46:07]      subject name      : C=IT, O=HiTEKS, OU=CCLI-Lab, CN=CCI016_01
+[14:46:07]      issued  on        : 2026-09-29 19:36:09
+[14:46:07]      expires on        : 2029-01-01 19:36:09
+[14:46:07]      signed using      : RSA with SHA-256
+[14:46:07]      RSA key size      : 2048 bits
+[14:46:07]      basic constraints : CA=false
+[14:46:07]      key usage         : Digital Signature, Key Encipherment
+[14:46:07] === P4 CS104 client (lib60870) ===
+[14:46:07] target=192.168.1.130:2404 ca=1 ioa=1001 tls=on
+[14:46:07] P4: TLS mode (62351-3)
+[14:46:07] P4: connection OPEN
+[14:46:07] P4: STARTDT_CON received
+[14:46:07] P4: ASDU M_ME_NC_1(13) cot=1 ca=1 n=1
+[14:46:07] P4: M_ME_NC_1 IOA=1001 value=0.000 kW
+[14:46:07] P4: GI sent CA=1, waiting 2000 ms
+[14:46:07] P4: ASDU C_IC_NA_1(100) cot=7 ca=1 n=1
+[14:46:07] P4: ASDU M_ME_NC_1(13) cot=20 ca=1 n=1
+[14:46:07] P4: M_ME_NC_1 IOA=1001 value=0.000 kW
+[14:46:07] P4: ASDU C_IC_NA_1(100) cot=10 ca=1 n=1
+[14:46:07] P4: ASDU M_ME_NC_1(13) cot=1 ca=1 n=1
+[14:46:07] P4: M_ME_NC_1 IOA=1001 value=0.000 kW
+[14:46:07] P4: connection CLOSED
+[14:46:07] P4: session summary startdt=YES totw_ioa1001=YES value=0.000
+[14:46:07] P4: VERDICT PASS (once/disconnect for P4-04)
+[14:46:07] PASS: restore session after fallback
+[14:46:07] P4-04 VERDICT: PASS

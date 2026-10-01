@@ -1,0 +1,42 @@
+===== P3-06 MMS TLS Eth_A (62351-3 / Annex T T.3.3.4) =====
+Date: 2026-09-25
+DUT: TG544/TR500 · ccli 0.1.0-r7
+Clause: T.3.3 / T.3.3.4 transport · IEC 62351-3 · checklist P3-06
+
+BUILD
+-----
+mbedtls 3.6.0 under apps/ccli/third_party/libiec61850/third_party/mbedtls/
+CONFIG_MMS_SUPPORT_TLS=1 · package ccli-0.1.0-r7.apk
+Lab PEMs: apps/ccli/config/tls/ → /etc/ccli/tls/
+
+RUNTIME
+-------
+mms.bind 192.168.10.1
+tcp_port 3782
+tls_enabled true
+Server log: mms: listening on 192.168.10.1:3782 tls=on
+netstat: LISTEN 192.168.10.1:3782 ccli
+netstat: no :102 listener
+
+CLIENT (TLS)
+------------
+mms_tls_client 192.168.10.1 3782 apps/ccli/config/tls
+CONNECT OK (TLS)
+READ Mod.stVal=5
+READ TotW.mag.f=0.000
+Evidence: P3_06_TLS_CLIENT.txt
+
+CLEARTEXT NEGATIVE
+------------------
+mms_lab_client 192.168.10.1 102 → CONNECT FAIL err=5
+Evidence: P3_06_CLEARTEXT_FAIL.txt
+
+LAB CAVEATS
+-----------
+- Lab MZ example PEMs (not DSO PKI) — P3-09 still OPEN
+- Client cert in example pack may show past notAfter; allowlist match used
+- TPM presence PASS; TLS private key still filesystem (not TPM-backed)
+- 62351-4 association (P3-07) not claimed
+
+VERDICT: P3-06 PASS
+===== END =====

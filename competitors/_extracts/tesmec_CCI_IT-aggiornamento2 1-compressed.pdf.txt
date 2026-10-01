@@ -1,0 +1,333 @@
+
+----- PAGE 1 -----
+AUTOMATION
+TC-CCI: La Soluzione Completa per la Gestione e la 
+Sicurezza degli Impianti Energetici
+Il TC-CCI è il Controllore Centrale di Impianto sviluppato da Tesmec 
+Automation per garantire conformità alle normative ARERA e CEI 
+0-16, rispondendo ai requisiti obbligatori per gli impianti connessi 
+alla rete in media tensione. Questo dispositivo integra l'intero 
+stack applicativo IEC 61850 e soddisfa i più rigorosi standard di 
+cybersecurity, come IEC 62351, per una gestione efﬁciente, sicura 
+e scalabile degli impianti. La sua architettura modulare si adatta a 
+diverse esigenze operative, offrendo beneﬁci come autodiagnostica, 
+conﬁgurazione web-based e protocolli di comunicazione avanzati, 
+per un controllo completo e afﬁdabile.
+Il nostro TC-CCI è conforme alla nuova normativa CEI 0-16 che 
+richiede l'obbligo delle funzioni PF2 per la limitazione in potenza 
+richiesta dalla recente delibera ARERA 385/2025.
+CCI 
+CONTROLLORE CENTRALE
+D'IMPIANTO
+CCI | CONTROLLORE CENTRALE D'IMPIANTO
+IT
+
+
+----- PAGE 2 -----
+2 3
+Controllore Centrale D'Impianto
+Brochure 
+AUTOMATION
+Punto di ConnessionePrincipali CaratteristicheIl Contesto Il Dispositivo
+L 'installazione del CCI al punto di consegna dell'impianto 
+è obbligatoria per impianti di produzione nuovi ed esistenti 
+connessi alla rete mt con potenza nominale complessiva 
+pari o superiore a 1 MW, e per impianti fotovoltaici ed 
+eolici con potenza nominale pari o superiore a 100 kW. 
+Il CCI presenta un design compatto, fornito in un armadio con 
+moduli installati su guida DIN, e un'architettura modulare che 
+lo rende adattabile a qualsiasi tipologia di impianto. Dispone 
+di una porta Ethernet dedicata per l'interfaccia con gli 
+elementi di impianto e garantisce la compatibilità EMC per 
+l'installazione in sottostazioni elettriche. Integra protocolli 
+di comunicazione sicuri conformi allo standard IEC 62351 
+e soddisfa i requisiti dei più stringenti standard di cyber-
+security hardware e software, grazie a un chip crittografato 
+integrato certiﬁcato FIPS 140-2, Level 3. È aggiornato per la 
+funzionalità PF1, PF2 e PF3. Supporta la sincronizzazione 
+oraria tramite NTP/SNTP e include un event log per la 
+registrazione degli eventi.
+In risposta alle necessità di una maggiore osservabilità e 
+controllo dei cosiddetti Signiﬁcant Grid Users, l’Autorità di 
+Regolazione per Energia, Reti e Ambiente (ARERA) ha previsto 
+nuove disposizioni per la connessione di impianti di produzione 
+alla rete in media tensione attraverso la pubblicazione della 
+delibera 540/2021/R/EEL e l’obbligatorietà del Controllore 
+Centrale di Impianto (CCI).
+Nello speciﬁco, il provvedimento è volto a regolare lo scambio 
+di dati tra Terna, le imprese distributrici e i Signiﬁcant Grid 
+Users ai ﬁni dell’esercizio in sicurezza del sistema elettrico 
+nazionale per tramite del dispositivo CCI e attraverso il 
+protocollo di comunicazione IEC 61850 secondo quanto 
+prescritto dalla norma tecnica CEI 0-16, allegato O e T.
+Il dispositivo TC-CCI di Tesmec Automation si presenta 
+come soluzione plug & play, facile da installare e 
+completao di ogni accessorio e funzionalità richiesta per 
+soddisfare i requisiti prescritti dagli Allegati O e T della 
+norma CEI 0-16.
+Da un punto di vista hardware, l'architettura PLC modulare 
+permette la massima ﬂessibilità per rispondere alle 
+necessità di qualsiasi tipologia di impianto da adeguare.
+A livello software, TC-CCI è basato su un database 
+real-time da cui il server 61850 preleva le informazioni 
+da scambiare tramite servizi di Report e GOOSE. La 
+piattaforma, incluso lo stack basato su IEC 61850 TLS , è 
+stata totalmente sviluppata da Tesmec Automation.
+Overview
+Controllore Centrale D'Impianto
+ LEGENDA
+1. Controllore CPU + I/O
+2. Media converter rame/ﬁbra
+3. Misuratore
+4. Ricevitore GNSS & Time server NTP
+5. Switch Ethernet
+6. UPS con batteria integrata
+7. Morsettiera e cablaggi
+
+----- PAGE 3 -----
+4 5
+Controllore Centrale D'Impianto
+Brochure 
+AUTOMATION
+Schema a Blocchi del Sistema: Livelli, Funzionalità e Cablaggio
+Dal campo alla rete, il CCI fa la differenza: la tabella evidenzia la collaborazione tra Rete, CCI e Campo per garantire 
+monitoraggio PF1 e controllo/limitazione della potenza PF2, con chiari riferimenti a protocolli e cablaggio impiegati; il tutto 
+in piena conformità alla Norma CEI 0‑16 (Allegati O e T) e alle Delibere ARERA 540/2021 e 385/2025, per un’integrazione 
+affidabile, scalabile e pronta all’esercizio. 
+Rete, CCI e Campo con indicazioni PF1/PF2 e protocolli
+Livello del Sistema Flusso di dati Funzionalità Componenti / Cablaggio
+LIVELLO 1: 
+Rete di Controllo 
+Esterna
+INVIO 
+COMANDO
+PF2 (Controllo/Limitazione): Il DSO 
+(o Terna, tramite il DSO) invia ordini di 
+modulazione (riduzione) della potenza 
+attiva (Pattiva) all'impianto, in ottica di 
+sicurezza del Sistema Elettrico Nazionale 
+(procedura RiGeDi).
+DSO / TSO
+TRASMISSIONI 
+DATI
+PF1 (Monitoraggio/Osservabilità): Il 
+CCI invia al DSO misure in tempo reale 
+di Potenza (P , Q), Tensione (V) e stato 
+dei Dispositivi di Interfaccia (DI). 
+Protocollo Esterno: IEC 61850. 
+Rete: Canale dedicato (es. Fibra 
+Ottica) con crittograﬁa TLS/PKI per la 
+sicurezza informatica.
+LIVELLO 2: 
+Controllore 
+Centrale (CCI 
+Tesmec)
+ELABORAZIONE 
+INTERNA
+Logica di controllo (Algoritmi PF2): Il 
+CCI riceve la funzione di regolazione 
+PF2 ed applica gli algoritmi e le priorità 
+descritte dalla CEI 0-16 Allegato O.
+Logica di monitoraggio (PF1): Raccoglie, 
+elabora e archivia i dati di campo e di rete.
+CCI (Controllore industriale): Esegue 
+il ﬁrmware Tesmec che integra 
+nativamente la logica PF2/PF3 
+attraverso comandi IEC 61850.
+ACQUISIZIONE 
+MISURE E STATI
+PF1 / Osservabilità impianto:
+Acquisizione di:
+1. Misure aggregate (P , Q, V) dal 
+Punto di Connessione (PdC). 
+2. Stato del Dispositivo Generale (DG) 
+e dei Dispositivi di Interfaccia (DI). 
+3. Potenza attiva P fonti aggregate e 
+singoli gruppi di generazione.
+Cablaggio metrologico: Cavi cablati 
+ai Trasformatori di Corrente (TA) e 
+Tensione (TV) al PdC.
+Cablaggio stati: Contatti puliti per gli 
+stati (ON/OFF) del DG/DI.
+Cablaggio fonti e gruppi: interfacce di 
+rete ethernet/seriali verso sistemi di 
+misura esterni o presenti in impianto 
+conformi CEI 0-16.
+LIVELLO 3: 
+Campo di 
+Generazione
+INVIO SETPOINT
+PF2 / Attuazione: Il CCI invia i comandi 
+di limitazione di potenza (es. 50% della 
+potenza nominale) ai singoli inverter o 
+unità di generazione. 
+Protocollo inverter: Modbus RTU 
+(via RS-485) o Modbus TCP (via 
+Ethernet), Proﬁnet o altri protocolli di 
+rete su Bus di Campo separato dalle 
+comunicazioni remote.
+Cablaggio RS‑485: Utilizzo di cavo 
+doppino schermato e ritorto (twisted 
+pair) con topologia Daisy-Chain per 
+connettere il CCI (Master) a tutti gli 
+Inverter (Slave).
+INVIO 
+TELEMETRIA
+PF1 / Osservabilità unità: Ogni unità 
+di generazione (inverter) invia al CCI i 
+propri dati di produzione (P , stato DDG) 
+per il monitoraggio aggregato. 
+Cablaggio: Rete RS-485 o Ethernet 
+(Bus di Campo).
+Interazione e Comunicazione nel Sistema CCI: Monitoraggio e Controllo di Potenza
+Architetture a Confronto: Fotovoltaico ed Eolico 
+La tabella seguente riassume le principali differenze di interazione tra CCI e unità di generazione nei contesti fotovoltaico 
+ed eolico: tipologia di unità, modalità di controllo PF2, protocolli di comunicazione specifici e verifiche di pilotabilità/
+attuazione.
+Interazione CCI con Fotovoltaico ed Eolico: differenze operative a confronto
+Aspetto Impianto Fotovoltaico (FV) Impianto Eoilico
+Unità di 
+generazione
+Inverter (Convertitori Statici). Aerogeneratori: turbine eoliche dotate 
+di generatori rotanti, generalmente 
+interfacciate alla rete attraverso convertitori 
+di potenza, così da ottimizzare la 
+regolazione della potenza attiva e reattiva.
+Controllo PF2 
+(interfaccia)
+Il CCI si interfaccia ai sistemi di controllo degli 
+inverter (centralizzati o di stringa) e distribuisce 
+i setpoint di limitazione della potenza attiva, 
+utilizzando protocolli industriali interoperabili quali 
+Modbus RTU/TCP per un’applicazione uniforme e 
+affidabile.
+Protocollo Esterno: IEC 61850.
+Comunicazione standard IEC 61850 su 
+canale di rete dedicato (ad es. fibra ottica), 
+con protezioni di cybersecurity basate su 
+crittografia TLS/PKI.
+Protocollo di campo 
+specifico
+Modbus RTU/TCP: protocollo ampiamente adottato 
+per la comunicazione con inverter fotovoltaici
+Per gli impianti eolici si adottano spesso 
+standard specifici come IEC 61400‑25, 
+pensati per la comunicazione e il controllo 
+di turbine e parchi eolici, oltre ai protocolli 
+IEC 61850 per l’interoperabilità a livello di 
+sottostazione.
+Verifica della 
+Pilotabilità
+Gli inverter devono essere ‘pilotabili’, cioè in grado 
+di ricevere comandi remoti per la riduzione della 
+potenza attiva; qualora non supportino questa 
+funzione, è prevista la loro sostituzione per 
+garantire conformità e controllo.
+Il controllore della turbina o il PLC di campo 
+deve poter ricevere i comandi dal CCI e 
+regolare la potenza agendo sugli attuatori 
+(angolo delle pale e/o convertitore); è 
+richiesta evidenza della capacità di controllo 
+per assicurare conformità e affidabilità 
+operativa.
+
+
+----- PAGE 4 -----
+6 7
+Controllore Centrale D'Impianto
+Brochure 
+AUTOMATION
+Dati Tecnici
+CCI Caratteristiche Valori
+Armadio
+Dimensioni (LXPXH) 500 x 250 x 700 mm
+Materiale Lamiera d’acciaio
+Colore Grigio (RAL 7035)
+Grado di protezione IP55
+Tensione di alimentazione 230Vac; 110Vdc
+Caratteristiche Valori
+Unità di calcolo centrale
+Processore Intel® Atom™ x5-E3930 2x 1,3 GHz
+Memoria ﬂash 1 Gbyte
+Memoria 2048 MByte
+Interfacce di rete come da CEI 0-16
+- 1 porta Ethernet di tipo 100BaseFX, realizzata con 
+tecnologia in ﬁbra multimodale 1310 nm
+- 1 porta 100BaseTX per la comunicazione verso 
+ulteriori attori abilitati
+- 2 porte 100BaseTX spare dedicate esclusivamente 
+all'acquisizione dei segnali dal campo
+Caratteristiche Valori
+Ingressi digitali
+Numero ingressi espandibile ﬁno a 16
+Livelli di acquisizione 110Vdc nom. (min 80.3Vdc - max 165Vdc)
+Circuito di protezione Relè di separazione dal campo, sostituibili con i 
+livelli di tensione disponibili.
+Caratteristiche Valori
+Sincronizzazione GPS
+Interfaccia SMA GNSS
+Guadagno 38db
+Lunghezza cavo 5mt (inclusa)
+Standard GNSS GPS, GLONASS, GALILEO
+Numero canali GNSS 32
+Antenna Inclusa in fornitura, adatta ad installazione outdoor
+CCI Caratteristiche Valori
+Tecnologia Ingressi Corrente
+Misuratore multifunzionale
+Denominazione ingresso Ingresso di misurazione della tensione V1, V2, V3
+Range tensione d'ingresso diretto 35 V AC - 690 V AC (Fase/fase)
+20 V AC - 400 V AC (Fase/conduttore neutro)
+Range tensione d'ingresso mediante convertitore esterno60 V AC - 2000000 V AC (primaria) 
+60 V AC - 400 V AC (secondaria)
+Resistenza sovratensione 760 V AC (Fase/fase)
+Accuratezza misure Classe 0.2
+Isolamento 3.51kV
+Potenza assorbita < 2 VA
+Tecnologia Ingressi Tensione
+Denominazione ingresso Misurazione corrente I1, I2, I3
+Corrente d'ingresso (conﬁgurabile) 1 A (secondaria)
+5 A (secondaria)
+Campo di misura corrente 1 A - 20000 A (primaria)
+Sovraccarico ammesso 6 A (Imax)
+Soglia di eccitazione del valore nominale del 
+campo di misura
+10mA (1A) 
+50mA (5A)
+Accuratezza misure Classe 0.2
+Isolamento 3.51kV
+Sovraccarico di corrente 50 A per 1 s
+Potenza assorbita
+< 0,5 VA
+Caratteristiche Valori
+Modulo di continuità UPS
+Tensione di uscita nominale 24 Vdc
+Corrente nominale di uscita (IN) 3 A (0 °C ... 40 °C)
+Limitazione corrente d’uscita
+Nel funzionamento di rete secondo limitazione di 
+corrente inserita a monte 
+4 A (Funzionamento della batteria)
+Power boost (IBoost) 4 A (0 °C ... 35 °C)
+Potenza d’uscita 72 W
+Fusibile d’ingresso 7 A (ritardato, interno)
+Tempo di riserva 90 min (1 A), 45 min (2 A), 30 min (3 A), 22 min (4 A)
+Caratteristiche
+Protocollii
+Protocollo di comunicazione IEC 61850 over TLS secondo lo standard IEC62351-3
+Protocollo IEC 60870-5-104
+Protocollo ModBus TCP
+Protocollo MQTT
+Protocollo PROFINET
+
+----- PAGE 5 -----
+tesmec.com
+AUTOMATION
+Resta in contatto
+con noi:
+TESMEC Automation S.r.l.
+Sede principale: 
+Via Zanica, 17/O 
+24050 Grassobbio (BG) - Italia
+Tel.: +39 035 4232911 
+Email: automation@tesmec.com
+Le foto e i disegni possono variare secondo le speciﬁche tecniche a causa del continuo programma di aggiornamento.
+Sono possibili variazioni senza preavviso.REV001A

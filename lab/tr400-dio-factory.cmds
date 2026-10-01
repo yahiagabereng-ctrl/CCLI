@@ -1,0 +1,30 @@
+echo === Restore lab channel modes: ch1=DO ch2=DI ch3=DO ch4=DO ===
+uci set didoservice_v2.channel_1.mode=do
+uci set didoservice_v2.channel_2.mode=di
+uci set didoservice_v2.channel_3.mode=do
+uci set didoservice_v2.channel_4.mode=do
+uci commit didoservice_v2
+
+ubus call dido_v2 gd32.reset '{}'
+sleep 2
+
+/etc/init.d/didoservice_v2 restart
+sleep 3
+
+ubus call dido_v2 set_mode '{"channel":1,"mode":"DO"}'
+ubus call dido_v2 set_mode '{"channel":2,"mode":"DI"}'
+ubus call dido_v2 gd32.set_mode '{"channel":1,"mode":"DO"}'
+ubus call dido_v2 gd32.set_mode '{"channel":2,"mode":"DI"}'
+sleep 1
+
+echo === status ===
+ubus call dido_v2 status
+
+echo === gd32.status ===
+ubus call dido_v2 gd32.status '{}'
+
+echo === gd32.read_di - jumper DIO2 to GND now ===
+ubus call dido_v2 gd32.read_di '{}'
+
+echo === recent dido logs ===
+logread | grep didod_v2 | tail -15

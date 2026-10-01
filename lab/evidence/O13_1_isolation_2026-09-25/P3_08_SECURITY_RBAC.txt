@@ -1,0 +1,44 @@
+# P3-08 RBAC + P3-09 PKI/CRL — lab evidence
+
+**Date:** 2026-09-25  
+**DUT:** TG544 · `ccli-0.1.0-r9` · `192.168.10.1:3782`  
+**Clauses:** Annex T **T.3.3.4** / **T.3.3.4.3** (62351-8) · **T.3.3.4.9** (62351-9 CRL path)
+
+## Server banner
+
+```
+mms: TLS CRL loaded /etc/ccli/tls/lab_crl.pem
+mms: listening on 192.168.10.1:3782 tls=on acse_tls_auth=on rbac=on crl=on fallback_s=15
+```
+
+## P3-08 — Role-based Wlim write
+
+| Identity | CN | Associate | Write Wlim | Read |
+|----------|----|-----------|------------|------|
+| DSO | `DSO_OPERATOR` | OK | OPERATE OK | — |
+| VIEWER | `VIEWER` | OK | OPERATE FAIL + `RBAC DENY` | READ OK |
+
+DUT log:
+
+```
+mms: ACSE auth ACCEPT — role=DSO_OPERATOR …
+mms: ACSE auth ACCEPT — role=VIEWER …
+mms: RBAC DENY Wlim — role is not DSO_OPERATOR (62351-8 / T.3.3.4)
+```
+
+**Verdict: PASS (lab)** — cert→role map stand-in for full IECUserRoles / Attribute Certificate (product).
+
+## P3-09 — CA + CRL
+
+| Check | Result |
+|-------|--------|
+| Leaves signed by lab Root CA (not self-signed) | OK |
+| Chain validation on | OK |
+| CRL loaded `lab_crl.pem` | OK |
+| `REVOKED_CLIENT` connect | CONNECT FAIL err=5 |
+
+**Verdict: PASS (lab CRL path)** — SCEP/EST enrolment **deferred** (product / T.3.3.4.9 full lifecycle).
+
+## Raw client transcript
+
+See `P3_08_09_RBAC_PKI.txt`.

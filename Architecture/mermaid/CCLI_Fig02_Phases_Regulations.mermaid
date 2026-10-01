@@ -1,0 +1,20 @@
+%% CCLI Fig 2 — Development phases × regulations × TR400 interfaces
+%% Source: knowledge-base/08-engineering/CCI_62443_Zones.md
+%% Render: https://mermaid.live
+
+flowchart LR
+  P0["Phase 0 Bench map<br/>62443 ZCR 1-3 paper<br/>HW: ip link · gpiodetect"]
+  P1["Phase 1 PF2 L2<br/>CEI Allegato O<br/>62443 CR 3.6<br/>HW: ttyS1 · DIO1/2"]
+  P2["Phase 2 Network<br/>62443 zones C1-C5<br/>REQ-NET-001/002<br/>HW: LAN firewall"]
+  P3["Phase 3 61850<br/>CEI Allegato T<br/>62351-4<br/>HW: LAN1 Eth_A"]
+  P4["Phase 4 104 plant<br/>60870-5-104<br/>62351-3/5<br/>HW: LAN2 · ttyS2"]
+  P5["Phase 5 Metrology<br/>CEI EN 61557-12<br/>HW: analyzer on RS485"]
+  P6["Phase 6 C4 I/O<br/>Allegato O full I/O<br/>AiLux 5DI/3DO GAP<br/>HW: DIO3/4 · expansion"]
+  P7["Phase 7 Cert demo<br/>62443-4-1/4-2<br/>62351-14 · ARERA<br/>CEI demo pack"]
+
+  P0 --> P1 --> P2 --> P3 --> P4 --> P5 --> P6 --> P7
+
+  P1 -.->|"SW"| SW1["apps/ccli PF2 FSM<br/>libmodbus · lab_tr400.yaml"]
+  P3 -.->|"SW"| SW2["libiec61850 MMS<br/>ICD Allegato T"]
+  P4 -.->|"SW"| SW3["lib60870 104<br/>Modbus TCP master"]
+  P7 -.->|"SW"| SW4["Audit log · 62351 TLS<br/>procd ipk deploy"]

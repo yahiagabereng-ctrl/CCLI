@@ -1,0 +1,2 @@
+/usr/bin/ar qc libccli_platform.a CMakeFiles/ccli_platform.dir/platform/platform_pi/hal_serial.cpp.o CMakeFiles/ccli_platform.dir/platform/platform_pi/hal_net.cpp.o CMakeFiles/ccli_platform.dir/platform/platform_pi/hal_gpio.cpp.o CMakeFiles/ccli_platform.dir/platform/platform_pi/hal_gpio_ll.c.o CMakeFiles/ccli_platform.dir/platform/platform_pi/hal_time.cpp.o CMakeFiles/ccli_platform.dir/platform/platform_pi/platform_init.cpp.o
+/usr/bin/ranlib libccli_platform.a

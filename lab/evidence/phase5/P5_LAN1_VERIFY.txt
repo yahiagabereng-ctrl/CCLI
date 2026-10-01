@@ -1,0 +1,18 @@
+[2026-09-30 16:33:03] # P5 Phase 5 LAN1 verify (Eth_A MMS TLS) — final with live Modbus
+[2026-09-30 16:33:03] Gates: P5-02 TotW + P5-M07 TotVAr + P5-M08 PPV + P5-M06 Wireshark
+[2026-09-30 16:33:03] PC IPv4: 192.168.10.10
+[2026-09-30 16:33:03] Build: ccli 0.1.0-r22 (P5-PPV)
+[2026-09-30 16:33:03] Modbus: P=450 kW Q=45 kvar (COM5 slave -> DUT RS485-2)
+[2026-09-30 16:33:03] mms_tls_client -> 192.168.10.1:3782 ...
+[2026-09-30 16:33:03] CONNECT OK (TLS)
+[2026-09-30 16:33:03] READ Mod.stVal=5
+[2026-09-30 16:33:03] READ OK TotW.mag.f=450.000
+[2026-09-30 16:33:03] READ OK TotVAr.mag.f=45.000
+[2026-09-30 16:33:03] READ OK PPV.phsAB.cVal.mag.f=20.000
+[2026-09-30 16:33:27] Wireshark: 80 frames, TLS Client Hello + App Data, no cleartext :102
+[2026-09-30 16:33:27] PCAP: lab/evidence/phase5/P5_MMS_TLS.pcapng
+[2026-09-30 16:33:27] P5-02 TotW: PASS
+[2026-09-30 16:33:27] P5-M07 TotVAr: PASS
+[2026-09-30 16:33:27] P5-M08 PPV: PASS
+[2026-09-30 16:33:27] P5-M06 Wireshark TLS: PASS
+[2026-09-30 16:33:27] P5 LAN1 VERDICT: PASS (see P5_FINAL_VERIFY.txt)

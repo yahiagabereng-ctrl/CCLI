@@ -1,0 +1,301 @@
+{
+  "doc_id": "CCLI-REGS-CLASS-001",
+  "source_id": "ccli-cci-module-regs-class",
+  "title": "CCI Module regulations classification",
+  "title_it": "Classificazione normative modulo CCI",
+  "languages": ["en", "it"],
+  "glossary_it_en": {
+    "Operatore Abilitato": "Qualified / Authorized Operator",
+    "Elementi di Impianto": "Plant elements / DER field devices",
+    "Allegato O": "Annex O",
+    "Allegato T": "Annex T",
+    "Normative di riferimento": "Reference standards",
+    "Gestione Armamenti": "Arming management",
+    "Delibera ARERA": "ARERA Decision / Resolution",
+    "antimanomissione": "anti-tampering",
+    "Temperatura di esercizio": "Operating temperature",
+    "conforme a": "compliant with"
+  },
+  "classes": [
+    "GRID-IT",
+    "REGULATOR-IT",
+    "METROLOGY",
+    "CYBER-IACS",
+    "CYBER-CRYPTO",
+    "CYBER-PROTO",
+    "CYBER-EU",
+    "ENERGY-EU",
+    "PROTO-FIELD",
+    "TIME",
+    "APP-PLC",
+    "ATEX",
+    "EMC-RADIO"
+  ],
+  "routing_packs": {
+    "A_italian_cci_mandate": [
+      "cei-0-16-allegato-o",
+      "cei-0-16-allegato-t",
+      "cei-0-16-cci-manual-ailux",
+      "ccli-cci-module-regs-class"
+    ],
+    "B_cyber_partial": [
+      "ccli-cci-module-regs-class",
+      "eu-2024-2847-cra",
+      "cei-0-16-cci-manual-ailux"
+    ],
+    "C_protocols_partial": [
+      "ccli-cci-module-regs-class",
+      "cei-0-16-allegato-t",
+      "cei-0-16-cci-manual-ailux"
+    ],
+    "D_market_metrology_blocked": [
+      "arera-540-2021",
+      "ccli-61557-12-extract",
+      "cei-en-61557-12-2018"
+    ]
+  },
+  "regulations": [
+    {
+      "norm": "CEI 0-16 Allegato O",
+      "class": "GRID-IT",
+      "priority": "P0",
+      "rag_status": "INGESTED",
+      "source_id": "cei-0-16-allegato-o",
+      "applies_to": ["cci_plant_controller", "ETH_A", "ETH_B", "plant_ports"]
+    },
+    {
+      "norm": "CEI 0-16 Allegato T",
+      "class": "GRID-IT",
+      "priority": "P0",
+      "rag_status": "INGESTED",
+      "source_id": "cei-0-16-allegato-t",
+      "applies_to": ["iec_61850", "goose", "dso_exchange"]
+    },
+    {
+      "norm": "AiLux CCI Manual",
+      "class": "GRID-IT",
+      "priority": "P0",
+      "rag_status": "INGESTED",
+      "source_id": "cei-0-16-cci-manual-ailux",
+      "applies_to": ["full_module_baseline"]
+    },
+    {
+      "norm": "ARERA 540/2021",
+      "class": "REGULATOR-IT",
+      "priority": "P0",
+      "rag_status": "MISSING",
+      "source_id": "arera-540-2021",
+      "applies_to": ["italian_market_obligations", "cci_mandate"]
+    },
+    {
+      "norm": "CEI EN 61557-12:2018",
+      "class": "METROLOGY",
+      "priority": "P1",
+      "rag_status": "PART",
+      "source_id": "ccli-61557-12-extract",
+      "source_id_target": "cei-en-61557-12-2018",
+      "applies_to": ["performance_measuring_monitoring"]
+    },
+    {
+      "norm": "IEC 62443-4-1",
+      "class": "CYBER-IACS",
+      "priority": "P0",
+      "rag_status": "MISSING",
+      "source_id": "iec-62443-4-1",
+      "applies_to": ["secure_development_lifecycle", "rbac", "firewall"]
+    },
+    {
+      "norm": "IEC 62443-4-2",
+      "class": "CYBER-IACS",
+      "priority": "P0",
+      "rag_status": "MISSING",
+      "source_id": "iec-62443-4-2",
+      "applies_to": ["component_security", "anti_tamper", "secure_boot"]
+    },
+    {
+      "norm": "FIPS 140-2",
+      "class": "CYBER-CRYPTO",
+      "priority": "P1",
+      "rag_status": "MISSING",
+      "source_id": "fips-140-2",
+      "applies_to": ["tpm_2_0", "fips_level_3_claim"]
+    },
+    {
+      "norm": "IEC 62351-3",
+      "class": "CYBER-PROTO",
+      "priority": "P0",
+      "rag_status": "MISSING",
+      "source_id": "iec-62351-3",
+      "applies_to": ["iec_60870_5_101", "iec_60870_5_104", "dnp3", "tls"]
+    },
+    {
+      "norm": "IEC 62351-4",
+      "class": "CYBER-PROTO",
+      "priority": "P0",
+      "rag_status": "MISSING",
+      "source_id": "iec-62351-4",
+      "applies_to": ["iec_61850"]
+    },
+    {
+      "norm": "IEC 62351-5",
+      "class": "CYBER-PROTO",
+      "priority": "P0",
+      "rag_status": "MISSING",
+      "source_id": "iec-62351-5",
+      "applies_to": ["iec_60870_5_101", "iec_60870_5_104", "dnp3"]
+    },
+    {
+      "norm": "IEC 62351-6",
+      "class": "CYBER-PROTO",
+      "priority": "P0",
+      "rag_status": "MISSING",
+      "source_id": "iec-62351-6",
+      "applies_to": ["iec_61850", "goose"]
+    },
+    {
+      "norm": "IEC 62351-7",
+      "class": "CYBER-PROTO",
+      "priority": "P1",
+      "rag_status": "MISSING",
+      "source_id": "iec-62351-7",
+      "applies_to": ["snmp"]
+    },
+    {
+      "norm": "IEC 62351-8",
+      "class": "CYBER-PROTO",
+      "priority": "P1",
+      "rag_status": "MISSING",
+      "source_id": "iec-62351-8",
+      "applies_to": ["rbac", "iec_60870", "iec_61850", "dnp3"]
+    },
+    {
+      "norm": "IEC 62351-9",
+      "class": "CYBER-PROTO",
+      "priority": "P1",
+      "rag_status": "MISSING",
+      "source_id": "iec-62351-9",
+      "applies_to": ["key_management", "iec_60870", "iec_61850", "dnp3"]
+    },
+    {
+      "norm": "IEC 62351-14",
+      "class": "CYBER-PROTO",
+      "priority": "P2",
+      "rag_status": "MISSING",
+      "source_id": "iec-62351-14",
+      "applies_to": ["syslog"]
+    },
+    {
+      "norm": "Regulation (EU) 2024/2847 CRA",
+      "class": "CYBER-EU",
+      "priority": "P1",
+      "rag_status": "INGESTED",
+      "source_id": "eu-2024-2847-cra",
+      "applies_to": ["clone_ce_cyber", "products_with_digital_elements"]
+    },
+    {
+      "norm": "Directive (EU) 2018/2001 RED II",
+      "class": "ENERGY-EU",
+      "priority": "P2",
+      "rag_status": "INGESTED",
+      "source_id": "eu-2018-2001-red",
+      "applies_to": ["renewables_policy_context"]
+    },
+    {
+      "norm": "IEC 60870-5-101",
+      "class": "PROTO-FIELD",
+      "priority": "P1",
+      "rag_status": "MISSING",
+      "source_id": "iec-60870-5-101",
+      "applies_to": ["serial_rs232_rs485"]
+    },
+    {
+      "norm": "IEC 60870-5-103",
+      "class": "PROTO-FIELD",
+      "priority": "P2",
+      "rag_status": "MISSING",
+      "source_id": "iec-60870-5-103",
+      "applies_to": ["serial_rs232_rs485"]
+    },
+    {
+      "norm": "IEC 60870-5-104",
+      "class": "PROTO-FIELD",
+      "priority": "P1",
+      "rag_status": "MISSING",
+      "source_id": "iec-60870-5-104",
+      "applies_to": ["ethernet", "arming_multicast_unicast", "redundancy"]
+    },
+    {
+      "norm": "IEC 61850",
+      "class": "PROTO-FIELD",
+      "priority": "P0",
+      "rag_status": "PARTIAL",
+      "source_id": "iec-61850",
+      "proxy_source_ids": ["cei-0-16-allegato-t"],
+      "applies_to": ["server_client_goose"]
+    },
+    {
+      "norm": "IEC 61158-15 Modbus",
+      "class": "PROTO-FIELD",
+      "priority": "P1",
+      "rag_status": "MISSING",
+      "source_id": "iec-61158-15-modbus",
+      "applies_to": ["modbus_rtu", "modbus_tcp"]
+    },
+    {
+      "norm": "DNP3 / IEEE 1815",
+      "class": "PROTO-FIELD",
+      "priority": "P2",
+      "rag_status": "MISSING",
+      "source_id": "ieee-1815-dnp3",
+      "applies_to": ["ethernet"]
+    },
+    {
+      "norm": "OPC UA / IEC 62541",
+      "class": "PROTO-FIELD",
+      "priority": "P2",
+      "rag_status": "MISSING",
+      "source_id": "opc-ua-iec-62541",
+      "applies_to": ["opc_ua_client"]
+    },
+    {
+      "norm": "IEEE C37.118",
+      "class": "PROTO-FIELD",
+      "priority": "P2",
+      "rag_status": "MISSING",
+      "source_id": "ieee-c37-118",
+      "applies_to": ["synchrophasor_client"]
+    },
+    {
+      "norm": "IEC 62056-21 DLMS/COSEM",
+      "class": "PROTO-FIELD",
+      "priority": "P2",
+      "rag_status": "MISSING",
+      "source_id": "iec-62056-21",
+      "applies_to": ["metering"]
+    },
+    {
+      "norm": "S7-Comm",
+      "class": "PROTO-FIELD",
+      "priority": "P3",
+      "rag_status": "N_A_PROPRIETARY",
+      "source_id": null,
+      "applies_to": ["siemens_plc"]
+    },
+    {
+      "norm": "IEC 61131-3",
+      "class": "APP-PLC",
+      "priority": "P2",
+      "rag_status": "MISSING",
+      "source_id": "iec-61131-3",
+      "applies_to": ["ladder_tasks"]
+    },
+    {
+      "norm": "IEEE 1588 PTP power profile",
+      "class": "TIME",
+      "priority": "P2",
+      "rag_status": "MISSING",
+      "source_id": "ieee-1588",
+      "applies_to": ["ptp_client_server", "time_sync"]
+    }
+  ]
+}

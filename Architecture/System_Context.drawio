@@ -1,0 +1,90 @@
+<mxfile host="Electron" agent="CCLI-RAG">
+  <diagram name="Page-1" id="ccli-System-Context">
+    <mxGraphModel dx="858" dy="522" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="900" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="t" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=18;fontStyle=1;" value="System Context — CEI 0-16 PF2 Central Plant Controller" vertex="1">
+          <mxGeometry height="36" width="1000" x="200" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="sub" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=10;" value="Source: ccli-vendor-selection · cei-0-16-allegato-o/t · ccli-architecture-framework" vertex="1">
+          <mxGeometry height="24" width="1000" x="200" y="56" as="geometry" />
+        </mxCell>
+        <mxCell id="g_ext" parent="1" style="swimlane;startSize=28;fillColor=#F8FAFC;strokeColor=#64748B;fontStyle=1;fontSize=12;" value="External (grid / operator)" vertex="1">
+          <mxGeometry height="380" width="320" x="20" y="130" as="geometry" />
+        </mxCell>
+        <mxCell id="ds o" parent="g_ext" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DBEAFE;strokeColor=#334155;fontSize=10;" value="DSO Eth_A IEC 61850 MMS/GOOSE Annex O" vertex="1">
+          <mxGeometry height="90" width="130" x="170" y="240" as="geometry" />
+        </mxCell>
+        <mxCell id="op" parent="g_ext" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DBEAFE;strokeColor=#334155;fontSize=10;" value="Operatore Abilitato Eth_B 61850 / 60870-104 Annex T" vertex="1">
+          <mxGeometry height="90" width="130" x="170" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ups" parent="g_ext" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#334155;fontSize=10;" value="UPS / cabinet power 12-24 Vdc context" vertex="1">
+          <mxGeometry height="50" width="280" x="20" y="150" as="geometry" />
+        </mxCell>
+        <mxCell id="g_plant" parent="1" style="swimlane;startSize=28;fillColor=#F8FAFC;strokeColor=#64748B;fontStyle=1;fontSize=12;" value="MT plant (behind CCI)" vertex="1">
+          <mxGeometry height="300" width="320" x="1040" y="90" as="geometry" />
+        </mxCell>
+        <mxCell id="inv" parent="g_plant" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#334155;fontSize=10;" value="Inverters / generators" vertex="1">
+          <mxGeometry height="60" width="130" x="20" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="bess" parent="g_plant" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#334155;fontSize=10;" value="BESS / storage" vertex="1">
+          <mxGeometry height="60" width="130" x="180" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="meter" parent="g_plant" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#334155;fontSize=10;" value="Energy analyzer Modbus RTU" vertex="1">
+          <mxGeometry height="60" width="130" x="20" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="plant_eth" parent="g_plant" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#334155;fontSize=10;" value="Plant LAN Modbus TCP" vertex="1">
+          <mxGeometry height="60" width="130" x="20" y="200" as="geometry" />
+        </mxCell>
+        <mxCell id="cci" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DCFCE7;strokeColor=#166534;fontSize=11;" value="CCI (original design) Toradex SoM 0063 + custom carrier PF2 · observability · curtailment" vertex="1">
+          <mxGeometry height="120" width="360" x="540" y="260" as="geometry" />
+        </mxCell>
+        <mxCell id="Eh49kjiTsbjQq69GnK1J-5" edge="1" parent="1" source="kit" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="cci" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="kit" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF4E6;strokeColor=#B45309;fontSize=11;" value="Phase 1 LAB ONLY Verdin Dev Board 99991105 2x GbE · 1x RS485 DB9" vertex="1">
+          <mxGeometry height="80" width="360" x="540" y="440" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" edge="1" parent="1" source="ds o" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;" target="cci" value="Eth_A">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" edge="1" parent="1" source="op" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;" target="cci" value="Eth_B">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" edge="1" parent="1" source="meter" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;" target="cci" value="RS485 Modbus">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="940.07" y="240.07" />
+              <mxPoint x="940.07" y="320.07" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e4" edge="1" parent="1" source="plant_eth" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;" target="cci" value="Plant ports">
+          <mxGeometry relative="1" x="0.4872" y="-20" as="geometry">
+            <mxPoint x="1" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e5" edge="1" parent="1" source="inv" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;" target="cci" value="&lt;font style=&quot;font-size: 15px;&quot;&gt;DI status / DO curtailment&lt;/font&gt;">
+          <mxGeometry relative="1" x="-0.1306" y="-30" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="720.07" y="190.07" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Eh49kjiTsbjQq69GnK1J-7" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;" value="&lt;font style=&quot;font-size: 16px;&quot;&gt;validates SW path only&lt;/font&gt;">
+          <mxGeometry relative="1" x="0.7157" y="403" as="geometry">
+            <mxPoint x="-160" y="33" as="offset" />
+            <Array as="points">
+              <mxPoint x="770.0033333333333" y="780" />
+              <mxPoint x="780.0033333333333" y="780" />
+            </Array>
+            <mxPoint x="770" y="899.9300000000001" as="sourcePoint" />
+            <mxPoint x="780" y="789.9300000000001" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

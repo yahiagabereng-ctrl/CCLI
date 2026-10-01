@@ -1,0 +1,10 @@
+ip link set lan4 up 2>/dev/null
+ifup lan 2>/dev/null || /etc/init.d/network restart
+sleep 8
+echo "=== links ==="
+ip -br link | grep -E 'lan|br-'
+echo "=== addr ==="
+ip -4 addr | grep -E 'lan|br-|inet '
+echo "=== brctl ==="
+brctl show
+ping -c 1 -W 1 192.168.1.183 >/dev/null && echo SSH_PATH_OK

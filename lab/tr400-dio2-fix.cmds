@@ -1,0 +1,14 @@
+echo === Fix DIO2 DI mode ===
+uci set didoservice_v2.channel_2.mode=di
+uci commit didoservice_v2
+/etc/init.d/didoservice_v2 restart
+sleep 2
+ubus call dido_v2 set_mode '{"channel":2,"mode":"DI"}'
+ubus call dido_v2 gd32.set_mode '{"channel":2,"mode":"DI"}'
+sleep 1
+echo === gd32.read_di ===
+ubus call dido_v2 gd32.read_di '{}'
+echo === read_di ch2 ===
+ubus call dido_v2 read_di '{"channel":2}'
+echo === status ===
+ubus call dido_v2 status

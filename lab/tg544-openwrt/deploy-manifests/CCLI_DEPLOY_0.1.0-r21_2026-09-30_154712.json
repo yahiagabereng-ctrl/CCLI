@@ -1,0 +1,16 @@
+﻿{
+    "codename":  "P5-TotVAr",
+    "changes":  [
+                    "P5-M07 TotVAr MMS DO",
+                    "DS_R_PdC_Mis4sec + TotVAr member",
+                    "update_totvar_kvar from Modbus q_kvar"
+                ],
+    "release":  21,
+    "timestamp_utc":  "2026-09-30T13:47:12.7318231Z",
+    "version_full":  "0.1.0-r21",
+    "lab_yaml":  "C:\\Yahia\\projects\\CCLI\\apps\\ccli\\config\\lab_tr400_phase4_eth_b.yaml",
+    "sha256":  "1618f0b97bab97c69a81aa0eee1e28dba7aaff296f6390f0d89e355992943553",
+    "binary":  "C:\\Yahia\\projects\\CCLI\\lab\\tg544-openwrt\\ccli-bin",
+    "host":  "192.168.10.1",
+    "semver":  "0.1.0"
+}

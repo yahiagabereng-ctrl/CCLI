@@ -1,0 +1,89 @@
+Central Plant Controller
+for the Italian Standard CEI 0-16
+this growth to be truly balanced, it is essential that distributed generation
+actively participates in grid balancing, contributing to the stability of the
+To make this evolution possible, the Central Plant Controller (CCI) was
+introduced: the connection point between distributed generation plants
+remote control of the plant by the DSO (distributor),
+Power Plant Controller for
+Standard CEI 0-16
+di Impianto)
+• 2014–2016 – Annex A72 and AEEG Resolution 421/14
+Between 2014 and 2016, with Annex A72 and ARERA resolutions, the Plan for the
+Reduction of Distributed Generation (RIGEDI) was defined, aimed at ensuring the
+• 2020–2022 – Annexes A6 and A13 and CEI 0-16 V1/V2 variants
+Subsequently, between 2020 and 2022, Annexes A6 and A13 of the Grid Code and
+the V1/V2 variants of the CEI 0-16 standard incorporated European guidelines on the
+observability of Distributed Generation, introducing the Central Plant Controller (CCI).
+This device is key to ensuring a safe and interoperable connection between plants and
+CEI 0-16 Annex O and T
+Plant size Compliance deadline Obligation
+The main deadlines established by ARERA Resolution 564/25 vary depending on plant
+monitoring functions mandatory for all medium-voltage plants with power above 1 MW,
+385/25, introduced significant changes to the RIGEDI procedure, eliminating the
+GDPRO category (plants remotely disconnectable only by the producer upon DSO
+timelines for the RIGEDI procedure, providing extensions and a revision of bonus time
+The CCI must monitor the active and reactive power,
+the status of the DG and DI, and communicate the
+new plants only, monitoring of the active power of
+of the plant, for the purpose of regulating grid voltage
+and frequency. The function of active power limitation
+is mandatory for all plants, regardless of size, while the
+other PF2 functionalities are optional and activated at
+producer’s discretion, relate to the plant’s participation
+in dispatching services markets, optimized plant
+OPTIMIZATION
+(Central Plant Controller)
+Eletricity grid Plant
+DSO distributor through the IEC 61850 protocol, using the secure transport profile defined by
+IEC 62351. The diagram below illustrates the basic connection between the main elements
+The Higeco More CCI is the optimal and flexible Made In Italy
+to meet the technical requirements established by the CEI 0-16
+years of hard-earned know-how in power plant control. And the
+power plants existent or under construction.
+FREQUENCY AND VOLTAGE
+POWER FACTOR CHECK
+ACTIVE POWER
+REACTIVE POWER
+Power Analyzer
+plant and the DSO (Distributor System Operators) using the
+• Power analyzer measures the electrical parameters at the
+event of power outages;
+• Switch interconnects the interface C with the system
+• Copper/fibre ethernet converter guarantees the extension
+of copper connections over optical fibre.
+Copper/fibre
+AC VERSION Q01-HSC-4T2F-10DI-PA
+AC Power Supply Voltage 230Vac (207Vac - 252Vac)
+Power Supply Frequency 50/60Hz
+DC VERSION Q01-HSC-4T2F-10DI-PA-DC
+DC Power Supply Voltage 110 Vdc (67.2 - 154 Vdc)
+Operative Temperature range da 0ºC a +40ºC
+CCI - Ethernet (No switch/bridge) 2xEth 1000Base-T
+CCI - Serial Ports 2xRS485
+2xCanbus (optional)
+CCI - Digital Ports 13xDI
+Ethernet Medium Converter 100/1000Base-X SFP
+Ethernet Switch 2x100/1000Base-T
+Communication Protocols IEC 61850, IEC 60870-101,
+IEC 60870-104, Modbus
+Maximum Voltage 400V TV terminals
+Isolation 2.5kV Power Analyzer inputs
+Power Analyzer Contrel EMA-90-N Class 0.2S,
+Configuration User Interface USB
+Data Export IEC 61850 toward DSO,
+Modbus, DNP3, IEC 60870-104
+GPS receiver
+GPS/GLONASS 32dB,
+Conformity CEI 0-16 Annex O 2022-03
+Annex T 2022-03
+IEC 62443-4-1
+IEC 62443-4-2
+IEC 61850 Test Certificate from UCA User
+IEC 62443
+with IEC 62443-4-1.
+physical tampering, a firewall and any intrusions. Application
+with IEC 62443-4-2.
+profile defined by IEC 62351-3 of the IEC 61850 protocol.
+systems for renewable power plants
+Via Toscana, 13B, 20136 Milano (MI), Italy

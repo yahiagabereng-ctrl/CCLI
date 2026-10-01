@@ -1,0 +1,49 @@
+#!/bin/sh
+# Phase 2 harden: netmask, masq off, wifi off — keep lan2 SSH path
+set -e
+echo "=== BEFORE fixes ==="
+ip -4 addr show lan1 | head -5
+uci get network.@device[0].ports
+
+# Fix DSO /24
+uci set network.lan1_sec.netmask='255.255.255.0'
+# Ensure plant netmask
+uci set network.lan2_sec.netmask='255.255.255.0'
+# Eng bridge: lan4 only (already), ensure lan IP
+uci set network.@device[0].ports='lan4'
+uci set network.lan.ipaddr='192.168.0.1/24'
+
+# Masq OFF on role zones
+uci set firewall.@zone[2].masq='0'
+uci set firewall.@zone[3].masq='0'
+uci set firewall.@zone[4].masq='0'
+# Eng forward reject (isolation)
+uci set firewall.@zone[0].forward='REJECT'
+
+# Wi-Fi off
+uci set wireless.radio0.disabled='1'
+uci set wireless.radio1.disabled='1'
+uci set wireless.default_radio0.disabled='1'
+uci set wireless.default_radio1.disabled='1'
+
+uci commit network
+uci commit firewall
+uci commit wireless
+
+wifi down 2>/dev/null || true
+/etc/init.d/firewall reload
+# soft network reload — avoid full restart if possible
+ubus call network reload 2>/dev/null || /etc/init.d/network reload
+
+sleep 2
+echo "=== AFTER ==="
+ip -4 addr show lan1 | head -5
+ip -4 addr show lan2 | head -5
+ip -4 addr show lan3 | head -5
+ip -4 addr show br-lan | head -5
+brctl show
+uci get wireless.radio0.disabled
+uci get firewall.@zone[2].masq
+uci get firewall.@zone[3].masq
+uci get firewall.@zone[4].masq
+echo "=== DONE FIX ==="

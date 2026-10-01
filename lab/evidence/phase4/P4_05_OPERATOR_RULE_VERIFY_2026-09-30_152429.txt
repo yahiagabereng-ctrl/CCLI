@@ -1,0 +1,22 @@
+[2026-09-30 15:24:29] # P4-05 - Operating Rule verify (O.14 reject audit + annex parameters)
+[2026-09-30 15:24:29] Build: ccli-0.1.0-r19 | DUT=192.168.1.130 | DeployHost=192.168.1.130
+[2026-09-30 15:24:29] Annex clauses (CEI 0-16 Allegato O):
+[2026-09-30 15:24:29]   O.13.1.1.1  Eth_B operator port only (192.168.1.130 port 2404)
+[2026-09-30 15:24:29]   O.8.3       P/Q at POC with quality (TotW IOA 1001, TotVAr/PPV yaml P5)
+[2026-09-30 15:24:29]   O.10.3.1    Active power set-point commands (C_SC/C_SE reject monitor_only)
+[2026-09-30 15:24:29]   O.13.1.3    Eth_B comms-loss fallback (comms_loss_fallback_s=60)
+[2026-09-30 15:24:29]   O.14        Log external operator commands and parameters (reject audit)
+[2026-09-30 15:24:29] Building p4_cs104_client ...
+[2026-09-30 15:24:29] mbedtls linked for 104 TLS: /mnt/c/Yahia/projects/CCLI/apps/ccli/third_party/lib60870/lib60870-C/dependencies/mbedtls-3.6
+[2026-09-30 15:24:30] -- The C compiler identification is GNU 15.2.0
+[2026-09-30 15:24:31] -- Detecting C compiler ABI info
+[2026-09-30 15:24:32] -- Detecting C compiler ABI info - done
+[2026-09-30 15:24:32] -- Check for working C compiler: /usr/bin/cc - skipped
+[2026-09-30 15:24:32] -- Detecting C compile features
+[2026-09-30 15:24:32] -- Detecting C compile features - done
+[2026-09-30 15:24:32] -- The CXX compiler identification is GNU 15.2.0
+[2026-09-30 15:24:33] -- Detecting CXX compiler ABI info
+[2026-09-30 15:24:33] -- Detecting CXX compiler ABI info - done
+[2026-09-30 15:24:33] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[2026-09-30 15:24:33] -- Detecting CXX compile features
+[2026-09-30 15:24:33] -- Detecting CXX compile features - done
