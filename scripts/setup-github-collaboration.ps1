@@ -31,13 +31,12 @@ if (-not (git rev-parse --verify HEAD 2>$null)) {
 
 $Remote = git remote get-url origin 2>$null
 if (-not $Remote) {
-    Write-Host "Creating private repo $User/$RepoName..."
-    gh repo create $RepoName --private --source=. --remote=origin --push
-} else {
-    Write-Host "Remote already set: $Remote"
-    git push -u origin main 2>$null
-    if ($LASTEXITCODE -ne 0) { git push -u origin master }
+    Write-Host "Adding remote for existing repo $User/$RepoName..."
+    git remote add origin "https://github.com/$User/$RepoName.git"
 }
+Write-Host "Pushing to origin/main..."
+git config http.postBuffer 524288000
+git push -u origin main
 
 Write-Host "Inviting collaborator $Collaborator (write access)..."
 gh api -X PUT "repos/$User/$RepoName/collaborators/$Collaborator" -f permission=push

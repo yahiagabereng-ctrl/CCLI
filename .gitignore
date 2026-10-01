@@ -43,8 +43,10 @@ lab/tg544-openwrt/ccli-*.apk
 .env
 .env.*
 *.credentials
-apps/ccli/config/tls/
 lab/tmp_*.pem
+
+# TLS lab PKI is tracked in the private repo (apps/ccli/config/tls/)
+apps/ccli/config/tls/__pycache__/
 
 # Large local reference / corpus — keep on disk, not in git (>100 MB)
 Standards_pdf*/
