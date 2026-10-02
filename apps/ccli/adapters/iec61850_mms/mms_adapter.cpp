@@ -839,9 +839,15 @@ bool MmsAdapter::start(const core::MmsConfig& cfg) {
             }
         }
         impl->rbac_enabled = !impl->dso_der.empty();
-        impl->server = IedServer_createWithTlsSupport(impl->model, impl->tls);
+        IedServerConfig server_cfg = IedServerConfig_create();
+        IedServerConfig_enableResvTmsForBRCB(server_cfg, false);
+        impl->server = IedServer_createWithConfig(impl->model, impl->tls, server_cfg);
+        IedServerConfig_destroy(server_cfg);
     } else {
-        impl->server = IedServer_create(impl->model);
+        IedServerConfig server_cfg = IedServerConfig_create();
+        IedServerConfig_enableResvTmsForBRCB(server_cfg, false);
+        impl->server = IedServer_createWithConfig(impl->model, nullptr, server_cfg);
+        IedServerConfig_destroy(server_cfg);
     }
 #else
     if (cfg.tls.enabled) {
@@ -852,7 +858,10 @@ bool MmsAdapter::start(const core::MmsConfig& cfg) {
         delete impl;
         return false;
     }
-    impl->server = IedServer_create(impl->model);
+    IedServerConfig server_cfg = IedServerConfig_create();
+    IedServerConfig_enableResvTmsForBRCB(server_cfg, false);
+    impl->server = IedServer_createWithConfig(impl->model, nullptr, server_cfg);
+    IedServerConfig_destroy(server_cfg);
 #endif
 
     if (impl->server == nullptr) {
@@ -884,33 +893,7 @@ bool MmsAdapter::start(const core::MmsConfig& cfg) {
 #endif
     IedServer_setConnectionIndicationHandler(impl->server, Impl::conn_tramp, impl);
 
-    /* genconfig .cfg preserves CID SBO ctlModel=4; lab/TSP cleartext uses Direct Operate */
-    if (impl->full_cid_model) {
-        if (impl->wlim_mod != nullptr) {
-            IedServer_updateCtlModel(impl->server, impl->wlim_mod,
-                                   CONTROL_MODEL_DIRECT_ENHANCED);
-        }
-        if (impl->wlim_wmax != nullptr) {
-            IedServer_updateCtlModel(impl->server, impl->wlim_wmax,
-                                   CONTROL_MODEL_DIRECT_ENHANCED);
-        }
-        if (impl->wsd_mod != nullptr) {
-            IedServer_updateCtlModel(impl->server, impl->wsd_mod,
-                                   CONTROL_MODEL_DIRECT_ENHANCED);
-        }
-        if (impl->wsd_wspt != nullptr) {
-            IedServer_updateCtlModel(impl->server, impl->wsd_wspt,
-                                   CONTROL_MODEL_DIRECT_ENHANCED);
-        }
-        if (impl->varsd_mod != nullptr) {
-            IedServer_updateCtlModel(impl->server, impl->varsd_mod,
-                                   CONTROL_MODEL_DIRECT_ENHANCED);
-        }
-        if (impl->varsd_vartgt != nullptr) {
-            IedServer_updateCtlModel(impl->server, impl->varsd_vartgt,
-                                   CONTROL_MODEL_DIRECT_ENHANCED);
-        }
-    }
+    /* ctlModel: CID + .cfg use direct-with-enhanced-security (TSP Compare + Direct Operate). */
 
     IedServer_setPerformCheckHandler(impl->server, impl->wlim_mod, Impl::check_tramp,
                                      impl);

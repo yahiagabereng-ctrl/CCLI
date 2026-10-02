@@ -1,9 +1,11 @@
-# Drop zone — Triangle MicroWorks Test Suite Pro logs / exports
+# Drop zone — DSO MMS verification logs / exports
 
 **Path:** `lab/evidence/testsuite-pro/`  
 **Procedure:** `lab/CCI_TestSuitePro_Verification_Layer.md`  
 **Multi-tool MMS (TSP + IED Simulator + IEDScout + Wireshark + libiec61850):** `lab/CCI_MMS_MultiTool_Verification.md`  
 **RAG:** paste or save here → Agent ingests via `ccli-testsuite-pro-lab-logs` / session extract
+
+**2026-10-01:** Test Suite Pro license **blocked** (expired Sentinel trial). New manual DSO runs may use **IEDExplorer** — prefix `IEDEX_` instead of `TSP_`. Historical TSP exports remain valid for closed gates. See `lab/evidence/phase5/P5_VERIFICATION_CLIENT_STATUS_2026-10-01.md`.
 
 ## Folders
 
@@ -25,6 +27,7 @@ Examples:
   TSP_P3_03_REPORT_TotW_2026-09-26.csv
   TSP_P3_04_OPERATE_WSd_2026-09-26.txt
   TSP_P3_06_TLS_FAIL_viewer_2026-09-26.log
+  IEDEX_P5_FULLCIRCLE_CLEARTEXT_2026-10-01_153000.txt
 ```
 
 | Token | Values |

@@ -1,8 +1,8 @@
 # CCLI — SW Architecture vs CEI Annex validation
 
 **Document ID:** CCLI-ARCH-SW-ANNEX-VAL-001  
-**Revision:** 1.0  
-**Date:** 2026-09-30  
+**Revision:** 1.1  
+**Date:** 2026-10-01  
 **Methodology:** `knowledge-base/08-engineering/CCI_Architecture_Framework.md`  
 **SW Architecture:** `Architecture/Software_Architecture.md` · `Software_Architecture.drawio`  
 **Runtime SoT:** `Architecture/CCI_Runtime_Dataflow_Architecture.md`  
@@ -31,11 +31,11 @@ This matrix freezes **Annex clause → SW layer/path → phase status → eviden
 
 | Annex cluster | Shall | SW layer / component | Arch colour (draw.io 1.0) | Validation |
 |---------------|-------|----------------------|---------------------------|------------|
-| **O.8 PF1** observability (P/Q/V @ PdC) | Measure + publish | L1 `MeasurementStore` · L2 Modbus · L2 MMS TotW | Green P / Amber Q,V | **PART** — TotW **IMPL**; TotVAr/PPV **P5 OPEN** (T.3.1.3) |
+| **O.8 PF1** observability (P/Q/V @ PdC) | Measure + publish | L1 `MeasurementStore` · L2 Modbus · L2 MMS TotW/TotVAr/PPV | Green P/Q/V (lab) | **PASS** (lab r25) · P5-06 meter map **OPEN** |
 | **O.9.2** mode (i) local limit | P → curtail | L1 `Pf2Fsm` · L3 `svc_pf2` · L0 HAL DIO1 | Green (Phase 1) | **FIT** path — eng. evidence vs P1-0x may be PASS/PEND |
 | **O.9.2.2 / O.9.2.3** DSO Wlim/WSd | Eth_A setpoints → limit | L2 `MmsAdapter` · L1 `dso_phase1` → `Pf2Fsm` | Not on SW Arch page 1 (2026-09-18) | **FIT** in Runtime DF · **SW Arch outdated** |
 | **O.9.2.1** ~110 % V | Autonomous V limit | — | Red / missing | **GAP** (P5) |
-| **O.9.1** Q(V), cosφ, VArSd… | Reactive FSMs + plant Q | Reactive LNs STUB | Red | **GAP** (P5-R) — plant Q path **MISSING** |
+| **O.9.1** Q(V), cosφ, VArSd… | Reactive FSMs + plant Q | VArSd **IMPL** lab; PFSP/VArV/PFW STUB | Amber/Red | **PART** — P5-R01 **PASS**; P5-R02–R09 **OPEN** |
 | **O.11** priority | Arbiter among FRs | `dso_active_power` O.11 **min** only | Amber | **PART** — not full Tab. O.11 |
 | **O.13** stale / safe | No stale-as-valid | `Pf2Fsm` + quality | Green | **FIT** design — verify P1-04 |
 | **O.13.1.1.1** IF isolation | No bridge Eth_A↔plant | L1 `net_policy` + OpenWrt zones | Grey/target on SW Arch | Phase checklist **P2 CLOSED** — use **current** isolation evidence as SoT |
@@ -156,9 +156,9 @@ This matrix freezes **Annex clause → SW layer/path → phase status → eviden
 | O.9.2.2 Wlim | `mms_adapter` → `dso_phase1` → PF2 | P3 | **IMPL** lab |
 | O.9.2.3 WSd | same | P3 | **IMPL** lab |
 | O.9.2.1 110 % V | — | P5 | **GAP** |
-| O.9.1.* reactive | CID STUB · no core FSM | P5-R | **GAP** |
-| O.8 / T.3.1.3 TotW | Modbus → store → MMS | P3/P5 | **IMPL** TotW |
-| T.3.1.3 TotVAr/PPV | store + MMS | P5-M | **OPEN** |
+| O.9.1.* reactive | VArSd Operate + FC16; PFSP/VArV/PFW STUB | P5-R | **PART** — R01 PASS |
+| O.8 / T.3.1.3 TotW | Modbus → store → MMS | P3/P5 | **PASS** (lab r25) |
+| T.3.1.3 TotVAr/PPV | store + MMS | P5-M | **PASS** (lab r25) |
 | O.11 full | `dso_active_power` min only | P5/P6 | **PART** |
 | O.13 stale | `pf2_fsm` quality/stale | P1 | **FIT** |
 | O.13.1.1.1 | zones + `net_policy` | P2 | Checklist **CLOSED** |

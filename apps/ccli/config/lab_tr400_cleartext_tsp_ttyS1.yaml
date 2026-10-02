@@ -1,10 +1,6 @@
-# Lab-only — Test Suite Pro cleartext MMS on Eth_A :102 (no TLS / no 62351-4 ACSE).
-# Product path remains tls_enabled on :3782 (see lab_tr400_phase4_eth_b.yaml).
-#
-# Deploy:
-#   .\lab\tg544-openwrt\run-p5-fullcircle-cleartext.ps1
-# TSP: 192.168.10.1 port 102, Transport security OFF, load lab_tg544_eth_a.cid
-# TesPro collector on same DUT: bind 0.0.0.0 (hairpin to 192.168.10.1 fails); IED Host 127.0.0.1 or 192.168.10.1
+# Lab cleartext P5 — Modbus on A1/B1 screw terminals (/dev/ttyS1).
+# Bench verified 2026-10-01: cable on A1/B1 (after A/B swap), NOT rs485_2_uart path.
+# Deploy via restart-dut-modbus-check.ps1 or pscp to /etc/ccli/lab.yaml
 
 platform: tg500
 lab:
@@ -15,8 +11,7 @@ lab:
 
 modbus:
   backend: rtu
-  # Default: LuCI RS485-2 / rs485_2_uart. THIS BENCH uses A1/B1 → see lab_tr400_cleartext_tsp_ttyS1.yaml
-  device: /dev/rs485_2_uart
+  device: /dev/ttyS1
   baud: 9600
   parity: N
   slave_id: 1
@@ -53,7 +48,6 @@ dso:
   wspt_pct: 20
   release_delta_kw: 5
 
-# Eth_A — cleartext MMS for TSP functional full circle (LAB BYPASS — not product profile)
 mms:
   enabled: true
   bind_address: 0.0.0.0
@@ -65,7 +59,6 @@ mms:
   chrony_poll: true
   tls_enabled: false
 
-# Eth_B 104 unchanged (TLS) — only active when OA cable on LAN2
 iec104:
   enabled: true
   bind_address: 192.168.1.130
@@ -91,7 +84,6 @@ iec104:
 
 io:
   backend: ubus_dido_v2
-  # Lab TSP actuation evidence without DI wiring walk
   permissive_bypass: true
   do_curtail:
     gpio: 1

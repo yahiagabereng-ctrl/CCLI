@@ -1,0 +1,52 @@
+﻿# P5 GNSS + time quality verify
+Date: 2026-10-01 12:34:27
+Host: 192.168.10.1
+VERDICT: PASS
+
+{
+	"course": "263.23",
+	"date": "2026-10-01",
+	"raw_nmea": "+QGPSGNMEA: $GNRMC,103419.00,A,4529.14453,N,01142.52702,E,1.925,263.23,011026,,,A,V*00\nOK\n+QGPSGNMEA: $GNGGA,103422.00,4529.14508,N,01142.52765,E,1,13,1.23,84.7,M,,M,,*64\nOK",
+	"altitude": "84.7",
+	"satellites": "13",
+	"success": true,
+	"fix": true,
+	"longitude": "11.708784",
+	"latitude": "45.485742",
+	"time": "10:34:19",
+	"speed": "1.925"
+}
+---
+{
+	"supported": true,
+	"powered_on": true
+}
+---
+Reference ID    : 1FD155F3 (ntp2.lwlcom.net)
+Stratum         : 2
+Ref time (UTC)  : Thu Oct 01 10:33:16 2026
+System time     : 0.000277793 seconds fast of NTP time
+Last offset     : -0.000070083 seconds
+RMS offset      : 0.004058723 seconds
+Frequency       : 10.139 ppm fast
+Residual freq   : -0.004 ppm
+Skew            : 0.148 ppm
+Root delay      : 0.067545339 seconds
+Root dispersion : 0.000811676 seconds
+Update interval : 129.3 seconds
+Leap status     : Normal
+---
+MS Name/IP address         Stratum Poll Reach LastRx Last sample               
+===============================================================================
+#x GNSS                          0   4   155    23  +1501ms[+1501ms] +/-  250ms
+^+ time1.panq.nl                 2  10   377  1035  -5012us[-4661us] +/-   39ms
+^+ mx.ae9.eu                     2   8   267   499  -3730us[-3251us] +/-   42ms
+^* ntp2.lwlcom.net               1   7   377    71  -2134us[-2204us] +/-   37ms
+^+ ns1.am-hosting.de             2   8   377   193  -2136us[-2204us] +/-   43ms
+---
+mms: time_quality chrony offset_ms=0 within_pm100=yes leap=Normal ref=1FD155F3 gnss_fix=0 clockNotSynchronized=1 (T.3.3.4.5)
+mms: time_quality chrony offset_ms=0 within_pm100=yes leap=Normal ref=1FD155F3 gnss_fix=0 clockNotSynchronized=1 (T.3.3.4.5)
+mms: time_quality chrony offset_ms=0 within_pm100=yes leap=Normal ref=1FD155F3 gnss_fix=0 clockNotSynchronized=1 (T.3.3.4.5)
+mms: time_quality chrony offset_ms=0 within_pm100=yes leap=Normal ref=1FD155F3 gnss_fix=0 clockNotSynchronized=1 (T.3.3.4.5)
+mms: time_quality chrony offset_ms=0 within_pm100=yes leap=Normal ref=1FD155F3 gnss_fix=1 clockNotSynchronized=0 (T.3.3.4.5)
+

@@ -38,6 +38,7 @@ lab/tg544-openwrt/openwrt-sdk-*/
 lab/tg544-openwrt/*.tar.zst
 lab/tg544-openwrt/ccli_*.ipk
 lab/tg544-openwrt/ccli-*.apk
+lab/tg544-openwrt/lab-env.ps1
 
 # Secrets / credentials — never commit
 .env

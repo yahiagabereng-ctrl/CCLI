@@ -48,6 +48,42 @@ VERDICT: PASS (P5-M06)
 | P5-04   | OPEN | accuracy / V5 chain not bench-calibrated |
 | P5-R*   | OPEN | reactive Operate not in scope this session |
 
-## Overall
+## Overall (2026-09-30 snapshot)
 P5-M measurement chain (Modbus → MMS TLS + Wireshark): **PASS (lab) 2026-09-30**
-Phase 5 remains **OPEN** for P5-R reactive control and P5-04 accuracy.
+Superseded by r25 full-circle closeout below.
+
+================================================================================
+# P5 — Full-circle lab gate close (cleartext MMS + northbound)
+Date: 2026-10-01
+Build: 0.1.0-r25 (P5-COMPARE-FIX)
+PC: 192.168.10.10
+DUT: 192.168.10.1 MMS cleartext :102 (bind 0.0.0.0)
+Modbus: COM5 → A1/B1 /dev/ttyS1 · P=450 kW Q=45 kvar
+
+## Chain under test
+modbus_rtu_slave.py → ccli Modbus FC03 → MeasurementStore → MMS PdCMMXU1
+  + Wlim/WSd/VArSd Operate → PF2/DIO + Modbus FC16 Q
+  + URCB urcb_PdC_Mis4sec01 IntgPd=4000
+  + TesPro iec61850d → MQTT channel_1 → PC broker :1883
+
+## Automated + manual evidence
+P5_FULLCIRCLE_CLEARTEXT_2026-10-01_111628.txt — PASS
+TSP Compare r25 (−8 rows waived) — PASS
+GNSS/chrony — PASS (P5_GNSS_FIX_VERIFY_2026-10-01)
+TesPro northbound — PASS (P5_TESPRO_NORTHBOUND_2026-10-01_142810.txt)
+
+## Gate summary (r25)
+| Gate      | Result | Evidence |
+|-----------|--------|----------|
+| P5-M07    | PASS   | TotVAr=45 kvar |
+| P5-M08    | PASS   | PPV=20 kV (yaml; P5-06 meter map OPEN) |
+| P5-R01    | PASS   | VArSd Operate → Q≈21 kvar FC16 |
+| REQ-NB-*  | PASS   | MQTT Connected · PdC_TotW=450 @ 4 s |
+| P5-04     | OPEN   | accuracy / V5 chain not bench-calibrated |
+| P5-R02-R09| OPEN   | PFSP/VArV/PFW plant path deferred P6+ |
+| REQ-MET-002 | GAP  | :00/:04/:08 grid alignment (product) |
+
+## Overall (2026-10-01)
+P5 lab gate P5_FULLCIRCLE: **CLOSED** (lab) 2026-10-01
+Closeout: lab/evidence/phase5/P5_FINAL_CLOSEOUT.md
+TSP license blocked post-close — re-runs: IEDExplorer (P5_VERIFICATION_CLIENT_STATUS_2026-10-01.md)

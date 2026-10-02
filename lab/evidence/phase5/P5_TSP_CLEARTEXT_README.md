@@ -1,8 +1,14 @@
-# P5 — Test Suite Pro cleartext full circle
+# P5 — Cleartext MMS full circle (TSP / IEDExplorer)
 
-**Date:** 2026-09-30  
-**Purpose:** Functional MMS + Modbus + Operate via TSP **without TLS** (lab bypass)  
-**Product path:** TLS `:3782` unchanged — `P5_MMS_TLS.pcapng`
+**Date:** 2026-10-01  
+**Gate status:** **CLOSED** (lab) · build **0.1.0-r25**  
+**Purpose:** Functional MMS + Modbus + Operate **without TLS** (lab bypass)  
+**DSO client:** TSP (r25 session) or [IEDExplorer](https://sourceforge.net/projects/iedexplorer/) if TSP license blocked — [P5_VERIFICATION_CLIENT_STATUS_2026-10-01.md](P5_VERIFICATION_CLIENT_STATUS_2026-10-01.md)
+**Product path:** TLS `:3782` unchanged — `P5_MMS_TLS.pcapng`  
+**Phase index:** [P5_README.md](P5_README.md)  
+**Annex test sequence:** [P5_ANNEX_TEST_SEQUENCE.md](P5_ANNEX_TEST_SEQUENCE.md)  
+**TSP sequencer:** [P5_TSP_FULLCIRCLE_SEQUENCER.md](P5_TSP_FULLCIRCLE_SEQUENCER.md)  
+**Timing / LN audit:** [P5_TIMING_ANNEX_AUDIT_2026-10-01.md](P5_TIMING_ANNEX_AUDIT_2026-10-01.md)
 
 ## Deploy cleartext config
 
@@ -37,21 +43,30 @@ python -u lab\modbus_rtu_slave.py --port COM5 --power-kw 450 --trace
 
 **`P5_LN_VALUE_MATRIX.md`** — every runtime DO, expected values, Modbus map, PF2 thresholds, CID gaps, TSP pass criteria.
 
-Sequencer copy: `lab/evidence/testsuite-pro/inbox/TSP_P5_FULLCIRCLE_SEQUENCER.md`
+**Execute:** [P5_TSP_FULLCIRCLE_SEQUENCER.md](P5_TSP_FULLCIRCLE_SEQUENCER.md) (Annex-traced; Compare **before** URCB).
 
 ## Sequencer steps (summary)
 
+0. **chronyc tracking** on DUT — \|offset\| ≤ 100 ms (**T.3.3.4.5**)
 1. **Connect** — TLS off, port **102**
-2. **Read** `PdCMMXU1.TotW` / `TotVAr` / `PPV.phsAB` → **450 / 45 / 20**
-3. **EnableReport** — `LLN0.RP.urcb_PdC_Mis4sec01` (genconfig name; RptId `…/LLN0.urcb_PdC_Mis4sec`, IntgPd 4000)
-4. **Read** baseline `WlimDWMX1.Mod` / `WSdDAGC1.Mod` → **5** (LN-GAP-05: PF2 still uses yaml 42 kW)
-5. **Direct Operate** `WlimDWMX1`: Mod=1, `WMaxSptPct=10` (or 70 per matrix §C)
-6. **Direct Operate** `WSdDAGC1`: Mod=1, `WSptPct=20`
-7. **Read** stub Mod (VArSd/PFSP/VArV/PFW) → all **5**; negative Operate on VArSd
-8. **Compare Model** — expect gaps vs full CID (runtime 9 LN only)
-9. DUT: `ubus call dido_v2 status` · curtail in `/tmp/ccli.log`
+2. **GetNameList** — **31** LNs (**T.3.1** / TR)
+3. **Compare Model** — vs CID **before** URCB enable
+4. **Read** `PdCMMXU1.TotW` / `TotVAr` / `PPV.phsAB` → **450 / 45 / 20** (**T.3.1.3**)
+5. **EnableReport** — `LLN0.RP.urcb_PdC_Mis4sec01`; verify Δt ~4 s + t/q (**O.8.3**)
+6. **Read** baseline Mod — Wlim/WSd/VArSd (**T.3.1.4** defaults)
+7. **Direct Operate** Wlim / WSd / VArSd (**O.9.2.2**, **O.9.2.3**, **O.9.1.4**)
+8. Modbus P sweep · disconnect 15 s fallback
 
-Export log → `lab/evidence/testsuite-pro/inbox/TSP_P5_FULLCIRCLE_CLEARTEXT_*.txt`
+## TesPro northbound MQTT (Part H — **PASS** 2026-10-01)
+
+Frozen config and verify script: **[P5_TESPRO_NORTHBOUND_2026-10-01.md](P5_TESPRO_NORTHBOUND_2026-10-01.md)**
+
+```powershell
+.\lab\tg544-openwrt\install-mqtt-lab-broker.ps1   # Admin, once
+.\lab\tg544-openwrt\verify-tespro-northbound.ps1    # exit 0
+```
+
+Export log → `lab/evidence/phase5/P5_TESPRO_NORTHBOUND_*.txt` or `testsuite-pro/inbox/TSP_P5_FULLCIRCLE_CLEARTEXT_*.txt`
 
 ## Revert to product TLS profile
 
@@ -66,8 +81,11 @@ Export log → `lab/evidence/testsuite-pro/inbox/TSP_P5_FULLCIRCLE_CLEARTEXT_*.t
 
 | File | Content |
 |------|---------|
+| `P5_README.md` | Phase 5 index |
+| `P5_ANNEX_TEST_SEQUENCE.md` | Annex O/T → test steps |
+| `P5_TSP_FULLCIRCLE_SEQUENCER.md` | TSP operator checklist |
+| `P5_TIMING_ANNEX_AUDIT_2026-10-01.md` | Timing + LN alignment audit |
 | `P5_LN_VALUE_MATRIX.md` | Complete LN/value matrix + TSP pass criteria |
 | `P5_00_LN_MATRIX_AUDIT.md` | CID vs runtime audit |
-| `P5_FULLCIRCLE_CLEARTEXT.txt` | Auto script (clients + DUT logs) |
-| `TSP_P5_FULLCIRCLE_SEQUENCER.md` | TSP step list (inbox) |
-| `TSP_P5_FULLCIRCLE_CLEARTEXT_*.txt` | Your TSP export (manual) |
+| `P5_FULLCIRCLE_CLEARTEXT*.txt` | Auto script (clients + DUT logs) |
+| `TSP_P5_FULLCIRCLE_CLEARTEXT_*.txt` | TSP export (inbox) |

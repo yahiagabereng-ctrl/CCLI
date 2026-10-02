@@ -1,8 +1,8 @@
 # CCLI — Reactive power roadmap · RAG gap report
 
 **Document ID:** CCLI-LAB-Q-ROADMAP-GAP-001  
-**Revision:** 1.0  
-**Date:** 2026-09-26  
+**Revision:** 1.1  
+**Date:** 2026-10-01  
 **Authority:** Programme assignment into **Phase 5** (P5-M / P5-R)  
 **Checklists:** `knowledge-base/08-engineering/CCI_Phase_Regulation_Checklists.md` (rev 1.2)  
 **Freeze:** `apps/ccli/config/icd/signal_map.yaml`
@@ -15,8 +15,8 @@ Reactive power was **not** on any closed phase exit. It is now **explicitly assi
 
 | Gate group | Owns | Status |
 |------------|------|--------|
-| **P5-M** | T.3.1.3 / O.8 — DSO must **see** Q (and V) | **OPEN** — TotW PART; TotVAr/PPV MISSING in MMS |
-| **P5-R** | O.9.1 / T Tables 88–92 — DSO may **command** Q / cosφ | **OPEN** — LN STUB only; no plant Q path |
+| **P5-M** | T.3.1.3 / O.8 — DSO must **see** Q (and V) | **PASS** (lab r25) — TotW/TotVAr/PPV on wire; P5-06 meter map **OPEN** |
+| **P5-R** | O.9.1 / T Tables 88–92 — DSO may **command** Q / cosφ | **PART** — **P5-R01 VArSd PASS** (lab); P5-R02–R09 **OPEN** |
 
 **Not** Phase 4 (104). **Not** a Phase 3 reopen (P3 closed on O.9.2 active P).
 
@@ -56,11 +56,11 @@ Reactive power was **not** on any closed phase exit. It is now **explicitly assi
 
 | Object / clause | Freeze (`signal_map`) | Runtime today | Roadmap gate |
 |-----------------|----------------------|---------------|--------------|
-| `PdCMMXU1.TotW` | IMPL | Published | P5-02 PART (live P) |
-| `PdCMMXU1.TotVAr` | **DEFERRED** | Not in model | **P5-M07** |
-| `PdCMMXU1.PPV` | **DEFERRED** | Not in model | **P5-M08** |
-| Modbus `q_kvar` | — | **HAVE** in `MeasurementStore` | Wire → TotVAr |
-| `VArSdDVAR1` | **STUB** Mod=5 | No APC / handler | **P5-R01** |
+| `PdCMMXU1.TotW` | IMPL | Published | **PASS** (lab r25) |
+| `PdCMMXU1.TotVAr` | IMPL | Published from Modbus Q | **PASS** P5-M07 (lab r25) |
+| `PdCMMXU1.PPV` | IMPL | Published (yaml V) | **PASS** P5-M08 (lab r25) |
+| Modbus `q_kvar` | — | **HAVE** in `MeasurementStore` | Wired → TotVAr |
+| `VArSdDVAR1` | IMPL Operate | Modbus FC16 Q path | **PASS** P5-R01 (lab r25) |
 | `PFSPDFPF1` | STUB | — | **P5-R02** |
 | `VArVDVVR1` | STUB | — | **P5-R03** |
 | `PFWDPFW1` | STUB | — | **P5-R04** |

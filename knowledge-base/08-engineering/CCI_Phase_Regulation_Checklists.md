@@ -1,8 +1,8 @@
 # CCLI phases — regulation checklists
 
 **Document ID:** CCLI-PLAN-PHASE-REGS-001  
-**Revision:** 1.2  
-**Date:** 2026-09-26  
+**Revision:** 1.3  
+**Date:** 2026-10-01  
 **RAG source_id:** `ccli-phase-regulation-checklists`  
 **Audience:** Lab, firmware, DSO interface, certification  
 **Companions:** `CCI_CCLI_Product_Spec_and_Roadmap.md` · `CCI_Annex_O_Extract.md` · `CCI_Annex_T_Extract.md` · `CCI_Annex_M_Extract.md` · `lab/PHASE1_TRACEABILITY.md` · `lab/CCI_Reactive_Roadmap_Gap_Report.md`  
@@ -21,7 +21,7 @@ Per **REQ-PH-002**: a phase closes when all **Gate** rows are **PASS** or **WAIV
 | **2** Isolation | P2-01…03 hard gates | **CLOSED** (2026-09-25) | P2-04/05 PART · P2-06 OPEN → net/architect | — |
 | **3** DSO MMS | P3-01 + P3-04 + P3-06 + soft cyber/time | **CLOSED** (lab) 2026-09-25 | P3-10/12/13/14 · §13 · SCEP → model/PKI | **Phase 4** |
 | **4** Operator 104 + TesPro 61850 | P4-01…05 **PASS** 2026-09-30 | P4-00 **PART** (LuCI/plant optional) | **CLOSED** (lab) 2026-09-30 |
-| **5** Observability + reactive | P5-M chain **PASS** (lab) 2026-09-30 · `P5_FINAL_VERIFY.txt` | **OPEN** (P5-R) | P5-R reactive · P5-04 accuracy · meter map P5-06 | P5-M06 Wireshark closed |
+| **5** Observability + reactive | P5_FULLCIRCLE **CLOSED** (lab) 2026-10-01 · build **0.1.0-r25** · `P5_FINAL_CLOSEOUT.md` | **CLOSED** (lab gate) | P5-R02–R09 · P5-04 accuracy · P5-06 meter map · REQ-MET-002 grid | **Phase 6** |
 | **6** Defence I/O | Not started | **OPEN** | C4 GAP | After P1 |
 | **7** Evidence pack | Not started | **OPEN** | Lab evidence ≠ O.15 cert | After P3+P5+P6 |
 
@@ -315,7 +315,7 @@ Fill **Evidence** with date, APK/`ccli` version, log excerpt, screenshot, or tes
 
 | Check | Regulation | Shall | Pass criteria | Status |
 |-------|------------|-------|---------------|--------|
-| P5-R01 | O.9.1.4 / T Table 88 | `VArSdDVAR1.{Mod,VArSptPct}` operable on Eth_A | DSO Operate → live command + plant Q path **or** GAP | **OPEN** |
+| P5-R01 | O.9.1.4 / T Table 88 | `VArSdDVAR1.{Mod,VArSptPct}` operable on Eth_A | DSO Operate → live command + plant Q path **or** GAP | **PASS** (lab r25) |
 | P5-R02 | O.9.1.1 / T Table 90 | `PFSPDFPF1` cosφ set-point | Operate + plant path **or** WAIVE (Operating Rule off) | **OPEN** |
 | P5-R03 | O.9.1.3 / T Table 91 | `VArVDVVR1` Q=f(V) + δQ=5 % Qmax + ΔT | Curve + slow ring **or** WAIVE | **OPEN** |
 | P5-R04 | O.9.1.2 / T Table 92 | `PFWDPFW1` cosφ=f(P) + δcosφ=0.02 + ΔT | Curve + slow ring **or** WAIVE | **OPEN** |

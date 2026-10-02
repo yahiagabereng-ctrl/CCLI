@@ -376,19 +376,24 @@ Official P3 close unchanged (**r15**, 2026-09-25). Additional deploy with sessio
 
 ## Phase 5 — Observability + reactive (PF1 / MMXU / O.9.1)
 
-**Status:** **Not started** as formal phase.  
-**Assignment (2026-09-26):** Phase 5 owns **mandatory TotVAr/PPV** (T.3.1.3) and **O.9.1** reactive DSO — was previously unassigned (“Phase 3+” placeholder).  
-**Note:** Lab has TotW RCB at 4 s (P3-03). Modbus `q_kvar` is read into `MeasurementStore` but **not** published as TotVAr. Reactive LNs are **STUB** Mod=5.
+**Status:** **CLOSED** (lab gate) **2026-10-01** · build **0.1.0-r25** · gate `P5_FULLCIRCLE`.  
+**Closeout:** `lab/evidence/phase5/P5_FINAL_CLOSEOUT.md` · index `lab/evidence/phase5/P5_README.md` · master `lab/evidence/README.md`.  
+**Lab profile:** cleartext MMS `:102` · Modbus COM5 → A1/B1 (`/dev/ttyS1`) · TesPro MQTT northbound **PASS**.
 
 | ID | Status |
 |----|--------|
-| P5-01…06 | OPEN / PART / N/A |
-| **P5-M07** TotVAr | **OPEN** |
-| **P5-M08** PPV | **OPEN** |
+| **P5-M07** TotVAr | **PASS** (lab r25) |
+| **P5-M08** PPV | **PASS** (lab r25; yaml 20 kV) |
 | **P5-M09** Q nameplate | PART (yaml) |
-| **P5-R01…R09** O.9.1 | **OPEN** / N/A (VArSa) |
+| **P5-R01** VArSd | **PASS** (lab r25 — Operate + FC16) |
+| **P5-R02…R09** O.9.1 | **OPEN** / N/A (VArSa) — PFSP/VArV/PFW deferred |
+| P5-04 accuracy | **OPEN** |
+| P5-06 meter map | **OPEN** |
+| REQ-MET-002 grid | **GAP** (product) |
 
-**Detail:** `knowledge-base/08-engineering/CCI_Phase_Regulation_Checklists.md` · gap report `lab/CCI_Reactive_Roadmap_Gap_Report.md`.
+**DSO client:** TSP r25 session evidence **PASS**; post-close TSP license **BLOCKED** — re-runs use **IEDExplorer** (`P5_VERIFICATION_CLIENT_STATUS_2026-10-01.md`).
+
+**Detail:** `knowledge-base/08-engineering/CCI_Phase_Regulation_Checklists.md` (rev 1.3) · gap report `lab/CCI_Reactive_Roadmap_Gap_Report.md`.
 
 ---
 

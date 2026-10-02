@@ -2,7 +2,7 @@
 
 **Document ID:** CCLI-VENDOR-TESPRO-61850-EXT-001
 **Revision:** 1.0
-**Date:** 2026-09-29
+**Date:** 2026-10-01
 **RAG source_id:** `ccli-tespro-61850-manual-extract`
 **Source file:** `knowledge-base/08-engineering/reference/vendor/tespro/IEC61850-User-Manual.docx`
 **DOCX source_id:** `ccli-tespro-61850-manual`
@@ -38,9 +38,6 @@ document A-profile ACSE auth, port **3782**, or Annex T / `Wlim` control.
 | `iec61850-proto-tespro-combined` | Web UI + collection + upload service |
 
 Delivered as **add-on opkg packages** with TesproOS firmware.
-
-**2026-09 APK bundle (supplier folder):** see `reference/vendor/tespro/TG500_iec61850_APK_Manifest.md`  
-(`libiec61850-1.5.2-r1`, `libopen62541-1.3.6-r2`, `iec61850-mmsd-1.0.0-r3`, `iec61850-proto-tespro-combined-1.0.0-r*`).
 
 ---
 

@@ -73,31 +73,35 @@ Yaml: **`di_permissive.active_low: true`** on TG544 — with this HAL, logical *
 
 Production lab: **`permissive_bypass: false`** so DIO2 gates DIO1.
 
-### Modbus RTU — two physical paths (do not mix)
+### Modbus RTU — three paths (do not mix)
 
-| Connector | Linux device | TG544 status (2026-09-22) |
-|-----------|--------------|---------------------------|
-| **TesPro LuCI “RS485-2”** (your screenshot) | **`/dev/rs485_2_uart`** → `ttyUSB1` | **Working** — use for PC slave bench when wired here. |
-| **Silkscreen A2 / B2** screw block | **`/dev/ttyS2`** | **Not working** on current FW (`uart:unknown` in `/proc/tty/driver/serial`). |
+> **P5 bench freeze (2026-10-01):** PC on **A1/B1** → **`/dev/ttyS1`**.  
+> Canonical map: [`lab/evidence/phase5/P5_A1B1_RS485_HW_MAP.md`](evidence/phase5/P5_A1B1_RS485_HW_MAP.md)
 
-| Layer | Value (RS485-2 bench) |
-|-------|------------------------|
-| **`lab.yaml`** | `modbus.device: /dev/rs485_2_uart` |
+| Silkscreen | LuCI name | Linux device | TG544 r601 status |
+|------------|-----------|--------------|-------------------|
+| **A1 / B1** | **RS485-1** | **`/dev/ttyS1`** | **PASS** — **current P5 bench** (P=450 kW verified) |
+| A2 / B2 | TR400 manual “RS485-2” | `/dev/ttyS2` | **FAIL** — `uart:unknown` in `/proc/tty/driver/serial` |
+| *(internal FTDI)* | LuCI **RS485-2** | `/dev/rs485_2_uart` → `ttyUSB1` | Worked Phase 1 (2026-09-22) — **not** wired to A2/B2 screws |
+
+| Layer | Value (**A1/B1 bench — active**) |
+|-------|----------------------------------|
+| **`lab.yaml`** | `modbus.device: /dev/ttyS1` |
+| **Repo yaml** | `apps/ccli/config/lab_tr400_cleartext_tsp_ttyS1.yaml` |
 | **Parameters** | 9600 8N1 · slave ID **1** · holding reg **40001** = P kW (float32 BE) |
-| **LuCI** | Enable port · device `/dev/rs485_2_uart` · match baud on **Serial Parameters** tab |
+| **LuCI** | RS485-1 enabled · device `/dev/ttyS1` · 9600 8N1 |
 
-**Wiring to PC USB-RS485 adapter:**
+**Wiring to PC USB-RS485 adapter (A1/B1 — verified 2026-10-01):**
 
 | TG544 | PC dongle |
 |-------|-----------|
-| **A2** | **A** (+) |
-| **B2** | **B** (−) |
+| **A1** | **A** (+) |
+| **B1** | **B** (−) |
+| **GND** | **GND** |
 
-Swap A/B once if no frames. Short lab cable; 120 Ω termination only if the bus is long or noisy.
+Swap A↔B once if no FC03 trace. Short lab cable; 120 Ω termination only if the bus is long or noisy.
 
-**On TG544:** `/etc/ccli/lab.yaml` → `modbus.device: /dev/rs485_2_uart` when PC is on **RS485-2** (verified **P=45 kW** 2026-09-22).
-
-**End-to-end pass:** PC running `lab/modbus_rtu_slave.py` → CCLI logs `P=… kW` every ~5 s (see `PHASE1.md` §7). **`/usr/sbin/ccli` must be deployed** (binary not on DUT until `pscp` / APK).
+**End-to-end pass:** PC `lab/modbus_rtu_slave.py` → CCLI `P=450kW` every ~4 s → MMS TotW → TesPro `PdC_TotW=450`.
 
 ---
 
@@ -148,9 +152,10 @@ ubus call dido_v2 gd32.read_di '{}'
 # key OPEN:   "di":[?,0,...]  → index 1 == 0
 # key CLOSED: "di":[?,1,...]  → index 1 == 1
 
-# --- Modbus A2/B2 (/dev/ttyS2) ---
-ls -l /dev/ttyS2
+# --- Modbus A1/B1 (/dev/ttyS1) — P5 bench ---
+ls -l /dev/ttyS1 /dev/ttyS2
 grep -A8 '^modbus:' /etc/ccli/lab.yaml
+# expect: device: /dev/ttyS1
 
 # --- CCLI mapping (optional) ---
 /usr/sbin/ccli --gpio-test --config /etc/ccli/lab.yaml

@@ -1,0 +1,9 @@
+Device,DeviceID,Host,Port,Name,ObjectRef,FC,DataType,Scale,Unit,Interval,ChangeReport,ReportKey,Enabled,Description
+CCLI_LAB,cci016-lab-01,192.168.10.1,102,PdC_TotVAr,CCI016_01LD_Plant/PdCMMXU1.TotVAr.mag.f,MX,float32,1,kvar,4,N,PdC_TotVAr,Y,P5 POC reactive power T.3.1.3
+CCLI_LAB,cci016-lab-01,192.168.10.1,102,PdC_PPV_AB,CCI016_01LD_Plant/PdCMMXU1.PPV.phsAB.cVal.mag.f,MX,float32,1,kV,4,N,PdC_PPV_AB,Y,P5 POC voltage T.3.1.3
+CCLI_LAB,cci016-lab-01,192.168.10.1,102,Wlim_Mod,CCI016_01LD_Plant/WlimDWMX1.Mod.stVal,ST,int32,1,,60,Y,Wlim_Mod,Y,Wlim mode O.9.2.2 baseline 5
+CCLI_LAB,cci016-lab-01,192.168.10.1,102,Wlim_WMax,CCI016_01LD_Plant/WlimDWMX1.WMaxSptPct.mxVal.f,MX,float32,1,%,60,Y,Wlim_WMax,Y,Wlim setpoint pct
+CCLI_LAB,cci016-lab-01,192.168.10.1,102,WSd_Mod,CCI016_01LD_Plant/WSdDAGC1.Mod.stVal,ST,int32,1,,60,Y,WSd_Mod,Y,WSd mode O.9.2.3
+CCLI_LAB,cci016-lab-01,192.168.10.1,102,WSd_WSpt,CCI016_01LD_Plant/WSdDAGC1.WSptPct.mxVal.f,MX,float32,1,%,60,Y,WSd_WSpt,Y,WSd setpoint pct
+CCLI_LAB,cci016-lab-01,192.168.10.1,102,VArSd_Mod,CCI016_01LD_Plant/VArSdDVAR1.Mod.stVal,ST,int32,1,,60,Y,VArSd_Mod,Y,VArSd mode O.9.1.4
+CCLI_LAB,cci016-lab-01,192.168.10.1,102,VArSd_VArTgt,CCI016_01LD_Plant/VArSdDVAR1.VArTgtSptPct.mxVal.f,MX,float32,1,%,60,Y,VArSd_VArTgt,Y,VArSd target pct

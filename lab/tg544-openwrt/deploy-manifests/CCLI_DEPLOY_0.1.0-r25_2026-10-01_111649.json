@@ -1,0 +1,16 @@
+﻿{
+    "codename":  "P5-COMPARE-FIX",
+    "changes":  [
+                    "P5 full circle cleartext TSP",
+                    "mms tcp_port 102 tls_enabled false",
+                    "permissive_bypass true for actuation"
+                ],
+    "release":  25,
+    "timestamp_utc":  "2026-10-01T09:16:49.7538010Z",
+    "version_full":  "0.1.0-r25",
+    "lab_yaml":  "C:\\Yahia\\projects\\CCLI\\apps\\ccli\\config\\lab_tr400_cleartext_tsp.yaml",
+    "sha256":  "bf0f7bd4558a311f8dfbdb6224604bbdf8f29958a31628c367bcb255c1fb48a0",
+    "binary":  "C:\\Yahia\\projects\\CCLI\\lab\\tg544-openwrt\\ccli-bin",
+    "host":  "192.168.10.1",
+    "semver":  "0.1.0"
+}

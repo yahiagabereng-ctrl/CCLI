@@ -7,6 +7,25 @@ Format: **`semver-rN`** — bump **N** in `VERSION` line 2 and `package/ccli/Mak
 
 ---
 
+## 0.1.0-r25 — P5-COMPARE-FIX (2026-10-01)
+
+**Codename:** P5-COMPARE-FIX  
+**Phase:** 5 — TSP Compare Model alignment
+
+### Changed
+
+- CID `lab_tg544_eth_a.cid`: Wlim/WSd/VArSd `ctlModel` → **direct-with-enhanced-security** (matches lab Operate)
+- CID: `PdCMMXU1` PPV/A **DOI** instance values (phsAB=20 kV) for TSP Compare tree
+- Regenerated `lab_tg544_eth_a.cfg` from CID
+- MMS server: disable **BRCB.ResvTms** (TSP Compare vs CID)
+- Removed runtime `IedServer_updateCtlModel` override (redundant with CID)
+
+### Note
+
+Run TSP **Compare Model before enabling URCB** to avoid RCB OptFlds/TrgOps drift.
+
+---
+
 ## 0.1.0-r24 — P5-R01 (2026-09-30)
 
 **Codename:** P5-R01  

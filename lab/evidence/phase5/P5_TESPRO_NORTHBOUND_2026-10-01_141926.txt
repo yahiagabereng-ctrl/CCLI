@@ -1,0 +1,27 @@
+﻿[2026-10-01 14:19:26] === P5 TesPro northbound verify ===
+[2026-10-01 14:19:26] Topic: device/tg544-lab-gw/cci016-lab-01/property/report
+[2026-10-01 14:19:26] Broker: 192.168.10.10:1883
+[2026-10-01 14:19:26] Listen: 8s
+[2026-10-01 14:19:26] 
+[2026-10-01 14:19:26] PC lab IP 192.168.10.10 on Ethernet: OK
+[2026-10-01 14:19:26] Ping 192.168.10.1: OK
+[2026-10-01 14:19:38] MMS :102: OPEN
+[2026-10-01 14:19:39] WARN: broker on localhost only - DUT cannot connect. Run install-mqtt-lab-broker.ps1 as Admin.
+[2026-10-01 14:19:39] --- MQTT capture (8 sec) ---
+[2026-10-01 14:19:42]   [stderr] Error: No connection could be made because the target machine actively refused it.
+[2026-10-01 14:19:42]   [stderr] 
+[2026-10-01 14:19:42]   [stderr] 
+[2026-10-01 14:19:42] 
+[2026-10-01 14:19:42] --- Results ---
+[2026-10-01 14:19:42] MQTT messages received: 0
+[2026-10-01 14:19:42] REPORT_PROPERTY JSON: FAIL
+[2026-10-01 14:19:42] PdC_TotW ~450: FAIL / no message yet
+[2026-10-01 14:19:42] 
+[2026-10-01 14:19:42] Troubleshooting:
+[2026-10-01 14:19:42]   1. LuCI Northbound: Enabled ON, Save Channel, Status Connected
+[2026-10-01 14:19:42]   2. Publish Topic typed explicitly (not empty placeholder)
+[2026-10-01 14:19:42]   3. Clear Subscribe/Reply topics for lab
+[2026-10-01 14:19:42]   4. Windows firewall: allow inbound TCP 1883 from 192.168.10.1
+[2026-10-01 14:19:42]   5. Restart IEC 61850 service on DUT after save
+[2026-10-01 14:19:42] Evidence: C:\Yahia\projects\CCLI\lab\tg544-openwrt\..\evidence\phase5\P5_TESPRO_NORTHBOUND_2026-10-01_141926.txt
+[2026-10-01 14:19:42] === end (exit 2) ===

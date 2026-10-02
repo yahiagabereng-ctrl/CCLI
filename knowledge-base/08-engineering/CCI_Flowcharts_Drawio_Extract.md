@@ -1,7 +1,7 @@
 # CCI Flowcharts — draw.io text extract (RAG corpus)
 
 **RAG source_id:** `ccli-flowcharts-drawio-extract`  
-**Date:** 2026-09-30  
+**Date:** 2026-10-01  
 **Purpose:** Searchable text from regulation flowcharts in `Flowcharts/*.drawio`.  
 **Master equations:** `Flowcharts/PARAMETERS_AND_EQUATIONS.md` · `ccli-flowcharts-params-equations`
 

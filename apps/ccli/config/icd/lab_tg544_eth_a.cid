@@ -296,6 +296,64 @@
 <Val>on</Val>
 </DAI>
 </DOI>
+<DOI name="PPV" desc="Tensione concatenata al PdC">
+<SDI name="phsAB">
+<DAI name="cVal">
+<SDI name="mag">
+<DAI name="f">
+<Val>20</Val>
+</DAI>
+</SDI>
+</DAI>
+</SDI>
+<SDI name="phsBC">
+<DAI name="cVal">
+<SDI name="mag">
+<DAI name="f">
+<Val>0</Val>
+</DAI>
+</SDI>
+</DAI>
+</SDI>
+<SDI name="phsCA">
+<DAI name="cVal">
+<SDI name="mag">
+<DAI name="f">
+<Val>0</Val>
+</DAI>
+</SDI>
+</DAI>
+</SDI>
+</DOI>
+<DOI name="A" desc="Corrente al PdC">
+<SDI name="phsA">
+<DAI name="cVal">
+<SDI name="mag">
+<DAI name="f">
+<Val>0</Val>
+</DAI>
+</SDI>
+</DAI>
+</SDI>
+<SDI name="phsB">
+<DAI name="cVal">
+<SDI name="mag">
+<DAI name="f">
+<Val>0</Val>
+</DAI>
+</SDI>
+</DAI>
+</SDI>
+<SDI name="phsC">
+<DAI name="cVal">
+<SDI name="mag">
+<DAI name="f">
+<Val>0</Val>
+</DAI>
+</SDI>
+</DAI>
+</SDI>
+</DOI>
 </LN>
 <LN lnClass="MMXU" lnType="MMXU2" inst="1" prefix="GenPV">
 <DOI name="Beh" desc="">
@@ -425,7 +483,7 @@
 </DOI>
 <DOI name="WMaxSptPct" desc="Setpoint limite di W in generazione (percentuale con segno rispetto a Smax di Impianto) [0..100]">
 <DAI name="ctlModel">
-<Val >sbo-with-enhanced-security</Val>
+<Val>direct-with-enhanced-security</Val>
 </DAI>
 </DOI>
 <DOI name="Mod" desc="Attivazione/disattivazione funzionamento [5 = Inattiva, 1 = Attiva]">
@@ -433,7 +491,7 @@
 <Val>off</Val>
 </DAI>
 <DAI name="ctlModel">
-<Val >sbo-with-enhanced-security</Val>
+<Val>direct-with-enhanced-security</Val>
 </DAI>
 </DOI>
 </LN>
@@ -450,7 +508,7 @@
 </DOI>
 <DOI name="WSptPct" desc="Setpoint modulazione W in immissione/assorbimento al PdC (percentuale con segno rispetto alla Smax di Impianto) [0..100]">
 <DAI name="ctlModel">
-<Val >sbo-with-enhanced-security</Val>
+<Val>direct-with-enhanced-security</Val>
 </DAI>
 <SDI name="mxVal" desc="Setpoint W in immissione/assorbimento al PdC (percentuale con segno rispetto a Smax di Impianto) [0..100]">
 <DAI name="f" desc="Valore default set-point">
@@ -463,7 +521,7 @@
 <Val>on</Val>
 </DAI>
 <DAI name="ctlModel">
-<Val >sbo-with-enhanced-security</Val>
+<Val>direct-with-enhanced-security</Val>
 </DAI>
 </DOI>
 </LN>
@@ -480,7 +538,7 @@
 </DOI>
 <DOI name="VArTgtSptPct" desc="Setpoint VAr induttiva/capacitiva (percentuale con segno rispetto a Smax di Impianto) [0..100]">
 <DAI name="ctlModel">
-<Val >sbo-with-enhanced-security</Val>
+<Val>direct-with-enhanced-security</Val>
 </DAI>
 </DOI>
 <DOI name="Mod" desc="Attivazione/disattivazione funzionamento [5 = Inattiva, 1 = Attiva]">
@@ -488,7 +546,7 @@
 <Val>off</Val>
 </DAI>
 <DAI name="ctlModel">
-<Val >sbo-with-enhanced-security</Val>
+<Val>direct-with-enhanced-security</Val>
 </DAI>
 </DOI>
 </LN>

@@ -1,0 +1,191 @@
+﻿========== P3-07 OpenSSL lab PKI verify ==========
+Time: 2026-10-01T21:06:22.0589478+02:00
+OpenSSL: OpenSSL 4.0.2 25 Aug 2026 (Library: OpenSSL 4.0.2 25 Aug 2026)
+TLS dir: C:\Yahia\projects\CCLI\apps\ccli\config\tls
+
+========== 1. Chain verify (root_CA -> leaf) ==========
+--- openssl verify -CAfile root_CA.pem server.pem ---
+server.pem: OK
+--- openssl verify -CAfile root_CA.pem server_tls.pem ---
+server_tls.pem: OK
+--- openssl verify -CAfile root_CA.pem server_combined.pem ---
+server_combined.pem: OK
+--- openssl verify -CAfile root_CA.pem client.pem ---
+client.pem: OK
+--- openssl verify -CAfile root_CA.pem client_tls.pem ---
+client_tls.pem: OK
+--- openssl verify -CAfile root_CA.pem viewer.pem ---
+viewer.pem: OK
+--- openssl verify -CAfile root_CA.pem viewer_tls.pem ---
+viewer_tls.pem: OK
+--- openssl verify -CAfile root_CA.pem revoked.pem ---
+revoked.pem: OK
+--- openssl verify -CAfile root_CA.pem revoked_tls.pem ---
+revoked_tls.pem: OK
+
+========== 2. server.pem (E2E / AARE auth cert) ==========
+--- subject / issuer / dates / extensions ---
+subject=2.5.4.106=1.1.1.999.1.12
+issuer=C=IT, O=HiTEKS, OU=CCLI-Lab, CN=CCLI_Lab_Root_CA
+notBefore=Sep 29 19:36:09 2026 GMT
+notAfter=Jan  1 19:36:09 2029 GMT
+X509v3 Key Usage: critical
+    Digital Signature, Key Agreement
+
+--- full text (server.pem) ---
+Certificate:
+    Data:
+        Version: 3 (0x2)
+        Serial Number: 8473609324339773989 (0x75984ec90eb5c225)
+        Signature Algorithm: sha256WithRSAEncryption
+        Issuer: C=IT, O=HiTEKS, OU=CCLI-Lab, CN=CCLI_Lab_Root_CA
+        Validity
+            Not Before: Sep 29 19:36:09 2026 GMT
+            Not After : Jan  1 19:36:09 2029 GMT
+        Subject: 2.5.4.106=1.1.1.999.1.12
+        Subject Public Key Info:
+            Public Key Algorithm: rsaEncryption
+                Public-Key: (2048 bit)
+                Modulus:
+                    ce:db:ef:46:c7:1e:9d:5d:87:0c:e2:54:b4:18:f8:0d:
+                    92:8b:19:33:4d:d9:dd:0b:81:b8:2f:85:3e:c7:d5:6b:
+                    54:89:c7:c1:5f:c2:96:59:e1:41:7b:be:03:ae:b6:b1:
+                    69:a3:ec:7c:74:05:e9:fa:2c:74:a4:50:2a:8d:2f:04:
+                    67:6a:0d:cd:f7:ca:7a:5a:6d:0f:af:d8:8f:39:45:d0:
+                    56:b3:6e:db:49:e4:23:9c:43:ea:1c:35:6a:29:5d:21:
+                    9f:e8:71:92:3b:5e:32:93:5a:13:32:15:81:57:b6:d4:
+                    d7:62:35:90:b9:31:5c:34:2b:df:08:22:ba:78:95:0c:
+                    61:d6:6d:4a:0f:3e:12:40:a1:b1:2e:8a:57:6e:c2:53:
+                    cf:c9:de:53:19:70:ce:75:a6:f1:ae:d4:93:d8:55:6e:
+                    89:fb:86:eb:86:ce:07:53:c7:67:a1:fd:a1:c4:1d:c4:
+                    59:00:d4:76:93:72:ac:16:d9:da:72:5e:52:6f:e0:91:
+                    6f:24:7e:cf:9c:eb:e8:7f:8c:95:69:24:c7:25:a7:40:
+                    40:d5:65:f8:ef:69:f4:84:de:8d:7c:f4:d7:83:87:84:
+                    93:4d:1e:e4:d1:48:ae:63:95:fe:91:e9:ea:be:47:c4:
+                    ac:ce:63:74:e4:5a:30:db:60:7c:fc:14:53:1e:f3:53
+                Exponent: 65537 (0x10001)
+        X509v3 extensions:
+            X509v3 Key Usage: critical
+                Digital Signature, Key Agreement
+            X509v3 Basic Constraints: critical
+                CA:FALSE
+    Signature Algorithm: sha256WithRSAEncryption
+    Signature Value:
+        23:92:11:f8:4b:7f:4e:1f:dc:20:d6:f1:c7:3d:cd:c3:9d:78:54:b1:0b:d1:04:3e:
+        82:1a:42:24:cd:51:a9:5c:57:8a:54:98:21:90:08:bf:30:9d:ef:fd:a6:1f:a6:14:
+        9b:cd:85:79:5b:d6:2a:3d:98:68:a6:e9:8a:46:02:7f:29:0c:32:41:eb:6a:f1:59:
+        78:d0:7a:b3:1d:1e:3c:36:62:08:6f:13:d9:9b:d9:a8:28:5e:76:3f:e9:74:a0:b9:
+        c2:23:0d:2b:10:d7:c5:8c:c6:63:79:7d:bd:af:3b:55:d2:6d:49:33:e0:59:a1:f7:
+        ea:e9:24:35:b1:23:8d:cb:ac:71:81:fd:5a:29:c0:4e:fa:2f:13:b5:01:29:95:3c:
+        2f:af:95:c4:27:e8:1c:39:d6:2a:b8:c9:f3:1e:06:20:86:d9:4c:c9:35:e2:be:a1:
+        bf:a4:fe:cf:df:81:10:7d:99:eb:f4:27:26:31:50:55:f8:d1:4d:e8:80:f0:50:bb:
+        8a:b7:44:a6:79:ea:c3:43:8c:17:4e:34:66:bc:3f:84:d2:4d:cf:cd:30:3a:ab:20:
+        19:85:14:9a:8c:37:af:77:bd:f6:4d:01:6f:97:ce:a8:31:91:ab:89:cf:75:f6:08:
+        b1:d2:19:13:1e:6f:42:3f:30:ba:c5:ac:15:fc:71:b9
+
+========== 3. server_tls.pem (Transport TLS cert) ==========
+subject=C=IT, O=HiTEKS, OU=CCLI-Lab, CN=CCI016_01
+issuer=C=IT, O=HiTEKS, OU=CCLI-Lab, CN=CCLI_Lab_Root_CA
+notBefore=Sep 29 19:36:09 2026 GMT
+notAfter=Jan  1 19:36:09 2029 GMT
+X509v3 Key Usage: critical
+    Digital Signature, Key Encipherment
+
+========== 4. Private key checks ==========
+--- E2E AARE signing key: server_acse.key ---
+RSA key ok
+--- Transport TLS key: server.key ---
+RSA key ok
+--- Combined cert key: server_combined.key ---
+RSA key ok
+
+========== 5. Cert <-> key modulus match (MD5) ==========
+E2E server.pem + server_acse.key: MATCH
+Transport server_tls.pem + server.key: MATCH
+Combined server_combined.pem + server_combined.key: MATCH
+Combined cert + server_acse.key (cross): MISMATCH
+
+========== 6. CRL check (revoked client) ==========
+--- verify revoked.pem against CRL ---
+C=IT, O=HiTEKS, OU=CCLI-Lab, CN=REVOKED_CLIENT
+error 23 at 0 depth lookup: certificate revoked
+error revoked.pem: verification failed
+--- verify client.pem (should OK) ---
+client.pem: OK
+
+========== 7. Step 7 offline hex (if present) ==========
+Hex: C:\Yahia\projects\CCLI\lab\tmp_tx_step7_latest.hex
+--- locate_p3_07_failure.py --cert server_combined.pem ---
+=== P3-07 failure locator: tmp_tx_step7_latest.hex ===
+SPDU total length: 1269 octets
+
+Traceback (most recent call last):
+  File "C:\Yahia\projects\CCLI\lab\locate_p3_07_failure.py", line 229, in <module>
+    raise SystemExit(main())
+                     ~~~~^^
+  File "C:\Yahia\projects\CCLI\lab\locate_p3_07_failure.py", line 132, in main
+    print("## 1. Protocol layer (outside \u2192 inside)")
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\yahia\AppData\Local\Programs\Python\Python313\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u2192' in position 30: character maps to <undefined>
+--- locate_p3_07_failure.py --cert server.pem ---
+=== P3-07 failure locator: tmp_tx_step7_latest.hex ===
+SPDU total length: 1269 octets
+
+Traceback (most recent call last):
+  File "C:\Yahia\projects\CCLI\lab\locate_p3_07_failure.py", line 229, in <module>
+    raise SystemExit(main())
+                     ~~~~^^
+  File "C:\Yahia\projects\CCLI\lab\locate_p3_07_failure.py", line 132, in main
+    print("## 1. Protocol layer (outside \u2192 inside)")
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\yahia\AppData\Local\Programs\Python\Python313\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u2192' in position 30: character maps to <undefined>
+--- locate_p3_07_failure.py --cert server_tls.pem ---
+=== P3-07 failure locator: tmp_tx_step7_latest.hex ===
+SPDU total length: 1269 octets
+
+Traceback (most recent call last):
+  File "C:\Yahia\projects\CCLI\lab\locate_p3_07_failure.py", line 229, in <module>
+    raise SystemExit(main())
+                     ~~~~^^
+  File "C:\Yahia\projects\CCLI\lab\locate_p3_07_failure.py", line 132, in main
+    print("## 1. Protocol layer (outside \u2192 inside)")
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\yahia\AppData\Local\Programs\Python\Python313\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u2192' in position 30: character maps to <undefined>
+
+========== 5b. Cross-check E2E cert vs Transport TLS key ==========
+E2E server.pem + server.key: MISMATCH (expected — Annex G.2 dual key pairs)
+
+========== 7. Step 7 offline hex (UTF-8 re-run) ==========
+Hex: C:\Yahia\projects\CCLI\lab\tmp_tx_step7_latest.hex (1269 octets, Sep 29 capture)
+
+--- server_combined.pem ---
+time_tlv_81 (§11.2.2): PASS
+Embedded cert == server_combined.pem: YES
+GeneralizedTime: 20260929202610.
+Verdict: DUT AARE encoding + signature VALID for combined cert profile
+
+--- server.pem ---
+time_tlv_81: FAIL
+Embedded cert == server.pem: NO (wire carried combined cert DER, not standalone server.pem)
+
+--- server_tls.pem ---
+time_tlv_81: FAIL
+Embedded cert == server_tls.pem: NO
+
+========== VERDICT SUMMARY ==========
+BASIC PKI: PASS — all lab leaf certs verify against root_CA.pem; all private keys RSA-ok.
+DUAL-CERT G.2: PASS — server.pem↔server_acse.key and server_tls.pem↔server.key MATCH; cross pairs MISMATCH as designed.
+CRL: PASS — revoked.pem rejected; client.pem OK.
+TLS / BASIC CERTS: NOT the failure layer.
+AARE Step 7 (offline): PASS with server_combined.pem on saved wire hex — encoding/signature OK on DUT.
+TSP Step 7 (live): still FAIL historically (~3 ms Encrypted Alert after AARE) — investigate TSP verify pubkey path or refresh :3782 capture on current build.
+Evidence: lab/evidence/testsuite-pro/inbox/TSP_P3_07_OPENSSL_VERIFY_2026-10-01_210622.txt

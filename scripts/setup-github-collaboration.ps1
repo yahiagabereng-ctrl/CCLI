@@ -38,6 +38,9 @@ Write-Host "Pushing to origin/main..."
 git config http.postBuffer 524288000
 git push -u origin main
 
+Write-Host "Making repo private..."
+gh api -X PATCH "repos/$User/$RepoName" -f visibility=private -f private=true
+
 Write-Host "Inviting collaborator $Collaborator (write access)..."
 gh api -X PUT "repos/$User/$RepoName/collaborators/$Collaborator" -f permission=push
 

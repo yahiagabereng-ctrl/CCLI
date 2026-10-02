@@ -2,7 +2,7 @@
 
 **Gate:** P5_FULLCIRCLE  
 **Date:** 2026-09-30  
-**Build:** 0.1.0-r24 (P5-R01)  
+**Build:** 0.1.0-r25 (P5-COMPARE-FIX) · prior r24 Compare export had **77** rows  
 **CID:** `apps/ccli/config/icd/lab_tg544_eth_a.cid`  
 **Matrix:** `lab/evidence/phase5/P5_LN_WIRE_STATUS.md`
 
@@ -27,7 +27,8 @@ Structure must match; **value** deltas on live DOs are expected and waived for l
 | `PdCMMXU1.TotW` | — | Modbus P (~450 kW) | LN-GAP-01 | Lab POC meter path |
 | `PdCMMXU1.TotVAr` | — | Modbus Q (~45 kvar baseline) | LN-GAP-01 | Lab POC meter path |
 | `PdCMMXU1.PPV.phsAB` | — | 20.0 kV (yaml) | LN-GAP-06 | No Modbus V reg yet (P5-06) |
-| `PdCMMXU1` q | good | Questionable/Inaccurate | LN-GAP-07 | GNSS/time sync not locked |
+| `PdCMMXU1` q | good | Questionable/Inaccurate | LN-GAP-07 | **CLOSED** — GNSS sky lock; re-Compare may show Good q |
+| `PdCMMXU1.PPV` q | matches TotW | Good (stale) vs Questionable | LN-GAP-08 | PPV.q not in `refresh_time_quality()` |
 | `WlimDWMX1.Mod` | off (CID) | **5** @ boot, **1** after Operate | LAB-CTL-01 | cfg default + lab direct-enhanced |
 | `WSdDAGC1.Mod` | on (CID) | **1** @ boot (r24 cfg) | LAB-CTL-02 | cfg vs CID enum naming |
 | `WSdDAGC1.WSptPct` | — | **20** (cfg) | LAB-VAL-01 | yaml seed |
@@ -35,7 +36,7 @@ Structure must match; **value** deltas on live DOs are expected and waived for l
 | `Gen*`, `St*`, `Dis*` MMXU/DPCC | nameplate | cfg static | PLANT-GAP-02 | No plant sim beyond POC |
 | `VArSdDVAR1` @ baseline | — | Mod=**5** until Operate | LAB-CTL-03 | cfg off until DSO command |
 | `PFSPDFPF1`, `VArVDVVR1`, `PFWDPFW1` | — | Mod=**5**, no plant path | P5-DEFER-01 | Annex T Tab.88–91 deferred |
-| ctlModel | SBO (CID) | direct-enhanced (lab) | LAB-CTL-04 | TSP cleartext bypass profile |
+| ctlModel | ~~SBO (CID)~~ **fixed r25** | direct-enhanced | — | CID aligned 2026-10-01 |
 
 ## Offline SCL (related)
 

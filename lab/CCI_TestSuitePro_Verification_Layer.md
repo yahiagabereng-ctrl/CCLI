@@ -1,10 +1,11 @@
 # CCLI — Triangle MicroWorks 61850 Test Suite Pro (verification layer)
 
 **Document ID:** CCLI-LAB-TSP-VER-001  
-**Revision:** 1.3  
-**Date:** 2026-09-26  
-**Tool:** Triangle MicroWorks **61850 Test Suite Pro** · **INSTALLED** on lab PC · **v4.7.4.5037**  
-**DUT:** TG544 `ccli` IED **CCI016_01** · LAN1 Eth_A `192.168.10.1:3782` TLS  
+**Revision:** 1.4  
+**Date:** 2026-10-01  
+**Tool:** Triangle MicroWorks **61850 Test Suite Pro** · **INSTALLED** on lab PC · **v4.7.4.5037** · **LICENSE BLOCKED** (expired trial)  
+**Alternate DSO client:** [IEDExplorer](https://sourceforge.net/projects/iedexplorer/) — see `lab/evidence/phase5/P5_VERIFICATION_CLIENT_STATUS_2026-10-01.md`  
+**DUT:** TG544 `ccli` IED **CCI016_01** · LAN1 Eth_A `192.168.10.1:102` cleartext (lab) · `:3782` TLS (product)  
 **Architecture:** `Architecture/CCI_Runtime_Dataflow_Architecture.md` · REQ-VER-001  
 **Naming:** **Test Suite Pro** ≠ **TesPro** (TG544 OEM)
 
@@ -42,6 +43,16 @@
 | **RAG Online Help copy** | `knowledge-base/08-engineering/testsuite-pro/help-offline/` (**HAVE** — mirrored from install) |
 | Download docs | `powershell -File scripts/download-testsuite-pro-docs.ps1` |
 | Ingest RAG | `powershell -File scripts/ingest-testsuite-pro.ps1` |
+
+### 0.3 License & fallback (2026-10-01)
+
+| State | Detail |
+|-------|--------|
+| TSP install | `C:\Program Files\Triangle MicroWorks\TMW Test Suite Pro\` — v4.7.4.5037 |
+| License | Sentinel Key Id `1099954349370049388` — **expired**; reinstall does not issue fresh trial |
+| Recovery | TMW support Product Key / `.v2c`; admin script `C:\Yahia\University\KILL_TMW_OLD_TRIAL.bat` |
+| **IEDExplorer** | Manual connect/read/Operate/URCB on cleartext `:102` — export `IEDEX_*` to `testsuite-pro/inbox/` |
+| Historical evidence | P5 gate **CLOSED** on r25 TSP + automated logs — no re-test required for closeout |
 
 ---
 

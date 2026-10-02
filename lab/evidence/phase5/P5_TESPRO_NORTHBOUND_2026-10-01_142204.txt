@@ -1,0 +1,25 @@
+﻿[2026-10-01 14:22:04] === P5 TesPro northbound verify ===
+[2026-10-01 14:22:04] Topic: device/tg544-lab-gw/cci016-lab-01/property/report
+[2026-10-01 14:22:04] Broker: 192.168.10.10:1883
+[2026-10-01 14:22:04] Listen: 25s
+[2026-10-01 14:22:04] 
+[2026-10-01 14:22:05] PC lab IP 192.168.10.10 on Ethernet: OK
+[2026-10-01 14:22:05] Ping 192.168.10.1: OK
+[2026-10-01 14:22:16] MMS :102: OPEN
+[2026-10-01 14:22:16] MQTT broker 0.0.0.0:1883 LISTENING (pid 17924)
+[2026-10-01 14:22:16] --- MQTT capture (25 sec) ---
+[2026-10-01 14:22:41]   [stderr] Timed out
+[2026-10-01 14:22:42] 
+[2026-10-01 14:22:42] --- Results ---
+[2026-10-01 14:22:42] MQTT messages received: 0
+[2026-10-01 14:22:42] REPORT_PROPERTY JSON: FAIL
+[2026-10-01 14:22:42] PdC_TotW ~450: FAIL / no message yet
+[2026-10-01 14:22:42] 
+[2026-10-01 14:22:42] Troubleshooting:
+[2026-10-01 14:22:42]   1. LuCI Northbound: Enabled ON, Save Channel, Status Connected
+[2026-10-01 14:22:42]   2. Publish Topic typed explicitly (not empty placeholder)
+[2026-10-01 14:22:42]   3. Clear Subscribe/Reply topics for lab
+[2026-10-01 14:22:42]   4. Windows firewall: allow inbound TCP 1883 from 192.168.10.1
+[2026-10-01 14:22:42]   5. Restart IEC 61850 service on DUT after save
+[2026-10-01 14:22:42] Evidence: C:\Yahia\projects\CCLI\lab\tg544-openwrt\..\evidence\phase5\P5_TESPRO_NORTHBOUND_2026-10-01_142204.txt
+[2026-10-01 14:22:42] === end (exit 2) ===

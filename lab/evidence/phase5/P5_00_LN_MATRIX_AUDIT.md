@@ -3,7 +3,9 @@
 **Date:** 2026-09-30  
 **References:** `lab_tg544_eth_a.cid` · `signal_map.yaml` · `mms_adapter.cpp` · IEC 61850-7-4 extract  
 **Tool:** `scripts/audit-ln-matrix.py`  
-**Value matrix (TSP):** `P5_LN_VALUE_MATRIX.md`
+**Value matrix (TSP):** `P5_LN_VALUE_MATRIX.md`  
+**Annex test sequence:** [P5_ANNEX_TEST_SEQUENCE.md](P5_ANNEX_TEST_SEQUENCE.md) (Part A)  
+**Timing / LN alignment:** [P5_TIMING_ANNEX_AUDIT_2026-10-01.md](P5_TIMING_ANNEX_AUDIT_2026-10-01.md) (§2.5)
 
 ---
 
@@ -80,7 +82,8 @@ Legacy label “CID-only / deferred” applied only to **MVP 9-LN path**. Groups
 | LN-GAP-04 | Stub LNs lack APC set-point DOs | P5-R01… when plant Q path exists |
 | LN-GAP-05 | MMS Mod/WSpt not seeded from yaml at boot | TSP: Operate before CID compare; see value matrix §B3 |
 | LN-GAP-06 | Lab direct-enhanced ctlModel vs CID SBO | TSP Direct Operate |
-| LN-GAP-07 | TotW/TotVAr quality questionable until GNSS | Optional q check in TSP |
+| LN-GAP-07 | TotW/TotVAr quality questionable until GNSS | **CLOSED** 2026-10-01 — sky lock, gnss_fix=1 |
+| LN-GAP-08 | PPV.phsAB.q not refreshed with time_quality | TotW/TotVAr q=Questionable, PPV q=Good stale; see timing audit §2.5.5 |
 
 ---
 
