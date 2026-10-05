@@ -1,0 +1,38 @@
+# P5 — Npcap / IED Explorer GooseSender diagnostic
+# Date: 2026-10-05 ~12:02 local
+
+=== Npcap service ===
+npcap: Running (StartType System)
+
+=== DLL paths (IED Explorer / WinPcap API) ===
+C:\Windows\System32\Npcap\wpcap.dll     OK
+C:\Windows\System32\Npcap\Packet.dll    OK
+C:\Windows\SysWOW64\Npcap\wpcap.dll     OK   (32-bit apps)
+C:\Windows\SysWOW64\Npcap\Packet.dll    OK
+C:\Windows\SysWOW64\wpcap.dll           OK   (compat shim)
+C:\Windows\System32\wpcap.dll           OK
+C:\Program Files\Npcap\wpcap.dll        MISSING (copy denied — needs Admin)
+C:\Program Files (x86)\Npcap\wpcap.dll  MISSING
+
+=== tshark capture (64-bit) ===
+Adapter 8 = Ethernet (Realtek) — 11 frames / 3 s PASS
+PC IP: 192.168.10.10/24
+
+=== IED Explorer (user screenshot 11:57) ===
+MMS connect 192.168.10.1:102: PASS (libiec61850 model read)
+GooseSender PCap init: FAIL "Problem to initialize PCap !!!"
+CID loaded: ceitr-57-126-example.cid — WRONG for lab (use lab_tg544_eth_a.cid)
+
+=== DUT ===
+ccli 0.1.0-r29 GOOSE publishing enabled on br-lan: PASS
+MMS :102 LISTEN: PASS
+
+=== VERDICT ===
+Npcap install: PASS for 64-bit (Wireshark/tshark)
+32-bit DLLs: PASS (SysWOW64) — reinstall appears complete vs earlier session
+IED Explorer PCap: LIKELY still needs (1) Run as Administrator, (2) full reboot,
+  (3) optional Admin copy to C:\Program Files\Npcap\, (4) correct CID file
+
+=== WORKAROUND (no PCap) ===
+IED Explorer MMS connected → LD_Plant/LLN0/gcb_PdC_Mis4sec → GoEna=true
+DUT publishes GOOSE on br-lan (not PC GooseSender)

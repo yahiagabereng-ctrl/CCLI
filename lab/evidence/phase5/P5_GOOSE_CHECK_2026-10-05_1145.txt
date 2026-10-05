@@ -1,0 +1,56 @@
+# P5-G02 GOOSE live check — 2026-10-05 ~11:45 local
+# DUT: TG544 @ 192.168.10.1 (LAN1 Eth_A)
+# PC: 192.168.10.10, COM5 Modbus slave, IED Explorer connected
+
+=== NETWORK ===
+N1 Ping 192.168.10.1: PASS (~1 ms)
+N2 TCP :102: PASS (LISTEN after clean restart)
+
+=== DUT RUNTIME ===
+D1 ccli process: PASS (PID 15383 after clean restart)
+D2 Version: 0.1.0-r27 (deployed ccli-bin still reports r27)
+D3 lab.yaml goose.publish_enabled: true, interface: br-lan
+D4 GC(gcb_ in /etc/ccli/icd/lab_tg544_eth_a.cfg: PASS (deployed from repo)
+D5 mms: GOOSE publishing enabled log: FAIL — not present in /tmp/ccli.log
+D6 strings GOOSE publish in binary: FAIL — r27 lacks enable_goose_publishing path
+
+=== MODBUS (A1/B1 /dev/ttyS1) ===
+M1 FC3 @40001 P=450 kW Q=45 kvar: PASS (continuous in log)
+M2 pf2 state: p_above_threshold / curtail=yes
+
+=== MMS CLIENT (WSL) ===
+C1 mms_lab_client connect: PASS
+C2 TotW read: 450.000000 kW
+C3 urcb_PdC_Mis4sec integrity reports: PASS (3 reports, avg ~3899 ms)
+C4 mms_goena_client GoEna read/write: FAIL (err 10 read, err 22 write)
+    — GoCB not exposed via MMS until IedServer_enableGoosePublishing (r28+)
+
+=== IED EXPLORER (user) ===
+I1 MMS connect 192.168.10.1:102 cleartext: PASS (OSI_CONNECT, model read)
+I2 Target must be 192.168.10.1 NOT localhost
+I3 GooseSender on PC: must stay OFF (DUT is publisher)
+
+=== GOOSE ON WIRE ===
+G1 DUT tcpdump br-lan: SKIP — tcpdump not installed on OpenWrt image
+G2 Wireshark evidence: OPEN
+
+=== ACTIONS TAKEN THIS SESSION ===
+- Deployed lab_tg544_eth_a.cfg with GC(gcb_PdC_Mis4sec) + GC(gcb_Stato_Allarmi)
+- Deployed lab/tg544-openwrt/ccli-bin (still r27)
+- Clean killall + restart ccli (fixed :102 port conflict)
+
+=== VERDICT ===
+| Layer              | Status |
+|--------------------|--------|
+| Modbus → MMS       | PASS   |
+| MMS :102 / reports | PASS   |
+| GC cfg on DUT      | PASS   |
+| GoEna / GoCB MMS   | BLOCKED — need ccli r28+ with GOOSE publish |
+| GOOSE on wire      | OPEN   |
+
+=== NEXT ===
+1. Build + deploy ccli r29 (CCLI_WITH_GOOSE): lab/tg544-openwrt/wsl-build-ccli.sh
+2. Restart ccli; confirm log: mms: GOOSE publishing enabled on br-lan
+3. IED Explorer: LLN0 → gcb_PdC_Mis4sec → GoEna=true
+4. Capture: install tcpdump on DUT OR plant-segment Wireshark
+   Filter: goose && eth.dst == 01:0c:cd:01:00:01

@@ -59,6 +59,12 @@ mms:
   chrony_poll: true
   tls_enabled: false
 
+# IED-integrated GOOSE publisher (LLN0 GoCBs in lab_tg544_eth_a.cid)
+goose:
+  enabled: false
+  publish_enabled: true
+  interface: br-lan
+
 iec104:
   enabled: true
   bind_address: 192.168.1.130

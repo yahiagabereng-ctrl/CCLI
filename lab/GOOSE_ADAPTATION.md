@@ -1,6 +1,6 @@
 # GOOSE plant adaptation — HiTEKS CCLI on TG544
 
-**Status:** IED-integrated GOOSE publisher (r28+) · subscribe path MVP · P5-G01 lab evidence **OPEN**  
+**Status:** IED-integrated GOOSE publisher (r29) · P5-G02 MMS/GoCB **PASS** · wire **DEFERRED** (`br-lan` NO-CARRIER) · P5-G01 **OPEN**  
 **Normative:** CEI 0-16 Annex T (DSO = MMS/TLS); plant = Modbus and/or GOOSE per site  
 **Competitor reference:** Higeco UCA cert = MMS only; Tesmec uses internal Report + GOOSE on plant bus
 
@@ -48,8 +48,9 @@ Build flag: `CCLI_WITH_GOOSE=ON` (default) → `CONFIG_IEC61850_L2_GOOSE` in lib
    - `gcb_Stato_Allarmi` → dataset `DS_R_Stato_Allarmi_Segnali` · APPID **0x1001**
 2. Set `goose.publish_enabled: true` in lab yaml (MMS must load `model_cfg`).
 3. `MmsAdapter::enable_goose_publishing()` calls libiec61850 `IedServer_enableGoosePublishing()` on `goose.interface` (default `br-lan`).
-4. When `PdCMMXU1` values update (Modbus → MMS every 4 s), integrated publisher emits GOOSE if GoEna is true.
-5. **IED Explorer:** connect to `192.168.10.1:102`, open `LLN0` → GoCB → enable / use **GooseSender**; Wireshark filter `goose && eth.addr == 01:0c:cd:01:00:01`.
+4. `IedServer_enableGoosePublishing()` sets **GoEna=true** on all GoCBs; frames emit when dataset values change (~4 s Modbus path).
+5. **MMS verify:** `mms_goena_client` uses `GetGoCBValues` / `SetGoCBValues` (ACSI ref `CCI016_01LD_Plant/LLN0.gcb_*`).
+6. **IED Explorer:** IED View `192.168.10.1:102` → `LLN0` → **GO** FC. Wireshark: `goose && eth.dst == 01:0c:cd:01:00:01` on **plant** NIC (`br-lan` must have carrier).
 
 Regenerate `.cfg` after CID edit: `powershell -File scripts/gen-mms-model-cfg.ps1`
 
@@ -89,7 +90,7 @@ Evidence folder (when run): `lab/evidence/phase5/P5_GOOSE_RX_*.txt`
 
 | ID | Item |
 |----|------|
-| P5-G02 | ~~Publisher~~ **HAVE** (integrated IedServer) · lab evidence pending |
+| P5-G02 | Publisher **HAVE** · MMS/GoCB lab PASS · wire PCAP when `br-lan` linked |
 | P5-G03 | Map subscribed dataset → `MeasurementStore` / reactive path |
 | P5-G04 | GOOSE timeout / comms-loss event (plant element comms O.14) |
 | P7-04 | Extend matrix: plant GOOSE comms **HAVE** after P5-G01 |

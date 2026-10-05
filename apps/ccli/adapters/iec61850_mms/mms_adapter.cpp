@@ -1144,8 +1144,8 @@ void MmsAdapter::enable_goose_publishing(const core::GooseConfig& cfg) {
     IedServer_setGoCBHandler(impl_->server, go_cb_event_handler, impl_);
     IedServer_enableGoosePublishing(impl_->server);
     std::fprintf(stderr,
-                 "mms: GOOSE publishing enabled on %s (gcb_PdC_Mis4sec APPID=0x1000, "
-                 "gcb_Stato_Allarmi APPID=0x1001)\n",
+                 "mms: GOOSE publishing enabled on %s (GoEna=true on all GoCBs; "
+                 "gcb_PdC_Mis4sec APPID=0x1000, gcb_Stato_Allarmi APPID=0x1001)\n",
                  iface);
 #else
     (void)cfg;

@@ -1,0 +1,19 @@
+[2026-10-05 11:25:46] # P5-G02 GOOSE check - DUT 192.168.10.1
+[2026-10-05 11:25:46] R1 CID GoCB: PASS
+[2026-10-05 11:25:46] R2 cfg GC(): PASS
+[2026-10-05 11:25:59] N1 Ping 192.168.10.1: PASS
+[2026-10-05 11:26:11] N2 TCP :102: FAIL - ccli not listening
+[2026-10-05 11:26:23] N3 TCP :3782: FAIL (ok if cleartext lab only)
+[2026-10-05 11:26:23] --- DUT plink ---
+[2026-10-05 11:26:23] ccli 0.1.0-r27 (P7-01-EVENT-STORE)
+[2026-10-05 11:26:23]   semver:   0.1.0
+[2026-10-05 11:26:23]   release:  r27
+[2026-10-05 11:26:23]   git:      unknown
+[2026-10-05 11:26:23]   built:    2026-06-29T12:59:20Z UTC
+[2026-10-05 11:26:23]   platform: tg500
+[2026-10-05 11:26:23] head: invalid number '3
+[2026-10-05 11:26:23] '
+[2026-10-05 11:26:23] head: invalid number '6
+[2026-10-05 11:26:23] '
+[2026-10-05 11:26:23] PC Npcap: PASS (dll present)
+[2026-10-05 11:26:23] Log: C:\Yahia\projects\CCLI\lab\evidence\phase5\P5_GOOSE_CHECK_2026-10-05_1125.txt
