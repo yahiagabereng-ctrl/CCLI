@@ -43,6 +43,13 @@ ccli 0.1.0-r30 (P5-R09-O14-VARSD)
 2026/10/05 13:49:00 mms client_disconnect
 --- store lines ---
 516 /var/lib/ccli/events.jsonl
+
+=== Verdict ===
+P7 O.14 lab (r30): PASS — timestamp format yyyy/mm/dd hh:mm:ss UTC
+Categories observed: system (power_on, firmware_boot), modbus (link_up/down/recovered),
+meter (quality_good/stale/recovered), mms (client_connect/disconnect, varsd_operate, comms_loss_fallback)
+Store: 516 lines in /var/lib/ccli/events.jsonl
+
 --- category grep ---
 2026/10/05 13:40:24 system power_off:shutdown
 2026/10/05 13:41:02 modbus link_recovered
