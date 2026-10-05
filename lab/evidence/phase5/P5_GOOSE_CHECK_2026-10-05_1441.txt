@@ -1,0 +1,21 @@
+[2026-10-05 14:41:27] # P5-G02 GOOSE check - DUT 192.168.10.1
+[2026-10-05 14:41:27] R1 CID GoCB: PASS
+[2026-10-05 14:41:27] R2 cfg GC(): PASS
+[2026-10-05 14:41:43] N1 Ping 192.168.10.1: PASS
+[2026-10-05 14:41:53] N2 TCP :102: PASS
+[2026-10-05 14:42:05] N3 TCP :3782: FAIL (ok if cleartext lab only)
+[2026-10-05 14:42:05] --- DUT plink ---
+[2026-10-05 14:42:05] ccli 0.1.0-r29 (EQ-PLANE-R07-SPACING)
+[2026-10-05 14:42:05]   semver:   0.1.0
+[2026-10-05 14:42:05]   release:  r29
+[2026-10-05 14:42:05]   git:      unknown
+[2026-10-05 14:42:05]   built:    2026-06-29T12:59:20Z UTC
+[2026-10-05 14:42:05]   platform: tg500
+[2026-10-05 14:42:05] head: invalid number '3
+[2026-10-05 14:42:05] '
+[2026-10-05 14:42:05] head: invalid number '6
+[2026-10-05 14:42:05] '
+[2026-10-05 14:42:05] mms: listening on 0.0.0.0:102 tls=off acse_tls_auth=off rbac=off crl=off fallback_s=15 gnss_poll_s=15 chrony=on discipline=off model=full_cid_cfg
+[2026-10-05 14:42:05] mms: GOOSE publishing enabled on lan3 (gcb_PdC_Mis4sec APPID=0x1000, gcb_Stato_Allarmi APPID=0x1001)
+[2026-10-05 14:42:05] PC Npcap: PASS (dll present)
+[2026-10-05 14:42:05] Log: C:\Yahia\projects\CCLI\lab\evidence\phase5\P5_GOOSE_CHECK_2026-10-05_1441.txt

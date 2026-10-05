@@ -691,21 +691,34 @@ int main(int argc, char** argv) {
                         app_cfg.plant, app_cfg.dso, dso_cmd.varsd_active,
                         dso_cmd.vartgt_spt_pct);
                     if (q_cmd.applied) {
+                        const int mod_val = dso_cmd.varsd_active ? 1 : 5;
                         if (modbus.write_reactive_kvar(q_cmd.derived.q_target_kvar)) {
                             std::cerr << "mms→plant: VArSd on @" << dso_cmd.vartgt_spt_pct
                                       << "% Smax → Q=" << q_cmd.derived.q_target_kvar
                                       << " kvar [O.9.1.4 P5-R01]\n";
-                            events.append({cci::hal::now().epoch_ms, "mms", "varsd_update"});
+                            events.append({cci::hal::now().epoch_ms, "mms",
+                                           "varsd_operate mod=" + std::to_string(mod_val) +
+                                               " pct=" + std::to_string(dso_cmd.vartgt_spt_pct) +
+                                               " q_kvar=" +
+                                               std::to_string(q_cmd.derived.q_target_kvar) +
+                                               " result=ok"});
                         } else {
                             std::cerr << "mms→plant: VArSd Q write FAILED q="
                                       << q_cmd.derived.q_target_kvar << " kvar\n";
                             events.append({cci::hal::now().epoch_ms, "mms",
-                                           "varsd_plant_write_fail"});
+                                           "varsd_operate mod=" + std::to_string(mod_val) +
+                                               " pct=" + std::to_string(dso_cmd.vartgt_spt_pct) +
+                                               " q_kvar=" +
+                                               std::to_string(q_cmd.derived.q_target_kvar) +
+                                               " result=plant_write_fail"});
                         }
                     } else {
                         std::cerr << "mms→plant: VArSd off — plant Q command cleared "
                                      "[O.9.1.4]\n";
-                        events.append({cci::hal::now().epoch_ms, "mms", "varsd_off"});
+                        events.append({cci::hal::now().epoch_ms, "mms",
+                                       "varsd_operate mod=5 pct=" +
+                                           std::to_string(dso_cmd.vartgt_spt_pct) +
+                                           " q_kvar=0 result=cleared"});
                     }
                 }
             }

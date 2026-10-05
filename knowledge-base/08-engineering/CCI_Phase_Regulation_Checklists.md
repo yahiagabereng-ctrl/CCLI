@@ -325,7 +325,7 @@ Fill **Evidence** with date, APK/`ccli` version, log excerpt, screenshot, or tes
 | P5-R06 | O.7.3.2 / O.7.3.3 | ΔT 10–600 s (default 60); external SP spacing ≥ 3 s | Config + reject test | **OPEN** |
 | P5-R07 | O.11 indices 5–7 | Reactive tier vs active (W110/Wlim/WSd) priority | Arbiter test matrix (extend `derive_*`) | **OPEN** |
 | P5-R08 | O.10.3.2 / T Table 89 | `VArSa` MSD reactive SP | **Discretionary** — PASS or **WAIVE** | **N/A** until MSD contract |
-| P5-R09 | O.14 | Log reactive Operate (Mod, set-point, result) | Event category present | **OPEN** |
+| P5-R09 | O.14 | Log reactive Operate (Mod, set-point, result) | Event category present | **PASS** (lab r30) — `varsd_operate mod=… pct=… q_kvar=… result=…` · `P5_R09_VARSD_EVENT_2026-10-05.txt` |
 
 ### P5-G — Plant GOOSE (optional Annex T Type 1)
 
@@ -333,7 +333,7 @@ Fill **Evidence** with date, APK/`ccli` version, log excerpt, screenshot, or tes
 |-------|------------|-------|---------------|--------|
 | P5-G01 | Annex T / plant bus | Subscribe to plant IED GOOSE when site uses L2 path | RX log + O.14 `goose` event + Wireshark | **OPEN** — code r28+ · lab evidence pending |
 | P5-G02 | Site export | Optional GOOSE publish (status) | GoCB in CID + `IedServer_enableGoosePublishing` + wire | **PASS** — r29 · lan3 · `P5_GOOSE_WIRE_2026-10-05_140838.pcapng` (3947×0x1000, 3946×0x1001) |
-| P5-G03 | O.8 / P5-M | GOOSE dataset → TotW/TotVAr **or** parallel Modbus | Measurement merge policy documented | **OPEN** |
+| P5-G03 | O.8 / P5-M | GOOSE dataset → TotW/TotVAr **or** parallel Modbus | Measurement merge policy documented | **PASS** (policy) — `P5_G03_MERGE_POLICY.md` 2026-10-05 · runtime merge **OPEN** |
 
 **Note:** Modbus RTU (A2/B2) remains lab-default plant path; GOOSE does **not** replace P5-R01 Modbus Q write until P5-G03.
 

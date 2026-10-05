@@ -1,0 +1,14 @@
+﻿{
+    "codename":  "EQ-PLANE-R07-SPACING",
+    "changes":  [
+                    "Restore r29 after r30 segfault investigation"
+                ],
+    "release":  29,
+    "timestamp_utc":  "2026-10-05T12:58:57.2958789Z",
+    "version_full":  "0.1.0-r29",
+    "lab_yaml":  "c:\\Yahia\\projects\\CCLI\\apps\\ccli\\config\\lab_tr400_cleartext_tsp_ttyS1.yaml",
+    "sha256":  "2db289733cfaa2ac911522cf1c3371c3b773106c7ede93066ea0db70d0ec7425",
+    "binary":  "C:\\Yahia\\projects\\CCLI\\lab\\tg544-openwrt\\ccli-bin",
+    "host":  "192.168.10.1",
+    "semver":  "0.1.0"
+}

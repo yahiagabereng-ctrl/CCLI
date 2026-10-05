@@ -1,0 +1,14 @@
+﻿{
+    "codename":  "P5-R09-O14-VARSD",
+    "changes":  [
+                    "P5-R09 varsd_operate O.14 detail (string concat)"
+                ],
+    "release":  30,
+    "timestamp_utc":  "2026-10-05T13:01:26.6300144Z",
+    "version_full":  "0.1.0-r30",
+    "lab_yaml":  "c:\\Yahia\\projects\\CCLI\\apps\\ccli\\config\\lab_tr400_cleartext_tsp_ttyS1.yaml",
+    "sha256":  "1882301468c10da90b7cd8cb03e8d4b63d7493f7126572ad7592e33deee8ce9d",
+    "binary":  "C:\\Yahia\\projects\\CCLI\\lab\\tg544-openwrt\\ccli-bin",
+    "host":  "192.168.10.1",
+    "semver":  "0.1.0"
+}

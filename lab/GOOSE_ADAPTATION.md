@@ -59,7 +59,7 @@ Regenerate `.cfg` after CID edit: `powershell -File scripts/gen-mms-model-cfg.ps
 1. `ccli_main` starts `GooseService` when `goose.enabled=true`.
 2. `GooseAdapter` registers `GooseSubscriber` + listener on the plant interface.
 3. Each received GOOSE frame logs to stderr and **O.14** `EventStore` as category `goose`.
-4. **No** automatic merge into `MeasurementStore` yet — Modbus remains authoritative for P5-M TotW/TotVAr until P5-G03 mapping is defined.
+4. **No** automatic merge into `MeasurementStore` yet — Modbus remains authoritative for P5-M TotW/TotVAr. Merge rules: [`lab/evidence/phase5/P5_G03_MERGE_POLICY.md`](evidence/phase5/P5_G03_MERGE_POLICY.md) (**P5-G03 policy PASS** 2026-10-05; runtime merge OPEN).
 
 ---
 
@@ -91,6 +91,6 @@ Evidence folder (when run): `lab/evidence/phase5/P5_GOOSE_RX_*.txt`
 | ID | Item |
 |----|------|
 | P5-G02 | **CLOSED** — MMS/GoCB + wire pcap `P5_GOOSE_WIRE_2026-10-05_140838.pcapng` on **lan3** |
-| P5-G03 | Map subscribed dataset → `MeasurementStore` / reactive path |
+| P5-G03 | **Policy PASS** — [`P5_G03_MERGE_POLICY.md`](evidence/phase5/P5_G03_MERGE_POLICY.md); runtime merge → `MeasurementStore` **OPEN** |
 | P5-G04 | GOOSE timeout / comms-loss event (plant element comms O.14) |
 | P7-04 | Extend matrix: plant GOOSE comms **HAVE** after P5-G01 |

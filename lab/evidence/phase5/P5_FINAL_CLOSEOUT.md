@@ -97,7 +97,8 @@ TesPro MQTT northbound: Connected · REPORT_PROPERTY · PdC_TotW=450 @ 4 s (P5_T
 | GoCB MMS | `P5_GOCB_MMS_2026-10-05.txt` | **PASS** |
 
 Plant egress: **`goose.interface: lan3`** (192.168.30.1) — not empty `br-lan`.  
-**Next:** P5-G01 subscribe — session record resume checklist.
+**P5-G03:** merge policy PASS — [`P5_G03_MERGE_POLICY.md`](P5_G03_MERGE_POLICY.md) (2026-10-05).  
+**Next:** P5-G01 subscribe (LAN3) · P5-G03 runtime merge implementation.
 
 ---
 

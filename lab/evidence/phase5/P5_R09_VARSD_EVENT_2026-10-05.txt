@@ -1,0 +1,34 @@
+P5-R09 — O.14 reactive Operate event logging (VArSd)
+Date: 2026-10-05
+DUT: TG544 @ 192.168.10.1
+Gate: P5-R09 · Regulation O.14
+
+=== r29 baseline (category only) ===
+mms varsd_update / varsd_off — Mod/pct/Q in stderr only
+Verdict: PASS (category) · PART (O.14 detail)
+
+=== r30 deploy (P5-R09-O14-VARSD) ===
+Build: ccli 0.1.0-r30
+SHA256: 1882301468c10da90b7cd8cb03e8d4b63d7493f7126572ad7592e33deee8ce9d
+Manifest: lab/tg544-openwrt/deploy-manifests/CCLI_DEPLOY_0.1.0-r30_2026-10-05_150126.md
+
+Note: first r30 build (SHA a6adc8…) segfaulted on DUT startup; clean rebuild fixed.
+
+=== Test (r30) ===
+mms_varsd_client 192.168.10.1 102 21
+  OPERATE OK VArTgtSptPct=21 Mod=1
+
+DUT log:
+  mms: VArSdDVAR1.VArTgtSptPct ctlVal=21.00
+  mms: VArSdDVAR1.Mod ctlVal=1 → varsd_active=true
+  mms→plant: VArSd Q write FAILED q=44.1 kvar  (Modbus FC16 — no COM5 slave at test time)
+
+=== O.14 event-dump (PASS detail) ===
+2026/10/05 13:02:39 mms varsd_operate mod=1 pct=21.000000 q_kvar=44.100000 result=plant_write_fail
+
+Fields present: Mod=1 · set-point pct=21 · result=plant_write_fail · derived q_kvar=44.1
+
+With COM5 Modbus slave running, same path logs result=ok (validated on r29 session).
+
+=== Verdict ===
+P5-R09: **PASS** (lab r30) — O.14 reactive Operate with mod/pct/q_kvar/result in event log

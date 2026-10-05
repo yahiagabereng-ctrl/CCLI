@@ -1,0 +1,29 @@
+P5 LAN1 + MMS regression (no LAN3)
+Date: 2026-10-05 ~14:42 local
+DUT: TG544 @ 192.168.10.1
+Build: ccli 0.1.0-r29
+
+=== P5-G02 readiness (run-p5-goose-check.ps1) ===
+R1 CID GoCB: PASS
+R2 cfg GC(): PASS
+N1 Ping 192.168.10.1: PASS
+N2 TCP :102: PASS
+DUT log: GOOSE publishing enabled on lan3 (APPID 0x1000, 0x1001)
+
+=== GoCB MMS (mms_goena_client) ===
+GET OK gcb_PdC_Mis4sec GoEna=1 APPID=0x1000 MAC=01:0c:cd:01:00:01
+GET OK gcb_Stato_Allarmi GoEna=1 APPID=0x1001 MAC=01:0c:cd:01:00:02
+VERDICT: PASS
+
+=== MMS measurements + URCB (mms_lab_client 8s) ===
+TotW = 450 kW
+TotVAr = 45 kvar
+reports_received = 3
+avg_interval_ms = 3899 (expect ~4000)
+VERDICT: PASS
+
+=== Overall ===
+LAN1 daily lab path: PASS (no LAN3 cable required for this check)
+Next blocked: P5-G01 subscribe (needs LAN3)
+
+Evidence also: P5_GOOSE_CHECK_2026-10-05_1441.txt

@@ -178,7 +178,7 @@ a2b0886 Add GOOSE plant integration, phase 6-7 lab evidence, and MMS/ICD mapping
 |------|--------|----------|
 | **P5-G02** Publish | **PASS** | pcap + GoCB MMS |
 | **P5-G01** Subscribe | **OPEN** | needs `goose.enabled: true` + external publisher |
-| **P5-G03** Merge policy | **OPEN** | Modbus vs GOOSE → MeasurementStore |
+| **P5-G03** Merge policy | **PASS** (policy) | [`P5_G03_MERGE_POLICY.md`](P5_G03_MERGE_POLICY.md) · runtime merge OPEN |
 | P5-M / core P5 | **CLOSED** (2026-10-01) | P5_FINAL_CLOSEOUT |
 
 Checklist: `knowledge-base/08-engineering/CCI_Phase_Regulation_Checklists.md`
@@ -200,7 +200,7 @@ Checklist: `knowledge-base/08-engineering/CCI_Phase_Regulation_Checklists.md`
    - External GOOSE publisher on plant segment (or loopback test)
    - Pass: DUT log `goose: rx appId=… stNum=…` + O.14 event
 
-2. **P5-G03** — document measurement merge (Modbus authoritative today)
+2. ~~**P5-G03**~~ — merge policy **PASS** → [`P5_G03_MERGE_POLICY.md`](P5_G03_MERGE_POLICY.md) (runtime merge still OPEN)
 
 3. **P5-R02/R03** — PFSP / VArV Operate (if DSO reactive path is priority)
 

@@ -7,6 +7,27 @@ Format: **`semver-rN`** — bump **N** in `VERSION` line 2 and `package/ccli/Mak
 
 ---
 
+## 0.1.0-r30 — P5-R09-O14-VARSD (2026-10-05)
+
+**Codename:** P5-R09-O14-VARSD  
+**Phase:** P5-R09 — O.14 reactive Operate event detail
+
+### Changed
+
+- `ccli_main.cpp` — VArSd plant path logs O.14 detail `varsd_operate mod=… pct=… q_kvar=… result=…`
+  (replaces bare `varsd_update` / `varsd_off` strings; `std::to_string` concat for musl safety).
+
+### Fixed (deploy)
+
+- r30 requires **clean** SDK rebuild (`make package/feeds/ccli/ccli/clean`); first incremental r30 binary
+  segfaulted on DUT after `dso-phase1` log (SHA a6adc8…); clean rebuild OK (SHA 188230…).
+
+### Evidence
+
+- `lab/evidence/phase5/P5_R09_VARSD_EVENT_2026-10-05.txt` (r29 category PASS; r30 detail re-test)
+
+---
+
 ## 0.1.0-r29 — EQ-PLANE-R07-SPACING (2026-10-03)
 
 **Codename:** EQ-PLANE-R07-SPACING  

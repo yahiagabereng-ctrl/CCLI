@@ -37,6 +37,8 @@ Annex O defines **what** must be measured and when (4 s, grid-aligned). Annex T 
 | **[P5_A1B1_RS485_HW_MAP.md](P5_A1B1_RS485_HW_MAP.md)** | **RS485 bench freeze** — A1/B1 → `/dev/ttyS1` |
 | **[P5_GOOSE_SESSION_RECORD_2026-10-05.md](P5_GOOSE_SESSION_RECORD_2026-10-05.md)** | **START HERE** — GOOSE session handoff + resume checklist |
 | **[P5_G02_CLOSEOUT_2026-10-05.md](P5_G02_CLOSEOUT_2026-10-05.md)** | **GOOSE publish (P5-G02)** — MMS/GoCB + LAN3 wire pcap |
+| **[P5_G03_MERGE_POLICY.md](P5_G03_MERGE_POLICY.md)** | **GOOSE merge policy (P5-G03)** — Modbus authoritative; runtime merge backlog |
+| **`P5_R09_VARSD_EVENT_2026-10-05.txt`** | **P5-R09** — VArSd Operate O.14 event logging (r29 PART detail / category PASS) |
 
 **Compare / waivers (inbox):**
 
