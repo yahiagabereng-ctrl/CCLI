@@ -1,8 +1,8 @@
 # P5-G02 GOOSE session record — resume from here
 
-**Session end:** 2026-10-05  
-**Gate closed:** **P5-G02** (GOOSE publish) — **PASS**  
-**Next gate:** **P5-G01** (GOOSE subscribe) — not started  
+**Session end:** 2026-10-05 (updated 15:49)  
+**Gate closed:** **P5-G02** (GOOSE publish) — **PASS** · **P5-R09** (VArSd O.14) — **PASS** (r30 E2E)  
+**Next gate:** **P5-G01** (GOOSE subscribe) — **PARKED** until LAN3 plant cable reconnected  
 **Bench today:** LAN1 + RS485 only (LAN3 unplugged; wire evidence already captured)
 
 ---
@@ -27,7 +27,7 @@
 |------|-------|
 | Product | HiTEKS CCLI PF2 / CEI 0-16 CCI |
 | Platform | TesPro TG544 (OpenWrt 25.12, `platform_tg500`) |
-| DUT build | **ccli 0.1.0-r29** |
+| DUT build | **ccli 0.1.0-r30** (P5-R09-O14-VARSD) |
 | CID | `apps/ccli/config/icd/lab_tg544_eth_a.cid` **rev 5** |
 | Lab yaml | `apps/ccli/config/lab_tr400_cleartext_tsp_ttyS1.yaml` → `/etc/ccli/lab.yaml` |
 | Model cfg | `/etc/ccli/icd/lab_tg544_eth_a.cfg` (must contain `GC(gcb_...)` blocks) |
@@ -177,8 +177,9 @@ a2b0886 Add GOOSE plant integration, phase 6-7 lab evidence, and MMS/ICD mapping
 | Gate | Status | Evidence |
 |------|--------|----------|
 | **P5-G02** Publish | **PASS** | pcap + GoCB MMS |
-| **P5-G01** Subscribe | **OPEN** | needs `goose.enabled: true` + external publisher |
+| **P5-G01** Subscribe | **PARKED** | LAN3 unplugged — resume when plant cable back |
 | **P5-G03** Merge policy | **PASS** (policy) | [`P5_G03_MERGE_POLICY.md`](P5_G03_MERGE_POLICY.md) · runtime merge OPEN |
+| **P5-R09** VArSd O.14 | **PASS** (r30) | [`P5_R09_VARSD_EVENT_2026-10-05.txt`](P5_R09_VARSD_EVENT_2026-10-05.txt) |
 | P5-M / core P5 | **CLOSED** (2026-10-01) | P5_FINAL_CLOSEOUT |
 
 Checklist: `knowledge-base/08-engineering/CCI_Phase_Regulation_Checklists.md`
@@ -188,23 +189,34 @@ Checklist: `knowledge-base/08-engineering/CCI_Phase_Regulation_Checklists.md`
 ## Bench state at session end
 
 - **LAN1:** connected — MMS/SSH/Modbus lab OK
-- **LAN3:** **disconnected** — no live GOOSE; evidence already in repo
+- **LAN3:** **disconnected (parked)** — no live GOOSE; P5-G02 wire evidence in repo; **do not start P5-G01 until LAN3 is back**
+- **COM5:** Modbus slave @ 450 kW — P5-R09 + P7 O.14 event lab OK
 - **Config on DUT:** keep `goose.interface: lan3` — no revert needed
+
+---
+
+## Same-day closeout (2026-10-05 afternoon)
+
+| Item | Result | Evidence |
+|------|--------|----------|
+| P5-R09 VArSd E2E | **PASS** | `P5_R09_VARSD_EVENT_2026-10-05.txt` · git `e863c5e` |
+| P7 O.14 event-dump lab | **PASS** (categories) | [`../phase7/P7_O14_LAB_2026-10-05_154908.txt`](../phase7/P7_O14_LAB_2026-10-05_154908.txt) |
+| P5-G01 subscribe | **PARKED** | LAN3 unavailable |
+
+P7 dump confirms O.14 categories: `system power_on`, `modbus link_*`, `meter quality_*`, `mms client_connect/disconnect`, `mms varsd_operate … result=ok`.
 
 ---
 
 ## Next session — recommended order
 
-1. **P5-G01 GOOSE subscribe** (reconnect LAN3)
+1. **P5-G01 GOOSE subscribe** — **only when LAN3 reconnected**
    - Profile: `apps/ccli/config/lab_tr400_goose_plant.yaml` or enable `goose.enabled: true`
    - External GOOSE publisher on plant segment (or loopback test)
    - Pass: DUT log `goose: rx appId=… stNum=…` + O.14 event
 
-2. ~~**P5-G03**~~ — merge policy **PASS** → [`P5_G03_MERGE_POLICY.md`](P5_G03_MERGE_POLICY.md) (runtime merge still OPEN)
+2. **Without LAN3:** P5-G03 runtime merge (code) · P7 wrap test / P7-11 DSO demo · P5-R02/R03 reactive
 
-3. **P5-R02/R03** — PFSP / VArV Operate (if DSO reactive path is priority)
-
-4. Optional: `git push` remote
+3. ~~**P5-G03** policy~~ — **PASS** · runtime merge still OPEN
 
 ---
 

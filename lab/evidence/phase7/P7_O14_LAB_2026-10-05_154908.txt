@@ -1,0 +1,88 @@
+P7 O.14 event-dump lab
+Date: 2026-10-05 15:49:08
+DUT: TG544 @ 192.168.10.1
+Build: ccli 0.1.0-r30 (P5-R09-O14-VARSD)
+Bench: LAN1 + COM5 Modbus slave (450 kW)
+Trigger: mms_goena_client connect (fresh) + ongoing Modbus poll
+=== P7 O.14 event-dump lab ===
+Mon Oct  5 13:49:08 UTC 2026
+ccli 0.1.0-r30 (P5-R09-O14-VARSD)
+  semver:   0.1.0
+  release:  r30
+  git:      unknown
+--- event-dump --count 30 ---
+2026/10/05 13:43:36 mms client_connect
+2026/10/05 13:43:36 mms client_disconnect
+2026/10/05 13:43:41 mms varsd_operate mod=1 pct=21.000000 q_kvar=44.100000 result=ok
+2026/10/05 13:43:43 modbus link_down:read_fail
+2026/10/05 13:43:43 meter quality_stale
+2026/10/05 13:44:03 mms comms_loss_fallback
+2026/10/05 13:44:03 mms wlim_off
+2026/10/05 13:44:03 mms varsd_operate mod=5 pct=0.000000 q_kvar=0 result=cleared
+2026/10/05 13:44:26 iec104 comms_loss_fallback
+2026/10/05 13:44:26 modbus link_recovered
+2026/10/05 13:44:26 meter quality_recovered
+2026/10/05 13:45:27 iec104 comms_loss_fallback
+2026/10/05 13:45:42 mms client_connect
+2026/10/05 13:45:42 mms client_disconnect
+2026/10/05 13:46:08 mms comms_loss_fallback
+2026/10/05 13:46:08 mms wlim_off
+2026/10/05 13:46:08 mms varsd_operate mod=5 pct=0.000000 q_kvar=0 result=cleared
+2026/10/05 13:46:29 iec104 comms_loss_fallback
+2026/10/05 13:46:51 modbus link_down:read_fail
+2026/10/05 13:46:51 meter quality_stale
+2026/10/05 13:47:12 modbus link_recovered
+2026/10/05 13:47:12 meter quality_recovered
+2026/10/05 13:47:32 iec104 comms_loss_fallback
+2026/10/05 13:48:20 mms client_connect
+2026/10/05 13:48:20 mms client_disconnect
+2026/10/05 13:48:33 iec104 comms_loss_fallback
+2026/10/05 13:48:40 mms client_connect
+2026/10/05 13:48:40 mms client_disconnect
+2026/10/05 13:49:00 mms client_connect
+2026/10/05 13:49:00 mms client_disconnect
+--- store lines ---
+516 /var/lib/ccli/events.jsonl
+--- category grep ---
+2026/10/05 13:40:24 system power_off:shutdown
+2026/10/05 13:41:02 modbus link_recovered
+2026/10/05 13:41:02 meter quality_recovered
+2026/10/05 13:41:10 modbus link_down:read_fail
+2026/10/05 13:41:10 meter quality_stale
+2026/10/05 13:41:14 modbus link_recovered
+2026/10/05 13:41:14 meter quality_recovered
+2026/10/05 13:41:20 modbus link_down:read_fail
+2026/10/05 13:41:20 meter quality_stale
+2026/10/05 13:41:22 modbus link_recovered
+2026/10/05 13:41:22 meter quality_recovered
+2026/10/05 13:43:18 system power_off:shutdown
+2026/10/05 13:43:20 system power_on:0.1.0-r30
+2026/10/05 13:43:20 system firmware_boot:0.1.0-r30
+2026/10/05 13:43:20 system psu_unmonitored
+2026/10/05 13:43:21 modbus link_up
+2026/10/05 13:43:21 meter quality_good
+2026/10/05 13:43:36 mms client_connect
+2026/10/05 13:43:36 mms client_disconnect
+2026/10/05 13:43:41 mms varsd_operate mod=1 pct=21.000000 q_kvar=44.100000 result=ok
+2026/10/05 13:43:43 modbus link_down:read_fail
+2026/10/05 13:43:43 meter quality_stale
+2026/10/05 13:44:03 mms comms_loss_fallback
+2026/10/05 13:44:03 mms wlim_off
+2026/10/05 13:44:03 mms varsd_operate mod=5 pct=0.000000 q_kvar=0 result=cleared
+2026/10/05 13:44:26 modbus link_recovered
+2026/10/05 13:44:26 meter quality_recovered
+2026/10/05 13:45:42 mms client_connect
+2026/10/05 13:45:42 mms client_disconnect
+2026/10/05 13:46:08 mms comms_loss_fallback
+2026/10/05 13:46:08 mms wlim_off
+2026/10/05 13:46:08 mms varsd_operate mod=5 pct=0.000000 q_kvar=0 result=cleared
+2026/10/05 13:46:51 modbus link_down:read_fail
+2026/10/05 13:46:51 meter quality_stale
+2026/10/05 13:47:12 modbus link_recovered
+2026/10/05 13:47:12 meter quality_recovered
+2026/10/05 13:48:20 mms client_connect
+2026/10/05 13:48:20 mms client_disconnect
+2026/10/05 13:48:40 mms client_connect
+2026/10/05 13:48:40 mms client_disconnect
+2026/10/05 13:49:00 mms client_connect
+2026/10/05 13:49:00 mms client_disconnect
