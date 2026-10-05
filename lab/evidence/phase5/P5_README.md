@@ -35,6 +35,7 @@ Annex O defines **what** must be measured and when (4 s, grid-aligned). Annex T 
 | **[P5_TESPRO_NORTHBOUND.md](P5_TESPRO_NORTHBOUND.md)** | TesPro MQTT collector + `channel_1` setup |
 | **[P5_TESPRO_NORTHBOUND_2026-10-01.md](P5_TESPRO_NORTHBOUND_2026-10-01.md)** | **Frozen northbound config** + broker/verify scripts |
 | **[P5_A1B1_RS485_HW_MAP.md](P5_A1B1_RS485_HW_MAP.md)** | **RS485 bench freeze** — A1/B1 → `/dev/ttyS1` |
+| **[P5_GOOSE_SESSION_RECORD_2026-10-05.md](P5_GOOSE_SESSION_RECORD_2026-10-05.md)** | **START HERE** — GOOSE session handoff + resume checklist |
 | **[P5_G02_CLOSEOUT_2026-10-05.md](P5_G02_CLOSEOUT_2026-10-05.md)** | **GOOSE publish (P5-G02)** — MMS/GoCB + LAN3 wire pcap |
 
 **Compare / waivers (inbox):**

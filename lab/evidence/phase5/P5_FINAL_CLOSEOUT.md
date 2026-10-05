@@ -1,6 +1,6 @@
 # P5 — Phase closeout (lab evidence chain)
 
-**Date:** 2026-10-01 (updated 2026-10-02 IEDExplorer re-validation)  
+**Date:** 2026-10-01 (updated 2026-10-02 IEDExplorer · **2026-10-05 P5-G02 GOOSE**)  
 **Gate:** P5_FULLCIRCLE  
 **DUT:** TesPro TG544 @ `192.168.10.1`  
 **Product build:** **0.1.0-r25** (P5-COMPARE-FIX)  
@@ -85,6 +85,19 @@ OPERATE OK VArSdDVAR1 · Modbus FC16 Q=21 kvar
 TesPro iec61850d PdC_TotW=450.0000 (bind 0.0.0.0 fix)
 TesPro MQTT northbound: Connected · REPORT_PROPERTY · PdC_TotW=450 @ 4 s (P5_TESPRO_NORTHBOUND_2026-10-01)
 ```
+
+---
+
+## 2026-10-05 extension — P5-G02 GOOSE publish (r29)
+
+| Item | Evidence | Status |
+|------|----------|--------|
+| P5-G02 integrated GOOSE publish | [P5_GOOSE_SESSION_RECORD_2026-10-05.md](P5_GOOSE_SESSION_RECORD_2026-10-05.md) | **PASS** |
+| Wire pcap LAN3 | `P5_GOOSE_WIRE_2026-10-05_140838.pcapng` | **PASS** |
+| GoCB MMS | `P5_GOCB_MMS_2026-10-05.txt` | **PASS** |
+
+Plant egress: **`goose.interface: lan3`** (192.168.30.1) — not empty `br-lan`.  
+**Next:** P5-G01 subscribe — session record resume checklist.
 
 ---
 
