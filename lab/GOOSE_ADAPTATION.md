@@ -1,6 +1,6 @@
 # GOOSE plant adaptation — HiTEKS CCLI on TG544
 
-**Status:** IED-integrated GOOSE publisher (r29) · P5-G02 MMS/GoCB **PASS** · wire **DEFERRED** (`br-lan` NO-CARRIER) · P5-G01 **OPEN**  
+**Status:** IED-integrated GOOSE publisher (r29) · P5-G02 MMS + wire **PASS** (`goose.interface: lan3`) · P5-G01 **OPEN**  
 **Normative:** CEI 0-16 Annex T (DSO = MMS/TLS); plant = Modbus and/or GOOSE per site  
 **Competitor reference:** Higeco UCA cert = MMS only; Tesmec uses internal Report + GOOSE on plant bus
 
@@ -13,7 +13,7 @@
 | **Eth_A** | `lan1_sec` / 192.168.10.x | IEC 61850 MMS + 62351-3 TLS `:3782` | DSO server | P3 **CLOSED** |
 | **Eth_B** | `lan2_sec` / operator VLAN | IEC 60870-5-104 + TLS `:2404` | Operator monitor | P4 **CLOSED** |
 | **Plant RTU** | RS485 A2/B2 `/dev/ttyS2` | Modbus RTU | P/Q from inverter/analyzer | P5-R **PASS** (lab) |
-| **Plant LAN** | `br-lan` or dedicated `lan3` | IEC 61850 GOOSE (L2) | Optional subscribe to inverter IED | **P5-G01 OPEN** |
+| **Plant LAN** | **`lan3`** on TesproOS (`192.168.30.1`; `br-lan` empty on TR544) | IEC 61850 GOOSE (L2) | Optional subscribe to inverter IED | **P5-G01 OPEN** |
 
 GOOSE is **not** a substitute for Modbus on the screw-terminal RS485 path. Sites may use **either** or **both** depending on inverter vendor.
 

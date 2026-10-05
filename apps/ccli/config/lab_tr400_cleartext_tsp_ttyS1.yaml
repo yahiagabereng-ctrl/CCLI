@@ -63,7 +63,8 @@ mms:
 goose:
   enabled: false
   publish_enabled: true
-  interface: br-lan
+  # TesproOS maps plant to lan3 (lan2_sec 192.168.30.1); br-lan is empty on TR544.
+  interface: lan3
 
 iec104:
   enabled: true

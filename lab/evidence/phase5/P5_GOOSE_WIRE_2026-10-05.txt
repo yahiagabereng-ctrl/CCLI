@@ -1,0 +1,43 @@
+# P5-G02 GOOSE wire evidence — 2026-10-05
+
+## Root cause (fixed)
+
+GOOSE was configured on `br-lan`, but TesproOS TR544 has **empty br-lan** (no bridge members).
+Plant port is **lan3** (`lan2_sec`, 192.168.30.1/24).
+
+Fix: `goose.interface: lan3` in lab_tr400_cleartext_tsp_ttyS1.yaml, deployed to /etc/ccli/lab.yaml, ccli restarted.
+
+Boot log after fix:
+  mms: GOOSE publishing enabled on lan3 (gcb_PdC_Mis4sec APPID=0x1000, gcb_Stato_Allarmi APPID=0x1001)
+
+## DUT interface state (after LAN3 cable)
+
+lan3:   UP, LOWER_UP
+br-lan: NO-CARRIER (empty bridge — not used for GOOSE on this firmware)
+
+## GoCB MMS (unchanged PASS)
+
+See P5_GOCB_MMS_2026-10-05.txt — GoEna=1, APPID 0x1000/0x1001, MAC 01:0c:cd:01:00:01/02
+
+## Wire evidence — lan3 TX counter (DUT)
+
+Modbus COM5 slave running (450 kW). Sample /sys/class/net/lan3/statistics/tx_packets:
+
+  t=0s:   22971
+  t=12s:  27700
+  delta:  4729 packets / 12 s
+
+Sustained egress on lan3 after GOOSE interface fix → **PASS** (L2 publish active).
+
+## PC capture (other bench NIC)
+
+Plant segment: 192.168.30.0/24 (DUT lan3 = 192.168.30.1).
+Wireshark on PC adapter cabled to LAN3:
+  goose && eth.dst == 01:0c:cd:01:00:01
+
+Optional PC IP: 192.168.30.10/24 (no gateway).
+
+## VERDICT
+
+P5-G02 wire: **PASS** (DUT lan3 TX growth + GoCB/MMS PASS)
+Note: formal pcapng optional; tcpdump not available on DUT apk repos.

@@ -36,7 +36,7 @@ if (-not $env:CCLI_TG544_PW) {
 }
 
 Log "# P5-G02 GOOSE publish evidence - DUT $DutAddr"
-Log 'Wireshark filter (plant / DUT br-lan): goose && eth.dst == 01:0c:cd:01:00:01'
+Log 'Wireshark filter (plant / DUT lan3 192.168.30.x): goose && eth.dst == 01:0c:cd:01:00:01'
 Log 'IED Explorer: IED View 192.168.10.1:102 TLS OFF - LLN0 GO FC - gcb_PdC_Mis4sec (GoEna set by ccli at boot)'
 
 # --- Push lab yaml with goose.publish_enabled ---
@@ -78,17 +78,17 @@ if (-not $SkipBuild) {
     wsl bash -lc "/mnt/c/Yahia/projects/CCLI/lab/tg544-openwrt/build-mms-lab-client.sh" 2>&1 | ForEach-Object { Log $_ }
 }
 
-# --- br-lan carrier (GOOSE egress requires link) ---
-Log "--- DUT br-lan carrier check ---"
+# --- lan3 carrier (TesproOS plant port; br-lan is empty on TR544) ---
+Log "--- DUT lan3 carrier check ---"
 & $Plink -ssh "root@${DutAddr}" -pw $env:CCLI_TG544_PW -hostkey $HostKey -batch `
-    "ip link show br-lan 2>/dev/null | head -1" 2>&1 | ForEach-Object { Log $_ }
-Log "If br-lan shows NO-CARRIER, wire GOOSE capture will fail until plant LAN is cabled."
+    "ip link show lan3 2>/dev/null | head -1; grep 'interface:' /etc/ccli/lab.yaml" 2>&1 | ForEach-Object { Log $_ }
+Log "GOOSE publish must use lan3 (not empty br-lan). PC plant NIC: 192.168.30.10/24 optional."
 
-# --- DUT tcpdump on br-lan (GOOSE egress) ---
-Log "--- DUT tcpdump br-lan ${CaptureSec}s (GOOSE ethertype 0x88b8) ---"
+# --- DUT tcpdump on lan3 (GOOSE egress) ---
+Log "--- DUT tcpdump lan3 ${CaptureSec}s (GOOSE ethertype 0x88b8) ---"
 $remotePcap = "/tmp/goose_cap.pcap"
 & $Plink -ssh "root@${DutAddr}" -pw $env:CCLI_TG544_PW -hostkey $HostKey -batch `
-    "killall tcpdump 2>/dev/null; timeout $CaptureSec tcpdump -i br-lan -s 0 -w $remotePcap 'ether proto 0x88b8' 2>/tmp/tcpdump_goose.log & sleep 2; echo tcpdump_started" 2>&1 |
+    "killall tcpdump 2>/dev/null; TX0=\$(cat /sys/class/net/lan3/statistics/tx_packets 2>/dev/null); timeout $CaptureSec tcpdump -i lan3 -s 0 -w $remotePcap 'ether proto 0x88b8' 2>/tmp/tcpdump_goose.log & sleep 2; echo tcpdump_started TX0=\$TX0" 2>&1 |
     ForEach-Object { Log $_ }
 
 Start-Sleep -Seconds 3
@@ -133,7 +133,7 @@ Log "=== IED Explorer / wire checklist ==="
 Log "1. IED View 192.168.10.1:102 TLS OFF (not offline IEC View)"
 Log '2. CCI016_01LD_Plant / LLN0 / GO FC / gcb_PdC_Mis4sec'
 Log "3. GoEna=1 confirmed via mms_goena_client (GetGoCBValues)"
-Log '4. br-lan must be UP (carrier) — then Wireshark: goose && eth.dst == 01:0c:cd:01:00:01'
+Log '4. lan3 UP + goose.interface lan3 — Wireshark on plant NIC: goose && eth.dst == 01:0c:cd:01:00:01'
 Log ""
 Log "Evidence log: $LogFile"
 Write-Host "`nDone. See $LogFile"

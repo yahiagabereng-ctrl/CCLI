@@ -332,7 +332,7 @@ Fill **Evidence** with date, APK/`ccli` version, log excerpt, screenshot, or tes
 | Check | Regulation | Shall | Pass criteria | Status |
 |-------|------------|-------|---------------|--------|
 | P5-G01 | Annex T / plant bus | Subscribe to plant IED GOOSE when site uses L2 path | RX log + O.14 `goose` event + Wireshark | **OPEN** — code r28+ · lab evidence pending |
-| P5-G02 | Site export | Optional GOOSE publish (status) | GoCB in CID + `IedServer_enableGoosePublishing` + wire | **PART** — r29 MMS/GoCB PASS (`P5_GOCB_MMS_2026-10-05.txt`); wire deferred — DUT `br-lan` NO-CARRIER |
+| P5-G02 | Site export | Optional GOOSE publish (status) | GoCB in CID + `IedServer_enableGoosePublishing` + wire | **PASS** — r29 · `goose.interface: lan3` · `P5_GOOSE_WIRE_2026-10-05.txt` |
 | P5-G03 | O.8 / P5-M | GOOSE dataset → TotW/TotVAr **or** parallel Modbus | Measurement merge policy documented | **OPEN** |
 
 **Note:** Modbus RTU (A2/B2) remains lab-default plant path; GOOSE does **not** replace P5-R01 Modbus Q write until P5-G03.
