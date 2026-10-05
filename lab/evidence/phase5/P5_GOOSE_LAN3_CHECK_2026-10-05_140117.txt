@@ -1,0 +1,18 @@
+﻿P5-G02 LAN3 check
+Timestamp: 2026-10-05_140117
+
+=== BLOCKER: IP CONFLICT ===
+PC Ethernet is set to 192.168.30.1 — same as DUT LAN3 gateway.
+Must be 192.168.30.10 (fix in Network Connections or Admin: netsh interface ip set address Ethernet static 192.168.30.10 255.255.255.0)
+
+=== CONNECTIVITY ===
+Ping 192.168.30.1: FAIL (100% loss)
+SSH 192.168.30.1: not attempted / will fail until IP fixed
+
+=== NPCAP ===
+Status: Stopped — Wireshark/tshark need Admin to capture GOOSE
+
+=== GOOSE WIRE ===
+Frames received: NOT CHECKED (link down due to IP conflict)
+
+VERDICT: FAIL — set PC to 192.168.30.10, then retry

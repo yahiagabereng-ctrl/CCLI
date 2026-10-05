@@ -1,0 +1,25 @@
+﻿P5-G02 LAN3 GOOSE check
+Timestamp: 2026-10-05_130738
+PC: PC17
+
+=== CONNECTIVITY ===
+Added 192.168.30.10/24 (SkipAsSource) on: Ethernet, Ethernet 2
+Ping 192.168.30.1: FAIL (100% loss, no ARP)
+SSH 192.168.30.1 / 192.168.10.1 / 192.168.1.130: FAIL (timeout)
+
+=== PC INTERFACES ===
+Ethernet: 192.168.1.183/24 (+ 192.168.30.10 secondary)
+Ethernet 2: 10.111.148.28/24 Remote NDIS USB tether (+ 192.168.30.10 secondary)
+
+=== NPCAP / WIRESHARK ===
+tshark -D shows only loopback + remote dumps — no local Ethernet NPF devices
+Local GOOSE capture: BLOCKED until Npcap running + Admin PowerShell
+
+=== GOOSE FRAMES RECEIVED ===
+Count: 0 (no capture possible; DUT not reachable)
+
+VERDICT: FAIL
+Blockers:
+  1. No L2/L3 reachability to DUT 192.168.30.1 — verify LAN3 cable to correct PC port (likely Ethernet, not USB tether)
+  2. Npcap not exposing physical NICs to tshark — run Wireshark installer / Admin shell
+  3. DUT may be off or lan3 NO-CARRIER — need SSH via LAN1 when available

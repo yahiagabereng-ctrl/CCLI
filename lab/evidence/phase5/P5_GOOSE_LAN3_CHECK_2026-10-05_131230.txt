@@ -1,0 +1,35 @@
+﻿P5-G02 LAN3 GOOSE re-check (after IP 192.168.30.10)
+Timestamp: 2026-10-05_131230
+PC: Ethernet @ 192.168.30.10/24
+DUT: 192.168.30.1 (LAN3)
+
+=== CONNECTIVITY ===
+Ping 192.168.30.1: PASS (4/4, <2ms)
+SSH 192.168.30.1: PASS (hostkey SHA256:4N84xpdiJRUiipactNbXLdVa2+A4eCCrUurVDrz3qoE)
+MMS port 102 on 192.168.30.1: PASS
+MMS port 3782 on 192.168.30.1: closed (expected — TLS on LAN1 only)
+
+=== DUT STATUS (SSH) ===
+lan3: UP, LOWER_UP (mtu 1500, MAC 00:0c:43:26:60:17)
+br-lan: NO-CARRIER, state DOWN
+ccli: PID 19761 /usr/sbin/ccli
+GOOSE log (tail):
+  mms: GOOSE publishing enabled on lan3 (gcb_PdC_Mis4sec APPID=0x1000, gcb_Stato_Allarmi APPID=0x1001)
+  goose: disabled in config (plant Modbus path active)
+
+=== WIRE CAPTURE (PC) ===
+Npcap: STOPPED (Access denied to start — need Admin PowerShell / Wireshark)
+tshark -i Ethernet: FAILED (NPF driver not running)
+DUT tcpdump: not available (no opkg/tcpdump on image)
+GOOSE frames received on PC: NOT CAPTURED (0 verified)
+
+=== INTERPRETATION ===
+- LAN3 link is good; DUT reports GOOSE publisher enabled on lan3 with APPID 0x1000/0x1001.
+- br-lan NO-CARRIER is OK if GOOSE egress is bound to lan3 (per ccli log).
+- Conflicting log line 'goose: disabled in config' — may be startup ordering; verify with Wireshark.
+- Wire proof still needed: run Wireshark **as Administrator** on Ethernet, filter:
+    goose && eth.dst == 01:0c:cd:01:00:01
+
+VERDICT: PART
+  Link + DUT GOOSE publisher log: PASS
+  Wire GOOSE frames on PC: PENDING (Npcap admin required)

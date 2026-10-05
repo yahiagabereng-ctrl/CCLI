@@ -1,0 +1,72 @@
+﻿P5-G02 GOOSE wire evidence
+Timestamp: 2026-10-05_130006
+Test: P5-G02 — GOOSE L2 wire capture (plant LAN3)
+DUT target: TG544 @ 192.168.10.1 (SSH/MMS) / 192.168.30.1 (plant)
+PC: Pc17
+
+=== VERDICT: FAIL ===
+Reason: P5 bench not reachable from this PC. Steps 1–4 could not run.
+
+=== BLOCKERS ===
+
+1. WRONG BENCH / NO LAN1 TO DUT
+   lab/tg544-openwrt/lab-env.ps1 defines THIS PC as TLS bench only:
+     - PC IP: 192.168.1.183 (Ethernet)
+     - TLS DUT: 192.168.1.130:3782
+     - P5 DSO DUT 192.168.10.1 is "other bench — not on this PC's cable"
+   SSH root@192.168.10.1: Connection timed out (x3, pw 000000 and lab-env pw)
+   SSH root@192.168.1.130: Connection timed out
+   Ping 192.168.10.1: 100% loss
+
+2. NO PLANT NIC (LAN3 capture path)
+   Expected: PC 2nd NIC @ 192.168.30.10/24 → DUT LAN3 (plant)
+   Found interfaces:
+     Ethernet      192.168.1.183/24  (TLS bench — NOT plant)
+     Ethernet 2    10.111.148.28/24  (USB tether; gw 10.111.148.166, no SSH/MMS)
+   No 192.168.30.x address configured.
+
+3. MODBUS SLAVE NOT STARTED
+   COM ports: none enumerated ([System.IO.Ports.SerialPort]::getportnames() empty)
+   Cannot run lab/modbus_rtu_slave.py --port COM5
+
+4. mms_goena_client MISSING
+   Expected: lab/tg544-openwrt/mms_goena_client
+   Not found in repo (WSL GoCB verify skipped)
+
+5. WIRESHARK CAPTURE NOT RUN
+   No plant NIC → no 20s GOOSE capture
+   PCAP: (not created)
+
+=== STEP STATUS ===
+| Step | Description              | Status |
+|------|--------------------------|--------|
+| 1    | SSH DUT health           | FAIL — 192.168.10.1 unreachable |
+| 2    | Modbus slave COM5        | SKIP — no COM port |
+| 3    | WSL mms_goena_client     | SKIP — no MMS path + binary missing |
+| 4    | Wireshark plant capture  | SKIP — no 192.168.30.x NIC |
+| 5    | Save evidence            | PART — this report only |
+
+=== REMEDIATION (run on P5 bench PC) ===
+A. Wire PC LAN1 → DUT LAN1; set PC to 192.168.10.10/24 gw 192.168.10.1
+B. Wire PC 2nd NIC/USB → DUT LAN3; set PC to 192.168.30.10/24 gw 192.168.30.1
+C. Connect RS485 PC COM5 → DUT A1/B1 (/dev/ttyS1)
+D. Confirm SSH: plink root@192.168.10.1 "ip link show br-lan" → UP, not NO-CARRIER
+E. Build/deploy mms_goena_client if missing; re-run P5-G02 sequence
+F. Capture on plant NIC only: filter goose && eth.dst == 01:0c:cd:01:00:01
+
+=== PC NETWORK SNAPSHOT ===
+
+InterfaceAlias  IPAddress    
+--------------  ---------    
+vEthernet (WSL) 172.24.160.1 
+Ethernet 2      10.111.148.28
+Ethernet        192.168.1.183
+
+
+
+
+=== SSH PROBE LOG ===
+192.168.10.1  -> timeout
+192.168.1.130 -> timeout
+192.168.30.1  -> timeout
+10.111.148.166 -> connection refused (port 22)

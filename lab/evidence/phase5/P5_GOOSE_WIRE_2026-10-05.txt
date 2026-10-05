@@ -1,43 +1,65 @@
 # P5-G02 GOOSE wire evidence — 2026-10-05
 
-## Root cause (fixed)
+## Verdict: **PASS** (MMS + DUT TX + PC Wireshark pcap)
 
-GOOSE was configured on `br-lan`, but TesproOS TR544 has **empty br-lan** (no bridge members).
-Plant port is **lan3** (`lan2_sec`, 192.168.30.1/24).
+Canonical wire proof: **`P5_GOOSE_WIRE_2026-10-05_140838.pcapng`** + **`P5_GOOSE_WIRE_2026-10-05_140838.txt`**
 
-Fix: `goose.interface: lan3` in lab_tr400_cleartext_tsp_ttyS1.yaml, deployed to /etc/ccli/lab.yaml, ccli restarted.
+---
 
-Boot log after fix:
-  mms: GOOSE publishing enabled on lan3 (gcb_PdC_Mis4sec APPID=0x1000, gcb_Stato_Allarmi APPID=0x1001)
+## Configuration fix (TesproOS TR544)
 
-## DUT interface state (after LAN3 cable)
+GOOSE was initially on `br-lan`, but **br-lan is empty** on this firmware.
+Plant port: **lan3** (`lan2_sec`, **192.168.30.1/24**).
 
-lan3:   UP, LOWER_UP
-br-lan: NO-CARRIER (empty bridge — not used for GOOSE on this firmware)
+Fix: `goose.interface: lan3` in `lab_tr400_cleartext_tsp_ttyS1.yaml` → `/etc/ccli/lab.yaml`
 
-## GoCB MMS (unchanged PASS)
+---
 
-See P5_GOCB_MMS_2026-10-05.txt — GoEna=1, APPID 0x1000/0x1001, MAC 01:0c:cd:01:00:01/02
+## PC Wireshark capture (14:08 — PASS)
 
-## Wire evidence — lan3 TX counter (DUT)
+| Item | Value |
+|------|-------|
+| PC | 192.168.30.10/24 on Ethernet (LAN3 cable) |
+| DUT | 192.168.30.1 (lan3) |
+| Duration | 20 s |
+| Total packets | 7,893 |
+| APPID 0x1000 → 01:0c:cd:01:00:01 | **3,947** frames |
+| APPID 0x1001 → 01:0c:cd:01:00:02 | **3,946** frames |
+| Source MAC | 00:0c:43:26:60:17 (DUT lan3) |
+| sqNum | 42104 → 46050 (advancing) |
+| stNum | 84 (stable dataset — OK) |
 
-Modbus COM5 slave running (450 kW). Sample /sys/class/net/lan3/statistics/tx_packets:
+Filter: `goose && eth.dst == 01:0c:cd:01:00:01`
 
-  t=0s:   22971
-  t=12s:  27700
-  delta:  4729 packets / 12 s
+---
 
-Sustained egress on lan3 after GOOSE interface fix → **PASS** (L2 publish active).
+## Supporting evidence (bench timeline)
 
-## PC capture (other bench NIC)
+| File | Verdict | Notes |
+|------|---------|-------|
+| `P5_GOOSE_WIRE_2026-10-05_130006.txt` | FAIL | Wrong bench PC (TLS 192.168.1.183) |
+| `P5_GOOSE_LAN3_CHECK_130738.txt` | FAIL | No link / Npcap |
+| `P5_GOOSE_LAN3_CHECK_131230.txt` | PART | LAN3 up; Npcap admin pending |
+| `P5_GOOSE_LAN3_CHECK_140117.txt` | FAIL | PC IP conflict (.1 vs .10) |
+| `P5_GOOSE_WIRE_140730.txt` | PART | DUT TX active; pcap pending |
+| `P5_GOOSE_WIRE_140838.*` | **PASS** | Full pcap + decode log |
 
-Plant segment: 192.168.30.0/24 (DUT lan3 = 192.168.30.1).
-Wireshark on PC adapter cabled to LAN3:
-  goose && eth.dst == 01:0c:cd:01:00:01
+Earlier DUT-only proof: lan3 TX 22971 → 27700 in 12 s (before bench pcap).
 
-Optional PC IP: 192.168.30.10/24 (no gateway).
+---
 
-## VERDICT
+## GoCB MMS
 
-P5-G02 wire: **PASS** (DUT lan3 TX growth + GoCB/MMS PASS)
-Note: formal pcapng optional; tcpdump not available on DUT apk repos.
+See `P5_GOCB_MMS_2026-10-05.txt` — GoEna=1, APPID/MAC match CID.
+
+---
+
+## Bench wiring (final)
+
+| Port | Role | Subnet |
+|------|------|--------|
+| LAN1 | DSO MMS | 192.168.10.0/24 |
+| LAN2 | Operator | 192.168.1.0/24 |
+| LAN3 | Plant GOOSE | 192.168.30.0/24 |
+
+PC plant NIC setup: `lab/set_pc_lan3_plant.cmd`

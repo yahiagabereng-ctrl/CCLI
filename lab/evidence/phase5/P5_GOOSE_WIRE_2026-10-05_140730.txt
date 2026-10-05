@@ -1,0 +1,36 @@
+﻿P5-G02 GOOSE wire check — device up, PC 192.168.30.10
+Timestamp: 2026-10-05_140730
+
+=== CONNECTIVITY ===
+PC Ethernet: 192.168.30.10/24
+Ping 192.168.30.1: PASS (4/4)
+SSH 192.168.30.1: PASS
+
+=== DUT (SSH) ===
+lan3: UP, LOWER_UP
+br-lan: NO-CARRIER, DOWN (OK — GOOSE bound to lan3 per log)
+ccli: PID 19761
+Log:
+  mms: GOOSE publishing enabled on lan3 (gcb_PdC_Mis4sec APPID=0x1000, gcb_Stato_Allarmi APPID=0x1001)
+  goose: disabled in config (plant Modbus path active)
+
+=== L2 ACTIVITY (lan3 TX counter, 10s sample) ===
+TX bytes: 797025601 -> 798977283 (+1,951,682 in 10s)
+TX packets: 1604521 -> 1608467 (+3946 pkts in 10s)
+=> Sustained L2 transmit on lan3 consistent with GOOSE publisher
+
+=== PC WIRE CAPTURE ===
+Npcap: STOPPED — tshark cannot open Ethernet (needs Admin Wireshark)
+GOOSE frames decoded on PC: NOT VERIFIED (0 pcap)
+
+=== PASS CRITERIA ===
+| Criterion              | Status |
+|------------------------|--------|
+| LAN3 link              | PASS   |
+| DUT GOOSE enabled log  | PASS   |
+| lan3 TX active         | PASS   |
+| Wireshark APPID/stNum  | PENDING (Admin + Npcap) |
+
+VERDICT: PART
+DUT is publishing on lan3 (log + TX counters). Run Wireshark as Administrator on Ethernet for full P5-G02 wire proof.
+Filter: goose && eth.dst == 01:0c:cd:01:00:01

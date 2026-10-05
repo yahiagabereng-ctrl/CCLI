@@ -1,0 +1,47 @@
+P5-G02 GOOSE wire evidence — PASS
+Timestamp: 2026-10-05_140838
+Test: P5-G02 GOOSE L2 wire capture (plant LAN3)
+PC: Ethernet @ 192.168.30.10/24
+DUT: TG544 @ 192.168.30.1 (LAN3)
+Capture: Admin elevated tshark (Npcap started via UAC)
+
+=== CONNECTIVITY ===
+Ping 192.168.30.1: PASS
+SSH 192.168.30.1: PASS
+
+=== DUT (SSH) ===
+lan3: UP, LOWER_UP (MAC 00:0c:43:26:60:17)
+br-lan: NO-CARRIER, DOWN
+ccli: PID 19761
+GOOSE log:
+  mms: GOOSE publishing enabled on lan3 (gcb_PdC_Mis4sec APPID=0x1000, gcb_Stato_Allarmi APPID=0x1001)
+
+=== WIRE CAPTURE ===
+PCAP: lab/evidence/phase5/P5_GOOSE_WIRE_2026-10-05_140838.pcapng (4,152,128 bytes)
+Interface: Ethernet
+Duration: 20 s
+BPF: ether proto 0x88b8
+Display filter: goose && eth.dst == 01:0c:cd:01:00:01
+
+Total packets captured: 7893
+GOOSE to 01:0c:cd:01:00:01 (APPID 4096 / 0x1000): 3947 frames
+GOOSE APPID 4097 (0x1001): 3946 frames
+Source MAC: 00:0c:43:26:60:17 (DUT lan3 MediaTek)
+Dest MAC: 01:0c:cd:01:00:01 (IecTc57_01:00:01)
+
+APPID 0x1000 stNum: 84 (stable — no dataset change during window)
+APPID 0x1000 sqNum: 42104 → 46050 (increasing — normal stable-state retransmission)
+
+=== PASS CRITERIA ===
+| Criterion                    | Result |
+|------------------------------|--------|
+| GOOSE frames on plant NIC    | PASS   |
+| APPID 4096 (0x1000)          | PASS   |
+| APPID 4097 (0x1001)          | PASS   |
+| Sequence advancing (sqNum)   | PASS   |
+| stNum increasing             | N/A (stable dataset; stNum=84 constant) |
+
+VERDICT: PASS
+P5-G02 wire evidence captured on LAN3. GOOSE publisher active with expected MAC/APPIDs.
+
+Log: lab/evidence/phase5/P5_GOOSE_WIRE_2026-10-05_140838_capture.log

@@ -90,7 +90,7 @@ Evidence folder (when run): `lab/evidence/phase5/P5_GOOSE_RX_*.txt`
 
 | ID | Item |
 |----|------|
-| P5-G02 | Publisher **HAVE** · MMS/GoCB lab PASS · wire PCAP when `br-lan` linked |
+| P5-G02 | **CLOSED** — MMS/GoCB + wire pcap `P5_GOOSE_WIRE_2026-10-05_140838.pcapng` on **lan3** |
 | P5-G03 | Map subscribed dataset → `MeasurementStore` / reactive path |
 | P5-G04 | GOOSE timeout / comms-loss event (plant element comms O.14) |
 | P7-04 | Extend matrix: plant GOOSE comms **HAVE** after P5-G01 |
