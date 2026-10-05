@@ -46,6 +46,7 @@ build_one() {
 
 build_one "$REPO/lab/mms_lab_client.c" "$OUTDIR/mms_lab_client"
 build_one "$REPO/lab/mms_wlim_client.c" "$OUTDIR/mms_wlim_client"
+build_one "$REPO/lab/mms_wsd_client.c" "$OUTDIR/mms_wsd_client"
 build_one "$REPO/lab/mms_tls_client.c" "$OUTDIR/mms_tls_client"
 build_one "$REPO/lab/mms_tls_noclient.c" "$OUTDIR/mms_tls_noclient"
 build_one "$REPO/lab/mms_tls_wlim_client.c" "$OUTDIR/mms_tls_wlim_client"

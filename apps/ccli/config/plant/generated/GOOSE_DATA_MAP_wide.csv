@@ -1,0 +1,30 @@
+﻿multicast_address,dataset_name,member_index,member_desc,sending_variable,sending_relay,cb_name,1-1TA/B,1-IGA/B,2-3A1/2B1,G-25A LGC,2-R10,2-1T1,1-10MA/B,1-20MA/B,1-30MA/B,1-40MA/B,7-T10A/B,7-T20A/B,7-T30A/B,7-T40A/B,CCI016_01
+01-0C-CD-01-00-14,Dset_BF,0,Quality,N/A,I-1AMB1,GooseDset_BF,VB003,VB003,VB009,VB012,VB015,VB018,VB006,VB003,VB009,VB012,VB015,VB003,VB009,VB012,VB022
+01-0C-CD-01-00-14,Dset_BF,1,Test Mode,LT05,I-1AMB1,GooseDset_BF,VB001,VB001,VB007,VB010,VB013,VB016,VB004,VB001,VB007,VB010,VB013,VB001,VB007,VB010,VB020
+01-0C-CD-01-00-14,Dset_BF,2,Breaker Failure,LT09,I-1AMB1,GooseDset_BF,VB002,VB002,VB008,VB011,VB014,VB017,VB005,VB002,VB008,VB011,VB014,VB002,VB008,VB011,VB021
+01-0C-CD-01-00-01,Dset_TT,0,Quality,N/A,I-1AMB1,GooseDset_TT,VB006,VB006,,,,,VB007,VB009,VB012,,,VB007,,,VB032
+01-0C-CD-01-00-01,Dset_TT,1,Test Mode,LT05,I-1AMB1,GooseDset_TT,VB004,VB004,,,,,VB005,VB007,VB010,,,VB005,,,VB030
+01-0C-CD-01-00-01,Dset_TT,2,Transfer Trip,SV11T,I-1AMB1,GooseDset_TT,VB005,VB005,,,,,VB006,VB008,VB011,,,VB006,,,VB031
+01-0C-CD-01-00-01,DS_R_PdC_Mis4sec,0,TotW,LT_N/A,CCI016_01,gcb_PdC_Mis4sec,,,,,,,,,,,,,,,
+01-0C-CD-01-00-01,DS_R_PdC_Mis4sec,1,TotVAr,LT_N/A,CCI016_01,gcb_PdC_Mis4sec,,,,,,,,,,,,,,,
+01-0C-CD-01-00-01,DS_R_PdC_Mis4sec,2,PPV,LT_N/A,CCI016_01,gcb_PdC_Mis4sec,,,,,,,,,,,,,,,
+01-0C-CD-01-00-01,DS_R_PdC_Mis4sec,3,A,LT_N/A,CCI016_01,gcb_PdC_Mis4sec,,,,,,,,,,,,,,,
+01-0C-CD-01-00-02,DS_R_Stato_Allarmi_Segnali,0,DisFRDECP1.Beh,N/A,CCI016_01,gcb_Stato_Allarmi,,,,,,,,,,,,,,,
+01-0C-CD-01-00-02,DS_R_Stato_Allarmi_Segnali,1,DisFRDGEN1.Beh,N/A,CCI016_01,gcb_Stato_Allarmi,,,,,,,,,,,,,,,
+01-0C-CD-01-00-02,DS_R_Stato_Allarmi_Segnali,2,DisFRDSTO1.Beh,N/A,CCI016_01,gcb_Stato_Allarmi,,,,,,,,,,,,,,,
+01-0C-CD-01-00-02,DS_R_Stato_Allarmi_Segnali,3,IDGXCBR1.Pos,N/A,CCI016_01,gcb_Stato_Allarmi,,,,,,,,,,,,,,,
+01-0C-CD-01-00-02,DS_R_Stato_Allarmi_Segnali,4,SSGGDGEN1.Health,N/A,CCI016_01,gcb_Stato_Allarmi,,,,,,,,,,,,,,,
+01-0C-CD-01-00-02,DS_R_Stato_Allarmi_Segnali,5,SSGGDGEN2.Health,N/A,CCI016_01,gcb_Stato_Allarmi,,,,,,,,,,,,,,,
+01-0C-CD-01-00-02,DS_R_Stato_Allarmi_Segnali,6,WlimDWMX1.Beh,N/A,CCI016_01,gcb_Stato_Allarmi,,,,,,,,,,,,,,,
+01-0C-CD-01-00-02,DS_R_Stato_Allarmi_Segnali,7,WlimDWMX1.FctOpStAuto,N/A,CCI016_01,gcb_Stato_Allarmi,,,,,,,,,,,,,,,
+01-0C-CD-01-00-02,DS_R_Stato_Allarmi_Segnali,8,WlimDWMX1.FctOpStEx,N/A,CCI016_01,gcb_Stato_Allarmi,,,,,,,,,,,,,,,
+01-0C-CD-01-00-02,DS_R_Stato_Allarmi_Segnali,9,WSdDAGC1.Beh,N/A,CCI016_01,gcb_Stato_Allarmi,,,,,,,,,,,,,,,
+01-0C-CD-01-00-02,DS_R_Stato_Allarmi_Segnali,10,WSdDAGC1.FctOpSt,N/A,CCI016_01,gcb_Stato_Allarmi,,,,,,,,,,,,,,,
+01-0C-CD-01-00-02,DS_R_Stato_Allarmi_Segnali,11,VArSdDVAR1.Beh,N/A,CCI016_01,gcb_Stato_Allarmi,,,,,,,,,,,,,,,
+01-0C-CD-01-00-02,DS_R_Stato_Allarmi_Segnali,12,VArSdDVAR1.FctOpSt,N/A,CCI016_01,gcb_Stato_Allarmi,,,,,,,,,,,,,,,
+01-0C-CD-01-00-02,DS_R_Stato_Allarmi_Segnali,13,PFSPDFPF1.Beh,N/A,CCI016_01,gcb_Stato_Allarmi,,,,,,,,,,,,,,,
+01-0C-CD-01-00-02,DS_R_Stato_Allarmi_Segnali,14,PFSPDFPF1.FctOpSt,N/A,CCI016_01,gcb_Stato_Allarmi,,,,,,,,,,,,,,,
+01-0C-CD-01-00-02,DS_R_Stato_Allarmi_Segnali,15,VArVDVVR1.Beh,N/A,CCI016_01,gcb_Stato_Allarmi,,,,,,,,,,,,,,,
+01-0C-CD-01-00-02,DS_R_Stato_Allarmi_Segnali,16,VArVDVVR1.FctOpSt,N/A,CCI016_01,gcb_Stato_Allarmi,,,,,,,,,,,,,,,
+01-0C-CD-01-00-02,DS_R_Stato_Allarmi_Segnali,17,PFWDPFW1.Beh,N/A,CCI016_01,gcb_Stato_Allarmi,,,,,,,,,,,,,,,
+01-0C-CD-01-00-02,DS_R_Stato_Allarmi_Segnali,18,PFWDPFW1.FctOpSt,N/A,CCI016_01,gcb_Stato_Allarmi,,,,,,,,,,,,,,,

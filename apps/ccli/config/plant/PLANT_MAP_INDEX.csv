@@ -1,0 +1,5 @@
+﻿file_id,path,schema_version,cid_ref,generator_script,description
+GOOSE,apps/ccli/config/plant/GOOSE_DATA_MAP.csv,1,lab_tg544_eth_a.cid,scripts/plant-map-generate.py,Berlin GOOSE data map (long format)
+ASSIGN,apps/ccli/config/plant/PLANT_ASSIGNMENT_PLANE.csv,1,lab_tg544_eth_a.cid,scripts/plant-map-generate.py,Field to MMS assignment plane
+MMS,apps/ccli/config/plant/MMS_POINT_MAP.csv,4,lab_tg544_eth_a.cid,scripts/plant-mms-sync.py,SCADA MMS v4 O11 priority classes q/t RBAC port 3782
+INDEX,apps/ccli/config/plant/PLANT_MAP_INDEX.csv,1,lab_tg544_eth_a.cid,scripts/plant-map-init.py,Manifest of plant CSV files

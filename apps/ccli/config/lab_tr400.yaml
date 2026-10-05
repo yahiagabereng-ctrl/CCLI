@@ -93,11 +93,12 @@ io:
   di_permissive:
     gpio: 2               # DIO2 / ubus ch2 — UCI channel_2.mode=di
     active_low: true      # TG544 HAL: gd32 state 1 = permit (12V key closed or GND-short bench)
-  di_pf2_spare:
-    gpio: 3               # DIO3 — PF2 spare (e.g. PI trip, external alarm)
-    active_low: true
+  # P6-03: LTE/SMS script or lab/annex-m-trip.sh drives DIO3 relay; ccli monitors state.
+  annex_m_trip_monitor:
+    enabled: true
+    gpio: 3               # DIO3 / ubus ch3 — K_TRIP (same 12 V wiring as DIO1)
   do_pf2_spare:
-    gpio: 4               # DIO4 — PF2 spare (e.g. curtailment ack, annunciator)
+    gpio: 4               # DIO4 — spare DO
     active_high: false
 analog:
   # 10-pin block: AI1 AI2 AO1 AO2 AOG GND — NOT bench-tested 2026-09-15.

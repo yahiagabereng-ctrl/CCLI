@@ -1,0 +1,57 @@
+
+----- PAGE 1 -----
+ 
+  
+CERTIFICATO DI CONFORMITA’  
+CERTIFICATE OF CONFORMITY 
+ 
+IND-F-006_CYB.62351 
+Rev. 00 del 01/11/2022 
+Rif. IND-REG-01_CYB.62351 
+ 
+Chrono: R9081/22/AF/uq     Test Report No : CYB.62351.1        IT FILE: 22.IT.4467928.006 R1 Pag. 1/1 
+Ufficio locale di: MILANO – Viale Monza, 347  20126 Milano - Italia 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Azienda 
+Company 
+Higeco S.r.l  
+Via Cal Longa 48 Paderno (BL) - Italy 
+Riferimento 
+In accordance with 
+IEC 62351-3: 2020 
+ 
+Descrizione prodotto 
+Description of product 
+HSC-110C V5.1 è una RTU per sistemi di automazione e controllo 
+industriali (IACS), dotata di avanzate funzionalità di cyber security sia 
+hardware che software. Progettata per il monitoraggio ed il controllo 
+remoto di impianti di produzione di energia e industriali. 
+ 
+The HSC-110C V5.1 is the all-in-one RTU for Industrial Automation and 
+Control Systems (IACS). The RTU is custom designed to meet all needs 
+in remote monitoring and control of energy and industrial production 
+plants. 
+Validità 
+Validity 
+Da/From 30-12-2022 a/untill 30-12-2025 
+ 
+Descrizione/Description 
+ 
+La RTU mod. HSC-110C V5.1 - SN: 5460QSNGID8F ha superato i test di conformità alla norma  
+IEC 62351-3: 2020 per garantire la protezione, integrità e confidenzialità  dei  messaggi  di  telecontrollo  
+dei sistemi SCADA, indicando i criteri di sicurezza necessaria per i protocollo basati su TCP/IP 
+ 
+The RTU mod. HSC-110C V5.1 - SN: 5460QSNGID8F passed the laboratory tests according to  
+IEC 62351 -3: 2020  in order  to provide confidentiality, integrity  protection, and message level 
+authentication for SCADA and telecontrol protocols that make use of TCP/IP as a message transport layer 
+when cyber-security is required. 
+ 
+Emesso da: Alessandro Ferrari Timbro & Firma 
+A:  Milano 
+Data :            30 Dicembre 2022  

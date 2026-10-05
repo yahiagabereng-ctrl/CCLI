@@ -1,0 +1,148 @@
+[2026-10-02 17:06:24] # P6-03 Annex M inhibit - DIO3 trip blocks DIO1
+[2026-10-02 17:06:24] DUT=192.168.10.1
+[2026-10-02 17:06:24] Step 1: restore DIO factory modes (ch1 DO, ch2 DI, ch3 DO) ...
+[2026-10-02 17:06:24] === Restore lab channel modes: ch1=DO ch2=DI ch3=DO ch4=DO ===
+[2026-10-02 17:06:24] uci: Parse error
+[2026-10-02 17:06:24] ash: 
+[2026-10-02 17:06:24] : not found
+[2026-10-02 17:06:24] {
+[2026-10-02 17:06:24] 	"success": true,
+[2026-10-02 17:06:24] 	"message": "OK"
+[2026-10-02 17:06:24] }
+[2026-10-02 17:06:24] sleep: invalid number '2
+[2026-10-02 17:06:24] '
+[2026-10-02 17:06:24] ash: 
+[2026-10-02 17:06:24] : not found
+[2026-10-02 17:06:24] Syntax: /etc/init.d/didoservice_v2 [command]
+[2026-10-02 17:06:24] 
+[2026-10-02 17:06:24] Available commands:
+[2026-10-02 17:06:24] 	start           Start the service
+[2026-10-02 17:06:24] 	stop            Stop the service
+[2026-10-02 17:06:24] 	restart         Restart the service
+[2026-10-02 17:06:24] 	reload          Reload configuration files (or restart if service does not implement reload)
+[2026-10-02 17:06:24] 	enable          Enable service autostart
+[2026-10-02 17:06:24] 	disable         Disable service autostart
+[2026-10-02 17:06:24] 	enabled         Check if service is started on boot
+[2026-10-02 17:06:24] 	running         Check if service is running
+[2026-10-02 17:06:24] 	status          Service status
+[2026-10-02 17:06:24] 	trace           Start with syscall trace
+[2026-10-02 17:06:24] 	info            Dump procd service info
+[2026-10-02 17:06:25] 
+[2026-10-02 17:06:25] sleep: invalid number '3
+[2026-10-02 17:06:25] '
+[2026-10-02 17:06:25] ash: 
+[2026-10-02 17:06:25] : not found
+[2026-10-02 17:06:25] Command failed: ubus call dido_v2 set_mode {channel:1,mode:DO}
+[2026-10-02 17:06:25]  (Parsing message data failed)
+[2026-10-02 17:06:25] Command failed: ubus call dido_v2 set_mode {channel:2,mode:DI}
+[2026-10-02 17:06:25]  (Parsing message data failed)
+[2026-10-02 17:06:25] Command failed: ubus call dido_v2 set_mode {channel:3,mode:DO}
+[2026-10-02 17:06:25]  (Parsing message data failed)
+[2026-10-02 17:06:25] Command failed: ubus call dido_v2 gd32.set_mode {channel:1,mode:DO}
+[2026-10-02 17:06:25]  (Parsing message data failed)
+[2026-10-02 17:06:25] Command failed: ubus call dido_v2 gd32.set_mode {channel:2,mode:DI}
+[2026-10-02 17:06:25]  (Parsing message data failed)
+[2026-10-02 17:06:25] Command failed: ubus call dido_v2 gd32.set_mode {channel:3,mode:DO}
+[2026-10-02 17:06:25]  (Parsing message data failed)
+[2026-10-02 17:06:25] sleep: invalid number '1
+[2026-10-02 17:06:25] '
+[2026-10-02 17:06:25] ash: 
+[2026-10-02 17:06:25] : not found
+[2026-10-02 17:06:25] === status ===
+[2026-10-02 17:06:25] Command failed: ubus call dido_v2 status
+[2026-10-02 17:06:25]  (Method not found)
+[2026-10-02 17:06:25] ash: 
+[2026-10-02 17:06:25] : not found
+[2026-10-02 17:06:25] === gd32.status ===
+[2026-10-02 17:06:27] {
+[2026-10-02 17:06:27] 	"available": true,
+[2026-10-02 17:06:27] 	"online": true,
+[2026-10-02 17:06:27] 	"fw_version": "",
+[2026-10-02 17:06:27] 	"fw_version_int": 65537,
+[2026-10-02 17:06:27] 	"uptime": 643,
+[2026-10-02 17:06:27] 	"state": true,
+[2026-10-02 17:06:27] 	"device": "/dev/gd32_uart",
+[2026-10-02 17:06:27] 	"baudrate": 115200,
+[2026-10-02 17:06:27] 	"di_mask": 0,
+[2026-10-02 17:06:27] 	"do_mask": 4,
+[2026-10-02 17:06:27] 	"di": [
+[2026-10-02 17:06:27] 		0,
+[2026-10-02 17:06:27] 		0,
+[2026-10-02 17:06:27] 		0,
+[2026-10-02 17:06:27] 		0
+[2026-10-02 17:06:27] 	],
+[2026-10-02 17:06:27] 	"do": [
+[2026-10-02 17:06:27] 		0,
+[2026-10-02 17:06:27] 		0,
+[2026-10-02 17:06:27] 		1,
+[2026-10-02 17:06:27] 		0
+[2026-10-02 17:06:27] 	],
+[2026-10-02 17:06:27] 	"rule_count": 0,
+[2026-10-02 17:06:27] 	"ota_busy": 0,
+[2026-10-02 17:06:27] 	"ota_percent": 0
+[2026-10-02 17:06:27] }
+[2026-10-02 17:06:27] === gd32.read_di - jumper DIO2 to GND now ===
+[2026-10-02 17:06:27] ash: 
+[2026-10-02 17:06:27] : not found
+[2026-10-02 17:06:28] {
+[2026-10-02 17:06:28] 	"success": false,
+[2026-10-02 17:06:28] 	"message": "GD32 timeout",
+[2026-10-02 17:06:28] 	"di_mask": 0,
+[2026-10-02 17:06:28] 	"di": [
+[2026-10-02 17:06:28] 		0,
+[2026-10-02 17:06:28] 		0,
+[2026-10-02 17:06:28] 		0,
+[2026-10-02 17:06:28] 		0
+[2026-10-02 17:06:28] 	]
+[2026-10-02 17:06:28] }
+[2026-10-02 17:06:28] ash: 
+[2026-10-02 17:06:28] : not found
+[2026-10-02 17:06:28] === recent dido logs ===
+[2026-10-02 17:06:28] tail: invalid number '15
+[2026-10-02 17:06:28] '
+[2026-10-02 17:06:28] Step 2: install annex-m-trip.sh on DUT ...
+[2026-10-02 17:06:28] Step 3: assert trip (DIO3 ON) ...
+[2026-10-02 17:06:29] {
+[2026-10-02 17:06:29] 	"success": true,
+[2026-10-02 17:06:29] 	"message": "OK",
+[2026-10-02 17:06:29] 	"channel": 3,
+[2026-10-02 17:06:29] 	"state": 1
+[2026-10-02 17:06:29] }
+[2026-10-02 17:06:29] annex-m-trip: DIO3 ON (telescatto active)
+[2026-10-02 17:06:29] Step 4: check ccli log for annex_m inhibit ...
+[2026-10-02 17:06:37] svc_io: annex_m_trip_monitor ch3 (O.11 inhibit DIO1) [P6-03]
+[2026-10-02 17:06:37] io: curtail_do=OFF permissive=OK annex_m_trip=ACTIVE
+[2026-10-02 17:06:37] {
+[2026-10-02 17:06:37] 	"running": true,
+[2026-10-02 17:06:37] 	"northbound_count": 0,
+[2026-10-02 17:06:37] 	"channels": [
+[2026-10-02 17:06:37] 		{
+[2026-10-02 17:06:37] 			"channel": 1,
+[2026-10-02 17:06:37] 			"name": "DIO-1",
+[2026-10-02 17:06:37] 			"enabled": true,
+[2026-10-02 17:06:37] 			"mode": "DO",
+[2026-10-02 17:06:37] 			"report_key": "relay_1",
+[2026-10-02 17:06:37] 			"state": 0,
+[2026-10-02 17:06:37] 			"memory_state": false
+[2026-10-02 17:06:37] 		},
+[2026-10-02 17:06:37] 		{
+[2026-10-02 17:06:37] 			"channel": 2,
+[2026-10-02 17:06:37] 			"name": "DIO-2",
+[2026-10-02 17:06:37] 			"enabled": true,
+[2026-10-02 17:06:37] 			"mode": "DI",
+[2026-10-02 17:06:37] 			"report_key": "relay_2",
+[2026-10-02 17:06:37] 			"state": 0,
+[2026-10-02 17:06:37] 			"irq_active": false,
+[2026-10-02 17:06:37] 			"poll_enabled": true,
+[2026-10-02 17:06:37] 			"poll_interval": 5,
+[2026-10-02 17:06:37] 			"change_report": true,
+[2026-10-02 17:06:37] 			"last_poll": 0
+[2026-10-02 17:06:37] Step 5: clear trip (DIO3 OFF) ...
+[2026-10-02 17:06:37] {
+[2026-10-02 17:06:37] 	"success": true,
+[2026-10-02 17:06:37] 	"message": "OK",
+[2026-10-02 17:06:37] 	"channel": 3,
+[2026-10-02 17:06:37] 	"state": 0
+[2026-10-02 17:06:37] }
+[2026-10-02 17:06:37] annex-m-trip: DIO3 OFF (telescatto cleared)
+[2026-10-02 17:06:37] P6-03 VERDICT: PASS

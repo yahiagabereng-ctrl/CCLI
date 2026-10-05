@@ -23,6 +23,7 @@ $Plink = "C:\Program Files\PuTTY\plink.exe"
 $HostKey = "SHA256:4N84xpdiJRUiipactNbXLdVa2+A4eCCrUurVDrz3qoE"
 $LabClient = Join-Path $Repo "lab\tg544-openwrt\mms_lab_client"
 $WlimClient = Join-Path $Repo "lab\tg544-openwrt\mms_wlim_client"
+$WSdClient = Join-Path $Repo "lab\tg544-openwrt\mms_wsd_client"
 $VArSdClient = Join-Path $Repo "lab\tg544-openwrt\mms_varsd_client"
 
 New-Item -ItemType Directory -Force -Path $EvidenceDir | Out-Null
@@ -127,6 +128,20 @@ if (Test-Path $WlimClient) {
     Log "SKIP wlim client - not built"
 }
 
+$wsdExit = 1
+$wsdOut = ""
+if (Test-Path $WSdClient) {
+    Log "--- mms_wsd_client WSd Operate 20pct (Figura 2) ---"
+    $prevW = $ErrorActionPreference
+    $ErrorActionPreference = "Continue"
+    $wsdOut = wsl bash -lc "/mnt/c/Yahia/projects/CCLI/lab/tg544-openwrt/mms_wsd_client $DutAddr $MmsPort 20" 2>&1
+    $wsdExit = $LASTEXITCODE
+    $ErrorActionPreference = $prevW
+    $wsdOut | ForEach-Object { Log $_ }
+} else {
+    Log "SKIP wsd client - not built"
+}
+
 $varsdExit = 1
 $varsdOut = ""
 if (Test-Path $VArSdClient) {
@@ -145,7 +160,7 @@ if ($env:CCLI_TG544_PW) {
     Log "--- DUT actuation excerpt ---"
     $prev4 = $ErrorActionPreference
     $ErrorActionPreference = "Continue"
-    $actCmd = "grep Wlim /tmp/ccli.log | tail -6; grep VArSd /tmp/ccli.log | tail -6; grep 'plant Q' /tmp/ccli.log | tail -4; grep FC16 /tmp/ccli.log | tail -4; grep curtail /tmp/ccli.log | tail -5; ubus call dido_v2 status 2>/dev/null | head -20"
+    $actCmd = "grep Wlim /tmp/ccli.log | tail -6; grep WSd /tmp/ccli.log | tail -6; grep VArSd /tmp/ccli.log | tail -6; grep 'plant Q' /tmp/ccli.log | tail -4; grep FC16 /tmp/ccli.log | tail -4; grep curtail /tmp/ccli.log | tail -5; ubus call dido_v2 status 2>/dev/null | head -20"
     & $Plink -ssh "root@${DutAddr}" -pw $env:CCLI_TG544_PW -hostkey $HostKey -batch $actCmd 2>&1 |
         ForEach-Object { Log $_ }
     $ErrorActionPreference = $prev4
@@ -163,16 +178,18 @@ Log "  Guide: lab\evidence\phase5\P5_TSP_CLEARTEXT_README.md"
 
 $okLab = $labExit -eq 0 -and ($labOut -join "`n") -match "PASS"
 $okWlim = $wlimExit -eq 0 -and ($wlimOut -join "`n") -match "OPERATE OK"
+$okWSd = $wsdExit -eq 0 -and ($wsdOut -join "`n") -match "OPERATE OK"
 $okVArSd = $varsdExit -eq 0 -and ($varsdOut -join "`n") -match "OPERATE OK"
 $okPort = $portTest.TcpTestSucceeded
 
 if ($okPort -and $okLab) {
     Log "P5 FULL CIRCLE (cleartext client): PASS"
     if ($okWlim) { Log "P3-04 Wlim actuation (cleartext): PASS" }
+    if ($okWSd) { Log "P5-F20 WSd actuation (cleartext): PASS" }
     if ($okVArSd) { Log "P5-R01 VArSd actuation (cleartext): PASS" }
     $rc = 0
 } else {
-    Log "P5 FULL CIRCLE: FAIL port=$okPort lab=$okLab wlim=$okWlim varsd=$okVArSd"
+    Log "P5 FULL CIRCLE: FAIL port=$okPort lab=$okLab wlim=$okWlim wsd=$okWSd varsd=$okVArSd"
     $rc = 1
 }
 

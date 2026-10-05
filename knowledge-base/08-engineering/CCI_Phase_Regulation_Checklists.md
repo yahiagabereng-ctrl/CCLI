@@ -107,6 +107,7 @@ Fill **Evidence** with date, APK/`ccli` version, log excerpt, screenshot, or tes
 | Analyzer | POC P/Q/V | Licensed meter + map | P5-M |
 | **61850 client** | **Eth_A verification** | **Triangle MicroWorks 61850 Test Suite Pro** | P3+ / P5 |
 | Plant Q path | VArSd / PFSP / curves | Inverter Modbus / GOOSE / vendor | P5-R |
+| Plant GOOSE RX | Annex T Type 1 optional subscribe | libiec61850 GooseReceiver on plant IF | **P5-G** |
 | C4 / M I/O | 10–120 V DI, teletrip | Expansion / ISO1212 class | P6 |
 
 ---
@@ -225,6 +226,7 @@ Fill **Evidence** with date, APK/`ccli` version, log excerpt, screenshot, or tes
 | P2-04 | O.13.1.1.2 | Local config is USB/serial (or documented engineering exception) | SSH/LuCI only on eng port, not Eth_A | **PART** — LuCI still on OA `.1.130` (2026-09-25) |
 | P2-05 | 62443-3-2 | Zones/conduits signed by architect | `CCI_62443_Zones.md` Rev 1.6 + `Architecture/Zones_62443_TG544_PortMap.drawio` | **PART** — annex map 2026-09-25; ZCR 7 asset owner MISS |
 | P2-06 | O.14 (link status) | Physical + data-link status of Eth_A/B logged | Log fields present | **WAIVED** (lab) → **P7** O.14 logger · owner: firmware |
+| P2-G01 | O.13.1.1.1 plant | Plant GOOSE (L2) **not** on DSO Eth_A bind | GOOSE listener on plant IF only; no bridge to MMS zone | **OPEN** — `lab/GOOSE_ADAPTATION.md` |
 
 **Exit:** P2-01…03 **PASS** (hard gates). P2-04…06 PASS or dated PART/WAIVED with owner.  
 **Lab close:** **CLOSED** 2026-09-25 (hard gates). Residuals P2-04/05 PART → net/architect.
@@ -325,6 +327,16 @@ Fill **Evidence** with date, APK/`ccli` version, log excerpt, screenshot, or tes
 | P5-R08 | O.10.3.2 / T Table 89 | `VArSa` MSD reactive SP | **Discretionary** — PASS or **WAIVE** | **N/A** until MSD contract |
 | P5-R09 | O.14 | Log reactive Operate (Mod, set-point, result) | Event category present | **OPEN** |
 
+### P5-G — Plant GOOSE (optional Annex T Type 1)
+
+| Check | Regulation | Shall | Pass criteria | Status |
+|-------|------------|-------|---------------|--------|
+| P5-G01 | Annex T / plant bus | Subscribe to plant IED GOOSE when site uses L2 path | RX log + O.14 `goose` event + Wireshark | **OPEN** — code r28+ · lab evidence pending |
+| P5-G02 | Site export | Optional GOOSE publish (status) | GoCB in CID + `IedServer_enableGoosePublishing` | **PART** — r28 CID GoCB · lab Wireshark pending |
+| P5-G03 | O.8 / P5-M | GOOSE dataset → TotW/TotVAr **or** parallel Modbus | Measurement merge policy documented | **OPEN** |
+
+**Note:** Modbus RTU (A2/B2) remains lab-default plant path; GOOSE does **not** replace P5-R01 Modbus Q write until P5-G03.
+
 **Exit:**
 - **P5-M minimum:** P5-02 + **P5-M07** + P5-04 (or V5 5 %) PASS. P5-M08 PASS or meter GAP.  
 - **P5-R minimum:** **P5-R01** PASS **or** written plant-Q GAP with owner; other O.9.1 rows PASS or **WAIVE** per Operating Rule / TR Figura 2 (Inactive).  
@@ -341,11 +353,11 @@ Fill **Evidence** with date, APK/`ccli` version, log excerpt, screenshot, or tes
 
 | Check | Regulation | Shall | Pass criteria | Status |
 |-------|------------|-------|---------------|--------|
-| P6-01 | M.1 | Defence plan ≥ 100 kW: telescatto path exists **or** site waiver | Modem/SPI diagram or DSO letter | **OPEN** |
-| P6-02 | M.5.1 | DO → PI “scatto da segnale esterno”; DI = DDI/PI feedback | Wiring photo vs M.5.1 | **OPEN** |
-| P6-03 | O.11 / O.9.3 | CCI **inhibits conflicting** PF2 when M trips | IO3 (or equivalent) → FSM block | **OPEN** |
-| P6-04 | O.12 | Teledistacco predisposition on installation drawing | Fig. 128-class sketch | **OPEN** |
-| P6-05 | O.14 | Log Annex M trip | Event category present | **OPEN** |
+| P6-01 | M.1 | Defence plan ≥ 100 kW: telescatto path exists **or** site waiver | Modem/SPI diagram or DSO letter | **PART** (lab mock) |
+| P6-02 | M.5.1 | DO → PI “scatto da segnale esterno”; DI = DDI/PI feedback | Wiring photo vs M.5.1 | **DEFERRED** |
+| P6-03 | O.11 / O.9.3 | CCI **inhibits conflicting** PF2 when M trips | IO3 (or equivalent) → FSM block | **PASS** (r26) |
+| P6-04 | O.12 | Teledistacco predisposition on installation drawing | Fig. 128-class sketch | **PART** |
+| P6-05 | O.14 | Log Annex M trip | Event category present | **PASS** (code) |
 | P6-06 | REQ-IO-004 | Product **5× DI 10–120 V**, **3× DO 250 Vac / 3 A** **or** written expansion | Schematic + ratings | **GAP** |
 | P6-07 | M.3.1 vs TR400 | Do **not** claim G6K/SMBJ33 = M modem class | Delta table | **PART** |
 
@@ -360,17 +372,17 @@ Fill **Evidence** with date, APK/`ccli` version, log excerpt, screenshot, or tes
 
 | Check | Regulation | Shall | Pass criteria | Status |
 |-------|------------|-------|---------------|--------|
-| P7-01 | O.14 | ≥ **2048** events, user cannot overwrite | Store + wrap test | **OPEN** |
-| P7-02 | O.14 | Timestamp `yyyy/mm/dd hh:mm:ss` | Sample dump | **OPEN** |
+| P7-01 | O.14 | ≥ **2048** events, user cannot overwrite | Store + wrap test | **PART** — r27 `EventStore`, `--event-wrap-test` |
+| P7-02 | O.14 | Timestamp `yyyy/mm/dd hh:mm:ss` | Sample dump | **PART** — `--event-dump` UTC |
 | P7-03 | O.14 / 62351-14 | Remote read syslog RFC 5424 | SIEM receive | **OPEN** |
-| P7-04 | O.14 list | Mandatory categories (DG/DI, comms, auth, DSO cmds, M trip, …) | Coverage matrix | **OPEN** |
+| P7-04 | O.14 list | Mandatory categories (DG/DI, comms, auth, DSO cmds, M trip, …) | Coverage matrix | **PART** — [P7-04 matrix](../../lab/evidence/phase7/P7-04_EVENT_COVERAGE_MATRIX.md) |
 | P7-05 | O.15 / 62443-4-1 | SDLC evidence | Threat model + test records | **PART** |
 | P7-06 | O.15 / 62443-4-2 | Component CR / SL-T 2 proposed | Gap vs CR 3.6 already in P1 | **PART** |
 | P7-07 | O.15 / 62351-100-3 | Transport conformance **plan** (cert later) | Lab procedure + PICS | **OPEN** |
 | P7-08 | O.15 / FIPS 140-2 L3 | Crypto module claim or **no-claim** | TPM evidence or drop claim | **PART** |
 | P7-09 | O.15 / 61557-12 + 61010 | Product insulation/EMC path | Test list | **PART** |
 | P7-10 | ARERA 385 / 564 | Scope ≥100 kW PF2 + dates | Legal memo | **PART** |
-| P7-11 | K7.5 | DSO demo script | Client steps + expected `Wlim` | **OPEN** |
+| P7-11 | K7.5 | DSO demo script | Client steps + expected `Wlim` | **PART** — [P7-11 script](../../lab/evidence/phase7/P7-11_DSO_DEMO_SCRIPT.md) |
 | P7-12 | Programme | `--lab-demo` **off** in product image | Config audit | **OPEN** |
 
 **Exit:** P7-01, P7-04, P7-11 PASS. Cert **lab booking** is after this pack — not a Phase 7 software exit.

@@ -1,0 +1,26 @@
+# CCLI MMS lab clients — P5-F Operate evidence (2026-10-02)
+tool: mms_wlim_client / mms_wsd_client / mms_varsd_client
+dut: 192.168.10.1:102 tls=off
+ccli_pkg: 0.1.0-r25
+cid: lab_tg544_eth_a.cid rev4
+operator: agent verify session
+date: 2026-10-02
+
+## P5-F10–11 Wlim (O.9.2.2)
+mms_wlim_client 192.168.10.1 102 10
+OPERATE OK CCI016_01LD_Plant/WlimDWMX1.WMaxSptPct = 10.00
+OPERATE OK CCI016_01LD_Plant/WlimDWMX1.Mod = 1
+READ Mod.stVal=1
+NOTE: IEDExplorer CO Write denied (ctlModel=3 APC); Operate via ControlObjectClient only.
+
+## P5-F20–21 WSd (O.9.2.3)
+mms_wsd_client 192.168.10.1 102 20
+OPERATE OK CCI016_01LD_Plant/WSdDAGC1.WSptPct = 20.00
+OPERATE OK CCI016_01LD_Plant/WSdDAGC1.Mod = 1
+READ Mod.stVal=1
+
+## P5-F30–31 VArSd (O.9.1.4)
+mms_varsd_client 192.168.10.1 102 10
+OPERATE OK CCI016_01LD_Plant/VArSdDVAR1.VArTgtSptPct = 10.00
+OPERATE OK CCI016_01LD_Plant/VArSdDVAR1.Mod = 1
+READ TotVAr.mag.f = 21 (mms_lab_client post-operate)

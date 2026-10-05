@@ -1,0 +1,62 @@
+﻿plane_id,record_type,app_group,enabled,ied_ld_ln,do_fc,mms_path,clause,equation_id,regulation_id,field_bus,field_device,modbus_slave_id,modbus_fc_read,modbus_reg_read,modbus_type_read,modbus_gain_read,modbus_fc_write,modbus_reg_write,modbus_gain_write,dso_source,transform,runtime_status,notes
+META.RTU,META,A0,Y,LD_Plant/LLN0,,,,,,modbus_rtu,Huawei V3.0 RTU,,,,,,,,,,,PART,9600 8N1 /dev/ttyS2; addressing=huawei_direct; poll_ms=4000
+PdC.TotW,MEASURE,A3,Y,LD_Plant/PdCMMXU1,TotW/MX,LD_Plant/PdCMMXU1.TotW,O.8.3,eq13_17,R09,modbus_rtu,Grid analyzer,1,3,40001,float32,1,,,,,40001-offset lab map,IMPL,POC meter — not inverter sum
+PdC.TotVAr,MEASURE,A3,Y,LD_Plant/PdCMMXU1,TotVAr/MX,LD_Plant/PdCMMXU1.TotVAr,O.8.3,eq13_17,R09,modbus_rtu,Grid analyzer,1,3,40003,float32,1,,,,,,IMPL,POC reactive
+INV01.TotW,MEASURE,A3,Y,LD_Plant/SGGMMXU1,TotW/MX,LD_Plant/SGGMMXU1.TotW,O.8.4,eq2,R09,modbus_rtu,Huawei SUN2000-100KTL-M2,1,3,32080,I32,1000,,,,,Model ID 150 @30070,IMPL,Inverter sample INV-01
+INV01.Status,STATUS,A3,Y,LD_Plant/SGGMMXU1,Health/ST,LD_Plant/SGGMMXU1.Beh,O.8.4,,,modbus_rtu,Huawei SUN2000-100KTL-M2,1,3,32089,U16,1,,,,,,IMPL,Device status word
+INV02.TotW,MEASURE,A3,Y,LD_Plant/SGGMMXU2,TotW/MX,LD_Plant/SGGMMXU2.TotW,O.8.4,eq2,R09,modbus_rtu,Huawei SUN2000-100KTL-M2,2,3,32080,I32,1000,,,,,Model ID 150 @30070,IMPL,Inverter sample INV-02
+INV02.Status,STATUS,A3,Y,LD_Plant/SGGMMXU2,Health/ST,LD_Plant/SGGMMXU2.Beh,O.8.4,,,modbus_rtu,Huawei SUN2000-100KTL-M2,2,3,32089,U16,1,,,,,,IMPL,Device status word
+INV03.TotW,MEASURE,A3,Y,LD_Plant/SGGMMXU3,TotW/MX,LD_Plant/SGGMMXU3.TotW,O.8.4,eq2,R09,modbus_rtu,Huawei SUN2000-100KTL-M2,3,3,32080,I32,1000,,,,,Model ID 150 @30070,CID_GAP,Inverter sample INV-03
+INV03.Status,STATUS,A3,Y,LD_Plant/SGGMMXU3,Health/ST,LD_Plant/SGGMMXU3.Beh,O.8.4,,,modbus_rtu,Huawei SUN2000-100KTL-M2,3,3,32089,U16,1,,,,,,CID_GAP,Device status word
+INV04.TotW,MEASURE,A3,Y,LD_Plant/SGGMMXU4,TotW/MX,LD_Plant/SGGMMXU4.TotW,O.8.4,eq2,R09,modbus_rtu,Huawei SUN2000-100KTL-M2,4,3,32080,I32,1000,,,,,Model ID 150 @30070,CID_GAP,Inverter sample INV-04
+INV04.Status,STATUS,A3,Y,LD_Plant/SGGMMXU4,Health/ST,LD_Plant/SGGMMXU4.Beh,O.8.4,,,modbus_rtu,Huawei SUN2000-100KTL-M2,4,3,32089,U16,1,,,,,,CID_GAP,Device status word
+INV05.TotW,MEASURE,A3,Y,LD_Plant/SGGMMXU5,TotW/MX,LD_Plant/SGGMMXU5.TotW,O.8.4,eq2,R09,modbus_rtu,Huawei SUN2000-100KTL-M2,5,3,32080,I32,1000,,,,,Model ID 150 @30070,CID_GAP,Inverter sample INV-05
+INV05.Status,STATUS,A3,Y,LD_Plant/SGGMMXU5,Health/ST,LD_Plant/SGGMMXU5.Beh,O.8.4,,,modbus_rtu,Huawei SUN2000-100KTL-M2,5,3,32089,U16,1,,,,,,CID_GAP,Device status word
+INV06.TotW,MEASURE,A3,Y,LD_Plant/SGGMMXU6,TotW/MX,LD_Plant/SGGMMXU6.TotW,O.8.4,eq2,R09,modbus_rtu,Huawei SUN2000-100KTL-M2,6,3,32080,I32,1000,,,,,Model ID 150 @30070,CID_GAP,Inverter sample INV-06
+INV06.Status,STATUS,A3,Y,LD_Plant/SGGMMXU6,Health/ST,LD_Plant/SGGMMXU6.Beh,O.8.4,,,modbus_rtu,Huawei SUN2000-100KTL-M2,6,3,32089,U16,1,,,,,,CID_GAP,Device status word
+INV07.TotW,MEASURE,A3,Y,LD_Plant/SGGMMXU7,TotW/MX,LD_Plant/SGGMMXU7.TotW,O.8.4,eq2,R09,modbus_rtu,Huawei SUN2000-100KTL-M2,7,3,32080,I32,1000,,,,,Model ID 150 @30070,CID_GAP,Inverter sample INV-07
+INV07.Status,STATUS,A3,Y,LD_Plant/SGGMMXU7,Health/ST,LD_Plant/SGGMMXU7.Beh,O.8.4,,,modbus_rtu,Huawei SUN2000-100KTL-M2,7,3,32089,U16,1,,,,,,CID_GAP,Device status word
+INV08.TotW,MEASURE,A3,Y,LD_Plant/SGGMMXU8,TotW/MX,LD_Plant/SGGMMXU8.TotW,O.8.4,eq2,R09,modbus_rtu,Huawei SUN2000-100KTL-M2,8,3,32080,I32,1000,,,,,Model ID 150 @30070,CID_GAP,Inverter sample INV-08
+INV08.Status,STATUS,A3,Y,LD_Plant/SGGMMXU8,Health/ST,LD_Plant/SGGMMXU8.Beh,O.8.4,,,modbus_rtu,Huawei SUN2000-100KTL-M2,8,3,32089,U16,1,,,,,,CID_GAP,Device status word
+INV09.TotW,MEASURE,A3,Y,LD_Plant/SGGMMXU9,TotW/MX,LD_Plant/SGGMMXU9.TotW,O.8.4,eq2,R09,modbus_rtu,Huawei SUN2000-100KTL-M2,9,3,32080,I32,1000,,,,,Model ID 150 @30070,CID_GAP,Inverter sample INV-09
+INV09.Status,STATUS,A3,Y,LD_Plant/SGGMMXU9,Health/ST,LD_Plant/SGGMMXU9.Beh,O.8.4,,,modbus_rtu,Huawei SUN2000-100KTL-M2,9,3,32089,U16,1,,,,,,CID_GAP,Device status word
+INV10.TotW,MEASURE,A3,Y,LD_Plant/SGGMMXU10,TotW/MX,LD_Plant/SGGMMXU10.TotW,O.8.4,eq2,R09,modbus_rtu,Huawei SUN2000-100KTL-M2,10,3,32080,I32,1000,,,,,Model ID 150 @30070,CID_GAP,Inverter sample INV-10
+INV10.Status,STATUS,A3,Y,LD_Plant/SGGMMXU10,Health/ST,LD_Plant/SGGMMXU10.Beh,O.8.4,,,modbus_rtu,Huawei SUN2000-100KTL-M2,10,3,32089,U16,1,,,,,,CID_GAP,Device status word
+GenPV.TotW,AGGREGATE,A3,Y,LD_Plant/GenPVMMXU1,TotW/MX,LD_Plant/GenPVMMXU1.TotW,O.8.4,eq2,R09,none,,,,,,,,,,,sum(INV01..INV10.TotW),PART,Clears PLANT-GAP-01 when multi-slave Modbus wired
+DSO.WSd.PctWrite,CONTROL,A6,Y,LD_Plant/WSdDAGC1,CO,LD_Plant/WSdDAGC1.WSptPct,O.9,eq2,R03,modbus_rtu,Huawei SUN2000-100KTL-M2,ALL,,,,,6,40125,10,WSdDAGC1.WSptPct,fanout slaves 1-10,PART,fanout slaves 1-10
+DSO.Wlim.PctWrite,CONTROL,A6,Y,LD_Plant/WlimDWMX1,CO,LD_Plant/WlimDWMX1.WMaxSptPct,O.9,eq2,R03,modbus_rtu,Huawei SUN2000-100KTL-M2,ALL,,,,,6,40125,10,WlimDWMX1.WMaxSptPct,fanout slaves 1-10,PART,fanout slaves 1-10
+DSO.VArSd.QWrite,CONTROL,A7,Y,LD_Plant/VArSdDVAR1,CO,LD_Plant/VArSdDVAR1.VArTgtSptPct,O.9.1.4,eq3,R13,modbus_rtu,Huawei SUN2000-100KTL-M2,ALL,,,,,6,40123,1000,VArSdDVAR1.VArTgtSptPct,Q/S signed,PART,Q/S signed
+DSO.PFSP.PFWrite,CONTROL,A7,N,LD_Plant/PFSPDFPF1,CO,LD_Plant/PFSPDFPF1.PFGnTgtSpt,O.9.1.1,eq12,R12,modbus_rtu,Huawei SUN2000-100KTL-M2,ALL,,,,,6,40122,1000,PFSPDFPF1.PFGnTgtSpt,cosφ*1000 export target,PART,cosφ*1000 export target
+COMM.42014,CONTROL,A0,Y,,CO,,O.9,eq3,R03,modbus_rtu,Huawei SUN2000-100KTL-M2,ALL,,,,,6,42014,1,,Remote scheduling enable,STUB,Remote scheduling enable
+COMM.42000,CONTROL,A0,Y,,CO,,O.9,eq3,R03,modbus_rtu,Huawei SUN2000-100KTL-M2,ALL,,,,,6,42000,1,,Grid code 70=CEI0-16 Italy,STUB,Grid code 70=CEI0-16 Italy
+LN.LLN0,LN_REF,A0,Y,LD_Plant/LLN0,,LD_Plant/LLN0,,,,none,,,,,,,,,,,,IMPL,31-LN traceability from signal_map.yaml
+LN.LPHD1,LN_REF,A0,Y,LD_Plant/LPHD1,,LD_Plant/LPHD1,,,,none,,,,,,,,,,,,PART,31-LN traceability from signal_map.yaml
+LN.PdC_WiDPCC1,LN_REF,A1,Y,LD_Plant/PdC_WiDPCC1,,LD_Plant/PdC_WiDPCC1,,eq1,,none,,,,,,,,,,,,PART,31-LN traceability from signal_map.yaml
+LN.PdC_WaDPCC1,LN_REF,A1,Y,LD_Plant/PdC_WaDPCC1,,LD_Plant/PdC_WaDPCC1,,eq1,,none,,,,,,,,,,,,PART,31-LN traceability from signal_map.yaml
+LN.PdC_QiDPCC1,LN_REF,A1,Y,LD_Plant/PdC_QiDPCC1,,LD_Plant/PdC_QiDPCC1,,eq1,,none,,,,,,,,,,,,PART,31-LN traceability from signal_map.yaml
+LN.PdC_QcDPCC1,LN_REF,A1,Y,LD_Plant/PdC_QcDPCC1,,LD_Plant/PdC_QcDPCC1,,eq1,,none,,,,,,,,,,,,PART,31-LN traceability from signal_map.yaml
+LN.PdC_VADPCC1,LN_REF,A1,Y,LD_Plant/PdC_VADPCC1,,LD_Plant/PdC_VADPCC1,,eq1,,none,,,,,,,,,,,,PART,31-LN traceability from signal_map.yaml
+LN.DisFRDECP1,LN_REF,A2,Y,LD_Plant/DisFRDECP1,,LD_Plant/DisFRDECP1,,,,none,,,,,,,,,,,,STUB,31-LN traceability from signal_map.yaml
+LN.DisFRDGEN1,LN_REF,A2,Y,LD_Plant/DisFRDGEN1,,LD_Plant/DisFRDGEN1,,,,none,,,,,,,,,,,,STUB,31-LN traceability from signal_map.yaml
+LN.DisFRDSTO1,LN_REF,A2,Y,LD_Plant/DisFRDSTO1,,LD_Plant/DisFRDSTO1,,,,none,,,,,,,,,,,,STUB,31-LN traceability from signal_map.yaml
+LN.PdCMMXU1,LN_REF,A3,Y,LD_Plant/PdCMMXU1,,LD_Plant/PdCMMXU1,,eq13_17,,none,,,,,,,,,,,,PART,31-LN traceability from signal_map.yaml
+LN.GenPVMMXU1,LN_REF,A3,Y,LD_Plant/GenPVMMXU1,,LD_Plant/GenPVMMXU1,,eq2,,none,,,,,,,,,,,,DEFERRED,31-LN traceability from signal_map.yaml
+LN.GenWiMMXU1,LN_REF,A3,Y,LD_Plant/GenWiMMXU1,,LD_Plant/GenWiMMXU1,,,,none,,,,,,,,,,,,DEFERRED,31-LN traceability from signal_map.yaml
+LN.GenTerMMXU1,LN_REF,A3,Y,LD_Plant/GenTerMMXU1,,LD_Plant/GenTerMMXU1,,,,none,,,,,,,,,,,,DEFERRED,31-LN traceability from signal_map.yaml
+LN.GenIdrMMXU1,LN_REF,A3,Y,LD_Plant/GenIdrMMXU1,,LD_Plant/GenIdrMMXU1,,,,none,,,,,,,,,,,,DEFERRED,31-LN traceability from signal_map.yaml
+LN.StMMXU1,LN_REF,A3,Y,LD_Plant/StMMXU1,,LD_Plant/StMMXU1,,,,none,,,,,,,,,,,,DEFERRED,31-LN traceability from signal_map.yaml
+LN.SGGMMXU1,LN_REF,A3,Y,LD_Plant/SGGMMXU1,,LD_Plant/SGGMMXU1,,eq2,,none,,,,,,,,,,,,DEFERRED,31-LN traceability from signal_map.yaml
+LN.SGGMMXU2,LN_REF,A3,Y,LD_Plant/SGGMMXU2,,LD_Plant/SGGMMXU2,,eq2,,none,,,,,,,,,,,,DEFERRED,31-LN traceability from signal_map.yaml
+LN.IDGXCBR1,LN_REF,A4,Y,LD_Plant/IDGXCBR1,,LD_Plant/IDGXCBR1,,,,none,,,,,,,,,,,,STUB,31-LN traceability from signal_map.yaml
+LN.SSGGDGEN1,LN_REF,A5,Y,LD_Plant/SSGGDGEN1,,LD_Plant/SSGGDGEN1,,,,none,,,,,,,,,,,,STUB,31-LN traceability from signal_map.yaml
+LN.SSGGDGEN2,LN_REF,A5,Y,LD_Plant/SSGGDGEN2,,LD_Plant/SSGGDGEN2,,,,none,,,,,,,,,,,,STUB,31-LN traceability from signal_map.yaml
+LN.WlimDWMX1,LN_REF,A6,Y,LD_Plant/WlimDWMX1,,LD_Plant/WlimDWMX1,,eq2,,none,,,,,,,,,,,,IMPL,31-LN traceability from signal_map.yaml
+LN.WSdDAGC1,LN_REF,A6,Y,LD_Plant/WSdDAGC1,,LD_Plant/WSdDAGC1,,eq2,,none,,,,,,,,,,,,IMPL,31-LN traceability from signal_map.yaml
+LN.VArSdDVAR1,LN_REF,A7,Y,LD_Plant/VArSdDVAR1,,LD_Plant/VArSdDVAR1,,eq3,,none,,,,,,,,,,,,IMPL,31-LN traceability from signal_map.yaml
+LN.PFSPDFPF1,LN_REF,A7,Y,LD_Plant/PFSPDFPF1,,LD_Plant/PFSPDFPF1,,eq12,,none,,,,,,,,,,,,STUB,31-LN traceability from signal_map.yaml
+LN.VArVDVVR1,LN_REF,A7,Y,LD_Plant/VArVDVVR1,,LD_Plant/VArVDVVR1,,eq10,,none,,,,,,,,,,,,STUB,31-LN traceability from signal_map.yaml
+LN.PFWDPFW1,LN_REF,A7,Y,LD_Plant/PFWDPFW1,,LD_Plant/PFWDPFW1,,eq11,,none,,,,,,,,,,,,STUB,31-LN traceability from signal_map.yaml
+LN.VArVDPMC1,LN_REF,A8,Y,LD_Plant/VArVDPMC1,,LD_Plant/VArVDPMC1,,eq10,,none,,,,,,,,,,,,STUB,31-LN traceability from signal_map.yaml
+LN.VArVDPMC2,LN_REF,A8,Y,LD_Plant/VArVDPMC2,,LD_Plant/VArVDPMC2,,eq10,,none,,,,,,,,,,,,STUB,31-LN traceability from signal_map.yaml
+LN.VArVDECP1,LN_REF,A8,Y,LD_Plant/VArVDECP1,,LD_Plant/VArVDECP1,,eq10,,none,,,,,,,,,,,,STUB,31-LN traceability from signal_map.yaml
+LN.VArVDECP2,LN_REF,A8,Y,LD_Plant/VArVDECP2,,LD_Plant/VArVDECP2,,eq10,,none,,,,,,,,,,,,STUB,31-LN traceability from signal_map.yaml

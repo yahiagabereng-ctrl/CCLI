@@ -67,7 +67,7 @@ Programming (M.4): AT strings, CLI list, SMS templates for DO trip, DI confirm, 
 **CCI / TR400 programme:**
 
 - Annex **O.11**: when defence-plan teletrip acts, **CCI must not take conflicting action** (see `CCI_Annex_O_Extract.md`).
-- Proposed lab mapping: **IO3** as **teletrip/permissive inhibit DI** (`CCI_TR400_GPIO_Schematic_Extract.md`) — **engineering allocation**; **M modem DI/DO** is a **separate device class** from TesPro **G6K/SMBJ33** channels unless qualified.
+- Lab mapping (P6-03 **PASS** r26): **DIO3** as **DO** trip relay monitor (`annex_m_trip_monitor` gpio 3) — SMS poller `lab/tg544-openwrt/annex-m-sms-poller.sh` + `annex-m-trip.sh` drives ch3; **ccli** inhibits **DIO1** when trip active. Closeout: `lab/evidence/phase6/P6_FINAL_CLOSEOUT.md`. **M modem DI/DO** voltage class remains **P6-06/P6-07 GAP**.
 
 ---
 

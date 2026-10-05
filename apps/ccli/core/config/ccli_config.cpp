@@ -287,6 +287,8 @@ CcliConfig load_config(const std::string& path) {
                     parse_bool(value, cfg.mms.tls.chain_validation);
             } else if (key == "comms_loss_fallback_s") {
                 cfg.mms.comms_loss_fallback_s = std::atoi(value.c_str());
+            } else if (key == "setpoint_min_interval_s") {
+                cfg.mms.setpoint_min_interval_s = std::atoi(value.c_str());
             } else if (key == "gnss_poll_s") {
                 cfg.mms.gnss_poll_s = std::atoi(value.c_str());
             } else if (key == "gnss_discipline_clock") {
@@ -296,6 +298,34 @@ CcliConfig load_config(const std::string& path) {
                 cfg.mms.chrony_poll = parse_bool(value, cfg.mms.chrony_poll);
             } else if (key == "model_cfg") {
                 cfg.mms.model_cfg_path = value;
+            }
+            continue;
+        }
+
+        if (top == "goose" && ind == 2 && !value.empty()) {
+            if (key == "enabled") {
+                cfg.goose.enabled = parse_bool(value, cfg.goose.enabled);
+            } else if (key == "interface") {
+                cfg.goose.interface = value;
+            } else if (key == "subscribe_go_cb_ref") {
+                cfg.goose.subscribe_go_cb_ref = value;
+            } else if (key == "subscribe_app_id") {
+                cfg.goose.subscribe_app_id =
+                    static_cast<uint16_t>(std::strtoul(value.c_str(), nullptr, 0));
+            } else if (key == "subscribe_dst_mac") {
+                cfg.goose.subscribe_dst_mac = value;
+            } else if (key == "publish_enabled") {
+                cfg.goose.publish_enabled = parse_bool(value, cfg.goose.publish_enabled);
+            } else if (key == "publish_app_id") {
+                cfg.goose.publish_app_id =
+                    static_cast<uint16_t>(std::strtoul(value.c_str(), nullptr, 0));
+            } else if (key == "publish_dst_mac") {
+                cfg.goose.publish_dst_mac = value;
+            } else if (key == "publish_vlan_id") {
+                cfg.goose.publish_vlan_id =
+                    static_cast<uint16_t>(std::strtoul(value.c_str(), nullptr, 10));
+            } else if (key == "publish_interval_ms") {
+                cfg.goose.publish_interval_ms = std::atoi(value.c_str());
             }
             continue;
         }
@@ -324,7 +354,23 @@ CcliConfig load_config(const std::string& path) {
                     } else if (key == "active_low") {
                         target->active_high = !parse_bool(value, !target->active_high);
                     }
+                } else if (sub == "annex_m_trip_monitor") {
+                    if (key == "enabled") {
+                        cfg.annex_m_trip_monitor.enabled =
+                            parse_bool(value, cfg.annex_m_trip_monitor.enabled);
+                    } else if (key == "gpio") {
+                        cfg.annex_m_trip_monitor.gpio = std::atoi(value.c_str());
+                    }
                 }
+            }
+            continue;
+        }
+
+        if (top == "event_log" && ind == 2 && !value.empty()) {
+            if (key == "enabled") {
+                cfg.event_log.enabled = parse_bool(value, cfg.event_log.enabled);
+            } else if (key == "path") {
+                cfg.event_log.path = value;
             }
         }
     }

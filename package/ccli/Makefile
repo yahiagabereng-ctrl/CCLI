@@ -3,7 +3,7 @@ include $(TOPDIR)/rules.mk
 PKG_NAME:=ccli
 # Keep in sync with apps/ccli/VERSION (run scripts/sync-ccli-version.ps1)
 PKG_VERSION:=0.1.0
-PKG_RELEASE:=25
+PKG_RELEASE:=29
 
 PKG_MAINTAINER:=HiTEKS CCLI
 PKG_LICENSE:=Proprietary

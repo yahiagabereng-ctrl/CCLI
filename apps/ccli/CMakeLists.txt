@@ -14,13 +14,19 @@ ccli_generate_version_header()
 
 # --- libiec61850 (Phase 3 MMS) ------------------------------------------------
 option(CCLI_WITH_LIBIEC61850 "Build IEC 61850 MMS with third_party/libiec61850" ON)
+option(CCLI_WITH_GOOSE "Build IEC 61850 L2 GOOSE (plant LAN) with libiec61850" ON)
 set(CCLI_LIBIEC61850_DIR "${CMAKE_CURRENT_SOURCE_DIR}/third_party/libiec61850")
 set(CCLI_HAVE_LIBIEC61850 0)
 if(CCLI_WITH_LIBIEC61850 AND EXISTS "${CCLI_LIBIEC61850_DIR}/CMakeLists.txt")
     set(BUILD_EXAMPLES OFF CACHE BOOL "libiec61850 examples" FORCE)
     set(BUILD_PYTHON_BINDINGS OFF CACHE BOOL "libiec61850 python" FORCE)
-    set(CONFIG_INCLUDE_GOOSE_SUPPORT OFF CACHE BOOL "libiec61850 GOOSE" FORCE)
-    set(CONFIG_IEC61850_L2_GOOSE OFF CACHE BOOL "libiec61850 L2 GOOSE" FORCE)
+    if(CCLI_WITH_GOOSE)
+        set(CONFIG_INCLUDE_GOOSE_SUPPORT ON CACHE BOOL "libiec61850 GOOSE" FORCE)
+        set(CONFIG_IEC61850_L2_GOOSE ON CACHE BOOL "libiec61850 L2 GOOSE" FORCE)
+    else()
+        set(CONFIG_INCLUDE_GOOSE_SUPPORT OFF CACHE BOOL "libiec61850 GOOSE" FORCE)
+        set(CONFIG_IEC61850_L2_GOOSE OFF CACHE BOOL "libiec61850 L2 GOOSE" FORCE)
+    endif()
     set(CONFIG_IEC61850_L2_SMV OFF CACHE BOOL "libiec61850 L2 SMV" FORCE)
     set(CONFIG_IEC61850_R_GOOSE OFF CACHE BOOL "libiec61850 R-GOOSE" FORCE)
     set(CONFIG_IEC61850_R_SMV OFF CACHE BOOL "libiec61850 R-SMV" FORCE)
@@ -58,6 +64,7 @@ add_library(ccli_core STATIC
     core/dso/dso_phase1.cpp
     core/measurement/measurement_store.cpp
     core/event/event_ring.cpp
+    core/event/event_store.cpp
     core/policy/net_policy.cpp
     core/config/ccli_config.cpp
     core/regulation/regulation_bench.cpp
@@ -71,6 +78,7 @@ target_include_directories(ccli_core PUBLIC
 
 set(CCLI_ADAPTERS_SOURCES
     adapters/modbus_master/modbus_adapter.cpp
+    adapters/iec61850_goose/goose_adapter.cpp
     adapters/iec61850_mms/mms_adapter.cpp
     adapters/iec61850_mms/mms_acse_auth.cpp
     adapters/iec61850_mms/mms_aare_auth.cpp
@@ -83,6 +91,7 @@ add_library(ccli_adapters STATIC ${CCLI_ADAPTERS_SOURCES})
 target_include_directories(ccli_adapters PUBLIC
     ${CMAKE_CURRENT_SOURCE_DIR}/adapters/modbus_master
     ${CMAKE_CURRENT_SOURCE_DIR}/adapters/iec61850_mms
+    ${CMAKE_CURRENT_SOURCE_DIR}/adapters/iec61850_goose
     ${CMAKE_CURRENT_SOURCE_DIR}/adapters/iec60870_104
     ${CMAKE_CURRENT_SOURCE_DIR}/adapters/io
 )
@@ -91,12 +100,16 @@ add_library(ccli_services STATIC
     services/svc_pf2.cpp
     services/svc_modbus.cpp
     services/svc_mms.cpp
+    services/svc_goose.cpp
     services/svc_io.c
 )
 target_link_libraries(ccli_adapters PUBLIC ccli_core)
 ccli_setup_libmodbus(ccli_adapters)
 if(CCLI_HAVE_LIBIEC61850)
     target_compile_definitions(ccli_adapters PRIVATE CCLI_HAVE_LIBIEC61850=1)
+    if(CCLI_WITH_GOOSE)
+        target_compile_definitions(ccli_adapters PRIVATE CCLI_HAVE_GOOSE=1)
+    endif()
     # Binary dir name follows source path under apps/ccli (third_party/libiec61850).
     set(_iec_bin "${CMAKE_BINARY_DIR}/third_party/libiec61850")
     if(NOT EXISTS "${_iec_bin}/config/stack_config.h")
@@ -120,6 +133,9 @@ if(CCLI_HAVE_LIBIEC61850)
         "${CCLI_LIBIEC61850_DIR}/src/mms/inc_private"
         "${CCLI_LIBIEC61850_DIR}/src/logging"
         "${CCLI_LIBIEC61850_DIR}/hal/inc"
+        "${CCLI_LIBIEC61850_DIR}/src/goose"
+        # goose_receiver.h includes r_session.h (R-GOOSE session layer) unconditionally.
+        "${CCLI_LIBIEC61850_DIR}/src/r_session"
         "${_iec_bin}/config"
     )
     # Prefer static link so OpenWrt apk needs no extra iec61850 package.

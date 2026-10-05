@@ -2,6 +2,8 @@
 # Install uploaded /tmp/ccli.new and record deploy version on DUT.
 set -eu
 
+mkdir -p /var/lib/ccli
+
 killall ccli 2>/dev/null || true
 sleep 1
 mv /tmp/ccli.new /usr/sbin/ccli

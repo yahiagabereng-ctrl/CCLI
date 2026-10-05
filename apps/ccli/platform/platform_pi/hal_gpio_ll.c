@@ -369,6 +369,28 @@ bool cci_gpio_ll_read(int line, int *level) {
 
 
 
+bool cci_gpio_ll_read_relay(int channel, int *energized) {
+
+    int level = 0;
+
+    if (!cci_gpio_ll_read(channel, &level)) {
+
+        return false;
+
+    }
+
+    if (energized != NULL) {
+
+        *energized = level == 0 ? 1 : 0;
+
+    }
+
+    return true;
+
+}
+
+
+
 void cci_gpio_ll_shutdown(void) {
 
     for (int i = 0; i < CCI_GPIO_LL_MAX_LINES; ++i) {
@@ -490,6 +512,22 @@ bool cci_gpio_ll_read(int line, int *level) {
     }
 
     *level = s_level[line];
+
+    return true;
+
+}
+
+
+
+bool cci_gpio_ll_read_relay(int channel, int *energized) {
+
+    if (!line_valid(channel) || energized == NULL) {
+
+        return false;
+
+    }
+
+    *energized = s_level[channel] == 0 ? 1 : 0;
 
     return true;
 

@@ -3,7 +3,7 @@
 **Programme:** HiTEKS CCLI · TesPro TG544 (`platform_tg500`)  
 **Last consolidated:** 2026-10-01  
 **Lab PC:** `192.168.10.10` · **DUT:** `192.168.10.1`  
-**Product build (lab gate):** `0.1.0-r25` (P5-COMPARE-FIX)
+**Product build (lab gate):** `0.1.0-r27` (P7-01-EVENT-STORE)
 
 This folder is the **authoritative lab evidence chain**. It is **not** O.15 certification (Phase 7).
 
@@ -19,8 +19,8 @@ This folder is the **authoritative lab evidence chain**. It is **not** O.15 cert
 | **3** | DSO MMS TLS | **CLOSED** (lab) 2026-09-25 | `lab/evidence/testsuite-pro/inbox/TSP_P3_07_*` |
 | **4** | Operator 104 + TesPro 61850 | **CLOSED** (lab) 2026-09-30 | `lab/evidence/phase4/` |
 | **5** | Observability + reactive (lab) | **CLOSED** (lab) 2026-10-01 | **[phase5/P5_FINAL_CLOSEOUT.md](phase5/P5_FINAL_CLOSEOUT.md)** |
-| **6** | Defence I/O Annex M | **OPEN** | Checklist P6-* |
-| **7** | Evidence pack / cert | **OPEN** | Not accredited cert |
+| **6** | Defence I/O Annex M | **CLOSED** (lab) 2026-10-02 | **[phase6/P6_FINAL_CLOSEOUT.md](phase6/P6_FINAL_CLOSEOUT.md)** |
+| **7** | Evidence pack / cert | **OPEN (kickoff)** | **[phase7/P7_README.md](phase7/P7_README.md)** — not accredited cert |
 
 **Phase 5 residual (product, non-blocking lab):** REQ-MET-002 grid alignment · LN-GAP-08 · REQ-CTL-004 · P5-R02–R09 · P5-04 accuracy · P5-06 meter map.
 
@@ -31,6 +31,8 @@ This folder is the **authoritative lab evidence chain**. It is **not** O.15 cert
 | Path | Contents |
 |------|----------|
 | **[phase5/](phase5/)** | P5 full-circle gate — annex sequence, LN matrix, northbound, GNSS, closeout |
+| **[phase6/](phase6/)** | P6 Annex M — SMS trip, O.11 inhibit, voltage-class gaps |
+| **[phase7/](phase7/)** | P7 O.14 event store, coverage matrix, K7.5 DSO demo |
 | **[phase4/](phase4/)** | P4 Eth_B 104 TLS, operator role, TesPro supplier SW |
 | **[testsuite-pro/](testsuite-pro/)** | Triangle MicroWorks TSP exports (historical + Compare waivers) |
 | **[O13_1_isolation_2026-09-25/](O13_1_isolation_2026-09-25/)** | P2/P3 isolation session reports |

@@ -1,0 +1,90 @@
+﻿map_id,multicast_address,dataset_name,member_index,member_desc,sending_variable,subscriber_ied,subscriber_local,sending_relay,cb_name,cb_go_id,vlan_dec,vlan_hex,cos,app_id_hex,mms_path,bind_kind,enabled,runtime_status,notes
+Dset_BF.Quality->1-1TA/B,01-0C-CD-01-00-14,Dset_BF,0,Quality,N/A,1-1TA/B,VB003,I-1AMB1,GooseDset_BF,I-1AMB1_Dset_BF,20,14,7,0x0002,,,Y,STUB,Berlin BF template
+Dset_BF.TestMode->1-1TA/B,01-0C-CD-01-00-14,Dset_BF,1,Test Mode,LT05,1-1TA/B,VB001,I-1AMB1,GooseDset_BF,I-1AMB1_Dset_BF,20,14,7,0x0002,,,Y,STUB,Berlin BF template
+Dset_BF.BreakerFailure->1-1TA/B,01-0C-CD-01-00-14,Dset_BF,2,Breaker Failure,LT09,1-1TA/B,VB002,I-1AMB1,GooseDset_BF,I-1AMB1_Dset_BF,20,14,7,0x0002,,,Y,STUB,Berlin BF template
+Dset_BF.Quality->1-IGA/B,01-0C-CD-01-00-14,Dset_BF,0,Quality,N/A,1-IGA/B,VB003,I-1AMB1,GooseDset_BF,I-1AMB1_Dset_BF,20,14,7,0x0002,,,Y,STUB,Berlin BF template
+Dset_BF.TestMode->1-IGA/B,01-0C-CD-01-00-14,Dset_BF,1,Test Mode,LT05,1-IGA/B,VB001,I-1AMB1,GooseDset_BF,I-1AMB1_Dset_BF,20,14,7,0x0002,,,Y,STUB,Berlin BF template
+Dset_BF.BreakerFailure->1-IGA/B,01-0C-CD-01-00-14,Dset_BF,2,Breaker Failure,LT09,1-IGA/B,VB002,I-1AMB1,GooseDset_BF,I-1AMB1_Dset_BF,20,14,7,0x0002,,,Y,STUB,Berlin BF template
+Dset_BF.Quality->2-3A1/2B1,01-0C-CD-01-00-14,Dset_BF,0,Quality,N/A,2-3A1/2B1,VB009,I-1AMB1,GooseDset_BF,I-1AMB1_Dset_BF,20,14,7,0x0002,,,N,STUB,Berlin BF template
+Dset_BF.TestMode->2-3A1/2B1,01-0C-CD-01-00-14,Dset_BF,1,Test Mode,LT05,2-3A1/2B1,VB007,I-1AMB1,GooseDset_BF,I-1AMB1_Dset_BF,20,14,7,0x0002,,,N,STUB,Berlin BF template
+Dset_BF.BreakerFailure->2-3A1/2B1,01-0C-CD-01-00-14,Dset_BF,2,Breaker Failure,LT09,2-3A1/2B1,VB008,I-1AMB1,GooseDset_BF,I-1AMB1_Dset_BF,20,14,7,0x0002,,,N,STUB,Berlin BF template
+Dset_BF.Quality->G-25A LGC,01-0C-CD-01-00-14,Dset_BF,0,Quality,N/A,G-25A LGC,VB012,I-1AMB1,GooseDset_BF,I-1AMB1_Dset_BF,20,14,7,0x0002,,,N,STUB,Berlin BF template
+Dset_BF.TestMode->G-25A LGC,01-0C-CD-01-00-14,Dset_BF,1,Test Mode,LT05,G-25A LGC,VB010,I-1AMB1,GooseDset_BF,I-1AMB1_Dset_BF,20,14,7,0x0002,,,N,STUB,Berlin BF template
+Dset_BF.BreakerFailure->G-25A LGC,01-0C-CD-01-00-14,Dset_BF,2,Breaker Failure,LT09,G-25A LGC,VB011,I-1AMB1,GooseDset_BF,I-1AMB1_Dset_BF,20,14,7,0x0002,,,N,STUB,Berlin BF template
+Dset_BF.Quality->2-R10,01-0C-CD-01-00-14,Dset_BF,0,Quality,N/A,2-R10,VB015,I-1AMB1,GooseDset_BF,I-1AMB1_Dset_BF,20,14,7,0x0002,,,N,STUB,Berlin BF template
+Dset_BF.TestMode->2-R10,01-0C-CD-01-00-14,Dset_BF,1,Test Mode,LT05,2-R10,VB013,I-1AMB1,GooseDset_BF,I-1AMB1_Dset_BF,20,14,7,0x0002,,,N,STUB,Berlin BF template
+Dset_BF.BreakerFailure->2-R10,01-0C-CD-01-00-14,Dset_BF,2,Breaker Failure,LT09,2-R10,VB014,I-1AMB1,GooseDset_BF,I-1AMB1_Dset_BF,20,14,7,0x0002,,,N,STUB,Berlin BF template
+Dset_BF.Quality->2-1T1,01-0C-CD-01-00-14,Dset_BF,0,Quality,N/A,2-1T1,VB018,I-1AMB1,GooseDset_BF,I-1AMB1_Dset_BF,20,14,7,0x0002,,,N,STUB,Berlin BF template
+Dset_BF.TestMode->2-1T1,01-0C-CD-01-00-14,Dset_BF,1,Test Mode,LT05,2-1T1,VB016,I-1AMB1,GooseDset_BF,I-1AMB1_Dset_BF,20,14,7,0x0002,,,N,STUB,Berlin BF template
+Dset_BF.BreakerFailure->2-1T1,01-0C-CD-01-00-14,Dset_BF,2,Breaker Failure,LT09,2-1T1,VB017,I-1AMB1,GooseDset_BF,I-1AMB1_Dset_BF,20,14,7,0x0002,,,N,STUB,Berlin BF template
+Dset_BF.Quality->1-10MA/B,01-0C-CD-01-00-14,Dset_BF,0,Quality,N/A,1-10MA/B,VB006,I-1AMB1,GooseDset_BF,I-1AMB1_Dset_BF,20,14,7,0x0002,,,N,STUB,Berlin BF template
+Dset_BF.TestMode->1-10MA/B,01-0C-CD-01-00-14,Dset_BF,1,Test Mode,LT05,1-10MA/B,VB004,I-1AMB1,GooseDset_BF,I-1AMB1_Dset_BF,20,14,7,0x0002,,,N,STUB,Berlin BF template
+Dset_BF.BreakerFailure->1-10MA/B,01-0C-CD-01-00-14,Dset_BF,2,Breaker Failure,LT09,1-10MA/B,VB005,I-1AMB1,GooseDset_BF,I-1AMB1_Dset_BF,20,14,7,0x0002,,,N,STUB,Berlin BF template
+Dset_BF.Quality->1-20MA/B,01-0C-CD-01-00-14,Dset_BF,0,Quality,N/A,1-20MA/B,VB003,I-1AMB1,GooseDset_BF,I-1AMB1_Dset_BF,20,14,7,0x0002,,,Y,STUB,Berlin BF template
+Dset_BF.TestMode->1-20MA/B,01-0C-CD-01-00-14,Dset_BF,1,Test Mode,LT05,1-20MA/B,VB001,I-1AMB1,GooseDset_BF,I-1AMB1_Dset_BF,20,14,7,0x0002,,,Y,STUB,Berlin BF template
+Dset_BF.BreakerFailure->1-20MA/B,01-0C-CD-01-00-14,Dset_BF,2,Breaker Failure,LT09,1-20MA/B,VB002,I-1AMB1,GooseDset_BF,I-1AMB1_Dset_BF,20,14,7,0x0002,,,Y,STUB,Berlin BF template
+Dset_BF.Quality->1-30MA/B,01-0C-CD-01-00-14,Dset_BF,0,Quality,N/A,1-30MA/B,VB009,I-1AMB1,GooseDset_BF,I-1AMB1_Dset_BF,20,14,7,0x0002,,,N,STUB,Berlin BF template
+Dset_BF.TestMode->1-30MA/B,01-0C-CD-01-00-14,Dset_BF,1,Test Mode,LT05,1-30MA/B,VB007,I-1AMB1,GooseDset_BF,I-1AMB1_Dset_BF,20,14,7,0x0002,,,N,STUB,Berlin BF template
+Dset_BF.BreakerFailure->1-30MA/B,01-0C-CD-01-00-14,Dset_BF,2,Breaker Failure,LT09,1-30MA/B,VB008,I-1AMB1,GooseDset_BF,I-1AMB1_Dset_BF,20,14,7,0x0002,,,N,STUB,Berlin BF template
+Dset_BF.Quality->1-40MA/B,01-0C-CD-01-00-14,Dset_BF,0,Quality,N/A,1-40MA/B,VB012,I-1AMB1,GooseDset_BF,I-1AMB1_Dset_BF,20,14,7,0x0002,,,N,STUB,Berlin BF template
+Dset_BF.TestMode->1-40MA/B,01-0C-CD-01-00-14,Dset_BF,1,Test Mode,LT05,1-40MA/B,VB010,I-1AMB1,GooseDset_BF,I-1AMB1_Dset_BF,20,14,7,0x0002,,,N,STUB,Berlin BF template
+Dset_BF.BreakerFailure->1-40MA/B,01-0C-CD-01-00-14,Dset_BF,2,Breaker Failure,LT09,1-40MA/B,VB011,I-1AMB1,GooseDset_BF,I-1AMB1_Dset_BF,20,14,7,0x0002,,,N,STUB,Berlin BF template
+Dset_BF.Quality->7-T10A/B,01-0C-CD-01-00-14,Dset_BF,0,Quality,N/A,7-T10A/B,VB015,I-1AMB1,GooseDset_BF,I-1AMB1_Dset_BF,20,14,7,0x0002,,,N,STUB,Berlin BF template
+Dset_BF.TestMode->7-T10A/B,01-0C-CD-01-00-14,Dset_BF,1,Test Mode,LT05,7-T10A/B,VB013,I-1AMB1,GooseDset_BF,I-1AMB1_Dset_BF,20,14,7,0x0002,,,N,STUB,Berlin BF template
+Dset_BF.BreakerFailure->7-T10A/B,01-0C-CD-01-00-14,Dset_BF,2,Breaker Failure,LT09,7-T10A/B,VB014,I-1AMB1,GooseDset_BF,I-1AMB1_Dset_BF,20,14,7,0x0002,,,N,STUB,Berlin BF template
+Dset_BF.Quality->7-T20A/B,01-0C-CD-01-00-14,Dset_BF,0,Quality,N/A,7-T20A/B,VB003,I-1AMB1,GooseDset_BF,I-1AMB1_Dset_BF,20,14,7,0x0002,,,Y,STUB,Berlin BF template
+Dset_BF.TestMode->7-T20A/B,01-0C-CD-01-00-14,Dset_BF,1,Test Mode,LT05,7-T20A/B,VB001,I-1AMB1,GooseDset_BF,I-1AMB1_Dset_BF,20,14,7,0x0002,,,Y,STUB,Berlin BF template
+Dset_BF.BreakerFailure->7-T20A/B,01-0C-CD-01-00-14,Dset_BF,2,Breaker Failure,LT09,7-T20A/B,VB002,I-1AMB1,GooseDset_BF,I-1AMB1_Dset_BF,20,14,7,0x0002,,,Y,STUB,Berlin BF template
+Dset_BF.Quality->7-T30A/B,01-0C-CD-01-00-14,Dset_BF,0,Quality,N/A,7-T30A/B,VB009,I-1AMB1,GooseDset_BF,I-1AMB1_Dset_BF,20,14,7,0x0002,,,N,STUB,Berlin BF template
+Dset_BF.TestMode->7-T30A/B,01-0C-CD-01-00-14,Dset_BF,1,Test Mode,LT05,7-T30A/B,VB007,I-1AMB1,GooseDset_BF,I-1AMB1_Dset_BF,20,14,7,0x0002,,,N,STUB,Berlin BF template
+Dset_BF.BreakerFailure->7-T30A/B,01-0C-CD-01-00-14,Dset_BF,2,Breaker Failure,LT09,7-T30A/B,VB008,I-1AMB1,GooseDset_BF,I-1AMB1_Dset_BF,20,14,7,0x0002,,,N,STUB,Berlin BF template
+Dset_BF.Quality->7-T40A/B,01-0C-CD-01-00-14,Dset_BF,0,Quality,N/A,7-T40A/B,VB012,I-1AMB1,GooseDset_BF,I-1AMB1_Dset_BF,20,14,7,0x0002,,,N,STUB,Berlin BF template
+Dset_BF.TestMode->7-T40A/B,01-0C-CD-01-00-14,Dset_BF,1,Test Mode,LT05,7-T40A/B,VB010,I-1AMB1,GooseDset_BF,I-1AMB1_Dset_BF,20,14,7,0x0002,,,N,STUB,Berlin BF template
+Dset_BF.BreakerFailure->7-T40A/B,01-0C-CD-01-00-14,Dset_BF,2,Breaker Failure,LT09,7-T40A/B,VB011,I-1AMB1,GooseDset_BF,I-1AMB1_Dset_BF,20,14,7,0x0002,,,N,STUB,Berlin BF template
+Dset_BF.Quality->CCI016_01,01-0C-CD-01-00-14,Dset_BF,0,Quality,N/A,CCI016_01,VB022,I-1AMB1,GooseDset_BF,I-1AMB1_Dset_BF,20,14,7,0x0002,,goose_sub,N,STUB,CCI subscribe stub — IDG from bay BF
+Dset_BF.TestMode->CCI016_01,01-0C-CD-01-00-14,Dset_BF,1,Test Mode,LT05,CCI016_01,VB020,I-1AMB1,GooseDset_BF,I-1AMB1_Dset_BF,20,14,7,0x0002,,goose_sub,N,STUB,CCI subscribe stub — IDG from bay BF
+Dset_BF.BreakerFailure->CCI016_01,01-0C-CD-01-00-14,Dset_BF,2,Breaker Failure,LT09,CCI016_01,VB021,I-1AMB1,GooseDset_BF,I-1AMB1_Dset_BF,20,14,7,0x0002,LD_Plant/IDGXCBR1.Pos,goose_sub,N,STUB,CCI subscribe stub — IDG from bay BF
+Dset_TT.Quality->1-1TA/B,01-0C-CD-01-00-01,Dset_TT,0,Quality,N/A,1-1TA/B,VB006,I-1AMB1,GooseDset_TT,I-1AMB1_Dset_TT,1,1,7,0x0001,,,N,STUB,Berlin TT template
+Dset_TT.TestMode->1-1TA/B,01-0C-CD-01-00-01,Dset_TT,1,Test Mode,LT05,1-1TA/B,VB004,I-1AMB1,GooseDset_TT,I-1AMB1_Dset_TT,1,1,7,0x0001,,,N,STUB,Berlin TT template
+Dset_TT.TransferTrip->1-1TA/B,01-0C-CD-01-00-01,Dset_TT,2,Transfer Trip,SV11T,1-1TA/B,VB005,I-1AMB1,GooseDset_TT,I-1AMB1_Dset_TT,1,1,7,0x0001,,,N,STUB,Berlin TT template
+Dset_TT.Quality->1-IGA/B,01-0C-CD-01-00-01,Dset_TT,0,Quality,N/A,1-IGA/B,VB006,I-1AMB1,GooseDset_TT,I-1AMB1_Dset_TT,1,1,7,0x0001,,,N,STUB,Berlin TT template
+Dset_TT.TestMode->1-IGA/B,01-0C-CD-01-00-01,Dset_TT,1,Test Mode,LT05,1-IGA/B,VB004,I-1AMB1,GooseDset_TT,I-1AMB1_Dset_TT,1,1,7,0x0001,,,N,STUB,Berlin TT template
+Dset_TT.TransferTrip->1-IGA/B,01-0C-CD-01-00-01,Dset_TT,2,Transfer Trip,SV11T,1-IGA/B,VB005,I-1AMB1,GooseDset_TT,I-1AMB1_Dset_TT,1,1,7,0x0001,,,N,STUB,Berlin TT template
+Dset_TT.Quality->1-10MA/B,01-0C-CD-01-00-01,Dset_TT,0,Quality,N/A,1-10MA/B,VB007,I-1AMB1,GooseDset_TT,I-1AMB1_Dset_TT,1,1,7,0x0001,,,Y,STUB,Berlin TT template
+Dset_TT.TestMode->1-10MA/B,01-0C-CD-01-00-01,Dset_TT,1,Test Mode,LT05,1-10MA/B,VB005,I-1AMB1,GooseDset_TT,I-1AMB1_Dset_TT,1,1,7,0x0001,,,Y,STUB,Berlin TT template
+Dset_TT.TransferTrip->1-10MA/B,01-0C-CD-01-00-01,Dset_TT,2,Transfer Trip,SV11T,1-10MA/B,VB006,I-1AMB1,GooseDset_TT,I-1AMB1_Dset_TT,1,1,7,0x0001,,,Y,STUB,Berlin TT template
+Dset_TT.Quality->1-20MA/B,01-0C-CD-01-00-01,Dset_TT,0,Quality,N/A,1-20MA/B,VB009,I-1AMB1,GooseDset_TT,I-1AMB1_Dset_TT,1,1,7,0x0001,,,N,STUB,Berlin TT template
+Dset_TT.TestMode->1-20MA/B,01-0C-CD-01-00-01,Dset_TT,1,Test Mode,LT05,1-20MA/B,VB007,I-1AMB1,GooseDset_TT,I-1AMB1_Dset_TT,1,1,7,0x0001,,,N,STUB,Berlin TT template
+Dset_TT.TransferTrip->1-20MA/B,01-0C-CD-01-00-01,Dset_TT,2,Transfer Trip,SV11T,1-20MA/B,VB008,I-1AMB1,GooseDset_TT,I-1AMB1_Dset_TT,1,1,7,0x0001,,,N,STUB,Berlin TT template
+Dset_TT.Quality->1-30MA/B,01-0C-CD-01-00-01,Dset_TT,0,Quality,N/A,1-30MA/B,VB012,I-1AMB1,GooseDset_TT,I-1AMB1_Dset_TT,1,1,7,0x0001,,,N,STUB,Berlin TT template
+Dset_TT.TestMode->1-30MA/B,01-0C-CD-01-00-01,Dset_TT,1,Test Mode,LT05,1-30MA/B,VB010,I-1AMB1,GooseDset_TT,I-1AMB1_Dset_TT,1,1,7,0x0001,,,N,STUB,Berlin TT template
+Dset_TT.TransferTrip->1-30MA/B,01-0C-CD-01-00-01,Dset_TT,2,Transfer Trip,SV11T,1-30MA/B,VB011,I-1AMB1,GooseDset_TT,I-1AMB1_Dset_TT,1,1,7,0x0001,,,N,STUB,Berlin TT template
+Dset_TT.Quality->7-T20A/B,01-0C-CD-01-00-01,Dset_TT,0,Quality,N/A,7-T20A/B,VB007,I-1AMB1,GooseDset_TT,I-1AMB1_Dset_TT,1,1,7,0x0001,,,Y,STUB,Berlin TT template
+Dset_TT.TestMode->7-T20A/B,01-0C-CD-01-00-01,Dset_TT,1,Test Mode,LT05,7-T20A/B,VB005,I-1AMB1,GooseDset_TT,I-1AMB1_Dset_TT,1,1,7,0x0001,,,Y,STUB,Berlin TT template
+Dset_TT.TransferTrip->7-T20A/B,01-0C-CD-01-00-01,Dset_TT,2,Transfer Trip,SV11T,7-T20A/B,VB006,I-1AMB1,GooseDset_TT,I-1AMB1_Dset_TT,1,1,7,0x0001,,,Y,STUB,Berlin TT template
+Dset_TT.Quality->CCI016_01,01-0C-CD-01-00-01,Dset_TT,0,Quality,N/A,CCI016_01,VB032,I-1AMB1,GooseDset_TT,I-1AMB1_Dset_TT,1,1,7,0x0001,,goose_sub,N,STUB,Berlin TT template
+Dset_TT.TestMode->CCI016_01,01-0C-CD-01-00-01,Dset_TT,1,Test Mode,LT05,CCI016_01,VB030,I-1AMB1,GooseDset_TT,I-1AMB1_Dset_TT,1,1,7,0x0001,,goose_sub,N,STUB,Berlin TT template
+Dset_TT.TransferTrip->CCI016_01,01-0C-CD-01-00-01,Dset_TT,2,Transfer Trip,SV11T,CCI016_01,VB031,I-1AMB1,GooseDset_TT,I-1AMB1_Dset_TT,1,1,7,0x0001,,goose_sub,N,STUB,Berlin TT template
+CCI.PdC.TotW,01-0C-CD-01-00-01,DS_R_PdC_Mis4sec,0,TotW,LT_N/A,CCI016_01,,CCI016_01,gcb_PdC_Mis4sec,PdCMis4,0,0,4,0x1000,LD_Plant/PdCMMXU1.TotW,mms_int,Y,IMPL,CCLI publish — matches lab_tg544_eth_a.cid
+CCI.PdC.TotVAr,01-0C-CD-01-00-01,DS_R_PdC_Mis4sec,1,TotVAr,LT_N/A,CCI016_01,,CCI016_01,gcb_PdC_Mis4sec,PdCMis4,0,0,4,0x1000,LD_Plant/PdCMMXU1.TotVAr,mms_int,Y,IMPL,CCLI publish — matches lab_tg544_eth_a.cid
+CCI.PdC.PPV,01-0C-CD-01-00-01,DS_R_PdC_Mis4sec,2,PPV,LT_N/A,CCI016_01,,CCI016_01,gcb_PdC_Mis4sec,PdCMis4,0,0,4,0x1000,LD_Plant/PdCMMXU1.PPV,mms_int,Y,IMPL,CCLI publish — matches lab_tg544_eth_a.cid
+CCI.PdC.A,01-0C-CD-01-00-01,DS_R_PdC_Mis4sec,3,A,LT_N/A,CCI016_01,,CCI016_01,gcb_PdC_Mis4sec,PdCMis4,0,0,4,0x1000,LD_Plant/PdCMMXU1.A,mms_int,Y,IMPL,CCLI publish — matches lab_tg544_eth_a.cid
+CCI.Alarm.DisFRDECP1.Beh,01-0C-CD-01-00-02,DS_R_Stato_Allarmi_Segnali,0,DisFRDECP1.Beh,N/A,CCI016_01,,CCI016_01,gcb_Stato_Allarmi,CCIAlrm,0,0,4,0x1001,LD_Plant/DisFRDECP1.Beh,mms_int,Y,IMPL,CCLI alarm GOOSE publish member
+CCI.Alarm.DisFRDGEN1.Beh,01-0C-CD-01-00-02,DS_R_Stato_Allarmi_Segnali,1,DisFRDGEN1.Beh,N/A,CCI016_01,,CCI016_01,gcb_Stato_Allarmi,CCIAlrm,0,0,4,0x1001,LD_Plant/DisFRDGEN1.Beh,mms_int,Y,IMPL,CCLI alarm GOOSE publish member
+CCI.Alarm.DisFRDSTO1.Beh,01-0C-CD-01-00-02,DS_R_Stato_Allarmi_Segnali,2,DisFRDSTO1.Beh,N/A,CCI016_01,,CCI016_01,gcb_Stato_Allarmi,CCIAlrm,0,0,4,0x1001,LD_Plant/DisFRDSTO1.Beh,mms_int,Y,IMPL,CCLI alarm GOOSE publish member
+CCI.Alarm.IDGXCBR1.Pos,01-0C-CD-01-00-02,DS_R_Stato_Allarmi_Segnali,3,IDGXCBR1.Pos,N/A,CCI016_01,,CCI016_01,gcb_Stato_Allarmi,CCIAlrm,0,0,4,0x1001,LD_Plant/IDGXCBR1.Pos,mms_int,Y,IMPL,CCLI alarm GOOSE publish member
+CCI.Alarm.SSGGDGEN1.Health,01-0C-CD-01-00-02,DS_R_Stato_Allarmi_Segnali,4,SSGGDGEN1.Health,N/A,CCI016_01,,CCI016_01,gcb_Stato_Allarmi,CCIAlrm,0,0,4,0x1001,LD_Plant/SSGGDGEN1.Health,mms_int,Y,IMPL,CCLI alarm GOOSE publish member
+CCI.Alarm.SSGGDGEN2.Health,01-0C-CD-01-00-02,DS_R_Stato_Allarmi_Segnali,5,SSGGDGEN2.Health,N/A,CCI016_01,,CCI016_01,gcb_Stato_Allarmi,CCIAlrm,0,0,4,0x1001,LD_Plant/SSGGDGEN2.Health,mms_int,Y,IMPL,CCLI alarm GOOSE publish member
+CCI.Alarm.WlimDWMX1.Beh,01-0C-CD-01-00-02,DS_R_Stato_Allarmi_Segnali,6,WlimDWMX1.Beh,N/A,CCI016_01,,CCI016_01,gcb_Stato_Allarmi,CCIAlrm,0,0,4,0x1001,LD_Plant/WlimDWMX1.Beh,mms_int,Y,IMPL,CCLI alarm GOOSE publish member
+CCI.Alarm.WlimDWMX1.FctOpStAuto,01-0C-CD-01-00-02,DS_R_Stato_Allarmi_Segnali,7,WlimDWMX1.FctOpStAuto,N/A,CCI016_01,,CCI016_01,gcb_Stato_Allarmi,CCIAlrm,0,0,4,0x1001,LD_Plant/WlimDWMX1.FctOpStAuto,mms_int,Y,IMPL,CCLI alarm GOOSE publish member
+CCI.Alarm.WlimDWMX1.FctOpStEx,01-0C-CD-01-00-02,DS_R_Stato_Allarmi_Segnali,8,WlimDWMX1.FctOpStEx,N/A,CCI016_01,,CCI016_01,gcb_Stato_Allarmi,CCIAlrm,0,0,4,0x1001,LD_Plant/WlimDWMX1.FctOpStEx,mms_int,Y,IMPL,CCLI alarm GOOSE publish member
+CCI.Alarm.WSdDAGC1.Beh,01-0C-CD-01-00-02,DS_R_Stato_Allarmi_Segnali,9,WSdDAGC1.Beh,N/A,CCI016_01,,CCI016_01,gcb_Stato_Allarmi,CCIAlrm,0,0,4,0x1001,LD_Plant/WSdDAGC1.Beh,mms_int,Y,IMPL,CCLI alarm GOOSE publish member
+CCI.Alarm.WSdDAGC1.FctOpSt,01-0C-CD-01-00-02,DS_R_Stato_Allarmi_Segnali,10,WSdDAGC1.FctOpSt,N/A,CCI016_01,,CCI016_01,gcb_Stato_Allarmi,CCIAlrm,0,0,4,0x1001,LD_Plant/WSdDAGC1.FctOpSt,mms_int,Y,IMPL,CCLI alarm GOOSE publish member
+CCI.Alarm.VArSdDVAR1.Beh,01-0C-CD-01-00-02,DS_R_Stato_Allarmi_Segnali,11,VArSdDVAR1.Beh,N/A,CCI016_01,,CCI016_01,gcb_Stato_Allarmi,CCIAlrm,0,0,4,0x1001,LD_Plant/VArSdDVAR1.Beh,mms_int,Y,IMPL,CCLI alarm GOOSE publish member
+CCI.Alarm.VArSdDVAR1.FctOpSt,01-0C-CD-01-00-02,DS_R_Stato_Allarmi_Segnali,12,VArSdDVAR1.FctOpSt,N/A,CCI016_01,,CCI016_01,gcb_Stato_Allarmi,CCIAlrm,0,0,4,0x1001,LD_Plant/VArSdDVAR1.FctOpSt,mms_int,Y,IMPL,CCLI alarm GOOSE publish member
+CCI.Alarm.PFSPDFPF1.Beh,01-0C-CD-01-00-02,DS_R_Stato_Allarmi_Segnali,13,PFSPDFPF1.Beh,N/A,CCI016_01,,CCI016_01,gcb_Stato_Allarmi,CCIAlrm,0,0,4,0x1001,LD_Plant/PFSPDFPF1.Beh,mms_int,Y,IMPL,CCLI alarm GOOSE publish member
+CCI.Alarm.PFSPDFPF1.FctOpSt,01-0C-CD-01-00-02,DS_R_Stato_Allarmi_Segnali,14,PFSPDFPF1.FctOpSt,N/A,CCI016_01,,CCI016_01,gcb_Stato_Allarmi,CCIAlrm,0,0,4,0x1001,LD_Plant/PFSPDFPF1.FctOpSt,mms_int,Y,IMPL,CCLI alarm GOOSE publish member
+CCI.Alarm.VArVDVVR1.Beh,01-0C-CD-01-00-02,DS_R_Stato_Allarmi_Segnali,15,VArVDVVR1.Beh,N/A,CCI016_01,,CCI016_01,gcb_Stato_Allarmi,CCIAlrm,0,0,4,0x1001,LD_Plant/VArVDVVR1.Beh,mms_int,Y,IMPL,CCLI alarm GOOSE publish member
+CCI.Alarm.VArVDVVR1.FctOpSt,01-0C-CD-01-00-02,DS_R_Stato_Allarmi_Segnali,16,VArVDVVR1.FctOpSt,N/A,CCI016_01,,CCI016_01,gcb_Stato_Allarmi,CCIAlrm,0,0,4,0x1001,LD_Plant/VArVDVVR1.FctOpSt,mms_int,Y,IMPL,CCLI alarm GOOSE publish member
+CCI.Alarm.PFWDPFW1.Beh,01-0C-CD-01-00-02,DS_R_Stato_Allarmi_Segnali,17,PFWDPFW1.Beh,N/A,CCI016_01,,CCI016_01,gcb_Stato_Allarmi,CCIAlrm,0,0,4,0x1001,LD_Plant/PFWDPFW1.Beh,mms_int,Y,IMPL,CCLI alarm GOOSE publish member
+CCI.Alarm.PFWDPFW1.FctOpSt,01-0C-CD-01-00-02,DS_R_Stato_Allarmi_Segnali,18,PFWDPFW1.FctOpSt,N/A,CCI016_01,,CCI016_01,gcb_Stato_Allarmi,CCIAlrm,0,0,4,0x1001,LD_Plant/PFWDPFW1.FctOpSt,mms_int,Y,IMPL,CCLI alarm GOOSE publish member

@@ -70,7 +70,7 @@ Requires **`pf2.use_dso_mock: true`** and **`dso.enabled: true`** for equation l
 | R04 | **O.9.2.1** 110 % V | `FctOpStAuto` | policy | — | yaml `w110_*` (no V meter) |
 | R05 | **O.11** priority | — | **(5)(6)** min() | 50/70 → **50**; 80/70 → **70** | `derive_active_power_kw()` |
 | R06 | **O.7.3.1** TsP ±5 % | — | **(7)(8)** | TsP ≤ **60 s** | `settled_within_band_kw()` test only |
-| R07 | **O.7.3.3** 3 s spacing | — | **(9)** | NOT IMPL | — |
+| R07 | **O.7.3.3** 3 s spacing | — | **(9)** | **IMPL r29** — `mms.setpoint_min_interval_s: 3` | `core/dso/setpoint_gate.hpp` → `mms_adapter.cpp` |
 | R08 | **O.13.1.2** DSO loss | Annex U | timers | NOT IMPL | lab **10 s** meter stale only |
 | R09 | **O.8.3** 4 s TotW | `MMXU1.PdC.TotW` | 4 s blocks | NOT IMPL | Modbus **1 s** poll |
 | R13 | **O.9.1.4 / O.10.3.2** VArSd/VArSa | Tab. **88/89** `VArSptPct` | **(3)** | direct Q % Smax | **Phase 5-R** (not Phase 1) |

@@ -3,6 +3,8 @@
 **core** logic: plant Smax + O.9.2.x / O.11 active-P arbiter → PF2 kW thresholds.
 Live Eth_A MMS populates the same `DsoActivePowerCommands` via `DsoLiveCommand`.
 
+Lab Operate clients: `lab/mms_wlim_client.c`, `lab/mms_wsd_client.c`, `lab/mms_varsd_client.c`.
+
 ## Hierarchy → code (Annex T T.3.3.1)
 
 ```text

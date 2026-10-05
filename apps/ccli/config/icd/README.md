@@ -19,7 +19,8 @@ Place CID/ICD exports and mapping tables here.
 | `cei-tr-57-126-example.cid` | Annex A reference CID from CEI TR 57-126 (PF1 + PF2 example plant) — **do not edit** |
 | `lab_tg544_eth_a.cid` | **Lab** copy — Communication IP **`192.168.10.1/24`** (TG544 LAN1 Eth_A); 2026-09-25 |
 | `lab_tg544_eth_a.cfg` | **Runtime model** (genconfig from CID) — **31 LNs**; deploy to `/etc/ccli/icd/` |
-| `signal_map.yaml` | **Lab MVP freeze (2026-09-25)** — `Wlim` / `PdC.TotW` / `urcb_PdC_Mis4sec` → runtime structs; plant DSO workbook still MISSING |
+| `signal_map.yaml` | **31-LN doc plane (rev 2, r29)** — equations + bindings; NOT loaded at runtime |
+| `../plant/` | **CSV commissioning plane (2026-10-04)** — GOOSE data map + Modbus/Huawei + MMS points — see [`../plant/READ.md`](../plant/READ.md) |
 
 ## Usage
 

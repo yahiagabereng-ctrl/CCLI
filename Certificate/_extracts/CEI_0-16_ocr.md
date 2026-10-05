@@ -1,0 +1,47 @@
+# OCR extract — CEI 0-16.pdf
+
+**Source:** `Certificate/CEI 0-16.pdf`
+**Method:** PyMuPDF render + Tesseract `ita+eng`
+**Regenerate:** `python scripts/ocr-certificates.py`
+
+---
+
+```text
+----- PAGE 1 (OCR ita+eng @ 300dpi) -----
+Holder:
+
+Product:
+
+identification:
+
+Tested acc. to:
+
+CERTIFICATE
+of Conformity
+
+TÙVRheinland
+
+A
+
+Registration No.: AK 60169282 0001
+
+Report No.: IT234ETC 001
+
+HIGECO MORE S.R.L.
+VIALE EUROPA 71
+32100 BELLUNO BL
+Italia
+
+Electrical Equipment
+Controllore Centrale di Impianto
+
+Trademark: HIGECO MORE
+Designation: CCI Q01-ESC-4T2F-10DI-PA
+
+According to Annex O and Annex T
+
+CEI 0-16:2022-03
+CEI 0-16; V1:2022-11
+
+TÙV Rheinland LGA Products GmbH - TillystraBe 2 - 90431 Nirnberg
+```

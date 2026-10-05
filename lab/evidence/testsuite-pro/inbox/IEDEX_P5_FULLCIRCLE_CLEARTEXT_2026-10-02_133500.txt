@@ -1,0 +1,79 @@
+# CCLI IEDExplorer evidence — Phase 5 full circle (cleartext)
+tool: IEDExplorer
+pc_ip: 192.168.10.10
+dut_ip: 192.168.10.1
+dut_port: 102
+tls: false
+cid: apps/ccli/config/icd/lab_tg544_eth_a.cid (rev 4)
+ccli_pkg: 0.1.0-r25
+gate: P5_FULLCIRCLE
+operator: yahia
+date: 2026-10-02
+annex_seq: P5-ANNEX-SEQ-001
+
+# --- Step log (one-by-one) ---
+
+## P5-00 Preconditions
+[P5-00-01] Deploy ccli 0.1.0-r25 + lab_tg544_eth_a.cfg rev4 — PASS (deploy 2026-10-02 13:26)
+[P5-00-02] Modbus slave COM5 P=450 Q=45 — PASS (PID 29320)
+[P5-00-03] chronyc tracking — PASS (Last offset -0.000354 s, RMS 0.0057 s, within ±100 ms)
+[P5-00-04] model=full_cid_cfg — PASS
+[P5-00-05] MMS 0.0.0.0:102 tls=off LISTEN — PASS
+[P5-00-06] Automated POC read (verify-tespro-points-live) — PASS TotW=450 TotVAr=45 PPV~20kV
+
+## P5-A Model
+[P5-A01] GetNameList 31 LNs — AUTO PASS (mms_ln_browser ln_count=31)
+[P5-A02] PdCMMXU1 present — AUTO PASS (browser list)
+[P5-A03] Wlim/WSd/VArSd present — AUTO PASS (browser list + Mod read 5/5/5)
+[P5-A-IED] IEDExplorer visual confirm tree — PASS (export apps/ccli/config/icd/ICD3.txt, 31 LNs)
+
+## P5-B Compare (waived — reuse r25 TSP exports)
+[P5-B02] Compare Model — WAIVED (TSP license blocked; TSP_P5_COMPARE_WAIVERS.md)
+
+## P5-C POC reads — PASS (ICD3.txt 2026-10-02 ~11:37 UTC)
+[P5-C01] TotW.mag.f = 450 kW — PASS
+[P5-C02] TotVAr.mag.f = 45 kvar — PASS
+[P5-C03] PPV.phsAB.cVal.mag.f = 20 kV — PASS
+[P5-C04] TotW/TotVAr/PPV.t identical (11:37:27.543) — PASS (E01 partial)
+[P5-C05] TotW.q/TotVAr.q INACCURATE; PPV.q Good — PART (LN-GAP-08 waived)
+
+## P5-F baseline reads (ICD3 pre-operate)
+[P5-F01] WlimDWMX1.Mod.stVal = 5 — PASS
+[P5-F02] WSdDAGC1.Mod.stVal = 5 (cfg had 1 at boot; runtime 5) — NOTE
+[P5-F03] VArSdDVAR1.Mod.stVal = 5 — PASS
+[P5-F04] ctlModel=3 on Wlim/WSd/VArSd — PASS (use Oper not SBOw)
+
+## P5-D URCB — PASS (IEDExplorer ReportsView → Report4.csv)
+[P5-D01] urcb_PdC_Mis4sec01 RptEna=True IntgPd=4000 — PASS
+[P5-D02] 17 integrity cycles TotW=450 TotVAr=45 — PASS (Δt ~3970–4067 ms)
+[P5-D03] t.sec mod 4 grid — GAP (product REQ-MET-002; lab waived)
+Evidence: apps/ccli/config/icd/Report4.csv
+         lab/evidence/testsuite-pro/inbox/IEDEX_P5_URCB_REPORT4_2026-10-02.csv
+
+## P5-E Timing — PASS (from Report4.csv)
+[P5-E01] TotW.t = TotVAr.t per cycle (identical ms) — PASS
+[P5-E02] Q019 on TotW/TotVAr; PPV/A empty in CSV export — PART (LN-GAP-08 waived)
+
+## P5-F Control — PASS (mms_*_client; IEDExplorer CO Write not supported)
+[P5-F10–11] Wlim WMaxSptPct=10 Mod=1 — PASS (mms_wlim_client)
+[P5-F20–21] WSd WSptPct=20 Mod=1 — PASS (mms_wsd_client)
+[P5-F30–31] VArSd VArTgtSptPct=10 Mod=1 — PASS (mms_varsd_client; TotVAr≈21)
+Evidence: lab/evidence/testsuite-pro/inbox/IEDEX_P5_CLIENT_OPERATE_2026-10-02.txt
+NOTE: IEDExplorer 0.80d cannot Operate ctlModel=3 APC/ENC (CO read-only / Write denied).
+
+## P5-H Northbound — PASS (2026-10-02 15:18 re-verify)
+[P5-H03] verify-tespro-northbound.ps1 exit 0 — PASS
+[P5-H04] PdC_TotW=450 PdC_TotVAr=21 PdC_PPV_AB=20 — PASS (15 MQTT msgs, Δt≈2s lab)
+[P5-H05] Control points in JSON: Wlim 10%, WSd 20%, VArSd 10% — PASS
+Evidence: lab/evidence/phase5/P5_TESPRO_NORTHBOUND_2026-10-02_151845.txt
+Prior partial (TotW=0 @ 11:57, modbus bench down): P5_TESPRO_NORTHBOUND_2026-10-02_115744.txt
+
+## P5-G02 — comms-loss fallback (2026-10-02 ~15:20)
+[P5-G02-01] IEDExplorer disconnect (user stop @ 192.168.10.1:102) — PASS
+[P5-G02-02] DUT log: "no clients — Operating Rule fallback armed (15 s)" — PASS
+[P5-G02-03] DUT log: "P3-05 Operating Rule fallback — live Wlim/WSd/VArSd cleared after 15 s no-comms" — PASS
+[P5-G02-04] Mod.stVal → 5 (Wlim/WSd/VArSd) via mms_adapter fallback — PASS
+NOTE: TesPro iec61850d northbound MMS client may remain connected (count=1); fallback fires when all MMS clients drop.
+
+## P5 session closeout — 2026-10-02
+GATE: P5_FULLCIRCLE re-validation (IEDExplorer + lab clients + CID rev4 + G02) — CLOSED

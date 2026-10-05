@@ -262,6 +262,57 @@ bool cci_gpio_ll_read(int line, int *level) {
     return true;
 }
 
+static bool ubus_read_relay_state(int channel, int *ubus_state) {
+    char buf[UBUS_BUF_SIZE];
+    char needle_a[32];
+    char needle_b[32];
+
+    if (ubus_state == NULL || channel < 1 || channel > 4) {
+        return false;
+    }
+
+    if (!ubus_run(CCI_UBUS_CMD " call dido_v2 status 2>/dev/null", buf,
+                  sizeof(buf))) {
+        return false;
+    }
+
+    snprintf(needle_a, sizeof(needle_a), "\"channel\": %d", channel);
+    snprintf(needle_b, sizeof(needle_b), "\"channel\":%d", channel);
+    const char *p = strstr(buf, needle_a);
+    if (p == NULL) {
+        p = strstr(buf, needle_b);
+    }
+    if (p == NULL) {
+        return false;
+    }
+
+    const char *state_key = strstr(p, "\"state\"");
+    if (state_key == NULL) {
+        return false;
+    }
+
+    return parse_int_after(state_key, ":", ubus_state);
+}
+
+bool cci_gpio_ll_read_relay(int channel, int *energized) {
+    if (energized == NULL) {
+        return false;
+    }
+
+    if (!s_use_ubus) {
+        *energized = 0;
+        return true;
+    }
+
+    int ubus_state = 0;
+    if (!ubus_read_relay_state(channel, &ubus_state)) {
+        return false;
+    }
+
+    *energized = ubus_state != 0 ? 1 : 0;
+    return true;
+}
+
 void cci_gpio_ll_shutdown(void) {
     for (int line = 1; line < 64; ++line) {
         if (s_line_is_output[line]) {

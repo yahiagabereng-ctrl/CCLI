@@ -1,0 +1,192 @@
+
+----- PAGE 1 -----
+No. 10373575-DSO 23-2657 
+  
+ 
+Page 1/2 
+DNV Netherlands B.V. 
+Utrechtseweg 310-B50, 6812 AR ARNHEM, The Netherlan ds Tel . +31 26 356 9111        www.dnv.com 
+P.O. Box 9035, 6800 ET ARNHEM, The Netherlands  Fax . +31 26 351 3683              contact@dnv.com 
+IEC 61850 Certificate Level A1
+ 
+ 
+Issued to: 
+Higeco Srl 
+HW R&D 
+Viale Europa 71 
+32100 Belluno 
+Italy 
+ 
+For the server product : 
+HSC 
+RTU for Industrial Automation and Control Systems 
+IEC 61850 version: HSC 110C V5.1 
+Hardware version: HSC 110 C 
+S/N: HSCIEC61850DNV 
+ 
+ 
+The server product has not been shown to be non-conforming to: 
+ 
+IEC 61850 Edition 2 Parts 6, 7-1, 7-2, 7-3, 7-4 and 8-1 
+ 
+Communication networks and systems for power utility automation  
+ 
+The conformance test has been performed according t o IEC 61850-10 Edition 2, the UCA International Users  Group 
+Edition 2 Server Test Procedures version 2.0.6 with pr oduct’s protocol, model and technical issue impleme ntation 
+conformance statements: “Protocol Implementation Con formance Statement for the IEC 61850 interface in Hig eco HSC-
+110-C, V1.0, Date 13/01/2023”, “Model Implementation  Conformance Statement for the IEC 61850 interface in  Higeco 
+HSC-110-C 1.0, V1.0, Date 10/01/2023” and “TISSUES Implem entation Conformance Statement for the IEC 61850 Ed2 
+interface in Higeco HSC-110-C 1.0, V1.0, Date 13/01/2 023” and product’s extra information for testing: “ Protocol 
+Implementation eXtra Information for Testing (PIXIT) for the IEC 61850 Edition 2 server interface in Higec o HSC-110-C 
+1.0, V1.0, Date 13/01/2023”. 
+ 
+The following IEC 61850 conformance blocks have been  tested with a positive result (number of relevant and executed 
+test cases / total number of test cases): 
+ 
+1    Basic Exchange (22/26) 
+2    Data Sets (4/7) 
+2+  Data Set Definition (24/24) 
+4    Setting Group Selection (4/4) 
+5    Unbuffered Reporting (22/23) 
+6    Buffered Reporting (32/33) 
+12a Direct Control (4/18) 
+12b SBO Control (10/27) 
+12c Enhanced Direct Control (4/20) 
+12d Enhanced SBO Control (11/28) 
+13 Time Synchronization (4/7) 
+14 File Transfer (8/8) 
+ 
+This certificate includes a summary of the test res ults as carried out at DNV in Spain with UniGrid SA S imulator 2.0.1 with 
+test suite 20211209 and UniCA 61850 Analyzer 6.40.01 . This document has been issued for information pur poses only, 
+and the archived DNV verification report No. 10373575-DSO 23-2656 rev 2 will prevail. 
+ 
+The test has been carried out on one single specime n of the product as referred above and submitted to  DNV by Higeco 
+Srl. The manufacturer’s production process has not b een assessed. This certificate does not imply that DNV has 
+approved any product other than the specimen tested. 
+ 
+Arnhem, January 12, 2023 
+ 
+Issued by:   
+ 
+ 
+G. Akse  
+Business Development Manager 
+Interoperability of Smart Power Systems 
+ 
+R. Schimmel  
+Verification Manager  
+1 Level A - Independent test lab with certified ISO 9001 Quality System 
+UCA International Users Group  P.O. Box 315, Shell Knob, MO 65747 USA 
+ 
+Copyright © DNV Netherlands B.V. Arnhem, the Netherlands. All rights reserved. It is prohibited to upd ate or change this certificate in any manner 
+whatsoever, including but not limited to dividing it into parts.  
+ 
+ 
+
+
+----- PAGE 2 -----
+No. 10373575-DSO 23-2657 
+  
+ 
+Page 2/2 
+DNV Netherlands B.V. 
+Utrechtseweg 310-B50, 6812 AR ARNHEM, The Netherlan ds Tel . +31 26 356 9111        www.dnv.com 
+P.O. Box 9035, 6800 ET ARNHEM, The Netherlands  Fax . +31 26 351 3683              contact@dnv.com 
+IEC 61850 Certificate Level A 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Applicable Test Procedures from the UCA International Users Group Edition 2 Server Test Procedures version 2.0.6 
+ 
+Conformance Block Mandatory Conditional  
+1:      Basic Exchange sAss1, sAss2, sAss3, sAss4, sAssN2, sAssN3, 
+sAssN4, sAssN5, sSrv1, sSrv2, sSrv3, sSrv4, 
+sSrv5, sSrv8, sSrvN1abcdf, sSrvN4 
+sAssN6, sSrv6, sSrv9, sSrv10, sSrvN1e, sSrvN3 
+2:      Data Sets sDs1, sDs10a, sDsN1ae sDs15 
+2+:   Data Set Definition  sDs2, sDs3, sDs4, sDs5, sDs6, sDs7, sDs8, sDs9, 
+sDs13, sDs14, sDsN1cd, sDsN2, sDsN3, sDsN4, 
+sDsN5, sDsN6, sDsN7, sDsN8, sDsN9, sDsN10 
+sDs11, sDs12, sDsN11, sDsN12 
+4:      Setting Group   
+         Selection 
+sSg1, sSg3, sSgN1 sSg11 
+5:      Unbuffered  
+         Reporting 
+sRp1, sRp2, sRp3, sRp4, sRp5, sRp9, sRp14, 
+sRp16, sRpN1, sRpN2, sRpN3, sRpN4, sRpN8 
+sRp6, sRp7, sRp8, sRp10, sRp11, sRp12, 
+sRp13, sRp15, sRpN5 
+6:      Buffered Reporting sBr1, sBr2, sBr3, sBr4, sBr5, sBr9, sBr14, sBr16, 
+sBr20, sBr21, sBr22, sBr25, sBr26, sBr27, sBr28, 
+sBr29, sBrN1, sBrN2, sBrN3, sBrN4, sBrN5, 
+sBrN8 
+sBr6, sBr7, sBr8, sBr10, sBr11, sBr12, sBr13, 
+sBr15, sBr23, sBr24 
+12a:  Direct control sCtl5, sCtl10, sDOns1, sDOns2 
+ 
+12b:  SBO control sCtl5, sCtl8, sCtl9, sCtl10, sCtl 11, sCtl25, 
+sSBOns1, sSBOns2, sSBOns6 
+sCtl6 
+12c:  Enhanced Direct  
+        Control 
+sCtl5, sCtl10, sDOes1, sDOes2  
+12d:  Enhanced SBO  
+         Control 
+sCtl5, sCtl8, sCtl9, sCtl10, sCtl11, sCtl25, 
+sSBOes1, sSBOes2, sSBOes6, sSBOes8 
+sCtl6 
+13:    Time sync  sTm1, sTm2, sTmN1 sTmN2 
+14:    File transfer sFt1, sFt2ab, sFt4, sFt5, sFtN 1ab sFt2c, sFt3, sFtN1c 
+ 

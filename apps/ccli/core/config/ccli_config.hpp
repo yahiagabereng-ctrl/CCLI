@@ -172,6 +172,25 @@ struct Iec104Config {
     Iec104TlsConfig tls{};
 };
 
+/** Annex T / plant LAN — IEC 61850 GOOSE (L2), separate from DSO MMS on Eth_A. */
+struct GooseConfig {
+    bool        enabled{false};
+    /** Linux interface for plant GOOSE (e.g. eth0, lan3). Not Eth_A DSO bind. */
+    std::string interface{"eth0"};
+    /** Subscribe: GoCB ref in MMS notation (Annex T Type 1 plant path). */
+    std::string subscribe_go_cb_ref;
+    /** 0 = accept any APPID matching goCbRef. */
+    uint16_t    subscribe_app_id{0};
+    /** Optional dst MAC filter (hex "01:0c:cd:01:00:01" or empty). */
+    std::string subscribe_dst_mac;
+    /** Enable IedServer integrated GOOSE publisher (GoCBs in CID/.cfg). */
+    bool        publish_enabled{false};
+    uint16_t    publish_app_id{0x0001};
+    std::string publish_dst_mac{"01:0c:cd:01:00:01"};
+    uint16_t    publish_vlan_id{0};
+    int         publish_interval_ms{1000};
+};
+
 struct MmsConfig {
     bool        enabled{false};
     std::string bind_address{"192.168.10.1"};
@@ -182,6 +201,12 @@ struct MmsConfig {
      * Operating Rule autonomous fallback (clear live Wlim). 0 = disabled.
      */
     int         comms_loss_fallback_s{60};
+    /**
+     * O.7.3.3 / Eq (9): minimum seconds between processed external set-point
+     * writes (WMaxSptPct, WSptPct, VArTgtSptPct). Faster writes are rejected.
+     * Normative default 3; 0 = disable gate (lab only).
+     */
+    int         setpoint_min_interval_s{3};
     /**
      * P3-11: poll TesPro `sim-manager gnss_get_position` for TimeQuality.
      * 0 = disable GNSS poll (TimeQuality stays clockNotSynchronized).
@@ -211,11 +236,25 @@ struct CcliConfig {
 
     MmsConfig   mms{};
 
+    GooseConfig goose{};
+
     Iec104Config iec104{};
 
     IoLineCfg   do_curtail{5, false};
 
     IoLineCfg   di_permissive{27, false};
+
+    /** P6-03: monitor externally driven trip relay on ubus channel (e.g. DIO3). */
+    struct {
+        bool enabled{false};
+        int  gpio{3};
+    } annex_m_trip_monitor{};
+
+    /** P7-01: O.14 rolling event log (2048, append-only file). */
+    struct {
+        bool        enabled{true};
+        std::string path{"/var/lib/ccli/events.jsonl"};
+    } event_log{};
 
     /* Lab-only: skip permissive DI gate when GD32 input is faulted (NOT for production). */
     bool        permissive_bypass{false};

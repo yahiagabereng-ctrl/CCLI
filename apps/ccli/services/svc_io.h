@@ -32,6 +32,12 @@ bool svc_io_apply_curtailment(bool active);
 /* Read the external permissive digital input: *ok = true when permitted. */
 bool svc_io_read_permissive(bool *ok);
 
+/* P6-03: monitor trip relay driven on ubus channel (LTE/SMS script → DIO3). */
+bool svc_io_configure_annex_m_trip_monitor(int gpio_channel, bool enabled);
+
+/* *active = true when trip relay is energized (Annex M telescatto lab path). */
+bool svc_io_read_annex_m_trip_active(bool *active);
+
 /* Force all outputs to safe state (de-energized). Call on fault / shutdown. */
 void svc_io_safe_state(void);
 
@@ -39,7 +45,7 @@ void svc_io_safe_state(void);
 void svc_io_shutdown(void);
 
 /* Log one status line to stderr (procd -> logread). */
-void svc_io_log_status(bool curtail_active, bool permissive_ok);
+void svc_io_log_status(bool curtail_active, bool permissive_ok, bool annex_m_trip_active);
 
 #ifdef __cplusplus
 }

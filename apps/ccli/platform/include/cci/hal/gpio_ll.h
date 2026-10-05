@@ -37,6 +37,9 @@ bool cci_gpio_ll_write(int line, int level);
 /* Read a raw level (0 = LOW, 1 = HIGH) from a configured line. */
 bool cci_gpio_ll_read(int line, int *level);
 
+/* Read ubus dido_v2 relay state for channel (1..4). *energized=1 when ON. */
+bool cci_gpio_ll_read_relay(int channel, int *energized);
+
 /* Release all line requests and shut down the backend. */
 void cci_gpio_ll_shutdown(void);
 

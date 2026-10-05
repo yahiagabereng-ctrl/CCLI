@@ -1,3 +1,4 @@
+#include "svc_goose.hpp"
 #include "svc_iec104.hpp"
 #include "svc_mms.hpp"
 #include "svc_modbus.hpp"
@@ -10,6 +11,7 @@
 #include "dso/dso_phase1.hpp"
 #include "drv_gpio.h"
 #include "policy/net_policy.hpp"
+#include "event/event_store.hpp"
 #include "regulation/regulation_bench.hpp"
 #include "version/ccli_version.hpp"
 
@@ -22,6 +24,7 @@
 #include <cstdint>
 #include <fstream>
 #include <iostream>
+#include <cstdio>
 #include <sstream>
 #include <string>
 #include <unistd.h>
@@ -44,7 +47,7 @@ std::string quality_string(const cci::core::DataQuality q) {
 void write_bench_status_file(const std::string& path, const cci::core::CcliConfig& cfg,
                              const cci::core::Measurement& m, const cci::core::Pf2State& pf2_st,
                              const bool curtailment_commanded, const bool permissive_ok,
-                             const bool do_curtail_on,
+                             const bool annex_m_trip_active, const bool do_curtail_on,
                              const cci::core::dso::DsoPhase1ApplyResult& dso_apply) {
     std::ofstream out(path, std::ios::trunc);
     if (!out) {
@@ -59,6 +62,8 @@ void write_bench_status_file(const std::string& path, const cci::core::CcliConfi
         << "  \"curtailment_commanded\": " << (curtailment_commanded ? "true" : "false")
         << ",\n"
         << "  \"permissive_ok\": " << (permissive_ok ? "true" : "false") << ",\n"
+        << "  \"annex_m_trip_active\": " << (annex_m_trip_active ? "true" : "false")
+        << ",\n"
         << "  \"do_curtail_on\": " << (do_curtail_on ? "true" : "false") << ",\n"
         << "  \"dso_applied\": " << (dso_apply.applied ? "true" : "false") << ",\n"
         << "  \"derived\": {\n"
@@ -120,7 +125,27 @@ void print_usage() {
               << "       ccli --lab-demo      Ramp sim power to exercise PF2 -> DO5\n"
               << "       ccli --regulation-check [--live] [--live-watch SEC] [--json]\n"
               << "       ccli --bench-status --json   Read /var/run/ccli-status.json (daemon)\n"
-              << "       ccli --bench-write-config PATH   Write lab yaml from stdin (lab UI)\n";
+              << "       ccli --bench-write-config PATH   Write lab yaml from stdin (lab UI)\n"
+              << "       ccli --event-dump [--count N] [--json]   O.14 event log (P7-01/02)\n"
+              << "       ccli --event-wrap-test   Verify 2048-event ring wrap (P7-01)\n";
+}
+
+int run_event_dump(const std::string& config_path, std::size_t count, bool json_out) {
+    const cci::core::CcliConfig cfg = cci::core::load_config(config_path);
+    if (count == 0 || count > cci::core::EventStore::kMaxEvents) {
+        count = cci::core::EventStore::kMaxEvents;
+    }
+    return cci::core::EventStore::dump_to_stream(std::cout, cfg.event_log.path, count, json_out);
+}
+
+int run_event_wrap_test() {
+    const std::string path = "/tmp/ccli-event-wrap-test.jsonl";
+    std::remove(path.c_str());
+    const bool ok = cci::core::EventStore::run_wrap_test(path);
+    std::cout << (ok ? "P7-01 wrap test: PASS (2048 events, oldest dropped)\n"
+                     : "P7-01 wrap test: FAIL\n");
+    std::remove(path.c_str());
+    return ok ? 0 : 1;
 }
 
 cci::core::regulation::ModbusLiveTrace modbus_trace_from(
@@ -288,7 +313,7 @@ int run_gpio_test() {
             std::cerr << "gpio-test: read_permissive failed\n";
             return 1;
         }
-        svc_io_log_status(on, permissive);
+        svc_io_log_status(on, permissive, false);
         usleep(1000000);
     }
 
@@ -308,6 +333,10 @@ int main(int argc, char** argv) {
     int live_watch_sec = 0;
     bool bench_status = false;
     bool bench_write_config = false;
+    bool event_dump = false;
+    bool event_wrap_test = false;
+    bool event_dump_json = false;
+    std::size_t event_dump_count = cci::core::EventStore::kMaxEvents;
     int gpio_blink = 0;
 
     for (int i = 1; i < argc; ++i) {
@@ -334,6 +363,7 @@ int main(int argc, char** argv) {
         }
         if (arg == "--json") {
             regulation_json = true;
+            event_dump_json = true;
             continue;
         }
         if (arg == "--live-watch" && i + 1 < argc) {
@@ -376,12 +406,34 @@ int main(int argc, char** argv) {
             config_path = argv[++i];
             continue;
         }
+        if (arg == "--event-dump") {
+            event_dump = true;
+            continue;
+        }
+        if (arg == "--event-wrap-test") {
+            event_wrap_test = true;
+            continue;
+        }
+        if (arg == "--count" && i + 1 < argc) {
+            try {
+                event_dump_count = static_cast<std::size_t>(std::stoul(argv[++i]));
+            } catch (const std::exception&) {
+                event_dump_count = cci::core::EventStore::kMaxEvents;
+            }
+            continue;
+        }
         if (arg == "--config" && i + 1 < argc) {
             config_path = argv[++i];
             continue;
         }
     }
 
+    if (event_wrap_test) {
+        return run_event_wrap_test();
+    }
+    if (event_dump) {
+        return run_event_dump(config_path, event_dump_count, event_dump_json);
+    }
     if (bench_status) {
         return run_bench_status_json();
     }
@@ -430,12 +482,24 @@ int main(int argc, char** argv) {
         std::cerr << "io: WARNING permissive_bypass=on — DI gate disabled (lab only)\n";
     }
 
+    svc_io_configure_annex_m_trip_monitor(app_cfg.annex_m_trip_monitor.gpio,
+                                          app_cfg.annex_m_trip_monitor.enabled);
+
     if (gpio_blink > 0) {
         gpio_blink_curtail(gpio_blink);
     }
 
     cci::core::MeasurementStore measurements;
-    cci::core::EventRing events;
+    cci::core::EventStore events(
+        {app_cfg.event_log.enabled, app_cfg.event_log.path});
+    const auto log_event = [&events](const std::string& type, const std::string& detail) {
+        events.append({cci::hal::now().epoch_ms, type, detail});
+    };
+    const auto boot_ver = cci::core::version::current();
+    log_event("system", "power_on:" + boot_ver.full);
+    log_event("system", "firmware_boot:" + boot_ver.full);
+    log_event("system", "psu_unmonitored");
+
     cci::services::ModbusService modbus(measurements, app_cfg);
 
     cci::core::Pf2Config pf2_cfg = app_cfg.pf2;
@@ -452,11 +516,15 @@ int main(int argc, char** argv) {
                   << " p_eff=" << dso_apply.derived.p_effective_export_kw
                   << " kW → pf2 enter=" << pf2_cfg.threshold_kw
                   << " release=" << pf2_cfg.release_threshold_kw << " kW\n";
+        log_event("dso",
+                  "polygon_seed smax_kva=" + std::to_string(dso_apply.derived.smax_kva_used) +
+                      " enter_kw=" + std::to_string(pf2_cfg.threshold_kw));
     }
 
-    cci::services::Pf2Service pf2(measurements, events, pf2_cfg);
+    cci::services::Pf2Service pf2(measurements, events.ring(), pf2_cfg);
     cci::services::MmsService mms;
     cci::services::Iec104Service iec104;
+    cci::services::GooseService goose;
 
     modbus.tick();
     pf2.tick();
@@ -469,16 +537,26 @@ int main(int argc, char** argv) {
     } else {
         svc_io_read_permissive(&permissive0);
     }
-    bool do_state = pf2.curtailment_active() && permissive0;
+    bool annex_m0 = false;
+    if (app_cfg.annex_m_trip_monitor.enabled) {
+        (void)svc_io_read_annex_m_trip_active(&annex_m0);
+    }
+    bool do_state = pf2.curtailment_active() && permissive0 && !annex_m0;
     svc_io_apply_curtailment(do_state);
     events.append({cci::hal::now().epoch_ms, "do",
                    do_state ? "curtail_on" : "curtail_off"});
     if (app_cfg.mms.enabled) {
-        if (!mms.start(app_cfg.mms)) {
+        const cci::adapters::MmsAuditFn mms_audit =
+            [&events](const std::string& detail) {
+                events.append({cci::hal::now().epoch_ms, "mms", detail});
+            };
+        if (!mms.start(app_cfg.mms, mms_audit)) {
             std::cerr << "mms: FAILED to bind " << app_cfg.mms.bind_address << ":"
                       << app_cfg.mms.tcp_port
                       << (app_cfg.mms.tls.enabled ? " (TLS)" : "")
                       << " — disable TesPro IEC61850 LuCI or check LAN1 IP/certs\n";
+        } else if (app_cfg.goose.publish_enabled) {
+            mms.enable_goose_publishing(app_cfg.goose);
         }
     } else {
         std::cerr << "mms: disabled in config\n";
@@ -491,6 +569,18 @@ int main(int argc, char** argv) {
         }
     } else {
         std::cerr << "iec104: disabled in config\n";
+    }
+
+    if (app_cfg.goose.enabled) {
+        const auto log_goose = [&events](const std::string& cat, const std::string& detail) {
+            events.append({cci::hal::now().epoch_ms, cat, detail});
+        };
+        if (!goose.start(app_cfg.goose, log_goose)) {
+            std::cerr << "goose: FAILED to start on " << app_cfg.goose.interface
+                      << " — check plant LAN / goCbRef / libiec61850 GOOSE build\n";
+        }
+    } else {
+        std::cerr << "goose: disabled in config (plant Modbus path active)\n";
     }
 
     std::signal(SIGTERM, on_signal);
@@ -508,6 +598,11 @@ int main(int argc, char** argv) {
     std::int64_t loop_count = 0;
     const std::int64_t status_interval = 50; /* 50 * 100ms = 5s */
     std::int64_t last_mb_trace_ms = -1;
+    int modbus_link_state = 0; /* 0=unknown, 1=up, -1=down */
+    cci::core::DataQuality last_meter_quality = cci::core::DataQuality::Invalid;
+    bool permissive_tracked = false;
+    bool last_permissive_di = false;
+    bool last_annex_m_trip = annex_m0;
 
     while (g_running) {
         if (lab_demo) {
@@ -520,8 +615,37 @@ int main(int argc, char** argv) {
 
         modbus.tick();
         pf2.tick();
+
+        {
+            const auto& mb = modbus.last_exchange();
+            if (mb.valid) {
+                if (mb.success) {
+                    if (modbus_link_state <= 0) {
+                        log_event("modbus",
+                                  modbus_link_state < 0 ? "link_recovered" : "link_up");
+                        modbus_link_state = 1;
+                    }
+                } else if (modbus_link_state >= 0) {
+                    log_event("modbus", "link_down:" + mb.error);
+                    modbus_link_state = -1;
+                }
+            }
+        }
+
         {
             const cci::core::Measurement m = measurements.snapshot();
+            if (m.quality != last_meter_quality) {
+                if (m.quality == cci::core::DataQuality::Good) {
+                    log_event("meter", last_meter_quality == cci::core::DataQuality::Stale
+                                             ? "quality_recovered"
+                                             : "quality_good");
+                } else if (m.quality == cci::core::DataQuality::Stale) {
+                    log_event("meter", "quality_stale");
+                } else {
+                    log_event("meter", "quality_invalid");
+                }
+                last_meter_quality = m.quality;
+            }
             mms.update_tot_w_kw(m.p_kw);
             mms.update_totvar_kvar(m.q_kvar);
             mms.update_ppv_kv(app_cfg.plant.poc_ppv_kv);
@@ -609,23 +733,47 @@ int main(int argc, char** argv) {
         const bool permissive_ok =
             app_cfg.permissive_bypass || (svc_io_read_permissive(&permissive) && permissive);
 
-        // Gate the DO by the permissive input. A commanded curtailment that is
-        // blocked by permissive is recorded for audit (traceable actuation).
-        const bool new_do_state = commanded && permissive_ok;
+        bool annex_m_trip = false;
+        if (app_cfg.annex_m_trip_monitor.enabled) {
+            (void)svc_io_read_annex_m_trip_active(&annex_m_trip);
+            if (annex_m_trip != last_annex_m_trip) {
+                log_event("annex_m",
+                          annex_m_trip ? "trip_relay_active" : "trip_relay_cleared");
+                last_annex_m_trip = annex_m_trip;
+            }
+        }
+
+        if (!app_cfg.permissive_bypass) {
+            bool permissive_di = false;
+            if (svc_io_read_permissive(&permissive_di)) {
+                if (!permissive_tracked || permissive_di != last_permissive_di) {
+                    log_event("di", permissive_di ? "permissive_ok" : "permissive_blocked");
+                    permissive_tracked = true;
+                    last_permissive_di = permissive_di;
+                }
+            }
+        }
+
+        // Gate DO by permissive and Annex M trip (O.11 — no conflicting PF2 actuation).
+        const bool new_do_state = commanded && permissive_ok && !annex_m_trip;
         if (new_do_state != do_state) {
             svc_io_apply_curtailment(new_do_state);
             const char* detail = new_do_state ? "curtail_on"
-                                 : (commanded ? "curtail_blocked_permissive" : "curtail_off");
+                                 : (annex_m_trip ? "curtail_blocked_annex_m"
+                                 : (commanded ? "curtail_blocked_permissive" : "curtail_off"));
             events.append({cci::hal::now().epoch_ms, "do", detail});
             std::cerr << "io: DO " << detail << "\n";
+            if (annex_m_trip && commanded) {
+                events.append({cci::hal::now().epoch_ms, "annex_m", "teledistacco_inhibit"});
+            }
             do_state = new_do_state;
         }
 
         if ((loop_count % status_interval) == 0) {
-            svc_io_log_status(do_state, permissive_ok);
+            svc_io_log_status(do_state, permissive_ok, annex_m_trip);
             write_bench_status_file(kBenchStatusPath, app_cfg, measurements.snapshot(),
-                                    pf2.last_state(), commanded, permissive_ok, do_state,
-                                    dso_apply);
+                                    pf2.last_state(), commanded, permissive_ok, annex_m_trip,
+                                    do_state, dso_apply);
         }
 
         if (app_cfg.modbus.trace) {
@@ -648,7 +796,9 @@ int main(int argc, char** argv) {
         usleep(100000);
     }
 
+    log_event("system", "power_off:shutdown");
     svc_io_shutdown();
+    goose.stop();
     iec104.stop();
     mms.stop();
 

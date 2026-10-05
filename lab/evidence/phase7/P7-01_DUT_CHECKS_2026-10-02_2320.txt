@@ -1,0 +1,60 @@
+# P7 DUT checks — one-by-one (TG544 @ 192.168.10.1)
+# Date: 2026-10-02 23:20 local (DUT)
+# Build deployed: 0.1.0-r27 (P7-01-EVENT-STORE)
+# Operator: automated plink session
+
+=== CHECK 1: VERSION (P7 baseline) ===
+ccli 0.1.0-r27 (P7-01-EVENT-STORE)
+  semver:   0.1.0
+  release:  r27
+  platform: tg500
+VERDICT: PASS
+
+=== CHECK 2: CONFIG event_log (P7-01) ===
+event_log:
+  enabled: true
+  path: /var/lib/ccli/events.jsonl
+VERDICT: PASS
+
+=== CHECK 3: CLI HELP (P7-01/02) ===
+ccli --event-dump [--count N] [--json]   O.14 event log (P7-01/02)
+ccli --event-wrap-test   Verify 2048-event ring wrap (P7-01)
+VERDICT: PASS
+
+=== CHECK 4: WRAP TEST (P7-01) ===
+P7-01 wrap test: PASS (2048 events, oldest dropped)
+VERDICT: PASS
+
+=== CHECK 5: EVENT DUMP text (P7-02) ===
+Initial: empty ( /var/lib/ccli missing at first daemon start )
+After mkdir + restart:
+2026/10/02 15:20:10 do curtail_off
+VERDICT: PASS (after mkdir - see note)
+
+=== CHECK 6: EVENT DUMP json (P7-02) ===
+[
+  {"ts_o14":"2026/10/02 15:20:10","type":"do","detail":"curtail_off"},
+  {"ts_o14":"2026/10/02 15:20:22","type":"iec104","detail":"comms_loss_fallback"},
+  {"ts_o14":"2026/10/02 15:20:22","type":"do","detail":"curtail_on"}
+]
+VERDICT: PASS — O.14 yyyy/mm/dd hh:mm:ss UTC
+
+=== CHECK 7: P6 annex_m (regression) ===
+io: curtail_do=OFF permissive=OK annex_m_trip=off
+VERDICT: PASS — monitor active; trip currently OFF (CLEAR state)
+
+=== CHECK 8: ccli process ===
+22823 root  /usr/sbin/ccli --config /etc/ccli/lab.yaml
+VERDICT: PASS
+
+=== CHECK 9: PERSISTENCE file ===
+3 /var/lib/ccli/events.jsonl
+JSONL append-only lines present
+VERDICT: PASS
+
+=== CHECK 10: MMS ===
+mms: listening on 0.0.0.0:102 tls=off
+VERDICT: PASS (lab cleartext profile)
+
+---
+NOTE: Create /var/lib/ccli before first boot or add procd init mkdir — events silently dropped if dir missing.

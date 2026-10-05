@@ -86,6 +86,8 @@ constexpr const char* kEq5_6 = "Eq (5)(6)";
 
 constexpr const char* kEq7_8 = "Eq (7)(8)";
 
+constexpr const char* kEq9 = "Eq (9)";
+
 constexpr const char* kEq13_17 = "Eq (13)–(17)";
 
 constexpr const char* kEq18 = "Eq (18)";
@@ -140,7 +142,7 @@ constexpr RegulationMapEntry kRegulationMasterMap[] = {
 
     {"R06", kClauseO_7_3_1, "TsP ±5% settling band", kEq7_8, RegulationP1Status::Pass},
 
-    {"R07", kClauseO_7_3_3, "3 s min between set-points", "-", RegulationP1Status::Na},
+    {"R07", kClauseO_7_3_3, "3 s min between set-points", kEq9, RegulationP1Status::Pass},
 
     {"R08", kClauseO_13_1_2, "DSO Eth_A loss / Operating Rule", "-", RegulationP1Status::Pass},
 

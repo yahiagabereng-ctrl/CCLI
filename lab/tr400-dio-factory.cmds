@@ -13,8 +13,10 @@ sleep 3
 
 ubus call dido_v2 set_mode '{"channel":1,"mode":"DO"}'
 ubus call dido_v2 set_mode '{"channel":2,"mode":"DI"}'
+ubus call dido_v2 set_mode '{"channel":3,"mode":"DO"}'
 ubus call dido_v2 gd32.set_mode '{"channel":1,"mode":"DO"}'
 ubus call dido_v2 gd32.set_mode '{"channel":2,"mode":"DI"}'
+ubus call dido_v2 gd32.set_mode '{"channel":3,"mode":"DO"}'
 sleep 1
 
 echo === status ===

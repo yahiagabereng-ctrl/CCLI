@@ -7,6 +7,92 @@ Format: **`semver-rN`** — bump **N** in `VERSION` line 2 and `package/ccli/Mak
 
 ---
 
+## 0.1.0-r29 — EQ-PLANE-R07-SPACING (2026-10-03)
+
+**Codename:** EQ-PLANE-R07-SPACING  
+**Phase:** Annex equation utilization — P0 item + single assignment plane
+
+### Added
+
+- **O.7.3.3 / Eq (9) — R07:** `core/dso/setpoint_gate.hpp` `SetpointSpacingGate` (header-only, monotonic clock).
+  `mms_adapter.cpp` rejects `WMaxSptPct` / `WSptPct` / `VArTgtSptPct` writes arriving < 3 s after the last
+  processed set-point (`CONTROL_RESULT_FAILED`, stderr `REJECT — set-point spacing`, O.14 event
+  `mms/setpoint_reject_spacing_o733`). `Mod` activation writes are not gated.
+- Config `mms.setpoint_min_interval_s` (default **3**; `0` disables — lab only). Added to `lab_tr400_cleartext_tsp.yaml`.
+- Unit test `setpoint_gate_test` (ctest `dso_r07_setpoint_spacing`).
+- `Flowcharts/ANNEX_EQUATION_UTILIZATION_MATRIX.md` — per-equation RAG · draw.io · code · verdict + backlog P0–P3.
+- `signal_map.yaml` rev 2: `equations:` index (eq1…eq18), `application_groups` A0–A8, `goose_map`,
+  `logical_nodes` for all **31** LNs of `lab_tg544_eth_a.cid` with `equation` / `regulation_id` / `drawio_ref` / `binding`.
+
+### Changed
+
+- `regulation_map.hpp` R07 → **Pass / Eq (9)**; `--regulation-check` R07 row now reads `mms.setpoint_min_interval_s`
+  (≥3 PASS · 1–2 PART · 0 NOT IMPL).
+
+### Fixed (build)
+
+- Host/cross build blocker: `goose_receiver.h` needs `src/r_session` include dir (libiec61850 R-GOOSE header);
+  `GooseAdapter::Impl` was defined inside an anonymous namespace (ill-formed) — moved out. `ccli` host build is green again.
+
+### Behaviour note
+
+Any client writing two DSO set-points within 3 s (TSP scripts, IEDScout bursts) will see the second Operate fail.
+This is normative; set `setpoint_min_interval_s: 0` only for throughput bench profiles.
+
+---
+
+## 0.1.0-r28 — P7-04-O14-GAPS (2026-10-02)
+
+**Codename:** P7-04-O14-GAPS  
+**Phase:** 7 — O.14 category wiring (software gaps)
+
+### Added
+
+- O.14 events: `system` (power_on/off, firmware_boot, psu_unmonitored stub)
+- `modbus` link_up / link_down / link_recovered on poll transition
+- `meter` quality_* on measurement quality change
+- `di` permissive_ok / permissive_blocked
+- `mms` client_connect/disconnect + ACSE auth accept/reject + rbac_deny_control
+- `dso` polygon_seed at Phase-1 config apply
+- `annex_m` trip_relay_active / trip_relay_cleared edges
+- Auto-create `/var/lib/ccli` in EventStore + deploy script
+
+### Changed
+
+- Pf2Service logs only on state/reason **change** (reduces event spam)
+
+### Added (GOOSE — P5-G02)
+
+- `lab_tg544_eth_a.cid`: `GSEControl` **gcb_PdC_Mis4sec** + **gcb_Stato_Allarmi** with GSE comms (APPID 0x1000 / 0x1001)
+- Regenerated `lab_tg544_eth_a.cfg` (`GC(...)` blocks)
+- `MmsAdapter::enable_goose_publishing()` — libiec61850 integrated IedServer GOOSE
+- Lab yaml: `goose.publish_enabled: true` on cleartext TSP profile
+
+### Still open
+
+- PSU HW, PG/PI DI, net anomaly, firmware **update**, remote syslog (P7-03) — see `P7-04_GAPS_BACKLOG.md`
+- GOOSE lab Wireshark evidence (P5-G01) · plant subscribe mapping (P5-G03)
+
+---
+
+## 0.1.0-r27 — P7-01-EVENT-STORE (2026-10-02)
+
+**Codename:** P7-01-EVENT-STORE  
+**Phase:** 7 — O.14 data logger foundation
+
+### Added
+
+- `EventStore` — 2048-event ring + append-only JSONL at `/var/lib/ccli/events.jsonl`
+- CLI `ccli --event-dump [--count N] [--json]` — O.14 timestamp `yyyy/mm/dd hh:mm:ss` (UTC)
+- CLI `ccli --event-wrap-test` — verifies ring wrap at 2048 + file compaction
+- Config block `event_log:` (`enabled`, `path`)
+
+### Note
+
+Syslog remote read (P7-03) and full O.14 category coverage remain Phase 7 open items.
+
+---
+
 ## 0.1.0-r25 — P5-COMPARE-FIX (2026-10-01)
 
 **Codename:** P5-COMPARE-FIX  

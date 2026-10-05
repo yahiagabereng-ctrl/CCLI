@@ -178,9 +178,17 @@ RegulationReport build_regulation_report(const CcliConfig& cfg, const std::strin
             notes = "dso_phase1_test Eq (7)(8)";
         } else if (id == "R07") {
             expected = "≥3 s between set-points";
-            actual = "MMS deferred";
-            status = export_figura2 ? RowStatus::Na : RowStatus::NotImpl;
-            notes = "Phase 3+ Annex T";
+            actual = "mms.setpoint_min_interval_s=" +
+                     std::to_string(cfg.mms.setpoint_min_interval_s);
+            unit = "s";
+            if (cfg.mms.setpoint_min_interval_s >= 3) {
+                status = RowStatus::Pass;
+            } else if (cfg.mms.setpoint_min_interval_s > 0) {
+                status = RowStatus::Part;
+            } else {
+                status = RowStatus::NotImpl;
+            }
+            notes = "Eq (9) SetpointSpacingGate in mms_adapter (r29)";
         } else if (id == "R08") {
             expected = "comm loss → safe (lab stale)";
             actual = "stale_data_s=" + std::to_string(cfg.pf2.stale_data_s) + " s";
@@ -374,8 +382,12 @@ void apply_live_snapshot(RegulationReport& report, const LiveSnapshot& live,
     conf_row("R04", dso::kClauseO_9_2_1, "w110 autonomous cap", "Vn path",
              "no Modbus", RowStatus::Na, "no V meter Modbus");
 
-    conf_row("R07", dso::kClauseO_7_3_3, "3 s set-point spacing", "MMS",
-             "no Modbus cmd", RowStatus::Na, "Phase 3");
+    conf_row("R07", dso::kClauseO_7_3_3, "3 s set-point spacing", "≥3 s",
+             "mms.setpoint_min_interval_s=" + std::to_string(cfg.mms.setpoint_min_interval_s),
+             cfg.mms.setpoint_min_interval_s >= 3 ? RowStatus::Pass
+             : cfg.mms.setpoint_min_interval_s > 0 ? RowStatus::Part
+                                                   : RowStatus::NotImpl,
+             "Eq (9) gate on WMaxSptPct/WSptPct/VArTgtSptPct");
 
     conf_row("R08", dso::kClauseO_13_1_2, "Comm loss → stale",
              "FC03 OK → good", live.modbus_last.success ? "read OK" : live.modbus_last.error,

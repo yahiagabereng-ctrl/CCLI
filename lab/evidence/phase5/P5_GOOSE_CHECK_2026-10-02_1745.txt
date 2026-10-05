@@ -1,0 +1,73 @@
+# P5-G02 GOOSE / MMS check — automated from dev PC
+# Date: 2026-10-02 (local)
+# DUT: 192.168.10.1 (Eth_A lab)
+# Operator: Cursor agent (CCLI_TG544_PW not set — SSH checks skipped)
+
+=== REPO / SOURCE (local) ===
+
+CHECK R1: CID GSEControl blocks
+  lab_tg544_eth_a.cid: gcb_PdC_Mis4sec + gcb_Stato_Allarmi — PASS
+
+CHECK R2: Generated .cfg GC() blocks
+  lab_tg544_eth_a.cfg lines 74-78: GC(gcb_PdC_Mis4sec ...) GC(gcb_Stato_Allarmi ...) — PASS
+
+CHECK R3: Runtime GOOSE publish wiring
+  mms_adapter.cpp: enable_goose_publishing() + IedServer_enableGoosePublishing — PASS
+  ccli_main.cpp: calls mms.enable_goose_publishing when goose.publish_enabled — PASS
+
+CHECK R4: Lab yaml publish_enabled
+  lab_tr400_cleartext_tsp.yaml: goose.publish_enabled: true — PASS
+  lab_tr400_goose_plant.yaml: goose.publish_enabled: true — PASS
+
+CHECK R5: VERSION
+  apps/ccli/VERSION: 0.1.0-r28 — PASS (GOOSE changes in tree; deploy pending)
+
+CHECK R6: CMake GOOSE flag
+  CCLI_WITH_GOOSE=ON default — PASS
+
+=== NETWORK (PC → DUT) ===
+
+CHECK N1: Ping 192.168.10.1
+  Result: PASS (2/2, ~1 ms)
+
+CHECK N2: TCP :102 (cleartext MMS)
+  Result: FAIL — connection refused (nothing listening)
+
+CHECK N3: TCP :3782 (TLS MMS)
+  Result: FAIL — connection refused
+
+=== DUT RUNTIME (skipped — set env:CCLI_TG544_PW for SSH) ===
+
+CHECK D1: ccli process — SKIPPED
+CHECK D2: ss -tlnp | grep 102 — SKIPPED
+CHECK D3: /etc/ccli/icd/lab_tg544_eth_a.cfg has GC(gcb_ — SKIPPED
+CHECK D4: log "GOOSE publishing enabled" — SKIPPED
+
+=== IED EXPLORER (from user screenshot) ===
+
+CHECK I1: MMS connect 192.168.10.1:102
+  Earlier session: FAIL connection refused
+  Later session: PASS (urcb tree visible) — intermittent / ccli was down at first attempt
+
+CHECK I2: PCap init for GooseSender
+  FAIL — install Npcap on Windows PC (WinPcap-compatible mode)
+
+CHECK I3: GoCB visible under LLN0
+  User tree showed urcb_* only in visible pane — likely OLD .cfg on DUT or need expand LLN0 GoCB nodes
+
+=== VERDICT ===
+
+| Layer              | Status |
+|--------------------|--------|
+| Source / CID / cfg | PASS   |
+| DUT deployed r28   | FAIL   — :102 refused; redeploy required |
+| GOOSE on wire      | BLOCKED — needs DUT up + Npcap + GoEna |
+
+=== NEXT ACTIONS ===
+
+1. Set password:  $env:CCLI_TG544_PW = '...'
+2. Deploy r28:    lab\tg544-openwrt\deploy-ccli-session-fix.ps1 -HostAddr 192.168.10.1 -LabYaml apps\ccli\config\lab_tr400_cleartext_tsp.yaml
+3. Upload cfg:    scp apps\ccli\config\icd\lab_tg544_eth_a.cfg root@192.168.10.1:/etc/ccli/icd/
+4. Verify DUT:    ss -tlnp | grep 102; grep GC /etc/ccli/icd/lab_tg544_eth_a.cfg; logread | grep GOOSE
+5. PC: Install Npcap; reconnect IED Explorer; LLN0 → gcb_PdC_Mis4sec → GoEna / GooseSender
+6. Wireshark: goose && eth.dst == 01:0c:cd:01:00:01

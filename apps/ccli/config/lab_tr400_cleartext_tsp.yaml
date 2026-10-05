@@ -60,10 +60,17 @@ mms:
   tcp_port: 102
   model_cfg: /etc/ccli/icd/lab_tg544_eth_a.cfg
   comms_loss_fallback_s: 15
+  setpoint_min_interval_s: 3   # O.7.3.3 / Eq (9) R07 — 0 disables (lab only)
   gnss_poll_s: 15
   gnss_discipline_clock: false
   chrony_poll: true
   tls_enabled: false
+
+# IED-integrated GOOSE publisher (LLN0 GoCBs in lab_tg544_eth_a.cid)
+goose:
+  enabled: false
+  publish_enabled: true
+  interface: br-lan
 
 # Eth_B 104 unchanged (TLS) — only active when OA cable on LAN2
 iec104:
@@ -99,3 +106,6 @@ io:
   di_permissive:
     gpio: 2
     active_low: true
+  annex_m_trip_monitor:
+    enabled: true
+    gpio: 3

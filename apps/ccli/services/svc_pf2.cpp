@@ -30,11 +30,14 @@ void Pf2Service::tick() {
     const auto m = measurements_.snapshot();
     const auto now = cci::hal::now().epoch_ms;
     const auto st = fsm_.step(m, now);
-    last_state_ = st;
     curtailment_active_ = st.curtailment_active;
-    if (st.state == core::Pf2StateId::SafeState || st.curtailment_active) {
+    const bool log_pf2 = st.state == core::Pf2StateId::SafeState || st.curtailment_active;
+    if (log_pf2 &&
+        (st.state != last_state_.state || st.reason != last_state_.reason ||
+         st.curtailment_active != last_state_.curtailment_active)) {
         events_.append({now, "pf2", st.reason});
     }
+    last_state_ = st;
 }
 
 }  // namespace cci::services

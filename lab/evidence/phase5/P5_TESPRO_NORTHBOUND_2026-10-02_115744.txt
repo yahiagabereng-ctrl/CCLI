@@ -1,0 +1,23 @@
+﻿[2026-10-02 11:57:44] === P5 TesPro northbound verify ===
+[2026-10-02 11:57:44] Topic: device/tg544-lab-gw/cci016-lab-01/property/report
+[2026-10-02 11:57:44] Broker: 192.168.10.10:1883
+[2026-10-02 11:57:44] Listen: 20s
+[2026-10-02 11:57:44] 
+[2026-10-02 11:57:45] PC lab IP 192.168.10.10 on Ethernet: OK
+[2026-10-02 11:57:45] Ping 192.168.10.1: OK
+[2026-10-02 11:57:58] MMS :102: OPEN
+[2026-10-02 11:57:59] MQTT broker 0.0.0.0:1883 LISTENING (pid 17924)
+[2026-10-02 11:57:59] --- MQTT capture (20 sec) ---
+[2026-10-02 11:58:19]   device/tg544-lab-gw/cci016-lab-01/property/report { "headers": { "timeSource": "DEVICE", "replay": false }, "messageId": "report_cci016-lab-01_1790935080", "messageType": "REPORT_PROPERTY", "gatewayCode": "tg544-lab-gw", "deviceCode": "cci016-lab-01", "dataTime": 1790933665000, "reportTime": 1790935080000, "properties": { "PdC_TotW": 0.0000, "PdC_TotVAr": 0.0000, "PdC_PPV_AB": 20.0000, "Wlim_Mod": 1, "Wlim_WMax": 10.0000, "WSd_Mod": 1, "WSd_WSpt": 20.0000, "VArSd_Mod": 1, "VArSd_VArTgt": 10.0000 } }
+[2026-10-02 11:58:19]   device/tg544-lab-gw/cci016-lab-01/property/report { "headers": { "timeSource": "DEVICE", "replay": false }, "messageId": "report_cci016-lab-01_1790935084", "messageType": "REPORT_PROPERTY", "gatewayCode": "tg544-lab-gw", "deviceCode": "cci016-lab-01", "dataTime": 1790933665000, "reportTime": 1790935084000, "properties": { "PdC_TotW": 0.0000, "PdC_TotVAr": 0.0000, "PdC_PPV_AB": 20.0000, "Wlim_Mod": 1, "Wlim_WMax": 10.0000, "WSd_Mod": 1, "WSd_WSpt": 20.0000, "VArSd_Mod": 1, "VArSd_VArTgt": 10.0000 } }
+[2026-10-02 11:58:19]   device/tg544-lab-gw/cci016-lab-01/property/report { "headers": { "timeSource": "DEVICE", "replay": false }, "messageId": "report_cci016-lab-01_1790935088", "messageType": "REPORT_PROPERTY", "gatewayCode": "tg544-lab-gw", "deviceCode": "cci016-lab-01", "dataTime": 1790933665000, "reportTime": 1790935088000, "properties": { "PdC_TotW": 0.0000, "PdC_TotVAr": 0.0000, "PdC_PPV_AB": 20.0000, "Wlim_Mod": 1, "Wlim_WMax": 10.0000, "WSd_Mod": 1, "WSd_WSpt": 20.0000, "VArSd_Mod": 1, "VArSd_VArTgt": 10.0000 } }
+[2026-10-02 11:58:19]   device/tg544-lab-gw/cci016-lab-01/property/report { "headers": { "timeSource": "DEVICE", "replay": false }, "messageId": "report_cci016-lab-01_1790935092", "messageType": "REPORT_PROPERTY", "gatewayCode": "tg544-lab-gw", "deviceCode": "cci016-lab-01", "dataTime": 1790933665000, "reportTime": 1790935092000, "properties": { "PdC_TotW": 0.0000, "PdC_TotVAr": 0.0000, "PdC_PPV_AB": 20.0000, "Wlim_Mod": 1, "Wlim_WMax": 10.0000, "WSd_Mod": 1, "WSd_WSpt": 20.0000, "VArSd_Mod": 1, "VArSd_VArTgt": 10.0000 } }
+[2026-10-02 11:58:19]   device/tg544-lab-gw/cci016-lab-01/property/report { "headers": { "timeSource": "DEVICE", "replay": false }, "messageId": "report_cci016-lab-01_1790935096", "messageType": "REPORT_PROPERTY", "gatewayCode": "tg544-lab-gw", "deviceCode": "cci016-lab-01", "dataTime": 1790933665000, "reportTime": 1790935096000, "properties": { "PdC_TotW": 0.0000, "PdC_TotVAr": 0.0000, "PdC_PPV_AB": 20.0000, "Wlim_Mod": 1, "Wlim_WMax": 10.0000, "WSd_Mod": 1, "WSd_WSpt": 20.0000, "VArSd_Mod": 1, "VArSd_VArTgt": 10.0000 } }
+[2026-10-02 11:58:19]   [stderr] Timed out
+[2026-10-02 11:58:19] 
+[2026-10-02 11:58:19] --- Results ---
+[2026-10-02 11:58:19] MQTT messages received: 5
+[2026-10-02 11:58:19] REPORT_PROPERTY JSON: PASS
+[2026-10-02 11:58:19] PdC_TotW ~450: FAIL / no message yet
+[2026-10-02 11:58:19] Evidence: C:\Yahia\projects\CCLI\lab\tg544-openwrt\..\evidence\phase5\P5_TESPRO_NORTHBOUND_2026-10-02_115744.txt
+[2026-10-02 11:58:19] === end (exit 1) ===

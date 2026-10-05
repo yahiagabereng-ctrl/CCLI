@@ -52,6 +52,15 @@ bool cci_gpio_ll_read(int line, int *level) {
     return true;
 }
 
+bool cci_gpio_ll_read_relay(int channel, int *energized) {
+    if (!line_valid(channel) || energized == NULL) {
+        return false;
+    }
+    /* Match TG544 open-drain sink: raw LOW (0) = relay energized. */
+    *energized = s_level[channel] == 0 ? 1 : 0;
+    return true;
+}
+
 /*----------------------------- test helpers -------------------------------*/
 int mock_gpio_ll_get_level(int line) {
     if (!line_valid(line)) {

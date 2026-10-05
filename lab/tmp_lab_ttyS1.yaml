@@ -1,0 +1,100 @@
+# Lab-only — Test Suite Pro cleartext MMS on Eth_A :102 (no TLS / no 62351-4 ACSE).
+# Product path remains tls_enabled on :3782 (see lab_tr400_phase4_eth_b.yaml).
+#
+# Deploy:
+#   .\lab\tg544-openwrt\run-p5-fullcircle-cleartext.ps1
+# TSP: 192.168.10.1 port 102, Transport security OFF, load lab_tg544_eth_a.cid
+# TesPro collector on same DUT: bind 0.0.0.0 (hairpin to 192.168.10.1 fails); IED Host 127.0.0.1 or 192.168.10.1
+
+platform: tg500
+lab:
+  hostname: TG544
+  model: tespro,tr500
+  address: 192.168.10.1/24
+  role: dso_eth_a_cleartext
+
+modbus:
+  backend: rtu
+  device: /dev/ttyS1
+  baud: 9600
+  parity: N
+  slave_id: 1
+  poll_ms: 4000
+  timeout_ms: 2000
+  retries: 3
+  trace: true
+
+pf2:
+  threshold_kw: 900
+  debounce_s: 30
+  release_threshold_kw: 850
+  min_on_s: 60
+  min_off_s: 30
+  stale_data_s: 10
+  use_dso_mock: true
+
+plant:
+  p_imm_kw: 200
+  p_ass_kw: 200
+  q_ind_kvar: 50
+  q_cap_kvar: 50
+  smax_kva: 210
+  poc_ppv_kv: 20.0
+
+dso:
+  enabled: true
+  profile: tr57126_table1
+  w110_active: false
+  w110_pct: 100
+  wlim_active: false
+  wmax_spt_pct: 0
+  wsd_active: true
+  wspt_pct: 20
+  release_delta_kw: 5
+
+# Eth_A — cleartext MMS for TSP functional full circle (LAB BYPASS — not product profile)
+mms:
+  enabled: true
+  bind_address: 0.0.0.0
+  tcp_port: 102
+  model_cfg: /etc/ccli/icd/lab_tg544_eth_a.cfg
+  comms_loss_fallback_s: 15
+  gnss_poll_s: 15
+  gnss_discipline_clock: false
+  chrony_poll: true
+  tls_enabled: false
+
+# Eth_B 104 unchanged (TLS) — only active when OA cable on LAN2
+iec104:
+  enabled: true
+  bind_address: 192.168.1.130
+  tcp_port: 2404
+  common_address: 1
+  periodic_s: 4
+  comms_loss_fallback_s: 60
+  operator_rule_mode: monitor_only
+  operator_allow_commands: false
+  operator_allow_gi: true
+  operator_allow_clock_sync: false
+  operator_monitor_tot_w: true
+  ioa_tot_w: 1001
+  operator_monitor_totvar: false
+  ioa_tot_var: 1002
+  operator_monitor_ppv: false
+  ioa_ppv: 1003
+  tls_enabled: true
+  tls_own_key: /etc/ccli/tls/server.key
+  tls_own_cert: /etc/ccli/tls/server_tls.pem
+  tls_ca_cert: /etc/ccli/tls/root_CA.pem
+  tls_client_cert: /etc/ccli/tls/client_tls.pem
+
+io:
+  backend: ubus_dido_v2
+  # Lab TSP actuation evidence without DI wiring walk
+  permissive_bypass: true
+  do_curtail:
+    gpio: 1
+    active_high: false
+  di_permissive:
+    gpio: 2
+    active_low: true

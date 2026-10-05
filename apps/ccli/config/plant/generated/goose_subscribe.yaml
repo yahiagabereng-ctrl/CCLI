@@ -1,0 +1,84 @@
+# AUTO-GENERATED from GOOSE_DATA_MAP.csv — do not edit by hand
+publish:
+  - cb_name: gcb_PdC_Mis4sec
+    cb_go_id: PdCMis4
+    dataset: DS_R_PdC_Mis4sec
+    app_id_hex: 0x1000
+    mac_address: 01-0C-CD-01-00-01
+    members:
+      - index: 0
+        desc: TotW
+        mms_path: LD_Plant/PdCMMXU1.TotW
+      - index: 1
+        desc: TotVAr
+        mms_path: LD_Plant/PdCMMXU1.TotVAr
+      - index: 2
+        desc: PPV
+        mms_path: LD_Plant/PdCMMXU1.PPV
+      - index: 3
+        desc: A
+        mms_path: LD_Plant/PdCMMXU1.A
+  - cb_name: gcb_Stato_Allarmi
+    cb_go_id: CCIAlrm
+    dataset: DS_R_Stato_Allarmi_Segnali
+    app_id_hex: 0x1001
+    mac_address: 01-0C-CD-01-00-02
+    members:
+      - index: 0
+        desc: DisFRDECP1.Beh
+        mms_path: LD_Plant/DisFRDECP1.Beh
+      - index: 1
+        desc: DisFRDGEN1.Beh
+        mms_path: LD_Plant/DisFRDGEN1.Beh
+      - index: 2
+        desc: DisFRDSTO1.Beh
+        mms_path: LD_Plant/DisFRDSTO1.Beh
+      - index: 3
+        desc: IDGXCBR1.Pos
+        mms_path: LD_Plant/IDGXCBR1.Pos
+      - index: 4
+        desc: SSGGDGEN1.Health
+        mms_path: LD_Plant/SSGGDGEN1.Health
+      - index: 5
+        desc: SSGGDGEN2.Health
+        mms_path: LD_Plant/SSGGDGEN2.Health
+      - index: 6
+        desc: WlimDWMX1.Beh
+        mms_path: LD_Plant/WlimDWMX1.Beh
+      - index: 7
+        desc: WlimDWMX1.FctOpStAuto
+        mms_path: LD_Plant/WlimDWMX1.FctOpStAuto
+      - index: 8
+        desc: WlimDWMX1.FctOpStEx
+        mms_path: LD_Plant/WlimDWMX1.FctOpStEx
+      - index: 9
+        desc: WSdDAGC1.Beh
+        mms_path: LD_Plant/WSdDAGC1.Beh
+      - index: 10
+        desc: WSdDAGC1.FctOpSt
+        mms_path: LD_Plant/WSdDAGC1.FctOpSt
+      - index: 11
+        desc: VArSdDVAR1.Beh
+        mms_path: LD_Plant/VArSdDVAR1.Beh
+      - index: 12
+        desc: VArSdDVAR1.FctOpSt
+        mms_path: LD_Plant/VArSdDVAR1.FctOpSt
+      - index: 13
+        desc: PFSPDFPF1.Beh
+        mms_path: LD_Plant/PFSPDFPF1.Beh
+      - index: 14
+        desc: PFSPDFPF1.FctOpSt
+        mms_path: LD_Plant/PFSPDFPF1.FctOpSt
+      - index: 15
+        desc: VArVDVVR1.Beh
+        mms_path: LD_Plant/VArVDVVR1.Beh
+      - index: 16
+        desc: VArVDVVR1.FctOpSt
+        mms_path: LD_Plant/VArVDVVR1.FctOpSt
+      - index: 17
+        desc: PFWDPFW1.Beh
+        mms_path: LD_Plant/PFWDPFW1.Beh
+      - index: 18
+        desc: PFWDPFW1.FctOpSt
+        mms_path: LD_Plant/PFWDPFW1.FctOpSt
+subscribe:

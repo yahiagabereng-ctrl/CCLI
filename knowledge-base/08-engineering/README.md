@@ -21,6 +21,8 @@ Cross-cutting project knowledge — architecture, lab platform, certification, v
 | `CCI_Competitors_HW_Extract.md` | `ccli-competitors-hw-extract` | **HAVE** — competitor HW fields from `competitors/` PDFs |
 | `CCI_Competitors_HW_Validation.md` | `ccli-competitors-hw-validation` | **HAVE** — V-NET/IO/TIME/SEC lab validation vs TG544 |
 | `CCI_Phase_Regulation_Checklists.md` | `ccli-phase-regulation-checklists` | **HAVE** — P0–P7 shall/pass tables from O/T/M + 62351/62443 |
+| `CCI_Certificate_Samples_Extract.md` | `ccli-certificate-samples-extract` | **HAVE** — Higeco reference certs in `Certificate/` |
+| `Certificate/README.md` | `ccli-certificate-readme` | **HAVE** — cert documentation handoff (outside lab phases) |
 | `CCI_TestSuitePro_Capture_Plan.md` | `ccli-testsuite-pro-capture-plan` | **HAVE** — Triangle TSP download paths + batches |
 | `CCI_TestSuitePro_Extract.md` | `ccli-testsuite-pro-extract` | **HAVE** — TSP↔CCLI gate map (v4.7.4) |
 | `testsuite-pro/` | `ccli-testsuite-pro-raw` / `…-help` | raw web + offline help drop |

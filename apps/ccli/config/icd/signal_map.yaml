@@ -1,6 +1,8 @@
 # CCLI — IEC 61850 object map (Figura 2 / Annex O+T)
-# Date: 2026-09-26
+# Date: 2026-10-03 (rev 2 — equations index + 31-LN single plane; r29)
 # Status: PRODUCT freeze — hierarchy + clauses; runtime IMPL status per object
+# NOTE:  Documentation / traceability plane. NOT loaded by ccli at runtime
+#        (runtime model = lab_tg544_eth_a.cfg; bindings = lab yaml + C++).
 # Norm:  CEI 0-16 Allegato O · Allegato T · TR 57-126 Figura 2
 # CID:   lab_tg544_eth_a.cid | cei-tr-57-126-example.cid (reference)
 #
@@ -36,6 +38,106 @@ meta:
     - "W110 is autonomous (O.9.2.1); exposed as yaml/math, not a separate DSO LN in Allegato T tables."
     - "Product ctlModel: SBO-with-enhanced-security; lab uses DIRECT_ENHANCED."
     - "Roadmap: TotVAr/PPV + O.9.1 reactive → Phase 5 (P5-M / P5-R). See lab/CCI_Reactive_Roadmap_Gap_Report.md."
+    - "Equation traceability: Flowcharts/ANNEX_EQUATION_UTILIZATION_MATRIX.md (one row per Eq)."
+
+# ---------------------------------------------------------------------------
+# Annex equation index — every control / measurement entry below references
+# one of these ids. Verdicts mirror ANNEX_EQUATION_UTILIZATION_MATRIX.md.
+#   USED · USED-LAB · PART · TEST-ONLY · DOC
+# ---------------------------------------------------------------------------
+equations:
+  eq1:
+    clause: O.8.2
+    formula: "Smax = sqrt(max(Pimm^2,Pass^2) + max(Qind^2,Qcap^2))"
+    regulation_id: R01
+    code: "core/dso/plant_envelope.hpp calc_smax_kva / smax_kva_effective"
+    drawio_ref: null
+    rag: "Flowcharts/PARAMETERS_AND_EQUATIONS.md §2 · lab/CCI_Figura2_Parameters.md"
+    verdict: USED
+  eq2:
+    clause: O.9.2.x
+    formula: "P_kW = pct/100 * Smax_kVA"
+    regulation_id: [R02, R03, R04]
+    code: "core/dso/plant_envelope.hpp pct_smax_to_kw"
+    drawio_ref: ["Flowcharts/DSO_P_limit O_9_2_2.drawio", "Flowcharts/DSO_P_modulation_O_9_2_3_.drawio", "Flowcharts/Lim W110 O.9.2.1.drawio"]
+    rag: "PARAMETERS §3"
+    verdict: USED
+  eq3:
+    clause: [O.9.1.4, O.10.3.2]
+    formula: "Q_kVAr = VArSptPct/100 * Smax_kVA (signed: + cap / − ind)"
+    regulation_id: R13
+    code: "core/dso/dso_reactive_power.cpp derive_reactive_kvar → modbus write_reactive_kvar"
+    drawio_ref: "Flowcharts/V.ctrl.Q.on.DSO.NotConfirmed.drawio"
+    rag: "PARAMETERS §10 · Annex T Tab. 88/89"
+    verdict: USED-LAB
+  eq4:
+    clause: O.9.2.3
+    formula: "WSptPct in [-100,+100]; + export, − import"
+    regulation_id: R03
+    code: "derive_active_power_kw uses max(0,pct) — import ignored"
+    drawio_ref: "Flowcharts/DSO_P_modulation_O_9_2_3_.drawio"
+    verdict: PART
+  eq5_6:
+    clause: O.11
+    formula: "P_eff = min(active export caps kW); order W110 > Wlim > WSd"
+    regulation_id: R05
+    code: "core/dso/dso_active_power.cpp derive_active_power_kw"
+    drawio_ref: ["Flowcharts/DSO_P_limit O_9_2_2.drawio", "Flowcharts/DSO_P_modulation_O_9_2_3_.drawio", "Flowcharts/Lim W110 O.9.2.1.drawio"]
+    rag: "knowledge-base/08-engineering/CCI_Annex_O_Extract.md §8 Table 1"
+    verdict: USED
+    gap: "active-P tier only; WSa + reactive tiers not arbitrated"
+  eq7_8:
+    clause: O.7.3.1
+    formula: "|P-Pexp|/|Pexp| <= 5% within TsP <= 60 s; TsQ <= 10 s"
+    regulation_id: R06
+    code: "settled_within_band_kw() — unit test + live bench band only"
+    drawio_ref: "Flowcharts/Q(V).not confirmed.drawio (fast ring ±5 %)"
+    verdict: TEST-ONLY
+    gap: "no runtime settling timer / TsQ"
+  eq9:
+    clause: O.7.3.3
+    formula: "dt = t_now − t_last >= 3 s else reject set-point"
+    regulation_id: R07
+    code: "core/dso/setpoint_gate.hpp SetpointSpacingGate → mms_adapter setpoint_spacing_accept (WMaxSptPct, WSptPct, VArTgtSptPct)"
+    config: "mms.setpoint_min_interval_s (default 3; 0 = off)"
+    o14_event: "mms/setpoint_reject_spacing_o733"
+    drawio_ref: "Flowcharts/DSO_P_limit O_9_2_2.drawio (DSO command validation node)"
+    verdict: USED
+    since: r29
+  eq10:
+    clause: [O.9.1.3, O.7.3.2]
+    formula: "Q(V): zones V2i/V1i/V1s/V2s, Q_tgt = K*Qmax, lock-in 0.20 Pn, lock-out 0.05 Pn, dQ 5 % Qmax, dT 10–600 s"
+    regulation_id: R10
+    code: null
+    drawio_ref: "Flowcharts/Q(V).not confirmed.drawio"
+    verdict: DOC
+  eq11:
+    clause: [O.9.1.2, O.7.3.2]
+    formula: "cosphi(P): A/B/C = 0.20/0.50/0.80 Pn → 1.00/1.00/0.95; dcosphi 0.02; Q = P*tan(acos(cosphi)); VLkIn 1.05 Vn"
+    regulation_id: R11
+    code: null
+    drawio_ref: "Flowcharts/Cosfi(P).not confirmed.drawio"
+    verdict: DOC
+  eq12:
+    clause: O.9.1.1
+    formula: "PFSP direct cosphi: gen [-1..0], load [0..1]"
+    regulation_id: R12
+    code: null
+    drawio_ref: "Flowcharts/cosfi. not confirmed.drawio"
+    verdict: DOC
+  eq13_17:
+    clause: Lab PF2
+    formula: "enter P > thr + debounce; release hysteresis; stale fail-safe"
+    regulation_id: [L01, L02, L03]
+    code: "core/pf2/pf2_fsm.cpp"
+    drawio_ref: "Flowcharts/PF2_Equation_Dataflow.mermaid"
+    verdict: USED
+  eq18:
+    clause: Lab
+    formula: "P = 400 + 550*|1 − |(phi/60) − 1||, phi = t mod 120"
+    regulation_id: L04
+    code: "lab/modbus_rtu_slave.py --ramp · ccli --lab-demo"
+    verdict: USED-LAB
 
 # ---------------------------------------------------------------------------
 # Figura 2 — lim W — O.9.2.2 / T Table 85 (EN) — LN DWMX prefix Wlim
@@ -45,6 +147,9 @@ controls:
     figura2: lim_W
     clause: [O.9.2.2, T.3.1.4, T.3.3.1.2.1]
     annex_t_table: "EN Table 85 / IT Tab. 84"
+    equation: [eq2, eq5_6, eq9]
+    regulation_id: [R02, R07]
+    drawio_ref: "Flowcharts/DSO_P_limit O_9_2_2.drawio"
     o11_priority: 2
     ln_class: DWMX
     ln_type: DWMX1
@@ -95,6 +200,9 @@ controls:
     figura2: s.p._W
     clause: [O.9.2.3, O.10.3.1, T.3.1.4, T.3.3.1.2.2]
     annex_t_table: "EN Table 86 / IT Tab. 85"
+    equation: [eq2, eq4, eq5_6, eq7_8, eq9]
+    regulation_id: [R03, R06, R07]
+    drawio_ref: "Flowcharts/DSO_P_modulation_O_9_2_3_.drawio"
     o11_priority: 3
     ln_class: DAGC
     ln_type: DAGC1
@@ -145,6 +253,9 @@ controls:
   w110:
     figura2: lim_W110
     clause: [O.9.2.1, O.11]
+    equation: [eq2, eq5_6]
+    regulation_id: R04
+    drawio_ref: "Flowcharts/Lim W110 O.9.2.1.drawio"
     o11_priority: 1
     runtime_status: PART
     note: >
@@ -163,6 +274,9 @@ controls:
     figura2: s.p._Q
     clause: [O.9.1.4, T.3.1.4, T.3.3.1.2.3]
     annex_t_table: "EN Table 88"
+    equation: [eq3, eq7_8, eq9]
+    regulation_id: [R13, R07]
+    drawio_ref: "Flowcharts/V.ctrl.Q.on.DSO.NotConfirmed.drawio"
     o11_priority: 5
     ln_class: DVAR
     prefix: VArSd
@@ -190,6 +304,9 @@ controls:
     figura2: s.p._cosphi
     clause: [O.9.1.1, T.3.1.4]
     annex_t_table: "EN Table 90"
+    equation: eq12
+    regulation_id: R12
+    drawio_ref: "Flowcharts/cosfi. not confirmed.drawio"
     o11_priority: 6
     ln_class: DFPF
     prefix: PFSP
@@ -214,6 +331,9 @@ controls:
     figura2: Q_V
     clause: [O.9.1.3, O.7.3.2, T.3.1.4]
     annex_t_table: "EN Table 91"
+    equation: [eq10, eq7_8]
+    regulation_id: R10
+    drawio_ref: "Flowcharts/Q(V).not confirmed.drawio"
     o11_priority: 6
     ln_class: DVVR
     prefix: VArV
@@ -235,6 +355,9 @@ controls:
     figura2: Cosphi_P
     clause: [O.9.1.2, O.7.3.2, T.3.1.4]
     annex_t_table: "EN Table 92"
+    equation: eq11
+    regulation_id: R11
+    drawio_ref: "Flowcharts/Cosfi(P).not confirmed.drawio"
     o11_priority: 6
     ln_class: DPFW
     prefix: PFW
@@ -255,6 +378,10 @@ controls:
     figura2: null
     clause: [O.10.3.1, T.3.1.4]
     annex_t_table: "EN Table 87 / IT Tab. 86"
+    equation: [eq2, eq3]
+    regulation_id: null
+    drawio_ref: ["Flowcharts/S.P.W.(MSD).not.Confirmed.drawio", "Flowcharts/S.P.Q(MSD).Not. confirmed.drawio"]
+    cid_present: false   # MVP hand-built model only; not in lab_tg544_eth_a.cid
     o11_priority: 4
     ln_class: DAGC
     prefix: WSa
@@ -273,6 +400,8 @@ controls:
 measurements:
   pdc:
     clause: [O.8.3, O.8.4, T.3.1.3, T.3.2.1]
+    equation: [eq7_8, eq13_17]
+    regulation_id: [R09, R06, L01]
     ln_class: MMXU
     prefix: PdC
     reference_base: LD_Plant/PdCMMXU1
@@ -344,6 +473,8 @@ nameplate:
   smax:
     clause: [O.8.2, T.3.1]
     annex_t_table: "Table 80"
+    equation: eq1
+    regulation_id: R01
     id: PdC_VA.VARtg
     unit: kVA
     lab_yaml: plant.smax_kva
@@ -365,6 +496,343 @@ plant_elements:
     - St MMXU2 TotW (Accumulo)
     - SGG MMXU2 TotW N=1..99
     - XCBR1.IDG Pos (breaker)
+
+# ---------------------------------------------------------------------------
+# SINGLE ASSIGNMENT PLANE — all 31 LNs of lab_tg544_eth_a.cid LD_Plant
+# One row per LN: application group · protocol exposure (MMS report / control,
+# GOOSE dataset) · values (CID defaults) · rule / equation · physical binding.
+#
+# application_group keys (Berlin-style mapping key, A0–A8):
+#   A0 common       LLN0 / LPHD              — reports, GOOSE control blocks, health
+#   A1 nameplate    DPCC                     — Smax polygon corners (Eq 1 base)
+#   A2 availability DisFR DECP/DGEN/DSTO     — plant element availability flags
+#   A3 measurement  MMXU                     — PdC + per-source 4 s measurements
+#   A4 breaker      XCBR                     — IDG position / block (status-only)
+#   A5 gen_group    SSGG DGEN2               — single generation group identity / health
+#   A6 active_ctrl  Wlim DWMX / WSd DAGC     — DSO active-P functions (Eq 2,4,5,6,9)
+#   A7 reactive_ctrl VArSd/PFSP/VArV/PFW     — DSO reactive functions (Eq 3,10,11,12)
+#   A8 curve_params VArV DPMC/DECP, PFW DO   — curve breakpoints for Eq 10 / 11
+#
+# binding.kind: modbus | gpio | yaml | mms_client | goose_sub | none
+# protocol: mms_report (dataset) · mms_control (ctlModel) · goose (gcb)
+# ---------------------------------------------------------------------------
+application_groups:
+  A0: {name: common,        count: 2}
+  A1: {name: nameplate,     count: 5}
+  A2: {name: availability,  count: 3}
+  A3: {name: measurement,   count: 8}
+  A4: {name: breaker,       count: 1}
+  A5: {name: gen_group,     count: 2}
+  A6: {name: active_ctrl,   count: 2}
+  A7: {name: reactive_ctrl, count: 4}
+  A8: {name: curve_params,  count: 4}
+  total_ln: 31
+
+goose_map:
+  - gcb: LD_Plant/LLN0.gcb_PdC_Mis4sec
+    app_id: 0x1000
+    dataset: DS_R_PdC_Mis4sec
+    members: [PdCMMXU1.TotW, PdCMMXU1.TotVAr, PdCMMXU1.PPV, PdCMMXU1.A]
+    direction: publish
+    runtime_status: IMPL   # P5-G02 integrated IedServer publish
+  - gcb: LD_Plant/LLN0.gcb_Stato_Allarmi
+    app_id: 0x1001
+    dataset: DS_R_Stato_Allarmi_Segnali
+    members: [DisFRDECP1.Beh, DisFRDGEN1.Beh, DisFRDSTO1.Beh, IDGXCBR1.Pos, SSGGDGEN1.Health, SSGGDGEN2.Health,
+              WlimDWMX1.Beh, WlimDWMX1.FctOpStAuto, WlimDWMX1.FctOpStEx, WSdDAGC1.Beh, WSdDAGC1.FctOpSt,
+              VArSdDVAR1.Beh, VArSdDVAR1.FctOpSt, PFSPDFPF1.Beh, PFSPDFPF1.FctOpSt,
+              VArVDVVR1.Beh, VArVDVVR1.FctOpSt, PFWDPFW1.Beh, PFWDPFW1.FctOpSt]
+    direction: publish
+    runtime_status: IMPL
+  - subscribe:
+      note: "Plant-side GOOSE subscribe (P5-G03) — bay IEDs (PTOC/PDIS/PTRC/CSWI) are NOT in the CCI CID; map via ExtRef / DI."
+      runtime_status: STUB
+
+logical_nodes:
+  # ---- A0 common --------------------------------------------------------
+  - ln: LD_Plant/LLN0
+    group: A0
+    protocol:
+      mms_report: [brcb_Stato_Allarmi_Segnali, urcb_PdC_Mis4sec, urcb_GenAcc_Mis4sec, urcb_SingGen_Mis4sec]
+      goose: [gcb_PdC_Mis4sec, gcb_Stato_Allarmi]
+    values: {Mod: on, configRev: 20261002, ldNs: "IEC61850-7-4:2010"}
+    rule: "T.3.2.1 integrity 4 s (intgPd 4000) · brcb bufTime 250 ms"
+    equation: null
+    regulation_id: R09
+    binding: {kind: none}
+    runtime_status: IMPL
+  - ln: LD_Plant/LPHD1
+    group: A0
+    protocol: {mms_report: null}
+    values: {PhyHealth: Ok, vendor: Abcd_01, swRev: "1.0", location: IT000E123456789}
+    rule: "PhyHealth ← ccli self-test / O.14 system events"
+    equation: null
+    binding: {kind: none, gap: "PhyHealth not driven by runtime yet"}
+    runtime_status: PART
+
+  # ---- A1 nameplate (Eq 1 corners) --------------------------------------
+  - ln: LD_Plant/PdC_WiDPCC1
+    group: A1
+    protocol: {mms_report: null, fc: SP}
+    values: {WRtg.setMag.f: 200, unit: kW, desc: "max P immissione"}
+    equation: eq1
+    regulation_id: R01
+    binding: {kind: yaml, key: plant.p_imm_kw}
+    runtime_status: PART
+  - ln: LD_Plant/PdC_WaDPCC1
+    group: A1
+    values: {WRtg.setMag.f: 200, unit: kW, desc: "max P assorbimento"}
+    equation: eq1
+    regulation_id: R01
+    binding: {kind: yaml, key: plant.p_ass_kw}
+    runtime_status: PART
+  - ln: LD_Plant/PdC_QiDPCC1
+    group: A1
+    values: {VArRtg.setMag.f: 50, unit: kVAr, desc: "max Q induttiva"}
+    equation: eq1
+    regulation_id: R01
+    binding: {kind: yaml, key: plant.q_ind_kvar}
+    runtime_status: PART
+  - ln: LD_Plant/PdC_QcDPCC1
+    group: A1
+    values: {VArRtg.setMag.f: 50, unit: kVAr, desc: "max Q capacitiva"}
+    equation: eq1
+    regulation_id: R01
+    binding: {kind: yaml, key: plant.q_cap_kvar}
+    runtime_status: PART
+  - ln: LD_Plant/PdC_VADPCC1
+    group: A1
+    values: {VARtg.setMag.f: 210, unit: kVA, desc: "Smax impianto (authoritative)"}
+    rule: "Smax_used = VARtg when set, else Eq (1) calc (206.15)"
+    equation: eq1
+    regulation_id: R01
+    binding: {kind: yaml, key: plant.smax_kva, code: "plant_envelope.hpp smax_kva_effective"}
+    runtime_status: PART
+
+  # ---- A2 availability ---------------------------------------------------
+  - ln: LD_Plant/DisFRDECP1
+    group: A2
+    protocol: {mms_report: brcb_Stato_Allarmi_Segnali, goose: gcb_Stato_Allarmi}
+    values: {Beh: on}
+    rule: "Availability of FR electrical connection point"
+    equation: null
+    binding: {kind: none, candidate: "DI or plant MMS client"}
+    runtime_status: STUB
+  - ln: LD_Plant/DisFRDGEN1
+    group: A2
+    protocol: {mms_report: brcb_Stato_Allarmi_Segnali, goose: gcb_Stato_Allarmi}
+    values: {Beh: on}
+    rule: "Generation availability"
+    binding: {kind: none, candidate: "plant MMS client / Modbus status word"}
+    runtime_status: STUB
+  - ln: LD_Plant/DisFRDSTO1
+    group: A2
+    protocol: {mms_report: brcb_Stato_Allarmi_Segnali, goose: gcb_Stato_Allarmi}
+    values: {Beh: on}
+    rule: "Storage availability"
+    binding: {kind: none}
+    runtime_status: STUB
+
+  # ---- A3 measurement ----------------------------------------------------
+  - ln: LD_Plant/PdCMMXU1
+    group: A3
+    protocol: {mms_report: urcb_PdC_Mis4sec, goose: gcb_PdC_Mis4sec}
+    values: {TotW: live, TotVAr: live, PPV.phsAB: "20 kV (yaml)", A: 0}
+    rule: "O.8.3 4 s blocks · feeds PF2 FSM (Eq 13–17) and Eq (7)(8) band"
+    equation: [eq7_8, eq13_17]
+    regulation_id: [R09, R06, L01]
+    binding:
+      - {do: TotW,   kind: modbus, ref: "FC03 @40001 float32 BE kW", code: "update_tot_w_kw"}
+      - {do: TotVAr, kind: modbus, ref: "FC03 @40003 float32 BE kVAr", code: "update_totvar_kvar"}
+      - {do: PPV,    kind: yaml,   ref: "plant.poc_ppv_kv (P5-06 analyzer register TBD)"}
+      - {do: A,      kind: none}
+    runtime_status: PART
+  - ln: LD_Plant/GenPVMMXU1
+    group: A3
+    protocol: {mms_report: urcb_GenAcc_Mis4sec}
+    values: {Beh: on, TotW: 0}
+    rule: "Per-source P (PV)"
+    binding: {kind: none, candidate: "inverter Modbus / Sun2000"}
+    runtime_status: DEFERRED
+  - ln: LD_Plant/GenWiMMXU1
+    group: A3
+    values: {Beh: on, TotW: 0}
+    rule: "Per-source P (wind)"
+    binding: {kind: none}
+    runtime_status: DEFERRED
+  - ln: LD_Plant/GenTerMMXU1
+    group: A3
+    protocol: {mms_report: urcb_GenAcc_Mis4sec}
+    values: {Beh: on, TotW: 0}
+    rule: "Per-source P (thermal)"
+    binding: {kind: none}
+    runtime_status: DEFERRED
+  - ln: LD_Plant/GenIdrMMXU1
+    group: A3
+    protocol: {mms_report: urcb_GenAcc_Mis4sec}
+    values: {Beh: on, TotW: 0}
+    rule: "Per-source P (hydro)"
+    binding: {kind: none}
+    runtime_status: DEFERRED
+  - ln: LD_Plant/StMMXU1
+    group: A3
+    protocol: {mms_report: urcb_GenAcc_Mis4sec}
+    values: {Beh: on, TotW: 0}
+    rule: "Storage P (Accumulo)"
+    binding: {kind: none}
+    runtime_status: DEFERRED
+  - ln: LD_Plant/SGGMMXU1
+    group: A3
+    protocol: {mms_report: urcb_SingGen_Mis4sec}
+    values: {Beh: on, TotW: 0, desc: "Singolo Gruppo GenPV(1)"}
+    binding: {kind: none}
+    runtime_status: DEFERRED
+  - ln: LD_Plant/SGGMMXU2
+    group: A3
+    protocol: {mms_report: urcb_SingGen_Mis4sec}
+    values: {Beh: on, TotW: 0, desc: "Singolo Gruppo GenTer(1)"}
+    binding: {kind: none}
+    runtime_status: DEFERRED
+
+  # ---- A4 breaker --------------------------------------------------------
+  - ln: LD_Plant/IDGXCBR1
+    group: A4
+    protocol: {mms_report: brcb_Stato_Allarmi_Segnali, goose: gcb_Stato_Allarmi}
+    values: {Pos.ctlModel: status-only, BlkOpn.ctlModel: status-only, BlkCls.ctlModel: status-only}
+    rule: "IDG (interface device) position — status only, never operated by CCI"
+    equation: null
+    binding: {kind: none, candidate: "DI (aux contact) or bay IED GOOSE/MMS ExtRef (Berlin-style CSWI/XCBR)"}
+    runtime_status: STUB
+
+  # ---- A5 gen_group ------------------------------------------------------
+  - ln: LD_Plant/SSGGDGEN1
+    group: A5
+    protocol: {mms_report: [brcb_Stato_Allarmi_Segnali, urcb_SingGen_Mis4sec], goose: gcb_Stato_Allarmi}
+    values: {Health: Ok, GnGrId: 1, desc: "GenPV(1)"}
+    binding: {kind: none}
+    runtime_status: STUB
+  - ln: LD_Plant/SSGGDGEN2
+    group: A5
+    protocol: {mms_report: [brcb_Stato_Allarmi_Segnali, urcb_SingGen_Mis4sec], goose: gcb_Stato_Allarmi}
+    values: {Health: Ok, GnGrId: 2, desc: "GenTer(1)"}
+    binding: {kind: none}
+    runtime_status: STUB
+
+  # ---- A6 active_ctrl ----------------------------------------------------
+  - ln: LD_Plant/WlimDWMX1
+    group: A6
+    protocol:
+      mms_control: {Mod: direct-with-enhanced-security, WMaxSptPct: direct-with-enhanced-security}
+      mms_report: brcb_Stato_Allarmi_Segnali
+      goose: gcb_Stato_Allarmi
+    values: {Beh: off, Mod: 5, WMaxSptPct: 0, unit: "% Smax"}
+    rule: "O.11 index 2 · Eq (2) → kW · Eq (9) ≥3 s spacing · RBAC DSO_OPERATOR"
+    equation: [eq2, eq5_6, eq9]
+    regulation_id: [R02, R05, R07]
+    drawio_ref: "Flowcharts/DSO_P_limit O_9_2_2.drawio"
+    binding: {kind: gpio, ref: "DIO1 curtail via Pf2Fsm thresholds", code: "apply_live_dso_commands_to_pf2"}
+    runtime_status: IMPL
+  - ln: LD_Plant/WSdDAGC1
+    group: A6
+    protocol:
+      mms_control: {Mod: direct-with-enhanced-security, WSptPct: direct-with-enhanced-security}
+      mms_report: brcb_Stato_Allarmi_Segnali
+      goose: gcb_Stato_Allarmi
+    values: {Beh: on, Mod: 1, WSptPct.mxVal.f: 20, unit: "% Smax signed"}
+    rule: "O.11 index 3 · Eq (2)(4) → 42 kW @ 210 kVA · Eq (9) spacing · TsP ≤ 60 s (Eq 7,8 — TEST-ONLY)"
+    equation: [eq2, eq4, eq5_6, eq7_8, eq9]
+    regulation_id: [R03, R05, R06, R07]
+    drawio_ref: "Flowcharts/DSO_P_modulation_O_9_2_3_.drawio"
+    binding: {kind: gpio, ref: "DIO1 via PF2 export threshold", gap: "import (−) not mapped; no plant P write"}
+    runtime_status: IMPL
+
+  # ---- A7 reactive_ctrl --------------------------------------------------
+  - ln: LD_Plant/VArSdDVAR1
+    group: A7
+    protocol:
+      mms_control: {Mod: direct-with-enhanced-security, VArTgtSptPct: direct-with-enhanced-security}
+      mms_report: brcb_Stato_Allarmi_Segnali
+      goose: gcb_Stato_Allarmi
+    values: {Beh: off, Mod: 5, VArTgtSptPct: 0, unit: "% Smax signed"}
+    rule: "O.11 index 5 · Eq (3) → kVAr · Eq (9) spacing · TsQ ≤ 10 s (not timed)"
+    equation: [eq3, eq7_8, eq9]
+    regulation_id: [R13, R07]
+    drawio_ref: "Flowcharts/V.ctrl.Q.on.DSO.NotConfirmed.drawio"
+    binding: {kind: modbus, ref: "FC16 Q @40003 (lab slave) / Sun2000 TBD", code: "modbus_adapter.write_reactive_kvar"}
+    runtime_status: IMPL
+  - ln: LD_Plant/PFSPDFPF1
+    group: A7
+    protocol:
+      mms_control: {Mod: sbo-with-enhanced-security, PFGnTgtSpt: sbo-with-enhanced-security, PFLodTgtSpt: sbo-with-enhanced-security}
+      mms_report: brcb_Stato_Allarmi_Segnali
+      goose: gcb_Stato_Allarmi
+    values: {Beh: off, Mod: 5, PFGnTgtSpt: "[-1.00..0.00]", PFLodTgtSpt: "[0.00..1.00]"}
+    rule: "O.11 index 6 · Eq (12) direct cosφ"
+    equation: eq12
+    regulation_id: R12
+    drawio_ref: "Flowcharts/cosfi. not confirmed.drawio"
+    binding: {kind: none, candidate: "inverter cosφ register or Q = P·tan(acos φ) via FC16"}
+    runtime_status: STUB
+  - ln: LD_Plant/VArVDVVR1
+    group: A7
+    protocol:
+      mms_control: {Mod: sbo-with-enhanced-security}
+      mms_report: brcb_Stato_Allarmi_Segnali
+      goose: gcb_Stato_Allarmi
+    values: {Beh: off, Mod: 5, K: "[-1.00..1.00]"}
+    rule: "O.11 index 6 · Eq (10) Q(V) slow ring ΔT 10–600 s (O.7.3.2) · δQ 5 % Qmax"
+    equation: [eq10, eq7_8]
+    regulation_id: R10
+    drawio_ref: "Flowcharts/Q(V).not confirmed.drawio"
+    binding: {kind: none, needs: "PdC V input (PPV) + Q write path"}
+    runtime_status: STUB
+  - ln: LD_Plant/PFWDPFW1
+    group: A7
+    protocol:
+      mms_control: {Mod: sbo-with-enhanced-security}
+      mms_report: brcb_Stato_Allarmi_Segnali
+      goose: gcb_Stato_Allarmi
+    values: {Beh: off, Mod: 5, WSetA: "0.20 Pn", PFSetA: 1.00, WSetB: "0.50 Pn", PFSetB: 1.00, WSetC: "0.80 Pn", PFSetC: 0.95, VLkIn: "1.05 Vn", VLkOut: "[0.90..1.00] Vn"}
+    rule: "O.11 index 6 · Eq (11) cosφ(P) piecewise · δcosφ 0.02"
+    equation: eq11
+    regulation_id: R11
+    drawio_ref: "Flowcharts/Cosfi(P).not confirmed.drawio"
+    binding: {kind: none, needs: "P measurement (have) + Q write path (have, lab) + V lock-in (missing)"}
+    runtime_status: STUB
+
+  # ---- A8 curve_params (Eq 10 breakpoints) --------------------------------
+  - ln: LD_Plant/VArVDPMC1
+    group: A8
+    protocol: {mms_control: {WSpt1: sbo-with-enhanced-security}}
+    values: {Beh: off, WSpt1: "lock-in P [0.00..max] Pn p.u. (default 0.20)"}
+    equation: eq10
+    regulation_id: R10
+    binding: {kind: yaml, candidate_key: dso.qv.lock_in_pu}
+    runtime_status: STUB
+  - ln: LD_Plant/VArVDPMC2
+    group: A8
+    protocol: {mms_control: {WSpt1: sbo-with-enhanced-security}}
+    values: {Beh: off, WSpt1: "lock-out P [0.00..max] Pn p.u. (default 0.05)"}
+    equation: eq10
+    regulation_id: R10
+    binding: {kind: yaml, candidate_key: dso.qv.lock_out_pu}
+    runtime_status: STUB
+  - ln: LD_Plant/VArVDECP1
+    group: A8
+    values: {Beh: off, VMax: "V1s p.u.", VMin: "V1i p.u."}
+    rule: "Q(V) inner dead-band corners"
+    equation: eq10
+    regulation_id: R10
+    binding: {kind: yaml, candidate_key: dso.qv.v1}
+    runtime_status: STUB
+  - ln: LD_Plant/VArVDECP2
+    group: A8
+    values: {Beh: off, VMax: "V2s p.u.", VMin: "V2i p.u."}
+    rule: "Q(V) outer saturation corners"
+    equation: eq10
+    regulation_id: R10
+    binding: {kind: yaml, candidate_key: dso.qv.v2}
+    runtime_status: STUB
 
 # ---------------------------------------------------------------------------
 # Status legend

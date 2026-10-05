@@ -11,6 +11,35 @@
 
 #include <stdio.h>
 
+static int s_annex_m_trip_gpio = 0;
+
+bool svc_io_configure_annex_m_trip_monitor(int gpio_channel, bool enabled) {
+    if (!enabled || gpio_channel < 1) {
+        s_annex_m_trip_gpio = 0;
+        return true;
+    }
+    s_annex_m_trip_gpio = gpio_channel;
+    fprintf(stderr, "svc_io: annex_m_trip_monitor ch%d (O.11 inhibit DIO1) [P6-03]\n",
+            s_annex_m_trip_gpio);
+    return true;
+}
+
+bool svc_io_read_annex_m_trip_active(bool *active) {
+    if (active == NULL) {
+        return false;
+    }
+    if (s_annex_m_trip_gpio <= 0) {
+        *active = false;
+        return true;
+    }
+    int energized = 0;
+    if (!cci_gpio_ll_read_relay(s_annex_m_trip_gpio, &energized)) {
+        return false;
+    }
+    *active = energized != 0;
+    return true;
+}
+
 bool svc_io_init_cfg(const DrvGpioConfig *cfg) {
     if (cfg == 0) {
         return false;
@@ -57,7 +86,14 @@ void svc_io_shutdown(void) {
     cci_gpio_ll_shutdown();
 }
 
-void svc_io_log_status(const bool curtail_active, const bool permissive_ok) {
-    fprintf(stderr, "io: curtail_do=%s permissive=%s\n", curtail_active ? "ON" : "OFF",
-            permissive_ok ? "OK" : "BLOCKED");
+void svc_io_log_status(const bool curtail_active, const bool permissive_ok,
+                       const bool annex_m_trip_active) {
+    if (s_annex_m_trip_gpio > 0) {
+        fprintf(stderr, "io: curtail_do=%s permissive=%s annex_m_trip=%s\n",
+                curtail_active ? "ON" : "OFF", permissive_ok ? "OK" : "BLOCKED",
+                annex_m_trip_active ? "ACTIVE" : "off");
+    } else {
+        fprintf(stderr, "io: curtail_do=%s permissive=%s\n", curtail_active ? "ON" : "OFF",
+                permissive_ok ? "OK" : "BLOCKED");
+    }
 }

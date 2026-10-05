@@ -214,7 +214,7 @@ Aligned with `regulation_map.hpp` after audit (see `FLOWCHARTS_CROSSCHECK_AUDIT.
 | R04 | O.9.2.1 W110 | (2) | **PART** | yaml; no V meter |
 | R05 | O.11 | (5)(6) | **PASS** | min() caps only |
 | R06 | O.7.3.1 | (7)(8) | **PASS** | unit test only |
-| R07 | O.7.3.3 | (9) | **Na** | not implemented |
+| R07 | O.7.3.3 | (9) | **Pass** (r29) | `SetpointSpacingGate` in `mms_adapter`; yaml `mms.setpoint_min_interval_s` |
 | R08 | O.13.1.2 | — | **PART** | stale meter; not full Annex U |
 | R09 | O.8.3 TotW | — | **PART** | P3-03 lab; poll 1 s vs 4 s block |
 | R10 | O.9.1.3 VArV | (10) | **Na** | draw.io only |

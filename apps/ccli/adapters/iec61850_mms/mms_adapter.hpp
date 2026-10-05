@@ -2,7 +2,13 @@
 
 #include "config/ccli_config.hpp"
 
+#include <functional>
+#include <string>
+
 namespace cci::adapters {
+
+/** O.14 audit hook — invoked from MMS connection / ACSE auth paths (P7-04). */
+using MmsAuditFn = std::function<void(const std::string& detail)>;
 
 /** Annex T / 62351-8 lab roles (private DSO_OPERATOR = −1). */
 enum class MmsRole : int {
@@ -42,7 +48,7 @@ public:
     MmsAdapter(const MmsAdapter&) = delete;
     MmsAdapter& operator=(const MmsAdapter&) = delete;
 
-    bool start(const core::MmsConfig& cfg);
+    bool start(const core::MmsConfig& cfg, MmsAuditFn audit = {});
     void stop();
     bool is_running() const;
 
@@ -64,6 +70,12 @@ public:
     void refresh_time_quality();
     int client_count() const;
     bool gnss_fix() const;
+
+    /**
+     * P5-G02 — enable libiec61850 integrated GOOSE publisher for GoCBs in CID/.cfg.
+     * Requires GSEControl + GSE in SCL; call after start() when goose.publish_enabled.
+     */
+    void enable_goose_publishing(const core::GooseConfig& cfg);
 
 private:
     struct Impl;

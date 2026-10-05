@@ -195,7 +195,23 @@ Verified after draw.io extract + numeric sanity check (2026-09-30).
 | `CCI_Control_not final.drawio` | Finalize or split per function |
 | RAG HTTP ingest | Start Telematry stack; re-run `ingest-flowcharts.ps1` |
 | WSd draw.io index 4 label | Correct node to **index 3** |
-| Eq **(9)** 3 s gate | Phase 3+ MMS command layer |
+| ~~Eq **(9)** 3 s gate~~ | **Done r29** — `core/dso/setpoint_gate.hpp` + `mms_adapter.cpp`; R07 bench PASS; DUT evidence pending |
+
+---
+
+## 8a. Code utilization (2026-10-03) — see `ANNEX_EQUATION_UTILIZATION_MATRIX.md`
+
+| Verdict | Equations |
+|---------|-----------|
+| **USED** | (1) (2) (5)(6) **(9)** (13)–(17) |
+| **USED-LAB** | (3) (18) |
+| **PART** | (4) import · O.9.2.1 V input · O.9.2.3 tracking |
+| **TEST-ONLY** | (7)(8) TsP / TsQ |
+| **DOC** | (10) (11) (12) · O.10.3 WSa |
+
+Single plane: `apps/ccli/config/icd/signal_map.yaml` now carries `equations:` (eq1…eq18), `application_groups` A0–A8, `goose_map`, and `logical_nodes` for all **31** CID LNs with `equation` / `regulation_id` / `drawio_ref` / `binding`.
+
+Row R07 in §4 above is superseded: `regulation_map.hpp` R07 = **Pass / Eq (9)** since r29.
 
 ---
 

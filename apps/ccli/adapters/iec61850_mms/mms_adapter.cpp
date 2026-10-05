@@ -20,6 +20,7 @@
 #include "mms_acse_auth.hpp"
 #include "mms_aare_auth.hpp"
 #include "gnss_time.hpp"
+#include "dso/setpoint_gate.hpp"
 
 #include <cstdio>
 #include <cstdint>
@@ -175,6 +176,46 @@ struct MmsAdapter::Impl {
     bool fallback_pending{false};
     bool fallback_latched{false};
     bool full_cid_model{false};
+    MmsAuditFn audit{};
+
+    /* O.7.3.3 / Eq (9) — R07: one gate across all DSO set-point objects (guarded by mu). */
+    core::dso::SetpointSpacingGate spacing_gate{core::dso::kSetpointMinIntervalMsO733};
+
+    void emit_audit(const char* detail) const {
+        if (audit && detail != nullptr) {
+            audit(detail);
+        }
+    }
+
+    static uint64_t mono_now_ms() {
+        timespec mono{};
+        clock_gettime(CLOCK_MONOTONIC, &mono);
+        return static_cast<uint64_t>(mono.tv_sec) * 1000ULL +
+               static_cast<uint64_t>(mono.tv_nsec / 1000000L);
+    }
+
+    /**
+     * Apply O.7.3.3 to one external set-point write. Returns false (and logs /
+     * audits) when the write arrives sooner than the configured interval.
+     * Caller must NOT hold mu.
+     */
+    bool setpoint_spacing_accept(const char* object_ref) {
+        uint64_t wait_ms = 0;
+        {
+            std::lock_guard<std::mutex> lock(mu);
+            const uint64_t now = mono_now_ms();
+            if (spacing_gate.accept(now)) {
+                return true;
+            }
+            wait_ms = spacing_gate.remaining_ms(now);
+        }
+        std::fprintf(stderr,
+                     "mms: %s REJECT — set-point spacing < %u ms (wait %llu ms) [O.7.3.3 R07]\n",
+                     object_ref, spacing_gate.min_interval_ms(),
+                     static_cast<unsigned long long>(wait_ms));
+        emit_audit("setpoint_reject_spacing_o733");
+        return false;
+    }
 
     static CheckHandlerResult check_tramp(ControlAction action, void* parameter,
                                           MmsValue* ctlVal, bool test,
@@ -208,6 +249,7 @@ CheckHandlerResult MmsAdapter::Impl::check_tramp(ControlAction action, void* par
     }
     std::fprintf(stderr,
                  "mms: RBAC DENY Wlim/WSd — role is not DSO_OPERATOR (62351-8 / T.3.3.4)\n");
+    impl->emit_audit("rbac_deny_control");
     return CONTROL_OBJECT_ACCESS_DENIED;
 }
 
@@ -231,6 +273,9 @@ bool MmsAdapter::Impl::auth_tramp(void* parameter,
     }
     if (authParameter == nullptr) {
         std::fprintf(stderr, "mms: ACSE auth REJECT — no auth parameter\n");
+        if (impl != nullptr) {
+            impl->emit_audit("auth_reject_no_parameter");
+        }
         return false;
     }
 
@@ -257,6 +302,9 @@ bool MmsAdapter::Impl::auth_tramp(void* parameter,
         std::fprintf(stderr,
                      "mms: ACSE auth ACCEPT — mech=%s role=DSO_OPERATOR cert=%d octets\n",
                      mms_acse_mechanism_label(mechanism), len);
+        if (impl != nullptr) {
+            impl->emit_audit("auth_accept_dso_operator");
+        }
         return true;
     case MmsAcseAuthResult::AcceptViewer:
         if (securityToken != nullptr) {
@@ -265,22 +313,34 @@ bool MmsAdapter::Impl::auth_tramp(void* parameter,
         std::fprintf(stderr,
                      "mms: ACSE auth ACCEPT — mech=%s role=VIEWER cert=%d octets\n",
                      mms_acse_mechanism_label(mechanism), len);
+        if (impl != nullptr) {
+            impl->emit_audit("auth_accept_viewer");
+        }
         return true;
     case MmsAcseAuthResult::RejectMechanism:
         std::fprintf(stderr,
                      "mms: ACSE auth REJECT — mechanism=%s (%d); need TLS or CERTIFICATE\n",
                      mms_acse_mechanism_label(mechanism),
                      static_cast<int>(mechanism));
+        if (impl != nullptr) {
+            impl->emit_audit("auth_reject_mechanism");
+        }
         return false;
     case MmsAcseAuthResult::RejectEmptyCert:
         std::fprintf(stderr,
                      "mms: ACSE auth REJECT — empty certificate (mech=%s)\n",
                      mms_acse_mechanism_label(mechanism));
+        if (impl != nullptr) {
+            impl->emit_audit("auth_reject_empty_cert");
+        }
         return false;
     case MmsAcseAuthResult::RejectUnknownCert:
         std::fprintf(stderr,
                      "mms: ACSE auth REJECT — cert not mapped to lab role (%d octets, mech=%s)\n",
                      len, mms_acse_mechanism_label(mechanism));
+        if (impl != nullptr) {
+            impl->emit_audit("auth_reject_unknown_cert");
+        }
         return false;
     }
     return false;
@@ -299,11 +359,13 @@ void MmsAdapter::Impl::conn_tramp(IedServer /*self*/, ClientConnection /*connect
         impl->fallback_pending = false;
         impl->last_zero_clients_ms = 0;
         std::fprintf(stderr, "mms: client CONNECT count=%d\n", impl->client_count);
+        impl->emit_audit("client_connect");
     } else {
         if (impl->client_count > 0) {
             impl->client_count -= 1;
         }
         std::fprintf(stderr, "mms: client DISCONNECT count=%d\n", impl->client_count);
+        impl->emit_audit("client_disconnect");
         if (impl->client_count == 0 && impl->fallback_s > 0) {
             impl->last_zero_clients_ms = Hal_getTimeInMs();
             std::fprintf(stderr,
@@ -360,6 +422,9 @@ ControlHandlerResult MmsAdapter::Impl::on_control(ControlAction action, MmsValue
                 got = true;
             }
         }
+        if (got && !setpoint_spacing_accept("WlimDWMX1.WMaxSptPct")) {
+            return CONTROL_RESULT_FAILED;
+        }
         if (got) {
             {
                 std::lock_guard<std::mutex> lock(mu);
@@ -408,6 +473,9 @@ ControlHandlerResult MmsAdapter::Impl::on_control(ControlAction action, MmsValue
                 got = true;
             }
         }
+        if (got && !setpoint_spacing_accept("WSdDAGC1.WSptPct")) {
+            return CONTROL_RESULT_FAILED;
+        }
         if (got) {
             {
                 std::lock_guard<std::mutex> lock(mu);
@@ -455,6 +523,9 @@ ControlHandlerResult MmsAdapter::Impl::on_control(ControlAction action, MmsValue
                 pct = MmsValue_toFloat(f);
                 got = true;
             }
+        }
+        if (got && !setpoint_spacing_accept("VArSdDVAR1.VArTgtSptPct")) {
+            return CONTROL_RESULT_FAILED;
         }
         if (got) {
             {
@@ -692,7 +763,7 @@ bool MmsAdapter::Impl::create_mms_model(const core::MmsConfig& cfg, MmsAdapter::
 
 MmsAdapter::~MmsAdapter() { stop(); }
 
-bool MmsAdapter::start(const core::MmsConfig& cfg) {
+bool MmsAdapter::start(const core::MmsConfig& cfg, MmsAuditFn audit) {
     const char* bind_address = cfg.bind_address.c_str();
     const int tcp_port = cfg.tcp_port;
 
@@ -702,7 +773,15 @@ bool MmsAdapter::start(const core::MmsConfig& cfg) {
     stop();
 
     auto* impl = new Impl();
+    impl->audit = std::move(audit);
     impl->fallback_s = cfg.comms_loss_fallback_s;
+    {
+        const int spacing_s = cfg.setpoint_min_interval_s < 0 ? 0 : cfg.setpoint_min_interval_s;
+        impl->spacing_gate =
+            core::dso::SetpointSpacingGate(static_cast<uint32_t>(spacing_s) * 1000U);
+        std::fprintf(stderr, "mms: O.7.3.3 set-point spacing gate %s (%d s)\n",
+                     spacing_s > 0 ? "ON" : "OFF", spacing_s);
+    }
     impl->gnss_poll_s = cfg.gnss_poll_s;
     impl->gnss_discipline = cfg.gnss_discipline_clock;
     impl->chrony_poll = cfg.chrony_poll;
@@ -841,11 +920,17 @@ bool MmsAdapter::start(const core::MmsConfig& cfg) {
         impl->rbac_enabled = !impl->dso_der.empty();
         IedServerConfig server_cfg = IedServerConfig_create();
         IedServerConfig_enableResvTmsForBRCB(server_cfg, false);
+#if defined(CCLI_HAVE_GOOSE)
+        IedServerConfig_useIntegratedGoosePublisher(server_cfg, true);
+#endif
         impl->server = IedServer_createWithConfig(impl->model, impl->tls, server_cfg);
         IedServerConfig_destroy(server_cfg);
     } else {
         IedServerConfig server_cfg = IedServerConfig_create();
         IedServerConfig_enableResvTmsForBRCB(server_cfg, false);
+#if defined(CCLI_HAVE_GOOSE)
+        IedServerConfig_useIntegratedGoosePublisher(server_cfg, true);
+#endif
         impl->server = IedServer_createWithConfig(impl->model, nullptr, server_cfg);
         IedServerConfig_destroy(server_cfg);
     }
@@ -860,6 +945,9 @@ bool MmsAdapter::start(const core::MmsConfig& cfg) {
     }
     IedServerConfig server_cfg = IedServerConfig_create();
     IedServerConfig_enableResvTmsForBRCB(server_cfg, false);
+#if defined(CCLI_HAVE_GOOSE)
+    IedServerConfig_useIntegratedGoosePublisher(server_cfg, true);
+#endif
     impl->server = IedServer_createWithConfig(impl->model, nullptr, server_cfg);
     IedServerConfig_destroy(server_cfg);
 #endif
@@ -1025,6 +1113,44 @@ void MmsAdapter::stop() {
 bool MmsAdapter::is_running() const {
     return impl_ != nullptr && impl_->running && impl_->server != nullptr &&
            IedServer_isRunning(impl_->server);
+}
+
+#if defined(CCLI_HAVE_LIBIEC61850) && defined(CCLI_HAVE_GOOSE)
+static void go_cb_event_handler(MmsGooseControlBlock go_cb, int event, void* parameter) {
+    (void)parameter;
+    const char* name =
+        go_cb != nullptr ? MmsGooseControlBlock_getName(go_cb) : "(null)";
+    const int ena = go_cb != nullptr ? MmsGooseControlBlock_getGoEna(go_cb) : -1;
+    std::fprintf(stderr, "mms: GoCB %s event=%d GoEna=%d\n", name, event, ena);
+}
+#endif
+
+void MmsAdapter::enable_goose_publishing(const core::GooseConfig& cfg) {
+#if defined(CCLI_HAVE_LIBIEC61850) && defined(CCLI_HAVE_GOOSE)
+    if (impl_ == nullptr || !impl_->running || impl_->server == nullptr) {
+        std::fprintf(stderr, "mms: GOOSE publish skipped — MMS server not running\n");
+        return;
+    }
+    if (!cfg.publish_enabled) {
+        return;
+    }
+    if (!impl_->full_cid_model) {
+        std::fprintf(stderr,
+                     "mms: GOOSE publish requires full CID model (model_cfg in yaml)\n");
+        return;
+    }
+    const char* iface = cfg.interface.empty() ? "br-lan" : cfg.interface.c_str();
+    IedServer_setGooseInterfaceId(impl_->server, iface);
+    IedServer_setGoCBHandler(impl_->server, go_cb_event_handler, impl_);
+    IedServer_enableGoosePublishing(impl_->server);
+    std::fprintf(stderr,
+                 "mms: GOOSE publishing enabled on %s (gcb_PdC_Mis4sec APPID=0x1000, "
+                 "gcb_Stato_Allarmi APPID=0x1001)\n",
+                 iface);
+#else
+    (void)cfg;
+    std::fprintf(stderr, "mms: GOOSE publish requested but built without CCLI_HAVE_GOOSE\n");
+#endif
 }
 
 void MmsAdapter::update_tot_w_kw(double p_kw) {
@@ -1312,8 +1438,9 @@ struct MmsAdapter::Impl {};
 
 MmsAdapter::~MmsAdapter() = default;
 
-bool MmsAdapter::start(const core::MmsConfig& cfg) {
+bool MmsAdapter::start(const core::MmsConfig& cfg, MmsAuditFn audit) {
     (void)cfg;
+    (void)audit;
     std::fprintf(stderr,
                  "mms: stub (libiec61850 not linked) — rebuild with "
                  "CCLI_HAVE_LIBIEC61850\n");

@@ -17,6 +17,7 @@ public:
     static constexpr std::size_t kMaxEvents = 2048;
 
     void append(EventRecord ev);
+    std::size_t size() const { return ring_.size(); }
     std::vector<EventRecord> recent(std::size_t max_count) const;
 
 private:

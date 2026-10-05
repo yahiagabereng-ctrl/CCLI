@@ -14,6 +14,7 @@
 |----------|----------|
 | **[PARAMETERS_AND_EQUATIONS.md](PARAMETERS_AND_EQUATIONS.md)** | Master equation list, yaml parameters, lab network ports, implementation status |
 | **[FLOWCHARTS_CROSSCHECK_AUDIT.md](FLOWCHARTS_CROSSCHECK_AUDIT.md)** | Ingest audit vs code + Annex O Table 1 |
+| **[ANNEX_EQUATION_UTILIZATION_MATRIX.md](ANNEX_EQUATION_UTILIZATION_MATRIX.md)** | Per-equation verdict: RAG · draw.io · code symbol · USED / PART / DOC + backlog |
 | **[ARCHITECTURE_Network_Protocols.mermaid](ARCHITECTURE_Network_Protocols.mermaid)** | LAN1/LAN2/LAN3 · ports 102 / 3782 / 2404 · TesPro vs `ccli` |
 | **[PF2_Equation_Dataflow.mermaid](PF2_Equation_Dataflow.mermaid)** | DSO commands → O.11 min → PF2 FSM → DIO |
 | **[Reactive_Equation_Dataflow.mermaid](Reactive_Equation_Dataflow.mermaid)** | VArSd/VArSa Eq (3) · Q(V)/PFW/PFSP · TsQ · TotVAr (Phase 5) |
@@ -54,7 +55,8 @@ Open with [draw.io](https://app.diagrams.net/) or VS Code Draw.io extension.
 | **(3)** | \(Q_{\mathrm{kVAr}}=(\mathrm{VArSptPct}/100)\,S_{\max,\mathrm{kVA}}\) — VArSd / VArSa | PARAMETERS §10 |
 | **(5)(6)** | \(P_{\mathrm{eff}}=\min(\text{active export caps in kW})\) | PARAMETERS §3 + O.11 Table 1 |
 | **(7)(8)** | ±5 % band — TsP ≤ 60 s (P) · TsQ ≤ 10 s (Q) | PARAMETERS §4 · §10 |
-| **(9)–(12)** | Spacing / curves (Q(V), PFW, PFSP) | PARAMETERS §10 — Phase 5 |
+| **(9)** | Δt ≥ 3 s between external set-points (O.7.3.3) — **IMPL r29** `SetpointSpacingGate` | UTILIZATION MATRIX §2 |
+| **(10)–(12)** | Curves Q(V), PFW, PFSP | PARAMETERS §10 — Phase 5 |
 | **(13)–(17)** | PF2 FSM debounce / hysteresis / stale | PARAMETERS §5 |
 | **(18)** | Lab demo power ramp | PARAMETERS §5 |
 

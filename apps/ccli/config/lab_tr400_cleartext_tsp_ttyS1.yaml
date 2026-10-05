@@ -91,3 +91,10 @@ io:
   di_permissive:
     gpio: 2
     active_low: true
+  annex_m_trip_monitor:
+    enabled: true
+    gpio: 3
+
+event_log:
+  enabled: true
+  path: /var/lib/ccli/events.jsonl

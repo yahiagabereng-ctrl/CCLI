@@ -1,6 +1,6 @@
 # P5 — Phase closeout (lab evidence chain)
 
-**Date:** 2026-10-01 (updated)  
+**Date:** 2026-10-01 (updated 2026-10-02 IEDExplorer re-validation)  
 **Gate:** P5_FULLCIRCLE  
 **DUT:** TesPro TG544 @ `192.168.10.1`  
 **Product build:** **0.1.0-r25** (P5-COMPARE-FIX)  
@@ -85,6 +85,19 @@ OPERATE OK VArSdDVAR1 · Modbus FC16 Q=21 kvar
 TesPro iec61850d PdC_TotW=450.0000 (bind 0.0.0.0 fix)
 TesPro MQTT northbound: Connected · REPORT_PROPERTY · PdC_TotW=450 @ 4 s (P5_TESPRO_NORTHBOUND_2026-10-01)
 ```
+
+---
+
+## 2026-10-02 re-validation (IEDExplorer + CID rev4)
+
+| Item | Tool / evidence | Status |
+|------|-----------------|--------|
+| Browse / reads / URCB | IEDExplorer ICD3 + Report4.csv | **PASS** |
+| Operate Wlim / WSd / VArSd | `mms_wlim_client`, `mms_wsd_client`, `mms_varsd_client` | **PASS** |
+| IEDExplorer Operate | CO Write denied (expected) | **WAIVED** — use lab clients |
+| MQTT northbound | `P5_TESPRO_NORTHBOUND_2026-10-02_151845.txt` | **PASS** TotW=450 @ ~2 s |
+| IEDEX log | `IEDEX_P5_FULLCIRCLE_CLEARTEXT_2026-10-02_133500.txt` | **CLOSED** |
+| P5-G02 fallback | IEDExplorer disconnect ≥15 s → P3-05 log | **PASS** |
 
 ---
 

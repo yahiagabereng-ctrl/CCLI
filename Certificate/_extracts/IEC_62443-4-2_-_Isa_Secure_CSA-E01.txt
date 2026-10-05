@@ -1,0 +1,94 @@
+
+----- PAGE 1 -----
+ 
+Page 1 of 1 
+CERTIFICATE 
+CERTIFICATO – ZERTIFIKAT – CERTIFICADO – CERTIFICAT 
+BYHON hereby confirms that the: 
+HSC-110-C V5.1 
+Higeco S.r.l. 
+Viale Europa 71, 32100 Belluno 
+Italy 
+Conforms to 62443 requirements listed, and to requirements shown in the 
+table: 
+ANSI/ISA-62443-4-1-2018, IEC 62443-4-1:2018 Secure product 
+development lifecycle requirements 
+ANSI/ISA-62443-4-2:2018, IEC 62443-4-2:2018 Technical security 
+requirements for IACS components 
+Meeting requirements for: 
+Capability Security Level 1 
+The normative documents and issue dates that define this certification are 
+listed at www.isasecure.org 
+Assessment Subject under 
+Assessment 
+Requirements Date Current 
+release at 
+time of 
+assessment 
+ISASecure® CSA 
+evaluation 
+HSC-110-C V5.1 
+ISASecure Component Security 
+Assurance 1.0.0 Capability 
+Security Level 1 requirements for 
+embedded device, referencing 
+errata CSA-102 v2.2 
+Supplemental information: 
+SL-C(HSC-110-C)={2 2 1* 1 1 1 3} 
+*ports that are not related to the 
+field are SL-C = 2 
+December 
+21, 2022 
+V5.1 
+ 
+ 
+ 
+ 
+CERTIFICATE No: 
+HIGE-HSC110C-EMB-E01 
+Revision: 01 
+ 
+Issued: 
+Dec 21, 2022 
+ 
+Application restrictions: 
+The unit shall be operated in 
+a network and operational 
+environmental meeting the 
+assumptions in the product 
+certification report. 
+ 
+Product certificate remain 
+valid under conditions: 
+• The following SDLA 
+certificate remains valid: 
+ISASecure® Security 
+Development Lifecycle 
+Assurance certificate 
+HIGE-SDLA issued to 
+Higeco S.r.l. 
+• HSC-110-C V5.1 remains 
+under the security 
+management practices 
+thereby certified 
+ 
+ISASecure®  
+Chartered Laboratory: 
+HON CONSULTING dba 
+BYHON 
+Via Lepanto 23, 59100 
+Prato (PO) - ITALY 
+License: ISCI-CL0005 
+Accreditation ID# 8914 
+ 
+ 
+ 
+ 
+Certified by: 
+ 
+BYHON Certification Director: 
+ 
+ 
+_________________________________ 
+Rosati Francesco 
+ISASecure® is a trademark of ASCI. All rights reserved.  

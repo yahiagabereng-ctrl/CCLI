@@ -1,0 +1,16 @@
+﻿{
+    "codename":  "P5-COMPARE-FIX",
+    "changes":  [
+                    "CID rev4 LN/DO audit align",
+                    "lab_tg544_eth_a.cfg regenerated",
+                    "mms tcp_port 102 tls=off"
+                ],
+    "release":  25,
+    "timestamp_utc":  "2026-10-02T11:26:04.4854438Z",
+    "version_full":  "0.1.0-r25",
+    "lab_yaml":  "c:\\Yahia\\projects\\CCLI\\apps\\ccli\\config\\lab_tr400_cleartext_tsp.yaml",
+    "sha256":  "bf0f7bd4558a311f8dfbdb6224604bbdf8f29958a31628c367bcb255c1fb48a0",
+    "binary":  "C:\\Yahia\\projects\\CCLI\\lab\\tg544-openwrt\\ccli-bin",
+    "host":  "192.168.10.1",
+    "semver":  "0.1.0"
+}
