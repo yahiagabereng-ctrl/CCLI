@@ -2,33 +2,36 @@ P5-R09 — O.14 reactive Operate event logging (VArSd)
 Date: 2026-10-05
 DUT: TG544 @ 192.168.10.1
 Gate: P5-R09 · Regulation O.14
+Build: ccli 0.1.0-r30 (P5-R09-O14-VARSD)
 
-=== r29 baseline (category only) ===
-mms varsd_update / varsd_off — Mod/pct/Q in stderr only
-Verdict: PASS (category) · PART (O.14 detail)
+=== Bench setup ===
+- PC Modbus slave: COM5 @ 9600 8N1, P=450 kW (`lab/modbus_rtu_slave.py --trace`)
+- DUT RS485: A1/B1 → /dev/ttyS1
+- MMS: ccli on :102 (TesPro iec61850d/mmsd stopped to free port)
+- LAN1: PC 192.168.10.10 → DUT 192.168.10.1
 
-=== r30 deploy (P5-R09-O14-VARSD) ===
-Build: ccli 0.1.0-r30
-SHA256: 1882301468c10da90b7cd8cb03e8d4b63d7493f7126572ad7592e33deee8ce9d
-Manifest: lab/tg544-openwrt/deploy-manifests/CCLI_DEPLOY_0.1.0-r30_2026-10-05_150126.md
+=== Test procedure ===
+1. python -u lab/modbus_rtu_slave.py --port COM5 --power-kw 450 --trace
+2. Confirm DUT log: P=450kW Q=45kvar (FC3 ~4 s)
+3. mms_varsd_client 192.168.10.1 102 21
+4. ccli --config /etc/ccli/lab.yaml --event-dump --count 20 | grep varsd
 
-Note: first r30 build (SHA a6adc8…) segfaulted on DUT startup; clean rebuild fixed.
+=== MMS client ===
+OPERATE OK CCI016_01LD_Plant/VArSdDVAR1.VArTgtSptPct = 21.00
+OPERATE OK CCI016_01LD_Plant/VArSdDVAR1.Mod = 1
 
-=== Test (r30) ===
-mms_varsd_client 192.168.10.1 102 21
-  OPERATE OK VArTgtSptPct=21 Mod=1
+=== DUT log ===
+modbus: FC16 write Q=44.10 kvar @ holding 40003
+mms→plant: VArSd on @21% Smax → Q=44.1 kvar [O.9.1.4 P5-R01]
 
-DUT log:
-  mms: VArSdDVAR1.VArTgtSptPct ctlVal=21.00
-  mms: VArSdDVAR1.Mod ctlVal=1 → varsd_active=true
-  mms→plant: VArSd Q write FAILED q=44.1 kvar  (Modbus FC16 — no COM5 slave at test time)
+Mod=1 · set-point=21% Smax · Q=44.1 kvar · FC16 OK
 
-=== O.14 event-dump (PASS detail) ===
+=== O.14 event-dump (r30 PASS — full detail) ===
+2026/10/05 13:43:41 mms varsd_operate mod=1 pct=21.000000 q_kvar=44.100000 result=ok
+
+=== Earlier r30 run (no COM5 slave) ===
 2026/10/05 13:02:39 mms varsd_operate mod=1 pct=21.000000 q_kvar=44.100000 result=plant_write_fail
-
-Fields present: Mod=1 · set-point pct=21 · result=plant_write_fail · derived q_kvar=44.1
-
-With COM5 Modbus slave running, same path logs result=ok (validated on r29 session).
 
 === Verdict ===
 P5-R09: **PASS** (lab r30) — O.14 reactive Operate with mod/pct/q_kvar/result in event log
+Full end-to-end: MMS Operate → Modbus FC16 → result=ok
