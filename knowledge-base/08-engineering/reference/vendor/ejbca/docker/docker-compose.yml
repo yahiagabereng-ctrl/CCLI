@@ -1,0 +1,22 @@
+# EJBCA Community Edition — lab PKI only (NOT production)
+# Usage: from repo root: powershell -File scripts/start-ejbca-lab.ps1
+services:
+  ejbca-ce:
+    image: keyfactor/ejbca-ce:latest
+    container_name: ccli-ejbca-ce
+    hostname: ejbca
+    environment:
+      # Lab only: HTTPS admin without client cert (default in CE image).
+      # Production: TLS_SETUP_ENABLED=true + SuperAdmin P12 enrollment.
+      TLS_SETUP_ENABLED: simple
+      LOG_LEVEL_APP: INFO
+    ports:
+      - "8080:8080"
+      - "8443:8443"
+    volumes:
+      # Must mount /mnt/persistent (not /opt/keyfactor/secrets/persistent) — see Keyfactor docker docs.
+      - ejbca-data:/mnt/persistent
+    restart: unless-stopped
+
+volumes:
+  ejbca-data:

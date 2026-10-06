@@ -1,4 +1,5 @@
 # Provision Annex-aligned CCLI PKI: generate CA -> import to EJBCA -> issue Cert A/B.
+# Default issue path is hybrid Python. Use -UseRest for EJBCA REST pkcs10enroll (mTLS admin P12).
 param(
     [string]$Container = "ccli-ejbca-ce",
     [string]$CaName = "CCLI-Lab-CA",
@@ -7,7 +8,13 @@ param(
     [string]$TspDir = "C:\CCLI_product_tls",
     [switch]$ResetVolume,
     [switch]$SkipDockerCheck,
-    [switch]$SkipEjbcaImport
+    [switch]$SkipEjbcaImport,
+    [switch]$StrictG62,
+    [switch]$UseRest,
+    [switch]$UseEjbcaCli,
+    [string]$AdminP12 = "",
+    [string]$AdminP12Password = "foo123",
+    [string]$RestBaseUrl = "https://localhost:8443/ejbca/ejbca-rest-api"
 )
 
 $ErrorActionPreference = "Stop"
@@ -77,13 +84,56 @@ if (-not $SkipEjbcaImport) {
     }
 }
 
-Write-Host "Issuing Annex-aligned end-entity certificates..." -ForegroundColor Cyan
-python $Py issue `
-    --ca-p12 $localP12 `
-    --ca-pem $localPem `
-    --p12-password $P12Password `
-    --out $EjbcaTls
-if ($LASTEXITCODE -ne 0) { throw "issue failed" }
+if ($UseEjbcaCli -and $UseRest) {
+    throw "Use only one of -UseEjbcaCli or -UseRest"
+}
+
+if (-not $SkipEjbcaImport) {
+    $SetupPy = Join-Path $Repo "scripts\setup_ejbca_annex_profiles.py"
+    Write-Host "Ensuring EJBCA Annex cert/EE profiles..." -ForegroundColor Cyan
+    python $SetupPy
+    if ($LASTEXITCODE -ne 0) { throw "EJBCA profile setup failed" }
+}
+
+if ($UseRest) {
+    Write-Host "Issuing end-entity certificates via EJBCA REST (pkcs10enroll)..." -ForegroundColor Cyan
+    $admin = if ($AdminP12) { $AdminP12 } else { Join-Path $Staging "superadmin.p12" }
+    if (-not (Test-Path $admin)) {
+        Write-Host "Admin P12 missing - trying export from container..." -ForegroundColor Yellow
+        & (Join-Path $Repo "scripts\export-ejbca-admin-p12.ps1") -Container $Container -OutDir $Staging -Password $AdminP12Password
+        if (-not (Test-Path $admin)) {
+            throw "Need SuperAdmin P12 at $admin for REST mTLS. See lab/EJBCA_LAB_SETUP.md section 12."
+        }
+    }
+    $RestPy = Join-Path $Repo "scripts\issue_ejbca_rest_pki.py"
+    $restArgs = @(
+        $RestPy,
+        "--base-url", $RestBaseUrl,
+        "--ca-name", $CaName,
+        "--out", $EjbcaTls,
+        "--admin-p12", $admin,
+        "--admin-p12-password", $AdminP12Password,
+        "--insecure",
+        "--root-ca-pem", $localPem
+    )
+    python @restArgs
+    if ($LASTEXITCODE -ne 0) { throw "EJBCA REST issue failed" }
+}
+elseif ($UseEjbcaCli) {
+    Write-Host "Issuing end-entity certificates via EJBCA CLI (createcert)..." -ForegroundColor Cyan
+    $CliPy = Join-Path $Repo "scripts\issue_ejbca_cli_pki.py"
+    python $CliPy --ca-name $CaName --out $EjbcaTls
+    if ($LASTEXITCODE -ne 0) { throw "EJBCA CLI issue failed" }
+}
+else {
+    Write-Host "Issuing Annex-aligned end-entity certificates (hybrid Python)..." -ForegroundColor Cyan
+    python $Py issue `
+        --ca-p12 $localP12 `
+        --ca-pem $localPem `
+        --p12-password $P12Password `
+        --out $EjbcaTls
+    if ($LASTEXITCODE -ne 0) { throw "issue failed" }
+}
 
 # Prefer EJBCA-published CRL if CA is present; otherwise keep Python CRL.
 if (-not $SkipEjbcaImport) {
@@ -113,102 +163,15 @@ foreach ($f in $copy) {
     if (Test-Path $src) { Copy-Item -Force $src (Join-Path $TspDir $f) }
 }
 
-Write-Host "`n=== Annex 10.4 verification ===" -ForegroundColor Cyan
-$root = Join-Path $EjbcaTls "root_CA.pem"
-$serverTls = Join-Path $EjbcaTls "server_tls.pem"
-$serverE2e = Join-Path $EjbcaTls "server.pem"
-$serverKey = Join-Path $EjbcaTls "server.key"
-$acseKey = Join-Path $EjbcaTls "server_acse.key"
-$client = Join-Path $EjbcaTls "client.pem"
-$fail = 0
-
-function Assert-Match([string]$Label, [string]$Haystack, [string]$Needle) {
-    if ($Haystack -match [regex]::Escape($Needle)) {
-        Write-Host "  PASS $Label" -ForegroundColor Green
-    }
-    else {
-        Write-Warning "  FAIL $Label (missing $Needle)"
-        $script:fail++
-    }
-}
-
-# Gate 1 - issuer CN
-$issuer = openssl x509 -in $serverTls -noout -issuer 2>&1 | Out-String
-Assert-Match "Gate1 issuer CCLI Lab CA" $issuer "CCLI Lab CA"
-
-# Gate 2 - dual cert / dual keys
-$serA = openssl x509 -in $serverTls -noout -serial 2>&1 | Out-String
-$serB = openssl x509 -in $serverE2e -noout -serial 2>&1 | Out-String
-if ($serA -ne $serB) {
-    Write-Host "  PASS Gate2 Cert A serial != Cert B serial" -ForegroundColor Green
-}
-else {
-    Write-Warning "  FAIL Gate2 same serial for Cert A and Cert B"
-    $fail++
-}
-if ((Test-Path $serverKey) -and (Test-Path $acseKey)) {
-    $h1 = (Get-FileHash $serverKey -Algorithm SHA256).Hash
-    $h2 = (Get-FileHash $acseKey -Algorithm SHA256).Hash
-    if ($h1 -ne $h2) {
-        Write-Host "  PASS Gate2 server.key != server_acse.key" -ForegroundColor Green
-    }
-    else {
-        Write-Warning "  FAIL Gate2 TLS and ACSE keys identical"
-        $fail++
-    }
-}
-else {
-    Write-Warning "  FAIL Gate2 missing server.key / server_acse.key"
-    $fail++
-}
-
-# Gate 3 - Cert A EKU
-$tlsTxt = openssl x509 -in $serverTls -noout -text 2>&1 | Out-String
-Assert-Match "Gate3 Cert A serverAuth" $tlsTxt "TLS Web Server Authentication"
-Assert-Match "Gate3 Cert A clientAuth" $tlsTxt "TLS Web Client Authentication"
-Assert-Match "Gate3 Cert A SAN 192.168.10.1" $tlsTxt "192.168.10.1"
-Assert-Match "Gate3 Cert A CN CCI016_01" $tlsTxt "CCI016_01"
-
-# Gate 4 - Cert B KU (no TLS EKU)
-$e2eTxt = openssl x509 -in $serverE2e -noout -text 2>&1 | Out-String
-Assert-Match "Gate4 Cert B digitalSignature" $e2eTxt "Digital Signature"
-Assert-Match "Gate4 Cert B keyAgreement" $e2eTxt "Key Agreement"
-if ($e2eTxt -match "TLS Web Server Authentication") {
-    Write-Warning "  FAIL Gate4 Cert B must not carry TLS EKU"
-    $fail++
-}
-else {
-    Write-Host "  PASS Gate4 Cert B has no TLS EKU" -ForegroundColor Green
-}
-
-# Gate 5 - G.6.2 OID
-Assert-Match "Gate5 Cert B subject OID 1.1.1.999.1.12" $e2eTxt "1.1.1.999.1.12"
-
-# Gate 6 - chain verify
-$ver = openssl verify -CAfile $root $serverTls $serverE2e $client 2>&1 | Out-String
-if ($ver -match "error") {
-    Write-Warning "  FAIL Gate6 openssl verify: $ver"
-    $fail++
-}
-else {
-    Write-Host "  PASS Gate6 openssl verify chain" -ForegroundColor Green
-}
-
-# Size gate T.3.3.4.2
-$tmpDer = Join-Path $env:TEMP "ccli-server-e2e.der"
-openssl x509 -in $serverE2e -outform DER -out $tmpDer 2>$null
-$sz = (Get-Item $tmpDer).Length
-if ($sz -lt 8192) {
-    Write-Host ("  PASS Gate T.3.3.4.2 Cert B DER size {0} under 8192" -f $sz) -ForegroundColor Green
-}
-else {
-    Write-Warning ("  FAIL Gate T.3.3.4.2 Cert B DER size {0} >= 8192" -f $sz)
-    $fail++
-}
-
-Write-Host ""
-if ($fail -gt 0) {
-    throw ("Annex verification failed ({0} checks). See lab/EJBCA_LAB_SETUP.md section 10.4" -f $fail)
+Write-Host "`n=== Annex 10.4 verification (verify_annex_pki.py) ===" -ForegroundColor Cyan
+$VerifyPy = Join-Path $Repo "scripts\verify_annex_pki.py"
+# Default accepts lab UTF8String G.6.2 (gen_lab_pki / TSP). Use -StrictG62 for Annex
+# OBJECT IDENTIFIER tag 0x06 (required once EJBCA Cert B DN is fixed).
+$verifyArgs = @($VerifyPy, "--dir", $EjbcaTls)
+if ($StrictG62) { $verifyArgs += "--strict-g62" }
+python @verifyArgs
+if ($LASTEXITCODE -ne 0) {
+    throw "Annex verification failed. Fix EJBCA profiles / re-issue. See lab/EJBCA_LAB_SETUP.md §10."
 }
 
 Write-Host "OK - all Annex 10.4 lab gates passed" -ForegroundColor Green

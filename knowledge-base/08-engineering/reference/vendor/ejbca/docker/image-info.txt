@@ -1,0 +1,2 @@
+﻿sha256:ef574ed81c1e2bb335902f1097b09f9408fe32f2c3abbccfe80999d1c9b50164 [keyfactor/ejbca-ce@sha256:ef574ed81c1e2bb335902f1097b09f9408fe32f2c3abbccfe80999d1c9b50164]
+keyfactor/ejbca-ce:latest 945MB ef574ed81c1e

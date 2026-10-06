@@ -248,8 +248,24 @@ Golden reference: `apps/ccli/config/tls/` from `gen_lab_pki.py` — **compare ev
 
 ### 10.4 Release gate — do not deploy until ALL pass
 
+Automated checker (preferred) — encodes the same rules that must be set in EJBCA profiles:
+
 ```powershell
-# After EJBCA export to staging folder:
+# Show issuance rules (CA + Cert A/B profiles)
+python scripts\verify_annex_pki.py --show-rules
+
+# After EJBCA export (or hybrid provision) into PEM folder:
+python scripts\verify_annex_pki.py --dir apps\ccli\config\tls\ejbca
+
+# Product / Annex-strict G.6.2 (OBJECT IDENTIFIER tag 0x06 only):
+python scripts\verify_annex_pki.py --dir apps\ccli\config\tls\ejbca --strict-g62
+```
+
+`scripts\provision-ejbca-ccli-pki.ps1` runs this verifier at the end (fails the script on any gate fail). Default accepts lab UTF8String G.6.2 (TSP/OpenSSL); pass `-StrictG62` when EJBCA Cert B DN uses ASN.1 OID encoding.
+
+Manual spot-check:
+
+```powershell
 openssl x509 -in server_tls.pem -noout -subject -ext keyUsage,extendedKeyUsage
 openssl x509 -in server.pem      -noout -subject -ext keyUsage
 openssl verify -CAfile root_CA.pem server_tls.pem server.pem client.pem
@@ -261,10 +277,11 @@ openssl verify -CAfile root_CA.pem server_tls.pem server.pem client.pem
 | 2 | Dual cert | **Cert A ≠ Cert B** serial; **server.key ≠ server_acse.key** |
 | 3 | Cert A EKU | **serverAuth** + **clientAuth** |
 | 4 | Cert B KU | **digitalSignature** + **keyAgreement** only |
-| 5 | Cert B subject | **2.5.4.106** = `1.1.1.999.1.12` |
-| 6 | Compare lab gold | `diff` extensions vs `gen_lab_pki.py` output |
-| 7 | TSP | Connect `:3782` → DUT log `ACSE auth ACCEPT role=DSO_OPERATOR` |
-| 8 | Wire (optional) | `lab/verify_62351_auth.py` on pcap |
+| 5 | Cert B subject | **2.5.4.106** = `1.1.1.999.1.12` (lab: UTF8 OK; `--strict-g62`: OID tag **0x06**) |
+| 6 | Algo / size | RSA-2048, SHA-256, DER &lt; 8192 |
+| 7 | Chain | EE signatures verify against `root_CA.pem` |
+| 8 | TSP | Connect `:3782` → DUT log `ACSE auth ACCEPT role=DSO_OPERATOR` |
+| 9 | Wire (optional) | `lab/verify_62351_auth.py` on pcap |
 
 ### 10.5 Known lab vs product gaps (document, do not hide)
 
@@ -287,3 +304,58 @@ openssl verify -CAfile root_CA.pem server_tls.pem server.pem client.pem
 | 62351-4 Annex G | `knowledge-base/08-engineering/CCI_62351-4_Extract.md` |
 | TSP TLS settings | `lab/evidence/testsuite-pro/inbox/TSP_P3_07_ACSE_CERT_2026-09-29.md` |
 | Lab PKI golden | `apps/ccli/config/tls/gen_lab_pki.py` |
+| REST issuer | `scripts/issue_ejbca_rest_pki.py` |
+| Annex PEM verify | `scripts/verify_annex_pki.py` |
+
+---
+
+## 12. EJBCA REST issue (all lab PEMs)
+
+EJBCA CE has **no API key** for certificate enrolment. Lab automation uses **REST `pkcs10enroll`** with **admin client-certificate mTLS**.
+
+### 12.1 One-time setup
+
+1. Create CA + profiles §§2–5 (`CCLI-Lab-CA`, Cert A/B, EE profiles).
+2. **System Configuration → Protocol Configuration → REST Certificate Management → Enable**.
+3. Obtain SuperAdmin (or RA) PKCS#12:
+   ```powershell
+   powershell -File scripts\export-ejbca-admin-p12.ps1
+   ```
+   If the container has no P12 (`TLS_SETUP_ENABLED=simple`), create SuperAdmin in Admin UI and save as `lab\ejbca-staging\superadmin.p12`.
+4. Swagger (optional): https://localhost:8443/ejbca/swagger-ui (client cert required).
+
+### 12.2 Issue all certificates
+
+```powershell
+# Direct REST issuer + Annex verify
+python scripts\issue_ejbca_rest_pki.py `
+  --admin-p12 lab\ejbca-staging\superadmin.p12 `
+  --admin-p12-password foo123 `
+  --ca-name CCLI-Lab-CA `
+  --insecure `
+  --verify-after
+
+# Or via provision wrapper (still imports CA if needed)
+powershell -File scripts\provision-ejbca-ccli-pki.ps1 -UseRest `
+  -AdminP12 lab\ejbca-staging\superadmin.p12 `
+  -AdminP12Password foo123
+```
+
+| Leaf username | Profile | Output |
+|---------------|---------|--------|
+| `tg544-lab-001` | Cert A | `server_tls.pem`, `server.key` |
+| `tg544-lab-001-e2e` | Cert B | `server.pem`, `server_acse.key` |
+| `tsp-dso-operator` / `-e2e` | A / B | `client_tls.pem`, `client.pem`, `client.key` |
+| `tsp-viewer*` / `tsp-revoked*` | A / B | viewer / revoked PEMs |
+
+Default EE enrollment password in the script: `ccli-lab-ee` (must match end-entity / enroll policy).
+
+### 12.3 After issue
+
+```powershell
+python scripts\verify_annex_pki.py --dir apps\ccli\config\tls\ejbca
+# Product G.6.2 OID encoding:
+python scripts\verify_annex_pki.py --dir apps\ccli\config\tls\ejbca --strict-g62
+```
+
+If REST fails with **403/Bad certificate**, the admin P12 is missing or lacks REST role. If **404/protocol disabled**, enable REST Certificate Management.

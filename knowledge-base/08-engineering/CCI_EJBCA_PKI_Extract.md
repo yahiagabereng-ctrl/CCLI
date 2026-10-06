@@ -82,6 +82,7 @@ EJBCA CE (lab CA)
 |-----------|--------|-------------|----------|
 | Enrolment (target) | TG544 TPM | EJBCA | EST `simpleenroll` over TLS |
 | Enrolment (lab interim) | Engineer | EJBCA Admin / OpenSSL CSR paste | Manual issue → PEM copy |
+| Enrolment (lab REST) | Engineer PC | EJBCA CE | REST `pkcs10enroll` + admin mTLS P12 (`scripts/issue_ejbca_rest_pki.py`) |
 | MMS C1 | TG544 Eth_A | Test Suite Pro | TLS :3782 + 62351-4 E2E |
 | Trust | DSO CA cert | TG544 + TSP | PEM trust anchor |
 | Revocation | EJBCA CRL | TG544 + TSP | `dso_crl.pem` |
