@@ -170,7 +170,7 @@ int build_mms_auth_value(uint8_t* out, int max_out) {
 
     uint8_t signature[512];
     size_t sig_len = 0;
-    if (!sign_time_field_pkcs1_sha256(time_field, time_field_len, signature, &sig_len)) {
+    if (!sign_time_field_pkcs1_sha256(gt, gt_len, signature, &sig_len)) {
         std::fprintf(stderr, "mms: AARE auth sign/self-verify failed\n");
         return -1;
     }
