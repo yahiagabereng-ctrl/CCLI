@@ -14,6 +14,7 @@ param(
     [string]$HostAddr = "192.168.10.1",
     [string]$User = "root",
     [string]$LabYaml = "",
+    [string]$TlsDir = "",
     [switch]$SkipManifest
 )
 
@@ -25,9 +26,11 @@ $Pscp = "C:\Program Files\PuTTY\pscp.exe"
 $Bin = Join-Path $PSScriptRoot "ccli-bin"
 $DeploySh = Join-Path $PSScriptRoot "deploy-ccli-dut.sh"
 $ManifestScript = Join-Path $PSScriptRoot "write-deploy-manifest.ps1"
-$TlsDir = Join-Path (Split-Path $PSScriptRoot -Parent | Split-Path -Parent) "apps\ccli\config\tls"
 $RepoRoot = Split-Path $PSScriptRoot -Parent | Split-Path -Parent
 $VersionFile = Join-Path $RepoRoot "apps\ccli\VERSION"
+if (-not $TlsDir) {
+    $TlsDir = Join-Path $RepoRoot "apps\ccli\config\tls"
+}
 
 if (-not $LabYaml) {
     $LabYaml = Join-Path $RepoRoot "apps\ccli\config\lab_tr400_phase4_eth_b.yaml"
@@ -37,7 +40,7 @@ if (-not $env:CCLI_TG544_PW) { Write-Error "Set `$env:CCLI_TG544_PW then re-run.
 if (-not (Test-Path $Bin)) { Write-Error "Missing $Bin - run wsl-build-ccli.sh first." }
 if (-not (Test-Path $Plink)) { Write-Error "Install PuTTY plink." }
 if (-not (Test-Path (Join-Path $TlsDir "server.pem"))) {
-    Write-Error "Missing TLS - run: python apps/ccli/config/tls/gen_lab_pki.py"
+    Write-Error "Missing TLS in $TlsDir - run: powershell -File scripts/provision-ejbca-ccli-pki.ps1  (or gen_lab_pki.py)"
 }
 if (-not (Test-Path $VersionFile)) { Write-Error "Missing $VersionFile" }
 
@@ -121,17 +124,22 @@ Write-Host "=== Install + start on DUT ===" -ForegroundColor Cyan
     "sed -i 's/\r$//' /tmp/deploy-ccli-dut.sh; chmod +x /tmp/deploy-ccli-dut.sh; sh /tmp/deploy-ccli-dut.sh"
 
 if ($HostAddr -eq "192.168.10.1") {
-    Write-Host "=== Sync PC TSP staging (C:\CCLI_tls) ===" -ForegroundColor Cyan
-    $TspTls = "C:\CCLI_tls"
-    New-Item -ItemType Directory -Force -Path $TspTls | Out-Null
-    foreach ($f in @("root_CA.pem", "client.pem", "client.key", "client_tsp.key", "lab_crl.pem")) {
-        $src = Join-Path $TlsDir $f
-        if (Test-Path $src) {
-            Copy-Item -Force $src (Join-Path $TspTls $f)
+    Write-Host "=== Sync PC TSP staging (C:\CCLI_tls + C:\CCLI_product_tls) ===" -ForegroundColor Cyan
+    foreach ($TspTls in @("C:\CCLI_tls", "C:\CCLI_product_tls")) {
+        New-Item -ItemType Directory -Force -Path $TspTls | Out-Null
+        foreach ($f in @(
+                "root_CA.pem", "client.pem", "client.key", "client_tls.pem", "client_tsp.key",
+                "viewer.pem", "viewer.key", "revoked.pem", "revoked.key", "lab_crl.pem"
+            )) {
+            $src = Join-Path $TlsDir $f
+            if (Test-Path $src) {
+                Copy-Item -Force $src (Join-Path $TspTls $f)
+            }
         }
-    }
-    if (-not (Test-Path (Join-Path $TspTls "client_tsp.key"))) {
-        Copy-Item -Force (Join-Path $TlsDir "client.key") (Join-Path $TspTls "client_tsp.key")
+        if (-not (Test-Path (Join-Path $TspTls "client_tsp.key"))) {
+            Copy-Item -Force (Join-Path $TlsDir "client.key") (Join-Path $TspTls "client_tsp.key")
+        }
+        Write-Host "  staged -> $TspTls"
     }
 }
 

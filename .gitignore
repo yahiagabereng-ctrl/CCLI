@@ -48,6 +48,8 @@ lab/tmp_*.pem
 
 # TLS lab PKI is tracked in the private repo (apps/ccli/config/tls/)
 apps/ccli/config/tls/__pycache__/
+# EJBCA CA PKCS#12 staging (contains CA private key) — regenerate via provision script
+lab/ejbca-staging/
 
 # Large local reference / corpus — keep on disk, not in git (>100 MB)
 Standards_pdf*/
