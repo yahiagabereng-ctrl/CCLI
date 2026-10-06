@@ -88,8 +88,17 @@ void ModbusAdapter::record_read_holding(const std::int64_t now_ms, const int sta
     last_exchange_.success = success;
     last_exchange_.error = error ? error : "";
     last_exchange_.exchange_ms = now_ms;
-    last_exchange_.backend_label =
-        cfg_.backend == ModbusBackend::Libmodbus ? "rtu" : "simulator";
+    switch (cfg_.backend) {
+        case ModbusBackend::LibmodbusRtu:
+            last_exchange_.backend_label = "rtu";
+            break;
+        case ModbusBackend::LibmodbusTcp:
+            last_exchange_.backend_label = "tcp";
+            break;
+        default:
+            last_exchange_.backend_label = "simulator";
+            break;
+    }
     if (regs != nullptr && reg_count > 0) {
         last_exchange_.raw_regs_hex = regs_hex_string(regs, reg_count);
     } else {
@@ -110,6 +119,8 @@ void ModbusAdapter::record_read_holding(const std::int64_t now_ms, const int sta
         } else if (cfg_.reg_reactive_power_count == 1 && q_idx >= 0 && q_idx < reg_count) {
             last_exchange_.q_kvar = static_cast<double>(regs[q_idx]);
         }
+        last_exchange_.p_kw *= cfg_.power_scale;
+        last_exchange_.q_kvar *= cfg_.reactive_scale;
     }
 }
 
@@ -119,7 +130,7 @@ ModbusAdapter::ModbusAdapter(ModbusPollConfig cfg) : cfg_(std::move(cfg)) {}
 
 ModbusAdapter::~ModbusAdapter() {
 
-    close_rtu();
+    close_libmodbus();
 
 }
 
@@ -141,17 +152,20 @@ bool ModbusAdapter::write_reactive_kvar(const double q_kvar) {
     }
 
 #ifdef CCLI_MODBUS_LIBMODBUS
+    if (cfg_.backend != ModbusBackend::LibmodbusRtu) {
+        return false;
+    }
     if (cfg_.reg_reactive_power_count < 2) {
         return false;
     }
-    if (!ensure_rtu_connected()) {
+    if (!ensure_libmodbus_connected()) {
         return false;
     }
     std::uint16_t hi = 0;
     std::uint16_t lo = 0;
     float32_to_regs_be(q_kvar, hi, lo);
     const std::uint16_t regs[2] = {hi, lo};
-    if (modbus_write_registers(static_cast<modbus_t*>(rtu_ctx_), cfg_.reg_reactive_power, 2,
+    if (modbus_write_registers(static_cast<modbus_t*>(libmodbus_ctx_), cfg_.reg_reactive_power, 2,
                                regs) == -1) {
         std::fprintf(stderr, "modbus: FC16 write Q @ reg %d failed\n",
                      cfg_.reg_reactive_power);
@@ -194,7 +208,8 @@ bool ModbusAdapter::poll(cci::core::MeasurementStore& store, const std::int64_t 
 
             return poll_simulator(store, now_ms);
 
-        case ModbusBackend::Libmodbus:
+        case ModbusBackend::LibmodbusRtu:
+        case ModbusBackend::LibmodbusTcp:
 
             return poll_libmodbus(store, now_ms);
 
@@ -279,7 +294,7 @@ bool ModbusAdapter::poll_simulator(cci::core::MeasurementStore& store, const std
 
     const int start = read_block_start(cfg_);
     const int count = read_block_count(cfg_);
-    std::uint16_t regs[8]{};
+    std::uint16_t regs[32]{};
     if (cfg_.reg_active_power_count >= 2 && count >= 2) {
         const int p_idx = cfg_.reg_active_power - start;
         float pf = static_cast<float>(simulated_p_kw_);
@@ -300,17 +315,17 @@ bool ModbusAdapter::poll_simulator(cci::core::MeasurementStore& store, const std
 
 
 
-void ModbusAdapter::close_rtu() {
+void ModbusAdapter::close_libmodbus() {
 
 #ifdef CCLI_MODBUS_LIBMODBUS
 
-    if (rtu_ctx_ != nullptr) {
+    if (libmodbus_ctx_ != nullptr) {
 
-        modbus_close(static_cast<modbus_t*>(rtu_ctx_));
+        modbus_close(static_cast<modbus_t*>(libmodbus_ctx_));
 
-        modbus_free(static_cast<modbus_t*>(rtu_ctx_));
+        modbus_free(static_cast<modbus_t*>(libmodbus_ctx_));
 
-        rtu_ctx_ = nullptr;
+        libmodbus_ctx_ = nullptr;
 
     }
 
@@ -320,25 +335,39 @@ void ModbusAdapter::close_rtu() {
 
 
 
-bool ModbusAdapter::ensure_rtu_connected() {
+bool ModbusAdapter::ensure_libmodbus_connected() {
 
 #ifdef CCLI_MODBUS_LIBMODBUS
 
-    if (rtu_ctx_ != nullptr) {
+    if (libmodbus_ctx_ != nullptr) {
 
         return true;
 
     }
 
-    if (cfg_.device.empty()) {
+    modbus_t* ctx = nullptr;
 
-        return false;
+    if (cfg_.backend == ModbusBackend::LibmodbusTcp) {
+
+        if (cfg_.host.empty()) {
+
+            return false;
+
+        }
+
+        ctx = modbus_new_tcp(cfg_.host.c_str(), cfg_.tcp_port);
+
+    } else {
+
+        if (cfg_.device.empty()) {
+
+            return false;
+
+        }
+
+        ctx = modbus_new_rtu(cfg_.device.c_str(), cfg_.baud, cfg_.parity, 8, 1);
 
     }
-
-
-
-    modbus_t* ctx = modbus_new_rtu(cfg_.device.c_str(), cfg_.baud, cfg_.parity, 8, 1);
 
     if (ctx == nullptr) {
 
@@ -358,7 +387,11 @@ bool ModbusAdapter::ensure_rtu_connected() {
 
     modbus_set_response_timeout(ctx, timeout_sec, timeout_usec);
 
-    modbus_set_byte_timeout(ctx, timeout_sec, timeout_usec);
+    if (cfg_.backend == ModbusBackend::LibmodbusRtu) {
+
+        modbus_set_byte_timeout(ctx, timeout_sec, timeout_usec);
+
+    }
 
 
 
@@ -372,7 +405,7 @@ bool ModbusAdapter::ensure_rtu_connected() {
 
 
 
-    rtu_ctx_ = ctx;
+    libmodbus_ctx_ = ctx;
 
     return true;
 
@@ -392,13 +425,15 @@ bool ModbusAdapter::poll_libmodbus(cci::core::MeasurementStore& store, const std
 
 #ifdef CCLI_MODBUS_LIBMODBUS
 
-    if (!ensure_rtu_connected()) {
+    const char* source = is_tcp_backend() ? "modbus_tcp" : "modbus_rtu";
+
+    if (!ensure_libmodbus_connected()) {
 
         ++timeout_count_;
 
         const int start = read_block_start(cfg_);
         const int count = read_block_count(cfg_);
-        record_read_holding(now_ms, start, count, nullptr, 0, false, "rtu_connect");
+        record_read_holding(now_ms, start, count, nullptr, 0, false, "connect_fail");
 
         cci::core::Measurement m{};
 
@@ -406,7 +441,7 @@ bool ModbusAdapter::poll_libmodbus(cci::core::MeasurementStore& store, const std
 
         m.timestamp_ms = now_ms - (cfg_.timeout_ms + 1);
 
-        m.source = "modbus_rtu";
+        m.source = source;
 
         store.update(m);
 
@@ -416,7 +451,7 @@ bool ModbusAdapter::poll_libmodbus(cci::core::MeasurementStore& store, const std
 
 
 
-    modbus_t* ctx = static_cast<modbus_t*>(rtu_ctx_);
+    modbus_t* ctx = static_cast<modbus_t*>(libmodbus_ctx_);
 
     const int start = read_block_start(cfg_);
 
@@ -424,7 +459,7 @@ bool ModbusAdapter::poll_libmodbus(cci::core::MeasurementStore& store, const std
 
 
 
-    std::uint16_t regs[8]{};
+    std::uint16_t regs[32]{};
 
     if (reg_count <= 0 || reg_count > static_cast<int>(sizeof(regs) / sizeof(regs[0]))) {
 
@@ -444,7 +479,7 @@ bool ModbusAdapter::poll_libmodbus(cci::core::MeasurementStore& store, const std
 
         record_read_holding(now_ms, start, reg_count, nullptr, 0, false, "read_fail");
 
-        close_rtu();
+        close_libmodbus();
 
         cci::core::Measurement m{};
 
@@ -452,7 +487,7 @@ bool ModbusAdapter::poll_libmodbus(cci::core::MeasurementStore& store, const std
 
         m.timestamp_ms = now_ms - (cfg_.timeout_ms + 1);
 
-        m.source = "modbus_rtu";
+        m.source = source;
 
         store.update(m);
 
@@ -498,6 +533,10 @@ bool ModbusAdapter::poll_libmodbus(cci::core::MeasurementStore& store, const std
 
     }
 
+    m.p_kw *= cfg_.power_scale;
+
+    m.q_kvar *= cfg_.reactive_scale;
+
 
 
     m.pf = 0.98;
@@ -506,7 +545,7 @@ bool ModbusAdapter::poll_libmodbus(cci::core::MeasurementStore& store, const std
 
     m.timestamp_ms = now_ms;
 
-    m.source = "modbus_rtu";
+    m.source = source;
 
     store.update(m);
 

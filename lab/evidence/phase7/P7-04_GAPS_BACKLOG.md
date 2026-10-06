@@ -20,6 +20,8 @@ Tracks Annex O §11 categories not yet fully covered vs what r28 wires into `Eve
 | Interface switch (DI) partial | `di` / `permissive_ok`, `permissive_blocked` | Permissive DI only |
 | Polygon / electrical params (seed) | `dso` / `polygon_seed smax_kva=* enter_kw=*` | Phase-1 mock at boot |
 | Annex M trip relay edge | `annex_m` / `trip_relay_active`, `trip_relay_cleared` | DIO3 monitor |
+| Process crash / unclean restart (r32) | `security` / `crash_recovered:*`, `unclean_restart`, `service_monitor:*` | Tombstone + running marker |
+| Service hang (r32) | procd `watchdog 90` + ubus ping every 30 s | Restart if main loop stalls |
 
 Also: auto-`mkdir` for `/var/lib/ccli` in `EventStore` + `deploy-ccli-dut.sh`.
 

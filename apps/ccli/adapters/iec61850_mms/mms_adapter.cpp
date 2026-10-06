@@ -9,7 +9,7 @@
  *          ├─ WSdDAGC1.{Mod,WSptPct}         O.9.2.3 s.p. W    — IMPL (Figura 2 green)
  *          ├─ WSaDAGC1.Mod                   O.10.3.1          — STUB Mod=5
  *          ├─ VArSdDVAR1.{Mod,VArTgtSptPct} O.9.1.4          — P5-R01 IMPL
- *          ├─ PFSPDFPF1.Mod                  O.9.1.1           — STUB
+ *          ├─ PFSPDFPF1.{Mod,PFGnTgtSpt,PFLodTgtSpt} O.9.1.1  — P5-R02 IMPL
  *          ├─ VArVDVVR1.Mod                  O.9.1.3           — STUB
  *          ├─ PFWDPFW1.Mod                   O.9.1.2           — STUB
  *          └─ PdCMMXU1.{TotW,TotVAr} + urcb_PdC_Mis4sec (4 s)  — TotW PART · TotVAr P5-M07
@@ -138,6 +138,9 @@ struct MmsAdapter::Impl {
     DataObject* wsd_wspt{nullptr};
     DataObject* varsd_mod{nullptr};
     DataObject* varsd_vartgt{nullptr};
+    DataObject* pfsp_mod{nullptr};
+    DataObject* pfsp_gn_tgt{nullptr};
+    DataObject* pfsp_lod_tgt{nullptr};
     DataAttribute* totw_mag{nullptr};
     DataAttribute* totw_t{nullptr};
     DataAttribute* totw_q{nullptr};
@@ -153,6 +156,9 @@ struct MmsAdapter::Impl {
     DataAttribute* wspt_mxval{nullptr};
     DataAttribute* varsd_mod_stval{nullptr};
     DataAttribute* vartgt_mxval{nullptr};
+    DataAttribute* pfsp_mod_stval{nullptr};
+    DataAttribute* pfsp_gn_mxval{nullptr};
+    DataAttribute* pfsp_lod_mxval{nullptr};
     bool running{false};
 
     std::vector<uint8_t> dso_der;
@@ -543,6 +549,67 @@ ControlHandlerResult MmsAdapter::Impl::on_control(ControlAction action, MmsValue
                          static_cast<double>(pct));
             handled = true;
         }
+    /* ---- O.9.1.1 PFSPDFPF1 (cosφ) — P5-R02 ---- */
+    } else if (ctl == pfsp_mod) {
+        if (ty == MMS_INTEGER || ty == MMS_UNSIGNED || ty == MMS_BOOLEAN) {
+            const int v = (ty == MMS_BOOLEAN) ? (MmsValue_getBoolean(value) ? 1 : 5)
+                                              : MmsValue_toInt32(value);
+            const bool active = (v == 1);
+            {
+                std::lock_guard<std::mutex> lock(mu);
+                live.pfsp_active = active;
+                live.valid = true;
+                live.reactive_dirty = true;
+                live.pfsp_dirty = true;
+                fallback_latched = false;
+            }
+            if (server != nullptr && pfsp_mod_stval != nullptr) {
+                IedServer_updateInt32AttributeValue(server, pfsp_mod_stval, v);
+            }
+            std::fprintf(stderr, "mms: PFSPDFPF1.Mod ctlVal=%d → pfsp_active=%s [O.9.1.1]\n",
+                         v, active ? "true" : "false");
+            handled = true;
+        }
+    } else if (ctl == pfsp_gn_tgt || ctl == pfsp_lod_tgt) {
+        float cosphi = 0.0f;
+        bool got = false;
+        if (ty == MMS_FLOAT) {
+            cosphi = MmsValue_toFloat(value);
+            got = true;
+        } else if (ty == MMS_STRUCTURE) {
+            MmsValue* f = MmsValue_getElement(value, 0);
+            if (f != nullptr && MmsValue_getType(f) == MMS_FLOAT) {
+                cosphi = MmsValue_toFloat(f);
+                got = true;
+            }
+        }
+        const bool generation = (ctl == pfsp_gn_tgt);
+        const char* ref =
+            generation ? "PFSPDFPF1.PFGnTgtSpt" : "PFSPDFPF1.PFLodTgtSpt";
+        if (got && !setpoint_spacing_accept(ref)) {
+            return CONTROL_RESULT_FAILED;
+        }
+        if (got) {
+            {
+                std::lock_guard<std::mutex> lock(mu);
+                live.pfsp_cosphi = static_cast<double>(cosphi);
+                live.pfsp_generation = generation;
+                live.valid = true;
+                live.reactive_dirty = true;
+                live.pfsp_dirty = true;
+                fallback_latched = false;
+            }
+            DataAttribute* mx =
+                generation ? pfsp_gn_mxval : pfsp_lod_mxval;
+            if (server != nullptr && mx != nullptr) {
+                IedServer_updateFloatAttributeValue(server, mx, cosphi);
+            }
+            std::fprintf(stderr,
+                         "mms: PFSPDFPF1.%s ctlVal=%.4f [O.9.1.1 P5-R02]\n",
+                         generation ? "PFGnTgtSpt" : "PFLodTgtSpt",
+                         static_cast<double>(cosphi));
+            handled = true;
+        }
     }
 
     return handled ? CONTROL_RESULT_OK : CONTROL_RESULT_FAILED;
@@ -582,6 +649,21 @@ bool MmsAdapter::Impl::wire_cfg_runtime_nodes(MmsAdapter::Impl* impl) {
     if (impl->vartgt_mxval == nullptr) {
         impl->vartgt_mxval =
             model_da(model, "LD_Plant/VArSdDVAR1.VArTgtSptPct.setMag.f");
+    }
+
+    impl->pfsp_mod = model_do(model, "LD_Plant/PFSPDFPF1.Mod");
+    impl->pfsp_gn_tgt = model_do(model, "LD_Plant/PFSPDFPF1.PFGnTgtSpt");
+    impl->pfsp_lod_tgt = model_do(model, "LD_Plant/PFSPDFPF1.PFLodTgtSpt");
+    impl->pfsp_mod_stval = model_da(model, "LD_Plant/PFSPDFPF1.Mod.stVal");
+    impl->pfsp_gn_mxval = model_da(model, "LD_Plant/PFSPDFPF1.PFGnTgtSpt.mxVal.f");
+    if (impl->pfsp_gn_mxval == nullptr) {
+        impl->pfsp_gn_mxval =
+            model_da(model, "LD_Plant/PFSPDFPF1.PFGnTgtSpt.setMag.f");
+    }
+    impl->pfsp_lod_mxval = model_da(model, "LD_Plant/PFSPDFPF1.PFLodTgtSpt.mxVal.f");
+    if (impl->pfsp_lod_mxval == nullptr) {
+        impl->pfsp_lod_mxval =
+            model_da(model, "LD_Plant/PFSPDFPF1.PFLodTgtSpt.setMag.f");
     }
 
     impl->totw_mag = model_da(model, "LD_Plant/PdCMMXU1.TotW.mag.f");
@@ -667,13 +749,35 @@ bool MmsAdapter::Impl::create_mvp_model(MmsAdapter::Impl* impl) {
     }
 
     DataAttribute* stub_wsa_mod = stub_mod_inactive(ld, "WSaDAGC1");
-    DataAttribute* stub_pfsp = stub_mod_inactive(ld, "PFSPDFPF1");
     DataAttribute* stub_varv = stub_mod_inactive(ld, "VArVDVVR1");
     DataAttribute* stub_pfw = stub_mod_inactive(ld, "PFWDPFW1");
     (void)stub_wsa_mod;
-    (void)stub_pfsp;
     (void)stub_varv;
     (void)stub_pfw;
+
+    LogicalNode* pfsp = LogicalNode_create("PFSPDFPF1", ld);
+    impl->pfsp_mod = CDC_ENC_create("Mod", reinterpret_cast<ModelNode*>(pfsp), 0,
+                                    CDC_CTL_MODEL_DIRECT_ENHANCED);
+    impl->pfsp_gn_tgt =
+        CDC_APC_create("PFGnTgtSpt", reinterpret_cast<ModelNode*>(pfsp), 0,
+                       CDC_CTL_MODEL_DIRECT_ENHANCED, false);
+    impl->pfsp_lod_tgt =
+        CDC_APC_create("PFLodTgtSpt", reinterpret_cast<ModelNode*>(pfsp), 0,
+                       CDC_CTL_MODEL_DIRECT_ENHANCED, false);
+    impl->pfsp_mod_stval = reinterpret_cast<DataAttribute*>(
+        ModelNode_getChild(reinterpret_cast<ModelNode*>(impl->pfsp_mod), "stVal"));
+    impl->pfsp_gn_mxval = reinterpret_cast<DataAttribute*>(ModelNode_getChild(
+        reinterpret_cast<ModelNode*>(impl->pfsp_gn_tgt), "mxVal.f"));
+    if (impl->pfsp_gn_mxval == nullptr) {
+        impl->pfsp_gn_mxval = reinterpret_cast<DataAttribute*>(ModelNode_getChild(
+            reinterpret_cast<ModelNode*>(impl->pfsp_gn_tgt), "setMag.f"));
+    }
+    impl->pfsp_lod_mxval = reinterpret_cast<DataAttribute*>(ModelNode_getChild(
+        reinterpret_cast<ModelNode*>(impl->pfsp_lod_tgt), "mxVal.f"));
+    if (impl->pfsp_lod_mxval == nullptr) {
+        impl->pfsp_lod_mxval = reinterpret_cast<DataAttribute*>(ModelNode_getChild(
+            reinterpret_cast<ModelNode*>(impl->pfsp_lod_tgt), "setMag.f"));
+    }
 
     LogicalNode* pdc = LogicalNode_create("PdCMMXU1", ld);
     DataObject* totw =
@@ -1011,6 +1115,24 @@ bool MmsAdapter::start(const core::MmsConfig& cfg, MmsAuditFn audit) {
         IedServer_setControlHandler(impl->server, impl->varsd_vartgt, Impl::control_tramp,
                                     impl);
     }
+    if (impl->pfsp_mod != nullptr) {
+        IedServer_setPerformCheckHandler(impl->server, impl->pfsp_mod, Impl::check_tramp,
+                                         impl);
+        IedServer_setControlHandler(impl->server, impl->pfsp_mod, Impl::control_tramp,
+                                    impl);
+    }
+    if (impl->pfsp_gn_tgt != nullptr) {
+        IedServer_setPerformCheckHandler(impl->server, impl->pfsp_gn_tgt,
+                                         Impl::check_tramp, impl);
+        IedServer_setControlHandler(impl->server, impl->pfsp_gn_tgt, Impl::control_tramp,
+                                    impl);
+    }
+    if (impl->pfsp_lod_tgt != nullptr) {
+        IedServer_setPerformCheckHandler(impl->server, impl->pfsp_lod_tgt,
+                                         Impl::check_tramp, impl);
+        IedServer_setControlHandler(impl->server, impl->pfsp_lod_tgt, Impl::control_tramp,
+                                    impl);
+    }
 
     if (bind_address != nullptr && bind_address[0] != '\0' &&
         std::strcmp(bind_address, "0.0.0.0") != 0) {
@@ -1045,7 +1167,10 @@ bool MmsAdapter::start(const core::MmsConfig& cfg, MmsAuditFn audit) {
         if (impl->varsd_mod_stval != nullptr) {
             IedServer_updateInt32AttributeValue(impl->server, impl->varsd_mod_stval, 5);
         }
-        static const char* k_stub_lns[] = {"WSaDAGC1", "PFSPDFPF1", "VArVDVVR1", "PFWDPFW1"};
+        if (impl->pfsp_mod_stval != nullptr) {
+            IedServer_updateInt32AttributeValue(impl->server, impl->pfsp_mod_stval, 5);
+        }
+        static const char* k_stub_lns[] = {"WSaDAGC1", "VArVDVVR1", "PFWDPFW1"};
         for (const char* ln : k_stub_lns) {
             char path[96];
             std::snprintf(path, sizeof(path), "LD_Plant/%s.Mod.stVal", ln);
@@ -1359,12 +1484,13 @@ bool MmsAdapter::poll_dso_live_command(DsoLiveCommand& out) {
         return false;
     }
     std::lock_guard<std::mutex> lock(impl_->mu);
-    if (!impl_->live.dirty && !impl_->live.reactive_dirty) {
+    if (!impl_->live.dirty && !impl_->live.reactive_dirty && !impl_->live.pfsp_dirty) {
         return false;
     }
     out = impl_->live;
     impl_->live.dirty = false;
     impl_->live.reactive_dirty = false;
+    impl_->live.pfsp_dirty = false;
     return true;
 }
 
@@ -1375,6 +1501,7 @@ bool MmsAdapter::poll_comms_loss_fallback() {
     DataAttribute* wlim_mod_stval = nullptr;
     DataAttribute* wsd_mod_stval = nullptr;
     DataAttribute* varsd_mod_stval = nullptr;
+    DataAttribute* pfsp_mod_stval = nullptr;
     IedServer server = nullptr;
     int fallback_s = 0;
     {
@@ -1397,19 +1524,23 @@ bool MmsAdapter::poll_comms_loss_fallback() {
         impl_->live.wspt_pct = 0.0;
         impl_->live.varsd_active = false;
         impl_->live.vartgt_spt_pct = 0.0;
+        impl_->live.pfsp_active = false;
+        impl_->live.pfsp_cosphi = 1.0;
         impl_->live.valid = true;
         impl_->live.dirty = true;
         impl_->live.reactive_dirty = true;
+        impl_->live.pfsp_dirty = true;
         impl_->fallback_latched = true;
         impl_->fallback_pending = true;
         fallback_s = impl_->fallback_s;
         wlim_mod_stval = impl_->wlim_mod_stval;
         wsd_mod_stval = impl_->wsd_mod_stval;
         varsd_mod_stval = impl_->varsd_mod_stval;
+        pfsp_mod_stval = impl_->pfsp_mod_stval;
         server = impl_->server;
     }
     std::fprintf(stderr,
-                 "mms: P3-05 Operating Rule fallback — live Wlim/WSd/VArSd cleared after %d s "
+                 "mms: P3-05 Operating Rule fallback — live Wlim/WSd/VArSd/PFSP cleared after %d s "
                  "no-comms\n",
                  fallback_s);
     if (server != nullptr && wlim_mod_stval != nullptr) {
@@ -1420,6 +1551,9 @@ bool MmsAdapter::poll_comms_loss_fallback() {
     }
     if (server != nullptr && varsd_mod_stval != nullptr) {
         IedServer_updateInt32AttributeValue(server, varsd_mod_stval, 5);
+    }
+    if (server != nullptr && pfsp_mod_stval != nullptr) {
+        IedServer_updateInt32AttributeValue(server, pfsp_mod_stval, 5);
     }
     return true;
 }

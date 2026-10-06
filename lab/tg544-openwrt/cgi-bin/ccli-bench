@@ -11,6 +11,7 @@ echo ""
 ACTION=""
 case "$QUERY_STRING" in
   *action=status*) ACTION=status ;;
+  *action=events*) ACTION=events ;;
   *action=regulation_live*) ACTION=regulation_live ;;
   *action=regulation*) ACTION=regulation ;;
   *action=apply*) ACTION=apply ;;
@@ -38,6 +39,9 @@ case "$ACTION" in
   status)
     /usr/sbin/ccli --bench-status --json 2>/dev/null || echo '{"error":"start ccli service"}'
     ;;
+  events)
+    /usr/sbin/ccli --config "$CFG" --event-dump --count 40 --json 2>/dev/null || echo '[]'
+    ;;
   regulation_live)
     /etc/init.d/ccli stop 2>/dev/null
     sleep 1
@@ -49,6 +53,6 @@ case "$ACTION" in
     /usr/sbin/ccli --regulation-check --json --config "$CFG" 2>/dev/null
     ;;
   *)
-    echo '{"error":"unknown action","hint":"status|apply|regulation|regulation_live"}'
+    echo '{"error":"unknown action","hint":"status|events|apply|regulation|regulation_live"}'
     ;;
 esac

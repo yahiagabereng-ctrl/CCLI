@@ -13,6 +13,10 @@ add_executable(setpoint_gate_test setpoint_gate_test.cpp)
 target_link_libraries(setpoint_gate_test PRIVATE ccli_core)
 add_test(NAME dso_r07_setpoint_spacing COMMAND setpoint_gate_test)
 
+add_executable(service_supervision_test service_supervision_test.cpp)
+target_link_libraries(service_supervision_test PRIVATE ccli_core)
+add_test(NAME service_supervision COMMAND service_supervision_test)
+
 # DI/DO L1 test: compile the C driver + service against an inspectable mock HAL
 # (no platform lib / no hardware) so we can inject inputs and read raw outputs.
 add_executable(io_safe_state_test

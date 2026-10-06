@@ -1,0 +1,23 @@
+{
+    "codename": "P7-SR62-WATCHDOG",
+    "changes": [
+        "P7-SR62 service supervision (62443 SR 6.2 partial)",
+        "Fatal signal crash tombstone + best-effort safe DO",
+        "O.14 security/crash_recovered and unclean_restart",
+        "procd watchdog 90 + ubus ping every 30s",
+        "security/service_monitor lifecycle events"
+    ],
+    "release": 32,
+    "revert_to": {
+        "version_full": "0.1.0-r31",
+        "manifest": "CCLI_DEPLOY_0.1.0-r31_2026-10-05_161342",
+        "sha256": "e3659ed074a355e100b5e5a0450c3c7174229547f262298e0ae36dda4fa8a38f"
+    },
+    "timestamp_utc": "2026-10-05T19:06:00.0000000Z",
+    "version_full": "0.1.0-r32",
+    "lab_yaml": "apps\\ccli\\config\\lab_tr400_cleartext_tsp_ttyS1.yaml",
+    "sha256": "PENDING_BUILD",
+    "binary": "C:\\Yahia\\projects\\CCLI\\lab\\tg544-openwrt\\ccli-bin",
+    "host": "192.168.10.1",
+    "semver": "0.1.0"
+}

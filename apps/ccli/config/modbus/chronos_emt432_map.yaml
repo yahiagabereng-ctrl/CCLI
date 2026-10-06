@@ -1,0 +1,91 @@
+# Chronos EMT432 / EMT430 family — Modbus RTU map (from EMT430_MR Rev2)
+# PDF: knowledge-base/08-engineering/reference/vendor/chronos/EMT430_MR.pdf
+# Addresses are PLC 4xxxx; ccli reg_* uses 0-based offset from 40001.
+schema: ccli-modbus-map/v1
+device: chronos_emt432
+vendor: Chronos srl
+product_url: https://chronos-tech.it/prodotti/chronos/emt432/
+notes:
+  - Default RTU: 9600 8N1, slave ID 1 (reg modbus_RTU_baudrate=3, parity=0).
+  - Float32 values use 2 consecutive holding registers (big-endian per bench verify).
+  - P/Q in W and VAR — scale 0.001 for kW/kvar in ccli if needed.
+  - Order code suffix I = TA 5A; V = 333mV/Rogowski.
+
+registers:
+  active_power_w:
+    name: P_SUM
+    address: 40939
+    offset_40001: 938
+    type: holding
+    count: 2
+    datatype: float32
+    byte_order: big_endian
+    scale: 0.001
+    unit: W
+    description: "RMS sum active power [W]"
+
+  reactive_power_var:
+    name: Q_SUM
+    address: 40947
+    offset_40001: 946
+    type: holding
+    count: 2
+    datatype: float32
+    byte_order: big_endian
+    scale: 0.001
+    unit: VAR
+    description: "RMS sum reactive power [VAR]"
+
+  active_power_l1_w:
+    name: P1
+    address: 40933
+    offset_40001: 932
+    type: holding
+    count: 2
+    datatype: float32
+    byte_order: big_endian
+    scale: 0.001
+    unit: W
+    description: "RMS active power line 1 [W]"
+
+  reactive_power_l1_var:
+    name: Q1
+    address: 40941
+    offset_40001: 940
+    type: holding
+    count: 2
+    datatype: float32
+    byte_order: big_endian
+    scale: 0.001
+    unit: VAR
+    description: "RMS reactive power line 1 [VAR]"
+
+  line_voltage_l1_l2_peak_v:
+    name: V_L1_L2_peak
+    address: 40981
+    offset_40001: 980
+    type: holding
+    count: 2
+    datatype: float32
+    byte_order: big_endian
+    scale: 0.001
+    unit: V
+    description: "Line voltage L1-L2 peak [V]"
+
+  frequency_hz:
+    name: Frequency
+    address: 40973
+    offset_40001: 972
+    type: holding
+    count: 2
+    datatype: float32
+    byte_order: big_endian
+    scale: 1.0
+    unit: Hz
+    description: "Frequency [Hz]"
+
+  comm_config_holding:
+    modbus_slave_id: { address: 40227, offset_40001: 226 }
+    modbus_baud_code: { address: 40229, offset_40001: 228 }
+    modbus_parity_code: { address: 40230, offset_40001: 229 }
+    modbus_stop_bit_code: { address: 40231, offset_40001: 230 }

@@ -914,7 +914,7 @@ Control system shall enforce **least privilege**: granular permissions, flexible
 
 **SL-C(TRE) mapping:** SL 1–4 = **SR 6.2** at all levels.
 
-**CCLI:** procd service watchdog; firewall hit counters; optional remote syslog/SIEM at SL 3.
+**CCLI (r32+):** procd `watchdog 90` + ubus ping every 30 s; crash tombstone → O.14 `security/crash_recovered`; fatal signal → best-effort safe DO. Still **PART** — firewall hit counters; SIEM/IDS at SL 3; HW WDT→DO (DRB) open.
 
 ---
 

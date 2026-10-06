@@ -24,6 +24,7 @@ Legend: **HAVE** = logged today · **PART** = partial / lab mock · **GAP** = no
 | Plant GOOSE comms | `goose` / `appId=… stNum=…` | **PART** | RX when `goose.enabled`; timeout GAP |
 | CCI functionality status | `pf2` / reason strings | **PART** | On state change only (r28) |
 | Measurement device status | `meter` / `quality_*` | **HAVE** | Quality transitions |
+| Process crash / service restart | `security` / `crash_recovered:*`, `unclean_restart`, `service_monitor:*` | **PART** | r32 tombstone + procd watchdog; no SIEM yet |
 | Irregular network connect/disconnect | — | **GAP** | netlink audit |
 | Abnormal endpoints / off-hours | — | **GAP** | net_policy not wired |
 | Port scan / malformed / auth errors | `mms` / `auth_reject_*`, `rbac_deny_control` | **PART** | ACSE/RBAC; no IDS |

@@ -51,6 +51,8 @@ See **`P4_OPERATOR_ROLE.md`**.
 | P4-00 LuCI Running / LAN3 plant / V-005 coexistence | Lab / vendor |
 | Operator **command** ASDUs + O.14 audit on 104 | Future if Operating Rule requires |
 | O.10.3.1 MSD on Eth_B | Commercial / programme |
+| **Product operator HMI** | **Cloud UI** — [CCI_Cloud_Operator_HMI.md](../../../knowledge-base/08-engineering/CCI_Cloud_Operator_HMI.md) |
+| LAN2 r30 regression + O.14 operator events | [LAN2_READINESS.md](LAN2_READINESS.md) — after LAN1 exit |
 
 ---
 

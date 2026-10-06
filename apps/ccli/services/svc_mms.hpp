@@ -24,6 +24,7 @@ public:
     bool poll_comms_loss_fallback() { return adapter_.poll_comms_loss_fallback(); }
     void refresh_time_quality() { adapter_.refresh_time_quality(); }
     bool gnss_fix() const { return adapter_.gnss_fix(); }
+    int client_count() const { return adapter_.client_count(); }
     void enable_goose_publishing(const core::GooseConfig& cfg) {
         adapter_.enable_goose_publishing(cfg);
     }

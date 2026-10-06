@@ -7,6 +7,90 @@ Format: **`semver-rN`** — bump **N** in `VERSION` line 2 and `package/ccli/Mak
 
 ---
 
+## 0.1.0-r34 — P7-ZONE-DASHBOARD (2026-10-05)
+
+### Added
+
+- **Lab zone dashboard** — read-only web UI: DSO (Eth_A), Operator (Eth_B), Plant (LAN3/RS485), Events (O.14).
+- `bench-status` JSON **`zones`** block + `q_kvar` in `ccli_main.cpp` (mock console fields unchanged).
+- CGI `?action=events`; `plant-map-generate.py` → `plant_ui_map.json` + `plant_map.json`.
+- `deploy-zone-dashboard.ps1` (web + CGI only; does not overwrite `/etc/ccli/lab.yaml`).
+
+### Notes
+
+- Inverter cards show CSV mapping; live poll remains single-slave meter only.
+- Demo mode (`?demo=1`) for off-device layout review.
+
+### Revert to r33
+
+1. **Git:** `git checkout 0.1.0-r33`.
+2. **DUT:** redeploy r33 `ccli-bin`; remove `/www/ccli/zone_dashboard.*` if needed.
+3. **Verify:** `ccli --bench-status --json | grep -q zones` → absent on r33.
+
+## 0.1.0-r33 — P5-EMT432-TCP-PFSP (2026-10-05)
+
+### Added
+
+- **P5-R02 completion** — MMS `PFSPDFPF1` Operate parsing in `mms_adapter` + `apply_live_pfsp_command()` /
+  `derive_pfsp_kvar()` in `dso_reactive_power` (r32 main loop referenced PFSP but adapter/derive were missing
+  from tagged source — **r33 makes PFSP buildable**).
+- **Modbus TCP backend** — `LibmodbusTcp` for Chronos EMT432 on LAN3 (`modbus.host`, `tcp_port`, `power_scale`).
+- Lab yaml `lab_tr400_emt432_1p.yaml`, `chronos_emt432_map.yaml`, probe `lab/modbus_emt432_tcp_probe.py`.
+- P5 EMT432 / PFSP evidence, Chronos extract, `handoff/masomeh95/` package.
+
+### Notes
+
+- Revert **r34** first if only the zone dashboard is unwanted; revert **r33** to drop PFSP wire-up + Modbus TCP.
+- Binary SHA256: run `lab/tg544-openwrt/wsl-build-ccli.sh` then update manifest.
+
+### Revert to r32
+
+1. **Git:** `git checkout 0.1.0-r32` (tag `42899bf8…`).
+2. **DUT binary:** redeploy pre-r33 `ccli-bin` or rebuild from r32 tree (manifest r32 SHA256 was PENDING_BUILD).
+3. **Verify:** `ccli --version` → `0.1.0-r32`; PFSP Operate will not parse on Eth_A until r33 is restored.
+
+## 0.1.0-r32 — P7-SR62-WATCHDOG (2026-10-05)
+
+### Added
+
+- **62443 SR 6.2 / FR 7 (partial)** — `core/service/service_supervision.cpp`:
+  - Fatal signal handlers (SIGSEGV, SIGABRT, SIGBUS, SIGFPE, SIGILL) write crash tombstone,
+    best-effort `svc_io_safe_state()`, then `_exit`.
+  - Startup detects tombstone → O.14 `security/crash_recovered:SIG*`; stale running marker →
+    `security/unclean_restart`.
+  - Main loop procd watchdog ping (`ubus call service event '{"type":"watchdog"}'`) every 30 s.
+  - `ccli.init`: `procd_set_param watchdog 90` (hang → procd restart).
+- O.14: `security/service_monitor:started|shutdown` on clean lifecycle.
+
+### Notes
+
+- HW WDT→DO failsafe (DRB) remains **OPEN** — software path only.
+- SR 6.2 full compliance still needs SIEM/IDS; this closes service health + crash audit gap.
+
+### Revert to r31
+
+1. **Git:** `git checkout 0.1.0-r31` (tag after this commit) or revert the r32 commit on your branch.
+2. **DUT binary:** redeploy `ccli-bin` from manifest `CCLI_DEPLOY_0.1.0-r31_2026-10-05_161342.*`
+   (SHA256 `e3659ed074a355e100b5e5a0450c3c7174229547f262298e0ae36dda4fa8a38f`).
+3. **Init script:** restore `/etc/init.d/ccli` without `procd_set_param watchdog 90` (r31 had respawn only).
+4. **Verify:** `ccli --version` → `0.1.0-r31`; no `security/crash_recovered` events unless a crash occurred.
+
+## 0.1.0-r31 — P5-R02-PFSP (2026-10-05)
+
+### Added
+
+- **P5-R02** — `PFSPDFPF1` Operate on `PFGnTgtSpt` / `PFLodTgtSpt` + `Mod` (O.9.1.1 Eq 12).
+- `derive_pfsp_kvar()` — Q from measured P × tan(acos(|cosφ|)).
+- O.14 event `pfsp_operate mod=… cosphi=… p_kw=… q_kvar=… result=…`.
+- Lab client `lab/mms_pfsp_client.c`.
+
+### Notes
+
+- PFSP takes priority over VArSd in same poll tick (P5-R07 partial).
+- Full O.11 reactive arbiter still OPEN.
+- Lab client `mms_pfsp_client` uses **SBO** (`selectWithValue` + `operate`) — cfg `ctlModel=4` on PFSP APC DOs.
+- Lab evidence: `lab/evidence/phase5/P5_R02_PFSP_EVENT_2026-10-05.txt` · P5-R **CLOSED** 2026-10-05.
+
 ## 0.1.0-r30 — P5-R09-O14-VARSD (2026-10-05)
 
 **Codename:** P5-R09-O14-VARSD  

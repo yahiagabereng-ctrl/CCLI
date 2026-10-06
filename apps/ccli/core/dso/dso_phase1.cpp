@@ -129,4 +129,26 @@ DsoReactiveApplyResult apply_live_varsd_command(const PlantConfig& plant_cfg,
     return result;
 }
 
+DsoReactiveApplyResult apply_live_pfsp_command(const PlantConfig& plant_cfg,
+                                               const DsoConfig& dso_cfg,
+                                               const bool pfsp_active,
+                                               const double cosphi,
+                                               const bool generation_setpoint,
+                                               const double p_kw_measured) {
+    DsoReactiveApplyResult result{};
+    if (!dso_cfg.enabled) {
+        return result;
+    }
+
+    DsoMockInputs mock = resolve_dso_mock_inputs(plant_cfg, dso_cfg);
+    PfspCommand pfsp{};
+    pfsp.active = pfsp_active;
+    pfsp.cosphi = cosphi;
+    pfsp.generation = generation_setpoint;
+
+    result.derived = derive_pfsp_kvar(mock.plant, p_kw_measured, pfsp);
+    result.applied = pfsp_active;
+    return result;
+}
+
 }  // namespace cci::core::dso

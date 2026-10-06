@@ -1,9 +1,9 @@
 # P5 — Phase closeout (lab evidence chain)
 
-**Date:** 2026-10-01 (updated 2026-10-02 IEDExplorer · **2026-10-05 P5-G02 GOOSE**)  
-**Gate:** P5_FULLCIRCLE  
+**Date:** 2026-10-01 (updated 2026-10-02 IEDExplorer · **2026-10-05 P5-G02 GOOSE · P5-R reactive close**)  
+**Gate:** P5_FULLCIRCLE + **P5-R CLOSED**  
 **DUT:** TesPro TG544 @ `192.168.10.1`  
-**Product build:** **0.1.0-r25** (P5-COMPARE-FIX)  
+**Product build:** **0.1.0-r31** (P5-R02-PFSP) · full-circle anchor **r25**  
 **Lab profile:** cleartext MMS `:102` · `bind_address: 0.0.0.0` · `lab_tr400_cleartext_tsp.yaml`  
 **Operator UI:** Test Suite Pro (r25 session) + automated `mms_lab_client` · **TSP license blocked 2026-10-01** — re-runs use [IEDExplorer](https://sourceforge.net/projects/iedexplorer/) per [P5_VERIFICATION_CLIENT_STATUS_2026-10-01.md](P5_VERIFICATION_CLIENT_STATUS_2026-10-01.md)  
 **Annex test sequence:** [P5_ANNEX_TEST_SEQUENCE.md](P5_ANNEX_TEST_SEQUENCE.md)  
@@ -43,11 +43,11 @@
 | REQ-CTL-004 | **O.7.3.3** | 3 s set-point reject | regulation_map R07 |
 | REQ-CTL-001/002 | **O.7.3.1** | TsP 60 s / TsQ 10 s | regulation bench |
 | REQ-TIM-003 | **T.3.3.4.5** | NTS mandatory (product) | C5 time architecture |
-| PFSP / VArV / PFW | **O.9.1.x** | Annex T Tab.88–91 | P6+ |
+| VArV / PFW curves | **O.9.1.2/3** | TR Figura 2 Inactive | **WAIVED** · P5-R03/R04 |
 | GenPV live values | **T.3.1.3** | No Sun2000 bus | plant slice |
 | Product TLS `:3782` TSP | **T.3.3.4.1** | cleartext lab bypass | revert below |
 | TSP steps 13–14 | — | manual optional | sequencer |
-| P5-R02–R09 (PFSP/VArV/PFW full plant) | **O.9.1.x** | lab scope VArSd only | P6+ |
+| P5-R05 TsQ bench · P5-R07 full arbiter | **O.7.3.1 / O.11** | partial impl | product track |
 | P5-04 accuracy / V5 chain | **O.13.2** | not bench-calibrated | metrology |
 | TSP license (post-close) | — | Sentinel trial expired | IEDExplorer fallback |
 
@@ -102,6 +102,28 @@ Plant egress: **`goose.interface: lan3`** (192.168.30.1) — not empty `br-lan`.
 
 ---
 
+## 2026-10-05 extension — P5-R reactive close (r31)
+
+| Item | Evidence | Status |
+|------|----------|--------|
+| P5-R02 PFSP cosφ Operate | [P5_R02_PFSP_EVENT_2026-10-05.txt](P5_R02_PFSP_EVENT_2026-10-05.txt) | **PASS** |
+| P5-R09 O.14 (VArSd + PFSP) | [P5_R09_VARSD_EVENT_2026-10-05.txt](P5_R09_VARSD_EVENT_2026-10-05.txt) | **PASS** |
+| P5-R03 VArV · P5-R04 PFW | TR Figura 2 Inactive | **WAIVED** |
+| P5-R06 3 s spacing | r29+ deploy log | **PASS** |
+| P5-R closeout | [P5_REACTIVE_CLOSEOUT_2026-10-05.md](P5_REACTIVE_CLOSEOUT_2026-10-05.md) | **CLOSED** |
+
+Key r31 snippet:
+
+```text
+ccli 0.1.0-r31 (P5-R02-PFSP)
+mms: O.7.3.3 set-point spacing gate ON (3 s)
+OPERATE OK PFSPDFPF1.PFGnTgtSpt = -0.95 · Mod = 1
+mms→plant: PFSP on cosφ=-0.95 P=450 kW → Q=50 kvar
+pfsp_operate mod=1 cosphi=-0.950000 p_kw=450 q_kvar=50 result=ok
+```
+
+---
+
 ## 2026-10-02 re-validation (IEDExplorer + CID rev4)
 
 | Item | Tool / evidence | Status |
@@ -145,4 +167,5 @@ Product MMS: `192.168.10.1:3782` TLS **ON** · client certs in `apps/ccli/config
 | REQ-MET-002 | P5-D03 | sec mod 4 = 0 | **GAP** (product) |
 
 **P5 lab gate: CLOSED** on functional + interval + chrony + LN structure/coherent **t** (2026-10-01, build **0.1.0-r25**).  
-**Product open:** REQ-MET-002 grid alignment · LN-GAP-08 · REQ-CTL-004.
+**P5-R lab gate: CLOSED** 2026-10-05 (build **0.1.0-r31**) — see [P5_REACTIVE_CLOSEOUT_2026-10-05.md](P5_REACTIVE_CLOSEOUT_2026-10-05.md).  
+**Product open:** REQ-MET-002 grid alignment · LN-GAP-08 · REQ-CTL-004 · VArV/PFW curves · P5-G01/P5-G03 runtime.

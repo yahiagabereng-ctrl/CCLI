@@ -22,7 +22,9 @@ enum class ModbusBackend : std::uint8_t {
 
     Simulator,
 
-    Libmodbus,
+    LibmodbusRtu,
+
+    LibmodbusTcp,
 
 };
 
@@ -48,6 +50,10 @@ struct ModbusPollConfig {
 
     ModbusBackend backend{ModbusBackend::Simulator};
 
+    std::string host;
+
+    int         tcp_port{502};
+
     std::string device{"/dev/ttyS1"};
 
     int         baud{9600};
@@ -69,6 +75,10 @@ struct ModbusPollConfig {
     int         reg_reactive_power{2};
 
     int         reg_reactive_power_count{2};
+
+    double      power_scale{1.0};
+
+    double      reactive_scale{1.0};
 
 };
 
@@ -119,9 +129,13 @@ private:
 
     bool poll_libmodbus(cci::core::MeasurementStore& store, std::int64_t now_ms);
 
-    bool ensure_rtu_connected();
+    bool ensure_libmodbus_connected();
 
-    void close_rtu();
+    void close_libmodbus();
+
+    bool is_tcp_backend() const {
+        return cfg_.backend == ModbusBackend::LibmodbusTcp;
+    }
 
     void record_read_holding(std::int64_t now_ms, int start, int count, const std::uint16_t* regs,
                              int reg_count, bool success, const char* error);
@@ -148,7 +162,7 @@ private:
 
 #ifdef CCLI_MODBUS_LIBMODBUS
 
-    void* rtu_ctx_{nullptr}; /* modbus_t* — opaque to keep header free of modbus.h */
+    void* libmodbus_ctx_{nullptr}; /* modbus_t* — opaque to keep header free of modbus.h */
 
 #endif
 

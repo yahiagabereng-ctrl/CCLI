@@ -55,6 +55,8 @@ enum class ModbusBackendKind : std::uint8_t {
 
     Rtu,
 
+    Tcp,
+
 };
 
 
@@ -62,6 +64,11 @@ enum class ModbusBackendKind : std::uint8_t {
 struct ModbusConfig {
 
     ModbusBackendKind backend{ModbusBackendKind::Simulator};
+
+    /** Modbus TCP peer (EMT432 on LAN3). Ignored for RTU. */
+    std::string       host;
+
+    int               tcp_port{502};
 
     std::string       device{"/dev/ttyS1"};
 
@@ -86,6 +93,11 @@ struct ModbusConfig {
     int reg_reactive_power{2};
 
     int reg_reactive_power_count{2};
+
+    /** Multiply decoded P/Q before store (EMT432 P1/Q1 are W/VAR → use 0.001). */
+    double power_scale{1.0};
+
+    double reactive_scale{1.0};
 
     /** stderr log on each successful Modbus poll (lab bus trace). */
     bool trace{false};

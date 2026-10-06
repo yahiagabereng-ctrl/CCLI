@@ -1,0 +1,33 @@
+P5-06 EMT432 availability — 2026-10-05 (178.x plant subnet)
+
+Meter as-configured (display):
+  IP:       192.168.178.250
+  Netmask:  255.255.255.0
+  Gateway:  192.168.178.250  (same as IP — fix to 192.168.178.1 when editable)
+
+TG544 LAN3 (adapted to match meter):
+  uci set network.lan2_sec.ipaddr='192.168.178.1'
+  uci commit network && /etc/init.d/network reload
+  lan3: 192.168.178.1/24, carrier=1
+
+Reachability from DUT (after LAN3 change):
+  ping 192.168.178.250  → 100% loss (5/5)
+  ARP                   → no MAC learned
+
+Reachability from PC (LAN1 192.168.10.10 only):
+  ping 192.168.178.250  → no route / timeout
+
+Check 2026-10-05 ~18:16 (Option B static, DHCP off target):
+  Meter: 192.168.178.250 /24 GW 192.168.178.1
+  DUT lan3: 192.168.178.1/24 carrier=1
+  ping .250 → 100% loss (4/4)
+  ARP .250 → FAILED
+  Modbus TCP .250:502 → FAIL (PC + DUT path)
+  Scan .2-.251 on /24 → no other host replied
+
+VERDICT: **SUBNET ALIGNED on DUT; meter still not answering at L3**
+  - Reboot meter after Ethernet save
+  - Confirm RJ45 LINK LED on meter
+  - Optional: set gateway on meter to 192.168.178.1 (not .250)
+  - PC probe: lab/set_pc_lan3_plant_178.cmd then:
+      python lab/modbus_emt432_tcp_probe.py --host 192.168.178.250

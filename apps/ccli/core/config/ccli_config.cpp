@@ -173,9 +173,21 @@ CcliConfig load_config(const std::string& path) {
             if (key == "backend") {
                 if (value == "rtu" || value == "libmodbus") {
                     cfg.modbus.backend = ModbusBackendKind::Rtu;
+                } else if (value == "tcp") {
+                    cfg.modbus.backend = ModbusBackendKind::Tcp;
                 } else if (value == "simulator" || value == "sim") {
                     cfg.modbus.backend = ModbusBackendKind::Simulator;
                 }
+            } else if (key == "mode") {
+                if (value == "tcp") {
+                    cfg.modbus.backend = ModbusBackendKind::Tcp;
+                } else if (value == "rtu") {
+                    cfg.modbus.backend = ModbusBackendKind::Rtu;
+                }
+            } else if (key == "host") {
+                cfg.modbus.host = value;
+            } else if (key == "tcp_port" || key == "port") {
+                cfg.modbus.tcp_port = std::atoi(value.c_str());
             } else if (key == "device") {
                 cfg.modbus.device = value;
             } else if (key == "baud") {
@@ -190,6 +202,18 @@ CcliConfig load_config(const std::string& path) {
                 cfg.modbus.timeout_ms = std::atoi(value.c_str());
             } else if (key == "retries") {
                 cfg.modbus.retries = std::atoi(value.c_str());
+            } else if (key == "reg_active_power") {
+                cfg.modbus.reg_active_power = std::atoi(value.c_str());
+            } else if (key == "reg_active_power_count") {
+                cfg.modbus.reg_active_power_count = std::atoi(value.c_str());
+            } else if (key == "reg_reactive_power") {
+                cfg.modbus.reg_reactive_power = std::atoi(value.c_str());
+            } else if (key == "reg_reactive_power_count") {
+                cfg.modbus.reg_reactive_power_count = std::atoi(value.c_str());
+            } else if (key == "power_scale") {
+                cfg.modbus.power_scale = std::strtod(value.c_str(), nullptr);
+            } else if (key == "reactive_scale") {
+                cfg.modbus.reactive_scale = std::strtod(value.c_str(), nullptr);
             } else if (key == "trace") {
                 cfg.modbus.trace = parse_bool(value, cfg.modbus.trace);
             }

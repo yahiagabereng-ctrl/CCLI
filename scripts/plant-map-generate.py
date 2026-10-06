@@ -3,11 +3,14 @@
 from __future__ import annotations
 
 import csv
+import json
+import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 PLANT = ROOT / "apps" / "ccli" / "config" / "plant"
 OUT = PLANT / "generated"
+LAB_WWW = ROOT / "lab" / "tg544-openwrt" / "www" / "ccli"
 
 
 def load_csv(path: Path) -> list[dict[str, str]]:
@@ -57,6 +60,117 @@ def write_modbus_yaml(rows: list[dict[str, str]]) -> None:
     path = OUT / "plant_modbus_map.yaml"
     path.write_text("\n".join(lines) + "\n", encoding="utf-8")
     print(f"Wrote {path}")
+
+
+def _int_or_none(s: str) -> int | None:
+    s = (s or "").strip()
+    return int(s) if s.isdigit() else None
+
+
+def _num_or_none(s: str) -> float | None:
+    try:
+        return float((s or "").strip())
+    except ValueError:
+        return None
+
+
+def write_ui_json(rows: list[dict[str, str]]) -> None:
+    """Inverter / POC / control map for the lab zone dashboard (read-only view)."""
+    meta = next((r for r in rows if r.get("record_type") == "META"), None)
+    inverters: dict[str, dict] = {}
+    poc: list[dict] = []
+    aggregates: list[dict] = []
+    controls: list[dict] = []
+
+    for r in rows:
+        rt = r.get("record_type", "")
+        pid = r.get("plane_id", "")
+        if rt in ("MEASURE", "STATUS"):
+            m = re.match(r"^(INV\d+)\.(TotW|Status)$", pid)
+            if m:
+                inv = inverters.setdefault(
+                    m.group(1),
+                    {
+                        "id": m.group(1),
+                        "vendor": r.get("field_device", ""),
+                        "slave_id": _int_or_none(r.get("modbus_slave_id", "")),
+                        "mms_ln": r.get("ied_ld_ln", ""),
+                        "enabled": r.get("enabled", "").upper() == "Y",
+                        "runtime_status": r.get("runtime_status", ""),
+                    },
+                )
+                if m.group(2) == "TotW":
+                    inv["p"] = {
+                        "fc": _int_or_none(r.get("modbus_fc_read", "")),
+                        "reg": _int_or_none(r.get("modbus_reg_read", "")),
+                        "type": r.get("modbus_type_read", ""),
+                        "gain": _num_or_none(r.get("modbus_gain_read", "")),
+                        "mms_path": r.get("mms_path", ""),
+                    }
+                    inv["notes"] = r.get("notes", "")
+                else:
+                    inv["status"] = {
+                        "fc": _int_or_none(r.get("modbus_fc_read", "")),
+                        "reg": _int_or_none(r.get("modbus_reg_read", "")),
+                        "type": r.get("modbus_type_read", ""),
+                        "mms_path": r.get("mms_path", ""),
+                    }
+                if r.get("runtime_status") == "CID_GAP":
+                    inv["runtime_status"] = "CID_GAP"
+            elif pid.startswith("PdC."):
+                poc.append(
+                    {
+                        "id": pid,
+                        "device": r.get("field_device", ""),
+                        "slave_id": _int_or_none(r.get("modbus_slave_id", "")),
+                        "reg": _int_or_none(r.get("modbus_reg_read", "")),
+                        "type": r.get("modbus_type_read", ""),
+                        "mms_path": r.get("mms_path", ""),
+                        "runtime_status": r.get("runtime_status", ""),
+                    }
+                )
+        elif rt == "AGGREGATE":
+            aggregates.append(
+                {
+                    "id": pid,
+                    "mms_path": r.get("mms_path", ""),
+                    "transform": r.get("transform", ""),
+                    "enabled": r.get("enabled", "").upper() == "Y",
+                    "runtime_status": r.get("runtime_status", ""),
+                    "notes": r.get("notes", ""),
+                }
+            )
+        elif rt == "CONTROL":
+            controls.append(
+                {
+                    "id": pid,
+                    "app_group": r.get("app_group", ""),
+                    "dso_source": r.get("dso_source", ""),
+                    "clause": r.get("clause", ""),
+                    "slave_id": r.get("modbus_slave_id", ""),
+                    "fc": _int_or_none(r.get("modbus_fc_write", "")),
+                    "reg": _int_or_none(r.get("modbus_reg_write", "")),
+                    "gain": _num_or_none(r.get("modbus_gain_write", "")),
+                    "transform": r.get("transform", ""),
+                    "enabled": r.get("enabled", "").upper() == "Y",
+                    "runtime_status": r.get("runtime_status", ""),
+                }
+            )
+
+    doc = {
+        "schema": "ccli-plant-ui-map/1",
+        "source": "apps/ccli/config/plant/PLANT_ASSIGNMENT_PLANE.csv",
+        "bus_notes": meta.get("notes", "") if meta else "",
+        "poc": poc,
+        "inverters": sorted(inverters.values(), key=lambda i: i["id"]),
+        "aggregates": aggregates,
+        "controls": controls,
+    }
+    text = json.dumps(doc, indent=2, ensure_ascii=False) + "\n"
+    for path in (OUT / "plant_ui_map.json", LAB_WWW / "plant_map.json"):
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(text, encoding="utf-8")
+        print(f"Wrote {path}")
 
 
 def write_goose_yaml(rows: list[dict[str, str]]) -> None:
@@ -150,6 +264,7 @@ def main() -> int:
     mms = load_csv(PLANT / "MMS_POINT_MAP.csv")
 
     write_modbus_yaml(assign)
+    write_ui_json(assign)
     write_goose_yaml(goose)
     write_mms_yaml(mms)
     print("Generation complete.")

@@ -1,0 +1,25 @@
+P5-06 EMT432 — network availability after DHCP disabled (Option B)
+
+Date: 2026-10-05
+Meter: EMT432.I.BASE SN 261001102952
+Config: DHCP OFF · static 192.168.178.250/24 GW 192.168.178.1
+
+=== TG544 DUT (192.168.10.1 SSH) ===
+lan3: 192.168.178.1/24 carrier=1
+
+ping 192.168.178.250:
+  4 transmitted, 4 received, 0% loss
+  rtt min/avg/max = 3.2 / 8.2 / 20.0 ms
+
+ARP 192.168.178.250:
+  lladdr 66:e8:33:67:9f:77 REACHABLE
+
+=== Modbus TCP ===
+PC (192.168.10.10, no LAN3 route): 192.168.178.250:502 → connect FAIL (timeout)
+DUT: python3 not installed; raw nc modbus not available on busybox nc
+
+VERDICT:
+  L3 ping:  **PASS** (meter reachable on plant LAN after DHCP off + reboot)
+  Modbus:   **PENDING** — run from PC on LAN3:
+    lab\set_pc_lan3_plant_178.cmd
+    python lab/modbus_emt432_tcp_probe.py --host 192.168.178.250

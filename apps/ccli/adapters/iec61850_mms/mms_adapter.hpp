@@ -19,18 +19,22 @@ enum class MmsRole : int {
 
 /**
  * Live DSO commands from Eth_A MMS.
- * O.9.2.2 Wlim · O.9.2.3 WSd · O.9.1.4 VArSd (P5-R01).
+ * O.9.2.2 Wlim · O.9.2.3 WSd · O.9.1.4 VArSd (P5-R01) · O.9.1.1 PFSP (P5-R02).
  */
 struct DsoLiveCommand {
     bool valid{false};
     bool dirty{false};          /**< Active-power (Wlim/WSd) changed */
-    bool reactive_dirty{false}; /**< Reactive (VArSd) changed — P5-R01 */
+    bool reactive_dirty{false}; /**< Reactive (VArSd / PFSP) changed */
+    bool pfsp_dirty{false};     /**< PFSP cosφ set-point changed — P5-R02 */
     bool wlim_active{false};    /**< WlimDWMX1.Mod 1=on, 5=off */
     double wmax_spt_pct{0.0};
     bool wsd_active{false}; /**< WSdDAGC1.Mod — Figura 2 s.p. W */
     double wspt_pct{0.0};   /**< WSdDAGC1.WSptPct % Smax */
     bool varsd_active{false};   /**< VArSdDVAR1.Mod — O.9.1.4 Q set-point */
     double vartgt_spt_pct{0.0}; /**< VArSdDVAR1.VArTgtSptPct % Smax (signed) */
+    bool pfsp_active{false};    /**< PFSPDFPF1.Mod — O.9.1.1 cosφ */
+    double pfsp_cosphi{1.0};    /**< PFGnTgtSpt or PFLodTgtSpt APC value */
+    bool pfsp_generation{true}; /**< true = PFGnTgtSpt, false = PFLodTgtSpt */
 };
 
 /** @deprecated alias — prefer DsoLiveCommand */

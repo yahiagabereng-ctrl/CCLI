@@ -1,0 +1,33 @@
+Hi Masomeh,
+
+You now have access to the full CCLI project on GitHub.
+
+Repository: https://github.com/yahiagabereng-ctrl/CCLI
+Branch: main
+
+To get all the code:
+
+1) Clone from GitHub:
+   git clone https://github.com/yahiagabereng-ctrl/CCLI.git
+   cd CCLI
+
+2) Add third-party libraries (needed to build):
+   cd apps/ccli/third_party
+   git clone --depth 1 --branch v1.6.0 https://github.com/mz-automation/libiec61850 libiec61850
+   git clone --depth 1 --branch v2.3.5 https://github.com/mz-automation/lib60870 lib60870
+
+Alternatively, I can share ZIP files with you (full project snapshot + libraries).
+
+Good places to start:
+- Architecture draft (your document): Architecture/_extracted_reg_analysis/arch_sw.txt
+- Plant / GOOSE mapping: apps/ccli/config/plant/
+- Signal map: apps/ccli/config/icd/signal_map.yaml
+- Lab evidence: lab/evidence/phase6/ and lab/evidence/phase7/
+
+Set your git identity:
+   git config --global user.name "Masomeh"
+   git config --global user.email "masoumeh.hashemi.sarvestani2022@gmail.com"
+
+Let me know if you need help with setup.
+
+Yahia

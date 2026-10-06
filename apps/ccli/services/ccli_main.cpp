@@ -13,6 +13,7 @@
 #include "policy/net_policy.hpp"
 #include "event/event_store.hpp"
 #include "regulation/regulation_bench.hpp"
+#include "service/service_supervision.hpp"
 #include "version/ccli_version.hpp"
 
 #include "modbus_adapter.hpp"
@@ -44,19 +45,82 @@ std::string quality_string(const cci::core::DataQuality q) {
     }
 }
 
+/** Read-only zone view for the lab dashboard (DSO Eth_A · operator Eth_B · plant). */
+struct ZoneStatusSnapshot {
+    bool                          mms_running{false};
+    int                           mms_clients{0};
+    bool                          gnss_fix{false};
+    bool                          dso_cmd_seen{false};
+    cci::adapters::DsoLiveCommand dso_cmd{};
+    bool                          iec104_running{false};
+    int                           iec104_clients{0};
+    int                           modbus_link_state{0}; /* 0=unknown, 1=up, -1=down */
+    cci::adapters::ModbusExchangeRecord modbus_last{};
+};
+
+std::string json_escape_str(const std::string& s) {
+    std::string out;
+    out.reserve(s.size());
+    for (const char c : s) {
+        switch (c) {
+            case '"':
+                out += "\\\"";
+                break;
+            case '\\':
+                out += "\\\\";
+                break;
+            case '\n':
+                out += "\\n";
+                break;
+            case '\r':
+                out += "\\r";
+                break;
+            case '\t':
+                out += "\\t";
+                break;
+            default:
+                if (static_cast<unsigned char>(c) >= 0x20) {
+                    out += c;
+                }
+                break;
+        }
+    }
+    return out;
+}
+
+const char* modbus_backend_string(const cci::core::ModbusBackendKind k) {
+    switch (k) {
+        case cci::core::ModbusBackendKind::Rtu:
+            return "rtu";
+        case cci::core::ModbusBackendKind::Tcp:
+            return "tcp";
+        default:
+            return "simulator";
+    }
+}
+
+const char* link_state_string(const int s) {
+    return s > 0 ? "up" : (s < 0 ? "down" : "unknown");
+}
+
 void write_bench_status_file(const std::string& path, const cci::core::CcliConfig& cfg,
                              const cci::core::Measurement& m, const cci::core::Pf2State& pf2_st,
                              const bool curtailment_commanded, const bool permissive_ok,
                              const bool annex_m_trip_active, const bool do_curtail_on,
-                             const cci::core::dso::DsoPhase1ApplyResult& dso_apply) {
+                             const cci::core::dso::DsoPhase1ApplyResult& dso_apply,
+                             const ZoneStatusSnapshot& z) {
     std::ofstream out(path, std::ios::trunc);
     if (!out) {
         return;
     }
     const auto& d = dso_apply.derived;
+    const auto& c = z.dso_cmd;
+    const auto& orule = cfg.iec104.operator_rule;
+    const auto& mb = z.modbus_last;
     out << "{\n"
         << "  \"ts_ms\": " << m.timestamp_ms << ",\n"
         << "  \"p_kw\": " << m.p_kw << ",\n"
+        << "  \"q_kvar\": " << m.q_kvar << ",\n"
         << "  \"quality\": \"" << quality_string(m.quality) << "\",\n"
         << "  \"pf2_reason\": \"" << pf2_st.reason << "\",\n"
         << "  \"curtailment_commanded\": " << (curtailment_commanded ? "true" : "false")
@@ -77,7 +141,75 @@ void write_bench_status_file(const std::string& path, const cci::core::CcliConfi
         << "    \"pf2_release_kw\": " << dso_apply.pf2_release_kw << "\n"
         << "  },\n"
         << "  \"pf2_debounce_s\": " << cfg.pf2.debounce_s << ",\n"
-        << "  \"stale_data_s\": " << cfg.pf2.stale_data_s << "\n"
+        << "  \"stale_data_s\": " << cfg.pf2.stale_data_s << ",\n"
+        << "  \"zones\": {\n"
+        << "    \"dso\": {\n"
+        << "      \"enabled\": " << (cfg.mms.enabled ? "true" : "false") << ",\n"
+        << "      \"running\": " << (z.mms_running ? "true" : "false") << ",\n"
+        << "      \"bind\": \"" << json_escape_str(cfg.mms.bind_address) << "\",\n"
+        << "      \"port\": " << cfg.mms.tcp_port << ",\n"
+        << "      \"tls\": " << (cfg.mms.tls.enabled ? "true" : "false") << ",\n"
+        << "      \"clients\": " << z.mms_clients << ",\n"
+        << "      \"gnss_fix\": " << (z.gnss_fix ? "true" : "false") << ",\n"
+        << "      \"comms_loss_fallback_s\": " << cfg.mms.comms_loss_fallback_s << ",\n"
+        << "      \"setpoint_min_interval_s\": " << cfg.mms.setpoint_min_interval_s << ",\n"
+        << "      \"cmd_seen\": " << (z.dso_cmd_seen ? "true" : "false") << ",\n"
+        << "      \"wlim_active\": " << (c.wlim_active ? "true" : "false") << ",\n"
+        << "      \"wlim_pct\": " << c.wmax_spt_pct << ",\n"
+        << "      \"wsd_active\": " << (c.wsd_active ? "true" : "false") << ",\n"
+        << "      \"wsd_pct\": " << c.wspt_pct << ",\n"
+        << "      \"varsd_active\": " << (c.varsd_active ? "true" : "false") << ",\n"
+        << "      \"varsd_pct\": " << c.vartgt_spt_pct << ",\n"
+        << "      \"pfsp_active\": " << (c.pfsp_active ? "true" : "false") << ",\n"
+        << "      \"pfsp_cosphi\": " << c.pfsp_cosphi << ",\n"
+        << "      \"pfsp_generation\": " << (c.pfsp_generation ? "true" : "false") << ",\n"
+        << "      \"ppv_kv\": " << cfg.plant.poc_ppv_kv << "\n"
+        << "    },\n"
+        << "    \"operator\": {\n"
+        << "      \"enabled\": " << (cfg.iec104.enabled ? "true" : "false") << ",\n"
+        << "      \"running\": " << (z.iec104_running ? "true" : "false") << ",\n"
+        << "      \"bind\": \"" << json_escape_str(cfg.iec104.bind_address) << "\",\n"
+        << "      \"port\": " << cfg.iec104.tcp_port << ",\n"
+        << "      \"tls\": " << (cfg.iec104.tls.enabled ? "true" : "false") << ",\n"
+        << "      \"clients\": " << z.iec104_clients << ",\n"
+        << "      \"common_address\": " << cfg.iec104.common_address << ",\n"
+        << "      \"periodic_s\": " << cfg.iec104.periodic_s << ",\n"
+        << "      \"comms_loss_fallback_s\": " << cfg.iec104.comms_loss_fallback_s << ",\n"
+        << "      \"mode\": \"" << json_escape_str(orule.mode) << "\",\n"
+        << "      \"allow_commands\": " << (orule.allow_commands ? "true" : "false") << ",\n"
+        << "      \"allow_gi\": " << (orule.allow_gi ? "true" : "false") << ",\n"
+        << "      \"allow_clock_sync\": " << (orule.allow_clock_sync ? "true" : "false") << ",\n"
+        << "      \"ioa\": [\n"
+        << "        {\"name\": \"TotW\", \"ioa\": " << cfg.iec104.ioa_tot_w
+        << ", \"enabled\": " << (orule.monitor_tot_w ? "true" : "false")
+        << ", \"published\": " << (orule.monitor_tot_w ? "true" : "false")
+        << ", \"value\": " << m.p_kw << ", \"unit\": \"kW\"},\n"
+        << "        {\"name\": \"TotVAr\", \"ioa\": " << orule.ioa_tot_var
+        << ", \"enabled\": " << (orule.monitor_tot_var ? "true" : "false")
+        << ", \"published\": false, \"value\": " << m.q_kvar << ", \"unit\": \"kVAr\"},\n"
+        << "        {\"name\": \"PPV\", \"ioa\": " << orule.ioa_ppv
+        << ", \"enabled\": " << (orule.monitor_ppv ? "true" : "false")
+        << ", \"published\": false, \"value\": " << cfg.plant.poc_ppv_kv
+        << ", \"unit\": \"kV\"}\n"
+        << "      ]\n"
+        << "    },\n"
+        << "    \"plant\": {\n"
+        << "      \"modbus_backend\": \"" << modbus_backend_string(cfg.modbus.backend) << "\",\n"
+        << "      \"modbus_device\": \"" << json_escape_str(cfg.modbus.device) << "\",\n"
+        << "      \"modbus_host\": \"" << json_escape_str(cfg.modbus.host) << "\",\n"
+        << "      \"modbus_tcp_port\": " << cfg.modbus.tcp_port << ",\n"
+        << "      \"modbus_baud\": " << cfg.modbus.baud << ",\n"
+        << "      \"modbus_slave_id\": " << cfg.modbus.slave_id << ",\n"
+        << "      \"poll_ms\": " << cfg.modbus.poll_ms << ",\n"
+        << "      \"link\": \"" << link_state_string(z.modbus_link_state) << "\",\n"
+        << "      \"last_exchange_ms\": " << mb.exchange_ms << ",\n"
+        << "      \"last_success\": " << (mb.success ? "true" : "false") << ",\n"
+        << "      \"last_error\": \"" << json_escape_str(mb.error) << "\",\n"
+        << "      \"goose_enabled\": " << (cfg.goose.enabled ? "true" : "false") << ",\n"
+        << "      \"goose_interface\": \"" << json_escape_str(cfg.goose.interface) << "\",\n"
+        << "      \"goose_publish\": " << (cfg.goose.publish_enabled ? "true" : "false") << "\n"
+        << "    }\n"
+        << "  }\n"
         << "}\n";
 }
 
@@ -112,10 +244,6 @@ int run_bench_write_config(const std::string& path) {
 }
 
 std::atomic<bool> g_running{true};
-
-void on_signal(int) {
-    g_running = false;
-}
 
 void print_usage() {
     std::cout << "ccli — CCI lab application (PF2 / Modbus / MMS scaffold)\n"
@@ -296,8 +424,8 @@ int run_gpio_test() {
         return 1;
     }
 
-    std::signal(SIGTERM, on_signal);
-    std::signal(SIGINT, on_signal);
+    cci::core::ServiceSupervision::set_safe_state_hook(svc_io_safe_state);
+    cci::core::ServiceSupervision::install_handlers(&g_running);
 
     std::cerr << "gpio-test: toggling curtail DO every 1s; reading permissive DI\n";
 
@@ -478,6 +606,9 @@ int main(int argc, char** argv) {
         return 1;
     }
 
+    cci::core::ServiceSupervision::set_safe_state_hook(svc_io_safe_state);
+    cci::core::ServiceSupervision::install_handlers(&g_running);
+
     if (app_cfg.permissive_bypass) {
         std::cerr << "io: WARNING permissive_bypass=on — DI gate disabled (lab only)\n";
     }
@@ -496,9 +627,26 @@ int main(int argc, char** argv) {
         events.append({cci::hal::now().epoch_ms, type, detail});
     };
     const auto boot_ver = cci::core::version::current();
+    {
+        const auto recovery = cci::core::ServiceSupervision::startup_check();
+        if (recovery.crash_recovered) {
+            const std::string sig =
+                cci::core::ServiceSupervision::signum_name(recovery.crash_signum);
+            log_event("security",
+                      "crash_recovered:" + sig + " signum=" +
+                          std::to_string(recovery.crash_signum));
+            std::cerr << "security: previous crash recovered (" << sig << ")\n";
+        }
+        if (recovery.unclean_restart && !recovery.crash_recovered) {
+            log_event("security", "unclean_restart:stale_running_marker");
+            std::cerr << "security: unclean restart detected (stale running marker)\n";
+        }
+    }
     log_event("system", "power_on:" + boot_ver.full);
     log_event("system", "firmware_boot:" + boot_ver.full);
     log_event("system", "psu_unmonitored");
+    log_event("security", "service_monitor:started");
+    cci::core::ServiceSupervision::mark_running();
 
     cci::services::ModbusService modbus(measurements, app_cfg);
 
@@ -583,9 +731,6 @@ int main(int argc, char** argv) {
         std::cerr << "goose: disabled in config (plant Modbus path active)\n";
     }
 
-    std::signal(SIGTERM, on_signal);
-    std::signal(SIGINT, on_signal);
-
     const auto ver = cci::core::version::current();
     std::cerr << "ccli " << ver.full << " (" << ver.git_sha << ") starting"
               << " config=" << config_path;
@@ -597,12 +742,16 @@ int main(int argc, char** argv) {
 
     std::int64_t loop_count = 0;
     const std::int64_t status_interval = 50; /* 50 * 100ms = 5s */
+    const std::int64_t watchdog_interval =
+        cci::core::ServiceSupervision::kDefaultWatchdogPingS * 10; /* 100ms loop */
     std::int64_t last_mb_trace_ms = -1;
     int modbus_link_state = 0; /* 0=unknown, 1=up, -1=down */
     cci::core::DataQuality last_meter_quality = cci::core::DataQuality::Invalid;
     bool permissive_tracked = false;
     bool last_permissive_di = false;
     bool last_annex_m_trip = annex_m0;
+    cci::adapters::DsoLiveCommand last_dso_cmd{};
+    bool dso_cmd_seen = false;
 
     while (g_running) {
         if (lab_demo) {
@@ -663,6 +812,8 @@ int main(int argc, char** argv) {
             }
             cci::adapters::DsoLiveCommand dso_cmd{};
             if (mms.poll_dso_live_command(dso_cmd) && dso_cmd.valid) {
+                last_dso_cmd = dso_cmd;
+                dso_cmd_seen = true;
                 if (dso_cmd.dirty) {
                     cci::core::Pf2Config live_cfg = pf2.config();
                     live_cfg.use_dso_mock = true;
@@ -687,38 +838,82 @@ int main(int argc, char** argv) {
                     }
                 }
                 if (dso_cmd.reactive_dirty) {
-                    const auto q_cmd = cci::core::dso::apply_live_varsd_command(
-                        app_cfg.plant, app_cfg.dso, dso_cmd.varsd_active,
-                        dso_cmd.vartgt_spt_pct);
-                    if (q_cmd.applied) {
-                        const int mod_val = dso_cmd.varsd_active ? 1 : 5;
-                        if (modbus.write_reactive_kvar(q_cmd.derived.q_target_kvar)) {
-                            std::cerr << "mms→plant: VArSd on @" << dso_cmd.vartgt_spt_pct
-                                      << "% Smax → Q=" << q_cmd.derived.q_target_kvar
-                                      << " kvar [O.9.1.4 P5-R01]\n";
-                            events.append({cci::hal::now().epoch_ms, "mms",
-                                           "varsd_operate mod=" + std::to_string(mod_val) +
-                                               " pct=" + std::to_string(dso_cmd.vartgt_spt_pct) +
-                                               " q_kvar=" +
-                                               std::to_string(q_cmd.derived.q_target_kvar) +
-                                               " result=ok"});
+                    const auto m_snap = measurements.snapshot();
+                    const double p_kw = m_snap.p_kw;
+
+                    if (dso_cmd.pfsp_dirty) {
+                        const auto q_pfsp = cci::core::dso::apply_live_pfsp_command(
+                            app_cfg.plant, app_cfg.dso, dso_cmd.pfsp_active,
+                            dso_cmd.pfsp_cosphi, dso_cmd.pfsp_generation, p_kw);
+                        const int mod_val = dso_cmd.pfsp_active ? 1 : 5;
+                        if (q_pfsp.applied) {
+                            if (modbus.write_reactive_kvar(q_pfsp.derived.q_target_kvar)) {
+                                std::cerr << "mms→plant: PFSP on cosφ="
+                                          << dso_cmd.pfsp_cosphi << " P=" << p_kw
+                                          << " kW → Q=" << q_pfsp.derived.q_target_kvar
+                                          << " kvar [O.9.1.1 P5-R02]\n";
+                                events.append({cci::hal::now().epoch_ms, "mms",
+                                               "pfsp_operate mod=" + std::to_string(mod_val) +
+                                                   " cosphi=" +
+                                                   std::to_string(dso_cmd.pfsp_cosphi) +
+                                                   " p_kw=" + std::to_string(p_kw) +
+                                                   " q_kvar=" +
+                                                   std::to_string(q_pfsp.derived.q_target_kvar) +
+                                                   " result=ok"});
+                            } else {
+                                events.append({cci::hal::now().epoch_ms, "mms",
+                                               "pfsp_operate mod=" + std::to_string(mod_val) +
+                                                   " cosphi=" +
+                                                   std::to_string(dso_cmd.pfsp_cosphi) +
+                                                   " p_kw=" + std::to_string(p_kw) +
+                                                   " q_kvar=" +
+                                                   std::to_string(q_pfsp.derived.q_target_kvar) +
+                                                   " result=plant_write_fail"});
+                            }
                         } else {
-                            std::cerr << "mms→plant: VArSd Q write FAILED q="
-                                      << q_cmd.derived.q_target_kvar << " kvar\n";
                             events.append({cci::hal::now().epoch_ms, "mms",
-                                           "varsd_operate mod=" + std::to_string(mod_val) +
-                                               " pct=" + std::to_string(dso_cmd.vartgt_spt_pct) +
-                                               " q_kvar=" +
-                                               std::to_string(q_cmd.derived.q_target_kvar) +
-                                               " result=plant_write_fail"});
+                                           "pfsp_operate mod=5 cosphi=" +
+                                               std::to_string(dso_cmd.pfsp_cosphi) +
+                                               " q_kvar=0 result=cleared"});
                         }
-                    } else {
-                        std::cerr << "mms→plant: VArSd off — plant Q command cleared "
-                                     "[O.9.1.4]\n";
-                        events.append({cci::hal::now().epoch_ms, "mms",
-                                       "varsd_operate mod=5 pct=" +
-                                           std::to_string(dso_cmd.vartgt_spt_pct) +
-                                           " q_kvar=0 result=cleared"});
+                    }
+
+                    if (!dso_cmd.pfsp_dirty) {
+                        const auto q_cmd = cci::core::dso::apply_live_varsd_command(
+                            app_cfg.plant, app_cfg.dso, dso_cmd.varsd_active,
+                            dso_cmd.vartgt_spt_pct);
+                        if (q_cmd.applied) {
+                            const int mod_val = dso_cmd.varsd_active ? 1 : 5;
+                            if (modbus.write_reactive_kvar(q_cmd.derived.q_target_kvar)) {
+                                std::cerr << "mms→plant: VArSd on @" << dso_cmd.vartgt_spt_pct
+                                          << "% Smax → Q=" << q_cmd.derived.q_target_kvar
+                                          << " kvar [O.9.1.4 P5-R01]\n";
+                                events.append({cci::hal::now().epoch_ms, "mms",
+                                               "varsd_operate mod=" + std::to_string(mod_val) +
+                                                   " pct=" +
+                                                   std::to_string(dso_cmd.vartgt_spt_pct) +
+                                                   " q_kvar=" +
+                                                   std::to_string(q_cmd.derived.q_target_kvar) +
+                                                   " result=ok"});
+                            } else {
+                                std::cerr << "mms→plant: VArSd Q write FAILED q="
+                                          << q_cmd.derived.q_target_kvar << " kvar\n";
+                                events.append({cci::hal::now().epoch_ms, "mms",
+                                               "varsd_operate mod=" + std::to_string(mod_val) +
+                                                   " pct=" +
+                                                   std::to_string(dso_cmd.vartgt_spt_pct) +
+                                                   " q_kvar=" +
+                                                   std::to_string(q_cmd.derived.q_target_kvar) +
+                                                   " result=plant_write_fail"});
+                            }
+                        } else {
+                            std::cerr << "mms→plant: VArSd off — plant Q command cleared "
+                                         "[O.9.1.4]\n";
+                            events.append({cci::hal::now().epoch_ms, "mms",
+                                           "varsd_operate mod=5 pct=" +
+                                               std::to_string(dso_cmd.vartgt_spt_pct) +
+                                               " q_kvar=0 result=cleared"});
+                        }
                     }
                 }
             }
@@ -784,9 +979,19 @@ int main(int argc, char** argv) {
 
         if ((loop_count % status_interval) == 0) {
             svc_io_log_status(do_state, permissive_ok, annex_m_trip);
+            ZoneStatusSnapshot zs{};
+            zs.mms_running = mms.is_running();
+            zs.mms_clients = mms.client_count();
+            zs.gnss_fix = mms.gnss_fix();
+            zs.dso_cmd_seen = dso_cmd_seen;
+            zs.dso_cmd = last_dso_cmd;
+            zs.iec104_running = iec104.is_running();
+            zs.iec104_clients = iec104.client_count();
+            zs.modbus_link_state = modbus_link_state;
+            zs.modbus_last = modbus.last_exchange();
             write_bench_status_file(kBenchStatusPath, app_cfg, measurements.snapshot(),
                                     pf2.last_state(), commanded, permissive_ok, annex_m_trip,
-                                    do_state, dso_apply);
+                                    do_state, dso_apply, zs);
         }
 
         if (app_cfg.modbus.trace) {
@@ -805,11 +1010,17 @@ int main(int argc, char** argv) {
             }
         }
 
+        if ((loop_count % watchdog_interval) == 0 && loop_count > 0) {
+            cci::core::ServiceSupervision::procd_watchdog_ping();
+        }
+
         ++loop_count;
         usleep(100000);
     }
 
+    log_event("security", "service_monitor:shutdown");
     log_event("system", "power_off:shutdown");
+    cci::core::ServiceSupervision::mark_clean_shutdown();
     svc_io_shutdown();
     goose.stop();
     iec104.stop();

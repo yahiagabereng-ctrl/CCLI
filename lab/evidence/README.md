@@ -1,9 +1,9 @@
 # CCLI lab evidence — master index
 
 **Programme:** HiTEKS CCLI · TesPro TG544 (`platform_tg500`)  
-**Last consolidated:** 2026-10-01  
+**Last consolidated:** 2026-10-06  
 **Lab PC:** `192.168.10.10` · **DUT:** `192.168.10.1`  
-**Product build (lab gate):** `0.1.0-r27` (P7-01-EVENT-STORE)
+**Product build (lab gate):** `0.1.0-r34` (P7-ZONE-DASHBOARD)
 
 This folder is the **authoritative lab evidence chain**. It is **not** O.15 certification (Phase 7).
 
@@ -18,11 +18,13 @@ This folder is the **authoritative lab evidence chain**. It is **not** O.15 cert
 | **2** | Isolation O.13.1 | **CLOSED** 2026-09-25 | `lab/evidence/O13_1_isolation_2026-09-25/` |
 | **3** | DSO MMS TLS | **CLOSED** (lab) 2026-09-25 | `lab/evidence/testsuite-pro/inbox/TSP_P3_07_*` |
 | **4** | Operator 104 + TesPro 61850 | **CLOSED** (lab) 2026-09-30 | `lab/evidence/phase4/` |
-| **5** | Observability + reactive (lab) | **CLOSED** (lab) 2026-10-01 | **[phase5/P5_FINAL_CLOSEOUT.md](phase5/P5_FINAL_CLOSEOUT.md)** |
+| **5** | Observability + reactive (lab) | **CLOSED** (lab) 2026-10-01 · **P5-R CLOSED** 2026-10-05 (r31) | **[phase5/P5_FINAL_CLOSEOUT.md](phase5/P5_FINAL_CLOSEOUT.md)** · [P5_REACTIVE_CLOSEOUT_2026-10-05.md](phase5/P5_REACTIVE_CLOSEOUT_2026-10-05.md) |
 | **6** | Defence I/O Annex M | **CLOSED** (lab) 2026-10-02 | **[phase6/P6_FINAL_CLOSEOUT.md](phase6/P6_FINAL_CLOSEOUT.md)** |
 | **7** | Evidence pack / cert | **OPEN (kickoff)** | **[phase7/P7_README.md](phase7/P7_README.md)** — not accredited cert |
 
-**Phase 5 residual (product, non-blocking lab):** REQ-MET-002 grid alignment · LN-GAP-08 · REQ-CTL-004 · P5-R02–R09 · P5-04 accuracy · P5-06 meter map.
+**Phase 5 residual (product, non-blocking lab):** REQ-MET-002 grid alignment · LN-GAP-08 · REQ-CTL-004 · P5-R05/R07 · P5-G01/P5-G03 runtime · P5-04 accuracy · P5-06 meter map.
+
+**Product operator HMI:** **Cloud UI** — [CCI_Cloud_Operator_HMI.md](../../knowledge-base/08-engineering/CCI_Cloud_Operator_HMI.md). LAN2 = 104 SCADA wire only; wire-day pack when LAN1 exit done.
 
 ---
 
@@ -31,9 +33,10 @@ This folder is the **authoritative lab evidence chain**. It is **not** O.15 cert
 | Path | Contents |
 |------|----------|
 | **[phase5/](phase5/)** | P5 full-circle gate — annex sequence, LN matrix, northbound, GNSS, closeout |
+| **Chronos EMT432** | P5-06 meter candidate — [CCI_Chronos_EMT432_Extract.md](../knowledge-base/08-engineering/CCI_Chronos_EMT432_Extract.md) · [P5_EMT432_BENCH_PLAN.md](phase5/P5_EMT432_BENCH_PLAN.md) |
 | **[phase6/](phase6/)** | P6 Annex M — SMS trip, O.11 inhibit, voltage-class gaps |
 | **[phase7/](phase7/)** | P7 O.14 event store, coverage matrix, K7.5 DSO demo |
-| **[phase4/](phase4/)** | P4 Eth_B 104 TLS, operator role, TesPro supplier SW |
+| **[phase4/](phase4/)** | P4 Eth_B 104 TLS, operator role, TesPro supplier SW, **[LAN2_READINESS.md](phase4/LAN2_READINESS.md)** |
 | **[testsuite-pro/](testsuite-pro/)** | Triangle MicroWorks TSP exports (historical + Compare waivers) |
 | **[O13_1_isolation_2026-09-25/](O13_1_isolation_2026-09-25/)** | P2/P3 isolation session reports |
 | **[field/regalgrid_snocu/](field/regalgrid_snocu/)** | Field competitor ingest (reference only) |

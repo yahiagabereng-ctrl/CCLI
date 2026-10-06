@@ -2,8 +2,8 @@
 
 **Programme:** HiTEKS CCLI · TesPro TG544 (`platform_tg500`)  
 **Gate ID:** `P5_FULLCIRCLE`  
-**Gate status:** **CLOSED** (lab) 2026-10-01 · build **0.1.0-r25**  
-**Product build (lab):** `0.1.0-r25` (P5-COMPARE-FIX)  
+**Gate status:** **CLOSED** (lab) 2026-10-01 · **P5-R CLOSED** 2026-10-05 · build **0.1.0-r31**  
+**Product build (lab):** `0.1.0-r31` (P5-R02-PFSP) · full-circle anchor **r25**  
 **Lab profile:** cleartext MMS `192.168.10.1:102` · Modbus RTU COM5 → **A1/B1** (`/dev/ttyS1`)  
 **Product profile:** TLS MMS `:3782` (separate evidence — not this gate)  
 **DSO client:** TSP (historical PASS) · **IEDExplorer** if TSP license blocked — [P5_VERIFICATION_CLIENT_STATUS_2026-10-01.md](P5_VERIFICATION_CLIENT_STATUS_2026-10-01.md)
@@ -31,6 +31,8 @@ Annex O defines **what** must be measured and when (4 s, grid-aligned). Annex T 
 | **[P5_LN_WIRE_STATUS.md](P5_LN_WIRE_STATUS.md)** | 31-LN wire tiers (W-L-C / W--S) |
 | **[P5_TSP_CLEARTEXT_README.md](P5_TSP_CLEARTEXT_README.md)** | Deploy + TSP connection setup |
 | **[P5_FINAL_CLOSEOUT.md](P5_FINAL_CLOSEOUT.md)** | Gate status + evidence chain |
+| **[P5_REACTIVE_CLOSEOUT_2026-10-05.md](P5_REACTIVE_CLOSEOUT_2026-10-05.md)** | **P5-R close** — VArSd + PFSP + WAIVE VArV/PFW |
+| **[P5_R02_PFSP_LAB.md](P5_R02_PFSP_LAB.md)** | P5-R02 PFSP lab procedure + PASS |
 | **[P5_MMS_TLS_README.md](P5_MMS_TLS_README.md)** | Product TLS path (parallel track) |
 | **[P5_TESPRO_NORTHBOUND.md](P5_TESPRO_NORTHBOUND.md)** | TesPro MQTT collector + `channel_1` setup |
 | **[P5_TESPRO_NORTHBOUND_2026-10-01.md](P5_TESPRO_NORTHBOUND_2026-10-01.md)** | **Frozen northbound config** + broker/verify scripts |
@@ -38,7 +40,8 @@ Annex O defines **what** must be measured and when (4 s, grid-aligned). Annex T 
 | **[P5_GOOSE_SESSION_RECORD_2026-10-05.md](P5_GOOSE_SESSION_RECORD_2026-10-05.md)** | **START HERE** — GOOSE session handoff + resume checklist |
 | **[P5_G02_CLOSEOUT_2026-10-05.md](P5_G02_CLOSEOUT_2026-10-05.md)** | **GOOSE publish (P5-G02)** — MMS/GoCB + LAN3 wire pcap |
 | **[P5_G03_MERGE_POLICY.md](P5_G03_MERGE_POLICY.md)** | **GOOSE merge policy (P5-G03)** — Modbus authoritative; runtime merge backlog |
-| **`P5_R09_VARSD_EVENT_2026-10-05.txt`** | **P5-R09** — VArSd Operate O.14 event logging (r29 PART detail / category PASS) |
+| **`P5_R09_VARSD_EVENT_2026-10-05.txt`** | **P5-R09** — VArSd Operate O.14 event logging (r30 PASS) |
+| **`P5_R02_PFSP_EVENT_2026-10-05.txt`** | **P5-R02** — PFSP Operate → FC16 → O.14 (r31 PASS) |
 
 **Compare / waivers (inbox):**
 

@@ -68,6 +68,7 @@ add_library(ccli_core STATIC
     core/policy/net_policy.cpp
     core/config/ccli_config.cpp
     core/regulation/regulation_bench.cpp
+    core/service/service_supervision.cpp
     core/version/ccli_version.cpp
 )
 target_include_directories(ccli_core PUBLIC

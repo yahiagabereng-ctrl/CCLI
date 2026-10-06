@@ -1,0 +1,18 @@
+﻿{
+    "codename":  "P5-R02-PFSP",
+    "changes":  [
+                    "P5-R02 PFSP cosphi set-point O.9.1.1",
+                    "MMS PFSPDFPF1 Mod+PFGnTgtSpt Operate",
+                    "Modbus FC16 Q from cosphi+live P",
+                    "O.14 pfsp_operate event",
+                    "3s reactive command spacing gate"
+                ],
+    "release":  31,
+    "timestamp_utc":  "2026-10-05T14:13:42.9467600Z",
+    "version_full":  "0.1.0-r31",
+    "lab_yaml":  "apps\\ccli\\config\\lab_tr400_cleartext_tsp_ttyS1.yaml",
+    "sha256":  "e3659ed074a355e100b5e5a0450c3c7174229547f262298e0ae36dda4fa8a38f",
+    "binary":  "C:\\Yahia\\projects\\CCLI\\lab\\tg544-openwrt\\ccli-bin",
+    "host":  "192.168.10.1",
+    "semver":  "0.1.0"
+}

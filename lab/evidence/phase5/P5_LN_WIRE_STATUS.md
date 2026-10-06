@@ -72,7 +72,7 @@ Regenerate this table: `python scripts/audit-ln-matrix.py --r23`
 | 22 | `WlimDWMX1` | DWMX | **W-L-C** | Operate + PF2 arbiter | ✓ direct-enhanced | **Mod=5**, Beh=5 | Use **Direct Operate** (lab); CID says SBO |
 | 23 | `WSdDAGC1` | DAGC | **W-L-C** | Operate + yaml/PF2 | ✓ direct-enhanced | **Mod=1**, WSptPct=**20** | r23: Mod≠5 at boot (unlike MVP) |
 | 24 | `VArSdDVAR1` | DVAR | **W-L-C** | Mod+APC | ✓ P5-R01 | Mod=5 @ baseline | Operate → Modbus Q write (lab FC16) |
-| 25 | `PFSPDFPF1` | DFPF | **W--C** | — | ✗ | Mod=5 | Same |
+| 25 | `PFSPDFPF1` | DFPF | **W-L-C** | Operate + live P | ✓ P5-R02 SBO | Mod=5 @ baseline | SBO ctlModel=4; `mms_pfsp_client` → FC16 Q |
 | 26 | `VArVDVVR1` | DVVR | **W--C** | — | ✗ | Mod=5 | Same |
 | 27 | `VArVDPMC1` | DPMC | **W--S** | — | ✗ | Beh=off | Q(V) lock-in params |
 | 28 | `VArVDPMC2` | DPMC | **W--S** | — | ✗ | Beh=off | Q(V) lock-out |
@@ -97,7 +97,7 @@ Regenerate this table: `python scripts/audit-ln-matrix.py --r23`
 | **Control handlers registered** | **3** | `WlimDWMX1`, `WSdDAGC1`, `VArSdDVAR1` (P5-R01) |
 | **Static structure (cfg defaults)** | **23** | All W--S rows in audit table |
 | **Reactive — live command (P5-R01)** | **1** | VArSd |
-| **Reactive — structure on wire, no plant path** | **3** | PFSP, VArV, PFW |
+| **Reactive — VArSd + PFSP live; VArV/PFW stub** | **3** | VArSd ✓ · PFSP ✓ · VArV/PFW structure only |
 | **Absent from r23** | **1** | WSa (MVP only) |
 
 ---

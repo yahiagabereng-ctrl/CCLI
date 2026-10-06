@@ -77,5 +77,12 @@ DsoReactiveApplyResult apply_live_varsd_command(const PlantConfig& plant_cfg,
                                                 bool varsd_active,
                                                 double vartgt_spt_pct);
 
+/** P5-R02 — live PFSP (O.9.1.1) → plant Q from cosφ × measured P. */
+DsoReactiveApplyResult apply_live_pfsp_command(const PlantConfig& plant_cfg,
+                                               const DsoConfig& dso_cfg,
+                                               bool pfsp_active, double cosphi,
+                                               bool generation_setpoint,
+                                               double p_kw_measured);
+
 }  // namespace cci::core::dso
 

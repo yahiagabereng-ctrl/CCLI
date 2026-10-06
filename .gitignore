@@ -63,6 +63,8 @@ lab/**/*.img.gz
 lab/**/*.ipk
 lab/**/*.apk
 lab/tg544-openwrt/ccli-bin
+handoff/**/*.zip
+handoff/**/*.7z
 lab/tg544-openwrt/libstdc++.so.6
 apps/ccli/build-p4-test/
 apps/ccli/build-mms-host/

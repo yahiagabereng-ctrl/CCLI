@@ -41,7 +41,8 @@ Pivot back to wide: `python scripts/goose-map-to-wide.py -o generated/GOOSE_DATA
 
 ## Addressing rules
 
-- **PdC analyzer:** lab 40001-offset (`40001`, `40003`)
+- **PdC analyzer (lab slave):** 40001-offset (`40001`, `40003`)
+- **Chronos EMT432 (product candidate):** see `config/modbus/chronos_emt432_map.yaml` · corpus `CCI_Chronos_EMT432_Extract.md`
 - **Huawei SUN2000:** direct registers (`32080`, `40125`, …)
 - **CID gap:** `SGGMMXU3`–`SGGMMXU10` marked `CID_GAP` until CID extended
 

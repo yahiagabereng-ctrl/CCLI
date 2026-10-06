@@ -1,8 +1,8 @@
 # CCLI phases — regulation checklists
 
 **Document ID:** CCLI-PLAN-PHASE-REGS-001  
-**Revision:** 1.3  
-**Date:** 2026-10-01  
+**Revision:** 1.4  
+**Date:** 2026-10-06  
 **RAG source_id:** `ccli-phase-regulation-checklists`  
 **Audience:** Lab, firmware, DSO interface, certification  
 **Companions:** `CCI_CCLI_Product_Spec_and_Roadmap.md` · `CCI_Annex_O_Extract.md` · `CCI_Annex_T_Extract.md` · `CCI_Annex_M_Extract.md` · `lab/PHASE1_TRACEABILITY.md` · `lab/CCI_Reactive_Roadmap_Gap_Report.md`  
@@ -21,9 +21,9 @@ Per **REQ-PH-002**: a phase closes when all **Gate** rows are **PASS** or **WAIV
 | **2** Isolation | P2-01…03 hard gates | **CLOSED** (2026-09-25) | P2-04/05 PART · P2-06 OPEN → net/architect | — |
 | **3** DSO MMS | P3-01 + P3-04 + P3-06 + soft cyber/time | **CLOSED** (lab) 2026-09-25 | P3-10/12/13/14 · §13 · SCEP → model/PKI | **Phase 4** |
 | **4** Operator 104 + TesPro 61850 | P4-01…05 **PASS** 2026-09-30 | P4-00 **PART** (LuCI/plant optional) | **CLOSED** (lab) 2026-09-30 |
-| **5** Observability + reactive | P5_FULLCIRCLE **CLOSED** (lab) 2026-10-01 · build **0.1.0-r25** · `P5_FINAL_CLOSEOUT.md` | **CLOSED** (lab gate) | P5-R02–R09 · P5-04 accuracy · P5-06 meter map · REQ-MET-002 grid | **Phase 6** |
-| **6** Defence I/O | Not started | **OPEN** | C4 GAP | After P1 |
-| **7** Evidence pack | Not started | **OPEN** | Lab evidence ≠ O.15 cert | After P3+P5+P6 |
+| **5** Observability + reactive | P5_FULLCIRCLE **CLOSED** 2026-10-01 (r25) · **P5-R CLOSED** 2026-10-05 (r31) · `P5_REACTIVE_CLOSEOUT_2026-10-05.md` | **CLOSED** (lab) | P5-04 accuracy · P5-06 meter map · REQ-MET-002 · P5-R05/R07 product · P5-G01/P5-G03 runtime | — |
+| **6** Defence I/O | P6-03 **PASS** (r26) · `P6_FINAL_CLOSEOUT.md` | **CLOSED** (lab) 2026-10-02 | P6-01 PART · P6-02 DEFERRED · P6-06 GAP → hardware | **Phase 7** |
+| **7** Evidence pack | P7 kickoff r27 event store · r32 SR6.2 · r34 zone dashboard | **OPEN** (kickoff) | Lab evidence ≠ O.15 cert | After P7 gates |
 
 **Phase 3 lab close statement:** DSO client on Eth_A TLS can browse the MVP model, write `Wlim` into the P1 actuator path, and receive TimeQuality with chrony UTC ≤ ±100 ms. Residuals below are **PART/WAIVED**, not exit blockers.
 
@@ -152,9 +152,9 @@ Fill **Evidence** with date, APK/`ccli` version, log excerpt, screenshot, or tes
 | **2** | Isolation | **O.13.1.1.1** no bridge, **62443-3-2** | No L2 path Eth_A ↔ Eth_B ↔ plant ↔ WAN | P0 | **CLOSED** |
 | **3** | DSO MMS | **T**, **O.9.2.2**, **62351-3/4/8/9**, **TR 57-126** | DSO client reads model and writes `Wlim` on Eth_A TLS | P2 | **CLOSED** (lab) |
 | **4** | Operator 104 + supplier 61850 | **P4-00** TesPro collector; **O.13 Eth_B**, **60870-5-104**, **62351-3/5** | Supplier apk + services; 104 on Eth_B only; no leak to Eth_A | P2 | **CLOSED** (lab) 2026-09-30 |
-| **5** | Observability + reactive | **O.8**, **T.3.1.3 P/Q/V**, **O.9.1**, **O.7.3 TsQ/ΔT**, **61557-12** | 4 s TotW+TotVAr; VArSd (or WAIVE) operable | P1/P3 | **OPEN** |
-| **6** | Defence I/O | **M**, **O.11**, **O.9.3**, **O.12**, **REQ-IO-004** | Teletrip inhibit + product DI/DO class or written GAP | P1 | **OPEN** |
-| **7** | Evidence | **O.14**, **O.15**, **62443-4-1/4-2**, **ARERA** | Logger + cert launch pack; not accredited cert | P3+P5+P6 | **OPEN** |
+| **5** | Observability + reactive | **O.8**, **T.3.1.3 P/Q/V**, **O.9.1**, **O.7.3 TsQ/ΔT**, **61557-12** | 4 s TotW+TotVAr; VArSd (or WAIVE) operable | P1/P3 | **CLOSED** (lab) 2026-10-05 |
+| **6** | Defence I/O | **M**, **O.11**, **O.9.3**, **O.12**, **REQ-IO-004** | Teletrip inhibit + product DI/DO class or written GAP | P1 | **CLOSED** (lab) 2026-10-02 |
+| **7** | Evidence | **O.14**, **O.15**, **62443-4-1/4-2**, **ARERA** | Logger + cert launch pack; not accredited cert | P3+P5+P6 | **OPEN** (kickoff) |
 
 ---
 
@@ -318,12 +318,12 @@ Fill **Evidence** with date, APK/`ccli` version, log excerpt, screenshot, or tes
 | Check | Regulation | Shall | Pass criteria | Status |
 |-------|------------|-------|---------------|--------|
 | P5-R01 | O.9.1.4 / T Table 88 | `VArSdDVAR1.{Mod,VArSptPct}` operable on Eth_A | DSO Operate → live command + plant Q path **or** GAP | **PASS** (lab r25) |
-| P5-R02 | O.9.1.1 / T Table 90 | `PFSPDFPF1` cosφ set-point | Operate + plant path **or** WAIVE (Operating Rule off) | **OPEN** |
-| P5-R03 | O.9.1.3 / T Table 91 | `VArVDVVR1` Q=f(V) + δQ=5 % Qmax + ΔT | Curve + slow ring **or** WAIVE | **OPEN** |
-| P5-R04 | O.9.1.2 / T Table 92 | `PFWDPFW1` cosφ=f(P) + δcosφ=0.02 + ΔT | Curve + slow ring **or** WAIVE | **OPEN** |
-| P5-R05 | O.7.3.1 | **TsQ ≤ 10 s** to ±5 % of expected Q | Bench or unit evidence when P5-R01 on | **OPEN** |
-| P5-R06 | O.7.3.2 / O.7.3.3 | ΔT 10–600 s (default 60); external SP spacing ≥ 3 s | Config + reject test | **OPEN** |
-| P5-R07 | O.11 indices 5–7 | Reactive tier vs active (W110/Wlim/WSd) priority | Arbiter test matrix (extend `derive_*`) | **OPEN** |
+| P5-R02 | O.9.1.1 / T Table 90 | `PFSPDFPF1` cosφ set-point | Operate + plant path **or** WAIVE (Operating Rule off) | **PASS** (lab r31) · `P5_R02_PFSP_EVENT_2026-10-05.txt` |
+| P5-R03 | O.9.1.3 / T Table 91 | `VArVDVVR1` Q=f(V) + δQ=5 % Qmax + ΔT | Curve + slow ring **or** WAIVE | **WAIVED** — TR Figura 2 Inactive · `P5_REACTIVE_CLOSEOUT_2026-10-05.md` |
+| P5-R04 | O.9.1.2 / T Table 92 | `PFWDPFW1` cosφ=f(P) + δcosφ=0.02 + ΔT | Curve + slow ring **or** WAIVE | **WAIVED** — TR Figura 2 Inactive · `P5_REACTIVE_CLOSEOUT_2026-10-05.md` |
+| P5-R05 | O.7.3.1 | **TsQ ≤ 10 s** to ±5 % of expected Q | Bench or unit evidence when P5-R01 on | **PART** — unit test; runtime bench → product |
+| P5-R06 | O.7.3.2 / O.7.3.3 | ΔT 10–600 s (default 60); external SP spacing ≥ 3 s | Config + reject test | **PASS** (r29+) — 3 s spacing gate in deploy log |
+| P5-R07 | O.11 indices 5–7 | Reactive tier vs active (W110/Wlim/WSd) priority | Arbiter test matrix (extend `derive_*`) | **PART** — PFSP > VArSd same poll; full matrix → product |
 | P5-R08 | O.10.3.2 / T Table 89 | `VArSa` MSD reactive SP | **Discretionary** — PASS or **WAIVE** | **N/A** until MSD contract |
 | P5-R09 | O.14 | Log reactive Operate (Mod, set-point, result) | Event category present | **PASS** (lab r30) — `varsd_operate mod=… pct=… q_kvar=… result=…` · `P5_R09_VARSD_EVENT_2026-10-05.txt` |
 
@@ -331,7 +331,7 @@ Fill **Evidence** with date, APK/`ccli` version, log excerpt, screenshot, or tes
 
 | Check | Regulation | Shall | Pass criteria | Status |
 |-------|------------|-------|---------------|--------|
-| P5-G01 | Annex T / plant bus | Subscribe to plant IED GOOSE when site uses L2 path | RX log + O.14 `goose` event + Wireshark | **OPEN** — code r28+ · lab evidence pending |
+| P5-G01 | Annex T / plant bus | Subscribe to plant IED GOOSE when site uses L2 path | RX log + O.14 `goose` event + Wireshark | **PARKED** — LAN3 · `P5_GOOSE_SESSION_RECORD_2026-10-05.md` |
 | P5-G02 | Site export | Optional GOOSE publish (status) | GoCB in CID + `IedServer_enableGoosePublishing` + wire | **PASS** — r29 · lan3 · `P5_GOOSE_WIRE_2026-10-05_140838.pcapng` (3947×0x1000, 3946×0x1001) |
 | P5-G03 | O.8 / P5-M | GOOSE dataset → TotW/TotVAr **or** parallel Modbus | Measurement merge policy documented | **PASS** (policy) — `P5_G03_MERGE_POLICY.md` 2026-10-05 · runtime merge **OPEN** |
 

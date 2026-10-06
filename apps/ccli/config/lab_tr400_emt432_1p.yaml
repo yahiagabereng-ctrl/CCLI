@@ -1,0 +1,73 @@
+# TG544 lab — Chronos EMT432 on Ethernet LAN3 (Modbus TCP), 230 V 1P bench.
+# RS485 path optional; bench uses RJ45 → lan3 @ 192.168.178.0/24 (meter factory-style IP).
+# Terminal map: lab/evidence/phase5/P5_EMT432_TERMINAL_WIRING.md
+# Register map: apps/ccli/config/modbus/chronos_emt432_map.yaml
+#
+platform: tg500
+lab:
+  hostname: TG544
+  model: tespro,tr500
+  address: 192.168.10.1/24
+  meter: chronos_emt432_1p
+  bench_note: "230 V L1+N · 66332A 20V Pow · EMT432 LAN3 · no CT yet"
+  meter_ip: 192.168.178.250
+  plant_gateway: 192.168.178.1
+
+serial:
+  rs485_a:
+    device: /dev/ttyS1
+    baud: 9600
+    parity: N
+    termination: false
+
+modbus:
+  backend: tcp
+  host: 192.168.178.250
+  tcp_port: 502
+  slave_id: 1
+  poll_ms: 4000
+  timeout_ms: 2000
+  retries: 3
+  trace: true
+  # EMT430_MR Rev2 — 1P P1/Q1 (W/VAR float32 BE); NOT P_SUM/Q_SUM
+  reg_active_power: 932
+  reg_active_power_count: 2
+  reg_reactive_power: 940
+  reg_reactive_power_count: 2
+  power_scale: 0.001
+  reactive_scale: 0.001
+  # Optional RS485 Q-command path (pymodbus slave on A1/B1) — not used for plant read
+  device: /dev/ttyS1
+  baud: 9600
+  parity: N
+
+pf2:
+  threshold_kw: 900
+  debounce_s: 30
+  release_threshold_kw: 850
+  min_on_s: 60
+  min_off_s: 30
+  stale_data_s: 10
+  use_dso_mock: true
+
+plant:
+  p_imm_kw: 200
+  p_ass_kw: 200
+  q_ind_kvar: 50
+  q_cap_kvar: 50
+  smax_kva: 210
+  poc_ppv_kv: 0.23
+
+dso:
+  enabled: true
+  profile: tr57126_table1
+  w110_active: false
+  wlim_active: false
+  wsd_active: false
+
+mms:
+  enabled: true
+  bind_address: 0.0.0.0
+  tcp_port: 102
+  model_cfg: /etc/ccli/icd/lab_tg544_eth_a.cfg
+  tls_enabled: false

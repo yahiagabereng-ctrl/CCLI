@@ -1,0 +1,25 @@
+{
+    "codename": "P7-ZONE-DASHBOARD",
+    "changes": [
+        "Read-only zone dashboard (DSO / Operator / Plant / Events)",
+        "bench-status zones block + q_kvar",
+        "CGI action=events",
+        "plant_map.json from PLANT_ASSIGNMENT_PLANE.csv",
+        "deploy-zone-dashboard.ps1"
+    ],
+    "release": 34,
+    "revert_to": {
+        "version_full": "0.1.0-r33",
+        "manifest": "CCLI_DEPLOY_0.1.0-r33_2026-10-05_214500",
+        "git_tag": "0.1.0-r33",
+        "git_sha": "a8e2a81",
+        "sha256": "PENDING_BUILD"
+    },
+    "timestamp_utc": "2026-10-05T19:50:00.0000000Z",
+    "version_full": "0.1.0-r34",
+    "lab_yaml": "apps\\ccli\\config\\lab_tr400_cleartext_tsp_ttyS1.yaml",
+    "sha256": "PENDING_BUILD",
+    "binary": "C:\\Yahia\\projects\\CCLI\\lab\\tg544-openwrt\\ccli-bin",
+    "host": "192.168.10.1",
+    "semver": "0.1.0"
+}

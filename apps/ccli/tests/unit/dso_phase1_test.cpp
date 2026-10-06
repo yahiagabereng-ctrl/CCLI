@@ -180,11 +180,35 @@ int main() {
         return EXIT_FAILURE;
     }
 
+    // P5-R02 — PFSP cosφ=-0.95 @ P=450 kW (clamp to TR plant Q envelope 50 kvar)
+    PfspCommand pfsp{};
+    pfsp.active = true;
+    pfsp.cosphi = -0.95;
+    pfsp.generation = true;
+    const auto pfsp_derived = derive_pfsp_kvar(tr_plant, 450.0, pfsp);
+    const double q_pfsp_raw = 450.0 * std::tan(std::acos(0.95));
+    const double q_pfsp_expected = 50.0; /* tr_plant.q_ind_kvar */
+    if (q_pfsp_raw <= q_pfsp_expected) {
+        std::cerr << "P5-R02 test vector: expected raw Q > envelope\n";
+        return EXIT_FAILURE;
+    }
+    if (!near_eq(pfsp_derived.q_target_kvar, q_pfsp_expected, 0.01)) {
+        std::cerr << "P5-R02 PFSP expected " << q_pfsp_expected << " kvar got "
+                  << pfsp_derived.q_target_kvar << '\n';
+        return EXIT_FAILURE;
+    }
+    const auto pfsp_live =
+        apply_live_pfsp_command(pc, dc, true, -0.95, true, 450.0);
+    if (!pfsp_live.applied || !near_eq(pfsp_live.derived.q_target_kvar, q_pfsp_expected, 0.5)) {
+        std::cerr << "P5-R02 live PFSP apply failed\n";
+        return EXIT_FAILURE;
+    }
+
     (void)kClauseO_8_2;
     (void)kClauseO_9_2_3;
     (void)kClauseTR57126;
     (void)kLabL04;
 
-    std::cout << "dso_phase1_test: PASS (R01–R06 mock, O.11, Phase1 apply, live WSd, P5-R01)\n";
+    std::cout << "dso_phase1_test: PASS (R01–R06 mock, O.11, Phase1 apply, live WSd, P5-R01, P5-R02)\n";
     return EXIT_SUCCESS;
 }

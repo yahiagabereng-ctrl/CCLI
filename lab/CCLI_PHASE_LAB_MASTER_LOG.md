@@ -3,7 +3,7 @@
 **Document ID:** CCLI-LAB-MASTER-LOG-001  
 **Programme:** HiTEKS CCLI · CEI 0-16 Allegato O / T · IEC 62443  
 **DUT:** TesPro TG544 / TR500 · `platform_tg500` · OpenWrt 25.12 (MediaTek MT798X)  
-**Revision:** 1.1 · **Date:** 2026-09-25  
+**Revision:** 1.2 · **Date:** 2026-10-06  
 **Canonical checklist:** `knowledge-base/08-engineering/CCI_Phase_Regulation_Checklists.md`  
 **Evidence root:** `lab/evidence/O13_1_isolation_2026-09-25/`
 
@@ -79,7 +79,7 @@ Status codes: **PASS** · **PART** · **OPEN** · **PEND** · **N/A** · **WAIVE
 
 **Note:** Presence PASS ≠ MMS TLS keys in TPM yet (P3-06 lab may use PEMs).
 
-### 0.6 Progress snapshot (2026-09-25 EOD — Phase 3 lab close)
+### 0.6 Progress snapshot (2026-10-06 — through P6 lab close)
 
 | Phase | Hard gates | Exit status |
 |-------|------------|-------------|
@@ -87,8 +87,10 @@ Status codes: **PASS** · **PART** · **OPEN** · **PEND** · **N/A** · **WAIVE
 | 1 Local PF2 | Eng. evidence (freeze 2026-09-22) | **CLOSED** (eng.) |
 | 2 Isolation | **P2-01/02/03 PASS** | **CLOSED** |
 | 3 DSO MMS | **P3-01…09/11 PASS** · residuals PART/WAIVED | **CLOSED** (lab) |
-| 4 Operator 104 | Not started | **OPEN** ← **next** |
-| 5–7 | Not started / OPEN | **OPEN** |
+| 4 Operator 104 | **P4-01…04 PASS** · P4-00 PART | **CLOSED** (lab) 2026-09-30 |
+| 5 Observability + reactive | **P5_FULLCIRCLE** r25 · **P5-R** r31 | **CLOSED** (lab) 2026-10-05 |
+| 6 Defence I/O | **P6-03 PASS** r26 · GAPs documented | **CLOSED** (lab) 2026-10-02 |
+| 7 Evidence pack | P7 kickoff r27–r34 | **OPEN** (kickoff) ← **next** |
 
 ---
 
@@ -386,9 +388,11 @@ Official P3 close unchanged (**r15**, 2026-09-25). Additional deploy with sessio
 | **P5-M08** PPV | **PASS** (lab r25; yaml 20 kV) |
 | **P5-M09** Q nameplate | PART (yaml) |
 | **P5-R01** VArSd | **PASS** (lab r25 — Operate + FC16) |
-| **P5-R02…R09** O.9.1 | **OPEN** / N/A (VArSa) — PFSP/VArV/PFW deferred |
+| **P5-R02** PFSP | **PASS** (lab r31) |
+| **P5-R03/R04** VArV/PFW | **WAIVED** — TR Figura 2 Inactive |
+| **P5-R05/R07** TsQ / O.11 arbiter | **PART** → product |
 | P5-04 accuracy | **OPEN** |
-| P5-06 meter map | **OPEN** |
+| P5-06 meter map | **OPEN** (EMT432 TCP r33 in progress) |
 | REQ-MET-002 grid | **GAP** (product) |
 
 **DSO client:** TSP r25 session evidence **PASS**; post-close TSP license **BLOCKED** — re-runs use **IEDExplorer** (`P5_VERIFICATION_CLIENT_STATUS_2026-10-01.md`).
@@ -399,23 +403,34 @@ Official P3 close unchanged (**r15**, 2026-09-25). Additional deploy with sessio
 
 ## Phase 6 — Defence I/O (Annex M + product C4)
 
-**Status:** **Not started**.  
-Do **not** claim G6K/SMBJ33 = M modem class (P6-07 PART in checklist).
+**Status:** **CLOSED** (lab) **2026-10-02** · build **0.1.0-r26** · gate **P6-03**.  
+**Closeout:** `lab/evidence/phase6/P6_FINAL_CLOSEOUT.md`
 
 | ID | Status |
 |----|--------|
-| P6-01…07 | OPEN / GAP / PART |
+| P6-01 | **PART** (lab SMS mock) |
+| P6-02 | **DEFERRED** |
+| P6-03 | **PASS** (r26 — O.11 inhibit DIO1) |
+| P6-04 | **PART** |
+| P6-05 | **PASS** (code) |
+| P6-06 | **GAP** (product DI/DO class) |
+| P6-07 | **PART** |
+
+Do **not** claim G6K/SMBJ33 = M modem class (P6-07).
 
 ---
 
 ## Phase 7 — Evidence pack (O.14 / O.15)
 
-**Status:** **Not started** as formal pack.  
-This master log + `lab/evidence/O13_1_isolation_2026-09-25/` are **lab engineering evidence**, not O.15 certification close-out.
+**Status:** **OPEN** (kickoff) · builds **r27** (event store) · **r32** (SR6.2 watchdog) · **r34** (zone dashboard).  
+This master log + `lab/evidence/` are **lab engineering evidence**, not O.15 certification close-out.
 
 | ID | Status |
 |----|--------|
-| P7-01…12 | OPEN / PART |
+| P7-01 | **PART** (r27 EventStore) |
+| P7-04 | **PART** (coverage matrix) |
+| P7-11 | **PART** (DSO demo script) |
+| P7-03/07/12 | **OPEN** |
 
 ---
 

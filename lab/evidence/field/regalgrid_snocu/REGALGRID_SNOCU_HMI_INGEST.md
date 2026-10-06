@@ -182,7 +182,7 @@ Use these values when validating TSP reads or Modbus slave defaults against fiel
 | Field photos archived | **HAVE** — 33 files in `photos/` |
 | HMI page inventory | **HAVE** — this document |
 | CCLI parity matrix | **HAVE** — `REGALGRID_SNOCU_vs_CCLI_MAP.md` |
-| LuCI / web HMI clone | **MISSING** — future phase |
-| TG544 local LCD HMI | **MISSING** — REGALGRID has dedicated panel; TG544 uses SSH/LuCI |
+| LuCI / web HMI clone | **N/A** — product uses **cloud UI/HMI** ([CCI_Cloud_Operator_HMI.md](../../../knowledge-base/08-engineering/CCI_Cloud_Operator_HMI.md)) |
+| TG544 local LCD HMI | **N/A** — REGALGRID panel = reference for **cloud screen parity** only |
 | ETH2 AirGate profile | **MISSING** in lab yaml |
 | ETH3 Modbus-TCP | **MISSING** — lab uses RS485 RTU |

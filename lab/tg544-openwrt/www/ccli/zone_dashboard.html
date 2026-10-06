@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CCLI Zone Dashboard — DSO · Operator · Plant</title>
+  <style>
+    :root {
+      --bg:#0f1419; --panel:#1a2332; --panel2:#121a24; --line:#2a3544; --text:#e7ecf3; --muted:#9aa8b8;
+      --acc:#3d8bfd; --ok:#2ecc71; --warn:#f1c40f; --bad:#e74c3c; --off:#5c6b7d;
+      --dso:#f39c12; --op:#9b59b6; --plant:#1abc9c;
+    }
+    * { box-sizing:border-box; }
+    body { margin:0; font-family:system-ui, -apple-system, Segoe UI, sans-serif; background:var(--bg); color:var(--text); }
+    header { padding:0.8rem 1.25rem; border-bottom:1px solid var(--line); display:flex; flex-wrap:wrap; gap:0.75rem 1.25rem; align-items:center; }
+    h1 { font-size:1.1rem; margin:0; }
+    h2 { font-size:0.95rem; margin:0 0 0.7rem; color:var(--acc); }
+    h3 { font-size:0.85rem; margin:0.9rem 0 0.5rem; color:var(--muted); text-transform:uppercase; letter-spacing:0.04em; }
+    .banner { background:#2b2210; border-bottom:1px solid #5a4614; color:#f5d77a; padding:0.45rem 1.25rem; font-size:0.8rem; }
+    .banner.demo { background:#3a1414; border-color:#7a2a2a; color:#ffb3b3; }
+    .hdr-right { margin-left:auto; display:flex; gap:0.6rem; align-items:center; flex-wrap:wrap; font-size:0.8rem; color:var(--muted); }
+    input[type=text] { padding:0.3rem 0.5rem; background:#0d1117; border:1px solid #3d4f63; color:var(--text); border-radius:4px; width:240px; }
+    select { padding:0.3rem 0.4rem; background:#0d1117; border:1px solid #3d4f63; color:var(--text); border-radius:4px; }
+    .btn { background:var(--acc); color:#fff; border:none; padding:0.35rem 0.8rem; border-radius:6px; cursor:pointer; font-weight:600; font-size:0.8rem; }
+    .btn.secondary { background:#3d4f63; }
+    nav { display:flex; gap:0.25rem; padding:0 1.25rem; border-bottom:1px solid var(--line); background:var(--panel2); overflow-x:auto; }
+    nav button { background:none; border:none; color:var(--muted); padding:0.7rem 1rem; cursor:pointer; font-size:0.85rem; font-weight:600; border-bottom:3px solid transparent; white-space:nowrap; }
+    nav button.active { color:var(--text); }
+    nav button[data-tab=overview].active { border-color:var(--acc); }
+    nav button[data-tab=dso].active { border-color:var(--dso); }
+    nav button[data-tab=operator].active { border-color:var(--op); }
+    nav button[data-tab=plant].active { border-color:var(--plant); }
+    nav button[data-tab=events].active { border-color:var(--muted); }
+    nav .zone-dot { display:inline-block; width:8px; height:8px; border-radius:50%; margin-right:0.4rem; vertical-align:middle; background:var(--off); }
+    main { padding:1rem 1.25rem; max-width:1500px; margin:0 auto; }
+    .tab { display:none; }
+    .tab.active { display:block; }
+    .grid { display:grid; gap:1rem; }
+    .g2 { grid-template-columns:1fr 1fr; }
+    .g3 { grid-template-columns:repeat(3, 1fr); }
+    .g4 { grid-template-columns:repeat(4, 1fr); }
+    @media (max-width:1100px) { .g3, .g4 { grid-template-columns:1fr 1fr; } }
+    @media (max-width:760px) { .g2, .g3, .g4 { grid-template-columns:1fr; } }
+    section { background:var(--panel); border-radius:10px; padding:1rem; border:1px solid var(--line); }
+    section.zone-dso { border-top:3px solid var(--dso); }
+    section.zone-op { border-top:3px solid var(--op); }
+    section.zone-plant { border-top:3px solid var(--plant); }
+    .tile { background:#0d1117; padding:0.7rem; border-radius:8px; }
+    .tile .l { font-size:0.7rem; color:var(--muted); text-transform:uppercase; letter-spacing:0.03em; }
+    .tile .v { font-size:1.5rem; font-weight:700; margin-top:0.2rem; font-variant-numeric:tabular-nums; }
+    .tile .s { font-size:0.72rem; color:var(--muted); margin-top:0.2rem; }
+    table { width:100%; border-collapse:collapse; font-size:0.8rem; }
+    th, td { border-bottom:1px solid var(--line); padding:0.4rem 0.45rem; text-align:left; vertical-align:top; }
+    th { color:var(--muted); font-weight:600; background:var(--panel2); }
+    td.num { text-align:right; font-variant-numeric:tabular-nums; }
+    .kv { display:grid; grid-template-columns:auto 1fr; gap:0.3rem 1rem; font-size:0.82rem; }
+    .kv dt { color:var(--muted); }
+    .kv dd { margin:0; font-variant-numeric:tabular-nums; }
+    .badge { display:inline-block; padding:0.1rem 0.5rem; border-radius:999px; font-size:0.7rem; font-weight:700; letter-spacing:0.03em; background:var(--off); color:#fff; }
+    .b-ok { background:#1e7d46; } .b-warn { background:#9a7b0a; } .b-bad { background:#a8322a; } .b-off { background:#3d4f63; } .b-info { background:#2a5ea8; }
+    .muted { color:var(--muted); }
+    .mono { font-family:ui-monospace, Consolas, monospace; font-size:0.75rem; }
+    .note { font-size:0.78rem; color:var(--muted); margin:0.5rem 0 0; }
+    .warnbox { background:#2b2210; border:1px solid #5a4614; color:#f5d77a; border-radius:6px; padding:0.5rem 0.7rem; font-size:0.78rem; margin-top:0.6rem; }
+    .errbox { background:#3a1414; border:1px solid #7a2a2a; color:#ffb3b3; border-radius:6px; padding:0.5rem 0.7rem; font-size:0.78rem; margin-bottom:1rem; display:none; }
+    /* Single-line diagram */
+    .sld-wrap { background:#0d1117; border-radius:8px; padding:0.5rem; overflow-x:auto; }
+    .sld-wrap svg { width:100%; min-width:760px; height:auto; display:block; }
+    .sld-line { stroke:#8fa3b8; stroke-width:3; fill:none; }
+    .sld-line.live { stroke:var(--ok); }
+    .sld-box { fill:#16202c; stroke:#3d4f63; stroke-width:1.5; rx:8; }
+    .sld-title { fill:var(--muted); font-size:12px; font-weight:700; letter-spacing:0.05em; }
+    .sld-val { fill:var(--text); font-size:18px; font-weight:700; }
+    .sld-sub { fill:var(--muted); font-size:11px; }
+    .sld-brk-closed { fill:var(--ok); }
+    .sld-brk-open { fill:none; stroke:var(--warn); stroke-width:2.5; }
+    .sld-brk-unknown { fill:none; stroke:var(--off); stroke-width:2; stroke-dasharray:3 3; }
+    /* Inverters */
+    .inv-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(170px, 1fr)); gap:0.6rem; }
+    .inv { background:#0d1117; border:1px solid var(--line); border-left:4px solid var(--off); border-radius:8px; padding:0.6rem; cursor:pointer; transition:border-color .15s; }
+    .inv:hover { border-color:var(--acc); }
+    .inv.s-live { border-left-color:var(--ok); }
+    .inv.s-mapped { border-left-color:var(--acc); }
+    .inv.s-gap { border-left-color:var(--warn); }
+    .inv.s-off { opacity:0.55; }
+    .inv.s-fault { border-left-color:var(--bad); }
+    .inv .id { font-weight:700; font-size:0.9rem; }
+    .inv .vendor { font-size:0.68rem; color:var(--muted); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+    .inv .p { font-size:1.3rem; font-weight:700; margin:0.3rem 0; font-variant-numeric:tabular-nums; }
+    .inv .meta { font-size:0.68rem; color:var(--muted); }
+    .legend { display:flex; flex-wrap:wrap; gap:0.8rem; font-size:0.72rem; color:var(--muted); margin:0.4rem 0 0.7rem; }
+    .legend span::before { content:""; display:inline-block; width:10px; height:10px; border-radius:2px; margin-right:0.3rem; vertical-align:middle; background:var(--c); }
+    /* Drawer */
+    #drawer { position:fixed; top:0; right:-480px; width:460px; max-width:100%; height:100%; background:var(--panel); border-left:1px solid var(--line); box-shadow:-8px 0 24px rgba(0,0,0,.4); transition:right .2s; padding:1rem 1.2rem; overflow-y:auto; z-index:20; }
+    #drawer.open { right:0; }
+    #drawer .close { float:right; }
+    footer { padding:1rem 1.25rem; font-size:0.72rem; color:var(--muted); text-align:center; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>CCLI Zone Dashboard <span class="muted" style="font-weight:400">· TG544 CCI016_01</span></h1>
+    <div class="hdr-right">
+      <span>API <input type="text" id="apiBase" /></span>
+      <label><input type="checkbox" id="demoMode" /> Demo data</label>
+      <button class="btn secondary" id="btnRefresh">Refresh</button>
+      <span id="connBadge" class="badge b-off">—</span>
+      <span id="lastUpdate">never</span>
+      <a href="mock_console.html" style="color:var(--acc)">PF2 mock console →</a>
+    </div>
+  </header>
+  <div class="banner" id="banner">
+    Lab dashboard (read-only). Product operator HMI is <strong>cloud-hosted</strong> (REQ-OP-CLOUD-001).
+    DSO commands (Wlim / WSd / VArSd / PFSP) are accepted <strong>only via IEC 61850 MMS on Eth_A</strong> — this page never sends Operate.
+  </div>
+
+  <nav id="tabs">
+    <button data-tab="overview" class="active">Overview</button>
+    <button data-tab="dso"><span class="zone-dot" id="dotDso"></span>DSO · LAN1 · Eth_A</button>
+    <button data-tab="operator"><span class="zone-dot" id="dotOp"></span>Operator · LAN2 · Eth_B</button>
+    <button data-tab="plant"><span class="zone-dot" id="dotPlant"></span>Plant · LAN3 / RS485</button>
+    <button data-tab="events">Events (O.14)</button>
+  </nav>
+
+  <main>
+    <div class="errbox" id="errBox"></div>
+
+    <!-- ================= OVERVIEW ================= -->
+    <div class="tab active" id="tab-overview">
+      <section>
+        <h2>Plant single-line — DG · DDI · DDG</h2>
+        <div class="sld-wrap">
+          <svg viewBox="0 0 1000 300" id="sld" role="img" aria-label="Plant single-line diagram">
+            <!-- Grid -->
+            <rect class="sld-box" x="20" y="70" width="170" height="130" />
+            <text class="sld-title" x="35" y="92">RETE · DG</text>
+            <g transform="translate(70,105)" stroke="#8fa3b8" stroke-width="2" fill="none">
+              <path d="M10 70 L35 0 L60 70 M18 48 L52 48 M24 28 L46 28 M35 0 L35 -6" />
+            </g>
+            <text class="sld-sub" x="35" y="190">MV 20 kV</text>
+            <!-- line Grid -> POC -->
+            <line class="sld-line" id="sldL1" x1="190" y1="135" x2="300" y2="135" />
+            <!-- POC meter -->
+            <rect class="sld-box" x="300" y="70" width="190" height="130" />
+            <text class="sld-title" x="315" y="92">PdC · POC METER</text>
+            <text class="sld-val" x="315" y="125" id="sldP">— kW</text>
+            <text class="sld-val" x="315" y="152" id="sldQ" style="font-size:15px">— kVAr</text>
+            <text class="sld-sub" x="315" y="175" id="sldQual">quality —</text>
+            <text class="sld-sub" x="315" y="191" id="sldMeterSrc">PdCMMXU1</text>
+            <!-- DDI breaker -->
+            <line class="sld-line" id="sldL2" x1="490" y1="135" x2="560" y2="135" />
+            <circle id="sldDdi" class="sld-brk-unknown" cx="575" cy="135" r="12" />
+            <text class="sld-sub" x="553" y="170">DDI</text>
+            <text class="sld-sub" x="540" y="184" id="sldDdiTxt">no feed</text>
+            <line class="sld-line" id="sldL3" x1="587" y1="135" x2="650" y2="135" />
+            <!-- Busbar -->
+            <line x1="650" y1="60" x2="650" y2="240" stroke="#c9d6e3" stroke-width="5" />
+            <!-- DDG breaker -> PV -->
+            <line class="sld-line" id="sldL4" x1="650" y1="135" x2="715" y2="135" />
+            <circle id="sldDdg" class="sld-brk-unknown" cx="730" cy="135" r="12" />
+            <text class="sld-sub" x="708" y="170">DDG</text>
+            <text class="sld-sub" x="695" y="184" id="sldDdgTxt">no feed</text>
+            <line class="sld-line" id="sldL5" x1="742" y1="135" x2="800" y2="135" />
+            <!-- PV -->
+            <rect class="sld-box" x="800" y="70" width="180" height="130" />
+            <text class="sld-title" x="815" y="92">FV · GenPV</text>
+            <g transform="translate(820,102)" stroke="#8fa3b8" stroke-width="1.5" fill="none">
+              <rect x="0" y="0" width="56" height="30" /><path d="M0 10 H56 M0 20 H56 M14 0 V30 M28 0 V30 M42 0 V30" />
+            </g>
+            <text class="sld-val" x="815" y="160" id="sldPv" style="font-size:15px">— kW</text>
+            <text class="sld-sub" x="815" y="178" id="sldInvCount">— inverters mapped</text>
+            <text class="sld-sub" x="815" y="192" id="sldPvSrc">GenPVMMXU1 · DEFERRED</text>
+            <!-- curtail DO -->
+            <text class="sld-sub" x="300" y="230">Curtailment DO (DIO1)</text>
+            <rect id="sldDoBox" x="300" y="238" width="190" height="34" rx="6" fill="#16202c" stroke="#3d4f63" />
+            <text class="sld-val" x="315" y="261" id="sldDo" style="font-size:14px">—</text>
+            <text class="sld-sub" x="20" y="230">Zones</text>
+            <text class="sld-sub" x="20" y="248" id="sldZones">LAN1 — · LAN2 — · LAN3 —</text>
+          </svg>
+        </div>
+        <p class="note">Breaker glyphs: filled = closed · ring = open · dashed = no position feed (IDGXCBR1 is status-only STUB until DI or bay IED is wired).</p>
+      </section>
+
+      <div class="grid g3" style="margin-top:1rem">
+        <section class="zone-dso">
+          <h2>DSO · LAN1</h2>
+          <div class="grid g2">
+            <div class="tile"><div class="l">MMS sessions</div><div class="v" id="ovDsoClients">—</div><div class="s" id="ovDsoBind">—</div></div>
+            <div class="tile"><div class="l">Effective export cap</div><div class="v" id="ovDsoPeff">—</div><div class="s" id="ovDsoMode">—</div></div>
+          </div>
+        </section>
+        <section class="zone-op">
+          <h2>Operator · LAN2</h2>
+          <div class="grid g2">
+            <div class="tile"><div class="l">104 sessions</div><div class="v" id="ovOpClients">—</div><div class="s" id="ovOpBind">—</div></div>
+            <div class="tile"><div class="l">Operating Rule</div><div class="v" id="ovOpMode" style="font-size:1.05rem">—</div><div class="s" id="ovOpFlags">—</div></div>
+          </div>
+        </section>
+        <section class="zone-plant">
+          <h2>Plant · LAN3 / RS485</h2>
+          <div class="grid g2">
+            <div class="tile"><div class="l">Fieldbus link</div><div class="v" id="ovPlLink">—</div><div class="s" id="ovPlBus">—</div></div>
+            <div class="tile"><div class="l">PF2</div><div class="v" id="ovPf2" style="font-size:1.05rem">—</div><div class="s" id="ovPf2Thr">—</div></div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <!-- ================= DSO ================= -->
+    <div class="tab" id="tab-dso">
+      <div class="grid g4">
+        <div class="tile"><div class="l">MMS sessions</div><div class="v" id="dsoClients">—</div><div class="s" id="dsoRun">—</div></div>
+        <div class="tile"><div class="l">TotW @ PdC</div><div class="v" id="dsoTotW">—</div><div class="s">PdCMMXU1.TotW · 4 s report</div></div>
+        <div class="tile"><div class="l">TotVAr @ PdC</div><div class="v" id="dsoTotVAr">—</div><div class="s">PdCMMXU1.TotVAr · 4 s report</div></div>
+        <div class="tile"><div class="l">PPV (phsAB)</div><div class="v" id="dsoPpv">—</div><div class="s">yaml plant.poc_ppv_kv (meter reg TBD)</div></div>
+      </div>
+      <div class="grid g2" style="margin-top:1rem">
+        <section class="zone-dso">
+          <h2>Eth_A link · IEC 61850 MMS server</h2>
+          <dl class="kv" id="dsoLink"></dl>
+          <p class="note">Annex O O.13.1.1.1: Eth_A is the DSO-only outside interface. Product spec is 100BaseFX fibre; the lab bench uses copper LAN1.</p>
+        </section>
+        <section class="zone-dso">
+          <h2>Active-power envelope (O.11 → PF2)</h2>
+          <dl class="kv" id="dsoDerived"></dl>
+        </section>
+      </div>
+      <section class="zone-dso" style="margin-top:1rem">
+        <h2>DSO set-points received (read-only, Annex T Figura 2)</h2>
+        <table>
+          <thead><tr><th>O.11</th><th>Function</th><th>Logical node</th><th>Clause</th><th>Mod</th><th class="num">Set-point</th><th class="num">Derived</th></tr></thead>
+          <tbody id="dsoSetpoints"></tbody>
+        </table>
+        <p class="note" id="dsoCmdNote"></p>
+      </section>
+      <section class="zone-dso" style="margin-top:1rem">
+        <h2>Recent Eth_A events</h2>
+        <table><thead><tr><th style="width:170px">Time (O.14)</th><th>Detail</th></tr></thead><tbody id="dsoEvents"></tbody></table>
+      </section>
+    </div>
+
+    <!-- ================= OPERATOR ================= -->
+    <div class="tab" id="tab-operator">
+      <div class="grid g4">
+        <div class="tile"><div class="l">104 sessions</div><div class="v" id="opClients">—</div><div class="s" id="opRun">—</div></div>
+        <div class="tile"><div class="l">Mode</div><div class="v" id="opMode" style="font-size:1.1rem">—</div><div class="s">Operating Rule (Annex O)</div></div>
+        <div class="tile"><div class="l">Cyclic period</div><div class="v" id="opPeriod">—</div><div class="s">COT periodic</div></div>
+        <div class="tile"><div class="l">Comms-loss fallback</div><div class="v" id="opFallback">—</div><div class="s">O.13.1.3 · P4-04</div></div>
+      </div>
+      <div class="grid g2" style="margin-top:1rem">
+        <section class="zone-op">
+          <h2>Eth_B link · IEC 60870-5-104 slave</h2>
+          <dl class="kv" id="opLink"></dl>
+          <p class="note">Machine clients (SCADA / aggregator) only. The human operator HMI is the cloud app; cloud does not replace this wire.</p>
+        </section>
+        <section class="zone-op">
+          <h2>Operating Rule allow-list</h2>
+          <table><thead><tr><th>Capability</th><th>ASDU</th><th>Allowed</th></tr></thead><tbody id="opRule"></tbody></table>
+        </section>
+      </div>
+      <section class="zone-op" style="margin-top:1rem">
+        <h2>Monitored points (M_ME_NC_1, common address <span id="opCa">—</span>)</h2>
+        <table>
+          <thead><tr><th>Point</th><th class="num">IOA</th><th>Configured</th><th>Sent on wire</th><th class="num">Value</th><th>Source</th></tr></thead>
+          <tbody id="opIoa"></tbody>
+        </table>
+        <p class="note">“Sent on wire” reflects the 104 adapter: only TotW is transmitted today. TotVAr / PPV flags are parsed but not yet emitted (LAN2 backlog).</p>
+      </section>
+      <section class="zone-op" style="margin-top:1rem">
+        <h2>Recent Eth_B events (operator ASDU audit)</h2>
+        <table><thead><tr><th style="width:170px">Time (O.14)</th><th>Detail</th></tr></thead><tbody id="opEvents"></tbody></table>
+      </section>
+    </div>
+
+    <!-- ================= PLANT ================= -->
+    <div class="tab" id="tab-plant">
+      <div class="grid g4">
+        <div class="tile"><div class="l">Fieldbus link</div><div class="v" id="plLink">—</div><div class="s" id="plLastEx">—</div></div>
+        <div class="tile"><div class="l">POC P</div><div class="v" id="plP">—</div><div class="s" id="plQual">—</div></div>
+        <div class="tile"><div class="l">POC Q</div><div class="v" id="plQ">—</div><div class="s">meter FC03</div></div>
+        <div class="tile"><div class="l">Inverters mapped</div><div class="v" id="plInvCount">—</div><div class="s" id="plInvSub">—</div></div>
+      </div>
+      <div class="grid g2" style="margin-top:1rem">
+        <section class="zone-plant">
+          <h2>Polled meter (ccli runtime)</h2>
+          <dl class="kv" id="plBus"></dl>
+        </section>
+        <section class="zone-plant">
+          <h2>POC measurement map</h2>
+          <table><thead><tr><th>Plane</th><th>Device</th><th class="num">Slave</th><th class="num">Reg</th><th>Type</th><th>MMS</th><th>Status</th></tr></thead><tbody id="plPoc"></tbody></table>
+          <p class="note mono" id="plBusNotes"></p>
+        </section>
+      </div>
+      <section class="zone-plant" style="margin-top:1rem">
+        <h2>Inverter map — PLANT_ASSIGNMENT_PLANE.csv</h2>
+        <div style="display:flex; gap:1rem; align-items:center; flex-wrap:wrap; font-size:0.8rem">
+          <label><input type="checkbox" id="invEnabledOnly" checked /> enabled rows only</label>
+          <span class="muted">Click a card for registers, MMS path and DSO fan-out.</span>
+        </div>
+        <div class="legend">
+          <span style="--c:var(--ok)">live value</span>
+          <span style="--c:var(--acc)">mapped — not polled by ccli yet</span>
+          <span style="--c:var(--warn)">CID gap (SGG LN missing in CID)</span>
+          <span style="--c:var(--off)">disabled</span>
+        </div>
+        <div class="inv-grid" id="invGrid"></div>
+        <div id="invWarn"></div>
+        <h3>Aggregates</h3>
+        <table><thead><tr><th>Plane</th><th>MMS</th><th>Transform</th><th>Status</th><th>Notes</th></tr></thead><tbody id="plAgg"></tbody></table>
+        <h3>DSO → inverter fan-out (CONTROL rows)</h3>
+        <table><thead><tr><th>Plane</th><th>DSO source</th><th>Clause</th><th>Slaves</th><th class="num">FC</th><th class="num">Reg</th><th class="num">Gain</th><th>Transform</th><th>Enabled</th><th>Status</th></tr></thead><tbody id="plCtl"></tbody></table>
+      </section>
+      <section class="zone-plant" style="margin-top:1rem">
+        <h2>How to map inverters (integrator)</h2>
+        <ol style="font-size:0.82rem; line-height:1.6; margin:0; padding-left:1.2rem">
+          <li>Edit <code>apps/ccli/config/plant/PLANT_ASSIGNMENT_PLANE.csv</code>: one <code>INVnn.TotW</code> + <code>INVnn.Status</code> row per inverter; set <code>enabled=Y</code>, <code>modbus_slave_id</code> (inverter unit ID), <code>field_device</code> (model).</li>
+          <li>Keep the POC meter and inverters on <strong>different buses or unit IDs</strong> — a shared slave ID on one RS485 line will collide.</li>
+          <li>Each inverter maps to one <code>SGGMMXUn</code> LN; <code>GenPVMMXU1.TotW</code> = sum of enabled inverters (AGGREGATE row). Add <code>SGGMMXU3..n</code> to the CID before claiming MMS for INV03+.</li>
+          <li>Run <code>python scripts/plant-map-validate.py</code> then <code>python scripts/plant-map-generate.py</code> (writes YAML + this page’s <code>plant_map.json</code>).</li>
+          <li>Redeploy the dashboard: <code>lab/tg544-openwrt/deploy-zone-dashboard.ps1</code>.</li>
+        </ol>
+      </section>
+    </div>
+
+    <!-- ================= EVENTS ================= -->
+    <div class="tab" id="tab-events">
+      <section>
+        <h2>O.14 event log (latest 40)</h2>
+        <div style="margin-bottom:0.6rem; font-size:0.8rem">
+          Filter type <select id="evFilter"><option value="">all</option></select>
+        </div>
+        <table><thead><tr><th style="width:170px">Time (O.14)</th><th style="width:110px">Type</th><th>Detail</th></tr></thead><tbody id="evBody"></tbody></table>
+      </section>
+    </div>
+  </main>
+
+  <aside id="drawer" aria-hidden="true">
+    <button class="btn secondary close" id="drawerClose">Close</button>
+    <h2 id="drwTitle">Inverter</h2>
+    <div id="drwBody"></div>
+  </aside>
+
+  <footer>CCLI lab · read-only zone view · data: <span class="mono">ccli-bench?action=status|events</span> + <span class="mono">plant_map.json</span></footer>
+
+  <script src="zone_dashboard.js"></script>
+</body>
+</html>

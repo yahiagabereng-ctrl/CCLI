@@ -1,0 +1,38 @@
+P5-R02 — O.9.1.1 PFSP cosφ set-point (PFSPDFPF1)
+Date: 2026-10-05
+DUT: TG544 @ 192.168.10.1
+Gate: P5-R02 · CEI 0-16 O.9.1.1 / T Table 90
+Build: ccli 0.1.0-r31 (P5-R02-PFSP)
+
+=== Bench setup ===
+- PC Modbus slave: COM5 @ 9600 8N1, P=450 kW (`lab/modbus_rtu_slave.py --trace`)
+- DUT RS485: A1/B1 → /dev/ttyS1
+- MMS: ccli on :102 (cleartext lab profile)
+- LAN1: PC 192.168.10.10 → DUT 192.168.10.1
+- Client: SBO ctlModel=4 — `selectWithValue` + `operate` (see `lab/mms_pfsp_client.c`)
+
+=== Test procedure ===
+1. python -u lab/modbus_rtu_slave.py --port COM5 --power-kw 450 --trace
+2. Deploy r31; confirm DUT log P=450 kW
+3. wsl lab/tg544-openwrt/mms_pfsp_client 192.168.10.1 102 -0.95 gn
+4. ccli --config /etc/ccli/lab.yaml --event-dump --count 10 | grep pfsp
+
+=== MMS client ===
+OPERATE OK CCI016_01LD_Plant/PFSPDFPF1.PFGnTgtSpt = -0.9500
+OPERATE OK CCI016_01LD_Plant/PFSPDFPF1.Mod = 1
+VERDICT: PASS — PFSP Operate sent
+
+=== DUT log ===
+mms: PFSPDFPF1.PFGnTgtSpt ctlVal=-0.9500 [O.9.1.1 P5-R02]
+mms: PFSPDFPF1.Mod ctlVal=1 → pfsp_active=true [O.9.1.1]
+modbus: FC16 write Q=50.00 kvar @ holding 40003
+mms→plant: PFSP on cosφ=-0.95 P=450 kW → Q=50 kvar [O.9.1.1 P5-R02]
+
+Note: Q clamped to TR plant envelope q_ind_kvar=50 (not theoretical ~148 kvar).
+
+=== O.14 event-dump (r31 PASS) ===
+2026/10/05 14:16:21 mms pfsp_operate mod=1 cosphi=-0.950000 p_kw=450.000000 q_kvar=50.000000 result=ok
+2026/10/05 14:16:42 mms pfsp_operate mod=1 cosphi=-0.950000 p_kw=450.000000 q_kvar=50.000000 result=ok
+
+=== Verdict ===
+P5-R02: **PASS** (lab r31) — MMS SBO Operate → Modbus FC16 → O.14 pfsp_operate result=ok

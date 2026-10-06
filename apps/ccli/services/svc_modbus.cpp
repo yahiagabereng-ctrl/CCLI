@@ -20,6 +20,10 @@ adapters::ModbusPollConfig modbus_poll_from_config(const core::CcliConfig& app_c
 
     const auto& m = app_cfg.modbus;
 
+    out.host = m.host;
+
+    out.tcp_port = m.tcp_port;
+
     out.device = m.device;
 
     out.baud = m.baud;
@@ -42,9 +46,17 @@ adapters::ModbusPollConfig modbus_poll_from_config(const core::CcliConfig& app_c
 
     out.reg_reactive_power_count = m.reg_reactive_power_count;
 
+    out.power_scale = m.power_scale;
+
+    out.reactive_scale = m.reactive_scale;
+
     if (m.backend == core::ModbusBackendKind::Rtu) {
 
-        out.backend = adapters::ModbusBackend::Libmodbus;
+        out.backend = adapters::ModbusBackend::LibmodbusRtu;
+
+    } else if (m.backend == core::ModbusBackendKind::Tcp) {
+
+        out.backend = adapters::ModbusBackend::LibmodbusTcp;
 
     } else {
 

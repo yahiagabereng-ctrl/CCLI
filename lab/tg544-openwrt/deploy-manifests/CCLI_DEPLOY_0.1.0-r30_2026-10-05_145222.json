@@ -1,0 +1,15 @@
+﻿{
+    "codename":  "P5-R09-O14-VARSD",
+    "changes":  [
+                    "P5-R09 O.14 varsd_operate event detail",
+                    "P5-G03 merge policy session evidence"
+                ],
+    "release":  30,
+    "timestamp_utc":  "2026-10-05T12:52:22.1529081Z",
+    "version_full":  "0.1.0-r30",
+    "lab_yaml":  "c:\\Yahia\\projects\\CCLI\\apps\\ccli\\config\\lab_tr400_cleartext_tsp_ttyS1.yaml",
+    "sha256":  "a6adc8e86ceee88f26fe0081bceea3877149a04b50b48c5b3b53bfd06c6e3483",
+    "binary":  "C:\\Yahia\\projects\\CCLI\\lab\\tg544-openwrt\\ccli-bin",
+    "host":  "192.168.10.1",
+    "semver":  "0.1.0"
+}

@@ -1,8 +1,9 @@
 # Operatore Abilitato (Eth_B) — role and rules
 
-**Date:** 2026-09-30  
+**Date:** 2026-09-30 (updated 2026-10-05)  
 **Programme:** HiTEKS CCLI · CEI 0-16 Allegato O  
-**Build:** `ccli-0.1.0-r19` (104 TLS + Operating Rule config on Eth_B)
+**Build:** `ccli-0.1.0-r19` (104 TLS + Operating Rule config on Eth_B)  
+**Product HMI:** **Cloud UI** — [CCI_Cloud_Operator_HMI.md](../../../knowledge-base/08-engineering/CCI_Cloud_Operator_HMI.md) · LAN2 wire pack: [LAN2_READINESS.md](LAN2_READINESS.md)
 
 ---
 
@@ -13,8 +14,10 @@
 | **Operatore Abilitato (OA)** | *Qualified / authorised remote operator* on **Eth_B** (Annex O **O.13.1.1.1**) |
 | Lab role | Aggregator / BSP / third-party **supervision client** — **not** the DSO |
 | **DSO** | Separate actor on **Eth_A** only (Annex T MMS `:3782`) |
+| **Human operator (product)** | **HiTEKS cloud UI/HMI** over LTE/WAN — not local panel; see cloud architecture doc |
 
-Normative interface: Eth_B — RJ45, isolated from Eth_A (Phase 2 PASS).
+Normative **wire** for machine clients: Eth_B — RJ45, isolated from Eth_A (Phase 2 PASS).  
+Normative **human** interface: cloud (REQ-OP-CLOUD-001); Eth_B 104 remains for direct SCADA.
 
 ---
 
