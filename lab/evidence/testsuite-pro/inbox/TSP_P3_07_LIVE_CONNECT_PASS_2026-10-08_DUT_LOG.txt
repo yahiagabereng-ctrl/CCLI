@@ -1,0 +1,19 @@
+﻿=== DUT pull 2026-10-08 P3-07 live pass ===
+ccli: HiTEKS CCLI user-space firmware: PF2 FSM, Modbus, IEC 61850 MMS (Eth_A), IEC 60870-5-104 (Eth_B). Platform HAL: platform_tg500 on TesPro TG544 / TR500 / TG-524 (MT798X).
+ccli 0.1.0-r48 (P3-07-AARE-SIGN-RAW-GT)
+  semver:   0.1.0
+  release:  r48
+  git:      unknown
+  built:    2026-06-29T12:59:20Z UTC
+  platform: tg500
+
+mms: AARE 62351-4 responder auth ready (cert=919 octets)
+mms: AARE responding titles AP=1.1.1.999.1 AE=12
+mms: AARE 62351-4 responder auth ready (cert=919 octets)
+mms: AARE responding titles AP=1.1.1.999.1 AE=12
+mms: listening on 192.168.10.1:3782 tls=on acse_tls_auth=on rbac=on crl=off fallback_s=15 gnss_poll_s=15 chrony=on discipline=off model=full_cid_cfg
+mms: client CONNECT count=1
+mms: iso session CONNECT (payload=1456)
+mms: ACSE auth ACCEPT ΓÇö mech=CERTIFICATE role=DSO_OPERATOR cert=938 octets
+mms: AARE responder auth [10]EXTERNAL ctx=5 inner=1215 octets
+mms: iso session ACCEPT extended LI (spdu=1395 payload=1375)

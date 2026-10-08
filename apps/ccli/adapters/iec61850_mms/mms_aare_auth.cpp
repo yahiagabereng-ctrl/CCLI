@@ -50,13 +50,13 @@ int format_a_profile_generalized_time(uint64_t ms_time, uint8_t* gt, int gt_max)
     return n;
 }
 
-bool sign_time_field_pkcs1_sha256(const uint8_t* time_field, int time_field_len,
+bool sign_time_field_pkcs1_sha256(const uint8_t* signed_bytes, int signed_len,
                                   uint8_t* signature, size_t* sig_len) {
-    /* §11.2.2: sha256WithRSA over DER-encoded [1] GeneralizedTime field (0x81 TLV).
-     * Mbed TLS 3.x pk_sign/pk_verify take the message digest, not the raw TLV. */
+    /* sha256WithRSA over signed_bytes. Wire [1] is still 0x81+GT TLV; Test Suite Pro
+     * verifies AARE like its AARQ (raw GeneralizedTime octets, not the TLV). */
     uint8_t hash[32];
-    if (mbedtls_md(mbedtls_md_info_from_type(MBEDTLS_MD_SHA256), time_field,
-                   static_cast<size_t>(time_field_len),
+    if (mbedtls_md(mbedtls_md_info_from_type(MBEDTLS_MD_SHA256), signed_bytes,
+                   static_cast<size_t>(signed_len),
                    hash) != 0) {
         return false;
     }
@@ -165,12 +165,9 @@ int build_mms_auth_value(uint8_t* out, int max_out) {
         return -1;
     }
 
-    uint8_t time_field[32];
-    const int time_field_len = append_tl(time_field, 0, 0x81, gt, gt_len);
-
     uint8_t signature[512];
     size_t sig_len = 0;
-    if (!sign_time_field_pkcs1_sha256(time_field, time_field_len, signature, &sig_len)) {
+    if (!sign_time_field_pkcs1_sha256(gt, gt_len, signature, &sig_len)) {
         std::fprintf(stderr, "mms: AARE auth sign/self-verify failed\n");
         return -1;
     }
@@ -182,12 +179,34 @@ int build_mms_auth_value(uint8_t* out, int max_out) {
     seq_len = append_tl(seq_body, seq_len, 0x81, gt, gt_len);
     seq_len = append_tl(seq_body, seq_len, 0x82, signature, static_cast<int>(sig_len));
 
-    if (seq_len + 4 > max_out) {
+    /* TSP AARQ / 62351-4: auth-value is EXTERNAL (mmsAuthenticationAS, indirect-ref 5) then
+     * nested 0xa0 wrappers around cert/time/sig — mirror on AARE [10] 0xAA payload. */
+    uint8_t inner_a0[8192];
+    const int inner_a0_len = append_tl(inner_a0, 0, 0xa0, seq_body, seq_len);
+    uint8_t outer_a0[8192];
+    const int outer_a0_len = append_tl(outer_a0, 0, 0xa0, inner_a0, inner_a0_len);
+
+    static const uint8_t indirect_ref_mms_auth_as[] = {0x02, 0x01, 0x05};
+    uint8_t ext_body[8192];
+    int ext_len = 0;
+    std::memcpy(ext_body, indirect_ref_mms_auth_as, sizeof(indirect_ref_mms_auth_as));
+    ext_len = static_cast<int>(sizeof(indirect_ref_mms_auth_as));
+    if (ext_len + outer_a0_len + 8 > static_cast<int>(sizeof(ext_body))) {
         return -1;
     }
-    /* MMS-Authentication-value certificate-based [0] IMPLICIT SEQUENCE -> 0xa0 { [0] cert, [1] time, [2] sig }.
-     * Caller (acse.c) wraps this in EXTERNAL + responding-authentication-value [10]. */
-    return append_tl(out, 0, 0xa0, seq_body, seq_len);
+    std::memcpy(ext_body + ext_len, outer_a0, static_cast<size_t>(outer_a0_len));
+    ext_len += outer_a0_len;
+
+    if (ext_len + 8 > max_out) {
+        return -1;
+    }
+    const int wrapped = append_tl(out, 0, 0xa2, ext_body, ext_len);
+    if (wrapped > 0) {
+        std::fprintf(stderr,
+                     "mms: AARE responder auth [10]EXTERNAL ctx=5 inner=%d octets\n",
+                     wrapped);
+    }
+    return wrapped;
 }
 
 extern "C" int ccli_aare_auth_build_tramp(uint8_t* out, int max_out) {

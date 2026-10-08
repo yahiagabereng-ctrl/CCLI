@@ -162,6 +162,7 @@ struct MmsAdapter::Impl {
     bool running{false};
 
     std::vector<uint8_t> dso_der;
+    std::vector<uint8_t> dso_tls_der;
     std::vector<uint8_t> viewer_der;
     bool rbac_enabled{false};
 
@@ -293,6 +294,7 @@ bool MmsAdapter::Impl::auth_tramp(void* parameter,
     MmsAcseCredentialStore creds;
     if (impl != nullptr) {
         creds.dso_der = impl->dso_der;
+        creds.dso_tls_der = impl->dso_tls_der;
         creds.viewer_der = impl->viewer_der;
         creds.rbac_enabled = impl->rbac_enabled;
     }
@@ -342,8 +344,11 @@ bool MmsAdapter::Impl::auth_tramp(void* parameter,
         return false;
     case MmsAcseAuthResult::RejectUnknownCert:
         std::fprintf(stderr,
-                     "mms: ACSE auth REJECT — cert not mapped to lab role (%d octets, mech=%s)\n",
-                     len, mms_acse_mechanism_label(mechanism));
+                     "mms: ACSE auth REJECT — cert not mapped to lab role (%d octets, mech=%s, "
+                     "dso=%zu tls=%zu, head=%02x%02x%02x)\n",
+                     len, mms_acse_mechanism_label(mechanism), creds.dso_der.size(),
+                     creds.dso_tls_der.size(),
+                     len > 0 ? buf[0] : 0, len > 1 ? buf[1] : 0, len > 2 ? buf[2] : 0);
         if (impl != nullptr) {
             impl->emit_audit("auth_reject_unknown_cert");
         }
@@ -968,6 +973,16 @@ bool MmsAdapter::start(const core::MmsConfig& cfg, MmsAuditFn audit) {
             if (!load_pem_der(dso_acse, impl->dso_der)) {
                 std::fprintf(stderr, "mms: failed to parse DSO ACSE cert DER %s\n",
                              dso_acse.c_str());
+                TLSConfiguration_destroy(impl->tls);
+                IedModel_destroy(impl->model);
+                delete impl;
+                return false;
+            }
+            if (!cfg.tls.client_cert.empty() &&
+                cfg.tls.client_cert != dso_acse &&
+                !load_pem_der(cfg.tls.client_cert, impl->dso_tls_der)) {
+                std::fprintf(stderr, "mms: failed to parse DSO TLS cert DER %s\n",
+                             cfg.tls.client_cert.c_str());
                 TLSConfiguration_destroy(impl->tls);
                 IedModel_destroy(impl->model);
                 delete impl;

@@ -15,7 +15,10 @@ enum class MmsAcseMechanism : int {
 
 /** Lab allowlist DER blobs loaded at MMS server start (P3-08 RBAC). */
 struct MmsAcseCredentialStore {
+    /** G.6.2 MMS Security profile (client.pem). */
     std::vector<uint8_t> dso_der;
+    /** Transport TLS profile (client_tls.pem) — TSP sometimes embeds this in AARQ. */
+    std::vector<uint8_t> dso_tls_der;
     std::vector<uint8_t> viewer_der;
     bool rbac_enabled{false};
 };
