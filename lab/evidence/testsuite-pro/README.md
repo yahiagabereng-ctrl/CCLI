@@ -2,6 +2,7 @@
 
 **Path:** `lab/evidence/testsuite-pro/`  
 **Procedure:** `lab/CCI_TestSuitePro_Verification_Layer.md`  
+**Test identification (post-Connect):** [TSP_TEST_IDENTIFICATION_POST_CONNECT.md](TSP_TEST_IDENTIFICATION_POST_CONNECT.md)  
 **Multi-tool MMS (TSP + IED Simulator + IEDScout + Wireshark + libiec61850):** `lab/CCI_MMS_MultiTool_Verification.md`  
 **RAG:** paste or save here → Agent ingests via `ccli-testsuite-pro-lab-logs` / session extract
 

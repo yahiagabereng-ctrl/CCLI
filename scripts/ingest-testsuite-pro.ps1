@@ -17,10 +17,14 @@ $TelLab = "C:\Yahia\projects\Telematry System\documents\projects\ccli\lab"
 
 New-Item -ItemType Directory -Path $TelEng, $TelLab -Force | Out-Null
 
+$Conf = Join-Path $Repo "lab\conformance"
 $Files = @(
     @{ Path = (Join-Path $Kb "CCI_TestSuitePro_Capture_Plan.md"); Sid = "ccli-testsuite-pro-capture-plan" },
     @{ Path = (Join-Path $Kb "CCI_TestSuitePro_Extract.md"); Sid = "ccli-testsuite-pro-extract" },
-    @{ Path = $Proc; Sid = "ccli-testsuite-pro-procedure" }
+    @{ Path = $Proc; Sid = "ccli-testsuite-pro-procedure" },
+    @{ Path = (Join-Path $Conf "LAB_REQUIREMENT_TEST_MATRIX.md"); Sid = "ccli-lab-requirement-test-matrix" },
+    @{ Path = (Join-Path $Conf "TSP_PC_FIELD_PACK.md"); Sid = "ccli-tsp-field-pack" },
+    @{ Path = (Join-Path $Repo "lab\evidence\testsuite-pro\TSP_TEST_IDENTIFICATION_POST_CONNECT.md"); Sid = "ccli-tsp-test-identification" }
 )
 
 Write-Host "=== Sync markdown to Telematry ==="
