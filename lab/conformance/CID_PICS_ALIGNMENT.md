@@ -1,8 +1,9 @@
 # CID `<Services>` vs first-pass PICS (R-LAB-01)
 
 **Document ID:** CCLI-LAB-CID-PICS-001  
-**Revision:** 1.0  
-**Date:** 2026-10-08  
+**Revision:** 1.1  
+**Date:** 2026-10-09  
+**CID pin:** History **rev 9** — [LAB_SPECIMEN_VERSION.md](LAB_SPECIMEN_VERSION.md)
 **RAG source_id:** `ccli-lab-cid-pics-alignment`  
 **61850-10:** Table 1 — ICD Services shall match PICS ACSI claims.
 
@@ -11,7 +12,7 @@ Working CID `lab_tg544_eth_a.cid` is a **TR 57-126 lab specimen** (P5-G GOOSE + 
 
 ---
 
-## Working CID Services (as of rev 5) vs PICS
+## Working CID Services (as of History rev 9) vs PICS
 
 | CID `<Services>` | Working CID | First-pass PICS | Action |
 |------------------|-------------|-----------------|--------|

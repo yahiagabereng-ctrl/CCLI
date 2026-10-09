@@ -4,7 +4,7 @@
 **Revision:** 1.0  
 **Date:** 2026-10-09  
 **RAG source_id:** `ccli-lab-scl-dataset-placement`  
-**Normative:** IEC 61850-6 (DataSet / ReportControl under LN0) · specimen `apps/ccli/config/icd/lab_tg544_eth_a.cid`
+**Normative:** IEC 61850-6 (DataSet / ReportControl under LN0) · specimen `apps/ccli/config/icd/lab_tg544_eth_a.cid` (History **rev 9** · [LAB_SPECIMEN_VERSION.md](LAB_SPECIMEN_VERSION.md))
 
 ---
 

@@ -15,6 +15,7 @@ Templates from the accredited lab (2026-10-08 email) live at repo root under `la
 | [CID_PICS_ALIGNMENT.md](CID_PICS_ALIGNMENT.md) | CID Services vs PICS | Do not over-claim |
 | [SCL_DATASET_PLACEMENT.md](SCL_DATASET_PLACEMENT.md) | DataSet under LLN0 + PdC FCDA map | IEC 61850-6 · lab CID |
 | [LAB_CONFIG_GUIDE.md](LAB_CONFIG_GUIDE.md) | D6 lab guide | IPs, yaml, firmware ID |
+| [LAB_SPECIMEN_VERSION.md](LAB_SPECIMEN_VERSION.md) | **CID/cfg pin** (History rev, configRev, SHA-256) | TSP Compare / MICS / deploy |
 
 **Working checklist (phases + evidence):** [2026-10-08_UCA_Document_Phase_Checklist.md](2026-10-08_UCA_Document_Phase_Checklist.md)
 

@@ -1,7 +1,8 @@
 # TSP Compare Model — fix pack (2026-10-09)
 
 **Input evidence:** `TSP_P3_COMPARE_2026-10-09.xlsx` (489 rows from `New folder/ss.xlsx`)  
-**CID/cfg:** `lab_tg544_eth_a` **rev 8** (3548437 + rev 7 LLN0) · DUT `ccli` r52 · `model=full_cid_cfg`
+**CID/cfg:** `lab_tg544_eth_a` History **rev 9** · `configRev` **20261009** · DUT `ccli` r52 · `model=full_cid_cfg`  
+**Pin:** [LAB_SPECIMEN_VERSION.md](../../../conformance/LAB_SPECIMEN_VERSION.md) · cfg SHA-256 **E3285E8F…D77E49**
 
 ## Root cause (from export)
 
@@ -30,6 +31,31 @@ Advanced Client already showed `PdCMMXU1.PPV.phsAB` live — not a missing-DO fi
 
 **Expect:** ~50–70 rows left (mostly `PdCMMXU1` PPV/A SDO/DO dual + optional BRCB OptFlds), not 489.  
 **Waive** remaining PdC DEL/WYE dual-Missing (TSP artefact; browse proves presence).
+
+## After re-test (2026-10-09)
+
+**Evidence:** `TSP_P3_COMPARE_AFTER_2026-10-09.xlsx` (source: `New folder/Second error.xlsx`) · **69 errors** (+ header = 70 rows)
+
+| Metric | Before (`ss.xlsx`) | After |
+|--------|-------------------:|------:|
+| Total error rows | 489 | **69** |
+| MissingFromDiscover | 432 | **54** |
+| MissingFromFile | 48 | **6** |
+| Value | 9 | **9** |
+| Gen* / St / SGG PPV/A rows | ~424 | **0** |
+
+**Verdict:** **MMXU2 / Gen* Compare fix confirmed.** Remaining structure noise is **PdC only** (`PdCMMXU1.PPV` / `.A` — 6× MissingFromFile on `phs*` nodes + 48 deep-path MissingFromDiscover; same SDO/DO waiver as P5).
+
+**Value rows (9) — fixed in CID History rev 9**
+
+| Object | Fix |
+|--------|-----|
+| `LLN0.NamPlt.configRev` | **20261009** in CID + regen cfg (match TSP + DUT after deploy) |
+| URCB ×6 `OptFlds` | CID `entryID=false` + cfg **`options=159`** (`gen-mms-model-cfg.ps1` patch) |
+| BRCB ×2 `OptFlds` | CID `entryID=false` + cfg **`options=191`** |
+
+**Re-test:** `git pull` → import repo CID **rev 9** → deploy cfg (SHA `E3285E8F…D77E49`) → restart `ccli` → Disconnect/Connect → Compare.  
+**Expect:** **~60** structure rows (PdC PPV/A waive only), **0** Value rows.
 
 ## Related
 

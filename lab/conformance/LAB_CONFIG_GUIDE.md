@@ -1,8 +1,9 @@
 # D6 — Lab configuration guide (DUT for UCA / TSP)
 
 **Document ID:** CCLI-LAB-D6-001  
-**Revision:** 1.0  
-**Date:** 2026-10-08  
+**Revision:** 1.1  
+**Date:** 2026-10-09  
+**Specimen pin:** [LAB_SPECIMEN_VERSION.md](LAB_SPECIMEN_VERSION.md) — CID History **rev 9** · `configRev` **20261009**
 **RAG source_id:** `ccli-lab-config-guide`  
 **Not** product HMI. Human operator UI is cloud (`CCI_Cloud_Operator_HMI.md`).
 
@@ -38,7 +39,7 @@ Same string goes on PICS Cover and every `TSP_*` log header.
 | File | Use |
 |------|-----|
 | `/etc/ccli/lab.yaml` | Deployed from `lab_tr400_phase1_regulation.yaml` or `lab_tr400_phase4_eth_b.yaml` |
-| CID / model | `lab_tg544_eth_a.cid` (cert freeze: see `CID_PICS_ALIGNMENT.md`) |
+| CID / model | `lab_tg544_eth_a.cid` + `.cfg` — **rev 9** per [LAB_SPECIMEN_VERSION.md](LAB_SPECIMEN_VERSION.md) (cert freeze: `CID_PICS_ALIGNMENT.md`) |
 | TLS | `/etc/ccli/tls/` — server_tls, server (ACSE), client, viewer, CRL |
 
 Product MMS: `tls_enabled: true`, `tcp_port: 3782`, `bind_address: 192.168.10.1`, `comms_loss_fallback_s: 15`.

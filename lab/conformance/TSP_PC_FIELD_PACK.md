@@ -1,8 +1,11 @@
 # Test Suite Pro PC — field pack (preview & push)
 
 **Document ID:** CCLI-LAB-TSP-PACK-001  
+**Revision:** 1.1  
+**Date:** 2026-10-09  
 **RAG source_id:** `ccli-tsp-field-pack`  
-**Script:** `scripts/stage-tsp-field-pack.ps1`
+**Script:** `scripts/stage-tsp-field-pack.ps1`  
+**CID pin:** History **rev 9** — [LAB_SPECIMEN_VERSION.md](LAB_SPECIMEN_VERSION.md)
 
 ---
 
@@ -37,10 +40,10 @@ Creates **`C:\CCLI_TSP_FIELD_PACK\`** with checklist, procedures, CID, TLS, and 
 | `03_TSP_SEQUENCER_DRAFT.md` | Step objects / MMS paths |
 | `04_TSP_VERIFICATION_LAYER.md` | Install paths · evidence naming |
 | `05_EVIDENCE_README.md` | `TSP_*` filename rules |
-| `cid/lab_tg544_eth_a.cid` | Compare Model / MICS source |
+| `cid/lab_tg544_eth_a.cid` | Compare Model / MICS source (must match **rev 9** pin) |
 | `tls/*` | EJBCA lab PEMs + `TSP_STAGE_README.txt` |
 | `config/lab_tr400_phase1_regulation.yaml` | Reference ports 3782 |
-| `09_PICS_FILL.md` … `15_LAB_CONFIG_GUIDE.md` | PID fill packs (PICS / PIXIT / MICS / TICS / D7 / CID / D6) |
+| `09_PICS_FILL.md` … `16_LAB_SPECIMEN_VERSION.md` | PID fill packs + **CID/cfg rev pin** (SHA-256) |
 | `PACK_MANIFEST.json` | Generated timestamp + file list |
 
 ---

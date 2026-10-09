@@ -1,11 +1,12 @@
 # MICS draft — model vs `lab_tg544_eth_a.cid`
 
 **Document ID:** CCLI-LAB-MICS-001  
-**Revision:** 1.0  
-**Date:** 2026-10-08  
+**Revision:** 1.1  
+**Date:** 2026-10-09  
+**Specimen pin:** [LAB_SPECIMEN_VERSION.md](LAB_SPECIMEN_VERSION.md)
 **RAG source_id:** `ccli-lab-mics-draft`  
 **Copy into:** `lab/TemplateMICS_Ed2_FromTP2.0.5.docx`  
-**SCL:** `apps/ccli/config/icd/lab_tg544_eth_a.cid` · IED **`CCI016_01`** · LD **`LD_Plant`**
+**SCL:** `apps/ccli/config/icd/lab_tg544_eth_a.cid` (History **rev 9**, `configRev` **20261009**) · IED **`CCI016_01`** · LD **`LD_Plant`**
 
 Namespace on CEI LNs: `(Tr)IEC61850-CEI016:2022` (TR 57-126).  
 Compare Model (TSP T1-02) must use **this same CID**.

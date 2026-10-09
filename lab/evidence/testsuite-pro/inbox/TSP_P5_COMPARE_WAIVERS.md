@@ -1,9 +1,10 @@
 # TSP P5 — Compare Model waivers (lab)
 
 **Gate:** P5_FULLCIRCLE  
-**Date:** 2026-09-30  
-**Build:** 0.1.0-r25 (P5-COMPARE-FIX) · prior r24 Compare export had **77** rows  
-**CID:** `apps/ccli/config/icd/lab_tg544_eth_a.cid`  
+**Date:** 2026-09-30 (updated 2026-10-09)  
+**Build:** 0.1.0-r25 (P5-COMPARE-FIX) · lab DUT **0.1.0-r52** for rev 6 re-test  
+**CID:** `apps/ccli/config/icd/lab_tg544_eth_a.cid` — History **rev 9** · `configRev` **20261009**  
+**Version pin:** `lab/conformance/LAB_SPECIMEN_VERSION.md` · git **3548437**  
 **Matrix:** `lab/evidence/phase5/P5_LN_WIRE_STATUS.md`
 
 ## Scope
@@ -37,6 +38,7 @@ Structure must match; **value** deltas on live DOs are expected and waived for l
 | `VArSdDVAR1` @ baseline | — | Mod=**5** until Operate | LAB-CTL-03 | cfg off until DSO command |
 | `PFSPDFPF1`, `VArVDVVR1`, `PFWDPFW1` | — | Mod=**5**, no plant path | P5-DEFER-01 | Annex T Tab.88–91 deferred |
 | ctlModel | ~~SBO (CID)~~ **fixed r25** | direct-enhanced | — | CID aligned 2026-10-01 |
+| `PdCMMXU1.PPV` / `.A` tree | SCL **SDO** (DEL/WYE) | MMS **DO** (`phsAB`…) | **TSP-SCL-01** | ~60 Compare dual-Missing; Advanced Client shows PPV live |
 
 ## Offline SCL (related)
 
@@ -61,6 +63,8 @@ Use URCB path `LLN0.RP.urcb_PdC_Mis4sec01` (not bare `urcb_PdC_Mis4sec01`).
 | Gen* / St / SGG PPV/A dual-Missing | **Fixed** — removed from `MMXU2` LNType + regen cfg |
 | URCB OptFlds `entryID` | **Fixed** — CID `entryID=false`; cfg options **191** |
 | `PdCMMXU1` PPV/A dual MissingFromDiscover+MissingFromFile | **Still waive** — TSP SDO vs DO typing; browse shows PPV present |
-| File CID | Must be repo rev **6** (`configRev` **20261002**) — not local rev-7 edits |
+| File CID | Repo History **rev 9** · `configRev` **20261009** |
+| After Compare (`TSP_P3_COMPARE_AFTER_2026-10-09.xlsx`) | **69** errors (was 489) — Gen* cleared; **rev 9** clears 9 Value rows after cfg deploy |
+| PdC `PPV`/`A` dual Missing (~60) | **Waive** TSP SDO vs DO — `TSP-SCL-01` |
 
 See `TSP_P3_COMPARE_FIX_2026-10-09.md`.

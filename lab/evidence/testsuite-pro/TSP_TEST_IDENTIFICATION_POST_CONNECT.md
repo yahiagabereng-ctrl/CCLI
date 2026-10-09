@@ -1,12 +1,13 @@
 # Test Suite Pro — test identification (post-Connect)
 
 **Document ID:** CCLI-LAB-TSP-TEST-ID-001  
-**Revision:** 1.0  
-**Date:** 2026-10-08  
+**Revision:** 1.1  
+**Date:** 2026-10-09  
+**Specimen:** CID History **rev 9** — [../../conformance/LAB_SPECIMEN_VERSION.md](../../conformance/LAB_SPECIMEN_VERSION.md)
 **Status:** Connect **PASS** on `:3782` TLS (update header below on first green run)  
 **RAG source_id:** `ccli-tsp-test-identification`  
 **DUT:** TG544 · IED **`CCI016_01`** · **`192.168.10.1:3782`** · yaml `lab_tr400_phase1_regulation.yaml` (or phase4 combined if 104 also up)  
-**CID:** `apps/ccli/config/icd/lab_tg544_eth_a.cid`  
+**CID:** `apps/ccli/config/icd/lab_tg544_eth_a.cid` (History **rev 9**, `configRev` **20261009**)  
 **PICS scope (first pass):** [`../../conformance/2026-10-08_UCA_Document_Phase_Checklist.md`](../../conformance/2026-10-08_UCA_Document_Phase_Checklist.md) §3 — server, 8-1 MMS, URCB, control, association; **exclude** BRCB/GOOSE/SV/files/SG unless you expand PICS  
 
 **Companion procedures:**  

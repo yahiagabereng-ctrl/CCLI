@@ -58,7 +58,11 @@ dut_ip: 192.168.10.1
 dut_port: 3782
 tls: true|false
 cid: apps/ccli/config/icd/lab_tg544_eth_a.cid
+cid_history_rev: 6
+configRev: 20261002
+model_cfg_sha256: <see LAB_SPECIMEN_VERSION.md>
 ccli_pkg: 0.1.0-rNN
+git: <short commit when pinned>
 gate: OFF|P3_xx
 tool: SCLVERIFY|…
 operator: <name>

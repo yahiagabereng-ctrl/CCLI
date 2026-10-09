@@ -29,6 +29,13 @@ if (-not (Test-Path $Cid)) { throw "CID not found: $Cid" }
 & java -jar $jar $Cid -ied $Ied -ap $Ap $Out
 if ($LASTEXITCODE -ne 0) { throw "genconfig failed exit=$LASTEXITCODE" }
 
+# genconfig sets RCB options=191/255 with BUFFER_OVERFLOW on URCB; TSP Compare expects
+# CID OptFields (URCB 159 = confRev, no entryID/bufOvfl; BRCB 191 = bufOvfl+confRev, no entryID).
+$cfgText = Get-Content -Path $Out -Raw
+$cfgText = $cfgText -replace '(urcb_[^\r\n]+?\s+\d+\s+\d+\s+)191(\s)', '${1}159${2}'
+$cfgText = $cfgText -replace '(brcb_[^\r\n]+?\s+\d+\s+\d+\s+)255(\s)', '${1}191${2}'
+Set-Content -Path $Out -Value $cfgText -NoNewline
+
 $lnCount = (Select-String -Path $Out -Pattern '^\s*LN\(' -AllMatches).Count
 Write-Host "Generated $Out ($lnCount logical nodes)"
 Write-Host "Deploy to DUT: /etc/ccli/icd/lab_tg544_eth_a.cfg"

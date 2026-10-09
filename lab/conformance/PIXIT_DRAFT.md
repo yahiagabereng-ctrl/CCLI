@@ -1,12 +1,13 @@
 # PIXIT draft — server extra test information
 
 **Document ID:** CCLI-LAB-PIXIT-001  
-**Revision:** 1.0  
-**Date:** 2026-10-08  
+**Revision:** 1.1  
+**Date:** 2026-10-09  
+**Specimen:** CID History **rev 9** · `configRev` **20261009** — [LAB_SPECIMEN_VERSION.md](LAB_SPECIMEN_VERSION.md)
 **RAG source_id:** `ccli-lab-pixit-draft`  
 **Normative:** IEC 61850-10 Annex E style · copy into lab **TemplatePixit** Word when added to `lab/`  
 **YAML source:** `apps/ccli/config/lab_tr400_phase1_regulation.yaml`  
-**CID:** `apps/ccli/config/icd/lab_tg544_eth_a.cid`
+**CID:** `apps/ccli/config/icd/lab_tg544_eth_a.cid` (History rev **7**)
 
 Until the lab Word template is in git, this file **is** the HiTEKS PIXIT working copy.
 
@@ -49,7 +50,7 @@ Until the lab Word template is in git, this file **is** the HiTEKS PIXIT working
 | IntgPd min / max (declared) | **1000–60000 ms** |
 | TrgOps claimed | **period** (integrity) + **GI** |
 | dchg / qchg / dupd | **Not enabled** on PdC URCB — do not test as claimed |
-| OptFields | seqNum, timeStamp, dataSet, reasonCode, dataRef, configRef (**entryID=false** on URCB; 8-1 / TSP Compare) |
+| OptFields | URCB: seqNum…configRef, **entryID=false** (cfg `options=159`); BRCB: +bufOvfl, **entryID=false** (cfg `options=191`) |
 | Buffered reporting | **Not claimed** |
 | Online dataset edit / ConfRev | **Static only** (`modify="false"`) |
 | Segmentation | Small PdC dataset; no forced multi-segment claim |
