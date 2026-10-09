@@ -7,6 +7,7 @@
 <Hitem version="1" revision="3" when="2026-09-26" what="Fix CtlModelKind/OriginatorCategoryKind spaced enum strings; add LPL configRev; fix ctlModel Val" who="CCLI" why="TSP SCL Verify Report.xlsx — enum corruption cascade" />
 <Hitem version="1" revision="4" when="2026-10-02" what="LN/DO audit align: DPCC ratings on all inst; DECP1 VMax/VMin; DGEN GnOpSt/OpTmsRs; MMXU2 TotVAr/PPV/A; DVVR VVArCrv" who="CCLI" why="LN,DO.xlsx mandatory DO audit vs lab CID" />
 <Hitem version="1" revision="5" when="2026-10-02" what="Add GSEControl gcb_PdC_Mis4sec + gcb_Stato_Allarmi with GSE comms (IED Explorer GOOSE sender)" who="CCLI" why="P5-G02 integrated IedServer GOOSE publish" />
+<Hitem version="1" revision="6" when="2026-10-09" what="MMXU2 drop PPV/A (Gen* TotW-only); URCB OptFields entryID=false for TSP Compare" who="CCLI" why="TSP Compare 489 dual MissingFromDiscover/File on DEL/WYE; keep PPV/A on PdC MMXU1 only" />
 </History>
 </Header>
 <Communication>
@@ -123,17 +124,17 @@
 </ReportControl>
 <ReportControl name="urcb_PdC_Mis4sec" confRev="1" datSet="DS_R_PdC_Mis4sec" rptID="CCI016_01LD_Plant/LLN0.urcb_PdC_Mis4sec" intgPd="4000" bufTime="0" desc="Misure al PdC a 4sec del CCI">
 <TrgOps period="true" gi="true" />
-<OptFields seqNum="true" timeStamp="true" dataSet="true" reasonCode="true" dataRef="true" entryID="true" configRef="true" />
+<OptFields seqNum="true" timeStamp="true" dataSet="true" reasonCode="true" dataRef="true" entryID="false" configRef="true" />
 <RptEnabled max="2" desc="Client DSO" />
 </ReportControl>
 <ReportControl name="urcb_GenAcc_Mis4sec" confRev="1" datSet="DS_R_GenAcc_Mis4sec" rptID="CCI016_01LD_Plant/LLN0.urcb_GenAcc_Mis4sec" intgPd="4000" bufTime="0" desc="Misure a 4sec per Tipo Generazione e Accumulo del CCI">
 <TrgOps period="true" gi="true" />
-<OptFields seqNum="true" timeStamp="true" dataSet="true" reasonCode="true" dataRef="true" entryID="true" configRef="true" />
+<OptFields seqNum="true" timeStamp="true" dataSet="true" reasonCode="true" dataRef="true" entryID="false" configRef="true" />
 <RptEnabled max="2" desc="Client DSO" />
 </ReportControl>
 <ReportControl name="urcb_SingGen_Mis4sec" confRev="1" datSet="DS_R_SingGen_Mis4sec" rptID="CCI016_01LD_Plant/LLN0.urcb_SingGen_Mis4sec" intgPd="4000" bufTime="0" desc="Misure a 4sec per Singolo Generatore del CCI">
 <TrgOps period="true" gi="true" />
-<OptFields seqNum="true" timeStamp="true" dataSet="true" reasonCode="true" dataRef="true" entryID="true" configRef="true" />
+<OptFields seqNum="true" timeStamp="true" dataSet="true" reasonCode="true" dataRef="true" entryID="false" configRef="true" />
 <RptEnabled max="2" desc="Client DSO" />
 </ReportControl>
 <GSEControl name="gcb_PdC_Mis4sec" datSet="DS_R_PdC_Mis4sec" appID="PdCMis4" confRev="1" type="GOOSE" desc="PdC 4s measurements GOOSE" />
@@ -814,8 +815,6 @@
 <DO name="Beh" type="ENS_2_Beh" />
 <DO name="TotW" type="MV_2_CtbWPct" />
 <DO name="TotVAr" type="MV_2_CtbWPct" />
-<DO name="PPV" type="DEL_1_PPV" />
-<DO name="A" type="WYE_1_A" />
 </LNodeType>
 <LNodeType id="XCBR1" lnClass="XCBR">
 <DO name="Beh" type="ENS_2_Beh" />

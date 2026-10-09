@@ -53,3 +53,14 @@ SCL Verify: **75** total, **5** errors — lab **PASS** with waivers per
 ## Operator note
 
 Use URCB path `LLN0.RP.urcb_PdC_Mis4sec01` (not bare `urcb_PdC_Mis4sec01`).
+
+## 2026-10-09 update (rev 6 CID)
+
+| Item | Action |
+|------|--------|
+| Gen* / St / SGG PPV/A dual-Missing | **Fixed** — removed from `MMXU2` LNType + regen cfg |
+| URCB OptFlds `entryID` | **Fixed** — CID `entryID=false`; cfg options **191** |
+| `PdCMMXU1` PPV/A dual MissingFromDiscover+MissingFromFile | **Still waive** — TSP SDO vs DO typing; browse shows PPV present |
+| File CID | Must be repo rev **6** (`configRev` **20261002**) — not local rev-7 edits |
+
+See `TSP_P3_COMPARE_FIX_2026-10-09.md`.

@@ -49,7 +49,7 @@ Until the lab Word template is in git, this file **is** the HiTEKS PIXIT working
 | IntgPd min / max (declared) | **1000–60000 ms** |
 | TrgOps claimed | **period** (integrity) + **GI** |
 | dchg / qchg / dupd | **Not enabled** on PdC URCB — do not test as claimed |
-| OptFields | seqNum, timeStamp, dataSet, reasonCode, dataRef, entryID, configRef |
+| OptFields | seqNum, timeStamp, dataSet, reasonCode, dataRef, configRef (**entryID=false** on URCB; 8-1 / TSP Compare) |
 | Buffered reporting | **Not claimed** |
 | Online dataset edit / ConfRev | **Static only** (`modify="false"`) |
 | Segmentation | Small PdC dataset; no forced multi-segment claim |

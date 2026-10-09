@@ -49,8 +49,8 @@ SCL
 
 | DataSet | Bound ReportControl | First-pass PICS |
 |---------|---------------------|-----------------|
-| `DS_R_PdC_Mis4sec` | `urcb_PdC_Mis4sec` (IntgPd=4000) | **M** — TotW/TotVAr/PPV (+ A in CID) |
-| `DS_R_GenAcc_Mis4sec` | `urcb_GenAcc_Mis4sec` | Optional / secondary |
+| `DS_R_PdC_Mis4sec` | `urcb_PdC_Mis4sec` (IntgPd=4000) | **M** — TotW/TotVAr/PPV (+ A on **PdC MMXU1** only) |
+| `DS_R_GenAcc_Mis4sec` | `urcb_GenAcc_Mis4sec` | Optional / secondary — Gen* LNType **MMXU2** = TotW/TotVAr (no PPV/A) |
 | `DS_R_SingGen_Mis4sec` | `urcb_SingGen_Mis4sec` | Optional / secondary |
 | `DS_R_Stato_Allarmi_Segnali` | `brcb_Stato_Allarmi_Segnali` | **N/A** first quote (BRCB) |
 
