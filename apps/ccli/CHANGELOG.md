@@ -7,6 +7,14 @@ Format: **`semver-rN`** — bump **N** in `VERSION` line 2 and `package/ccli/Mak
 
 ---
 
+## 0.1.0-r52 — EMT432 float word-swap (2026-10-09)
+
+### Fixed
+
+- **Modbus TCP** float decode: **`modbus.float_word_swap`** for Chronos EMT432 (low register word first). Lab yaml **`lab_tr400_phase4_emt432_lan3_tcp.yaml`**.
+
+---
+
 ## 0.1.0-r49 — P7-O14-LOGGER (2026-10-09)
 
 ### Fixed

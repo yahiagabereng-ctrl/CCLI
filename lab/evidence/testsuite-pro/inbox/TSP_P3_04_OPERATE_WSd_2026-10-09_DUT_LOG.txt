@@ -1,0 +1,222 @@
+﻿# DUT SSH POST (retro T1-08)
+2026-10-09T16:50:20.8391554+02:00
+
+=== DUT evidence POST test_id=T1-08 ===
+2026-10-09T22:50:18+08:00
+ccli 0.1.0-r52 (P3-07-AARE-SIGN-RAW-GT)
+  semver:   0.1.0
+  release:  r52
+  git:      unknown
+  built:    2026-06-29T12:59:20Z UTC
+  platform: tg500
+=== process / listen ===
+18852 /usr/sbin/ccli
+tcp        0      0 192.168.10.1:3782       0.0.0.0:*               LISTEN      3055/ubus
+=== dido_v2 (actuation) ===
+{
+	"running": true,
+	"northbound_count": 0,
+	"channels": [
+		{
+			"channel": 1,
+			"name": "DIO-1",
+			"enabled": true,
+			"mode": "DO",
+			"report_key": "relay_1",
+			"state": 0,
+			"memory_state": false
+		},
+		{
+			"channel": 2,
+			"name": "DIO-2",
+			"enabled": true,
+			"mode": "DI",
+			"report_key": "relay_2",
+			"state": 0,
+			"irq_active": false,
+			"poll_enabled": true,
+			"poll_interval": 5,
+			"change_report": true,
+			"last_poll": 0
+		},
+		{
+			"channel": 3,
+			"name": "DIO-3",
+			"enabled": true,
+			"mode": "DO",
+			"report_key": "relay_3",
+			"state": 0,
+			"memory_state": false
+		},
+		{
+			"channel": 4,
+			"name": "DIO-4",
+			"enabled": true,
+			"mode": "DO",
+			"report_key": "relay_4",
+			"state": 0,
+			"memory_state": false
+		}
+	],
+	"ai": [
+		{
+			"channel": 1,
+			"raw": 0,
+			"ma": 0.000000,
+			"valid": true,
+			"age_ms": 100
+		},
+		{
+			"channel": 2,
+			"raw": 0,
+			"ma": 0.000000,
+			"valid": true,
+			"age_ms": 100
+		}
+	],
+	"northbound_channels": [
+		
+	]
+}
+=== logread ccli (filter: WSd|WSpt|ctl|Operate|control|RBAC|dido|curtail|permissive) ===
+Fri Oct  9 22:43:35 2026 daemon.err ccli[18852]: modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=-9.73832e-07kW Q=2.57944e-05kvar raw=0x48c5 0xba7f 0x4812 0x3518 0x13b6 0xb4a0 0x36b5 0xba7f 0x4eb7 0x3cd3 P=-9.73832e-07kW pf2=ok curtail=no DO=OFF
+Fri Oct  9 22:43:39 2026 daemon.err ccli[18852]: io: curtail_do=OFF permissive=BLOCKED
+Fri Oct  9 22:43:39 2026 daemon.err ccli[18852]: modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=-2.98428e-07kW Q=-2.56046e-05kvar raw=0x7660 0xb99c 0xbcf7 0x347c 0xe2ed 0xb4f5 0x9441 0xb99c 0xc0b2 0xbcd1 P=-2.98428e-07kW pf2=ok curtail=no DO=OFF
+Fri Oct  9 22:43:50 2026 daemon.err ccli[18852]: modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+Fri Oct  9 22:43:54 2026 daemon.err ccli[18852]: modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=-7.53768e-07kW Q=-2.57992e-05kvar raw=0x9888 0xba45 0x991c 0x3518 0x424b 0xb4fb 0x91ca 0xba45 0x58e7 0xbcd3 P=-7.53768e-07kW pf2=ok curtail=no DO=OFF
+Fri Oct  9 22:44:07 2026 daemon.err ccli[18852]: modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=2.9619e-07kW Q=2.57692e-05kvar raw=0x49e3 0x399b 0xd318 0x3520 0xed29 0xb4ab 0x6f52 0x399b 0x1a08 0x3cd3 P=2.9619e-07kW pf2=ok curtail=no DO=OFF
+Fri Oct  9 22:44:08 2026 daemon.err ccli[18852]: modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=4.89839e-07kW Q=2.59794e-05kvar raw=0x6888 0x3a00 0xa697 0x3518 0xc0b6 0xb48b 0x7d3a 0x3a00 0xd2aa 0x3cd4 P=4.89839e-07kW pf2=ok curtail=no DO=OFF
+Fri Oct  9 22:44:12 2026 daemon.err ccli[18852]: modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=3.24329e-07kW Q=2.59329e-05kvar raw=0x0aba 0x39aa 0xabcd 0xb449 0x02c2 0xb4fa 0xb304 0x39a9 0x712f 0x3cd4 P=3.24329e-07kW pf2=ok curtail=no DO=OFF
+Fri Oct  9 22:44:22 2026 daemon.err ccli[18852]: modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+Fri Oct  9 22:44:25 2026 daemon.err ccli[18852]: io: curtail_do=OFF permissive=BLOCKED
+Fri Oct  9 22:44:26 2026 daemon.err ccli[18852]: modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=3.95028e-07kW Q=2.57153e-05kvar raw=0x1bc7 0x39cf 0x9575 0x3586 0x75d7 0xb4de 0x6abf 0x39cf 0xa8d4 0x3cd2 P=3.95028e-07kW pf2=ok curtail=no DO=OFF
+Fri Oct  9 22:44:30 2026 daemon.err ccli[18852]: mms: WSdDAGC1.WSptPct ctlVal=10.00 [O.9.2.3 Figura2 s.p.W]
+Fri Oct  9 22:44:38 2026 daemon.err ccli[18852]: mmsΓåÆpf2: Wlim=on@120% WSd=off@10% p_wlim=252 p_wsd=0 p_eff=210 kW ΓåÆ enter=210 release=205 kW
+Fri Oct  9 22:44:38 2026 daemon.err ccli[18852]: modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+Fri Oct  9 22:44:43 2026 daemon.err ccli[18852]: modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=3.06611e-07kW Q=-2.57617e-05kvar raw=0xc09a 0x39a0 0xdadb 0x3406 0xe86f 0xb467 0xb478 0x39a0 0x0a47 0xbcd3 P=3.06611e-07kW pf2=ok curtail=no DO=OFF
+Fri Oct  9 22:44:51 2026 daemon.err ccli[18852]: modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=1.17375e-06kW Q=-2.61449e-05kvar raw=0xd892 0x3a99 0x02ae 0x3565 0x616c 0xb50a 0xe3e6 0x3a99 0x2dbd 0xbcd6 P=1.17375e-06kW pf2=ok curtail=no DO=OFF
+Fri Oct  9 22:44:55 2026 daemon.err ccli[18852]: modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=-1.46353e-06kW Q=2.55079e-05kvar raw=0xd40d 0xbabf 0x02f7 0x34cc 0xfecf 0xb4ec 0xd61d 0xbabf 0xf5fd 0x3cd0 P=-1.46353e-06kW pf2=ok curtail=no DO=OFF
+Fri Oct  9 22:45:07 2026 daemon.err ccli[18852]: modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=2.34714e-07kW Q=2.53252e-05kvar raw=0x1da9 0x3976 0xa57b 0x34cb 0x2063 0xb500 0x035c 0x3976 0x76ca 0x3ccf P=2.34714e-07kW pf2=ok curtail=no DO=OFF
+Fri Oct  9 22:45:08 2026 daemon.err ccli[18852]: modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=-9.76549e-08kW Q=2.57439e-05kvar raw=0xcc12 0xb8cc 0xb0f1 0x3548 0x0ab9 0xb4a1 0xdbbb 0xb8cb 0xe4f0 0x3cd2 P=-9.76549e-08kW pf2=ok curtail=no DO=OFF
+Fri Oct  9 22:45:10 2026 daemon.err ccli[18852]: io: curtail_do=OFF permissive=BLOCKED
+Fri Oct  9 22:45:12 2026 daemon.err ccli[18852]: modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=5.34204e-07kW Q=-2.57867e-05kvar raw=0x09d8 0x3a0c 0x65e7 0x3510 0x74d4 0xb4b0 0x17e2 0x3a0c 0x3e99 0xbcd3 P=5.34204e-07kW pf2=ok curtail=no DO=OFF
+Fri Oct  9 22:45:22 2026 daemon.err ccli[18852]: modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+Fri Oct  9 22:45:26 2026 daemon.err ccli[18852]: modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=-2.06213e-07kW Q=-2.58473e-05kvar raw=0x3ae3 0xb958 0xa0d7 0x349a 0x6ef8 0xb51e 0x8c02 0xb958 0xbd9f 0xbcd3 P=-2.06213e-07kW pf2=ok curtail=no DO=OFF
+Fri Oct  9 22:45:36 2026 daemon.err ccli[18852]: modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+Fri Oct  9 22:45:39 2026 daemon.err ccli[18852]: mms: WSdDAGC1.WSptPct ctlVal=10.00 [O.9.2.3 Figura2 s.p.W]
+Fri Oct  9 22:45:40 2026 daemon.err ccli[18852]: mmsΓåÆpf2: Wlim=on@120% WSd=off@10% p_wlim=252 p_wsd=0 p_eff=210 kW ΓåÆ enter=210 release=205 kW
+Fri Oct  9 22:45:41 2026 daemon.err ccli[18852]: modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=6.35699e-07kW Q=2.58347e-05kvar raw=0xa50f 0x3a26 0xc038 0x3520 0xf8c2 0xb3be 0xc747 0x3a26 0xa335 0x3cd3 P=6.35699e-07kW pf2=ok curtail=no DO=OFF
+Fri Oct  9 22:45:45 2026 daemon.err ccli[18852]: io: curtail_do=OFF permissive=BLOCKED
+Fri Oct  9 22:45:52 2026 daemon.err ccli[18852]: modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=1.73072e-07kW Q=-2.57691e-05kvar raw=0x7aba 0x3935 0xafb6 0x3577 0x42e0 0xb494 0x2849 0x3936 0x19a5 0xbcd3 P=1.73072e-07kW pf2=ok curtail=no DO=OFF
+Fri Oct  9 22:45:53 2026 daemon.err ccli[18852]: modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=-1.18671e-07kW Q=2.61962e-05kvar raw=0xdf46 0xb8f8 0x3a95 0x3504 0x2973 0xb524 0x1f24 0xb8f9 0x996c 0x3cd6 P=-1.18671e-07kW pf2=ok curtail=no DO=OFF
+Fri Oct  9 22:45:57 2026 daemon.err ccli[18852]: modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=4.7488e-07kW Q=-2.56601e-05kvar raw=0xf947 0x39f8 0x530c 0x3510 0xf021 0xb50c 0xfaf9 0x39f8 0x3539 0xbcd2 P=4.7488e-07kW pf2=ok curtail=no DO=OFF
+Fri Oct  9 22:46:12 2026 daemon.err ccli[18852]: modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+Fri Oct  9 22:46:25 2026 daemon.err ccli[18852]: modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=1.02353e-06kW Q=2.5742e-05kvar raw=0x27de 0x3a86 0xc14c 0x34f5 0x2d35 0xb488 0x2eb7 0x3a86 0xe0cc 0x3cd2 P=1.02353e-06kW pf2=ok curtail=no DO=OFF
+Fri Oct  9 22:46:26 2026 daemon.err ccli[18852]: mms: WSdDAGC1.WSptPct ctlVal=10.00 [O.9.2.3 Figura2 s.p.W]
+Fri Oct  9 22:46:27 2026 daemon.err ccli[18852]: mmsΓåÆpf2: Wlim=on@120% WSd=off@10% p_wlim=252 p_wsd=0 p_eff=210 kW ΓåÆ enter=210 release=205 kW
+Fri Oct  9 22:46:27 2026 daemon.err ccli[18852]: mms: WSdDAGC1.WSptPct REJECT ΓÇö set-point spacing < 3000 ms (wait 2249 ms) [O.7.3.3 R07]
+Fri Oct  9 22:46:27 2026 daemon.err ccli[18852]: mms: WSdDAGC1.WSptPct REJECT ΓÇö set-point spacing < 3000 ms (wait 2097 ms) [O.7.3.3 R07]
+Fri Oct  9 22:46:28 2026 daemon.err ccli[18852]: mms: WSdDAGC1.WSptPct REJECT ΓÇö set-point spacing < 3000 ms (wait 1945 ms) [O.7.3.3 R07]
+Fri Oct  9 22:46:28 2026 daemon.err ccli[18852]: mms: WSdDAGC1.WSptPct REJECT ΓÇö set-point spacing < 3000 ms (wait 1800 ms) [O.7.3.3 R07]
+Fri Oct  9 22:46:28 2026 daemon.err ccli[18852]: mms: WSdDAGC1.WSptPct REJECT ΓÇö set-point spacing < 3000 ms (wait 1648 ms) [O.7.3.3 R07]
+Fri Oct  9 22:46:30 2026 daemon.err ccli[18852]: modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=1.03571e-06kW Q=2.61789e-05kvar raw=0xc07f 0x3a87 0x5ec6 0x350a 0xa2d6 0xb482 0xc9a1 0x3a87 0x7535 0x3cd6 P=1.03571e-06kW pf2=ok curtail=no DO=OFF
+Fri Oct  9 22:46:40 2026 daemon.err ccli[18852]: modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+Fri Oct  9 22:46:42 2026 daemon.err ccli[18852]: io: curtail_do=OFF permissive=BLOCKED
+Fri Oct  9 22:46:45 2026 daemon.err ccli[18852]: modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=1.94516e-07kW Q=2.57665e-05kvar raw=0xf715 0x394b 0xde99 0x354e 0x9657 0xb4d6 0x5aa9 0x394c 0x1442 0x3cd3 P=1.94516e-07kW pf2=ok curtail=no DO=OFF
+Fri Oct  9 22:46:54 2026 daemon.err ccli[18852]: modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=-6.08268e-07kW Q=2.60205e-05kvar raw=0x742e 0xba1f 0x936e 0x3544 0x95e3 0xb4c3 0x5b7c 0xba1f 0x28eb 0x3cd5 P=-6.08268e-07kW pf2=ok curtail=no DO=OFF
+Fri Oct  9 22:46:58 2026 daemon.err ccli[18852]: modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=5.97231e-07kW Q=-2.60167e-05kvar raw=0x8f7d 0x3a1c 0x59bd 0x34c2 0xdccd 0xb4d6 0x8cec 0x3a1c 0x20e6 0xbcd5 P=5.97231e-07kW pf2=ok curtail=no DO=OFF
+Fri Oct  9 22:47:10 2026 daemon.err ccli[18852]: modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+Fri Oct  9 22:47:14 2026 daemon.err ccli[18852]: modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=6.48905e-07kW Q=2.64282e-05kvar raw=0x1b4a 0x3a2a 0x3d76 0x3282 0xe4ce 0xb4b4 0x05b1 0x3a2a 0x7fec 0x3cd8 P=6.48905e-07kW pf2=ok curtail=no DO=OFF
+Fri Oct  9 22:47:23 2026 daemon.err ccli[18852]: modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=3.70933e-08kW Q=2.5928e-05kvar raw=0x949e 0x381b 0x8548 0x34ba 0x7dc4 0xb494 0xe0ad 0x381b 0x66dd 0x3cd4 P=3.70933e-08kW pf2=ok curtail=no DO=OFF
+Fri Oct  9 22:47:25 2026 daemon.err ccli[18852]: io: curtail_do=OFF permissive=BLOCKED
+Fri Oct  9 22:47:28 2026 daemon.err ccli[18852]: modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=3.01831e-08kW Q=-2.57607e-05kvar raw=0x31ac 0x37fd 0x6ff0 0x34d1 0x6ca3 0xb3ca 0xacff 0x37ff 0x0810 0xbcd3 P=3.01831e-08kW pf2=ok curtail=no DO=OFF
+Fri Oct  9 22:47:38 2026 daemon.err ccli[18852]: modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+Fri Oct  9 22:47:43 2026 daemon.err ccli[18852]: modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=8.1514e-07kW Q=-2.63325e-05kvar raw=0xaf16 0x3a55 0xf16c 0x3526 0x0366 0xb4e5 0xbc32 0x3a55 0xb753 0xbcd7 P=8.1514e-07kW pf2=ok curtail=no DO=OFF
+Fri Oct  9 22:47:53 2026 daemon.err ccli[18852]: modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=-2.87895e-07kW Q=-2.54073e-05kvar raw=0xf091 0xb996 0xa24a 0x3545 0x1206 0xb49c 0xb4c5 0xb996 0x22e8 0xbcd0 P=-2.87895e-07kW pf2=ok curtail=no DO=OFF
+Fri Oct  9 22:47:54 2026 daemon.err ccli[18852]: modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=2.73709e-07kW Q=-2.61314e-05kvar raw=0x80a9 0x398f 0x06f7 0x341b 0x56f2 0xb4d4 0x5ef4 0x398f 0x116a 0xbcd6 P=2.73709e-07kW pf2=ok curtail=no DO=OFF
+Fri Oct  9 22:47:58 2026 daemon.err ccli[18852]: modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=-1.88219e-07kW Q=2.60114e-05kvar raw=0x5cb7 0xb945 0xf55e 0x351b 0xc8e0 0xb4a5 0x13a6 0xb945 0x15e5 0x3cd5 P=-1.88219e-07kW pf2=ok curtail=no DO=OFF
+Fri Oct  9 22:47:59 2026 daemon.err ccli[18852]: io: curtail_do=OFF permissive=BLOCKED
+Fri Oct  9 22:48:02 2026 daemon.err ccli[18852]: modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=6.63881e-07kW Q=-2.63758e-05kvar raw=0x0847 0x3a2e 0x2983 0x34e9 0x2480 0x3294 0x2694 0x3a2e 0x121d 0xbcd8 P=6.63881e-07kW pf2=ok curtail=no DO=OFF
+Fri Oct  9 22:48:12 2026 daemon.err ccli[18852]: modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=1.84304e-07kW Q=2.58822e-05kvar raw=0x41be 0x3941 0x3a4e 0x352b 0x0f1d 0xb45c 0xb5f4 0x3941 0x06dc 0x3cd4 P=1.84304e-07kW pf2=ok curtail=no DO=OFF
+Fri Oct  9 22:48:16 2026 daemon.err ccli[18852]: modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=-1.67103e-07kW Q=-2.61622e-05kvar raw=0x3859 0xb92f 0x29cb 0xb247 0x1f61 0xb498 0x8786 0xb92f 0x5211 0xbcd6 P=-1.67103e-07kW pf2=ok curtail=no DO=OFF
+Fri Oct  9 22:48:26 2026 daemon.err ccli[18852]: modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+Fri Oct  9 22:48:30 2026 daemon.err ccli[18852]: modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=5.42165e-07kW Q=2.58272e-05kvar raw=0x200e 0x3a0e 0x7b9b 0x3512 0xba4a 0xb4c4 0x2c16 0x3a0e 0x9377 0x3cd3 P=5.42165e-07kW pf2=ok curtail=no DO=OFF
+Fri Oct  9 22:48:44 2026 daemon.err ccli[18852]: modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+Fri Oct  9 22:48:48 2026 daemon.err ccli[18852]: io: curtail_do=OFF permissive=BLOCKED
+Fri Oct  9 22:48:57 2026 daemon.err ccli[18852]: modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=7.06597e-07kW Q=2.57647e-05kvar raw=0x3ae7 0x3a39 0x2ca9 0x3505 0x8eaf 0xb50c 0x390e 0x3a39 0x107c 0x3cd3 P=7.06597e-07kW pf2=ok curtail=no DO=OFF
+Fri Oct  9 22:48:57 2026 daemon.err ccli[18852]: modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=9.69901e-08kW Q=-2.60623e-05kvar raw=0x672e 0x38cb 0x0a77 0x3570 0xba03 0xb500 0x45cf 0x38cc 0x80a4 0xbcd5 P=9.69901e-08kW pf2=ok curtail=no DO=OFF
+Fri Oct  9 22:49:01 2026 daemon.err ccli[18852]: modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=-6.69102e-08kW Q=-2.61433e-05kvar raw=0x5223 0xb88c 0x94aa 0x3562 0xca32 0xb479 0x09df 0xb88b 0x2a88 0xbcd6 P=-6.69102e-08kW pf2=ok curtail=no DO=OFF
+Fri Oct  9 22:49:12 2026 daemon.err ccli[18852]: modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+Fri Oct  9 22:49:16 2026 daemon.err ccli[18852]: modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=-1.70266e-07kW Q=2.5945e-05kvar raw=0x897a 0xb932 0x7714 0x34ad 0x21ae 0xb504 0xb6e0 0xb932 0x8aa9 0x3cd4 P=-1.70266e-07kW pf2=ok curtail=no DO=OFF
+Fri Oct  9 22:49:26 2026 daemon.err ccli[18852]: modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=1.942e-07kW Q=-2.58535e-05kvar raw=0xa20a 0x394b 0x19ba 0x351c 0x172a 0xb4b0 0xe618 0x394b 0xcab3 0xbcd3 P=1.942e-07kW pf2=ok curtail=no DO=OFF
+Fri Oct  9 22:49:30 2026 daemon.err ccli[18852]: modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=1.43921e-09kW Q=-2.56379e-05kvar raw=0x2aef 0x35c1 0x6de6 0x354a 0x74e1 0xb4de 0xc4aa 0x35ee 0x06a0 0xbcd2 P=1.43921e-09kW pf2=ok curtail=no DO=OFF
+Fri Oct  9 22:49:32 2026 daemon.err ccli[18852]: io: curtail_do=OFF permissive=BLOCKED
+Fri Oct  9 22:49:41 2026 daemon.err ccli[18852]: modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=6.25311e-08kW Q=-2.55304e-05kvar raw=0x2325 0x3883 0xbf8d 0x3573 0xccce 0xb52e 0xad0a 0x3883 0x2515 0xbcd1 P=6.25311e-08kW pf2=ok curtail=no DO=OFF
+Fri Oct  9 22:49:42 2026 daemon.err ccli[18852]: modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=3.76303e-07kW Q=-2.62053e-05kvar raw=0x4a7b 0x39c5 0x3b29 0x34e3 0x78d4 0xb483 0x626c 0x39c5 0xac97 0xbcd6 P=3.76303e-07kW pf2=ok curtail=no DO=OFF
+Fri Oct  9 22:49:46 2026 daemon.err ccli[18852]: modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=1.51437e-07kW Q=-2.59013e-05kvar raw=0xcaf5 0x391e 0x031b 0x34e0 0x1f4a 0xb4a6 0xe7e7 0x391e 0x2eee 0xbcd4 P=1.51437e-07kW pf2=ok curtail=no DO=OFF
+Fri Oct  9 22:49:57 2026 daemon.err ccli[18852]: modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+Fri Oct  9 22:50:01 2026 daemon.err ccli[18852]: modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=4.121e-07kW Q=2.54364e-05kvar raw=0x0f1d 0x39d8 0x4bb5 0x33ce 0x75c2 0xb499 0xf5a5 0x39d7 0x5fef 0x3cd0 P=4.121e-07kW pf2=ok curtail=no DO=OFF
+Fri Oct  9 22:50:13 2026 daemon.err ccli[18852]: modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+Fri Oct  9 22:50:15 2026 daemon.err ccli[18852]: io: curtail_do=OFF permissive=BLOCKED
+Fri Oct  9 22:50:17 2026 daemon.err ccli[18852]: modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=8.55066e-07kW Q=2.62299e-05kvar raw=0x2681 0x3a60 0x1edb 0x3540 0x3f93 0xb502 0x35f9 0x3a60 0xe002 0x3cd6 P=8.55066e-07kW pf2=ok curtail=no DO=OFF
+=== /tmp/ccli.log tail ===
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=4.61498e-08kW Q=-2.57479e-05kvar raw=0x90ef 0x3841 0x9a95 0x34b8 0x5a4f 0xb4e7 0x336f 0x3841 0xed4f 0xbcd2 P=4.61498e-08kW pf2=ok curtail=no DO=OFF
+io: curtail_do=OFF permissive=BLOCKED
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=1.38043e-07kW Q=-2.59754e-05kvar raw=0xbfbb 0x3910 0x3c50 0x355c 0x315b 0xb53d 0xdec6 0x3910 0xca47 0xbcd4 P=1.38043e-07kW pf2=ok curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=4.65577e-08kW Q=-2.62762e-05kvar raw=0x4700 0x3843 0xdf20 0x34b3 0x05e7 0xb53f 0xb2a6 0x3841 0x411e 0xbcd7 P=4.65577e-08kW pf2=ok curtail=no DO=OFF
+iec104: P4-04 Eth_B comms-loss fallback
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=8.39597e-07kW Q=2.56876e-05kvar raw=0x1862 0x3a5c 0x6ade 0x34f3 0xb8ba 0xb506 0x1521 0x3a5c 0x6eb3 0x3cd2 P=8.39597e-07kW pf2=ok curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=-1.5862e-07kW Q=-2.56477e-05kvar raw=0x531e 0xb926 0x1b68 0x33db 0xa902 0xb439 0x6625 0xb926 0x1b30 0xbcd2 P=-1.5862e-07kW pf2=ok curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=1.28502e-06kW Q=2.5819e-05kvar raw=0x6e37 0x3aa8 0x0a95 0x3596 0x6e52 0xb4dc 0x85f3 0x3aa8 0x8271 0x3cd3 P=1.28502e-06kW pf2=ok curtail=no DO=OFF
+io: curtail_do=OFF permissive=BLOCKED
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=-3.93577e-07kW Q=-2.60698e-05kvar raw=0x5903 0xb9ce 0x532a 0x34f3 0x5e8d 0xb501 0x5cdd 0xb9ce 0x9059 0xbcd5 P=-3.93577e-07kW pf2=ok curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=4.43912e-07kW Q=2.5903e-05kvar raw=0xbcd3 0x39e8 0x17bb 0x34e4 0x223e 0xb502 0xb4c8 0x39e8 0x3282 0x3cd4 P=4.43912e-07kW pf2=ok curtail=no DO=OFF
+iec104: P4-04 Eth_B comms-loss fallback
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=-3.02837e-07kW Q=-2.59768e-05kvar raw=0xc611 0xb99e 0x9916 0x353a 0x996c 0xb4d6 0x9e6a 0xb99e 0xcd3d 0xbcd4 P=-3.02837e-07kW pf2=ok curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=-3.25562e-07kW Q=-2.6403e-05kvar raw=0xb02f 0xb9aa 0x2505 0x34bd 0x181d 0xb4bb 0xafac 0xb9aa 0x4b2e 0xbcd8 P=-3.25562e-07kW pf2=ok curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=1.02044e-06kW Q=-2.58375e-05kvar raw=0xc06c 0x3a85 0xb32d 0x34a2 0x5eef 0xb4cc 0xbdd1 0x3a85 0xa93f 0xbcd3 P=1.02044e-06kW pf2=ok curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=4.52415e-07kW Q=-2.63425e-05kvar raw=0x3218 0x39ed 0x7b78 0x34a4 0xf3d6 0xb49b 0x343a 0x39ed 0xcc2f 0xbcd7 P=4.52415e-07kW pf2=ok curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=3.1308e-07kW Q=-2.63038e-05kvar raw=0x24ed 0x39a4 0x8c1b 0x355a 0x34c6 0xb500 0x5219 0x39a4 0x7b01 0xbcd7 P=3.1308e-07kW pf2=ok curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=9.06902e-07kW Q=-2.62007e-05kvar raw=0xbd27 0x3a6d 0x005f 0x355c 0x5c78 0xb4d9 0xd8fb 0x3a6d 0xa2d7 0xbcd6 P=9.06902e-07kW pf2=ok curtail=no DO=OFF
+io: curtail_do=OFF permissive=BLOCKED
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=-3.09974e-07kW Q=2.62838e-05kvar raw=0x83ff 0xb9a2 0xb2ed 0x34d5 0x2e0c 0xb4a4 0x779e 0xb9a2 0x510c 0x3cd7 P=-3.09974e-07kW pf2=ok curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=-7.29683e-08kW Q=2.59389e-05kvar raw=0x068b 0xb899 0xf815 0x34eb 0x2834 0xb49e 0xb8bb 0xb898 0x7ddf 0x3cd4 P=-7.29683e-08kW pf2=ok curtail=no DO=OFF
+iec104: P4-04 Eth_B comms-loss fallback
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=6.58464e-07kW Q=-2.60559e-05kvar raw=0x9ccd 0x3a2c 0x20b9 0x3493 0xd59d 0xb492 0x9cd6 0x3a2c 0x7337 0xbcd5 P=6.58464e-07kW pf2=ok curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=5.83482e-07kW Q=2.63571e-05kvar raw=0xf4c8 0x3a18 0x2828 0x34ec 0x6b7d 0xb513 0xed72 0x3a18 0xeaee 0x3cd7 P=5.83482e-07kW pf2=ok curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=-3.92946e-08kW Q=-2.6101e-05kvar raw=0xd042 0xb824 0x7160 0x3520 0xa7b4 0xb4b4 0xb7cb 0xb823 0xd1cf 0xbcd5 P=-3.92946e-08kW pf2=ok curtail=no DO=OFF
+io: curtail_do=OFF permissive=BLOCKED
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=7.304e-07kW Q=2.56432e-05kvar raw=0x7856 0x3a3f 0xa370 0x3499 0x949a 0xb4fc 0x6bf7 0x3a3f 0x11bc 0x3cd2 P=7.304e-07kW pf2=ok curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=2.48604e-07kW Q=2.64479e-05kvar raw=0x571f 0x3982 0x124f 0x3599 0xc70c 0xb4cb 0xbd3f 0x3982 0xa942 0x3cd8 P=2.48604e-07kW pf2=ok curtail=no DO=OFF
+iec104: P4-04 Eth_B comms-loss fallback
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=8.4348e-07kW Q=-2.57112e-05kvar raw=0x1d00 0x3a5d 0x2bf7 0x3436 0x4ace 0xb4be 0x109a 0x3a5d 0xa03f 0xbcd2 P=8.4348e-07kW pf2=ok curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=4.23348e-07kW Q=-2.60761e-05kvar raw=0xf4c2 0x39dd 0xbdf2 0xb4b8 0x49c8 0xb443 0xae2a 0x39dd 0x9da5 0xbcd5 P=4.23348e-07kW pf2=ok curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=8.25959e-08kW Q=2.60997e-05kvar raw=0x3750 0x38ad 0x37c4 0x34ab 0x2b57 0xb4d5 0x0d5d 0x38ad 0xcf19 0x3cd5 P=8.25959e-08kW pf2=ok curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=7.23546e-08kW Q=-2.59308e-05kvar raw=0xbd10 0x3897 0xaf66 0xb403 0x9369 0xb4d5 0xa5a5 0x3896 0x6cd8 0xbcd4 P=7.23546e-08kW pf2=ok curtail=no DO=OFF
+io: curtail_do=OFF permissive=BLOCKED
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=5.71875e-08kW Q=-2.63138e-05kvar raw=0xdc95 0x386f 0x4c55 0x346c 0x7992 0xb484 0xbfee 0x386f 0x901f 0xbcd7 P=5.71875e-08kW pf2=ok curtail=no DO=OFF
+iec104: P4-04 Eth_B comms-loss fallback
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=5.76057e-07kW Q=-2.59361e-05kvar raw=0x0281 0x3a17 0x1e14 0x34a1 0x4652 0xb482 0x065c 0x3a17 0x77f6 0xbcd4 P=5.76057e-07kW pf2=ok curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=-3.4166e-07kW Q=2.59165e-05kvar raw=0x20e1 0xb9b3 0x2876 0x34dc 0xe67c 0xb441 0x0214 0xb9b3 0x4ebe 0x3cd4 P=-3.4166e-07kW pf2=ok curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=2.5873e-07kW Q=-2.57612e-05kvar raw=0xa617 0x3987 0x6f16 0x34f5 0x28ec 0xb4f5 0xa629 0x3987 0x091f 0xbcd3 P=2.5873e-07kW pf2=ok curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=1.16065e-06kW Q=-2.57278e-05kvar raw=0x20d6 0x3a98 0x2fd2 0x34ce 0x62b9 0xb518 0x1aad 0x3a98 0xc313 0xbcd2 P=1.16065e-06kW pf2=ok curtail=no DO=OFF
+io: curtail_do=OFF permissive=BLOCKED
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=1.93947e-07kW Q=-2.60185e-05kvar raw=0x5e4b 0x394b 0xf167 0x34db 0x333f 0xb508 0x4411 0x394b 0x24c5 0xbcd5 P=1.93947e-07kW pf2=ok curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=-2.43979e-08kW Q=2.57718e-05kvar raw=0xaa31 0xb7cc 0x24bc 0x356b 0x8854 0xb4ed 0x072c 0xb7c9 0x1f5e 0x3cd3 P=-2.43979e-08kW pf2=ok curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=6.71368e-07kW Q=-2.59432e-05kvar raw=0xfebc 0x3a2f 0xd608 0xb501 0x8842 0xb52c 0xb324 0x3a2f 0x86bc 0xbcd4 P=6.71368e-07kW pf2=ok curtail=no DO=OFF
+iec104: P4-04 Eth_B comms-loss fallback
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=9.30515e-07kW Q=-2.57068e-05kvar raw=0xedcf 0x3a73 0x58c1 0x34d6 0x7e9a 0xb4ec 0xeb0a 0x3a73 0x9722 0xbcd2 P=9.30515e-07kW pf2=ok curtail=no DO=OFF

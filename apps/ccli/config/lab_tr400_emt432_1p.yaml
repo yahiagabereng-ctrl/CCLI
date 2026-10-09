@@ -36,6 +36,7 @@ modbus:
   reg_reactive_power_count: 2
   power_scale: 0.001
   reactive_scale: 0.001
+  float_word_swap: true
   # Optional RS485 Q-command path (pymodbus slave on A1/B1) — not used for plant read
   device: /dev/ttyS1
   baud: 9600

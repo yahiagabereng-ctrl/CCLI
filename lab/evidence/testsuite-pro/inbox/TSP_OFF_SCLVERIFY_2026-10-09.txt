@@ -1,0 +1,93 @@
+# CCLI TSP evidence — SCL Verify (offline, Phase 2 supplement)
+gate: OFF
+tool: SCLVERIFY
+date: 2026-10-09
+cid: apps/ccli/config/icd/lab_tg544_eth_a.cid
+ied: CCI016_01
+operator: Federico
+result: PASS — Error 0 (rev 7 CID); Warnings 63 documented in TSP_SIDEBAR_TRIAGE_2026-10-09.md
+
+## Purpose
+**SCL Verify** checks the **CID/SCL file** (schema, enums, templates) — complements **online Compare Model** (TSP_P3_COMPARE_*).
+Prior baseline: offline-scl/TSP_OFF_SCLVERIFY_2026-09-26_r2_TRIAGE.md (5 Error / 75 total after ctlModel enum fix).
+
+## TSP SCL Verify run (2026-10-09)
+file_verified: lab_tg544_eth_a.cid (repo path; reload in TSP after git pull)
+
+summary_counts:
+  Error: 0
+  Warning: 63
+  Recommendation: 13
+  Information: 5
+  Total: 81
+
+screenshot: inbox/TSP_OFF_SCLVERIFY_2026-10-09.png (optional — UI grouped by Severity/Test/Message)
+
+## Error breakdown (12) — root cause and disposition
+
+### A. CompareToStandardEnumMismatch (4) — ACCEPT (lab)
+| Test | Message (summary) | Cause |
+|------|-------------------|--------|
+| Mod.stVal | value `on-blocked` not in master; ord mismatch vs `blocked` | CEI TR enum `Mod`/`Beh` uses **on-blocked** (ord 2) in DataTypeTemplates |
+| Beh.stVal | same | same |
+
+CID: EnumType Mod/Beh in lab_tg544_eth_a.cid — intentional CEI specimen naming.
+Product: runtime uses cfg enums; online **Compare** on Wlim/WSd **Match**. Non-blocking for Tier 1 / Phase 2.
+
+### B. Services (1) — DEFER
+| Message | Cause |
+|---------|--------|
+| SupSubscription service but no LGOS or LSVS | `<Services>` claims supervision; no LGOS/LSVS LNs in model |
+
+Action (optional product): remove SupSubscription from Services or add LGOS when GOOSE/SV subscription is real.
+
+### C. SchemaValidation (7) — ACCEPT (lab) / FIX (cert CID hardening)
+| # | Message (summary) | CID location | Cause |
+|---|-------------------|--------------|--------|
+| 1 | LN0 invalid child **DOI** (wrong sequence) | LLN0 after ReportControl/GSEControl | SCL schema requires **DOI before** DataSet/ReportControl; CEI export put Mod/Beh/Health/NamPlt **after** RCB/GSE |
+| 2–7 | **DAI** invalid child **SDI** | PdCMMXU1 **PPV** (phsAB/BC/CA) and **A** (phsA/B/C) | Nested `<DAI name="cVal"><SDI name="mag">` — SDI must be under DOI/SDI, not under DAI |
+
+Example (invalid — TSP flags):
+  DOI PPV → SDI phsAB → DAI cVal → SDI mag → DAI f
+
+libiec61850 / ccli **loads and serves** this CID today; TSP XSD is stricter than runtime parser.
+Cert freeze: reorder LLN0 DOI block; rewrite PPV/A cVal tree to schema-valid SDI nesting.
+
+## Delta vs 2026-09-26 r2 (5 Error / 75 total)
+| Item | r2 | 2026-10-09 | Note |
+|------|----|------------|------|
+| ctlModel spacing cascade | cleared | cleared | rev 3 enum fix holds |
+| Mod/Beh on-blocked | 4 E | 4 E | unchanged |
+| SupSubscription | 1 E | 1 E | unchanged |
+| SchemaValidation (LN0 order + PPV/A) | not in r2 export? | **7 E** | TSP 4.7.4 / CID edits (NamPlt configRev 20261002, GSE on LLN0) may enable stricter schema pass |
+| Warnings | 52 | 63 | +11 — review if new export needed |
+| Total | 75 | 93 | still **lab PASS** with waivers |
+
+## Lab verdict
+| Gate | Status |
+|------|--------|
+| Blocking ctlModel enum corruption | **PASS** (cleared) |
+| Residual 12 Errors | **KNOWN** — CEI enums (4) + Services (1) + CEI XML shape (7) |
+| Live TLS + Compare + T1 controls | **PASS** (separate evidence) |
+
+## Cross-reference
+- Compare (online): TSP_P3_COMPARE_2026-10-09.txt
+- Phase 2: TSP_P5_FULLCIRCLE_TLS_2026-10-09.txt step 4b
+- Waivers: TSP_P5_COMPARE_WAIVERS.md · offline-scl/TSP_OFF_SCLVERIFY_2026-09-26_r2_TRIAGE.md
+
+## Related CSV / export files (NOT SCL Verify — do not mix)
+| File | Tool | What it is |
+|------|------|------------|
+| apps/ccli/config/icd/Report4.csv | **IEDExplorer** Reports View | URCB `urcb_PdC_Mis4sec` integrity samples: TotW=450, TotVAr=45, Q019, ~4 s Δt |
+| lab/evidence/testsuite-pro/inbox/IEDEX_P5_URCB_REPORT4_2026-10-02.csv | copy of Report4 | T1-05/06 / P5-D URCB evidence |
+| apps/ccli/config/icd/Logs111.csv | **TSP** trace | Security log snippet (OpenSSL RSA padding) — TLS/session debug, not SCL |
+| lab/evidence/phase5/CCLI_LAB_P5_points_import.csv | **TesPro MQTT** import | Northbound point list for gateway UI — not TSP |
+| apps/ccli/config/icd/Reort.xls / Report.xlsx (if present) | **TSP SCL Verify** | Excel export of offline verify — copy to offline-scl/TSP_OFF_SCLVERIFY_2026-10-09.xlsx when saved |
+
+SCL Verify primary export in TSP is **Excel** (Report / Report 2.xlsx lineage); use CSV only if you explicitly export a trace or copy grid to CSV.
+
+## CID fix applied (2026-10-09, Header revision 6)
+See offline-scl/TSP_OFF_SCLVERIFY_2026-10-09_r6_CID_FIX.md — all 12 Error clusters patched in lab_tg544_eth_a.cid.
+
+## Export TODO (after TSP re-run)
+- Save TSP SCL Verify Excel → lab/evidence/testsuite-pro/offline-scl/TSP_OFF_SCLVERIFY_2026-10-09_r6.xlsx

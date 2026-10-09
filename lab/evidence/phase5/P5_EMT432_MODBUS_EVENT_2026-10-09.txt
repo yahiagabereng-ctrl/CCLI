@@ -1,0 +1,38 @@
+P5-06 EMT432 — LAN3 / Modbus TCP status (2026-10-09)
+
+Meter: EMT432.I.BASE SN 261001102952
+  Static 192.168.178.250/24 · GW 192.168.178.1 · DHCP OFF · 5A TA · no CT · no Rogowski
+  RJ45 → TG544 LAN3
+
+DUT (SSH 192.168.10.1):
+  lan3: 192.168.178.1/24 UP
+  UCI network.lan2_sec.ipaddr='192.168.178.1'
+  ping 192.168.178.250: PASS (0% loss, ~5–10 ms)
+
+Modbus TCP :502 (from DUT, busybox nc):
+  port 502: CLOSED (also 80, 443, 503, 5020, 8080 — no TCP listener seen)
+
+ccli (still lab_tr400_phase4_eth_b_ttyS1.yaml):
+  modbus.backend: rtu · /dev/ttyS1 · FC3 @ 40001 → mock P=450 kW (COM5 slave path)
+
+Modbus probe (dev PC on LAN1 only, no LAN3 route):
+  python lab/modbus_emt432_tcp_probe.py --host 192.168.178.250 → connect FAIL (timeout)
+
+VERDICT (matches 2026-10-05 session):
+  L3 ping:     PASS
+  Modbus TCP:  FAIL — meter not accepting TCP :502 (enable on device or check firmware/menu)
+  ccli TCP:    NOT DEPLOYED — use lab_tr400_phase4_emt432_lan3_tcp.yaml after :502 PASS
+
+Next steps (operator):
+  1. On PC cabled to LAN3: Admin run lab/set_pc_lan3_plant_178.cmd → 192.168.178.10
+  2. pip install pymodbus
+  3. python lab/modbus_emt432_tcp_probe.py --host 192.168.178.250
+     (or --scan --subnet 192.168.178)
+  4. On meter UI: confirm Ethernet link, Modbus TCP enabled, unit ID 1, port 502
+  5. When probe PASS:
+     deploy-ccli-session-fix.ps1 -LabYaml apps/ccli/config/lab_tr400_phase4_emt432_lan3_tcp.yaml
+     -Changes @("EMT432 Modbus TCP 178.250","keep MMS 3782 + 104 2404")
+  6. logread | grep modbus — expect modbus_tcp FC3 @932/940, P≈0 without CT
+
+Repo profile: apps/ccli/config/lab_tr400_phase4_emt432_lan3_tcp.yaml
+DUT verify:   lab/tg544-openwrt/verify-emt432-lan3.ps1

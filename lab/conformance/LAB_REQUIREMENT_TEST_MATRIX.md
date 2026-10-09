@@ -32,12 +32,13 @@
 
 | Field | Value |
 |-------|--------|
-| Date | |
-| Operator | |
-| TSP version | |
-| DUT `ccli --version` | |
-| Connect `:3782` | □ PASS |
-| Pack copied from | `C:\CCLI_TSP_FIELD_PACK` |
+| Date | **2026-10-09** |
+| Operator | *(fill)* |
+| TSP version | *(fill)* |
+| DUT `ccli --version` | **0.1.0-r48** (P3-07-AARE-SIGN-RAW-GT) |
+| Connect `:3782` | **START** — re-run T1-01 · save evidence today |
+| Pack / TLS | `C:\CCLI_product_tls\` · start card: `lab/evidence/testsuite-pro/inbox/TSP_SESSION_START_2026-10-09.md` |
+| Git | **5939fb8** |
 
 ---
 
@@ -64,7 +65,8 @@ Scripts: `lab/set_pc_lan1_dso.cmd` · `set_pc_lan2_oa.cmd` · `set_pc_lan3_plant
 2. Run **`powershell -File scripts\stage-tsp-field-pack.ps1`** → copies this matrix + CID + TLS + sequencers into **`C:\CCLI_TSP_FIELD_PACK`**.  
 3. Copy folder to TSP PC (USB / network).  
 4. Execute **TSP test** column; tick **□**; save evidence under `inbox/` names in **Evidence** column.  
-5. Return USB / git pull with logs — maps 1:1 to **lab submission** when PICS is filled with same **M** claims.
+5. **Phase 1:** use `scripts/tsp-evidence-logger.ps1` **Start/Stop** per **T1-xx** (log + pcap per row) — [EVIDENCE_PER_TEST_PROTOCOL.md](../evidence/testsuite-pro/EVIDENCE_PER_TEST_PROTOCOL.md).  
+6. Return USB / git pull with logs — maps 1:1 to **lab submission** when PICS is filled with same **M** claims.
 
 **First-pass PICS scope (aligned with lab quote):** server · 8-1 MMS · association · directory · get/set · datasets · **URCB** · **control** · time; **exclude** BRCB, GOOSE, SV, files, SG, 104.
 

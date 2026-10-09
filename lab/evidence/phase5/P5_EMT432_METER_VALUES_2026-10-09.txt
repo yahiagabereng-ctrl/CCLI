@@ -1,0 +1,23 @@
+# EMT432 Modbus TCP — meter values (DUT LAN3 → 192.168.178.250:502)
+# 2026-10-09 — raw FC3 via /tmp/emt432_raw_read.sh (ccli stopped for single client)
+
+Meter: SN 261001102952 · unit 1 · no CT
+
+| Quantity | Offset | Raw regs (hi, lo) | Word-swap float32 | Notes |
+|----------|--------|-------------------|-------------------|--------|
+| P1 | 932 | 0x43c6, 0xba0d | **≈ −0.00054 W** | ≈0 without CT — OK |
+| Q1 | 940 | 0xd625, 0xbcd3 | **≈ −0.026 VAR** | ≈0 — OK |
+| V (reg 974) | 974 | 0xf1fa, 0x43a5 | **≈ 331.9 V** | Likely peak L–N (~√2×230) — OK |
+| f (reg 972) | 972 | 0x08b5, 0x4248 | **≈ 50.01 Hz** | OK |
+
+If decoded as naive big-endian (first reg = high word), P1 ≈ 397 W and V/f are nonsense — matches garbage in ccli logread.
+
+Conclusion:
+  Modbus TCP **works** from DUT when ccli not holding the socket.
+  Metrology is **plausible** with **word-swapped** float32 (low reg first).
+  ccli modbus_adapter uses regs_to_float32_be(regs[p], regs[p+1]) — likely **wrong endian/word order** for EMT432.
+
+PC-A python probe from 192.168.178.10: still required for independent copy; dev PC (LAN1) cannot reach :502.
+
+Fix shipped: **0.1.0-r52** — `modbus.float_word_swap: true` in lab yaml (deploy CCLI_DEPLOY_0.1.0-r52_2026-10-09_135140.md).
+Probe: `modbus_emt432_tcp_probe.py` defaults to word-swap (use `--no-word-swap` for RTU-style).

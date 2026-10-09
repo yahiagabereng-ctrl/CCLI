@@ -1,0 +1,18 @@
+﻿# CCLI TSP evidence
+tsp_id: T1-07
+tsp_version: 
+pc_ip: 192.168.10.10
+dut_ip: 192.168.10.1
+dut_port: 3782
+tls: true
+cid: apps/ccli/config/icd/lab_tg544_eth_a.cid
+ccli_pkg: 0.1.0-r52
+gate: P3_04
+tool: OPERATE
+operator: lab
+date: 2026-10-09
+result: PENDING
+hint: Operate Mod (on) + WMaxSptPct=10 or 70; no Write Mod.stVal.
+
+--- TSP Output / notes (paste below) ---
+

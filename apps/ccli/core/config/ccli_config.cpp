@@ -214,6 +214,8 @@ CcliConfig load_config(const std::string& path) {
                 cfg.modbus.power_scale = std::strtod(value.c_str(), nullptr);
             } else if (key == "reactive_scale") {
                 cfg.modbus.reactive_scale = std::strtod(value.c_str(), nullptr);
+            } else if (key == "float_word_swap") {
+                cfg.modbus.float_word_swap = parse_bool(value, cfg.modbus.float_word_swap);
             } else if (key == "trace") {
                 cfg.modbus.trace = parse_bool(value, cfg.modbus.trace);
             }

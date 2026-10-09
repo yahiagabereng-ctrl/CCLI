@@ -65,6 +65,19 @@ operator: <name>
 date: YYYY-MM-DD
 ```
 
+## Per-test logger (Phase 1 — PC-B)
+
+**Mandatory:** one Wireshark capture + one `.txt` log per matrix step **T1-01 … T1-10**.
+
+See [EVIDENCE_PER_TEST_PROTOCOL.md](EVIDENCE_PER_TEST_PROTOCOL.md) · script `scripts/tsp-evidence-logger.ps1`:
+
+```powershell
+powershell -File scripts\tsp-evidence-logger.ps1 -Action Start -TestId T1-07
+powershell -File scripts\tsp-evidence-logger.ps1 -Action Stop -PasteClipboard
+```
+
+Pcaps land in `pcap/` with the same basename as the inbox log.
+
 ## Chat workflow
 
 1. Save file under `inbox/` **or** paste log in chat with the metadata header.  

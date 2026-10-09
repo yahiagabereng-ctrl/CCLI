@@ -1,0 +1,15 @@
+﻿{
+    "codename":  "P3-07-AARE-SIGN-RAW-GT",
+    "changes":  [
+                    "EMT432 Modbus TCP 192.168.178.250:502",
+                    "phase4 MMS 3782 + 104 2404"
+                ],
+    "release":  51,
+    "timestamp_utc":  "2026-10-09T11:20:57.0050383Z",
+    "version_full":  "0.1.0-r51",
+    "lab_yaml":  "d:\\CCLI\\CCLI\\CCLI\\apps\\ccli\\config\\lab_tr400_phase4_emt432_lan3_tcp.yaml",
+    "sha256":  "2b166430fdb5851a46bad31c1741f11f7c553161fe98bce8b6bbc6558cbdf7ae",
+    "binary":  "D:\\CCLI\\CCLI\\CCLI\\lab\\tg544-openwrt\\ccli-bin",
+    "host":  "192.168.10.1",
+    "semver":  "0.1.0"
+}

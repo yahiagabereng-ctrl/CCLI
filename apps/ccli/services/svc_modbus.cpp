@@ -50,6 +50,8 @@ adapters::ModbusPollConfig modbus_poll_from_config(const core::CcliConfig& app_c
 
     out.reactive_scale = m.reactive_scale;
 
+    out.float_word_swap = m.float_word_swap;
+
     if (m.backend == core::ModbusBackendKind::Rtu) {
 
         out.backend = adapters::ModbusBackend::LibmodbusRtu;

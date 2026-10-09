@@ -1,0 +1,52 @@
+﻿# P5 GNSS + time quality verify
+Date: 2026-10-09 12:44:03
+Host: 192.168.10.1
+VERDICT: PART - fix true; wait for next ccli gnss poll (15s) and re-run
+
+{
+	"course": "",
+	"date": "2026-10-09",
+	"raw_nmea": "+QGPSGNMEA: $GNRMC,104357.00,A,4529.13756,N,01142.53065,E,0.302,,091026,,,A,V*12\nOK\n+QGPSGNMEA: $GNGGA,104359.00,4529.13741,N,01142.53134,E,1,07,2.34,99.2,M,,M,,*6A\nOK",
+	"altitude": "99.2",
+	"satellites": "07",
+	"success": true,
+	"fix": true,
+	"longitude": "11.708844",
+	"latitude": "45.485626",
+	"time": "10:43:57",
+	"speed": "0.302"
+}
+---
+{
+	"supported": true,
+	"powered_on": true
+}
+---
+Reference ID    : 5E82B8C1 (nbg01.muxx.net)
+Stratum         : 3
+Ref time (UTC)  : Fri Oct 09 10:40:55 2026
+System time     : 0.001133937 seconds slow of NTP time
+Last offset     : -0.001646514 seconds
+RMS offset      : 0.011640506 seconds
+Frequency       : 9.044 ppm fast
+Residual freq   : -0.010 ppm
+Skew            : 0.265 ppm
+Root delay      : 0.069644436 seconds
+Root dispersion : 0.000705487 seconds
+Update interval : 514.1 seconds
+Leap status     : Normal
+---
+MS Name/IP address         Stratum Poll Reach LastRx Last sample               
+===============================================================================
+#? GNSS                          0   4     0     -     +0ns[   +0ns] +/-    0ns
+^+ static.245.70.235.167.cl>     2   6   377    52  -1356us[-1356us] +/-   41ms
+^+ time3.panq.nl                 2   9   377   950   +310us[+1626us] +/-   35ms
+^+ ip31-70-111-17.pbiaas.com     2  10   277  1015    -37ms[  -36ms] +/-   73ms
+^* nbg01.muxx.net                2   8   377   186  -2900us[-4547us] +/-   40ms
+---
+mms: time_quality chrony offset_ms=0 within_pm100=yes leap=Normal ref=5E82B8C1 gnss_fix=0 clockNotSynchronized=1 (T.3.3.4.5)
+mms: time_quality chrony offset_ms=0 within_pm100=yes leap=Normal ref=5E82B8C1 gnss_fix=0 clockNotSynchronized=1 (T.3.3.4.5)
+mms: time_quality chrony offset_ms=0 within_pm100=yes leap=Normal ref=5E82B8C1 gnss_fix=0 clockNotSynchronized=1 (T.3.3.4.5)
+mms: time_quality chrony offset_ms=0 within_pm100=yes leap=Normal ref=5E82B8C1 gnss_fix=0 clockNotSynchronized=1 (T.3.3.4.5)
+mms: time_quality chrony offset_ms=0 within_pm100=yes leap=Normal ref=5E82B8C1 gnss_fix=0 clockNotSynchronized=1 (T.3.3.4.5)
+

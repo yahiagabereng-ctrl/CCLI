@@ -47,6 +47,7 @@ $docs = @(
     @{ Rel = "lab/CCI_TestSuitePro_Sequencer_Draft.md"; Out = "03_TSP_SEQUENCER_DRAFT.md" },
     @{ Rel = "lab/CCI_TestSuitePro_Verification_Layer.md"; Out = "04_TSP_VERIFICATION_LAYER.md" },
     @{ Rel = "lab/evidence/testsuite-pro/README.md"; Out = "05_EVIDENCE_README.md" },
+    @{ Rel = "lab/evidence/testsuite-pro/EVIDENCE_PER_TEST_PROTOCOL.md"; Out = "05b_EVIDENCE_PER_TEST_PROTOCOL.md" },
     @{ Rel = "lab/conformance/TSP_PC_FIELD_PACK.md"; Out = "00_README_FIELD_PACK.md" },
     @{ Rel = "lab/conformance/2026-10-08_UCA_Document_Phase_Checklist.md"; Out = "06_LAB_UCA_DOCUMENT_CHECKLIST.md" },
     @{ Rel = "lab/conformance/LAB_TEMPLATES_VS_TEST_SCOPE.md"; Out = "07_LAB_TEMPLATES_VS_TEST_SCOPE.md" },
@@ -60,6 +61,20 @@ $docs = @(
     @{ Rel = "lab/conformance/CID_PICS_ALIGNMENT.md"; Out = "14_CID_PICS_ALIGNMENT.md" },
     @{ Rel = "lab/conformance/LAB_CONFIG_GUIDE.md"; Out = "15_LAB_CONFIG_GUIDE.md" }
 )
+
+$tspScripts = @(
+    "scripts/tsp-evidence-logger.ps1",
+    "scripts/capture-mms-tsp.ps1",
+    "scripts/capture-mms-tsp-interactive.ps1"
+)
+New-Item -ItemType Directory -Force -Path (Join-Path $Dest "scripts") | Out-Null
+foreach ($rel in $tspScripts) {
+    $src = Join-Path $Repo ($rel -replace '/', '\')
+    if (Test-Path $src) {
+        Copy-Item -Force $src (Join-Path $Dest "scripts\$(Split-Path $src -Leaf)")
+        $manifest.files += "scripts/$(Split-Path $src -Leaf)"
+    }
+}
 
 $benchScripts = @(
     "lab/set_pc_lan1_dso.cmd",

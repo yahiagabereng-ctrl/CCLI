@@ -46,6 +46,14 @@ double regs_to_float32_be(const std::uint16_t hi, const std::uint16_t lo) {
 
 }
 
+double regs_to_float32_pair(const std::uint16_t reg0, const std::uint16_t reg1,
+                            const bool word_swap) {
+    if (word_swap) {
+        return regs_to_float32_be(reg1, reg0);
+    }
+    return regs_to_float32_be(reg0, reg1);
+}
+
 std::string regs_hex_string(const std::uint16_t* regs, const int n) {
     std::ostringstream os;
     for (int i = 0; i < n; ++i) {
@@ -110,12 +118,14 @@ void ModbusAdapter::record_read_holding(const std::int64_t now_ms, const int sta
         const int p_idx = cfg_.reg_active_power - start;
         const int q_idx = cfg_.reg_reactive_power - start;
         if (cfg_.reg_active_power_count >= 2 && (p_idx + 1) < reg_count) {
-            last_exchange_.p_kw = regs_to_float32_be(regs[p_idx], regs[p_idx + 1]);
+            last_exchange_.p_kw =
+                regs_to_float32_pair(regs[p_idx], regs[p_idx + 1], cfg_.float_word_swap);
         } else if (cfg_.reg_active_power_count == 1 && p_idx >= 0 && p_idx < reg_count) {
             last_exchange_.p_kw = static_cast<double>(regs[p_idx]);
         }
         if (cfg_.reg_reactive_power_count >= 2 && (q_idx + 1) < reg_count) {
-            last_exchange_.q_kvar = regs_to_float32_be(regs[q_idx], regs[q_idx + 1]);
+            last_exchange_.q_kvar =
+                regs_to_float32_pair(regs[q_idx], regs[q_idx + 1], cfg_.float_word_swap);
         } else if (cfg_.reg_reactive_power_count == 1 && q_idx >= 0 && q_idx < reg_count) {
             last_exchange_.q_kvar = static_cast<double>(regs[q_idx]);
         }
@@ -509,7 +519,7 @@ bool ModbusAdapter::poll_libmodbus(cci::core::MeasurementStore& store, const std
 
     if (cfg_.reg_active_power_count >= 2 && (p_idx + 1) < reg_count) {
 
-        m.p_kw = regs_to_float32_be(regs[p_idx], regs[p_idx + 1]);
+        m.p_kw = regs_to_float32_pair(regs[p_idx], regs[p_idx + 1], cfg_.float_word_swap);
 
     } else if (cfg_.reg_active_power_count == 1 && p_idx < reg_count) {
 
@@ -521,7 +531,7 @@ bool ModbusAdapter::poll_libmodbus(cci::core::MeasurementStore& store, const std
 
     if (cfg_.reg_reactive_power_count >= 2 && (q_idx + 1) < reg_count) {
 
-        m.q_kvar = regs_to_float32_be(regs[q_idx], regs[q_idx + 1]);
+        m.q_kvar = regs_to_float32_pair(regs[q_idx], regs[q_idx + 1], cfg_.float_word_swap);
 
     } else if (cfg_.reg_reactive_power_count == 1 && q_idx < reg_count) {
 

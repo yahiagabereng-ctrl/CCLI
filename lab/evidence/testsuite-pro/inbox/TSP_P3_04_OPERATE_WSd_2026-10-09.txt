@@ -1,0 +1,43 @@
+# CCLI TSP evidence
+tsp_id: T1-08
+tsp_version: Test Suite Pro (session 2026-10-09)
+pc_ip: 192.168.10.10
+dut_ip: 192.168.10.1
+dut_port: 3782
+tls: true
+cid: apps/ccli/config/icd/lab_tg544_eth_a.cid
+ccli_pkg: 0.1.0-r52
+gate: P3_04
+tool: OPERATE
+operator: lab
+date: 2026-10-09
+result: PASS
+hint: Operate Mod + WSptPct=20 (matrix) — final capture ctlVal=20, Beh=on.
+
+--- TSP visual evidence (screenshots) ---
+TSP_P3_04_OPERATE_WSd_2026-10-09_wspt20.png — **WSdDAGC1 Beh=on**; WSptPct.Oper **ctlVal=20**; Test=False; Check=no-check; ReadResponse Success ~14:53:26
+TSP_P3_04_OPERATE_WSd_2026-10-09_oper.png — earlier WSptPct.Oper ctlVal=10 (enhanced security)
+TSP_P3_04_OPERATE_WSd_2026-10-09_read.png — ReqW.mag Validity=Good; Integrity reports ~4s
+
+--- Pass criteria (LAB_SESSION / matrix) ---
+| Check | Status |
+|-------|--------|
+| Connected CCI016_01 @ 192.168.10.1:3782 TLS | PASS |
+| WSdDAGC1 enhanced control (ctlModel direct-with-enhanced-security) | PASS |
+| WSdDAGC1 Mod / Beh on | PASS (Beh=on on wspt20 capture) |
+| WSptPct Operate = **20** | PASS (ctlVal=20 on wspt20 capture) |
+| DUT accepts WSptPct (earlier) | PASS — ctlVal=10.00 in DUT_LOG (22:44–22:46) |
+| URCB still flowing during test | PASS (Integrity reports in viewer) |
+| GOOSE adapter warning | N/A Tier 1 — ignore |
+
+--- TSP Output (paste full Operate success lines if not captured above) ---
+Output log showed ReadResponse Success for:
+  CCI016_01LD_Plant/WSdDAGC1.MX.ReqW.mag
+  CCI016_01LD_Plant/WSdDAGC1.CO.WSptPct.Oper
+(~14:46:59–14:48:25 session)
+
+dut_log: TSP_P3_04_OPERATE_WSd_2026-10-09_DUT_LOG.txt
+pcap: (retro — use Start/Stop logger on T1-09/T1-10 for per-test pcap)
+
+--- capture note ---
+Next steps: logger Start/Stop around T1-09 and T1-10 for pcap + _WIRE.txt.

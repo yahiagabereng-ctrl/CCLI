@@ -15,9 +15,12 @@ param(
 $ErrorActionPreference = "Stop"
 $RepoRoot = Split-Path -Parent $PSScriptRoot
 if (-not $Src) {
-    $ejbca = Join-Path $RepoRoot "apps\ccli\config\tls\ejbca"
     $legacy = Join-Path $RepoRoot "apps\ccli\config\tls"
-    $Src = if (Test-Path (Join-Path $ejbca "client.pem")) { $ejbca } else { $legacy }
+    $ejbca = Join-Path $RepoRoot "apps\ccli\config\tls\ejbca"
+    # Same default as deploy-ccli-session-fix.ps1 ($TlsDir = config/tls). Use -Src ...\ejbca for EJBCA regen sets.
+    $Src = if (Test-Path (Join-Path $legacy "server.pem")) { $legacy }
+           elseif (Test-Path (Join-Path $ejbca "client.pem")) { $ejbca }
+           else { $legacy }
 }
 
 if (-not (Test-Path $Src)) {

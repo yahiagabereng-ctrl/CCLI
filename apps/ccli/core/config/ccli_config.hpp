@@ -99,6 +99,9 @@ struct ModbusConfig {
 
     double reactive_scale{1.0};
 
+    /** Chronos EMT432 TCP: float32 low register word first (Modbus CDAB). */
+    bool float_word_swap{false};
+
     /** stderr log on each successful Modbus poll (lab bus trace). */
     bool trace{false};
 };

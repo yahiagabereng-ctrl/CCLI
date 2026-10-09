@@ -1,0 +1,60 @@
+# CCLI TSP evidence â€” Phase 2 P5 full circle (3782 TLS)
+gate: P5_FULLCIRCLE
+tool: SEQ
+date: 2026-10-09
+dut_ip: 192.168.10.1
+dut_port: 3782
+tls: true
+ccli_pkg: 0.1.0-r52
+phase1_index: TSP_PHASE1_SESSION_INDEX_2026-10-09.md
+
+## Step 1 â€” P5-00 chrony + DUT preflight
+=== chronyc tracking ===
+Reference ID    : 5E82B8C1 (nbg01.muxx.net)
+Stratum         : 3
+Ref time (UTC)  : Fri Oct 09 15:46:42 2026
+System time     : 0.000547758 seconds fast of NTP time
+Last offset     : -0.000017380 seconds
+RMS offset      : 0.005923254 seconds
+Frequency       : 10.199 ppm fast
+Residual freq   : -0.003 ppm
+Skew            : 0.080 ppm
+Root delay      : 0.070302114 seconds
+Root dispersion : 0.001382431 seconds
+Update interval : 1551.6 seconds
+Leap status     : Normal
+=== ccli version ===
+=== listen 3782 ===
+tcp        0      0 192.168.10.1:3782       0.0.0.0:*               LISTEN      13838/ubus
+
+## Step 2 - Connect (T.3.3.3) - PASS (cross-ref Phase 1)
+result: PASS
+tsp_id_cross_ref: T1-01, T1-10
+evidence_files:
+  - TSP_P3_01_CONNECT_2026-10-09.txt (T1-01 initial)
+  - TSP_P3_01_RECONNECT_2026-10-09.txt (T1-10 reconnect)
+  - TSP_P3_01_RECONNECT_2026-10-09_DUT_LOG.txt
+  - pcap/TSP_P3_01_RECONNECT_2026-10-09.pcapng
+dut_proof: mms client CONNECT; ACSE auth ACCEPT role=DSO_OPERATOR; iso session ACCEPT
+operator_note: Already connected / confirmed in TSP (green CCI016_01 @ 3782 TLS) - no duplicate connect required for Phase 2.
+
+## Step 3 - Browse LD_Plant (~31 LN) - PASS (cross-ref Phase 1 T1-03)
+result: PASS (session)
+tsp_id_cross_ref: T1-03
+evidence: TSP_P3_03_BROWSE_2026-10-09.txt (stub); LD_Plant ~31 LNs browsed in Phase 1
+LN_count_expected: 31
+
+## Step 4 - Compare Model vs CID (P5-B / T1-02) - PASS (scoped, no xlsx)
+result: PASS (scoped)
+annex: T.3.1 / TR 57-126
+cid_file: apps/ccli/config/icd/lab_tg544_eth_a.cid
+note_URCB: URCB enabled in Phase 1 - ignore RCB/OptFlds-only diffs where applicable.
+tsp_ui: Compare Model run; **no spreadsheet extract** in this TSP build.
+evidence_files:
+  - inbox/TSP_P3_COMPARE_2026-10-09.txt (scope + optional paste from Compare grid)
+  - optional inbox/TSP_P3_COMPARE_2026-10-09.png (screenshot)
+  - xlsx NOT REQUIRED when extract unavailable (see TSP_TEST_IDENTIFICATION: Compare documented, waivers OK)
+waiver_ref: lab/evidence/testsuite-pro/inbox/TSP_P5_COMPARE_WAIVERS.md
+pass_criteria: M objects proven via T1-04..T1-08; Compare = structure check + waiver doc, not full xlsx export.
+offline_scl_verify: TSP_OFF_SCLVERIFY_2026-10-09.txt (SCL Verify on CID — supplement to online Compare)
+

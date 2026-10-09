@@ -44,7 +44,7 @@ Use this when **two Windows PCs** share one TG544 DUT:
 | **EMT432 meter** | (polled by DUT TCP) | `192.168.30.50:502` | — |
 | **RS485 plant** | A1/B1 → `ttyS1` | USB-RS485 **COM5** (typ.) | — |
 
-**LAN3 IP alignment:** Bench plan uses **`192.168.30.0/24`** ([P5_EMT432_BENCH_PLAN.md](../evidence/phase5/P5_EMT432_BENCH_PLAN.md)). If DUT yaml still has `modbus.host: 192.168.178.250`, either set meter to **30.50** and update yaml, or add a static route — **prefer 30.50 everywhere**.
+**LAN3 IP alignment:** Zone docs use **`192.168.30.0/24`**; **Chronos EMT432 bench (SN 261001102952)** uses **`192.168.178.0/24`** (meter **.250**, DUT **.178.1**, PC **`set_pc_lan3_plant_178.cmd`** → **.178.10**). See [P5_EMT432_CONNECT_SESSION.md](../evidence/phase5/P5_EMT432_CONNECT_SESSION.md). Deploy **`lab_tr400_phase4_emt432_lan3_tcp.yaml`** only after **`modbus_emt432_tcp_probe.py`** PASS on **:502**.
 
 ---
 
@@ -53,7 +53,7 @@ Use this when **two Windows PCs** share one TG544 DUT:
 | Goal | Yaml on DUT | MMS | 104 | Modbus P source |
 |------|-------------|-----|-----|-----------------|
 | **TSP + 104 same day** (recommended) | **`lab_tr400_phase4_eth_b_ttyS1.yaml`** (3782 + 104 + **ttyS1** COM5) | `:3782` | `:2404` | **RTU** A1/B1 slave |
-| **TSP + 104 + EMT432 LAN3** | `lab_tr400_phase4_eth_b.yaml` + merge `modbus` TCP from emt432 | `:3782` | `:2404` | **TCP** EMT432 if `backend: tcp` |
+| **TSP + 104 + EMT432 LAN3** | **`lab_tr400_phase4_emt432_lan3_tcp.yaml`** | `:3782` | `:2404` | **TCP** → **192.168.178.250:502** |
 | **TSP only, RS485 mock P** | `lab_tr400_phase1_regulation.yaml` + `ttyS1` | `:3782` | off | **RTU** slave on A1/B1 |
 | **Meter TCP + RS485 inverter mock** | `lab_tr400_emt432_1p.yaml` + enable `iec104` from phase4 | `:3782` | optional | **TCP** for TotW; RS485 for lab/Huawei path (see note below) |
 
@@ -73,6 +73,7 @@ Use this when **two Windows PCs** share one TG544 DUT:
 | □ | PC-A | Admin: `lab\set_pc_lan3_plant.cmd` · `ping 192.168.30.1` · `ping 192.168.30.50` | LAN3 + meter |
 | □ | PC-A | RS485: A→A1, B→B1, GND common ([P5_A1B1_RS485_HW_MAP.md](../evidence/phase5/P5_A1B1_RS485_HW_MAP.md)) | Plant |
 | □ | PC-B | Import CID `lab_tg544_eth_a.cid` · TLS from `CCLI_TSP_FIELD_PACK\tls\` | T1-01 |
+| □ | PC-A/B | DUT: **`/etc/init.d/iec61850service stop`** · **`/etc/init.d/ccli restart`** · one `ccli` PID | Avoid 3782/2404 bind clash |
 | □ | PC-A | SSH/plink DUT: confirm `mms: listening 192.168.10.1:3782` · `iec104: listening 192.168.1.130:2404` if phase4 | P3-01 / P4-01 |
 | □ | PC-B | Fill session header in matrix (date, TSP version, `ccli --version`) | Specimen row |
 
@@ -100,7 +101,24 @@ Start **before** PC-B enables URCB on DUT.
 
 ## Phase 1 — MMS core (PC-B only on LAN1)
 
+**2026-10-09:** Bench **GO** on PC-B — see [`../evidence/testsuite-pro/inbox/TSP_SESSION_START_2026-10-09.md`](../evidence/testsuite-pro/inbox/TSP_SESSION_START_2026-10-09.md).
+
 **PC-A:** leave plant processes running; **no** 104 connect during this block unless you are on Phase 4 (104 is low traffic if monitor-only).
+
+### Evidence logger (mandatory — every T1 row)
+
+Before **each** TSP step: start capture + log stub + **DUT SSH PRE**. After the step: copy TSP **Output** → stop logger → **DUT SSH POST** + **Wireshark `_WIRE.txt` summary** + **`.pcapng`**.
+
+```powershell
+cd D:\CCLI\CCLI\CCLI
+. .\lab\tg544-openwrt\lab-env.ps1
+powershell -File scripts\tsp-evidence-logger.ps1 -Action Init -SessionDate 2026-10-09   # once per day
+powershell -File scripts\tsp-evidence-logger.ps1 -Action Start -TestId T1-08 -Operator "<name>"
+# ... run one TSP action ...
+powershell -File scripts\tsp-evidence-logger.ps1 -Action Stop -PasteClipboard
+```
+
+Full protocol: [`../evidence/testsuite-pro/EVIDENCE_PER_TEST_PROTOCOL.md`](../evidence/testsuite-pro/EVIDENCE_PER_TEST_PROTOCOL.md) · index `inbox/TSP_PHASE1_SESSION_INDEX_*.md`.
 
 | □ | TSP ID | Action | Matrix □ row |
 |---|--------|--------|--------------|
@@ -115,9 +133,9 @@ Start **before** PC-B enables URCB on DUT.
 | □ | T1-09 | Release · wait **15 s** fallback | P3-05 |
 | □ | T1-10 | Disconnect · reconnect | Associate |
 
-**PC-A after T1-07:** `ubus call dido_v2 status` on DUT → save with TSP log | Actuation row |
+**PC-A after T1-07:** `ubus call dido_v2 status` on DUT → append to `TSP_P3_04_OPERATE_Wlim_*.txt` | Actuation row |
 
-Evidence names: `TSP_P3_*` per [matrix](LAB_REQUIREMENT_TEST_MATRIX.md).
+Evidence: **one `.txt` + one `.pcapng` per T1-xx** via `tsp-evidence-logger.ps1`; names in [matrix](LAB_REQUIREMENT_TEST_MATRIX.md) and session index.
 
 ---
 

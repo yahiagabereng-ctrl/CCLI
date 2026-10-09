@@ -3,7 +3,7 @@ include $(TOPDIR)/rules.mk
 PKG_NAME:=ccli
 # Keep in sync with apps/ccli/VERSION (run scripts/sync-ccli-version.ps1)
 PKG_VERSION:=0.1.0
-PKG_RELEASE:=51
+PKG_RELEASE:=52
 
 PKG_MAINTAINER:=HiTEKS CCLI
 PKG_LICENSE:=Proprietary
@@ -32,6 +32,7 @@ CMAKE_OPTIONS += \
 	-DCCLI_BUILD_TESTS:BOOL=OFF \
 	-DCCLI_FORCE_LIBGPIOD:BOOL=$(CCLI_FORCE_GPIOD) \
 	-DCCLI_FORCE_LIBMODBUS:BOOL=ON \
+	-DCCLI_WITH_LIB60870:BOOL=ON \
 	-DCMAKE_CXX_STANDARD=17
 
 define Build/Download

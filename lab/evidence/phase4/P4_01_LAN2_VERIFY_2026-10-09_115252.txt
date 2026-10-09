@@ -1,0 +1,13 @@
+[11:52:52] === P4-01 LAN2 / Eth_B verify ===
+[11:52:52] DUT=192.168.1.130 PC=192.168.1.183
+[11:52:52] --- PC Ethernet ---
+[11:52:53]   192.168.10.10/24 on Ethernet
+[11:52:53] FAIL: PC Ethernet not on 192.168.1.0/24 (got '192.168.10.10').
+[11:52:53]       Run lab\set_pc_lan2_oa.cmd as Administrator, or use DHCP on LAN2.
+[11:52:53] --- Ping DUT ---
+[11:53:12] FAIL: no reply from 192.168.1.130 - check cable on LAN2, DUT power, firewall input on lan_sec.
+[11:53:12] --- LuCI (Eth_B) ---
+[11:53:12]   http://192.168.1.130/cgi-bin/luci
+[11:53:12]   http://192.168.1.130/ccli/mock_console.html
+[11:53:12] SKIP: SSH ( -SkipSsh )
+[11:53:12] === end ===

@@ -80,6 +80,8 @@ struct ModbusPollConfig {
 
     double      reactive_scale{1.0};
 
+    bool        float_word_swap{false};
+
 };
 
 

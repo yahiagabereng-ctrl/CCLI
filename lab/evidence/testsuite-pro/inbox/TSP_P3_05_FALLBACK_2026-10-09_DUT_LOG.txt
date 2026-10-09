@@ -1,0 +1,449 @@
+﻿# CCLI DUT SSH evidence
+tsp_id: T1-09
+dut_ip: 192.168.10.1
+date: 2026-10-09
+
+
+========== DUT SSH PRE 2026-10-09 17:29:18 UTC-ish local ==========
+=== DUT evidence PRE test_id=T1-09 ===
+2026-10-09T23:29:17+08:00
+ccli 0.1.0-r52 (P3-07-AARE-SIGN-RAW-GT)
+  semver:   0.1.0
+  release:  r52
+  git:      unknown
+  built:    2026-06-29T12:59:20Z UTC
+  platform: tg500
+=== process / listen ===
+18852 /usr/sbin/ccli
+tcp        0      0 192.168.10.1:3782       0.0.0.0:*               LISTEN      18852/ccli
+=== dido_v2 (actuation) ===
+{
+	"running": true,
+	"northbound_count": 0,
+	"channels": [
+		{
+			"channel": 1,
+			"name": "DIO-1",
+			"enabled": true,
+			"mode": "DO",
+			"report_key": "relay_1",
+			"state": 0,
+			"memory_state": false
+		},
+		{
+			"channel": 2,
+			"name": "DIO-2",
+			"enabled": true,
+			"mode": "DI",
+			"report_key": "relay_2",
+			"state": 0,
+			"irq_active": false,
+			"poll_enabled": true,
+			"poll_interval": 5,
+			"change_report": true,
+			"last_poll": 0
+		},
+		{
+			"channel": 3,
+			"name": "DIO-3",
+			"enabled": true,
+			"mode": "DO",
+			"report_key": "relay_3",
+			"state": 0,
+			"memory_state": false
+		},
+		{
+			"channel": 4,
+			"name": "DIO-4",
+			"enabled": true,
+			"mode": "DO",
+			"report_key": "relay_4",
+			"state": 0,
+			"memory_state": false
+		}
+	],
+	"ai": [
+		{
+			"channel": 1,
+			"raw": 0,
+			"ma": 0.000000,
+			"valid": true,
+			"age_ms": 100
+		},
+		{
+			"channel": 2,
+			"raw": 0,
+			"ma": 0.000000,
+			"valid": true,
+			"age_ms": 100
+		}
+	],
+	"northbound_channels": [
+		
+	]
+}
+=== logread ccli (filter: fallback|comms_loss|Release|DISCONNECT|Wlim|WSd|session|closed) ===
+Fri Oct  9 23:27:09 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=68
+Fri Oct  9 23:27:09 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=76
+Fri Oct  9 23:27:11 2026 daemon.err ccli[18852]: iec104: P4-04 Eth_B comms-loss fallback
+Fri Oct  9 23:27:14 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=72
+Fri Oct  9 23:27:14 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=68
+Fri Oct  9 23:27:14 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=76
+Fri Oct  9 23:27:19 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=72
+Fri Oct  9 23:27:19 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=68
+Fri Oct  9 23:27:19 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=76
+Fri Oct  9 23:27:24 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=72
+Fri Oct  9 23:27:24 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=68
+Fri Oct  9 23:27:24 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=76
+Fri Oct  9 23:27:29 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=72
+Fri Oct  9 23:27:29 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=68
+Fri Oct  9 23:27:29 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=76
+Fri Oct  9 23:27:34 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=72
+Fri Oct  9 23:27:34 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=68
+Fri Oct  9 23:27:34 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=76
+Fri Oct  9 23:27:39 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=72
+Fri Oct  9 23:27:39 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=68
+Fri Oct  9 23:27:39 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=76
+Fri Oct  9 23:27:44 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=72
+Fri Oct  9 23:27:44 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=68
+Fri Oct  9 23:27:44 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=76
+Fri Oct  9 23:27:49 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=72
+Fri Oct  9 23:27:49 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=68
+Fri Oct  9 23:27:49 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=76
+Fri Oct  9 23:27:54 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=72
+Fri Oct  9 23:27:54 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=68
+Fri Oct  9 23:27:54 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=76
+Fri Oct  9 23:27:59 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=72
+Fri Oct  9 23:27:59 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=68
+Fri Oct  9 23:27:59 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=76
+Fri Oct  9 23:28:04 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=72
+Fri Oct  9 23:28:04 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=68
+Fri Oct  9 23:28:04 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=76
+Fri Oct  9 23:28:09 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=72
+Fri Oct  9 23:28:09 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=68
+Fri Oct  9 23:28:09 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=76
+Fri Oct  9 23:28:12 2026 daemon.err ccli[18852]: iec104: P4-04 Eth_B comms-loss fallback
+Fri Oct  9 23:28:14 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=72
+Fri Oct  9 23:28:14 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=68
+Fri Oct  9 23:28:14 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=76
+Fri Oct  9 23:28:19 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=72
+Fri Oct  9 23:28:19 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=68
+Fri Oct  9 23:28:19 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=76
+Fri Oct  9 23:28:24 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=72
+Fri Oct  9 23:28:24 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=68
+Fri Oct  9 23:28:24 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=76
+Fri Oct  9 23:28:29 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=72
+Fri Oct  9 23:28:29 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=68
+Fri Oct  9 23:28:29 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=76
+Fri Oct  9 23:28:34 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=72
+Fri Oct  9 23:28:34 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=68
+Fri Oct  9 23:28:34 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=76
+Fri Oct  9 23:28:39 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=72
+Fri Oct  9 23:28:39 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=68
+Fri Oct  9 23:28:39 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=76
+Fri Oct  9 23:28:44 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=72
+Fri Oct  9 23:28:44 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=68
+Fri Oct  9 23:28:44 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=76
+Fri Oct  9 23:28:49 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=72
+Fri Oct  9 23:28:49 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=68
+Fri Oct  9 23:28:49 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=76
+Fri Oct  9 23:28:54 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=72
+Fri Oct  9 23:28:54 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=68
+Fri Oct  9 23:28:54 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=76
+Fri Oct  9 23:28:59 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=72
+Fri Oct  9 23:28:59 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=68
+Fri Oct  9 23:28:59 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=76
+Fri Oct  9 23:29:04 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=72
+Fri Oct  9 23:29:04 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=68
+Fri Oct  9 23:29:04 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=76
+Fri Oct  9 23:29:09 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=72
+Fri Oct  9 23:29:09 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=68
+Fri Oct  9 23:29:09 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=76
+Fri Oct  9 23:29:14 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=72
+Fri Oct  9 23:29:14 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=68
+Fri Oct  9 23:29:14 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=76
+Fri Oct  9 23:29:15 2026 daemon.err ccli[18852]: iec104: P4-04 Eth_B comms-loss fallback
+=== /tmp/ccli.log tail ===
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=4.61498e-08kW Q=-2.57479e-05kvar raw=0x90ef 0x3841 0x9a95 0x34b8 0x5a4f 0xb4e7 0x336f 0x3841 0xed4f 0xbcd2 P=4.61498e-08kW pf2=ok curtail=no DO=OFF
+io: curtail_do=OFF permissive=BLOCKED
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=1.38043e-07kW Q=-2.59754e-05kvar raw=0xbfbb 0x3910 0x3c50 0x355c 0x315b 0xb53d 0xdec6 0x3910 0xca47 0xbcd4 P=1.38043e-07kW pf2=ok curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=4.65577e-08kW Q=-2.62762e-05kvar raw=0x4700 0x3843 0xdf20 0x34b3 0x05e7 0xb53f 0xb2a6 0x3841 0x411e 0xbcd7 P=4.65577e-08kW pf2=ok curtail=no DO=OFF
+iec104: P4-04 Eth_B comms-loss fallback
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=8.39597e-07kW Q=2.56876e-05kvar raw=0x1862 0x3a5c 0x6ade 0x34f3 0xb8ba 0xb506 0x1521 0x3a5c 0x6eb3 0x3cd2 P=8.39597e-07kW pf2=ok curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=-1.5862e-07kW Q=-2.56477e-05kvar raw=0x531e 0xb926 0x1b68 0x33db 0xa902 0xb439 0x6625 0xb926 0x1b30 0xbcd2 P=-1.5862e-07kW pf2=ok curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=1.28502e-06kW Q=2.5819e-05kvar raw=0x6e37 0x3aa8 0x0a95 0x3596 0x6e52 0xb4dc 0x85f3 0x3aa8 0x8271 0x3cd3 P=1.28502e-06kW pf2=ok curtail=no DO=OFF
+io: curtail_do=OFF permissive=BLOCKED
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=-3.93577e-07kW Q=-2.60698e-05kvar raw=0x5903 0xb9ce 0x532a 0x34f3 0x5e8d 0xb501 0x5cdd 0xb9ce 0x9059 0xbcd5 P=-3.93577e-07kW pf2=ok curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=4.43912e-07kW Q=2.5903e-05kvar raw=0xbcd3 0x39e8 0x17bb 0x34e4 0x223e 0xb502 0xb4c8 0x39e8 0x3282 0x3cd4 P=4.43912e-07kW pf2=ok curtail=no DO=OFF
+iec104: P4-04 Eth_B comms-loss fallback
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=-3.02837e-07kW Q=-2.59768e-05kvar raw=0xc611 0xb99e 0x9916 0x353a 0x996c 0xb4d6 0x9e6a 0xb99e 0xcd3d 0xbcd4 P=-3.02837e-07kW pf2=ok curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=-3.25562e-07kW Q=-2.6403e-05kvar raw=0xb02f 0xb9aa 0x2505 0x34bd 0x181d 0xb4bb 0xafac 0xb9aa 0x4b2e 0xbcd8 P=-3.25562e-07kW pf2=ok curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=1.02044e-06kW Q=-2.58375e-05kvar raw=0xc06c 0x3a85 0xb32d 0x34a2 0x5eef 0xb4cc 0xbdd1 0x3a85 0xa93f 0xbcd3 P=1.02044e-06kW pf2=ok curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=4.52415e-07kW Q=-2.63425e-05kvar raw=0x3218 0x39ed 0x7b78 0x34a4 0xf3d6 0xb49b 0x343a 0x39ed 0xcc2f 0xbcd7 P=4.52415e-07kW pf2=ok curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=3.1308e-07kW Q=-2.63038e-05kvar raw=0x24ed 0x39a4 0x8c1b 0x355a 0x34c6 0xb500 0x5219 0x39a4 0x7b01 0xbcd7 P=3.1308e-07kW pf2=ok curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=9.06902e-07kW Q=-2.62007e-05kvar raw=0xbd27 0x3a6d 0x005f 0x355c 0x5c78 0xb4d9 0xd8fb 0x3a6d 0xa2d7 0xbcd6 P=9.06902e-07kW pf2=ok curtail=no DO=OFF
+io: curtail_do=OFF permissive=BLOCKED
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=-3.09974e-07kW Q=2.62838e-05kvar raw=0x83ff 0xb9a2 0xb2ed 0x34d5 0x2e0c 0xb4a4 0x779e 0xb9a2 0x510c 0x3cd7 P=-3.09974e-07kW pf2=ok curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=-7.29683e-08kW Q=2.59389e-05kvar raw=0x068b 0xb899 0xf815 0x34eb 0x2834 0xb49e 0xb8bb 0xb898 0x7ddf 0x3cd4 P=-7.29683e-08kW pf2=ok curtail=no DO=OFF
+iec104: P4-04 Eth_B comms-loss fallback
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=6.58464e-07kW Q=-2.60559e-05kvar raw=0x9ccd 0x3a2c 0x20b9 0x3493 0xd59d 0xb492 0x9cd6 0x3a2c 0x7337 0xbcd5 P=6.58464e-07kW pf2=ok curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=5.83482e-07kW Q=2.63571e-05kvar raw=0xf4c8 0x3a18 0x2828 0x34ec 0x6b7d 0xb513 0xed72 0x3a18 0xeaee 0x3cd7 P=5.83482e-07kW pf2=ok curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=-3.92946e-08kW Q=-2.6101e-05kvar raw=0xd042 0xb824 0x7160 0x3520 0xa7b4 0xb4b4 0xb7cb 0xb823 0xd1cf 0xbcd5 P=-3.92946e-08kW pf2=ok curtail=no DO=OFF
+io: curtail_do=OFF permissive=BLOCKED
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=7.304e-07kW Q=2.56432e-05kvar raw=0x7856 0x3a3f 0xa370 0x3499 0x949a 0xb4fc 0x6bf7 0x3a3f 0x11bc 0x3cd2 P=7.304e-07kW pf2=ok curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=2.48604e-07kW Q=2.64479e-05kvar raw=0x571f 0x3982 0x124f 0x3599 0xc70c 0xb4cb 0xbd3f 0x3982 0xa942 0x3cd8 P=2.48604e-07kW pf2=ok curtail=no DO=OFF
+iec104: P4-04 Eth_B comms-loss fallback
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=8.4348e-07kW Q=-2.57112e-05kvar raw=0x1d00 0x3a5d 0x2bf7 0x3436 0x4ace 0xb4be 0x109a 0x3a5d 0xa03f 0xbcd2 P=8.4348e-07kW pf2=ok curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=4.23348e-07kW Q=-2.60761e-05kvar raw=0xf4c2 0x39dd 0xbdf2 0xb4b8 0x49c8 0xb443 0xae2a 0x39dd 0x9da5 0xbcd5 P=4.23348e-07kW pf2=ok curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=8.25959e-08kW Q=2.60997e-05kvar raw=0x3750 0x38ad 0x37c4 0x34ab 0x2b57 0xb4d5 0x0d5d 0x38ad 0xcf19 0x3cd5 P=8.25959e-08kW pf2=ok curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=7.23546e-08kW Q=-2.59308e-05kvar raw=0xbd10 0x3897 0xaf66 0xb403 0x9369 0xb4d5 0xa5a5 0x3896 0x6cd8 0xbcd4 P=7.23546e-08kW pf2=ok curtail=no DO=OFF
+io: curtail_do=OFF permissive=BLOCKED
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=5.71875e-08kW Q=-2.63138e-05kvar raw=0xdc95 0x386f 0x4c55 0x346c 0x7992 0xb484 0xbfee 0x386f 0x901f 0xbcd7 P=5.71875e-08kW pf2=ok curtail=no DO=OFF
+iec104: P4-04 Eth_B comms-loss fallback
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=5.76057e-07kW Q=-2.59361e-05kvar raw=0x0281 0x3a17 0x1e14 0x34a1 0x4652 0xb482 0x065c 0x3a17 0x77f6 0xbcd4 P=5.76057e-07kW pf2=ok curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=-3.4166e-07kW Q=2.59165e-05kvar raw=0x20e1 0xb9b3 0x2876 0x34dc 0xe67c 0xb441 0x0214 0xb9b3 0x4ebe 0x3cd4 P=-3.4166e-07kW pf2=ok curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=2.5873e-07kW Q=-2.57612e-05kvar raw=0xa617 0x3987 0x6f16 0x34f5 0x28ec 0xb4f5 0xa629 0x3987 0x091f 0xbcd3 P=2.5873e-07kW pf2=ok curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=1.16065e-06kW Q=-2.57278e-05kvar raw=0x20d6 0x3a98 0x2fd2 0x34ce 0x62b9 0xb518 0x1aad 0x3a98 0xc313 0xbcd2 P=1.16065e-06kW pf2=ok curtail=no DO=OFF
+io: curtail_do=OFF permissive=BLOCKED
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=1.93947e-07kW Q=-2.60185e-05kvar raw=0x5e4b 0x394b 0xf167 0x34db 0x333f 0xb508 0x4411 0x394b 0x24c5 0xbcd5 P=1.93947e-07kW pf2=ok curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=-2.43979e-08kW Q=2.57718e-05kvar raw=0xaa31 0xb7cc 0x24bc 0x356b 0x8854 0xb4ed 0x072c 0xb7c9 0x1f5e 0x3cd3 P=-2.43979e-08kW pf2=ok curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=6.71368e-07kW Q=-2.59432e-05kvar raw=0xfebc 0x3a2f 0xd608 0xb501 0x8842 0xb52c 0xb324 0x3a2f 0x86bc 0xbcd4 P=6.71368e-07kW pf2=ok curtail=no DO=OFF
+iec104: P4-04 Eth_B comms-loss fallback
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=9.30515e-07kW Q=-2.57068e-05kvar raw=0xedcf 0x3a73 0x58c1 0x34d6 0x7e9a 0xb4ec 0xeb0a 0x3a73 0x9722 0xbcd2 P=9.30515e-07kW pf2=ok curtail=no DO=OFF
+
+
+========== DUT SSH POST 2026-10-09 17:30:45 UTC-ish local ==========
+=== DUT evidence POST test_id=T1-09 ===
+2026-10-09T23:30:43+08:00
+ccli 0.1.0-r52 (P3-07-AARE-SIGN-RAW-GT)
+  semver:   0.1.0
+  release:  r52
+  git:      unknown
+  built:    2026-06-29T12:59:20Z UTC
+  platform: tg500
+=== process / listen ===
+18852 /usr/sbin/ccli
+tcp        0      0 192.168.10.1:3782       0.0.0.0:*               LISTEN      18852/ccli
+=== dido_v2 (actuation) ===
+{
+	"running": true,
+	"northbound_count": 0,
+	"channels": [
+		{
+			"channel": 1,
+			"name": "DIO-1",
+			"enabled": true,
+			"mode": "DO",
+			"report_key": "relay_1",
+			"state": 0,
+			"memory_state": false
+		},
+		{
+			"channel": 2,
+			"name": "DIO-2",
+			"enabled": true,
+			"mode": "DI",
+			"report_key": "relay_2",
+			"state": 0,
+			"irq_active": false,
+			"poll_enabled": true,
+			"poll_interval": 5,
+			"change_report": true,
+			"last_poll": 0
+		},
+		{
+			"channel": 3,
+			"name": "DIO-3",
+			"enabled": true,
+			"mode": "DO",
+			"report_key": "relay_3",
+			"state": 0,
+			"memory_state": false
+		},
+		{
+			"channel": 4,
+			"name": "DIO-4",
+			"enabled": true,
+			"mode": "DO",
+			"report_key": "relay_4",
+			"state": 0,
+			"memory_state": false
+		}
+	],
+	"ai": [
+		{
+			"channel": 1,
+			"raw": 0,
+			"ma": 0.000000,
+			"valid": true,
+			"age_ms": 1092
+		},
+		{
+			"channel": 2,
+			"raw": 0,
+			"ma": 0.000000,
+			"valid": true,
+			"age_ms": 1092
+		}
+	],
+	"northbound_channels": [
+		
+	]
+}
+=== logread ccli (filter: fallback|comms_loss|Release|DISCONNECT|Wlim|WSd|session|closed) ===
+Fri Oct  9 23:27:44 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=72
+Fri Oct  9 23:27:44 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=68
+Fri Oct  9 23:27:44 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=76
+Fri Oct  9 23:27:49 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=72
+Fri Oct  9 23:27:49 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=68
+Fri Oct  9 23:27:49 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=76
+Fri Oct  9 23:27:54 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=72
+Fri Oct  9 23:27:54 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=68
+Fri Oct  9 23:27:54 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=76
+Fri Oct  9 23:27:59 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=72
+Fri Oct  9 23:27:59 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=68
+Fri Oct  9 23:27:59 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=76
+Fri Oct  9 23:28:04 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=72
+Fri Oct  9 23:28:04 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=68
+Fri Oct  9 23:28:04 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=76
+Fri Oct  9 23:28:09 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=72
+Fri Oct  9 23:28:09 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=68
+Fri Oct  9 23:28:09 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=76
+Fri Oct  9 23:28:12 2026 daemon.err ccli[18852]: iec104: P4-04 Eth_B comms-loss fallback
+Fri Oct  9 23:28:14 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=72
+Fri Oct  9 23:28:14 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=68
+Fri Oct  9 23:28:14 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=76
+Fri Oct  9 23:28:19 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=72
+Fri Oct  9 23:28:19 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=68
+Fri Oct  9 23:28:19 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=76
+Fri Oct  9 23:28:24 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=72
+Fri Oct  9 23:28:24 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=68
+Fri Oct  9 23:28:24 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=76
+Fri Oct  9 23:28:29 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=72
+Fri Oct  9 23:28:29 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=68
+Fri Oct  9 23:28:29 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=76
+Fri Oct  9 23:28:34 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=72
+Fri Oct  9 23:28:34 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=68
+Fri Oct  9 23:28:34 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=76
+Fri Oct  9 23:28:39 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=72
+Fri Oct  9 23:28:39 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=68
+Fri Oct  9 23:28:39 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=76
+Fri Oct  9 23:28:44 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=72
+Fri Oct  9 23:28:44 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=68
+Fri Oct  9 23:28:44 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=76
+Fri Oct  9 23:28:49 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=72
+Fri Oct  9 23:28:49 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=68
+Fri Oct  9 23:28:49 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=76
+Fri Oct  9 23:28:54 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=72
+Fri Oct  9 23:28:54 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=68
+Fri Oct  9 23:28:54 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=76
+Fri Oct  9 23:28:59 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=72
+Fri Oct  9 23:28:59 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=68
+Fri Oct  9 23:28:59 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=76
+Fri Oct  9 23:29:04 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=72
+Fri Oct  9 23:29:04 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=68
+Fri Oct  9 23:29:04 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=76
+Fri Oct  9 23:29:09 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=72
+Fri Oct  9 23:29:09 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=68
+Fri Oct  9 23:29:09 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=76
+Fri Oct  9 23:29:14 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=72
+Fri Oct  9 23:29:14 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=68
+Fri Oct  9 23:29:14 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=76
+Fri Oct  9 23:29:15 2026 daemon.err ccli[18852]: iec104: P4-04 Eth_B comms-loss fallback
+Fri Oct  9 23:29:19 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=72
+Fri Oct  9 23:29:19 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=68
+Fri Oct  9 23:29:19 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=76
+Fri Oct  9 23:29:24 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=72
+Fri Oct  9 23:29:24 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=68
+Fri Oct  9 23:29:24 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=76
+Fri Oct  9 23:29:29 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=72
+Fri Oct  9 23:29:29 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=68
+Fri Oct  9 23:29:29 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=76
+Fri Oct  9 23:29:34 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=72
+Fri Oct  9 23:29:34 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=68
+Fri Oct  9 23:29:34 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=76
+Fri Oct  9 23:29:36 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=88
+Fri Oct  9 23:29:36 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=4 payloadSize=15
+Fri Oct  9 23:29:36 2026 daemon.err ccli[18852]: mms: iso_conn COTP_DATA, session_ind=1 payloadSize=18
+Fri Oct  9 23:29:36 2026 daemon.err ccli[18852]: mms: client DISCONNECT count=0
+Fri Oct  9 23:29:36 2026 daemon.err ccli[18852]: mms: no clients ΓÇö Operating Rule fallback armed (15 s)
+Fri Oct  9 23:30:00 2026 daemon.err ccli[18852]: mms: P3-05 Operating Rule fallback ΓÇö live Wlim/WSd/VArSd/PFSP cleared after 15 s no-comms
+Fri Oct  9 23:30:00 2026 daemon.err ccli[18852]: mmsΓåÆpf2: P3-05 Operating Rule fallback (Eth_A no-comms)
+Fri Oct  9 23:30:00 2026 daemon.err ccli[18852]: mmsΓåÆpf2: Wlim=off@0% WSd=off@0% p_wlim=0 p_wsd=0 p_eff=210 kW ΓåÆ enter=210 release=205 kW
+Fri Oct  9 23:30:15 2026 daemon.err ccli[18852]: iec104: P4-04 Eth_B comms-loss fallback
+=== /tmp/ccli.log tail ===
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=4.61498e-08kW Q=-2.57479e-05kvar raw=0x90ef 0x3841 0x9a95 0x34b8 0x5a4f 0xb4e7 0x336f 0x3841 0xed4f 0xbcd2 P=4.61498e-08kW pf2=ok curtail=no DO=OFF
+io: curtail_do=OFF permissive=BLOCKED
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=1.38043e-07kW Q=-2.59754e-05kvar raw=0xbfbb 0x3910 0x3c50 0x355c 0x315b 0xb53d 0xdec6 0x3910 0xca47 0xbcd4 P=1.38043e-07kW pf2=ok curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=4.65577e-08kW Q=-2.62762e-05kvar raw=0x4700 0x3843 0xdf20 0x34b3 0x05e7 0xb53f 0xb2a6 0x3841 0x411e 0xbcd7 P=4.65577e-08kW pf2=ok curtail=no DO=OFF
+iec104: P4-04 Eth_B comms-loss fallback
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=8.39597e-07kW Q=2.56876e-05kvar raw=0x1862 0x3a5c 0x6ade 0x34f3 0xb8ba 0xb506 0x1521 0x3a5c 0x6eb3 0x3cd2 P=8.39597e-07kW pf2=ok curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=-1.5862e-07kW Q=-2.56477e-05kvar raw=0x531e 0xb926 0x1b68 0x33db 0xa902 0xb439 0x6625 0xb926 0x1b30 0xbcd2 P=-1.5862e-07kW pf2=ok curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=1.28502e-06kW Q=2.5819e-05kvar raw=0x6e37 0x3aa8 0x0a95 0x3596 0x6e52 0xb4dc 0x85f3 0x3aa8 0x8271 0x3cd3 P=1.28502e-06kW pf2=ok curtail=no DO=OFF
+io: curtail_do=OFF permissive=BLOCKED
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=-3.93577e-07kW Q=-2.60698e-05kvar raw=0x5903 0xb9ce 0x532a 0x34f3 0x5e8d 0xb501 0x5cdd 0xb9ce 0x9059 0xbcd5 P=-3.93577e-07kW pf2=ok curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=4.43912e-07kW Q=2.5903e-05kvar raw=0xbcd3 0x39e8 0x17bb 0x34e4 0x223e 0xb502 0xb4c8 0x39e8 0x3282 0x3cd4 P=4.43912e-07kW pf2=ok curtail=no DO=OFF
+iec104: P4-04 Eth_B comms-loss fallback
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=-3.02837e-07kW Q=-2.59768e-05kvar raw=0xc611 0xb99e 0x9916 0x353a 0x996c 0xb4d6 0x9e6a 0xb99e 0xcd3d 0xbcd4 P=-3.02837e-07kW pf2=ok curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=-3.25562e-07kW Q=-2.6403e-05kvar raw=0xb02f 0xb9aa 0x2505 0x34bd 0x181d 0xb4bb 0xafac 0xb9aa 0x4b2e 0xbcd8 P=-3.25562e-07kW pf2=ok curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=1.02044e-06kW Q=-2.58375e-05kvar raw=0xc06c 0x3a85 0xb32d 0x34a2 0x5eef 0xb4cc 0xbdd1 0x3a85 0xa93f 0xbcd3 P=1.02044e-06kW pf2=ok curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=4.52415e-07kW Q=-2.63425e-05kvar raw=0x3218 0x39ed 0x7b78 0x34a4 0xf3d6 0xb49b 0x343a 0x39ed 0xcc2f 0xbcd7 P=4.52415e-07kW pf2=ok curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=3.1308e-07kW Q=-2.63038e-05kvar raw=0x24ed 0x39a4 0x8c1b 0x355a 0x34c6 0xb500 0x5219 0x39a4 0x7b01 0xbcd7 P=3.1308e-07kW pf2=ok curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=9.06902e-07kW Q=-2.62007e-05kvar raw=0xbd27 0x3a6d 0x005f 0x355c 0x5c78 0xb4d9 0xd8fb 0x3a6d 0xa2d7 0xbcd6 P=9.06902e-07kW pf2=ok curtail=no DO=OFF
+io: curtail_do=OFF permissive=BLOCKED
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=-3.09974e-07kW Q=2.62838e-05kvar raw=0x83ff 0xb9a2 0xb2ed 0x34d5 0x2e0c 0xb4a4 0x779e 0xb9a2 0x510c 0x3cd7 P=-3.09974e-07kW pf2=ok curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=-7.29683e-08kW Q=2.59389e-05kvar raw=0x068b 0xb899 0xf815 0x34eb 0x2834 0xb49e 0xb8bb 0xb898 0x7ddf 0x3cd4 P=-7.29683e-08kW pf2=ok curtail=no DO=OFF
+iec104: P4-04 Eth_B comms-loss fallback
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=6.58464e-07kW Q=-2.60559e-05kvar raw=0x9ccd 0x3a2c 0x20b9 0x3493 0xd59d 0xb492 0x9cd6 0x3a2c 0x7337 0xbcd5 P=6.58464e-07kW pf2=ok curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=5.83482e-07kW Q=2.63571e-05kvar raw=0xf4c8 0x3a18 0x2828 0x34ec 0x6b7d 0xb513 0xed72 0x3a18 0xeaee 0x3cd7 P=5.83482e-07kW pf2=ok curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=-3.92946e-08kW Q=-2.6101e-05kvar raw=0xd042 0xb824 0x7160 0x3520 0xa7b4 0xb4b4 0xb7cb 0xb823 0xd1cf 0xbcd5 P=-3.92946e-08kW pf2=ok curtail=no DO=OFF
+io: curtail_do=OFF permissive=BLOCKED
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=7.304e-07kW Q=2.56432e-05kvar raw=0x7856 0x3a3f 0xa370 0x3499 0x949a 0xb4fc 0x6bf7 0x3a3f 0x11bc 0x3cd2 P=7.304e-07kW pf2=ok curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=2.48604e-07kW Q=2.64479e-05kvar raw=0x571f 0x3982 0x124f 0x3599 0xc70c 0xb4cb 0xbd3f 0x3982 0xa942 0x3cd8 P=2.48604e-07kW pf2=ok curtail=no DO=OFF
+iec104: P4-04 Eth_B comms-loss fallback
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=8.4348e-07kW Q=-2.57112e-05kvar raw=0x1d00 0x3a5d 0x2bf7 0x3436 0x4ace 0xb4be 0x109a 0x3a5d 0xa03f 0xbcd2 P=8.4348e-07kW pf2=ok curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=4.23348e-07kW Q=-2.60761e-05kvar raw=0xf4c2 0x39dd 0xbdf2 0xb4b8 0x49c8 0xb443 0xae2a 0x39dd 0x9da5 0xbcd5 P=4.23348e-07kW pf2=ok curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=8.25959e-08kW Q=2.60997e-05kvar raw=0x3750 0x38ad 0x37c4 0x34ab 0x2b57 0xb4d5 0x0d5d 0x38ad 0xcf19 0x3cd5 P=8.25959e-08kW pf2=ok curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=7.23546e-08kW Q=-2.59308e-05kvar raw=0xbd10 0x3897 0xaf66 0xb403 0x9369 0xb4d5 0xa5a5 0x3896 0x6cd8 0xbcd4 P=7.23546e-08kW pf2=ok curtail=no DO=OFF
+io: curtail_do=OFF permissive=BLOCKED
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=5.71875e-08kW Q=-2.63138e-05kvar raw=0xdc95 0x386f 0x4c55 0x346c 0x7992 0xb484 0xbfee 0x386f 0x901f 0xbcd7 P=5.71875e-08kW pf2=ok curtail=no DO=OFF
+iec104: P4-04 Eth_B comms-loss fallback
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=5.76057e-07kW Q=-2.59361e-05kvar raw=0x0281 0x3a17 0x1e14 0x34a1 0x4652 0xb482 0x065c 0x3a17 0x77f6 0xbcd4 P=5.76057e-07kW pf2=ok curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=-3.4166e-07kW Q=2.59165e-05kvar raw=0x20e1 0xb9b3 0x2876 0x34dc 0xe67c 0xb441 0x0214 0xb9b3 0x4ebe 0x3cd4 P=-3.4166e-07kW pf2=ok curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=2.5873e-07kW Q=-2.57612e-05kvar raw=0xa617 0x3987 0x6f16 0x34f5 0x28ec 0xb4f5 0xa629 0x3987 0x091f 0xbcd3 P=2.5873e-07kW pf2=ok curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=1.16065e-06kW Q=-2.57278e-05kvar raw=0x20d6 0x3a98 0x2fd2 0x34ce 0x62b9 0xb518 0x1aad 0x3a98 0xc313 0xbcd2 P=1.16065e-06kW pf2=ok curtail=no DO=OFF
+io: curtail_do=OFF permissive=BLOCKED
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=1.93947e-07kW Q=-2.60185e-05kvar raw=0x5e4b 0x394b 0xf167 0x34db 0x333f 0xb508 0x4411 0x394b 0x24c5 0xbcd5 P=1.93947e-07kW pf2=ok curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=-2.43979e-08kW Q=2.57718e-05kvar raw=0xaa31 0xb7cc 0x24bc 0x356b 0x8854 0xb4ed 0x072c 0xb7c9 0x1f5e 0x3cd3 P=-2.43979e-08kW pf2=ok curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=6.71368e-07kW Q=-2.59432e-05kvar raw=0xfebc 0x3a2f 0xd608 0xb501 0x8842 0xb52c 0xb324 0x3a2f 0x86bc 0xbcd4 P=6.71368e-07kW pf2=ok curtail=no DO=OFF
+iec104: P4-04 Eth_B comms-loss fallback
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=10 -> P=9.30515e-07kW Q=-2.57068e-05kvar raw=0xedcf 0x3a73 0x58c1 0x34d6 0x7e9a 0xb4ec 0xeb0a 0x3a73 0x9722 0xbcd2 P=9.30515e-07kW pf2=ok curtail=no DO=OFF
+

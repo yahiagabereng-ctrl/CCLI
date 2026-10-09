@@ -1,0 +1,44 @@
+﻿# P5 GNSS + time quality verify
+Date: 2026-10-09 11:52:22
+Host: 192.168.10.1
+VERDICT: FAIL
+
+{
+	"message": "off",
+	"success": true,
+	"fix": false
+}
+---
+{
+	"supported": true,
+	"powered_on": false
+}
+---
+Reference ID    : 5E82B8C1 (nbg01.muxx.net)
+Stratum         : 3
+Ref time (UTC)  : Fri Oct 09 09:47:00 2026
+System time     : 0.001972307 seconds slow of NTP time
+Last offset     : -0.002245343 seconds
+RMS offset      : 0.016768854 seconds
+Frequency       : 8.476 ppm fast
+Residual freq   : -0.074 ppm
+Skew            : 0.879 ppm
+Root delay      : 0.070472941 seconds
+Root dispersion : 0.002899353 seconds
+Update interval : 1678.2 seconds
+Leap status     : Normal
+---
+MS Name/IP address         Stratum Poll Reach LastRx Last sample               
+===============================================================================
+#? GNSS                          0   4     0     -     +0ns[   +0ns] +/-    0ns
+^+ static.245.70.235.167.cl>     2   6   377   314    -12ms[  -12ms] +/-   48ms
+^+ time3.panq.nl                 2   8   377   182  -8337us[-8337us] +/-   42ms
+^+ ip31-70-111-17.pbiaas.com     2   9   233   506  -2748us[-4864us] +/-   37ms
+^* nbg01.muxx.net                2   7   377   321  -4697us[-6942us] +/-   40ms
+---
+mms: time_quality chrony offset_ms=0 within_pm100=yes leap=Normal ref=5E82B8C1 gnss_fix=0 clockNotSynchronized=1 (T.3.3.4.5)
+mms: time_quality chrony offset_ms=0 within_pm100=yes leap=Normal ref=5E82B8C1 gnss_fix=0 clockNotSynchronized=1 (T.3.3.4.5)
+mms: time_quality chrony offset_ms=0 within_pm100=yes leap=Normal ref=5E82B8C1 gnss_fix=0 clockNotSynchronized=1 (T.3.3.4.5)
+mms: time_quality chrony offset_ms=0 within_pm100=yes leap=Normal ref=5E82B8C1 gnss_fix=0 clockNotSynchronized=1 (T.3.3.4.5)
+mms: time_quality chrony offset_ms=0 within_pm100=yes leap=Normal ref=5E82B8C1 gnss_fix=0 clockNotSynchronized=1 (T.3.3.4.5)
+

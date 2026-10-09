@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <SCL xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:sxy="http://www.iec.ch/61850/2003/SCLcoordinates" xsi:schemaLocation="http://www.iec.ch/61850/2003/SCL SCL.xsd" version="2007" revision="B" release="4" xmlns="http://www.iec.ch/61850/2003/SCL">
-<Header id="CCI_Oss_Contr" version="1" revision="3" toolID="" nameStructure="IEDName">
+<Header id="CCI_Oss_Contr" version="1" revision="7" toolID="" nameStructure="IEDName">
 <History>
 <Hitem version="1" revision="1" when="05/08/2022 12:00:00" what="Esempio CID CCI Osservab. + Controllab." who="RMS" why="Per TR 57-126 relativo a Allegato T CEI 0-16" />
 <Hitem version="1" revision="2" when="2026-09-25" what="Lab TG544 Eth_A bind IP → 192.168.10.1/24 (LAN1 DSO)" who="CCLI" why="Phase 3 P3-02 lab CID; keep example.cid unchanged" />
 <Hitem version="1" revision="3" when="2026-09-26" what="Fix CtlModelKind/OriginatorCategoryKind spaced enum strings; add LPL configRev; fix ctlModel Val" who="CCLI" why="TSP SCL Verify Report.xlsx — enum corruption cascade" />
 <Hitem version="1" revision="4" when="2026-10-02" what="LN/DO audit align: DPCC ratings on all inst; DECP1 VMax/VMin; DGEN GnOpSt/OpTmsRs; MMXU2 TotVAr/PPV/A; DVVR VVArCrv" who="CCLI" why="LN,DO.xlsx mandatory DO audit vs lab CID" />
 <Hitem version="1" revision="5" when="2026-10-02" what="Add GSEControl gcb_PdC_Mis4sec + gcb_Stato_Allarmi with GSE comms (IED Explorer GOOSE sender)" who="CCLI" why="P5-G02 integrated IedServer GOOSE publish" />
+<Hitem version="1" revision="6" when="2026-10-09" what="SCL Verify: Mod/Beh blocked enum; remove SupSubscription; PdC PPV/A SDI nesting" who="CCLI" why="TSP offline verify" />
+<Hitem version="1" revision="7" when="2026-10-09" what="LLN0 repair: DataSet-Report-DOI-GSE order; valid XML on PdC phsC" who="CCLI" why="Clear last SchemaValidation Error" />
 </History>
 </Header>
 <Communication>
@@ -69,7 +71,6 @@
 <GSESettings cbName="Fix" datSet="Fix" appID="Fix" />
 <ConfLNs fixPrefix="true" fixLnInst="true" />
 <ConfLdName />
-<SupSubscription maxGo="10" maxSv="0" />
 <TimeSyncProt sntp="true" c37_238="false" other="true" />
 </Services>
 <AccessPoint name="accessPoint1" desc="">
@@ -136,8 +137,6 @@
 <OptFields seqNum="true" timeStamp="true" dataSet="true" reasonCode="true" dataRef="true" entryID="true" configRef="true" />
 <RptEnabled max="2" desc="Client DSO" />
 </ReportControl>
-<GSEControl name="gcb_PdC_Mis4sec" datSet="DS_R_PdC_Mis4sec" appID="PdCMis4" confRev="1" type="GOOSE" desc="PdC 4s measurements GOOSE" />
-<GSEControl name="gcb_Stato_Allarmi" datSet="DS_R_Stato_Allarmi_Segnali" appID="CCIAlrm" confRev="1" type="GOOSE" desc="Alarms and status GOOSE" />
 <DOI name="Mod" desc="">
 <DAI name="stVal">
 <Val>on</Val>
@@ -158,12 +157,14 @@
 </DOI>
 <DOI name="NamPlt" desc="">
 <DAI name="configRev">
-<Val>20261002</Val>
+<Val>20261009</Val>
 </DAI>
 <DAI name="ldNs" desc="">
 <Val>IEC61850-7-4:2010</Val>
 </DAI>
 </DOI>
+<GSEControl name="gcb_PdC_Mis4sec" datSet="DS_R_PdC_Mis4sec" appID="PdCMis4" confRev="1" type="GOOSE" desc="PdC 4s measurements GOOSE" />
+<GSEControl name="gcb_Stato_Allarmi" datSet="DS_R_Stato_Allarmi_Segnali" appID="CCIAlrm" confRev="1" type="GOOSE" desc="Alarms and status GOOSE" />
 </LN0>
 <LN lnClass="LPHD" lnType="LPHD1" inst="1" prefix="">
 <DOI name="PhyHealth" desc="">
@@ -322,60 +323,60 @@
 </DOI>
 <DOI name="PPV" desc="Tensione concatenata al PdC">
 <SDI name="phsAB">
-<DAI name="cVal">
+<SDI name="cVal">
 <SDI name="mag">
 <DAI name="f">
 <Val>20</Val>
 </DAI>
 </SDI>
-</DAI>
+</SDI>
 </SDI>
 <SDI name="phsBC">
-<DAI name="cVal">
+<SDI name="cVal">
 <SDI name="mag">
 <DAI name="f">
 <Val>0</Val>
 </DAI>
 </SDI>
-</DAI>
+</SDI>
 </SDI>
 <SDI name="phsCA">
-<DAI name="cVal">
+<SDI name="cVal">
 <SDI name="mag">
 <DAI name="f">
 <Val>0</Val>
 </DAI>
 </SDI>
-</DAI>
+</SDI>
 </SDI>
 </DOI>
 <DOI name="A" desc="Corrente al PdC">
 <SDI name="phsA">
-<DAI name="cVal">
+<SDI name="cVal">
 <SDI name="mag">
 <DAI name="f">
 <Val>0</Val>
 </DAI>
 </SDI>
-</DAI>
+</SDI>
 </SDI>
 <SDI name="phsB">
-<DAI name="cVal">
+<SDI name="cVal">
 <SDI name="mag">
 <DAI name="f">
 <Val>0</Val>
 </DAI>
 </SDI>
-</DAI>
+</SDI>
 </SDI>
 <SDI name="phsC">
-<DAI name="cVal">
+<SDI name="cVal">
 <SDI name="mag">
 <DAI name="f">
 <Val>0</Val>
 </DAI>
 </SDI>
-</DAI>
+</SDI>
 </SDI>
 </DOI>
 </LN>
@@ -1131,7 +1132,7 @@
 </DAType>
 <EnumType id="Mod">
 <EnumVal ord="1">on</EnumVal>
-<EnumVal ord="2">on-blocked</EnumVal>
+<EnumVal ord="2">blocked</EnumVal>
 <EnumVal ord="3">test</EnumVal>
 <EnumVal ord="4">test/blocked</EnumVal>
 <EnumVal ord="5">off</EnumVal>
@@ -1145,7 +1146,7 @@
 </EnumType>
 <EnumType id="Beh">
 <EnumVal ord="1">on</EnumVal>
-<EnumVal ord="2">on-blocked</EnumVal>
+<EnumVal ord="2">blocked</EnumVal>
 <EnumVal ord="3">test</EnumVal>
 <EnumVal ord="4">test/blocked</EnumVal>
 <EnumVal ord="5">off</EnumVal>

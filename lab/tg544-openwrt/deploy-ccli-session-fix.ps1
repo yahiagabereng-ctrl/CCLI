@@ -50,7 +50,10 @@ $expectedFull = "$($vlines[0])-r$($vlines[1])"
 Write-Host "=== Deploy target version: $expectedFull ===" -ForegroundColor Cyan
 
 Write-Host "=== Verify binary version (TG544 aarch64, no local exec on x86) ===" -ForegroundColor Cyan
-$wslBin = $Bin -replace '\\', '/' -replace '^C:', '/mnt/c' -replace '^c:', '/mnt/c'
+$wslBin = ($Bin -replace '\\', '/')
+if ($wslBin -match '^([A-Za-z]):(.*)$') {
+    $wslBin = ('/mnt/{0}{1}' -f $Matches[1].ToLower(), $Matches[2])
+}
 $verOk = $false
 $prevEap = $ErrorActionPreference
 $ErrorActionPreference = "SilentlyContinue"

@@ -1,0 +1,22 @@
+# P4 — IEC 104 Eth_B listener after r51 + lib60870 deploy
+# 2026-10-09 deploy from PC-B @ 192.168.10.10 → DUT 192.168.10.1
+# Manifest: lab/tg544-openwrt/deploy-manifests/CCLI_DEPLOY_0.1.0-r51_2026-10-09_130515.md
+
+ccli 0.1.0-r51 (P3-07-AARE-SIGN-RAW-GT)
+SHA256 /usr/sbin/ccli = 2b166430fdb5851a46bad31c1741f11f7c553161fe98bce8b6bbc6558cbdf7ae
+
+netstat:
+tcp  0  0  192.168.10.1:3782   0.0.0.0:*  LISTEN  ccli
+tcp  0  0  192.168.1.130:2404  0.0.0.0:*  LISTEN  ccli
+
+log:
+iec104: listening 192.168.1.130:2404 CA=1 tls=on [IEC 60870-5-104 / O.13.1.1.1]
+iec104: Operating Rule mode=monitor_only allow_commands=no gi=yes monitor: TotW@1001=on [O.14]
+
+PC-A check (from logger NIC):
+  Test-NetConnection 192.168.1.130 -Port 2404  → TcpTestSucceeded = True
+
+Build notes:
+- scripts/vendor-lib60870.sh (v2.3.5 + mbedtls symlink)
+- lab/tg544-openwrt/wsl-build-ccli.sh → ccli-0.1.0-r51.apk + ccli-bin
+- deploy-ccli-session-fix.ps1 -LabYaml lab_tr400_phase4_eth_b_ttyS1.yaml

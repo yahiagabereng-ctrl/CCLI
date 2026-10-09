@@ -1,0 +1,23 @@
+# DUT preflight — listeners restored (2026-10-09 20:08:28 UTC+2)
+
+## Issue
+ccli r52 was running but MMS/104 bind failed at 20:06:07:
+- mms: FAILED bind 192.168.10.1:3782 (port busy — TesPro iec61850service)
+- iec104: FAILED 192.168.1.130:2404 (Address in use)
+
+## Fix (on DUT via LAN1 SSH)
+/etc/init.d/iec61850service stop
+/etc/init.d/iec61850-mmsd stop
+killall iec61850d 2>/dev/null
+/etc/init.d/ccli restart
+
+## After restart (PID 18852)
+mms: listening on 192.168.10.1:3782 tls=on ...
+iec104: listening 192.168.1.130:2404 CA=1 tls=on
+
+netstat:
+  192.168.10.1:3782  LISTEN  ccli
+  192.168.1.130:2404 LISTEN  ccli
+
+## Operator rule
+Before formal test or after LuCI IEC61850 toggles: ensure **iec61850service stopped** and **single ccli** with both listeners.

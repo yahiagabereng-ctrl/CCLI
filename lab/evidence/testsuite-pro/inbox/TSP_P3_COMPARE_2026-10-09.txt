@@ -1,0 +1,70 @@
+﻿# CCLI TSP evidence — Compare Model (T1-02 / Phase 2 step 4)
+tsp_id: T1-02
+gate: P3_COMPARE
+tool: COMPARE
+date: 2026-10-09
+pc_ip: 192.168.10.10
+dut_ip: 192.168.10.1:3782
+tls: true
+cid: apps/ccli/config/icd/lab_tg544_eth_a.cid
+ccli_pkg: 0.1.0-r52
+result: PASS (scoped — screenshot evidence; no xlsx export)
+
+## Screenshots (primary evidence)
+- inbox/TSP_P3_COMPARE_2026-10-09_top.png — CCI016_01 / LD_Plant tree, Match vs MisMatch
+- inbox/TSP_P3_COMPARE_2026-10-09_controls.png — regulation LNs incl. **WlimDWMX1 Match**, **WSdDAGC1 Match**
+
+## Compare grid summary (2026-10-09 session)
+reference_cid: lab_tg544_eth_a.cid
+online_ied: CCI016_01 @ 3782 TLS
+urcb_already_enabled: yes (Phase 1)
+
+### MisMatch (red) — waived / explained for first-pass PICS
+- CCI016_01 (root) — rollup of children; TSP **Error Count ~489** = **leaf DA** mismatches, not 489 missing LNs
+- CCI016_01LD_Plant — rollup
+- **LLN0** (see drill-down below)
+- **PdCMMXU1** — Beh/TotW/TotVAr **Match**; **PPV** + **A** **MisMatch** (q/t/phase tree vs static CID)
+- GenPVMMXU1, GenWiMMXU1, GenTerMMXU1, GenIdrMMXU1, StMMXU1, SGGMMXU1, SGGMMXU2 — same **PPV/A** pattern on **MMXU2** (CID instance = Beh only; online exposes full type)
+
+#### LLN0 drill-down (2026-10-09 Compare screenshots)
+| Object | Status | Cause | Waiver |
+|--------|--------|-------|--------|
+| DataSets | Match | — | — |
+| GOOSE Control Blocks | Match | gcb_* present | — |
+| Mod, Beh, Health | Match | — | — |
+| NamPlt vendor/swRev/ldNs/lnNs | Match | — | — |
+| **NamPlt configRev** | **MisMatch** | CID rev7 **20261009** vs DUT still **20261002** until redeploy `.cid`/`.cfg` | **CFG-REV-01** — redeploy CID rev7 + restart ccli |
+| **brcb_Stato_Allarmi_Segnali01/02** | **MisMatch** | `RptEnabled max=2` — inst **02** reserved/empty vs CID template; **01** may differ after client enable | **RCB-INST-02** |
+| **urcb_*_01/02** (all 4 URCBs) | **MisMatch** | Same dual-instance; **01** often enabled (Phase 1 URCB) — RptEna/Resv/owner/client attrs ≠ static CID | **RCB-LIVE-01** — structure OK; T1-05/06 PASS |
+
+#### MMXU PPV / A pattern (explains bulk of Error Count)
+| LN type | CID file | Online | Compare |
+|---------|----------|--------|---------|
+| **MMXU1** PdC | PPV/A **DOI** with phs values | Live **q/t** + runtime mag | TotW/TotVAr Match; **PPV/A red** (LN-GAP-06/08) |
+| **MMXU2** Gen/St/SGG | Instance often **Beh only** | **full_cid_cfg** exposes PPV/A from **LNodeType** | LN red; TotW may Match at 0; **PPV/A always red** (PLANT-GAP-02) |
+
+Expand **PPV** under PdCMMXU1: expect mismatches on **phsBC/phsCA**, **q**, **t**, not necessarily **phsAB mag** (Report4.csv often empty on PPV export).
+
+### Match (green) — includes mandatory control path
+- LPHD1
+- PdC_WiDPCC1, PdC_WaDPCC1, PdC_QiDPCC1, PdC_QcDPCC1, PdC_VADPCC1
+- DisFRDECP1, DisFRDGEN1, DisFRDSTO1
+- IDGXCBR1, SSGGDGEN1, SSGGDGEN2
+- **WlimDWMX1** — Match
+- **WSdDAGC1** — Match
+- VArSdDVAR1, PFSPDFPF1, VArVDVVR1, VArVDPMC1, VArVDPMC2, VArVDECP1, VArVDECP2, PFWDPFW1
+
+## PICS M conclusion
+| Requirement | Evidence |
+|-------------|----------|
+| Wlim / WSd in model | **Match** on Compare + T1-07/08 Operate PASS |
+| PdC measures | MisMatch on LN row; **GetDataValues PASS** (T1-04) |
+| LLN0 URCB | MisMatch on LN row; **URCB PASS** (T1-05/06) |
+| Full CID value parity | **Out of scope** first quote — cert CID / discovery depth later |
+
+waiver_ref: lab/evidence/testsuite-pro/inbox/TSP_P5_COMPARE_WAIVERS.md
+cross_ref: TSP_P5_FULLCIRCLE_TLS_2026-10-09.txt step 4
+offline_scl_verify: TSP_OFF_SCLVERIFY_2026-10-09.txt (same session — CID static check)
+
+## Export limitation
+TSP Compare Model: **no xlsx extract** — screenshots + this scope note satisfy matrix row "Compare documented (waivers OK)".

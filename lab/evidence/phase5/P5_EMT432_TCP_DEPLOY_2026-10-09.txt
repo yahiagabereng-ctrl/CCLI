@@ -1,0 +1,26 @@
+P5-06 — ccli Modbus TCP to EMT432 (deploy 2026-10-09)
+
+Manifest: lab/tg544-openwrt/deploy-manifests/CCLI_DEPLOY_0.1.0-r51_2026-10-09_132056.md
+Lab yaml on DUT: lab_tr400_phase4_emt432_lan3_tcp.yaml → /etc/ccli/lab.yaml
+
+modbus:
+  backend: tcp
+  host: 192.168.178.250
+  tcp_port: 502
+  slave_id: 1
+  reg_active_power: 932 (P1 @ 40933)
+  reg_reactive_power: 940 (Q1 @ 40941)
+
+DUT after /etc/init.d/ccli restart (single PID):
+  MMS  192.168.10.1:3782  LISTEN
+  104  192.168.1.130:2404 LISTEN
+  lan3 192.168.178.1/24
+
+Modbus log (ccli 19568):
+  FC3 @ addr=40933 qty=10 (TCP path active — no longer RTU @ 40001)
+  Values unstable / non-physical (e.g. P=1e14 kW) — validate with PC probe:
+    lab/set_pc_lan3_plant_178.cmd
+    python lab/modbus_emt432_tcp_probe.py --host 192.168.178.250
+  busybox nc :502 may still show CLOSED while Modbus ADU succeeds.
+
+Operator: confirm Modbus TCP enabled on meter UI; without CT expect P≈0 Q≈0 with sane V/f in probe.

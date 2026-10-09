@@ -343,7 +343,10 @@ int run_regulation_check(const std::string& config_path, bool live, bool json_ou
 
         if (svc_io_init_cfg(&gcfg)) {
             cci::core::MeasurementStore measurements;
-            cci::core::EventRing events;
+            cci::core::EventLogConfig elog_cfg;
+            elog_cfg.enabled = app_cfg.event_log.enabled;
+            elog_cfg.path = app_cfg.event_log.path;
+            cci::core::EventStore events(elog_cfg);
             cci::services::ModbusService modbus(measurements, app_cfg);
             cci::core::Pf2Config pf2_cfg = app_cfg.pf2;
             const auto dso_apply =

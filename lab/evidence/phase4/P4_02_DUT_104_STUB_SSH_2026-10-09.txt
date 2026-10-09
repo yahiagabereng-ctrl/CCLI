@@ -1,0 +1,35 @@
+# P4 — DUT IEC 104 listener probe (SSH from PC-B / LAN1)
+# 2026-10-09 ~18:53 UTC+2
+# Host: root@192.168.10.1 (lab-env CCLI_TG544_PW)
+
+=== ccli --version ===
+ccli 0.1.0-r48 (P3-07-AARE-SIGN-RAW-GT)
+  platform: tg500
+  built:    2026-06-29T12:59:20Z UTC
+
+=== process ===
+14131 root  /usr/sbin/ccli --config /etc/ccli/lab.yaml
+
+=== netstat LISTEN (104 / MMS) ===
+tcp  0  0  192.168.10.1:3782  0.0.0.0:*  LISTEN
+(no listener on 192.168.1.130:2404)
+
+=== /etc/ccli/lab.yaml iec104 ===
+iec104:
+  enabled: true
+  bind_address: 192.168.1.130
+  tcp_port: 2404
+  common_address: 1
+
+=== strings /usr/sbin/ccli (iec104) ===
+iec104: lib60870 not linked (stub)
+
+=== PC-A LAN2 (user-confirmed same session) ===
+PC 192.168.1.183/24 — ping 192.168.1.130 PASS
+TCP :22 :80 OPEN on 192.168.1.130
+TCP :2404 CLOSED (TcpTestSucceeded = False)
+
+=== verdict ===
+L3 Eth_B OK. Port 2404 blocked by DUT binary (stub), not cable/IP.
+Fix: deploy ccli built with CCLI_WITH_LIB60870 (r49+), match apps/ccli/VERSION (tree: 0.1.0-r51).
+Local lab/tg544-openwrt/ccli-bin strings show 0.1.0-r30 — deploy script will reject until rebuild.

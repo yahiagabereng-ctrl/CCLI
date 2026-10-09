@@ -22,11 +22,15 @@
 
 ## Network plan (LAN3)
 
-| Device | IP | Note |
-|--------|-----|------|
-| TG544 **lan3** | **192.168.30.1/24** | DUT plant port |
-| **EMT432** | **192.168.30.50/24** (target) | Set static on meter or via web UI |
-| PC plant NIC | **192.168.30.10/24** | `lab/set_pc_lan3_plant.cmd` (Admin) |
+**Two bench IP plans** — use one consistently:
+
+| Device | Plan A (zone docs) | Plan B (**EMT432 SN 261001102952**, 2026-10-05+) |
+|--------|-------------------|--------------------------------------------------|
+| TG544 **lan3** | **192.168.30.1/24** | **192.168.178.1/24** (`uci set network.lan2_sec.ipaddr`) |
+| **EMT432** | **192.168.30.50/24** | **192.168.178.250/24** static, GW **.178.1** |
+| PC plant NIC | **192.168.30.10/24** — `lab/set_pc_lan3_plant.cmd` | **192.168.178.10/24** — `lab/set_pc_lan3_plant_178.cmd` |
+
+**Current as-built:** Plan B — L3 ping **PASS**; Modbus TCP **:502 still closed** (2026-10-09).
 
 **PC note (2026-10-05):** bench PC on **LAN1** `192.168.10.10` only — **LAN3 ping to 192.168.30.1 timed out**. Probe from PC after LAN3 cable + `192.168.30.10`, or from DUT SSH.
 
