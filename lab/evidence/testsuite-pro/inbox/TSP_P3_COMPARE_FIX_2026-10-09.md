@@ -1,7 +1,7 @@
 # TSP Compare Model — fix pack (2026-10-09)
 
 **Input evidence:** `TSP_P3_COMPARE_2026-10-09.xlsx` (489 rows from `New folder/ss.xlsx`)  
-**CID/cfg:** `lab_tg544_eth_a` **rev 6** · DUT `ccli` r52 · `model=full_cid_cfg`
+**CID/cfg:** `lab_tg544_eth_a` **rev 8** (3548437 + rev 7 LLN0) · DUT `ccli` r52 · `model=full_cid_cfg`
 
 ## Root cause (from export)
 
@@ -23,7 +23,7 @@ Advanced Client already showed `PdCMMXU1.PPV.phsAB` live — not a missing-DO fi
 
 ## Re-test on TSP (PC-B)
 
-1. Import **repo** CID only (`lab_tg544_eth_a.cid` History **rev 6** — not local “LLN0 repair” rev 7).  
+1. Import **repo** `lab_tg544_eth_a.cid` (Header **revision 8** · `configRev` **20261009**).  
 2. Disconnect → Connect `:3782` (fresh discovery after DUT restart).  
 3. URCB **disabled**.  
 4. Compare Model → export `TSP_P3_COMPARE_AFTER_2026-10-09.xlsx`.
