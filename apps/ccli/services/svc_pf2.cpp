@@ -19,10 +19,10 @@ core::Pf2Config lab_pf2_config() {
 
 }  // namespace
 
-Pf2Service::Pf2Service(core::MeasurementStore& measurements, core::EventRing& events)
+Pf2Service::Pf2Service(core::MeasurementStore& measurements, core::EventStore& events)
     : measurements_(measurements), events_(events), fsm_(lab_pf2_config()) {}
 
-Pf2Service::Pf2Service(core::MeasurementStore& measurements, core::EventRing& events,
+Pf2Service::Pf2Service(core::MeasurementStore& measurements, core::EventStore& events,
                        core::Pf2Config cfg)
     : measurements_(measurements), events_(events), fsm_(cfg) {}
 

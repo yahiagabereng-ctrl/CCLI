@@ -1,7 +1,7 @@
 # P7-04 — O.14 gap backlog (r28+)
 
-**Date:** 2026-10-02  
-**Build:** 0.1.0-r28 (P7-04-O14-GAPS)
+**Date:** 2026-10-09  
+**Build:** 0.1.0-r35 (P7-O14-LOGGER)
 
 Tracks Annex O §11 categories not yet fully covered vs what r28 wires into `EventStore`.
 
@@ -27,19 +27,30 @@ Also: auto-`mkdir` for `/var/lib/ccli` in `EventStore` + `deploy-ccli-dut.sh`.
 
 ---
 
+## Closed in r35 (software)
+
+| Item | Event / API |
+|------|-------------|
+| Firmware change | `firmware_update:old->new` sidecar |
+| GOOSE timeout | `goose link_down:timeout` / `link_up` |
+| Syslog RFC 5424 | UDP `event_log.syslog_host:port` |
+| User overwrite | `--event-clear` exit 2; 0640 file |
+| PF2 persist | `EventStore` not RAM-only ring |
+| Eth physical link | `iface lanN:up\|down` |
+| Segmentation policy | `net segmentation_deny:EthA->EthB` |
+| Priority on comms loss | `priority autonomous_after_eth_a_loss` |
+
 ## Still GAP (hardware / product)
 
 | O.14 category | Blocker | Target |
 |---------------|---------|--------|
 | CCI PSU presence | No PSU monitor driver / ubus | HW + driver |
 | Real power-loss cause | PMIC / UPS GPIO | Field wiring |
-| Firmware **update** event | opkg/sysupgrade hook | procd + opkg postinst |
+| Firmware **failed sysupgrade** | opkg/sysupgrade hook | procd postinst |
 | Full DG / PI switch map | DI not assigned on TR400 lab | P6-06 IO expansion |
 | PG / PI protection trips | Protection relay DI | Field PI |
-| Irregular network / port scan | netlink + IDS | `net_policy` + hostapd |
-| Abnormal endpoints / off-hours | Time policy engine | Annex T |
-| Remote syslog (P7-03) | RFC 5424 forwarder | `logd` / rsyslog client |
-| Control priority changes | No runtime priority API | PF2/PF3 config service |
+| Port scan / IDS | Packet IDS | hostapd / suricata |
+| Off-hours endpoints | Time policy engine | Annex T |
 | Live polygon curve edits | MMS set-point only; no curve object | Annex T data model |
 
 ---

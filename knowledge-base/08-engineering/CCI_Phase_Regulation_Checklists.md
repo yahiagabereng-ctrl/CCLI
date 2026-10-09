@@ -119,7 +119,7 @@ Fill **Evidence** with date, APK/`ccli` version, log excerpt, screenshot, or tes
 | 61850-8-1 | 2004 OCR | 2011 Ed.2 + AMD2018 | P3 corpus |
 | 61850-7-3 | PDF **HAVE** (drop) | Engineering extract **HAVE** | `ccli-61850-7-3-extract` 2026-09-30 |
 | 61850-7-4 | PDF **HAVE** (drop) | Engineering extract **HAVE** | `ccli-61850-7-4-extract` 2026-09-30 |
-| 62351-100-3 | Cited in O.15 | PDF + lab plan | P7 |
+| 62351-100-3 | Cited in O.15 | **HAVE** extract + OCR · formal PID TODO | P7 |
 | ARERA 385 / 564 | O §2.1 summary | Full delibere | P7 legal |
 | Allegato U | In consolidata | English extract + timers | P3 fallback |
 | DSO ICD / `signal_map.yaml` | TR 57-126 example only | Plant-specific CID | P3 |
@@ -372,10 +372,10 @@ Fill **Evidence** with date, APK/`ccli` version, log excerpt, screenshot, or tes
 
 | Check | Regulation | Shall | Pass criteria | Status |
 |-------|------------|-------|---------------|--------|
-| P7-01 | O.14 | ≥ **2048** events, user cannot overwrite | Store + wrap test | **PART** — r27 `EventStore`, `--event-wrap-test` |
-| P7-02 | O.14 | Timestamp `yyyy/mm/dd hh:mm:ss` | Sample dump | **PART** — `--event-dump` UTC |
-| P7-03 | O.14 / 62351-14 | Remote read syslog RFC 5424 | SIEM receive | **OPEN** |
-| P7-04 | O.14 list | Mandatory categories (DG/DI, comms, auth, DSO cmds, M trip, …) | Coverage matrix | **PART** — [P7-04 matrix](../../lab/evidence/phase7/P7-04_EVENT_COVERAGE_MATRIX.md) |
+| P7-01 | O.14 | ≥ **2048** events, user cannot overwrite | Store + wrap test | **HAVE** (r35 software) — wrap + `--event-clear` denied |
+| P7-02 | O.14 | Timestamp `yyyy/mm/dd hh:mm:ss` | Sample dump | **HAVE** — `--event-dump` UTC |
+| P7-03 | O.14 / 62351-14 | Remote read syslog RFC 5424 | SIEM receive | **HAVE** (UDP client r35) — SIEM wiring lab |
+| P7-04 | O.14 list | Mandatory categories (DG/DI, comms, auth, DSO cmds, M trip, …) | Coverage matrix | **HAVE** software r35 — HW PSU/PG-PI still GAP |
 | P7-05 | O.15 / 62443-4-1 | SDLC evidence | Threat model + test records | **PART** |
 | P7-06 | O.15 / 62443-4-2 | Component CR / SL-T 2 proposed | Gap vs CR 3.6 already in P1 | **PART** |
 | P7-07 | O.15 / 62351-100-3 | Transport conformance **plan** (cert later) | Lab procedure + PICS | **OPEN** |

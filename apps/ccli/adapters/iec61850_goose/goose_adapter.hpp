@@ -31,6 +31,8 @@ public:
     void stop();
     bool is_running() const { return running_.load(); }
     GooseRxSnapshot snapshot() const;
+    /** Wall-clock ms of last GOOSE PDU (0 = never). O.14 plant GOOSE comms. */
+    std::int64_t last_rx_ms() const { return last_rx_ms_.load(); }
 
     /** Called from libiec61850 GooseListener (C callback). */
     void on_goose_received(void* subscriber);
@@ -38,8 +40,9 @@ public:
 private:
 
     core::GooseConfig cfg_{};
-    EventCallback     on_event_{};
-    std::atomic<bool> running_{false};
+    EventCallback                 on_event_{};
+    std::atomic<bool>             running_{false};
+    std::atomic<std::int64_t>     last_rx_ms_{0};
 
 #if defined(CCLI_HAVE_LIBIEC61850) && defined(CCLI_HAVE_GOOSE)
     struct Impl;

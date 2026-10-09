@@ -63,4 +63,33 @@ foreach ($name in @("CCI_Project_Roadmap.md", "CCI_3Month_Italy_NoFab_Plan.md"))
     }
 }
 
+# Lab meeting docs
+$TelLab = Join-Path $TelematryRoot "documents\projects\ccli\lab\meetings"
+$LabMeet = Join-Path $Repo "lab\meetings"
+if (Test-Path $LabMeet) {
+    New-Item -ItemType Directory -Path $TelLab -Force | Out-Null
+    Get-ChildItem $LabMeet -Filter "*.md" -ErrorAction SilentlyContinue | ForEach-Object {
+        Copy-Item $_.FullName (Join-Path $TelLab $_.Name) -Force
+        $count++
+    }
+}
+
+# Lab conformance + TSP test identification (RAG field checklists)
+$TelConf = Join-Path $TelematryRoot "documents\projects\ccli\lab\conformance"
+$LabConf = Join-Path $Repo "lab\conformance"
+if (Test-Path $LabConf) {
+    New-Item -ItemType Directory -Path $TelConf -Force | Out-Null
+    Get-ChildItem $LabConf -Filter "*.md" -ErrorAction SilentlyContinue | ForEach-Object {
+        Copy-Item $_.FullName (Join-Path $TelConf $_.Name) -Force
+        $count++
+    }
+}
+$TspId = Join-Path $Repo "lab\evidence\testsuite-pro\TSP_TEST_IDENTIFICATION_POST_CONNECT.md"
+if (Test-Path $TspId) {
+    $TelTspDoc = Join-Path $TelematryRoot "documents\projects\ccli\lab\evidence\testsuite-pro"
+    New-Item -ItemType Directory -Path $TelTspDoc -Force | Out-Null
+    Copy-Item $TspId (Join-Path $TelTspDoc "TSP_TEST_IDENTIFICATION_POST_CONNECT.md") -Force
+    $count++
+}
+
 Write-Host "Synced $count files to Telematry under documents/projects/ccli/" -ForegroundColor Green

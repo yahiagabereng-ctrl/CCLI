@@ -1,5 +1,6 @@
 #include "goose_adapter.hpp"
 
+#include <chrono>
 #include <cstdio>
 #include <cstring>
 #include <iostream>
@@ -75,6 +76,9 @@ void GooseAdapter::on_goose_received(void* subscriber) {
     const uint32_t sq = static_cast<uint32_t>(GooseSubscriber_getSqNum(sub));
     const int32_t app = GooseSubscriber_getAppId(sub);
     const bool ok = GooseSubscriber_isValid(sub);
+    last_rx_ms_.store(std::chrono::duration_cast<std::chrono::milliseconds>(
+                          std::chrono::system_clock::now().time_since_epoch())
+                          .count());
     std::cerr << "goose: rx appId=0x" << std::hex << app << std::dec << " stNum=" << st
               << " sqNum=" << sq << " valid=" << (ok ? "yes" : "no") << '\n';
     if (on_event_) {

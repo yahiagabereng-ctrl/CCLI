@@ -350,6 +350,8 @@ CcliConfig load_config(const std::string& path) {
                     static_cast<uint16_t>(std::strtoul(value.c_str(), nullptr, 10));
             } else if (key == "publish_interval_ms") {
                 cfg.goose.publish_interval_ms = std::atoi(value.c_str());
+            } else if (key == "timeout_s") {
+                cfg.goose.timeout_s = std::atoi(value.c_str());
             }
             continue;
         }
@@ -395,6 +397,15 @@ CcliConfig load_config(const std::string& path) {
                 cfg.event_log.enabled = parse_bool(value, cfg.event_log.enabled);
             } else if (key == "path") {
                 cfg.event_log.path = value;
+            } else if (key == "syslog_enabled") {
+                cfg.event_log.syslog_enabled =
+                    parse_bool(value, cfg.event_log.syslog_enabled);
+            } else if (key == "syslog_host") {
+                cfg.event_log.syslog_host = value;
+            } else if (key == "syslog_port") {
+                cfg.event_log.syslog_port = std::atoi(value.c_str());
+            } else if (key == "watch_ifaces") {
+                cfg.event_log.watch_ifaces = value;
             }
         }
     }

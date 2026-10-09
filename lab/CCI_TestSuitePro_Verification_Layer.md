@@ -156,6 +156,8 @@ Point TSP IED Connection Configuration at that folder; leave **Disconnected**.
 Minimum live sequence: Connect → EnableReport TotW → Operate Wlim/WSd → save under `inbox/` as `TSP_P3_*`.  
 Actuation check outside TSP: `ubus call dido_v2 status`.
 
+**Full test list (post-Connect):** `lab/evidence/testsuite-pro/TSP_TEST_IDENTIFICATION_POST_CONNECT.md` — Tier 1 P0 → Tier 2 Annex T TLS → security negatives → optional PICS extras.
+
 ---
 
 ## 4. Tool map → CCLI gates

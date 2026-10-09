@@ -208,7 +208,7 @@ RegulationReport build_regulation_report(const CcliConfig& cfg, const std::strin
             expected = "≥2048";
             actual = std::to_string(core::EventRing::kMaxEvents);
             status = core::EventRing::kMaxEvents >= 2048 ? RowStatus::Pass : RowStatus::Fail;
-            notes = "EventRing capacity";
+            notes = "EventRing 2048 + EventStore 0640 + syslog RFC 5424 (r35)";
         } else if (id == "R15") {
             expected = "Annex M DIO3 inhibit";
             actual = "lab: DIO1/DIO2 only";

@@ -10,6 +10,8 @@ struct EventRecord {
     std::int64_t timestamp_ms{0};
     std::string type;
     std::string detail;
+    /** Annex O.14 category; filled by EventStore if empty. */
+    std::string category;
 };
 
 class EventRing {

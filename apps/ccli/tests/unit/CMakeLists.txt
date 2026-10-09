@@ -17,6 +17,10 @@ add_executable(service_supervision_test service_supervision_test.cpp)
 target_link_libraries(service_supervision_test PRIVATE ccli_core)
 add_test(NAME service_supervision COMMAND service_supervision_test)
 
+add_executable(event_store_test event_store_test.cpp)
+target_link_libraries(event_store_test PRIVATE ccli_core)
+add_test(NAME event_store_o14 COMMAND event_store_test)
+
 # DI/DO L1 test: compile the C driver + service against an inspectable mock HAL
 # (no platform lib / no hardware) so we can inject inputs and read raw outputs.
 add_executable(io_safe_state_test
