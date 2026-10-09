@@ -74,8 +74,36 @@ def _num_or_none(s: str) -> float | None:
         return None
 
 
-def write_ui_json(rows: list[dict[str, str]]) -> None:
+def apply_lab_bench_overrides(rows: list[dict[str, str]]) -> list[dict[str, str]]:
+    """Two-PC bench: ttyS1 + COM5 single slave — one visible inverter (INV01)."""
+    out: list[dict[str, str]] = []
+    for r in rows:
+        row = dict(r)
+        pid = row.get("plane_id", "")
+        if row.get("record_type") == "META":
+            row["notes"] = (
+                "9600 8N1 /dev/ttyS1 A1/B1 · PC COM5 lab mock · poll_ms=4000 · lab_combined_slave=1"
+            )
+        elif re.match(r"^INV(0[2-9]|10)\.", pid):
+            row["enabled"] = "N"
+        elif pid in ("PdC.TotW", "PdC.TotVAr"):
+            row["field_device"] = "Lab RS485 slave (PdC 40001 map)"
+            if pid == "PdC.TotW":
+                row["notes"] = "Polled by ccli — TotW for MMS/URCB"
+        elif pid == "INV01.TotW":
+            row["field_device"] = "Huawei SUN2000 lab mock (COM5)"
+            row["notes"] = "Reg 32080 on mock · PdC uses 40001 on same unit ID 1"
+        elif pid == "GenPV.TotW":
+            row["transform"] = "sum(INV01.TotW)"
+            row["notes"] = "Lab bench: single inverter mock until multi-slave poll in ccli"
+        out.append(row)
+    return out
+
+
+def write_ui_json(rows: list[dict[str, str]], *, lab_bench: bool = False) -> None:
     """Inverter / POC / control map for the lab zone dashboard (read-only view)."""
+    if lab_bench:
+        rows = apply_lab_bench_overrides(rows)
     meta = next((r for r in rows if r.get("record_type") == "META"), None)
     inverters: dict[str, dict] = {}
     poc: list[dict] = []
@@ -157,10 +185,16 @@ def write_ui_json(rows: list[dict[str, str]]) -> None:
                 }
             )
 
+    source = (
+        "apps/ccli/config/plant/PLANT_ASSIGNMENT_PLANE.csv (lab-bench overlay)"
+        if lab_bench
+        else "apps/ccli/config/plant/PLANT_ASSIGNMENT_PLANE.csv"
+    )
     doc = {
         "schema": "ccli-plant-ui-map/1",
-        "source": "apps/ccli/config/plant/PLANT_ASSIGNMENT_PLANE.csv",
+        "source": source,
         "bus_notes": meta.get("notes", "") if meta else "",
+        "lab_combined_mock": lab_bench,
         "poc": poc,
         "inverters": sorted(inverters.values(), key=lambda i: i["id"]),
         "aggregates": aggregates,
@@ -257,16 +291,28 @@ def write_mms_yaml(rows: list[dict[str, str]]) -> None:
 
 
 def main() -> int:
+    import argparse
+
+    parser = argparse.ArgumentParser(description="Generate plant mapping artifacts from CSV.")
+    parser.add_argument(
+        "--lab-bench",
+        action="store_true",
+        help="Emit plant_map.json for two-PC bench (ttyS1 COM5, INV01 only)",
+    )
+    args = parser.parse_args()
+
     OUT.mkdir(parents=True, exist_ok=True)
 
     assign = load_csv(PLANT / "PLANT_ASSIGNMENT_PLANE.csv")
     goose = load_csv(PLANT / "GOOSE_DATA_MAP.csv")
     mms = load_csv(PLANT / "MMS_POINT_MAP.csv")
 
-    write_modbus_yaml(assign)
-    write_ui_json(assign)
-    write_goose_yaml(goose)
-    write_mms_yaml(mms)
+    if not args.lab_bench:
+        write_modbus_yaml(assign)
+    write_ui_json(assign, lab_bench=args.lab_bench)
+    if not args.lab_bench:
+        write_goose_yaml(goose)
+        write_mms_yaml(mms)
     print("Generation complete.")
     return 0
 

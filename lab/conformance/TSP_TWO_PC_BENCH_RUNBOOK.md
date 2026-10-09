@@ -90,7 +90,7 @@ Start **before** PC-B enables URCB on DUT.
 | □ | PC-A | `python lab\modbus_emt432_tcp_probe.py` (or equivalent) → meter **502** OK | Plant comms |
 | □ | PC-A | DUT log: modbus TCP trace · `link_up` in `--event-dump` | P7-04 / modbus |
 | □ | PC-A | Start inverter mock (keep window open): | P5 step 13 |
-|   |   | `python -u lab\modbus_rtu_slave.py --port COM5 --power-kw 450 --q-kvar 45 --trace` | |
+|   |   | `python -u lab\modbus_rtu_slave.py --port COM5 --power-kw 450 --huawei --trace` | |
 | □ | PC-A | Optional: `ccli --event-wrap-test` once on DUT · save log | P7-01 |
 | □ | PC-A | Optional syslog listener on `514` if testing r35 forward | P7-03 |
 

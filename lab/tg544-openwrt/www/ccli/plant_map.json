@@ -1,11 +1,12 @@
 {
   "schema": "ccli-plant-ui-map/1",
-  "source": "apps/ccli/config/plant/PLANT_ASSIGNMENT_PLANE.csv",
-  "bus_notes": "9600 8N1 /dev/ttyS2; addressing=huawei_direct; poll_ms=4000",
+  "source": "apps/ccli/config/plant/PLANT_ASSIGNMENT_PLANE.csv (lab-bench overlay)",
+  "bus_notes": "9600 8N1 /dev/ttyS1 A1/B1 · PC COM5 lab mock · poll_ms=4000 · lab_combined_slave=1",
+  "lab_combined_mock": true,
   "poc": [
     {
       "id": "PdC.TotW",
-      "device": "Grid analyzer",
+      "device": "Lab RS485 slave (PdC 40001 map)",
       "slave_id": 1,
       "reg": 40001,
       "type": "float32",
@@ -25,7 +26,7 @@
   "inverters": [
     {
       "id": "INV01",
-      "vendor": "Huawei SUN2000-100KTL-M2",
+      "vendor": "Huawei SUN2000 lab mock (COM5)",
       "slave_id": 1,
       "mms_ln": "LD_Plant/SGGMMXU1",
       "enabled": true,
@@ -37,7 +38,7 @@
         "gain": 1000.0,
         "mms_path": "LD_Plant/SGGMMXU1.TotW"
       },
-      "notes": "Inverter sample INV-01",
+      "notes": "Reg 32080 on mock · PdC uses 40001 on same unit ID 1",
       "status": {
         "fc": 3,
         "reg": 32089,
@@ -50,7 +51,7 @@
       "vendor": "Huawei SUN2000-100KTL-M2",
       "slave_id": 2,
       "mms_ln": "LD_Plant/SGGMMXU2",
-      "enabled": true,
+      "enabled": false,
       "runtime_status": "IMPL",
       "p": {
         "fc": 3,
@@ -72,7 +73,7 @@
       "vendor": "Huawei SUN2000-100KTL-M2",
       "slave_id": 3,
       "mms_ln": "LD_Plant/SGGMMXU3",
-      "enabled": true,
+      "enabled": false,
       "runtime_status": "CID_GAP",
       "p": {
         "fc": 3,
@@ -94,7 +95,7 @@
       "vendor": "Huawei SUN2000-100KTL-M2",
       "slave_id": 4,
       "mms_ln": "LD_Plant/SGGMMXU4",
-      "enabled": true,
+      "enabled": false,
       "runtime_status": "CID_GAP",
       "p": {
         "fc": 3,
@@ -116,7 +117,7 @@
       "vendor": "Huawei SUN2000-100KTL-M2",
       "slave_id": 5,
       "mms_ln": "LD_Plant/SGGMMXU5",
-      "enabled": true,
+      "enabled": false,
       "runtime_status": "CID_GAP",
       "p": {
         "fc": 3,
@@ -138,7 +139,7 @@
       "vendor": "Huawei SUN2000-100KTL-M2",
       "slave_id": 6,
       "mms_ln": "LD_Plant/SGGMMXU6",
-      "enabled": true,
+      "enabled": false,
       "runtime_status": "CID_GAP",
       "p": {
         "fc": 3,
@@ -160,7 +161,7 @@
       "vendor": "Huawei SUN2000-100KTL-M2",
       "slave_id": 7,
       "mms_ln": "LD_Plant/SGGMMXU7",
-      "enabled": true,
+      "enabled": false,
       "runtime_status": "CID_GAP",
       "p": {
         "fc": 3,
@@ -182,7 +183,7 @@
       "vendor": "Huawei SUN2000-100KTL-M2",
       "slave_id": 8,
       "mms_ln": "LD_Plant/SGGMMXU8",
-      "enabled": true,
+      "enabled": false,
       "runtime_status": "CID_GAP",
       "p": {
         "fc": 3,
@@ -204,7 +205,7 @@
       "vendor": "Huawei SUN2000-100KTL-M2",
       "slave_id": 9,
       "mms_ln": "LD_Plant/SGGMMXU9",
-      "enabled": true,
+      "enabled": false,
       "runtime_status": "CID_GAP",
       "p": {
         "fc": 3,
@@ -226,7 +227,7 @@
       "vendor": "Huawei SUN2000-100KTL-M2",
       "slave_id": 10,
       "mms_ln": "LD_Plant/SGGMMXU10",
-      "enabled": true,
+      "enabled": false,
       "runtime_status": "CID_GAP",
       "p": {
         "fc": 3,
@@ -248,10 +249,10 @@
     {
       "id": "GenPV.TotW",
       "mms_path": "LD_Plant/GenPVMMXU1.TotW",
-      "transform": "sum(INV01..INV10.TotW)",
+      "transform": "sum(INV01.TotW)",
       "enabled": true,
       "runtime_status": "PART",
-      "notes": "Clears PLANT-GAP-01 when multi-slave Modbus wired"
+      "notes": "Lab bench: single inverter mock until multi-slave poll in ccli"
     }
   ],
   "controls": [

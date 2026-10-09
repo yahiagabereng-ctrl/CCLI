@@ -184,7 +184,8 @@ void write_bench_status_file(const std::string& path, const cci::core::CcliConfi
         << "      \"ioa\": [\n"
         << "        {\"name\": \"TotW\", \"ioa\": " << cfg.iec104.ioa_tot_w
         << ", \"enabled\": " << (orule.monitor_tot_w ? "true" : "false")
-        << ", \"published\": " << (orule.monitor_tot_w ? "true" : "false")
+        << ", \"published\": "
+        << ((orule.monitor_tot_w && z.iec104_running) ? "true" : "false")
         << ", \"value\": " << m.p_kw << ", \"unit\": \"kW\"},\n"
         << "        {\"name\": \"TotVAr\", \"ioa\": " << orule.ioa_tot_var
         << ", \"enabled\": " << (orule.monitor_tot_var ? "true" : "false")

@@ -7,6 +7,22 @@ Format: **`semver-rN`** — bump **N** in `VERSION` line 2 and `package/ccli/Mak
 
 ---
 
+## 0.1.0-r49 — P7-O14-LOGGER (2026-10-09)
+
+### Fixed
+
+- Bench status **TotW `published`** is true only when IEC 60870-5-104 is **running** (not merely enabled in yaml).
+
+### Lab (two-PC bench)
+
+- **`plant-map-generate.py --lab-bench`**, Huawei **`modbus_rtu_slave.py`**, zone dashboard cache-bust + lab plant map deploy script host key.
+
+### Deploy (other PC)
+
+- Build with **`lab/tg544-openwrt/wsl-build-ccli.sh`** (`CCLI_WITH_LIB60870` default ON) then **`deploy-ccli-session-fix.ps1 -HostAddr 192.168.1.130`** with lab yaml **`lab_tr400_phase4_eth_b_ttyS1.yaml`**.
+
+---
+
 ## 0.1.0-r35 — P7-O14-LOGGER (2026-10-09)
 
 ### Added

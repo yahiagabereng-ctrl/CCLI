@@ -125,7 +125,7 @@
   }
   async function loadMap() {
     try {
-      state.map = await getJson("plant_map.json");
+      state.map = await getJson(`plant_map.json?t=${Date.now()}`);
     } catch (_) {
       state.map = null;
     }
@@ -354,7 +354,11 @@
       let cls = "s-mapped", pTxt = "not polled", tag = badge("MAPPED", "b-info");
       if (!i.enabled) { cls = "s-off"; tag = badge("DISABLED", "b-off"); }
       else if (d) { cls = "s-live"; pTxt = `${num(d.p_kw)} kW`; tag = badge("DEMO", "b-warn"); }
-      else if (i.runtime_status === "CID_GAP") { cls = "s-gap"; tag = badge("CID GAP", "b-warn"); }
+      else if (m.lab_combined_mock && i.id === "INV01" && s && pl && pl.last_success) {
+        cls = "s-live";
+        pTxt = `${num(s.p_kw)} kW (PdC poll)`;
+        tag = badge("LAB MOCK", "b-ok");
+      } else if (i.runtime_status === "CID_GAP") { cls = "s-gap"; tag = badge("CID GAP", "b-warn"); }
       return `<div class="inv ${cls}" data-inv="${esc(i.id)}" tabindex="0">
         <div style="display:flex;justify-content:space-between;align-items:center"><span class="id">${esc(i.id)}</span>${tag}</div>
         <div class="vendor" title="${esc(i.vendor)}">${esc(i.vendor)}</div>
@@ -366,9 +370,12 @@
     const warns = [];
     const pocIds = new Set(m.poc.map((r) => r.slave_id).filter((x) => x !== null));
     const clash = enabled.filter((i) => pocIds.has(i.slave_id)).map((i) => i.id);
-    if (clash.length) {
+    if (clash.length && !m.lab_combined_mock) {
       warns.push(`Unit-ID clash: POC meter and ${clash.join(", ")} share Modbus unit ${[...pocIds].join(", ")}. ` +
         "Put the meter and inverters on separate buses (e.g. meter ttyS1, inverters ttyS2 or LAN3 TCP) or renumber.");
+    } else if (m.lab_combined_mock && clash.length) {
+      warns.push(
+        "Lab bench: one COM5 slave (unit 1) serves PdC @40001 and Huawei INV01 @32080 — production uses separate devices.");
     }
     if (gaps.length) {
       warns.push(`${gaps.map((i) => i.id).join(", ")}: SGGMMXU LN not in the CID — MMS reports cannot carry these values until the CID is extended.`);
