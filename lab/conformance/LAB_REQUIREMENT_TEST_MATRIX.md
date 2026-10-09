@@ -1,8 +1,8 @@
 # Lab requirement ↔ test requirement matrix (TSP field checklist)
 
 **Document ID:** CCLI-LAB-REQ-TEST-MTX-001  
-**Revision:** 1.1  
-**Date:** 2026-10-08  
+**Revision:** 1.2  
+**Date:** 2026-10-09  
 **RAG source_id:** `ccli-lab-requirement-test-matrix`  
 **Purpose:** One checklist for **accredited lab needs** (PICS/PIXIT/MICS/61850-10) and **Test Suite Pro** runs on the **other PC** — same rows, same scope.  
 **Preview on dev PC → push** via `scripts/stage-tsp-field-pack.ps1` → `C:\CCLI_TSP_FIELD_PACK\` (USB copy to TSP machine).
@@ -41,16 +41,18 @@
 
 ---
 
-## Hardware prerequisites (one PC — triple NIC + USB RS485)
+## Hardware prerequisites
 
-Full wiring and run order: **[TSP_PC_FULL_BENCH_HW.md](TSP_PC_FULL_BENCH_HW.md)** (`ccli-tsp-full-bench-hw`).
+**Two-PC bench (recommended):** **[TSP_TWO_PC_BENCH_RUNBOOK.md](TSP_TWO_PC_BENCH_RUNBOOK.md)** — PC-B = **LAN1 TSP only** · PC-A = **LAN2 (104) + LAN3 (EMT432 TCP) + USB RS485 (inverter mock)**.
+
+**Single-PC alternative:** triple NIC + USB — **[TSP_PC_FULL_BENCH_HW.md](TSP_PC_FULL_BENCH_HW.md)** (`ccli-tsp-full-bench-hw`).
 
 | □ | Interface | PC IP | DUT | Purpose |
 |---|-----------|-------|-----|---------|
-| □ | **LAN1** | `192.168.10.10` | `192.168.10.1:3782` | **Test Suite Pro** (61850) |
-| □ | **LAN2** | `192.168.1.183` | `192.168.1.130:2404` | **IEC 104** client (optional same PC) |
-| □ | **LAN3** | `192.168.30.10` | `192.168.30.1` | Plant / GOOSE capture (optional) |
-| □ | **USB RS485** | `COM5` (typ.) | A1/B1 → DUT Modbus | **`modbus_rtu_slave.py`** — TotW/TotVAr for reads & P5 step 13 |
+| □ | **LAN1** | `192.168.10.10` (**PC-B TSP**) | `192.168.10.1:3782` | **Test Suite Pro** (61850) — **only this PC on LAN1** |
+| □ | **LAN2** | `192.168.1.183` (**PC-A logger**) | `192.168.1.130:2404` | **IEC 104** client · event-dump SSH |
+| □ | **LAN3** | `192.168.30.10` (**PC-A**) | `192.168.30.1` · meter **`192.168.30.50:502`** | **EMT432** Modbus TCP · probe |
+| □ | **USB RS485** | `COM5` on **PC-A** | A1/B1 → DUT `ttyS1` | **`modbus_rtu_slave.py`** — **Huawei inverter mock** · P5 step 13 |
 
 Scripts: `lab/set_pc_lan1_dso.cmd` · `set_pc_lan2_oa.cmd` · `set_pc_lan3_plant.cmd` (Admin, rename adapters).
 

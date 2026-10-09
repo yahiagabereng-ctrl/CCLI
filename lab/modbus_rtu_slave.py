@@ -28,16 +28,27 @@ def float32_to_regs(value: float) -> tuple[int, int]:
     return (raw >> 16) & 0xFFFF, raw & 0xFFFF
 
 
+def i32_to_regs(value: int) -> tuple[int, int]:
+    raw = int(value) & 0xFFFFFFFF
+    return (raw >> 16) & 0xFFFF, raw & 0xFFFF
+
+
 def regs_to_float32(hi: int, lo: int) -> float:
     raw = ((hi & 0xFFFF) << 16) | (lo & 0xFFFF)
     return struct.unpack(">f", struct.pack(">I", raw))[0]
 
 
-def write_power(store: ModbusSlaveContext, p_kw: float) -> None:
+def write_power(store: ModbusSlaveContext, p_kw: float, *, huawei: bool = False) -> None:
     q_kvar = p_kw * 0.1
     hi, lo = float32_to_regs(p_kw)
     qhi, qlo = float32_to_regs(q_kvar)
     store.setValues(3, 0, [hi, lo, qhi, qlo])
+    if huawei:
+        # Huawei SUN2000-style holding map (same slave ID 1 as PdC lab 40001 block).
+        watts = int(round(p_kw * 1000.0))
+        whi, wlo = i32_to_regs(watts)
+        store.setValues(3, 32080, [whi, wlo])
+        store.setValues(3, 32089, [512])  # grid-connected lab status word
 
 
 class TracingDataBlock(ModbusSequentialDataBlock):
@@ -81,12 +92,12 @@ class TracingDataBlock(ModbusSequentialDataBlock):
         )
 
 
-def ramp_thread(store: ModbusSlaveContext, stop: threading.Event) -> None:
+def ramp_thread(store: ModbusSlaveContext, stop: threading.Event, *, huawei: bool) -> None:
     t0 = time.monotonic()
     while not stop.is_set():
         phase = (time.monotonic() - t0) % 120.0
         p = 400.0 + 550.0 * abs(1.0 - abs(phase / 60.0 - 1.0))
-        write_power(store, p)
+        write_power(store, p, huawei=huawei)
         stop.wait(0.5)
 
 
@@ -101,20 +112,28 @@ def main() -> None:
         action="store_true",
         help="Print each master read (compare with TG544 logread / regulation-check)",
     )
+    parser.add_argument(
+        "--huawei",
+        action="store_true",
+        help="Also expose Huawei INV01 map @32080/32089 (lab COM5 combined mock)",
+    )
     args = parser.parse_args()
 
     block_cls = TracingDataBlock if args.trace else ModbusSequentialDataBlock
+    hr_size = 32092 if args.huawei else 10
     if args.trace:
-        hr = block_cls(True, 0, [0] * 10)
+        hr = block_cls(True, 0, [0] * hr_size)
     else:
-        hr = block_cls(0, [0] * 10)
+        hr = block_cls(0, [0] * hr_size)
     store = ModbusSlaveContext(hr=hr, zero_mode=True)
-    write_power(store, args.power_kw)
+    write_power(store, args.power_kw, huawei=args.huawei)
     context = ModbusServerContext(slaves=store, single=True)
 
     stop = threading.Event()
     if args.ramp:
-        threading.Thread(target=ramp_thread, args=(store, stop), daemon=True).start()
+        threading.Thread(
+            target=ramp_thread, args=(store, stop), kwargs={"huawei": args.huawei}, daemon=True
+        ).start()
         print("Ramp: 400..950 kW / 120 s")
     else:
         print(f"Fixed P = {args.power_kw} kW")

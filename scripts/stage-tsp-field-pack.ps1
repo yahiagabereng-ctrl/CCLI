@@ -51,6 +51,7 @@ $docs = @(
     @{ Rel = "lab/conformance/2026-10-08_UCA_Document_Phase_Checklist.md"; Out = "06_LAB_UCA_DOCUMENT_CHECKLIST.md" },
     @{ Rel = "lab/conformance/LAB_TEMPLATES_VS_TEST_SCOPE.md"; Out = "07_LAB_TEMPLATES_VS_TEST_SCOPE.md" },
     @{ Rel = "lab/conformance/TSP_PC_FULL_BENCH_HW.md"; Out = "08_TSP_PC_FULL_BENCH_HW.md" },
+    @{ Rel = "lab/conformance/TSP_TWO_PC_BENCH_RUNBOOK.md"; Out = "00_TWO_PC_BENCH_RUNBOOK.md" },
     @{ Rel = "lab/conformance/PICS_FILL.md"; Out = "09_PICS_FILL.md" },
     @{ Rel = "lab/conformance/PIXIT_DRAFT.md"; Out = "10_PIXIT_DRAFT.md" },
     @{ Rel = "lab/conformance/MICS_DRAFT.md"; Out = "11_MICS_DRAFT.md" },

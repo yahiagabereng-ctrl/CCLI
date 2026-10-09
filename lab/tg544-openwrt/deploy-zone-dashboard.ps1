@@ -20,11 +20,8 @@ $Cgi = Join-Path $PSScriptRoot "cgi-bin\ccli-bench"
 $Plink = "C:\Program Files\PuTTY\plink.exe"
 $Pscp = "C:\Program Files\PuTTY\pscp.exe"
 # Eth_A 192.168.10.1 and operator LAN 192.168.1.130 present different host-key fingerprints.
-$HostKey = if ($HostAddr -eq "192.168.10.1") {
-    "SHA256:4N84xpdiJRUiipactNbXLdVa2+A4eCCrUurVDrz3qoE"
-} else {
-    "SHA256:2hiPouwqC1oxP//Q0BpvgIcqD6IG+pqLkzNih1EpNRE"
-}
+# TG544 presents the same host key on LAN1/LAN2/LAN3 in current lab images.
+$HostKey = "SHA256:4N84xpdiJRUiipactNbXLdVa2+A4eCCrUurVDrz3qoE"
 
 if (-not $env:CCLI_TG544_PW) { Write-Error 'Set $env:CCLI_TG544_PW' }
 $Files = @("index.html", "zone_dashboard.html", "zone_dashboard.js", "plant_map.json", "mock_console.html")
