@@ -1,10 +1,14 @@
 # Test Suite Pro PC — full bench (LAN1 + LAN2 + LAN3 + USB RS485)
 
 **Document ID:** CCLI-LAB-TSP-BENCH-001  
-**Revision:** 1.0  
-**Date:** 2026-10-08  
+**Revision:** 1.1  
+**Date:** 2026-10-09  
 **RAG source_id:** `ccli-tsp-full-bench-hw`  
-**Goal:** One **Windows PC** runs **Test Suite Pro** (61850), **104 client** (optional), and **plant/inverter mock** (Modbus USB-RS485 and/or LAN3) so [`LAB_REQUIREMENT_TEST_MATRIX.md`](LAB_REQUIREMENT_TEST_MATRIX.md) and **P5 full-circle** can complete without swapping machines.
+**Goal:** Run [`LAB_REQUIREMENT_TEST_MATRIX.md`](LAB_REQUIREMENT_TEST_MATRIX.md) with clear **LAN roles**.
+
+**Preferred (two PCs):** **[TSP_TWO_PC_BENCH_RUNBOOK.md](TSP_TWO_PC_BENCH_RUNBOOK.md)** — **PC-B** = LAN1 TSP only · **PC-A** = LAN2 + LAN3 + USB RS485.
+
+**Alternative:** one PC with three NICs + USB (sections below).
 
 ---
 

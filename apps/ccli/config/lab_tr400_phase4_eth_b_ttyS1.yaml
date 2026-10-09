@@ -1,0 +1,115 @@
+# Phase 4 + two-PC bench — MMS TLS :3782 (LAN1) · 104 :2404 (LAN2) · Modbus RTU A1/B1 (/dev/ttyS1).
+# Logger PC: USB-RS485 COM5 → A1/B1 · TSP PC: LAN1 only → 192.168.10.1:3782
+# Same as lab_tr400_phase4_eth_b.yaml except modbus.device for screw-terminal RS485.
+#
+# Deploy: deploy-ccli-session-fix.ps1 -HostAddr 192.168.1.130 -LabYaml .../lab_tr400_phase4_eth_b_ttyS1.yaml
+
+platform: tg500
+lab:
+  hostname: TG544
+  model: tespro,tr500
+  address: 192.168.1.130/24
+  role: operator_eth_b
+  bench_note: "two-PC TSP + logger · ttyS1 A1/B1 · COM5 slave"
+
+modbus:
+  backend: rtu
+  device: /dev/ttyS1
+  baud: 9600
+  parity: N
+  slave_id: 1
+  poll_ms: 4000
+  timeout_ms: 2000
+  retries: 3
+  trace: true
+
+pf2:
+  threshold_kw: 900
+  debounce_s: 30
+  release_threshold_kw: 850
+  min_on_s: 60
+  min_off_s: 30
+  stale_data_s: 10
+  use_dso_mock: true
+
+plant:
+  p_imm_kw: 200
+  p_ass_kw: 200
+  q_ind_kvar: 50
+  q_cap_kvar: 50
+  smax_kva: 210
+  poc_ppv_kv: 20.0
+
+dso:
+  enabled: true
+  profile: tr57126_table1
+  w110_active: false
+  w110_pct: 100
+  wlim_active: false
+  wmax_spt_pct: 0
+  wsd_active: true
+  wspt_pct: 20
+  release_delta_kw: 5
+
+mms:
+  enabled: true
+  bind_address: 192.168.10.1
+  tcp_port: 3782
+  model_cfg: /etc/ccli/icd/lab_tg544_eth_a.cfg
+  comms_loss_fallback_s: 15
+  gnss_poll_s: 15
+  gnss_discipline_clock: false
+  chrony_poll: true
+  tls_enabled: true
+  tls_own_key: /etc/ccli/tls/server.key
+  tls_own_cert: /etc/ccli/tls/server_tls.pem
+  tls_acse_cert: /etc/ccli/tls/server.pem
+  tls_acse_key: /etc/ccli/tls/server_acse.key
+  tls_ca_cert: /etc/ccli/tls/root_CA.pem
+  tls_client_cert: /etc/ccli/tls/client_tls.pem
+  tls_acse_client_cert: /etc/ccli/tls/client.pem
+  tls_viewer_cert: /etc/ccli/tls/viewer_tls.pem
+  tls_revoked_cert: /etc/ccli/tls/revoked_tls.pem
+  tls_crl: /etc/ccli/tls/lab_crl.pem
+  tls_chain_validation: true
+
+iec104:
+  enabled: true
+  bind_address: 192.168.1.130
+  tcp_port: 2404
+  common_address: 1
+  periodic_s: 4
+  comms_loss_fallback_s: 60
+  operator_rule_mode: monitor_only
+  operator_allow_commands: false
+  operator_allow_gi: true
+  operator_allow_clock_sync: false
+  operator_monitor_tot_w: true
+  ioa_tot_w: 1001
+  operator_monitor_totvar: false
+  ioa_tot_var: 1002
+  operator_monitor_ppv: false
+  ioa_ppv: 1003
+  tls_enabled: true
+  tls_own_key: /etc/ccli/tls/server.key
+  tls_own_cert: /etc/ccli/tls/server_tls.pem
+  tls_ca_cert: /etc/ccli/tls/root_CA.pem
+  tls_client_cert: /etc/ccli/tls/client_tls.pem
+
+io:
+  backend: ubus_dido_v2
+  permissive_bypass: false
+  do_curtail:
+    gpio: 1
+    active_high: false
+  di_permissive:
+    gpio: 2
+    active_low: true
+
+event_log:
+  enabled: true
+  path: /var/lib/ccli/events.jsonl
+  syslog_enabled: true
+  syslog_host: 127.0.0.1
+  syslog_port: 514
+  watch_ifaces: lan1 lan2

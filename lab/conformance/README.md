@@ -19,7 +19,9 @@ Templates from the accredited lab (2026-10-08 email) live at repo root under `la
 
 **Lab templates vs accredited test scope:** [LAB_TEMPLATES_VS_TEST_SCOPE.md](LAB_TEMPLATES_VS_TEST_SCOPE.md) (`ccli-lab-templates-test-scope`)
 
-**Full bench HW (LAN1+LAN2+LAN3 + USB RS485):** [TSP_PC_FULL_BENCH_HW.md](TSP_PC_FULL_BENCH_HW.md) (`ccli-tsp-full-bench-hw`)
+**Two-PC phased run (TSP + plant/logger):** [TSP_TWO_PC_BENCH_RUNBOOK.md](TSP_TWO_PC_BENCH_RUNBOOK.md) (`ccli-tsp-two-pc-bench-runbook`)
+
+**Full bench HW (single PC — triple NIC + USB RS485):** [TSP_PC_FULL_BENCH_HW.md](TSP_PC_FULL_BENCH_HW.md) (`ccli-tsp-full-bench-hw`)
 
 **Test Suite Pro — which tests to run after Connect:** [../evidence/testsuite-pro/TSP_TEST_IDENTIFICATION_POST_CONNECT.md](../evidence/testsuite-pro/TSP_TEST_IDENTIFICATION_POST_CONNECT.md)
 

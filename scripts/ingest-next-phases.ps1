@@ -125,6 +125,7 @@ $priority = [ordered]@{
     "ccli-tsp-test-identification"      = "projects/ccli/lab/evidence/testsuite-pro/TSP_TEST_IDENTIFICATION_POST_CONNECT.md"
     "ccli-lab-templates-test-scope"     = "projects/ccli/lab/conformance/LAB_TEMPLATES_VS_TEST_SCOPE.md"
     "ccli-tsp-full-bench-hw"            = "projects/ccli/lab/conformance/TSP_PC_FULL_BENCH_HW.md"
+    "ccli-tsp-two-pc-bench-runbook"     = "projects/ccli/lab/conformance/TSP_TWO_PC_BENCH_RUNBOOK.md"
     "ccli-lab-pics-fill"               = "projects/ccli/lab/conformance/PICS_FILL.md"
     "ccli-lab-pixit-draft"             = "projects/ccli/lab/conformance/PIXIT_DRAFT.md"
     "ccli-lab-mics-draft"              = "projects/ccli/lab/conformance/MICS_DRAFT.md"
