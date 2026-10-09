@@ -1,4 +1,4 @@
-# CCLI TSP evidence â€” Phase 2 P5 full circle (3782 TLS)
+﻿# CCLI TSP evidence â€” Phase 2 P5 full circle (3782 TLS)
 gate: P5_FULLCIRCLE
 tool: SEQ
 date: 2026-10-09

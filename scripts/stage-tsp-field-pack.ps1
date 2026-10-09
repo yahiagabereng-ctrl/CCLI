@@ -59,8 +59,7 @@ $docs = @(
     @{ Rel = "lab/conformance/TICS_DRAFT.md"; Out = "12_TICS_DRAFT.md" },
     @{ Rel = "lab/conformance/D7_62351-3_PID_DRAFT.md"; Out = "13_D7_62351-3_PID.md" },
     @{ Rel = "lab/conformance/CID_PICS_ALIGNMENT.md"; Out = "14_CID_PICS_ALIGNMENT.md" },
-    @{ Rel = "lab/conformance/LAB_CONFIG_GUIDE.md"; Out = "15_LAB_CONFIG_GUIDE.md" },
-    @{ Rel = "lab/conformance/LAB_SPECIMEN_VERSION.md"; Out = "16_LAB_SPECIMEN_VERSION.md" }
+    @{ Rel = "lab/conformance/LAB_CONFIG_GUIDE.md"; Out = "15_LAB_CONFIG_GUIDE.md" }
 )
 
 $tspScripts = @(

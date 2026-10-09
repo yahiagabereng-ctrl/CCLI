@@ -1,0 +1,14 @@
+﻿{
+    "codename":  "P3-07-AARE-SIGN-RAW-GT",
+    "changes":  [
+                    "a4b8d1c: CID rev9 configRev 20261009; MMXU2 drop PPV/A; URCB OptFlds entryID=false; regen lab_tg544_eth_a.cfg"
+                ],
+    "release":  52,
+    "timestamp_utc":  "2026-10-09T17:23:26.6671474Z",
+    "version_full":  "0.1.0-r52",
+    "lab_yaml":  "D:\\CCLI\\CCLI\\CCLI\\apps\\ccli\\config\\lab_tr400_phase4_emt432_lan3_tcp.yaml",
+    "sha256":  "1df82c26243021a86c533a179781c749fc852c2f724efa3b0aa4018b2969eca1",
+    "binary":  "D:\\CCLI\\CCLI\\CCLI\\lab\\tg544-openwrt\\ccli-bin",
+    "host":  "192.168.10.1",
+    "semver":  "0.1.0"
+}
