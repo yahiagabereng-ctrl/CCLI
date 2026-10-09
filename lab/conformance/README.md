@@ -13,6 +13,7 @@ Templates from the accredited lab (2026-10-08 email) live at repo root under `la
 | [MICS_DRAFT.md](MICS_DRAFT.md) · [TICS_DRAFT.md](TICS_DRAFT.md) | Model + TISSUES drafts | CID / empty TICS |
 | [D7_62351-3_PID_DRAFT.md](D7_62351-3_PID_DRAFT.md) | 62351-3 PID | §8 Tables 1–5 |
 | [CID_PICS_ALIGNMENT.md](CID_PICS_ALIGNMENT.md) | CID Services vs PICS | Do not over-claim |
+| [SCL_DATASET_PLACEMENT.md](SCL_DATASET_PLACEMENT.md) | DataSet under LLN0 + PdC FCDA map | IEC 61850-6 · lab CID |
 | [LAB_CONFIG_GUIDE.md](LAB_CONFIG_GUIDE.md) | D6 lab guide | IPs, yaml, firmware ID |
 
 **Working checklist (phases + evidence):** [2026-10-08_UCA_Document_Phase_Checklist.md](2026-10-08_UCA_Document_Phase_Checklist.md)
