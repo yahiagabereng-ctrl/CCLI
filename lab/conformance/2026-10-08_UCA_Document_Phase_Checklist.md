@@ -13,14 +13,14 @@
 | # | Document | Template in repo | Lab priority | Purpose |
 |---|----------|------------------|--------------|---------|
 | D1 | **PICS** | `lab/TemplatePics_Ed1Ed2Ed2p1_Excel_rev3p0.xlsx` | **Immediate (quote)** | Declares ACSI blocks, services, editions → drives test days and fee |
-| D2 | **PIXIT** | **MISSING** — add `TemplatePixit*` from email | Before test slot | Timeouts, max clients, IntgPd, dataset limits, ctlModel, segmentation |
+| D2 | **PIXIT** | **MISSING** Word — values in [PIXIT_DRAFT.md](PIXIT_DRAFT.md) | Before test slot | Timeouts, max clients, IntgPd, dataset limits, ctlModel, segmentation |
 | D3 | **MICS** | `lab/TemplateMICS_Ed2_FromTP2.0.5.docx` | With PICS / pre-test | Model vs standard logical nodes; maps to CID |
 | D4 | **TICS** | `lab/TemplateTICS_Ed2_FromTP2.0.5.docx` | Pre-test | TISSUES resolution list |
 | D5 | **ICD/CID/SCD** | Product CID (no UCA form) | Pre-test | Lab may build SCD from ICD (confirm in meeting §2.5) |
-| D6 | **User / lab guide** | Internal draft | Pre-test | Configuration, ports, roles, firmware ID |
-| D7 | **62351-3 PID** (PICS + PIXIT) | Separate from UCA xlsx | Quote / parallel track | Transport (TLS); see §4 |
+| D6 | **User / lab guide** | [LAB_CONFIG_GUIDE.md](LAB_CONFIG_GUIDE.md) | Pre-test | Configuration, ports, roles, firmware ID |
+| D7 | **62351-3 PID** (PICS + PIXIT) | [D7_62351-3_PID_DRAFT.md](D7_62351-3_PID_DRAFT.md) | Quote / parallel track | Transport (TLS); see §4 |
 
-**Corpus status:** Templates **HAVE** (3/4) · PIXIT template **MISSING** in git · Filled PICS/PIXIT/MICS/TICS **TODO**.
+**Corpus status:** Templates **HAVE** (3/4) · PIXIT Word **MISSING** · markdown fills **HAVE** ([PICS_FILL.md](PICS_FILL.md) · [PIXIT_DRAFT.md](PIXIT_DRAFT.md) · [MICS_DRAFT.md](MICS_DRAFT.md) · [TICS_DRAFT.md](TICS_DRAFT.md)). Excel/Word paste **TODO**. CID Services vs PICS: [CID_PICS_ALIGNMENT.md](CID_PICS_ALIGNMENT.md).
 
 ---
 
@@ -50,11 +50,11 @@ Phases **P0–P6** are **CLOSED** (internal lab gates). **P7** is **OPEN** (evid
 
 | Sheet | Content | Evidence / source | Fill status |
 |-------|---------|-------------------|---------------|
-| Cover | Device ID, firmware, edition | Master log §0.5 build **r31+**; questionnaire §10 | **TODO** |
-| General | Roles, editions, SCSM | Server only · Ed. 2 model · 8-1 MMS · questionnaire §0 | **TODO** |
-| ACSI Basic | B11 server, B21 8-1, … | P3-01 listen, P3-03 browse | **TODO** (mostly **M** server, **N/A** client/subscriber) |
-| ACSI Model | Logical devices, CDCs | ICD/CID · P3-02 PART (dynamic genconfig) | **PART** — static lab CID OK for cert specimen |
-| ACSI Service | Association, datasets, URCB, control, time | P3-03, P3-04, P5 full-circle, `mms_adapter.cpp` | **TODO** — map each **M** to internal PASS id |
+| Cover | Device ID, firmware, edition | Master log §0.5 build **r31+**; questionnaire §10 · [PICS_FILL.md](PICS_FILL.md) | **READY to paste** |
+| General | Roles, editions, SCSM | Server only · Ed. 2 model · 8-1 MMS · questionnaire §0 | **READY to paste** |
+| ACSI Basic | B11 server, B21 8-1, … | P3-01 listen, P3-03 browse | **READY** — **M** server, **N/A** client/subscriber |
+| ACSI Model | Logical devices, CDCs | ICD/CID · [MICS_DRAFT.md](MICS_DRAFT.md) | **READY** — static lab CID; trim Services for cert |
+| ACSI Service | Association, datasets, URCB, control, time | P3-03, P3-04, P5 full-circle, `mms_adapter.cpp` | **READY** — each **M** mapped in PICS_FILL |
 | 61869-9 / 9-3 | Process bus | Not in product claim | **N/A** — leave unsupported |
 
 **Draft claim profile (for quote — confirm with lab):**
@@ -71,11 +71,11 @@ Phases **P0–P6** are **CLOSED** (internal lab gates). **P7** is **OPEN** (evid
 | TCP ports | 3782 TLS (DSO); 102 plain lab only | `lab_tr400_phase1_regulation.yaml` |
 | Max associations | e.g. 4 (confirm in implementation) | Questionnaire §10 |
 | IntgPd | 1000–60000 ms; TotW default **4000 ms** | P3-03 ~3961 ms evidence |
-| ctlModel | Direct-with-normal-security (per DO in CID) | ICD |
+| ctlModel | **direct-with-enhanced-security** (Wlim/WSd) | CID · [PIXIT_DRAFT.md](PIXIT_DRAFT.md) |
 | TLS | TLS 1.2; mutual auth; cipher suites | P3-06 PASS |
 | Cert sizes | RSA 2048 | Annex T / EJBCA lab PKI |
 
-**Status:** Values **HAVE** in engineering docs; **TODO** copy into lab Word PIXIT once template is added to `lab/`.
+**Status:** Values **HAVE** in [PIXIT_DRAFT.md](PIXIT_DRAFT.md). **TODO** paste into lab Word once `TemplatePixit*` is added to `lab/`.
 
 ### D3 — MICS
 
@@ -84,14 +84,14 @@ Phases **P0–P6** are **CLOSED** (internal lab gates). **P7** is **OPEN** (evid
 | IED name, LD/LN inventory | `apps/ccli/config/icd/lab_tg544_eth_a.cid` | **HAVE** |
 | URCB / RCB instances | CID + P3-03 traces | **HAVE** |
 | Control objects (Wlim, WSd) | P3-04, P5 | **HAVE** |
-| Formal MICS tables in Word | Template | **TODO** |
+| Formal MICS tables in Word | [MICS_DRAFT.md](MICS_DRAFT.md) | **READY to paste** |
 
 ### D4 — TICS
 
 | Item | Status |
 |------|--------|
-| TISSUES database date | **TODO** — ask lab (questionnaire §2.4) |
-| Per-TISSUE implementation | **TODO** — minimal list; libiec61850 + our patches |
+| TISSUES database date | **HOLD** — ask lab (questionnaire §2.4) |
+| Per-TISSUE implementation | [TICS_DRAFT.md](TICS_DRAFT.md) — empty until lab date |
 
 ### D5 — SCL
 
@@ -106,16 +106,16 @@ Phases **P0–P6** are **CLOSED** (internal lab gates). **P7** is **OPEN** (evid
 
 | Content | Phase link | Status |
 |---------|------------|--------|
-| Eth_A addressing, yaml, roles | P2, P3 | **PART** — scattered in `lab/` scripts |
-| Firmware ID procedure | P7, questionnaire §10 | **TODO** |
-| Event log ≥2048 | P7-01 PART | **PART** |
+| Eth_A addressing, yaml, roles | P2, P3 | **HAVE** — [LAB_CONFIG_GUIDE.md](LAB_CONFIG_GUIDE.md) |
+| Firmware ID procedure | P7, questionnaire §10 | **HAVE** in D6 (`ccli --version` + SHA-256) |
+| Event log ≥2048 | P7-01 PART | **PART** — code HAVE; signed wrap OPEN |
 
 ### D7 — IEC 62351-3 PID (separate from UCA PICS xlsx)
 
 | Item | Regulation | Phase | Status |
 |------|------------|-------|--------|
-| 62351-3 §8 PICS tables | O.15 / 62351-100-3 | P7-07 **OPEN** | **TODO** |
-| TLS PIXIT | Lab 62351 template (if any) | P3-06 evidence | **TODO** |
+| 62351-3 §8 PICS tables | O.15 / 62351-100-3 | P7-07 **OPEN** | **READY to paste** — [D7_62351-3_PID_DRAFT.md](D7_62351-3_PID_DRAFT.md) |
+| TLS PIXIT | Lab 62351 template (if any) | P3-06 evidence | **READY** in D7 draft |
 | 62351-100-3 test cases | Extract in KB | — | **HAVE** (planning) |
 
 Lab may quote **61850 only** from D1 first; confirm combined visit (questionnaire §1.6–1.7).
@@ -145,24 +145,25 @@ Use this when marking **M** / **O** in the Excel service sheet:
 
 | ID | Gap | Owner | Priority |
 |----|-----|-------|----------|
-| G1 | **Filled PICS** not started | Engineering | **P0 — lab quote** |
-| G2 | **PIXIT Word template** not in repo | Admin | Add from email attachment |
+| G1 | **PICS Excel** not pasted from [PICS_FILL.md](PICS_FILL.md) | Engineering | **P0 — lab quote** |
+| G2 | **PIXIT Word template** not in repo | Admin | Add from email; values in PIXIT_DRAFT |
 | G3 | Meeting answers empty (§11 questionnaire) | PM + lab | After Nicola thread |
-| G4 | MICS/TICS Word not filled | Engineering | After PICS scope frozen |
-| G5 | 62351-3 PID | Engineering | P7-07; may be second quote |
-| G6 | TSP Connect / Cert B vs Cert A | Engineering | Before 62351-4 test day |
+| G4 | MICS/TICS **Word** not pasted | Engineering | Drafts HAVE |
+| G5 | 62351-3 PID **lab form** | Engineering | Markdown HAVE; P7-07 formal |
+| G6 | TSP Connect / Cert B vs Cert A | Engineering | Connect reported PASS; keep evidence |
 | G7 | P7-01/04/11 still PART | Lab TG544 | Before shipping DUT for cert |
+| G8 | CID `<Services>` over-claims vs PICS | Engineering | [CID_PICS_ALIGNMENT.md](CID_PICS_ALIGNMENT.md) — trim at cert freeze |
 
 ---
 
 ## 6. Suggested submission order
 
-1. **Filled PICS (D1)** → lab pricing (**this week**).  
-2. Add **PIXIT template** to repo; fill **D2** using §3 table.  
-3. **MICS (D3)** from `lab_tg544_eth_a.cid` + Services list in questionnaire §10.  
-4. **TICS (D4)** after lab confirms TISSUES date.  
-5. **CID + lab guide (D5–D6)** with firmware manifest when P7 gates green.  
-6. **62351 PID (D7)** — same or second lab engagement.
+1. **Paste PICS (D1)** from [PICS_FILL.md](PICS_FILL.md) → Excel → lab pricing.  
+2. Add **PIXIT Word** to repo; paste [PIXIT_DRAFT.md](PIXIT_DRAFT.md).  
+3. **MICS (D3)** from [MICS_DRAFT.md](MICS_DRAFT.md).  
+4. **TICS (D4)** after lab confirms TISSUES date ([TICS_DRAFT.md](TICS_DRAFT.md)).  
+5. **CID + lab guide (D5–D6)** — [LAB_CONFIG_GUIDE.md](LAB_CONFIG_GUIDE.md); cert Services trim.  
+6. **62351 PID (D7)** — [D7_62351-3_PID_DRAFT.md](D7_62351-3_PID_DRAFT.md).
 
 ---
 
@@ -175,7 +176,7 @@ Use this when marking **M** / **O** in the Excel service sheet:
 | REQ-LAB-DOC-003 | Scope excludes non-DSO features | GOOSE/SV/client marked **N/A** unless lab overrides |
 | REQ-LAB-DOC-004 | Phase P7 exit tracked | P7-01/04/11 PASS before DUT ship |
 
-**Current verdict:** REQ-LAB-DOC-001 **FAIL** (PIXIT template missing). REQ-LAB-DOC-002 **OPEN** (PICS not filled). REQ-LAB-DOC-003 **READY** (claim profile documented). REQ-LAB-DOC-004 **PART**.
+**Current verdict:** REQ-LAB-DOC-001 **FAIL** (PIXIT Word missing; markdown PIXIT **HAVE**). REQ-LAB-DOC-002 **PART** (PICS values filled in markdown; Excel not yet sent). REQ-LAB-DOC-003 **READY**. REQ-LAB-DOC-004 **PART**.
 
 ---
 

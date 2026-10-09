@@ -80,9 +80,9 @@
 |---|----------|------------|--------------|------------|
 | 4.1 | Which **SCL schema** revision must the ICD validate against (2007B rel 4 / rel 5)? Any UCA-specific validator? | Table 2 sCnf cases | 2007B | |
 | 4.2 | Are **private extensions / namespaces** in ICD a problem (TesPro vendor LNs, HiTEKS LNs)? | 7-1 §14 rules | Minimize extensions | |
-| 4.3 | For **Unbuffered Reporting (Table 14)**: do you test all optional fields and all trigger options, or only those enabled in PIXIT? | Scope of URCB | Claim IntgPd + dchg + GI | |
+| 4.3 | For **Unbuffered Reporting (Table 14)**: do you test all optional fields and all trigger options, or only those enabled in PIXIT? | Scope of URCB | Claim **IntgPd (period) + GI** only — **no dchg** on `urcb_PdC_Mis4sec` | |
 | 4.4 | Do you require **Buffered Reporting** for DSO-facing CCI? (CEI Annex T uses URCB.) | Scope | Not claimed | |
-| 4.5 | **Control model**: which ctlModel values will you test for Wlim / WSd — direct-with-normal-security, SBO, enhanced? | Table 26 cases | Direct normal security (confirm) | |
+| 4.5 | **Control model**: which ctlModel values will you test for Wlim / WSd — direct-with-normal-security, SBO, enhanced? | Table 26 cases | **direct-with-enhanced-security** (CID). SBO on PFSP/VArV **not claimed** | |
 | 4.6 | **Segmentation**: minimum dataset size you use to force segmented reports? | Buffer limits | Declare max dataset in PIXIT | |
 | 4.7 | **Quality / timestamp** rules on MX values — do you check `q` and `t` on every change? | Model correctness | Yes, implemented | |
 | 4.8 | **Negative tests**: wrong object names, invalid writes — how many are mandatory? | Error path | Implemented, to verify | |
@@ -165,11 +165,11 @@
 |--------------|------------|
 | Server role only? Any client? | Server only |
 | Edition 2 or 2.1 model? | Ed. 2 model, Ed. 2.1 test procedure |
-| Which ACSI services? | Association, GetServerDirectory, GetLogicalDevice/NodeDirectory, GetDataValues, SetDataValues, GetDataSetValues, URCB (GetURCBValues/SetURCBValues/Report), Control (Operate; SelectWithValue if SBO), TimeSync client |
-| Max clients / associations | PIXIT value (e.g. 4) |
+| Which ACSI services? | Association, GetServerDirectory, GetLogicalDevice/NodeDirectory, GetDataValues, SetDataValues (O), GetDataSetValues, URCB (period + GI), Control Operate (enhanced direct Wlim/WSd), TimeSync client — see `PICS_FILL.md` |
+| Max clients / associations | **4** associations; **2** RCB clients (`RptEnabled max="2"`) |
 | IntgPd range | 1000–60000 ms (TotW 4000 ms default) |
-| Dataset limits | Static datasets; max members per dataset in PIXIT |
-| Control model | Direct normal security (confirm per DO) |
+| Dataset limits | Static datasets; PdC set = 4 FCDAs |
+| Control model | **direct-with-enhanced-security** on Wlim/WSd |
 | TLS versions / ciphers | TLS 1.2; ECDHE-RSA-AES128/256-GCM-SHA256/384 |
 | Certificate sizes | RSA 2048, ≤ 8192 octets |
 | Ports | 102 plain (bench), 3782 TLS |
@@ -195,10 +195,10 @@
 ## 12. Follow-up actions (HiTEKS)
 
 0. Track templates vs phases: [2026-10-08_UCA_Document_Phase_Checklist.md](../conformance/2026-10-08_UCA_Document_Phase_Checklist.md) (add missing **PIXIT** Word file to `lab/`).  
-1. Fill PICS (61850-7-2 Annex A / UCA template) from `mms_adapter.cpp` capabilities.  
-2. Fill PIXIT: ports, IntgPd range, max clients, dataset limits, ctlModel, timeouts.  
-3. Fill 62351-3 PID (PICS §8 tables + TLS PIXIT).  
-4. Validate ICD against the lab's SCL validator.  
+1. Paste PICS from [PICS_FILL.md](../conformance/PICS_FILL.md) into the UCA Excel.  
+2. Paste PIXIT from [PIXIT_DRAFT.md](../conformance/PIXIT_DRAFT.md).  
+3. Paste 62351-3 PID from [D7_62351-3_PID_DRAFT.md](../conformance/D7_62351-3_PID_DRAFT.md).  
+4. Validate ICD against the lab's SCL validator; cert Services trim per [CID_PICS_ALIGNMENT.md](../conformance/CID_PICS_ALIGNMENT.md).  
 5. Deploy ISO session fix + EJBCA PEMs on TG544; capture TSP evidence on 3782.  
 6. Share this questionnaire with answers to the programme file (`lab/meetings/`).
 

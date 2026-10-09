@@ -125,6 +125,13 @@ $priority = [ordered]@{
     "ccli-tsp-test-identification"      = "projects/ccli/lab/evidence/testsuite-pro/TSP_TEST_IDENTIFICATION_POST_CONNECT.md"
     "ccli-lab-templates-test-scope"     = "projects/ccli/lab/conformance/LAB_TEMPLATES_VS_TEST_SCOPE.md"
     "ccli-tsp-full-bench-hw"            = "projects/ccli/lab/conformance/TSP_PC_FULL_BENCH_HW.md"
+    "ccli-lab-pics-fill"               = "projects/ccli/lab/conformance/PICS_FILL.md"
+    "ccli-lab-pixit-draft"             = "projects/ccli/lab/conformance/PIXIT_DRAFT.md"
+    "ccli-lab-mics-draft"              = "projects/ccli/lab/conformance/MICS_DRAFT.md"
+    "ccli-lab-tics-draft"              = "projects/ccli/lab/conformance/TICS_DRAFT.md"
+    "ccli-lab-d7-62351-3-pid"          = "projects/ccli/lab/conformance/D7_62351-3_PID_DRAFT.md"
+    "ccli-lab-cid-pics-alignment"      = "projects/ccli/lab/conformance/CID_PICS_ALIGNMENT.md"
+    "ccli-lab-config-guide"            = "projects/ccli/lab/conformance/LAB_CONFIG_GUIDE.md"
     # Product TLS path (revert cleartext lab)
     "ccli-62351-9-pdf"                  = "projects/ccli/reference/IEC_62351-9_2023.pdf"
     "ccli-tespro-61850-manual-extract"  = "projects/ccli/engineering/CCI_TesPro_61850_Manual_Extract.md"

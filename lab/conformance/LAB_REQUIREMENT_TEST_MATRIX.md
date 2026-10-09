@@ -1,11 +1,15 @@
 # Lab requirement ↔ test requirement matrix (TSP field checklist)
 
 **Document ID:** CCLI-LAB-REQ-TEST-MTX-001  
-**Revision:** 1.0  
+**Revision:** 1.1  
 **Date:** 2026-10-08  
 **RAG source_id:** `ccli-lab-requirement-test-matrix`  
 **Purpose:** One checklist for **accredited lab needs** (PICS/PIXIT/MICS/61850-10) and **Test Suite Pro** runs on the **other PC** — same rows, same scope.  
 **Preview on dev PC → push** via `scripts/stage-tsp-field-pack.ps1` → `C:\CCLI_TSP_FIELD_PACK\` (USB copy to TSP machine).
+
+**Fill packs (copy into lab Excel/Word):** [PICS_FILL.md](PICS_FILL.md) · [PIXIT_DRAFT.md](PIXIT_DRAFT.md) · [MICS_DRAFT.md](MICS_DRAFT.md) · [TICS_DRAFT.md](TICS_DRAFT.md) · [D7_62351-3_PID_DRAFT.md](D7_62351-3_PID_DRAFT.md) · [CID_PICS_ALIGNMENT.md](CID_PICS_ALIGNMENT.md) · [LAB_CONFIG_GUIDE.md](LAB_CONFIG_GUIDE.md)
+
+**Code vs this matrix (2026-10-08):** first-pass **M** capabilities are **implemented** in `mms_adapter.cpp` + CID. Accredited run still needs filled D1–D4 and P7-01/04/11 **PASS**. Do **not** mark GOOSE/BRCB/File **M** from raw CID Services.
 
 **Normative RAG corpus (query these when filling □ or disputing scope):**
 
@@ -19,6 +23,8 @@
 | `ccli-testsuite-pro-procedure` | Paths, evidence naming |
 | `cei-0-16-allegato-t-extract` · `cei-tr-57-126-extract` | Annex T / TR model |
 | `ccli-phase-regulation-checklists` | P3–P7 gate IDs |
+| `ccli-lab-pics-fill` · `ccli-lab-pixit-draft` · `ccli-lab-mics-draft` | Copy-paste PID values |
+| `ccli-lab-cid-pics-alignment` | CID Services vs PICS (R-LAB-01) |
 
 ---
 
@@ -66,8 +72,8 @@ Scripts: `lab/set_pc_lan1_dso.cmd` · `set_pc_lan2_oa.cmd` · `set_pc_lan3_plant
 
 | □ | Lab / doc need | IEC 61850-10 | PICS / PIXIT | CEI 0-16 | Gate | TSP ID | Test Suite Pro (3782 TLS) | Evidence filename | Notes |
 |---|----------------|--------------|--------------|----------|------|--------|---------------------------|-------------------|--------|
-| □ | **D1 PICS** submitted for quote | §5.4 PID | Cover + General + ACSI sheets | O.15 path | P7 | — | Fill Excel offline; scope = rows below | `PICS_*_draft.xlsx` | Not a TSP run |
-| □ | **D2 PIXIT** | Annex E PIXIT | Timeouts, ports, IntgPd | T.3.3 | P3 | — | Values: **3782**, IntgPd **1000–60000**, default **4000** | PIXIT doc | Template may be missing in repo |
+| □ | **D1 PICS** submitted for quote | §5.4 PID | Cover + General + ACSI sheets | O.15 path | P7 | — | Copy [PICS_FILL.md](PICS_FILL.md) into Excel | `PICS_*_draft.xlsx` | Values **HAVE**; Excel paste **TODO** |
+| □ | **D2 PIXIT** | Annex E PIXIT | Timeouts, ports, IntgPd | T.3.3 | P3 | — | Copy [PIXIT_DRAFT.md](PIXIT_DRAFT.md); **3782**, IntgPd **4000**, ctlModel **enhanced** | PIXIT Word | Word template still missing; markdown **HAVE** |
 | □ | **D3 MICS** + **D5 CID** match | Table 3 SCL | Model sheet | TR 57-126 | P3-02 | T1-02 | **Compare Model** vs `lab_tg544_eth_a.cid` | `TSP_P3_COMPARE_*.xlsx` | Before URCB enable |
 | □ | **D4 TICS** | TISSUES | TICS Word | — | — | — | Offline | `TICS_*` | Lab gives TISSUES date |
 | □ | Specimen identity | Table 1 docs | Cover firmware | — | P7 | — | Record `ccli --version` | header in every `.txt` | |
@@ -91,8 +97,12 @@ Scripts: `lab/set_pc_lan1_dso.cmd` · `set_pc_lan2_oa.cmd` · `set_pc_lan3_plant
 | □ | Actuation proof | — | — | O.9.2.2 | P3-04 | — | DUT `ubus call dido_v2 status` | outside TSP | After Wlim |
 | □ | **BRCB** buffered | sBr 16–17 | Only if **M** in PICS | — | — | Tier 4 | `brcb_Stato_Allarmi_Segnali` | — | **Exclude** first quote |
 | □ | **GOOSE** publish | sGop 20–25 | Only if **M** | — | P5-G | Tier 4 | GOOSE Tracker | P5_G02 closeout | **Exclude** first quote |
-| □ | **IEC 104** :2404 | — | **Not in 61850 PICS** | **O.13** Eth_B | P4 | — | lib60870 on LAN2 | `phase4/P4_*` | Not TSP |
-| □ | Formal **UCA certificate** | Full 61850-10 | Final PICS | O.15 | P7 | — | **Accredited lab** | lab report | After this matrix green |
+| □ | **IEC 104** :2404 | — | **Not in 61850 PICS** | **O.13** Eth_B | P4 | — | lib60870 on LAN2 | `phase4/P4_*` | monitor_only — no operator write |
+| □ | **P7-01** event ring ≥2048 | — | D6 | **O.14** | P7-01 | — | DUT `ccli --event-wrap-test` + `--event-clear` must fail | `P7_01_WRAP_*` | r35 software HAVE; sign on DUT |
+| □ | **P7-02** O.14 timestamp | — | D6 | **O.14** | P7-02 | — | `ccli --event-dump --count 20` | `P7_02_DUMP_*` | `yyyy/mm/dd hh:mm:ss` UTC |
+| □ | **P7-04** O.14 categories | — | — | **O.14** | P7-04 | — | Coverage matrix (not TSP) | `phase7/P7-04_EVENT_COVERAGE_MATRIX.md` | PART — HW/syslog gaps remain |
+| □ | **P7-11** K7.5 DSO demo | — | D6 | K7.5 | P7-11 | — | Script + event-dump tail | `P7-11_DSO_DEMO_*.txt` | Script HAVE; signed run OPEN |
+| □ | Formal **UCA certificate** | Full 61850-10 | Final PICS | O.15 | P7 | — | **Accredited lab** | lab report | After P7-01/04/11 PASS + this matrix green |
 
 ---
 
@@ -100,12 +110,13 @@ Scripts: `lab/set_pc_lan1_dso.cmd` · `set_pc_lan2_oa.cmd` · `set_pc_lan3_plant
 
 | □ | ID | Action | Owner |
 |---|-----|--------|--------|
-| □ | D1 | PICS Excel → Nicola (quote) | PM / eng |
-| □ | D2 | PIXIT Word when template added | eng |
-| □ | D3 | MICS from CID | eng |
-| □ | D4 | TICS after lab TISSUES date | eng |
-| □ | D6 | Lab config guide + firmware ID | eng |
-| □ | D7 | 62351-3 PID (may be second quote) | eng |
+| □ | D1 | Paste [PICS_FILL.md](PICS_FILL.md) → Excel → Nicola | PM / eng |
+| □ | D2 | Paste [PIXIT_DRAFT.md](PIXIT_DRAFT.md) into lab Word when template added | eng |
+| □ | D3 | Paste [MICS_DRAFT.md](MICS_DRAFT.md) into MICS Word | eng |
+| □ | D4 | [TICS_DRAFT.md](TICS_DRAFT.md) after lab TISSUES date | eng |
+| □ | D6 | [LAB_CONFIG_GUIDE.md](LAB_CONFIG_GUIDE.md) + firmware SHA-256 | eng |
+| □ | D7 | Paste [D7_62351-3_PID_DRAFT.md](D7_62351-3_PID_DRAFT.md) (may be second quote) | eng |
+| □ | CID | Cert specimen Services trim — [CID_PICS_ALIGNMENT.md](CID_PICS_ALIGNMENT.md) | eng |
 | □ | REQ-LAB-DOC-004 | P7-01 / P7-04 / P7-11 PASS before ship | lab TG544 |
 
 ---
@@ -135,6 +146,8 @@ powershell -File scripts\ingest-next-phases.ps1   # if Telematry sync needed
 | REQ-LAB-MTX-001 | Every **M** row in submitted PICS has □ checked or explicit PART + waiver |
 | REQ-LAB-MTX-002 | TSP evidence filenames match **Evidence** column |
 | REQ-LAB-MTX-003 | Same `ccli_pkg` on DUT as PICS Cover |
+| REQ-LAB-MTX-004 | Submitted PICS **N/A** for File/Log/GOOSE/BRCB even if CID Services still lists them |
+| REQ-LAB-MTX-005 | P7-01 wrap + P7-11 demo log exist before DUT ship |
 
 ---
 

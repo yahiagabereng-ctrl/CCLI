@@ -79,6 +79,7 @@ goose:
   publish_dst_mac: "01:0c:cd:01:00:01"
   publish_vlan_id: 0
   publish_interval_ms: 1000
+  timeout_s: 10
 
 io:
   backend: ubus_dido_v2
@@ -96,3 +97,7 @@ io:
 event_log:
   enabled: true
   path: /var/log/ccli-events.jsonl
+  syslog_enabled: true
+  syslog_host: 127.0.0.1
+  syslog_port: 514
+  watch_ifaces: lan3

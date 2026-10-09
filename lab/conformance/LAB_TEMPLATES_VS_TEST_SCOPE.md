@@ -25,7 +25,7 @@
 | # | Lab document | File in repo | Edition / lineage | Filled by | Drives which tests |
 |---|--------------|--------------|-------------------|-----------|-------------------|
 | **D1** | **PICS** (Protocol ICS) | `lab/TemplatePics_Ed1Ed2Ed2p1_Excel_rev3p0.xlsx` | UCAIug Excel **rev 3.0**; based on **61850-7-2 Annex A** (+ Ed.2 cols) | HiTEKS | **All** 61850-10 server groups you mark **M** / **O** |
-| **D2** | **PIXIT** (extra test info) | **MISSING** (`TemplatePixit*` from email) | IEC 61850-10 **Annex E** style; UCA server Word | HiTEKS | Timeouts, max clients, IntgPd range, segmentation, ctlModel → **how** cases run |
+| **D2** | **PIXIT** (extra test info) | Word **MISSING**; values [PIXIT_DRAFT.md](PIXIT_DRAFT.md) | IEC 61850-10 **Annex E** style; UCA server Word | HiTEKS | Timeouts, max clients, IntgPd range, segmentation, ctlModel → **how** cases run |
 | **D3** | **MICS** (Model ICS) | `lab/TemplateMICS_Ed2_FromTP2.0.5.docx` | **Edition 2** · **UCA Test Procedure 2.0.5** | HiTEKS | Model / LN / DO claims → **Table 3** / model tests |
 | **D4** | **TICS** (TISSUES ICS) | `lab/TemplateTICS_Ed2_FromTP2.0.5.docx` | **Edition 2** · **TP 2.0.5**; UCA IUG QAP | HiTEKS | TISSUES resolution → certificate reference |
 | — | **Instructions** (not submitted) | PICS sheet **Instructions** | UCAIug help text | Remove before send | — |
@@ -64,7 +64,7 @@ Typical items lab expects (questionnaire §2.2, §10):
 | TLS / cert sizes | 62351-3 lab profile |
 | Segmentation / max dataset | Static CID datasets |
 
-**Until PIXIT Word template is in `lab/`,** copy values into lab form from yaml + [`LAB_REQUIREMENT_TEST_MATRIX.md`](LAB_REQUIREMENT_TEST_MATRIX.md).
+**Until PIXIT Word template is in `lab/`,** copy [PIXIT_DRAFT.md](PIXIT_DRAFT.md) into the lab form. PICS cells: [PICS_FILL.md](PICS_FILL.md). Do not copy raw CID `<Services>` — [CID_PICS_ALIGNMENT.md](CID_PICS_ALIGNMENT.md).
 
 ---
 
@@ -107,11 +107,11 @@ Not from lab email; use to **preview** the same scope before accredited run:
 | □ | Action |
 |---|--------|
 | □ | Add missing **PIXIT** Word template to `lab/` |
-| □ | Fill **PICS** → send for **quote** (lab ask) |
+| □ | Paste [PICS_FILL.md](PICS_FILL.md) → Excel → send for **quote** |
 | □ | Confirm **TP version** (2.0.5 vs 2.0.6) and **61850-10 edition** with lab |
-| □ | Fill **MICS/TICS** from CID + TISSUES date |
+| □ | Paste **MICS/TICS** drafts into Word + TISSUES date |
 | □ | Run **TSP matrix** on other PC; evidence supports PICS **M** rows |
-| □ | Prepare **62351-3 PID** if bundled with 61850 quote |
+| □ | Paste [D7_62351-3_PID_DRAFT.md](D7_62351-3_PID_DRAFT.md) if bundled with 61850 quote |
 
 ---
 

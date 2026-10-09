@@ -40,6 +40,7 @@ Creates **`C:\CCLI_TSP_FIELD_PACK\`** with checklist, procedures, CID, TLS, and 
 | `cid/lab_tg544_eth_a.cid` | Compare Model / MICS source |
 | `tls/*` | EJBCA lab PEMs + `TSP_STAGE_README.txt` |
 | `config/lab_tr400_phase1_regulation.yaml` | Reference ports 3782 |
+| `09_PICS_FILL.md` … `15_LAB_CONFIG_GUIDE.md` | PID fill packs (PICS / PIXIT / MICS / TICS / D7 / CID / D6) |
 | `PACK_MANIFEST.json` | Generated timestamp + file list |
 
 ---

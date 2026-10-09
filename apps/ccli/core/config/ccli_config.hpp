@@ -201,6 +201,8 @@ struct GooseConfig {
     std::string publish_dst_mac{"01:0c:cd:01:00:01"};
     uint16_t    publish_vlan_id{0};
     int         publish_interval_ms{1000};
+    /** O.14 plant GOOSE comms: log link_down after this many seconds without RX. 0 = off. */
+    int         timeout_s{10};
 };
 
 struct MmsConfig {
@@ -262,10 +264,15 @@ struct CcliConfig {
         int  gpio{3};
     } annex_m_trip_monitor{};
 
-    /** P7-01: O.14 rolling event log (2048, append-only file). */
+    /** P7-01 / P7-03: O.14 rolling event log (2048, append-only file + optional syslog). */
     struct {
         bool        enabled{true};
         std::string path{"/var/lib/ccli/events.jsonl"};
+        bool        syslog_enabled{false};
+        std::string syslog_host{"127.0.0.1"};
+        int         syslog_port{514};
+        /** Space/comma-separated ifaces for O.14 physical-link (e.g. "lan1 lan2"). */
+        std::string watch_ifaces;
     } event_log{};
 
     /* Lab-only: skip permissive DI gate when GD32 input is faulted (NOT for production). */

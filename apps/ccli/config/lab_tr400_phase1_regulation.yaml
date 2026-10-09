@@ -78,3 +78,11 @@ io:
   di_permissive:
     gpio: 2
     active_low: true
+
+event_log:
+  enabled: true
+  path: /var/lib/ccli/events.jsonl
+  syslog_enabled: true
+  syslog_host: 127.0.0.1
+  syslog_port: 514
+  watch_ifaces: lan1 lan2

@@ -7,6 +7,26 @@ Format: **`semver-rN`** — bump **N** in `VERSION` line 2 and `package/ccli/Mak
 
 ---
 
+## 0.1.0-r35 — P7-O14-LOGGER (2026-10-09)
+
+### Added
+
+- **O.14 datalogger finalize** — annex category on every event; RFC 5424 UDP syslog (P7-03);
+  firmware `old→new` detect; GOOSE RX timeout; Eth `watch_ifaces` operstate; `--event-clear` **rejected**.
+- Thread-safe `EventStore` mutex; PF2 events persist to jsonl (was memory-only).
+- File mode **0640**; wrap drops oldest only (no user erase API).
+- Unit test `event_store_o14`.
+
+### Notes
+
+- PSU / PG-PI / IDS still HW **N/A**; syslog is local UDP `127.0.0.1:514` until SIEM is wired.
+- Yaml: `event_log.syslog_*`, `event_log.watch_ifaces`, `goose.timeout_s`.
+
+### Revert to r34
+
+1. **Git:** `git checkout 0.1.0-r34` (or previous tag).
+2. **DUT:** redeploy r34 `ccli-bin`.
+
 ## 0.1.0-r34 — P7-ZONE-DASHBOARD (2026-10-05)
 
 ### Added

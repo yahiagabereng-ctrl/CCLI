@@ -17,6 +17,7 @@ public:
     void stop() { adapter_.stop(); }
     bool is_running() const { return adapter_.is_running(); }
     adapters::GooseRxSnapshot snapshot() const { return adapter_.snapshot(); }
+    std::int64_t last_rx_ms() const { return adapter_.last_rx_ms(); }
 
 private:
     adapters::GooseAdapter adapter_;

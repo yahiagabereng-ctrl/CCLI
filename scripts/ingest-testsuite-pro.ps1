@@ -24,7 +24,14 @@ $Files = @(
     @{ Path = $Proc; Sid = "ccli-testsuite-pro-procedure" },
     @{ Path = (Join-Path $Conf "LAB_REQUIREMENT_TEST_MATRIX.md"); Sid = "ccli-lab-requirement-test-matrix" },
     @{ Path = (Join-Path $Conf "TSP_PC_FIELD_PACK.md"); Sid = "ccli-tsp-field-pack" },
-    @{ Path = (Join-Path $Repo "lab\evidence\testsuite-pro\TSP_TEST_IDENTIFICATION_POST_CONNECT.md"); Sid = "ccli-tsp-test-identification" }
+    @{ Path = (Join-Path $Repo "lab\evidence\testsuite-pro\TSP_TEST_IDENTIFICATION_POST_CONNECT.md"); Sid = "ccli-tsp-test-identification" },
+    @{ Path = (Join-Path $Conf "PICS_FILL.md"); Sid = "ccli-lab-pics-fill" },
+    @{ Path = (Join-Path $Conf "PIXIT_DRAFT.md"); Sid = "ccli-lab-pixit-draft" },
+    @{ Path = (Join-Path $Conf "MICS_DRAFT.md"); Sid = "ccli-lab-mics-draft" },
+    @{ Path = (Join-Path $Conf "TICS_DRAFT.md"); Sid = "ccli-lab-tics-draft" },
+    @{ Path = (Join-Path $Conf "D7_62351-3_PID_DRAFT.md"); Sid = "ccli-lab-d7-62351-3-pid" },
+    @{ Path = (Join-Path $Conf "CID_PICS_ALIGNMENT.md"); Sid = "ccli-lab-cid-pics-alignment" },
+    @{ Path = (Join-Path $Conf "LAB_CONFIG_GUIDE.md"); Sid = "ccli-lab-config-guide" }
 )
 
 Write-Host "=== Sync markdown to Telematry ==="

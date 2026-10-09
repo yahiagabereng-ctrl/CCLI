@@ -49,6 +49,8 @@ Cross-cutting project knowledge — architecture, lab platform, certification, v
 | `CCI_61850-6_Extract.md` | `ccli-61850-6-extract` | **HAVE (P0+P1 SCL)** — full CID grammar + I/J/K |
 | `CCI_61850-7-2_Capture_Plan.md` | `ccli-61850-7-2-capture-plan` | **HAVE** |
 | `CCI_61850-7-2_Extract.md` | `ccli-61850-7-2-extract` | **HAVE (P0)** — ACSI / MMS services |
+| `CCI_61850-10_Extract.md` | `ccli-61850-10-extract` | **HAVE** — Ed.2.1 (2025) conformance · DNV test matrix |
+| `reference/iec61850/_extract_61850-10/full.txt` | `ccli-61850-10-ocr-corpus` | **HAVE** — 196 pp. OCR (2026-10-08) |
 | `CCI_61850-7-3_Capture_Plan.md` | `ccli-61850-7-3-capture-plan` | **HAVE** — CDC batches A–E |
 | `CCI_61850-7-3_Extract.md` | `ccli-61850-7-3-extract` | **HAVE (P0)** — MV/APC/ENC · P3-14 |
 | `CCI_61850-7-3_OCR_Corpus.md` | `ccli-61850-7-3-ocr-corpus` | **HAVE** — full OCR (2026-09-30) |
@@ -76,6 +78,8 @@ Cross-cutting project knowledge — architecture, lab platform, certification, v
 | `CCI_62351-1_Extract.md` | `ccli-62351-1-extract` | **HAVE** — §1, §4–§6; bib p.35 optional |
 | `CCI_62351-3_Capture_Plan.md` | `ccli-62351-3-capture-plan` | **HAVE (P0)** — Batch A pp. 6–19 |
 | `CCI_62351-3_Extract.md` | `ccli-62351-3-extract` | **HAVE (P0)** — §5 TLS · §8 PICS Tables 1–5 |
+| `CCI_62351-100-3_Extract.md` | `ccli-62351-100-3-extract` | **HAVE** — 62351-3 conformance **test cases** (TS 2020) |
+| `reference/iec62351/_extract_62351-100-3/full.txt` | `ccli-62351-100-3-ocr-corpus` | **HAVE** — 37 pp. OCR (2026-10-08) |
 | `CCI_62351-4_Capture_Plan.md` | `ccli-62351-4-capture-plan` | **HAVE (C1 P0)** — Batches A–G |
 | `CCI_62351-4_Extract.md` | `ccli-62351-4-extract` | **HAVE (C1 P0)** — §4–§17 + Annex G + §13.2 |
 | `CCI_K6.3_Key_Ceremony_SOP.md` | `ccli-k63-ceremony-sop` | **HAVE** — EST dual cert · CR 1.8 |

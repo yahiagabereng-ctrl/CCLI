@@ -12,6 +12,7 @@
 #include "drv_gpio.h"
 #include "policy/net_policy.hpp"
 #include "event/event_store.hpp"
+#include "event/link_monitor.hpp"
 #include "regulation/regulation_bench.hpp"
 #include "service/service_supervision.hpp"
 #include "version/ccli_version.hpp"
@@ -21,6 +22,7 @@
 #include <algorithm>
 #include <atomic>
 #include <cmath>
+#include <vector>
 #include <csignal>
 #include <cstdint>
 #include <fstream>
@@ -255,7 +257,8 @@ void print_usage() {
               << "       ccli --bench-status --json   Read /var/run/ccli-status.json (daemon)\n"
               << "       ccli --bench-write-config PATH   Write lab yaml from stdin (lab UI)\n"
               << "       ccli --event-dump [--count N] [--json]   O.14 event log (P7-01/02)\n"
-              << "       ccli --event-wrap-test   Verify 2048-event ring wrap (P7-01)\n";
+              << "       ccli --event-wrap-test   Verify 2048-event ring wrap (P7-01)\n"
+              << "       ccli --event-clear     Rejected (O.14 user cannot overwrite)\n";
 }
 
 int run_event_dump(const std::string& config_path, std::size_t count, bool json_out) {
@@ -463,6 +466,7 @@ int main(int argc, char** argv) {
     bool bench_write_config = false;
     bool event_dump = false;
     bool event_wrap_test = false;
+    bool event_clear = false;
     bool event_dump_json = false;
     std::size_t event_dump_count = cci::core::EventStore::kMaxEvents;
     int gpio_blink = 0;
@@ -542,6 +546,10 @@ int main(int argc, char** argv) {
             event_wrap_test = true;
             continue;
         }
+        if (arg == "--event-clear") {
+            event_clear = true;
+            continue;
+        }
         if (arg == "--count" && i + 1 < argc) {
             try {
                 event_dump_count = static_cast<std::size_t>(std::stoul(argv[++i]));
@@ -556,6 +564,10 @@ int main(int argc, char** argv) {
         }
     }
 
+    if (event_clear) {
+        std::cerr << "O.14: user overwrite forbidden (P7-01) — no erase API\n";
+        return cci::core::EventStore::user_overwrite_forbidden() ? 2 : 1;
+    }
     if (event_wrap_test) {
         return run_event_wrap_test();
     }
@@ -621,10 +633,15 @@ int main(int argc, char** argv) {
     }
 
     cci::core::MeasurementStore measurements;
-    cci::core::EventStore events(
-        {app_cfg.event_log.enabled, app_cfg.event_log.path});
+    cci::core::EventLogConfig elog_cfg;
+    elog_cfg.enabled = app_cfg.event_log.enabled;
+    elog_cfg.path = app_cfg.event_log.path;
+    elog_cfg.syslog_enabled = app_cfg.event_log.syslog_enabled;
+    elog_cfg.syslog_host = app_cfg.event_log.syslog_host;
+    elog_cfg.syslog_port = app_cfg.event_log.syslog_port;
+    cci::core::EventStore events(elog_cfg);
     const auto log_event = [&events](const std::string& type, const std::string& detail) {
-        events.append({cci::hal::now().epoch_ms, type, detail});
+        events.append({cci::hal::now().epoch_ms, type, detail, ""});
     };
     const auto boot_ver = cci::core::version::current();
     {
@@ -643,9 +660,24 @@ int main(int argc, char** argv) {
         }
     }
     log_event("system", "power_on:" + boot_ver.full);
-    log_event("system", "firmware_boot:" + boot_ver.full);
+    {
+        const auto fw = cci::core::EventStore::record_firmware_boot(elog_cfg.path, boot_ver.full);
+        log_event("system", fw.detail);
+    }
     log_event("system", "psu_unmonitored");
     log_event("security", "service_monitor:started");
+    log_event("security", "tls_material:loaded_from_config");
+    {
+        const auto np = cci::core::lab_segmentation_policy();
+        if (!cci::core::is_forward_allowed(np, cci::core::EthDomain::EthA,
+                                           cci::core::EthDomain::EthB)) {
+            log_event("net", "segmentation_deny:EthA->EthB");
+        }
+        if (!cci::core::is_forward_allowed(np, cci::core::EthDomain::EthB,
+                                           cci::core::EthDomain::EthA)) {
+            log_event("net", "segmentation_deny:EthB->EthA");
+        }
+    }
     cci::core::ServiceSupervision::mark_running();
 
     cci::services::ModbusService modbus(measurements, app_cfg);
@@ -669,7 +701,7 @@ int main(int argc, char** argv) {
                       " enter_kw=" + std::to_string(pf2_cfg.threshold_kw));
     }
 
-    cci::services::Pf2Service pf2(measurements, events.ring(), pf2_cfg);
+    cci::services::Pf2Service pf2(measurements, events, pf2_cfg);
     cci::services::MmsService mms;
     cci::services::Iec104Service iec104;
     cci::services::GooseService goose;
@@ -752,6 +784,9 @@ int main(int argc, char** argv) {
     bool last_annex_m_trip = annex_m0;
     cci::adapters::DsoLiveCommand last_dso_cmd{};
     bool dso_cmd_seen = false;
+    int goose_link_state = 0; /* 0=unknown, 1=up, -1=down */
+    const auto watch_ifaces = cci::core::split_watch_ifaces(app_cfg.event_log.watch_ifaces);
+    std::vector<std::string> last_iface_state(watch_ifaces.size());
 
     while (g_running) {
         if (lab_demo) {
@@ -808,7 +843,8 @@ int main(int argc, char** argv) {
         {
             if (mms.poll_comms_loss_fallback()) {
                 std::cerr << "mms→pf2: P3-05 Operating Rule fallback (Eth_A no-comms)\n";
-                events.append({cci::hal::now().epoch_ms, "mms", "comms_loss_fallback"});
+                events.append({cci::hal::now().epoch_ms, "mms", "comms_loss_fallback", ""});
+                log_event("priority", "autonomous_after_eth_a_loss");
             }
             cci::adapters::DsoLiveCommand dso_cmd{};
             if (mms.poll_dso_live_command(dso_cmd) && dso_cmd.valid) {
@@ -977,7 +1013,36 @@ int main(int argc, char** argv) {
             do_state = new_do_state;
         }
 
+        if (app_cfg.goose.enabled && goose.is_running() && app_cfg.goose.timeout_s > 0 &&
+            (loop_count % 10) == 0) {
+            const auto now_ms = cci::hal::now().epoch_ms;
+            const auto last_rx = goose.last_rx_ms();
+            const std::int64_t timeout_ms =
+                static_cast<std::int64_t>(app_cfg.goose.timeout_s) * 1000;
+            const bool heard = last_rx > 0 && (now_ms - last_rx) <= timeout_ms;
+            if (heard) {
+                if (goose_link_state <= 0) {
+                    log_event("goose", goose_link_state < 0 ? "link_recovered" : "link_up");
+                    goose_link_state = 1;
+                }
+            } else if (goose_link_state == 1 ||
+                       (goose_link_state == 0 && loop_count * 100 >= timeout_ms)) {
+                log_event("goose", last_rx > 0 ? "link_down:timeout" : "link_down:no_rx");
+                goose_link_state = -1;
+            }
+        }
+
         if ((loop_count % status_interval) == 0) {
+            for (std::size_t i = 0; i < watch_ifaces.size(); ++i) {
+                const std::string st = cci::core::read_iface_operstate(watch_ifaces[i]);
+                if (st != last_iface_state[i]) {
+                    const std::string prev = last_iface_state[i];
+                    last_iface_state[i] = st;
+                    if (!prev.empty() || st == "down" || st == "up") {
+                        log_event("iface", watch_ifaces[i] + ":" + st);
+                    }
+                }
+            }
             svc_io_log_status(do_state, permissive_ok, annex_m_trip);
             ZoneStatusSnapshot zs{};
             zs.mms_running = mms.is_running();

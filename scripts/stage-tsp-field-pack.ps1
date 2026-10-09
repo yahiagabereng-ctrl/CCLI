@@ -50,7 +50,14 @@ $docs = @(
     @{ Rel = "lab/conformance/TSP_PC_FIELD_PACK.md"; Out = "00_README_FIELD_PACK.md" },
     @{ Rel = "lab/conformance/2026-10-08_UCA_Document_Phase_Checklist.md"; Out = "06_LAB_UCA_DOCUMENT_CHECKLIST.md" },
     @{ Rel = "lab/conformance/LAB_TEMPLATES_VS_TEST_SCOPE.md"; Out = "07_LAB_TEMPLATES_VS_TEST_SCOPE.md" },
-    @{ Rel = "lab/conformance/TSP_PC_FULL_BENCH_HW.md"; Out = "08_TSP_PC_FULL_BENCH_HW.md" }
+    @{ Rel = "lab/conformance/TSP_PC_FULL_BENCH_HW.md"; Out = "08_TSP_PC_FULL_BENCH_HW.md" },
+    @{ Rel = "lab/conformance/PICS_FILL.md"; Out = "09_PICS_FILL.md" },
+    @{ Rel = "lab/conformance/PIXIT_DRAFT.md"; Out = "10_PIXIT_DRAFT.md" },
+    @{ Rel = "lab/conformance/MICS_DRAFT.md"; Out = "11_MICS_DRAFT.md" },
+    @{ Rel = "lab/conformance/TICS_DRAFT.md"; Out = "12_TICS_DRAFT.md" },
+    @{ Rel = "lab/conformance/D7_62351-3_PID_DRAFT.md"; Out = "13_D7_62351-3_PID.md" },
+    @{ Rel = "lab/conformance/CID_PICS_ALIGNMENT.md"; Out = "14_CID_PICS_ALIGNMENT.md" },
+    @{ Rel = "lab/conformance/LAB_CONFIG_GUIDE.md"; Out = "15_LAB_CONFIG_GUIDE.md" }
 )
 
 $benchScripts = @(
