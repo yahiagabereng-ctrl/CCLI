@@ -35,6 +35,15 @@ powershell -File scripts\start-ejbca-lab.ps1 -Status
 curl.exe -k https://localhost:8443/ejbca/publicweb/healthcheck/ejbcahealth
 ```
 
+### Edge `ERR_EMPTY_RESPONSE` on `:8443` (fixed 2026-10-12)
+
+| Cause | Fix in repo |
+|-------|-------------|
+| TLS cert was `CN=ejbca` but URL is `localhost` | `docker-compose.yml` hostname / `APPSERVER_HOSTNAME=localhost` |
+| WildFly `want-client-auth=true` (optional client cert) aborts Chromium/Edge | `scripts/start-ejbca-lab.ps1` disables it after health check |
+
+After `git pull`, always start with `scripts\start-ejbca-lab.ps1` (not raw `docker compose` alone) so the Edge fix is applied. Use **https://localhost:8443/ejbca/adminweb/** (not `127.0.0.1`, not `:8080` for Admin). If an old tab still fails, open **InPrivate**.
+
 ---
 
 ## 3. Passwords that are *not* Admin login

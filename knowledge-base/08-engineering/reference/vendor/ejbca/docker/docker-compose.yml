@@ -4,12 +4,16 @@ services:
   ejbca-ce:
     image: keyfactor/ejbca-ce:latest
     container_name: ccli-ejbca-ce
-    hostname: ejbca
+    # Must match browser URL host (https://localhost:8443/...) so Edge/Chrome
+    # do not fail TLS name checks / empty-response on Admin Web.
+    hostname: localhost
     environment:
       # Lab only: HTTPS admin without client cert (default in CE image).
       # Production: TLS_SETUP_ENABLED=true + SuperAdmin P12 enrollment.
       TLS_SETUP_ENABLED: simple
       LOG_LEVEL_APP: INFO
+      # Prefer regenerating appserver TLS for hostname=localhost.
+      APPSERVER_HOSTNAME: localhost
     ports:
       - "8080:8080"
       - "8443:8443"

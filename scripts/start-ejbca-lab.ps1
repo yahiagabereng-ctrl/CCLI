@@ -19,6 +19,37 @@ function Show-Status {
     Write-Host "Runbook:   lab/EJBCA_LAB_SETUP.md"
 }
 
+function Disable-EjbcaOptionalClientAuth {
+    # Edge ERR_EMPTY_RESPONSE: want-client-auth=true makes Chromium abort TLS.
+    $staging = Join-Path $Repo "lab\ejbca-staging"
+    New-Item -ItemType Directory -Force -Path $staging | Out-Null
+    $xmlLocal = Join-Path $staging "standalone.xml"
+    docker cp "ccli-ejbca-ce:/opt/keyfactor/appserver/standalone/configuration/standalone.xml" $xmlLocal
+    $text = Get-Content -Raw -Path $xmlLocal
+    $old = 'want-client-auth="true" need-client-auth="false" authentication-optional="true"'
+    $new = 'want-client-auth="false" need-client-auth="false" authentication-optional="false"'
+    if ($text -notlike "*$old*") {
+        if ($text -like "*$new*") {
+            Write-Host "HTTPS already has client-auth disabled (Edge-safe)." -ForegroundColor DarkGray
+            return
+        }
+        Write-Warning "Could not find want-client-auth pattern in standalone.xml"
+        return
+    }
+    Set-Content -Path $xmlLocal -Value ($text.Replace($old, $new)) -NoNewline -Encoding utf8
+    docker cp $xmlLocal "ccli-ejbca-ce:/opt/keyfactor/appserver/standalone/configuration/standalone.xml"
+    docker exec ccli-ejbca-ce /opt/keyfactor/appserver/bin/jboss-cli.sh --connect --command=':reload' | Out-Null
+    for ($i = 0; $i -lt 40; $i++) {
+        Start-Sleep -Seconds 3
+        $code = curl.exe -k -s -o NUL -w "%{http_code}" "https://localhost:8443/ejbca/publicweb/healthcheck/ejbcahealth" 2>$null
+        if ($code -eq "200") {
+            Write-Host "Disabled optional client-auth (fixes Edge ERR_EMPTY_RESPONSE)." -ForegroundColor Green
+            return
+        }
+    }
+    Write-Warning "WildFly reload after client-auth patch did not become healthy in time."
+}
+
 if ($Status) {
     Show-Status
     exit 0
@@ -61,6 +92,14 @@ Write-Host ""
 
 if ($ready) {
     Write-Host "EJBCA is responding on https://localhost:8443" -ForegroundColor Green
+    # Edge/Chrome often return ERR_EMPTY_RESPONSE when WildFly asks for optional
+    # client certificates (want-client-auth=true). Lab simple mode does not need that.
+    try {
+        Disable-EjbcaOptionalClientAuth
+    }
+    catch {
+        Write-Warning "Could not disable optional client-auth (Admin Web may fail in Edge): $($_.Exception.Message)"
+    }
 }
 else {
     Write-Warning "EJBCA not yet HTTP-ready. Check: scripts/start-ejbca-lab.ps1 -Logs"
