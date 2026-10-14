@@ -93,7 +93,7 @@ RBAC: VIEWER associate OK; Operate **denied**.
 
 | Item | Value |
 |------|--------|
-| TLS | **1.2** minimum (`TLS_VERSION_TLS_1_2`) |
+| TLS | **1.2 only** — min and max `TLS_VERSION_TLS_1_2` (r56+; **TLS 1.3 not** offered on MMS/104) |
 | Mutual auth | Required (client cert allow-list) |
 | Cert | RSA **2048**; max **8192** octets |
 | CA | Lab EJBCA root |
