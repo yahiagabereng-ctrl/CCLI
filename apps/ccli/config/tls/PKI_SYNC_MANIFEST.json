@@ -1,6 +1,6 @@
 ﻿{
     "pki_source":  "ejbca",
-    "synced_utc":  "2026-10-14 14:24:47 UTC",
+    "synced_utc":  "2026-10-14 14:51:33 UTC",
     "source_dir":  "C:\\Yahia\\projects\\CCLI\\apps\\ccli\\config\\tls\\ejbca",
     "product_dir":  "C:\\Yahia\\projects\\CCLI\\apps\\ccli\\config\\tls",
     "files":  [
@@ -11,12 +11,14 @@
                   "server_acse.key",
                   "client.pem",
                   "client.key",
+                  "client_acse.key",
                   "client_tls.pem",
                   "viewer.pem",
                   "viewer.key",
                   "viewer_tls.pem",
                   "revoked.pem",
                   "revoked.key",
+                  "revoked_acse.key",
                   "revoked_tls.pem",
                   "lab_crl.pem"
               ],

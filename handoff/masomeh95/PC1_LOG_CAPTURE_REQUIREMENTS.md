@@ -53,12 +53,12 @@ Read **`tls\TSP_STAGE_README.txt`** after stage. Summary:
 | TSP role | Certificate | Private key |
 |----------|-------------|-------------|
 | Trust / CA | `root_CA.pem` | — |
-| **MMS Security** (Cert B / ACSE) | `client.pem` | **`client_tsp.key`** |
-| **Transport TLS** (Cert A) | `client_tls.pem` | **`client_tsp.key`** (same key both slots) |
+| **MMS Security** (Cert B / ACSE) | `client.pem` | **`client_acse.key`** |
+| **Transport TLS** (Cert A) | `client_tls.pem` | **`client_tsp.key`** |
 | Viewer cases (T3-02/03) | `viewer.pem` | `viewer.key` |
 | Revoked case (T3-04) | `revoked_tls.pem` + `revoked.pem` | **`revoked_tsp.key`** (both slots) + import **`lab_crl.pem`** |
 
-**Critical:** both MMS and Transport key browse fields → **`client_tsp.key`**. TSP’s OpenSSL build often rejects PKCS#8 `BEGIN PRIVATE KEY` without conversion.
+**Critical:** Transport key → **`client_tsp.key`** · MMS key → **`client_acse.key`** (62351-4 dual key). Run `scripts/verify-tsp-tls-key-match.ps1` after `git pull`.
 
 ### OpenSSL preflight (save optional evidence)
 

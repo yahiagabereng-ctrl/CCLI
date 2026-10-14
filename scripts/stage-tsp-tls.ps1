@@ -31,9 +31,11 @@ New-Item -ItemType Directory -Force -Path $Dest | Out-Null
 
 $files = @(
     "root_CA.pem",
-    "client.pem", "client.key", "client_tls.pem", "client_tsp.key",
+    "client.pem", "client.key", "client_acse.key", "client_acse_tsp.key",
+    "client_tls.pem", "client_tsp.key",
     "viewer.pem", "viewer.key",
-    "revoked.pem", "revoked.key", "revoked_tls.pem", "revoked_tsp.key",
+    "revoked.pem", "revoked.key", "revoked_acse.key", "revoked_acse_tsp.key",
+    "revoked_tls.pem", "revoked_tsp.key",
     "lab_crl.pem",
     "README.md"
 )
@@ -78,8 +80,8 @@ Copied from ``$Src`` on $(Get-Date -Format 'yyyy-MM-dd HH:mm').
 | Role | Files |
 |------|-------|
 | Trust anchor | root_CA.pem |
-| Transport TLS (Cert A) | client_tls.pem + client_tsp.key |
-| MMS Security (Cert B) | client.pem + client_tsp.key |
+| Transport TLS (Cert A) | client_tls.pem + **client_tsp.key** |
+| MMS Security (Cert B) | client.pem + **client_acse.key** (or client_acse_tsp.key) — **not** client_tsp.key |
 | Viewer / RBAC negative | viewer.pem + viewer.key |
 | CRL negative (T3-04 / P3-09) | revoked_tls.pem + revoked.pem + **revoked_tsp.key** (both key slots) + import **lab_crl.pem** as CRL |
 
@@ -89,7 +91,7 @@ Connection: 192.168.10.1 port **3782** TLS — not cleartext 102.
 
 1. Enable / browse **lab_crl.pem** on the connection (DUT runs with ``crl=on``).
 2. Replace Transport cert with **revoked_tls.pem** and MMS Security with **revoked.pem**.
-3. Private key **revoked_tsp.key** in both TLS key fields (same pattern as **client_tsp.key**).
+3. Transport key **revoked_tsp.key** · MMS key **revoked_acse.key** (dual cert, same as DSO client).
 4. Connect must **fail** (revoked cert rejected). Restore **client_*** before T1 rows.
 
 ## OpenSSL on TestPro PC (preflight)
@@ -115,5 +117,5 @@ Write-Host "OK -> $Dest"
 if ($AltDest -and ($AltDest -ne $Dest)) { Write-Host "OK -> $AltDest" }
 if ($ProductDest) { Write-Host "OK -> $ProductDest  (copy this folder to the TestPro PC)" }
 Write-Host "Next: TSP System Status / IED Connection -> TLS paths above."
-Write-Host "Use client_tsp.key for MMS Security + Transport TLS private key (TSP OpenSSL)."
+Write-Host "Use client_tsp.key (Transport) + client_acse.key (MMS Security). Run scripts/verify-tsp-tls-key-match.ps1"
 Write-Host "Keep Disconnected until DUT is up (Phase B)."

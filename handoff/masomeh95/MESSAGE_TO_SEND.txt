@@ -24,8 +24,8 @@ Or in the pack after stage:
 TEST SUITE PRO — TLS paths (folder D:\CCLI_TSP_FIELD_PACK\tls\):
 
   Trust CA:     root_CA.pem
-  Transport:    client_tls.pem  +  private key client_tsp.key
-  MMS Security: client.pem      +  same client_tsp.key (both key slots)
+  Transport:    client_tls.pem  +  client_tsp.key
+  MMS Security: client.pem      +  client_acse.key  (NOT client_tsp.key - dual cert G.2)
   CRL:          lab_crl.pem (enable in TSP if there is a CRL field)
 
   Server: 192.168.10.1:3782  |  IED CCI016_01  |  CID: cid\lab_tg544_eth_a.cid

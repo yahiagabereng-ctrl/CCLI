@@ -84,6 +84,7 @@ LEAVES: list[LeafSpec] = [
         "CCLI-Cert-B-E2E-MMS",
         EE_PROFILE_DEFAULT,
         g62_oid=MMS_OID,
+        dual_key=True,
     ),
     LeafSpec(
         "tsp-viewer",
@@ -101,6 +102,7 @@ LEAVES: list[LeafSpec] = [
         "CCLI-Cert-B-E2E-MMS",
         EE_PROFILE_DEFAULT,
         g62_oid=MMS_OID,
+        dual_key=True,
     ),
     LeafSpec(
         "tsp-revoked",
@@ -118,6 +120,7 @@ LEAVES: list[LeafSpec] = [
         "CCLI-Cert-B-E2E-MMS",
         EE_PROFILE_DEFAULT,
         g62_oid=MMS_OID,
+        dual_key=True,
     ),
 ]
 
@@ -291,9 +294,15 @@ def issue_all(args: argparse.Namespace) -> int:
     client_key = out / "client.key"
     if client_key.is_file():
         _write_pem(out / "client_tsp.key", client_key.read_bytes())
+    client_acse = out / "client_acse.key"
+    if client_acse.is_file():
+        _write_pem(out / "client_acse_tsp.key", client_acse.read_bytes())
     revoked_key = out / "revoked.key"
     if revoked_key.is_file():
         _write_pem(out / "revoked_tsp.key", revoked_key.read_bytes())
+    revoked_acse = out / "revoked_acse.key"
+    if revoked_acse.is_file():
+        _write_pem(out / "revoked_acse_tsp.key", revoked_acse.read_bytes())
 
     if revoked_serial_hex and revoked_issuer and not args.skip_revoke:
         print(f"  revoke {revoked_serial_hex} ...")

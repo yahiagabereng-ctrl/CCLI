@@ -52,6 +52,8 @@
     "transport_cert": "client_tls.pem",
     "mms_security_cert": "client.pem",
     "client_private_key_tsp": "client_tsp.key",
+    "mms_private_key": "client_acse.key",
+    "mms_private_key_tsp_alias": "client_acse_tsp.key",
     "viewer_cert": "viewer.pem",
     "viewer_key": "viewer.key",
     "revoked_mms_cert": "revoked.pem",

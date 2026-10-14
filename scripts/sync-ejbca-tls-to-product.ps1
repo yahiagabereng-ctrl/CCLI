@@ -24,9 +24,9 @@ if (-not (Test-Path (Join-Path $Src "root_CA.pem"))) {
 $copy = @(
     "root_CA.pem",
     "server.pem", "server.key", "server_tls.pem", "server_acse.key",
-    "client.pem", "client.key", "client_tls.pem",
+    "client.pem", "client.key", "client_acse.key", "client_tls.pem",
     "viewer.pem", "viewer.key", "viewer_tls.pem",
-    "revoked.pem", "revoked.key", "revoked_tls.pem",
+    "revoked.pem", "revoked.key", "revoked_acse.key", "revoked_tls.pem",
     "lab_crl.pem"
 )
 
@@ -64,7 +64,9 @@ function Copy-KeyAlias {
 }
 
 Copy-KeyAlias -FromKey "client.key" -AliasName "client_tsp.key"
+Copy-KeyAlias -FromKey "client_acse.key" -AliasName "client_acse_tsp.key"
 Copy-KeyAlias -FromKey "revoked.key" -AliasName "revoked_tsp.key"
+Copy-KeyAlias -FromKey "revoked_acse.key" -AliasName "revoked_acse_tsp.key"
 
 $combined = @("server_combined.pem", "server_combined.key")
 foreach ($f in $combined) {

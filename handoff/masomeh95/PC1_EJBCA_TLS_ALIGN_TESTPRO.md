@@ -58,9 +58,9 @@ Use folder: **`D:\CCLI_TSP_FIELD_PACK\tls\`**
 |-----------|------|
 | Trusted CA / root | **`root_CA.pem`** |
 | Transport TLS certificate | **`client_tls.pem`** |
-| Transport TLS private key | **`client_tsp.key`** |
+| Transport TLS private key | **`client_tsp.key`** (Cert A — pairs with `client_tls.pem`) |
 | MMS Security / ACSE certificate | **`client.pem`** |
-| MMS Security private key | **`client_tsp.key`** (same key in both slots) |
+| MMS Security private key | **`client_acse.key`** (Cert B — **different** key; do **not** use `client_tsp.key` here) |
 | CRL (enable in connection if TSP has CRL browse) | **`lab_crl.pem`** |
 
 | Connection | Value |

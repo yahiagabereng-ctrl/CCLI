@@ -98,9 +98,9 @@ if ($manifestPath -and (Test-Path $manifestPath)) {
 foreach ($f in @(
         "root_CA.pem", "server.pem", "server_tls.pem", "server.key", "server_acse.key",
         "server_combined.pem", "server_combined.key",
-        "client.pem", "client_tls.pem", "client.key",
+        "client.pem", "client_tls.pem", "client.key", "client_acse.key", "client_tsp.key",
         "viewer.pem", "viewer_tls.pem", "viewer.key",
-        "revoked.pem", "revoked_tls.pem", "lab_crl.pem"
+        "revoked.pem", "revoked_tls.pem", "revoked.key", "revoked_acse.key", "lab_crl.pem"
     )) {
     $src = Join-Path $TlsDir $f
     if (Test-Path $src) {
@@ -143,8 +143,8 @@ if ($HostAddr -eq "192.168.10.1") {
     foreach ($TspTls in @("C:\CCLI_tls", "C:\CCLI_product_tls")) {
         New-Item -ItemType Directory -Force -Path $TspTls | Out-Null
         foreach ($f in @(
-                "root_CA.pem", "client.pem", "client.key", "client_tls.pem", "client_tsp.key",
-                "viewer.pem", "viewer.key", "revoked.pem", "revoked.key", "lab_crl.pem"
+                "root_CA.pem", "client.pem", "client.key", "client_acse.key", "client_tls.pem", "client_tsp.key",
+                "viewer.pem", "viewer.key", "revoked.pem", "revoked.key", "revoked_acse.key", "lab_crl.pem"
             )) {
             $src = Join-Path $TlsDir $f
             if (Test-Path $src) {

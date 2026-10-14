@@ -71,9 +71,9 @@ Use paths under `D:\CCLI_TSP_FIELD_PACK\tls\` (or `C:\CCLI_product_tls\` if you 
 |-----------|------|
 | Trusted CA / root | `root_CA.pem` |
 | Transport TLS certificate | `client_tls.pem` |
-| Transport TLS private key | **`client_tsp.key`** |
+| Transport TLS private key | **`client_tsp.key`** (Cert A) |
 | MMS Security / ACSE certificate | `client.pem` |
-| MMS Security private key | **`client_tsp.key`** (same key, both slots) |
+| MMS Security private key | **`client_acse.key`** (Cert B — dual key; verify with `scripts/verify-tsp-tls-key-match.ps1`) |
 
 Optional copies for negative tests:
 
