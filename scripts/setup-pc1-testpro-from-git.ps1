@@ -17,10 +17,24 @@ Write-Host "Repo: $Repo"
 
 & (Join-Path $Repo "scripts\stage-tsp-field-pack.ps1") -Dest $Dest
 
+# Overwrite tls\ with full DUT-aligned PEM set + DUT_TLS_MANIFEST.json (includes revoked, viewer, CRL).
+$dutVer = "0.1.0-r55"
+$verFile = Join-Path $Repo "apps\ccli\VERSION"
+if (Test-Path $verFile) {
+    $line = Get-Content $verFile -Raw
+    if ($line -match 'PKG_RELEASE:=\s*(\d+)') { $dutVer = "0.1.0-r$($Matches[1])" }
+}
+& (Join-Path $Repo "scripts\stage-pc1-tls-dut-bundle.ps1") -Dest (Join-Path $Dest "tls") -DutRelease $dutVer
+
 $testProReadme = Join-Path $Repo "lab\testpro\PC1_TSP_IMPORT_CHECKLIST.md"
 if (Test-Path $testProReadme) {
     Copy-Item -Force $testProReadme (Join-Path $Dest "00i_PC1_TSP_IMPORT_CHECKLIST.md")
     Write-Host "  00i_PC1_TSP_IMPORT_CHECKLIST.md"
+}
+$tlsBundleDoc = Join-Path $Repo "lab\testpro\PC1_TLS_BUNDLE_DUT_ALIGNED.md"
+if (Test-Path $tlsBundleDoc) {
+    Copy-Item -Force $tlsBundleDoc (Join-Path $Dest "00j_PC1_TLS_BUNDLE_DUT_ALIGNED.md")
+    Write-Host "  00j_PC1_TLS_BUNDLE_DUT_ALIGNED.md"
 }
 
 $json = Join-Path $Repo "lab\testpro\tsp_tls_and_cid.json"

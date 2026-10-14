@@ -33,7 +33,7 @@ $files = @(
     "root_CA.pem",
     "client.pem", "client.key", "client_acse.key", "client_acse_tsp.key",
     "client_tls.pem", "client_tsp.key",
-    "viewer.pem", "viewer.key",
+    "viewer.pem", "viewer_tls.pem", "viewer.key",
     "revoked.pem", "revoked.key", "revoked_acse.key", "revoked_acse_tsp.key",
     "revoked_tls.pem", "revoked_tsp.key",
     "lab_crl.pem",

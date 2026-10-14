@@ -45,6 +45,7 @@ lab/tg544-openwrt/lab-env.ps1
 .env.*
 *.credentials
 lab/tmp_*.pem
+lab/testpro/staged/
 
 # TLS lab PKI is tracked in the private repo (apps/ccli/config/tls/)
 apps/ccli/config/tls/__pycache__/
