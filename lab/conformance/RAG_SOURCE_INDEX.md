@@ -63,6 +63,7 @@ powershell -File scripts\ingest-62351-100-4.ps1 -SkipSync
 | `ccli-product-specimen-5ln-validation` | `PRODUCT_SPECIMEN_5LN_VALIDATION.md` | Compare/Browse audit |
 | `ccli-p5-fullcircle-5ln-scope` | `P5_FULLCIRCLE_5LN_SCOPE.md` | Annex T 5-LN only |
 | `ccli-tsp-two-pc-bench-runbook` | `TSP_TWO_PC_BENCH_RUNBOOK.md` | Two-PC execution |
+| `ccli-lab-testpro-pc1-config` | `lab/testpro/README.md` + `PC1_TSP_IMPORT_CHECKLIST.md` | PC1 TSP CID/TLS import |
 | `ccli-tsp-evidence-per-test-protocol` | `lab/evidence/testsuite-pro/EVIDENCE_PER_TEST_PROTOCOL.md` | txt + pcap bundle |
 | `ccli-lab-requirement-test-matrix` | `LAB_REQUIREMENT_TEST_MATRIX.md` | REQ ↔ TSP ↔ 61850-10 |
 | `ccli-lab-pics-fill` | `PICS_FILL.md` | D1 PICS values |

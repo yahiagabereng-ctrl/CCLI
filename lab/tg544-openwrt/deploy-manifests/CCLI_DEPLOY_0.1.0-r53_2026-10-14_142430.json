@@ -1,0 +1,16 @@
+﻿{
+    "codename":  "P5-PPV-EMT432-UNIFIED-CERT",
+    "changes":  [
+                    "Two-PC bench lab_tr400_phase4_eth_b_ttyS1.yaml",
+                    "MMS TLS 3782 LAN1 + IEC104 2404 LAN2 + Modbus RTU /dev/ttyS1",
+                    "Unified cert test session deploy"
+                ],
+    "release":  53,
+    "timestamp_utc":  "2026-10-14T12:24:30.9615718Z",
+    "version_full":  "0.1.0-r53",
+    "lab_yaml":  "C:\\Yahia\\projects\\CCLI\\apps\\ccli\\config\\lab_tr400_phase4_eth_b_ttyS1.yaml",
+    "sha256":  "11a9a4f0fe70bb066e31d9cdca38321e7c900cf7914a20fd0c534d011b3e14da",
+    "binary":  "C:\\Yahia\\projects\\CCLI\\lab\\tg544-openwrt\\ccli-bin",
+    "host":  "192.168.1.130",
+    "semver":  "0.1.0"
+}

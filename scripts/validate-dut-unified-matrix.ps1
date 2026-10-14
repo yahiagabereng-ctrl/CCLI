@@ -92,7 +92,7 @@ $report = @"
 generated: $ts
 host: $HostAddr
 matrix_rows: U-P0-06 U-P0-07 U-P0-08 U-D7-01
-deploy_manifest: lab/tg544-openwrt/deploy-manifests/CCLI_DEPLOY_0.1.0-r52_2026-10-14_134735.md
+deploy_manifest: lab/tg544-openwrt/deploy-manifests/CCLI_DEPLOY_0.1.0-r53_2026-10-14_142430.md
 session_pin: lab/conformance/LAB_UNIFIED_SESSION_PIN_2026-10-14.md
 
 $version
@@ -121,7 +121,7 @@ if ($WriteEvidence) {
 
 Write-Host ""
 Write-Host "5-LN Compare: needs product_tr400_eth_a_5ln.cid (DUT still on lab_tg544_eth_a.cfg)." -ForegroundColor Yellow
-Write-Host "PPV from meter @980: in source tree; redeploy after wsl-build-ccli.sh (r53+)." -ForegroundColor Yellow
+Write-Host 'PPV from meter reg 980: in source tree; redeploy after wsl-build-ccli.sh (r53+).' -ForegroundColor Yellow
 
 if ($fail -gt 0) { exit 1 }
 exit 0

@@ -1,33 +1,32 @@
 Hi Masomeh,
 
-All Test Suite Pro checklists are on GitHub. On PC1 (TestPro machine):
+Test Suite Pro CID + certificates are on GitHub. On PC1:
 
   git clone https://github.com/yahiagabereng-ctrl/CCLI.git
   cd CCLI
   git pull origin main
-  powershell -File scripts\stage-tsp-field-pack.ps1 -Dest D:\CCLI_TSP_FIELD_PACK
+  powershell -File scripts\setup-pc1-testpro-from-git.ps1 -Dest D:\CCLI_TSP_FIELD_PACK
 
 Then open (in this order):
+  D:\CCLI_TSP_FIELD_PACK\00i_PC1_TSP_IMPORT_CHECKLIST.md   <-- CID + TLS in TSP (start here)
   D:\CCLI_TSP_FIELD_PACK\00_START_PC1_MASOMEH.md
-  D:\CCLI_TSP_FIELD_PACK\00h_PC1_LOG_CAPTURE_REQUIREMENTS.md   <-- LOG CAPTURE (mandatory)
+  D:\CCLI_TSP_FIELD_PACK\00h_PC1_LOG_CAPTURE_REQUIREMENTS.md
   D:\CCLI_TSP_FIELD_PACK\00_UNIFIED_CERT_TEST_MATRIX.md
 
 LAN1 (Admin): D:\CCLI_TSP_FIELD_PACK\bench_scripts\set_pc_lan1_dso.cmd
   PC 192.168.10.10  ->  DUT 192.168.10.1:3782  IED CCI016_01
-  TLS: ...\tls\  (client.pem + client_tsp.key in TSP)
+  DUT firmware: 0.1.0-r53 (Yahia deployed 2026-10-14)
 
-LOG CAPTURE (every U-T1 / U-T3 / U-P5-01 row on PC1):
-  1) Install Wireshark + OpenSSL 3.x (Win64) on PC1
-  1b) TSP TLS: client.pem + client_tls.pem, private key client_tsp.key (both slots) — see tls\TSP_STAGE_README.txt
-  2) cd D:\CCLI_TSP_FIELD_PACK
-  3) Once per day:
-       powershell -File scripts\tsp-evidence-logger.ps1 -Action Init -SessionDate 2026-10-14 -Operator Masomeh
-  4) Each test:
-       Start -TestId T1-01  ->  one TSP step  ->  Stop -PasteClipboard
-     (see 00h for full T1-01..T3-05 map)
-  5) Four files per row: .txt + _DUT_LOG + _WIRE + .pcapng under lab\evidence\testsuite-pro\
+TSP import (summary):
+  CID:  ...\cid\lab_tg544_eth_a.cid  (matches DUT until 5-LN product CID exists)
+  TLS:  ...\tls\  root_CA.pem + client.pem + client_tls.pem + client_tsp.key (both key slots)
+  See tls\TSP_STAGE_README.txt
 
-Full guide in repo: handoff/masomeh95/TSP_PC1_START_MASOMEH.md
-Log requirements: handoff/masomeh95/PC1_LOG_CAPTURE_REQUIREMENTS.md
+LOG CAPTURE (every U-T1 / U-T3 / U-P5-01 row):
+  cd D:\CCLI_TSP_FIELD_PACK
+  powershell -File scripts\tsp-evidence-logger.ps1 -Action Init -SessionDate 2026-10-14 -Operator Masomeh -CcliPkg 0.1.0-r53
+  Start/Stop per 00h and 00g
+
+Repo paths: lab/testpro/README.md · handoff/masomeh95/TSP_PC1_START_MASOMEH.md
 
 Yahia

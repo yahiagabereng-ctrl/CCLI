@@ -10,12 +10,12 @@
 | Date | 2026-10-14 |
 | Specimen | **5-LN cert intent** · interim MMS **`lab_tg544_eth_a.cfg`** until `product_tr400_eth_a_5ln.cid` |
 | DUT `ccli --version` | **0.1.0-r53** (P5-PPV-EMT432-UNIFIED-CERT) |
-| Binary SHA-256 | *(from deploy manifest / `Get-FileHash lab/tg544-openwrt/ccli-bin`)* |
+| Binary SHA-256 | `11a9a4f0fe70bb066e31d9cdca38321e7c900cf7914a20fd0c534d011b3e14da` |
 | Lab yaml | `lab_tr400_phase4_eth_b_ttyS1.yaml` or `lab_tr400_phase4_emt432_lan3_tcp.yaml` when meter live |
 | MMS | `192.168.10.1:3782` TLS |
 | IEC 104 | `192.168.1.130:2404` TLS |
 | Preflight | `scripts/validate-dut-unified-matrix.ps1 -FixServices -WriteEvidence` |
-| Prior deploy | [CCLI_DEPLOY_0.1.0-r52_2026-10-14_134735.md](../tg544-openwrt/deploy-manifests/CCLI_DEPLOY_0.1.0-r52_2026-10-14_134735.md) |
+| Deploy manifest | [CCLI_DEPLOY_0.1.0-r53_2026-10-14_142430.md](../tg544-openwrt/deploy-manifests/CCLI_DEPLOY_0.1.0-r53_2026-10-14_142430.md) |
 
 ## r53 code delta (vs r52)
 

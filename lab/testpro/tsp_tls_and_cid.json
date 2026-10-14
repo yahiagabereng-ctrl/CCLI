@@ -1,0 +1,49 @@
+{
+  "schema": "ccli-lab-testpro-pc1-v1",
+  "updated": "2026-10-14",
+  "ied": {
+    "name": "CCI016_01",
+    "access_point": "accessPoint1",
+    "mms_host": "192.168.10.1",
+    "mms_port": 3782,
+    "tls_required": true
+  },
+  "pc1_lan1": {
+    "address": "192.168.10.10",
+    "netmask": "255.255.255.0"
+  },
+  "dut_firmware_target": {
+    "semver": "0.1.0-r53",
+    "codename": "P5-PPV-EMT432-UNIFIED-CERT",
+    "deploy_manifest": "lab/tg544-openwrt/deploy-manifests/CCLI_DEPLOY_0.1.0-r53_2026-10-14_142430.md"
+  },
+  "cid": {
+    "connect_and_interim_compare": {
+      "repo": "apps/ccli/config/icd/lab_tg544_eth_a.cid",
+      "field_pack": "cid/lab_tg544_eth_a.cid",
+      "history_revision": 9,
+      "lln0_configRev": "20261009",
+      "ln_count": 31,
+      "matches_dut_cfg": "lab_tg544_eth_a.cfg"
+    },
+    "cert_compare_5ln": {
+      "repo": "apps/ccli/config/icd/product/product_tr400_eth_a_5ln.cid",
+      "field_pack": "cid/product_tr400_eth_a_5ln.cid",
+      "status": "TODO",
+      "validator": "scripts/validate-5ln-cid.ps1"
+    }
+  },
+  "tls": {
+    "repo_dir": "apps/ccli/config/tls",
+    "field_pack_dir": "tls",
+    "trust_anchor": "root_CA.pem",
+    "transport_cert": "client_tls.pem",
+    "mms_security_cert": "client.pem",
+    "client_private_key_tsp": "client_tsp.key",
+    "viewer_cert": "viewer.pem",
+    "viewer_key": "viewer.key",
+    "revoked_cert": "revoked.pem",
+    "crl": "lab_crl.pem"
+  },
+  "tsp_ui_notes": "Use client_tsp.key for both Transport TLS and MMS Security private key slots. Port 3782 only."
+}

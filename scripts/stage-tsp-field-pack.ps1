@@ -74,6 +74,8 @@ $docs = @(
     @{ Rel = "handoff/masomeh95/PC1_HW_CERT_PREFLIGHT.md"; Out = "00f_PC1_HW_CERT_PREFLIGHT.md" },
     @{ Rel = "handoff/masomeh95/PC1_LOG_CAPTURE_REQUIREMENTS.md"; Out = "00h_PC1_LOG_CAPTURE_REQUIREMENTS.md" },
     @{ Rel = "lab/conformance/LAB_UNIFIED_TSP_5LN_EXECUTION.md"; Out = "00g_TSP_5LN_EXECUTION_AND_LOGS.md" },
+    @{ Rel = "lab/testpro/PC1_TSP_IMPORT_CHECKLIST.md"; Out = "00i_PC1_TSP_IMPORT_CHECKLIST.md" },
+    @{ Rel = "lab/testpro/README.md"; Out = "00j_TESTPRO_CONFIG_README.md" },
     @{ Rel = "lab/evidence/testsuite-pro/EVIDENCE_PER_TEST_PROTOCOL.md"; Out = "05c_EVIDENCE_PER_TEST_PROTOCOL.md" }
 )
 
@@ -175,6 +177,13 @@ if (Test-Path $pics) {
     New-Item -ItemType Directory -Force -Path (Join-Path $Dest "templates") | Out-Null
     Copy-Item -Force $pics (Join-Path $Dest "templates\TemplatePics_Ed1Ed2Ed2p1_Excel_rev3p0.xlsx")
     $manifest.files += "templates/TemplatePics_Ed1Ed2Ed2p1_Excel_rev3p0.xlsx"
+}
+
+$testProJson = Join-Path $Repo "lab\testpro\tsp_tls_and_cid.json"
+if (Test-Path $testProJson) {
+    New-Item -ItemType Directory -Force -Path (Join-Path $Dest "testpro") | Out-Null
+    Copy-Item -Force $testProJson (Join-Path $Dest "testpro\tsp_tls_and_cid.json")
+    $manifest.files += "testpro/tsp_tls_and_cid.json"
 }
 
 $manifestPath = Join-Path $Dest "PACK_MANIFEST.json"

@@ -29,11 +29,11 @@ cd CCLI
 # Every session (get Yahia's latest matrices + scripts):
 git pull origin main
 
-# Build USB-free field pack locally:
-powershell -File scripts\stage-tsp-field-pack.ps1 -Dest D:\CCLI_TSP_FIELD_PACK
+# Build USB-free field pack + TestPro CID/TLS checklist:
+powershell -File scripts\setup-pc1-testpro-from-git.ps1 -Dest D:\CCLI_TSP_FIELD_PACK
 ```
 
-TLS is included under `D:\CCLI_TSP_FIELD_PACK\tls\` after stage. No separate USB copy needed if git pull succeeds.
+TLS is included under `D:\CCLI_TSP_FIELD_PACK\tls\` after stage. Open **`00i_PC1_TSP_IMPORT_CHECKLIST.md`** for exact TSP import steps. No separate USB copy needed if git pull succeeds.
 
 ---
 
@@ -85,9 +85,10 @@ ping 192.168.10.1
 | 3 | `00c_PRODUCT_SPECIMEN_5LN.md` |
 | 4 | `00e_P5_FULLCIRCLE_5LN_SCOPE.md` |
 | 5 | `02_TSP_TEST_IDENTIFICATION.md` (Tier 1 / 3 detail) |
-| 6 | **`00f_PC1_HW_CERT_PREFLIGHT.md`** — TLS, CID, LAN1, O.15 docs + PC-A plant coordination |
-| 7 | **`00h_PC1_LOG_CAPTURE_REQUIREMENTS.md`** — **mandatory** Wireshark + 4 artefacts per row |
-| 8 | **`00g_TSP_5LN_EXECUTION_AND_LOGS.md`** — TestPro step order + logger `-TestId` map |
+| 6 | **`00i_PC1_TSP_IMPORT_CHECKLIST.md`** — **CID + TLS paths in Test Suite Pro** |
+| 7 | **`00f_PC1_HW_CERT_PREFLIGHT.md`** — TLS, CID, LAN1, O.15 docs + PC-A plant coordination |
+| 8 | **`00h_PC1_LOG_CAPTURE_REQUIREMENTS.md`** — **mandatory** Wireshark + 4 artefacts per row |
+| 9 | **`00g_TSP_5LN_EXECUTION_AND_LOGS.md`** — TestPro step order + logger `-TestId` map |
 
 Excel: `00_UNIFIED_CERT_TEST_MATRIX.csv`
 
