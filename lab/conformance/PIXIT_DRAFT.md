@@ -1,8 +1,8 @@
 # PIXIT draft — server extra test information
 
 **Document ID:** CCLI-LAB-PIXIT-001  
-**Revision:** 1.1  
-**Date:** 2026-10-09  
+**Revision:** 1.2  
+**Date:** 2026-10-14  
 **Specimen:** CID History **rev 9** · `configRev` **20261009** — [LAB_SPECIMEN_VERSION.md](LAB_SPECIMEN_VERSION.md)
 **RAG source_id:** `ccli-lab-pixit-draft`  
 **Normative:** IEC 61850-10 Annex E style · copy into lab **TemplatePixit** Word when added to `lab/`  
@@ -48,8 +48,9 @@ Until the lab Word template is in git, this file **is** the HiTEKS PIXIT working
 | Dataset | `DS_R_PdC_Mis4sec` (TotW, TotVAr, PPV, A) |
 | **IntgPd default** | **4000 ms** |
 | IntgPd min / max (declared) | **1000–60000 ms** |
-| TrgOps claimed | **period** (integrity) + **GI** |
-| dchg / qchg / dupd | **Not enabled** on PdC URCB — do not test as claimed |
+| TrgOps claimed | **integrity (period)** + **GI** + **dchg** + **qchg** + **dupd** (PICS S27-1…3 **M** on server) |
+| TrgOps test order | T1-05/06 integrity first · then **T1-05b–d** (enable via SetURCBValues) |
+| CID default `urcb_PdC_Mis4sec` | **period + gi** in SCL — enable dchg/qchg/dupd in TSP before TrgOp cases |
 | OptFields | URCB: seqNum…configRef, **entryID=false** (cfg `options=159`); BRCB: +bufOvfl, **entryID=false** (cfg `options=191`) |
 | Buffered reporting | **Not claimed** |
 | Online dataset edit / ConfRev | **Static only** (`modify="false"`) |

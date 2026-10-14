@@ -1,8 +1,8 @@
 # Test Suite Pro — test identification (post-Connect)
 
 **Document ID:** CCLI-LAB-TSP-TEST-ID-001  
-**Revision:** 1.1  
-**Date:** 2026-10-09  
+**Revision:** 1.2  
+**Date:** 2026-10-14  
 **Specimen:** CID History **rev 9** — [../../conformance/LAB_SPECIMEN_VERSION.md](../../conformance/LAB_SPECIMEN_VERSION.md)
 **Status:** Connect **PASS** on `:3782` TLS (update header below on first green run)  
 **RAG source_id:** `ccli-tsp-test-identification`  
@@ -69,6 +69,9 @@ These align with **sAss**, **sSrv**, **sRp**, **sCtl** in [`CCI_61850-10_Extract
 | T1-04 | P3-03 | Advanced Client | **GetDataValues** | `PdCMMXU1$MX$TotW`, TotVAr, PPV | sSrv | `TSP_P3_03_READ_PdC_*.txt` |
 | T1-05 | P3-03 | Report Viewer | **SetURCBValues** + enable | `LLN0.urcb_PdC_Mis4sec` · IntgPd=**4000** · RptEna=true | sRp Table 14 | `TSP_P3_03_REPORT_TotW_*.csv` |
 | T1-06 | P3-03 | Report Viewer | Observe **integrity period** | Δt **3900–4100 ms** · TotW in payload | sRp | same + timing notes |
+| T1-05b | P3-03 | Report Viewer | **TrgOp dchg** | SetURCB **TrgOps** incl. **dchg** · step `PdCMMXU1.TotW` (Modbus/mock) · report reason **dchg** | sRp Table 14 · PICS S27-1 | `TSP_P3_03_REPORT_DCHG_*` |
+| T1-05c | P3-03 | Report Viewer | **TrgOp qchg** | Enable **qchg** · quality change on member in `DS_R_PdC_Mis4sec` | sRp · PICS S27-2 | `TSP_P3_03_REPORT_QCHG_*` |
+| T1-05d | P3-03 | Report Viewer | **TrgOp dupd** | Enable **dupd** · data-update trigger per TSP/lab | sRp · PICS S27-3 | `TSP_P3_03_REPORT_DUPD_*` |
 | T1-07 | P3-04 | Advanced Client | **Operate** (enhanced security) | `WlimDWMX1.Mod`=1 · `WMaxSptPct`=10 or 70 | sCtl Table 26 | `TSP_P3_04_OPERATE_Wlim_*.txt` |
 | T1-08 | P3-04 | Advanced Client | **Operate** | `WSdDAGC1.Mod`=1 · `WSptPct`=20 | sCtl | `TSP_P3_04_OPERATE_WSd_*.txt` |
 | T1-09 | P3-05 | Sequencer | **Release** + wait **15 s** | `comms_loss_fallback_s` in yaml | App + O.9.2.2 | `TSP_P3_05_FALLBACK_*.txt` |
@@ -159,7 +162,7 @@ If the TSP UI lists test groups by **table number** (e.g. Table 14 reporting), c
 | Milestone | Criteria |
 |-----------|----------|
 | **Connect milestone** | T1-01 PASS · System Status no Initiate/Connect errors |
-| **PICS-minimum TSP pack** | T1-01…T1-10 PASS · Compare documented (waivers OK) · one pcap optional |
+| **PICS-minimum TSP pack** | T1-01…T1-10 PASS · **T1-05b–d** if PICS S27-1…3 **M** · Compare documented (waivers OK) · one pcap optional |
 | **Annex T TLS pack** | Tier 2 full-circle log on **3782** · Wlim DIO check once |
 | **Security pack** | T3-01…T3-03 PASS (T3-04 if CRL loaded on DUT) |
 

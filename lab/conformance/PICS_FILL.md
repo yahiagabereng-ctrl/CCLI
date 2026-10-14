@@ -71,7 +71,8 @@ Do **not** copy raw CID `<Services>` into PICS — see [CID_PICS_ALIGNMENT.md](C
 | SetDataValues | **O** | sSrv | — | Prefer **Control Operate** for Wlim/WSd; mark **O** unless lab requires **M** |
 | GetDataSetDirectory / GetDataSetValues | **M** | sDs 8–9 | T1-05 | `DS_R_PdC_Mis4sec` |
 | Create/Delete/Set DataSet | **N/A** | sDs | — | `ConfDataSet modify="false"`; static only |
-| **Unbuffered reporting** (Get/SetURCB, Report) | **M** | **sRp Table 14** | P3-03 T1-05/06 | IntgPd 4000; TrgOps **period + GI** (no dchg) |
+| **Unbuffered reporting** (Get/SetURCB, Report) | **M** | **sRp Table 14** | P3-03 T1-05–06 | IntgPd 4000; **period + GI** |
+| URCB TrgOp **dchg / qchg / dupd** (S27-1…3) | **M** (server) | sRp Table 14 | P3-03 **T1-05b–d** | Aligned with filled PICS · matrix rev 1.4 |
 | Buffered reporting | **N/A** | sBr 16–17 | — | `brcb_*` exists in CID — **do not claim** |
 | Logging | **N/A** | sLog | — | CID `ConfLogControl` — **do not claim** |
 | GOOSE publish / subscribe | **N/A** | sGop 20–25 | P5-G | Exclude first quote |

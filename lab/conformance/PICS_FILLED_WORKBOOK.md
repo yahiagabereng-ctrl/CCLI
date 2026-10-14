@@ -1,7 +1,7 @@
 # PICS filled workbook — canonical lab submit (2026-10-14)
 
 **Document ID:** CCLI-LAB-PICS-WB-001  
-**Revision:** 1.0  
+**Revision:** 1.1  
 **Date:** 2026-10-14  
 **RAG source_id:** `ccli-lab-pics-filled-workbook`  
 **Markdown values (planning):** `ccli-lab-pics-fill` · [PICS_FILL.md](PICS_FILL.md)  
@@ -43,7 +43,7 @@ Use this table in lab quote email and TSP scope. **Resolve or waive** before loc
 | **Static datasets** | **M** Get/SetDataSetValues; Create/Delete **N/A** | S12–S16 mix **O** | Align Create/Delete to **O**/empty only |
 | **Setting groups** | **N/A** | S44 **SelectActiveSG** = **M** | **FIX** — not in MVP / CID trim |
 | **URCB / BRCB** | URCB **M**; BRCB **N/A** | **c6** cells on Report / URCB / BRCB | Map **c6** to **M** URCB only; BRCB **N/A** |
-| **TrgOps dchg/qchg/dupd** | **period + GI** only (no dchg claim) | TrgOp rows **M** for dchg/qchg/dupd | **FIX** or PIXIT waiver vs `urcb_PdC_Mis4sec` |
+| **TrgOps dchg/qchg/dupd** (S27-1…3) | **M** server (expanded Table 14) | TrgOp rows **M** | **IN MATRIX** — [LAB_REQUIREMENT_TEST_MATRIX.md](LAB_REQUIREMENT_TEST_MATRIX.md) **T1-05b–d** · enable TrgOps via SetURCB before test |
 | **Logging LCB** | **N/A** | Get/Query Log **M** | **FIX** — remove log claim or implement |
 | **GOOSE services** | **N/A** | GetGo* **O** | Trim to **N/A** for first quote |
 | **Control Operate** | **M** enhanced Wlim/WSd | **Operate** **M** | OK |
@@ -51,7 +51,7 @@ Use this table in lab quote email and TSP scope. **Resolve or waive** before loc
 | **Time** | **O** or **M** | Check sheet row 120+ | Confirm vs P3-11 |
 
 **Quote scope sentence (recommended after trim):**  
-*Server-only IEC 61850-8-1 MMS on TLS :3782; association; directory; GetDataValues; static datasets; unbuffered reporting (integrity 4 s + GI); direct-with-enhanced-security control on Wlim/WSd. Not claimed: BRCB, GOOSE, SV, files, SG, client role.*
+*Server-only IEC 61850-8-1 MMS on TLS :3782; association; directory; GetDataValues; static datasets; URCB (integrity 4 s + GI + TrgOps dchg/qchg/dupd per S27-1…3); direct-with-enhanced-security control on Wlim/WSd. Not claimed: BRCB, GOOSE, SV, files, SG, client role.*
 
 ---
 
@@ -61,7 +61,7 @@ Use this table in lab quote email and TSP scope. **Resolve or waive** before loc
 |--------|-------------|--------|
 | REQ-PICS-WB-001 | One pinned xlsx SHA on disk for D1 submit | **HAVE** (this doc + `drafts/`) |
 | REQ-PICS-WB-002 | Workbook ↔ [MICS_DRAFT.md](MICS_DRAFT.md) / same CID | **REVIEW** Model sheet |
-| REQ-PICS-WB-003 | Workbook ↔ [LAB_REQUIREMENT_TEST_MATRIX.md](LAB_REQUIREMENT_TEST_MATRIX.md) **M** rows | **PART** — see alignment table |
+| REQ-PICS-WB-003 | Workbook ↔ [LAB_REQUIREMENT_TEST_MATRIX.md](LAB_REQUIREMENT_TEST_MATRIX.md) **M** rows | **PART** — TrgOp rows **HAVE** (T1-05b–d); other gaps in alignment table |
 | REQ-PICS-WB-004 | Separate **D7** 62351-3 PID | [D7_62351-3_PID_DRAFT.md](D7_62351-3_PID_DRAFT.md) |
 
 ---

@@ -1,7 +1,7 @@
 # Lab requirement ↔ test requirement matrix (TSP field checklist)
 
 **Document ID:** CCLI-LAB-REQ-TEST-MTX-001  
-**Revision:** 1.3  
+**Revision:** 1.4  
 **Date:** 2026-10-14  
 **RAG source_id:** `ccli-lab-requirement-test-matrix`  
 **Purpose:** One checklist for **accredited lab needs** (PICS/PIXIT/MICS/61850-10) and **Test Suite Pro** runs on the **other PC** — same rows, same scope.  
@@ -88,7 +88,10 @@ Scripts: `lab/set_pc_lan1_dso.cmd` · `set_pc_lan2_oa.cmd` · `set_pc_lan3_plant
 | □ | Associate / release | sAss Tables 4–5 | Association **M** | T.3.3.3 | P3-01 | T1-10 | Disconnect + reconnect | System Status | |
 | □ | Browse model | sSrv | GetDirectory* **M** | T.3.3.2 | P3-03 | T1-03 | GetServerDirectory / LD / LN | sequencer log | ~31 LNs |
 | □ | Read PdC measures | sSrv | GetDataValues **M** | T.3.1.3 | P3-03 | T1-04 | Read TotW, TotVAr, PPV | `TSP_P3_03_READ_*` | |
-| □ | **URCB** 4 s integrity | **sRp** Table **14** | Reporting **M** | T.3.2.1 · O.8.3 | P3-03 | T1-05–06 | Enable `urcb_PdC_Mis4sec` IntgPd=4000 | `TSP_P3_03_REPORT_*` | Δt 3900–4100 ms |
+| □ | **URCB** 4 s integrity | **sRp** Table **14** | Report / Get·SetURCB **M** (PICS **c6**) | T.3.2.1 · O.8.3 | P3-03 | T1-05–06 | Enable `urcb_PdC_Mis4sec` IntgPd=4000 · RptEna | `TSP_P3_03_REPORT_*` | Δt 3900–4100 ms |
+| □ | URCB TrgOp **dchg** | **sRp** Table **14** | PICS **S27-1** server **M** | T.3.2.1 | P3-03 | **T1-05b** | SetURCB **TrgOps** incl. **dchg** · change `PdCMMXU1.TotW` (plant/mock) · expect report | `TSP_P3_03_REPORT_DCHG_*` | Matches filled PICS |
+| □ | URCB TrgOp **qchg** | sRp 14 | PICS **S27-2** **M** | T.3.2.1 | P3-03 | **T1-05c** | Enable **qchg** · force quality change on dataset member if wired | `TSP_P3_03_REPORT_QCHG_*` | Skip **N/A** if no q in dataset |
+| □ | URCB TrgOp **dupd** | sRp 14 | PICS **S27-3** **M** | T.3.2.1 | P3-03 | **T1-05d** | Enable **dupd** · trigger data-update per lab/TSP procedure | `TSP_P3_03_REPORT_DUPD_*` | Confirm vs 61850-10 Table 14 |
 | □ | Data sets | sDs | DataSet **M** | T | P3-03 | T1-05 | Dataset in RCB = `DS_R_PdC_Mis4sec` | same | |
 | □ | **Wlim** control | **sCtl** Table **26** | Control **M** | **O.9.2.2** | P3-04 | T1-07 | Operate Mod + WMaxSptPct | `TSP_P3_04_OPERATE_Wlim_*` | ctlModel **direct-with-enhanced-security** |
 | □ | **WSd** control | sCtl | Control **M** | **O.9.2.3** | P3-04 | T1-08 | Operate Mod + WSptPct | `TSP_P3_04_OPERATE_WSd_*` | |
