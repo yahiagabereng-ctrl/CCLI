@@ -47,6 +47,16 @@
 | U-T1-04 PPV | **PASS** when EMT432 yaml + meter; else RTU bench uses yaml fallback |
 | U-T1-02 / U-T1-03 5-LN | **UNBLOCKED** — CID in git + cfg live on DUT · `validate-5ln-cid.ps1` **PASS** 2026-10-14 · TSP import `cid\product_tr400_eth_a_5ln.cid` |
 
+## PC1 (Masomeh) — field pack + TLS bundle
+
+| Field | Value |
+|-------|--------|
+| Handoff | **SENT** 2026-10-14 — full **`D:\CCLI_TSP_FIELD_PACK\`** (or USB equivalent) |
+| TLS | DUT-aligned bundle incl. **revoked** + **viewer** + **`lab_crl.pem`** — [PC1_TLS_BUNDLE_DUT_ALIGNED.md](../testpro/PC1_TLS_BUNDLE_DUT_ALIGNED.md) · git **`670fe89`**+ |
+| PC1 verify | `verify-tsp-tls-key-match.ps1` **PASS** · `client_tls.pem` MD5 **`13c231ee…`** = DUT |
+| TSP Connect | **operator** certs only (`client_tls` + `client.pem` keys) · not revoked for U-T1-01 |
+| TLS fail doc | [TSP_TLS_ACCESS_DENIED_2026-10-14.md](../evidence/testsuite-pro/inbox/TSP_TLS_ACCESS_DENIED_2026-10-14.md) |
+
 ## Deploy
 
 ```powershell
