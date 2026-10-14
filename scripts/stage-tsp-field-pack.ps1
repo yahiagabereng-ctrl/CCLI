@@ -89,10 +89,12 @@ foreach ($rel in $tspScripts) {
         $manifest.files += "scripts/$(Split-Path $src -Leaf)"
     }
 }
-$v5 = Join-Path $Repo "scripts\validate-5ln-cid.ps1"
-if (Test-Path $v5) {
-    Copy-Item -Force $v5 (Join-Path $Dest "scripts\validate-5ln-cid.ps1")
-    $manifest.files += "scripts/validate-5ln-cid.ps1"
+foreach ($scr in @("validate-5ln-cid.ps1", "validate-dut-unified-matrix.ps1")) {
+    $v5 = Join-Path $Repo "scripts\$scr"
+    if (Test-Path $v5) {
+        Copy-Item -Force $v5 (Join-Path $Dest "scripts\$scr")
+        $manifest.files += "scripts/$scr"
+    }
 }
 
 $benchScripts = @(

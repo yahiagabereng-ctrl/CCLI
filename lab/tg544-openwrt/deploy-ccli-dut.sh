@@ -4,6 +4,9 @@ set -eu
 
 mkdir -p /var/lib/ccli
 
+/etc/init.d/iec61850service disable 2>/dev/null || true
+/etc/init.d/iec61850service stop 2>/dev/null || true
+killall iec61850d 2>/dev/null || true
 killall ccli 2>/dev/null || true
 sleep 1
 mv /tmp/ccli.new /usr/sbin/ccli

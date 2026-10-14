@@ -29,7 +29,7 @@
 | CID file | `product_tr400_eth_a_5ln.cid` (or interim note) |
 | cfg SHA-256 | *(fill)* |
 | Bench | **Two-PC** · PC-B TSP · PC-A 104/LAN3/COM5 |
-| Git / manifest | *(fill)* |
+| Git / manifest | `4fdfcd9`+ · [LAB_UNIFIED_SESSION_PIN_2026-10-14.md](LAB_UNIFIED_SESSION_PIN_2026-10-14.md) |
 | Evidence index | `TSP_UNIFIED_5LN_SESSION_INDEX_<date>.md` in `lab/evidence/testsuite-pro/inbox/` |
 | RAG ingest after closeout | `ingest-testsuite-pro.ps1` + `ingest-product-deploy-rag.ps1` (U-CLO-03) |
 
@@ -120,7 +120,7 @@ Scripts: `lab/set_pc_lan1_dso.cmd` · `set_pc_lan2_oa.cmd` · `set_pc_lan3_plant
 | □ | U-P0-04 | 0 | Deploy | P5 plant | PC-A | LAN3 | `set_pc_lan3_plant*.cmd` · ping DUT + meter | Both OK | modbus_emt432_*.txt | — | ccli-tsp-two-pc-bench-runbook |
 | □ | U-P0-05 | 0 | Deploy | REQ-ROAD-HW-003 | PC-A | RS485 | Wire A1/B1 + GND | Continuity | P5_A1B1 map | — | ccli-tr500-io-peripheral |
 | □ | U-P0-06 | 0 | UCA prep | D5 | PC-B | — | Import **5-LN** CID + TLS PEMs | Load OK | TSP project snapshot | — | ccli-product-specimen-5ln |
-| □ | U-P0-07 | 0 | UCA prep | — | PC-A | SSH | Stop `iec61850service` · one `ccli` · deploy **product cfg** | :3782 listen | PREFLIGHT_DUT_*.txt | — | ccli-lab-dut-finalize-cert-path |
+| □ | U-P0-07 | 0 | UCA prep | — | PC-A | SSH | `validate-dut-unified-matrix.ps1 -FixServices -WriteEvidence` | 3782+2404 · 1× ccli · no :102 | PREFLIGHT_DUT_UNIFIED_*.txt | — | ccli-lab-dut-finalize-cert-path |
 | □ | U-P0-08 | 0 | Trace | REQ-LAB-MTX-003 | Both | — | Record version + cfg SHA in header | Match pin doc | session header + index md | — | ccli-product-specimen-5ln |
 | □ | U-P0b-01 | 0b | Annex T | T.3.1 | PC-A | LAN3 | `modbus_emt432_tcp_probe.py` · **V_L1_L2 @980** → PPV kV | Modbus OK + PPV hint | modbus_emt432_*.txt | — | ccli-validation-strategy |
 | □ | U-P0b-02 | 0b | Annex T | T.3.1 | PC-A | COM5 | `start-bench-plant.ps1` Sun on COM5 | FC03 inverter map | PLANT_SUN2000_*.txt | — | ccli-tsp-two-pc-bench-runbook |

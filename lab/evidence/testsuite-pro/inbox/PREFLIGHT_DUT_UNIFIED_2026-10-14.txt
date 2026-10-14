@@ -1,0 +1,37 @@
+﻿# PREFLIGHT_DUT unified matrix â€” 2026-10-14
+generated: 2026-10-14 14:13:19
+host: 192.168.1.130
+matrix_rows: U-P0-06 U-P0-07 U-P0-08 U-D7-01
+deploy_manifest: lab/tg544-openwrt/deploy-manifests/CCLI_DEPLOY_0.1.0-r52_2026-10-14_134735.md
+session_pin: lab/conformance/LAB_UNIFIED_SESSION_PIN_2026-10-14.md
+
+ccli 0.1.0-r52 (P3-07-AARE-SIGN-RAW-GT)
+  semver:   0.1.0
+  release:  r52
+  git:      unknown
+  built:    2026-06-29T12:59:20Z UTC
+  platform: tg500
+1df82c26243021a86c533a179781c749fc852c2f724efa3b0aa4018b2969eca1  /usr/sbin/ccli
+ccli_pgrep_count: 1
+
+## Checks
+- [x] U-P0-07 listening 3782 (MMS TLS) - [x] U-P0-07 listening 2404 (IEC 104 TLS) - [x] U-D7-01 no cleartext :102 - [x] U-P0-07 single ccli PID - [x] U-P0-07 no iec61850d - [x] U-P0-06 TLS PEMs on DUT - [x] U-P0-08 version 0.1.0-r52 - [x] U-P0-08 binary SHA (manifest) - [x] MMS/104 TLS in yaml - [x] Interim model lab_tg544_eth_a.cfg - [x] Modbus RTU ttyS1 (bench)
+
+## netstat
+tcp        0      0 192.168.1.130:2404      0.0.0.0:*               LISTEN      6485/ccli
+tcp        0      0 192.168.10.1:3782       0.0.0.0:*               LISTEN      6485/ccli
+
+## ps
+6485 root      4816 S    /usr/sbin/ccli --config /etc/ccli/lab.yaml
+
+## yaml (excerpt)
+backend: rtu
+  device: /dev/ttyS1
+  bind_address: 192.168.10.1
+  tcp_port: 3782
+  model_cfg: /etc/ccli/icd/lab_tg544_eth_a.cfg
+  tls_enabled: true
+  bind_address: 192.168.1.130
+  tcp_port: 2404
+  tls_enabled: true
+  backend: ubus_dido_v2
