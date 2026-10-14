@@ -21,6 +21,11 @@ Templates from the accredited lab (2026-10-08 email) live at repo root under `la
 | [LAB_CONFIG_GUIDE.md](LAB_CONFIG_GUIDE.md) | D6 lab guide | IPs, yaml, firmware ID |
 | [LAB_SPECIMEN_VERSION.md](LAB_SPECIMEN_VERSION.md) | **CID/cfg pin** (History rev, configRev, SHA-256) | TSP Compare / MICS / deploy |
 | [DUT_LAB_FINALIZE_AND_CERT_PATH.md](DUT_LAB_FINALIZE_AND_CERT_PATH.md) | **DUT bench close** vs **UCA certificate** path | After T1–T10 |
+| [LAB_UNIFIED_CERT_TEST_MATRIX.md](LAB_UNIFIED_CERT_TEST_MATRIX.md) | **Single □** functional + cyber + O.15 (CSV for Excel) | `ccli-lab-unified-cert-test-matrix` |
+| [LAB_UNIFIED_CERT_TEST_ROADMAP.md](LAB_UNIFIED_CERT_TEST_ROADMAP.md) | Two-PC bench phase order (TSP + meter + RS485) | `ccli-lab-unified-cert-test-roadmap` |
+| [PRODUCT_SPECIMEN_5LN.md](PRODUCT_SPECIMEN_5LN.md) | **5-LN** product specimen pin (first unified run) | `ccli-product-specimen-5ln` |
+| [PRODUCT_SPECIMEN_5LN_VALIDATION.md](PRODUCT_SPECIMEN_5LN_VALIDATION.md) | Matrix vs 5-LN audit + validator | `ccli-product-specimen-5ln-validation` |
+| [P5_FULLCIRCLE_5LN_SCOPE.md](P5_FULLCIRCLE_5LN_SCOPE.md) | Annex P5 steps **without** 31-LN / VArSd | `ccli-p5-fullcircle-5ln-scope` |
 | [LAB_REQUIREMENT_TEST_MATRIX.md](LAB_REQUIREMENT_TEST_MATRIX.md) | Functional REQ ↔ TSP ↔ 61850-10 | `ccli-lab-requirement-test-matrix` |
 | [LAB_REQUIREMENT_TEST_MATRIX_CYBER.md](LAB_REQUIREMENT_TEST_MATRIX_CYBER.md) | **62351 / D7 / Tier 3** cyber checklist | `ccli-lab-requirement-test-matrix-cyber` |
 | [LAB_REQUIREMENT_TEST_MATRIX_2026-10-09_DUT.md](LAB_REQUIREMENT_TEST_MATRIX_2026-10-09_DUT.md) | Matrix snapshot ☑/◐/☐ | DUT sign-off |

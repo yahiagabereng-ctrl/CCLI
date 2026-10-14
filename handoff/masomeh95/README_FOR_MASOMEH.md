@@ -51,12 +51,17 @@ See `apps/ccli/third_party/README.md` for versions and license notes.
 | Functional TSP ↔ 61850 matrix | `lab/conformance/LAB_REQUIREMENT_TEST_MATRIX.md` |
 | Engineering KB | `knowledge-base/08-engineering/` |
 
-After `git pull`, optional TSP USB pack (includes cyber checklist):
+**Test Suite Pro on PC1 (your role = PC-B / LAN1):** read **[TSP_PC1_START_MASOMEH.md](TSP_PC1_START_MASOMEH.md)** first.
+
+Yahia may push the field pack to `D:\CCLI_TSP_FIELD_PACK` on PC1. Open **`00_START_PC1_MASOMEH.md`** inside that folder.
+
+Build pack yourself on PC1:
 
 ```powershell
-powershell -File scripts\stage-tsp-field-pack.ps1
-# -> C:\CCLI_TSP_FIELD_PACK\01b_CHECKLIST_CYBER_REQUIREMENT_TEST_MATRIX.md
+powershell -File scripts\stage-tsp-field-pack.ps1 -Dest D:\CCLI_TSP_FIELD_PACK
 ```
+
+Master checklist: `00_UNIFIED_CERT_TEST_MATRIX.md` + `00b_UNIFIED_CERT_ROADMAP.md` (not legacy-only 01_CHECKLIST).
 
 ---
 

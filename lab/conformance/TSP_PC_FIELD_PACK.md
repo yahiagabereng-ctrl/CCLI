@@ -5,7 +5,7 @@
 **Date:** 2026-10-09  
 **RAG source_id:** `ccli-tsp-field-pack`  
 **Script:** `scripts/stage-tsp-field-pack.ps1`  
-**CID pin:** History **rev 9** — [LAB_SPECIMEN_VERSION.md](LAB_SPECIMEN_VERSION.md)
+**Master checklist:** [LAB_UNIFIED_CERT_TEST_MATRIX.md](LAB_UNIFIED_CERT_TEST_MATRIX.md) · **5-LN run:** [PRODUCT_SPECIMEN_5LN.md](PRODUCT_SPECIMEN_5LN.md) · **31-LN lab pin:** [LAB_SPECIMEN_VERSION.md](LAB_SPECIMEN_VERSION.md)
 
 ---
 
@@ -26,8 +26,8 @@ Creates **`C:\CCLI_TSP_FIELD_PACK\`** with checklist, procedures, CID, TLS, and 
 1. Plug USB → copy entire **`CCLI_TSP_FIELD_PACK`** folder.  
 2. On TSP PC: paste e.g. `D:\CCLI_TSP_FIELD_PACK`.  
 3. Run **`stage-tsp-tls.ps1`** is already reflected in **`tls\`** subfolder — point TSP at **`tls\`** (same as `CCLI_product_tls`).  
-4. Open **`01_CHECKLIST_LAB_REQUIREMENT_TEST_MATRIX.md`** (print or second monitor).  
-5. Import CID in TSP from **`cid\lab_tg544_eth_a.cid`**.
+4. Open **`00_UNIFIED_CERT_TEST_MATRIX.md`** + **`00b_UNIFIED_CERT_ROADMAP.md`** (print or second monitor).  
+5. Import CID in TSP from **`cid\product_tr400_eth_a_5ln.cid`** when present; else see **`00c_PRODUCT_SPECIMEN_5LN.md`**.
 
 ---
 
@@ -35,7 +35,11 @@ Creates **`C:\CCLI_TSP_FIELD_PACK\`** with checklist, procedures, CID, TLS, and 
 
 | Path in pack | Role |
 |--------------|------|
-| `01_CHECKLIST_LAB_REQUIREMENT_TEST_MATRIX.md` | Lab ↔ test □ matrix (this is the master) |
+| `00_UNIFIED_CERT_TEST_MATRIX.md` | **Unified** functional + cyber + O.15 □ matrix |
+| `00_UNIFIED_CERT_TEST_MATRIX.csv` | Same rows for Excel |
+| `00b_UNIFIED_CERT_ROADMAP.md` | Two-PC phase order (TSP + meter + RS485) |
+| `00c_PRODUCT_SPECIMEN_5LN.md` | 5-LN product pin |
+| `01_CHECKLIST_LAB_REQUIREMENT_TEST_MATRIX.md` | Legacy functional detail |
 | `02_TSP_TEST_IDENTIFICATION.md` | Tier 1–4 detail |
 | `03_TSP_SEQUENCER_DRAFT.md` | Step objects / MMS paths |
 | `04_TSP_VERIFICATION_LAYER.md` | Install paths · evidence naming |

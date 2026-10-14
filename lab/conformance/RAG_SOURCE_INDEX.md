@@ -34,7 +34,7 @@ powershell -File scripts\ingest-next-phases.ps1 -SkipDocker
 powershell -File scripts\ingest-62351-100-4.ps1 -SkipSync
 ```
 
-**Probe examples:** `ccli-product-sw-freeze` · `ccli-lab-requirement-test-matrix` · `ccli-lab-requirement-test-matrix-cyber` · `ccli-lab-pics-fill` · `ccli-lab-dut-finalize-cert-path` · `ccli-dnv-product-readiness`
+**Probe examples:** `ccli-lab-unified-cert-test-matrix` · `ccli-lab-unified-cert-test-roadmap` · `ccli-product-specimen-5ln` · `ccli-lab-requirement-test-matrix` · `ccli-lab-requirement-test-matrix-cyber` · `ccli-tsp-two-pc-bench-runbook` · `ccli-dnv-product-readiness`
 
 ---
 
@@ -56,6 +56,9 @@ powershell -File scripts\ingest-62351-100-4.ps1 -SkipSync
 
 | source_id | Repo path | Role |
 |-----------|-----------|------|
+| `ccli-lab-unified-cert-test-matrix` | `LAB_UNIFIED_CERT_TEST_MATRIX.md` + `.csv` | **Single □** functional + cyber + O.15 |
+| `ccli-lab-unified-cert-test-roadmap` | `LAB_UNIFIED_CERT_TEST_ROADMAP.md` | Two-PC phase order |
+| `ccli-product-specimen-5ln` | `PRODUCT_SPECIMEN_5LN.md` | 5-LN product pin |
 | `ccli-lab-requirement-test-matrix` | `LAB_REQUIREMENT_TEST_MATRIX.md` | REQ ↔ TSP ↔ 61850-10 |
 | `ccli-lab-pics-fill` | `PICS_FILL.md` | D1 PICS values |
 | `ccli-lab-pics-filled-workbook` | `PICS_FILLED_WORKBOOK.md` | Filled xlsx SHA + alignment |
@@ -113,7 +116,7 @@ powershell -File scripts\ingest-62351-100-4.ps1 -SkipSync
 | **62351-100-4** table rows in extract | OCR **HAVE**; batch Table 2–4 into extract **PART** |
 | Licensed IEC PDF (non-doc88) | Prefer IEC webshop copy for accredited submit |
 | **PIXIT** Word template | Paste from `PIXIT_DRAFT.md` |
-| **5-LN product CID** in `apps/ccli/config/icd/product/` | Future trim; update specimen doc |
+| **5-LN product CID** in `apps/ccli/config/icd/product/` | Block **U-T1-02** until committed; pin: `ccli-product-specimen-5ln` |
 | TesPro vendor OpenWrt SDK | Upstream SDK in `lab/tg544-openwrt/` |
 
 ---

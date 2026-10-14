@@ -7,6 +7,8 @@
 **Purpose:** One checklist for **accredited lab needs** (PICS/PIXIT/MICS/61850-10) and **Test Suite Pro** runs on the **other PC** — same rows, same scope.  
 **Preview on dev PC → push** via `scripts/stage-tsp-field-pack.ps1` → `C:\CCLI_TSP_FIELD_PACK\` (USB copy to TSP machine).
 
+**Unified checklist (functional + cyber + O.15):** [LAB_UNIFIED_CERT_TEST_MATRIX.md](LAB_UNIFIED_CERT_TEST_MATRIX.md) (`ccli-lab-unified-cert-test-matrix`) + [roadmap](LAB_UNIFIED_CERT_TEST_ROADMAP.md) · **5-LN first run:** [PRODUCT_SPECIMEN_5LN.md](PRODUCT_SPECIMEN_5LN.md). Legacy split below remains for detail.
+
 **Cybersecurity tests (62351 / D7 / Tier 3):** [LAB_REQUIREMENT_TEST_MATRIX_CYBER.md](LAB_REQUIREMENT_TEST_MATRIX_CYBER.md) (`ccli-lab-requirement-test-matrix-cyber`) — tick TLS/ACSE/RBAC/CRL there; this file keeps 61850-10 + Annex T **function** rows.
 
 **Fill packs (copy into lab Excel/Word):** [PICS_FILL.md](PICS_FILL.md) · [PIXIT_DRAFT.md](PIXIT_DRAFT.md) · [MICS_DRAFT.md](MICS_DRAFT.md) · [TICS_DRAFT.md](TICS_DRAFT.md) · [D7_62351-3_PID_DRAFT.md](D7_62351-3_PID_DRAFT.md) · [CID_PICS_ALIGNMENT.md](CID_PICS_ALIGNMENT.md) · [LAB_CONFIG_GUIDE.md](LAB_CONFIG_GUIDE.md)

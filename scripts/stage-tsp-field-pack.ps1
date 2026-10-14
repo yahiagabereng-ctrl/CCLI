@@ -42,6 +42,13 @@ $manifest = [ordered]@{
 }
 
 $docs = @(
+    @{ Rel = "lab/conformance/LAB_UNIFIED_CERT_TEST_MATRIX.md"; Out = "00_UNIFIED_CERT_TEST_MATRIX.md" },
+    @{ Rel = "lab/conformance/LAB_UNIFIED_CERT_TEST_ROADMAP.md"; Out = "00b_UNIFIED_CERT_ROADMAP.md" },
+    @{ Rel = "lab/conformance/PRODUCT_SPECIMEN_5LN.md"; Out = "00c_PRODUCT_SPECIMEN_5LN.md" },
+    @{ Rel = "lab/conformance/PRODUCT_SPECIMEN_5LN_VALIDATION.md"; Out = "00d_PRODUCT_SPECIMEN_5LN_VALIDATION.md" },
+    @{ Rel = "lab/conformance/P5_FULLCIRCLE_5LN_SCOPE.md"; Out = "00e_P5_FULLCIRCLE_5LN_SCOPE.md" },
+    @{ Rel = "handoff/masomeh95/TSP_PC1_START_MASOMEH.md"; Out = "00_START_PC1_MASOMEH.md" },
+    @{ Rel = "lab/conformance/LAB_UNIFIED_CERT_TEST_MATRIX.csv"; Out = "00_UNIFIED_CERT_TEST_MATRIX.csv" },
     @{ Rel = "lab/conformance/LAB_REQUIREMENT_TEST_MATRIX.md"; Out = "01_CHECKLIST_LAB_REQUIREMENT_TEST_MATRIX.md" },
     @{ Rel = "lab/conformance/LAB_REQUIREMENT_TEST_MATRIX_CYBER.md"; Out = "01b_CHECKLIST_CYBER_REQUIREMENT_TEST_MATRIX.md" },
     @{ Rel = "lab/evidence/testsuite-pro/TSP_TEST_IDENTIFICATION_POST_CONNECT.md"; Out = "02_TSP_TEST_IDENTIFICATION.md" },
@@ -83,7 +90,8 @@ foreach ($rel in $tspScripts) {
 $benchScripts = @(
     "lab/set_pc_lan1_dso.cmd",
     "lab/set_pc_lan2_oa.cmd",
-    "lab/set_pc_lan3_plant.cmd"
+    "lab/set_pc_lan3_plant.cmd",
+    "lab/set_pc_lan3_plant_178.cmd"
 )
 New-Item -ItemType Directory -Force -Path (Join-Path $Dest "bench_scripts") | Out-Null
 foreach ($rel in $benchScripts) {
@@ -110,7 +118,16 @@ foreach ($d in $docs) {
 }
 
 Copy-Rel "apps/ccli/config/icd/lab_tg544_eth_a.cid" "cid" | Out-Null
+$prodCid = "apps/ccli/config/icd/product/product_tr400_eth_a_5ln.cid"
+if (Test-Path (Join-Path $Repo ($prodCid -replace '/', '\'))) {
+    Copy-Rel $prodCid "cid" | Out-Null
+    $manifest.files += "cid/product_tr400_eth_a_5ln.cid"
+} else {
+    Write-Warning "5-LN product CID not in repo yet - TSP must load product CID when ready (see 00c_PRODUCT_SPECIMEN_5LN.md)"
+}
 Copy-Rel "apps/ccli/config/lab_tr400_phase1_regulation.yaml" "config" | Out-Null
+Copy-Rel "apps/ccli/config/lab_tr400_phase4_eth_b_ttyS1.yaml" "config" | Out-Null
+Copy-Rel "apps/ccli/config/lab_tr400_phase4_emt432_lan3_tcp.yaml" "config" | Out-Null
 
 # PICS template optional (large xlsx)
 $pics = Join-Path $Repo "lab\TemplatePics_Ed1Ed2Ed2p1_Excel_rev3p0.xlsx"
@@ -126,5 +143,5 @@ $manifest.files += "tls/*", "cid/lab_tg544_eth_a.cid", "config/lab_tr400_phase1_
 
 Write-Host ""
 Write-Host "OK: $Dest" -ForegroundColor Green
-Write-Host "Copy this folder to the Test Suite Pro PC (USB). Open 01_CHECKLIST_LAB_REQUIREMENT_TEST_MATRIX.md"
-Write-Host "RAG source_ids: ccli-lab-requirement-test-matrix, ccli-lab-requirement-test-matrix-cyber, ccli-tsp-field-pack, ccli-tsp-test-identification"
+Write-Host "Copy this folder to the Test Suite Pro PC (USB). Open 00_UNIFIED_CERT_TEST_MATRIX.md (master) + 00b_UNIFIED_CERT_ROADMAP.md"
+Write-Host "RAG: ccli-lab-unified-cert-test-matrix, ccli-lab-unified-cert-test-roadmap, ccli-product-specimen-5ln, ccli-tsp-two-pc-bench-runbook"
