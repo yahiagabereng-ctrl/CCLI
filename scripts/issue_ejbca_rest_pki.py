@@ -28,6 +28,10 @@ from cryptography.hazmat.primitives.serialization import pkcs12
 from cryptography.x509.oid import NameOID, ObjectIdentifier
 
 REPO = Path(__file__).resolve().parents[1]
+if str(REPO) not in sys.path:
+    sys.path.insert(0, str(REPO / "scripts"))
+from ejbca_lab_common import CONTAINER_DEFAULT, export_crl_pem_from_ejbca  # noqa: E402
+
 DEFAULT_OUT = REPO / "apps" / "ccli" / "config" / "tls" / "ejbca"
 DEFAULT_BASE = "https://localhost:8443/ejbca/ejbca-rest-api"
 
@@ -399,10 +403,17 @@ def issue_all(args: argparse.Namespace) -> int:
     client_key = out / "client.key"
     if client_key.is_file():
         _write_pem(out / "client_tsp.key", client_key.read_bytes())
+    revoked_key = out / "revoked.key"
+    if revoked_key.is_file():
+        _write_pem(out / "revoked_tsp.key", revoked_key.read_bytes())
 
     if revoked_serial_hex and revoked_issuer and not args.skip_revoke:
         print(f"  revoke {revoked_serial_hex} ...")
         api.revoke(revoked_issuer, revoked_serial_hex)
+        print("  export lab_crl.pem from EJBCA ...")
+        export_crl_pem_from_ejbca(
+            args.ca_name, out / "lab_crl.pem", container=CONTAINER_DEFAULT
+        )
 
     readme = f"""# Annex-aligned CCLI lab PKI (EJBCA REST)
 
@@ -414,6 +425,10 @@ Issued by `scripts/issue_ejbca_rest_pki.py` via pkcs10enroll.
 | `server_tls.pem` + `server.key` | CCLI-Cert-A-TLS |
 | `server.pem` + `server_acse.key` | CCLI-Cert-B-E2E-MMS |
 | `client.pem` / `client_tls.pem` | operator dual |
+| `revoked.pem` / `revoked_tls.pem` | REVOKED_CLIENT (revoked in CA) |
+| `lab_crl.pem` | EJBCA-published CRL (PEM) |
+
+Sync to DUT/TSP: `powershell -File scripts/sync-ejbca-tls-to-product.ps1 -Verify`
 
 Verify: `python scripts/verify_annex_pki.py --dir {out}`
 """

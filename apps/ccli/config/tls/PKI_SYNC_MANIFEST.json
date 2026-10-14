@@ -1,0 +1,27 @@
+﻿{
+    "pki_source":  "ejbca",
+    "synced_utc":  "2026-10-14 12:34:24 UTC",
+    "source_dir":  "C:\\Yahia\\projects\\CCLI\\apps\\ccli\\config\\tls\\ejbca",
+    "product_dir":  "C:\\Yahia\\projects\\CCLI\\apps\\ccli\\config\\tls",
+    "files":  [
+                  "root_CA.pem",
+                  "server.pem",
+                  "server.key",
+                  "server_tls.pem",
+                  "server_acse.key",
+                  "client.pem",
+                  "client.key",
+                  "client_tls.pem",
+                  "viewer.pem",
+                  "viewer.key",
+                  "viewer_tls.pem",
+                  "revoked.pem",
+                  "revoked.key",
+                  "revoked_tls.pem",
+                  "lab_crl.pem"
+              ],
+    "next_steps":  [
+                       "Deploy DUT: lab/tg544-openwrt/deploy-ccli-bench-lan2.ps1",
+                       "PC1: git pull; scripts/setup-pc1-testpro-from-git.ps1"
+                   ]
+}

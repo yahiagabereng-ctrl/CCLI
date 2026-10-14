@@ -359,3 +359,38 @@ python scripts\verify_annex_pki.py --dir apps\ccli\config\tls\ejbca --strict-g62
 ```
 
 If REST fails with **403/Bad certificate**, the admin P12 is missing or lacks REST role. If **404/protocol disabled**, enable REST Certificate Management.
+
+### 12.4 Publish to DUT + Test Suite Pro (EJBCA-backed PKI)
+
+**Authoritative lab flow** for T3-04 (revoked + **EJBCA CRL** on DUT and PC1):
+
+```powershell
+cd c:\Yahia\projects\CCLI
+
+# One shot: EJBCA CLI issue, revoke tsp-revoked*, CRL PEM, sync -> config/tls, stage PC1 pack
+powershell -File scripts\publish-ejbca-lab-pki.ps1
+
+# Optional: push TLS to TG544 (after . .\lab\tg544-openwrt\lab-env.ps1)
+powershell -File scripts\publish-ejbca-lab-pki.ps1 -DeployDut
+```
+
+Manual steps (same result):
+
+| Step | Command |
+|------|---------|
+| 1 Issue + revoke | `powershell -File scripts\provision-ejbca-ccli-pki.ps1 -UseEjbcaCli` |
+| 2 Sync product dir | `powershell -File scripts\sync-ejbca-tls-to-product.ps1 -Verify` |
+| 3 DUT | `lab\tg544-openwrt\deploy-ccli-bench-lan2.ps1` |
+| 4 PC1 | `git pull` + `scripts\setup-pc1-testpro-from-git.ps1` |
+
+**Layout:**
+
+| Directory | Role |
+|-----------|------|
+| `apps/ccli/config/tls/ejbca/` | EJBCA issue output (staging) |
+| `apps/ccli/config/tls/` | **Deploy + GitHub + field pack** (after sync) |
+| `apps/ccli/config/tls/PKI_SYNC_MANIFEST.json` | Last sync timestamp + file list |
+
+**Revoked leaf:** `tsp-revoked` (Cert A) + `tsp-revoked-e2e` (Cert B) → `revoked_tls.pem`, `revoked.pem`, `revoked_tsp.key`; **`lab_crl.pem`** from `ejbca.sh ca getcrl` (PEM).
+
+**Note:** `gen_lab_pki.py` remains offline fallback; do **not** mix CA trust (pick EJBCA **or** Python CA per session). `server_combined.pem` is kept from the previous product dir if EJBCA does not re-issue it (Solution C yaml).

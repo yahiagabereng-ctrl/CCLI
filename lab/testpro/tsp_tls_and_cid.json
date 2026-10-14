@@ -33,6 +33,11 @@
       "validator": "scripts/validate-5ln-cid.ps1"
     }
   },
+  "pki": {
+    "source": "ejbca",
+    "publish_script": "scripts/publish-ejbca-lab-pki.ps1",
+    "sync_manifest": "apps/ccli/config/tls/PKI_SYNC_MANIFEST.json"
+  },
   "tls": {
     "repo_dir": "apps/ccli/config/tls",
     "field_pack_dir": "tls",

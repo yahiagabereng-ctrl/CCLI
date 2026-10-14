@@ -135,20 +135,16 @@ else {
     if ($LASTEXITCODE -ne 0) { throw "issue failed" }
 }
 
-# Prefer EJBCA-published CRL if CA is present; otherwise keep Python CRL.
-if (-not $SkipEjbcaImport) {
+# EJBCA CLI/REST issue already writes lab_crl.pem; hybrid Python keeps Python CRL.
+if (-not $SkipEjbcaImport -and -not $UseEjbcaCli -and -not $UseRest) {
     $cas2 = docker exec $Container $EjbcaSh ca listcas 2>&1 | Out-String
     if ($cas2 -match [regex]::Escape($CaName)) {
         try {
-            Write-Host "Publishing CRL in EJBCA..." -ForegroundColor Cyan
-            Invoke-Ejbca @("ca", "createcrl", "--caname", $CaName)
-            $crlIn = "/tmp/ccli-lab.crl"
-            Invoke-Ejbca @("ca", "getcrl", "--caname", $CaName, "-f", $crlIn)
-            docker cp "${Container}:${crlIn}" (Join-Path $EjbcaTls "lab_crl.ejbca.der")
-            Write-Host '  (Annex lab CRL remains lab_crl.pem from Python; EJBCA DER saved as lab_crl.ejbca.der)' -ForegroundColor DarkGray
+            Write-Host "Export EJBCA CRL PEM (hybrid issue; Python CRL may differ)..." -ForegroundColor Cyan
+            python (Join-Path $Repo "scripts\ejbca_export_crl.py") --ca-name $CaName --out (Join-Path $EjbcaTls "lab_crl.pem")
         }
         catch {
-            Write-Warning "EJBCA CRL publish skipped: $($_.Exception.Message)"
+            Write-Warning "EJBCA CRL export skipped: $($_.Exception.Message)"
         }
     }
 }
@@ -156,7 +152,9 @@ if (-not $SkipEjbcaImport) {
 New-Item -ItemType Directory -Force -Path $TspDir | Out-Null
 $copy = @(
     "root_CA.pem", "client.pem", "client.key", "client_tls.pem", "client_tsp.key",
-    "viewer.pem", "viewer.key", "revoked.pem", "revoked.key", "lab_crl.pem"
+    "viewer.pem", "viewer.key", "viewer_tls.pem",
+    "revoked.pem", "revoked.key", "revoked_tls.pem", "revoked_tsp.key",
+    "lab_crl.pem"
 )
 foreach ($f in $copy) {
     $src = Join-Path $EjbcaTls $f
@@ -175,6 +173,8 @@ if ($LASTEXITCODE -ne 0) {
 }
 
 Write-Host "OK - all Annex 10.4 lab gates passed" -ForegroundColor Green
-Write-Host "  DUT/TSP trust + EE certs: $EjbcaTls"
-Write-Host "  TSP staged:               $TspDir"
-Write-Host '  Next: deploy to TG544 + TSP Connect :3782 - see lab/EJBCA_LAB_SETUP.md section 9'
+Write-Host "  EJBCA staging dir: $EjbcaTls"
+Write-Host "  TSP quick copy:     $TspDir"
+Write-Host '  Next: powershell -File scripts\sync-ejbca-tls-to-product.ps1 -Verify'
+Write-Host '  Or:   powershell -File scripts\publish-ejbca-lab-pki.ps1 -SkipIssue'
+Write-Host '  Then: deploy-ccli-bench-lan2.ps1 + PC1 setup-pc1-testpro-from-git.ps1'

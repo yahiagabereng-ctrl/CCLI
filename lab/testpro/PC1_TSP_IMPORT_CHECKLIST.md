@@ -15,6 +15,8 @@ Masomeh pack copy: `00i_PC1_TSP_IMPORT_CHECKLIST.md` (from `stage-tsp-field-pack
 
 ## 1. Stage TLS + CID from GitHub
 
+Yahia may refresh PEMs from **EJBCA** (`lab/EJBCA_LAB_SETUP.md` §12.4) before push — always **`git pull`** so PC1 matches DUT **`/etc/ccli/tls/`**.
+
 ```powershell
 cd D:\CCLI\CCLI   # or your clone path
 git pull origin main
