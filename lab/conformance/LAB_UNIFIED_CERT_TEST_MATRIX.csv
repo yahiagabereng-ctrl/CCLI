@@ -5,8 +5,11 @@ checkbox,U_ID,Phase,O15_cert,REQ_gate,Executor,HW,Action_summary,Pass_criteria,E
 ,U-P0-04,0,Deploy,P5 plant,PC-A,LAN3,set_pc_lan3_plant ping DUT and meter,Both OK,modbus_emt432_*.txt,,ccli-tsp-two-pc-bench-runbook
 ,U-P0-05,0,Deploy,REQ-ROAD-HW-003,PC-A,RS485,Wire A1/B1 GND,Continuity,P5_A1B1 map,,ccli-tr500-io-peripheral
 ,U-P0-06,0,UCA prep,D5,PC-B,,Import 5-LN CID and TLS PEMs,Load OK,TSP project snapshot,,ccli-product-specimen-5ln
-,U-P0-07,0,UCA prep,,PC-A,SSH,Stop iec61850service one ccli deploy product cfg,:3782 listen,PREFLIGHT_DUT_*.txt,,ccli-lab-dut-finalize-cert-path
+,U-P0-07,0,UCA prep,,PC-A,SSH,validate-dut-unified-matrix -FixServices -WriteEvidence,3782+2404 one ccli no :102,PREFLIGHT_DUT_UNIFIED_*.txt,,ccli-lab-dut-finalize-cert-path
 ,U-P0-08,0,Trace,REQ-LAB-MTX-003,Both,,Record version and cfg SHA in header,Match pin doc,session header + TSP_UNIFIED_5LN_SESSION_INDEX,,ccli-product-specimen-5ln
+,U-P0-09,0a,RAG,REQ-UNI-FIN-002,Repo PC,,sync ingest P0 RAG corpus,Probes OK unified ids,RAG_PREFLIGHT_*.txt,,ccli-rag-source-index
+,U-P0-10,0a,Evidence,REQ-UNI-FIN-006,PC-B,,Wireshark OpenSSL field pack 00h,Tools OK,PREFLIGHT_PC1_TOOLS_*.txt,,ccli-pc1-log-capture-requirements
+,U-P0-11,0a,Deploy,REQ-UNI-FIN-007,PC-A,SSH,session pin deploy manifest U-P0-07,r53 on DUT,PREFLIGHT_DUT_UNIFIED_*.txt,,ccli-lab-unified-session-pin-2026-10-14
 ,U-P0b-01,0b,Annex T,T.3.1,PC-A,LAN3,EMT432 probe V_L1_L2 980 PPV,Modbus OK + PPV hint,modbus_emt432_*.txt,,ccli-validation-strategy
 ,U-P0b-02,0b,Annex T,T.3.1,PC-A,COM5,start-bench-plant Sun COM5,FC03 inverter map,PLANT_SUN2000_*.txt,,ccli-tsp-two-pc-bench-runbook
 ,U-P0b-03,0b,O.14,P7-04,PC-A,SSH,modbus link_up in event-dump,Category present,P7_04_MODBUS_LINK_*.txt,,ccli-lab-requirement-test-matrix

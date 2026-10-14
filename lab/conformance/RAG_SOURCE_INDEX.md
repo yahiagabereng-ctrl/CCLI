@@ -1,8 +1,9 @@
 # CCLI RAG source index — product deployment P0
 
 **Document ID:** CCLI-RAG-INDEX-001  
-**Revision:** 1.2  
+**Revision:** 1.3  
 **Date:** 2026-10-14  
+**Matrix:** rev **1.3** — Phase **0a** rows **U-P0-09…11** · finalize clauses in `LAB_UNIFIED_CERT_TEST_MATRIX.md`
 **RAG source_id:** `ccli-rag-source-index`  
 **Registry (machine):** `scripts/rag-product-deploy-sources.json`  
 **Parents:** `ccli-knowledge-base-brief` · `ccli-product-sw-freeze` · `ccli-product-deployment-init`
@@ -34,7 +35,7 @@ powershell -File scripts\ingest-next-phases.ps1 -SkipDocker
 powershell -File scripts\ingest-62351-100-4.ps1 -SkipSync
 ```
 
-**Probe examples:** `ccli-lab-unified-cert-test-matrix` · `ccli-lab-unified-cert-test-roadmap` · `ccli-product-specimen-5ln` · `ccli-lab-requirement-test-matrix` · `ccli-lab-requirement-test-matrix-cyber` · `ccli-tsp-two-pc-bench-runbook` · `ccli-dnv-product-readiness`
+**Probe examples (before matrix Phase 1):** `ccli-lab-unified-cert-test-matrix` · `ccli-lab-unified-session-pin-2026-10-14` · `ccli-pc1-log-capture-requirements` · `ccli-lab-unified-tsp-5ln-execution` · `ccli-product-specimen-5ln` · `ccli-rag-source-index`
 
 ---
 
@@ -56,7 +57,9 @@ powershell -File scripts\ingest-62351-100-4.ps1 -SkipSync
 
 | source_id | Repo path | Role |
 |-----------|-----------|------|
-| `ccli-lab-unified-cert-test-matrix` | `LAB_UNIFIED_CERT_TEST_MATRIX.md` + `.csv` | **Single □** functional + cyber + O.15 |
+| `ccli-lab-unified-cert-test-matrix` | `LAB_UNIFIED_CERT_TEST_MATRIX.md` + `.csv` | **Single □** functional + cyber + O.15 · **finalize clauses** |
+| `ccli-lab-unified-session-pin-2026-10-14` | `LAB_UNIFIED_SESSION_PIN_2026-10-14.md` | r53 deploy pin · **U-P0-11** |
+| `ccli-pc1-log-capture-requirements` | `handoff/masomeh95/PC1_LOG_CAPTURE_REQUIREMENTS.md` | PC-B logger · **U-P0-10** |
 | `ccli-lab-unified-cert-test-roadmap` | `LAB_UNIFIED_CERT_TEST_ROADMAP.md` | Two-PC phase order |
 | `ccli-lab-unified-tsp-5ln-execution` | `LAB_UNIFIED_TSP_5LN_EXECUTION.md` | TestPro logger map · 5-LN capture |
 | `ccli-product-specimen-5ln` | `PRODUCT_SPECIMEN_5LN.md` | 5-LN product pin |
@@ -77,6 +80,12 @@ powershell -File scripts\ingest-62351-100-4.ps1 -SkipSync
 | `ccli-62351-100-3-extract` | `CCI_62351-100-3_Extract.md` | Accredited TLS cases |
 | `ccli-tsp-test-identification` | `lab/evidence/.../TSP_TEST_IDENTIFICATION_POST_CONNECT.md` | Tier 1–4 steps |
 | `ccli-lab-requirement-test-matrix-cyber` | `LAB_REQUIREMENT_TEST_MATRIX_CYBER.md` | 62351 / D7 / Tier 3 cyber checklist |
+| `ccli-62351-8-extract` | `CCI_62351-8_Extract.md` | Viewer (**U-T3-02/03**) |
+| `ccli-62351-9-extract` | `CCI_62351-9_Extract.md` | CRL (**U-T3-04**) |
+| `ccli-phase-regulation-checklists` | `CCI_Phase_Regulation_Checklists.md` | IEC 104 (**U-P4-***) |
+| `ccli-61557-12-extract` | `CCI_61557-12_Extract.md` | **U-ACC-04** programme |
+| `ccli-62443-4-2-extract` | `CCI_62443-4-2_Extract.md` | **U-ACC-05** programme |
+| `cei-0-16-consolidata-2025-12` | `CCI_CEI_0-16_Consolidated.md` | **U-ACC-06** programme |
 
 ---
 

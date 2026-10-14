@@ -1,5 +1,8 @@
 # PC1 (Masomeh) — mandatory TestPro log capture
 
+**Document ID:** CCLI-LAB-PC1-LOG-001  
+**RAG source_id:** `ccli-pc1-log-capture-requirements`  
+**Matrix row:** **U-P0-10** · [LAB_UNIFIED_CERT_TEST_MATRIX.md](../../lab/conformance/LAB_UNIFIED_CERT_TEST_MATRIX.md) rev 1.3  
 **Role:** PC-B · LAN1 `192.168.10.10` → DUT `192.168.10.1:3782`  
 **Date:** 2026-10-14  
 **Matrix:** unified cert test matrix rows **U-T1-*** · **U-T3-*** · **U-P5-01**  

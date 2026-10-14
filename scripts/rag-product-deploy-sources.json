@@ -1,7 +1,7 @@
 {
   "schema": "ccli-rag-registry-v1",
   "purpose": "Product deployment + DNV/TSP P0 sources — enqueued by ingest-next-phases.ps1 and ingest-product-deploy-rag.ps1",
-  "updated": "2026-10-14-unified-matrix-1.2",
+  "updated": "2026-10-14-unified-matrix-1.3",
   "sources": [
     { "source_id": "ccli-knowledge-base-brief", "relative": "projects/ccli/engineering/Knowledge_Base_Brief.md", "cluster": "governance" },
     { "source_id": "ccli-rag-source-index", "relative": "projects/ccli/lab/conformance/RAG_SOURCE_INDEX.md", "cluster": "governance" },
@@ -22,6 +22,8 @@
     { "source_id": "ccli-lab-session-2026-10-09-annex-runbook", "relative": "projects/ccli/lab/conformance/LAB_SESSION_2026-10-09_ANNEX_RUNBOOK.md", "cluster": "lab-specimen" },
     { "source_id": "ccli-lab-scl-dataset-placement", "relative": "projects/ccli/lab/conformance/SCL_DATASET_PLACEMENT.md", "cluster": "lab-specimen" },
     { "source_id": "ccli-lab-unified-cert-test-matrix", "relative": "projects/ccli/lab/conformance/LAB_UNIFIED_CERT_TEST_MATRIX.md", "cluster": "test-req" },
+    { "source_id": "ccli-lab-unified-session-pin-2026-10-14", "relative": "projects/ccli/lab/conformance/LAB_UNIFIED_SESSION_PIN_2026-10-14.md", "cluster": "test-req" },
+    { "source_id": "ccli-pc1-log-capture-requirements", "relative": "projects/ccli/lab/handoff/masomeh95/PC1_LOG_CAPTURE_REQUIREMENTS.md", "cluster": "tsp" },
     { "source_id": "ccli-lab-unified-cert-test-roadmap", "relative": "projects/ccli/lab/conformance/LAB_UNIFIED_CERT_TEST_ROADMAP.md", "cluster": "test-req" },
     { "source_id": "ccli-product-specimen-5ln", "relative": "projects/ccli/lab/conformance/PRODUCT_SPECIMEN_5LN.md", "cluster": "lab-specimen" },
     { "source_id": "ccli-product-specimen-5ln-validation", "relative": "projects/ccli/lab/conformance/PRODUCT_SPECIMEN_5LN_VALIDATION.md", "cluster": "lab-specimen" },
@@ -53,6 +55,12 @@
 
     { "source_id": "ccli-62351-3-extract", "relative": "projects/ccli/engineering/CCI_62351-3_Extract.md", "cluster": "cyber" },
     { "source_id": "ccli-62351-4-extract", "relative": "projects/ccli/engineering/CCI_62351-4_Extract.md", "cluster": "cyber" },
+    { "source_id": "ccli-62351-8-extract", "relative": "projects/ccli/engineering/CCI_62351-8_Extract.md", "cluster": "cyber" },
+    { "source_id": "ccli-62351-9-extract", "relative": "projects/ccli/engineering/CCI_62351-9_Extract.md", "cluster": "cyber" },
+    { "source_id": "ccli-phase-regulation-checklists", "relative": "projects/ccli/engineering/CCI_Phase_Regulation_Checklists.md", "cluster": "test-req" },
+    { "source_id": "ccli-61557-12-extract", "relative": "projects/ccli/engineering/CCI_61557-12_Extract.md", "cluster": "dnv" },
+    { "source_id": "ccli-62443-4-2-extract", "relative": "projects/ccli/engineering/CCI_62443-4-2_Extract.md", "cluster": "dnv" },
+    { "source_id": "cei-0-16-consolidata-2025-12", "relative": "projects/ccli/engineering/CCI_CEI_0-16_Consolidated.md", "cluster": "dnv" },
     { "source_id": "ccli-62351-100-4-extract", "relative": "projects/ccli/engineering/CCI_62351-100-4_Extract.md", "cluster": "cyber" },
     { "source_id": "ccli-62351-100-4-ocr-corpus", "relative": "projects/ccli/reference/iec62351/IEC_TS_62351-100-4_2023_full.txt", "cluster": "cyber" },
     { "source_id": "ccli-62351-100-4-ocr-index", "relative": "projects/ccli/engineering/CCI_62351-100-4_OCR_Corpus.md", "cluster": "cyber" },

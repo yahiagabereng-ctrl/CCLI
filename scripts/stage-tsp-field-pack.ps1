@@ -43,6 +43,7 @@ $manifest = [ordered]@{
 
 $docs = @(
     @{ Rel = "lab/conformance/LAB_UNIFIED_CERT_TEST_MATRIX.md"; Out = "00_UNIFIED_CERT_TEST_MATRIX.md" },
+    @{ Rel = "lab/conformance/LAB_UNIFIED_SESSION_PIN_2026-10-14.md"; Out = "00a_UNIFIED_SESSION_PIN_2026-10-14.md" },
     @{ Rel = "lab/conformance/LAB_UNIFIED_CERT_TEST_ROADMAP.md"; Out = "00b_UNIFIED_CERT_ROADMAP.md" },
     @{ Rel = "lab/conformance/PRODUCT_SPECIMEN_5LN.md"; Out = "00c_PRODUCT_SPECIMEN_5LN.md" },
     @{ Rel = "lab/conformance/PRODUCT_SPECIMEN_5LN_VALIDATION.md"; Out = "00d_PRODUCT_SPECIMEN_5LN_VALIDATION.md" },

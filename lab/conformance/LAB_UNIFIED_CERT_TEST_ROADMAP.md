@@ -1,8 +1,9 @@
 # Unified certification test roadmap — 5-LN product · two-PC bench
 
 **Document ID:** CCLI-LAB-UNIFIED-ROAD-001  
-**Revision:** 1.1  
+**Revision:** 1.2  
 **Date:** 2026-10-14  
+**Matrix rev:** 1.3 (finalize clauses · **U-P0-09…11**)  
 **TestPro logs:** [LAB_UNIFIED_TSP_5LN_EXECUTION.md](LAB_UNIFIED_TSP_5LN_EXECUTION.md)
 **RAG source_id:** `ccli-lab-unified-cert-test-roadmap`  
 **Matrix:** [LAB_UNIFIED_CERT_TEST_MATRIX.md](LAB_UNIFIED_CERT_TEST_MATRIX.md) · CSV: [LAB_UNIFIED_CERT_TEST_MATRIX.csv](LAB_UNIFIED_CERT_TEST_MATRIX.csv)  
@@ -68,6 +69,7 @@ gantt
 | Phase | Who | Objective | Unified rows | Legacy docs |
 |-------|-----|-----------|--------------|-------------|
 | **0 Prep** | Both | Field pack, NIC scripts, single `ccli`, stop `iec61850service` | U-P0-01…08 | Runbook Phase 0 |
+| **0a RAG + pin** | Repo + PC-B | Corpus ingest · PC1 tools · session pin = DUT | **U-P0-09…11** | [LAB_UNIFIED_CERT_TEST_MATRIX.md](LAB_UNIFIED_CERT_TEST_MATRIX.md) finalize clauses |
 | **0b Plant** | PC-A | Meter + RS485 mock + non-zero P if needed | U-P0b-01…05 | Runbook Phase 0b |
 | **1 MMS core** | PC-B | T1-01…10 on **5-LN** CID | U-T1-01…10 | Functional matrix |
 | **2 Annex T** | PC-B + PC-A | **5-LN** P5 scope only ([P5_FULLCIRCLE_5LN_SCOPE.md](P5_FULLCIRCLE_5LN_SCOPE.md)) | U-P5-01 | Not 31-LN sequencer |

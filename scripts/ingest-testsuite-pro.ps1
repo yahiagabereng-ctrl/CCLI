@@ -39,13 +39,20 @@ $Files = @(
     @{ Path = (Join-Path $Conf "TICS_DRAFT.md"); Sid = "ccli-lab-tics-draft" },
     @{ Path = (Join-Path $Conf "D7_62351-3_PID_DRAFT.md"); Sid = "ccli-lab-d7-62351-3-pid" },
     @{ Path = (Join-Path $Conf "CID_PICS_ALIGNMENT.md"); Sid = "ccli-lab-cid-pics-alignment" },
-    @{ Path = (Join-Path $Conf "LAB_CONFIG_GUIDE.md"); Sid = "ccli-lab-config-guide" }
+    @{ Path = (Join-Path $Conf "LAB_CONFIG_GUIDE.md"); Sid = "ccli-lab-config-guide" },
+    @{ Path = (Join-Path $Conf "LAB_UNIFIED_SESSION_PIN_2026-10-14.md"); Sid = "ccli-lab-unified-session-pin-2026-10-14" },
+    @{ Path = (Join-Path $Repo "handoff\masomeh95\PC1_LOG_CAPTURE_REQUIREMENTS.md"); Sid = "ccli-pc1-log-capture-requirements" }
 )
 
 Write-Host "=== Sync markdown to Telematry ==="
 foreach ($f in $Files) {
     if (-not (Test-Path $f.Path)) { Write-Warning ("Missing " + $f.Path); continue }
-    if ($f.Path -like "*\lab\*") {
+    if ($f.Path -like "*\handoff\masomeh95\*") {
+        $destDir = Join-Path $TelLab "handoff\masomeh95"
+        New-Item -ItemType Directory -Path $destDir -Force | Out-Null
+        $dest = Join-Path $destDir (Split-Path $f.Path -Leaf)
+    }
+    elseif ($f.Path -like "*\lab\*") {
         $dest = Join-Path $TelLab (Split-Path $f.Path -Leaf)
     } else {
         $dest = Join-Path $TelEng (Split-Path $f.Path -Leaf)

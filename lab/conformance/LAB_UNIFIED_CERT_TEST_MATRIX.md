@@ -1,8 +1,11 @@
 # Unified certification test matrix — functional + cyber + O.15 (5-LN first run)
 
 **Document ID:** CCLI-LAB-UNIFIED-MTX-001  
-**Revision:** 1.2  
+**Revision:** 1.3  
 **Date:** 2026-10-14  
+**Session pin:** [LAB_UNIFIED_SESSION_PIN_2026-10-14.md](LAB_UNIFIED_SESSION_PIN_2026-10-14.md) (`ccli-lab-unified-session-pin-2026-10-14`)  
+**Finalize path:** [DUT_LAB_FINALIZE_AND_CERT_PATH.md](DUT_LAB_FINALIZE_AND_CERT_PATH.md)  
+**RAG init:** [RAG_SOURCE_INDEX.md](RAG_SOURCE_INDEX.md) · [PRODUCT_DEPLOYMENT_INIT.md](PRODUCT_DEPLOYMENT_INIT.md)
 **TestPro execution:** [LAB_UNIFIED_TSP_5LN_EXECUTION.md](LAB_UNIFIED_TSP_5LN_EXECUTION.md) (`ccli-lab-unified-tsp-5ln-execution`)  
 **Evidence protocol:** [../evidence/testsuite-pro/EVIDENCE_PER_TEST_PROTOCOL.md](../evidence/testsuite-pro/EVIDENCE_PER_TEST_PROTOCOL.md) · `scripts/tsp-evidence-logger.ps1`
 **5-LN validation:** [PRODUCT_SPECIMEN_5LN_VALIDATION.md](PRODUCT_SPECIMEN_5LN_VALIDATION.md) · `scripts/validate-5ln-cid.ps1`
@@ -14,6 +17,65 @@
 **Supersedes as single □ checklist:** merges [LAB_REQUIREMENT_TEST_MATRIX.md](LAB_REQUIREMENT_TEST_MATRIX.md) + [LAB_REQUIREMENT_TEST_MATRIX_CYBER.md](LAB_REQUIREMENT_TEST_MATRIX_CYBER.md) + O.15 non-TSP deliverables from `ccli-dnv-product-readiness`. Legacy files remain authoritative for row detail; tick **here** for programme traceability.
 
 **Field pack:** `scripts/stage-tsp-field-pack.ps1` → `00_UNIFIED_CERT_TEST_MATRIX.md` + `00b_UNIFIED_CERT_ROADMAP.md`
+
+**Use this file as the live finalize checklist:** tick □ in the master table; record **Status** in the session header; on closeout save `LAB_UNIFIED_CERT_TEST_MATRIX_<date>_done.md` (**U-CLO-02**).
+
+---
+
+## Finalize clauses (how to run the matrix)
+
+### Row status (write in `_done` copy or session index)
+
+| Mark | Meaning | When |
+|------|---------|------|
+| **PASS** | Evidence meets pass criteria | Default for executed rows |
+| **PART** | Executed with documented waiver | Compare Value rows · interim 31-LN cfg vs 5-LN CID |
+| **FAIL** | Ran; criteria not met | Block Milestone A until fixed or waived |
+| **N/A** | Out of specimen PICS scope | **U-N/A-01** · PICS **N/A** rows |
+| **ACC** | External lab only | **U-ACC-*** · **U-D7-03** — track report ID, not bench □ |
+| **SKIP** | Not run this session | Document reason in session header |
+
+### Programme requirements (finalize)
+
+| ID | Clause |
+|----|--------|
+| REQ-UNI-FIN-001 | **Single checklist:** only this matrix □ for programme traceability (legacy matrices = detail) |
+| REQ-UNI-FIN-002 | **Phase 0a** (**U-P0-09…11**) complete before **U-T1-01** |
+| REQ-UNI-FIN-003 | **Milestone A** (internal DUT finalize): minimum row set in table below — all **M** PICS rows **PASS** or **PART+waiver** |
+| REQ-UNI-FIN-004 | **Milestone B** (lab quote): **U-DOC-01…07** + Milestone A |
+| REQ-UNI-FIN-005 | **Milestone C** (certificate): **U-ACC-*** + accredited report IDs — not gated on bench day |
+| REQ-UNI-FIN-006 | Every PC-B logger row: four artefacts per [EVIDENCE_PER_TEST_PROTOCOL.md](../evidence/testsuite-pro/EVIDENCE_PER_TEST_PROTOCOL.md) |
+| REQ-UNI-FIN-007 | Session header + [session pin](LAB_UNIFIED_SESSION_PIN_2026-10-14.md) + deploy manifest SHA agree |
+
+### Milestone A — internal lab finalize (minimum □ set)
+
+| Include | U-IDs |
+|---------|--------|
+| Prep | **U-P0-01 … U-P0-11**, **U-P0b-01 … U-P0b-05** |
+| MMS core | **U-T1-01 … U-T1-10**, **U-T1-05b/c/d** if PICS **M**, **U-T1-11** |
+| Annex trace | **U-P5-01** (+ **U-P5-02** if dynamic P in scope) |
+| Cyber (recommended before ship) | **U-T3-01 … U-T3-05**, **U-D7-01**, **U-D7-02** |
+| Regulation / time | **U-P3-11** |
+| Closeout | **U-CLO-01 … U-CLO-03** |
+
+**Strongly recommended same programme:** **U-P4-01/02**, **U-P7-01/02/04**, **U-DOC-05** (SCL Verify).
+
+### Pre-test RAG (Phase 0a — repo PC, before bench)
+
+Run from **CCLI Lab** root (RAG on `localhost:8001`):
+
+```powershell
+powershell -File scripts\sync-ccli-corpus-to-telematry.ps1
+powershell -File scripts\ingest-product-deploy-rag.ps1
+powershell -File scripts\ingest-next-phases.ps1 -SkipDocker
+powershell -File scripts\ingest-62351-100-4.ps1 -SkipSync
+# Optional before U-T3-02…04 disputes:
+powershell -File scripts\ingest-62351-security-debug.ps1
+```
+
+**Probe:** `ccli-lab-unified-cert-test-matrix` · `ccli-lab-unified-tsp-5ln-execution` · `ccli-lab-unified-session-pin-2026-10-14` · `ccli-pc1-log-capture-requirements`
+
+Evidence of run (optional): `lab/evidence/testsuite-pro/inbox/RAG_PREFLIGHT_<date>.txt` (console log).
 
 ---
 
@@ -31,7 +93,10 @@
 | Bench | **Two-PC** · PC-B TSP · PC-A 104/LAN3/COM5 |
 | Git / manifest | `4fdfcd9`+ · [LAB_UNIFIED_SESSION_PIN_2026-10-14.md](LAB_UNIFIED_SESSION_PIN_2026-10-14.md) |
 | Evidence index | `TSP_UNIFIED_5LN_SESSION_INDEX_<date>.md` in `lab/evidence/testsuite-pro/inbox/` |
+| RAG preflight (Phase 0a) | **U-P0-09** done · probe ids return current rev |
 | RAG ingest after closeout | `ingest-testsuite-pro.ps1` + `ingest-product-deploy-rag.ps1` (U-CLO-03) |
+| Finalize milestone target | **A** / **B** / **C** (see clauses above) |
+| Matrix `_done` copy | `LAB_UNIFIED_CERT_TEST_MATRIX_<date>_done.md` (**U-CLO-02**) |
 
 ---
 
@@ -91,6 +156,13 @@ Scripts: `lab/set_pc_lan1_dso.cmd` · `set_pc_lan2_oa.cmd` · `set_pc_lan3_plant
 | `ccli-tsp-two-pc-bench-runbook` | Two-PC phases 0–3 |
 | `ccli-tsp-field-pack` | Stage script · TLS/CID pack |
 | `cei-tr-57-126-extract` | PdCMMXU1 / TR-57-126 LNs |
+| `ccli-lab-unified-session-pin-2026-10-14` | r53 deploy · cfg · matrix readiness |
+| `ccli-pc1-log-capture-requirements` | PC-B Wireshark · OpenSSL · logger |
+| `ccli-62351-8-extract` | Viewer RBAC (**U-T3-02/03**) |
+| `ccli-62351-9-extract` | CRL (**U-T3-04**) |
+| `ccli-phase-regulation-checklists` | IEC 104 (**U-P4-***) |
+| `ccli-rag-source-index` | Ingest index · gap list |
+| `ccli-product-deployment-init` | Pre-matrix RAG one-shot |
 
 ---
 
@@ -122,6 +194,9 @@ Scripts: `lab/set_pc_lan1_dso.cmd` · `set_pc_lan2_oa.cmd` · `set_pc_lan3_plant
 | □ | U-P0-06 | 0 | UCA prep | D5 | PC-B | — | Import **5-LN** CID + TLS PEMs | Load OK | TSP project snapshot | — | ccli-product-specimen-5ln |
 | □ | U-P0-07 | 0 | UCA prep | — | PC-A | SSH | `validate-dut-unified-matrix.ps1 -FixServices -WriteEvidence` | 3782+2404 · 1× ccli · no :102 | PREFLIGHT_DUT_UNIFIED_*.txt | — | ccli-lab-dut-finalize-cert-path |
 | □ | U-P0-08 | 0 | Trace | REQ-LAB-MTX-003 | Both | — | Record version + cfg SHA in header | Match pin doc | session header + index md | — | ccli-product-specimen-5ln |
+| □ | U-P0-09 | 0a | RAG | REQ-UNI-FIN-002 | Repo PC | — | Sync + ingest P0 corpus (see **Pre-test RAG** above) | Probes hit · no skip for unified ids | RAG_PREFLIGHT_*.txt | — | ccli-rag-source-index |
+| □ | U-P0-10 | 0a | Evidence | REQ-UNI-FIN-006 | PC-B | — | Wireshark · OpenSSL · read **PC1 log** doc · stage field pack | Tools OK · `00h` in pack | PREFLIGHT_PC1_TOOLS_*.txt | — | ccli-pc1-log-capture-requirements |
+| □ | U-P0-11 | 0a | Deploy | REQ-UNI-FIN-007 | PC-A | SSH | Match [session pin](LAB_UNIFIED_SESSION_PIN_2026-10-14.md) · deploy manifest · **U-P0-07** | r53 (or header version) on DUT | PREFLIGHT_DUT_UNIFIED_*.txt | — | ccli-lab-unified-session-pin-2026-10-14 |
 | □ | U-P0b-01 | 0b | Annex T | T.3.1 | PC-A | LAN3 | `modbus_emt432_tcp_probe.py` · **V_L1_L2 @980** → PPV kV | Modbus OK + PPV hint | modbus_emt432_*.txt | — | ccli-validation-strategy |
 | □ | U-P0b-02 | 0b | Annex T | T.3.1 | PC-A | COM5 | `start-bench-plant.ps1` Sun on COM5 | FC03 inverter map | PLANT_SUN2000_*.txt | — | ccli-tsp-two-pc-bench-runbook |
 | □ | U-P0b-03 | 0b | O.14 | P7-04 | PC-A | SSH | DUT modbus `link_up` in event-dump | Category present | P7_04_MODBUS_LINK_*.txt | — | ccli-lab-requirement-test-matrix |
@@ -183,6 +258,10 @@ Scripts: `lab/set_pc_lan1_dso.cmd` · `set_pc_lan2_oa.cmd` · `set_pc_lan3_plant
 
 | REQ-ID | Pass when |
 |--------|-----------|
+| REQ-UNI-FIN-002 | **U-P0-09…11** □ before first **U-T1-01** |
+| REQ-UNI-FIN-003 | Milestone A row set □ with **PASS** or **PART** + waiver ID in evidence |
+| REQ-UNI-FIN-006 | Spot-check ≥3 logger bundles: `.txt` + `_DUT_LOG` + `_WIRE` + `.pcapng` |
+| REQ-UNI-FIN-007 | DUT `ccli --version` = session header = pin doc = deploy manifest |
 | REQ-UNI-MTX-001 | Every **U-T1-*** / **U-T3-*** row for submitted PICS **M** is □ or PART+waiver |
 | REQ-UNI-MTX-002 | Specimen = **5-LN** per PRODUCT_SPECIMEN_5LN · validator PASS |
 | REQ-5LN-VAL-001 | `validate-5ln-cid.ps1` exit 0 on Compare CID |
@@ -195,9 +274,21 @@ Scripts: `lab/set_pc_lan1_dso.cmd` · `set_pc_lan2_oa.cmd` · `set_pc_lan3_plant
 
 ## Return path
 
-1. Copy evidence → `lab/evidence/testsuite-pro/inbox/`  
-2. Commit done-matrix copy (optional): `LAB_UNIFIED_CERT_TEST_MATRIX_YYYY-MM-DD_done.md`  
+1. Copy evidence → `lab/evidence/testsuite-pro/inbox/` (**U-CLO-01**)  
+2. Save done-matrix: `LAB_UNIFIED_CERT_TEST_MATRIX_YYYY-MM-DD_done.md` with **Status** column (**U-CLO-02**)  
 3. Update [PRODUCT_SPECIMEN_5LN.md](PRODUCT_SPECIMEN_5LN.md) SHA table  
-4. RAG ingest (see roadmap)
+4. RAG ingest: `ingest-testsuite-pro.ps1` + `ingest-product-deploy-rag.ps1` (**U-CLO-03**)  
+5. If Milestone A claimed: [DUT_LAB_FINALIZE_AND_CERT_PATH.md](DUT_LAB_FINALIZE_AND_CERT_PATH.md) §2 checklist cross-check
 
-**Keywords:** `unified`, `matrix`, `O.15`, `5-LN`, `TSP`, `62351`, `UCA`, `ccli-lab-unified-cert-test-matrix`
+## Finalize sign-off (Milestone A)
+
+| Field | Value |
+|-------|--------|
+| Session date | |
+| Operators (PC-A / PC-B) | |
+| DUT version + cfg SHA | |
+| Milestone | **A** internal / **B** quote prep / **C** accredited track |
+| Open waivers (IDs) | |
+| Sign-off (name · date) | |
+
+**Keywords:** `unified`, `matrix`, `O.15`, `5-LN`, `TSP`, `62351`, `UCA`, `finalize`, `ccli-lab-unified-cert-test-matrix`
