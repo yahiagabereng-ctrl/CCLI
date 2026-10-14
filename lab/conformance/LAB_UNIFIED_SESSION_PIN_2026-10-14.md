@@ -33,7 +33,7 @@
 |------|-----|
 | U-P0-07 / U-D7-01 | Preflight script (reads **VERSION** from repo) |
 | U-T1-04 PPV | **PASS** when EMT432 yaml + meter; else RTU bench uses yaml fallback |
-| U-T1-02 / U-T1-03 5-LN | Still blocked until **product 5-LN CID** in git |
+| U-T1-02 / U-T1-03 5-LN | **HAVE** — `apps/ccli/config/icd/product/product_tr400_eth_a_5ln.cid` in repo · run `validate-5ln-cid.ps1` before Compare |
 
 ## Deploy
 

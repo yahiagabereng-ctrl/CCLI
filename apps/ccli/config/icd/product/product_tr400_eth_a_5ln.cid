@@ -1,0 +1,462 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SCL xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:sxy="http://www.iec.ch/61850/2003/SCLcoordinates" xsi:schemaLocation="http://www.iec.ch/61850/2003/SCL SCL.xsd" version="2007" revision="B" release="4" xmlns="http://www.iec.ch/61850/2003/SCL">
+<Header id="CCI_Oss_Contr_5LN" version="1" revision="1" toolID="" nameStructure="IEDName">
+<History>
+<Hitem version="1" revision="1" when="2026-10-14" what="Product 5-LN O.15 certificate model: LLN0 + LPHD1 + PdCMMXU1 + WlimDWMX1 + WSdDAGC1; DS_R_PdC_Mis4sec + urcb_PdC_Mis4sec only; no GOOSE/BRCB; trimmed from lab_tg544_eth_a.cid History rev 9" who="CCLI" why="PRODUCT_SPECIMEN_5LN — U-T1-02/U-T1-03 cert Compare" />
+</History>
+</Header>
+<Communication>
+<SubNetwork name="subnetwork1" type="8-MMS" desc="">
+<Text>CCI-DSO bus — TG544 LAN1 Eth_A</Text>
+<BitRate unit="b/s">100000</BitRate>
+<ConnectedAP iedName="CCI016_01" apName="accessPoint1">
+<Address>
+<P  type="IP">192.168.10.1</P>
+<P type="IP-SUBNET">255.255.255.0</P>
+<P type="IP-GATEWAY">192.168.10.1</P>
+<P type="OSI-TSEL">0001</P>
+<P type="OSI-PSEL">00000001</P>
+<P type="OSI-SSEL">0001</P>
+<P type="OSI-AP-Title">1,1,1,999,1</P>
+<P type="OSI-AE-Qualifier">12</P>
+</Address>
+</ConnectedAP>
+</SubNetwork>
+</Communication>
+<IED name="CCI016_01" engRight="full" originalSclRevision="B" originalSclVersion="2007">
+<Services nameLength="32">
+<DynAssociation />
+<GetDirectory />
+<GetDataObjectDefinition />
+<GetDataSetValue />
+<DataSetDirectory />
+<ConfDataSet max="10" maxAttributes="200" modify="false" />
+<ReadWrite />
+<ConfReportControl max="10" bufMode="unbuffered" bufConf="false" />
+<GetCBValues />
+<FileHandling />
+<TimerActivatedControl />
+<ClientServices bufReport="false" goose="false" readLog="false" unbufReport="true" supportsLdName="true" maxAttributes="200" maxReports="10" />
+<DataObjectDirectory />
+<ReportSettings cbName="Fix" datSet="Fix" rptID="Fix" optFields="Fix" bufTime="Fix" trgOps="Fix" intgPd="Fix" resvTms="false" owner="false" />
+<ConfLNs fixPrefix="true" fixLnInst="true" />
+<ConfLdName />
+<TimeSyncProt sntp="true" c37_238="false" other="true" />
+</Services>
+<AccessPoint name="accessPoint1" desc="">
+<Server desc="CCI CEI 0-16 Oss. e Contr. — product 5-LN">
+<Authentication />
+<LDevice inst="LD_Plant" desc="">
+<LN0 lnClass="LLN0" lnType="LLN01" inst="">
+<DataSet name="DS_R_PdC_Mis4sec" desc="Misure al PdC a 4sec del CCI">
+<FCDA ldInst="LD_Plant" lnClass="MMXU" fc="MX" lnInst="1" prefix="PdC" doName="TotW" />
+<FCDA ldInst="LD_Plant" lnClass="MMXU" fc="MX" lnInst="1" prefix="PdC" doName="TotVAr" />
+<FCDA ldInst="LD_Plant" lnClass="MMXU" fc="MX" lnInst="1" prefix="PdC" doName="PPV" />
+<FCDA ldInst="LD_Plant" lnClass="MMXU" fc="MX" lnInst="1" prefix="PdC" doName="A" />
+</DataSet>
+<ReportControl name="urcb_PdC_Mis4sec" confRev="1" datSet="DS_R_PdC_Mis4sec" rptID="CCI016_01LD_Plant/LLN0.urcb_PdC_Mis4sec" intgPd="4000" bufTime="0" desc="Misure al PdC a 4sec del CCI">
+<TrgOps period="true" gi="true" />
+<OptFields seqNum="true" timeStamp="true" dataSet="true" reasonCode="true" dataRef="true" entryID="false" configRef="true" />
+<RptEnabled max="2" desc="Client DSO" />
+</ReportControl>
+<DOI name="Mod" desc="">
+<DAI name="stVal">
+<Val>on</Val>
+</DAI>
+<DAI name="ctlModel">
+<Val>status-only</Val>
+</DAI>
+</DOI>
+<DOI name="Beh" desc="">
+<DAI name="stVal">
+<Val>on</Val>
+</DAI>
+</DOI>
+<DOI name="Health" desc="">
+<DAI name="stVal">
+<Val>Ok</Val>
+</DAI>
+</DOI>
+<DOI name="NamPlt" desc="">
+<DAI name="configRev">
+<Val>20261014</Val>
+</DAI>
+<DAI name="ldNs" desc="">
+<Val>IEC61850-7-4:2010</Val>
+</DAI>
+</DOI>
+</LN0>
+<LN lnClass="LPHD" lnType="LPHD1" inst="1" prefix="">
+<DOI name="PhyHealth" desc="">
+<DAI name="stVal">
+<Val>Ok</Val>
+</DAI>
+</DOI>
+<DOI name="PhyNam">
+<DAI name="vendor">
+<Val>Abcd_01</Val>
+</DAI>
+<DAI name="swRev">
+<Val>1.0</Val>
+</DAI>
+<DAI name="location">
+<Val>IT000E123456789</Val>
+</DAI>
+</DOI>
+</LN>
+<LN lnClass="MMXU" lnType="MMXU1" inst="1" prefix="PdC">
+<DOI name="Beh" desc="">
+<DAI name="stVal">
+<Val>on</Val>
+</DAI>
+</DOI>
+<DOI name="PPV" desc="Tensione concatenata al PdC">
+<SDI name="phsAB">
+<SDI name="cVal">
+<SDI name="mag">
+<DAI name="f">
+<Val>20</Val>
+</DAI>
+</SDI>
+</SDI>
+</SDI>
+<SDI name="phsBC">
+<SDI name="cVal">
+<SDI name="mag">
+<DAI name="f">
+<Val>0</Val>
+</DAI>
+</SDI>
+</SDI>
+</SDI>
+<SDI name="phsCA">
+<SDI name="cVal">
+<SDI name="mag">
+<DAI name="f">
+<Val>0</Val>
+</DAI>
+</SDI>
+</SDI>
+</SDI>
+</DOI>
+<DOI name="A" desc="Corrente al PdC">
+<SDI name="phsA">
+<SDI name="cVal">
+<SDI name="mag">
+<DAI name="f">
+<Val>0</Val>
+</DAI>
+</SDI>
+</SDI>
+</SDI>
+<SDI name="phsB">
+<SDI name="cVal">
+<SDI name="mag">
+<DAI name="f">
+<Val>0</Val>
+</DAI>
+</SDI>
+</SDI>
+</SDI>
+<SDI name="phsC">
+<SDI name="cVal">
+<SDI name="mag">
+<DAI name="f">
+<Val>0</Val>
+</DAI>
+</SDI>
+</SDI>
+</SDI>
+</DOI>
+</LN>
+<LN lnClass="DWMX" lnType="DWMX1" inst="1" prefix="Wlim" desc="Fz. di Regolazione - limitazione della W - da DSO">
+<DOI name="NamPlt">
+<DAI name="lnNs">
+<Val>(Tr)IEC61850-CEI016:2022</Val>
+</DAI>
+</DOI>
+<DOI name="Beh" desc="">
+<DAI name="stVal">
+<Val>off</Val>
+</DAI>
+</DOI>
+<DOI name="WMaxSptPct" desc="Setpoint limite di W in generazione (percentuale con segno rispetto a Smax di Impianto) [0..100]">
+<DAI name="ctlModel">
+<Val>direct-with-enhanced-security</Val>
+</DAI>
+</DOI>
+<DOI name="Mod" desc="Attivazione/disattivazione funzionamento [5 = Inattiva, 1 = Attiva]">
+<DAI name="stVal">
+<Val>off</Val>
+</DAI>
+<DAI name="ctlModel">
+<Val>direct-with-enhanced-security</Val>
+</DAI>
+</DOI>
+</LN>
+<LN lnClass="DAGC" lnType="DAGC1" inst="1" prefix="WSd" desc="Fz. di Regolazione - modulazione di W in immissione/assorbimento al PdC - da DSO">
+<DOI name="NamPlt">
+<DAI name="lnNs">
+<Val>(Tr)IEC61850-CEI016:2022</Val>
+</DAI>
+</DOI>
+<DOI name="Beh" desc="">
+<DAI name="stVal">
+<Val>on</Val>
+</DAI>
+</DOI>
+<DOI name="WSptPct" desc="Setpoint modulazione W in immissione/assorbimento al PdC (percentuale con segno rispetto alla Smax di Impianto) [0..100]">
+<DAI name="ctlModel">
+<Val>direct-with-enhanced-security</Val>
+</DAI>
+<SDI name="mxVal" desc="Setpoint W in immissione/assorbimento al PdC (percentuale con segno rispetto a Smax di Impianto) [0..100]">
+<DAI name="f" desc="Valore default set-point">
+<Val>20</Val>
+</DAI>
+</SDI>
+</DOI>
+<DOI name="Mod" desc="Attivazione/disattivazione funzionamento - [5 = Inattiva, 1 = Attiva]">
+<DAI name="stVal">
+<Val>on</Val>
+</DAI>
+<DAI name="ctlModel">
+<Val>direct-with-enhanced-security</Val>
+</DAI>
+</DOI>
+</LN>
+</LDevice>
+</Server>
+</AccessPoint>
+</IED>
+<DataTypeTemplates>
+<LNodeType id="LLN01" lnClass="LLN0">
+<DO name="Mod" type="ENC_1_Mod" />
+<DO name="Beh" type="ENS_2_Beh" />
+<DO name="Health" type="ENS_1_Health" />
+<DO name="NamPlt" type="LPL_5_NamPlt" />
+</LNodeType>
+<LNodeType id="LPHD1" lnClass="LPHD">
+<DO name="PhyNam" type="DPL_1_PhyNam" />
+<DO name="PhyHealth" type="ENS_1_PhyHealth" />
+<DO name="Proxy" type="SPS_1_Proxy" />
+</LNodeType>
+<LNodeType id="MMXU1" lnClass="MMXU">
+<DO name="Beh" type="ENS_2_Beh" />
+<DO name="TotW" type="MV_2_CtbWPct" />
+<DO name="TotVAr" type="MV_2_CtbWPct" />
+<DO name="PPV" type="DEL_1_PPV" />
+<DO name="A" type="WYE_1_A" />
+</LNodeType>
+<LNodeType id="DWMX1" lnClass="DWMX">
+<DO name="NamPlt" type="LPL_5_NamPlt" />
+<DO name="Beh" type="ENS_2_Beh" />
+<DO name="WMaxSptPct" type="APC_1_WMaxSpt" />
+<DO name="Mod" type="ENC_2_Mod" />
+<DO name="RmpRteUse" type="SPG_2_RefFrm" />
+<DO name="InEcpRef" type="ORG_2_ElcMsRef" />
+<DO name="FctOpStAuto" type="ENS_2_FctOpSt" />
+<DO name="FctOpStEx" type="ENS_2_FctOpSt" />
+</LNodeType>
+<LNodeType id="DAGC1" lnClass="DAGC">
+<DO name="NamPlt" type="LPL_5_NamPlt" />
+<DO name="Beh" type="ENS_2_Beh" />
+<DO name="ReqW" type="MV_2_CtbWPct" />
+<DO name="WSptPct" type="APC_1_WMaxSpt" />
+<DO name="Mod" type="ENC_2_Mod" />
+<DO name="RmpRteUse" type="SPG_2_RefFrm" />
+<DO name="InEcpRef" type="ORG_2_ElcMsRef" />
+<DO name="FctOpSt" type="ENS_2_FctOpSt" />
+</LNodeType>
+<DOType id="ENC_1_Mod" cdc="ENC">
+<DA name="stVal" type="Mod" bType="Enum" fc="ST" dchg="true" />
+<DA name="q" bType="Quality" fc="ST" qchg="true" />
+<DA name="t" bType="Timestamp" fc="ST" />
+<DA name="ctlModel" type="CtlModelKind" bType="Enum" fc="CF" />
+</DOType>
+<DOType id="ENS_2_Beh" cdc="ENS">
+<DA name="stVal" type="Beh" bType="Enum" fc="ST" dchg="true" dupd="true" />
+<DA name="q" bType="Quality" fc="ST" qchg="true" />
+<DA name="t" bType="Timestamp" fc="ST" />
+</DOType>
+<DOType id="ENS_1_Health" cdc="ENS">
+<DA name="stVal" type="Health" bType="Enum" fc="ST" dchg="true" dupd="true" />
+<DA name="q" bType="Quality" fc="ST" qchg="true" />
+<DA name="t" bType="Timestamp" fc="ST" />
+</DOType>
+<DOType id="DPL_1_PhyNam" cdc="DPL">
+<DA name="vendor" bType="VisString255" fc="DC" />
+<DA name="swRev" bType="VisString255" fc="DC" />
+<DA name="location" bType="VisString255" fc="DC" />
+</DOType>
+<DOType id="ENS_1_PhyHealth" cdc="ENS">
+<DA name="stVal" type="PhyHealth" bType="Enum" fc="ST" dchg="true" dupd="true" />
+<DA name="q" bType="Quality" fc="ST" qchg="true" />
+<DA name="t" bType="Timestamp" fc="ST" />
+</DOType>
+<DOType id="SPS_1_Proxy" cdc="SPS">
+<DA name="stVal" bType="BOOLEAN" fc="ST" dchg="true" />
+<DA name="q" bType="Quality" fc="ST" qchg="true" />
+<DA name="t" bType="Timestamp" fc="ST" />
+</DOType>
+<DOType id="LPL_5_NamPlt" cdc="LPL">
+<DA name="vendor" bType="VisString255" fc="DC" />
+<DA name="swRev" bType="VisString255" fc="DC" />
+<DA name="configRev" bType="VisString255" fc="DC" />
+<DA name="ldNs" bType="VisString255" fc="EX"/>
+<DA name="lnNs" bType="VisString255" fc="EX"/>
+</DOType>
+<DOType id="MV_2_CtbWPct" cdc="MV">
+<DA name="mag" type="AnalogueValue_1" bType="Struct" fc="MX" dchg="true" dupd="true" />
+<DA name="q" bType="Quality" fc="MX" qchg="true" />
+<DA name="t" bType="Timestamp" fc="MX" />
+</DOType>
+<DOType id="DEL_1_PPV" cdc="DEL">
+<SDO name="phsAB" type="CMV_1_phsAB" />
+<SDO name="phsBC" type="CMV_1_phsAB" />
+<SDO name="phsCA" type="CMV_1_phsAB" />
+</DOType>
+<DOType id="CMV_1_phsAB" cdc="CMV">
+<DA name="cVal" type="Vector_1" bType="Struct" fc="MX" dchg="true" dupd="true" />
+<DA name="q" bType="Quality" fc="MX" qchg="true" />
+<DA name="t" bType="Timestamp" fc="MX" />
+</DOType>
+<DOType id="WYE_1_A" cdc="WYE">
+<SDO name="phsA" type="CMV_1_phsAB" />
+<SDO name="phsB" type="CMV_1_phsAB" />
+<SDO name="phsC" type="CMV_1_phsAB" />
+</DOType>
+<DOType id="APC_1_WMaxSpt" cdc="APC">
+<DA name="Cancel" type="APCCancel_1" bType="Struct" fc="CO" />
+<DA name="Oper" type="APCOperate_1" bType="Struct" fc="CO" />
+<DA name="SBOw" type="APCSelectWithValue_1" bType="Struct" fc="CO" />
+<DA name="ctlModel" type="CtlModelKind" bType="Enum" fc="CF" />
+<DA name="mxVal" type="AnalogueValue_1" bType="Struct" fc="MX" dchg="true" />
+<DA name="q" bType="Quality" fc="MX" qchg="true" />
+<DA name="t" bType="Timestamp" fc="MX" />
+</DOType>
+<DOType id="ENC_2_Mod" cdc="ENC">
+<DA name="stVal" type="Mod" bType="Enum" fc="ST" dchg="true" />
+<DA name="q" bType="Quality" fc="ST" qchg="true" />
+<DA name="t" bType="Timestamp" fc="ST" />
+<DA name="ctlModel" type="CtlModelKind" bType="Enum" fc="CF" />
+<DA name="SBOw" type="ENCSelectWithValue_1" bType="Struct" fc="CO" />
+<DA name="Oper" type="ENCOperate_1" bType="Struct" fc="CO" />
+<DA name="Cancel" type="ENCCancel_1" bType="Struct" fc="CO" />
+</DOType>
+<DOType id="ENS_2_FctOpSt" cdc="ENS">
+<DA name="stVal" type="DERFunctionState" bType="Enum" fc="ST" dchg="true" dupd="true" />
+<DA name="q" bType="Quality" fc="ST" qchg="true" />
+<DA name="t" bType="Timestamp" fc="ST" />
+</DOType>
+<DOType id="SPG_2_RefFrm" cdc="SPG">
+<DA name="setVal" bType="BOOLEAN" fc="SP" dchg="true" />
+</DOType>
+<DOType id="ORG_2_ElcMsRef" cdc="ORG">
+<DA name="setSrcRef" bType="VisString129" fc="SP" dchg="true" />
+</DOType>
+<DAType id="Vector_1">
+<BDA name="mag" type="AnalogueValue_1" bType="Struct" />
+<BDA name="ang" type="AnalogueValue_1" bType="Struct" />
+</DAType>
+<DAType id="APCCancel_1">
+<BDA name="ctlVal" type="AnalogueValue_1" bType="Struct" />
+<BDA name="origin" type="Originator_1" bType="Struct" />
+<BDA name="ctlNum" bType="INT8U" />
+<BDA name="T" bType="Timestamp" />
+<BDA name="Test" bType="BOOLEAN" />
+</DAType>
+<DAType id="APCOperate_1">
+<BDA name="ctlVal" type="AnalogueValue_1" bType="Struct" />
+<BDA name="origin" type="Originator_1" bType="Struct" />
+<BDA name="ctlNum" bType="INT8U" />
+<BDA name="T" bType="Timestamp" />
+<BDA name="Test" bType="BOOLEAN" />
+<BDA name="Check" bType="Check" />
+</DAType>
+<DAType id="APCSelectWithValue_1">
+<BDA name="ctlVal" type="AnalogueValue_1" bType="Struct" />
+<BDA name="origin" type="Originator_1" bType="Struct" />
+<BDA name="ctlNum" bType="INT8U" />
+<BDA name="T" bType="Timestamp" />
+<BDA name="Test" bType="BOOLEAN" />
+<BDA name="Check" bType="Check" />
+</DAType>
+<DAType id="ENCSelectWithValue_1">
+<BDA name="ctlVal" type="Mod" bType="Enum" />
+<BDA name="origin" type="Originator_1" bType="Struct" />
+<BDA name="ctlNum" bType="INT8U" />
+<BDA name="T" bType="Timestamp" />
+<BDA name="Test" bType="BOOLEAN" />
+<BDA name="Check" bType="Check" />
+</DAType>
+<DAType id="ENCOperate_1">
+<BDA name="ctlVal" type="Mod" bType="Enum" />
+<BDA name="origin" type="Originator_1" bType="Struct" />
+<BDA name="ctlNum" bType="INT8U" />
+<BDA name="T" bType="Timestamp" />
+<BDA name="Test" bType="BOOLEAN" />
+<BDA name="Check" bType="Check" />
+</DAType>
+<DAType id="ENCCancel_1">
+<BDA name="ctlVal" type="Mod" bType="Enum" />
+<BDA name="origin" type="Originator_1" bType="Struct" />
+<BDA name="ctlNum" bType="INT8U" />
+<BDA name="T" bType="Timestamp" />
+<BDA name="Test" bType="BOOLEAN" />
+</DAType>
+<DAType id="Originator_1">
+<BDA name="orCat" type="OriginatorCategoryKind" bType="Enum" />
+<BDA name="orIdent" bType="Octet64" />
+</DAType>
+<DAType id="AnalogueValue_1">
+<BDA name="f" bType="FLOAT32" desc="The value of f shall be the FLOAT representation of the measured value. f shall represent the technological value in SI units." />
+</DAType>
+<EnumType id="Mod">
+<EnumVal ord="1">on</EnumVal>
+<EnumVal ord="2">blocked</EnumVal>
+<EnumVal ord="3">test</EnumVal>
+<EnumVal ord="4">test/blocked</EnumVal>
+<EnumVal ord="5">off</EnumVal>
+</EnumType>
+<EnumType id="CtlModelKind">
+<EnumVal ord="0">status-only</EnumVal>
+<EnumVal ord="1">direct-with-normal-security</EnumVal>
+<EnumVal ord="2">sbo-with-normal-security</EnumVal>
+<EnumVal ord="3">direct-with-enhanced-security</EnumVal>
+<EnumVal ord="4">sbo-with-enhanced-security</EnumVal>
+</EnumType>
+<EnumType id="Beh">
+<EnumVal ord="1">on</EnumVal>
+<EnumVal ord="2">blocked</EnumVal>
+<EnumVal ord="3">test</EnumVal>
+<EnumVal ord="4">test/blocked</EnumVal>
+<EnumVal ord="5">off</EnumVal>
+</EnumType>
+<EnumType id="Health">
+<EnumVal ord="1">Ok</EnumVal>
+<EnumVal ord="2">Warning</EnumVal>
+<EnumVal ord="3">Alarm</EnumVal>
+</EnumType>
+<EnumType id="PhyHealth">
+<EnumVal ord="1">Ok</EnumVal>
+<EnumVal ord="2">Warning</EnumVal>
+<EnumVal ord="3">Alarm</EnumVal>
+</EnumType>
+<EnumType id="OriginatorCategoryKind">
+<EnumVal ord="0">not-supported</EnumVal>
+<EnumVal ord="1">bay-control</EnumVal>
+<EnumVal ord="2">station-control</EnumVal>
+<EnumVal ord="3">remote-control</EnumVal>
+<EnumVal ord="4">automatic-bay</EnumVal>
+<EnumVal ord="5">automatic-station</EnumVal>
+<EnumVal ord="6">automatic-remote</EnumVal>
+<EnumVal ord="7">maintenance</EnumVal>
+<EnumVal ord="8">process</EnumVal>
+</EnumType>
+<EnumType id="DERFunctionState">
+<EnumVal ord="0">Not Available</EnumVal>
+<EnumVal ord="1">Autonomous</EnumVal>
+<EnumVal ord="2">Slave</EnumVal>
+</EnumType>
+</DataTypeTemplates>
+</SCL>
