@@ -3,6 +3,8 @@
 **Use this before first Connect (U-T1-01 / U-P0-01).**  
 Masomeh pack copy: `00i_PC1_TSP_IMPORT_CHECKLIST.md` (from `stage-tsp-field-pack.ps1`).
 
+**Connect failing (`Initiate Response Failed`)?** Start with **`MASOMEH_CONNECT_FIX_2026-10-14.md`** (pack: `00k_…`) and **`scripts/dut-mms-tsp-preflight.ps1`** on logger PC.
+
 ---
 
 ## 0. One-time PC setup

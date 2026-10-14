@@ -36,6 +36,16 @@ if (Test-Path $tlsBundleDoc) {
     Copy-Item -Force $tlsBundleDoc (Join-Path $Dest "00j_PC1_TLS_BUNDLE_DUT_ALIGNED.md")
     Write-Host "  00j_PC1_TLS_BUNDLE_DUT_ALIGNED.md"
 }
+$masomehFix = Join-Path $Repo "lab\testpro\MASOMEH_CONNECT_FIX_2026-10-14.md"
+if (Test-Path $masomehFix) {
+    Copy-Item -Force $masomehFix (Join-Path $Dest "00k_MASOMEH_CONNECT_FIX_2026-10-14.md")
+    Write-Host "  00k_MASOMEH_CONNECT_FIX_2026-10-14.md"
+}
+$triage = Join-Path $Repo "lab\evidence\testsuite-pro\inbox\TSP_INITIATE_RESPONSE_TRIAGE_2026-10-14.md"
+if (Test-Path $triage) {
+    Copy-Item -Force $triage (Join-Path $Dest "00l_TSP_INITIATE_RESPONSE_TRIAGE_2026-10-14.md")
+    Write-Host "  00l_TSP_INITIATE_RESPONSE_TRIAGE_2026-10-14.md"
+}
 
 $json = Join-Path $Repo "lab\testpro\tsp_tls_and_cid.json"
 if (Test-Path $json) {
