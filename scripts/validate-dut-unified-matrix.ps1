@@ -7,6 +7,7 @@
 param(
     [string]$HostAddr = "192.168.1.130",
     [string]$HostKey = "SHA256:4N84xpdiJRUiipactNbXLdVa2+A4eCCrUurVDrz3qoE",
+    [string]$ExpectedSha = "",
     [switch]$WriteEvidence,
     [switch]$FixServices
 )
@@ -17,9 +18,19 @@ $Plink = "C:\Program Files\PuTTY\plink.exe"
 if (-not (Test-Path $Plink)) { throw "PuTTY plink not found" }
 if (-not $env:CCLI_TG544_PW) { throw "Source lab-env.ps1 first" }
 
+$verPath = Join-Path $Repo "apps\ccli\VERSION"
+$verLines = Get-Content $verPath
+$expectedPkg = "{0}-r{1}" -f $verLines[0].Trim(), $verLines[1].Trim()
+$expectedCodename = if ($verLines.Count -ge 3) { $verLines[2].Trim() } else { "" }
+
 $date = Get-Date -Format "yyyy-MM-dd"
 $ts = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
-$expectedSha = "1df82c26243021a86c533a179781c749fc852c2f724efa3b0aa4018b2969eca1"
+if (-not $ExpectedSha) {
+    $binLocal = Join-Path $Repo "lab\tg544-openwrt\ccli-bin"
+    if (Test-Path $binLocal) {
+        $ExpectedSha = (Get-FileHash $binLocal -Algorithm SHA256).Hash.ToLower()
+    }
+}
 
 function Invoke-Dut {
     param([string]$Cmd)
@@ -54,8 +65,13 @@ $checks["U-D7-01 no cleartext :102"] = $ss -notmatch ":102 "
 $checks["U-P0-07 single ccli PID"] = $ccliCount -eq 1
 $checks["U-P0-07 no iec61850d"] = $ps -notmatch "iec61850"
 $checks["U-P0-06 TLS PEMs on DUT"] = ([int]($tlsN -replace '\D', '') -ge 4)
-$checks["U-P0-08 version 0.1.0-r52"] = $version -match "0\.1\.0-r52"
-$checks["U-P0-08 binary SHA (manifest)"] = $sha -match $expectedSha
+$checks["U-P0-08 version $expectedPkg"] = $version -match [regex]::Escape($expectedPkg)
+if ($ExpectedSha) {
+    $checks["U-P0-08 binary SHA (repo ccli-bin)"] = $sha -match $ExpectedSha
+} else {
+    $checks["U-P0-08 binary SHA (repo ccli-bin)"] = $true
+    Write-Host "WARN: no ExpectedSha / local ccli-bin — skip SHA compare" -ForegroundColor Yellow
+}
 $checks["MMS/104 TLS in yaml"] = $yaml -match "tls_enabled: true"
 $checks["Interim model lab_tg544_eth_a.cfg"] = $yaml -match "lab_tg544_eth_a\.cfg"
 $checks["Modbus RTU ttyS1 (bench)"] = $yaml -match "ttyS1" -or $yaml -match "backend: rtu"

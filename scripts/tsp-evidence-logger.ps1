@@ -13,7 +13,7 @@ param(
     [string]$UnifiedId = "",
     [string]$SessionDate = "",  # YYYY-MM-DD; default today
     [string]$Operator = "",
-    [string]$CcliPkg = "0.1.0-r52",
+    [string]$CcliPkg = "0.1.0-r53",
     [string]$TspVersion = "",
     [string]$PcIp = "192.168.10.10",
     [string]$DutIp = "192.168.10.1",

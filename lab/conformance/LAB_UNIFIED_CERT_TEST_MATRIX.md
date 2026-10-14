@@ -25,7 +25,7 @@
 | Operator | *(fill)* |
 | Specimen | **5-LN product** per PRODUCT_SPECIMEN_5LN |
 | TSP version | *(fill)* |
-| DUT `ccli --version` | *(fill)* |
+| DUT `ccli --version` | **0.1.0-r53** (target) · see `apps/ccli/VERSION` |
 | CID file | `product_tr400_eth_a_5ln.cid` (or interim note) |
 | cfg SHA-256 | *(fill)* |
 | Bench | **Two-PC** · PC-B TSP · PC-A 104/LAN3/COM5 |

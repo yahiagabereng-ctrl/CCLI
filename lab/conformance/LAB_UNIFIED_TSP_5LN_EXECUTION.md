@@ -47,7 +47,7 @@ cd D:\CCLI\CCLI   # repo on PC1
 . lab\tg544-openwrt\lab-env.ps1   # optional: DUT SSH on LAN1
 
 $dt = Get-Date -Format yyyy-MM-dd
-powershell -File scripts\tsp-evidence-logger.ps1 -Action Init -SessionDate $dt -Operator Masomeh -CcliPkg "0.1.0-r52" -TspVersion "<TSP build>"
+powershell -File scripts\tsp-evidence-logger.ps1 -Action Init -SessionDate $dt -Operator Masomeh -CcliPkg "0.1.0-r53" -TspVersion "<TSP build>"
 ```
 
 Creates stubs under `lab/evidence/testsuite-pro/inbox/` and `pcap/`, plus **`TSP_UNIFIED_5LN_SESSION_INDEX_<date>.md`**.

@@ -7,6 +7,32 @@ Format: **`semver-rN`** — bump **N** in `VERSION` line 2 and `package/ccli/Mak
 
 ---
 
+## 0.1.0-r53 — P5-PPV-EMT432-UNIFIED-CERT (2026-10-14)
+
+### Added
+
+- **PdCMMXU1.PPV** from Modbus when **`reg_line_voltage`** is set (EMT432 **V_L1_L2 @980**, **`line_voltage_scale: 0.001`**).
+- Lab yaml **`lab_tr400_phase4_emt432_lan3_tcp.yaml`** includes P/Q/PPV meter block.
+
+### Changed
+
+- **`deploy-ccli-dut.sh`**: disable **iec61850service** before starting **ccli** (single owner of **3782**).
+- Unified cert preflight: **`scripts/validate-dut-unified-matrix.ps1`** reads **`apps/ccli/VERSION`**.
+
+### Build note
+
+OpenWrt SDK build requires **CCLI `acse.c` fork** (62351-4 AARE tags + bridge getters) as documented in `lab/TSP_P3_07_LIVE_CONNECT_TEAM_HANDOFF.md`. Until that patch is re-applied to `third_party/libiec61850`, **keep DUT on shipped `ccli-bin` r52** and treat **r53** as repo source-of-truth for matrix/specimen pins.
+
+### Deploy (after successful SDK build)
+
+```powershell
+lab/tg544-openwrt/wsl-build-ccli.sh
+. lab/tg544-openwrt/lab-env.ps1
+lab/tg544-openwrt/deploy-ccli-bench-lan2.ps1
+```
+
+---
+
 ## 0.1.0-r52 — EMT432 float word-swap (2026-10-09)
 
 ### Fixed

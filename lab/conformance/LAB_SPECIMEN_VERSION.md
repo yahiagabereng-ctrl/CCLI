@@ -27,7 +27,7 @@ Use this file as the **single reference** for which CID/cfg revision TSP, MICS, 
 | DUT deploy path | `/etc/ccli/icd/lab_tg544_eth_a.cfg` |
 | Runtime mode | `model=full_cid_cfg` · yaml `model_cfg: /etc/ccli/icd/lab_tg544_eth_a.cfg` |
 | LN count (Compare) | **31** |
-| Lab firmware (validated) | `ccli 0.1.0-r52` (record actual `ccli --version` on each session) |
+| Lab firmware (target) | `ccli 0.1.0-r53` · prior pin **r52** manifest 2026-10-14 (record `ccli --version` each session) |
 
 ### Rev 6–7 model delta (Compare fix)
 

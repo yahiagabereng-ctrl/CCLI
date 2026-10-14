@@ -83,6 +83,7 @@ set(CCLI_ADAPTERS_SOURCES
     adapters/iec61850_mms/mms_adapter.cpp
     adapters/iec61850_mms/mms_acse_auth.cpp
     adapters/iec61850_mms/mms_aare_auth.cpp
+    adapters/iec61850_mms/ccli_acse_bridge.c
     adapters/iec61850_mms/gnss_time.cpp
     adapters/iec60870_104/iec104_adapter.cpp
     adapters/iec60870_104/iec104_tls.cpp
