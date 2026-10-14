@@ -15,7 +15,7 @@ Masomeh pack copy: `00i_PC1_TSP_IMPORT_CHECKLIST.md` (from `stage-tsp-field-pack
 
 ## 1. Stage TLS + CID from GitHub
 
-Yahia may refresh PEMs from **EJBCA** (`lab/EJBCA_LAB_SETUP.md` §12.4) before push — always **`git pull`** so PC1 matches DUT **`/etc/ccli/tls/`**.
+Yahia may refresh PEMs from **EJBCA** (`lab/EJBCA_LAB_SETUP.md` §12.4) before push — always **`git pull`** so PC1 matches DUT **`/etc/ccli/tls/`**. After a CA sync, re-run **`stage-tsp-tls.ps1`** even if `root_CA.pem` looks updated: a **stale `client_tls.pem`** causes TSP **`tlsv1 alert access denied`** ([`TSP_TLS_ACCESS_DENIED_2026-10-14.md`](../evidence/testsuite-pro/inbox/TSP_TLS_ACCESS_DENIED_2026-10-14.md)).
 
 ```powershell
 cd D:\CCLI\CCLI   # or your clone path
