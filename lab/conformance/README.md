@@ -21,7 +21,8 @@ Templates from the accredited lab (2026-10-08 email) live at repo root under `la
 | [LAB_CONFIG_GUIDE.md](LAB_CONFIG_GUIDE.md) | D6 lab guide | IPs, yaml, firmware ID |
 | [LAB_SPECIMEN_VERSION.md](LAB_SPECIMEN_VERSION.md) | **CID/cfg pin** (History rev, configRev, SHA-256) | TSP Compare / MICS / deploy |
 | [DUT_LAB_FINALIZE_AND_CERT_PATH.md](DUT_LAB_FINALIZE_AND_CERT_PATH.md) | **DUT bench close** vs **UCA certificate** path | After T1–T10 |
-| [LAB_UNIFIED_CERT_TEST_MATRIX.md](LAB_UNIFIED_CERT_TEST_MATRIX.md) | **Single □** functional + cyber + O.15 (CSV for Excel) | `ccli-lab-unified-cert-test-matrix` |
+| [LAB_UNIFIED_CERT_TEST_MATRIX.md](LAB_UNIFIED_CERT_TEST_MATRIX.md) | **Single □** functional + cyber + O.15 · rev 1.2 + **Logger** column (CSV) | `ccli-lab-unified-cert-test-matrix` |
+| [LAB_UNIFIED_TSP_5LN_EXECUTION.md](LAB_UNIFIED_TSP_5LN_EXECUTION.md) | TestPro finalize · evidence bundle per row | `ccli-lab-unified-tsp-5ln-execution` |
 | [LAB_UNIFIED_CERT_TEST_ROADMAP.md](LAB_UNIFIED_CERT_TEST_ROADMAP.md) | Two-PC bench phase order (TSP + meter + RS485) | `ccli-lab-unified-cert-test-roadmap` |
 | [PRODUCT_SPECIMEN_5LN.md](PRODUCT_SPECIMEN_5LN.md) | **5-LN** product specimen pin (first unified run) | `ccli-product-specimen-5ln` |
 | [PRODUCT_SPECIMEN_5LN_VALIDATION.md](PRODUCT_SPECIMEN_5LN_VALIDATION.md) | Matrix vs 5-LN audit + validator | `ccli-product-specimen-5ln-validation` |

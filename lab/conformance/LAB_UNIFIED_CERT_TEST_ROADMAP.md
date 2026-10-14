@@ -1,8 +1,9 @@
 # Unified certification test roadmap — 5-LN product · two-PC bench
 
 **Document ID:** CCLI-LAB-UNIFIED-ROAD-001  
-**Revision:** 1.0  
+**Revision:** 1.1  
 **Date:** 2026-10-14  
+**TestPro logs:** [LAB_UNIFIED_TSP_5LN_EXECUTION.md](LAB_UNIFIED_TSP_5LN_EXECUTION.md)
 **RAG source_id:** `ccli-lab-unified-cert-test-roadmap`  
 **Matrix:** [LAB_UNIFIED_CERT_TEST_MATRIX.md](LAB_UNIFIED_CERT_TEST_MATRIX.md) · CSV: [LAB_UNIFIED_CERT_TEST_MATRIX.csv](LAB_UNIFIED_CERT_TEST_MATRIX.csv)  
 **Specimen:** [PRODUCT_SPECIMEN_5LN.md](PRODUCT_SPECIMEN_5LN.md)
@@ -31,7 +32,7 @@ Executable order for **your hardware**: **PC-B** (Test Suite Pro, LAN1 only) · 
   PC-A 192.168.1.183  ──LAN2──  DUT 192.168.1.130:2404 (IEC 104)
   PC-A 192.168.30.10  ──LAN3──  DUT 192.168.30.1      (plant)
   EMT432 192.168.30.50:502 (default doc) OR 192.168.178.250 (Chronos SN bench)
-  PC-A COM5 USB-RS485 ──A1/B1── DUT /dev/ttyS1        (Huawei-style mock)
+  PC-A COM5 USB-RS485 ──A1/B1── DUT /dev/ttyS1        (SUN2000 RTU mock)
 ```
 
 **Before Phase 0b:** pick LAN3 profile · run `modbus_emt432_tcp_probe.py` if using TCP meter · start **SUN2000** via `lab/start-bench-plant.ps1` on COM5 (not `--huawei` RTU slave).

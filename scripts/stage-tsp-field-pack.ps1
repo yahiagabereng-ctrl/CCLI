@@ -71,7 +71,9 @@ $docs = @(
     @{ Rel = "lab/conformance/CID_PICS_ALIGNMENT.md"; Out = "14_CID_PICS_ALIGNMENT.md" },
     @{ Rel = "lab/conformance/LAB_CONFIG_GUIDE.md"; Out = "15_LAB_CONFIG_GUIDE.md" },
     @{ Rel = "lab/conformance/LAB_SPECIMEN_VERSION.md"; Out = "16_LAB_SPECIMEN_VERSION.md" },
-    @{ Rel = "handoff/masomeh95/PC1_HW_CERT_PREFLIGHT.md"; Out = "00f_PC1_HW_CERT_PREFLIGHT.md" }
+    @{ Rel = "handoff/masomeh95/PC1_HW_CERT_PREFLIGHT.md"; Out = "00f_PC1_HW_CERT_PREFLIGHT.md" },
+    @{ Rel = "lab/conformance/LAB_UNIFIED_TSP_5LN_EXECUTION.md"; Out = "00g_TSP_5LN_EXECUTION_AND_LOGS.md" },
+    @{ Rel = "lab/evidence/testsuite-pro/EVIDENCE_PER_TEST_PROTOCOL.md"; Out = "05c_EVIDENCE_PER_TEST_PROTOCOL.md" }
 )
 
 $tspScripts = @(

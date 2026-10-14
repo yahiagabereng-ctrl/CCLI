@@ -86,6 +86,7 @@ ping 192.168.10.1
 | 4 | `00e_P5_FULLCIRCLE_5LN_SCOPE.md` |
 | 5 | `02_TSP_TEST_IDENTIFICATION.md` (Tier 1 / 3 detail) |
 | 6 | **`00f_PC1_HW_CERT_PREFLIGHT.md`** — TLS, CID, LAN1, O.15 docs + PC-A plant coordination |
+| 7 | **`00g_TSP_5LN_EXECUTION_AND_LOGS.md`** — TestPro step order + **tsp-evidence-logger** every row |
 
 Excel: `00_UNIFIED_CERT_TEST_MATRIX.csv`
 

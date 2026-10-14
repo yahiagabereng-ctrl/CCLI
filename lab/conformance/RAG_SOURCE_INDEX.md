@@ -58,7 +58,12 @@ powershell -File scripts\ingest-62351-100-4.ps1 -SkipSync
 |-----------|-----------|------|
 | `ccli-lab-unified-cert-test-matrix` | `LAB_UNIFIED_CERT_TEST_MATRIX.md` + `.csv` | **Single □** functional + cyber + O.15 |
 | `ccli-lab-unified-cert-test-roadmap` | `LAB_UNIFIED_CERT_TEST_ROADMAP.md` | Two-PC phase order |
+| `ccli-lab-unified-tsp-5ln-execution` | `LAB_UNIFIED_TSP_5LN_EXECUTION.md` | TestPro logger map · 5-LN capture |
 | `ccli-product-specimen-5ln` | `PRODUCT_SPECIMEN_5LN.md` | 5-LN product pin |
+| `ccli-product-specimen-5ln-validation` | `PRODUCT_SPECIMEN_5LN_VALIDATION.md` | Compare/Browse audit |
+| `ccli-p5-fullcircle-5ln-scope` | `P5_FULLCIRCLE_5LN_SCOPE.md` | Annex T 5-LN only |
+| `ccli-tsp-two-pc-bench-runbook` | `TSP_TWO_PC_BENCH_RUNBOOK.md` | Two-PC execution |
+| `ccli-tsp-evidence-per-test-protocol` | `lab/evidence/testsuite-pro/EVIDENCE_PER_TEST_PROTOCOL.md` | txt + pcap bundle |
 | `ccli-lab-requirement-test-matrix` | `LAB_REQUIREMENT_TEST_MATRIX.md` | REQ ↔ TSP ↔ 61850-10 |
 | `ccli-lab-pics-fill` | `PICS_FILL.md` | D1 PICS values |
 | `ccli-lab-pics-filled-workbook` | `PICS_FILLED_WORKBOOK.md` | Filled xlsx SHA + alignment |

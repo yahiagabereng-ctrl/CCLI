@@ -1,6 +1,6 @@
 # Evidence per test (mandatory on PC-B)
 
-**Applies to:** Phase 1 matrix **T1-01 … T1-10** on Test Suite Pro (LAN1 `192.168.10.10` → DUT `192.168.10.1:3782`).
+**Applies to:** [LAB_UNIFIED_CERT_TEST_MATRIX.md](../../conformance/LAB_UNIFIED_CERT_TEST_MATRIX.md) **U-T1-*** / **U-T3-*** / **U-P5-01** on Test Suite Pro (LAN1 `192.168.10.10` → DUT `192.168.10.1:3782`). Row ↔ `-TestId` map: [LAB_UNIFIED_TSP_5LN_EXECUTION.md](../../conformance/LAB_UNIFIED_TSP_5LN_EXECUTION.md).
 
 Every matrix step gets **four artifacts** (one bundle per T1-xx):
 
@@ -44,7 +44,7 @@ Requires PuTTY **plink** + **pscp**. Skip SSH with `-NoSsh` if offline.
 
 5. Set `result: PASS` or `FAIL` at the top of the `.txt` if not obvious from pasted output.
 
-6. Tick the row in [LAB_REQUIREMENT_TEST_MATRIX.md](../../conformance/LAB_REQUIREMENT_TEST_MATRIX.md).
+6. Tick **U-ID** in [LAB_UNIFIED_CERT_TEST_MATRIX.md](../../conformance/LAB_UNIFIED_CERT_TEST_MATRIX.md) (and session index `TSP_UNIFIED_5LN_SESSION_INDEX_*.md`).
 
 **One test = one Start/Stop pair.** Do not leave capture running across unrelated steps (keeps pcaps aligned with matrix rows).
 
