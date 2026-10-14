@@ -28,21 +28,23 @@
 
 ## File pin (update on first commit of product CID)
 
-| Item | Planned path | Status |
-|------|--------------|--------|
-| CID | `apps/ccli/config/icd/product/product_tr400_eth_a_5ln.cid` | **TODO** — create before Compare sign-off |
-| cfg | `apps/ccli/config/icd/product/product_tr400_eth_a_5ln.cfg` | **TODO** — `scripts/gen-mms-model-cfg.ps1` |
-| DUT deploy | `/etc/ccli/icd/product_tr400_eth_a_5ln.cfg` | After cfg SHA recorded below |
-| Product yaml | `apps/ccli/config/product_tr400.yaml` (or release bundle) | `model_cfg` → deploy path |
+| Item | Path | Status |
+|------|------|--------|
+| CID | `apps/ccli/config/icd/product/product_tr400_eth_a_5ln.cid` | **DONE 2026-10-14** — `validate-5ln-cid.ps1` **PASS** |
+| cfg | `apps/ccli/config/icd/product/product_tr400_eth_a_5ln.cfg` | **DONE** — `gen-mms-model-cfg.ps1` (5 LNs, URCB options 159) |
+| DUT deploy | `/etc/ccli/icd/product_tr400_eth_a_5ln.cfg` | **DEPLOYED 2026-10-14** — SHA verified = repo cfg |
+| Cert-run yaml | `apps/ccli/config/lab_tr400_phase4_eth_b_ttyS1_5ln.yaml` | `model_cfg` → product cfg; lab 31-LN stays in `..._ttyS1.yaml` |
 | PICS Cover | Declare **5-LN** + firmware semver | [PICS_FILLED_WORKBOOK.md](PICS_FILLED_WORKBOOK.md) |
 | MICS | Model matches **same** CID | [MICS_DRAFT.md](MICS_DRAFT.md) — trim from lab draft |
 
-| Field | Value (fill on session) |
-|-------|-------------------------|
-| CID History rev | *(fill)* |
-| `LLN0.NamPlt.configRev` | *(fill)* |
-| cfg SHA-256 | *(fill)* |
-| `ccli --version` | *(fill)* |
+| Field | Value (session 2026-10-14) |
+|-------|-----------------------------|
+| CID History rev | **1** (`when=2026-10-14`, trimmed from lab rev 9) |
+| CID SHA-256 | `68C72E7F87D1C65B04A3E42925E727815EC8B1A421E0DC65296C7C65B3CF2582` |
+| `LLN0.NamPlt.configRev` | **20261014** |
+| cfg SHA-256 | `7E13DE139559ADC68DA0BBAE0C8AB0BD20ABDED6AF3472A9974CD4A5BC6A3146` (6604 bytes) |
+| `ccli --version` | **0.1.0-r54** (`P5-5LN-CERT-MODEL`) — reactive LNs optional in MMS adapter |
+| DUT boot log | `mms: full CID model loaded from /etc/ccli/icd/product_tr400_eth_a_5ln.cfg` · VArSd/PFSP **inactive** notices |
 | LN count (Compare) | **5** |
 
 ### Exact MMS browse list (U-T1-03)
@@ -61,7 +63,7 @@ Pre-Compare gate:
 powershell -File scripts\validate-5ln-cid.ps1
 ```
 
-**Until CID exists:** run **Phase 0–0b** and **document-only** rows only; do **not** tick **U-T1-02** Compare or submit PICS Cover as final 5-LN.
+**CID exists (2026-10-14):** U-T1-02 Compare and U-T1-03 browse are **unblocked** — TSP must import `cid\product_tr400_eth_a_5ln.cid` and DUT must run `lab_tr400_phase4_eth_b_ttyS1_5ln.yaml` (check session header `ccli --version` ≥ r54).
 
 ---
 

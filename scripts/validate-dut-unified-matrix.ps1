@@ -70,10 +70,10 @@ if ($ExpectedSha) {
     $checks["U-P0-08 binary SHA (repo ccli-bin)"] = $sha -match $ExpectedSha
 } else {
     $checks["U-P0-08 binary SHA (repo ccli-bin)"] = $true
-    Write-Host "WARN: no ExpectedSha / local ccli-bin — skip SHA compare" -ForegroundColor Yellow
+    Write-Host "WARN: no ExpectedSha / local ccli-bin - skip SHA compare" -ForegroundColor Yellow
 }
 $checks["MMS/104 TLS in yaml"] = $yaml -match "tls_enabled: true"
-$checks["Interim model lab_tg544_eth_a.cfg"] = $yaml -match "lab_tg544_eth_a\.cfg"
+$checks["MMS model cfg (5-LN product or lab)"] = ($yaml -match "product_tr400_eth_a_5ln\.cfg") -or ($yaml -match "lab_tg544_eth_a\.cfg")
 $checks["Modbus RTU ttyS1 (bench)"] = $yaml -match "ttyS1" -or $yaml -match "backend: rtu"
 
 Write-Host ""
@@ -88,7 +88,7 @@ foreach ($k in $checks.Keys) {
 }
 
 $report = @"
-# PREFLIGHT_DUT unified matrix — $date
+# PREFLIGHT_DUT unified matrix - $date
 generated: $ts
 host: $HostAddr
 matrix_rows: U-P0-06 U-P0-07 U-P0-08 U-D7-01
@@ -120,8 +120,8 @@ if ($WriteEvidence) {
 }
 
 Write-Host ""
-Write-Host "5-LN Compare: needs product_tr400_eth_a_5ln.cid (DUT still on lab_tg544_eth_a.cfg)." -ForegroundColor Yellow
-Write-Host 'PPV from meter reg 980: in source tree; redeploy after wsl-build-ccli.sh (r53+).' -ForegroundColor Yellow
+Write-Host "5-LN Compare: product_tr400_eth_a_5ln.cfg live when yaml is lab_tr400_phase4_eth_b_ttyS1_5ln.yaml (r54+)." -ForegroundColor Yellow
+Write-Host 'PPV from meter reg 980: EMT432 yaml variant when LAN3 meter live.' -ForegroundColor Yellow
 
 if ($fail -gt 0) { exit 1 }
 exit 0

@@ -1,0 +1,16 @@
+﻿{
+    "codename":  "P5-PPV-EMT432-UNIFIED-CERT",
+    "changes":  [
+                    "5-LN product cert model product_tr400_eth_a_5ln.cfg (configRev 20261014)",
+                    "Yaml lab_tr400_phase4_eth_b_ttyS1_5ln.yaml model_cfg -\u003e product 5-LN",
+                    "U-T1-02/U-T1-03 Compare alignment"
+                ],
+    "release":  53,
+    "timestamp_utc":  "2026-10-14T12:57:32.1659345Z",
+    "version_full":  "0.1.0-r53",
+    "lab_yaml":  "C:\\Yahia\\projects\\CCLI\\apps\\ccli\\config\\lab_tr400_phase4_eth_b_ttyS1_5ln.yaml",
+    "sha256":  "11a9a4f0fe70bb066e31d9cdca38321e7c900cf7914a20fd0c534d011b3e14da",
+    "binary":  "C:\\Yahia\\projects\\CCLI\\lab\\tg544-openwrt\\ccli-bin",
+    "host":  "192.168.1.130",
+    "semver":  "0.1.0"
+}

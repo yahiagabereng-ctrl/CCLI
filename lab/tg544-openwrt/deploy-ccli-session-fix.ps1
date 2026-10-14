@@ -122,6 +122,14 @@ if (Test-Path $ModelCfg) {
     & $Pscp -scp -batch -pw $pw -hostkey $HostKey $ModelCfg "${User}@${HostAddr}:/etc/ccli/icd/lab_tg544_eth_a.cfg"
 }
 
+# Product 5-LN cert model (PRODUCT_SPECIMEN_5LN) - upload when present so yaml can select it.
+$ProductCfg = Join-Path $RepoRoot "apps\ccli\config\icd\product\product_tr400_eth_a_5ln.cfg"
+if (Test-Path $ProductCfg) {
+    Write-Host "MMS product 5-LN cfg: $ProductCfg" -ForegroundColor Cyan
+    & $Plink -ssh "${User}@${HostAddr}" -pw $pw -hostkey $HostKey -batch "mkdir -p /etc/ccli/icd"
+    & $Pscp -scp -batch -pw $pw -hostkey $HostKey $ProductCfg "${User}@${HostAddr}:/etc/ccli/icd/product_tr400_eth_a_5ln.cfg"
+}
+
 Write-Host "=== Install + start on DUT ===" -ForegroundColor Cyan
 & $Plink -ssh "${User}@${HostAddr}" -pw $pw -hostkey $HostKey -batch `
     "sed -i 's/\r$//' /tmp/deploy-ccli-dut.sh; chmod +x /tmp/deploy-ccli-dut.sh; sh /tmp/deploy-ccli-dut.sh"

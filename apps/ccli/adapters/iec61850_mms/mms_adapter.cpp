@@ -686,9 +686,18 @@ bool MmsAdapter::Impl::wire_cfg_runtime_nodes(MmsAdapter::Impl* impl) {
         std::fprintf(stderr, "mms: cfg model missing required Wlim/WSd/PdC nodes\n");
         return false;
     }
+    /* Reactive LNs are optional: absent in the product 5-LN cert model
+     * (PRODUCT_SPECIMEN_5LN — LLN0+LPHD+PdCMMXU+WlimDWMX+WSdDAGC only).
+     * All varsd/pfsp consumers are nullptr-guarded; O.9.1.x stays inactive. */
     if (impl->varsd_mod == nullptr || impl->varsd_vartgt == nullptr) {
-        std::fprintf(stderr, "mms: cfg model missing VArSdDVAR1 (P5-R01)\n");
-        return false;
+        std::fprintf(stderr,
+                     "mms: cfg model without VArSdDVAR1 — O.9.1.4 P5-R01 inactive "
+                     "(5-LN cert model)\n");
+    }
+    if (impl->pfsp_mod == nullptr) {
+        std::fprintf(stderr,
+                     "mms: cfg model without PFSPDFPF1 — O.9.1.1 P5-R02 inactive "
+                     "(5-LN cert model)\n");
     }
     return true;
 }

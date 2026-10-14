@@ -7,6 +7,24 @@ Format: **`semver-rN`** — bump **N** in `VERSION` line 2 and `package/ccli/Mak
 
 ---
 
+## 0.1.0-r54 — P5-5LN-CERT-MODEL (2026-10-14)
+
+### Added
+
+- **Product 5-LN certificate model** — `apps/ccli/config/icd/product/product_tr400_eth_a_5ln.cid` (**CID rev 1**, `configRev 20261014`) + generated `.cfg` (5 LNs, URCB options **159**). `validate-5ln-cid.ps1` **PASS**.
+- Cert-run yaml **`lab_tr400_phase4_eth_b_ttyS1_5ln.yaml`** — `model_cfg: /etc/ccli/icd/product_tr400_eth_a_5ln.cfg`.
+- `deploy-ccli-session-fix.ps1` uploads product 5-LN cfg to `/etc/ccli/icd/` when present.
+
+### Changed
+
+- **MMS adapter:** `VArSdDVAR1` / `PFSPDFPF1` are now **optional** in `wire_cfg_runtime_nodes` — the 5-LN cert model binds 3782; O.9.1.4 / O.9.1.1 log *inactive* when the LNs are absent. All consumers were already nullptr-guarded (P3-05 fallback, control handler, Mod updates).
+
+### Deploy
+
+DUT 2026-10-14 15:04 UTC — binary SHA `705752f8…` · cfg SHA `7E13DE13…` verified on DUT · log: `mms: full CID model loaded from /etc/ccli/icd/product_tr400_eth_a_5ln.cfg`.
+
+---
+
 ## 0.1.0-r53 — P5-PPV-EMT432-UNIFIED-CERT (2026-10-14)
 
 ### Added

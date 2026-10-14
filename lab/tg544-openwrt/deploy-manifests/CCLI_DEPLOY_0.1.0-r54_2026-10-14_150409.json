@@ -1,0 +1,16 @@
+﻿{
+    "codename":  "P5-5LN-CERT-MODEL",
+    "changes":  [
+                    "r54: MMS reactive LNs optional (5-LN cert model boots)",
+                    "model_cfg -\u003e product_tr400_eth_a_5ln.cfg (configRev 20261014, 5 LNs)",
+                    "U-T1-02/U-T1-03 Compare alignment"
+                ],
+    "release":  54,
+    "timestamp_utc":  "2026-10-14T13:04:09.8393604Z",
+    "version_full":  "0.1.0-r54",
+    "lab_yaml":  "C:\\Yahia\\projects\\CCLI\\apps\\ccli\\config\\lab_tr400_phase4_eth_b_ttyS1_5ln.yaml",
+    "sha256":  "705752f8c0440a659e1726cba516753be42fff6d6297feba4a094db5cd43e885",
+    "binary":  "C:\\Yahia\\projects\\CCLI\\lab\\tg544-openwrt\\ccli-bin",
+    "host":  "192.168.1.130",
+    "semver":  "0.1.0"
+}

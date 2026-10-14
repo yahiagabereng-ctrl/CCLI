@@ -48,16 +48,18 @@ If TSP rejects the key: `openssl rsa -in client.key -out client_tsp.key`
 ## 2. Import CID in Test Suite Pro
 
 1. **File → Import** (or project **SCL / IED**) → select  
-   `D:\CCLI_TSP_FIELD_PACK\cid\lab_tg544_eth_a.cid`
+   **`D:\CCLI_TSP_FIELD_PACK\cid\product_tr400_eth_a_5ln.cid`** (cert model — matches DUT since **r54**)
 2. Confirm **IED name** = **`CCI016_01`**
 3. Set **MMS server** address to match DUT (not only SCL static IP if TSP allows override):
    - Host **`192.168.10.1`**
    - Port **`3782`**
    - **TLS enabled** (not cleartext 102)
 
-**5-LN certificate Compare (U-T1-02):** when `cid\product_tr400_eth_a_5ln.cid` exists in the pack, run `scripts\validate-5ln-cid.ps1` then switch Compare model to that CID. Until then, **do not sign off U-T1-02 / U-T1-03 (5 LNs)** — Connect and cyber rows still run on **lab** CID.
+**Compare (U-T1-02) / browse (U-T1-03):** DUT runs `product_tr400_eth_a_5ln.cfg` — browse must show exactly **5 LNs** (`LLN0, LPHD1, PdCMMXU1, WlimDWMX1, WSdDAGC1`). Gate before Compare: `powershell -File scripts\validate-5ln-cid.ps1` → **PASS**.
 
-Specimen pin: `16_LAB_SPECIMEN_VERSION.md` in pack (CID History rev **9**, `configRev` **20261009**).
+**31-LN lab CID** (`cid\lab_tg544_eth_a.cid`) only if Yahia reverts DUT to `lab_tr400_phase4_eth_b_ttyS1.yaml` — confirm with session header first.
+
+Specimen pin: pack `00c_PRODUCT_SPECIMEN_5LN.md` (5-LN CID rev **1**, `configRev` **20261014**) · 31-LN history in `16_LAB_SPECIMEN_VERSION.md`.
 
 ---
 

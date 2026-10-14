@@ -13,24 +13,31 @@
     "netmask": "255.255.255.0"
   },
   "dut_firmware_target": {
-    "semver": "0.1.0-r53",
-    "codename": "P5-PPV-EMT432-UNIFIED-CERT",
-    "deploy_manifest": "lab/tg544-openwrt/deploy-manifests/CCLI_DEPLOY_0.1.0-r53_2026-10-14_142430.md"
+    "semver": "0.1.0-r54",
+    "codename": "P5-5LN-CERT-MODEL",
+    "deploy_manifest": "lab/tg544-openwrt/deploy-manifests/CCLI_DEPLOY_0.1.0-r54_2026-10-14_150409.md"
   },
   "cid": {
-    "connect_and_interim_compare": {
+    "cert_compare_5ln": {
+      "repo": "apps/ccli/config/icd/product/product_tr400_eth_a_5ln.cid",
+      "field_pack": "cid/product_tr400_eth_a_5ln.cid",
+      "status": "DEPLOYED 2026-10-14 — DUT model_cfg live",
+      "history_revision": 1,
+      "lln0_configRev": "20261014",
+      "ln_count": 5,
+      "cid_sha256": "68C72E7F87D1C65B04A3E42925E727815EC8B1A421E0DC65296C7C65B3CF2582",
+      "cfg_sha256": "7E13DE139559ADC68DA0BBAE0C8AB0BD20ABDED6AF3472A9974CD4A5BC6A3146",
+      "matches_dut_cfg": "product_tr400_eth_a_5ln.cfg",
+      "validator": "scripts/validate-5ln-cid.ps1"
+    },
+    "lab_31ln_fallback": {
       "repo": "apps/ccli/config/icd/lab_tg544_eth_a.cid",
       "field_pack": "cid/lab_tg544_eth_a.cid",
       "history_revision": 9,
       "lln0_configRev": "20261009",
       "ln_count": 31,
-      "matches_dut_cfg": "lab_tg544_eth_a.cfg"
-    },
-    "cert_compare_5ln": {
-      "repo": "apps/ccli/config/icd/product/product_tr400_eth_a_5ln.cid",
-      "field_pack": "cid/product_tr400_eth_a_5ln.cid",
-      "status": "TODO",
-      "validator": "scripts/validate-5ln-cid.ps1"
+      "matches_dut_cfg": "lab_tg544_eth_a.cfg",
+      "note": "Only when DUT runs lab_tr400_phase4_eth_b_ttyS1.yaml (31-LN)"
     }
   },
   "pki": {

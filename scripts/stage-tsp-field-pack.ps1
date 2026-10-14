@@ -171,6 +171,7 @@ if (Test-Path (Join-Path $Repo ($prodCid -replace '/', '\'))) {
 }
 Copy-Rel "apps/ccli/config/lab_tr400_phase1_regulation.yaml" "config" | Out-Null
 Copy-Rel "apps/ccli/config/lab_tr400_phase4_eth_b_ttyS1.yaml" "config" | Out-Null
+Copy-Rel "apps/ccli/config/lab_tr400_phase4_eth_b_ttyS1_5ln.yaml" "config" | Out-Null
 Copy-Rel "apps/ccli/config/lab_tr400_phase4_emt432_lan3_tcp.yaml" "config" | Out-Null
 
 # PICS template optional (large xlsx)
