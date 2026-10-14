@@ -1,9 +1,9 @@
 # CCLI RAG source index — product deployment P0
 
 **Document ID:** CCLI-RAG-INDEX-001  
-**Revision:** 1.3  
+**Revision:** 1.4  
 **Date:** 2026-10-14  
-**Matrix:** rev **1.3** — Phase **0a** rows **U-P0-09…11** · finalize clauses in `LAB_UNIFIED_CERT_TEST_MATRIX.md`
+**Matrix:** rev **1.4** — **U-CYB-1003/1004-*** vs `ccli-62351-100-3-extract` / `ccli-62351-100-4-extract` · Phase **0a** **U-P0-09…11**
 **RAG source_id:** `ccli-rag-source-index`  
 **Registry (machine):** `scripts/rag-product-deploy-sources.json`  
 **Parents:** `ccli-knowledge-base-brief` · `ccli-product-sw-freeze` · `ccli-product-deployment-init`

@@ -1,7 +1,7 @@
 # Unified certification test matrix — functional + cyber + O.15 (5-LN first run)
 
 **Document ID:** CCLI-LAB-UNIFIED-MTX-001  
-**Revision:** 1.3  
+**Revision:** 1.4  
 **Date:** 2026-10-14  
 **Session pin:** [LAB_UNIFIED_SESSION_PIN_2026-10-14.md](LAB_UNIFIED_SESSION_PIN_2026-10-14.md) (`ccli-lab-unified-session-pin-2026-10-14`)  
 **Finalize path:** [DUT_LAB_FINALIZE_AND_CERT_PATH.md](DUT_LAB_FINALIZE_AND_CERT_PATH.md)  
@@ -42,7 +42,7 @@
 | REQ-UNI-FIN-001 | **Single checklist:** only this matrix □ for programme traceability (legacy matrices = detail) |
 | REQ-UNI-FIN-002 | **Phase 0a** (**U-P0-09…11**) complete before **U-T1-01** |
 | REQ-UNI-FIN-003 | **Milestone A** (internal DUT finalize): minimum row set in table below — all **M** PICS rows **PASS** or **PART+waiver** |
-| REQ-UNI-FIN-004 | **Milestone B** (lab quote): **U-DOC-01…07** + Milestone A |
+| REQ-UNI-FIN-004 | **Milestone B** (lab quote): **U-DOC-01…07** + **U-DOC-09** (62351-4 PID) + Milestone A |
 | REQ-UNI-FIN-005 | **Milestone C** (certificate): **U-ACC-*** + accredited report IDs — not gated on bench day |
 | REQ-UNI-FIN-006 | Every PC-B logger row: four artefacts per [EVIDENCE_PER_TEST_PROTOCOL.md](../evidence/testsuite-pro/EVIDENCE_PER_TEST_PROTOCOL.md) |
 | REQ-UNI-FIN-007 | Session header + [session pin](LAB_UNIFIED_SESSION_PIN_2026-10-14.md) + deploy manifest SHA agree |
@@ -54,7 +54,7 @@
 | Prep | **U-P0-01 … U-P0-11**, **U-P0b-01 … U-P0b-05** |
 | MMS core | **U-T1-01 … U-T1-10**, **U-T1-05b/c/d** if PICS **M**, **U-T1-11** |
 | Annex trace | **U-P5-01** (+ **U-P5-02** if dynamic P in scope) |
-| Cyber (recommended before ship) | **U-T3-01 … U-T3-05**, **U-D7-01**, **U-D7-02** |
+| Cyber (internal **62351-100-3 / 100-4** pre-lab) | **U-T3-01 … U-T3-05**, **U-D7-01**, **U-D7-02**, **U-CYB-1003-*** · **U-CYB-1004-*** (see crosswalk) |
 | Regulation / time | **U-P3-11** |
 | Closeout | **U-CLO-01 … U-CLO-03** |
 
@@ -163,6 +163,9 @@ Scripts: `lab/set_pc_lan1_dso.cmd` · `set_pc_lan2_oa.cmd` · `set_pc_lan3_plant
 | `ccli-phase-regulation-checklists` | IEC 104 (**U-P4-***) |
 | `ccli-rag-source-index` | Ingest index · gap list |
 | `ccli-product-deployment-init` | Pre-matrix RAG one-shot |
+| `ccli-lab-requirement-test-matrix-cyber` | Full cyber track A–E detail |
+| `ccli-62351-100-4-extract` | 100-4 case planning · Table B |
+| `ccli-62351-100-4-ocr-corpus` | Licensed-case ID verification |
 
 ---
 
@@ -175,6 +178,53 @@ Scripts: `lab/set_pc_lan1_dso.cmd` · `set_pc_lan2_oa.cmd` · `set_pc_lan3_plant
 | **P5 (U-P5-01)** | [P5_FULLCIRCLE_5LN_SCOPE.md](P5_FULLCIRCLE_5LN_SCOPE.md) only — **not** 31-LN [P5_TSP_FULLCIRCLE_SEQUENCER.md](../evidence/phase5/P5_TSP_FULLCIRCLE_SEQUENCER.md) |
 | **PICS (U-DOC-01)** | **5-LN** Cover + model sheet — **do not** submit 31-LN [PICS_FILLED_WORKBOOK.md](PICS_FILLED_WORKBOOK.md) as cert without trim |
 | **Field pack CID** | TSP Compare source = **product** CID; `lab_tg544_eth_a.cid` is lab reference only |
+
+---
+
+## 62351-100-3 / 62351-100-4 crosswalk (mandatory vs accredited)
+
+**Note:** **IEC TS 62351-100-3** = transport (62351-3). **IEC TS 62351-100-4** = MMS security (62351-4). Allegato **O §12** names **100-3** accredited; **100-4** is lab-dependent (Allegato **T** E2E). Detail: [LAB_REQUIREMENT_TEST_MATRIX_CYBER.md](LAB_REQUIREMENT_TEST_MATRIX_CYBER.md) · `ccli-62351-100-3-extract` · `ccli-62351-100-4-extract`.
+
+### Table A — 62351-100-3 (transport) → unified rows
+
+| TS 62351-100-3 | Theme | Unified row(s) | Executor | Accredited only |
+|----------------|-------|----------------|----------|-----------------|
+| **Table 1** (Clause 5 config) | TLS 1.2 · ciphers · ports PIXIT | **U-CYB-1003-01**, **U-CYB-1003-04**, **U-D7-01**, **U-D7-02** | Eng / PC-A | Table 1 formal → **U-D7-03** |
+| **Table 2** (normal) | Mutual TLS + app (MMS) | **U-T1-01**, **U-CYB-1003-02**, **REQ-1003-TLS-001** | PC-B | **U-D7-03** |
+| **§4.2.2** server role | Server station **M** in PID | **U-CYB-1003-08** | Eng | Lab |
+| **Table 2** | Session resume / reneg | **U-CYB-1003-03** | Eng (PIXIT) | Lab |
+| **Table 3** (resiliency) | No client cert | **U-T3-01** | PC-B | **U-D7-03** |
+| **Table 3** | Revoked + CRL | **U-T3-04** | PC-B | **U-D7-03** |
+| **Table 3** | Expired / wrong CA / weak key | **U-CYB-1003-05** | Accredited lab | **U-D7-03** / **U-ACC-02** |
+| **§4.3.4** logging | TLS/cert security events | **U-CYB-1003-07**, **U-CYB-1004-05** | PC-A SSH | Lab may re-check |
+| **Table 4–5** + report | Full 100-3 conformance chart | **U-D7-03**, **U-ACC-02** | Accredited | **M** (O §12) |
+| **OCSP** | Not in first PID | **U-CYB-1003-06** | Eng **N/A** | — |
+| **D7 PID submit** | PICS+PIXIT 62351-3 | **U-DOC-06** | Eng | Pre-quote |
+
+### Table B — 62351-100-4 (MMS / 62351-4) → unified rows
+
+| TS 62351-100-4 / 62351-4 | Theme | Unified row(s) | Executor | Accredited only |
+|--------------------------|-------|----------------|----------|-----------------|
+| **Table 3** (8-1 E2E) | Mandatory association accept | **U-T3-05**, **U-CYB-1004-01** | PC-B | **U-ACC-03** |
+| **100-4 §6.3 / TLS** | MMS on **:3782** mutual TLS | **U-CYB-1004-08**, **U-T1-01** | PC-B | Lab |
+| **A-profile §11.2.2** | AARQ/AARE auth value | **U-T3-05**, **U-CYB-1004-01** | PC-B | **U-ACC-03** if lab runs 100-4 |
+| **Annex G.2** | Dual cert TLS ≠ ACSE | **U-D7-02**, **U-CYB-1004-02** | Eng | Lab |
+| **Annex G.5.2** | Cert B keyUsage | **U-CYB-1004-03** | Eng | Lab |
+| **Annex G.6.2** | Subject / AP-title OID | **U-CYB-1004-04** | Eng | Lab |
+| **T.3.3.4.6** | Security events on MMS/TLS fail | **U-CYB-1004-05** | PC-A | Lab |
+| **§13 native E2E** | EncrTransfer SecPDU | **U-CYB-1004-06** | Eng **N/A** | Defer |
+| **62351-8 RBAC** | Viewer read / Operate deny | **U-T3-02**, **U-T3-03** | PC-B | 62351-8 / lab |
+| **Lab Q 7.3** | Lab executes 100-4? | **U-CYB-1004-07**, **U-ACC-03** | Eng | Quote |
+| **62351-4 PID** | Separate from D7 | **U-DOC-09** | Eng | Pre-quote |
+
+### Table C — Product cyber (both TS)
+
+| Requirement | Unified row |
+|-------------|-------------|
+| **3782** only · no :102 ship | **U-D7-01**, **U-CYB-PROD-01** |
+| Release yaml audit | **U-D7-01**, **U-CYB-PROD-01** |
+
+**Internal mandatory before Milestone A (cyber):** all **U-T3-*** + **U-CYB-1003-01,03,04,06,07,08** + **U-CYB-1004-01,02,03,04,05,06,07,08** + **U-D7-01,02** + **U-CYB-PROD-01** (accredited **U-CYB-1003-05** / **U-D7-03** separate).
 
 ---
 
@@ -231,7 +281,25 @@ Scripts: `lab/set_pc_lan1_dso.cmd` · `set_pc_lan2_oa.cmd` · `set_pc_lan3_plant
 | □ | U-T3-05 | 3 | O.15 #6 · T | P3-07 | PC-B | LAN1 | DSO ACSE / dual cert | AARE OK | TSP_P3_07_DSO_ACSE_* bundle | T3-05 | ccli-62351-4-extract |
 | □ | U-D7-01 | 3 | O.15 #6 | REQ-D7-PORT | Eng | DUT | Port audit **3782** only | No :102 ship | yaml audit txt | — | ccli-product-sw-freeze |
 | □ | U-D7-02 | 3 | O.15 #6 | REQ-D7-CRYPTO | Eng | — | `verify_annex_pki.py` | RSA≥2048 | PKI log | — | ccli-lab-d7-62351-3-pid |
-| □ | U-D7-03 | 3 | O.15 #6 | REQ-D7-1003 | Accredited | Lab | **62351-100-3** suite | Report ID | cert report | — | ccli-62351-100-3-extract |
+| □ | U-D7-03 | 3 | O.15 #6 | REQ-D7-1003 | Accredited | Lab | **62351-100-3** Tables 1–5 suite | Report ID | cert report | — | ccli-62351-100-3-extract |
+| □ | U-CYB-1003-01 | 3 | O.15 #6 · T | REQ-D7-ED-001 | PC-B | LAN1 | **100-3 T1** TLS 1.2 mutual preflight | `openssl s_client` or T1-01 OK | PREFLIGHT_TLS_S_CLIENT_*.txt | — | ccli-62351-100-3-extract |
+| □ | U-CYB-1003-02 | 3 | O.15 #6 | REQ-1003-APP-001 | PC-B | LAN1 | **100-3 T2** MMS app over TLS | Same session as **U-T1-01** + Browse | TSP_P3_01_CONNECT_* + T1-03 | T1-01 | ccli-62351-100-3-extract |
+| □ | U-CYB-1003-03 | 3 | O.15 #6 · T | REQ-D7-REN-001 | Eng | — | **100-3 T2** resume/reneg PIXIT documented | PART+waiver or lab agrees | D7/PIXIT note | — | ccli-lab-d7-62351-3-pid |
+| □ | U-CYB-1003-04 | 3 | O.15 #6 | REQ-1003-PORT-001 | PC-A | SSH | **100-3 T1** DUT `openssl ciphers` snapshot | Matches frozen D7 Tables | D7_OPENSSL_CIPHERS_*.txt | — | ccli-62351-100-3-extract |
+| □ | U-CYB-1003-05 | 3 | O.15 #6 | REQ-1003-TLS-002 | Accredited | Lab | **100-3 T3** expired/wrong-CA negatives | Lab Table 3 PASS | **U-D7-03** report | — | ccli-62351-100-3-extract |
+| □ | U-CYB-1003-06 | 3 | O.15 #6 | REQ-D7-OCSP-001 | Eng | — | OCSP **not claimed** | **N/A** in D7 | D7 draft §OCSP | — | ccli-lab-d7-62351-3-pid |
+| □ | U-CYB-1003-07 | 3 | O.15 #6 · T | REQ-1003-LOG-001 | PC-A | SSH | **100-3 §4.3.4** after **U-T3-01** event-dump | TLS/cert fail category or waiver | CYB_TLS_FAIL_EVENT_*.txt | — | ccli-lab-requirement-test-matrix-cyber |
+| □ | U-CYB-1003-08 | 3 | O.15 #6 | REQ-1003-ROLE-001 | Eng | — | **100-3 §4.2.2** D7 **server** station **M** | PICS server row; client if claimed | D7 PICS §station | — | ccli-62351-100-3-extract |
+| □ | U-CYB-1004-01 | 3 | O.15 #6 · T | REQ-1004-APROF-001 | PC-B | LAN1 | **100-4** A-profile AARE accept | Initiate Success (= **U-T3-05**) | TSP_P3_07_DSO_ACSE_* | T3-05 | ccli-62351-100-4-extract |
+| □ | U-CYB-1004-02 | 3 | O.15 #6 · T | REQ-1004-G2-001 | Eng | — | **62351-4 G.2** dual cert A≠B serial | `verify_annex_pki.py` PASS | PKI log (with **U-D7-02**) | — | ccli-62351-4-extract |
+| □ | U-CYB-1004-03 | 3 | O.15 #6 · T | REQ-1004-G2-001 | Eng | — | **G.5.2** Cert B keyUsage | digSig + keyAgreement | in PKI log | — | ccli-62351-4-extract |
+| □ | U-CYB-1004-04 | 3 | O.15 #6 · T | REQ-1004-G2-001 | Eng | — | **G.6.2** ACSE subject OID dump | client.pem + server.pem `-subject` | in PKI log | — | ccli-62351-4-extract |
+| □ | U-CYB-1004-05 | 3 | O.15 #6 · T | REQ-1004-CEI-T-001 | PC-A | SSH | **T.3.3.4.6** security event on TLS/MMS fail | Category after forced fail | CYB_MMS_FAIL_EVENT_*.txt | — | ccli-62351-100-4-extract |
+| □ | U-CYB-1004-06 | 3 | O.15 #6 · T | REQ-1004-SCOPE-001 | Eng | — | Native **§13** EncrTransfer | **N/A** first PID | 62351-4 PID note | — | ccli-62351-100-4-extract |
+| □ | U-CYB-1004-07 | DOC | O.15 #6 · T | REQ-1004-LAB-001 | Eng | — | Lab questionnaire **7.3** — runs **100-4**? | Written yes/no + date | LAB_Q73_1004_*.txt | — | ccli-62351-100-4-extract |
+| □ | U-CYB-1004-08 | 3 | O.15 #6 · T | REQ-1004-TLS-001 | PC-B | LAN1 | **100-4** MMS only on **:3782** mutual TLS | Same session as **U-T1-01** | TSP_P3_01_CONNECT_* | T1-01 | ccli-62351-100-4-extract |
+| □ | U-CYB-PROD-01 | 3 | O.15 #6 | REQ-PROD-SW-006 | Eng | DUT | Product yaml: no WAN→Eth_A bypass | Audit PASS | PRODUCT_YAML_NET_AUDIT_*.txt | — | ccli-product-sw-freeze |
+| □ | U-DOC-09 | DOC | O.15 #6 · T | 62351-4 PID | Eng | — | **62351-4** PICS+PIXIT (**separate** from D7) | Draft ready for lab | 62351-4_PID_*.md | — | ccli-62351-100-4-extract |
 | □ | U-P5-01 | 2 | O.8 · O.9 | P5 | PC-B | LAN1 | **5-LN** annex trace TLS | No 31-LN steps | TSP_P5_FULLCIRCLE_TLS_* bundle | P5-01 | ccli-p5-fullcircle-5ln-scope |
 | □ | U-P5-02 | 2 | O.8 | P5 | PC-A | COM5/meter | Vary P step 13 | Dynamic read | RTU/meter log | — | ccli-tsp-two-pc-bench-runbook |
 | □ | U-P4-01 | 4 | O.13 | P4 | PC-A | LAN2 | 104 → :2404 TLS | Session up | phase4/P4_* | — | ccli-phase-regulation-checklists |
@@ -263,6 +331,9 @@ Scripts: `lab/set_pc_lan1_dso.cmd` · `set_pc_lan2_oa.cmd` · `set_pc_lan3_plant
 | REQ-UNI-FIN-006 | Spot-check ≥3 logger bundles: `.txt` + `_DUT_LOG` + `_WIRE` + `.pcapng` |
 | REQ-UNI-FIN-007 | DUT `ccli --version` = session header = pin doc = deploy manifest |
 | REQ-UNI-MTX-001 | Every **U-T1-*** / **U-T3-*** row for submitted PICS **M** is □ or PART+waiver |
+| REQ-UNI-MTX-005 | Internal **62351-100-3/100-4** rows (**U-CYB-1003-01,03,04,06,07,08** · **U-CYB-1004-01…08** · **U-CYB-PROD-01**) □ or **N/A** before Milestone A cyber sign-off |
+| REQ-UNI-MTX-006 | **U-D7-03** / **U-ACC-02** = accredited **100-3** only — does not replace **U-CYB-1003-05** Table 3 at lab |
+| REQ-UNI-MTX-007 | **U-ACC-03** / **U-CYB-1004-07** tracked when Allegato **T** E2E formal **100-4** is quoted |
 | REQ-UNI-MTX-002 | Specimen = **5-LN** per PRODUCT_SPECIMEN_5LN · validator PASS |
 | REQ-5LN-VAL-001 | `validate-5ln-cid.ps1` exit 0 on Compare CID |
 | REQ-5LN-VAL-002 | Browse = exactly 5 MMS names (binding table above) |

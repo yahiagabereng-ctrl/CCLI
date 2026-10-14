@@ -2,7 +2,7 @@
 
 **Document ID:** CCLI-LAB-UNIFIED-PIN-001  
 **RAG source_id:** `ccli-lab-unified-session-pin-2026-10-14`  
-**Matrix:** [LAB_UNIFIED_CERT_TEST_MATRIX.md](LAB_UNIFIED_CERT_TEST_MATRIX.md) rev **1.3** · rows **U-P0-11**, **U-P0-07**  
+**Matrix:** [LAB_UNIFIED_CERT_TEST_MATRIX.md](LAB_UNIFIED_CERT_TEST_MATRIX.md) rev **1.4** · rows **U-P0-11**, **U-P0-07**, cyber **U-CYB-1003/1004-***  
 **Repo version truth:** `apps/ccli/VERSION` → **0.1.0-r54** (`P5-5LN-CERT-MODEL`)
 
 ## Session header (current — r54 + 5-LN product model live)

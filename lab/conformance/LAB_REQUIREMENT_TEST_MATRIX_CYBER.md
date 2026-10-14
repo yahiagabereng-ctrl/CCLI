@@ -1,11 +1,13 @@
 # Lab requirement ↔ cybersecurity test matrix (62351 / Annex T transport)
 
 **Document ID:** CCLI-LAB-REQ-TEST-MTX-CYB-001  
-**Revision:** 1.0  
+**Revision:** 1.1  
 **Date:** 2026-10-14  
 **RAG source_id:** `ccli-lab-requirement-test-matrix-cyber`  
 **Purpose:** Checklist for **62351-3 transport (D7)**, **62351-4 / 100-4 MMS security**, **62351-8 RBAC**, and **product cyber profile** — separate from **61850-10 functional** tests in [LAB_REQUIREMENT_TEST_MATRIX.md](LAB_REQUIREMENT_TEST_MATRIX.md).  
 **Field pack:** `scripts/stage-tsp-field-pack.ps1` → `01b_CHECKLIST_CYBER_REQUIREMENT_TEST_MATRIX.md`
+
+**Programme □ checklist:** [LAB_UNIFIED_CERT_TEST_MATRIX.md](LAB_UNIFIED_CERT_TEST_MATRIX.md) rev **1.4** — **U-CYB-1003-*** / **U-CYB-1004-*** / **U-CYB-PROD-01** map 62351-**100-3** Tables 1–3 and **100-4** Table 3 mandatory themes; tick unified matrix for traceability, use **this** file for step detail.
 
 **Companion PID:** [D7_62351-3_PID_DRAFT.md](D7_62351-3_PID_DRAFT.md) (**62351-3 only** — not 61850 D1 PICS).  
 **62351-4 / 100-4:** separate PID — `ccli-62351-100-4-extract` · `ccli-62351-4-extract`.
@@ -142,6 +144,23 @@ LN count does **not** change TLS/RBAC/ACSE rows — only functional matrix brows
 | CRL revoked (P3-09) | §2 T3-04 |
 
 Tick cyber **□** here; functional matrix may reference this file instead of duplicating detail.
+
+### Unified matrix IDs (rev 1.4)
+
+| This file | Unified U-ID |
+|-----------|--------------|
+| §2 T1-01 · REQ-1003-APP-001 | **U-T1-01**, **U-CYB-1003-02**, **U-CYB-1004-08** |
+| §2 T3-01 | **U-T3-01**, **U-CYB-1003-07** |
+| §2 T3-05 · A-profile | **U-T3-05**, **U-CYB-1004-01** |
+| §2 dual cert | **U-D7-02**, **U-CYB-1004-02…04** |
+| §2 T3-02/03/04 | **U-T3-02**, **U-T3-03**, **U-T3-04** |
+| §3 REQ-D7-ED-001 · ciphers | **U-CYB-1003-01**, **U-CYB-1003-04** |
+| §3 REQ-D7-REN / OCSP | **U-CYB-1003-03**, **U-CYB-1003-06** |
+| §3 REQ-1003-ROLE-001 | **U-CYB-1003-08** |
+| §3 REQ-D7-1003-001 | **U-D7-03**, **U-ACC-02**, **U-CYB-1003-05** |
+| §4 Track C rows | **U-CYB-1004-01…08**, **U-DOC-09** |
+| §5 REQ-PROD-SW-002/006/007 | **U-D7-01**, **U-CYB-PROD-01** |
+| §6 D7 PID | **U-DOC-06** |
 
 ---
 

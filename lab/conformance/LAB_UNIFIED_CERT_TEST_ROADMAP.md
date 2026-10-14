@@ -3,7 +3,7 @@
 **Document ID:** CCLI-LAB-UNIFIED-ROAD-001  
 **Revision:** 1.2  
 **Date:** 2026-10-14  
-**Matrix rev:** 1.3 (finalize clauses · **U-P0-09…11**)  
+**Matrix rev:** 1.4 (62351-**100-3/100-4** crosswalk · **U-CYB-1003/1004-***)  
 **TestPro logs:** [LAB_UNIFIED_TSP_5LN_EXECUTION.md](LAB_UNIFIED_TSP_5LN_EXECUTION.md)
 **RAG source_id:** `ccli-lab-unified-cert-test-roadmap`  
 **Matrix:** [LAB_UNIFIED_CERT_TEST_MATRIX.md](LAB_UNIFIED_CERT_TEST_MATRIX.md) · CSV: [LAB_UNIFIED_CERT_TEST_MATRIX.csv](LAB_UNIFIED_CERT_TEST_MATRIX.csv)  
