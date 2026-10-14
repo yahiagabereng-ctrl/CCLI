@@ -73,10 +73,22 @@ Use paths under `D:\CCLI_TSP_FIELD_PACK\tls\` (or `C:\CCLI_product_tls\` if you 
 
 Optional copies for negative tests:
 
-| Test | Cert | Key |
-|------|------|-----|
-| T3-02 viewer read | `viewer.pem` | `viewer.key` |
-| T3-04 CRL / revoked | `revoked.pem` | `revoked.key` + enable CRL `lab_crl.pem` per TSP UI |
+| Test | Transport TLS | MMS Security | Private key | CRL |
+|------|---------------|--------------|-------------|-----|
+| T3-02 viewer read | — | `viewer.pem` | `viewer.key` | — |
+| **T3-04 revoked** | **`revoked_tls.pem`** | **`revoked.pem`** | **`revoked_tsp.key`** (both slots) | **`lab_crl.pem`** |
+
+After stage, confirm pack contains:
+
+```text
+tls\revoked.pem
+tls\revoked_tls.pem
+tls\revoked.key
+tls\revoked_tsp.key
+tls\lab_crl.pem
+```
+
+OpenSSL (optional): `openssl verify -CAfile root_CA.pem -crl_check -CRLfile lab_crl.pem revoked.pem` → must **fail** (revoked).
 
 Connection summary:
 

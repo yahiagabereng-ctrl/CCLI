@@ -33,7 +33,7 @@ $files = @(
     "root_CA.pem",
     "client.pem", "client.key", "client_tls.pem", "client_tsp.key",
     "viewer.pem", "viewer.key",
-    "revoked.pem", "revoked.key",
+    "revoked.pem", "revoked.key", "revoked_tls.pem", "revoked_tsp.key",
     "lab_crl.pem",
     "README.md"
 )
@@ -51,6 +51,11 @@ function Stage-TspTlsFolder {
     if (-not (Test-Path $tspKey) -and (Test-Path (Join-Path $Src "client.key"))) {
         Copy-Item -Force (Join-Path $Src "client.key") $tspKey
         Write-Host "staged client_tsp.key (from client.key) -> $Target"
+    }
+    $revokedTspKey = Join-Path $Target "revoked_tsp.key"
+    if (-not (Test-Path $revokedTspKey) -and (Test-Path (Join-Path $Src "revoked.key"))) {
+        Copy-Item -Force (Join-Path $Src "revoked.key") $revokedTspKey
+        Write-Host "staged revoked_tsp.key (from revoked.key) -> $Target"
     }
 }
 
@@ -76,9 +81,16 @@ Copied from ``$Src`` on $(Get-Date -Format 'yyyy-MM-dd HH:mm').
 | Transport TLS (Cert A) | client_tls.pem + client_tsp.key |
 | MMS Security (Cert B) | client.pem + client_tsp.key |
 | Viewer / RBAC negative | viewer.pem + viewer.key |
-| CRL negative (P3-09) | revoked.* + lab_crl.pem |
+| CRL negative (T3-04 / P3-09) | revoked_tls.pem + revoked.pem + **revoked_tsp.key** (both key slots) + import **lab_crl.pem** as CRL |
 
 Connection: 192.168.10.1 port **3782** TLS — not cleartext 102.
+
+### T3-04 revoked connect (swap from DSO client)
+
+1. Enable / browse **lab_crl.pem** on the connection (DUT runs with ``crl=on``).
+2. Replace Transport cert with **revoked_tls.pem** and MMS Security with **revoked.pem**.
+3. Private key **revoked_tsp.key** in both TLS key fields (same pattern as **client_tsp.key**).
+4. Connect must **fail** (revoked cert rejected). Restore **client_*** before T1 rows.
 
 ## OpenSSL on TestPro PC (preflight)
 

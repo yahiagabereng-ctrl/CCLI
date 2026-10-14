@@ -17,7 +17,9 @@ Regenerate: `python3 apps/ccli/config/tls/gen_lab_pki.py` (requires `cryptograph
 | `server.pem` / `server.key` | IED CCI016_01 (Eth_A MMS TLS + AARE auth) |
 | `client.pem` / `client.key` | **DSO_OPERATOR** (−1) — may write `Wlim` |
 | `viewer.pem` / `viewer.key` | **VIEWER** (0) — associate/read only |
-| `revoked.pem` / `revoked.key` | Listed on `lab_crl.pem` (P3-09 negative) |
+| `revoked.pem` / `revoked.key` | MMS Security cert listed on `lab_crl.pem` (T3-04 / P3-09) |
+| `revoked_tls.pem` | Transport TLS cert (same key as `revoked.key`) |
+| `revoked_tsp.key` | TSP OpenSSL copy of `revoked.key` (stage script also generates) |
 | `lab_crl.pem` | CRL with revoked serial |
 
 Deployed on DUT as `/etc/ccli/tls/`.

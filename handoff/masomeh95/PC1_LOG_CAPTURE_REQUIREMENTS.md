@@ -53,7 +53,7 @@ Read **`tls\TSP_STAGE_README.txt`** after stage. Summary:
 | **MMS Security** (Cert B / ACSE) | `client.pem` | **`client_tsp.key`** |
 | **Transport TLS** (Cert A) | `client_tls.pem` | **`client_tsp.key`** (same key both slots) |
 | Viewer cases (T3-02/03) | `viewer.pem` | `viewer.key` |
-| Revoked case (T3-04) | `revoked.pem` | `revoked.key` + import **`lab_crl.pem`** |
+| Revoked case (T3-04) | `revoked_tls.pem` + `revoked.pem` | **`revoked_tsp.key`** (both slots) + import **`lab_crl.pem`** |
 
 **Critical:** both MMS and Transport key browse fields → **`client_tsp.key`**. TSP’s OpenSSL build often rejects PKCS#8 `BEGIN PRIVATE KEY` without conversion.
 

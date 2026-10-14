@@ -23,7 +23,7 @@ That builds `D:\CCLI_TSP_FIELD_PACK\` (or `-Dest`) with **TLS**, **CID**, bench 
 | **Trust anchor** | `apps/ccli/config/tls/root_CA.pem` | `tls\root_CA.pem` |
 | **MMS Security (Cert B)** | `apps/ccli/config/tls/client.pem` + `client_tsp.key` | `tls\` |
 | **Transport TLS (Cert A)** | `apps/ccli/config/tls/client_tls.pem` + same key | `tls\` |
-| **CRL / revoked (T3-04)** | `tls\lab_crl.pem`, `revoked.pem` | `tls\` |
+| **CRL / revoked (T3-04)** | `revoked.pem`, `revoked_tls.pem`, `revoked_tsp.key`, `lab_crl.pem` | `tls\` |
 | **Viewer (T3-02/T3-03)** | `tls\viewer.pem` + `viewer.key` | `tls\` |
 
 **DUT (Yahia deploy):** `ccli 0.1.0-r53` · MMS **`192.168.10.1:3782`** TLS · model **`lab_tg544_eth_a.cfg`** (31-LN lab) until 5-LN product CID is on DUT.

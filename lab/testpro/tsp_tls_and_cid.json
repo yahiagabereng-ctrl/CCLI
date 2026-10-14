@@ -42,8 +42,12 @@
     "client_private_key_tsp": "client_tsp.key",
     "viewer_cert": "viewer.pem",
     "viewer_key": "viewer.key",
-    "revoked_cert": "revoked.pem",
-    "crl": "lab_crl.pem"
+    "revoked_mms_cert": "revoked.pem",
+    "revoked_transport_cert": "revoked_tls.pem",
+    "revoked_private_key_tsp": "revoked_tsp.key",
+    "revoked_private_key_source": "revoked.key",
+    "crl": "lab_crl.pem",
+    "t3_04_matrix_row": "U-T3-04"
   },
   "tsp_ui_notes": "Use client_tsp.key for both Transport TLS and MMS Security private key slots. Port 3782 only."
 }

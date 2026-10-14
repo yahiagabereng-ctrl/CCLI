@@ -20,6 +20,7 @@ LAN1 (Admin): D:\CCLI_TSP_FIELD_PACK\bench_scripts\set_pc_lan1_dso.cmd
 TSP import (summary):
   CID:  ...\cid\lab_tg544_eth_a.cid  (matches DUT until 5-LN product CID exists)
   TLS:  ...\tls\  root_CA.pem + client.pem + client_tls.pem + client_tsp.key (both key slots)
+  T3-04 revoked: revoked_tls.pem + revoked.pem + revoked_tsp.key + lab_crl.pem (see 00i checklist)
   See tls\TSP_STAGE_README.txt
 
 LOG CAPTURE (every U-T1 / U-T3 / U-P5-01 row):
