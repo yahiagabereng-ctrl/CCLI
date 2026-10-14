@@ -79,6 +79,7 @@ $docs = @(
     @{ Rel = "lab/testpro/MASOMEH_CONNECT_FIX_2026-10-14.md"; Out = "00k_MASOMEH_CONNECT_FIX_2026-10-14.md" },
     @{ Rel = "lab/evidence/testsuite-pro/inbox/TSP_INITIATE_RESPONSE_TRIAGE_2026-10-14.md"; Out = "00l_TSP_INITIATE_RESPONSE_TRIAGE_2026-10-14.md" },
     @{ Rel = "lab/evidence/testsuite-pro/inbox/TSP_TLS_ACCESS_DENIED_2026-10-14.md"; Out = "00m_TSP_TLS_ACCESS_DENIED_2026-10-14.md" },
+    @{ Rel = "lab/evidence/testsuite-pro/inbox/DUT_PC1_TLS_PIN_2026-10-14.json"; Out = "00n_DUT_PC1_TLS_PIN.json" },
     @{ Rel = "lab/testpro/PC1_TLS_BUNDLE_DUT_ALIGNED.md"; Out = "00j_PC1_TLS_BUNDLE_DUT_ALIGNED.md" },
     @{ Rel = "lab/testpro/README.md"; Out = "00j_TESTPRO_CONFIG_README.md" },
     @{ Rel = "handoff/masomeh95/PC1_EJBCA_TLS_ALIGN_TESTPRO.md"; Out = "00k_PC1_EJBCA_TLS_TESTPRO.md" },

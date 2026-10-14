@@ -1,0 +1,28 @@
+{
+  "verified_utc": "2026-10-14 (Yahia pre-send check)",
+  "dut_host": "192.168.1.130",
+  "dut_ccli": "ccli 0.1.0-r55 (P5-5LN-CERT-MODEL)",
+  "repo_tls": "apps/ccli/config/tls",
+  "instruction": "Masomeh must match these MD5s in D:\\CCLI_TSP_FIELD_PACK\\tls\\ before TSP Connect. Regenerate with export-pc1-tls-for-masomeh.ps1 after any DUT TLS redeploy.",
+  "files": [
+    { "file": "root_CA.pem", "md5": "f265ae5ca881a5097bc74a543784b443" },
+    { "file": "client_tls.pem", "md5": "13c231ee6a2e782b3eb464ac2dee4c21" },
+    { "file": "client.pem", "md5": "7bb6b77cde4614ae68ad387e580e2696" },
+    { "file": "client.key", "md5": "b0e3f01dad384d88f8917640e1b1b808" },
+    { "file": "client_acse.key", "md5": "aeb973ca39452062578dd8329302d9d4" },
+    { "file": "client_tsp.key", "md5": "b0e3f01dad384d88f8917640e1b1b808" },
+    { "file": "viewer.pem", "md5": "e3630e674f8aaabeaadc1760d9b3d391" },
+    { "file": "viewer_tls.pem", "md5": "d60f37d793dc03dd5fe0815c3d0a718e" },
+    { "file": "viewer.key", "md5": "4da937f17a4aac9534fb87d97d41efa8" },
+    { "file": "revoked.pem", "md5": "c92bf69d697711547647c6636496db5e" },
+    { "file": "revoked_tls.pem", "md5": "80f3df034b15c7439f1e8d6fe9459b24" },
+    { "file": "revoked.key", "md5": "143471fe6772d66f788d6c375458bc38" },
+    { "file": "revoked_acse.key", "md5": "5f84262e220624c108c3fd9f9faec34c" },
+    { "file": "lab_crl.pem", "md5": "0695da4dc4829236127e9e904b9ccdfc" }
+  ],
+  "masomeh_144deb9_stale_example": {
+    "root_CA.pem": "b28b0f41f6563b4539456bf24a16b374",
+    "client_tls.pem": "4490e8178d56a90f2725eca08e00a6ff",
+    "note": "DO NOT USE — replace with pin above"
+  }
+}
