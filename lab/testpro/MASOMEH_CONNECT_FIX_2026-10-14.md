@@ -25,7 +25,10 @@ cd D:\CCLI\CCLI
 git pull origin main
 powershell -File scripts\setup-pc1-testpro-from-git.ps1 -Dest D:\CCLI_TSP_FIELD_PACK
 powershell -File scripts\verify-tsp-tls-key-match.ps1 -TlsDir D:\CCLI_TSP_FIELD_PACK\tls
+powershell -File scripts\pc1-test-mms-tls12.ps1 -TlsDir D:\CCLI_TSP_FIELD_PACK\tls
 ```
+
+**TSP:** set transport security to **TLS 1.2** (not 1.3-only / not “auto” if that picks 1.3). DUT **r56+** caps MMS at TLS 1.2 (62351-3 PIXIT).
 
 **MD5 check** (must match **DUT** — if you see `b28b0f41…` / `4490e817…` you have a **stale pack**, re-run setup):
 

@@ -67,6 +67,7 @@ bool iec104_create_tls_config(const core::Iec104TlsConfig& cfg, void** out_tls,
         return false;
     }
     TLSConfiguration_setMinTlsVersion(tls, TLS_VERSION_TLS_1_2);
+    TLSConfiguration_setMaxTlsVersion(tls, TLS_VERSION_TLS_1_2);
     if (!load_pem(tls, cfg, err)) {
         TLSConfiguration_destroy(tls);
         return false;

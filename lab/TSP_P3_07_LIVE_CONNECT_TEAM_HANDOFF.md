@@ -46,6 +46,7 @@ $env:CCLI_TG544_PW = "..."
 | MMS Security | `client.pem` + `client_tsp.key` |
 | Transport TLS | `client_tls.pem` + `client_tsp.key` |
 | CA | `root_CA.pem` (stage with `scripts/stage-tsp-tls.ps1` → `C:\CCLI_product_tls\`) |
+| TLS version | **1.2 only** on DUT (r56+) and in TSP connection (62351-3 PIXIT); PC1 check: `scripts/pc1-test-mms-tls12.ps1` |
 
 CRL warnings in TSP are OK for lab (`crl=off` on DUT).
 

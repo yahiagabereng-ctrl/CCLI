@@ -921,6 +921,8 @@ bool MmsAdapter::start(const core::MmsConfig& cfg, MmsAuditFn audit) {
         }
         impl->tls = TLSConfiguration_create();
         TLSConfiguration_setMinTlsVersion(impl->tls, TLS_VERSION_TLS_1_2);
+        /* 62351-3 / PIXIT: TLS 1.2 only (no TLS 1.3 claim) */
+        TLSConfiguration_setMaxTlsVersion(impl->tls, TLS_VERSION_TLS_1_2);
         TLSConfiguration_setChainValidation(impl->tls, cfg.tls.chain_validation);
         const bool have_allow =
             !cfg.tls.client_cert.empty() || !cfg.tls.acse_client_cert.empty() ||

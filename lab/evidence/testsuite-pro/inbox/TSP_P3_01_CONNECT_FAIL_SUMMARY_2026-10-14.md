@@ -32,7 +32,7 @@ They **do not** match the older spot-check table in `MASOMEH_CONNECT_FIX_2026-10
 | **PC1 PEMs vs DUT** | **MISMATCH.** PC1 bundle MD5s (`b28b0f41…` CA, `4490e817…` `client_tls`) ≠ DUT (`f265ae5c…`, `13c231ee…`). Field pack is an **older EJBCA tree**; `MASOMEH_CONNECT_FIX` spot-check table matches **current DUT**. |
 | **OpenSSL “PASS”** | Handshake used **stale PC1** certs; may not match **today’s** DUT allowlist. Re-test after PEM refresh. |
 | **DUT (2026-10-14 post-check)** | **`iec61850d` respawning**; at one point **3782 listened as `ubus`**, not `ccli`. Run **`scripts/dut-mms-tsp-preflight.ps1`** before next TSP attempt. |
-| **TSP vs OpenSSL** | OpenSSL negotiated **TLS 1.3**; product claims **TLS 1.2 min** (62351-3). In TSP, keep **TLS 1.2** policy consistent with PIXIT; enable 1.3 only if TSP requires it for transport. |
+| **TSP vs OpenSSL** | OpenSSL 3 defaulted to **TLS 1.3** in diag. **Fix:** DUT **r56+** sets **max TLS 1.2** on MMS; PC1 use `scripts/pc1-test-mms-tls12.ps1` (`-tls1_2`); TSP **TLS 1.2** on IED connection. |
 
 ## Fix order
 
