@@ -7,14 +7,26 @@ All Test Suite Pro checklists are on GitHub. On PC1 (TestPro machine):
   git pull origin main
   powershell -File scripts\stage-tsp-field-pack.ps1 -Dest D:\CCLI_TSP_FIELD_PACK
 
-Then open:
+Then open (in this order):
   D:\CCLI_TSP_FIELD_PACK\00_START_PC1_MASOMEH.md
+  D:\CCLI_TSP_FIELD_PACK\00h_PC1_LOG_CAPTURE_REQUIREMENTS.md   <-- LOG CAPTURE (mandatory)
   D:\CCLI_TSP_FIELD_PACK\00_UNIFIED_CERT_TEST_MATRIX.md
 
 LAN1 (Admin): D:\CCLI_TSP_FIELD_PACK\bench_scripts\set_pc_lan1_dso.cmd
   PC 192.168.10.10  ->  DUT 192.168.10.1:3782  IED CCI016_01
   TLS: ...\tls\  (client.pem + client_tsp.key in TSP)
 
+LOG CAPTURE (every U-T1 / U-T3 / U-P5-01 row on PC1):
+  1) Install Wireshark on PC1
+  2) cd D:\CCLI_TSP_FIELD_PACK
+  3) Once per day:
+       powershell -File scripts\tsp-evidence-logger.ps1 -Action Init -SessionDate 2026-10-14 -Operator Masomeh
+  4) Each test:
+       Start -TestId T1-01  ->  one TSP step  ->  Stop -PasteClipboard
+     (see 00h for full T1-01..T3-05 map)
+  5) Four files per row: .txt + _DUT_LOG + _WIRE + .pcapng under lab\evidence\testsuite-pro\
+
 Full guide in repo: handoff/masomeh95/TSP_PC1_START_MASOMEH.md
+Log requirements: handoff/masomeh95/PC1_LOG_CAPTURE_REQUIREMENTS.md
 
 Yahia

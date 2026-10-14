@@ -86,7 +86,8 @@ ping 192.168.10.1
 | 4 | `00e_P5_FULLCIRCLE_5LN_SCOPE.md` |
 | 5 | `02_TSP_TEST_IDENTIFICATION.md` (Tier 1 / 3 detail) |
 | 6 | **`00f_PC1_HW_CERT_PREFLIGHT.md`** — TLS, CID, LAN1, O.15 docs + PC-A plant coordination |
-| 7 | **`00g_TSP_5LN_EXECUTION_AND_LOGS.md`** — TestPro step order + **tsp-evidence-logger** every row |
+| 7 | **`00h_PC1_LOG_CAPTURE_REQUIREMENTS.md`** — **mandatory** Wireshark + 4 artefacts per row |
+| 8 | **`00g_TSP_5LN_EXECUTION_AND_LOGS.md`** — TestPro step order + logger `-TestId` map |
 
 Excel: `00_UNIFIED_CERT_TEST_MATRIX.csv`
 
@@ -111,21 +112,33 @@ Open **`00f_PC1_HW_CERT_PREFLIGHT.md`** in the pack and complete section **A** o
 
 ---
 
-## 7. Evidence (every T1 / T3 step)
+## 7. Evidence (every T1 / T3 / P5-01 step)
 
-From repo clone (or copy `scripts\` from pack):
+**Full rules:** open **`00h_PC1_LOG_CAPTURE_REQUIREMENTS.md`** in the pack (REQ-PC1-LOG-001 … 007).
+
+**Install on PC1:** Wireshark (tshark) · optional PuTTY plink/pscp for DUT SSH logs.
+
+Run logger from **field pack root** or **git clone** (same relative paths):
 
 ```powershell
-cd D:\CCLI\CCLI   # if full repo on PC1
-powershell -File scripts\tsp-evidence-logger.ps1 -Action Init -SessionDate 2026-10-14
+cd D:\CCLI_TSP_FIELD_PACK   # or D:\CCLI\CCLI after git clone
+
+$dt = Get-Date -Format yyyy-MM-dd
+powershell -File scripts\tsp-evidence-logger.ps1 -Action Init -SessionDate $dt -Operator Masomeh -TspVersion "<TSP build>"
+
 powershell -File scripts\tsp-evidence-logger.ps1 -Action Start -TestId T1-01 -Operator Masomeh
-# ... run one TSP step ...
+# ... exactly one TSP step; copy Output ...
 powershell -File scripts\tsp-evidence-logger.ps1 -Action Stop -PasteClipboard
 ```
 
-Save logs under a folder e.g. `D:\CCLI_TSP_EVIDENCE\inbox\` — USB or git to Yahia → `lab/evidence/testsuite-pro/inbox/`.
+Outputs:
 
-Pack includes: `scripts\tsp-evidence-logger.ps1` if staged from repo.
+```text
+lab\evidence\testsuite-pro\inbox\   ← TSP_*.txt, *_DUT_LOG, *_WIRE
+lab\evidence\testsuite-pro\pcap\      ← TSP_*.pcapng
+```
+
+Return to Yahia: **U-CLO-01** — robocopy `inbox` + `pcap` → repo `lab/evidence/testsuite-pro/` (USB OK).
 
 ---
 

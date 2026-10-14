@@ -9,8 +9,8 @@
 param(
     [ValidateSet("Init", "Start", "Stop", "Status")]
     [string]$Action = "Start",
-    [ValidateSet("T1-01", "T1-02", "T1-03", "T1-04", "T1-05", "T1-06", "T1-07", "T1-08", "T1-09", "T1-10")]
     [string]$TestId = "",
+    [string]$UnifiedId = "",
     [string]$SessionDate = "",  # YYYY-MM-DD; default today
     [string]$Operator = "",
     [string]$CcliPkg = "0.1.0-r52",
@@ -33,20 +33,42 @@ $Inbox = Join-Path $Repo "lab\evidence\testsuite-pro\inbox"
 $PcapDir = Join-Path $Repo "lab\evidence\testsuite-pro\pcap"
 $StatePath = Join-Path $Inbox ".tsp_evidence_active.json"
 $IndexName = "TSP_PHASE1_SESSION_INDEX_{0}.md"
+$UnifiedIndexName = "TSP_UNIFIED_5LN_SESSION_INDEX_{0}.md"
 
 $tshark = "C:\Program Files\Wireshark\tshark.exe"
 
 $TestCatalog = [ordered]@{
-    "T1-01" = @{ Gate = "P3_01"; Tool = "CONNECT"; Base = "TSP_P3_01_CONNECT"; Hint = "Connect CCI016_01 TLS; save System Status screenshot." }
-    "T1-02" = @{ Gate = "P3_COMPARE"; Tool = "COMPARE"; Base = "TSP_P3_COMPARE"; Hint = "Export Compare xlsx + scope note (M objects waiver OK)." }
-    "T1-03" = @{ Gate = "P3_03"; Tool = "BROWSE"; Base = "TSP_P3_03_BROWSE"; Hint = "Browse LD_Plant / ~31 LNs; paste sequencer or Output." }
-    "T1-04" = @{ Gate = "P3_03"; Tool = "READ"; Base = "TSP_P3_03_READ_PdC"; Hint = "Read PdCMMXU1 TotW, TotVAr, PPV." }
-    "T1-05" = @{ Gate = "P3_03"; Tool = "REPORT"; Base = "TSP_P3_03_REPORT_URCB"; Hint = "Enable urcb_PdC_Mis4sec01 IntgPd=4000; note dataset DS_R_PdC_Mis4sec." }
-    "T1-06" = @{ Gate = "P3_03"; Tool = "REPORT"; Base = "TSP_P3_03_REPORT_TotW"; Hint = "Report Viewer: SqNum, Integrity ~4s, dataRef TotW/PPV." }
-    "T1-07" = @{ Gate = "P3_04"; Tool = "OPERATE"; Base = "TSP_P3_04_OPERATE_Wlim"; Hint = "Operate Mod (on) + WMaxSptPct=10 or 70; no Write Mod.stVal." }
-    "T1-08" = @{ Gate = "P3_04"; Tool = "OPERATE"; Base = "TSP_P3_04_OPERATE_WSd"; Hint = "Operate Mod + WSptPct=20." }
-    "T1-09" = @{ Gate = "P3_05"; Tool = "FALLBACK"; Base = "TSP_P3_05_FALLBACK"; Hint = "Release association; wait 15 s; note fallback behaviour." }
-    "T1-10" = @{ Gate = "P3_01"; Tool = "RECONNECT"; Base = "TSP_P3_01_RECONNECT"; Hint = "Disconnect then Connect again." }
+    "T1-01"  = @{ UnifiedId = "U-T1-01"; Gate = "P3_01"; Tool = "CONNECT"; Base = "TSP_P3_01_CONNECT"; Hint = "Connect CCI016_01 :3782 mutual TLS; System Status screenshot optional." }
+    "T1-02"  = @{ UnifiedId = "U-T1-02"; Gate = "P3_COMPARE"; Tool = "COMPARE"; Base = "TSP_P3_COMPARE"; Hint = "Compare vs product_tr400_eth_a_5ln.cid; export xlsx; validate-5ln-cid PASS note." }
+    "T1-03"  = @{ UnifiedId = "U-T1-03"; Gate = "P3_03"; Tool = "BROWSE"; Base = "TSP_P3_03_BROWSE"; Hint = "Browse LD_Plant: exactly 5 LNs (LLN0,LPHD1,PdCMMXU1,WlimDWMX1,WSdDAGC1)." }
+    "T1-04"  = @{ UnifiedId = "U-T1-04"; Gate = "P3_03"; Tool = "READ"; Base = "TSP_P3_03_READ_PdC"; Hint = "Read PdCMMXU1 TotW, TotVAr, PPV (meter/RTU live)." }
+    "T1-05"  = @{ UnifiedId = "U-T1-05"; Gate = "P3_03"; Tool = "REPORT"; Base = "TSP_P3_03_REPORT_URCB"; Hint = "SetURCB urcb_PdC_Mis4sec IntgPd=4000 RptEna=true; DS_R_PdC_Mis4sec." }
+    "T1-05b" = @{ UnifiedId = "U-T1-05b"; Gate = "P3_03"; Tool = "REPORT"; Base = "TSP_P3_03_REPORT_DCHG"; Hint = "SetURCB TrgOps dchg; PC-A changes P during window." }
+    "T1-05c" = @{ UnifiedId = "U-T1-05c"; Gate = "P3_03"; Tool = "REPORT"; Base = "TSP_P3_03_REPORT_QCHG"; Hint = "SetURCB TrgOps qchg; report or document N/A." }
+    "T1-05d" = @{ UnifiedId = "U-T1-05d"; Gate = "P3_03"; Tool = "REPORT"; Base = "TSP_P3_03_REPORT_DUPD"; Hint = "SetURCB TrgOps dupd; GI or dupd report." }
+    "T1-06"  = @{ UnifiedId = "U-T1-06"; Gate = "P3_03"; Tool = "REPORT"; Base = "TSP_P3_03_REPORT_TotW"; Hint = "Report Viewer: SqNum, Integrity 3900-4100 ms, TotW/PPV in dataset." }
+    "T1-07"  = @{ UnifiedId = "U-T1-07"; Gate = "P3_04"; Tool = "OPERATE"; Base = "TSP_P3_04_OPERATE_Wlim"; Hint = "Operate Wlim enhanced Mod + WMaxSptPct; PC-A ubus dido_v2 after." }
+    "T1-08"  = @{ UnifiedId = "U-T1-08"; Gate = "P3_04"; Tool = "OPERATE"; Base = "TSP_P3_04_OPERATE_WSd"; Hint = "Operate WSd Mod + WSptPct=20." }
+    "T1-09"  = @{ UnifiedId = "U-T1-09"; Gate = "P3_05"; Tool = "FALLBACK"; Base = "TSP_P3_05_FALLBACK"; Hint = "Release association; wait 15 s; fallback per PIXIT." }
+    "T1-10"  = @{ UnifiedId = "U-T1-10"; Gate = "P3_01"; Tool = "RECONNECT"; Base = "TSP_P3_01_RECONNECT"; Hint = "Disconnect then Connect again." }
+    "T3-01"  = @{ UnifiedId = "U-T3-01"; Gate = "P3_06"; Tool = "TLS_FAIL"; Base = "TSP_P3_06_TLS_FAIL"; Hint = "Connect without client cert; must fail establish." }
+    "T3-02"  = @{ UnifiedId = "U-T3-02"; Gate = "P3_08"; Tool = "VIEWER_READ"; Base = "TSP_P3_08_VIEWER_READ"; Hint = "Viewer cert: read PdCMMXU1 OK." }
+    "T3-03"  = @{ UnifiedId = "U-T3-03"; Gate = "P3_08"; Tool = "VIEWER_DENY"; Base = "TSP_P3_08_VIEWER_OPERATE_DENY"; Hint = "Viewer Operate Wlim; must deny." }
+    "T3-04"  = @{ UnifiedId = "U-T3-04"; Gate = "P3_09"; Tool = "CRL"; Base = "TSP_P3_09_CRL"; Hint = "Revoked client cert + lab CRL; fail TLS." }
+    "T3-05"  = @{ UnifiedId = "U-T3-05"; Gate = "P3_07"; Tool = "DSO_ACSE"; Base = "TSP_P3_07_DSO_ACSE"; Hint = "DSO profile / dual cert ACSE; AARE OK." }
+    "P5-01"  = @{ UnifiedId = "U-P5-01"; Gate = "P5"; Tool = "FULLCIRCLE"; Base = "TSP_P5_FULLCIRCLE_TLS"; Hint = "5-LN annex trace only (P5_FULLCIRCLE_5LN_SCOPE); specimen=5-LN in header." }
+}
+
+function Resolve-TestKey {
+    param([string]$Id, [string]$Unified)
+    if ($Unified) {
+        foreach ($k in $TestCatalog.Keys) {
+            if ($TestCatalog[$k].UnifiedId -eq $Unified) { return $k }
+        }
+        throw "Unknown -UnifiedId $Unified (see LAB_UNIFIED_TSP_5LN_EXECUTION.md)"
+    }
+    if ($Id -and $TestCatalog.Contains($Id)) { return $Id }
+    throw "Unknown -TestId $Id (use T1-01..T1-10, T1-05b..d, T3-01..05, P5-01, or -UnifiedId U-T1-01)"
 }
 
 function Get-SessionDate {
@@ -185,7 +207,8 @@ function New-MetadataHeader {
         "dut_ip: $($Meta.DutIp)",
         "dut_port: $($Meta.MmsPort)",
         "tls: true",
-        "cid: apps/ccli/config/icd/lab_tg544_eth_a.cid",
+        "cid: apps/ccli/config/icd/product/product_tr400_eth_a_5ln.cid",
+        "specimen: 5-LN",
         "ccli_pkg: $($Meta.CcliPkg)",
         "gate: $($Meta.Gate)",
         "tool: $($Meta.Tool)",

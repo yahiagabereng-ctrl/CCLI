@@ -51,7 +51,7 @@ See `apps/ccli/third_party/README.md` for versions and license notes.
 | Functional TSP ↔ 61850 matrix | `lab/conformance/LAB_REQUIREMENT_TEST_MATRIX.md` |
 | Engineering KB | `knowledge-base/08-engineering/` |
 
-**Test Suite Pro on PC1 (your role = PC-B / LAN1):** read **[TSP_PC1_START_MASOMEH.md](TSP_PC1_START_MASOMEH.md)** first.
+**Test Suite Pro on PC1 (your role = PC-B / LAN1):** read **[TSP_PC1_START_MASOMEH.md](TSP_PC1_START_MASOMEH.md)** first, then **[PC1_LOG_CAPTURE_REQUIREMENTS.md](PC1_LOG_CAPTURE_REQUIREMENTS.md)** (Wireshark + logger every row).
 
 Yahia may push the field pack to `D:\CCLI_TSP_FIELD_PACK` on PC1. Open **`00_START_PC1_MASOMEH.md`** inside that folder.
 

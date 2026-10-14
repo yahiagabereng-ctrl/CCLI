@@ -72,9 +72,21 @@ $docs = @(
     @{ Rel = "lab/conformance/LAB_CONFIG_GUIDE.md"; Out = "15_LAB_CONFIG_GUIDE.md" },
     @{ Rel = "lab/conformance/LAB_SPECIMEN_VERSION.md"; Out = "16_LAB_SPECIMEN_VERSION.md" },
     @{ Rel = "handoff/masomeh95/PC1_HW_CERT_PREFLIGHT.md"; Out = "00f_PC1_HW_CERT_PREFLIGHT.md" },
+    @{ Rel = "handoff/masomeh95/PC1_LOG_CAPTURE_REQUIREMENTS.md"; Out = "00h_PC1_LOG_CAPTURE_REQUIREMENTS.md" },
     @{ Rel = "lab/conformance/LAB_UNIFIED_TSP_5LN_EXECUTION.md"; Out = "00g_TSP_5LN_EXECUTION_AND_LOGS.md" },
     @{ Rel = "lab/evidence/testsuite-pro/EVIDENCE_PER_TEST_PROTOCOL.md"; Out = "05c_EVIDENCE_PER_TEST_PROTOCOL.md" }
 )
+
+# Evidence tree on TSP PC (logger writes here when cwd = pack root)
+$evidenceInbox = Join-Path $Dest "lab\evidence\testsuite-pro\inbox"
+$evidencePcap = Join-Path $Dest "lab\evidence\testsuite-pro\pcap"
+New-Item -ItemType Directory -Force -Path $evidenceInbox, $evidencePcap | Out-Null
+$pullDut = Join-Path $Repo "lab\evidence\testsuite-pro\pull-dut-tsp-test-remote.sh"
+if (Test-Path $pullDut) {
+    Copy-Item -Force $pullDut (Join-Path $Dest "lab\evidence\testsuite-pro\pull-dut-tsp-test-remote.sh")
+    $manifest.files += "lab/evidence/testsuite-pro/pull-dut-tsp-test-remote.sh"
+}
+$manifest.files += "lab/evidence/testsuite-pro/inbox/", "lab/evidence/testsuite-pro/pcap/"
 
 $tspScripts = @(
     "scripts/tsp-evidence-logger.ps1",
@@ -171,5 +183,5 @@ $manifest.files += "tls/*", "cid/lab_tg544_eth_a.cid", "config/lab_tr400_phase1_
 
 Write-Host ""
 Write-Host "OK: $Dest" -ForegroundColor Green
-Write-Host "Copy this folder to the Test Suite Pro PC (USB). Open 00_UNIFIED_CERT_TEST_MATRIX.md (master) + 00b_UNIFIED_CERT_ROADMAP.md"
+Write-Host "Copy this folder to the Test Suite Pro PC (USB). Open 00_START_PC1_MASOMEH.md + 00h_PC1_LOG_CAPTURE_REQUIREMENTS.md + 00_UNIFIED_CERT_TEST_MATRIX.md"
 Write-Host "RAG: ccli-lab-unified-cert-test-matrix, ccli-lab-unified-cert-test-roadmap, ccli-product-specimen-5ln, ccli-tsp-two-pc-bench-runbook"

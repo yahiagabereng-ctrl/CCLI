@@ -85,4 +85,4 @@ if ($rc -ge 8) {
 
 Write-Host ""
 Write-Host "OK: field pack on PC1 at $RemoteDest" -ForegroundColor Green
-Write-Host "Masomeh: open 00_START_PC1_MASOMEH.md then 00_UNIFIED_CERT_TEST_MATRIX.md"
+Write-Host "Masomeh: open 00_START_PC1_MASOMEH.md -> 00h_PC1_LOG_CAPTURE_REQUIREMENTS.md -> 00_UNIFIED_CERT_TEST_MATRIX.md"

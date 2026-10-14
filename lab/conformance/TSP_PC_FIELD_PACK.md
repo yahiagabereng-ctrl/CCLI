@@ -49,6 +49,11 @@ Creates **`C:\CCLI_TSP_FIELD_PACK\`** with checklist, procedures, CID, TLS, and 
 | `config/lab_tr400_phase1_regulation.yaml` | Reference ports 3782 |
 | `config/lab_tr400_phase4_emt432_lan3_tcp.yaml` | LAN3 EMT432 TCP + PPV reg 980 |
 | `00f_PC1_HW_CERT_PREFLIGHT.md` | PC1 TLS/CID/HW + PC-A plant coordination |
+| `00h_PC1_LOG_CAPTURE_REQUIREMENTS.md` | PC1 **mandatory** Wireshark + 4 artefacts per matrix row |
+| `00g_TSP_5LN_EXECUTION_AND_LOGS.md` | Logger `-TestId` map · phase order |
+| `lab/evidence/testsuite-pro/inbox/` | Logger output (created empty at stage) |
+| `lab/evidence/testsuite-pro/pcap/` | Wireshark pcaps |
+| `scripts/tsp-evidence-logger.ps1` | Start/Stop/Init evidence automation |
 | `tools/modbus_emt432_tcp_probe.py` | Meter LAN3 probe (PC-A) |
 | `tools/start-bench-plant.ps1` | EMT432 probe + Sun mock launcher |
 | `scripts/validate-5ln-cid.ps1` | 5-LN CID gate before Compare |

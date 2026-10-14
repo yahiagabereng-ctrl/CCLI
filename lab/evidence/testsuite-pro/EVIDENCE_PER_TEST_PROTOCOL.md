@@ -16,7 +16,8 @@ Optional: screenshots (`.png`) with the same basename.
 **SSH:** PC-B must reach DUT **`192.168.10.1`** (LAN1). Source secrets once:
 
 ```powershell
-. D:\CCLI\CCLI\CCLI\lab\tg544-openwrt\lab-env.ps1
+. D:\CCLI\CCLI\lab\tg544-openwrt\lab-env.ps1
+# or: $env:CCLI_TG544_PW = "<DUT root password from Yahia>"
 ```
 
 Requires PuTTY **plink** + **pscp**. Skip SSH with `-NoSsh` if offline.
@@ -28,7 +29,8 @@ Requires PuTTY **plink** + **pscp**. Skip SSH with `-NoSsh` if offline.
 1. **Start logger** (opens capture + refreshes log header):
 
    ```powershell
-   cd D:\CCLI\CCLI\CCLI
+   cd D:\CCLI\CCLI
+   # field pack only: cd D:\CCLI_TSP_FIELD_PACK
    powershell -File scripts\tsp-evidence-logger.ps1 -Action Start -TestId T1-07 -Operator "YourName"
    ```
 
