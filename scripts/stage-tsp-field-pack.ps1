@@ -77,6 +77,7 @@ $docs = @(
     @{ Rel = "lab/conformance/LAB_UNIFIED_TSP_5LN_EXECUTION.md"; Out = "00g_TSP_5LN_EXECUTION_AND_LOGS.md" },
     @{ Rel = "lab/testpro/PC1_TSP_IMPORT_CHECKLIST.md"; Out = "00i_PC1_TSP_IMPORT_CHECKLIST.md" },
     @{ Rel = "lab/testpro/README.md"; Out = "00j_TESTPRO_CONFIG_README.md" },
+    @{ Rel = "handoff/masomeh95/PC1_EJBCA_TLS_ALIGN_TESTPRO.md"; Out = "00k_PC1_EJBCA_TLS_TESTPRO.md" },
     @{ Rel = "lab/evidence/testsuite-pro/EVIDENCE_PER_TEST_PROTOCOL.md"; Out = "05c_EVIDENCE_PER_TEST_PROTOCOL.md" }
 )
 

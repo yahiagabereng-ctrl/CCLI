@@ -33,7 +33,7 @@ git pull origin main
 powershell -File scripts\setup-pc1-testpro-from-git.ps1 -Dest D:\CCLI_TSP_FIELD_PACK
 ```
 
-TLS is included under `D:\CCLI_TSP_FIELD_PACK\tls\` after stage. Open **`00i_PC1_TSP_IMPORT_CHECKLIST.md`** for exact TSP import steps. No separate USB copy needed if git pull succeeds.
+TLS is included under `D:\CCLI_TSP_FIELD_PACK\tls\` after stage ( **EJBCA** sync — must match DUT 2026-10-14). Read **`00k_PC1_EJBCA_TLS_TESTPRO.md`** first, then **`00i_PC1_TSP_IMPORT_CHECKLIST.md`**. No separate USB copy needed if git pull succeeds.
 
 ---
 

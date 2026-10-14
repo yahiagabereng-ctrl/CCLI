@@ -14,7 +14,7 @@ Use with **`00_UNIFIED_CERT_TEST_MATRIX.md`** session header and **`08_TSP_PC_FU
 | A1 | Field pack present | Folder has `PACK_MANIFEST.json`, `00_UNIFIED_CERT_TEST_MATRIX.md`, `tls\`, `cid\` |
 | A2 | LAN1 NIC | Admin: `bench_scripts\set_pc_lan1_dso.cmd` → PC = **192.168.10.10/24** |
 | A3 | DUT reachability | `ping 192.168.10.1` OK (DUT powered, cable LAN1) |
-| A4 | TLS folder | `tls\client.pem`, `tls\client_tls.pem`, `tls\root_CA.pem`, **`tls\client_tsp.key`**, `tls\lab_crl.pem` |
+| A4 | TLS folder (EJBCA sync) | `tls\root_CA.pem`, `client.pem`, `client_tls.pem`, **`client_tsp.key`**, `lab_crl.pem`, `revoked*.pem`, `revoked_tsp.key` — see **`00k_PC1_EJBCA_TLS_TESTPRO.md`** |
 | A5 | TSP TLS profile | Mutual TLS · CA **`root_CA.pem`** · MMS **`client.pem`** + key **`client_tsp.key`** · Transport **`client_tls.pem`** + same **`client_tsp.key`** (TSP OpenSSL) |
 | A5b | OpenSSL on PC1 | `openssl version` → 3.x · `openssl verify -CAfile tls\root_CA.pem tls\client.pem` → OK (see **`00h_PC1_LOG_CAPTURE_REQUIREMENTS.md`**) |
 | A6 | CID for Compare | **Cert:** `cid\product_tr400_eth_a_5ln.cid` if present; else read **`00d_PRODUCT_SPECIMEN_5LN_VALIDATION.md`** (Compare blocked until product CID) |
