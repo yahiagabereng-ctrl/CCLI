@@ -8,7 +8,7 @@ checkbox,U_ID,Phase,O15_cert,REQ_gate,Executor,HW,Action_summary,Pass_criteria,E
 ,U-P0-07,0,UCA prep,,PC-A,SSH,Stop iec61850service one ccli deploy product cfg,:3782 listen,PREFLIGHT_*,ccli-lab-dut-finalize-cert-path
 ,U-P0-08,0,Trace,REQ-LAB-MTX-003,Both,,Record version and cfg SHA in header,Match pin doc,session header,ccli-product-specimen-5ln
 ,U-P0b-01,0b,Annex T,T.3.1,PC-A,LAN3,EMT432 probe port 502,Modbus OK,modbus_emt432_*,ccli-validation-strategy
-,U-P0b-02,0b,Annex T,T.3.1,PC-A,COM5,modbus_rtu_slave.py Huawei trace,FC03 reads,RTU log,ccli-tsp-two-pc-bench-runbook
+,U-P0b-02,0b,Annex T,T.3.1,PC-A,COM5,start-bench-plant.ps1 SUN2000 RTU sim COM5,FC03 reads,RTU log,ccli-tsp-two-pc-bench-runbook
 ,U-P0b-03,0b,O.14,P7-04,PC-A,SSH,modbus link_up in event-dump,Category present,event snippet,ccli-lab-requirement-test-matrix
 ,U-P0b-04,0b,O.14,P7-01,PC-A,SSH,optional event-wrap-test,Log saved,P7_01_WRAP_*,ccli-lab-dut-finalize-cert-path
 ,U-P0b-05,0b,,,PC-A,,Plant yaml matches HW before TSP,,DUT lab.yaml,ccli-lab-config-guide

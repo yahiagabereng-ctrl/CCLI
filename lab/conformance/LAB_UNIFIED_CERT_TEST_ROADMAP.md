@@ -34,7 +34,7 @@ Executable order for **your hardware**: **PC-B** (Test Suite Pro, LAN1 only) · 
   PC-A COM5 USB-RS485 ──A1/B1── DUT /dev/ttyS1        (Huawei-style mock)
 ```
 
-**Before Phase 0b:** pick LAN3 profile · run `modbus_emt432_tcp_probe.py` if using TCP meter · start `modbus_rtu_slave.py` if using RTU path.
+**Before Phase 0b:** pick LAN3 profile · run `modbus_emt432_tcp_probe.py` if using TCP meter · start **SUN2000** via `lab/start-bench-plant.ps1` on COM5 (not `--huawei` RTU slave).
 
 Normative bench doc: `ccli-tsp-two-pc-bench-runbook`
 

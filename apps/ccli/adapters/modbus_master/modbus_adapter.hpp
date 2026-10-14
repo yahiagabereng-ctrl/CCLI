@@ -76,6 +76,12 @@ struct ModbusPollConfig {
 
     int         reg_reactive_power_count{2};
 
+    int         reg_line_voltage{-1};
+
+    int         reg_line_voltage_count{2};
+
+    double      line_voltage_scale{0.001};
+
     double      power_scale{1.0};
 
     double      reactive_scale{1.0};

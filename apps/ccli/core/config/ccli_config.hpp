@@ -94,6 +94,14 @@ struct ModbusConfig {
 
     int reg_reactive_power_count{2};
 
+    /** Holding offset for line-line V (EMT432 @980). -1 = disabled (use plant.poc_ppv_kv). */
+    int reg_line_voltage{-1};
+
+    int reg_line_voltage_count{2};
+
+    /** V to kV for MMS PPV (default 0.001). */
+    double line_voltage_scale{0.001};
+
     /** Multiply decoded P/Q before store (EMT432 P1/Q1 are W/VAR → use 0.001). */
     double power_scale{1.0};
 

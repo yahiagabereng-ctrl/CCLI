@@ -34,6 +34,9 @@ modbus:
   power_scale: 0.001
   reactive_scale: 0.001
   float_word_swap: true
+  reg_line_voltage: 980
+  reg_line_voltage_count: 2
+  line_voltage_scale: 0.001
 
 pf2:
   threshold_kw: 900

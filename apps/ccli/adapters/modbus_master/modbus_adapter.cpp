@@ -66,20 +66,30 @@ std::string regs_hex_string(const std::uint16_t* regs, const int n) {
 }
 
 int read_block_start(const ModbusPollConfig& cfg) {
+    int start = cfg.reg_active_power < cfg.reg_reactive_power ? cfg.reg_active_power
+                                                              : cfg.reg_reactive_power;
+    if (cfg.reg_line_voltage >= 0 && cfg.reg_line_voltage < start) {
+        start = cfg.reg_line_voltage;
+    }
+    return start;
+}
+
+int read_block_end(const ModbusPollConfig& cfg) {
     const int p_end = cfg.reg_active_power + cfg.reg_active_power_count;
     const int q_end = cfg.reg_reactive_power + cfg.reg_reactive_power_count;
-    const int start = cfg.reg_active_power < cfg.reg_reactive_power ? cfg.reg_active_power
-                                                                  : cfg.reg_reactive_power;
-    const int end = p_end > q_end ? p_end : q_end;
-    return start;
+    int end = p_end > q_end ? p_end : q_end;
+    if (cfg.reg_line_voltage >= 0) {
+        const int v_end = cfg.reg_line_voltage + cfg.reg_line_voltage_count;
+        if (v_end > end) {
+            end = v_end;
+        }
+    }
+    return end;
 }
 
 int read_block_count(const ModbusPollConfig& cfg) {
     const int start = read_block_start(cfg);
-    const int p_end = cfg.reg_active_power + cfg.reg_active_power_count;
-    const int q_end = cfg.reg_reactive_power + cfg.reg_reactive_power_count;
-    const int end = p_end > q_end ? p_end : q_end;
-    return end - start;
+    return read_block_end(cfg) - start;
 }
 
 }  // namespace
@@ -132,6 +142,23 @@ void ModbusAdapter::record_read_holding(const std::int64_t now_ms, const int sta
         last_exchange_.p_kw *= cfg_.power_scale;
         last_exchange_.q_kvar *= cfg_.reactive_scale;
     }
+}
+
+double decode_line_voltage_kv(const ModbusPollConfig& cfg, const int start,
+                              const std::uint16_t* regs, const int reg_count) {
+    if (cfg.reg_line_voltage < 0) {
+        return 0.0;
+    }
+    const int v_idx = cfg.reg_line_voltage - start;
+    if (cfg.reg_line_voltage_count >= 2 && (v_idx + 1) < reg_count) {
+        const double v =
+            regs_to_float32_pair(regs[v_idx], regs[v_idx + 1], cfg.float_word_swap);
+        return v * cfg.line_voltage_scale;
+    }
+    if (cfg.reg_line_voltage_count == 1 && v_idx >= 0 && v_idx < reg_count) {
+        return static_cast<double>(regs[v_idx]) * cfg.line_voltage_scale;
+    }
+    return 0.0;
 }
 
 ModbusAdapter::ModbusAdapter(ModbusPollConfig cfg) : cfg_(std::move(cfg)) {}
@@ -547,7 +574,10 @@ bool ModbusAdapter::poll_libmodbus(cci::core::MeasurementStore& store, const std
 
     m.q_kvar *= cfg_.reactive_scale;
 
-
+    if (cfg_.reg_line_voltage >= 0) {
+        m.ppv_kv = decode_line_voltage_kv(cfg_, start, regs, reg_count);
+        m.has_ppv_kv = true;
+    }
 
     m.pf = 0.98;
 

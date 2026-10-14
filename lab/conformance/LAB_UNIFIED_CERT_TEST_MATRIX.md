@@ -39,7 +39,7 @@
 | IEC 104 | `192.168.1.130:2404` | — | `192.168.1.183` |
 | Plant LAN3 | `192.168.30.1/24` | — | `192.168.30.10` |
 | EMT432 Modbus TCP | polled by DUT | — | `192.168.30.50:502` *(or `.178.250` Chronos)* |
-| RS485 mock | A1/B1 → `ttyS1` | — | USB **COM5** `modbus_rtu_slave.py` |
+| RS485 mock | A1/B1 → `ttyS1` | — | USB **COM5** **SUN2000** RTU sim (`lab/start-bench-plant.ps1`) |
 
 Scripts: `lab/set_pc_lan1_dso.cmd` · `set_pc_lan2_oa.cmd` · `set_pc_lan3_plant.cmd` (or `set_pc_lan3_plant_178.cmd`).
 
@@ -90,8 +90,8 @@ Scripts: `lab/set_pc_lan1_dso.cmd` · `set_pc_lan2_oa.cmd` · `set_pc_lan3_plant
 | □ | U-P0-06 | 0 | UCA prep | D5 | PC-B | — | Import **5-LN** CID + TLS PEMs | Load OK | TSP project | ccli-product-specimen-5ln |
 | □ | U-P0-07 | 0 | UCA prep | — | PC-A | SSH | Stop `iec61850service` · one `ccli` · deploy **product cfg** | :3782 listen | PREFLIGHT_* | ccli-lab-dut-finalize-cert-path |
 | □ | U-P0-08 | 0 | Trace | REQ-LAB-MTX-003 | Both | — | Record version + cfg SHA in header | Match pin doc | session header | ccli-product-specimen-5ln |
-| □ | U-P0b-01 | 0b | Annex T | T.3.1 | PC-A | LAN3 | EMT432 power · probe `:502` | Modbus OK | modbus_emt432_* | ccli-validation-strategy |
-| □ | U-P0b-02 | 0b | Annex T | T.3.1 | PC-A | COM5 | `modbus_rtu_slave.py --port COM5 --huawei --trace` | FC03 reads | RTU log | ccli-tsp-two-pc-bench-runbook |
+| □ | U-P0b-01 | 0b | Annex T | T.3.1 | PC-A | LAN3 | `modbus_emt432_tcp_probe.py` · **V_L1_L2 @980** → PPV kV | Modbus OK + PPV hint | modbus_emt432_* | ccli-validation-strategy |
+| □ | U-P0b-02 | 0b | Annex T | T.3.1 | PC-A | COM5 | `start-bench-plant.ps1 -ScanOnly` then Sun on COM5 (or `-Port COM5` only) | FC03 inverter map | RTU log | ccli-tsp-two-pc-bench-runbook |
 | □ | U-P0b-03 | 0b | O.14 | P7-04 | PC-A | SSH | DUT modbus `link_up` in event-dump | Category present | event snippet | ccli-lab-requirement-test-matrix |
 | □ | U-P0b-04 | 0b | O.14 | P7-01 | PC-A | SSH | Optional `ccli --event-wrap-test` once | Log saved | P7_01_WRAP_* | ccli-lab-dut-finalize-cert-path |
 | □ | U-P0b-05 | 0b | — | — | PC-A | — | Do **not** start TSP until plant path chosen | yaml matches HW | DUT lab.yaml | ccli-lab-config-guide |

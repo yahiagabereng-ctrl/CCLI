@@ -47,6 +47,11 @@ Creates **`C:\CCLI_TSP_FIELD_PACK\`** with checklist, procedures, CID, TLS, and 
 | `cid/lab_tg544_eth_a.cid` | Compare Model / MICS source (must match **rev 9** pin) |
 | `tls/*` | EJBCA lab PEMs + `TSP_STAGE_README.txt` |
 | `config/lab_tr400_phase1_regulation.yaml` | Reference ports 3782 |
+| `config/lab_tr400_phase4_emt432_lan3_tcp.yaml` | LAN3 EMT432 TCP + PPV reg 980 |
+| `00f_PC1_HW_CERT_PREFLIGHT.md` | PC1 TLS/CID/HW + PC-A plant coordination |
+| `tools/modbus_emt432_tcp_probe.py` | Meter LAN3 probe (PC-A) |
+| `tools/start-bench-plant.ps1` | EMT432 probe + Sun mock launcher |
+| `scripts/validate-5ln-cid.ps1` | 5-LN CID gate before Compare |
 | `09_PICS_FILL.md` … `16_LAB_SPECIMEN_VERSION.md` | PID fill packs + **CID/cfg rev pin** (SHA-256) |
 | `PACK_MANIFEST.json` | Generated timestamp + file list |
 
@@ -64,7 +69,7 @@ Creates **`C:\CCLI_TSP_FIELD_PACK\`** with checklist, procedures, CID, TLS, and 
 | PC LAN2 | `192.168.1.183` → 104 client (same PC OK) |
 | DUT LAN3 (plant) | `192.168.30.1` |
 | PC LAN3 | `192.168.30.10` → GOOSE / plant |
-| USB RS485 | **COM5** → `lab/modbus_rtu_slave.py` (PdC / inverter mock) |
+| USB RS485 | **COM5** → **SUN2000** RTU sim (`tools/start-bench-plant.ps1` in pack) |
 | IED | `CCI016_01` · Server = DUT · Client = TSP |
 
 After `git clone` on TSP PC: run `stage-tsp-field-pack.ps1` from repo root.

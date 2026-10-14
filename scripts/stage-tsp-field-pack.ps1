@@ -70,7 +70,8 @@ $docs = @(
     @{ Rel = "lab/conformance/D7_62351-3_PID_DRAFT.md"; Out = "13_D7_62351-3_PID.md" },
     @{ Rel = "lab/conformance/CID_PICS_ALIGNMENT.md"; Out = "14_CID_PICS_ALIGNMENT.md" },
     @{ Rel = "lab/conformance/LAB_CONFIG_GUIDE.md"; Out = "15_LAB_CONFIG_GUIDE.md" },
-    @{ Rel = "lab/conformance/LAB_SPECIMEN_VERSION.md"; Out = "16_LAB_SPECIMEN_VERSION.md" }
+    @{ Rel = "lab/conformance/LAB_SPECIMEN_VERSION.md"; Out = "16_LAB_SPECIMEN_VERSION.md" },
+    @{ Rel = "handoff/masomeh95/PC1_HW_CERT_PREFLIGHT.md"; Out = "00f_PC1_HW_CERT_PREFLIGHT.md" }
 )
 
 $tspScripts = @(
@@ -85,6 +86,11 @@ foreach ($rel in $tspScripts) {
         Copy-Item -Force $src (Join-Path $Dest "scripts\$(Split-Path $src -Leaf)")
         $manifest.files += "scripts/$(Split-Path $src -Leaf)"
     }
+}
+$v5 = Join-Path $Repo "scripts\validate-5ln-cid.ps1"
+if (Test-Path $v5) {
+    Copy-Item -Force $v5 (Join-Path $Dest "scripts\validate-5ln-cid.ps1")
+    $manifest.files += "scripts/validate-5ln-cid.ps1"
 }
 
 $benchScripts = @(
@@ -101,11 +107,29 @@ foreach ($rel in $benchScripts) {
         $manifest.files += "bench_scripts/$(Split-Path $src -Leaf)"
     }
 }
-$modbus = Join-Path $Repo "lab\modbus_rtu_slave.py"
-if (Test-Path $modbus) {
-    New-Item -ItemType Directory -Force -Path (Join-Path $Dest "tools") | Out-Null
-    Copy-Item -Force $modbus (Join-Path $Dest "tools\modbus_rtu_slave.py")
-    $manifest.files += "tools/modbus_rtu_slave.py"
+New-Item -ItemType Directory -Force -Path (Join-Path $Dest "tools") | Out-Null
+$toolFiles = @(
+    "lab\modbus_rtu_slave.py",
+    "lab\modbus_emt432_tcp_probe.py",
+    "lab\start-bench-plant.ps1"
+)
+foreach ($rel in $toolFiles) {
+    $src = Join-Path $Repo ($rel -replace '/', '\')
+    if (-not (Test-Path $src)) { continue }
+    Copy-Item -Force $src (Join-Path $Dest "tools\$(Split-Path $src -Leaf)")
+    $manifest.files += "tools/$(Split-Path $src -Leaf)"
+}
+$sunSim = Join-Path $Repo "lab\third_party\Sun2000-100KTL-M2-Inverter-Simulator\sun2000_100ktl_m2_rtu_sim.py"
+if (Test-Path $sunSim) {
+    New-Item -ItemType Directory -Force -Path (Join-Path $Dest "tools\sun2000") | Out-Null
+    Copy-Item -Force $sunSim (Join-Path $Dest "tools\sun2000\sun2000_100ktl_m2_rtu_sim.py")
+    $manifest.files += "tools/sun2000/sun2000_100ktl_m2_rtu_sim.py"
+}
+$emtMap = Join-Path $Repo "apps\ccli\config\modbus\chronos_emt432_map.yaml"
+if (Test-Path $emtMap) {
+    New-Item -ItemType Directory -Force -Path (Join-Path $Dest "config\modbus") | Out-Null
+    Copy-Item -Force $emtMap (Join-Path $Dest "config\modbus\chronos_emt432_map.yaml")
+    $manifest.files += "config/modbus/chronos_emt432_map.yaml"
 }
 
 foreach ($d in $docs) {

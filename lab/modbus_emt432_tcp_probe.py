@@ -68,7 +68,8 @@ def probe_host(host: str, port: int, unit: int, timeout: float, *, word_swap: bo
     mode = (meas_cfg >> 1) & 0x3 if meas_cfg is not None else None
     mode_names = {0: "single phase", 1: "3P 3W 2TA", 2: "3P 3W 3TA", 3: "3P 4W 3TA+N"}
 
-    v_ln = read_f32(client, 974, unit, word_swap=word_swap)  # V_L1_N_peak
+    v_ln = read_f32(client, 974, unit, word_swap=word_swap)  # V_L1_N_peak @40975
+    v_l1_l2 = read_f32(client, 980, unit, word_swap=word_swap)  # V_L1_L2_peak @40981
     freq = read_f32(client, 972, unit, word_swap=word_swap)
     p1 = read_f32(client, 932, unit, word_swap=word_swap)
     q1 = read_f32(client, 940, unit, word_swap=word_swap)
@@ -81,6 +82,9 @@ def probe_host(host: str, port: int, unit: int, timeout: float, *, word_swap: bo
         print(f"  Measurement_Config @40232 mode: {mode} = {mode_names.get(mode, '?')}")
     if v_ln is not None:
         print(f"  V_L1_N_peak @40975: {v_ln:.1f} V")
+    if v_l1_l2 is not None:
+        ppv_kv = v_l1_l2 / 1000.0
+        print(f"  V_L1_L2_peak @40981: {v_l1_l2:.1f} V  -> PPV.phsAB ~ {ppv_kv:.4f} kV (ccli line_voltage_scale 0.001)")
     if freq is not None:
         print(f"  Frequency @40973: {freq:.3f} Hz")
     if p1 is not None:
@@ -97,27 +101,27 @@ def probe_host(host: str, port: int, unit: int, timeout: float, *, word_swap: bo
 def scan_subnet(
     subnet_prefix: str, port: int, unit: int, timeout: float, *, word_swap: bool
 ) -> None:
-    print("Scanning 192.168.30.2–254 (Modbus TCP)...")
+    prefix = subnet_prefix.rstrip(".")
+    print(f"Scanning {prefix}.2–254 (Modbus TCP)...")
     found = 0
     for last in range(2, 255):
-        host = f"192.168.30.{last}"
+        host = f"{prefix}.{last}"
         client = ModbusTcpClient(host, port=port, timeout=timeout)
         if not client.connect():
             continue
         rr = client.read_holding_registers(14, 1, slave=unit)
         client.close()
         if not rr.isError():
+            found += 1
             print(f"  candidate: {host}")
-            probe_host(host, port, unit, timeout)
             probe_host(host, port, unit, timeout, word_swap=word_swap)
     if found == 0:
-        print("  No Modbus TCP slave found on 192.168.30.0/24")
-        print("  Check: meter IP, LAN3 cable, PC NIC 192.168.30.10/24")
+        print(f"  No Modbus TCP slave found on {prefix}.0/24")
+        print("  Check: meter IP, LAN3 cable, PC NIC (set_pc_lan3_plant*.cmd)")
 
 
 def main() -> int:
     ap = argparse.ArgumentParser(description="EMT432 Modbus TCP bench probe")
-    ap.add_argument("--host", default="192.168.30.50", help="Meter IP (plant LAN3)")
     ap.add_argument("--host", default="192.168.178.250", help="Meter IP (plant LAN3)")
     ap.add_argument(
         "--subnet",

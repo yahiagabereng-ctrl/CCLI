@@ -57,7 +57,7 @@ Use this when **two Windows PCs** share one TG544 DUT:
 | **TSP only, RS485 mock P** | `lab_tr400_phase1_regulation.yaml` + `ttyS1` | `:3782` | off | **RTU** slave on A1/B1 |
 | **Meter TCP + RS485 inverter mock** | `lab_tr400_emt432_1p.yaml` + enable `iec104` from phase4 | `:3782` | optional | **TCP** for TotW; RS485 for lab/Huawei path (see note below) |
 
-**Modbus note:** With **`backend: tcp`**, DUT **TotW/TotVAr** come from the **EMT432 on LAN3**. USB RS485 **`modbus_rtu_slave.py`** still runs on PC-A for **Huawei inverter mock** (plant map / P5 step 13 / future FC06) and must stay wired to **A1/B1** — it does **not** replace TCP meter reads unless you switch DUT yaml to **RTU-only** (`phase1` / `cleartext_tsp_ttyS1`).
+**Modbus note:** With **`backend: tcp`**, DUT **TotW/TotVAr/PPV** come from the **EMT432 on LAN3** (`reg_line_voltage: 980` → `PdCMMXU1.PPV`). USB RS485 runs **`lab/start-bench-plant.ps1`** (**SUN2000** RTU sim on **COM5**) for **inverter / P5 step 13** — wired to **A1/B1**; it does **not** replace TCP meter reads unless you switch DUT yaml to **RTU-only** (`phase1` / `cleartext_tsp_ttyS1`). Do **not** use `modbus_rtu_slave.py --huawei` for cert bench (legacy).
 
 **Firmware:** deploy **`ccli` 0.1.0-r35+** (O.14 logger). Record `ccli --version` on PC-A via SSH.
 
@@ -91,11 +91,11 @@ Start **before** PC-B enables URCB on DUT.
 | □ | PC-A | `python lab\modbus_emt432_tcp_probe.py` (or equivalent) → meter **502** OK | Plant comms |
 | □ | PC-A | DUT log: modbus TCP trace · `link_up` in `--event-dump` | P7-04 / modbus |
 | □ | PC-A | Start inverter mock (keep window open): | P5 step 13 |
-|   |   | `python -u lab\modbus_rtu_slave.py --port COM5 --power-kw 450 --huawei --trace` | |
+|   |   | `powershell -File lab\start-bench-plant.ps1 -Port COM5 -ScanOnly` then same script without `-ScanOnly`, or `python lab\third_party\Sun2000-100KTL-M2-Inverter-Simulator\sun2000_100ktl_m2_rtu_sim.py --port COM5` | |
 | □ | PC-A | Optional: `ccli --event-wrap-test` once on DUT · save log | P7-01 |
 | □ | PC-A | Optional syslog listener on `514` if testing r35 forward | P7-03 |
 
-**Huawei mapping:** Production plant uses registers in `apps/ccli/config/plant/PLANT_ASSIGNMENT_PLANE.csv` (e.g. `32080` TotW). Lab **`modbus_rtu_slave.py`** emulates **generic** FC03 kW at **40001** (PdC mock) — sufficient for **TSP TotW** when DUT yaml uses **RTU**. For **TCP meter** day, prioritize **EMT432** reads; keep RS485 running for bench continuity and P5 sweep.
+**SUN2000 mapping:** `sun2000_100ktl_m2_rtu_sim.py` exposes production-style inverter registers on RS485. For **TCP meter** day, **EMT432** is TotW/TotVAr/PPV source; keep Sun sim on COM5 for GenPV / P5 sweep.
 
 ---
 

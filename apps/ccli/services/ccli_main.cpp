@@ -836,7 +836,9 @@ int main(int argc, char** argv) {
             }
             mms.update_tot_w_kw(m.p_kw);
             mms.update_totvar_kvar(m.q_kvar);
-            mms.update_ppv_kv(app_cfg.plant.poc_ppv_kv);
+            const double ppv_kv =
+                m.has_ppv_kv ? m.ppv_kv : app_cfg.plant.poc_ppv_kv;
+            mms.update_ppv_kv(ppv_kv);
             iec104.update_tot_w_kw(m.p_kw);
         }
         mms.refresh_time_quality();

@@ -115,9 +115,19 @@ def main() -> None:
     parser.add_argument(
         "--huawei",
         action="store_true",
-        help="Also expose Huawei INV01 map @32080/32089 (lab COM5 combined mock)",
+        help="Legacy: Huawei map @32080/32089 (prefer Sun2000 sim for inverter mock)",
+    )
+    parser.add_argument(
+        "--sun",
+        action="store_true",
+        help="Deprecated alias — use lab/start-bench-plant.ps1 (SUN2000 RTU sim) instead",
     )
     args = parser.parse_args()
+    if args.sun:
+        raise SystemExit(
+            "Use Sun2000 bench sim: powershell -File lab\\start-bench-plant.ps1 -Port "
+            + args.port
+        )
 
     block_cls = TracingDataBlock if args.trace else ModbusSequentialDataBlock
     hr_size = 32092 if args.huawei else 10

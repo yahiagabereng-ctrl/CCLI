@@ -46,6 +46,12 @@ adapters::ModbusPollConfig modbus_poll_from_config(const core::CcliConfig& app_c
 
     out.reg_reactive_power_count = m.reg_reactive_power_count;
 
+    out.reg_line_voltage = m.reg_line_voltage;
+
+    out.reg_line_voltage_count = m.reg_line_voltage_count;
+
+    out.line_voltage_scale = m.line_voltage_scale;
+
     out.power_scale = m.power_scale;
 
     out.reactive_scale = m.reactive_scale;

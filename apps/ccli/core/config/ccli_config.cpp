@@ -210,6 +210,12 @@ CcliConfig load_config(const std::string& path) {
                 cfg.modbus.reg_reactive_power = std::atoi(value.c_str());
             } else if (key == "reg_reactive_power_count") {
                 cfg.modbus.reg_reactive_power_count = std::atoi(value.c_str());
+            } else if (key == "reg_line_voltage") {
+                cfg.modbus.reg_line_voltage = std::atoi(value.c_str());
+            } else if (key == "reg_line_voltage_count") {
+                cfg.modbus.reg_line_voltage_count = std::atoi(value.c_str());
+            } else if (key == "line_voltage_scale") {
+                cfg.modbus.line_voltage_scale = std::strtod(value.c_str(), nullptr);
             } else if (key == "power_scale") {
                 cfg.modbus.power_scale = std::strtod(value.c_str(), nullptr);
             } else if (key == "reactive_scale") {
