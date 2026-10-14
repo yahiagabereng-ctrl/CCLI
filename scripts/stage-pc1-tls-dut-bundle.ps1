@@ -1,5 +1,5 @@
-# Stage TLS material on PC1 aligned with DUT /etc/ccli/tls/ (full deploy-ccli-session-fix.ps1 PKI set).
-# Includes server + CA private keys for lab PC1 mirror. Do not commit Dest to git or send over public email.
+# Stage TLS on PC1: files deployed to DUT that Test Suite Pro / UCA bench needs (T1 + Tier 3).
+# Same trust + client/viewer/revoked material as deploy-ccli-session-fix.ps1, excluding DUT-server-only keys/certs.
 #
 # Usage:
 #   powershell -File scripts\stage-pc1-tls-dut-bundle.ps1
@@ -22,11 +22,9 @@ if (-not $Dest) {
 
 New-Item -ItemType Directory -Force -Path $Dest | Out-Null
 
-# Same PEM/key set pushed to DUT (deploy-ccli-session-fix.ps1) + root_CA.key for full PC1 mirror.
-$dutTlsFiles = @(
-    "root_CA.pem", "root_CA.key",
-    "server.pem", "server_tls.pem", "server.key", "server_acse.key",
-    "server_combined.pem", "server_combined.key",
+# Intersection: on DUT after deploy + required for cert/TSP (LAB_REQUIREMENT_TEST_MATRIX T1-01, T3-01..04).
+$pc1CertTlsFiles = @(
+    "root_CA.pem",
     "client.pem", "client_tls.pem", "client.key", "client_acse.key", "client_tsp.key",
     "client_acse_tsp.key",
     "viewer.pem", "viewer_tls.pem", "viewer.key",
@@ -44,26 +42,22 @@ function Copy-IfExists([string]$Name) {
     return $Name
 }
 
-Write-Host "PC1 TLS DUT-aligned bundle -> $Dest" -ForegroundColor Cyan
+Write-Host "PC1 TLS (DUT deploy cap + cert bench) -> $Dest" -ForegroundColor Cyan
 Write-Host "Source: $Src" -ForegroundColor DarkGray
 Write-Host "DUT release pin: $DutRelease" -ForegroundColor DarkGray
 
-$copied = @()
-foreach ($f in $dutTlsFiles) {
-    $n = Copy-IfExists $f
-    if ($n) { $copied += $n }
+foreach ($f in $pc1CertTlsFiles) {
+    Copy-IfExists $f | Out-Null
 }
 
 $clientTsp = Join-Path $Dest "client_tsp.key"
 if (-not (Test-Path $clientTsp) -and (Test-Path (Join-Path $Src "client.key"))) {
     Copy-Item -Force (Join-Path $Src "client.key") $clientTsp
-    if ("client_tsp.key" -notin $copied) { $copied += "client_tsp.key" }
 }
 
 $revokedTsp = Join-Path $Dest "revoked_tsp.key"
 if (-not (Test-Path $revokedTsp) -and (Test-Path (Join-Path $Src "revoked.key"))) {
     Copy-Item -Force (Join-Path $Src "revoked.key") $revokedTsp
-    if ("revoked_tsp.key" -notin $copied) { $copied += "revoked_tsp.key" }
 }
 
 $revokedAcseTsp = Join-Path $Dest "revoked_acse_tsp.key"
@@ -84,11 +78,18 @@ foreach ($f in (Get-ChildItem $Dest -File | Sort-Object Name)) {
 $manifest = [ordered]@{
     dut_release = $DutRelease
     dut_tls_path = "/etc/ccli/tls/"
-    pki_source = "apps/ccli/config/tls (EJBCA sync per PKI_SYNC_MANIFEST.json)"
+    scope = "PC1 cert bench only (not full DUT tls tree)"
+    tsp_rows = @("T1-01 Connect", "T3-01 no client cert", "T3-02/03 viewer RBAC", "T3-04 revoked + CRL")
+    pki_source = "apps/ccli/config/tls"
     generated_utc = (Get-Date).ToUniversalTime().ToString("yyyy-MM-dd HH:mm:ss") + " UTC"
-    verify_on_dut = "md5sum /etc/ccli/tls/<file>  # must match md5 below for each PEM/key"
-    full_dut_mirror = $true
-    handling = "Lab PC1 / USB only - contains private keys; never commit staged folder or attach to public tickets"
+    verify_on_dut = "md5sum /etc/ccli/tls/<file>  # same filename on DUT"
+    not_pushed_to_pc1 = @(
+        "root_CA.key",
+        "server.pem", "server_tls.pem", "server_combined.pem",
+        "server.key", "server_acse.key", "server_combined.key",
+        "gen_lab_pki.py", "README.md", "ejbca/", "lab_crl.pem.BAD_SIG"
+    )
+    handling = "Lab PC1 / USB - client-side private keys only; not for accredited lab email"
     files = $entries
 }
 
