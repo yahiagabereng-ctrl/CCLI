@@ -58,6 +58,7 @@ powershell -File scripts\ingest-62351-100-4.ps1 -SkipSync
 |-----------|-----------|------|
 | `ccli-lab-requirement-test-matrix` | `LAB_REQUIREMENT_TEST_MATRIX.md` | REQ ↔ TSP ↔ 61850-10 |
 | `ccli-lab-pics-fill` | `PICS_FILL.md` | D1 PICS values |
+| `ccli-lab-pics-filled-workbook` | `PICS_FILLED_WORKBOOK.md` | Filled xlsx SHA + alignment |
 | `ccli-lab-pixit-draft` | `PIXIT_DRAFT.md` | D2 PIXIT |
 | `ccli-lab-mics-draft` | `MICS_DRAFT.md` | D3 MICS |
 | `ccli-lab-cid-pics-alignment` | `CID_PICS_ALIGNMENT.md` | Services trim |

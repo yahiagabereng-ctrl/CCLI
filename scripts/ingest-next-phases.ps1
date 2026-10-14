@@ -136,6 +136,7 @@ $priority = [ordered]@{
     "ccli-tsp-full-bench-hw"            = "projects/ccli/lab/conformance/TSP_PC_FULL_BENCH_HW.md"
     "ccli-tsp-two-pc-bench-runbook"     = "projects/ccli/lab/conformance/TSP_TWO_PC_BENCH_RUNBOOK.md"
     "ccli-lab-pics-fill"               = "projects/ccli/lab/conformance/PICS_FILL.md"
+    "ccli-lab-pics-filled-workbook"    = "projects/ccli/lab/conformance/PICS_FILLED_WORKBOOK.md"
     "ccli-lab-pixit-draft"             = "projects/ccli/lab/conformance/PIXIT_DRAFT.md"
     "ccli-lab-mics-draft"              = "projects/ccli/lab/conformance/MICS_DRAFT.md"
     "ccli-lab-tics-draft"              = "projects/ccli/lab/conformance/TICS_DRAFT.md"

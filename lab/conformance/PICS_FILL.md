@@ -1,11 +1,12 @@
 # PICS fill sheet — first-pass UCA quote (copy into Excel)
 
 **Document ID:** CCLI-LAB-PICS-FILL-001  
-**Revision:** 1.1  
-**Date:** 2026-10-09  
+**Revision:** 1.2  
+**Date:** 2026-10-14  
 **Specimen pin:** [LAB_SPECIMEN_VERSION.md](LAB_SPECIMEN_VERSION.md)
 **RAG source_id:** `ccli-lab-pics-fill`  
 **Target workbook:** `lab/TemplatePics_Ed1Ed2Ed2p1_Excel_rev3p0.xlsx`  
+**Filled submit (canonical):** [PICS_FILLED_WORKBOOK.md](PICS_FILLED_WORKBOOK.md) → `lab/conformance/drafts/PICS_CCI016_01_filled_rev3p0_AutoRecovered.xlsx`  
 **IED / CID:** `CCI016_01` · `apps/ccli/config/icd/lab_tg544_eth_a.cid` (History **rev 9**)  
 **Platform:** TesPro TG544 · `ccli` OpenWrt 25.12  
 **Code check:** `mms_adapter.cpp` 2026-10-08  

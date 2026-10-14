@@ -78,7 +78,7 @@ Scripts: `lab/set_pc_lan1_dso.cmd` · `set_pc_lan2_oa.cmd` · `set_pc_lan3_plant
 
 | □ | Lab / doc need | IEC 61850-10 | PICS / PIXIT | CEI 0-16 | Gate | TSP ID | Test Suite Pro (3782 TLS) | Evidence filename | Notes |
 |---|----------------|--------------|--------------|----------|------|--------|---------------------------|-------------------|--------|
-| □ | **D1 PICS** submitted for quote | §5.4 PID | Cover + General + ACSI sheets | O.15 path | P7 | — | Copy [PICS_FILL.md](PICS_FILL.md) into Excel | `PICS_*_draft.xlsx` | Values **HAVE**; Excel paste **TODO** |
+| □ | **D1 PICS** submitted for quote | §5.4 PID | Cover + General + ACSI sheets | O.15 path | P7 | — | Workbook [PICS_FILLED_WORKBOOK.md](PICS_FILLED_WORKBOOK.md) · fix Cover + alignment gaps | `drafts/PICS_CCI016_01_filled_rev3p0_AutoRecovered.xlsx` | SHA pinned · review vs PICS_FILL |
 | □ | **D2 PIXIT** | Annex E PIXIT | Timeouts, ports, IntgPd | T.3.3 | P3 | — | Copy [PIXIT_DRAFT.md](PIXIT_DRAFT.md); **3782**, IntgPd **4000**, ctlModel **enhanced** | PIXIT Word | Word template still missing; markdown **HAVE** |
 | □ | **D3 MICS** + **D5 CID** match | Table 3 SCL | Model sheet | TR 57-126 | P3-02 | T1-02 | **Compare Model** vs `lab_tg544_eth_a.cid` | `TSP_P3_COMPARE_*.xlsx` | Before URCB enable |
 | □ | **D4 TICS** | TISSUES | TICS Word | — | — | — | Offline | `TICS_*` | Lab gives TISSUES date |
@@ -112,7 +112,7 @@ Scripts: `lab/set_pc_lan1_dso.cmd` · `set_pc_lan2_oa.cmd` · `set_pc_lan3_plant
 
 | □ | ID | Action | Owner |
 |---|-----|--------|--------|
-| □ | D1 | Paste [PICS_FILL.md](PICS_FILL.md) → Excel → Nicola | PM / eng |
+| □ | D1 | Finalize [PICS_FILLED_WORKBOOK.md](PICS_FILLED_WORKBOOK.md) → lab (Cover + alignment) | PM / eng |
 | □ | D2 | Paste [PIXIT_DRAFT.md](PIXIT_DRAFT.md) into lab Word when template added | eng |
 | □ | D3 | Paste [MICS_DRAFT.md](MICS_DRAFT.md) into MICS Word | eng |
 | □ | D4 | [TICS_DRAFT.md](TICS_DRAFT.md) after lab TISSUES date | eng |

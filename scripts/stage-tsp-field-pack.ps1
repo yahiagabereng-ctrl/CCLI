@@ -55,6 +55,8 @@ $docs = @(
     @{ Rel = "lab/conformance/TSP_PC_FULL_BENCH_HW.md"; Out = "08_TSP_PC_FULL_BENCH_HW.md" },
     @{ Rel = "lab/conformance/TSP_TWO_PC_BENCH_RUNBOOK.md"; Out = "00_TWO_PC_BENCH_RUNBOOK.md" },
     @{ Rel = "lab/conformance/PICS_FILL.md"; Out = "09_PICS_FILL.md" },
+    @{ Rel = "lab/conformance/PICS_FILLED_WORKBOOK.md"; Out = "09b_PICS_FILLED_WORKBOOK.md" },
+    @{ Rel = "lab/conformance/drafts/PICS_CCI016_01_filled_rev3p0_AutoRecovered.xlsx"; Out = "09c_PICS_CCI016_01_filled.xlsx" },
     @{ Rel = "lab/conformance/PIXIT_DRAFT.md"; Out = "10_PIXIT_DRAFT.md" },
     @{ Rel = "lab/conformance/MICS_DRAFT.md"; Out = "11_MICS_DRAFT.md" },
     @{ Rel = "lab/conformance/TICS_DRAFT.md"; Out = "12_TICS_DRAFT.md" },
