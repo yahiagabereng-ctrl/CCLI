@@ -18,6 +18,80 @@
 | REQ-PC1-LOG-005 | Set **`result: PASS`** or **`result: FAIL`** in each `.txt` header after paste |
 | REQ-PC1-LOG-006 | **U-T1-02 Compare:** export TSP **Compare `.xlsx`** beside `TSP_P3_COMPARE_<date>.txt` |
 | REQ-PC1-LOG-007 | Closeout **U-CLO-01:** copy `inbox/` + `pcap/` to Yahia → `lab/evidence/testsuite-pro/` |
+| REQ-PC1-LOG-008 | Install **OpenSSL 3.x Win64** on PC1 for TLS preflight + key checks (see below) |
+| REQ-PC1-LOG-009 | TSP uses **OpenSSL** for MMS/TLS — private key file must be **`tls\client_tsp.key`** (PKCS#1 RSA), **not** `client.key` alone in the UI |
+
+---
+
+## OpenSSL + TSP TLS (before first Connect)
+
+Test Suite Pro loads certificates through its **OpenSSL** stack. Wrong key format → Connect fails **before** any useful log row.
+
+### Install OpenSSL on PC1
+
+Pick one (add `bin` to PATH or use full path):
+
+| Method | Notes |
+|--------|--------|
+| [Win64 OpenSSL v3.x](https://slproweb.com/products/Win32OpenSSL.html) (**Light** is enough) | Typical: `C:\Program Files\OpenSSL-Win64\bin\openssl.exe` |
+| Git for Windows | Often includes `usr\bin\openssl.exe` in Git install dir |
+
+Confirm:
+
+```powershell
+openssl version
+# expect OpenSSL 3.x.x
+```
+
+### TSP file wiring (field pack `tls\` or `C:\CCLI_tls\`)
+
+Read **`tls\TSP_STAGE_README.txt`** after stage. Summary:
+
+| TSP role | Certificate | Private key |
+|----------|-------------|-------------|
+| Trust / CA | `root_CA.pem` | — |
+| **MMS Security** (Cert B / ACSE) | `client.pem` | **`client_tsp.key`** |
+| **Transport TLS** (Cert A) | `client_tls.pem` | **`client_tsp.key`** (same key both slots) |
+| Viewer cases (T3-02/03) | `viewer.pem` | `viewer.key` |
+| Revoked case (T3-04) | `revoked.pem` | `revoked.key` + import **`lab_crl.pem`** |
+
+**Critical:** both MMS and Transport key browse fields → **`client_tsp.key`**. TSP’s OpenSSL build often rejects PKCS#8 `BEGIN PRIVATE KEY` without conversion.
+
+### OpenSSL preflight (save optional evidence)
+
+Run once per session from pack folder; redirect to `inbox\PREFLIGHT_OPENSSL_<date>.txt` if you want a paper trail:
+
+```powershell
+cd D:\CCLI_TSP_FIELD_PACK\tls
+
+openssl verify -CAfile root_CA.pem client.pem client_tls.pem
+openssl x509 -in client.pem -noout -subject -dates -ext keyUsage,extendedKeyUsage
+openssl rsa -in client_tsp.key -check -noout
+```
+
+If **`openssl rsa -check`** fails or TSP says invalid key, regenerate PKCS#1 from lab key (only if Yahia supplied `client.key`):
+
+```powershell
+openssl rsa -in client.key -out client_tsp.key
+```
+
+Do **not** commit or email private keys.
+
+### Optional smoke test (before **U-T1-01**)
+
+Mutual-TLS probe (handshake only; MMS is TSP):
+
+```powershell
+openssl s_client -connect 192.168.10.1:3782 -tls1_2 `
+  -CAfile root_CA.pem -cert client.pem -key client_tsp.key `
+  -brief </$null 2>&1 | Tee-Object -FilePath ..\lab\evidence\testsuite-pro\inbox\PREFLIGHT_TLS_S_CLIENT_<date>.txt
+```
+
+Look for **`Verify return code: 0 (ok)`** and negotiated **TLSv1.2**. Failure here → fix LAN1/TLS paths before starting the logger.
+
+### Wireshark + OpenSSL (optional debug)
+
+Evidence **pass** uses encrypted **pcapng** + `_WIRE.txt` frame counts (**REQ-PC1-LOG-004**). Decrypting TLS inside Wireshark is **not** required for matrix closeout. If Yahia asks for MMS decode: see repo `lab/evidence/testsuite-pro/pcap/README.md` (needs DUT **`server.key`** — lab only, not on operator USB pack).
 
 ---
 
@@ -56,8 +130,9 @@ cd D:\CCLI\CCLI
 | Tool | Purpose |
 |------|---------|
 | Wireshark / tshark | Live capture filter `host 192.168.10.1 and port 3782` |
+| **OpenSSL 3.x** | Preflight `verify` / `rsa -check`; optional `s_client` before Connect |
 | PuTTY **plink** + **pscp** (optional) | DUT SSH PRE/POST in `_DUT_LOG.txt` |
-| Test Suite Pro | One step per logger cycle |
+| Test Suite Pro | One step per logger cycle · TLS via **OpenSSL** + **`client_tsp.key`** |
 
 **SSH to DUT (LAN1):** Yahia provides DUT password once. Before **Start**:
 

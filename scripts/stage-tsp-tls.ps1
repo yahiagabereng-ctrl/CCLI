@@ -80,6 +80,17 @@ Copied from ``$Src`` on $(Get-Date -Format 'yyyy-MM-dd HH:mm').
 
 Connection: 192.168.10.1 port **3782** TLS — not cleartext 102.
 
+## OpenSSL on TestPro PC (preflight)
+
+Install OpenSSL 3.x Win64; then from this folder:
+
+  openssl verify -CAfile root_CA.pem client.pem client_tls.pem
+  openssl rsa -in client_tsp.key -check -noout
+
+If TSP rejects the key: ``openssl rsa -in client.key -out client_tsp.key``
+
+See: handoff/masomeh95/PC1_LOG_CAPTURE_REQUIREMENTS.md (pack: 00h_...)
+
 See: lab/EJBCA_LAB_SETUP.md section 9–10
 "@
 Set-Content -Path (Join-Path $Dest "TSP_STAGE_README.txt") -Value $readme -Encoding UTF8

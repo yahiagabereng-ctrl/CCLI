@@ -17,7 +17,8 @@ LAN1 (Admin): D:\CCLI_TSP_FIELD_PACK\bench_scripts\set_pc_lan1_dso.cmd
   TLS: ...\tls\  (client.pem + client_tsp.key in TSP)
 
 LOG CAPTURE (every U-T1 / U-T3 / U-P5-01 row on PC1):
-  1) Install Wireshark on PC1
+  1) Install Wireshark + OpenSSL 3.x (Win64) on PC1
+  1b) TSP TLS: client.pem + client_tls.pem, private key client_tsp.key (both slots) — see tls\TSP_STAGE_README.txt
   2) cd D:\CCLI_TSP_FIELD_PACK
   3) Once per day:
        powershell -File scripts\tsp-evidence-logger.ps1 -Action Init -SessionDate 2026-10-14 -Operator Masomeh
