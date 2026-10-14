@@ -2,11 +2,16 @@ Hi Masomeh,
 
 Yahia updated the lab certificates in EJBCA and deployed the same PEMs to the DUT. Your Test Suite Pro must use the NEW tls folder from GitHub (replace any old cert paths).
 
-ON PC1 — run exactly:
+OPTION A — PC1 on GitHub (preferred):
 
   cd D:\CCLI\CCLI
   git pull origin main
   powershell -File scripts\setup-pc1-testpro-from-git.ps1 -Dest D:\CCLI_TSP_FIELD_PACK
+
+OPTION B — USB from Yahia (if git pull fails or TLS folder is old):
+
+  Copy folder D:\CCLI_TSP_FIELD_PACK from USB (full pack), OR unzip CCLI_TSP_TLS_PC1.zip into D:\CCLI_TSP_FIELD_PACK\tls\
+  Do NOT mix old C:\CCLI_tls or old TSP browse paths — replace all TLS files.
 
 Then read this file in the repo (copied to pack as 00k_... after pull):
 
