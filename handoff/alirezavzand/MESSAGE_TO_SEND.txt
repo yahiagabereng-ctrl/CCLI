@@ -1,0 +1,43 @@
+Hi Alireza,
+
+We are running the unified certification test matrix (rev 1.3) on the two-PC bench. Masomeh is PC-B (Test Suite Pro on LAN1). Your side is PC-A plant/logger + DUT SSH, and TLS/Wireshark review when we send pcaps.
+
+ON YOUR PC — run:
+
+  git clone https://github.com/yahiagabereng-ctrl/CCLI.git
+  cd CCLI
+  git pull origin main
+
+Start guide (read first):
+  handoff/alirezavzand/PCA_UNIFIED_CERT_START_ALIREZA.md
+
+Master checklist (tick your rows):
+  lab/conformance/LAB_UNIFIED_CERT_TEST_MATRIX.md
+
+Session pin (DUT 0.1.0-r53):
+  lab/conformance/LAB_UNIFIED_SESSION_PIN_2026-10-14.md
+
+BEFORE Masomeh Connect — DUT preflight:
+
+  . .\lab\tg544-openwrt\lab-env.ps1
+  powershell -File scripts\validate-dut-unified-matrix.ps1 -FixServices -WriteEvidence
+
+PC-A bench (Admin cmd from repo lab\ or field pack bench_scripts\):
+  set_pc_lan2_oa.cmd     -> 192.168.1.183  to  DUT 192.168.1.130:2404
+  set_pc_lan3_plant*.cmd -> 192.168.30.10  to  DUT plant + EMT432
+
+Plant (Phase 0b):
+  python lab\modbus_emt432_tcp_probe.py
+  powershell -File lab\start-bench-plant.ps1 -SunOnly -Port COM5
+
+Your matrix rows: U-P0-03/04/05/07/11, U-P0b-01..05, U-T1-11, U-P5-02, U-P3-11, U-P4-*, U-P7-*
+
+Do NOT run Test Suite Pro on LAN1 on your PC if Masomeh is TSP on PC1.
+
+TLS / EJBCA deep-dive (when needed):
+  lab/evidence/TLS_WIRESHARK_HANDOFF_ALIREZA.md
+  lab/evidence/EJBCA_HANDOFF_ALIREZA.md
+
+Send evidence back to lab/evidence/ on the repo PC when done.
+
+Yahia

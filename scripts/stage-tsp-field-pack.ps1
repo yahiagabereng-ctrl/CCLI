@@ -78,6 +78,9 @@ $docs = @(
     @{ Rel = "lab/testpro/PC1_TSP_IMPORT_CHECKLIST.md"; Out = "00i_PC1_TSP_IMPORT_CHECKLIST.md" },
     @{ Rel = "lab/testpro/README.md"; Out = "00j_TESTPRO_CONFIG_README.md" },
     @{ Rel = "handoff/masomeh95/PC1_EJBCA_TLS_ALIGN_TESTPRO.md"; Out = "00k_PC1_EJBCA_TLS_TESTPRO.md" },
+    @{ Rel = "handoff/alirezavzand/PCA_UNIFIED_CERT_START_ALIREZA.md"; Out = "00l_PC-A_ALIREZA_UNIFIED_CERT_START.md" },
+    @{ Rel = "lab/evidence/TLS_WIRESHARK_HANDOFF_ALIREZA.md"; Out = "00m_TLS_WIRESHARK_HANDOFF_ALIREZA.md" },
+    @{ Rel = "lab/evidence/EJBCA_HANDOFF_ALIREZA.md"; Out = "00n_EJBCA_HANDOFF_ALIREZA.md" },
     @{ Rel = "lab/evidence/testsuite-pro/EVIDENCE_PER_TEST_PROTOCOL.md"; Out = "05c_EVIDENCE_PER_TEST_PROTOCOL.md" }
 )
 

@@ -150,11 +150,12 @@ if (Test-Path $TspId) {
 }
 
 # Handoff docs referenced by unified matrix RAG (U-P0-10)
-$TelHandoff = Join-Path $TelematryRoot "documents\projects\ccli\lab\handoff\masomeh95"
-$HandoffSrc = Join-Path $Repo "handoff\masomeh95"
-if (Test-Path $HandoffSrc) {
+foreach ($handoffSub in @("masomeh95", "alirezavzand")) {
+    $HandoffSrc = Join-Path $Repo "handoff\$handoffSub"
+    if (-not (Test-Path $HandoffSrc)) { continue }
+    $TelHandoff = Join-Path $TelematryRoot "documents\projects\ccli\lab\handoff\$handoffSub"
     New-Item -ItemType Directory -Path $TelHandoff -Force | Out-Null
-    Get-ChildItem $HandoffSrc -Filter "*.md" -ErrorAction SilentlyContinue | ForEach-Object {
+    Get-ChildItem $HandoffSrc -Include "*.md", "*.txt" -Recurse -ErrorAction SilentlyContinue | ForEach-Object {
         Copy-Item $_.FullName (Join-Path $TelHandoff $_.Name) -Force
         $count++
     }
