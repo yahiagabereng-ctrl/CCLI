@@ -155,9 +155,11 @@ foreach ($handoffSub in @("masomeh95", "alirezavzand")) {
     if (-not (Test-Path $HandoffSrc)) { continue }
     $TelHandoff = Join-Path $TelematryRoot "documents\projects\ccli\lab\handoff\$handoffSub"
     New-Item -ItemType Directory -Path $TelHandoff -Force | Out-Null
-    Get-ChildItem $HandoffSrc -Include "*.md", "*.txt" -Recurse -ErrorAction SilentlyContinue | ForEach-Object {
-        Copy-Item $_.FullName (Join-Path $TelHandoff $_.Name) -Force
-        $count++
+    foreach ($pat in @("*.md", "*.txt")) {
+        Get-ChildItem $HandoffSrc -Filter $pat -ErrorAction SilentlyContinue | ForEach-Object {
+            Copy-Item $_.FullName (Join-Path $TelHandoff $_.Name) -Force
+            $count++
+        }
     }
 }
 
