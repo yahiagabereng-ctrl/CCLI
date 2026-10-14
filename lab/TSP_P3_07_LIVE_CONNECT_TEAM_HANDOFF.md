@@ -49,7 +49,7 @@ $env:CCLI_TG544_PW = "..."
 
 CRL warnings in TSP are OK for lab (`crl=off` on DUT).
 
-**If Connect fails with `tlsv1 alert access denied`:** DUT rejected the **transport** client cert (allowlist). Restage **`scripts/stage-tsp-tls.ps1`**, run **`scripts/verify-tsp-tls-key-match.ps1`**, confirm **`client_tls.pem` MD5** matches DUT `/etc/ccli/tls/` — see [`lab/evidence/testsuite-pro/inbox/TSP_TLS_ACCESS_DENIED_2026-10-14.md`](evidence/testsuite-pro/inbox/TSP_TLS_ACCESS_DENIED_2026-10-14.md). After EJBCA sync, **stale `CCLI_product_tls\client_tls.pem`** with a new `root_CA.pem` is a common cause.
+**If Connect fails (`Initiate Response Failed` / access denied):** Run **`scripts/dut-mms-tsp-preflight.ps1`** (stop **`iec61850d`**, single **`ccli`** on **3782**). On PC1 restage **`D:\CCLI_TSP_FIELD_PACK\tls`** and re-browse TSP cert paths — see [`TSP_INITIATE_RESPONSE_TRIAGE_2026-10-14.md`](evidence/testsuite-pro/inbox/TSP_INITIATE_RESPONSE_TRIAGE_2026-10-14.md) and [`TSP_TLS_ACCESS_DENIED_2026-10-14.md`](evidence/testsuite-pro/inbox/TSP_TLS_ACCESS_DENIED_2026-10-14.md).
 
 ---
 
