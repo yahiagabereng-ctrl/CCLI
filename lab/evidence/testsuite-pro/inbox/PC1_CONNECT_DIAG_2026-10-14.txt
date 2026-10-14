@@ -1,0 +1,95 @@
+﻿=== PC1 Connect diagnostic capture ===
+timestamp: 2026-10-14 17:25:46 +02:00
+git_head: 2eba126
+operator: Masomeh PC-B (automated capture)
+symptom: CCI016_01 Initiate Response Failed Transport connection closed
+
+--- Network ---
+
+
+ComputerName             : 192.168.10.1
+RemoteAddress            : 192.168.10.1
+ResolvedAddresses        : {192.168.10.1}
+PingSucceeded            : False
+PingReplyDetails         : 
+TcpClientSocket          : 
+TcpTestSucceeded         : True
+RemotePort               : 3782
+TraceRoute               : 
+Detailed                 : False
+InterfaceAlias           : Ethernet
+InterfaceIndex           : 3
+InterfaceDescription     : Realtek PCIe GbE Family Controller
+NetAdapter               : MSFT_NetAdapter (CreationClassName = "MSFT_NetAdapter", DeviceID = 
+                           "{1088FBF9-BFCD-4587-AE4E-9373CBDB453E}", SystemCreationClassName = "CIM_NetworkPort", 
+                           SystemName = "LAPTOP-ACER-01")
+NetRoute                 : MSFT_NetRoute (InstanceID = ";C?8;@B8;:8:9??55?55:8:8:8:55;")
+SourceAddress            : 192.168.10.10
+NameResolutionSucceeded  : True
+BasicNameResolution      : {}
+LLMNRNetbiosRecords      : {}
+DNSOnlyRecords           : {}
+AllNameResolutionResults : 
+IsAdmin                  : False
+NetworkIsolationContext  : Internet
+MatchingIPsecRules       : 
+
+
+
+
+--- TLS key match ---
+TSP TLS key/cert pairing: C:\CCLI_TSP_FIELD_PACK\tls
+PASS Transport Cert A: client_tls.pem + client_tsp.key
+PASS MMS Cert B: client.pem + client_acse.key
+PASS Revoked Cert A: revoked_tls.pem + revoked_tsp.key
+PASS Revoked Cert B: revoked.pem + revoked_acse.key
+
+Result: PASS - Transport=client_tls+client_tsp.key, MMS=client.pem+client_acse.key
+
+--- MD5 field pack (matches DUT_TLS_MANIFEST.json on PC1) ---
+root_CA.pem     b28b0f41f6563b4539456bf24a16b374
+client_tls.pem  4490e8178d56a90f2725eca08e00a6ff
+client.pem      4e1dcf0209a235f8e7c7142166436d82
+client_acse.key 59e3078118309843c0379671713639b3
+client_tsp.key  a3d0446e2a0d70be54c91f470233e88d
+lab_crl.pem     228b0310c06e6924bacc95bedaaa3f41
+
+--- MD5 in MASOMEH_CONNECT_FIX card (may differ until DUT TLS redeploy) ---
+root_CA.pem     f265ae5ca881a5097bc74a543784b443  MISMATCH vs PC1 bundle
+client_tls.pem  13c231ee6a2e782b3eb464ac2dee4c21  MISMATCH vs PC1 bundle
+client.pem      7bb6b77cde4614ae68ad387e580e2696  MISMATCH vs PC1 bundle
+--- OpenSSL mutual TLS (transport cert) ---
+openssl : Connecting to 192.168.10.1
+In C:\Users\Firmware Engineer\AppData\Local\Temp\ps-script-afea3c82-c9cf-48be-be1d-38c1ee50ea07.ps1:137 car:12
++ $openssl = openssl s_client -connect 192.168.10.1:3782 -cert C:\CCLI_ ...
++            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Connecting to 192.168.10.1:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+Can't use SSL_get_servername
+CONNECTION ESTABLISHED
+Protocol version: TLSv1.3
+Ciphersuite: TLS_AES_256_GCM_SHA384
+Requested Signature Algorithms: ecdsa_secp256r1_sha256:ecdsa_secp384r1_sha384:ecdsa_secp521r1_sha512:rsa_pss_rsae_sha51
+2:rsa_pss_rsae_sha384:rsa_pss_rsae_sha256:rsa_pkcs1_sha512:rsa_pkcs1_sha384:rsa_pkcs1_sha256
+Own signature type: rsa_pss_rsae_sha512
+Peer certificate: C=IT, O=HiTEKS, OU=CCLI-Lab, CN=CCI016_01
+Hash used: SHA256
+Signature type: rsa_pss_rsae_sha256
+Verification: OK
+Peer Temp Key: X25519, 253 bits
+DONE
+
+openssl_transport: PASS (handshake established)
+
+--- Interpretation ---
+TSP reported: CCI016_01 Initiate Response Failed Transport connection closed
+PC1 verify-tsp-tls-key-match: PASS
+OpenSSL mutual TLS with client_tls.pem + client_tsp.key: PASS (TLS 1.3)
+=> Transport cert on disk is accepted by DUT :3782; TSP failure likely MMS Security paths,
+   cached PEMs in TSP UI, TLS 1.3 policy mismatch (TSP: v1.3 off), or post-TLS ACSE/CID.
+DUT SSH preflight: NOT RUN (CCLI_TG544_PW / lab-env.ps1 not on this PC).
+
+TSP paths configured (Masomeh): C:\CCLI_TSP_FIELD_PACK\tls\
+  MMS: client.pem + client_acse.key + root_CA.pem + lab_crl.pem
+  Transport: client_tls.pem + client_tsp.key + root_CA.pem + lab_crl.pem
