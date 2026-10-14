@@ -11,6 +11,7 @@ param(
 $ErrorActionPreference = "Stop"
 $Repo = Split-Path -Parent $PSScriptRoot
 $KbEng = Join-Path $Repo "knowledge-base\08-engineering"
+$KbApp = Join-Path $Repo "knowledge-base\06-application"
 $TelEng = Join-Path $TelematryRoot "documents\projects\ccli\engineering"
 $TelProto = Join-Path $TelematryRoot "documents\projects\ccli\protocols"
 $TelCcli = Join-Path $TelematryRoot "documents\projects\ccli"
@@ -26,6 +27,7 @@ $extraEng = @(
     "CCI_TG500_Knowledge_Tree.md",
     "CCI_Application_Structure.md",
     "CCI_OpenWrt_Freeze.md",
+    "CCI_Product_SW_Freeze.md",
     "CCI_CCLI_Product_Spec_and_Roadmap.md",
     "CCI_TestSuitePro_Extract.md",
     "CCI_TestSuitePro_Capture_Plan.md",
@@ -33,6 +35,9 @@ $extraEng = @(
 )
 foreach ($name in $extraEng | Select-Object -Unique) {
     $src = Join-Path $KbEng $name
+    if (-not (Test-Path $src)) {
+        $src = Join-Path $KbApp $name
+    }
     if (Test-Path $src) {
         Copy-Item $src (Join-Path $TelEng $name) -Force
         Write-Host "  synced $name"
@@ -118,9 +123,13 @@ $priority = [ordered]@{
     "ccli-61850-10-ocr-corpus"          = "projects/ccli/reference/iec61850/IEC_61850-10_2025_full.txt"
     "ccli-62351-100-3-extract"          = "projects/ccli/engineering/CCI_62351-100-3_Extract.md"
     "ccli-62351-100-3-ocr-corpus"       = "projects/ccli/reference/iec62351/IEC_TS_62351-100-3_2020_full.txt"
+    "ccli-62351-100-4-extract"          = "projects/ccli/engineering/CCI_62351-100-4_Extract.md"
+    "ccli-62351-100-4-ocr-corpus"       = "projects/ccli/reference/iec62351/IEC_TS_62351-100-4_2023_full.txt"
+    "ccli-62351-100-4-ocr-index"        = "projects/ccli/engineering/CCI_62351-100-4_OCR_Corpus.md"
     "ccli-lab-conformance-questionnaire" = "projects/ccli/lab/meetings/2026-10-08_Lab_Conformance_Questionnaire.md"
     "ccli-lab-uca-document-checklist"   = "projects/ccli/lab/conformance/2026-10-08_UCA_Document_Phase_Checklist.md"
     "ccli-lab-requirement-test-matrix"  = "projects/ccli/lab/conformance/LAB_REQUIREMENT_TEST_MATRIX.md"
+    "ccli-lab-requirement-test-matrix-cyber" = "projects/ccli/lab/conformance/LAB_REQUIREMENT_TEST_MATRIX_CYBER.md"
     "ccli-tsp-field-pack"               = "projects/ccli/lab/conformance/TSP_PC_FIELD_PACK.md"
     "ccli-tsp-test-identification"      = "projects/ccli/lab/evidence/testsuite-pro/TSP_TEST_IDENTIFICATION_POST_CONNECT.md"
     "ccli-lab-templates-test-scope"     = "projects/ccli/lab/conformance/LAB_TEMPLATES_VS_TEST_SCOPE.md"
@@ -139,6 +148,18 @@ $priority = [ordered]@{
     # P7 evidence / test tooling
     "ccli-testsuitepro-extract"         = "projects/ccli/engineering/CCI_TestSuitePro_Extract.md"
     "arera-540-2021-extract"            = "projects/ccli/engineering/CCI_ARERA_540_2021_Extract.md"
+}
+
+# Merge product-deployment registry (scripts/rag-product-deploy-sources.json)
+$registryPath = Join-Path $Repo "scripts\rag-product-deploy-sources.json"
+if (Test-Path $registryPath) {
+    $reg = Get-Content $registryPath -Raw | ConvertFrom-Json
+    foreach ($s in $reg.sources) {
+        if (-not $priority.Contains($s.source_id)) {
+            $priority[$s.source_id] = $s.relative
+        }
+    }
+    Write-Host "Merged $($reg.sources.Count) entries from rag-product-deploy-sources.json"
 }
 
 $docsRoot = Join-Path $TelematryRoot "documents"

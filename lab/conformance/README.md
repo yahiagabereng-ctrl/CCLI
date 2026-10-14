@@ -1,5 +1,7 @@
 # Lab conformance documents (UCA / IEC 61850-10)
 
+**RAG / product deploy:** [RAG_SOURCE_INDEX.md](RAG_SOURCE_INDEX.md) (`ccli-rag-source-index`) · [PRODUCT_DEPLOYMENT_INIT.md](PRODUCT_DEPLOYMENT_INIT.md) · [dnv/DNV_UCA_PRODUCT_READINESS.md](dnv/DNV_UCA_PRODUCT_READINESS.md)
+
 Templates from the accredited lab (2026-10-08 email) live at repo root under `lab/`:
 
 | File | Document | Normative basis |
@@ -9,13 +11,18 @@ Templates from the accredited lab (2026-10-08 email) live at repo root under `la
 | `lab/TemplateTICS_Ed2_FromTP2.0.5.docx` | **TICS** (TISSUES Implementation Conformance Statement) | UCA TISSUES database |
 | *(not in repo yet)* | **PIXIT** Word template | IEC 61850-10 Annex E |
 | [PIXIT_DRAFT.md](PIXIT_DRAFT.md) | **PIXIT values** (working copy) | Ports, IntgPd, ctlModel |
-| [PICS_FILL.md](PICS_FILL.md) | **PICS M/N/A** (paste into Excel) | 7-2 Annex A first pass |
+| [PICS_FILL.md](PICS_FILL.md) | **PICS M/N/A** (paste into Excel) | 7-2 **Annex A** first pass |
+| [CCI_61850-7-2_Extract.md](../../knowledge-base/08-engineering/CCI_61850-7-2_Extract.md) | **7-2 ACSI + Annex A (Batch F)** | OCR corpus `_extract_61850-7-2/` |
 | [MICS_DRAFT.md](MICS_DRAFT.md) · [TICS_DRAFT.md](TICS_DRAFT.md) | Model + TISSUES drafts | CID / empty TICS |
 | [D7_62351-3_PID_DRAFT.md](D7_62351-3_PID_DRAFT.md) | 62351-3 PID | §8 Tables 1–5 |
 | [CID_PICS_ALIGNMENT.md](CID_PICS_ALIGNMENT.md) | CID Services vs PICS | Do not over-claim |
 | [SCL_DATASET_PLACEMENT.md](SCL_DATASET_PLACEMENT.md) | DataSet under LLN0 + PdC FCDA map | IEC 61850-6 · lab CID |
 | [LAB_CONFIG_GUIDE.md](LAB_CONFIG_GUIDE.md) | D6 lab guide | IPs, yaml, firmware ID |
 | [LAB_SPECIMEN_VERSION.md](LAB_SPECIMEN_VERSION.md) | **CID/cfg pin** (History rev, configRev, SHA-256) | TSP Compare / MICS / deploy |
+| [DUT_LAB_FINALIZE_AND_CERT_PATH.md](DUT_LAB_FINALIZE_AND_CERT_PATH.md) | **DUT bench close** vs **UCA certificate** path | After T1–T10 |
+| [LAB_REQUIREMENT_TEST_MATRIX.md](LAB_REQUIREMENT_TEST_MATRIX.md) | Functional REQ ↔ TSP ↔ 61850-10 | `ccli-lab-requirement-test-matrix` |
+| [LAB_REQUIREMENT_TEST_MATRIX_CYBER.md](LAB_REQUIREMENT_TEST_MATRIX_CYBER.md) | **62351 / D7 / Tier 3** cyber checklist | `ccli-lab-requirement-test-matrix-cyber` |
+| [LAB_REQUIREMENT_TEST_MATRIX_2026-10-09_DUT.md](LAB_REQUIREMENT_TEST_MATRIX_2026-10-09_DUT.md) | Matrix snapshot ☑/◐/☐ | DUT sign-off |
 
 **Working checklist (phases + evidence):** [2026-10-08_UCA_Document_Phase_Checklist.md](2026-10-08_UCA_Document_Phase_Checklist.md)
 

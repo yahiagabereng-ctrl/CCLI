@@ -43,6 +43,7 @@ $manifest = [ordered]@{
 
 $docs = @(
     @{ Rel = "lab/conformance/LAB_REQUIREMENT_TEST_MATRIX.md"; Out = "01_CHECKLIST_LAB_REQUIREMENT_TEST_MATRIX.md" },
+    @{ Rel = "lab/conformance/LAB_REQUIREMENT_TEST_MATRIX_CYBER.md"; Out = "01b_CHECKLIST_CYBER_REQUIREMENT_TEST_MATRIX.md" },
     @{ Rel = "lab/evidence/testsuite-pro/TSP_TEST_IDENTIFICATION_POST_CONNECT.md"; Out = "02_TSP_TEST_IDENTIFICATION.md" },
     @{ Rel = "lab/CCI_TestSuitePro_Sequencer_Draft.md"; Out = "03_TSP_SEQUENCER_DRAFT.md" },
     @{ Rel = "lab/CCI_TestSuitePro_Verification_Layer.md"; Out = "04_TSP_VERIFICATION_LAYER.md" },
@@ -124,4 +125,4 @@ $manifest.files += "tls/*", "cid/lab_tg544_eth_a.cid", "config/lab_tr400_phase1_
 Write-Host ""
 Write-Host "OK: $Dest" -ForegroundColor Green
 Write-Host "Copy this folder to the Test Suite Pro PC (USB). Open 01_CHECKLIST_LAB_REQUIREMENT_TEST_MATRIX.md"
-Write-Host "RAG source_ids: ccli-lab-requirement-test-matrix, ccli-tsp-field-pack, ccli-tsp-test-identification"
+Write-Host "RAG source_ids: ccli-lab-requirement-test-matrix, ccli-lab-requirement-test-matrix-cyber, ccli-tsp-field-pack, ccli-tsp-test-identification"

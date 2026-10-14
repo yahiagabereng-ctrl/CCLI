@@ -1,11 +1,13 @@
 # Lab requirement ↔ test requirement matrix (TSP field checklist)
 
 **Document ID:** CCLI-LAB-REQ-TEST-MTX-001  
-**Revision:** 1.2  
-**Date:** 2026-10-09  
+**Revision:** 1.3  
+**Date:** 2026-10-14  
 **RAG source_id:** `ccli-lab-requirement-test-matrix`  
 **Purpose:** One checklist for **accredited lab needs** (PICS/PIXIT/MICS/61850-10) and **Test Suite Pro** runs on the **other PC** — same rows, same scope.  
 **Preview on dev PC → push** via `scripts/stage-tsp-field-pack.ps1` → `C:\CCLI_TSP_FIELD_PACK\` (USB copy to TSP machine).
+
+**Cybersecurity tests (62351 / D7 / Tier 3):** [LAB_REQUIREMENT_TEST_MATRIX_CYBER.md](LAB_REQUIREMENT_TEST_MATRIX_CYBER.md) (`ccli-lab-requirement-test-matrix-cyber`) — tick TLS/ACSE/RBAC/CRL there; this file keeps 61850-10 + Annex T **function** rows.
 
 **Fill packs (copy into lab Excel/Word):** [PICS_FILL.md](PICS_FILL.md) · [PIXIT_DRAFT.md](PIXIT_DRAFT.md) · [MICS_DRAFT.md](MICS_DRAFT.md) · [TICS_DRAFT.md](TICS_DRAFT.md) · [D7_62351-3_PID_DRAFT.md](D7_62351-3_PID_DRAFT.md) · [CID_PICS_ALIGNMENT.md](CID_PICS_ALIGNMENT.md) · [LAB_CONFIG_GUIDE.md](LAB_CONFIG_GUIDE.md)
 
@@ -91,11 +93,7 @@ Scripts: `lab/set_pc_lan1_dso.cmd` · `set_pc_lan2_oa.cmd` · `set_pc_lan3_plant
 | □ | **Wlim** control | **sCtl** Table **26** | Control **M** | **O.9.2.2** | P3-04 | T1-07 | Operate Mod + WMaxSptPct | `TSP_P3_04_OPERATE_Wlim_*` | ctlModel **direct-with-enhanced-security** |
 | □ | **WSd** control | sCtl | Control **M** | **O.9.2.3** | P3-04 | T1-08 | Operate Mod + WSptPct | `TSP_P3_04_OPERATE_WSd_*` | |
 | □ | Comms loss fallback | App behaviour | PIXIT timeout | O.9.2.2 / U | P3-05 | T1-09 | Release + wait **15 s** | `TSP_P3_05_FALLBACK_*` | yaml `comms_loss_fallback_s` |
-| □ | **TLS** transport | §6.3 → 62351-100-3 | 62351-3 PID **D7** | T.3.3 | P3-06 | T1-01 | TLS handshake on **3782** | pcap optional | Not cleartext 102 |
-| □ | No client cert | 62351-3 neg | PIXIT | T security | P3-06 | T3-01 | Connect without cert → fail | `TSP_P3_06_TLS_FAIL_*` | |
-| □ | **ACSE** / dual cert | 62351-100-4 | PICS + 62351-4 | T G.2 | P3-07 | T3-05 | Connect DSO profile | DUT log + TSP | Connect now PASS |
-| □ | **RBAC** viewer | sSrv neg | Security | T Table 97–102 | P3-08 | T3-02–03 | viewer read OK · Operate **deny** | `TSP_P3_08_*` | |
-| □ | **CRL** revoked | 62351-9 | PIXIT PKI | T | P3-09 | T3-04 | revoked cert → fail | `TSP_P3_09_*` | |
+| □ | **Cyber pack** (TLS/ACSE/RBAC/CRL) | §6.3 · 62351 | **D7** + 62351-4 PID | T.3.3.4 | P3-06…09 | T1-01 · T3-01…05 | See **[CYBER matrix](LAB_REQUIREMENT_TEST_MATRIX_CYBER.md)** §2–§3 | `TSP_P3_06_*` … `TSP_P3_09_*` | Do not duplicate □ here — tick cyber doc |
 | □ | Time quality | sTm 31–32 | Time **M**/O | **T.3.3.4.5** | P3-11 | Tier 2 step 0 | DUT `chronyc tracking` ≤100 ms | `P3_11_*` | |
 | □ | Annex T **full circle** | Multiple | As PICS | O.8 · O.9 | P5 | Tier 2 | Run P5 sequencer on **3782** | `TSP_P5_FULLCIRCLE_TLS_*` | VArSd step 11 optional |
 | □ | Actuation proof | — | — | O.9.2.2 | P3-04 | — | DUT `ubus call dido_v2 status` | outside TSP | After Wlim |

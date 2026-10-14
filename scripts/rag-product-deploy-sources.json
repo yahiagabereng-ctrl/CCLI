@@ -1,0 +1,55 @@
+{
+  "schema": "ccli-rag-registry-v1",
+  "purpose": "Product deployment + DNV/TSP P0 sources — enqueued by ingest-next-phases.ps1 and ingest-product-deploy-rag.ps1",
+  "updated": "2026-10-14-finalize",
+  "sources": [
+    { "source_id": "ccli-knowledge-base-brief", "relative": "projects/ccli/engineering/Knowledge_Base_Brief.md", "cluster": "governance" },
+    { "source_id": "ccli-rag-source-index", "relative": "projects/ccli/lab/conformance/RAG_SOURCE_INDEX.md", "cluster": "governance" },
+    { "source_id": "ccli-product-deployment-init", "relative": "projects/ccli/lab/conformance/PRODUCT_DEPLOYMENT_INIT.md", "cluster": "product-deploy" },
+
+    { "source_id": "ccli-product-sw-freeze", "relative": "projects/ccli/engineering/CCI_Product_SW_Freeze.md", "cluster": "product-deploy" },
+    { "source_id": "ccli-product-cyber-release", "relative": "projects/ccli/releases/product-cyber/README.md", "cluster": "product-deploy" },
+    { "source_id": "ccli-app-structure", "relative": "projects/ccli/engineering/CCI_Application_Structure.md", "cluster": "product-deploy" },
+    { "source_id": "ccli-openwrt-freeze", "relative": "projects/ccli/engineering/CCI_OpenWrt_Freeze.md", "cluster": "product-deploy" },
+    { "source_id": "ccli-soc-freeze", "relative": "projects/ccli/engineering/CCI_SOC_Freeze.md", "cluster": "product-deploy" },
+    { "source_id": "ccli-tg500-lab-platform", "relative": "projects/ccli/engineering/CCI_TG500_Lab_Platform.md", "cluster": "product-deploy" },
+    { "source_id": "ccli-architecture-framework", "relative": "projects/ccli/engineering/CCI_Architecture_Framework.md", "cluster": "product-deploy" },
+    { "source_id": "ccli-validation-strategy", "relative": "projects/ccli/engineering/CCI_Validation_and_Mocking_Strategy.md", "cluster": "product-deploy" },
+    { "source_id": "ccli-tr500-io-peripheral", "relative": "projects/ccli/engineering/CCI_TR500_IO_Peripheral.md", "cluster": "product-deploy" },
+
+    { "source_id": "ccli-lab-specimen-version", "relative": "projects/ccli/lab/conformance/LAB_SPECIMEN_VERSION.md", "cluster": "lab-specimen" },
+    { "source_id": "ccli-lab-dut-finalize-cert-path", "relative": "projects/ccli/lab/conformance/DUT_LAB_FINALIZE_AND_CERT_PATH.md", "cluster": "lab-specimen" },
+    { "source_id": "ccli-lab-session-2026-10-09-annex-runbook", "relative": "projects/ccli/lab/conformance/LAB_SESSION_2026-10-09_ANNEX_RUNBOOK.md", "cluster": "lab-specimen" },
+    { "source_id": "ccli-lab-scl-dataset-placement", "relative": "projects/ccli/lab/conformance/SCL_DATASET_PLACEMENT.md", "cluster": "lab-specimen" },
+    { "source_id": "ccli-lab-requirement-test-matrix", "relative": "projects/ccli/lab/conformance/LAB_REQUIREMENT_TEST_MATRIX.md", "cluster": "test-req" },
+    { "source_id": "ccli-lab-requirement-test-matrix-cyber", "relative": "projects/ccli/lab/conformance/LAB_REQUIREMENT_TEST_MATRIX_CYBER.md", "cluster": "cyber" },
+    { "source_id": "ccli-lab-requirement-test-matrix-dut", "relative": "projects/ccli/lab/conformance/LAB_REQUIREMENT_TEST_MATRIX_2026-10-09_DUT.md", "cluster": "test-req" },
+    { "source_id": "ccli-lab-pics-fill", "relative": "projects/ccli/lab/conformance/PICS_FILL.md", "cluster": "test-req" },
+    { "source_id": "ccli-lab-pixit-draft", "relative": "projects/ccli/lab/conformance/PIXIT_DRAFT.md", "cluster": "test-req" },
+    { "source_id": "ccli-lab-mics-draft", "relative": "projects/ccli/lab/conformance/MICS_DRAFT.md", "cluster": "test-req" },
+    { "source_id": "ccli-lab-cid-pics-alignment", "relative": "projects/ccli/lab/conformance/CID_PICS_ALIGNMENT.md", "cluster": "test-req" },
+    { "source_id": "ccli-lab-config-guide", "relative": "projects/ccli/lab/conformance/LAB_CONFIG_GUIDE.md", "cluster": "test-req" },
+    { "source_id": "ccli-lab-templates-test-scope", "relative": "projects/ccli/lab/conformance/LAB_TEMPLATES_VS_TEST_SCOPE.md", "cluster": "test-req" },
+    { "source_id": "ccli-lab-uca-document-checklist", "relative": "projects/ccli/lab/conformance/2026-10-08_UCA_Document_Phase_Checklist.md", "cluster": "test-req" },
+    { "source_id": "ccli-lab-d7-62351-3-pid", "relative": "projects/ccli/lab/conformance/D7_62351-3_PID_DRAFT.md", "cluster": "test-req" },
+    { "source_id": "ccli-tsp-field-pack", "relative": "projects/ccli/lab/conformance/TSP_PC_FIELD_PACK.md", "cluster": "test-req" },
+    { "source_id": "ccli-tsp-test-identification", "relative": "projects/ccli/lab/evidence/testsuite-pro/TSP_TEST_IDENTIFICATION_POST_CONNECT.md", "cluster": "test-req" },
+    { "source_id": "ccli-tsp-compare-waivers", "relative": "projects/ccli/lab/evidence/testsuite-pro/inbox/TSP_P5_COMPARE_WAIVERS.md", "cluster": "lab-specimen" },
+
+    { "source_id": "ccli-61850-10-extract", "relative": "projects/ccli/engineering/CCI_61850-10_Extract.md", "cluster": "test-req" },
+    { "source_id": "ccli-62351-100-3-extract", "relative": "projects/ccli/engineering/CCI_62351-100-3_Extract.md", "cluster": "test-req" },
+
+    { "source_id": "ccli-testsuite-pro-procedure", "relative": "projects/ccli/lab/CCI_TestSuitePro_Verification_Layer.md", "cluster": "tsp" },
+    { "source_id": "ccli-mms-multitool-verification", "relative": "projects/ccli/lab/CCI_MMS_MultiTool_Verification.md", "cluster": "tsp" },
+
+    { "source_id": "ccli-62351-3-extract", "relative": "projects/ccli/engineering/CCI_62351-3_Extract.md", "cluster": "cyber" },
+    { "source_id": "ccli-62351-4-extract", "relative": "projects/ccli/engineering/CCI_62351-4_Extract.md", "cluster": "cyber" },
+    { "source_id": "ccli-62351-100-4-extract", "relative": "projects/ccli/engineering/CCI_62351-100-4_Extract.md", "cluster": "cyber" },
+    { "source_id": "ccli-62351-100-4-ocr-corpus", "relative": "projects/ccli/reference/iec62351/IEC_TS_62351-100-4_2023_full.txt", "cluster": "cyber" },
+    { "source_id": "ccli-62351-100-4-ocr-index", "relative": "projects/ccli/engineering/CCI_62351-100-4_OCR_Corpus.md", "cluster": "cyber" },
+    { "source_id": "ccli-62443-zones-extract", "relative": "projects/ccli/engineering/CCI_62443_Zones.md", "cluster": "cyber" },
+    { "source_id": "ccli-k63-ceremony-sop", "relative": "projects/ccli/engineering/CCI_K6.3_Key_Ceremony_SOP.md", "cluster": "cyber" },
+    { "source_id": "ccli-certificate-samples-extract", "relative": "projects/ccli/engineering/CCI_Certificate_Samples_Extract.md", "cluster": "dnv" },
+    { "source_id": "ccli-dnv-product-readiness", "relative": "projects/ccli/lab/conformance/dnv/DNV_UCA_PRODUCT_READINESS.md", "cluster": "dnv" }
+  ]
+}
