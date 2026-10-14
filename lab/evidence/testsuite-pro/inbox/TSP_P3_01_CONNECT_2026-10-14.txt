@@ -20,10 +20,12 @@ hint: Connect CCI016_01 :3782 mutual TLS; System Status screenshot optional.
 APP  CCI016_01: Initiate Response Failed: Transport connection closed
      Source: CCI016_01  Destination: Test Suite Pro  Category: GENERAL
 
-PC1 automated diag: lab/evidence/testsuite-pro/inbox/PC1_CONNECT_DIAG_2026-10-14.txt
-  - TcpTestSucceeded 192.168.10.1:3782 from 192.168.10.10
-  - verify-tsp-tls-key-match.ps1 PASS
-  - OpenSSL s_client mutual TLS PASS (field-pack client_tls.pem)
+Round 1: PC1_CONNECT_DIAG_2026-10-14.txt (stale TLS MD5 before DUT pull)
+Round 2 (2026-10-14 ~17:51 UTC+2): TLS aligned PASS, OpenSSL TLS1.2 PASS, TSP still FAIL
+  - PC1_CONNECT_FAIL_2026-10-14_round2.txt
+  - DUT_CCLI_LOG_SNAPSHOT_2026-10-14.txt (TLS allowlist OK; no ACSE ACCEPT)
+  - TSP_CONNECT_FAIL_ROUND2_2026-10-14.md
+  - DUT_MMS_PREFLIGHT_2026-10-14.txt (after preflight script)
 
-Next: re-browse all TSP cert paths; confirm MMS vs Transport split; Yahia DUT preflight (iec61850d off).
+DUT note: iec61850d was running alongside ccli on 3782 during capture.
 

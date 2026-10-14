@@ -1,0 +1,101 @@
+﻿=== DUT snapshot Wed Oct 14 23:51:14 CST 2026 ===
+ccli 0.1.0-r55 (P5-5LN-CERT-MODEL)
+PROCS
+ 7980 root      4072 S    /usr/sbin/ccli --config /etc/ccli/lab.yaml
+10689 root     10000 S    /usr/sbin/iec61850d
+LISTEN3782
+tcp        0      0 192.168.10.1:3782       0.0.0.0:*               LISTEN      7980/ccli
+MD5TLS
+13c231ee6a2e782b3eb464ac2dee4c21  /etc/ccli/tls/client_tls.pem
+7bb6b77cde4614ae68ad387e580e2696  /etc/ccli/tls/client.pem
+f265ae5ca881a5097bc74a543784b443  /etc/ccli/tls/root_CA.pem
+TAIL_CCLI_LOG
+ccli config loaded from /etc/ccli/lab.yaml
+hal_gpio_ll: TesPro dido_v2 via ubus (gd32.read_di + set_mode)
+svc_io: ready do_curtail=GPIO1(active_low) di_permissive=GPIO2(active_low)
+security: previous crash recovered (SIGSEGV)
+dso-phase1: O.8.2/O.11 mock ΓÇö Smax_calc=206.155 Smax_used=210 kVA p_w110=0 p_wlim=0 p_wsd=42 p_eff=42 kW ΓåÆ pf2 enter=42 release=37 kW
+mms: O.7.3.3 set-point spacing gate ON (3 s)
+mms: cfg model without VArSdDVAR1 ΓÇö O.9.1.4 P5-R01 inactive (5-LN cert model)
+mms: cfg model without PFSPDFPF1 ΓÇö O.9.1.1 P5-R02 inactive (5-LN cert model)
+mms: full CID model loaded from /etc/ccli/icd/product_tr400_eth_a_5ln.cfg
+mms: TLS CRL loaded /etc/ccli/tls/lab_crl.pem
+mms: AARE 62351-4 responder auth ready (cert=919 octets)
+mms: AARE responding titles AP=1.1.1.999.1 AE=12
+mms: listening on 192.168.10.1:3782 tls=on acse_tls_auth=on rbac=on crl=on fallback_s=15 gnss_poll_s=15 chrony=on discipline=off model=full_cid_cfg
+iec104: listening 192.168.1.130:2404 CA=1 tls=on [IEC 60870-5-104 / O.13.1.1.1]
+iec104: Operating Rule mode=monitor_only allow_commands=no gi=yes monitor: TotW@1001=on [O.14]
+goose: disabled in config (plant Modbus path active)
+ccli 0.1.0-r55 (unknown) starting config=/etc/ccli/lab.yaml
+ccli 0.1.0-r55 started. config=/etc/ccli/lab.yaml
+mms: time_quality chrony offset_ms=1 within_pm100=yes leap=Normal ref=4F852C8D gnss_fix=0 clockNotSynchronized=1 (T.3.3.4.5)
+io: curtail_do=OFF permissive=BLOCKED
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40001 qty=4 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40001 qty=4 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40001 qty=4 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40001 qty=4 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+mms: time_quality chrony offset_ms=1 within_pm100=yes leap=Normal ref=4F852C8D gnss_fix=0 clockNotSynchronized=1 (T.3.3.4.5)
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40001 qty=4 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40001 qty=4 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40001 qty=4 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+IO1(active_low) di_permissive=GPIO2(active_low)
+security: previous crash recovered (SIGSEGV)
+dso-phase1: O.8.2/O.11 mock ΓÇö Smax_calc=206.155 Smax_used=210 kVA p_w110=0 p_wlim=0 p_wsd=42 p_eff=42 kW ΓåÆ pf2 enter=42 release=37 kW
+mms: O.7.3.3 set-point spacing gate ON (3 s)
+mms: cfg model without VArSdDVAR1 ΓÇö O.9.1.4 P5-R01 inactive (5-LN cert model)
+mms: cfg model without PFSPDFPF1 ΓÇö O.9.1.1 P5-R02 inactive (5-LN cert model)
+mms: full CID model loaded from /etc/ccli/icd/product_tr400_eth_a_5ln.cfg
+mms: TLS CRL loaded /etc/ccli/tls/lab_crl.pem
+mms: AARE 62351-4 responder auth ready (cert=919 octets)
+mms: AARE responding titles AP=1.1.1.999.1 AE=12
+mms: listening on 192.168.10.1:3782 tls=on acse_tls_auth=on rbac=on crl=on fallback_s=15 gnss_poll_s=15 chrony=on discipline=off model=full_cid_cfg
+iec104: listening 192.168.1.130:2404 CA=1 tls=on [IEC 60870-5-104 / O.13.1.1.1]
+iec104: Operating Rule mode=monitor_only allow_commands=no gi=yes monitor: TotW@1001=on [O.14]
+goose: disabled in config (plant Modbus path active)
+ccli 0.1.0-r55 (unknown) starting config=/etc/ccli/lab.yaml
+ccli 0.1.0-r55 started. config=/etc/ccli/lab.yaml
+mms: time_quality chrony offset_ms=1 within_pm100=yes leap=Normal ref=4F852C8D gnss_fix=0 clockNotSynchronized=1 (T.3.3.4.5)
+io: curtail_do=OFF permissive=BLOCKED
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40001 qty=4 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40001 qty=4 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+LOGREAD_MMS
+Wed Oct 14 23:50:31 2026 daemon.err ccli[7980]: iec104: P4-04 Eth_B comms-loss fallback
+Wed Oct 14 23:50:35 2026 daemon.err iec61850d[8819]: mms_ipc: object iec61850.mms not found (is mmsd running?)
+Wed Oct 14 23:50:35 2026 daemon.err iec61850d[8819]: mms_ipc: connect 192.168.10.1:102 failed
+Wed Oct 14 23:50:36 2026 daemon.err ccli[7980]: mms: time_quality chrony offset_ms=0 within_pm100=yes leap=Normal ref=4F852C8D gnss_fix=0 clockNotSynchronized=1 (T.3.3.4.5)
+Wed Oct 14 23:50:40 2026 daemon.err iec61850d[8819]: mms_ipc: object iec61850.mms not found (is mmsd running?)
+Wed Oct 14 23:50:40 2026 daemon.err iec61850d[8819]: mms_ipc: connect 192.168.10.1:102 failed
+Wed Oct 14 23:50:42 2026 daemon.err ccli[7980]: TLS: Verify cert: depth 1
+Wed Oct 14 23:50:42 2026 daemon.err ccli[7980]: TLS:    flags: 00000000
+Wed Oct 14 23:50:42 2026 daemon.err ccli[7980]: TLS:   cert. version     : 3
+Wed Oct 14 23:50:42 2026 daemon.err ccli[7980]: TLS: Verify cert: depth 0
+Wed Oct 14 23:50:42 2026 daemon.err ccli[7980]: TLS:    flags: 00000000
+Wed Oct 14 23:50:42 2026 daemon.err ccli[7980]: TLS:   cert. version     : 3
+Wed Oct 14 23:50:42 2026 daemon.err ccli[7980]:   ext key usage     : TLS Web Server Authentication, TLS Web Client Authentication
+Wed Oct 14 23:50:42 2026 daemon.err ccli[7980]: TLS: Check against list of allowed certs
+Wed Oct 14 23:50:42 2026 daemon.err ccli[7980]: TLS: Compare With:
+Wed Oct 14 23:50:42 2026 daemon.err ccli[7980]: TLS:      cert. version     : 3
+Wed Oct 14 23:50:42 2026 daemon.err ccli[7980]:      ext key usage     : TLS Web Server Authentication, TLS Web Client Authentication
+Wed Oct 14 23:50:42 2026 daemon.err ccli[7980]: mms: client CONNECT count=1
+Wed Oct 14 23:50:42 2026 daemon.err ccli[7980]: mms: client DISCONNECT count=0
+Wed Oct 14 23:50:42 2026 daemon.err ccli[7980]: mms: no clients ΓÇö Operating Rule fallback armed (15 s)
+Wed Oct 14 23:50:50 2026 daemon.err ccli[7980]: mms: time_quality chrony offset_ms=0 within_pm100=yes leap=Normal ref=4F852C8D gnss_fix=0 clockNotSynchronized=1 (T.3.3.4.5)
+Wed Oct 14 23:50:58 2026 daemon.err ccli[7980]: mms: P3-05 Operating Rule fallback ΓÇö live Wlim/WSd/VArSd/PFSP cleared after 15 s no-comms
+Wed Oct 14 23:50:58 2026 daemon.err ccli[7980]: mmsΓåÆpf2: P3-05 Operating Rule fallback (Eth_A no-comms)
+Wed Oct 14 23:50:58 2026 daemon.err ccli[7980]: mmsΓåÆpf2: Wlim=off@0% WSd=off@0% p_wlim=0 p_wsd=0 p_eff=210 kW ΓåÆ enter=210 release=205 kW
+Wed Oct 14 23:51:00 2026 daemon.info iec61850d[10689]: 61850: waiting for mmsd (iec61850.mms) to become available...
+Wed Oct 14 23:51:07 2026 daemon.err ccli[7980]: mms: time_quality chrony offset_ms=0 within_pm100=yes leap=Normal ref=4F852C8D gnss_fix=0 clockNotSynchronized=1 (T.3.3.4.5)
+Wed Oct 14 23:51:13 2026 daemon.err ccli[7980]: TLS: Verify cert: depth 1
+Wed Oct 14 23:51:13 2026 daemon.err ccli[7980]: TLS:    flags: 00000000
+Wed Oct 14 23:51:13 2026 daemon.err ccli[7980]: TLS:   cert. version     : 3
+Wed Oct 14 23:51:13 2026 daemon.err ccli[7980]: TLS: Verify cert: depth 0
+Wed Oct 14 23:51:13 2026 daemon.err ccli[7980]: TLS:    flags: 00000000
+Wed Oct 14 23:51:13 2026 daemon.err ccli[7980]: TLS:   cert. version     : 3
+Wed Oct 14 23:51:13 2026 daemon.err ccli[7980]:   ext key usage     : TLS Web Server Authentication, TLS Web Client Authentication
+Wed Oct 14 23:51:13 2026 daemon.err ccli[7980]: TLS: Check against list of allowed certs
+Wed Oct 14 23:51:13 2026 daemon.err ccli[7980]: TLS: Compare With:
+Wed Oct 14 23:51:13 2026 daemon.err ccli[7980]: TLS:      cert. version     : 3
+Wed Oct 14 23:51:13 2026 daemon.err ccli[7980]:      ext key usage     : TLS Web Server Authentication, TLS Web Client Authentication
+Wed Oct 14 23:51:13 2026 daemon.err ccli[7980]: mms: client CONNECT count=1
+Wed Oct 14 23:51:13 2026 daemon.err ccli[7980]: mms: client DISCONNECT count=0
+Wed Oct 14 23:51:13 2026 daemon.err ccli[7980]: mms: no clients ΓÇö Operating Rule fallback armed (15 s)
