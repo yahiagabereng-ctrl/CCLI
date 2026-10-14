@@ -27,15 +27,16 @@ powershell -File scripts\setup-pc1-testpro-from-git.ps1 -Dest D:\CCLI_TSP_FIELD_
 powershell -File scripts\verify-tsp-tls-key-match.ps1 -TlsDir D:\CCLI_TSP_FIELD_PACK\tls
 ```
 
-**MD5 check** (must match DUT):
+**MD5 check** (must match **DUT** — if you see `b28b0f41…` / `4490e817…` you have a **stale pack**, re-run setup):
 
-| File | MD5 |
-|------|-----|
+| File | MD5 (current DUT r55) |
+|------|------------------------|
 | `root_CA.pem` | `f265ae5ca881a5097bc74a543784b443` |
 | `client_tls.pem` | `13c231ee6a2e782b3eb464ac2dee4c21` |
 | `client.pem` | `7bb6b77cde4614ae68ad387e580e2696` |
 
-Full list: `D:\CCLI_TSP_FIELD_PACK\tls\DUT_TLS_MANIFEST.json`
+Full list: `D:\CCLI_TSP_FIELD_PACK\tls\DUT_TLS_MANIFEST.json`  
+Your **144deb9** capture had mismatches — see `TSP_P3_01_CONNECT_FAIL_SUMMARY_2026-10-14.md`.
 
 ---
 

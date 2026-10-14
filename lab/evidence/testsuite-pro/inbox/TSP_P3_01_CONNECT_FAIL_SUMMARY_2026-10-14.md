@@ -25,12 +25,21 @@ Full log: [PC1_CONNECT_DIAG_2026-10-14.txt](PC1_CONNECT_DIAG_2026-10-14.txt)
 PC1 bundle MD5s match `C:\CCLI_TSP_FIELD_PACK\tls\DUT_TLS_MANIFEST.json` (EJBCA sync tree).  
 They **do not** match the older spot-check table in `MASOMEH_CONNECT_FIX_2026-10-14.md` until DUT TLS is redeployed to the same tree. OpenSSL accept implies DUT allowlist matches **current** `client_tls.pem` on PC1.
 
-## Likely causes (ordered)
+## Root cause (Yahia check after `144deb9`)
 
-1. TSP still using **cached** cert paths — re-browse every TLS/MMS field under `C:\CCLI_TSP_FIELD_PACK\tls\`.
-2. **MMS Security** wrong key (`client_tsp.key` on MMS tab) — must be `client_acse.key` + `client.pem`.
-3. **DUT stack:** `iec61850d` or second listener on 3782 — needs `scripts/dut-mms-tsp-preflight.ps1` from logger PC (SSH).
-4. Post-TLS **ACSE/CID** — capture TSP sniffer + DUT `/tmp/ccli.log` on next attempt.
+| Layer | Finding |
+|-------|---------|
+| **PC1 PEMs vs DUT** | **MISMATCH.** PC1 bundle MD5s (`b28b0f41…` CA, `4490e817…` `client_tls`) ≠ DUT (`f265ae5c…`, `13c231ee…`). Field pack is an **older EJBCA tree**; `MASOMEH_CONNECT_FIX` spot-check table matches **current DUT**. |
+| **OpenSSL “PASS”** | Handshake used **stale PC1** certs; may not match **today’s** DUT allowlist. Re-test after PEM refresh. |
+| **DUT (2026-10-14 post-check)** | **`iec61850d` respawning**; at one point **3782 listened as `ubus`**, not `ccli`. Run **`scripts/dut-mms-tsp-preflight.ps1`** before next TSP attempt. |
+| **TSP vs OpenSSL** | OpenSSL negotiated **TLS 1.3**; product claims **TLS 1.2 min** (62351-3). In TSP, keep **TLS 1.2** policy consistent with PIXIT; enable 1.3 only if TSP requires it for transport. |
+
+## Fix order
+
+1. **Logger PC:** `git pull` → `dut-mms-tsp-preflight.ps1` → confirm **`3782` → `ccli`** (not `ubus` / not `iec61850d`).
+2. **PC1:** `git pull` → `setup-pc1-testpro-from-git.ps1` → MD5 **`client_tls.pem` = `13c231ee…`** (must match DUT).
+3. **TSP:** Re-browse **all** paths under `C:\CCLI_TSP_FIELD_PACK\tls\`; MMS key = **`client_acse.key`**.
+4. Retry Connect; if fail with SSL alert → paste TSP first red line + new `PC1_CONNECT_DIAG` run.
 
 ## Evidence files
 
