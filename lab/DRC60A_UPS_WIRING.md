@@ -27,7 +27,7 @@
 |------|------------|------|--------|------|----------|-------|
 | **DIO1** | ch 1 | DO | PF2 | Curtailment relay **K1** | `io.do_curtail` | **PASS** |
 | **DIO2** | ch 2 | DI | PF2 | Permissive interlock | `io.di_permissive` | **PASS** |
-| **DIO3** | ch 3 | DI | PF2 | Spare (PI trip, external alarm) | `io.di_pf2_spare` | UNTESTED |
+| **DIO3** | ch 3 | **DO** | PF2 / Annex M | **K_TRIP** teletrip mock (P6-03); ccli **monitors** relay state | `io.annex_m_trip_monitor` | **PASS** (software) |
 | **DIO4** | ch 4 | DO | PF2 | Spare (curtail ack, annunciator) | `io.do_pf2_spare` | UNTESTED |
 | **AI1** | vendor AI0? | AI | UPS | Battery voltage (divider) | `analog.ai_battery_v` | NOT TESTED |
 | **AI2** | — | AI | UPS | AC OK + Bat low ladder | `analog.ai_ups_status` | NOT TESTED |

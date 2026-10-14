@@ -50,6 +50,7 @@ powershell -File scripts\ingest-62351-100-4.ps1 -SkipSync
 | `ccli-openwrt-freeze` | `knowledge-base/08-engineering/CCI_OpenWrt_Freeze.md` | OS pin |
 | `ccli-soc-freeze` | `knowledge-base/08-engineering/CCI_SOC_Freeze.md` | Silicon pin |
 | `ccli-tg500-lab-platform` | `knowledge-base/08-engineering/CCI_TG500_Lab_Platform.md` | HW / ports |
+| `ccli-lab-hw-configuration-index` | `lab/HW_CONFIGURATION_INDEX.md` | Lab HW docs index + conflict table |
 
 ---
 

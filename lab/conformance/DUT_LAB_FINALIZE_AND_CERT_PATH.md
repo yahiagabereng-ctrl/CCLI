@@ -59,6 +59,7 @@ Cross-check evidence under `lab/evidence/testsuite-pro/inbox/`:
 | □ | **chrony** \|offset\| ≤ 100 ms | Annex **T.3.3.4.5** · matrix P3-11 | Already in `TSP_P5_FULLCIRCLE_TLS_2026-10-09.txt` § step 1 |
 | □ | **SCL Verify** 0 errors | D5 / lab intake | `TSP_OFF_SCLVERIFY_2026-10-09.txt` **PASS** |
 | □ | **`dido_v2` after Wlim** | O.9.2.2 actuation trace | One SSH log line in evidence |
+| □ | **DIO1 relay + DIO2 permissive wired** | PF2 / Wlim actuation only when key closed | [CURTAIL_BUTTON_AND_RELAY_SETUP.md](../CURTAIL_BUTTON_AND_RELAY_SETUP.md) §7 |
 | □ | **Tier 3** T3-01…03 (TLS fail, viewer read/deny) | PICS security **M** rows | Lab may re-run; recommended before ship |
 
 **Explicitly out of first-pass 61850 PICS:** BRCB, GOOSE, File, SG (matrix Tier 4) — no DUT block for cert quote if PICS stays **N/A**.

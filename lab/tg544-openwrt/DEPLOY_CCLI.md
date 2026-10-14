@@ -10,6 +10,7 @@ OpenWrt **25.12** uses **`apk`** packages (not `opkg`).
 | `apps/ccli/CHANGELOG.md` | Human-readable changes per release |
 | `lab/tg544-openwrt/deploy-manifests/` | Per-upload manifest (SHA256, changes, checks) |
 | DUT `/etc/ccli/VERSION` | Installed binary identity after deploy |
+| Product bundle | `releases/product-cyber/<semver>-rN>/` after lab gates — `CCI_Product_SW_Freeze.md` |
 
 **Bump workflow:**
 

@@ -3,7 +3,8 @@
 **DUT:** TG544 @ `192.168.1.130`  
 **Status (2026-09-22):** **GD32 online** (reflash) · **Modbus A2/B2** → `/dev/ttyS2` · **DIO1 = DO (ch1)** · **DIO2 = DI (ch2)**  
 **SSH verify 2026-09-22:** `gd32.status` **online true**, FW **GD32-DIDO-F v1.0.1**, `/dev/gd32_uart` → `ttyUSB0`, `set_relay` ch1 **OK**
-**Runbook:** `lab/PHASE1.md` · **Modbus:** `lab/MODBUS_RTU_LAB.md` · **DIO:** `lab/TR400_DIO_SMOKE_TEST.md`
+**Runbook:** `lab/PHASE1.md` · **Modbus:** `lab/MODBUS_RTU_LAB.md` · **DIO:** `lab/TR400_DIO_SMOKE_TEST.md`  
+**Install (relay + permissive button):** `lab/CURTAIL_BUTTON_AND_RELAY_SETUP.md` · plink: `lab/tr400-permissive-and-relay-setup.cmds`
 
 ### Bench signal flow
 

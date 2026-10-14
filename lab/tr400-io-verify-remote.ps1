@@ -9,7 +9,8 @@ param(
 )
 
 $ErrorActionPreference = "Stop"
-$HostKey = "SHA256:2hiPouwqC1oxP//Q0BpvgIcqD6IG+pqLkzNih1EpNRE"
+# TG544 @ 192.168.1.130 (2026-10-14): ssh-ed25519 SHA256:4N84xpdiJRUiipactNbXLdVa2+A4eCCrUurVDrz3qoE
+$HostKey = "SHA256:4N84xpdiJRUiipactNbXLdVa2+A4eCCrUurVDrz3qoE"
 $Plink = "C:\Program Files\PuTTY\plink.exe"
 
 if (-not $env:CCLI_TG544_PW) {
@@ -35,7 +36,9 @@ ubus call dido_v2 set_relay '{"channel":1,"value":0}'
 ubus call dido_v2 set_relay '{"channel":1,"value":1}'
 sleep 1
 ubus call dido_v2 set_relay '{"channel":1,"value":0}'
-echo "=== DI channel 2: gd32.read_di (di[1]) ==="
+echo "=== gd32.status (online must be true) ==="
+ubus call dido_v2 gd32.status '{}'
+echo "=== DI channel 2: gd32.read_di (di[1]) permissive button ==="
 ubus call dido_v2 gd32.read_di '{}'
 '@
 

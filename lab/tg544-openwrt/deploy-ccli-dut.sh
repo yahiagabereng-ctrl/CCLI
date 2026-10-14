@@ -40,6 +40,16 @@ elif command -v openssl >/dev/null 2>&1; then
     openssl dgst -sha256 /usr/sbin/ccli
 fi
 
+if [ -x /tmp/enable-dut-gpio.sh ]; then
+    echo "=== enable DIO (GD32) before ccli start ==="
+    sh /tmp/enable-dut-gpio.sh
+elif [ -f /usr/share/ccli/enable-dut-gpio.sh ]; then
+    sh /usr/share/ccli/enable-dut-gpio.sh
+else
+    /etc/init.d/didoservice_v2 enable 2>/dev/null || true
+    /etc/init.d/didoservice_v2 restart 2>/dev/null || true
+fi
+
 killall ccli 2>/dev/null || true
 sleep 1
 /usr/sbin/ccli --config /etc/ccli/lab.yaml >>/tmp/ccli.log 2>&1 &

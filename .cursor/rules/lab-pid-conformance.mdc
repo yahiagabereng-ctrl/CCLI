@@ -1,0 +1,42 @@
+---
+description: Lab PID / PIXIT / 62351-100-x conformance document rules (D7, Allegato O/T)
+globs: lab/conformance/**/*.md,knowledge-base/08-engineering/CCI_62351-100*.md,knowledge-base/08-engineering/CCI_61850-10_Extract.md
+alwaysApply: false
+---
+
+# Lab PID and cyber conformance docs
+
+When editing **D7**, PIXIT security sections, or **62351-100-3/100-4** / **61850-10** extracts:
+
+## Always follow (in order)
+
+Use the programme architect sections: **Requirements · Architecture · Interface matrix · BOM matrix · Knowledge gaps · Risks · Verification** (see `system-architect.mdc`). Cite corpus **HAVE / MISSING / PART**.
+
+## Scope split (do not mix)
+
+| Artefact | Scope |
+|----------|--------|
+| **D1 PICS / D2 PIXIT** | IEC **61850-10** server services (sAss/sSrv/sRp/sCtl…) |
+| **D7** (`D7_62351-3_PID_DRAFT.md`) | IEC **62351-3** transport only — TLS PICS §8 + TLS PIXIT |
+| **62351-100-3** | Abstract **TLS** test cases; Allegato **O §12** mandates accredited cert |
+| **62351-4 / 100-4 PID** | MMS ACSE / E2E / Annex G dual cert — **separate** from D7 |
+| Allegato **T.3.3.4** | Product cyber **profile** (requirements), not the lab procedure |
+
+## Update rules for D7 after corpus ingest
+
+1. Bump **Revision** + **Date**; list **Last ingestion / parents** with RAG ids.  
+2. Align claims with `ccli-62351-3-extract`, `ccli-62351-100-3-extract`, Allegato O/T extracts.  
+3. Keep **TLS 1.2 m**; **1.3 x** unless product freeze changes.  
+4. Port **3782** secure; **102** cleartext = bench only.  
+5. OCSP **x** until claimed; CRL **m** when `tls_crl` loaded.  
+6. Dual-cert G.2 / ACSE Cert B → point to **100-4** planning extract, not D7 tables.  
+7. Formal accredited cases = **P7-07 OPEN** until lab report; TSP Connect ≠ certificate.  
+8. Notation: **m / o / x / c / PART** only.
+
+## Platform
+
+TesPro **TG544 / TG-524** only (`platform_tg500`). Raspberry Pi / `platform_pi` out of scope.
+
+## RAG ids to keep in sync
+
+`ccli-lab-d7-62351-3-pid` · `ccli-62351-100-3-extract` · `ccli-62351-100-4-extract` · `ccli-61850-10-extract` · `ccli-product-sw-freeze` · `cei-0-16-allegato-o` · `cei-0-16-allegato-t-extract`

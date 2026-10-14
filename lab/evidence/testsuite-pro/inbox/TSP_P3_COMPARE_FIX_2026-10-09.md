@@ -57,6 +57,24 @@ Advanced Client already showed `PdCMMXU1.PPV.phsAB` live — not a missing-DO fi
 **Re-test:** `git pull` → import repo CID **rev 9** → deploy cfg (SHA `E3285E8F…D77E49`) → restart `ccli` → Disconnect/Connect → Compare.  
 **Expect:** **~60** structure rows (PdC PPV/A waive only), **0** Value rows.
 
+## Third Compare — `New folder/3.xlsx` (rev 9 pin)
+
+| Run | File | When | CID/cfg | Typical errors |
+|-----|------|------|---------|----------------|
+| **1** | `ss.xlsx` | Pre–MMXU2 fix | Local / old | **489** (Gen* PPV/A noise) |
+| **2** | `Second error.xlsx` | MMXU2 fix; DUT cfg not rev 9 | File vs DUT mismatch | **69** (**9 Value** + ~60 PdC) |
+| **3** | **`3.xlsx`** | After **git pull**, TSP CID **History rev 9**, DUT cfg deployed | [`LAB_SPECIMEN_VERSION.md`](../../../conformance/LAB_SPECIMEN_VERSION.md) | Target **~60 Missing**, **0 Value** |
+
+**Before Compare #3:** URCB **disabled** · Disconnect → Connect · import **repo** `lab_tg544_eth_a.cid` only (not an old workspace copy).
+
+**Archive when saved:** copy to `lab/evidence/testsuite-pro/inbox/TSP_P3_COMPARE_AFTER_REV9_2026-10-09.xlsx` and paste row counts below.
+
+| Metric | Compare #2 | Compare #3 (`3.xlsx`) |
+|--------|------------:|----------------------:|
+| Total errors | 69 | *(fill after export)* |
+| Value | 9 | *(expect 0)* |
+| Missing (PdC PPV/A) | ~60 | *(waive TSP-SCL-01 if unchanged)* |
+
 ## Related
 
 - `TSP_P5_COMPARE_WAIVERS.md` · `PIXIT_DRAFT.md` OptFields · `SCL_DATASET_PLACEMENT.md`

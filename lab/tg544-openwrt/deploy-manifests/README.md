@@ -17,3 +17,12 @@ On the DUT after deploy:
 3. Add entry to `apps/ccli/CHANGELOG.md`
 4. Build (`wsl-build-ccli.sh`)
 5. Deploy with `-Changes` describing this upload
+
+**Lab vs product**
+
+| Path | Purpose |
+|------|---------|
+| This folder | **Lab** upload record (every bench deploy) |
+| `releases/product-cyber/<semver>-rN>/` | **Product** bundle after lab gates + cyber checklist |
+
+Normative: `knowledge-base/08-engineering/CCI_Product_SW_Freeze.md` (`ccli-product-sw-freeze`). Lab may use cleartext TSP yaml; product bundles must use **TLS :3782** only.

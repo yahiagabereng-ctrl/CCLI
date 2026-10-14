@@ -15,6 +15,7 @@ param(
 $ErrorActionPreference = "Stop"
 $Repo = Split-Path -Parent $PSScriptRoot
 $Plink = "C:\Program Files\PuTTY\plink.exe"
+$Pscp = "C:\Program Files\PuTTY\pscp.exe"
 if (-not (Test-Path $Plink)) { throw "PuTTY plink not found" }
 if (-not $env:CCLI_TG544_PW) { throw "Source lab-env.ps1 first" }
 
@@ -42,8 +43,15 @@ function Invoke-Dut {
 }
 
 if ($FixServices) {
-    Write-Host "Normalize DUT: disable iec61850service, single ccli via init.d..." -ForegroundColor Yellow
-    Invoke-Dut "/etc/init.d/iec61850service disable; /etc/init.d/iec61850service stop; killall iec61850d; killall ccli; sleep 2; /etc/init.d/ccli start; sleep 4" | Out-Null
+    Write-Host "Normalize DUT: GPIO (didoservice) + disable iec61850service, single ccli..." -ForegroundColor Yellow
+    $gpioSh = Join-Path $Repo "lab\tg544-openwrt\enable-dut-gpio.sh"
+    if (Test-Path $gpioSh) {
+        & $Pscp -scp -batch -pw $env:CCLI_TG544_PW -hostkey $HostKey $gpioSh "root@${HostAddr}:/tmp/enable-dut-gpio.sh" | Out-Null
+        Invoke-Dut "sed -i 's/\r$//' /tmp/enable-dut-gpio.sh; chmod +x /tmp/enable-dut-gpio.sh; sh /tmp/enable-dut-gpio.sh" | Out-Null
+    } else {
+        Invoke-Dut "/etc/init.d/didoservice_v2 enable; /etc/init.d/didoservice_v2 restart; sleep 2" | Out-Null
+        Invoke-Dut "/etc/init.d/iec61850service disable; /etc/init.d/iec61850service stop; killall iec61850d; killall ccli; sleep 2; /etc/init.d/ccli start; sleep 4" | Out-Null
+    }
 }
 
 $version = Invoke-Dut "/usr/sbin/ccli --version"
@@ -75,6 +83,15 @@ if ($ExpectedSha) {
 $checks["MMS/104 TLS in yaml"] = $yaml -match "tls_enabled: true"
 $checks["MMS model cfg (5-LN product or lab)"] = ($yaml -match "product_tr400_eth_a_5ln\.cfg") -or ($yaml -match "lab_tg544_eth_a\.cfg")
 $checks["Modbus RTU ttyS1 (bench)"] = $yaml -match "ttyS1" -or $yaml -match "backend: rtu"
+
+$gd32 = Invoke-Dut "ubus call dido_v2 gd32.status '{}'"
+$dido = Invoke-Dut "ubus call dido_v2 status"
+$ioYaml = Invoke-Dut "grep -E 'permissive_bypass|do_curtail|di_permissive' /etc/ccli/lab.yaml 2>/dev/null"
+$svcIo = Invoke-Dut "logread 2>/dev/null | grep 'svc_io: ready' | tail -1; tail -80 /tmp/ccli.log 2>/dev/null | grep 'svc_io: ready' | tail -1"
+$checks["U-P5 GPIO GD32 online"] = $gd32 -match '"online"\s*:\s*true'
+$checks["U-P5 GPIO ch1 DO / ch2 DI"] = ($dido -match '"channel"\s*:\s*1[\s\S]*"mode"\s*:\s*"DO"') -and ($dido -match '"channel"\s*:\s*2[\s\S]*"mode"\s*:\s*"DI"')
+$checks["U-P5 permissive_bypass false"] = ($ioYaml -match "permissive_bypass: false") -or ($ioYaml -notmatch "permissive_bypass: true")
+$checks["U-P5 svc_io initialized"] = $svcIo -match "svc_io: ready"
 
 Write-Host ""
 Write-Host "=== DUT unified matrix preflight @ $HostAddr ($ts) ===" -ForegroundColor Cyan
@@ -110,6 +127,13 @@ $ps
 
 ## yaml (excerpt)
 $yaml
+
+## gpio (U-P5 actuation)
+$gd32
+
+$ioYaml
+
+$svcIo
 "@
 
 if ($WriteEvidence) {

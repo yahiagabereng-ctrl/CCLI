@@ -1,0 +1,19 @@
+---
+description: Multi-root workspace — lab vs Official Product folder split
+alwaysApply: true
+---
+
+# Lab + Product workspace
+
+When **CCLI-Lab-And-Product.code-workspace** is open (two roots):
+
+| Folder name | Role |
+|-------------|------|
+| **CCLI Lab** | Conformance, DUT r52, `lab/`, `knowledge-base/`, deploy scripts, **`ccli_main`** build |
+| **CCLI Product (apps/ccli)** | Product intent root — SK0153 **`program/`**, **`ccli_program`**, entry **`program/main.c`** (`…Official Product\apps\ccli`) |
+
+**RAG:** Run sync/ingest from **CCLI Lab** root only (`scripts/sync-ccli-corpus-to-telematry.ps1`, `scripts/ingest-product-deploy-rag.ps1`). Telematry mirror: `documents/projects/ccli/`.
+
+**Shared code:** Prefer editing `core/`, `adapters/`, `services/` in the tree that owns the change; port to the other repo deliberately — do not flip lab CMake to `program/main.c`.
+
+Guide: `lab/WORKSPACE_LAB_AND_PRODUCT.md`

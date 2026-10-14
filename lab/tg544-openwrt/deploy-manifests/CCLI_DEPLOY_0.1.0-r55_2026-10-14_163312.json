@@ -1,0 +1,15 @@
+﻿{
+    "codename":  "P5-5LN-CERT-MODEL",
+    "changes":  [
+                    "r55 GD32 di[] permissive fix (di_mask=0)",
+                    "GPIO enable on deploy"
+                ],
+    "release":  55,
+    "timestamp_utc":  "2026-10-14T14:33:12.8992704Z",
+    "version_full":  "0.1.0-r55",
+    "lab_yaml":  "apps\\ccli\\config\\lab_tr400_phase4_eth_b_ttyS1_5ln.yaml",
+    "sha256":  "e192d3cce1a0bdff54bb712c6cefdbbd0ff7a2f5057f74c0bc0b4dac5a950b31",
+    "binary":  "C:\\Yahia\\projects\\CCLI\\lab\\tg544-openwrt\\ccli-bin",
+    "host":  "192.168.1.130",
+    "semver":  "0.1.0"
+}

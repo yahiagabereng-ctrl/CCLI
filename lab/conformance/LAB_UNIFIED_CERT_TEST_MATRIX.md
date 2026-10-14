@@ -128,6 +128,9 @@ One matrix row = one **`Start` → TSP step → `Stop -PasteClipboard`** pair. E
 | Plant LAN3 | `192.168.30.1/24` | — | `192.168.30.10` |
 | EMT432 Modbus TCP | polled by DUT | — | `192.168.30.50:502` *(or `.178.250` Chronos)* |
 | RS485 mock | A1/B1 → `ttyS1` | — | USB **COM5** **SUN2000** RTU sim (`lab/start-bench-plant.ps1`) |
+| DIO curtail + permissive | **DIO1** relay · **DIO2** button | — | SSH `dido_v2` after **Wlim** — [CURTAIL_BUTTON_AND_RELAY_SETUP.md](../CURTAIL_BUTTON_AND_RELAY_SETUP.md) |
+
+**Full HW index:** [HW_CONFIGURATION_INDEX.md](../HW_CONFIGURATION_INDEX.md)
 
 Scripts: `lab/set_pc_lan1_dso.cmd` · `set_pc_lan2_oa.cmd` · `set_pc_lan3_plant.cmd` (or `set_pc_lan3_plant_178.cmd`).
 

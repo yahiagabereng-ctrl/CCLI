@@ -69,6 +69,7 @@ foreach ($f in @(
 Sync-File "$Kb\08-engineering\CCI_TG500_Knowledge_Tree.md" "$Tel\projects\ccli\engineering\CCI_TG500_Knowledge_Tree.md"
 Sync-File "$Kb\06-application\CCI_Application_Structure.md" "$Tel\projects\ccli\engineering\CCI_Application_Structure.md"
 Sync-File "$Kb\08-engineering\CCI_OpenWrt_Freeze.md" "$Tel\projects\ccli\engineering\CCI_OpenWrt_Freeze.md"
+Sync-File "$Kb\08-engineering\CCI_Product_SW_Freeze.md" "$Tel\projects\ccli\engineering\CCI_Product_SW_Freeze.md"
 Sync-File "$Kb\08-engineering\CCI_TesPro_Supplier_Correspondence.md" "$Tel\projects\ccli\engineering\CCI_TesPro_Supplier_Correspondence.md"
 Sync-File "$Kb\08-engineering\CCI_61557-12_Extract.md" "$Tel\projects\ccli\engineering\CCI_61557-12_Extract.md"
 Sync-File "$Kb\08-engineering\CCI_MT7986A_Datasheet_Extract.md" "$Tel\projects\ccli\engineering\CCI_MT7986A_Datasheet_Extract.md"

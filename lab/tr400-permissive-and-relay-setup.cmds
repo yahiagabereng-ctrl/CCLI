@@ -1,0 +1,38 @@
+echo === CCLI lab: DIO1 relay + DIO2 permissive button setup ===
+echo === 1) Restore channel modes (ch1 DO, ch2 DI) ===
+uci set didoservice_v2.channel_1.mode=do
+uci set didoservice_v2.channel_2.mode=di
+uci commit didoservice_v2
+/etc/init.d/didoservice_v2 restart
+sleep 2
+ubus call dido_v2 set_mode '{"channel":1,"mode":"DO"}'
+ubus call dido_v2 set_mode '{"channel":2,"mode":"DI"}'
+ubus call dido_v2 gd32.set_mode '{"channel":1,"mode":"DO"}'
+ubus call dido_v2 gd32.set_mode '{"channel":2,"mode":"DI"}'
+sleep 1
+
+echo === 2) GD32 link (must be online for relay/button) ===
+ubus call dido_v2 gd32.status '{}'
+
+echo === 3) dido_v2 status ===
+ubus call dido_v2 status
+
+echo === 4) lab.yaml io block (deploy lab_tr400.yaml if missing/wrong) ===
+grep -E 'permissive_bypass|do_curtail|di_permissive|gpio:|active_' /etc/ccli/lab.yaml 2>/dev/null | head -12 || echo "WARN: /etc/ccli/lab.yaml missing"
+
+echo === 5) Relay DIO1 / ubus ch1: OFF - ON - OFF (listen for click) ===
+ubus call dido_v2 set_relay '{"channel":1,"value":0}'
+sleep 1
+ubus call dido_v2 set_relay '{"channel":1,"value":1}'
+sleep 1
+ubus call dido_v2 set_relay '{"channel":1,"value":0}'
+
+echo === 6) Permissive DIO2 / di[1]: open key, then close key ===
+echo "     Open permissive NOW, wait 3s..."
+sleep 3
+ubus call dido_v2 gd32.read_di '{}'
+echo "     Close permissive NOW, wait 3s..."
+sleep 3
+ubus call dido_v2 gd32.read_di '{}'
+
+echo === Done. See lab/CURTAIL_BUTTON_AND_RELAY_SETUP.md ===

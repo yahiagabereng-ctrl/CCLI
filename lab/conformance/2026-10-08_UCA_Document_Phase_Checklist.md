@@ -114,9 +114,10 @@ Phases **P0–P6** are **CLOSED** (internal lab gates). **P7** is **OPEN** (evid
 
 | Item | Regulation | Phase | Status |
 |------|------------|-------|--------|
-| 62351-3 §8 PICS tables | O.15 / 62351-100-3 | P7-07 **OPEN** | **READY to paste** — [D7_62351-3_PID_DRAFT.md](D7_62351-3_PID_DRAFT.md) |
-| TLS PIXIT | Lab 62351 template (if any) | P3-06 evidence | **READY** in D7 draft |
-| 62351-100-3 test cases | Extract in KB | — | **HAVE** (planning) |
+| 62351-3 §8 PICS tables | O §12 / 62351-100-3 | P7-07 **OPEN** | **READY to paste** — [D7_62351-3_PID_DRAFT.md](D7_62351-3_PID_DRAFT.md) **rev 1.1** (2026-10-13 ingest) |
+| TLS PIXIT | Lab 62351 template (if any) | P3-06 evidence | **READY** in D7 draft · Allegato T :3782 |
+| 62351-100-3 test cases | `ccli-62351-100-3-extract` | — | **HAVE** (rev 1.1 + Allegato O/T) |
+| 62351-100-4 (MMS) | `ccli-62351-100-4-extract` | Separate PID | Planning **HAVE** · PDF **MISSING** |
 
 Lab may quote **61850 only** from D1 first; confirm combined visit (questionnaire §1.6–1.7).
 

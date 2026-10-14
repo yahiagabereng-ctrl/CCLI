@@ -130,9 +130,13 @@ if (Test-Path $ProductCfg) {
     & $Pscp -scp -batch -pw $pw -hostkey $HostKey $ProductCfg "${User}@${HostAddr}:/etc/ccli/icd/product_tr400_eth_a_5ln.cfg"
 }
 
+$GpioSh = Join-Path $PSScriptRoot "enable-dut-gpio.sh"
+Write-Host "=== Upload GPIO enable script ===" -ForegroundColor Cyan
+& $Pscp -scp -batch -pw $pw -hostkey $HostKey $GpioSh "${User}@${HostAddr}:/tmp/enable-dut-gpio.sh"
+
 Write-Host "=== Install + start on DUT ===" -ForegroundColor Cyan
 & $Plink -ssh "${User}@${HostAddr}" -pw $pw -hostkey $HostKey -batch `
-    "sed -i 's/\r$//' /tmp/deploy-ccli-dut.sh; chmod +x /tmp/deploy-ccli-dut.sh; sh /tmp/deploy-ccli-dut.sh"
+    "sed -i 's/\r$//' /tmp/deploy-ccli-dut.sh /tmp/enable-dut-gpio.sh; chmod +x /tmp/deploy-ccli-dut.sh /tmp/enable-dut-gpio.sh; sh /tmp/deploy-ccli-dut.sh"
 
 if ($HostAddr -eq "192.168.10.1") {
     Write-Host "=== Sync PC TSP staging (C:\CCLI_tls + C:\CCLI_product_tls) ===" -ForegroundColor Cyan

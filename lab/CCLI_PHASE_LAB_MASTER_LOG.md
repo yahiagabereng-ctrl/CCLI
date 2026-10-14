@@ -3,7 +3,7 @@
 **Document ID:** CCLI-LAB-MASTER-LOG-001  
 **Programme:** HiTEKS CCLI · CEI 0-16 Allegato O / T · IEC 62443  
 **DUT:** TesPro TG544 / TR500 · `platform_tg500` · OpenWrt 25.12 (MediaTek MT798X)  
-**Revision:** 1.2 · **Date:** 2026-10-06  
+**Revision:** 1.3 · **Date:** 2026-10-06  
 **Canonical checklist:** `knowledge-base/08-engineering/CCI_Phase_Regulation_Checklists.md`  
 **Evidence root:** `lab/evidence/O13_1_isolation_2026-09-25/`
 
@@ -12,104 +12,140 @@ Status codes: **PASS** · **PART** · **OPEN** · **PEND** · **N/A** · **WAIVE
 
 ---
 
+
+
 ## 0. Bench identity (frozen as-built)
+
+
 
 ### 0.1 Hardware
 
-| Item | Value |
-|------|--------|
-| Gateway | TesPro **TG544** / board **TR500** |
-| SoC / OS | MT798X · OpenWrt **25.12** |
-| Software platform | `platform_tg500` only (Pi / `platform_pi` out of scope) |
-| Field I/O | DIO1 = curtail DO · DIO2 = permissive DI · via ubus `dido_v2` |
-| RS485 (Phase 1 meter) | LuCI **RS485-2** → **`/dev/rs485_2_uart`** (not A2/B2 `/dev/ttyS2` on this FW) |
-| LTE | Quectel **EC200U** · `usb0` · SIM **1NCE** · APN **`iot.1nce.net`** |
+
+| Item                  | Value                                                                      |
+| --------------------- | -------------------------------------------------------------------------- |
+| Gateway               | TesPro **TG544** / board **TR500**                                         |
+| SoC / OS              | MT798X · OpenWrt **25.12**                                                 |
+| Software platform     | `platform_tg500` only (Pi / `platform_pi` out of scope)                    |
+| Field I/O             | DIO1 = curtail DO · DIO2 = permissive DI · via ubus `dido_v2`              |
+| RS485 (Phase 1 meter) | LuCI **RS485-2** → `/dev/rs485_2_uart` (not A2/B2 `/dev/ttyS2` on this FW) |
+| LTE                   | Quectel **EC200U** · `usb0` · SIM **1NCE** · APN `iot.1nce.net`            |
+
+
+
 
 ### 0.2 Network roles (after Phase 2 peel)
 
-| Port | Role | UCI IF | IPv4 | Firewall zone |
-|------|------|--------|------|---------------|
-| **LAN1** | DSO **Eth_A** | `lan1` | **192.168.10.1/24** | `lan1_sec` |
-| **LAN2** | Operator **Eth_B** / OA | `lan2` | **192.168.1.130/24** | `lan_sec` |
-| **LAN3** | Plant | `lan3` | **192.168.30.1/24** | `lan2_sec` |
-| ENG | Local config | `br-lan` (empty PHY) | 192.168.0.1/24 | `lan` |
-| WAN / LTE | Backup only | `wan` / `usb0` | e.g. 10.43.46.209 | `wan` |
+
+| Port      | Role                    | UCI IF               | IPv4                 | Firewall zone |
+| --------- | ----------------------- | -------------------- | -------------------- | ------------- |
+| **LAN1**  | DSO **Eth_A**           | `lan1`               | **192.168.10.1/24**  | `lan1_sec`    |
+| **LAN2**  | Operator **Eth_B** / OA | `lan2`               | **192.168.1.130/24** | `lan_sec`     |
+| **LAN3**  | Plant                   | `lan3`               | **192.168.30.1/24**  | `lan2_sec`    |
+| ENG       | Local config            | `br-lan` (empty PHY) | 192.168.0.1/24       | `lan`         |
+| WAN / LTE | Backup only             | `wan` / `usb0`       | e.g. 10.43.46.209    | `wan`         |
+
 
 **Diagrams / annex map:**  
 `Architecture/Zones_62443_TG544_PortMap.drawio` · `knowledge-base/08-engineering/CCI_62443_Zones.md` · `P2_ANNEX_PORT_MAP.txt`
 
 ### 0.3 Lab PCs (Phase 2 matrix)
 
-| Role | Host | IPv4 | Gateway |
-|------|------|------|---------|
-| DSO Eth_A | Lab PC | 192.168.10.10 | 192.168.10.1 |
-| OA Eth_B | Yahia | 192.168.1.183 | 192.168.1.130 |
-| Plant | Federico | 192.168.30.10 | 192.168.30.1 |
+
+| Role      | Host     | IPv4          | Gateway       |
+| --------- | -------- | ------------- | ------------- |
+| DSO Eth_A | Lab PC   | 192.168.10.10 | 192.168.10.1  |
+| OA Eth_B  | Yahia    | 192.168.1.183 | 192.168.1.130 |
+| Plant     | Federico | 192.168.30.10 | 192.168.30.1  |
+
+
+
 
 ### 0.4 Access / tools used repeatedly
 
-| Tool | Use |
-|------|-----|
-| SSH / SCP | PuTTY `plink` / `pscp` · hostkey LAN1 `SHA256:4N84xpdiJRUiipactNbXLdVa2+A4eCCrUurVDrz3qoE` · password via `$env:CCLI_TG544_PW` only |
-| Build | WSL · OpenWrt SDK `~/openwrt-sdk-25.12.5-mediatek-filogic_gcc-14.3.0_musl.Linux-x86_64` · `lab/tg544-openwrt/wsl-build-ccli.sh` |
-| Host MMS clients | WSL gcc vs `apps/ccli/third_party/libiec61850` · `lab/tg544-openwrt/build-mms-lab-client.sh` (**secondary**) |
-| **61850 Test Suite Pro** | **Triangle MicroWorks** — **primary Eth_A verification** · PC on LAN1 · `lab/CCI_TestSuitePro_Verification_Layer.md` · logs → `lab/evidence/testsuite-pro/inbox/` · RAG `ccli-testsuite-pro-*` |
-| LuCI | Browser on role IP (Eth_A `http://192.168.10.1` or OA `http://192.168.1.130`) |
-| Duty binary | `/usr/sbin/ccli` · config `/etc/ccli/lab.yaml` |
+
+| Tool                     | Use                                                                                                                                                                                            |
+| ------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| SSH / SCP                | PuTTY `plink` / `pscp` · hostkey LAN1 `SHA256:4N84xpdiJRUiipactNbXLdVa2+A4eCCrUurVDrz3qoE` · password via `$env:CCLI_TG544_PW` only                                                            |
+| Build                    | WSL · OpenWrt SDK `~/openwrt-sdk-25.12.5-mediatek-filogic_gcc-14.3.0_musl.Linux-x86_64` · `lab/tg544-openwrt/wsl-build-ccli.sh`                                                                |
+| Host MMS clients         | WSL gcc vs `apps/ccli/third_party/libiec61850` · `lab/tg544-openwrt/build-mms-lab-client.sh` (**secondary**)                                                                                   |
+| **61850 Test Suite Pro** | **Triangle MicroWorks** — **primary Eth_A verification** · PC on LAN1 · `lab/CCI_TestSuitePro_Verification_Layer.md` · logs → `lab/evidence/testsuite-pro/inbox/` · RAG `ccli-testsuite-pro-`* |
+| **EJBCA CE (lab CA)**    | Docker `ccli-ejbca-ce` · `scripts/start-ejbca-lab.ps1` · CLI issue `scripts/issue_ejbca_cli_pki.py` · Annex gate `scripts/verify_annex_pki.py` · PEMs `apps/ccli/config/tls/ejbca/`            |
+| LuCI                     | Browser on role IP (Eth_A `http://192.168.10.1` or OA `http://192.168.1.130`)                                                                                                                  |
+| Duty binary              | `/usr/sbin/ccli` · config `/etc/ccli/lab.yaml`                                                                                                                                                 |
+
+
+
 
 ### 0.5 Software versions exercised
 
-| Package / lib | Version / note |
-|---------------|----------------|
-| `ccli` APK / binary | **0.1.0-r5** (P3-01) → **r6** (P3-04) → **r9** (soft cyber) → **r15** (chrony TimeQuality) |
-| chrony | **4.8** static aarch64 sideload · `/usr/sbin/chronyd` · GNSS SOCK feeder |
-| libiec61850 | **v1.6.0** static in `apps/ccli/third_party/libiec61850` (MZ license for ship) |
-| Lab yaml | `apps/ccli/config/lab_tr400_phase1_regulation.yaml` → DUT `/etc/ccli/lab.yaml` |
+
+| Package / lib       | Version / note                                                                                                                                                                                         |
+| ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `ccli` APK / binary | **0.1.0-r5** (P3-01) → **r6** (P3-04) → **r9** (soft cyber) → **r15** (chrony) → **r18** (P4) → **r25** (P5 full-circle) → **r26** (P6-03) → **r27–r34** (P7 kickoff) → **r29** GOOSE · **r31** P5-R02 |
+| chrony              | **4.8** static aarch64 sideload · `/usr/sbin/chronyd` · GNSS SOCK feeder                                                                                                                               |
+| libiec61850         | **v1.6.0** static in `apps/ccli/third_party/libiec61850` (MZ license for ship)                                                                                                                         |
+| Lab yaml            | `apps/ccli/config/lab_tr400_phase1_regulation.yaml` → DUT `/etc/ccli/lab.yaml`                                                                                                                         |
+| Lab PKI             | EJBCA-issued dual certs under `apps/ccli/config/tls/ejbca/` (Cert A TLS + Cert B E2E) · staged `C:\CCLI_product_tls\`                                                                                  |
+
+
+
 
 ### 0.7 TPM (TesPro guide §4) — verified 2026-09-25
 
-| Check | Result |
-|-------|--------|
-| `/dev/tpm0` + `/dev/tpmrm0` | PASS |
-| `tpm_tis_i2c 0-002e: 2.0 TPM (device-id 0x1C)` | PASS |
-| `tpm2_getrandom --hex 16` | PASS |
-| Manufacturer **IFX** · vendor **SLB9673** · TPM 2.0 | PASS |
-| Guide | `TG500-TPM-Configuration-Guide.pdf` |
-| Evidence | `lab/evidence/O13_1_isolation_2026-09-25/P0_TPM_VERIFY.txt` |
+
+| Check                                               | Result                                                      |
+| --------------------------------------------------- | ----------------------------------------------------------- |
+| `/dev/tpm0` + `/dev/tpmrm0`                         | PASS                                                        |
+| `tpm_tis_i2c 0-002e: 2.0 TPM (device-id 0x1C)`      | PASS                                                        |
+| `tpm2_getrandom --hex 16`                           | PASS                                                        |
+| Manufacturer **IFX** · vendor **SLB9673** · TPM 2.0 | PASS                                                        |
+| Guide                                               | `TG500-TPM-Configuration-Guide.pdf`                         |
+| Evidence                                            | `lab/evidence/O13_1_isolation_2026-09-25/P0_TPM_VERIFY.txt` |
+
 
 **Note:** Presence PASS ≠ MMS TLS keys in TPM yet (P3-06 lab may use PEMs).
 
-### 0.6 Progress snapshot (2026-10-06 — through P6 lab close)
+### 0.6 Progress snapshot (2026-10-06 — P0–P6 closed · P7 open · TSP dual-cert residual)
 
-| Phase | Hard gates | Exit status |
-|-------|------------|-------------|
-| 0 Platform | PASS/PART | **CLOSED** |
-| 1 Local PF2 | Eng. evidence (freeze 2026-09-22) | **CLOSED** (eng.) |
-| 2 Isolation | **P2-01/02/03 PASS** | **CLOSED** |
-| 3 DSO MMS | **P3-01…09/11 PASS** · residuals PART/WAIVED | **CLOSED** (lab) |
-| 4 Operator 104 | **P4-01…04 PASS** · P4-00 PART | **CLOSED** (lab) 2026-09-30 |
-| 5 Observability + reactive | **P5_FULLCIRCLE** r25 · **P5-R** r31 | **CLOSED** (lab) 2026-10-05 |
-| 6 Defence I/O | **P6-03 PASS** r26 · GAPs documented | **CLOSED** (lab) 2026-10-02 |
-| 7 Evidence pack | P7 kickoff r27–r34 | **OPEN** (kickoff) ← **next** |
+
+| Phase                      | Hard gates                                               | Exit status                                                  |
+| -------------------------- | -------------------------------------------------------- | ------------------------------------------------------------ |
+| 0 Platform                 | PASS/PART                                                | **CLOSED**                                                   |
+| 1 Local PF2                | Eng. evidence (freeze 2026-09-22)                        | **CLOSED** (eng.)                                            |
+| 2 Isolation                | **P2-01/02/03 PASS**                                     | **CLOSED**                                                   |
+| 3 DSO MMS                  | **P3-01…09/11 PASS** · residuals PART/WAIVED             | **CLOSED** (lab) · **TSP dual-cert Connect PART** (see §3.7) |
+| 4 Operator 104             | **P4-01…04 PASS** · P4-00 PART                           | **CLOSED** (lab) 2026-09-30                                  |
+| 5 Observability + reactive | **P5_FULLCIRCLE** r25 · **P5-R** r31 · GOOSE publish r29 | **CLOSED** (lab) 2026-10-05                                  |
+| 6 Defence I/O              | **P6-03 PASS** r26 · GAPs documented                     | **CLOSED** (lab) 2026-10-02                                  |
+| 7 Evidence pack            | P7-01/04/11 PART · r27–r34                               | **OPEN** (kickoff) ← **programme next**                      |
+
+
+**Active residual (does not reopen P3 lab exit):** Triangle Test Suite Pro Connect on `:3782` with Annex G.2 dual certs still fails after AARE — DUT ACSE ACCEPT + offline Cert B signature **PASS**; see §3.7 (2026-10-06 `test4.pcapng`).
 
 ---
+
+
 
 ## Phase 0 — Platform bind
 
 **Goal:** Bind RJ45 / RS485 / DIO / zones / deploy path to TG544.  
 **Checklist:** P0-01…05.
 
-| Check | Status | What was used | Notes |
-|-------|--------|---------------|-------|
-| P0-01 Port roles | **PEND** → later superseded by P2 map | LuCI Devices / Interfaces | Full peel done in Phase 2 |
-| P0-02 RS485 device | **PART** | `/dev/rs485_2_uart` | A2/B2 `/dev/ttyS2` unbound |
-| P0-03 DIO map | **PART→documented** | ubus `dido_v2` ch1 DO / ch2 DI | `lab/TR400_HW_IO_CONFIG.md` |
-| P0-04 62443 zones | **PART** | `CCI_62443_Zones.md` | Rev updated with annex map |
-| P0-05 Deploy path | **PASS** | `/usr/sbin/ccli`, `/etc/ccli/lab.yaml` | `lab/tg544-openwrt/DEPLOY_CCLI.md` |
+
+| Check              | Status                                | What was used                          | Notes                              |
+| ------------------ | ------------------------------------- | -------------------------------------- | ---------------------------------- |
+| P0-01 Port roles   | **PEND** → later superseded by P2 map | LuCI Devices / Interfaces              | Full peel done in Phase 2          |
+| P0-02 RS485 device | **PART**                              | `/dev/rs485_2_uart`                    | A2/B2 `/dev/ttyS2` unbound         |
+| P0-03 DIO map      | **PART→documented**                   | ubus `dido_v2` ch1 DO / ch2 DI         | `lab/TR400_HW_IO_CONFIG.md`        |
+| P0-04 62443 zones  | **PART**                              | `CCI_62443_Zones.md`                   | Rev updated with annex map         |
+| P0-05 Deploy path  | **PASS**                              | `/usr/sbin/ccli`, `/etc/ccli/lab.yaml` | `lab/tg544-openwrt/DEPLOY_CCLI.md` |
+
 
 **Primary docs:** `lab/PHASE1.md` § topology · `lab/TR400_HW_IO_CONFIG.md` · `lab/DIDO_V2_API.md`
 
 ---
+
+
 
 ## Phase 1 — Local PF2 (no DSO)
 
@@ -119,20 +155,25 @@ Status codes: **PASS** · **PART** · **OPEN** · **PEND** · **N/A** · **WAIVE
 
 ### 1.1 What was used
 
-| Layer | Exact item |
-|-------|------------|
-| Config | `lab_tr400_phase1_regulation.yaml` · DSO mock on · enter **42 kW** · release **37 kW** · debounce **30 s** · stale **10 s** |
-| Modbus | 9600 8N1 · slave **1** · FC03 holding **40001** · `poll_ms: 4000` · device **`/dev/rs485_2_uart`** |
-| PC slave | `python -u lab/modbus_rtu_slave.py --port COM5 --trace` |
-| I/O | DIO1 curtail · DIO2 permissive · `permissive_bypass: false` |
-| UI | `http://192.168.1.130/ccli/mock_console.html` · CGI `/cgi-bin/ccli-bench` |
-| Checks | `ccli --regulation-check` · `PHASE1_REGULATION_CHECK_MATRIX.md` |
+
+| Layer    | Exact item                                                                                                                  |
+| -------- | --------------------------------------------------------------------------------------------------------------------------- |
+| Config   | `lab_tr400_phase1_regulation.yaml` · DSO mock on · enter **42 kW** · release **37 kW** · debounce **30 s** · stale **10 s** |
+| Modbus   | 9600 8N1 · slave **1** · FC03 holding **40001** · `poll_ms: 4000` · device `/dev/rs485_2_uart`                              |
+| PC slave | `python -u lab/modbus_rtu_slave.py --port COM5 --trace`                                                                     |
+| I/O      | DIO1 curtail · DIO2 permissive · `permissive_bypass: false`                                                                 |
+| UI       | `http://192.168.1.130/ccli/mock_console.html` · CGI `/cgi-bin/ccli-bench`                                                   |
+| Checks   | `ccli --regulation-check` · `PHASE1_REGULATION_CHECK_MATRIX.md`                                                             |
+
+
+
 
 ### 1.2 Log / result excerpts (2026-09-22)
 
 **Static regulation:** 19 PASS / 7 N/A / 0 FAIL.
 
 **Live snapshot (~18:09):**
+
 ```json
 "p_kw": 40, "quality": "good", "pf2_enter_kw": 42,
 "permissive_ok": false, "do_curtail_on": false
@@ -142,20 +183,24 @@ Status codes: **PASS** · **PART** · **OPEN** · **PEND** · **N/A** · **WAIVE
 
 ### 1.3 Checklist status (Phase 1)
 
-| ID | Status | Comment |
-|----|--------|---------|
-| P1-03 hysteresis | PASS (unit) | |
-| P1-06 safe DO at boot | PASS (unit) | |
-| P1-08 logging | PART | |
-| P1-09 binary under test | PASS | |
-| P1-01/02/04/05/07 live DIO walk | PEND | Permissive open; curtail ON not signed off 2026-09-22 |
-| P1-W1…W5 | WAIVED → later phases | Wlim = P3, etc. |
+
+| ID                              | Status                | Comment                                               |
+| ------------------------------- | --------------------- | ----------------------------------------------------- |
+| P1-03 hysteresis                | PASS (unit)           |                                                       |
+| P1-06 safe DO at boot           | PASS (unit)           |                                                       |
+| P1-08 logging                   | PART                  |                                                       |
+| P1-09 binary under test         | PASS                  |                                                       |
+| P1-01/02/04/05/07 live DIO walk | PEND                  | Permissive open; curtail ON not signed off 2026-09-22 |
+| P1-W1…W5                        | WAIVED → later phases | Wlim = P3, etc.                                       |
+
 
 **Sign-off sentence:** Phase 1 is **engineering evidence of local limitation** — **not** CEI DSO PF2.
 
 **Evidence / runbooks:** `lab/PHASE1.md` · `PHASE1_LAB_SESSION_FREEZE_2026-09-22.md` · `PHASE1_REGULATION_CHECK_MATRIX.md` · `MODBUS_LIVE_VIEW.md` · `REGULATION_MOCK_DIO_MAP.md`
 
 ---
+
+
 
 ## Phase 2 — Isolation (O.13.1 + 62443)
 
@@ -164,25 +209,31 @@ Status codes: **PASS** · **PART** · **OPEN** · **PEND** · **N/A** · **WAIVE
 
 ### 2.1 What was used
 
-| Item | Exact value |
-|------|-------------|
-| Harden method | LuCI Network/Firewall + SSH `uci` |
-| Zones | `lan1_sec` / `lan_sec` / `lan2_sec` · input=accept · forward=**reject** · masq=**0** |
-| Forwarding | Only **lan → wan**; **no** role→role forward |
-| Wi-Fi | Disabled for isolation profile |
-| LTE bring-up | 2G SIM failed → **1NCE 4G** · APN via TesPro `sim_manager` field **`apn_user`** = `iot.1nce.net` |
-| PC helpers | `lab/set_pc_lan1_oa.cmd` · `lab/set_pc_lan2_oa.cmd` |
+
+| Item          | Exact value                                                                                  |
+| ------------- | -------------------------------------------------------------------------------------------- |
+| Harden method | LuCI Network/Firewall + SSH `uci`                                                            |
+| Zones         | `lan1_sec` / `lan_sec` / `lan2_sec` · input=accept · forward=**reject** · masq=**0**         |
+| Forwarding    | Only **lan → wan**; **no** role→role forward                                                 |
+| Wi-Fi         | Disabled for isolation profile                                                               |
+| LTE bring-up  | 2G SIM failed → **1NCE 4G** · APN via TesPro `sim_manager` field `apn_user` = `iot.1nce.net` |
+| PC helpers    | `lab/set_pc_lan1_oa.cmd` · `lab/set_pc_lan2_oa.cmd`                                          |
+
+
+
 
 ### 2.2 P2-01 / P2-02 — Cross-ping matrix
 
 **Pass rule:** own TG IP = PASS; **other-role PC IP = FAIL**.  
 Ping of *other* TG interface IPs may succeed (INPUT) → **N/A**, not fail.
 
+
 | From \ To | Own TG | DSO PC .10.10 | OA PC .1.183 | Plant PC .30.10 |
-|-----------|--------|---------------|--------------|-----------------|
-| DSO PC | PASS | — | **FAIL** | **FAIL** |
-| OA PC | PASS | **FAIL** | — | **FAIL** |
-| Plant PC | PASS | **FAIL** | **FAIL** | — |
+| --------- | ------ | ------------- | ------------ | --------------- |
+| DSO PC    | PASS   | —             | **FAIL**     | **FAIL**        |
+| OA PC     | PASS   | **FAIL**      | —            | **FAIL**        |
+| Plant PC  | PASS   | **FAIL**      | **FAIL**     | —               |
+
 
 **Verdict:** **P2-01 PASS** · **P2-02 PASS**  
 **Evidence:** `P2_01_CROSS_PING_MATRIX.txt` · `P2_fw_ssh_verify_*.log` · `P2_port_map_ssh_*.log`
@@ -201,16 +252,20 @@ Ping of *other* TG interface IPs may succeed (INPUT) → **N/A**, not fail.
 
 ### 2.4 Soft / open (non-blocking for hard gates)
 
-| ID | Status | Note |
-|----|--------|------|
-| P2-04 | PART | LuCI still on OA `.1.130`; eng-only not enforced |
-| P2-05 | PART | Annex map done; ZCR-7 asset-owner sign-off missing |
-| P2-06 | OPEN | Eth link-status logging |
-| — | optional | Rename UCI `lan2_sec` → `plant` |
+
+| ID    | Status   | Note                                               |
+| ----- | -------- | -------------------------------------------------- |
+| P2-04 | PART     | LuCI still on OA `.1.130`; eng-only not enforced   |
+| P2-05 | PART     | Annex map done; ZCR-7 asset-owner sign-off missing |
+| P2-06 | OPEN     | Eth link-status logging                            |
+| —     | optional | Rename UCI `lan2_sec` → `plant`                    |
+
 
 **Phase 2 hard gates:** **CLOSED**.
 
 ---
+
+
 
 ## Phase 3 — DSO MMS (Annex T + O.9.2.2)
 
@@ -224,12 +279,14 @@ Ping of *other* TG interface IPs may succeed (INPUT) → **N/A**, not fail.
 **CID lab:** `apps/ccli/config/icd/lab_tg544_eth_a.cid` @ **192.168.10.1/24**  
 **IED:** `CCI016_01` · LD `LD_Plant`
 
-| Function | Object | Clause |
-|----------|--------|--------|
-| Enable | `WlimDWMX1.Mod` (1=Active, 5=Inactive) | T.3.1.4 |
-| Limit % | `WlimDWMX1.WMaxSptPct` | T.3.1.4 / O.9.2.2 |
-| PdC P | `PdCMMXU1.TotW` | T.3.1.3 |
-| 4 s report | `urcb_PdC_Mis4sec` · `intgPd=4000` | T.3.2.1 |
+
+| Function   | Object                                 | Clause            |
+| ---------- | -------------------------------------- | ----------------- |
+| Enable     | `WlimDWMX1.Mod` (1=Active, 5=Inactive) | T.3.1.4           |
+| Limit %    | `WlimDWMX1.WMaxSptPct`                 | T.3.1.4 / O.9.2.2 |
+| PdC P      | `PdCMMXU1.TotW`                        | T.3.1.3           |
+| 4 s report | `urcb_PdC_Mis4sec` · `intgPd=4000`     | T.3.2.1           |
+
 
 **Maps to runtime:** `DsoActivePowerCommands.wlim_active` / `wmax_spt_pct` → `apply_live_dso_commands_to_pf2` → `Pf2Fsm::set_thresholds` → DIO1.
 
@@ -237,16 +294,18 @@ Ping of *other* TG interface IPs may succeed (INPUT) → **N/A**, not fail.
 
 ### 3.2 Stack / build (used for Steps 4–7)
 
-| Item | Exact |
-|------|--------|
-| Library | `libiec61850` **v1.6.0** · CMake `CCLI_WITH_LIBIEC61850=ON` · static link |
-| Server code | `apps/ccli/adapters/iec61850_mms/mms_adapter.cpp` |
-| Main poll | `apps/ccli/services/ccli_main.cpp` — `poll_wlim_command` → `apply_live_dso_commands_to_pf2` |
-| Package | `package/ccli` · `PKG_RELEASE:=6` |
-| Build | WSL SDK → `lab/tg544-openwrt/ccli-0.1.0-r6.apk` · `ccli-bin` (aarch64) |
-| Lab clients | `lab/mms_lab_client.c` · `lab/mms_wlim_client.c` → `lab/tg544-openwrt/mms_*` |
-| Bind | `mms.bind_address: 192.168.10.1` · `mms.tcp_port: 102` |
-| Lab ctlModel | **DIRECT_ENHANCED** (product intent remains **SBO**) |
+
+| Item         | Exact                                                                                       |
+| ------------ | ------------------------------------------------------------------------------------------- |
+| Library      | `libiec61850` **v1.6.0** · CMake `CCLI_WITH_LIBIEC61850=ON` · static link                   |
+| Server code  | `apps/ccli/adapters/iec61850_mms/mms_adapter.cpp`                                           |
+| Main poll    | `apps/ccli/services/ccli_main.cpp` — `poll_wlim_command` → `apply_live_dso_commands_to_pf2` |
+| Package      | `package/ccli` · `PKG_RELEASE:=6`                                                           |
+| Build        | WSL SDK → `lab/tg544-openwrt/ccli-0.1.0-r6.apk` · `ccli-bin` (aarch64)                      |
+| Lab clients  | `lab/mms_lab_client.c` · `lab/mms_wlim_client.c` → `lab/tg544-openwrt/mms_*`                |
+| Bind         | `mms.bind_address: 192.168.10.1` · `mms.tcp_port: 102`                                      |
+| Lab ctlModel | **DIRECT_ENHANCED** (product intent remains **SBO**)                                        |
+
 
 **Important:** TesPro LuCI “IEC 61850 Protocol” page is a **client/MQTT gateway**, **not** Annex T server — disable if it grabs `:102`. Browser to `:102` fails with `ERR_UNSAFE_PORT` (expected).
 
@@ -256,11 +315,13 @@ Ping of *other* TG interface IPs may succeed (INPUT) → **N/A**, not fail.
 **Start:** `/usr/sbin/ccli --config /etc/ccli/lab.yaml` (procd init may need CRLF strip)
 
 **Server log:**
+
 ```text
 mms: listening on 192.168.10.1:102 (IED CCI016_01 / LD_Plant)
 ```
 
 **Device:**
+
 ```text
 tcp  0  0  192.168.10.1:102  0.0.0.0:*  LISTEN  ccli
 ```
@@ -289,18 +350,22 @@ tcp  0  0  192.168.10.1:102  0.0.0.0:*  LISTEN  ccli
 
 **Binary:** `ccli-0.1.0-r6` (~6.7 MB aarch64)  
 **Start used for proof:**
+
 ```text
 /usr/sbin/ccli --config /etc/ccli/lab.yaml --lab-demo
 ```
+
 (`--lab-demo` = simulated P ramp; Modbus slave not required for this gate)  
 **Lab:** `permissive_bypass: true` for this run only.
 
 **Client:**
+
 ```text
 mms_wlim_client 192.168.10.1 102 10
 ```
 
 **Client log:**
+
 ```text
 CONNECT OK
 OPERATE OK CCI016_01LD_Plant/WlimDWMX1.WMaxSptPct = 10.00
@@ -309,6 +374,7 @@ READ Mod.stVal=1
 ```
 
 **Server log (key lines):**
+
 ```text
 mms: listening on 192.168.10.1:102 ... Wlim control enabled
 mms: Wlim.WMaxSptPct (struct) ctlVal=10.00
@@ -321,6 +387,7 @@ io: DO curtail_on
 **Math:** Smax_used **210 kVA** · 10% → **p_wlim=21 kW** (binds below WSd 42 kW).
 
 **ubus DIO1:**
+
 ```json
 "channel": 1, "mode": "DO", "state": 1
 ```
@@ -332,26 +399,55 @@ io: DO curtail_on
 
 ### 3.6 Phase 3 checklist board (lab close 2026-09-25)
 
-| ID | Status | Evidence / note |
-|----|--------|-----------------|
-| P3-01 | **PASS** | Eth_A MMS listen |
-| P3-02 | PART | Dynamic MVP + lab CID; full genconfig TBD |
-| P3-03 | **PASS** | ~3961 ms TotW |
-| P3-04 | **PASS** | Wlim → enter=21 · DIO1 ON |
-| P3-05 | **PASS** | Comms-loss fallback_s=15 |
-| P3-06 | **PASS** | TLS `:3782` |
-| P3-07 | **PASS** | ACSE mutual cert (lab); §13 E2E deferred |
-| P3-08 | **PASS** | DSO OK / VIEWER DENY |
-| P3-09 | **PASS** (lab) | CA + CRL; SCEP/EST deferred |
-| P3-10 | **WAIVED** (lab) | XCBR → product model |
-| P3-11 | **PASS** | chrony ≤±100 ms · ccli observe |
-| P3-12 | PART | signal_map MVP; plant workbook MISSING |
-| P3-13 | PART | 2004 only; Ed.2 corpus |
-| P3-14 | **WAIVED** (lab) | 7-3 extract → corpus |
+
+| ID    | Status           | Evidence / note                           |
+| ----- | ---------------- | ----------------------------------------- |
+| P3-01 | **PASS**         | Eth_A MMS listen                          |
+| P3-02 | PART             | Dynamic MVP + lab CID; full genconfig TBD |
+| P3-03 | **PASS**         | ~3961 ms TotW                             |
+| P3-04 | **PASS**         | Wlim → enter=21 · DIO1 ON                 |
+| P3-05 | **PASS**         | Comms-loss fallback_s=15                  |
+| P3-06 | **PASS**         | TLS `:3782`                               |
+| P3-07 | **PASS**         | ACSE mutual cert (lab); §13 E2E deferred  |
+| P3-08 | **PASS**         | DSO OK / VIEWER DENY                      |
+| P3-09 | **PASS** (lab)   | CA + CRL; SCEP/EST deferred               |
+| P3-10 | **WAIVED** (lab) | XCBR → product model                      |
+| P3-11 | **PASS**         | chrony ≤±100 ms · ccli observe            |
+| P3-12 | PART             | signal_map MVP; plant workbook MISSING    |
+| P3-13 | PART             | 2004 only; Ed.2 corpus                    |
+| P3-14 | **WAIVED** (lab) | 7-3 extract → corpus                      |
+
 
 **Phase 3 lab exit:** **CLOSED** · `SESSION_REPORT_P3_LAB_CLOSE_2026-09-25.md`
 
+### 3.7 Post-close residual — EJBCA dual cert + TSP Connect (2026-10-06)
+
+Official P3 lab exit **unchanged**. This section tracks the **Annex G.2 dual-cert TSP Connect** residual after EJBCA issuance.
+
+
+| Item                                               | Status                  | Evidence / note                                                                                                                   |
+| -------------------------------------------------- | ----------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| EJBCA CE lab CA + profiles                         | **PASS**                | `CCLI-Lab-CA` · `CCLI-Cert-A-TLS` · `CCLI-Cert-B-E2E-MMS` · `CCLI-Lab-EE` · `lab/EJBCA_LAB_SETUP.md`                              |
+| Leaf issue (EJBCA CLI, not hybrid Python)          | **PASS**                | `scripts/issue_ejbca_cli_pki.py` · `provision-ejbca-ccli-pki.ps1 -UseEjbcaCli`                                                    |
+| Annex §10 lab PEM gates                            | **PASS**                | `python scripts/verify_annex_pki.py --dir apps/ccli/config/tls/ejbca` (G.6.2 UTF8 lab OK; `--strict-g62` OID tag 0x06 still FAIL) |
+| DUT TLS `:3782` mutual + allow-list `DSO_OPERATOR` | **PASS**                | DUT log 2026-10-06                                                                                                                |
+| ISO session CONNECT → ACCEPT extended LI           | **PASS**                | DUT `spdu=1395` · session-LI fix live                                                                                             |
+| ACSE auth ACCEPT role=`DSO_OPERATOR`               | **PASS**                | DUT log                                                                                                                           |
+| Wire capture `test4.pcapng`                        | **PART**                | `New folder/test4.pcapng` · decrypt helpers `lab/decrypt_test4_tls.py` · `lab/tmp_test4_*_spdu.`*                                 |
+| AARE embeds Cert B (`server.pem`)                  | **PASS**                | serial `2d71da93…` · G.6.2 `1.1.1.999.1.12` + CN (UTF8)                                                                           |
+| Offline §11.2.2 sig vs Cert B (raw GT)             | **PASS**                | matches `lab/locate_p3_07_failure.py` pattern                                                                                     |
+| Offline sig vs TLS Cert A (`server_tls.pem`)       | **FAIL**                | Confirms wrong-key hypothesis                                                                                                     |
+| TSP AARQ embeds                                    | Cert A `client_tls.pem` | Not `client.pem` (Cert B)                                                                                                         |
+| TSP Initiate Response / Connect                    | **FAIL**                | ~2 s after AARE → Encrypted Alert / FIN · `Initiate Response Failed: Transport connection closed`                                 |
+
+
+**Verdict:** Failure is **TSP post-AARE validation** (likely verifies with **TLS peer cert** instead of **embedded AARE Cert B** — 62351-4 G.2), **not** CA missing, TLS handshake, session LI, or DUT ACSE ACCEPT.
+
+**Next lab actions (P3 residual):** configure TSP MMS/ACSE to use Cert B; confirm verify key = embedded AARE cert; optional single-cert smoke; capture `TSP_P3_07_LIVE_CONNECT_PASS`. Prior wire proof: `lab/evidence/testsuite-pro/inbox/TSP_P3_07_WIRE_EVIDENCE_2026-09-29_222559.md` · `TSP_P3_07_62351-9_CROSSCHECK_2026-09-30.md`.
+
 ---
+
+
 
 ## Phase 4 — Operator 104 (Eth_B) + TesPro supplier 61850
 
@@ -359,80 +455,101 @@ io: DO curtail_on
 **Scope:** IEC 60870-5-104 TLS on **Eth_B** — **monitor/supervision only**; DSO commands stay **Eth_A MMS**.  
 **Operator role:** `lab/evidence/phase4/P4_OPERATOR_ROLE.md`
 
-| ID | Status |
-|----|--------|
+
+| ID                                    | Status                                                    |
+| ------------------------------------- | --------------------------------------------------------- |
 | **P4-00** TesPro 61850 apk + services | **PART** — install PASS · LuCI/plant/coexistence optional |
-| **P4-01** Eth_B only | **PASS** |
-| **P4-02** 104 session | **PASS** |
-| **P4-03** TLS 62351-3 | **PASS** |
-| **P4-04** Eth_B fallback 60 s | **PASS** |
-| **P4-05** O.14 operator cmd log | **WAIVED** — monitor-only |
+| **P4-01** Eth_B only                  | **PASS**                                                  |
+| **P4-02** 104 session                 | **PASS**                                                  |
+| **P4-03** TLS 62351-3                 | **PASS**                                                  |
+| **P4-04** Eth_B fallback 60 s         | **PASS**                                                  |
+| **P4-05** O.14 operator cmd log       | **WAIVED** — monitor-only                                 |
+
 
 **Deploy:** `ccli-0.1.0-r18` · yaml `lab_tr400_phase4_eth_b.yaml` · LAN2 `192.168.1.130:2404`.
 
 ### Post–Phase 3 note (2026-09-29 TSP deep test)
 
-Official P3 close unchanged (**r15**, 2026-09-25). Additional deploy with session/ACSE fixes + Solution C yaml; TSP Step 7 still FAIL offline PASS — see `lab/evidence/testsuite-pro/inbox/TSP_P3_07_WIRE_EVIDENCE_2026-09-29_222559.md`.
+Official P3 close unchanged (**r15**, 2026-09-25). Additional deploy with session/ACSE fixes + Solution C yaml; TSP Step 7 still FAIL offline PASS — see `lab/evidence/testsuite-pro/inbox/TSP_P3_07_WIRE_EVIDENCE_2026-09-29_222559.md`. Superseded in detail by **§3.7** (2026-10-06 EJBCA + `test4`).
 
 ---
 
+
+
 ## Phase 5 — Observability + reactive (PF1 / MMXU / O.9.1)
 
-**Status:** **CLOSED** (lab gate) **2026-10-01** · build **0.1.0-r25** · gate `P5_FULLCIRCLE`.  
-**Closeout:** `lab/evidence/phase5/P5_FINAL_CLOSEOUT.md` · index `lab/evidence/phase5/P5_README.md` · master `lab/evidence/README.md`.  
-**Lab profile:** cleartext MMS `:102` · Modbus COM5 → A1/B1 (`/dev/ttyS1`) · TesPro MQTT northbound **PASS**.
+**Status:** **CLOSED** (lab) **2026-10-05** · full-circle **r25** (2026-10-01) · reactive **r31** · GOOSE publish **r29**.  
+**Closeouts:** `lab/evidence/phase5/P5_FINAL_CLOSEOUT.md` · `P5_REACTIVE_CLOSEOUT_2026-10-05.md` · `P5_GOOSE_SESSION_RECORD_2026-10-05.md`.  
+**Lab profile (full-circle):** cleartext MMS `:102` · Modbus COM5 → A1/B1 · TesPro MQTT northbound **PASS**. Product TLS `:3782` dual-cert TSP still tracked under **§3.7**.
 
-| ID | Status |
-|----|--------|
-| **P5-M07** TotVAr | **PASS** (lab r25) |
-| **P5-M08** PPV | **PASS** (lab r25; yaml 20 kV) |
-| **P5-M09** Q nameplate | PART (yaml) |
-| **P5-R01** VArSd | **PASS** (lab r25 — Operate + FC16) |
-| **P5-R02** PFSP | **PASS** (lab r31) |
-| **P5-R03/R04** VArV/PFW | **WAIVED** — TR Figura 2 Inactive |
-| **P5-R05/R07** TsQ / O.11 arbiter | **PART** → product |
-| P5-04 accuracy | **OPEN** |
-| P5-06 meter map | **OPEN** (EMT432 TCP r33 in progress) |
-| REQ-MET-002 grid | **GAP** (product) |
 
-**DSO client:** TSP r25 session evidence **PASS**; post-close TSP license **BLOCKED** — re-runs use **IEDExplorer** (`P5_VERIFICATION_CLIENT_STATUS_2026-10-01.md`).
+| ID                                | Status                                 |
+| --------------------------------- | -------------------------------------- |
+| **P5-M07** TotVAr                 | **PASS** (lab r25)                     |
+| **P5-M08** PPV                    | **PASS** (lab r25; yaml 20 kV)         |
+| **P5-M09** Q nameplate            | PART (yaml)                            |
+| **P5-R01** VArSd                  | **PASS** (lab r25 — Operate + FC16)    |
+| **P5-R02** PFSP                   | **PASS** (lab r31)                     |
+| **P5-R03/R04** VArV/PFW           | **WAIVED** — TR Figura 2 Inactive      |
+| **P5-R05/R07** TsQ / O.11 arbiter | **PART** → product                     |
+| **P5-G02** GOOSE publish          | **PASS** (r29 · LAN3 wire pcap)        |
+| **P5-G01** GOOSE subscribe        | **PARKED** (LAN3 not cabled)           |
+| **P5-G03** merge policy           | **PASS** (policy) · runtime merge OPEN |
+| P5-04 accuracy                    | **OPEN**                               |
+| P5-06 meter map                   | **OPEN** (EMT432)                      |
+| REQ-MET-002 grid                  | **GAP** (product)                      |
+
+
+**DSO client:** TSP r25 full-circle evidence **PASS** (cleartext); dual-cert TLS Connect residual → §3.7. Post-license block: **IEDExplorer** fallback (`P5_VERIFICATION_CLIENT_STATUS_2026-10-01.md`).
 
 **Detail:** `knowledge-base/08-engineering/CCI_Phase_Regulation_Checklists.md` (rev 1.3) · gap report `lab/CCI_Reactive_Roadmap_Gap_Report.md`.
 
 ---
+
+
 
 ## Phase 6 — Defence I/O (Annex M + product C4)
 
 **Status:** **CLOSED** (lab) **2026-10-02** · build **0.1.0-r26** · gate **P6-03**.  
 **Closeout:** `lab/evidence/phase6/P6_FINAL_CLOSEOUT.md`
 
-| ID | Status |
-|----|--------|
-| P6-01 | **PART** (lab SMS mock) |
-| P6-02 | **DEFERRED** |
+
+| ID    | Status                             |
+| ----- | ---------------------------------- |
+| P6-01 | **PART** (lab SMS mock)            |
+| P6-02 | **DEFERRED**                       |
 | P6-03 | **PASS** (r26 — O.11 inhibit DIO1) |
-| P6-04 | **PART** |
-| P6-05 | **PASS** (code) |
-| P6-06 | **GAP** (product DI/DO class) |
-| P6-07 | **PART** |
+| P6-04 | **PART**                           |
+| P6-05 | **PASS** (code)                    |
+| P6-06 | **GAP** (product DI/DO class)     |
+| P6-07 | **PART**                           |
+
 
 Do **not** claim G6K/SMBJ33 = M modem class (P6-07).
 
 ---
 
+
+
 ## Phase 7 — Evidence pack (O.14 / O.15)
 
-**Status:** **OPEN** (kickoff) · builds **r27** (event store) · **r32** (SR6.2 watchdog) · **r34** (zone dashboard).  
-This master log + `lab/evidence/` are **lab engineering evidence**, not O.15 certification close-out.
+**Status:** **OPEN** (kickoff) ← **programme next** · builds **r27** (event store) · **r28** O.14 gaps · **r32** (SR6.2 watchdog) · **r34** (zone dashboard).  
+This master log + `lab/evidence/` are **lab engineering evidence**, not O.15 certification close-out.  
+**Exit rule:** P7-01 + P7-04 + P7-11 **PASS** (lab). Index: `lab/evidence/phase7/P7_README.md`.
 
-| ID | Status |
-|----|--------|
-| P7-01 | **PART** (r27 EventStore) |
-| P7-04 | **PART** (coverage matrix) |
-| P7-11 | **PART** (DSO demo script) |
-| P7-03/07/12 | **OPEN** |
+
+| ID          | Status                                              |
+| ----------- | --------------------------------------------------- |
+| P7-01       | **PART** (r27 EventStore · wrap test)               |
+| P7-02       | **PART** (`--event-dump` timestamps)                |
+| P7-04       | **PART** (coverage matrix · r28 categories)         |
+| P7-11       | **PART** (DSO demo script draft)                    |
+| P7-03/07/12 | **OPEN** (syslog · 62351-100-3 plan · lab-demo off) |
+
 
 ---
+
+
 
 ## A. End-to-end data path proven (lab)
 
@@ -454,42 +571,50 @@ Phase 3 slaves the **same actuator** from DSO `Wlim`.
 
 ---
 
+
+
 ## B. Evidence index (this session folder)
 
-| File | Phase / topic |
-|------|----------------|
-| `P2_ANNEX_PORT_MAP.txt` | As-built ports + open list |
-| `P2_01_CROSS_PING_MATRIX.txt` | P2-01/02 |
-| `P2_03_LTE_ISOLATION.txt` (+ `.log`) | P2-03 |
-| `P2_LTE_APN_SSH_FIX.txt` | 1NCE APN |
-| `P2_port_map_ssh_*.log` · `P2_fw_ssh_verify_*.log` | SSH dumps |
-| `P3_01_MMS_LISTEN_ETH_A.txt` | P3-01 |
-| `P3_02_LAB_CID_ETH_A.txt` | Lab CID |
-| `P3_03_SIGNAL_MAP.txt` | Object freeze |
-| `P3_03_MMS_CLIENT_STEP5.txt` (+ `.log`) | P3-03 |
-| `P3_DSO_CLIENT_LIVE.log` | Live DSO client |
-| `P3_04_WLIM_ACTUATOR.txt` | P3-04 verdict |
-| `P3_04_WLIM_CLIENT.txt` | Client operate |
-| `P3_04_CCLI_SERVER.log` | Server Wlim + DO |
-| `P3_04_DIO1_STATUS.txt` | ubus DIO1 |
-| `SESSION_REPORT_P2_P3_2026-09-25.md` | P2→P3 Steps 1–3 |
-| `SESSION_REPORT_P3_STEP5_2026-09-25.md` | Step 5 |
-| `SESSION_REPORT_P3_STEP7_P304_2026-09-25.md` | P3-04 |
-| `P3_05_COMMS_LOSS_FALLBACK.txt` | P3-05 |
-| `P3_06_MMS_TLS_ETH_A.txt` | P3-06 |
-| `P3_07_SECURITY_ASSOC.txt` | P3-07 |
-| `P3_08_SECURITY_RBAC.txt` · `P3_08_09_RBAC_PKI.txt` | P3-08/09 |
-| `P3_11_CHRONY_TRACKING.txt` · `P3_11_TIMEQUALITY_REPORT.md` | P3-11 chrony |
-| `SESSION_REPORT_P3_SOFT_2026-09-25.md` | Soft cyber close |
-| `SESSION_REPORT_P3_P311_2026-09-25.md` | TimeQuality |
-| `SESSION_REPORT_P3_LAB_CLOSE_2026-09-25.md` | **Phase 3 lab exit** |
+
+| File                                                        | Phase / topic              |
+| ----------------------------------------------------------- | -------------------------- |
+| `P2_ANNEX_PORT_MAP.txt`                                     | As-built ports + open list |
+| `P2_01_CROSS_PING_MATRIX.txt`                               | P2-01/02                   |
+| `P2_03_LTE_ISOLATION.txt` (+ `.log`)                        | P2-03                      |
+| `P2_LTE_APN_SSH_FIX.txt`                                    | 1NCE APN                   |
+| `P2_port_map_ssh_*.log` · `P2_fw_ssh_verify_*.log`          | SSH dumps                  |
+| `P3_01_MMS_LISTEN_ETH_A.txt`                                | P3-01                      |
+| `P3_02_LAB_CID_ETH_A.txt`                                   | Lab CID                    |
+| `P3_03_SIGNAL_MAP.txt`                                      | Object freeze              |
+| `P3_03_MMS_CLIENT_STEP5.txt` (+ `.log`)                     | P3-03                      |
+| `P3_DSO_CLIENT_LIVE.log`                                    | Live DSO client            |
+| `P3_04_WLIM_ACTUATOR.txt`                                   | P3-04 verdict              |
+| `P3_04_WLIM_CLIENT.txt`                                     | Client operate             |
+| `P3_04_CCLI_SERVER.log`                                     | Server Wlim + DO           |
+| `P3_04_DIO1_STATUS.txt`                                     | ubus DIO1                  |
+| `SESSION_REPORT_P2_P3_2026-09-25.md`                        | P2→P3 Steps 1–3            |
+| `SESSION_REPORT_P3_STEP5_2026-09-25.md`                     | Step 5                     |
+| `SESSION_REPORT_P3_STEP7_P304_2026-09-25.md`                | P3-04                      |
+| `P3_05_COMMS_LOSS_FALLBACK.txt`                             | P3-05                      |
+| `P3_06_MMS_TLS_ETH_A.txt`                                   | P3-06                      |
+| `P3_07_SECURITY_ASSOC.txt`                                  | P3-07                      |
+| `P3_08_SECURITY_RBAC.txt` · `P3_08_09_RBAC_PKI.txt`         | P3-08/09                   |
+| `P3_11_CHRONY_TRACKING.txt` · `P3_11_TIMEQUALITY_REPORT.md` | P3-11 chrony               |
+| `SESSION_REPORT_P3_SOFT_2026-09-25.md`                      | Soft cyber close           |
+| `SESSION_REPORT_P3_P311_2026-09-25.md`                      | TimeQuality                |
+| `SESSION_REPORT_P3_LAB_CLOSE_2026-09-25.md`                 | **Phase 3 lab exit**       |
+
 
 **Phase 1 (earlier folder / docs):**  
 `lab/PHASE1_LAB_SESSION_FREEZE_2026-09-22.md` · `lab/PHASE1.md` · `lab/PHASE1_TRACEABILITY.md`
 
 ---
 
+
+
 ## C. Reproduce commands (precise)
+
+
 
 ### C.1 Build APK (WSL)
 
@@ -499,12 +624,16 @@ bash /tmp/wsl-build-ccli.sh
 # outputs: lab/tg544-openwrt/ccli-0.1.0-r6.apk · ccli-bin
 ```
 
+
+
 ### C.2 Build MMS clients (WSL)
 
 ```bash
 bash lab/tg544-openwrt/build-mms-lab-client.sh
 # → lab/tg544-openwrt/mms_lab_client · mms_wlim_client
 ```
+
+
 
 ### C.3 Deploy binary (Windows PowerShell → LAN1)
 
@@ -514,6 +643,8 @@ $hk = "SHA256:4N84xpdiJRUiipactNbXLdVa2+A4eCCrUurVDrz3qoE"
 pscp -scp -pw $env:CCLI_TG544_PW -hostkey $hk lab\tg544-openwrt\ccli-bin root@192.168.10.1:/tmp/ccli-r6
 plink ... "killall -9 ccli; cp /tmp/ccli-r6 /usr/sbin/ccli; chmod +x /usr/sbin/ccli"
 ```
+
+
 
 ### C.4 Run P3-04 proof
 
@@ -531,24 +662,31 @@ ubus call dido_v2 status
 
 ---
 
+
+
 ## D. Next actions (ordered)
 
-1. **Phase 5** — TotVAr / O.9.1 reactive on Eth_A MMS (P5-M / P5-R) — **programme next**.  
-2. Phase 3 residuals (non-blocking): P3-10 XCBR · plant ICD workbook · 62351-4 §13 E2E · SCEP/EST · GNSS PPS (C5).  
-3. Phase 1 residual: DIO scenario walk with real permissive + Modbus (optional).  
-4. Product harden: SBO ctlModel · drop `permissive_bypass` · MZ license · TPM-backed TLS keys.  
-5. **Phase 5-M** — live TotW + **TotVAr** (+ PPV) on Eth_A; analyzer map P/Q/V.  
-6. **Phase 5-R** — VArSd (O.9.1.4) + plant Q path; remaining O.9.1 WAIVE per Operating Rule.  
-7. See `lab/CCI_Reactive_Roadmap_Gap_Report.md` for RAG HAVE/MISSING.
+1. **Phase 7 lab exit** — drive **P7-01** (≥2048 / non-overwrite), **P7-04** (O.14 matrix), **P7-11** (K7.5 DSO demo) to **PASS**.
+2. **P3 residual — TSP dual-cert Connect** (§3.7) — TSP Cert B / embedded AARE verify key; capture `TSP_P3_07_LIVE_CONNECT_PASS`.
+3. Phase 3/5 product residuals (non-blocking): plant ICD workbook · EST/SCEP · G.6.2 OID tag 0x06 · P5-04 accuracy · P5-06 meter map · TsQ/O.11 arbiter · GOOSE subscribe.
+4. Phase 6 field gaps: real telescatto / PI wiring photo · product DI/DO class (P6-06).
+5. Phase 2 polish: eng-only LuCI · ZCR asset-owner sign-off.
+6. Product harden: SBO ctlModel · drop `permissive_bypass` / `--lab-demo` · MZ license · TPM-backed TLS keys.
+7. After P7: O.15 / 62443 / 61850 / 62351 certification track.
 
 ---
 
+
+
 ## E. Document history
 
-| Rev | Date | Change |
-|-----|------|--------|
-| 1.2 | 2026-09-26 | Phase 5 owns reactive (P5-M/P5-R); link gap report |
-| 1.1 | 2026-09-25 | Phase 0–3 lab closes; P3 soft + chrony P3-11; next = Phase 4 |
-| 1.0 | 2026-09-25 | First master log through P3-04 PASS |
+
+| Rev | Date       | Change                                                                                                  |
+| --- | ---------- | ------------------------------------------------------------------------------------------------------- |
+| 1.3 | 2026-10-06 | P0–P6 closed snapshot; §3.7 EJBCA + `test4` TSP dual-cert residual; P5-R/GOOSE; next = P7 + TSP Connect |
+| 1.2 | 2026-09-26 | Phase 5 owns reactive (P5-M/P5-R); link gap report                                                      |
+| 1.1 | 2026-09-25 | Phase 0–3 lab closes; P3 soft + chrony P3-11; next = Phase 4                                            |
+| 1.0 | 2026-09-25 | First master log through P3-04 PASS                                                                     |
+
 
 **Owner:** HiTEKS CCLI lab · update this file when a checklist ID changes status; keep raw logs under `lab/evidence/`.

@@ -7,6 +7,8 @@
 
 This folder is the **authoritative lab evidence chain**. It is **not** O.15 certification (Phase 7).
 
+**Product promotion:** after lab gates pass for a given **`semver-rN`**, create an immutable bundle under [`releases/product-cyber/`](../../releases/product-cyber/README.md) per [`CCI_Product_SW_Freeze.md`](../../knowledge-base/08-engineering/CCI_Product_SW_Freeze.md) (`ccli-product-sw-freeze`). Lab manifests stay in `lab/tg544-openwrt/deploy-manifests/`.
+
 ---
 
 ## Phase close register (lab)

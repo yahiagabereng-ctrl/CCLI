@@ -34,7 +34,7 @@
 | 2 | T.3.1.3 | Read | `PdCMMXU1.TotW` · `TotVAr` · `PPV` | Plausible (meter/RTU) |
 | 3 | TR | Compare Model | vs **5-LN** CID **before** URCB enable | 0 MISSING · Value 0 target |
 | 4 | T.3.2.1 | Enable URCB | `LLN0.urcb_PdC_Mis4sec` · IntgPd=**4000** | RptEna · Δt 3900–4100 ms |
-| 5 | O.9.2.2 | Operate enhanced | `WlimDWMX1.Mod` + `WMaxSptPct` | OK · DIO trace |
+| 5 | O.9.2.2 | Operate enhanced | `WlimDWMX1.Mod` + `WMaxSptPct` | OK · DIO trace — run [enable-dut-gpio-full-cycle.ps1](../enable-dut-gpio-full-cycle.ps1) · **close DIO2 permissive** |
 | 6 | O.9.2.3 | Operate enhanced | `WSdDAGC1.Mod` + `WSptPct` | OK |
 | 7 | T.3.1.3 | Modbus sweep (PC-A) | RTU **COM5** or EMT432 TCP | TotW tracks |
 | 8 | P3-05 | Release 15 s | — | Fallback per PIXIT |

@@ -55,7 +55,8 @@ This is a **local lab loop**. It does **not** implement DSO **`Wlim`** (Allegato
   └────────────────────────────────────────────┘
 ```
 
-**I/O map:** `lab/TR400_HW_IO_CONFIG.md` — **ubus ch1 = DIO1 DO**, **ch2 = DIO2 DI**; yaml `gpio: 1` / `gpio: 2`.
+**I/O map:** `lab/TR400_HW_IO_CONFIG.md` — **ubus ch1 = DIO1 DO**, **ch2 = DIO2 DI**; yaml `gpio: 1` / `gpio: 2`.  
+**Wire-up checklist (relay + permissive button):** `lab/CURTAIL_BUTTON_AND_RELAY_SETUP.md`.
 
 ### Alternate Modbus ports
 

@@ -1,0 +1,16 @@
+﻿{
+    "codename":  "P3-07-AARE-SIGN-RAW-GT",
+    "changes":  [
+                    "Two-PC bench lab_tr400_phase4_eth_b_ttyS1.yaml",
+                    "MMS TLS 3782 LAN1 + IEC104 2404 LAN2 + Modbus RTU /dev/ttyS1",
+                    "Unified cert test session deploy"
+                ],
+    "release":  52,
+    "timestamp_utc":  "2026-10-14T11:47:35.5312682Z",
+    "version_full":  "0.1.0-r52",
+    "lab_yaml":  "C:\\Yahia\\projects\\CCLI\\apps\\ccli\\config\\lab_tr400_phase4_eth_b_ttyS1.yaml",
+    "sha256":  "1df82c26243021a86c533a179781c749fc852c2f724efa3b0aa4018b2969eca1",
+    "binary":  "C:\\Yahia\\projects\\CCLI\\lab\\tg544-openwrt\\ccli-bin",
+    "host":  "192.168.1.130",
+    "semver":  "0.1.0"
+}

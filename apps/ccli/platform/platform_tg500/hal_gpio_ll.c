@@ -84,8 +84,8 @@ static bool parse_gd32_di_state(const char *json, int channel, int *ubus_state) 
         return false;
     }
 
-    int di_mask = 0;
-    if (parse_int_after(json, "\"di_mask\":", &di_mask)) {
+    int di_mask = -1;
+    if (parse_int_after(json, "\"di_mask\":", &di_mask) && di_mask != 0) {
         *ubus_state = (di_mask >> (channel - 1)) & 1;
         return true;
     }

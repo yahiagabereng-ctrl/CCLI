@@ -1,0 +1,19 @@
+﻿{
+    "settings":  {
+                     "files.exclude":  {
+                                           "**/ -DBUILD_PLATFORM=*":  true,
+                                           "**/lab/104/build":  true,
+                                           "**/build-mms-host*":  true
+                                       }
+                 },
+    "folders":  [
+                    {
+                        "name":  "CCLI Lab",
+                        "path":  "C:\\Yahia\\projects\\CCLI"
+                    },
+                    {
+                        "name":  "CCLI Product (apps/ccli)",
+                        "path":  "C:\\Yahia\\projects\\CCLIOfficial Product\\apps\\ccli"
+                    }
+                ]
+}

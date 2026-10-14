@@ -1,5 +1,5 @@
 ﻿# PREFLIGHT_DUT unified matrix - 2026-10-14
-generated: 2026-10-14 15:09:48
+generated: 2026-10-14 16:22:33
 host: 192.168.1.130
 matrix_rows: U-P0-06 U-P0-07 U-P0-08 U-D7-01
 deploy_manifest: lab/tg544-openwrt/deploy-manifests/CCLI_DEPLOY_0.1.0-r53_2026-10-14_142430.md
@@ -15,14 +15,15 @@ ccli 0.1.0-r54 (P5-5LN-CERT-MODEL)
 ccli_pgrep_count: 1
 
 ## Checks
-- [x] U-P0-07 listening 3782 (MMS TLS) - [x] U-P0-07 listening 2404 (IEC 104 TLS) - [x] U-D7-01 no cleartext :102 - [x] U-P0-07 single ccli PID - [x] U-P0-07 no iec61850d - [x] U-P0-06 TLS PEMs on DUT - [x] U-P0-08 version 0.1.0-r54 - [x] U-P0-08 binary SHA (repo ccli-bin) - [x] MMS/104 TLS in yaml - [x] MMS model cfg (5-LN product or lab) - [x] Modbus RTU ttyS1 (bench)
+- [x] U-P0-07 listening 3782 (MMS TLS) - [x] U-P0-07 listening 2404 (IEC 104 TLS) - [x] U-D7-01 no cleartext :102 - [x] U-P0-07 single ccli PID - [ ] U-P0-07 no iec61850d - [x] U-P0-06 TLS PEMs on DUT - [x] U-P0-08 version 0.1.0-r54 - [x] U-P0-08 binary SHA (repo ccli-bin) - [x] MMS/104 TLS in yaml - [x] MMS model cfg (5-LN product or lab) - [x] Modbus RTU ttyS1 (bench) - [x] U-P5 GPIO GD32 online - [x] U-P5 GPIO ch1 DO / ch2 DI - [x] U-P5 permissive_bypass false - [x] U-P5 svc_io initialized
 
 ## netstat
-tcp        0      0 192.168.1.130:2404      0.0.0.0:*               LISTEN      2143/ccli
-tcp        0      0 192.168.10.1:3782       0.0.0.0:*               LISTEN      2143/ccli
+tcp        0      0 192.168.1.130:2404      0.0.0.0:*               LISTEN      23755/ubus
+tcp        0      0 192.168.10.1:3782       0.0.0.0:*               LISTEN      23755/ubus
 
 ## ps
-2143 root      3996 S    /usr/sbin/ccli --config /etc/ccli/lab.yaml
+2362 root     10308 S    /usr/sbin/iec61850d
+24076 root      3476 S    /usr/sbin/ccli --config /etc/ccli/lab.yaml
 
 ## yaml (excerpt)
 backend: rtu
@@ -35,3 +36,38 @@ backend: rtu
   tcp_port: 2404
   tls_enabled: true
   backend: ubus_dido_v2
+
+## gpio (U-P5 actuation)
+{
+	"available": true,
+	"online": true,
+	"fw_version": "GD32-DIDO-F v1.0.1",
+	"fw_version_int": 65537,
+	"uptime": 13684,
+	"state": true,
+	"device": "/dev/gd32_uart",
+	"baudrate": 115200,
+	"di_mask": 0,
+	"do_mask": 0,
+	"di": [
+		0,
+		0,
+		0,
+		0
+	],
+	"do": [
+		0,
+		0,
+		0,
+		0
+	],
+	"rule_count": 0,
+	"ota_busy": 0,
+	"ota_percent": 0
+}
+
+permissive_bypass: false
+  do_curtail:
+  di_permissive:
+
+Wed Oct 14 22:22:31 2026 daemon.err ccli[24076]: svc_io: ready do_curtail=GPIO1(active_low) di_permissive=GPIO2(active_low)
