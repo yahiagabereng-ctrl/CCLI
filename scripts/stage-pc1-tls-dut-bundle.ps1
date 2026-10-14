@@ -88,7 +88,7 @@ $manifest = [ordered]@{
     generated_utc = (Get-Date).ToUniversalTime().ToString("yyyy-MM-dd HH:mm:ss") + " UTC"
     verify_on_dut = "md5sum /etc/ccli/tls/<file>  # must match md5 below for each PEM/key"
     full_dut_mirror = $true
-    handling = "Lab PC1 / USB only — contains private keys; never commit staged folder or attach to public tickets"
+    handling = "Lab PC1 / USB only - contains private keys; never commit staged folder or attach to public tickets"
     files = $entries
 }
 
