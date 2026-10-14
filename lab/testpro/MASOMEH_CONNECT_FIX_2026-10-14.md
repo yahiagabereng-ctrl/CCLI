@@ -20,16 +20,16 @@ powershell -File scripts\dut-mms-tsp-preflight.ps1
 
 ## B. On your TestPro PC (PC1) — **required**
 
-**Yahia (before USB):** on logger PC with SSH:
+**Yahia (before USB) — full DUT TLS mirror:**
 
 ```powershell
 . .\lab\tg544-openwrt\lab-env.ps1
-powershell -File scripts\export-pc1-tls-for-masomeh.ps1 -Dest D:\handoff\PC1_tls_verified
+powershell -File scripts\export-pc1-tls-for-masomeh.ps1 -Dest D:\handoff\PC1_tls_full
 ```
 
-Only send the folder if **`verify-dut-pc1-tls-alignment.ps1`** prints **PASS**. Pin file: `lab/evidence/testsuite-pro/inbox/DUT_PC1_TLS_PIN_2026-10-14.json`.
+USB **entire folder** to Masomeh (all PEMs/keys from **live DUT**, including server + `root_CA.key`).
 
-**Masomeh:** copy verified `tls\` into `D:\CCLI_TSP_FIELD_PACK\tls\` **or** run from git after Yahia pushed pin:
+**Masomeh:** copy that folder to `D:\CCLI_TSP_FIELD_PACK\tls\` **or** from git (client subset only) then prefer USB:
 
 ```powershell
 cd D:\CCLI\CCLI

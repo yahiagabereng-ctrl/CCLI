@@ -1,8 +1,6 @@
-# Stage TLS on PC1: files deployed to DUT that Test Suite Pro / UCA bench needs (T1 + Tier 3).
-# Same trust + client/viewer/revoked material as deploy-ccli-session-fix.ps1, excluding DUT-server-only keys/certs.
+# Stage TLS for PC1: full DUT deploy mirror from repo (prefer pull-dut-tls-full-mirror.ps1 from live DUT).
 #
 # Usage:
-#   powershell -File scripts\stage-pc1-tls-dut-bundle.ps1
 #   powershell -File scripts\stage-pc1-tls-dut-bundle.ps1 -Dest D:\CCLI_TSP_FIELD_PACK\tls
 
 param(
@@ -22,9 +20,10 @@ if (-not $Dest) {
 
 New-Item -ItemType Directory -Force -Path $Dest | Out-Null
 
-# Intersection: on DUT after deploy + required for cert/TSP (LAB_REQUIREMENT_TEST_MATRIX T1-01, T3-01..04).
-$pc1CertTlsFiles = @(
-    "root_CA.pem",
+$dutTlsFiles = @(
+    "root_CA.pem", "root_CA.key",
+    "server.pem", "server_tls.pem", "server.key", "server_acse.key",
+    "server_combined.pem", "server_combined.key",
     "client.pem", "client_tls.pem", "client.key", "client_acse.key", "client_tsp.key",
     "client_acse_tsp.key",
     "viewer.pem", "viewer_tls.pem", "viewer.key",
@@ -42,11 +41,10 @@ function Copy-IfExists([string]$Name) {
     return $Name
 }
 
-Write-Host "PC1 TLS (DUT deploy cap + cert bench) -> $Dest" -ForegroundColor Cyan
-Write-Host "Source: $Src" -ForegroundColor DarkGray
-Write-Host "DUT release pin: $DutRelease" -ForegroundColor DarkGray
+Write-Host "PC1 TLS full DUT mirror (from repo) -> $Dest" -ForegroundColor Cyan
+Write-Host "For live DUT match use: pull-dut-tls-full-mirror.ps1" -ForegroundColor DarkGray
 
-foreach ($f in $pc1CertTlsFiles) {
+foreach ($f in $dutTlsFiles) {
     Copy-IfExists $f | Out-Null
 }
 
@@ -54,12 +52,10 @@ $clientTsp = Join-Path $Dest "client_tsp.key"
 if (-not (Test-Path $clientTsp) -and (Test-Path (Join-Path $Src "client.key"))) {
     Copy-Item -Force (Join-Path $Src "client.key") $clientTsp
 }
-
 $revokedTsp = Join-Path $Dest "revoked_tsp.key"
 if (-not (Test-Path $revokedTsp) -and (Test-Path (Join-Path $Src "revoked.key"))) {
     Copy-Item -Force (Join-Path $Src "revoked.key") $revokedTsp
 }
-
 $revokedAcseTsp = Join-Path $Dest "revoked_acse_tsp.key"
 if (-not (Test-Path $revokedAcseTsp) -and (Test-Path (Join-Path $Src "revoked_acse.key"))) {
     Copy-Item -Force (Join-Path $Src "revoked_acse.key") $revokedAcseTsp
@@ -68,34 +64,16 @@ if (-not (Test-Path $revokedAcseTsp) -and (Test-Path (Join-Path $Src "revoked_ac
 $entries = @()
 foreach ($f in (Get-ChildItem $Dest -File | Sort-Object Name)) {
     $md5 = (Get-FileHash $f.FullName -Algorithm MD5).Hash.ToLower()
-    $entries += [ordered]@{
-        file = $f.Name
-        bytes = $f.Length
-        md5 = $md5
-    }
+    $entries += [ordered]@{ file = $f.Name; bytes = $f.Length; md5 = $md5 }
 }
 
 $manifest = [ordered]@{
     dut_release = $DutRelease
     dut_tls_path = "/etc/ccli/tls/"
-    scope = "PC1 cert bench only (not full DUT tls tree)"
-    tsp_rows = @("T1-01 Connect", "T3-01 no client cert", "T3-02/03 viewer RBAC", "T3-04 revoked + CRL")
-    pki_source = "apps/ccli/config/tls"
-    generated_utc = (Get-Date).ToUniversalTime().ToString("yyyy-MM-dd HH:mm:ss") + " UTC"
-    verify_on_dut = "md5sum /etc/ccli/tls/<file>  # same filename on DUT"
-    not_pushed_to_pc1 = @(
-        "root_CA.key",
-        "server.pem", "server_tls.pem", "server_combined.pem",
-        "server.key", "server_acse.key", "server_combined.key",
-        "gen_lab_pki.py", "README.md", "ejbca/", "lab_crl.pem.BAD_SIG"
-    )
-    handling = "Lab PC1 / USB - client-side private keys only; not for accredited lab email"
+    scope = "Full DUT PKI deploy mirror for PC1 (includes server + CA private keys)"
+    handling = "Lab USB to Masomeh only - never email or commit this folder"
     files = $entries
 }
+$manifest | ConvertTo-Json -Depth 5 | Set-Content (Join-Path $Dest "DUT_TLS_MANIFEST.json") -Encoding UTF8
 
-$manifestPath = Join-Path $Dest "DUT_TLS_MANIFEST.json"
-$manifest | ConvertTo-Json -Depth 5 | Set-Content -Path $manifestPath -Encoding UTF8
-
-Write-Host ""
-Write-Host "Copied $($entries.Count) files. Manifest: DUT_TLS_MANIFEST.json" -ForegroundColor Green
-Write-Host "Run: powershell -File scripts\verify-tsp-tls-key-match.ps1 -TlsDir `"$Dest`""
+Write-Host "Copied $($entries.Count) files."

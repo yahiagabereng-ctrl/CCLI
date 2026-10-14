@@ -23,7 +23,9 @@ $pw = $env:CCLI_TG544_PW
 if (-not $pw) { throw "Set CCLI_TG544_PW (source lab-env.ps1)" }
 
 $files = @(
-    "root_CA.pem",
+    "root_CA.pem", "root_CA.key",
+    "server.pem", "server_tls.pem", "server.key", "server_acse.key",
+    "server_combined.pem", "server_combined.key",
     "client.pem", "client_tls.pem", "client.key", "client_acse.key", "client_tsp.key",
     "viewer.pem", "viewer_tls.pem", "viewer.key",
     "revoked.pem", "revoked_tls.pem", "revoked.key", "revoked_acse.key",

@@ -3,7 +3,8 @@
   "dut_host": "192.168.1.130",
   "dut_ccli": "ccli 0.1.0-r55 (P5-5LN-CERT-MODEL)",
   "repo_tls": "apps/ccli/config/tls",
-  "instruction": "Masomeh must match these MD5s in D:\\CCLI_TSP_FIELD_PACK\\tls\\ before TSP Connect. Regenerate with export-pc1-tls-for-masomeh.ps1 after any DUT TLS redeploy.",
+  "instruction": "Full send: run export-pc1-tls-for-masomeh.ps1 (pulls ALL deploy keys from DUT). MD5s below are client+server subset; USB manifest DUT_TLS_MANIFEST.json is authoritative.",
+  "full_mirror_script": "scripts/pull-dut-tls-full-mirror.ps1",
   "files": [
     { "file": "root_CA.pem", "md5": "f265ae5ca881a5097bc74a543784b443" },
     { "file": "client_tls.pem", "md5": "13c231ee6a2e782b3eb464ac2dee4c21" },
