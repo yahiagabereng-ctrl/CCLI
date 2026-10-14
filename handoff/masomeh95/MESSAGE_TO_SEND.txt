@@ -18,11 +18,18 @@ To get all the code:
 
 Alternatively, I can share ZIP files with you (full project snapshot + libraries).
 
+New on main (pull first):
+  git pull origin main
+  Latest: 85d7946 — cybersecurity test matrix for lab/TSP (62351-3 D7, Tier 3 TLS/ACSE/RBAC/CRL)
+
+  Primary doc: lab/conformance/LAB_REQUIREMENT_TEST_MATRIX_CYBER.md
+
 Good places to start:
 - Architecture draft (your document): Architecture/_extracted_reg_analysis/arch_sw.txt
 - Plant / GOOSE mapping: apps/ccli/config/plant/
 - Signal map: apps/ccli/config/icd/signal_map.yaml
 - Lab evidence: lab/evidence/phase6/ and lab/evidence/phase7/
+- Cyber + functional test matrices: lab/conformance/LAB_REQUIREMENT_TEST_MATRIX_CYBER.md
 
 Set your git identity:
    git config --global user.name "Masomeh"

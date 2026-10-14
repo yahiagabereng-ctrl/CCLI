@@ -1,8 +1,8 @@
 # CCLI — code handoff for Masomeh (masomeh95)
 
-**Date:** 2026-10-05  
+**Date:** 2026-10-14  
 **Repo:** https://github.com/yahiagabereng-ctrl/CCLI  
-**Latest commit:** `a2b0886` — GOOSE plant integration, phase 6–7 lab evidence, MMS/ICD mapping
+**Latest commit:** `85d7946` — cybersecurity lab test matrix (62351 / D7 / TSP Tier 3) + RAG hooks
 
 ---
 
@@ -47,7 +47,16 @@ See `apps/ccli/third_party/README.md` for versions and license notes.
 | Signal map (ICD) | `apps/ccli/config/icd/signal_map.yaml` |
 | GOOSE adapter | `apps/ccli/adapters/iec61850_goose/` |
 | Lab evidence P6/P7 | `lab/evidence/phase6/`, `lab/evidence/phase7/` |
+| **Cyber test checklist (62351)** | `lab/conformance/LAB_REQUIREMENT_TEST_MATRIX_CYBER.md` |
+| Functional TSP ↔ 61850 matrix | `lab/conformance/LAB_REQUIREMENT_TEST_MATRIX.md` |
 | Engineering KB | `knowledge-base/08-engineering/` |
+
+After `git pull`, optional TSP USB pack (includes cyber checklist):
+
+```powershell
+powershell -File scripts\stage-tsp-field-pack.ps1
+# -> C:\CCLI_TSP_FIELD_PACK\01b_CHECKLIST_CYBER_REQUIREMENT_TEST_MATRIX.md
+```
 
 ---
 
