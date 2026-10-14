@@ -43,8 +43,12 @@ md5sum /etc/ccli/tls/<same-filename>
 | `revoked.pem` / `revoked_tls.pem` | yes | **yes** | **T3-04** negative |
 | `revoked.key` / `revoked_tsp.key` / `revoked_acse.key` | yes | **yes** | Revoked test keys |
 | `lab_crl.pem` | yes | **yes** | **T3-04** CRL check |
+| `root_CA.key` | yes | **yes** | Lab CA (offline / regen only — not loaded in TSP Connect) |
+| `server.key` / `server_acse.key` / `server_combined.key` | yes | **yes** | DUT server keys — mirror for OpenSSL verify / emergency DUT restore |
 
-**Not copied to PC1 (stay on DUT only):** `root_CA.key`, `server.key`, `server_acse.key`, `server_combined.key`.
+**Full DUT PKI mirror on PC1** (same files as deploy to `/etc/ccli/tls/`). TSP Connect still uses **client** certs only; server keys are for parity with DUT r55, not for normal TSP UI.
+
+**Handling:** USB or private git pull + script — **do not** email keys or commit `lab/testpro/staged/`.
 
 ---
 
@@ -84,4 +88,4 @@ TLS access denied after CA update: **`lab/evidence/testsuite-pro/inbox/TSP_TLS_A
 |--------|--------|
 | **Git (preferred)** | Masomeh `git pull` + scripts above |
 | **USB** | Copy entire **`D:\CCLI_TSP_FIELD_PACK\tls\`** including `DUT_TLS_MANIFEST.json` |
-| **Do not** | Email `root_CA.key` or server private keys; lab PKI is bench-internal |
+| **Do not** | Public email / Slack attachments of the `tls\` folder (contains all private keys) |

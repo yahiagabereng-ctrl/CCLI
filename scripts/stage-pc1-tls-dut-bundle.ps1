@@ -1,5 +1,5 @@
-# Stage TLS material on PC1 aligned with DUT /etc/ccli/tls/ (same set as deploy-ccli-session-fix.ps1).
-# Excludes DUT-only private keys (server*, root_CA.key). Includes revoked + viewer + CRL for Tier 3.
+# Stage TLS material on PC1 aligned with DUT /etc/ccli/tls/ (full deploy-ccli-session-fix.ps1 PKI set).
+# Includes server + CA private keys for lab PC1 mirror. Do not commit Dest to git or send over public email.
 #
 # Usage:
 #   powershell -File scripts\stage-pc1-tls-dut-bundle.ps1
@@ -22,10 +22,11 @@ if (-not $Dest) {
 
 New-Item -ItemType Directory -Force -Path $Dest | Out-Null
 
-# Same PEM/key set pushed to DUT (deploy-ccli-session-fix.ps1), minus server private material on PC1.
-$publicAndClient = @(
-    "root_CA.pem",
-    "server.pem", "server_tls.pem", "server_combined.pem",
+# Same PEM/key set pushed to DUT (deploy-ccli-session-fix.ps1) + root_CA.key for full PC1 mirror.
+$dutTlsFiles = @(
+    "root_CA.pem", "root_CA.key",
+    "server.pem", "server_tls.pem", "server.key", "server_acse.key",
+    "server_combined.pem", "server_combined.key",
     "client.pem", "client_tls.pem", "client.key", "client_acse.key", "client_tsp.key",
     "client_acse_tsp.key",
     "viewer.pem", "viewer_tls.pem", "viewer.key",
@@ -48,7 +49,7 @@ Write-Host "Source: $Src" -ForegroundColor DarkGray
 Write-Host "DUT release pin: $DutRelease" -ForegroundColor DarkGray
 
 $copied = @()
-foreach ($f in $publicAndClient) {
+foreach ($f in $dutTlsFiles) {
     $n = Copy-IfExists $f
     if ($n) { $copied += $n }
 }
@@ -86,7 +87,8 @@ $manifest = [ordered]@{
     pki_source = "apps/ccli/config/tls (EJBCA sync per PKI_SYNC_MANIFEST.json)"
     generated_utc = (Get-Date).ToUniversalTime().ToString("yyyy-MM-dd HH:mm:ss") + " UTC"
     verify_on_dut = "md5sum /etc/ccli/tls/<file>  # must match md5 below for each PEM/key"
-    excluded_from_pc1 = @("root_CA.key", "server.key", "server_acse.key", "server_combined.key")
+    full_dut_mirror = $true
+    handling = "Lab PC1 / USB only — contains private keys; never commit staged folder or attach to public tickets"
     files = $entries
 }
 
