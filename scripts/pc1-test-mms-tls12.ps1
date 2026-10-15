@@ -30,7 +30,7 @@ if ($out -match "CONNECTION ESTABLISHED" -and $out -match "TLSv1\.2") {
     exit 0
 }
 if ($out -match "CONNECTION ESTABLISHED") {
-    Write-Host "WARN: connected but not TLSv1.2 in output — check DUT runs ccli r56+ (max TLS 1.2)" -ForegroundColor Yellow
+    Write-Host "WARN: connected but not TLSv1.2 in output - check DUT runs ccli r56+ (max TLS 1.2)" -ForegroundColor Yellow
     exit 1
 }
 Write-Host "FAIL: no TLS connection" -ForegroundColor Red

@@ -1,0 +1,6 @@
+﻿PROCS
+12450 root      3420 S    /usr/sbin/ccli --config /etc/ccli/lab.yaml
+IEC
+10689 root      9720 S    /usr/sbin/iec61850d
+12213 root      1336 S    ash -c /etc/init.d/iec61850service stop; /etc/init.d/iec61850service disable; /etc/init.d/iec61850-mmsd s
+LISTEN

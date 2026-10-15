@@ -1,0 +1,63 @@
+﻿=== PC1 Connect FAIL capture (round 2) ===
+timestamp: 2026-10-14 17:51:15 +02:00
+git_head: 99a59a4
+symptom: Initiate Response Failed Transport connection closed
+
+
+
+TcpTestSucceeded : True
+SourceAddress    : 192.168.10.10
+
+
+
+
+--- verify-dut-pc1-tls-alignment ---
+Verify repo TLS vs DUT 192.168.10.1 ...
+OK  root_CA.pem
+OK  client.pem
+OK  client_tls.pem
+OK  client.key
+OK  client_acse.key
+OK  client_tsp.key
+OK  viewer.pem
+OK  viewer_tls.pem
+OK  viewer.key
+OK  revoked.pem
+OK  revoked_tls.pem
+OK  revoked.key
+OK  revoked_acse.key
+OK  lab_crl.pem
+
+Result: PASS - safe to stage PC1 bundle (DUT: ccli 0.1.0-r55 (P5-5LN-CERT-MODEL))
+
+--- verify-tsp-tls-key-match ---
+TSP TLS key/cert pairing: C:\CCLI_TSP_FIELD_PACK\tls
+PASS Transport Cert A: client_tls.pem + client_tsp.key
+PASS MMS Cert B: client.pem + client_acse.key
+PASS Revoked Cert A: revoked_tls.pem + revoked_tsp.key
+PASS Revoked Cert B: revoked.pem + revoked_acse.key
+
+Result: PASS - Transport=client_tls+client_tsp.key, MMS=client.pem+client_acse.key
+
+--- OpenSSL TLS 1.2 ---
+openssl : Connecting to 192.168.10.1
+In C:\Users\Firmware Engineer\AppData\Local\Temp\ps-script-58dd3447-a0fd-4cc0-b067-3fbbe664bd47.ps1:119 car:1
++ openssl s_client -connect 192.168.10.1:3782 -cert C:\CCLI_TSP_FIELD_P ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Connecting to 192.168.10.1:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+Can't use SSL_get_servername
+CONNECTION ESTABLISHED
+Protocol version: TLSv1.2
+Ciphersuite: AES128-SHA256
+Requested Signature Algorithms: ecdsa_secp256r1_sha256:ecdsa_secp384r1_sha384:rsa_pkcs1_sha384:rsa_pkcs1_sha256
+Own signature type: rsa_pkcs1_sha384
+Peer certificate: C=IT, O=HiTEKS, OU=CCLI-Lab, CN=CCI016_01
+Verification: OK
+DONE
+
+--- MD5 spot ---
+root_CA.pem F265AE5CA881A5097BC74A543784B443
+client_tls.pem 13C231EE6A2E782B3EB464AC2DEE4C21
+client.pem 7BB6B77CDE4614AE68AD387E580E2696
