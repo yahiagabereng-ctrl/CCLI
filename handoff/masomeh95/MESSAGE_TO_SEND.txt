@@ -1,46 +1,47 @@
 Hi Masomeh,
 
-Yahia updated the lab certificates in EJBCA and deployed the same PEMs to the DUT. Your Test Suite Pro must use the NEW tls folder from GitHub (replace any old cert paths).
+Yahia pushed the **first documented TestPro TLS PASS** handoff (2026-10-08) to GitHub. Use this when wiring Test Suite Pro on PC1.
 
-OPTION A — PC1 on GitHub (preferred):
+GET FILES (every session):
 
   cd D:\CCLI\CCLI
   git pull origin main
   powershell -File scripts\setup-pc1-testpro-from-git.ps1 -Dest D:\CCLI_TSP_FIELD_PACK
 
-OPTION B — USB from Yahia (if git pull fails or TLS folder is old):
+READ FIRST in the pack:
 
-  Copy folder D:\CCLI_TSP_FIELD_PACK from USB (full pack), OR unzip CCLI_TSP_TLS_PC1.zip into D:\CCLI_TSP_FIELD_PACK\tls\
-  Do NOT mix old C:\CCLI_tls or old TSP browse paths — replace all TLS files.
+  D:\CCLI_TSP_FIELD_PACK\00m_PC1_P3_07_FIRST_PASS_TLS_2026-10-08.md
 
-Then read this file in the repo (copied to pack as 00k_... after pull):
+  (Full evidence: lab/evidence/testsuite-pro/inbox/TSP_P3_07_LIVE_CONNECT_PASS_2026-10-08.md)
 
-  handoff/masomeh95/PC1_EJBCA_TLS_ALIGN_TESTPRO.md
+If Yahia redeployed EJBCA on 2026-10-14, also read 00k_PC1_EJBCA_TLS_TESTPRO.md — same file names; PEM bytes must match DUT.
 
-Or in the pack after stage:
+TEST SUITE PRO — TLS (2026-10-08 PASS profile):
 
-  D:\CCLI_TSP_FIELD_PACK\00k_PC1_EJBCA_TLS_TESTPRO.md
-
-TEST SUITE PRO — TLS paths (folder D:\CCLI_TSP_FIELD_PACK\tls\):
+  Folder: D:\CCLI_TSP_FIELD_PACK\tls\
 
   Trust CA:     root_CA.pem
   Transport:    client_tls.pem  +  client_tsp.key
-  MMS Security: client.pem      +  client_acse.key  (NOT client_tsp.key - dual cert G.2)
+  MMS Security: client.pem      +  client_tsp.key (same key, both slots — 2026-10-08 PASS)
   CRL:          lab_crl.pem (enable in TSP if there is a CRL field)
 
-  Server: 192.168.10.1:3782  |  IED CCI016_01  |  CID: cid\lab_tg544_eth_a.cid
-  LAN1 Admin: bench_scripts\set_pc_lan1_dso.cmd  (PC 192.168.10.10)
+  If Yahia says dual-key G.2 only: MMS Security key may be client_acse.key instead — ask before Connect.
 
-T3-04 revoked test ONLY (then switch back to client_* above):
-  revoked_tls.pem + revoked.pem + revoked_tsp.key + lab_crl.pem
+  Server: 192.168.10.1:3782  |  IED CCI016_01  |  TLS ON (not :102)
+  LAN1: bench_scripts\set_pc_lan1_dso.cmd  (PC 192.168.10.10)
+
+  CID: cid\product_tr400_eth_a_5ln.cid if Yahia pinned 5-LN cert (r54+)
+       else cid\lab_tg544_eth_a.cid for 31-LN lab — ask Yahia before Connect
 
 OpenSSL check (from tls folder):
+
   openssl verify -CAfile root_CA.pem client.pem client_tls.pem
+  openssl rsa -in client_tsp.key -check -noout
 
-DUT firmware: 0.1.0-r53 (matches -CcliPkg 0.1.0-r53 in evidence logger)
+Pass = Connected + Initiate Response Success + reads.
 
-Also open: 00i_PC1_TSP_IMPORT_CHECKLIST.md, 00h_PC1_LOG_CAPTURE_REQUIREMENTS.md, 00_UNIFIED_CERT_TEST_MATRIX.md
+Also: 00i_PC1_TSP_IMPORT_CHECKLIST.md, 00h_PC1_LOG_CAPTURE_REQUIREMENTS.md, 00_UNIFIED_CERT_TEST_MATRIX.md
 
-If anything fails on Connect, send Yahia a screenshot of TSP TLS file paths + result of the openssl verify line above.
+If Connect fails, send screenshot of TSP TLS paths + openssl verify output.
 
 Yahia
