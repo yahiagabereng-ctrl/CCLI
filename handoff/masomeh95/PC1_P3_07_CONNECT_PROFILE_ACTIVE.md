@@ -1,6 +1,7 @@
 # ACTIVE — P3-07 Connect profile (Oct 2026-10-08 PASS wiring)
 
 **Status:** Use this **instead of** EJBCA dual-key (`00k`) until Connect **PASS** again.  
+**If TSP says Transport connection closed:** read **`00t_PC1_FIX_WRONG_TRANSPORT_CERT.md`** first (Transport slot must be **`client_tls.pem`**, not **`client.pem`**).  
 **DUT:** `ccli 0.1.0-r55` (AARE raw-GT stack from r51 retained) · **`crl=off`** · **no revoke/CRL**  
 **Model:** **`lab_tg544_eth_a.cfg`** (31-LN lab — same as first PASS)  
 **PKI folder:** `apps/ccli/config/tls/p3_07_connect/` (single **`client_tsp.key`** for Transport **and** MMS)

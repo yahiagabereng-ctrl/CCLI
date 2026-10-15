@@ -1,33 +1,33 @@
 Hi Masomeh,
 
-We switched to the **2026-10-08 P3-07 PASS profile** until Connect works (no CRL, no revoke tests yet).
+Connect still fails: DUT log shows you are using **client.pem in the Transport TLS slot** (wrong). That causes **Transport connection closed**.
 
+**Read and fix:** **00t_PC1_FIX_WRONG_TRANSPORT_CERT.md** (wrong vs correct table + TSP edit checklist)
+
+Quick fix in TSP:
+  Transport TLS cert  →  client_tls.pem   (serial DC:9A:9E…, CN=DSO_OPERATOR)
+  Transport TLS key   →  client_tsp.key
+  MMS cert            →  client.pem       (serial 28:E5:3F:07…, OID 1.12)
+  MMS key             →  client_tsp.key   (same file both slots)
+  Trust               →  root_CA.pem
+  CRL                 →  empty / off
+
+Stage pack first:
   cd D:\CCLI\CCLI
   git pull origin main
   powershell -File scripts\setup-pc1-p3-07-connect.ps1 -Dest D:\CCLI_TSP_FIELD_PACK
 
-Read first: **00r_PC1_P3_07_CONNECT_PROFILE_ACTIVE.md**
+Then **re-browse ALL six TLS paths** in Test Suite Pro (do not keep old paths).
 
-DUT now:
-  Firmware: 0.1.0-r55 (same AARE raw-GT stack as r51)
-  MMS: 192.168.10.1:3782  TLS  crl=off
-  Model: lab_tg544_eth_a.cfg (31-LN)
-  NEW PKI folder: tls\ from p3_07_connect (not the old EJBCA USB zip)
+Verify on PC1:
+  cd D:\CCLI_TSP_FIELD_PACK\tls
+  openssl x509 -in client_tls.pem -noout -serial -subject
+  openssl x509 -in client.pem -noout -serial -subject
 
-Test Suite Pro TLS (Oct-08 exact):
-  Trust:     root_CA.pem
-  Transport: client_tls.pem + client_tsp.key
-  MMS:       client.pem + client_tsp.key   (SAME key file both slots)
-  CRL:       leave empty / off
-  CID:       cid\lab_tg544_eth_a.cid
+DUT: 192.168.10.1:3782 · CCI016_01 · cid\lab_tg544_eth_a.cid · LAN1 192.168.10.10/24
 
-  IED CCI016_01  |  LAN1 192.168.10.10/24
+When fixed, message Yahia **ready** for one Connect (he captures DUT log). Pass = Initiate Response Success + ACSE auth ACCEPT on DUT.
 
-Re-browse ALL six TLS paths in TSP after pull.
-
-Preflight:
-  powershell -File scripts\verify-tsp-tls-key-match.ps1 -TlsDir D:\CCLI_TSP_FIELD_PACK\tls
-
-Yahia will capture DUT log on Connect. Pass = Initiate Response Success + DUT log ACSE auth ACCEPT.
+Also: **00r_PC1_P3_07_CONNECT_PROFILE_ACTIVE.md**
 
 Yahia

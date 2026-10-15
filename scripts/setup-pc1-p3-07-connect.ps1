@@ -30,9 +30,11 @@ New-Item -ItemType Directory -Force -Path (Join-Path $Dest "cid") | Out-Null
 Copy-Item -Force $cidSrc $cidDst
 
 $docs = @(
+    @{ Rel = "handoff/masomeh95/PC1_FIX_WRONG_TRANSPORT_CERT.md"; Out = "00t_PC1_FIX_WRONG_TRANSPORT_CERT.md" },
     @{ Rel = "handoff/masomeh95/PC1_P3_07_CONNECT_PROFILE_ACTIVE.md"; Out = "00r_PC1_P3_07_CONNECT_PROFILE_ACTIVE.md" },
     @{ Rel = "handoff/masomeh95/PC1_P3_07_FIRST_PASS_TLS_2026-10-08.md"; Out = "00m_PC1_P3_07_FIRST_PASS_TLS_2026-10-08.md" },
-    @{ Rel = "lab/evidence/testsuite-pro/inbox/TSP_P3_07_LIVE_CONNECT_PASS_2026-10-08.md"; Out = "00s_TSP_P3_07_LIVE_CONNECT_PASS_2026-10-08.md" }
+    @{ Rel = "lab/evidence/testsuite-pro/inbox/TSP_P3_07_LIVE_CONNECT_PASS_2026-10-08.md"; Out = "00s_TSP_P3_07_LIVE_CONNECT_PASS_2026-10-08.md" },
+    @{ Rel = "lab/evidence/testsuite-pro/inbox/TSP_TRANSPORT_CLOSED_ROOT_CAUSE_2026-10-15.md"; Out = "00u_TSP_TRANSPORT_CLOSED_ROOT_CAUSE_2026-10-15.md" }
 )
 foreach ($d in $docs) {
     $from = Join-Path $Repo ($d.Rel -replace "/", "\")
@@ -46,7 +48,8 @@ Write-Host "`n=== TLS verify (Oct-08 profile) ===" -ForegroundColor Cyan
 & (Join-Path $Repo "scripts\verify-tsp-tls-key-match.ps1") -TlsDir (Join-Path $Dest "tls")
 
 Write-Host "`nOK: $Dest" -ForegroundColor Green
-Write-Host "Read: 00r_PC1_P3_07_CONNECT_PROFILE_ACTIVE.md"
+Write-Host "Read FIRST: 00t_PC1_FIX_WRONG_TRANSPORT_CERT.md"
+Write-Host "Then:       00r_PC1_P3_07_CONNECT_PROFILE_ACTIVE.md"
 Write-Host 'CID:  cid\lab_tg544_eth_a.cid  (31-LN lab, same as 2026-10-08 PASS)'
 Write-Host 'TLS:  tls\  from p3_07_connect (client_tsp.key in BOTH TSP key slots)'
 Write-Host 'NO CRL / NO revoked certs in TSP for this session.'
