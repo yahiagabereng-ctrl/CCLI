@@ -28,6 +28,10 @@ DUT: 192.168.10.1:3782 · CCI016_01 · cid\lab_tg544_eth_a.cid · LAN1 192.168.1
 
 When fixed, message Yahia **ready** for one Connect (he captures DUT log). Pass = Initiate Response Success + ACSE auth ACCEPT on DUT.
 
+DUT is pinned to same PEMs as your pack (git 43e8e85 / p3_07_connect). After pull+setup verify:
+  powershell -File scripts\verify-tsp-tls-key-match.ps1 -TlsDir D:\CCLI_TSP_FIELD_PACK\tls
+  MD5 client_tls.pem must be 524fdd81b0d87abc9dc8c1cd2c490968
+
 Also: **00r_PC1_P3_07_CONNECT_PROFILE_ACTIVE.md**
 
 Yahia

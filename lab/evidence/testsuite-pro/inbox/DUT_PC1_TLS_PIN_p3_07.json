@@ -1,0 +1,66 @@
+﻿{
+    "profile":  "p3_07_connect",
+    "git_reference":  "43e8e85",
+    "verified_utc":  "2026-10-15 14:33:17 UTC",
+    "dut_host":  "192.168.1.130",
+    "dut_ccli":  "7ada0cbe2be1bb4bddff7b6961461bc5  /etc/ccli/tls/root_CA.pem",
+    "lab_yaml_md5":  "b1981900b6288050af408cc4836df2aa",
+    "model_cfg_md5":  "f6100bdfa04531f6183beb9dd96e3019",
+    "tls":  [
+                {
+                    "file":  "root_CA.pem",
+                    "md5":  "7ada0cbe2be1bb4bddff7b6961461bc5",
+                    "match":  true
+                },
+                {
+                    "file":  "server.pem",
+                    "md5":  "00bd891cbd4b72a94b67585f649704ed",
+                    "match":  true
+                },
+                {
+                    "file":  "server_tls.pem",
+                    "md5":  "414bb978ce1c120bb135d78e56cfc92c",
+                    "match":  true
+                },
+                {
+                    "file":  "server.key",
+                    "md5":  "efe300aedab13a84e367e2c2dc1c3918",
+                    "match":  true
+                },
+                {
+                    "file":  "server_acse.key",
+                    "md5":  "6b31887710448b7462fee053bcfaec78",
+                    "match":  true
+                },
+                {
+                    "file":  "client.pem",
+                    "md5":  "fe374442fce9eea87f7a937bac1b3bea",
+                    "match":  true
+                },
+                {
+                    "file":  "client_tls.pem",
+                    "md5":  "524fdd81b0d87abc9dc8c1cd2c490968",
+                    "match":  true
+                },
+                {
+                    "file":  "client_tsp.key",
+                    "md5":  "9858beb9736ad5b32b72238d0cbfa27c",
+                    "match":  true
+                },
+                {
+                    "file":  "viewer.pem",
+                    "md5":  "3e7f74b2eeadce3cb0879fc295b025b6",
+                    "match":  true
+                },
+                {
+                    "file":  "viewer_tls.pem",
+                    "md5":  "3e7f74b2eeadce3cb0879fc295b025b6",
+                    "match":  true
+                },
+                {
+                    "file":  "viewer.key",
+                    "md5":  "af5a553a90d09084e72d60c7f7ba05d2",
+                    "match":  true
+                }
+            ]
+}
