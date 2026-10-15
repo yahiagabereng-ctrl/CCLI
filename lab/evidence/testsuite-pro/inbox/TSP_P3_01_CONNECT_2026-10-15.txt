@@ -21,3 +21,9 @@ APP  CCI016_01: Initiate Response Failed: Transport connection closed
 lab/evidence/testsuite-pro/inbox/PC1_EVIDENCE_CAPTURE_2026-10-15.txt
 lab/evidence/testsuite-pro/inbox/DUT_SNAPSHOT_2026-10-15.txt
 lab/evidence/testsuite-pro/inbox/TSP_CONNECT_EVIDENCE_2026-10-15.md
+lab/evidence/testsuite-pro/inbox/PC1_EVIDENCE_CAPTURE_2026-10-15_b.txt  (USB CCLI_TSP_TLS_COMPLETE)
+lab/evidence/testsuite-pro/inbox/DUT_SNAPSHOT_2026-10-15_b.txt  (TWO ccli, bind fail on 3782)
+lab/evidence/testsuite-pro/inbox/TSP_CONNECT_EVIDENCE_2026-10-15_usb.md
+
+tls_paths_used:
+  C:\Users\Firmware Engineer\Downloads\CCLI_TSP_TLS_COMPLETE\CCLI_TSP_TLS_COMPLETE\

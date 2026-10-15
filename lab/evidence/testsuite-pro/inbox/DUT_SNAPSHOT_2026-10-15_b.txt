@@ -1,0 +1,30 @@
+﻿Thu Oct 15 18:57:08 CST 2026
+ccli 0.1.0-r55 (P5-5LN-CERT-MODEL)
+11602 root      3864 S    /usr/sbin/ccli --config /etc/ccli/lab.yaml
+11745 root      3384 S    /usr/sbin/ccli --config /etc/ccli/lab.yaml
+10418 root     10424 S    /usr/sbin/iec61850d
+12489 root         0 Z    [iec61850d-healt]
+16346 root      2448 S    /usr/sbin/iec61850-mmsd
+tcp        0      0 192.168.10.1:3782       0.0.0.0:*               LISTEN      11602/ccli
+13c231ee6a2e782b3eb464ac2dee4c21  /etc/ccli/tls/client_tls.pem
+7bb6b77cde4614ae68ad387e580e2696  /etc/ccli/tls/client.pem
+Thu Oct 15 18:56:45 2026 daemon.err ccli[11745]: mms: cfg model without VArSdDVAR1 ΓÇö O.9.1.4 P5-R01 inactive (5-LN cert model)
+Thu Oct 15 18:56:45 2026 daemon.err ccli[11745]: mms: cfg model without PFSPDFPF1 ΓÇö O.9.1.1 P5-R02 inactive (5-LN cert model)
+Thu Oct 15 18:56:45 2026 daemon.err ccli[11745]: mms: full CID model loaded from /etc/ccli/icd/product_tr400_eth_a_5ln.cfg
+Thu Oct 15 18:56:45 2026 daemon.err ccli[11745]: mms: TLS CRL loaded /etc/ccli/tls/lab_crl.pem
+Thu Oct 15 18:56:45 2026 daemon.err ccli[11745]: mms: AARE 62351-4 responder auth ready (cert=919 octets)
+Thu Oct 15 18:56:45 2026 daemon.err ccli[11745]: mms: AARE responding titles AP=1.1.1.999.1 AE=12
+Thu Oct 15 18:56:45 2026 daemon.err ccli[11745]: mms: start failed bind=192.168.10.1 port=3782 tls=on (port busy or IP missing)
+Thu Oct 15 18:56:45 2026 daemon.err ccli[11745]: mms: FAILED to bind 192.168.10.1:3782 (TLS) ΓÇö disable TesPro IEC61850 LuCI or check LAN1 IP/certs
+Thu Oct 15 18:56:45 2026 daemon.err ccli[11745]: iec104: startThreadless failed on 192.168.1.130:2404 (Address in use)
+Thu Oct 15 18:56:45 2026 daemon.err ccli[11745]: iec104: FAILED to bind 192.168.1.130:2404 ΓÇö check LAN2 IP / port 2404 free
+Thu Oct 15 18:56:45 2026 daemon.err ccli[11745]: goose: disabled in config (plant Modbus path active)
+Thu Oct 15 18:56:45 2026 daemon.err ccli[11745]: ccli 0.1.0-r55 (unknown) starting config=/etc/ccli/lab.yaml
+Thu Oct 15 18:56:45 2026 daemon.info ccli[11745]: ccli 0.1.0-r55 started. config=/etc/ccli/lab.yaml
+Thu Oct 15 18:56:46 2026 daemon.err ccli[11745]: io: curtail_do=OFF permissive=BLOCKED
+Thu Oct 15 18:56:46 2026 daemon.err ccli[11745]: modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=50 -> P=0kW Q=0kvar ERR=bad_map P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+Thu Oct 15 18:56:49 2026 daemon.err ccli[11745]: modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=50 -> P=0kW Q=0kvar ERR=bad_map P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+Thu Oct 15 18:56:54 2026 daemon.err ccli[11745]: modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=50 -> P=0kW Q=0kvar ERR=bad_map P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+Thu Oct 15 18:56:58 2026 daemon.err ccli[11745]: modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=50 -> P=0kW Q=0kvar ERR=bad_map P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+Thu Oct 15 18:57:03 2026 daemon.err ccli[11745]: modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=50 -> P=0kW Q=0kvar ERR=bad_map P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+Thu Oct 15 18:57:07 2026 daemon.err ccli[11745]: modbus: FC3 ReadHoldingRegisters unit=1 addr=40933 qty=50 -> P=0kW Q=0kvar ERR=bad_map P=0kW pf2=stale_or_invalid curtail=no DO=OFF

@@ -1,0 +1,30 @@
+﻿=== PC1 evidence capture (USB TLS pack) ===
+timestamp: 2026-10-15 12:57:05 +02:00
+git_head: 51fee2a
+tls_source: C:\Users\Firmware Engineer\Downloads\CCLI_TSP_TLS_COMPLETE\CCLI_TSP_TLS_COMPLETE
+pc: 192.168.10.10/24 -> 192.168.10.1:3782
+tsp: Initiate Response Failed Transport connection closed (ongoing)
+
+
+
+TcpTestSucceeded : True
+PingSucceeded    : False
+SourceAddress    : 192.168.10.10
+
+
+
+
+root_CA.pem F265AE5CA881A5097BC74A543784B443
+client_tls.pem 13C231EE6A2E782B3EB464AC2DEE4C21
+client.pem 7BB6B77CDE4614AE68AD387E580E2696
+client_tsp.key B0E3F01DAD384D88F8917640E1B1B808
+client_acse.key AEB973CA39452062578DD8329302D9D4
+lab_crl.pem 0695DA4DC4829236127E9E904B9CCDFC
+TSP TLS key/cert pairing: C:\Users\Firmware Engineer\Downloads\CCLI_TSP_TLS_COMPLETE\CCLI_TSP_TLS_COMPLETE
+PASS Transport Cert A: client_tls.pem + client_tsp.key
+PASS MMS Cert B: client.pem + client_acse.key
+PASS Revoked Cert A: revoked_tls.pem + revoked_tsp.key
+PASS Revoked Cert B: revoked.pem + revoked_acse.key
+
+Result: PASS - Transport=client_tls+client_tsp.key, MMS=client.pem+client_acse.key
+
