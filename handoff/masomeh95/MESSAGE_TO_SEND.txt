@@ -1,45 +1,33 @@
 Hi Masomeh,
 
-2026-10-15: repo TLS = live DUT (21 files MD5 verified). Pull and stage in one step:
-
-OR USB: Yahia sends CCLI_TSP_TLS_COMPLETE_2026-10-15.zip (all certs) + optional CCLI_TSP_FIELD_PACK_DUT_TLS_2026-10-15.zip (full bench pack).
-
-Git path:
+We switched to the **2026-10-08 P3-07 PASS profile** until Connect works (no CRL, no revoke tests yet).
 
   cd D:\CCLI\CCLI
   git pull origin main
-  powershell -File scripts\setup-pc1-testpro-from-git.ps1 -Dest D:\CCLI_TSP_FIELD_PACK
+  powershell -File scripts\setup-pc1-p3-07-connect.ps1 -Dest D:\CCLI_TSP_FIELD_PACK
 
-Read in the pack:
+Read first: **00r_PC1_P3_07_CONNECT_PROFILE_ACTIVE.md**
 
-  00p_PC1_PULL_TLS_DUT_ALIGNED.md   (start here)
-  00k_PC1_EJBCA_TLS_TESTPRO.md      (TSP file paths + CRL)
+DUT now:
+  Firmware: 0.1.0-r55 (same AARE raw-GT stack as r51)
+  MMS: 192.168.10.1:3782  TLS  crl=off
+  Model: lab_tg544_eth_a.cfg (31-LN)
+  NEW PKI folder: tls\ from p3_07_connect (not the old EJBCA USB zip)
 
-DUT today (Yahia deploy 2026-10-15):
+Test Suite Pro TLS (Oct-08 exact):
+  Trust:     root_CA.pem
+  Transport: client_tls.pem + client_tsp.key
+  MMS:       client.pem + client_tsp.key   (SAME key file both slots)
+  CRL:       leave empty / off
+  CID:       cid\lab_tg544_eth_a.cid
 
-  Firmware: 0.1.0-r55 (P5-5LN-CERT-MODEL)
-  MMS:      192.168.10.1:3782  TLS + CRL on
-  Model:    product_tr400_eth_a_5ln (5 LNs)
-  CID:      cid\product_tr400_eth_a_5ln.cid  (mandatory for cert Compare)
+  IED CCI016_01  |  LAN1 192.168.10.10/24
 
-TEST SUITE PRO — TLS (matches DUT / 00k):
+Re-browse ALL six TLS paths in TSP after pull.
 
-  Folder: D:\CCLI_TSP_FIELD_PACK\tls\
+Preflight:
+  powershell -File scripts\verify-tsp-tls-key-match.ps1 -TlsDir D:\CCLI_TSP_FIELD_PACK\tls
 
-  Trust CA:     root_CA.pem
-  Transport:    client_tls.pem  +  client_tsp.key
-  MMS Security: client.pem      +  client_acse.key   (NOT client_tsp.key for MMS)
-  CRL:          lab_crl.pem
-
-  Server: 192.168.10.1:3782  |  IED CCI016_01  |  TLS ON (not :102)
-  LAN1: bench_scripts\set_pc_lan1_dso.cmd  (PC 192.168.10.10)
-
-After setup, the script runs verify-tsp-tls-key-match.ps1 — must PASS before Connect.
-
-Evidence logger: -CcliPkg 0.1.0-r55
-
-Also: 00i_PC1_TSP_IMPORT_CHECKLIST.md, 00h_PC1_LOG_CAPTURE_REQUIREMENTS.md, 00_UNIFIED_CERT_TEST_MATRIX.md
-
-If Connect fails: screenshot TSP TLS paths + tls\DUT_TLS_MANIFEST.json + openssl verify output.
+Yahia will capture DUT log on Connect. Pass = Initiate Response Success + DUT log ACSE auth ACCEPT.
 
 Yahia

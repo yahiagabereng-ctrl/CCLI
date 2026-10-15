@@ -31,9 +31,9 @@ Write-Host "TSP TLS key/cert pairing: $TlsDir" -ForegroundColor Cyan
 
 $checks = @(
     @{ Label = "Transport Cert A"; Cert = "client_tls.pem"; Key = "client_tsp.key"; AltKey = "client.key" },
-    @{ Label = "MMS Cert B"; Cert = "client.pem"; Key = "client_acse.key"; AltKey = "" },
+    @{ Label = "MMS Cert B"; Cert = "client.pem"; Key = "client_acse.key"; AltKey = "client_tsp.key" },
     @{ Label = "Revoked Cert A"; Cert = "revoked_tls.pem"; Key = "revoked_tsp.key"; AltKey = "revoked.key" },
-    @{ Label = "Revoked Cert B"; Cert = "revoked.pem"; Key = "revoked_acse.key"; AltKey = "" }
+    @{ Label = "Revoked Cert B"; Cert = "revoked.pem"; Key = "revoked_acse.key"; AltKey = "revoked.key" }
 )
 
 $fail = 0

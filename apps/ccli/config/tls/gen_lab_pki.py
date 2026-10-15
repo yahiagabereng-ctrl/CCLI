@@ -314,6 +314,18 @@ def _gen_crl(revoked_serial: int, ca_key: rsa.RSAPrivateKey, ca_cert: x509.Certi
 
 
 def main() -> int:
+    import argparse
+
+    parser = argparse.ArgumentParser(description="Generate CCLI lab PKI (P3-07 / Annex G)")
+    parser.add_argument(
+        "--dest",
+        type=Path,
+        default=None,
+        help="Output directory (default: directory containing this script)",
+    )
+    args = parser.parse_args()
+    global TLS
+    TLS = args.dest if args.dest else Path(__file__).resolve().parent
     TLS.mkdir(parents=True, exist_ok=True)
 
     ca_key, ca_cert = _gen_ca()
