@@ -101,12 +101,20 @@ if (Test-Path $pullDut) {
     Copy-Item -Force $pullDut (Join-Path $Dest "lab\evidence\testsuite-pro\pull-dut-tsp-test-remote.sh")
     $manifest.files += "lab/evidence/testsuite-pro/pull-dut-tsp-test-remote.sh"
 }
+$pullConnect = Join-Path $Repo "lab\evidence\testsuite-pro\capture-dut-tsp-connect-remote.sh"
+if (Test-Path $pullConnect) {
+    Copy-Item -Force $pullConnect (Join-Path $Dest "lab\evidence\testsuite-pro\capture-dut-tsp-connect-remote.sh")
+    $manifest.files += "lab/evidence/testsuite-pro/capture-dut-tsp-connect-remote.sh"
+}
 $manifest.files += "lab/evidence/testsuite-pro/inbox/", "lab/evidence/testsuite-pro/pcap/"
 
 $tspScripts = @(
     "scripts/tsp-evidence-logger.ps1",
     "scripts/capture-mms-tsp.ps1",
-    "scripts/capture-mms-tsp-interactive.ps1"
+    "scripts/capture-mms-tsp-interactive.ps1",
+    "scripts/capture-dut-tsp-connect-log.ps1",
+    "scripts/dut-mms-tsp-preflight.ps1",
+    "scripts/verify-tsp-tls-key-match.ps1"
 )
 New-Item -ItemType Directory -Force -Path (Join-Path $Dest "scripts") | Out-Null
 foreach ($rel in $tspScripts) {

@@ -1,4 +1,6 @@
 # Minimal mutual-TLS + MMS Security set for Test Suite Pro T1-01 Connect (pulled from live DUT).
+# For ALL certificates in one ZIP (Connect + revoked + CRL + viewer + server): use
+#   scripts\export-pc1-tls-for-masomeh.ps1
 # Usage:
 #   . .\lab\tg544-openwrt\lab-env.ps1
 #   powershell -File scripts\export-tsp-connect-tls-from-dut.ps1

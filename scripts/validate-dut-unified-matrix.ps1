@@ -50,7 +50,7 @@ if ($FixServices) {
         Invoke-Dut "sed -i 's/\r$//' /tmp/enable-dut-gpio.sh; chmod +x /tmp/enable-dut-gpio.sh; sh /tmp/enable-dut-gpio.sh" | Out-Null
     } else {
         Invoke-Dut "/etc/init.d/didoservice_v2 enable; /etc/init.d/didoservice_v2 restart; sleep 2" | Out-Null
-        Invoke-Dut "/etc/init.d/iec61850service disable; /etc/init.d/iec61850service stop; killall iec61850d; killall ccli; sleep 2; /etc/init.d/ccli start; sleep 4" | Out-Null
+        Invoke-Dut "uci set iec61850service.global.enabled='0'; uci commit iec61850service; /etc/init.d/iec61850service disable; /etc/init.d/iec61850service stop; /etc/init.d/iec61850-mmsd disable; /etc/init.d/iec61850-mmsd stop; killall iec61850d; killall iec61850-mmsd; killall ccli; sleep 2; /etc/init.d/ccli start; sleep 4" | Out-Null
     }
 }
 
@@ -60,6 +60,10 @@ $ss = Invoke-Dut "netstat -tlnp 2>/dev/null | grep -E '3782|2404|:102 '"
 $ps = Invoke-Dut "ps w | grep -E 'ccli|iec61850' | grep -v grep"
 $yaml = Invoke-Dut "grep -E 'model_cfg|tls_enabled|bind_address|tcp_port|backend:|device:' /etc/ccli/lab.yaml | head -20"
 $tlsN = Invoke-Dut "ls /etc/ccli/tls/*.pem 2>/dev/null | wc -l"
+$crlYaml = Invoke-Dut "grep -E '^[[:space:]]*tls_crl:' /etc/ccli/lab.yaml 2>/dev/null"
+$crlFile = Invoke-Dut "test -f /etc/ccli/tls/lab_crl.pem && wc -c </etc/ccli/tls/lab_crl.pem || echo MISSING"
+$crlLog = Invoke-Dut "logread 2>/dev/null | grep -E 'TLS CRL loaded|crl=on' | tail -2; tail -100 /tmp/ccli.log 2>/dev/null | grep -E 'TLS CRL loaded|crl=on' | tail -2"
+$revokedTls = Invoke-Dut "test -f /etc/ccli/tls/revoked_tls.pem && test -f /etc/ccli/tls/revoked.pem && echo OK || echo MISSING"
 $pgrepOut = Invoke-Dut "pgrep -f '/usr/sbin/ccli --config'"
 $ccliCount = @($pgrepOut -split "\s+" | Where-Object { $_ -match '^\d+$' }).Count
 if ($ccliCount -lt 1) {
@@ -71,8 +75,12 @@ $checks["U-P0-07 listening 3782 (MMS TLS)"] = $ss -match "3782"
 $checks["U-P0-07 listening 2404 (IEC 104 TLS)"] = $ss -match "2404"
 $checks["U-D7-01 no cleartext :102"] = $ss -notmatch ":102 "
 $checks["U-P0-07 single ccli PID"] = $ccliCount -eq 1
-$checks["U-P0-07 no iec61850d"] = $ps -notmatch "iec61850"
+$checks["U-P0-07 no iec61850d"] = $ps -notmatch "/usr/sbin/iec61850"
 $checks["U-P0-06 TLS PEMs on DUT"] = ([int]($tlsN -replace '\D', '') -ge 4)
+$checks["U-T3-04 tls_crl in lab.yaml"] = $crlYaml -match "tls_crl:\s*/etc/ccli/tls/lab_crl\.pem"
+$checks["U-T3-04 lab_crl.pem on DUT"] = ($crlFile -notmatch "MISSING") -and ([int]($crlFile -replace '\D', '') -gt 100)
+$checks["U-T3-04 MMS crl=on (runtime log)"] = $crlLog -match "CRL loaded|crl=on"
+$checks["U-T3-04 revoked test PEMs (TSP)"] = $revokedTls -match "^OK"
 $checks["U-P0-08 version $expectedPkg"] = $version -match [regex]::Escape($expectedPkg)
 if ($ExpectedSha) {
     $checks["U-P0-08 binary SHA (repo ccli-bin)"] = $sha -match $ExpectedSha
@@ -108,8 +116,9 @@ $report = @"
 # PREFLIGHT_DUT unified matrix - $date
 generated: $ts
 host: $HostAddr
-matrix_rows: U-P0-06 U-P0-07 U-P0-08 U-D7-01
-deploy_manifest: lab/tg544-openwrt/deploy-manifests/CCLI_DEPLOY_0.1.0-r53_2026-10-14_142430.md
+matrix_rows: U-P0-06 U-P0-07 U-P0-08 U-D7-01 U-T3-04 (CRL preflight)
+git_pin: 0e330a1
+deploy_manifest: lab/tg544-openwrt/deploy-manifests/CCLI_DEPLOY_0.1.0-r55_2026-10-15_140421.md
 session_pin: lab/conformance/LAB_UNIFIED_SESSION_PIN_2026-10-14.md
 
 $version
@@ -134,6 +143,12 @@ $gd32
 $ioYaml
 
 $svcIo
+
+## tls_crl (U-T3-04)
+$crlYaml
+lab_crl.pem bytes: $crlFile
+revoked PEMs: $revokedTls
+$crlLog
 "@
 
 if ($WriteEvidence) {

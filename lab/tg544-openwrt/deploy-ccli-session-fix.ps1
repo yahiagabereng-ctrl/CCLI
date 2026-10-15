@@ -15,7 +15,8 @@ param(
     [string]$User = "root",
     [string]$LabYaml = "",
     [string]$TlsDir = "",
-    [switch]$SkipManifest
+    [switch]$SkipManifest,
+    [switch]$SkipVersionCheck
 )
 
 $ErrorActionPreference = "Stop"
@@ -49,29 +50,33 @@ $expectedFull = "$($vlines[0])-r$($vlines[1])"
 
 Write-Host "=== Deploy target version: $expectedFull ===" -ForegroundColor Cyan
 
-Write-Host "=== Verify binary version (TG544 aarch64, no local exec on x86) ===" -ForegroundColor Cyan
-$wslBin = ($Bin -replace '\\', '/')
-if ($wslBin -match '^([A-Za-z]):(.*)$') {
-    $wslBin = ('/mnt/{0}{1}' -f $Matches[1].ToLower(), $Matches[2])
-}
-$verOk = $false
-$prevEap = $ErrorActionPreference
-$ErrorActionPreference = "SilentlyContinue"
-$verOut = wsl bash -lc "'$wslBin' --version" 2>&1 | Out-String
-if ($verOut -match [regex]::Escape($expectedFull)) {
-    Write-Host $verOut.Trim()
-    $verOk = $true
-} else {
-    $grepPat = "CCLI_VERSION_FULL|$expectedFull"
-    $embedded = wsl bash -lc "strings '$wslBin' | grep -E '$grepPat' | head -5" 2>&1 | Out-String
-    Write-Host "strings:" $embedded.Trim()
-    if ($embedded -match [regex]::Escape($expectedFull)) {
-        $verOk = $true
+if (-not $SkipVersionCheck) {
+    Write-Host "=== Verify binary version (TG544 aarch64, no local exec on x86) ===" -ForegroundColor Cyan
+    $wslBin = ($Bin -replace '\\', '/')
+    if ($wslBin -match '^([A-Za-z]):(.*)$') {
+        $wslBin = ('/mnt/{0}{1}' -f $Matches[1].ToLower(), $Matches[2])
     }
-}
-$ErrorActionPreference = $prevEap
-if (-not $verOk) {
-    Write-Error "Binary version mismatch. Expected '$expectedFull' embedded in ccli-bin. Rebuild after editing apps/ccli/VERSION."
+    $verOk = $false
+    $prevEap = $ErrorActionPreference
+    $ErrorActionPreference = "SilentlyContinue"
+    $verOut = wsl bash -lc "'$wslBin' --version" 2>&1 | Out-String
+    if ($verOut -match [regex]::Escape($expectedFull)) {
+        Write-Host $verOut.Trim()
+        $verOk = $true
+    } else {
+        $grepPat = "CCLI_VERSION_FULL|$expectedFull"
+        $embedded = wsl bash -lc "strings '$wslBin' | grep -E '$grepPat' | head -5" 2>&1 | Out-String
+        Write-Host "strings:" $embedded.Trim()
+        if ($embedded -match [regex]::Escape($expectedFull)) {
+            $verOk = $true
+        }
+    }
+    $ErrorActionPreference = $prevEap
+    if (-not $verOk) {
+        Write-Error "Binary version mismatch. Expected '$expectedFull' embedded in ccli-bin. Rebuild after editing apps/ccli/VERSION."
+    }
+} else {
+    Write-Host "=== SkipVersionCheck (archived binary) ===" -ForegroundColor Yellow
 }
 
 $manifestPath = $null
@@ -126,8 +131,8 @@ if (Test-Path $ModelCfg) {
 $ProductCfg = Join-Path $RepoRoot "apps\ccli\config\icd\product\product_tr400_eth_a_5ln.cfg"
 if (Test-Path $ProductCfg) {
     Write-Host "MMS product 5-LN cfg: $ProductCfg" -ForegroundColor Cyan
-    & $Plink -ssh "${User}@${HostAddr}" -pw $pw -hostkey $HostKey -batch "mkdir -p /etc/ccli/icd"
-    & $Pscp -scp -batch -pw $pw -hostkey $HostKey $ProductCfg "${User}@${HostAddr}:/etc/ccli/icd/product_tr400_eth_a_5ln.cfg"
+    & $Plink -ssh "${User}@${HostAddr}" -pw $pw -hostkey $HostKey -batch "mkdir -p /etc/ccli/icd/product"
+    & $Pscp -scp -batch -pw $pw -hostkey $HostKey $ProductCfg "${User}@${HostAddr}:/etc/ccli/icd/product/product_tr400_eth_a_5ln.cfg"
 }
 
 $GpioSh = Join-Path $PSScriptRoot "enable-dut-gpio.sh"

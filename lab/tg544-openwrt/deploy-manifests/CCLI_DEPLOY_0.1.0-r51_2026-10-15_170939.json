@@ -1,0 +1,17 @@
+﻿{
+    "codename":  "P3-07-AARE-SIGN-RAW-GT",
+    "changes":  [
+                    "Oct-08 TSP Connect repro",
+                    "ccli 0.1.0-r51 P3-07-AARE-SIGN-RAW-GT",
+                    "p3_07_connect PKI crl=off",
+                    "lab_tg544_eth_a.cfg"
+                ],
+    "release":  51,
+    "timestamp_utc":  "2026-10-15T15:09:39.8773844Z",
+    "version_full":  "0.1.0-r51",
+    "lab_yaml":  "C:\\Yahia\\projects\\CCLI\\apps\\ccli\\config\\lab_tr400_phase4_eth_b_ttyS1_p3_07_connect.yaml",
+    "sha256":  "1882301468c10da90b7cd8cb03e8d4b63d7493f7126572ad7592e33deee8ce9d",
+    "binary":  "C:\\Yahia\\projects\\CCLI\\lab\\tg544-openwrt\\ccli-bin",
+    "host":  "192.168.10.1",
+    "semver":  "0.1.0"
+}

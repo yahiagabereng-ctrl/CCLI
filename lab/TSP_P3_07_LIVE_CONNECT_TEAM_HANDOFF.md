@@ -58,8 +58,9 @@ CRL warnings in TSP are OK for lab (`crl=off` on DUT).
 
 | Item | Value |
 |------|--------|
-| Config | `/etc/ccli/lab.yaml` |
-| Model | `/etc/ccli/icd/lab_tg544_eth_a.cfg` |
+| Config | `/etc/ccli/lab.yaml` (cert run: `lab_tr400_phase4_eth_b_ttyS1_5ln.yaml` → `model_cfg`) |
+| Model (5-LN cert) | `/etc/ccli/icd/product/product_tr400_eth_a_5ln.cfg` — gate: `scripts/validate-5ln-stack.ps1 -CheckDut -Profile Tsp -FixDut` |
+| Model (31-LN lab) | `/etc/ccli/icd/lab_tg544_eth_a.cfg` |
 | TLS server | `server_tls.pem` + `server.key` |
 | AARE auth (G.2) | `server.pem` + `server_acse.key` |
 | ACSE client allow | `client.pem` (G.6.2) + `client_tls.pem` (TLS allowlist) |

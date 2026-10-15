@@ -1,0 +1,168 @@
+﻿=== Masomeh connect DUT pull 2026-10-15 12:32:54 ===
+=== DUT evidence POST test_id=T1-01 ===
+2026-10-15T18:32:54+08:00
+ccli 0.1.0-r55 (P5-5LN-CERT-MODEL)
+  semver:   0.1.0
+  release:  r55
+  git:      unknown
+  built:    2026-06-29T12:59:20Z UTC
+  platform: tg500
+=== process / listen ===
+13184 /usr/sbin/ccli
+tcp        0      0 192.168.10.1:3782       0.0.0.0:*               LISTEN      2319/ubus
+=== dido_v2 (actuation) ===
+{
+	"running": true,
+	"northbound_count": 0,
+	"channels": [
+		{
+			"channel": 1,
+			"name": "DIO-1",
+			"enabled": true,
+			"mode": "DO",
+			"report_key": "relay_1",
+			"state": 0,
+			"memory_state": false
+		},
+		{
+			"channel": 2,
+			"name": "DIO-2",
+			"enabled": true,
+			"mode": "DI",
+			"report_key": "relay_2",
+			"state": 0,
+			"irq_active": false,
+			"poll_enabled": true,
+			"poll_interval": 5,
+			"change_report": true,
+			"last_poll": 0
+		},
+		{
+			"channel": 3,
+			"name": "DIO-3",
+			"enabled": true,
+			"mode": "DO",
+			"report_key": "relay_3",
+			"state": 0,
+			"memory_state": false
+		},
+		{
+			"channel": 4,
+			"name": "DIO-4",
+			"enabled": true,
+			"mode": "DO",
+			"report_key": "relay_4",
+			"state": 0,
+			"memory_state": false
+		}
+	],
+	"ai": [
+		{
+			"channel": 1,
+			"raw": 5,
+			"ma": 0.005000,
+			"valid": true,
+			"age_ms": 1252
+		},
+		{
+			"channel": 2,
+			"raw": 5,
+			"ma": 0.005000,
+			"valid": true,
+			"age_ms": 1252
+		}
+	],
+	"northbound_channels": [
+		
+	]
+}
+=== logread ccli (filter: CONNECT|DISCONNECT|TLS|ACSE|AARE|auth|handshake|Initiate|session|listening|FAILED|closed) ===
+Thu Oct 15 18:20:40 2026 daemon.err ccli[13184]: TLS: Verify cert: depth 1
+Thu Oct 15 18:20:40 2026 daemon.err ccli[13184]: TLS:    flags: 00000000
+Thu Oct 15 18:20:40 2026 daemon.err ccli[13184]: TLS:   cert. version     : 3
+Thu Oct 15 18:20:40 2026 daemon.err ccli[13184]: TLS: Verify cert: depth 0
+Thu Oct 15 18:20:40 2026 daemon.err ccli[13184]: TLS:    flags: 00000000
+Thu Oct 15 18:20:40 2026 daemon.err ccli[13184]: TLS:   cert. version     : 3
+Thu Oct 15 18:20:40 2026 daemon.err ccli[13184]:   ext key usage     : TLS Web Server Authentication, TLS Web Client Authentication
+Thu Oct 15 18:20:40 2026 daemon.err ccli[13184]: TLS: Check against list of allowed certs
+Thu Oct 15 18:20:40 2026 daemon.err ccli[13184]: TLS: Compare With:
+Thu Oct 15 18:20:40 2026 daemon.err ccli[13184]: TLS:      cert. version     : 3
+Thu Oct 15 18:20:40 2026 daemon.err ccli[13184]:      ext key usage     : TLS Web Server Authentication, TLS Web Client Authentication
+Thu Oct 15 18:20:40 2026 daemon.err ccli[13184]: mms: client CONNECT count=1
+Thu Oct 15 18:20:40 2026 daemon.err ccli[13184]: mms: client DISCONNECT count=0
+Thu Oct 15 18:28:31 2026 daemon.err ccli[13184]: TLS: Verify cert: depth 1
+Thu Oct 15 18:28:31 2026 daemon.err ccli[13184]: TLS:    flags: 00000000
+Thu Oct 15 18:28:31 2026 daemon.err ccli[13184]: TLS:   cert. version     : 3
+Thu Oct 15 18:28:31 2026 daemon.err ccli[13184]: TLS: Verify cert: depth 0
+Thu Oct 15 18:28:31 2026 daemon.err ccli[13184]: TLS:    flags: 00000000
+Thu Oct 15 18:28:31 2026 daemon.err ccli[13184]: TLS:   cert. version     : 3
+Thu Oct 15 18:28:31 2026 daemon.err ccli[13184]:   ext key usage     : TLS Web Server Authentication, TLS Web Client Authentication
+Thu Oct 15 18:28:31 2026 daemon.err ccli[13184]: TLS: Check against list of allowed certs
+Thu Oct 15 18:28:31 2026 daemon.err ccli[13184]: TLS: Compare With:
+Thu Oct 15 18:28:31 2026 daemon.err ccli[13184]: TLS:      cert. version     : 3
+Thu Oct 15 18:28:31 2026 daemon.err ccli[13184]:      ext key usage     : TLS Web Server Authentication, TLS Web Client Authentication
+Thu Oct 15 18:28:31 2026 daemon.err ccli[13184]: mms: client CONNECT count=1
+Thu Oct 15 18:28:31 2026 daemon.err ccli[13184]: mms: client DISCONNECT count=0
+Thu Oct 15 18:30:51 2026 daemon.err ccli[13184]: TLS: handshake failed - mbedtls_ssl_handshake returned -0x1
+=== /tmp/ccli.log tail ===
+mms: time_quality chrony offset_ms=-1 within_pm100=yes leap=Normal ref=BC288E12 gnss_fix=0 clockNotSynchronized=1 (T.3.3.4.5)
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40001 qty=4 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40001 qty=4 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40001 qty=4 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40001 qty=4 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+mms: time_quality chrony offset_ms=-1 within_pm100=yes leap=Normal ref=BC288E12 gnss_fix=0 clockNotSynchronized=1 (T.3.3.4.5)
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40001 qty=4 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40001 qty=4 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+iec104: P4-04 Eth_B comms-loss fallback
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40001 qty=4 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40001 qty=4 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+mms: time_quality chrony offset_ms=-1 within_pm100=yes leap=Normal ref=BC288E12 gnss_fix=0 clockNotSynchronized=1 (T.3.3.4.5)
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40001 qty=4 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40001 qty=4 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+mms: time_quality chrony offset_ms=-1 within_pm100=yes leap=Normal ref=BC288E12 gnss_fix=0 clockNotSynchronized=1 (T.3.3.4.5)
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40001 qty=4 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+io: curtail_do=OFF permissive=BLOCKED
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40001 qty=4 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40001 qty=4 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40001 qty=4 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+mms: time_quality chrony offset_ms=-1 within_pm100=yes leap=Normal ref=BC288E12 gnss_fix=0 clockNotSynchronized=1 (T.3.3.4.5)
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40001 qty=4 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40001 qty=4 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40001 qty=4 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40001 qty=4 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+mms: time_quality chrony offset_ms=-1 within_pm100=yes leap=Normal ref=BC288E12 gnss_fix=0 clockNotSynchronized=1 (T.3.3.4.5)
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40001 qty=4 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+iec104: P4-04 Eth_B comms-loss fallback
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40001 qty=4 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40001 qty=4 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40001 qty=4 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+mms: time_quality chrony offset_ms=-1 within_pm100=yes leap=Normal ref=BC288E12 gnss_fix=0 clockNotSynchronized=1 (T.3.3.4.5)
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40001 qty=4 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40001 qty=4 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+io: curtail_do=OFF permissive=BLOCKED
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40001 qty=4 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40001 qty=4 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+mms: time_quality chrony offset_ms=-1 within_pm100=yes leap=Normal ref=BC288E12 gnss_fix=0 clockNotSynchronized=1 (T.3.3.4.5)
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40001 qty=4 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40001 qty=4 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40001 qty=4 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+mms: time_quality chrony offset_ms=-1 within_pm100=yes leap=Normal ref=BC288E12 gnss_fix=0 clockNotSynchronized=1 (T.3.3.4.5)
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40001 qty=4 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40001 qty=4 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40001 qty=4 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+mms: time_quality chrony offset_ms=-1 within_pm100=yes leap=Normal ref=BC288E12 gnss_fix=0 clockNotSynchronized=1 (T.3.3.4.5)
+iec104: P4-04 Eth_B comms-loss fallback
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40001 qty=4 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40001 qty=4 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+mms: time_quality chrony offset_ms=-1 within_pm100=yes leap=Normal ref=BC288E12 gnss_fix=0 clockNotSynchronized=1 (T.3.3.4.5)
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40001 qty=4 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40001 qty=4 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40001 qty=4 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40001 qty=4 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+mms: time_quality chrony offset_ms=-1 within_pm100=yes leap=Normal ref=BC288E12 gnss_fix=0 clockNotSynchronized=1 (T.3.3.4.5)
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40001 qty=4 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+iec104: P4-04 Eth_B comms-loss fallback
+io: curtail_do=OFF permissive=BLOCKED
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40001 qty=4 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+modbus: FC3 ReadHoldingRegisters unit=1 addr=40001 qty=4 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+

@@ -1,0 +1,24 @@
+﻿# PREFLIGHT_5LN_STACK - 2026-10-15
+generated: 2026-10-15 12:01:35
+profile: Tsp
+host: 192.168.1.130
+
+## Repo
+CID SHA256: 68C72E7F87D1C65B04A3E42925E727815EC8B1A421E0DC65296C7C65B3CF2582
+cfg SHA256: 7E13DE139559ADC68DA0BBAE0C8AB0BD20ABDED6AF3472A9974CD4A5BC6A3146
+
+## DUT
+7e13de139559adc68da0bbae0c8ab0bd20abded6af3472a9974cd4a5bc6a3146  /etc/ccli/icd/product/product_tr400_eth_a_5ln.cfg
+5981e84b026d3579fe2ab19b3cfd1121  /tmp/iec61850_icd/product_tr400_eth_a_5ln.cid
+-r---w----    1 root     root         15888 Oct 15 17:56 /tmp/iec61850_icd/product_tr400_eth_a_5ln.cid
+model_cfg: /etc/ccli/icd/product_tr400_eth_a_5ln.cfg
+
+## ps
+13184 root      3944 S    /usr/sbin/ccli --config /etc/ccli/lab.yaml
+
+## log excerpt
+Thu Oct 15 18:00:42 2026 daemon.err ccli[11519]: mms: full CID model loaded from /etc/ccli/icd/product_tr400_eth_a_5ln.cfg
+Thu Oct 15 18:01:33 2026 daemon.err ccli[13184]: mms: full CID model loaded from /etc/ccli/icd/product_tr400_eth_a_5ln.cfg
+
+## Checks
+- [x] yaml model_cfg -> product_tr400_eth_a_5ln.cfg - [x] DUT cfg SHA = repo cfg SHA - [x] LuCI ICD md5 = repo CID md5 - [x] single ccli process - [x] no iec61850d (TSP / unified) - [x] no iec61850-mmsd (TSP bench) - [x] ccli loaded 5-LN cfg (log hint)

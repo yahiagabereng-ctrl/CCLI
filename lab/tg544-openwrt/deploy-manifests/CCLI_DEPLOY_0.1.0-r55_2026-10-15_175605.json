@@ -1,0 +1,16 @@
+﻿{
+    "codename":  "P5-5LN-CERT-MODEL",
+    "changes":  [
+                    "P3-07 connect profile p3_07_connect",
+                    "lab_tg544_eth_a.cfg crl=off",
+                    "ccli-bin from apps/ccli/VERSION (not legacy r51 git blob)"
+                ],
+    "release":  55,
+    "timestamp_utc":  "2026-10-15T15:56:05.5471411Z",
+    "version_full":  "0.1.0-r55",
+    "lab_yaml":  "C:\\Yahia\\projects\\CCLI\\apps\\ccli\\config\\lab_tr400_phase4_eth_b_ttyS1_p3_07_connect.yaml",
+    "sha256":  "e192d3cce1a0bdff54bb712c6cefdbbd0ff7a2f5057f74c0bc0b4dac5a950b31",
+    "binary":  "C:\\Yahia\\projects\\CCLI\\lab\\tg544-openwrt\\ccli-bin",
+    "host":  "192.168.1.130",
+    "semver":  "0.1.0"
+}

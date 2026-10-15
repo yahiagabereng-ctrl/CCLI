@@ -18,7 +18,7 @@ $remote = @'
 /etc/init.d/iec61850 stop 2>/dev/null; /etc/init.d/iec61850server stop 2>/dev/null
 killall iec61850d 2>/dev/null; killall iec61850-mmsd 2>/dev/null
 /etc/init.d/ccli stop 2>/dev/null; killall ccli 2>/dev/null; sleep 2
-/etc/init.d/ccli start; sleep 4
+/etc/init.d/ccli start; sleep 8
 echo PROCS
 ps w | grep '[c]cli'
 echo IEC

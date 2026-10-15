@@ -116,10 +116,32 @@ if (-not $ds -or $ds.Count -lt 1) {
     $errors += "Missing DataSet DS_R_PdC_Mis4sec on LLN0"
 }
 
+# Header / configRev discipline (PRODUCT_SPECIMEN_5LN)
+$hdrRev = $null
+$header = $doc.SelectSingleNode("//scl:Header", $ns)
+if ($header) { $hdrRev = $header.GetAttribute("revision") }
+$configRevVal = $null
+$configRevNode = $doc.SelectSingleNode("//scl:LN0/scl:DOI[@name='NamPlt']/scl:DAI[@name='configRev']/scl:Val", $ns)
+if ($configRevNode) { $configRevVal = $configRevNode.InnerText.Trim() }
+$hitems = $doc.SelectNodes("//scl:History/scl:Hitem", $ns)
+$maxHitemRev = 0
+foreach ($h in $hitems) {
+    $r = 0
+    [void][int]::TryParse($h.GetAttribute("revision"), [ref]$r)
+    if ($r -gt $maxHitemRev) { $maxHitemRev = $r }
+}
+
 Write-Host "5-LN CID validation: $CidPath" -ForegroundColor Cyan
 Write-Host "IED: $iedName"
 $mmsCount = 1 + $found.Count
 Write-Host "MMS logical nodes: LLN0 + $($found.Count) LN(s) = $mmsCount (expect 5 for cert)"
+if ($hdrRev) { Write-Host "Header revision: $hdrRev | History Hitem rev: $maxHitemRev | configRev: $configRevVal" }
+if ($hdrRev -and ($maxHitemRev -gt 0) -and ([int]$hdrRev -ne $maxHitemRev)) {
+    $errors += "Header revision ($hdrRev) != latest History Hitem revision ($maxHitemRev) - run bump-5ln-cid-revision.ps1 after edits"
+}
+if ($configRevVal -and ($configRevVal -notmatch '^\d{8}$')) {
+    $errors += "LLN0.NamPlt.configRev must be YYYYMMDD (got '$configRevVal')"
+}
 
 foreach ($w in $warnings) { Write-Host "WARN: $w" -ForegroundColor Yellow }
 foreach ($e in $errors) { Write-Host "FAIL: $e" -ForegroundColor Red }

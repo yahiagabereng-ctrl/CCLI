@@ -1,0 +1,82 @@
+﻿# PREFLIGHT_DUT unified matrix - 2026-10-15
+generated: 2026-10-15 15:36:14
+host: 192.168.1.130
+matrix_rows: U-P0-06 U-P0-07 U-P0-08 U-D7-01 U-T3-04 (CRL preflight)
+git_pin: 0e330a1
+deploy_manifest: lab/tg544-openwrt/deploy-manifests/CCLI_DEPLOY_0.1.0-r55_2026-10-15_140421.md
+session_pin: lab/conformance/LAB_UNIFIED_SESSION_PIN_2026-10-14.md
+
+ccli 0.1.0-r55 (P5-5LN-CERT-MODEL)
+  semver:   0.1.0
+  release:  r55
+  git:      unknown
+  built:    2026-06-29T12:59:20Z UTC
+  platform: tg500
+a2c25122e777b4f62b5c856ee77cfb114de33fef9200b70c4ba206bd296be653  /usr/sbin/ccli
+ccli_pgrep_count: 1
+
+## Checks
+- [x] U-P0-07 listening 3782 (MMS TLS) - [x] U-P0-07 listening 2404 (IEC 104 TLS) - [x] U-D7-01 no cleartext :102 - [x] U-P0-07 single ccli PID - [x] U-P0-07 no iec61850d - [x] U-P0-06 TLS PEMs on DUT - [x] U-T3-04 tls_crl in lab.yaml - [x] U-T3-04 lab_crl.pem on DUT - [x] U-T3-04 MMS crl=on (runtime log) - [x] U-T3-04 revoked test PEMs (TSP) - [x] U-P0-08 version 0.1.0-r55 - [x] U-P0-08 binary SHA (repo ccli-bin) - [x] MMS/104 TLS in yaml - [x] MMS model cfg (5-LN product or lab) - [x] Modbus RTU ttyS1 (bench) - [x] U-P5 GPIO GD32 online - [x] U-P5 GPIO ch1 DO / ch2 DI - [x] U-P5 permissive_bypass false - [x] U-P5 svc_io initialized
+
+## netstat
+tcp        0      0 192.168.10.1:3782       0.0.0.0:*               LISTEN      2758/ccli
+tcp        0      0 192.168.1.130:2404      0.0.0.0:*               LISTEN      2758/ccli
+
+## ps
+2758 root      4068 S    /usr/sbin/ccli --config /etc/ccli/lab.yaml
+14437 root      1612 S    logread -e ccli -f
+
+## yaml (excerpt)
+backend: rtu
+  device: /dev/ttyS1
+  bind_address: 192.168.10.1
+  tcp_port: 3782
+  model_cfg: /etc/ccli/icd/product_tr400_eth_a_5ln.cfg
+  tls_enabled: true
+  bind_address: 192.168.1.130
+  tcp_port: 2404
+  tls_enabled: true
+  backend: ubus_dido_v2
+
+## gpio (U-P5 actuation)
+{
+	"available": true,
+	"online": true,
+	"fw_version": "GD32-DIDO-F v1.0.1",
+	"fw_version_int": 65537,
+	"uptime": 16494,
+	"state": true,
+	"device": "/dev/gd32_uart",
+	"baudrate": 115200,
+	"di_mask": 0,
+	"do_mask": 0,
+	"di": [
+		0,
+		0,
+		0,
+		0
+	],
+	"do": [
+		0,
+		0,
+		0,
+		0
+	],
+	"rule_count": 0,
+	"ota_busy": 0,
+	"ota_percent": 0
+}
+
+permissive_bypass: false
+  do_curtail:
+  di_permissive:
+
+Thu Oct 15 21:36:12 2026 daemon.err ccli[2758]: svc_io: ready do_curtail=GPIO1(active_low) di_permissive=GPIO2(active_low)
+
+## tls_crl (U-T3-04)
+tls_crl: /etc/ccli/tls/lab_crl.pem
+lab_crl.pem bytes: 1101
+revoked PEMs: OK
+Thu Oct 15 21:36:14 2026 daemon.err ccli[2758]: mms: TLS CRL loaded /etc/ccli/tls/lab_crl.pem
+Thu Oct 15 21:36:14 2026 daemon.err ccli[2758]: mms: listening on 192.168.10.1:3782 tls=on acse_tls_auth=on rbac=on crl=on fallback_s=15 gnss_poll_s=15 chrony=on discipline=off model=full_cid_cfg
+mms: TLS CRL loaded /etc/ccli/tls/lab_crl.pem
