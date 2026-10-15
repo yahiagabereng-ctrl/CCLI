@@ -1,0 +1,241 @@
+﻿{
+    "generated_utc":  "2026-10-15 10:55:23 UTC",
+    "purpose":  "TestPro + DUT lab TLS bundle in repo",
+    "files":  [
+                  {
+                      "path":  "apps/ccli/config/tls/client.key",
+                      "sha256":  "5A7730CF3993CF5A966960024B2329B6A881CE773BBF2F8B2B6A492180675312",
+                      "bytes":  1706
+                  },
+                  {
+                      "path":  "apps/ccli/config/tls/client.pem",
+                      "sha256":  "C7974E6D5686D6EF3EADC124BD3D09BE8A14ABF727A64607A6938BC25BD65A94",
+                      "bytes":  1455
+                  },
+                  {
+                      "path":  "apps/ccli/config/tls/client_acse.key",
+                      "sha256":  "0236325394F9B7E8E8730865CC3F71C849F7837EF173F056D8A8B0ADD5011D40",
+                      "bytes":  1702
+                  },
+                  {
+                      "path":  "apps/ccli/config/tls/client_acse_tsp.key",
+                      "sha256":  "0236325394F9B7E8E8730865CC3F71C849F7837EF173F056D8A8B0ADD5011D40",
+                      "bytes":  1702
+                  },
+                  {
+                      "path":  "apps/ccli/config/tls/client_tls.pem",
+                      "sha256":  "826D79B032371B5802294154368A4D7C6EC0D5B0C38EF8434316FF77B83229FA",
+                      "bytes":  1438
+                  },
+                  {
+                      "path":  "apps/ccli/config/tls/client_tsp.key",
+                      "sha256":  "5A7730CF3993CF5A966960024B2329B6A881CE773BBF2F8B2B6A492180675312",
+                      "bytes":  1706
+                  },
+                  {
+                      "path":  "apps/ccli/config/tls/lab_crl.pem",
+                      "sha256":  "A8C890E223495CFD632E20849DC23C79CD3FD3F2113B83CDA3C07E6883600CF0",
+                      "bytes":  1120
+                  },
+                  {
+                      "path":  "apps/ccli/config/tls/revoked.key",
+                      "sha256":  "C2C4B3E0881601BF39E5142FD455A45985F5740C14EC9A5D589979401D9BE150",
+                      "bytes":  1702
+                  },
+                  {
+                      "path":  "apps/ccli/config/tls/revoked.pem",
+                      "sha256":  "272ADEFF47CD7B02C8A62DBA6360DCF00C51C138442EF6E59ABEA2FB1BDB01B0",
+                      "bytes":  1457
+                  },
+                  {
+                      "path":  "apps/ccli/config/tls/revoked_acse.key",
+                      "sha256":  "63D24B8CD1F2FCABFE917932D94E4350A2EAD09C5615B4B1D16A2F82C35C7B09",
+                      "bytes":  1702
+                  },
+                  {
+                      "path":  "apps/ccli/config/tls/revoked_acse_tsp.key",
+                      "sha256":  "63D24B8CD1F2FCABFE917932D94E4350A2EAD09C5615B4B1D16A2F82C35C7B09",
+                      "bytes":  1702
+                  },
+                  {
+                      "path":  "apps/ccli/config/tls/revoked_tls.pem",
+                      "sha256":  "9F916AC98968676B00E0C44DEE54618CD777FB83334A506489959D12E64F86E1",
+                      "bytes":  1440
+                  },
+                  {
+                      "path":  "apps/ccli/config/tls/revoked_tsp.key",
+                      "sha256":  "C2C4B3E0881601BF39E5142FD455A45985F5740C14EC9A5D589979401D9BE150",
+                      "bytes":  1702
+                  },
+                  {
+                      "path":  "apps/ccli/config/tls/root_CA.key",
+                      "sha256":  "E4060F6A5227FA532B4F7FA396FBCDB1A59E44629C635C846F3E492D53FE892C",
+                      "bytes":  1706
+                  },
+                  {
+                      "path":  "apps/ccli/config/tls/root_CA.pem",
+                      "sha256":  "8B1D8A82B21E4E53EE7F21FCB95C453E1895CD899E909CAD09E74A61A0A27787",
+                      "bytes":  1293
+                  },
+                  {
+                      "path":  "apps/ccli/config/tls/server.key",
+                      "sha256":  "9C8D6BE1129B3C92E48C393F5F645B661FDADA20D55A95F27C583A99FEEF6EE3",
+                      "bytes":  1702
+                  },
+                  {
+                      "path":  "apps/ccli/config/tls/server.pem",
+                      "sha256":  "9CD77FCCB9EBD298FC02A649CBFD11CB960F362408E9D810FE751BF51C10D0F5",
+                      "bytes":  1448
+                  },
+                  {
+                      "path":  "apps/ccli/config/tls/server_acse.key",
+                      "sha256":  "6844FB9F1C4A0FE8258291732898FDA7BCEC727C34681E25A2BCB277771E6012",
+                      "bytes":  1702
+                  },
+                  {
+                      "path":  "apps/ccli/config/tls/server_combined.key",
+                      "sha256":  "AC37FCB95C8C304B7156C2D304DB80B7BB066C5E1C54C5660B4F3FFD46B5E902",
+                      "bytes":  1706
+                  },
+                  {
+                      "path":  "apps/ccli/config/tls/server_combined.pem",
+                      "sha256":  "2DA5136A15E308222CCD981845C7D7D4ACD633DF61FFFCF7956BB8CF88CA513C",
+                      "bytes":  1124
+                  },
+                  {
+                      "path":  "apps/ccli/config/tls/server_tls.pem",
+                      "sha256":  "EC439FE3F33CBBE48041153677EE26A912653F39B0A875D36B4F8159760B2401",
+                      "bytes":  1455
+                  },
+                  {
+                      "path":  "apps/ccli/config/tls/viewer.key",
+                      "sha256":  "A868F7A0F0FC6E333A4D189CB0DE0E3F5033561D1043DE9E44A19C338E76667D",
+                      "bytes":  1706
+                  },
+                  {
+                      "path":  "apps/ccli/config/tls/viewer.pem",
+                      "sha256":  "C859B034504730C1C2981BEF207CE23B33EDE762FEB7AA047E828018ECC51C31",
+                      "bytes":  1441
+                  },
+                  {
+                      "path":  "apps/ccli/config/tls/viewer_tls.pem",
+                      "sha256":  "9063DF529CC3798745E19F9CF0CB4B97EC9F936C5F81DE7409AC0909004A6750",
+                      "bytes":  1424
+                  },
+                  {
+                      "path":  "apps/ccli/config/tls/ejbca/client.key",
+                      "sha256":  "5A7730CF3993CF5A966960024B2329B6A881CE773BBF2F8B2B6A492180675312",
+                      "bytes":  1706
+                  },
+                  {
+                      "path":  "apps/ccli/config/tls/ejbca/client.pem",
+                      "sha256":  "C7974E6D5686D6EF3EADC124BD3D09BE8A14ABF727A64607A6938BC25BD65A94",
+                      "bytes":  1455
+                  },
+                  {
+                      "path":  "apps/ccli/config/tls/ejbca/client_acse.key",
+                      "sha256":  "0236325394F9B7E8E8730865CC3F71C849F7837EF173F056D8A8B0ADD5011D40",
+                      "bytes":  1702
+                  },
+                  {
+                      "path":  "apps/ccli/config/tls/ejbca/client_acse_tsp.key",
+                      "sha256":  "0236325394F9B7E8E8730865CC3F71C849F7837EF173F056D8A8B0ADD5011D40",
+                      "bytes":  1702
+                  },
+                  {
+                      "path":  "apps/ccli/config/tls/ejbca/client_tls.pem",
+                      "sha256":  "826D79B032371B5802294154368A4D7C6EC0D5B0C38EF8434316FF77B83229FA",
+                      "bytes":  1438
+                  },
+                  {
+                      "path":  "apps/ccli/config/tls/ejbca/client_tsp.key",
+                      "sha256":  "5A7730CF3993CF5A966960024B2329B6A881CE773BBF2F8B2B6A492180675312",
+                      "bytes":  1706
+                  },
+                  {
+                      "path":  "apps/ccli/config/tls/ejbca/lab_crl.ejbca.der",
+                      "sha256":  "98B4BCE32D5BCAD5ED254DBEE8C6EC48348A044539E2720417315160D08804C2",
+                      "bytes":  723
+                  },
+                  {
+                      "path":  "apps/ccli/config/tls/ejbca/lab_crl.pem",
+                      "sha256":  "A8C890E223495CFD632E20849DC23C79CD3FD3F2113B83CDA3C07E6883600CF0",
+                      "bytes":  1120
+                  },
+                  {
+                      "path":  "apps/ccli/config/tls/ejbca/revoked.key",
+                      "sha256":  "C2C4B3E0881601BF39E5142FD455A45985F5740C14EC9A5D589979401D9BE150",
+                      "bytes":  1702
+                  },
+                  {
+                      "path":  "apps/ccli/config/tls/ejbca/revoked.pem",
+                      "sha256":  "272ADEFF47CD7B02C8A62DBA6360DCF00C51C138442EF6E59ABEA2FB1BDB01B0",
+                      "bytes":  1457
+                  },
+                  {
+                      "path":  "apps/ccli/config/tls/ejbca/revoked_acse.key",
+                      "sha256":  "63D24B8CD1F2FCABFE917932D94E4350A2EAD09C5615B4B1D16A2F82C35C7B09",
+                      "bytes":  1702
+                  },
+                  {
+                      "path":  "apps/ccli/config/tls/ejbca/revoked_acse_tsp.key",
+                      "sha256":  "63D24B8CD1F2FCABFE917932D94E4350A2EAD09C5615B4B1D16A2F82C35C7B09",
+                      "bytes":  1702
+                  },
+                  {
+                      "path":  "apps/ccli/config/tls/ejbca/revoked_tls.pem",
+                      "sha256":  "9F916AC98968676B00E0C44DEE54618CD777FB83334A506489959D12E64F86E1",
+                      "bytes":  1440
+                  },
+                  {
+                      "path":  "apps/ccli/config/tls/ejbca/revoked_tsp.key",
+                      "sha256":  "C2C4B3E0881601BF39E5142FD455A45985F5740C14EC9A5D589979401D9BE150",
+                      "bytes":  1702
+                  },
+                  {
+                      "path":  "apps/ccli/config/tls/ejbca/root_CA.pem",
+                      "sha256":  "8B1D8A82B21E4E53EE7F21FCB95C453E1895CD899E909CAD09E74A61A0A27787",
+                      "bytes":  1293
+                  },
+                  {
+                      "path":  "apps/ccli/config/tls/ejbca/server.key",
+                      "sha256":  "9C8D6BE1129B3C92E48C393F5F645B661FDADA20D55A95F27C583A99FEEF6EE3",
+                      "bytes":  1702
+                  },
+                  {
+                      "path":  "apps/ccli/config/tls/ejbca/server.pem",
+                      "sha256":  "9CD77FCCB9EBD298FC02A649CBFD11CB960F362408E9D810FE751BF51C10D0F5",
+                      "bytes":  1448
+                  },
+                  {
+                      "path":  "apps/ccli/config/tls/ejbca/server_acse.key",
+                      "sha256":  "6844FB9F1C4A0FE8258291732898FDA7BCEC727C34681E25A2BCB277771E6012",
+                      "bytes":  1702
+                  },
+                  {
+                      "path":  "apps/ccli/config/tls/ejbca/server_tls.pem",
+                      "sha256":  "EC439FE3F33CBBE48041153677EE26A912653F39B0A875D36B4F8159760B2401",
+                      "bytes":  1455
+                  },
+                  {
+                      "path":  "apps/ccli/config/tls/ejbca/viewer.key",
+                      "sha256":  "A868F7A0F0FC6E333A4D189CB0DE0E3F5033561D1043DE9E44A19C338E76667D",
+                      "bytes":  1706
+                  },
+                  {
+                      "path":  "apps/ccli/config/tls/ejbca/viewer.pem",
+                      "sha256":  "C859B034504730C1C2981BEF207CE23B33EDE762FEB7AA047E828018ECC51C31",
+                      "bytes":  1441
+                  },
+                  {
+                      "path":  "apps/ccli/config/tls/ejbca/viewer_acse.key",
+                      "sha256":  "9C9D6EF7F4616D01BE997F716F5227F9B94E13324388AAFD67BC15C551A268C1",
+                      "bytes":  1706
+                  },
+                  {
+                      "path":  "apps/ccli/config/tls/ejbca/viewer_tls.pem",
+                      "sha256":  "9063DF529CC3798745E19F9CF0CB4B97EC9F936C5F81DE7409AC0909004A6750",
+                      "bytes":  1424
+                  }
+              ]
+}

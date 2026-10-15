@@ -76,6 +76,7 @@ $docs = @(
     @{ Rel = "handoff/masomeh95/PC1_LOG_CAPTURE_REQUIREMENTS.md"; Out = "00h_PC1_LOG_CAPTURE_REQUIREMENTS.md" },
     @{ Rel = "lab/conformance/LAB_UNIFIED_TSP_5LN_EXECUTION.md"; Out = "00g_TSP_5LN_EXECUTION_AND_LOGS.md" },
     @{ Rel = "lab/testpro/PC1_TSP_IMPORT_CHECKLIST.md"; Out = "00i_PC1_TSP_IMPORT_CHECKLIST.md" },
+    @{ Rel = "lab/testpro/TSP_TLS_CERTIFICATE_PATHS.md"; Out = "00n_TSP_TLS_CERTIFICATE_PATHS.md" },
     @{ Rel = "lab/testpro/MASOMEH_CONNECT_FIX_2026-10-14.md"; Out = "00k_MASOMEH_CONNECT_FIX_2026-10-14.md" },
     @{ Rel = "lab/evidence/testsuite-pro/inbox/TSP_INITIATE_RESPONSE_TRIAGE_2026-10-14.md"; Out = "00l_TSP_INITIATE_RESPONSE_TRIAGE_2026-10-14.md" },
     @{ Rel = "lab/evidence/testsuite-pro/inbox/TSP_TLS_ACCESS_DENIED_2026-10-14.md"; Out = "00m_TSP_TLS_ACCESS_DENIED_2026-10-14.md" },

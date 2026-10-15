@@ -1,8 +1,8 @@
 ﻿{
     "pki_source":  "ejbca",
     "synced_utc":  "2026-10-15 12:40:00 UTC (DUT pull -> repo -> PC1; verify-dut-pc1-tls-alignment PASS)",
-    "source_dir":  "C:\\Yahia\\projects\\CCLI\\apps\\ccli\\config\\tls\\ejbca",
-    "product_dir":  "C:\\Yahia\\projects\\CCLI\\apps\\ccli\\config\\tls",
+    "source_dir":  "apps/ccli/config/tls/ejbca",
+    "product_dir":  "apps/ccli/config/tls",
     "files":  [
                   "root_CA.pem",
                   "server.pem",
@@ -13,6 +13,8 @@
                   "client.key",
                   "client_acse.key",
                   "client_tls.pem",
+                  "client_tsp.key",
+                  "client_acse_tsp.key",
                   "viewer.pem",
                   "viewer.key",
                   "viewer_tls.pem",
@@ -20,6 +22,8 @@
                   "revoked.key",
                   "revoked_acse.key",
                   "revoked_tls.pem",
+                  "revoked_tsp.key",
+                  "revoked_acse_tsp.key",
                   "lab_crl.pem"
               ],
     "next_steps":  [

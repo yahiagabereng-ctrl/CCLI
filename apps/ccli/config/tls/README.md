@@ -25,4 +25,6 @@ Regenerate: `python3 apps/ccli/config/tls/gen_lab_pki.py` (requires `cryptograph
 
 Deployed on DUT as `/etc/ccli/tls/`.
 
+**TestPro paths (repo + PC staging):** [`lab/testpro/TSP_TLS_CERTIFICATE_PATHS.md`](../../lab/testpro/TSP_TLS_CERTIFICATE_PATHS.md) · SHA inventory: `TESTPRO_TLS_FILE_MANIFEST.json`
+
 **Product:** replace with DSO / manufacturer PKI (T.3.3.4.9 SCEP/EST); prefer TPM key custody; dual TLS+E2E certs per 62351-4 Annex G.

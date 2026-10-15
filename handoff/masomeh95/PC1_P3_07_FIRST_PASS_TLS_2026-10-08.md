@@ -24,6 +24,8 @@ Or stage TLS only:
 powershell -File scripts\stage-tsp-tls.ps1 -ProductDest D:\CCLI_TSP_FIELD_PACK\tls
 ```
 
+**Repo (all certs committed):** `apps/ccli/config/tls/` and `apps/ccli/config/tls/ejbca/` — see `lab/testpro/TSP_TLS_CERTIFICATE_PATHS.md` and `apps/ccli/config/tls/TESTPRO_TLS_FILE_MANIFEST.json`.
+
 Required files under **`D:\CCLI_TSP_FIELD_PACK\tls\`** (or `C:\CCLI_product_tls\`):
 
 ```text
