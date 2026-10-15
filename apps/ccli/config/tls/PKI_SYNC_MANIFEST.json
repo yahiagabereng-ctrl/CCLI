@@ -23,7 +23,8 @@
                   "lab_crl.pem"
               ],
     "next_steps":  [
-                       "Deploy DUT: lab/tg544-openwrt/deploy-ccli-bench-lan2.ps1",
-                       "PC1: git pull; scripts/setup-pc1-testpro-from-git.ps1"
+                       "Deploy DUT: lab/tg544-openwrt/deploy-ccli-session-fix.ps1 with lab_tr400_phase4_eth_b_ttyS1_5ln.yaml",
+                       "PC1 Masomeh: git pull; scripts/setup-pc1-testpro-from-git.ps1 -Dest D:\\CCLI_TSP_FIELD_PACK",
+                       "Verify: scripts/verify-tsp-tls-key-match.ps1 -TlsDir ...\\tls"
                    ]
 }

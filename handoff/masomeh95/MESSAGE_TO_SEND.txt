@@ -1,47 +1,41 @@
 Hi Masomeh,
 
-Yahia pushed the **first documented TestPro TLS PASS** handoff (2026-10-08) to GitHub. Use this when wiring Test Suite Pro on PC1.
-
-GET FILES (every session):
+The repo now has the same TLS PEMs as the deployed DUT (EJBCA lab PKI under apps/ccli/config/tls/). Pull and stage in one step:
 
   cd D:\CCLI\CCLI
   git pull origin main
   powershell -File scripts\setup-pc1-testpro-from-git.ps1 -Dest D:\CCLI_TSP_FIELD_PACK
 
-READ FIRST in the pack:
+Read in the pack:
 
-  D:\CCLI_TSP_FIELD_PACK\00m_PC1_P3_07_FIRST_PASS_TLS_2026-10-08.md
+  00p_PC1_PULL_TLS_DUT_ALIGNED.md   (start here)
+  00k_PC1_EJBCA_TLS_TESTPRO.md      (TSP file paths + CRL)
 
-  (Full evidence: lab/evidence/testsuite-pro/inbox/TSP_P3_07_LIVE_CONNECT_PASS_2026-10-08.md)
+DUT today (Yahia deploy 2026-10-15):
 
-If Yahia redeployed EJBCA on 2026-10-14, also read 00k_PC1_EJBCA_TLS_TESTPRO.md — same file names; PEM bytes must match DUT.
+  Firmware: 0.1.0-r55 (P5-5LN-CERT-MODEL)
+  MMS:      192.168.10.1:3782  TLS + CRL on
+  Model:    product_tr400_eth_a_5ln (5 LNs)
+  CID:      cid\product_tr400_eth_a_5ln.cid  (mandatory for cert Compare)
 
-TEST SUITE PRO — TLS (2026-10-08 PASS profile):
+TEST SUITE PRO — TLS (matches DUT / 00k):
 
   Folder: D:\CCLI_TSP_FIELD_PACK\tls\
 
   Trust CA:     root_CA.pem
   Transport:    client_tls.pem  +  client_tsp.key
-  MMS Security: client.pem      +  client_tsp.key (same key, both slots — 2026-10-08 PASS)
-  CRL:          lab_crl.pem (enable in TSP if there is a CRL field)
-
-  If Yahia says dual-key G.2 only: MMS Security key may be client_acse.key instead — ask before Connect.
+  MMS Security: client.pem      +  client_acse.key   (NOT client_tsp.key for MMS)
+  CRL:          lab_crl.pem
 
   Server: 192.168.10.1:3782  |  IED CCI016_01  |  TLS ON (not :102)
   LAN1: bench_scripts\set_pc_lan1_dso.cmd  (PC 192.168.10.10)
 
-  CID: cid\product_tr400_eth_a_5ln.cid if Yahia pinned 5-LN cert (r54+)
-       else cid\lab_tg544_eth_a.cid for 31-LN lab — ask Yahia before Connect
+After setup, the script runs verify-tsp-tls-key-match.ps1 — must PASS before Connect.
 
-OpenSSL check (from tls folder):
-
-  openssl verify -CAfile root_CA.pem client.pem client_tls.pem
-  openssl rsa -in client_tsp.key -check -noout
-
-Pass = Connected + Initiate Response Success + reads.
+Evidence logger: -CcliPkg 0.1.0-r55
 
 Also: 00i_PC1_TSP_IMPORT_CHECKLIST.md, 00h_PC1_LOG_CAPTURE_REQUIREMENTS.md, 00_UNIFIED_CERT_TEST_MATRIX.md
 
-If Connect fails, send screenshot of TSP TLS paths + openssl verify output.
+If Connect fails: screenshot TSP TLS paths + tls\DUT_TLS_MANIFEST.json + openssl verify output.
 
 Yahia

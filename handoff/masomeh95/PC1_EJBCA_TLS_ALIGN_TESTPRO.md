@@ -3,7 +3,7 @@
 **For:** Masomeh · **PC-B** · Test Suite Pro only  
 **Date:** 2026-10-14  
 **Git pin:** `main` after commit **dae0a7d** (EJBCA PEMs + DUT redeploy)  
-**DUT:** `ccli 0.1.0-r53` · MMS `192.168.10.1:3782` · **CRL on** (`crl=on`)
+**DUT:** `ccli 0.1.0-r55` · MMS `192.168.10.1:3782` · **CRL on** (`crl=on`) · model **`/etc/ccli/icd/product_tr400_eth_a_5ln.cfg`**
 
 Yahia re-issued lab certificates in **EJBCA** and deployed the same PEM set to the TG544. **You must replace any old TLS files in Test Suite Pro** with the new pack (do not keep a previous `C:\CCLI_tls` or old TSP browse paths from an earlier session).
 
@@ -68,7 +68,7 @@ Use folder: **`D:\CCLI_TSP_FIELD_PACK\tls\`**
 | Server | **`192.168.10.1:3782`** |
 | TLS | **On** (not port 102 cleartext) |
 | IED | **`CCI016_01`** |
-| CID import | **`cid\lab_tg544_eth_a.cid`** |
+| CID import | **`cid\product_tr400_eth_a_5ln.cid`** (5-LN cert — mandatory) |
 
 LAN1 (Admin): `bench_scripts\set_pc_lan1_dso.cmd` → PC **`192.168.10.10`** → `ping 192.168.10.1`
 

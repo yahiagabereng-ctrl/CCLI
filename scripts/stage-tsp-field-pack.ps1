@@ -84,6 +84,7 @@ $docs = @(
     @{ Rel = "lab/testpro/README.md"; Out = "00j_TESTPRO_CONFIG_README.md" },
     @{ Rel = "handoff/masomeh95/PC1_EJBCA_TLS_ALIGN_TESTPRO.md"; Out = "00k_PC1_EJBCA_TLS_TESTPRO.md" },
     @{ Rel = "handoff/masomeh95/PC1_P3_07_FIRST_PASS_TLS_2026-10-08.md"; Out = "00m_PC1_P3_07_FIRST_PASS_TLS_2026-10-08.md" },
+    @{ Rel = "handoff/masomeh95/PC1_PULL_TLS_DUT_ALIGNED.md"; Out = "00p_PC1_PULL_TLS_DUT_ALIGNED.md" },
     @{ Rel = "handoff/alirezavzand/PCA_UNIFIED_CERT_START_ALIREZA.md"; Out = "00l_PC-A_ALIREZA_UNIFIED_CERT_START.md" },
     @{ Rel = "lab/evidence/TLS_WIRESHARK_HANDOFF_ALIREZA.md"; Out = "00m_TLS_WIRESHARK_HANDOFF_ALIREZA.md" },
     @{ Rel = "lab/evidence/EJBCA_HANDOFF_ALIREZA.md"; Out = "00n_EJBCA_HANDOFF_ALIREZA.md" },
@@ -114,7 +115,7 @@ foreach ($rel in $tspScripts) {
         $manifest.files += "scripts/$(Split-Path $src -Leaf)"
     }
 }
-foreach ($scr in @("validate-5ln-cid.ps1", "validate-dut-unified-matrix.ps1")) {
+foreach ($scr in @("validate-5ln-cid.ps1", "bump-5ln-cid-revision.ps1", "validate-5ln-stack.ps1", "validate-dut-unified-matrix.ps1", "push-5ln-product-cfg-to-dut.ps1")) {
     $v5 = Join-Path $Repo "scripts\$scr"
     if (Test-Path $v5) {
         Copy-Item -Force $v5 (Join-Path $Dest "scripts\$scr")

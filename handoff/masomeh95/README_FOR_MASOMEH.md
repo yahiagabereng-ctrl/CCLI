@@ -1,8 +1,8 @@
 # CCLI — code handoff for Masomeh (masomeh95)
 
-**Date:** 2026-10-14  
+**Date:** 2026-10-15  
 **Repo:** https://github.com/yahiagabereng-ctrl/CCLI  
-**Latest commit:** `85d7946` — cybersecurity lab test matrix (62351 / D7 / TSP Tier 3) + RAG hooks
+**TLS + TSP:** After clone, run **`scripts/setup-pc1-testpro-from-git.ps1`** — copies **`apps/ccli/config/tls/`** (DUT-aligned EJBCA lab PKI) into the field pack. See **[PC1_PULL_TLS_DUT_ALIGNED.md](PC1_PULL_TLS_DUT_ALIGNED.md)**.
 
 ---
 

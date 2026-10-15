@@ -21,8 +21,8 @@ Write-Host "Repo: $Repo"
 $dutVer = "0.1.0-r55"
 $verFile = Join-Path $Repo "apps\ccli\VERSION"
 if (Test-Path $verFile) {
-    $line = Get-Content $verFile -Raw
-    if ($line -match 'PKG_RELEASE:=\s*(\d+)') { $dutVer = "0.1.0-r$($Matches[1])" }
+    $vlines = Get-Content $verFile | ForEach-Object { $_.Trim() } | Where-Object { $_ -ne "" }
+    if ($vlines.Count -ge 2) { $dutVer = "$($vlines[0])-r$($vlines[1])" }
 }
 & (Join-Path $Repo "scripts\stage-pc1-tls-dut-bundle.ps1") -Dest (Join-Path $Dest "tls") -DutRelease $dutVer
 
@@ -53,8 +53,19 @@ if (Test-Path $json) {
     Write-Host "  testpro\tsp_tls_and_cid.json"
 }
 
+$handoffPull = Join-Path $Repo "handoff\masomeh95\PC1_PULL_TLS_DUT_ALIGNED.md"
+if (Test-Path $handoffPull) {
+    Copy-Item -Force $handoffPull (Join-Path $Dest "00p_PC1_PULL_TLS_DUT_ALIGNED.md")
+    Write-Host "  00p_PC1_PULL_TLS_DUT_ALIGNED.md"
+}
+
+Write-Host ""
+Write-Host "=== TLS verify (run before TSP Connect) ===" -ForegroundColor Cyan
+& (Join-Path $Repo "scripts\verify-tsp-tls-key-match.ps1") -TlsDir (Join-Path $Dest "tls")
+
 Write-Host ""
 Write-Host "OK: $Dest" -ForegroundColor Green
-Write-Host "Open: 00i_PC1_TSP_IMPORT_CHECKLIST.md -> 00h_PC1_LOG_CAPTURE_REQUIREMENTS.md -> 00_UNIFIED_CERT_TEST_MATRIX.md"
-Write-Host "TSP TLS folder: $Dest\tls\  (see tls\TSP_STAGE_README.txt)"
-Write-Host "TSP CID:        $Dest\cid\lab_tg544_eth_a.cid"
+Write-Host "Read first: 00p_PC1_PULL_TLS_DUT_ALIGNED.md -> 00k_PC1_EJBCA_TLS_TESTPRO.md"
+Write-Host "TSP TLS:     $Dest\tls\  (DUT_TLS_MANIFEST.json = MD5 pin)"
+Write-Host "TSP CID:     $Dest\cid\product_tr400_eth_a_5ln.cid  (5-LN cert, mandatory)"
+Write-Host "DUT pin:     $dutVer  (evidence logger -CcliPkg $dutVer)"

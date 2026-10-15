@@ -1,6 +1,6 @@
 {
   "schema": "ccli-lab-testpro-pc1-v1",
-  "updated": "2026-10-14",
+  "updated": "2026-10-15",
   "ied": {
     "name": "CCI016_01",
     "access_point": "accessPoint1",
@@ -13,9 +13,11 @@
     "netmask": "255.255.255.0"
   },
   "dut_firmware_target": {
-    "semver": "0.1.0-r54",
+    "semver": "0.1.0-r55",
     "codename": "P5-5LN-CERT-MODEL",
-    "deploy_manifest": "lab/tg544-openwrt/deploy-manifests/CCLI_DEPLOY_0.1.0-r54_2026-10-14_150409.md"
+    "binary_sha256": "e192d3cce1a0bdff54bb712c6cefdbbd0ff7a2f5057f74c0bc0b4dac5a950b31",
+    "deploy_manifest": "lab/tg544-openwrt/deploy-manifests/CCLI_DEPLOY_0.1.0-r55_2026-10-15_112042.md",
+    "lab_yaml": "apps/ccli/config/lab_tr400_phase4_eth_b_ttyS1_5ln.yaml"
   },
   "cid": {
     "cert_compare_5ln": {
@@ -63,5 +65,7 @@
     "crl": "lab_crl.pem",
     "t3_04_matrix_row": "U-T3-04"
   },
-  "tsp_ui_notes": "Use client_tsp.key for both Transport TLS and MMS Security private key slots. Port 3782 only."
+  "tsp_ui_notes": "EJBCA dual-key: client_tsp.key = Transport TLS only; client_acse.key = MMS Security. Import lab_crl.pem (DUT crl=on). Port 3782 TLS only.",
+  "pc1_setup_script": "scripts/setup-pc1-testpro-from-git.ps1",
+  "handoff": "handoff/masomeh95/PC1_PULL_TLS_DUT_ALIGNED.md"
 }
