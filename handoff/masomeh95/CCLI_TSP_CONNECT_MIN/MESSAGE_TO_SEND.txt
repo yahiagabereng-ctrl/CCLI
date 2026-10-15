@@ -1,0 +1,35 @@
+Hi Masomeh,
+
+Yahia deployed DUT **2026-10-15 ~18:16 UTC**:
+  **ccli 0.1.0-r55** (apk upgrade r51→r55) · **p3_07_connect** TLS · **lab_tg544_eth_a.cfg** · **crl=off**
+  **192.168.10.1:3782** · preflight **PASS** (3782 = ccli)
+
+Use the attached **CCLI_TSP_CONNECT_MIN** folder (or zip) for TestPro TLS login.
+
+**Read first:** 00t_PC1_FIX_WRONG_TRANSPORT_CERT.md
+
+TSP files (browse every path — do not reuse old paths):
+  Trust               →  tls\root_CA.pem
+  Transport TLS cert  →  tls\client_tls.pem   (serial DC:9A:9E…, CN=DSO_OPERATOR)
+  Transport TLS key   →  tls\client_tsp.key
+  MMS cert            →  tls\client.pem       (serial 28:E5:3F:07…, OID 1.12)
+  MMS key             →  tls\client_tsp.key   (SAME file in both key slots)
+  CRL / revoked       →  EMPTY / off
+
+Connection:
+  IED **CCI016_01** · server **192.168.10.1:3782** · TLS on
+  CID **cid\lab_tg544_eth_a.cid**
+  PC LAN1 **192.168.10.10/24** · Sisco OFF · TLS 1.3 OFF
+
+MD5 must match DUT:
+  7ada0cbe2be1bb4bddff7b6961461bc5  root_CA.pem
+  524fdd81b0d87abc9dc8c1cd2c490968  client_tls.pem
+  fe374442fce9eea87f7a937bac1b3bea  client.pem
+  9858beb9736ad5b32b72238d0cbfa27c  client_tsp.key
+
+Or git pull + scripts\setup-pc1-p3-07-connect.ps1 -Dest D:\CCLI_TSP_FIELD_PACK
+
+When ready: message **ready** for one Connect (Yahia captures DUT log).
+Pass = **Initiate Response Success** + DUT **ACSE auth ACCEPT**.
+
+Yahia
