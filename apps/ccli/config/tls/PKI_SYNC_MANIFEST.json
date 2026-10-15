@@ -1,6 +1,6 @@
 ﻿{
     "pki_source":  "ejbca",
-    "synced_utc":  "2026-10-14 14:51:33 UTC",
+    "synced_utc":  "2026-10-15 12:40:00 UTC (DUT pull -> repo -> PC1; verify-dut-pc1-tls-alignment PASS)",
     "source_dir":  "C:\\Yahia\\projects\\CCLI\\apps\\ccli\\config\\tls\\ejbca",
     "product_dir":  "C:\\Yahia\\projects\\CCLI\\apps\\ccli\\config\\tls",
     "files":  [
