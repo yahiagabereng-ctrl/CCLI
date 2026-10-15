@@ -1,6 +1,10 @@
 Hi Masomeh,
 
-The repo now has the same TLS PEMs as the deployed DUT (EJBCA lab PKI under apps/ccli/config/tls/). Pull and stage in one step:
+2026-10-15: repo TLS = live DUT (21 files MD5 verified). Pull and stage in one step:
+
+OR USB: Yahia sends CCLI_TSP_TLS_COMPLETE_2026-10-15.zip (all certs) + optional CCLI_TSP_FIELD_PACK_DUT_TLS_2026-10-15.zip (full bench pack).
+
+Git path:
 
   cd D:\CCLI\CCLI
   git pull origin main

@@ -1,0 +1,158 @@
+﻿TLS OpenSSL alignment report 2026-10-15T15:02:15.2169913+02:00
+
+======== C:\Yahia\projects\CCLI\apps\ccli\config\tls ========
+--- openssl verify ---
+client.pem: OK
+client_tls.pem: OK
+server.pem: OK
+server_tls.pem: OK
+viewer.pem: OK
+revoked.pem: OK
+revoked_tls.pem: OK
+--- subjects and validity ---
+[root_CA.pem]
+  subject=C=IT, O=HiTEKS, OU=CCLI-Lab, CN=CCLI Lab CA
+  issuer=C=IT, O=HiTEKS, OU=CCLI-Lab, CN=CCLI Lab CA
+  notBefore=Oct  6 13:40:34 2026 GMT
+  notAfter=Oct  3 13:40:34 2036 GMT
+  serial=F49B1FD8B4EA65AE
+[client_tls.pem]
+  subject=C=IT, O=HiTEKS, OU=CCLI-Lab, CN=DSO_OPERATOR
+  issuer=C=IT, O=HiTEKS, OU=CCLI-Lab, CN=CCLI Lab CA
+  notBefore=Oct 14 14:40:35 2026 GMT
+  notAfter=Oct 13 14:40:34 2028 GMT
+  serial=49257D45A067F489D0A048FC5D5B006FFBA37C9F
+[client.pem]
+  subject=C=IT, O=HiTEKS, OU=CCLI-Lab, 2.5.4.106=1.1.1.999.1.12, CN=DSO_OPERATOR
+  issuer=C=IT, O=HiTEKS, OU=CCLI-Lab, CN=CCLI Lab CA
+  notBefore=Oct 14 14:40:43 2026 GMT
+  notAfter=Oct 13 14:40:42 2028 GMT
+  serial=694A6E1111E54A49474B3E31F90DBE6A88B7ADCE
+[server_tls.pem]
+  subject=C=IT, O=HiTEKS, OU=CCLI-Lab, CN=CCI016_01
+  issuer=C=IT, O=HiTEKS, OU=CCLI-Lab, CN=CCLI Lab CA
+  notBefore=Oct 14 14:40:19 2026 GMT
+  notAfter=Oct 13 14:40:18 2028 GMT
+  serial=677EF4082B28948B0B02EFED41671C589AAE4094
+[server.pem]
+  subject=C=IT, O=HiTEKS, OU=CCLI-Lab, 2.5.4.106=1.1.1.999.1.12, CN=CCI016_01
+  issuer=C=IT, O=HiTEKS, OU=CCLI-Lab, CN=CCLI Lab CA
+  notBefore=Oct 14 14:40:27 2026 GMT
+  notAfter=Oct 13 14:40:26 2028 GMT
+  serial=639417BC17817ED79FE43772887A8B262B39FDCF
+[viewer.pem]
+  subject=C=IT, O=HiTEKS, OU=CCLI-Lab, 2.5.4.106=1.1.1.999.1.12, CN=VIEWER
+  issuer=C=IT, O=HiTEKS, OU=CCLI-Lab, CN=CCLI Lab CA
+  notBefore=Oct 14 14:40:59 2026 GMT
+  notAfter=Oct 13 14:40:58 2028 GMT
+  serial=0EE64D397DCB00BA82FA0241FE6901366E4287E2
+[revoked.pem]
+  subject=C=IT, O=HiTEKS, OU=CCLI-Lab, 2.5.4.106=1.1.1.999.1.12, CN=REVOKED_CLIENT
+  issuer=C=IT, O=HiTEKS, OU=CCLI-Lab, CN=CCLI Lab CA
+  notBefore=Oct 14 14:41:14 2026 GMT
+  notAfter=Oct 13 14:41:13 2028 GMT
+  serial=2BEEDCB75E43448FB2C21FB130B5C12870014614
+[revoked_tls.pem]
+  subject=C=IT, O=HiTEKS, OU=CCLI-Lab, CN=REVOKED_CLIENT
+  issuer=C=IT, O=HiTEKS, OU=CCLI-Lab, CN=CCLI Lab CA
+  notBefore=Oct 14 14:41:06 2026 GMT
+  notAfter=Oct 13 14:41:05 2028 GMT
+  serial=25C44238278149E1C556256C364CA4930F91E8F4
+--- CRL ---
+lastUpdate=Oct 14 14:51:22 2026 GMT
+nextUpdate=Oct 15 14:51:21 2026 GMT
+--- modulus pairing ---
+PASS client_tls.pem + client_tsp.key
+PASS client.pem + client_acse.key
+FAIL client.pem + client_tsp.key
+PASS server_tls.pem + server.key
+PASS server.pem + server_acse.key
+PASS revoked_tls.pem + revoked_tsp.key
+PASS revoked.pem + revoked_acse.key
+--- verify-tsp-tls-key-match.ps1 ---
+TSP TLS key/cert pairing: C:\Yahia\projects\CCLI\apps\ccli\config\tls
+PASS Transport Cert A: client_tls.pem + client_tsp.key
+PASS MMS Cert B: client.pem + client_acse.key
+PASS Revoked Cert A: revoked_tls.pem + revoked_tsp.key
+PASS Revoked Cert B: revoked.pem + revoked_acse.key
+
+Result: PASS - Transport=client_tls+client_tsp.key, MMS=client.pem+client_acse.key
+
+======== C:\Yahia\projects\CCLI\lab\tmp\pc1-pack-test\tls ========
+--- openssl verify ---
+client.pem: OK
+client_tls.pem: OK
+server.pem: OK
+server_tls.pem: OK
+viewer.pem: OK
+revoked.pem: OK
+revoked_tls.pem: OK
+--- subjects and validity ---
+[root_CA.pem]
+  subject=C=IT, O=HiTEKS, OU=CCLI-Lab, CN=CCLI Lab CA
+  issuer=C=IT, O=HiTEKS, OU=CCLI-Lab, CN=CCLI Lab CA
+  notBefore=Oct  6 13:40:34 2026 GMT
+  notAfter=Oct  3 13:40:34 2036 GMT
+  serial=F49B1FD8B4EA65AE
+[client_tls.pem]
+  subject=C=IT, O=HiTEKS, OU=CCLI-Lab, CN=DSO_OPERATOR
+  issuer=C=IT, O=HiTEKS, OU=CCLI-Lab, CN=CCLI Lab CA
+  notBefore=Oct 14 14:40:35 2026 GMT
+  notAfter=Oct 13 14:40:34 2028 GMT
+  serial=49257D45A067F489D0A048FC5D5B006FFBA37C9F
+[client.pem]
+  subject=C=IT, O=HiTEKS, OU=CCLI-Lab, 2.5.4.106=1.1.1.999.1.12, CN=DSO_OPERATOR
+  issuer=C=IT, O=HiTEKS, OU=CCLI-Lab, CN=CCLI Lab CA
+  notBefore=Oct 14 14:40:43 2026 GMT
+  notAfter=Oct 13 14:40:42 2028 GMT
+  serial=694A6E1111E54A49474B3E31F90DBE6A88B7ADCE
+[server_tls.pem]
+  subject=C=IT, O=HiTEKS, OU=CCLI-Lab, CN=CCI016_01
+  issuer=C=IT, O=HiTEKS, OU=CCLI-Lab, CN=CCLI Lab CA
+  notBefore=Oct 14 14:40:19 2026 GMT
+  notAfter=Oct 13 14:40:18 2028 GMT
+  serial=677EF4082B28948B0B02EFED41671C589AAE4094
+[server.pem]
+  subject=C=IT, O=HiTEKS, OU=CCLI-Lab, 2.5.4.106=1.1.1.999.1.12, CN=CCI016_01
+  issuer=C=IT, O=HiTEKS, OU=CCLI-Lab, CN=CCLI Lab CA
+  notBefore=Oct 14 14:40:27 2026 GMT
+  notAfter=Oct 13 14:40:26 2028 GMT
+  serial=639417BC17817ED79FE43772887A8B262B39FDCF
+[viewer.pem]
+  subject=C=IT, O=HiTEKS, OU=CCLI-Lab, 2.5.4.106=1.1.1.999.1.12, CN=VIEWER
+  issuer=C=IT, O=HiTEKS, OU=CCLI-Lab, CN=CCLI Lab CA
+  notBefore=Oct 14 14:40:59 2026 GMT
+  notAfter=Oct 13 14:40:58 2028 GMT
+  serial=0EE64D397DCB00BA82FA0241FE6901366E4287E2
+[revoked.pem]
+  subject=C=IT, O=HiTEKS, OU=CCLI-Lab, 2.5.4.106=1.1.1.999.1.12, CN=REVOKED_CLIENT
+  issuer=C=IT, O=HiTEKS, OU=CCLI-Lab, CN=CCLI Lab CA
+  notBefore=Oct 14 14:41:14 2026 GMT
+  notAfter=Oct 13 14:41:13 2028 GMT
+  serial=2BEEDCB75E43448FB2C21FB130B5C12870014614
+[revoked_tls.pem]
+  subject=C=IT, O=HiTEKS, OU=CCLI-Lab, CN=REVOKED_CLIENT
+  issuer=C=IT, O=HiTEKS, OU=CCLI-Lab, CN=CCLI Lab CA
+  notBefore=Oct 14 14:41:06 2026 GMT
+  notAfter=Oct 13 14:41:05 2028 GMT
+  serial=25C44238278149E1C556256C364CA4930F91E8F4
+--- CRL ---
+lastUpdate=Oct 14 14:51:22 2026 GMT
+nextUpdate=Oct 15 14:51:21 2026 GMT
+--- modulus pairing ---
+PASS client_tls.pem + client_tsp.key
+PASS client.pem + client_acse.key
+FAIL client.pem + client_tsp.key
+PASS server_tls.pem + server.key
+PASS server.pem + server_acse.key
+PASS revoked_tls.pem + revoked_tsp.key
+PASS revoked.pem + revoked_acse.key
+--- verify-tsp-tls-key-match.ps1 ---
+TSP TLS key/cert pairing: C:\Yahia\projects\CCLI\lab\tmp\pc1-pack-test\tls
+PASS Transport Cert A: client_tls.pem + client_tsp.key
+PASS MMS Cert B: client.pem + client_acse.key
+PASS Revoked Cert A: revoked_tls.pem + revoked_tsp.key
+PASS Revoked Cert B: revoked.pem + revoked_acse.key
+
+Result: PASS - Transport=client_tls+client_tsp.key, MMS=client.pem+client_acse.key
+

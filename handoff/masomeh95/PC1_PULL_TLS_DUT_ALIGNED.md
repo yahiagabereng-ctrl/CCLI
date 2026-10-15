@@ -14,6 +14,10 @@ git pull origin main
 powershell -File scripts\setup-pc1-testpro-from-git.ps1 -Dest D:\CCLI_TSP_FIELD_PACK
 ```
 
+**Quick guide:** `handoff/masomeh95/MASOMEH_TLS_HANDOFF_2026-10-15.md` (in pack: **`00q_MASOMEH_TLS_HANDOFF_2026-10-15.md`**)
+
+**USB from Yahia (optional):** extract **`CCLI_TSP_TLS_COMPLETE_2026-10-15.zip`** → `D:\CCLI_TSP_FIELD_PACK\tls\` (TLS only; still use git pack for CID + scripts).
+
 This stages:
 
 | Output | Purpose |
@@ -23,6 +27,22 @@ This stages:
 | `cid\product_tr400_eth_a_5ln.cid` | **Mandatory** Compare / browse (5-LN cert) |
 | `00k_PC1_EJBCA_TLS_TESTPRO.md` | TSP TLS + CRL wiring for **current** DUT |
 | `00_UNIFIED_CERT_TEST_MATRIX.md` | Cyber + functional checklist |
+
+---
+
+## DUT log while Masomeh Connects (logger PC / Yahia)
+
+SSH is on **LAN2** (`192.168.1.130`), not `192.168.10.1`. On the **logger PC** while PC1 clicks **Connect**:
+
+```powershell
+cd D:\CCLI\CCLI   # or repo root
+. .\lab\tg544-openwrt\lab-env.ps1
+powershell -File scripts\capture-dut-tsp-connect-log.ps1 -DurationSec 120
+```
+
+Writes `lab\evidence\testsuite-pro\inbox\TSP_CONNECT_DUT_LOG_<date>.txt` (live `logread` + ACSE/TLS/AARE tail).
+
+**PC1 full evidence** (Wireshark + TSP paste + DUT PRE/POST): use `tsp-evidence-logger.ps1` with **`-SshHost 192.168.1.130`** (not `-NoSsh` unless SSH blocked).
 
 ---
 
