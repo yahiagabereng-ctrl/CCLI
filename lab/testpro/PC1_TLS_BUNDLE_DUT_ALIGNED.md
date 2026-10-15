@@ -5,16 +5,25 @@
 
 ---
 
-## Send (Yahia, logger PC)
+## Send (Yahia, logger PC) — **one ZIP, all certs**
 
 ```powershell
 . .\lab\tg544-openwrt\lab-env.ps1
-powershell -File scripts\export-pc1-tls-for-masomeh.ps1 -Dest D:\handoff\PC1_tls_full
+powershell -File scripts\export-pc1-tls-for-masomeh.ps1
 ```
 
-This **pulls from the DUT** (not only repo) so bytes match **what is deployed**. USB **`D:\handoff\PC1_tls_full`** to Masomeh.
+Default output:
 
-Check **`DUT_TLS_MANIFEST.json`** inside the folder for MD5 per file.
+| Output | Contents |
+|--------|----------|
+| **`C:\Yahia\CCLI_TSP_TLS_COMPLETE\`** | Every `*.pem` / `*.key` on DUT `/etc/ccli/tls/` + TSP aliases |
+| **`C:\Yahia\CCLI_TSP_TLS_COMPLETE.zip`** | Same files — **send this one file** (USB / WhatsApp) |
+
+Custom paths: `-Dest D:\handoff\tls -ZipPath D:\handoff\CCLI_TSP_TLS_COMPLETE.zip`  
+Folder only (no zip): `-NoZip`
+
+This **pulls from the DUT** (not only repo) so bytes match **what is deployed**.  
+Check **`DUT_TLS_MANIFEST.json`** and **`TSP_TLS_COMPLETE_README.txt`** inside the folder after extract.
 
 ---
 

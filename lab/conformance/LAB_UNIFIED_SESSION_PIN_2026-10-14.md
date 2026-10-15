@@ -3,24 +3,34 @@
 **Document ID:** CCLI-LAB-UNIFIED-PIN-001  
 **RAG source_id:** `ccli-lab-unified-session-pin-2026-10-14`  
 **Matrix:** [LAB_UNIFIED_CERT_TEST_MATRIX.md](LAB_UNIFIED_CERT_TEST_MATRIX.md) rev **1.4** · rows **U-P0-11**, **U-P0-07**, cyber **U-CYB-1003/1004-***  
-**Repo version truth:** `apps/ccli/VERSION` → **0.1.0-r54** (`P5-5LN-CERT-MODEL`)
+**Repo version truth:** `apps/ccli/VERSION` → **0.1.0-r55** (`P5-5LN-CERT-MODEL`) · **git `0e330a1`** (`origin/main`)
 
-## Session header (current — r54 + 5-LN product model live)
+## Session header (current — r55 + git 0e330a1 + 5-LN on DUT)
 
 | Field | Value |
 |-------|--------|
-| Date | 2026-10-14 |
+| Date | 2026-10-15 |
+| Git pin | **`0e330a1`** |
 | Specimen | **5-LN product model on DUT** — `/etc/ccli/icd/product_tr400_eth_a_5ln.cfg` (CID rev **1**, configRev **20261014**) |
-| DUT `ccli --version` | **0.1.0-r54** (P5-5LN-CERT-MODEL) |
-| Binary SHA-256 | `705752f8c0440a659e1726cba516753be42fff6d6297feba4a094db5cd43e885` |
+| DUT `ccli --version` | **0.1.0-r55** (P5-5LN-CERT-MODEL) |
+| Binary SHA-256 | `a2c25122e777b4f62b5c856ee77cfb114de33fef9200b70c4ba206bd296be653` |
 | Lab yaml | **`lab_tr400_phase4_eth_b_ttyS1_5ln.yaml`** (cert run) · 31-LN fallback `lab_tr400_phase4_eth_b_ttyS1.yaml` |
 | CID SHA-256 | `68C72E7F87D1C65B04A3E42925E727815EC8B1A421E0DC65296C7C65B3CF2582` |
 | cfg SHA-256 (DUT verified = repo) | `7E13DE139559ADC68DA0BBAE0C8AB0BD20ABDED6AF3472A9974CD4A5BC6A3146` (6604 bytes) |
 | MMS | `192.168.10.1:3782` TLS · crl=on · `model loaded from /etc/ccli/icd/product_tr400_eth_a_5ln.cfg` |
 | IEC 104 | `192.168.1.130:2404` TLS |
-| Preflight | `scripts/validate-dut-unified-matrix.ps1 -FixServices -WriteEvidence` |
-| Deploy manifest | [CCLI_DEPLOY_0.1.0-r54_2026-10-14_150409.md](../tg544-openwrt/deploy-manifests/CCLI_DEPLOY_0.1.0-r54_2026-10-14_150409.md) |
-| Prior r53 manifest | [CCLI_DEPLOY_0.1.0-r53_2026-10-14_142430.md](../tg544-openwrt/deploy-manifests/CCLI_DEPLOY_0.1.0-r53_2026-10-14_142430.md) |
+| TesPro northbound | **`uci set iec61850service.global.enabled=0`** — single **ccli** owns 3782/2404 |
+| Preflight | `scripts/validate-dut-unified-matrix.ps1 -FixServices -WriteEvidence` → `PREFLIGHT_DUT_UNIFIED_2026-10-15.txt` |
+| Deploy manifest | [CCLI_DEPLOY_0.1.0-r55_2026-10-15_140421.md](../tg544-openwrt/deploy-manifests/CCLI_DEPLOY_0.1.0-r55_2026-10-15_140421.md) |
+| Prior r54 manifest | [CCLI_DEPLOY_0.1.0-r54_2026-10-14_150409.md](../tg544-openwrt/deploy-manifests/CCLI_DEPLOY_0.1.0-r54_2026-10-14_150409.md) |
+
+## r55 lab delta (vs r54, git 0e330a1)
+
+| Area | Change |
+|------|--------|
+| TLS | Repo EJBCA PEMs on DUT; TestPro dual-key (`client_acse.key` for MMS) |
+| Deploy | UCI-disable **iec61850service** + stop **iec61850-mmsd**; single **ccli** (3782/2404) |
+| Evidence | `PREFLIGHT_DUT_UNIFIED_2026-10-15.txt` **PASS** |
 
 ## r54 code delta (vs r53)
 
@@ -46,16 +56,6 @@
 | U-P0-07 / U-D7-01 | Preflight script (reads **VERSION** from repo) |
 | U-T1-04 PPV | **PASS** when EMT432 yaml + meter; else RTU bench uses yaml fallback |
 | U-T1-02 / U-T1-03 5-LN | **UNBLOCKED** — CID in git + cfg live on DUT · `validate-5ln-cid.ps1` **PASS** 2026-10-14 · TSP import `cid\product_tr400_eth_a_5ln.cid` |
-
-## PC1 (Masomeh) — field pack + TLS bundle
-
-| Field | Value |
-|-------|--------|
-| Handoff | **SENT** 2026-10-14 — full **`D:\CCLI_TSP_FIELD_PACK\`** (or USB equivalent) |
-| TLS | DUT-aligned bundle incl. **revoked** + **viewer** + **`lab_crl.pem`** — [PC1_TLS_BUNDLE_DUT_ALIGNED.md](../testpro/PC1_TLS_BUNDLE_DUT_ALIGNED.md) · git **`670fe89`**+ |
-| PC1 verify | `verify-tsp-tls-key-match.ps1` **PASS** · `client_tls.pem` MD5 **`13c231ee…`** = DUT |
-| TSP Connect | **operator** certs only (`client_tls` + `client.pem` keys) · not revoked for U-T1-01 |
-| TLS fail doc | [TSP_TLS_ACCESS_DENIED_2026-10-14.md](../evidence/testsuite-pro/inbox/TSP_TLS_ACCESS_DENIED_2026-10-14.md) |
 
 ## Deploy
 
