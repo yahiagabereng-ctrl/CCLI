@@ -1,0 +1,30 @@
+# DUT log snapshot after Masomeh Connect attempts (~22:01-22:02 DUT local)
+# Pulled: 2026-10-15 session (PC1 config fixes in progress)
+
+## Result: PARTIAL — Transport TLS OK, MMS Initiate not completed
+
+### Observed (3 attempts ~22:01:56, 22:02:19, 22:02:39)
+- TLS: cert verify depth 0/1 OK
+- TLS: allowlist compare — client matches DSO_OPERATOR / transport allowlist
+- mms: client CONNECT count=1
+- mms: client DISCONNECT count=0  (session dropped quickly)
+- mms: no clients — Operating Rule fallback armed (15 s)
+- NO line: mms: ACSE auth ACCEPT
+- NO line: InitiateResponse success on DUT
+
+### Interpretation
+TCP + mutual TLS to :3782 is working from TSP (traffic reached DUT).
+Failure is after TLS — MMS Security / ACSE / Initiate (AP title, MMS cert+key, Sisco, or CID/model mismatch).
+
+### DUT profile at tail
+- lab_tg544_eth_a.cfg · crl=off · AP=1.1.1.999.1 AE=12
+- ccli restarted 22:03:15 (SIGSEGV recovery) — listening 3782 tls=on
+
+### PC evidence on disk
+- No new TSP Output .txt pasted today after UI fix
+- Wireshark TSP_CONNECT_* pcaps: 0 frames (capture timing) except npcap_test=10
+
+### TSP still verify (from screenshots)
+- Port 3782 not 102 · Local IP 192.168.10.10 not 0.0.0.0
+- AP Title 1,1,1,999,1 on ALL stack tabs (not 1,1,999,1)
+- MMS+Transport certs browsed · client_tsp.key BOTH key slots · chaining depth 1 · Sisco OFF · CRL empty

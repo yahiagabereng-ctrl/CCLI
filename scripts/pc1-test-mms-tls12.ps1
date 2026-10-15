@@ -22,8 +22,8 @@ foreach ($f in @($cert, $key, $ca)) {
 }
 
 Write-Host "OpenSSL TLS 1.2 mutual auth -> ${DutHost}:${Port}" -ForegroundColor Cyan
-$out = & openssl s_client -connect "${DutHost}:${Port}" -cert $cert -key $key -CAfile $ca -tls1_2 -brief 2>&1
-$out | Out-String | Write-Host
+$out = cmd /c "openssl s_client -connect ${DutHost}:${Port} -cert `"$cert`" -key `"$key`" -CAfile `"$ca`" -tls1_2 -brief <nul 2>&1"
+Write-Host $out
 
 if ($out -match "CONNECTION ESTABLISHED" -and $out -match "TLSv1\.2") {
     Write-Host "PASS: TLS 1.2 handshake" -ForegroundColor Green
