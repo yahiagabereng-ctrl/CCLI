@@ -29,3 +29,5 @@ Round 2 (2026-10-14 ~17:51 UTC+2): TLS aligned PASS, OpenSSL TLS1.2 PASS, TSP st
 
 DUT note: iec61850d was running alongside ccli on 3782 during capture.
 
+2026-10-15 (c1f3553): TSP_P3_01_CONNECT_2026-10-15.txt + TSP_CONNECT_EVIDENCE_2026-10-15.md
+

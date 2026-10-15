@@ -1,0 +1,23 @@
+# CCLI TSP evidence
+tsp_id: T1-01
+pc_ip: 192.168.10.10/24
+dut_ip: 192.168.10.1
+dut_port: 3782
+tls: true
+cid: C:\CCLI_TSP_FIELD_PACK\cid\product_tr400_eth_a_5ln.cid
+specimen: 5-LN
+ccli_pkg: 0.1.0-r55
+git_head: c1f3553
+operator: Masomeh
+date: 2026-10-15
+result: FAIL
+
+--- TSP Output ---
+
+APP  CCI016_01: Initiate Response Failed: Transport connection closed
+
+--- Evidence bundle ---
+
+lab/evidence/testsuite-pro/inbox/PC1_EVIDENCE_CAPTURE_2026-10-15.txt
+lab/evidence/testsuite-pro/inbox/DUT_SNAPSHOT_2026-10-15.txt
+lab/evidence/testsuite-pro/inbox/TSP_CONNECT_EVIDENCE_2026-10-15.md
