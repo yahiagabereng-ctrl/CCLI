@@ -1,0 +1,61 @@
+=== PC1 evidence capture ===
+timestamp: 2026-10-15 (Masomeh PC1 session)
+git_head: c1f3553
+pc_ip: 192.168.10.10 (subnet should be 255.255.255.0 /24)
+dut: 192.168.10.1:3782
+ied: CCI016_01
+cid: product_tr400_eth_a_5ln.cid
+tls_dir: C:\CCLI_TSP_FIELD_PACK\tls
+tsp_error: CCI016_01 Initiate Response Failed Transport connection closed
+
+--- Network ---
+(TcpTestSucceeded 192.168.10.1:3782 - run at capture time)
+
+--- MD5 (field pack) ---
+root_CA.pem     F265AE5CA881A5097BC74A543784B443
+client_tls.pem  13C231EE6A2E782B3EB464AC2DEE4C21
+client.pem      7BB6B77CDE4614AE68AD387E580E2696
+
+--- verify-tsp-tls-key-match ---
+PASS Transport: client_tls.pem + client_tsp.key
+PASS MMS: client.pem + client_acse.key
+
+--- TSP config note ---
+Paths must be full browse under C:\CCLI_TSP_FIELD_PACK\tls\
+Transport TLS v1.3 OFF. MMS vs Transport cert split required.
+
+--- DUT correlate ---
+See DUT_SNAPSHOT_2026-10-15.txt (iec61850d + iec61850-mmsd running again)
+
+
+TcpTestSucceeded : True
+PingSucceeded    : False
+
+
+
+
+Verify repo TLS vs DUT 192.168.10.1 ...
+OK  root_CA.pem
+OK  root_CA.key
+FAIL server.pem  repo=ff8e6220495211ae4423acfa45b291ac  dut=190ee0c3f45576c53848f65aa41d8d30
+FAIL server_tls.pem  repo=edd6ead0dde7af7f200bd2fe570e586a  dut=40af60a369dec05933bd603888877a50
+FAIL server.key  repo=2395899c54b97f55828fca8548f96823  dut=c81df4c49e878aff982a91eec84d985d
+FAIL server_acse.key  repo=c96a98901371928b2237ef100a9756a1  dut=0df3cf1985af1bf46de56431a1be6a13
+FAIL server_combined.pem  repo=f3224c63b7ffb8536f3aad74b74cd965  dut=586815053990221ae8938151e77936fa
+FAIL server_combined.key  repo=3bcfa648a2dae8aa3b56f133bc8e3158  dut=366e0216da9fe604acc3bfe698b92c67
+OK  client.pem
+OK  client_tls.pem
+OK  client.key
+OK  client_acse.key
+OK  client_tsp.key
+OK  viewer.pem
+OK  viewer_tls.pem
+OK  viewer.key
+OK  revoked.pem
+OK  revoked_tls.pem
+OK  revoked.key
+OK  revoked_acse.key
+OK  lab_crl.pem
+
+Result: FAIL (6) - redeploy DUT TLS from repo or sync repo from DUT before sending to PC1.
+
