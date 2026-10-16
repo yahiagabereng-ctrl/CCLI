@@ -34,6 +34,11 @@ Your matrix rows: U-P0-03/04/05/07/11, U-P0b-01..05, U-T1-11, U-P5-02, U-P3-11, 
 
 Do NOT run Test Suite Pro on LAN1 on your PC if Masomeh is TSP on PC1.
 
+P3-07 SECURITY PASS (TSP Connect — repeat deploy):
+  handoff/alirezavzand/P3_07_SECURITY_PASS_DEPLOY_ALIREZA.md
+  handoff/alirezavzand/TSP_CERT_PATHS_P3_07_SECURITY_PASS.txt
+  Release: https://github.com/yahiagabereng-ctrl/CCLI/releases/tag/p3-07-security-pass
+
 TLS / EJBCA deep-dive (when needed):
   lab/evidence/TLS_WIRESHARK_HANDOFF_ALIREZA.md
   lab/evidence/EJBCA_HANDOFF_ALIREZA.md

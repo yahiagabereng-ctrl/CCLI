@@ -1,8 +1,18 @@
 # CCLI unified cert — handoff for Alireza (@alirezavzand)
 
-**Date:** 2026-10-14  
+**Date:** 2026-10-16 (P3-07 PASS deploy added)  
 **Repo:** https://github.com/yahiagabereng-ctrl/CCLI  
 **GitHub:** `alirezavzand` (collaborator)
+
+---
+
+## P3-07 SECURITY PASS (TSP Connect — deploy every time)
+
+When Masomeh / PC-B runs **Test Suite Pro** on **192.168.10.10** → DUT **192.168.10.1:3782**:
+
+1. **[P3_07_SECURITY_PASS_DEPLOY_ALIREZA.md](P3_07_SECURITY_PASS_DEPLOY_ALIREZA.md)** — full runbook (r51 APK, yaml, certs, TSP fields)  
+2. **[TSP_CERT_PATHS_P3_07_SECURITY_PASS.txt](TSP_CERT_PATHS_P3_07_SECURITY_PASS.txt)** — copy-paste browse paths  
+3. GitHub release: https://github.com/yahiagabereng-ctrl/CCLI/releases/tag/p3-07-security-pass  
 
 ---
 

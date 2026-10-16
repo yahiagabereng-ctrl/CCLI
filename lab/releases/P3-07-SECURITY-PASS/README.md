@@ -31,7 +31,7 @@ Last lab deploy note: **r55** kept the r51 AARE stack and switched DUT to this y
 | MMS Security | `tls/client.pem` | **`28E53F07CFE347B0`** · OID `1.1.1.999.1.12` |
 | MMS key | **`tls/client_tsp.key`** (same file) | |
 
-**CRL / revoked:** leave **empty** in TSP for this session.
+**CRL:** DUT yaml uses **`crl=off`**. On TSP, if the UI errors on an empty revocation list, use **`lab_crl.pem`** (from `apps/ccli/config/tls/lab_crl.pem`) on **both** Transport and MMS tabs — same file as staged in `C:\CCLI_tls\`.
 
 | Connection | Value |
 |------------|--------|

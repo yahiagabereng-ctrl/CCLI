@@ -1,0 +1,28 @@
+P3-07 SECURITY PASS — Test Suite Pro certificate paths (2026-10-16)
+Use C:\CCLI_tls\ only (no spaces). Refresh from p3_07_connect before Connect.
+
+Trust / CA (Transport AND MMS):
+  C:\CCLI_tls\root_CA.pem
+
+Transport TLS:
+  Public:  C:\CCLI_tls\client_tls.pem   serial DC9A9E26D547EF38  CN=DSO_OPERATOR
+  Private: C:\CCLI_tls\client_tsp.key
+
+MMS Security:
+  Public:  C:\CCLI_tls\client.pem        serial 28E53F07CFE347B0
+  Private: C:\CCLI_tls\client_tsp.key    SAME file as Transport
+
+CRL (both tabs if TSP requires non-empty):
+  C:\CCLI_tls\lab_crl.pem
+
+CID:
+  ...\CCLI_TSP_FIELD_PACK\cid\lab_tg544_eth_a.cid
+
+Connection:
+  IED CCI016_01  |  192.168.10.1:3782  |  local 192.168.10.10
+  AP Title 1,1,1,999,1  |  AE 12  |  Listening port 3782
+  TLS 1.3 OFF  |  Sisco OFF
+
+DUT binary:
+  ccli 0.1.0-r51 (P3-07-AARE-SIGN-RAW-GT)
+  https://github.com/yahiagabereng-ctrl/CCLI/releases/tag/p3-07-security-pass
