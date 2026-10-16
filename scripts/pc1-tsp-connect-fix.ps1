@@ -58,15 +58,15 @@ if (-not $CaptureOnly) {
     }
 }
 
-Step "TSP UI checklist (manual - required for traffic on wire)"
+Step "TSP UI checklist (P3-07 Connect — see handoff/masomeh95/PC1_ENCRYPTED_ALERT_P3_07.md)"
 @(
     "1. Close and reopen Test Suite Pro AS ADMINISTRATOR"
     "2. System Status: Ethernet $PcIp must be GREEN (not red / no adapters)"
-    "3. Import CID: C:\CCLI_TSP_FIELD_PACK\cid\product_tr400_eth_a_5ln.cid"
+    "3. Import CID: C:\CCLI_TSP_FIELD_PACK\cid\lab_tg544_eth_a.cid (NOT product 5-LN for Connect)"
     "4. IED Connection: $DutHost port $Port TLS ON local IP $PcIp IED CCI016_01 AP accessPoint1"
     "5. TLS paths ONLY from $TlsDir (re-browse every file):"
     "   CA root_CA.pem | Transport client_tls.pem + client_tsp.key"
-    "   MMS client.pem + client_acse.key | CRL lab_crl.pem"
+    "   MMS client.pem + client_tsp.key (SAME key file — NOT client_acse.key) | CRL/revoked EMPTY"
     "6. Chaining depth 1 both tabs | AP Title 1,1,1,999,1 | Allow TLS v1.3 OFF"
     "7. Output filter: MMS; APP; SSL"
 ) | ForEach-Object { Write-Host $_ }

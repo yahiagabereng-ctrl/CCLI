@@ -13,7 +13,8 @@ Write-Host "P3-07 connect PKI -> $Dest" -ForegroundColor Cyan
 python $Gen --dest $Dest
 if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 
-& (Join-Path $Repo "scripts\verify-tsp-tls-key-match.ps1") -TlsDir $Dest
+& (Join-Path $Repo "scripts\verify-tsp-tls-key-match.ps1") -TlsDir $Dest -Profile P3-07
+& (Join-Path $Repo "scripts\sync-tsp-connect-min-handoff.ps1")
 if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 
 # Oct-08 TSP: client_tsp.key must match client.pem (same as client.key)

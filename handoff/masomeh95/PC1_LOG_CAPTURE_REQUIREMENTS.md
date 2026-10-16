@@ -48,7 +48,11 @@ openssl version
 
 ### TSP file wiring (field pack `tls\` or `C:\CCLI_tls\`)
 
-Read **`tls\TSP_STAGE_README.txt`** after stage. Summary:
+Read **`tls\TSP_STAGE_README.txt`** after stage.
+
+**P3-07 Connect (Oct-08 PASS):** MMS key = **`client_tsp.key`** (same as Transport). See **`00r_PC1_P3_07_CONNECT_PROFILE_ACTIVE.md`**.
+
+**EJBCA unified matrix only:**
 
 | TSP role | Certificate | Private key |
 |----------|-------------|-------------|
@@ -58,7 +62,8 @@ Read **`tls\TSP_STAGE_README.txt`** after stage. Summary:
 | Viewer cases (T3-02/03) | `viewer.pem` | `viewer.key` |
 | Revoked case (T3-04) | `revoked_tls.pem` + `revoked.pem` | **`revoked_tsp.key`** (both slots) + import **`lab_crl.pem`** |
 
-**Critical:** Transport key → **`client_tsp.key`** · MMS key → **`client_acse.key`** (62351-4 dual key). Run `scripts/verify-tsp-tls-key-match.ps1` after `git pull`.
+**Critical (P3-07 Connect session):** Transport key → **`client_tsp.key`** · MMS key → **`client_tsp.key`** (same file in both slots — **not** `client_acse.key`). Run `scripts/pc1-p3-07-connect-preflight.ps1` after `git pull`.  
+**Unified EJBCA / 5-LN matrix** uses dual key (`client_acse.key`) — different session; see `00k_PC1_EJBCA_TLS_TESTPRO.md`.
 
 ### OpenSSL preflight (save optional evidence)
 

@@ -44,16 +44,19 @@ DUT SSH: **`root`** · password in **`lab-env.example.ps1`** freeze · host **`1
 
 ```powershell
 cd D:\CCLI\CCLI\CCLI
-powershell -File scripts\setup-pc1-p3-07-connect.ps1 -Dest D:\CCLI_TSP_FIELD_PACK
-powershell -File scripts\verify-tsp-tls-key-match.ps1 -TlsDir D:\CCLI_TSP_FIELD_PACK\tls
-powershell -File scripts\verify-lab-access-freeze.ps1 -TlsDir D:\CCLI_TSP_FIELD_PACK\tls
+powershell -ExecutionPolicy Bypass -File scripts\pc1-p3-07-connect-preflight.ps1
 ```
+
+(Do **not** run `setup-pc1-testpro-from-git.ps1` for this session.)
 
 Read **in order:**
 
-1. `D:\CCLI_TSP_FIELD_PACK\00t_PC1_FIX_WRONG_TRANSPORT_CERT.md`
-2. `D:\CCLI_TSP_FIELD_PACK\00r_PC1_P3_07_CONNECT_PROFILE_ACTIVE.md`
-3. `D:\CCLI_TSP_FIELD_PACK\00q_LAB_ACCESS_FREEZE.md`
+1. `D:\CCLI_TSP_FIELD_PACK\00_START_HERE_P3_07_CONNECT.md`
+2. `D:\CCLI_TSP_FIELD_PACK\00w_PC1_PULL_STILL_FAILS_README.md` (if Connect still fails after pull)
+3. `D:\CCLI_TSP_FIELD_PACK\00t_PC1_FIX_WRONG_TRANSPORT_CERT.md`
+4. `D:\CCLI_TSP_FIELD_PACK\00r_PC1_P3_07_CONNECT_PROFILE_ACTIVE.md`
+
+**Code / firmware layout (repo):** `apps/ccli/` (lab binary source) · `lab/tg544-openwrt/` (DUT deploy, **`ccli-0.1.0-r55.apk`**, revision pin **`lab/tg544-openwrt/revision-pins/P3-07-TSP-CONNECT.json`**) · pin **`releases/product-cyber/0.1.0-r55/FREEZE.md`**
 
 Repo copy of minimal TLS zip path: `handoff/masomeh95/CCLI_TSP_CONNECT_MIN/` (same PEMs as step 3).
 

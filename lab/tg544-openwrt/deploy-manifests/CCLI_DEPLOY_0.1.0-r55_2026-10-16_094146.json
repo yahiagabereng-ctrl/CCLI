@@ -1,0 +1,19 @@
+﻿{
+    "release":  55,
+    "semver":  "0.1.0",
+    "icd_cfg":  "C:\\Yahia\\projects\\CCLI\\apps\\ccli\\config\\icd\\lab_tg544_eth_a.cfg",
+    "lab_yaml":  "apps\\ccli\\config\\lab_tr400_phase4_eth_b_ttyS1_p3_07_connect.yaml",
+    "codename":  "P5-5LN-CERT-MODEL",
+    "host":  "192.168.1.130",
+    "deploy_profile":  "P3-07-TSP-CONNECT",
+    "binary":  "C:\\Yahia\\projects\\CCLI\\lab\\tg544-openwrt\\ccli-bin",
+    "version_full":  "0.1.0-r55",
+    "git_commit":  "09ecd42",
+    "changes":  [
+                    "Align p3_07_connect for PC1",
+                    "crl=off"
+                ],
+    "timestamp_utc":  "2026-10-16T07:41:52.4576394Z",
+    "tls_dir":  "apps\\ccli\\config\\tls\\p3_07_connect",
+    "sha256":  "e192d3cce1a0bdff54bb712c6cefdbbd0ff7a2f5057f74c0bc0b4dac5a950b31"
+}

@@ -7,7 +7,9 @@
 #   powershell -File scripts\verify-tsp-tls-key-match.ps1 -TlsDir D:\CCLI_TSP_FIELD_PACK\tls
 
 param(
-    [string]$TlsDir = ""
+    [string]$TlsDir = "",
+    [ValidateSet("Auto", "P3-07", "EJBCA")]
+    [string]$Profile = "Auto"
 )
 
 $ErrorActionPreference = "Stop"
@@ -29,9 +31,23 @@ function Get-ModulusMd5([string]$Path, [string]$Kind) {
 
 Write-Host "TSP TLS key/cert pairing: $TlsDir" -ForegroundColor Cyan
 
+$acsePath = Join-Path $TlsDir "client_acse.key"
+$p307 = $Profile -eq "P3-07" -or ($Profile -eq "Auto" -and -not (Test-Path $acsePath))
+if ($Profile -eq "Auto" -and (Test-Path $acsePath)) {
+    Write-Host "Profile: EJBCA (client_acse.key present)" -ForegroundColor DarkGray
+} elseif ($p307) {
+    Write-Host "Profile: P3-07 Connect (MMS key MUST be client_tsp.key)" -ForegroundColor DarkGray
+    if (Test-Path $acsePath) {
+        Write-Host "WARN: client_acse.key must NOT be selected in TSP for P3-07 - remove from pack or ignore file" -ForegroundColor Yellow
+    }
+}
+
+$mmsKey = if ($p307) { "client_tsp.key" } else { "client_acse.key" }
+$mmsAlt = if ($p307) { $null } else { "client_tsp.key" }
+
 $checks = @(
     @{ Label = "Transport Cert A"; Cert = "client_tls.pem"; Key = "client_tsp.key"; AltKey = "client.key" },
-    @{ Label = "MMS Cert B"; Cert = "client.pem"; Key = "client_acse.key"; AltKey = "client_tsp.key" },
+    @{ Label = "MMS Cert B"; Cert = "client.pem"; Key = $mmsKey; AltKey = $mmsAlt },
     @{ Label = "Revoked Cert A"; Cert = "revoked_tls.pem"; Key = "revoked_tsp.key"; AltKey = "revoked.key" },
     @{ Label = "Revoked Cert B"; Cert = "revoked.pem"; Key = "revoked_acse.key"; AltKey = "revoked.key" }
 )
@@ -68,5 +84,10 @@ if ($fail -gt 0) {
     Write-Host "`nResult: FAIL ($fail) - fix before TestPro Connect" -ForegroundColor Red
     exit 1
 }
-Write-Host "`nResult: PASS - Transport=client_tls+client_tsp.key, MMS=client.pem+client_acse.key" -ForegroundColor Green
+Write-Host ""
+if ($p307) {
+    Write-Host 'Result: PASS - P3-07: Transport client_tls+client_tsp.key, MMS client.pem+client_tsp.key (same key)' -ForegroundColor Green
+} else {
+    Write-Host 'Result: PASS - EJBCA: Transport client_tls+client_tsp.key, MMS client.pem+client_acse.key' -ForegroundColor Green
+}
 exit 0

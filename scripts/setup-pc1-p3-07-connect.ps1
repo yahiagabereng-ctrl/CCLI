@@ -23,6 +23,11 @@ if (Test-Path $tlsDest) {
 }
 New-Item -ItemType Directory -Force -Path $tlsDest | Out-Null
 Copy-Item -Force (Join-Path $TlsSrc "*") $tlsDest
+# Oct-08 pack must not ship dual-key files (TSP users pick client_acse.key by mistake).
+foreach ($bad in @("client_acse.key", "client_acse_tsp.key", "lab_crl.pem")) {
+    $p = Join-Path $tlsDest $bad
+    if (Test-Path $p) { Remove-Item -Force $p; Write-Host "  removed tls\$bad (not P3-07 Connect)" -ForegroundColor Yellow }
+}
 
 $cidSrc = Join-Path $Repo "apps\ccli\config\icd\lab_tg544_eth_a.cid"
 $cidDst = Join-Path $Dest "cid\lab_tg544_eth_a.cid"
@@ -30,7 +35,10 @@ New-Item -ItemType Directory -Force -Path (Join-Path $Dest "cid") | Out-Null
 Copy-Item -Force $cidSrc $cidDst
 
 $docs = @(
+    @{ Rel = "handoff/masomeh95/00_START_HERE_P3_07_CONNECT.md"; Out = "00_START_HERE_P3_07_CONNECT.md" },
+    @{ Rel = "handoff/masomeh95/PC1_PULL_STILL_FAILS_README.md"; Out = "00w_PC1_PULL_STILL_FAILS_README.md" },
     @{ Rel = "handoff/masomeh95/PC1_FIX_WRONG_TRANSPORT_CERT.md"; Out = "00t_PC1_FIX_WRONG_TRANSPORT_CERT.md" },
+    @{ Rel = "handoff/masomeh95/PC1_ENCRYPTED_ALERT_P3_07.md"; Out = "00v_PC1_ENCRYPTED_ALERT_P3_07.md" },
     @{ Rel = "handoff/masomeh95/PC1_P3_07_CONNECT_PROFILE_ACTIVE.md"; Out = "00r_PC1_P3_07_CONNECT_PROFILE_ACTIVE.md" },
     @{ Rel = "handoff/masomeh95/PC1_P3_07_FIRST_PASS_TLS_2026-10-08.md"; Out = "00m_PC1_P3_07_FIRST_PASS_TLS_2026-10-08.md" },
     @{ Rel = "lab/evidence/testsuite-pro/inbox/TSP_P3_07_LIVE_CONNECT_PASS_2026-10-08.md"; Out = "00s_TSP_P3_07_LIVE_CONNECT_PASS_2026-10-08.md" },
@@ -45,7 +53,7 @@ foreach ($d in $docs) {
 }
 
 Write-Host "`n=== TLS verify (Oct-08 profile) ===" -ForegroundColor Cyan
-& (Join-Path $Repo "scripts\verify-tsp-tls-key-match.ps1") -TlsDir (Join-Path $Dest "tls")
+& (Join-Path $Repo "scripts\verify-tsp-tls-key-match.ps1") -TlsDir (Join-Path $Dest "tls") -Profile P3-07
 
 $envExample = Join-Path $Repo "lab\tg544-openwrt\lab-env.example.ps1"
 if (Test-Path $envExample) {

@@ -77,6 +77,8 @@ $docs = @(
     @{ Rel = "lab/conformance/LAB_SPECIMEN_VERSION.md"; Out = "16_LAB_SPECIMEN_VERSION.md" },
     @{ Rel = "handoff/masomeh95/PC1_HW_CERT_PREFLIGHT.md"; Out = "00f_PC1_HW_CERT_PREFLIGHT.md" },
     @{ Rel = "handoff/masomeh95/PC1_LOG_CAPTURE_REQUIREMENTS.md"; Out = "00h_PC1_LOG_CAPTURE_REQUIREMENTS.md" },
+    @{ Rel = "handoff/masomeh95/PC1_PULL_STILL_FAILS_README.md"; Out = "00w_PC1_PULL_STILL_FAILS_README.md" },
+    @{ Rel = "handoff/masomeh95/PC1_ENCRYPTED_ALERT_P3_07.md"; Out = "00v_PC1_ENCRYPTED_ALERT_P3_07.md" },
     @{ Rel = "lab/conformance/LAB_UNIFIED_TSP_5LN_EXECUTION.md"; Out = "00g_TSP_5LN_EXECUTION_AND_LOGS.md" },
     @{ Rel = "lab/testpro/PC1_TSP_IMPORT_CHECKLIST.md"; Out = "00i_PC1_TSP_IMPORT_CHECKLIST.md" },
     @{ Rel = "lab/testpro/TSP_TLS_CERTIFICATE_PATHS.md"; Out = "00n_TSP_TLS_CERTIFICATE_PATHS.md" },
