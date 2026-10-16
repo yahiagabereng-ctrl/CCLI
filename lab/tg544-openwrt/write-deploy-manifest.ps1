@@ -11,6 +11,9 @@ param(
     [string[]]$Changes,
     [string]$Binary = "",
     [string]$LabYaml = "",
+    [string]$TlsDir = "",
+    [string]$IcdCfg = "",
+    [string]$DeployProfile = "",
     [string]$HostAddr = "192.168.1.130",
     [string]$Operator = $env:USERNAME
 )
@@ -49,6 +52,10 @@ try {
 }
 
 $yamlName = Split-Path $LabYaml -Leaf
+$tlsName = if ($TlsDir) { Split-Path $TlsDir -Leaf } else { "" }
+$icdName = if ($IcdCfg) { Split-Path $IcdCfg -Leaf } else { "" }
+$gitShort = ""
+try { $gitShort = (git -C $RepoRoot rev-parse --short HEAD 2>$null) } catch { }
 $manifestName = "CCLI_DEPLOY_${full}_${stamp}.md"
 $manifestPath = Join-Path $ManifestDir $manifestName
 New-Item -ItemType Directory -Force -Path $ManifestDir | Out-Null
@@ -69,6 +76,7 @@ $body = @"
 | **SHA256** | ``$hash`` |
 | **Size (bytes)** | $size |
 | **Lab yaml** | ``$yamlName`` |
+$(if ($tlsName) { "| **TLS dir** | ``$tlsName`` |`n" })$(if ($icdName) { "| **ICD cfg** | ``$icdName`` |`n" })$(if ($DeployProfile) { "| **Revision pin** | ``$DeployProfile`` |`n" })$(if ($gitShort) { "| **Git (short)** | ``$gitShort`` |`n" })
 
 ## Changes in this deploy
 
@@ -105,16 +113,20 @@ Write-Host "SHA256:   $hash"
 # Machine-readable sidecar for deploy script
 $jsonPath = $manifestPath -replace '\.md$', '.json'
 @{
-    version_full = $full
-    semver       = $semver
-    release      = [int]$release
-    codename     = $codename
-    sha256       = $hash
-    binary       = $Binary
-    lab_yaml     = $LabYaml
-    host         = $HostAddr
-    timestamp_utc = (Get-Date).ToUniversalTime().ToString("o")
-    changes      = $Changes
+    version_full   = $full
+    semver         = $semver
+    release        = [int]$release
+    codename       = $codename
+    sha256         = $hash
+    binary         = $Binary
+    lab_yaml       = $LabYaml
+    tls_dir        = $TlsDir
+    icd_cfg        = $IcdCfg
+    deploy_profile = $DeployProfile
+    git_commit     = $gitShort
+    host           = $HostAddr
+    timestamp_utc  = (Get-Date).ToUniversalTime().ToString("o")
+    changes        = $Changes
 } | ConvertTo-Json -Depth 4 | Set-Content -Path $jsonPath -Encoding UTF8
 
 Write-Output $manifestPath

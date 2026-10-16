@@ -1,0 +1,34 @@
+{
+  "document_id": "CCLI-LAB-ACCESS-FREEZE-001",
+  "revision": "1.0",
+  "effective_date": "2026-10-15",
+  "markdown": "lab/LAB_ACCESS_FREEZE.md",
+  "ssh": {
+    "user": "root",
+    "env_var": "CCLI_TG544_PW",
+    "password_source": "lab/tg544-openwrt/lab-env.example.ps1",
+    "putty_hostkey_sha256": "4N84xpdiJRUiipactNbXLdVa2+A4eCCrUurVDrz3qoE",
+    "hosts": {
+      "lan1_mms": "192.168.10.1",
+      "lan2_plant": "192.168.1.130"
+    }
+  },
+  "pc_roles": {
+    "tsp_pc_b": { "ipv4": "192.168.10.10/24", "script": "lab/set_pc_lan1_dso.cmd" },
+    "logger_lan1": { "ipv4": "192.168.10.20/24", "script": "lab/set_pc_lan1_logger.cmd" }
+  },
+  "tsp_field_pack_default": "D:\\CCLI_TSP_FIELD_PACK",
+  "tsp_p3_07_connect": {
+    "profile": "P3-07-TSP-CONNECT",
+    "tls_repo": "apps/ccli/config/tls/p3_07_connect",
+    "md5": {
+      "root_CA.pem": "7ada0cbe2be1bb4bddff7b6961461bc5",
+      "client_tls.pem": "524fdd81b0d87abc9dc8c1cd2c490968",
+      "client.pem": "fe374442fce9eea87f7a937bac1b3bea",
+      "client_tsp.key": "9858beb9736ad5b32b72238d0cbfa27c"
+    },
+    "transport_cert_serial": "DC:9A:9E:26:D5:47:EF:38",
+    "mms_endpoint": "192.168.10.1:3782",
+    "ied_name": "CCI016_01"
+  }
+}

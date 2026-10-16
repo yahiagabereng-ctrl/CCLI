@@ -7,10 +7,13 @@ param(
 )
 
 $ErrorActionPreference = "Stop"
+if (-not $env:CCLI_TG544_PW) {
+    & (Join-Path $PSScriptRoot "source-lab-env.ps1") | Out-Null
+}
 $Plink = "C:\Program Files\PuTTY\plink.exe"
 $hk = "SHA256:4N84xpdiJRUiipactNbXLdVa2+A4eCCrUurVDrz3qoE"
 $pw = $env:CCLI_TG544_PW
-if (-not $pw) { throw "Set CCLI_TG544_PW (source lab-env.ps1)" }
+if (-not $pw) { throw "Set CCLI_TG544_PW (source-lab-env.ps1 or lab-env.ps1)" }
 
 $remote = @'
 /etc/init.d/iec61850service stop 2>/dev/null; /etc/init.d/iec61850service disable 2>/dev/null

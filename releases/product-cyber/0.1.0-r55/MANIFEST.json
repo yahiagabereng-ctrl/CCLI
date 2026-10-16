@@ -1,0 +1,20 @@
+{
+  "semver": "0.1.0",
+  "release": 55,
+  "codename": "P5-5LN-CERT-MODEL",
+  "git_pin": "main",
+  "frozen_cyber": {
+    "mms": "192.168.10.1:3782 TLS CRL ACSE",
+    "iec104": "192.168.1.130:2404 TLS",
+    "model": "product_tr400_eth_a_5ln",
+    "yaml_ship": "apps/ccli/config/product_tr400.yaml"
+  },
+  "reference_binary_sha256": "a2c25122e777b4f62b5c856ee77cfb114de33fef9200b70c4ba206bd296be653",
+  "deploy_manifest": "lab/tg544-openwrt/deploy-manifests/CCLI_DEPLOY_0.1.0-r55_2026-10-15_140421.json",
+  "artifacts_pending_copy": [
+    "ccli-0.1.0-r55.apk",
+    "config/product_tr400.yaml",
+    "icd/product_tr400_eth_a_5ln.cid",
+    "icd/product_tr400_eth_a_5ln.cfg"
+  ]
+}

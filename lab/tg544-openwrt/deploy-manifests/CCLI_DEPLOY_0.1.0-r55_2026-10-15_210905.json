@@ -1,0 +1,20 @@
+﻿{
+    "release":  55,
+    "semver":  "0.1.0",
+    "icd_cfg":  "C:\\Yahia\\projects\\CCLI\\apps\\ccli\\config\\icd\\lab_tg544_eth_a.cfg",
+    "lab_yaml":  "C:\\Yahia\\projects\\CCLI\\apps\\ccli\\config\\product_tr400.yaml",
+    "codename":  "P5-5LN-CERT-MODEL",
+    "host":  "192.168.1.130",
+    "deploy_profile":  "PRODUCT-5LN-CERT",
+    "binary":  "C:\\Yahia\\projects\\CCLI\\lab\\tg544-openwrt\\ccli-bin",
+    "version_full":  "0.1.0-r55",
+    "git_commit":  "66a1418",
+    "changes":  [
+                    "product_tr400.yaml as DUT lab.yaml",
+                    "5-LN product cfg + EJBCA tls",
+                    "cert specimen r55"
+                ],
+    "timestamp_utc":  "2026-10-15T19:09:06.1524358Z",
+    "tls_dir":  "C:\\Yahia\\projects\\CCLI\\apps\\ccli\\config\\tls",
+    "sha256":  "e192d3cce1a0bdff54bb712c6cefdbbd0ff7a2f5057f74c0bc0b4dac5a950b31"
+}

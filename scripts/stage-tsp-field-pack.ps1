@@ -49,6 +49,9 @@ $docs = @(
     @{ Rel = "lab/conformance/PRODUCT_SPECIMEN_5LN_VALIDATION.md"; Out = "00d_PRODUCT_SPECIMEN_5LN_VALIDATION.md" },
     @{ Rel = "lab/conformance/P5_FULLCIRCLE_5LN_SCOPE.md"; Out = "00e_P5_FULLCIRCLE_5LN_SCOPE.md" },
     @{ Rel = "handoff/masomeh95/TSP_PC1_START_MASOMEH.md"; Out = "00_START_PC1_MASOMEH.md" },
+    @{ Rel = "handoff/masomeh95/PC1_GITHUB_PULL_RUNBOOK.md"; Out = "00z_PC1_GITHUB_PULL_RUNBOOK.md" },
+    @{ Rel = "handoff/masomeh95/PC1_FIX_WRONG_TRANSPORT_CERT.md"; Out = "00t_PC1_FIX_WRONG_TRANSPORT_CERT.md" },
+    @{ Rel = "handoff/masomeh95/PC1_P3_07_CONNECT_PROFILE_ACTIVE.md"; Out = "00r_PC1_P3_07_CONNECT_PROFILE_ACTIVE.md" },
     @{ Rel = "lab/conformance/LAB_UNIFIED_CERT_TEST_MATRIX.csv"; Out = "00_UNIFIED_CERT_TEST_MATRIX.csv" },
     @{ Rel = "lab/conformance/LAB_REQUIREMENT_TEST_MATRIX.md"; Out = "01_CHECKLIST_LAB_REQUIREMENT_TEST_MATRIX.md" },
     @{ Rel = "lab/conformance/LAB_REQUIREMENT_TEST_MATRIX_CYBER.md"; Out = "01b_CHECKLIST_CYBER_REQUIREMENT_TEST_MATRIX.md" },
@@ -114,7 +117,11 @@ $tspScripts = @(
     "scripts/capture-mms-tsp-interactive.ps1",
     "scripts/capture-dut-tsp-connect-log.ps1",
     "scripts/dut-mms-tsp-preflight.ps1",
-    "scripts/verify-tsp-tls-key-match.ps1"
+    "scripts/verify-tsp-tls-key-match.ps1",
+    "scripts/verify-dut-p3-07-connect-alignment.ps1",
+    "scripts/source-lab-env.ps1",
+    "scripts/ensure-lab-env.ps1",
+    "scripts/verify-lab-access-freeze.ps1"
 )
 New-Item -ItemType Directory -Force -Path (Join-Path $Dest "scripts") | Out-Null
 foreach ($rel in $tspScripts) {
@@ -145,6 +152,16 @@ foreach ($rel in $benchScripts) {
         Copy-Item -Force $src (Join-Path $Dest "bench_scripts\$(Split-Path $src -Leaf)")
         $manifest.files += "bench_scripts/$(Split-Path $src -Leaf)"
     }
+}
+$labEnvExample = Join-Path $Repo "lab\tg544-openwrt\lab-env.example.ps1"
+if (Test-Path $labEnvExample) {
+    Copy-Item -Force $labEnvExample (Join-Path $Dest "bench_scripts\lab-env.ps1")
+    $manifest.files += "bench_scripts/lab-env.ps1"
+}
+$accessFreeze = Join-Path $Repo "lab\LAB_ACCESS_FREEZE.md"
+if (Test-Path $accessFreeze) {
+    Copy-Item -Force $accessFreeze (Join-Path $Dest "00q_LAB_ACCESS_FREEZE.md")
+    $manifest.files += "00q_LAB_ACCESS_FREEZE.md"
 }
 New-Item -ItemType Directory -Force -Path (Join-Path $Dest "tools") | Out-Null
 $toolFiles = @(

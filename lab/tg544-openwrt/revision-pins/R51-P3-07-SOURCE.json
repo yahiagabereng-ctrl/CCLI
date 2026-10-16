@@ -1,0 +1,51 @@
+{
+  "profile_id": "R51-P3-07-SOURCE",
+  "title": "0.1.0-r51 P3-07 AARE (pre-5LN source pin)",
+  "description": "Source and build identity for Oct-08 TestPro MMS Security association pass, before r52–r55 5-LN cert-model changes. Do not deploy rolling lab/tg544-openwrt/ccli-bin from main without rebuilding at this release.",
+  "version": {
+    "semver": "0.1.0",
+    "release": 51,
+    "codename": "P3-07-AARE-SIGN-RAW-GT",
+    "version_full": "0.1.0-r51"
+  },
+  "source_git_commit": "4c73addc60581c710032f75ff693e5ba47be4818",
+  "source_git_commit_short": "4c73add",
+  "reference_binary": {
+    "sha256": "2b166430fdb5851a46bad31c1741f11f7c553161fe98bce8b6bbc6558cbdf7ae",
+    "size_bytes": 7805952,
+    "note": "Oct-09 Federico deploy manifest; not the mislabeled 7776624 B blob at 4c73add in git ccli-bin"
+  },
+  "deploy": {
+    "host_default": "192.168.10.1",
+    "pc_network_script": "lab/set_pc_lan1_logger.cmd",
+    "pc_ipv4": "192.168.10.20/24",
+    "lab_yaml": "apps/ccli/config/lab_tr400_phase4_eth_b.yaml",
+    "lab_yaml_at_source_commit": "apps/ccli/config/lab_tr400_phase4_eth_b.yaml",
+    "lab_yaml_modern_repro": "apps/ccli/config/lab_tr400_phase4_eth_b_ttyS1_p3_07_connect.yaml",
+    "tls_dir": "apps/ccli/config/tls",
+    "tls_dir_modern_repro": "apps/ccli/config/tls/p3_07_connect",
+    "icd_cfg": "apps/ccli/config/icd/lab_tg544_eth_a.cfg",
+    "mms": "192.168.10.1:3782",
+    "iec104": "192.168.1.130:2404"
+  },
+  "requirements": [
+    "REQ-VER-001: apps/ccli/VERSION lines 0.1.0 / 51 / P3-07-AARE-SIGN-RAW-GT",
+    "REQ-VER-002: scripts/sync-ccli-version.ps1 then PKG_RELEASE:=51 in package/ccli/Makefile",
+    "REQ-BLD-001: wsl bash lab/tg544-openwrt/build-ccli-ipk-sdk.sh (or wsl-build-ccli.sh)",
+    "REQ-BLD-002: lab/tg544-openwrt/ccli-bin --version (WSL qemu/aarch64) must print 0.1.0-r51",
+    "REQ-BLD-003: write-deploy-manifest.ps1 before upload; SHA256 must match rebuilt binary",
+    "REQ-DUT-001: disable iec61850service / iec61850-mmsd (deploy-ccli-dut.sh)",
+    "REQ-TSP-001: PC-B 192.168.10.10; TSP uses client_tls.pem + client_acse.key for MMS",
+    "REQ-LOG-001: DUT log iso session CONNECT -> ACSE auth ACCEPT -> AARE responder auth [10]EXTERNAL"
+  ],
+  "verify_scripts": [
+    "scripts/dut-mms-tsp-preflight.ps1",
+    "scripts/verify-dut-ccli-install.ps1"
+  ],
+  "canonical_manifest": "lab/tg544-openwrt/deploy-manifests/CCLI_DEPLOY_0.1.0-r51_2026-10-09_130515.json",
+  "anti_patterns": [
+    "Deploying git ccli-bin at 4c73add without rebuild (often reports r30 at runtime)",
+    "SkipVersionCheck without archiving as ccli-bin.r51 and documenting actual strings --version",
+    "Hand-copy ccli-bin without apk add — apk metadata may lie; trust /usr/sbin/ccli --version and sha256"
+  ]
+}

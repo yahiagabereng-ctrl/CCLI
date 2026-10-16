@@ -1,0 +1,49 @@
+{
+  "profile_id": "PRODUCT-5LN-CERT",
+  "title": "Product ship profile on DUT (cert specimen)",
+  "description": "Deploy apps/ccli/config/product_tr400.yaml as /etc/ccli/lab.yaml — same MMS/104 cyber as UNIFIED-5LN-CERT; plant = EMT432 Modbus TCP LAN3, use_dso_mock false.",
+  "version": {
+    "semver": "0.1.0",
+    "release": 55,
+    "codename": "P5-5LN-CERT-MODEL",
+    "version_full": "0.1.0-r55"
+  },
+  "source_git_commit": "main",
+  "reference_binary": {
+    "sha256": "a2c25122e777b4f62b5c856ee77cfb114de33fef9200b70c4ba206bd296be653",
+    "manifest": "lab/tg544-openwrt/deploy-manifests/CCLI_DEPLOY_0.1.0-r55_2026-10-15_140421.json"
+  },
+  "deploy": {
+    "host_default": "192.168.1.130",
+    "host_lan1_mms": "192.168.10.1",
+    "lab_yaml": "apps/ccli/config/product_tr400.yaml",
+    "tls_dir": "apps/ccli/config/tls",
+    "icd_cfg": "apps/ccli/config/icd/product/product_tr400_eth_a_5ln.cfg",
+    "icd_cid": "apps/ccli/config/icd/product/product_tr400_eth_a_5ln.cid",
+    "mms": "192.168.10.1:3782",
+    "iec104": "192.168.1.130:2404"
+  },
+  "requirements": [
+    "REQ-PROD-SW-002: MMS TLS :3782 only",
+    "REQ-PROD-SW-004: use_dso_mock false · Modbus TCP plant when meter on LAN3",
+    "REQ-PROD-SW-007: not lab cleartext yaml",
+    "REQ-DUT-001: single ccli · iec61850service off",
+    "REQ-VER-001: validate-dut-unified-matrix.ps1 -FixServices -WriteEvidence"
+  ],
+  "verify_scripts": [
+    "scripts/validate-dut-unified-matrix.ps1"
+  ],
+  "docs": [
+    "knowledge-base/08-engineering/CCI_Product_SW_Freeze.md",
+    "product/PRODUCT_5LN_CYBER_MINIMAL.md",
+    "lab/conformance/PRODUCT_SPECIMEN_5LN.md"
+  ],
+  "deploy_script": {
+    "path": "lab/tg544-openwrt/deploy-ccli-session-fix.ps1",
+    "example_changes": [
+      "product_tr400.yaml as DUT lab.yaml",
+      "5-LN product cfg + EJBCA tls",
+      "cert specimen r55"
+    ]
+  }
+}

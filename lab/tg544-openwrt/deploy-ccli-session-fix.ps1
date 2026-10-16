@@ -15,6 +15,7 @@ param(
     [string]$User = "root",
     [string]$LabYaml = "",
     [string]$TlsDir = "",
+    [string]$DeployProfile = "",
     [switch]$SkipManifest,
     [switch]$SkipVersionCheck
 )
@@ -81,7 +82,12 @@ if (-not $SkipVersionCheck) {
 
 $manifestPath = $null
 if (-not $SkipManifest) {
-    $manifestPath = & $ManifestScript -Changes $Changes -Binary $Bin -LabYaml $LabYaml -HostAddr $HostAddr
+    $icdForManifest = Join-Path $RepoRoot "apps\ccli\config\icd\lab_tg544_eth_a.cfg"
+    if ($LabYaml -match "5ln\.yaml") {
+        $icdForManifest = Join-Path $RepoRoot "apps\ccli\config\icd\product\product_tr400_eth_a_5ln.cfg"
+    }
+    $manifestPath = & $ManifestScript -Changes $Changes -Binary $Bin -LabYaml $LabYaml `
+        -TlsDir $TlsDir -IcdCfg $icdForManifest -DeployProfile $DeployProfile -HostAddr $HostAddr
 }
 
 $pw = $env:CCLI_TG544_PW

@@ -1,0 +1,50 @@
+{
+  "profile_id": "UNIFIED-5LN-CERT",
+  "title": "Unified cert matrix (5-LN product specimen)",
+  "description": "LAB_UNIFIED_CERT_TEST_MATRIX session: product_tr400_eth_a_5ln on DUT, EJBCA TLS, crl=on, CS104 TLS on Eth_B.",
+  "version": {
+    "semver": "0.1.0",
+    "release": 55,
+    "codename": "P5-5LN-CERT-MODEL",
+    "version_full": "0.1.0-r55"
+  },
+  "source_git_commit": "0e330a1",
+  "source_git_commit_note": "Session pin in LAB_UNIFIED_SESSION_PIN_2026-10-14; use current main >= r54 for 5-LN boot",
+  "reference_binary": {
+    "sha256": "a2c25122e777b4f62b5c856ee77cfb114de33fef9200b70c4ba206bd296be653",
+    "manifest": "lab/tg544-openwrt/deploy-manifests/CCLI_DEPLOY_0.1.0-r55_2026-10-15_140421.json"
+  },
+  "deploy": {
+    "host_default": "192.168.1.130",
+    "host_lan1_mms": "192.168.10.1",
+    "lab_yaml": "apps/ccli/config/lab_tr400_phase4_eth_b_ttyS1_5ln.yaml",
+    "lab_yaml_fallback_31ln": "apps/ccli/config/lab_tr400_phase4_eth_b_ttyS1.yaml",
+    "tls_dir": "apps/ccli/config/tls",
+    "icd_cfg": "apps/ccli/config/icd/product/product_tr400_eth_a_5ln.cfg",
+    "icd_cid": "apps/ccli/config/icd/product/product_tr400_eth_a_5ln.cid",
+    "mms": "192.168.10.1:3782",
+    "iec104": "192.168.1.130:2404"
+  },
+  "requirements": [
+    "REQ-CID-001: validate-5ln-cid.ps1 PASS; bump via scripts/bump-5ln-cid-revision.ps1 when CID edits",
+    "REQ-SPEC-001: PRODUCT_SPECIMEN_5LN.md SHA pins updated after CID/cfg change",
+    "REQ-PKI-001: provision-ejbca-ccli-pki.ps1 — TestPro dual-key client_acse.key",
+    "REQ-DUT-001: deploy uploads product cfg to /etc/ccli/icd/product/",
+    "REQ-TSP-001: TSP imports cid/product_tr400_eth_a_5ln.cid",
+    "REQ-VER-001: validate-dut-unified-matrix.ps1 -FixServices -WriteEvidence"
+  ],
+  "verify_scripts": [
+    "scripts/validate-dut-unified-matrix.ps1",
+    "scripts/validate-5ln-cid.ps1",
+    "scripts/validate-5ln-stack.ps1"
+  ],
+  "docs": [
+    "lab/conformance/LAB_UNIFIED_SESSION_PIN_2026-10-14.md",
+    "lab/conformance/LAB_UNIFIED_CERT_TEST_MATRIX.md",
+    "lab/conformance/PRODUCT_SPECIMEN_5LN.md"
+  ],
+  "deploy_script": {
+    "path": "lab/tg544-openwrt/deploy-ccli-session-fix.ps1",
+    "example_changes": ["5-LN cert session", "EJBCA tls", "product_tr400_eth_a_5ln.cfg"]
+  }
+}

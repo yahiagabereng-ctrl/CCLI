@@ -47,7 +47,16 @@ foreach ($d in $docs) {
 Write-Host "`n=== TLS verify (Oct-08 profile) ===" -ForegroundColor Cyan
 & (Join-Path $Repo "scripts\verify-tsp-tls-key-match.ps1") -TlsDir (Join-Path $Dest "tls")
 
+$envExample = Join-Path $Repo "lab\tg544-openwrt\lab-env.example.ps1"
+if (Test-Path $envExample) {
+    New-Item -ItemType Directory -Force -Path (Join-Path $Dest "bench_scripts") | Out-Null
+    Copy-Item -Force $envExample (Join-Path $Dest "bench_scripts\lab-env.ps1")
+    Copy-Item -Force (Join-Path $Repo "lab\LAB_ACCESS_FREEZE.md") (Join-Path $Dest "00q_LAB_ACCESS_FREEZE.md") -ErrorAction SilentlyContinue
+    Write-Host "  bench_scripts\lab-env.ps1 (frozen DUT SSH — same as logger PC)"
+}
+
 Write-Host "`nOK: $Dest" -ForegroundColor Green
+Write-Host "SSH on TSP PC:  . $Dest\bench_scripts\lab-env.ps1"
 Write-Host "Read FIRST: 00t_PC1_FIX_WRONG_TRANSPORT_CERT.md"
 Write-Host "Then:       00r_PC1_P3_07_CONNECT_PROFILE_ACTIVE.md"
 Write-Host 'CID:  cid\lab_tg544_eth_a.cid  (31-LN lab, same as 2026-10-08 PASS)'

@@ -21,19 +21,22 @@ D:\CCLI_TSP_FIELD_PACK\
 
 ### B — GitHub (recommended): pull repo on PC1, then stage pack
 
+**Full steps:** [`PC1_GITHUB_PULL_RUNBOOK.md`](PC1_GITHUB_PULL_RUNBOOK.md)
+
 ```powershell
-# First time on PC1:
-git clone https://github.com/yahiagabereng-ctrl/CCLI.git
-cd CCLI
-
-# Every session (get Yahia's latest matrices + scripts):
+cd D:\CCLI\CCLI\CCLI
 git pull origin main
+powershell -File scripts\ensure-lab-env.ps1
+powershell -File scripts\source-lab-env.ps1
 
-# Build USB-free field pack + TestPro CID/TLS checklist:
-powershell -File scripts\setup-pc1-testpro-from-git.ps1 -Dest D:\CCLI_TSP_FIELD_PACK
+# P3-07 Connect session (matches DUT p3_07_connect, crl=off):
+powershell -File scripts\setup-pc1-p3-07-connect.ps1 -Dest D:\CCLI_TSP_FIELD_PACK
+powershell -File scripts\verify-lab-access-freeze.ps1 -TlsDir D:\CCLI_TSP_FIELD_PACK\tls
 ```
 
-TLS is included under `D:\CCLI_TSP_FIELD_PACK\tls\` after stage (same PEMs as DUT `/etc/ccli/tls/`). Read **`00p_PC1_PULL_TLS_DUT_ALIGNED.md`** first, then **`00k_PC1_EJBCA_TLS_TESTPRO.md`**, then **`00i_PC1_TSP_IMPORT_CHECKLIST.md`**. Use **`scripts\setup-pc1-testpro-from-git.ps1`** after every `git pull` — no separate USB copy needed if pull succeeds.
+Read **`00t_PC1_FIX_WRONG_TRANSPORT_CERT.md`** then **`00r_PC1_P3_07_CONNECT_PROFILE_ACTIVE.md`** in the pack.
+
+**Unified 5-LN / EJBCA matrix** (different TLS tree): use **`setup-pc1-testpro-from-git.ps1`** and **`00k_PC1_EJBCA_TLS_TESTPRO.md`** instead.
 
 ---
 

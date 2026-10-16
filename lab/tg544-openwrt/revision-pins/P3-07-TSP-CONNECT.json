@@ -1,0 +1,56 @@
+{
+  "profile_id": "P3-07-TSP-CONNECT",
+  "title": "P3-07 Connect repro (Oct-08 profile on current tree)",
+  "description": "Masomeh / PC1 pack alignment: dedicated PKI directory, crl=off, 31-LN lab_tg544_eth_a.cfg. Firmware may be r55 with P3-07 stack or rebuilt r51; identity must match apps/ccli/VERSION.",
+  "version": {
+    "semver": "0.1.0",
+    "release": 55,
+    "codename": "P5-5LN-CERT-MODEL",
+    "version_full": "0.1.0-r55",
+    "note": "Use release 51 + codename P3-07-AARE-SIGN-RAW-GT only when explicitly rebuilding R51-P3-07-SOURCE"
+  },
+  "source_git_commit": "4c0d6b2",
+  "source_git_commit_note": "Introduced p3_07_connect yaml + tls; P3-07 MMS fixes live from 4c73add",
+  "reference_binary": {
+    "sha256": "e192d3cce1a0bdff54bb712c6cefdbbd0ff7a2f5057f74c0bc0b4dac5a950b31",
+    "size_bytes": null,
+    "manifest": "lab/tg544-openwrt/deploy-manifests/CCLI_DEPLOY_0.1.0-r55_2026-10-15_181640.json"
+  },
+  "deploy": {
+    "host_default": "192.168.10.1",
+    "host_lan2_alt": "192.168.1.130",
+    "pc_network_script_lan1": "lab/set_pc_lan1_logger.cmd",
+    "pc_network_script_lan2": "lab/set_pc_lan2_oa.cmd",
+    "lab_yaml": "apps/ccli/config/lab_tr400_phase4_eth_b_ttyS1_p3_07_connect.yaml",
+    "tls_dir": "apps/ccli/config/tls/p3_07_connect",
+    "icd_cfg": "apps/ccli/config/icd/lab_tg544_eth_a.cfg",
+    "mms": "192.168.10.1:3782",
+    "yaml_flags": ["tls_crl: off", "single-key PKI", "model_cfg -> lab_tg544_eth_a.cfg"]
+  },
+  "requirements": [
+    "REQ-VER-001: ccli-bin embedded version matches apps/ccli/VERSION (deploy script enforces)",
+    "REQ-PKI-001: TlsDir p3_07_connect — full replace on DUT /etc/ccli/tls",
+    "REQ-PC1-001: scripts/setup-pc1-p3-07-connect.ps1 — same MD5 as DUT TLS set",
+    "REQ-TSP-001: uci iec61850service.global.enabled=0 — ccli owns :3782",
+    "REQ-NET-001: one NIC — LAN1 OR LAN2 script, not both",
+    "REQ-HAND-001: handoff/masomeh95/CCLI_TSP_CONNECT_MIN.zip when using field pack"
+  ],
+  "verify_scripts": [
+    "scripts/verify-dut-p3-07-connect-alignment.ps1",
+    "scripts/dut-mms-tsp-preflight.ps1"
+  ],
+  "deploy_script": {
+    "path": "lab/tg544-openwrt/deploy-ccli-session-fix.ps1",
+    "example_changes": [
+      "Oct-08 P3-07 connect repro",
+      "p3_07_connect PKI crl=off",
+      "lab_tg544_eth_a.cfg"
+    ]
+  },
+  "docs": [
+    "lab/LAN1_LOGGER_OCT08_DEPLOY.md",
+    "lab/LAB_ACCESS_FREEZE.md",
+    "lab/evidence/testsuite-pro/inbox/DUT_FIRMWARE_APK_VS_BINARY_2026-10-15.md"
+  ],
+  "access_freeze": "lab/tg544-openwrt/lab-access.freeze.json"
+}

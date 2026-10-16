@@ -1,5 +1,7 @@
 # Logger PC on LAN1 — Oct-08 Connect deploy (r51 + p3_07_connect)
 
+**Full revision recap:** [`tg544-openwrt/DEPLOY_REVISION_RECAP.md`](tg544-openwrt/DEPLOY_REVISION_RECAP.md) · pin **`P3-07-TSP-CONNECT`** or source **`R51-P3-07-SOURCE`** in [`tg544-openwrt/revision-pins/`](tg544-openwrt/revision-pins/).
+
 Use when the logger is cabled to **TG544 LAN1 (Eth_A)** for deploy, ping, and Wireshark on `:3782`.
 
 ## 1. IP (do not use 192.168.10.10 — reserved for PC-B / TSP)

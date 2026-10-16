@@ -4,6 +4,8 @@ One file per DUT upload: **`CCLI_DEPLOY_<semver>-rN>_<timestamp>.md`** (+ `.json
 
 Created by `write-deploy-manifest.ps1` (called automatically from `deploy-ccli-session-fix.ps1`).
 
+**Named lab profiles (yaml + TLS + git pin):** [`../revision-pins/`](../revision-pins/) and [`../DEPLOY_REVISION_RECAP.md`](../DEPLOY_REVISION_RECAP.md). Apply with `scripts/deploy-from-revision-pin.ps1`.
+
 On the DUT after deploy:
 
 - `/etc/ccli/VERSION` — first line of `ccli --version`

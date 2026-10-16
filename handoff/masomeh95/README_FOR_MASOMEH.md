@@ -1,8 +1,9 @@
 # CCLI — code handoff for Masomeh (masomeh95)
 
-**Date:** 2026-10-15  
+**Date:** 2026-10-16  
 **Repo:** https://github.com/yahiagabereng-ctrl/CCLI  
-**TLS + TSP:** After clone, run **`scripts/setup-pc1-testpro-from-git.ps1`** — copies **`apps/ccli/config/tls/`** (DUT-aligned EJBCA lab PKI) into the field pack. See **[PC1_PULL_TLS_DUT_ALIGNED.md](PC1_PULL_TLS_DUT_ALIGNED.md)**.
+**PC1 Connect session (git pull):** **[PC1_GITHUB_PULL_RUNBOOK.md](PC1_GITHUB_PULL_RUNBOOK.md)** — revision pin **P3-07-TSP-CONNECT**, frozen SSH/TLS, **`setup-pc1-p3-07-connect.ps1`**.  
+**5-LN EJBCA matrix:** **`setup-pc1-testpro-from-git.ps1`** · [PC1_PULL_TLS_DUT_ALIGNED.md](PC1_PULL_TLS_DUT_ALIGNED.md).
 
 ---
 

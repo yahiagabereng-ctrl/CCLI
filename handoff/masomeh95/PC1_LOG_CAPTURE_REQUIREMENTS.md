@@ -137,11 +137,14 @@ cd D:\CCLI\CCLI
 | PuTTY **plink** + **pscp** (optional) | DUT SSH PRE/POST in `_DUT_LOG.txt` |
 | Test Suite Pro | One step per logger cycle · TLS via **OpenSSL** + **`client_tsp.key`** |
 
-**SSH to DUT (LAN1):** Yahia provides DUT password once. Before **Start**:
+**SSH to DUT (LAN1):** Use the **frozen lab password** (same as logger PC). Before **Start**:
 
 ```powershell
-$env:CCLI_TG544_PW = "<from Yahia — do not commit>"
+. D:\CCLI_TSP_FIELD_PACK\bench_scripts\lab-env.ps1
+# or: powershell -File scripts\source-lab-env.ps1   (with git clone)
 ```
+
+See repo **`lab/LAB_ACCESS_FREEZE.md`** (also **`00q_LAB_ACCESS_FREEZE.md`** in the field pack). Do not use a different password on PC-B.
 
 If SSH is unavailable, use **`-NoSsh`** on **Start** (still capture Wireshark + TSP paste; note gap in session index).
 
