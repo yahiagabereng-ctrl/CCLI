@@ -1,0 +1,14 @@
+DUT TG544 192.168.1.130  ccli 0.1.0-r57 pid 20381
+TestPro Connect PASS 2026-10-16
+
+Fri Oct 16 20:28:21 2026 mms: iso session CONNECT (payload=1332)
+Fri Oct 16 20:28:21 2026 mms: iso presentation skip non-ACSE/MMS context id=5 (mmsAuthenticationAS)
+Fri Oct 16 20:28:21 2026 mms: ACSE auth ACCEPT — mech=CERTIFICATE role=DSO_OPERATOR cert=1071 octets
+Fri Oct 16 20:28:22 2026 mms: AARE responder auth [10]EXTERNAL ctx=5 inner=1075 octets
+Fri Oct 16 20:28:22 2026 mms: iso session ACCEPT extended LI (spdu=1264 payload=1244)
+
+Fri Oct 16 20:30:10 2026 mms: iso session CONNECT (payload=1332)
+Fri Oct 16 20:30:10 2026 mms: iso presentation skip non-ACSE/MMS context id=5 (mmsAuthenticationAS)
+Fri Oct 16 20:30:10 2026 mms: ACSE auth ACCEPT — mech=CERTIFICATE role=DSO_OPERATOR cert=1071 octets
+Fri Oct 16 20:30:11 2026 mms: AARE responder auth [10]EXTERNAL ctx=5 inner=1075 octets
+Fri Oct 16 20:30:11 2026 mms: iso session ACCEPT extended LI (spdu=1264 payload=1244)

@@ -7,6 +7,32 @@ Format: **`semver-rN`** — bump **N** in `VERSION` line 2 and `package/ccli/Mak
 
 ---
 
+## 0.1.0-r57 — P5-5LN-ISO-PRES-AARE (2026-10-16)
+
+### Fixed
+
+- **Initiate Response Failed on r56:** ISO session CONNECT (payload=1332) then immediate DISCONNECT — `IsoPresentation_parseConnect` rejected TSP’s extra **mmsAuthenticationAS** PCDL entry. Unknown contexts are skipped; CPA now returns **3** accept results.
+- Restored **62351-4 AARE** in `acse.c`: responding AP/AE (`1.1.1.999.1` / 12), tags **0x88 / 0x89 / 0xAA**, CERTIFICATE mechanism OID, prefer AARQ auth-value over TLS peer cert.
+
+### Deploy
+
+Keep 5-LN yaml `product_tr400_p3_07_connect_5ln.yaml` + P3-07 TLS. Rebuild then `deploy-product-fw-same-cyber.ps1 -ReplaceBinary`.
+
+---
+
+## 0.1.0-r56 — P5-5LN-ISO-SESSION (2026-10-16)
+
+### Fixed
+
+- **ISO session X.225 extended LI** restored in `iso_session.c` / `iso_connection.c` (TSP MMS Security AARQ > 255 bytes). r55 `ccli-bin` lacked this patch → TLS OK then **Association timeout / Transport connection closed** with 5-LN CID.
+- Inbound CONNECT: decode 3-octet LI + PGI 194 user data. Outbound ACCEPT: PGI 194 + extended SPDU LI when payload > 254.
+
+### Deploy
+
+Keep 5-LN yaml `product_tr400_p3_07_connect_5ln.yaml` + P3-07 TLS. Rebuild `wsl-build-ccli.sh` then `deploy-product-fw-same-cyber.ps1 -ReplaceBinary -LabYaml …_5ln.yaml`.
+
+---
+
 ## 0.1.0-r54 — P5-5LN-CERT-MODEL (2026-10-14)
 
 ### Added

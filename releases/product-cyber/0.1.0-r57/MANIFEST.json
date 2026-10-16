@@ -1,0 +1,54 @@
+{
+  "name": "PRODUCT-CYBER-CONNECT-PASS",
+  "semver": "0.1.0",
+  "release": 57,
+  "codename": "P5-5LN-ISO-PRES-AARE",
+  "date": "2026-10-16",
+  "result": "TestPro Connect PASS — presentation skip mmsAuthenticationAS + ACSE CERTIFICATE ACCEPT + AARE [10]EXTERNAL + session ACCEPT extended LI",
+  "ssh_host": "192.168.1.130",
+  "git_short": "68563b8",
+  "binary": {
+    "dut": "/usr/sbin/ccli",
+    "apk": "ccli-0.1.0-r57.apk",
+    "apk_sha256": "422e731cc236598fd4520d8f43e815fb105f4507a0e5f118eea074931c7fc1ae",
+    "apk_size_bytes": 1025103,
+    "elf_sha256": "96963619dbebb87e366510a555fdac729a4b948847b76f1f91d94b5b6cd7d697",
+    "elf_size_bytes": 7805000,
+    "lab_pin": "lab/tg544-openwrt/ccli-bin.r57.dut-connect-pass",
+    "version": "0.1.0-r57",
+    "codename": "P5-5LN-ISO-PRES-AARE"
+  },
+  "config": {
+    "dut": "/etc/ccli/lab.yaml",
+    "repo": "apps/ccli/config/product_tr400_p3_07_connect_5ln.yaml",
+    "bundle": "config/product_tr400_p3_07_connect_5ln.yaml",
+    "sha256": "ed7d8778996284ac3aa5407b9d9c70f5651ca0e5cc39fa146be0634a41ef5f86",
+    "crl": "off",
+    "model_cfg": "/etc/ccli/icd/product/product_tr400_eth_a_5ln.cfg"
+  },
+  "icd": {
+    "cfg": "icd/product_tr400_eth_a_5ln.cfg",
+    "cfg_sha256": "7e13de139559adc68da0bbae0c8ab0bd20abded6af3472a9974cd4a5bc6a3146",
+    "cid": "icd/product_tr400_eth_a_5ln.cid",
+    "cid_sha256": "68c72e7f87d1c65b04a3e42925e727815ec8b1a421e0dc65296c7c65b3cf2582",
+    "lns": ["LLN0", "LPHD1", "PdCMMXU1", "WlimDWMX1", "WSdDAGC1"]
+  },
+  "tls": {
+    "profile": "apps/ccli/config/tls/p3_07_connect",
+    "root_CA_md5": "7ada0cbe2be1bb4bddff7b6961461bc5",
+    "serials": {
+      "root_CA.pem": "4DAA40028901CFFB",
+      "client_tls.pem": "DC9A9E26D547EF38",
+      "client.pem": "28E53F07CFE347B0",
+      "server.pem": "70CA7EBDE9FB0EFD",
+      "server_tls.pem": "1EEC8EF4631E4981"
+    }
+  },
+  "listen": {
+    "mms": "192.168.10.1:3782",
+    "iec104": "192.168.1.130:2404",
+    "pid": 20381
+  },
+  "extract": "lab/tg544-openwrt/dut-extract-connect-pass-r57-2026-10-16/MANIFEST.json",
+  "deploy_manifest": "lab/tg544-openwrt/deploy-manifests/CCLI_DEPLOY_0.1.0-r57_2026-10-16_142635.md"
+}

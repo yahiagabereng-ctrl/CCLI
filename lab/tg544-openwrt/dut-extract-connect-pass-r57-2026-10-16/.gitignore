@@ -1,0 +1,5 @@
+ccli
+tls/
+*.key
+*.pem
+logs/dut-logread-ccli.txt

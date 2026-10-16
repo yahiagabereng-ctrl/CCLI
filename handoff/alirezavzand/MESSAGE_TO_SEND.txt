@@ -1,43 +1,31 @@
 Hi Alireza,
 
-We are running the unified certification test matrix (rev 1.3) on the two-PC bench. Masomeh is PC-B (Test Suite Pro on LAN1). Your side is PC-A plant/logger + DUT SSH, and TLS/Wireshark review when we send pcaps.
-
-ON YOUR PC — run:
+TestPro Connect is **PASS** on the TG544 with **product 5-LN** (2026-10-16).
 
   git clone https://github.com/yahiagabereng-ctrl/CCLI.git
   cd CCLI
   git pull origin main
 
-Start guide (read first):
+**Current Connect-PASS (use this):**
+  releases/product-cyber/0.1.0-r57/
+  FREEZE.md · ccli-0.1.0-r57.apk · 5-LN CID/yaml
+
+| Item | Pin |
+|------|-----|
+| Firmware | **ccli 0.1.0-r57** `P5-5LN-ISO-PRES-AARE` |
+| ELF SHA-256 | `96963619dbebb87e366510a555fdac729a4b948847b76f1f91d94b5b6cd7d697` |
+| Yaml | `product_tr400_p3_07_connect_5ln.yaml` |
+| CID | `product_tr400_eth_a_5ln.cid` (5 LN only) |
+| TLS | P3-07 Connect — `client_tsp.key` both slots, crl=off |
+| MMS | `192.168.10.1:3782` |
+
+Evidence: lab/evidence/testsuite-pro/inbox/TSP_P3_07_LIVE_CONNECT_PASS_2026-10-16.md
+
+Do **not** mix with r51 **31-LN** CID. r51 GitHub release is rollback only:
+  https://github.com/yahiagabereng-ctrl/CCLI/releases/tag/p3-07-security-pass
+
+PC-A plant/logger (unchanged):
   handoff/alirezavzand/PCA_UNIFIED_CERT_START_ALIREZA.md
-
-Master checklist (tick your rows):
   lab/conformance/LAB_UNIFIED_CERT_TEST_MATRIX.md
-
-Session pin (DUT 0.1.0-r53):
-  lab/conformance/LAB_UNIFIED_SESSION_PIN_2026-10-14.md
-
-BEFORE Masomeh Connect — DUT preflight:
-
-  . .\lab\tg544-openwrt\lab-env.ps1
-  powershell -File scripts\validate-dut-unified-matrix.ps1 -FixServices -WriteEvidence
-
-PC-A bench (Admin cmd from repo lab\ or field pack bench_scripts\):
-  set_pc_lan2_oa.cmd     -> 192.168.1.183  to  DUT 192.168.1.130:2404
-  set_pc_lan3_plant*.cmd -> 192.168.30.10  to  DUT plant + EMT432
-
-Plant (Phase 0b):
-  python lab\modbus_emt432_tcp_probe.py
-  powershell -File lab\start-bench-plant.ps1 -SunOnly -Port COM5
-
-Your matrix rows: U-P0-03/04/05/07/11, U-P0b-01..05, U-T1-11, U-P5-02, U-P3-11, U-P4-*, U-P7-*
-
-Do NOT run Test Suite Pro on LAN1 on your PC if Masomeh is TSP on PC1.
-
-TLS / EJBCA deep-dive (when needed):
-  lab/evidence/TLS_WIRESHARK_HANDOFF_ALIREZA.md
-  lab/evidence/EJBCA_HANDOFF_ALIREZA.md
-
-Send evidence back to lab/evidence/ on the repo PC when done.
 
 Yahia

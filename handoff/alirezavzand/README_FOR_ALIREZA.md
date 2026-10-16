@@ -1,8 +1,26 @@
 # CCLI unified cert — handoff for Alireza (@alirezavzand)
 
-**Date:** 2026-10-14  
+**Date:** 2026-10-16  
 **Repo:** https://github.com/yahiagabereng-ctrl/CCLI  
 **GitHub:** `alirezavzand` (collaborator)
+
+---
+
+## Current Connect-PASS (DUT live 2026-10-16)
+
+**0.1.0-r57** + **5-LN** CID + P3-07 TLS (`crl=off`).
+
+| Item | Path |
+|------|------|
+| Freeze | [`releases/product-cyber/0.1.0-r57/FREEZE.md`](../../releases/product-cyber/0.1.0-r57/FREEZE.md) |
+| APK | [`ccli-0.1.0-r57.apk`](../../releases/product-cyber/0.1.0-r57/ccli-0.1.0-r57.apk) |
+| Yaml | [`product_tr400_p3_07_connect_5ln.yaml`](../../releases/product-cyber/0.1.0-r57/config/product_tr400_p3_07_connect_5ln.yaml) |
+| CID | [`product_tr400_eth_a_5ln.cid`](../../releases/product-cyber/0.1.0-r57/icd/product_tr400_eth_a_5ln.cid) |
+| Chat text | [`MESSAGE_TO_SEND.txt`](MESSAGE_TO_SEND.txt) |
+
+ELF SHA-256: `96963619dbebb87e366510a555fdac729a4b948847b76f1f91d94b5b6cd7d697`
+
+**r51** (`p3-07-security-pass`) is **31-LN rollback only** — do not mix with this 5-LN freeze.
 
 ---
 
@@ -19,10 +37,11 @@
 
 ## Start here
 
-1. **[PCA_UNIFIED_CERT_START_ALIREZA.md](PCA_UNIFIED_CERT_START_ALIREZA.md)** — matrix rows + commands  
-2. **[MESSAGE_TO_SEND.txt](MESSAGE_TO_SEND.txt)** — short copy-paste for chat  
-3. Master checklist: **`lab/conformance/LAB_UNIFIED_CERT_TEST_MATRIX.md`** rev **1.3**  
-4. Session pin: **`lab/conformance/LAB_UNIFIED_SESSION_PIN_2026-10-14.md`** (DUT **0.1.0-r53**)
+1. **Connect-PASS freeze** — [`releases/product-cyber/0.1.0-r57/`](../../releases/product-cyber/0.1.0-r57/FREEZE.md) (DUT **0.1.0-r57** · 5-LN)  
+2. **[PCA_UNIFIED_CERT_START_ALIREZA.md](PCA_UNIFIED_CERT_START_ALIREZA.md)** — matrix rows + commands  
+3. **[MESSAGE_TO_SEND.txt](MESSAGE_TO_SEND.txt)** — short copy-paste for chat  
+4. Master checklist: **`lab/conformance/LAB_UNIFIED_CERT_TEST_MATRIX.md`** rev **1.3**  
+5. Session pin (older unified run): **`lab/conformance/LAB_UNIFIED_SESSION_PIN_2026-10-14.md`** (DUT **0.1.0-r53**)
 
 ---
 

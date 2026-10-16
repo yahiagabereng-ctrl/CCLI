@@ -3,7 +3,7 @@ include $(TOPDIR)/rules.mk
 PKG_NAME:=ccli
 # Keep in sync with apps/ccli/VERSION (run scripts/sync-ccli-version.ps1)
 PKG_VERSION:=0.1.0
-PKG_RELEASE:=56
+PKG_RELEASE:=57
 
 PKG_MAINTAINER:=HiTEKS CCLI
 PKG_LICENSE:=Proprietary
@@ -11,8 +11,8 @@ PKG_LICENSE:=Proprietary
 PKG_BUILD_PARALLEL:=1
 PKG_BUILD_DEPENDS:=cmake/host
 
-# Local source tree (repo apps/ccli). Override when packaging from another layout:
-#   make package/ccli/compile CCLI_SRC_DIR=/path/to/apps/ccli
+# Local source tree (repo apps/ccli). Product line (program/main.c):
+#   make package/ccli/compile CCLI_SRC_DIR=$(CURDIR)/../../product/apps/ccli
 CCLI_SRC_DIR?=$(CURDIR)/../../apps/ccli
 
 include $(INCLUDE_DIR)/package.mk

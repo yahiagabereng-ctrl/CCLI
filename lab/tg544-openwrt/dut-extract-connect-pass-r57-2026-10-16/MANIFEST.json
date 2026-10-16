@@ -1,0 +1,28 @@
+{
+  "name": "DUT-EXTRACT-CONNECT-PASS-R57",
+  "date": "2026-10-16",
+  "ssh_host": "192.168.1.130",
+  "result": "TestPro Connect PASS — iso session CONNECT + presentation skip ctx=5 + ACSE ACCEPT CERTIFICATE + AARE [10]EXTERNAL + ACCEPT extended LI",
+  "bundle": "releases/product-cyber/0.1.0-r57/",
+  "binary": {
+    "path_dut": "/usr/sbin/ccli",
+    "path_local": "ccli",
+    "path_lab_pin": "lab/tg544-openwrt/ccli-bin.r57.dut-connect-pass",
+    "sha256": "96963619dbebb87e366510a555fdac729a4b948847b76f1f91d94b5b6cd7d697",
+    "size_bytes": 7805000,
+    "version": "0.1.0-r57",
+    "codename": "P5-5LN-ISO-PRES-AARE"
+  },
+  "yaml": {
+    "dut": "/etc/ccli/lab.yaml",
+    "repo": "apps/ccli/config/product_tr400_p3_07_connect_5ln.yaml",
+    "sha256": "ed7d8778996284ac3aa5407b9d9c70f5651ca0e5cc39fa146be0634a41ef5f86",
+    "model_cfg": "/etc/ccli/icd/product/product_tr400_eth_a_5ln.cfg",
+    "crl": "off"
+  },
+  "listen": {
+    "mms": "192.168.10.1:3782",
+    "iec104": "192.168.1.130:2404",
+    "pid": 20381
+  }
+}
