@@ -1,0 +1,79 @@
+{
+  "name": "P3-07-SECURITY-PASS",
+  "date": "2026-10-16",
+  "purpose": "Pin TesPro binary + certificates for Test Suite Pro security PASS (Oct-08 profile)",
+  "security_pass_evidence": "lab/evidence/testsuite-pro/inbox/TSP_P3_07_LIVE_CONNECT_PASS_2026-10-08.md",
+  "tsp_wiring": {
+    "trust_ca": "root_CA.pem",
+    "transport_cert": "client_tls.pem",
+    "transport_key": "client_tsp.key",
+    "mms_cert": "client.pem",
+    "mms_key": "client_tsp.key",
+    "crl": "OFF / empty",
+    "ied": "CCI016_01",
+    "host": "192.168.10.1:3782",
+    "cid": "cid/lab_tg544_eth_a.cid",
+    "local_ip": "192.168.10.10"
+  },
+  "dut_yaml": "config/lab_tr400_phase4_eth_b_ttyS1_p3_07_connect.yaml",
+  "binary_pass_documented": {
+    "package": "ccli-0.1.0-r51.apk",
+    "codename": "P3-07-AARE-SIGN-RAW-GT",
+    "deploy_manifest": "lab/tg544-openwrt/deploy-manifests/CCLI_DEPLOY_0.1.0-r51_2026-10-09_132056.md",
+    "sha256_manifest_note": "2b166430fdb5851a46bad31c1741f11f7c553161fe98bce8b6bbc6558cbdf7ae (ccli-bin at deploy)",
+    "apk_sha256_local": "0a2d2782d76e60dcbbafb851416ec24a0aa707b592c51cfa4545c08f1504419c"
+  },
+  "binary_last_deploy_r55": {
+    "package": "0.1.0-r55",
+    "codename": "P5-5LN-CERT-MODEL",
+    "sha256_deployed": "a2c25122e777b4f62b5c856ee77cfb114de33fef9200b70c4ba206bd296be653",
+    "note": "Last yaml+PKI deploy Oct-15; AARE stack retained from r51. Pull from DUT when online to pin binary bytes."
+  },
+  "certificate_serials": {
+    "root_CA.pem": {
+      "serial_hex": "4DAA40028901CFFB",
+      "subject": "CN=CCLI_Lab_Root_CA,OU=CCLI-Lab,O=HiTEKS,C=IT"
+    },
+    "server.pem": {
+      "serial_hex": "70CA7EBDE9FB0EFD",
+      "subject": "2.5.4.106=1.1.1.999.1.12"
+    },
+    "server_tls.pem": {
+      "serial_hex": "1EEC8EF4631E4981",
+      "subject": "CN=CCI016_01,OU=CCLI-Lab,O=HiTEKS,C=IT"
+    },
+    "client.pem": {
+      "serial_hex": "28E53F07CFE347B0",
+      "subject": "2.5.4.106=1.1.1.999.1.12"
+    },
+    "client_tls.pem": {
+      "serial_hex": "DC9A9E26D547EF38",
+      "subject": "CN=DSO_OPERATOR,OU=CCLI-Lab,O=HiTEKS,C=IT"
+    }
+  },
+  "certificate_md5": {
+    "root_CA.pem": "fa23eb4d198c74059cdf72d585eb50c6",
+    "client_tls.pem": "adda810ae47ced71f4880a18f93b7ddf",
+    "client.pem": "0b540059962d61cd897fe393074d6aac",
+    "client_tsp.key": "04a791a3e34ecf68521cfcb582867865",
+    "server.pem": "8c1b7c0278480c839f42b8f6295e3933",
+    "server_tls.pem": "baf6eea5d11477c1144936d093032397",
+    "server.key": "89a88d2dd15e17e3acb662ab519297a9",
+    "server_acse.key": "60e054612506391dfbb06eb6dcc816c5"
+  },
+  "binaries_in_pack": {
+    "ccli-0.1.0-r51.apk": {
+      "sha256": "0a2d2782d76e60dcbbafb851416ec24a0aa707b592c51cfa4545c08f1504419c",
+      "size": 997024
+    },
+    "ccli-bin-local-workspace": {
+      "sha256": "e192d3cce1a0bdff54bb712c6cefdbbd0ff7a2f5057f74c0bc0b4dac5a950b31",
+      "size": 7802088
+    }
+  },
+  "do_not_use_for_this_session": [
+    "EJBCA client_acse.key dual-key",
+    "product_tr400_eth_a_5ln.cid",
+    "lab_crl.pem in TSP"
+  ]
+}

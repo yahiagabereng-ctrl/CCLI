@@ -66,6 +66,9 @@ lab/**/*.img.gz
 lab/**/*.ipk
 lab/**/*.apk
 lab/tg544-openwrt/ccli-bin
+# Local-only binary/TLS copies inside release packs (pins live in MANIFEST.json)
+lab/releases/**/bin/
+lab/releases/**/tls/
 handoff/**/*.zip
 handoff/**/*.7z
 lab/tg544-openwrt/libstdc++.so.6
