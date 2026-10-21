@@ -49,6 +49,8 @@ powershell -ExecutionPolicy Bypass -File scripts\pc1-p3-07-connect-preflight.ps1
 
 (Do **not** run `setup-pc1-testpro-from-git.ps1` for this session.)
 
+**Full Validate rev 1.2** (O/T/M + 61850-10 + 62351 + 62443 + **Lines**): `lab/conformance/Full Validate.md` after pull · pack **`00_FULL_VALIDATE.md`**.
+
 Read **in order:**
 
 1. `D:\CCLI_TSP_FIELD_PACK\00_START_HERE_P3_07_CONNECT.md`

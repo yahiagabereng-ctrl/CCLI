@@ -36,6 +36,8 @@ powershell -File scripts\verify-lab-access-freeze.ps1 -TlsDir D:\CCLI_TSP_FIELD_
 
 Read **`00t_PC1_FIX_WRONG_TRANSPORT_CERT.md`** then **`00r_PC1_P3_07_CONNECT_PROFILE_ACTIVE.md`** in the pack.
 
+**Normative book (clause → code Lines):** `lab/conformance/Full Validate.md` after `git pull` · pack copy **`00_FULL_VALIDATE.md`**.
+
 **Unified 5-LN / EJBCA matrix** (different TLS tree): use **`setup-pc1-testpro-from-git.ps1`** and **`00k_PC1_EJBCA_TLS_TESTPRO.md`** instead.
 
 ---

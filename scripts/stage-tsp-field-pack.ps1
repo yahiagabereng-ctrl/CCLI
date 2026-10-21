@@ -43,6 +43,8 @@ $manifest = [ordered]@{
 
 $docs = @(
     @{ Rel = "lab/conformance/LAB_UNIFIED_CERT_TEST_MATRIX.md"; Out = "00_UNIFIED_CERT_TEST_MATRIX.md" },
+    @{ Rel = "lab/conformance/Full Validate.md"; Out = "00_FULL_VALIDATE.md" },
+    @{ Rel = "lab/conformance/ANNEX_O_SOFTWARE_MATRIX.md"; Out = "00_ANNEX_O_SOFTWARE_MATRIX.md" },
     @{ Rel = "lab/conformance/LAB_UNIFIED_SESSION_PIN_2026-10-14.md"; Out = "00a_UNIFIED_SESSION_PIN_2026-10-14.md" },
     @{ Rel = "lab/conformance/LAB_UNIFIED_CERT_TEST_ROADMAP.md"; Out = "00b_UNIFIED_CERT_ROADMAP.md" },
     @{ Rel = "lab/conformance/PRODUCT_SPECIMEN_5LN.md"; Out = "00c_PRODUCT_SPECIMEN_5LN.md" },
@@ -233,5 +235,5 @@ $manifest.files += "tls/*", "cid/lab_tg544_eth_a.cid", "config/lab_tr400_phase1_
 
 Write-Host ""
 Write-Host "OK: $Dest" -ForegroundColor Green
-Write-Host "Copy this folder to the Test Suite Pro PC (USB). Open 00_START_PC1_MASOMEH.md + 00h_PC1_LOG_CAPTURE_REQUIREMENTS.md + 00_UNIFIED_CERT_TEST_MATRIX.md"
+Write-Host "Copy this folder to the Test Suite Pro PC (USB). Open 00_START_PC1_MASOMEH.md + 00h_PC1_LOG_CAPTURE_REQUIREMENTS.md + 00_UNIFIED_CERT_TEST_MATRIX.md + 00_FULL_VALIDATE.md"
 Write-Host "RAG: ccli-lab-unified-cert-test-matrix, ccli-lab-unified-cert-test-roadmap, ccli-product-specimen-5ln, ccli-tsp-two-pc-bench-runbook"

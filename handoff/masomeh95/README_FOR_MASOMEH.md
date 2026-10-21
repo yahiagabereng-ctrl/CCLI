@@ -48,6 +48,7 @@ See `apps/ccli/third_party/README.md` for versions and license notes.
 | Signal map (ICD) | `apps/ccli/config/icd/signal_map.yaml` |
 | GOOSE adapter | `apps/ccli/adapters/iec61850_goose/` |
 | Lab evidence P6/P7 | `lab/evidence/phase6/`, `lab/evidence/phase7/` |
+| **Full Validate (O/T/M + O.15 + Lines)** | `lab/conformance/Full Validate.md` — rev **1.2** · field pack `00_FULL_VALIDATE.md` |
 | **Cyber test checklist (62351)** | `lab/conformance/LAB_REQUIREMENT_TEST_MATRIX_CYBER.md` |
 | Functional TSP ↔ 61850 matrix | `lab/conformance/LAB_REQUIREMENT_TEST_MATRIX.md` |
 | Engineering KB | `knowledge-base/08-engineering/` |
@@ -62,7 +63,7 @@ Build pack yourself on PC1:
 powershell -File scripts\stage-tsp-field-pack.ps1 -Dest D:\CCLI_TSP_FIELD_PACK
 ```
 
-Master checklist: `00_UNIFIED_CERT_TEST_MATRIX.md` + `00b_UNIFIED_CERT_ROADMAP.md` (not legacy-only 01_CHECKLIST).
+Master checklist: `00_UNIFIED_CERT_TEST_MATRIX.md` + `00_FULL_VALIDATE.md` + `00b_UNIFIED_CERT_ROADMAP.md` (not legacy-only 01_CHECKLIST).
 
 ---
 
