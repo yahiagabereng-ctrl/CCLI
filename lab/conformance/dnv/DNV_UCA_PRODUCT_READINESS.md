@@ -33,6 +33,8 @@ Separates **field product deployment** (HiTEKS release bundle) from **accredited
 
 Sample UCA scope: `ccli-certificate-samples-extract` (Higeco / DNV TP v2.0.6).
 
+**Clause-by-clause book (O/M/T/U + #1–#8):** [Full Validate.md](../Full%20Validate.md) (`ccli-normative-cert-validation-matrix`).
+
 ---
 
 ## Test Suite Pro vs DNV

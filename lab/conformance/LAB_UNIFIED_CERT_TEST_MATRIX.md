@@ -16,6 +16,8 @@
 
 **Supersedes as single □ checklist:** merges [LAB_REQUIREMENT_TEST_MATRIX.md](LAB_REQUIREMENT_TEST_MATRIX.md) + [LAB_REQUIREMENT_TEST_MATRIX_CYBER.md](LAB_REQUIREMENT_TEST_MATRIX_CYBER.md) + O.15 non-TSP deliverables from `ccli-dnv-product-readiness`. Legacy files remain authoritative for row detail; tick **here** for programme traceability.
 
+**Clause-by-clause normative book (fill part by part):** [Full Validate.md](Full%20Validate.md) (`ccli-normative-cert-validation-matrix`).
+
 **Field pack:** `scripts/stage-tsp-field-pack.ps1` → `00_UNIFIED_CERT_TEST_MATRIX.md` + `00b_UNIFIED_CERT_ROADMAP.md`
 
 **Use this file as the live finalize checklist:** tick □ in the master table; record **Status** in the session header; on closeout save `LAB_UNIFIED_CERT_TEST_MATRIX_<date>_done.md` (**U-CLO-02**).
