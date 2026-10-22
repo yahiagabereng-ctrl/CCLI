@@ -7,6 +7,48 @@ Format: **`semver-rN`** — bump **N** in `VERSION` line 2 and `package/ccli/Mak
 
 ---
 
+## 0.1.0-r61 — P5-EMT432-A-PHSA-BRIDGE (2026-10-22)
+
+### Fixed
+
+- **TestPro `PdCMMXU1.A.phsA.cVal.mag.f` stuck at 0 A** while TotW/PPV updated: product path **`TransmissionMms_PublishTask`** now passes EMT432 phase-A current into **`CcliBridge_Mms_PublishMeasurement`** → **`MmsService::update_phs_a_a()`**.
+- **MMS runtime:** `model_mx_float_f` + FC=MX fallback for `A.phsA.cVal.mag.f`; publish trace in adapter.
+- **URCB dataset:** explicit `DE(PdCMMXU1$MX$A$phsA$cVal$mag$f)` in `product_tr400_eth_a_5ln.cfg`.
+
+### Added
+
+- Modbus **`reg_phase_a_current: 922`** (EMT432 I1), decode + **`I1=`** bench trace; lab **`mms_tls_client.c`** reads phase-A MX.
+
+### Deploy
+
+Manifest **`CCLI_DEPLOY_0.1.0-r61_2026-10-22_181748`**. Staging ELF SHA `448007a2…` · yaml **`product_tr400_p3_07_connect_5ln.yaml`** + P3-07 TLS.
+
+---
+
+## 0.1.0-r60 — P5-EMT432-A-PHSA-PUBLISH (2026-10-22)
+
+### Changed
+
+- MMS float wire + URCB dataset leaf for phase-A; Modbus poll exposes **`phs_a_a`** on exchange record.
+
+---
+
+## 0.1.0-r59 — P5-EMT432-A-PHSA-WIRE (2026-10-22)
+
+### Fixed
+
+- **`wire_cfg_runtime_nodes`:** bind `A.phsA.cVal.mag.f` at runtime (compile-safe in `MmsAdapter::Impl`).
+
+---
+
+## 0.1.0-r58 — P5-EMT432-A-PHSA-MAP (2026-10-22)
+
+### Added
+
+- Config map EMT432 **I1 @922** → PdCMMXU1 phase-A; commissioning map + 5-LN product yamls.
+
+---
+
 ## 0.1.0-r57 — P5-5LN-ISO-PRES-AARE (2026-10-16)
 
 ### Fixed

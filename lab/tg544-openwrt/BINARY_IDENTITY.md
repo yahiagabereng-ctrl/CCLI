@@ -2,7 +2,23 @@
 
 **Rule:** Trust **`/usr/sbin/ccli --version`** and **`sha256sum /usr/sbin/ccli`**, not the filename `ccli-bin` alone.
 
-## Current Connect-PASS (2026-10-16 live) — **r57 + 5-LN**
+## Current lab DUT (2026-10-22) — **r61 EMT432 phase-A**
+
+| Item | Value |
+|------|--------|
+| **Version** | `ccli 0.1.0-r61 (P5-EMT432-A-PHSA-BRIDGE)` |
+| **ELF SHA-256** | `448007a2bd89e594e4df788bbc47dfd39535d45b5aa0b5b940c6fe8c07383819` |
+| **Size** | **7 814 864** B |
+| **Local pin** | `lab/tg544-openwrt/ccli-bin.r61.p5-emt432-a-phsa-bridge` |
+| **APK** | `ccli-0.1.0-r61.apk` SHA `e384b3998150e56dcb3094ea1b5aa956843413394d3b9172a265ed22a3ef0a8c` |
+| **Yaml** | `product_tr400_p3_07_connect_5ln.yaml` SHA `f4d0d29c…` |
+| **Model** | `product_tr400_eth_a_5ln.cfg` SHA `c64ccdf8…` |
+| **Freeze** | `releases/product-cyber/0.1.0-r61/` |
+| **Manifest** | `deploy-manifests/CCLI_DEPLOY_0.1.0-r61_2026-10-22_181748.md` |
+
+Connect / ISO / ACSE baseline unchanged from **r57**; r61 adds Modbus **I1** → **`A.phsA.cVal.mag.f`**.
+
+## Connect-PASS reference (2026-10-16) — **r57 + 5-LN**
 
 Pulled / pinned while TestPro showed **Connected** (ACSE ACCEPT + AARE + session ACCEPT).
 

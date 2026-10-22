@@ -1,0 +1,45 @@
+{
+  "name": "PRODUCT-CYBER-EMT432-PHSA",
+  "semver": "0.1.0",
+  "release": 61,
+  "codename": "P5-EMT432-A-PHSA-BRIDGE",
+  "date": "2026-10-22",
+  "result": "Lab DUT — EMT432 I1 to PdCMMXU1.A.phsA.cVal.mag.f via product MMS bridge",
+  "ssh_host": "192.168.1.130",
+  "git_short": "b6a81ef",
+  "binary": {
+    "dut": "/usr/sbin/ccli",
+    "apk": "ccli-0.1.0-r61.apk",
+    "apk_sha256": "e384b3998150e56dcb3094ea1b5aa956843413394d3b9172a265ed22a3ef0a8c",
+    "apk_size_bytes": 1033322,
+    "elf_sha256": "448007a2bd89e594e4df788bbc47dfd39535d45b5aa0b5b940c6fe8c07383819",
+    "elf_size_bytes": 7814864,
+    "elf_bundle": "ccli-bin-aarch64-musl",
+    "lab_pin": "lab/tg544-openwrt/ccli-bin.r61.p5-emt432-a-phsa-bridge",
+    "version": "0.1.0-r61",
+    "codename": "P5-EMT432-A-PHSA-BRIDGE"
+  },
+  "config": {
+    "dut": "/etc/ccli/lab.yaml",
+    "repo": "apps/ccli/config/product_tr400_p3_07_connect_5ln.yaml",
+    "bundle": "config/product_tr400_p3_07_connect_5ln.yaml",
+    "sha256": "f4d0d29c25788633a0dc5431be253083b3382ee9f5c134af0c07923c2d24d357",
+    "crl": "off",
+    "model_cfg": "/etc/ccli/icd/product/product_tr400_eth_a_5ln.cfg"
+  },
+  "icd": {
+    "cfg": "icd/product_tr400_eth_a_5ln.cfg",
+    "cfg_sha256": "c64ccdf884f60806603b6b53e71405a92c578bcdeb14c130b2abdc4a19b4937",
+    "cid": "icd/product_tr400_eth_a_5ln.cid",
+    "cid_sha256": "431047507cdc16b117ea1740a37805c4235f9cdf6a22d6c2f724f6cceaa8bb4b",
+    "lns": ["LLN0", "LPHD1", "PdCMMXU1", "WlimDWMX1", "WSdDAGC1"]
+  },
+  "tls": {
+    "profile": "apps/ccli/config/tls/p3_07_connect"
+  },
+  "listen": {
+    "mms": "192.168.10.1:3782",
+    "iec104": "192.168.1.130:2404"
+  },
+  "deploy_manifest": "lab/tg544-openwrt/deploy-manifests/CCLI_DEPLOY_0.1.0-r61_2026-10-22_181748.md"
+}

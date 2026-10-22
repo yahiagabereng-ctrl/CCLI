@@ -70,10 +70,10 @@ netstat -tlnp | grep -E '3782|2404'
 | Item | Value |
 |------|-------|
 | **Software** | **0.1.0-r61** (P5-EMT432-A-PHSA-BRIDGE) |
-| **Git (build tree)** | `546d489` |
+| **Git (build tree)** | `b6a81ef` |
 | **DUT SSH** | `root@192.168.1.130` (LAN1 `192.168.10.1` or LAN2 `192.168.1.130`) |
 | **Staging `ccli-bin`** | SHA256 `448007a2bd89e594e4df788bbc47dfd39535d45b5aa0b5b940c6fe8c07383819` (7814864 B) |
-| **OpenWrt APK** | - |
+| **OpenWrt APK** | `ccli-0.1.0-r61.apk` SHA256 `e384b3998150e56dcb3094ea1b5aa956843413394d3b9172a265ed22a3ef0a8c` (1033322 B) |
 | **DUT `/usr/sbin/ccli`** | *(deploy to capture)* |
 | **Config on DUT** | `/etc/ccli/lab.yaml` = `product_tr400_p3_07_connect_5ln.yaml` |
 | **Last manifest** | [CCLI_DEPLOY_0.1.0-r61_2026-10-22_181748.md](deploy-manifests/CCLI_DEPLOY_0.1.0-r61_2026-10-22_181748.md) |
