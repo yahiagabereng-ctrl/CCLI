@@ -39,6 +39,7 @@ Same string goes on PICS Cover and every `TSP_*` log header.
 | File | Use |
 |------|-----|
 | `/etc/ccli/lab.yaml` | Deployed from `lab_tr400_phase1_regulation.yaml` or `lab_tr400_phase4_eth_b.yaml` |
+| `/etc/ccli/lab.yaml` (Rogowski LAN3) | `lab_tr400_emt432_lan3_tcp_102.yaml` — meter **192.168.178.102** · [P5_ROGOWSKI_FRC350_BENCH.md](../evidence/phase5/P5_ROGOWSKI_FRC350_BENCH.md) |
 | CID / model | `lab_tg544_eth_a.cid` + `.cfg` — **rev 9** per [LAB_SPECIMEN_VERSION.md](LAB_SPECIMEN_VERSION.md) (cert freeze: `CID_PICS_ALIGNMENT.md`) |
 | TLS | `/etc/ccli/tls/` — server_tls, server (ACSE), client, viewer, CRL |
 

@@ -1,20 +1,22 @@
 # IEC / CEI EN 61557-12 — Engineering Extract (CCLI Metrology)
 
 **Document ID:** CCLI-NORM-61557-12-001  
-**Revision:** 1.1  
-**Date:** 2026-09-21  
+**Revision:** 1.4  
+**Date:** 2026-10-21  
 **RAG source_id:** `ccli-61557-12-extract`  
-**Normative source:** IEC 61557-12:2018+AMD1:2021 CSV (CEI EN 61557-12:2018 + AMD1:2021)  
-**Licensed PDF:** `07-protocols/regulations/standards-drop-20260918/IEC 61557-12 2018.pdf` (~143 MB, verified 2026-09-21)  
-**Capture method:** Screenshot extract (Aug 2026) — upgrade via `ccli-61557-12-capture-plan` against licensed PDF  
-**Corpus status:** **HAVE (P1)** — Annex D/H + Table 3/8 in extract; licensed PDF on disk for cert page cites  
+**Normative source (programme):** IEC 61557-12:**2018+AMD1:2021** (EPMF / Annex H)  
+**Desktop scan:** IEC 61557-12:**2018 Ed 2.0 only** — `CCI_61557-12_2018_Ed2_Extract.md` · HQ OCR **HAVE** · **no Annex H / no EPMF**  
+**PDF:** `C:\Users\yahia\OneDrive\Desktop\New folder (2)\IEC 61557-12 2018.pdf` (Doc88, 211 pp., 150 MB)  
+**Corpus status:** **HAVE** 2018 OCR · **MISSING** AMD1 PDF  
 **Programme link:** HiTEKS CCLI / PF2 · CEI 0-16 Annex O measurement timing and accuracy
 
 ---
 
 ## Summary
 
-IEC 61557-12 defines **Power Metering and monitoring Devices (PMD)** and embedded **Power Metering Functions (PMF/EPMF)**. For the **TG-524 gateway CCI**, the applicable model is **EPMF SS** (Annex H): main function = protocols/gateway; measurement at POC via **external analyzer + CT + VT**. Annex O cites “61557-12 Annex B” for fixed blocks — in this edition **fixed-block aggregation is normative in Annex D** (Fig D.2), not Annex B (electrical parameter definitions).
+IEC 61557-12 **2018 Ed 2.0** (Desktop PDF, full OCR) defines **PMD only**. **EPMF / Annex H do not exist** until **AMD1:2021**. CCLI programme still uses AMD1: gateway = **EPMF SS**; analyzer + CT/VT = PMD chain. Do **not** cite Annex H against the 2018-only PDF.
+
+Annex O cites “Annex B” for fixed blocks. In **2018 Ed 2.0** (and AMD1) **Fig D.2** is the fixed block; Annex B = electrical parameter definitions.
 
 **CCLI firmware must implement:** gapless P/Q sampling → **fixed-block** averages at **200 ms (MC200)**, **4 s (PF1 TX)**, and **ΔT (MCΔT)**; boundary-aligned 4 s blocks at `:00/:04/:08…`; **no sliding blocks** for Annex O PF1.
 
@@ -33,7 +35,7 @@ IEC 61557-12 defines **Power Metering and monitoring Devices (PMD)** and embedde
 | REQ-MET-007 | MC200 = 200 ms fixed blocks for fast control ring | Annex D + Annex O O.7.3.1 | PART |
 | REQ-MET-008 | PF1 P/Q/V TX = 4 s fixed blocks, aligned :00/:04/:08… | Annex D + Annex O O.8 | PART |
 | REQ-MET-009 | MCΔT = measurements aggregated over slow-ring ΔT (10–600 s, default 60 s) | Annex D + Annex O O.7.3.2 | PART |
-| REQ-MET-010 | TG-524 classified as **EPMF**; metering chain **EPMF SS** | Annex H, Table H.3, Fig H.1 | PART |
+| REQ-MET-010 | TG-524 classified as **EPMF**; metering chain **EPMF SS** | Annex H, Table H.3, Fig H.1 | PART — TesPro Scope Allocation **HAVE** 2026-10-21 (unsigned); Table H.5 still HiTEKS |
 | REQ-MET-011 | Rated voltage band **80% Un < U < 120% Un** for P and Q | §4.8.2.2, §4.8.3.2 | PART |
 | REQ-MET-012 | Voltage measurement range **20% Un … 120% Un** (PMD xS) | Table 26 | PART |
 | REQ-MET-013 | Reference conditions K55: **−5 … +55 °C** | Tables 5–6 | HAVE (captured) |
@@ -275,8 +277,8 @@ Both CT and VT required for P/Q at POC — matches **EPMF SS**.
 | Block | Function | Candidate / class | Status |
 |-------|----------|-------------------|--------|
 | TG-524 gateway | EPMF — protocols + aggregation | TesPro TG-524 / MT798X | FROZEN |
-| Energy analyzer | Gapless P/Q/U, class 0,2 P | **TBD model** — K4.5 register map missing | MISS |
-| CT set | Phase current, class ≤ 0,5 | IEC 61869-2, 0,5S preferred | PART — architecture only |
+| Energy analyzer | Gapless P/Q/U, class 0,2 P | **EMT432.V.FULL** — [meter freeze](../../lab/conformance/METER_SPECIMEN_EMT432_V_FULL.md) | FROZEN SKU · 61557 cert MISS |
+| CT set | Phase current, class ≤ 0,5 | **FRC-350-100mV** (100 mV/kA · not 85 mV) | FROZEN coil · Annex F PART |
 | VT set | Phase voltage, class ≤ 0,5 | IEC 61869-3, 0,5 preferred | PART |
 | RS485 link | Analyzer ↔ gateway | Existing TG-524 RS485-1 | HAVE (hardware) |
 
@@ -287,7 +289,7 @@ Both CT and VT required for P/Q at POC — matches **EPMF SS**.
 | Area | Current | Required | Gap |
 |------|---------|----------|-----|
 | Licensed PDF | Screenshot extract only | CEI EN 61557-12:2018 full PDF | **MISSING** `cei-en-61557-12-2018` |
-| Analyzer model | None chosen | Register map + cert class 0,2 | K4.5 |
+| Analyzer model | **EMT432.V.FULL** frozen | 61557-12 class 0,2 report (have 62053-22) | K4.5 cert |
 | Firmware aggregator | Not implemented | `core/measurement/` fixed-block pipeline | REQ-MET-004 |
 | Gapless type test | Not captured (p. 75) | §6.2.18 test procedure for cert | P1 optional |
 | Current I tables | Not captured (p. 43–46) | Full PMD cert if needed | P2 |
@@ -357,3 +359,7 @@ Screenshot assets: Cursor workspace `assets/` (Aug 2026 capture session). Option
 | Rev | Date | Change |
 |-----|------|--------|
 | 1.0 | 2026-08-11 | Initial extract from screenshot corpus; RAG ingest `ccli-61557-12-extract` |
+| 1.1 | 2026-09-21 | Licensed PDF path + Annex D/H |
+| 1.2 | 2026-10-21 | REQ-MET-010: TesPro Scope Allocation HAVE (unsigned) |
+| 1.3 | 2026-10-21 | Full OCR 2018 Ed 2.0: no EPMF; pin AMD1 for Annex H |
+| 1.4 | 2026-10-21 | Freeze analyzer **EMT432.V.FULL** + **FRC-350-100mV** |

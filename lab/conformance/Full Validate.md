@@ -1,7 +1,7 @@
 # Normative certification validation matrix — all annexes and O.15 standards
 
 **Document ID:** CCLI-LAB-NORM-CERT-VAL-001  
-**Revision:** 1.2  
+**Revision:** 1.5  
 **Date:** 2026-10-21  
 **File:** `lab/conformance/Full Validate.md`  
 **RAG source_id:** `ccli-normative-cert-validation-matrix`  
@@ -270,13 +270,13 @@ Milestone A (bench) → B (docs) → C (U-ACC-01…06)
 | # | Clause / standard | Shall | Test | 5-LN DUT | Gap | Cert | Lines |
 |---|-------------------|-------|------|----------|-----|------|-------|
 | **1** | Functional (O.6 + 61850 + logger + self-diag) | All **applicable** PF | **U-P7-04**, TÜV-class O/T | **PART** | 5-LN ≠ full PF2 | **#1** | `apps/ccli/core/event/o14_catalog.hpp:7-26` · `apps/ccli/services/ccli_main.cpp:833-903` |
-| **2** | **CEI EN 61557-12** + 61010; ≥K55; **ISO/IEC 17025** | EMC / insulation / metrology | **P7-09**, **U-ACC-04** | **ACC** | **OPEN** | **#2** | — |
-| **3** | **FIPS 140-2 Level 3** independent | Crypto module **or no-claim** | **P7-08** | — | **PART** — decide | **#3** | — |
+| **2** | **CEI EN 61557-12** + 61010; ≥K55; **ISO/IEC 17025** | EMC / insulation / metrology | **P7-09**, **U-ACC-04** | **ACC** | TesPro **not PMD HAVE**; **not EPMF** (Annex H MISS). K55/62368 **reports MISS**; ACCREDIA **OPEN** — [61557-12_TESPRO_VENDOR_MAP.md](61557-12_TESPRO_VENDOR_MAP.md) §4 | **#2** | — |
+| **3** | **FIPS 140-2 Level 3** independent | Crypto module **or no-claim** | **P7-08** | — | TesPro **L2** policy + CC **1278-2026** — **not L3** | **#3** | — |
 | **4** | **ISASecure EDSA v3.0.0** per **62443-4-1** + **62443-4-2** | SDLC + component CR | **P7-05/06**, **U-ACC-05** | **ACC** | **PART** pack; Higeco sample was **CSA SL-C 1** — CCLI target **SL-C 2** | **#4** | `knowledge-base/08-engineering/CCI_62443-4-1_Extract.md:1-8` · `knowledge-base/08-engineering/CCI_62443-4-2_Extract.md:1-8` |
 | **5** | **IEC 61850** UCA-accredited lab | 61850-10 Ed 2.1 Server | **U-ACC-01** | **ACC** | Pre-test PART | **#5** | `apps/ccli/config/icd/product/product_tr400_eth_a_5ln.cid:1-59` · `lab/conformance/PRODUCT_SPECIMEN_5LN.md:15-24` |
 | **6** | **62351-3** via **62351-100-3** accredited | Transport Tables 1–5 | **U-ACC-02**, **U-D7-03** | **ACC** | **P7-07 OPEN** | **#6 M** | `scripts/verify_annex_pki.py:196-420` · `apps/ccli/core/config/product_cyber_gate.hpp:8-13` |
 | **7** | **ISO 9001:2000 (as amended)** manufacturing | Factory QMS | Manufacturer audit | — | Outside repo | **#7** | — |
-| **8** | **CE** + DoC DPR 445/2000 Art. 47; retain ≥**20 y** | Technical file | **U-ACC-06** | — | **OPEN** | **#8** | — |
+| **8** | **CE** + DoC DPR 445/2000 Art. 47; retain ≥**20 y** | Technical file | **U-ACC-06** | — | TesPro: CNAS L5868 + A2LA 4674.01 **lab menus** — **no TG544 CE/DoC** | **#8** | — |
 
 ---
 
@@ -707,26 +707,29 @@ Milestone A (bench) → B (docs) → C (U-ACC-01…06)
 
 **Source:** `CCI_61557-12_Extract.md`  
 **Edition:** CEI EN **61557-12** (extract P1) + **61010-1 / 2-201**; 17025 lab.  
-**Note:** O cites “Annex B” fixed blocks; **this edition** puts fixed-block in **Annex D** (Fig D.2). CCI = **EPMF SS** (gateway + external analyzer).
+**Note:** O cites “Annex B” fixed blocks; **this edition** puts fixed-block in **Annex D** (Fig D.2). CCI = **EPMF SS** (gateway + external analyzer).  
+**TesPro only:** [61557-12_TESPRO_VENDOR_MAP.md](61557-12_TESPRO_VENDOR_MAP.md) — Ask #6 split **HAVE**; CNAS/A2LA menus **HAVE**.  
+**Clause vs TesPro respond:** [61557-12_CLAUSES_VS_TESPRO.md](61557-12_CLAUSES_VS_TESPRO.md) — every Ed 2.0 shall vs Scope §3.  
+**PDF ingest:** Desktop `IEC 61557-12 2018.pdf` = **Ed 2.0 2018 only** — [CCI_61557-12_2018_Ed2_Extract.md](../../knowledge-base/08-engineering/CCI_61557-12_2018_Ed2_Extract.md). **No EPMF / no Annex H.** Adding 61557-12 on that edition makes TesPro a **PMD** and forces **§4.10 61010-1 + 2-030**. Keep programme on **AMD1:2021** for EPMF.
 
 | Clause | Shall | SW | Test | 5-LN DUT | Gap | Cert | Lines |
 |--------|-------|----|------|----------|-----|------|-------|
-| **REQ-MET-001 / §4.8.2.1** | P **gapless** | Analyzer | Chain calc | **PART** | Spec | #2 | `apps/ccli/adapters/modbus_master/modbus_adapter.cpp:286-350` · `apps/ccli/core/measurement/measurement_store.cpp:5-7` |
-| **REQ-MET-002 / §4.8.3.1** | Q **gapless** | Analyzer | Chain | **PART** | — | #2 | `apps/ccli/services/ccli_main.cpp:847` · `apps/ccli/adapters/iec61850_mms/mms_adapter.cpp:1323-1336` |
-| **REQ-MET-003 / §4.8.7.1** | U gapless **not** required | Analyzer | — | **PART** | — | #2 | `apps/ccli/services/ccli_main.cpp:848-850` |
-| **REQ-MET-004 / Annex D** | **Fixed** blocks, not sliding | Aggregator TBD | **P5-03** | **PART** | `core/measurement/` TBD | #2 | `apps/ccli/core/measurement/measurement_store.cpp:5-7` |
-| **REQ-MET-005 / Table 3+8** | P class ≤ **0,2** | Converter | **P5-04** | **PART** | Analyzer selection | #2 | — |
-| **REQ-MET-006** | CT ≤0,5 · VT ≤0,5 | Sensors | Datasheet | **PART** | Annex F | #2 | — |
-| **REQ-MET-007** | MC200 = 200 ms fixed | Fast ring | **P5-03** | **PART** | — | #2 · O.7.4 | `apps/ccli/core/measurement/measurement_store.cpp:5-7` |
-| **REQ-MET-008** | PF1 TX 4 s fixed, :00/:04/… | URCB | **U-T1-06** | **PART** | Alignment | #2 · O.8.3 | `apps/ccli/config/icd/product/product_tr400_eth_a_5ln.cid:58-59` |
+| **REQ-MET-001 / §4.8.2.1** | P **gapless** | Analyzer | Chain calc | **PART** | TesPro **N/A**. EMT432 62053-22 only | #2 | `apps/ccli/adapters/modbus_master/modbus_adapter.cpp:286-350` · `apps/ccli/core/measurement/measurement_store.cpp:5-7` |
+| **REQ-MET-002 / §4.8.3.1** | Q **gapless** | Analyzer | Chain | **PART** | TesPro **N/A** | #2 | `apps/ccli/services/ccli_main.cpp:847` · `apps/ccli/adapters/iec61850_mms/mms_adapter.cpp:1323-1336` |
+| **REQ-MET-003 / §4.8.7.1** | U gapless **not** required | Analyzer | — | **PART** | TesPro **N/A** | #2 | `apps/ccli/services/ccli_main.cpp:848-850` |
+| **REQ-MET-004 / Annex D** | **Fixed** blocks, not sliding | Aggregator TBD | **P5-03** | **PART** | TesPro **N/A**. `core/measurement/` last-sample | #2 | `apps/ccli/core/measurement/measurement_store.cpp:5-7` |
+| **REQ-MET-005 / Table 3+8** | P class ≤ **0,2** | Converter | **P5-04** | **PART** | TesPro **N/A**. Analyzer 61557 cert **MISS** | #2 | — |
+| **REQ-MET-006** | CT ≤0,5 · VT ≤0,5 | Sensors | Datasheet | **PART** | TesPro **N/A**. Annex F datasheets **MISS** | #2 | — |
+| **REQ-MET-007** | MC200 = 200 ms fixed | Fast ring | **P5-03** | **PART** | TesPro **N/A** | #2 · O.7.4 | `apps/ccli/core/measurement/measurement_store.cpp:5-7` |
+| **REQ-MET-008** | PF1 TX 4 s fixed, :00/:04/… | URCB | **U-T1-06** | **PART** | TesPro **N/A**. Alignment **PART** | #2 · O.8.3 | `apps/ccli/config/icd/product/product_tr400_eth_a_5ln.cid:58-59` |
 | **REQ-MET-009** | MCΔT over ΔT 10–600 s | Slow ring | **P5-R06** | **N/A** | Curves waived | #2 | — |
-| **REQ-MET-010 / Annex H** | TG-524 = **EPMF SS** | Architecture | Doc | **PART** | — | #2 | — |
-| **REQ-MET-011** | P/Q rated 80–120 % Un | Analyzer | Type test | **PART** | — | #2 | — |
-| **REQ-MET-012** | U range 20–120 % Un (xS) | Analyzer | Type test | **PART** | — | #2 | — |
-| **REQ-MET-013** | Climate **K55** (−5…+55 °C) | HW | **P7-09** | **ACC** | 17025 lab | #2 | — |
-| **REQ-MET-014** | **No fiscal** CT/VT reuse | Design | Spec | — | None (spec) | #2 | — |
-| **61010-1 / 2-201** | Insulation / safety | HW | **P7-09** | **ACC** | Recalled by 61557-12 | #2 | — |
-| **ISO/IEC 17025** | Lab accreditation (ACCREDIA IT) | — | **U-ACC-04** | **ACC** | **OPEN** | **#2** | — |
+| **REQ-MET-010 / Annex H** | TG-524 = **EPMF SS** | Architecture | Doc | **PART** | TesPro letter = **not PMD**, **0 hits EPMF**. Annex H is **AMD1** (not in 2018 PDF). Table H.5 **MISS** | #2 | `knowledge-base/08-engineering/reference/vendor/tespro/2026-10-cert-reply/_extracts/TesPro-Certification-Scope-Allocation-Statement-EN.txt` |
+| **REQ-MET-011** | P/Q rated 80–120 % Un | Analyzer | Type test | **PART** | TesPro **N/A** | #2 | — |
+| **REQ-MET-012** | U range 20–120 % Un (xS) | Analyzer | Type test | **PART** | TesPro **N/A** | #2 | — |
+| **REQ-MET-013** | Climate **K55** (−5…+55 °C) | HW | **P7-09** | **ACC** | TesPro **no report**. 4674.01 / CNAS p.1 **no** 60068 | #2 | — |
+| **REQ-MET-014** | **No fiscal** CT/VT reuse | Design | Spec | — | TesPro **N/A**. Spec **HAVE** | #2 | — |
+| **61010-1 / 2-201** | Insulation / safety | HW | **P7-09** | **ACC** | TesPro **N/A** (no measuring I/O). Chronos 61010-1:2010 **HAVE**. Assembled CCI **OPEN** | #2 | — |
+| **ISO/IEC 17025** | Lab accreditation (ACCREDIA IT) | — | **U-ACC-04** | **ACC** | TesPro **HAVE** CNAS L5868 + A2LA 4674.01 (62368/61326 **menu**). **Not** 61557-12. ACCREDIA **OPEN** | **#2** | `knowledge-base/08-engineering/CCI_TesPro_CNAS_L5868_62368_Scope_Extract.md` · `_extracts/4674-01.txt` |
 | **CEI EN 61439-2** | Cabinet (competitor sample D) | Enclosure | If claimed | — | Not CCI function cert | optional | — |
 
 ---
@@ -735,9 +738,9 @@ Milestone A (bench) → B (docs) → C (U-ACC-01…06)
 
 | Clause | Shall | SW | Test | 5-LN DUT | Gap | Cert | Lines |
 |--------|-------|----|------|----------|-----|------|-------|
-| **FIPS 140-2 L3** | Independent crypto module **or drop claim** | TPM | **P7-08** | — | **PART** | **#3** | — |
-| **ISO 9001:2000 (as amended)** | Manufacturing QMS | Factory | Audit | — | Outside repo | **#7** | — |
-| **CE marking** | Mandatory | File | **U-ACC-06** | — | **OPEN** | **#8** | — |
+| **FIPS 140-2 L3** | Independent crypto module **or drop claim** | TPM | **P7-08** | — | TesPro **L2** policy Rel 1.6 + CC **BSI-DSZ-CC-1278-2026** — **not L3** | **#3** | `knowledge-base/08-engineering/reference/vendor/tespro/2026-10-cert-reply/_extracts/FIPS_140_2_Level_2_Non-Proprietary_Security_Policy.txt` |
+| **ISO 9001:2000 (as amended)** | Manufacturing QMS | Factory | Audit | — | TesPro said attached — **PDF not in drop** | **#7** | — |
+| **CE marking** | Mandatory | File | **U-ACC-06** | — | TesPro lab menus **HAVE**; TG544 CE/DoC **MISS** | **#8** | `knowledge-base/08-engineering/CCI_TesPro_CNAS_L5868_62368_Scope_Extract.md` |
 | **DPR 445/2000 Art. 47** | Manufacturer DoC; retain ≥20 y | File | Legal | — | **OPEN** | **#8** | — |
 | **ARERA 385/2025** | ≥100 kW PF2 + V5 dates | Memo | **P7-10** | — | Full text **MISSING** | #8 | — |
 | **ARERA 564 / 36/2020** | Observability / CCI mandate | Memo | **P7-10** | — | **PART** | #8 | — |
@@ -841,8 +844,8 @@ Verified against the extracts listed. Status = extract on disk vs this matrix co
 | H.1 62443-3-2 | `CCI_62443_Zones.md` ZCR 1–7 | **HAVE** / ZCR 7 **MISS** | ZCR 1–7 | □ |
 | H.2 62443-4-1 | Extract Annex B — **47** clauses | **HAVE** / SD-3/4 body **MISSING** | SM-1…SG-7 | □ |
 | H.3 62443-4-2 | FR 1–7 SL-C 2 checklists | **HAVE** / CR 6.1 p.57 **MISSING** | All SL-2 CRs | □ |
-| I 61557-12 | Extract REQ-MET-001…014 + Annex D/H | **HAVE** (P1) | MET-001…014 + 61010 + 17025 | □ |
-| J Legal / 104 / FIPS | Phase checklists · cert samples | **PART** | #3 #7 #8 ARERA 104 | □ |
+| I 61557-12 | Extract + TesPro 2026-10 pack + CNAS p.1 + 4674.01 | **HAVE** (P1) + TesPro split | MET-001…014 + TesPro N/A/HAVE | □ |
+| J Legal / 104 / FIPS | Phase checklists · TesPro L2 + CC 1278 | **PART** | #3 L2 ≠ L3 · #8 lab menu | □ |
 
 **Intentionally out of first UCA (still listed):** O.9.1.x, T Tables 88–92, CB-06/09/14, 62351-4 §13, 62351-100-6, U bis.
 
@@ -857,6 +860,8 @@ Verified against the extracts listed. Status = extract on disk vs this matrix co
 | [ANNEX_O_SOFTWARE_MATRIX.md](ANNEX_O_SOFTWARE_MATRIX.md) | O → software (shorter) |
 | [LAB_UNIFIED_CERT_TEST_MATRIX.md](LAB_UNIFIED_CERT_TEST_MATRIX.md) | Live □ execution |
 | [dnv/DNV_UCA_PRODUCT_READINESS.md](dnv/DNV_UCA_PRODUCT_READINESS.md) | O.15 vs product deploy |
+| [61557-12_TESPRO_VENDOR_MAP.md](61557-12_TESPRO_VENDOR_MAP.md) | TesPro asks vs 61557-12 **only** |
+| `CCI_TesPro_Cert_Reply_2026-10_Extract.md` | Full 2026-10-21 vendor pack |
 | `knowledge-base/08-engineering/CCI_Phase_Regulation_Checklists.md` | P0–P7 gates |
 | `scripts/verify_annex_pki.py` | Cert A/B / CRL gates |
 
@@ -871,5 +876,8 @@ When a row moves **GAP → PASS**, write evidence filename + session date in **G
 | 1.0 | 2026-10-20 | Initial book: O, M, T, U-gap, 61850-10 CBs, 100-3/100-4, 62443 3-2/4-1/4-2, 61557-12, O.15 #1–8 |
 | 1.1 | 2026-10-20 | Second validation: add O.13.4/7, PHY/IPv4, T.3.1.3 Gen/St/SGG + Table 80, O.14 cats; fix overstated PASS; 62351-8 ≠ #6 |
 | 1.2 | 2026-10-21 | **Lines** column after **Cert** on all clause tables; pin O/T/M/61850-10/62351/62443 editions |
+| 1.3 | 2026-10-21 | TesPro 2026-10 pack into §I / A.8 #2#3#8 / J: EPMF split HAVE; 62368/A2LA menus HAVE; K55/CE/L3/ACCREDIA still OPEN |
+| 1.4 | 2026-10-21 | Desktop 61557-12 PDF scan: 2018 Ed 2.0 only, no EPMF; AMD1 required for TesPro path |
+| 1.5 | 2026-10-21 | TesPro Ask #6 = not PMD, not EPMF; O.15 #2 / Annex H gaps in vendor map §4 |
 
 **Keywords:** `normative`, `O.15`, `Annex O`, `Annex M`, `Annex T`, `61850-10`, `62351-100-3`, `62443`, `5-LN`, `ccli-normative-cert-validation-matrix`

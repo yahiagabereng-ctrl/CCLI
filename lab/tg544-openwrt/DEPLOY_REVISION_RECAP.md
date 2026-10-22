@@ -2,7 +2,7 @@
 
 Use this when you need a **named lab profile** (pre–5LN r51 vs P3-07 Connect vs unified 5-LN cert), not “whatever is in `ccli-bin` today”.
 
-**Pins:** [`revision-pins/`](revision-pins/) · **Per-upload record:** [`deploy-manifests/`](deploy-manifests/) · **Access (SSH + TSP TLS):** [`LAB_ACCESS_FREEZE.md`](../LAB_ACCESS_FREEZE.md)
+**Pins:** [`revision-pins/`](revision-pins/) · **Per-upload record:** [`deploy-manifests/`](deploy-manifests/) · **Rolling SW + binaries:** [`CCLI_SW_VERSION_AND_BINARIES.md`](CCLI_SW_VERSION_AND_BINARIES.md) · **Access (SSH + TSP TLS):** [`LAB_ACCESS_FREEZE.md`](../LAB_ACCESS_FREEZE.md)
 
 ---
 
@@ -16,8 +16,9 @@ Use this when you need a **named lab profile** (pre–5LN r51 vs P3-07 Connect v
 | REQ-BLD-001 | Build for **aarch64** OpenWrt | `lab/tg544-openwrt/ccli-bin` updated |
 | REQ-BLD-002 | Version gate | `deploy-ccli-session-fix.ps1` runs WSL `ccli-bin --version` or strings match **rN** |
 | REQ-MAN-001 | Manifest before upload | `write-deploy-manifest.ps1` → `CCLI_DEPLOY_*` + `.json` |
+| REQ-MAN-002 | Rolling record | `Update-CcliDeployRecord.ps1` → `CCLI_DEPLOY_LATEST.*` + `CCLI_SW_VERSION_AND_BINARIES.md` |
 | REQ-DUT-001 | Single MMS owner | `iec61850service` / `iec61850-mmsd` off; **ccli** on **3782** / **2404** |
-| REQ-DUT-002 | Post-deploy identity | DUT: `ccli --version`, `sha256sum /usr/sbin/ccli` = manifest |
+| REQ-DUT-002 | Post-deploy identity | DUT: `ccli --version`, `sha256sum /usr/sbin/ccli` = manifest (auto on deploy) |
 
 **Do not** treat “we copied a file named r51” as r51 until **REQ-BLD-002** and DUT SHA match a manifest.
 

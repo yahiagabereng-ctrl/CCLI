@@ -160,6 +160,23 @@ int main() {
         return EXIT_FAILURE;
     }
 
+    // P3-05 / O.13.1.2: cleared live + Operating Rule latched → yaml TR Table 1 (O.11 min)
+    DsoConfig tr_dc{};
+    tr_dc.enabled = true;
+    tr_dc.profile = DsoProfile::Tr57126Table1;
+    tr_dc.release_delta_kw = 5.0;
+    const auto or_fb = apply_live_dso_commands_to_pf2(live_pf2, pc, tr_dc, false, 0.0, false, 0.0,
+                                                     true);
+    if (!or_fb.applied || !near_eq(or_fb.pf2_threshold_kw, 42.0, 0.5)) {
+        std::cerr << "OR fallback Figura2 expected enter~42 kW got " << or_fb.pf2_threshold_kw
+                  << '\n';
+        return EXIT_FAILURE;
+    }
+    if (!near_eq(or_fb.pf2_release_kw, 37.0, 0.5)) {
+        std::cerr << "OR fallback expected release~37 kW got " << or_fb.pf2_release_kw << '\n';
+        return EXIT_FAILURE;
+    }
+
     // P5-R01 — VArSd 10 % Smax on 210 kVA → 21 kVAr
     DsoReactivePowerCommands varsd{};
     varsd.varsd_active = true;

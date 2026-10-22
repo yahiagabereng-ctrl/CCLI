@@ -90,7 +90,11 @@ if ($ExpectedSha) {
 }
 $checks["MMS/104 TLS in yaml"] = $yaml -match "tls_enabled: true"
 $checks["MMS model cfg (5-LN product or lab)"] = ($yaml -match "product_tr400_eth_a_5ln\.cfg") -or ($yaml -match "lab_tg544_eth_a\.cfg")
-$checks["Modbus RTU ttyS1 (bench)"] = $yaml -match "ttyS1" -or $yaml -match "backend: rtu"
+$prodYaml = Invoke-Dut "grep -E 'use_dso_mock|backend:|host:|device:' /etc/ccli/lab.yaml 2>/dev/null | head -8"
+$checks["U-PROD-001 plant modbus (RTU bench or TCP product)"] =
+    ($yaml -match "backend: rtu") -or ($yaml -match "ttyS1") -or ($yaml -match "backend: tcp")
+$checks["U-PROD-002 product profile (no DSO mock)"] =
+    ($prodYaml -match "use_dso_mock: false") -or ($prodYaml -notmatch "use_dso_mock: true")
 
 $gd32 = Invoke-Dut "ubus call dido_v2 gd32.status '{}'"
 $dido = Invoke-Dut "ubus call dido_v2 status"
@@ -116,7 +120,7 @@ $report = @"
 # PREFLIGHT_DUT unified matrix - $date
 generated: $ts
 host: $HostAddr
-matrix_rows: U-P0-06 U-P0-07 U-P0-08 U-D7-01 U-T3-04 (CRL preflight)
+matrix_rows: U-P0-06 U-P0-07 U-P0-08 U-D7-01 U-T3-04 U-PROD-001/002
 git_pin: 0e330a1
 deploy_manifest: lab/tg544-openwrt/deploy-manifests/CCLI_DEPLOY_0.1.0-r55_2026-10-15_140421.md
 session_pin: lab/conformance/LAB_UNIFIED_SESSION_PIN_2026-10-14.md
@@ -149,6 +153,9 @@ $crlYaml
 lab_crl.pem bytes: $crlFile
 revoked PEMs: $revokedTls
 $crlLog
+
+## product vs lab plant
+$prodYaml
 "@
 
 if ($WriteEvidence) {

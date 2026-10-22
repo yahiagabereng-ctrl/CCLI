@@ -2,7 +2,7 @@
 
 **Document ID:** CCLI-VENDOR-TESPRO-61850-EXT-001
 **Revision:** 1.0
-**Date:** 2026-10-01
+**Date:** 2026-10-14
 **RAG source_id:** `ccli-tespro-61850-manual-extract`
 **Source file:** `knowledge-base/08-engineering/reference/vendor/tespro/IEC61850-User-Manual.docx`
 **DOCX source_id:** `ccli-tespro-61850-manual`

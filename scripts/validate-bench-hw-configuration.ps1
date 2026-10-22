@@ -7,7 +7,7 @@
 
 param(
     [string]$DutHost = "192.168.1.130",
-    [string]$MeterHost = "192.168.178.102",
+    [string]$MeterHost = "192.168.178.10",
     [string]$DutLan1 = "192.168.10.1",
     [string]$InverterCom = "COM5",
     [string]$ConfigYaml = "lab_tr400_emt432_lan3_tcp_102.yaml",
@@ -79,7 +79,14 @@ if ($ConfigYaml -match "emt432") {
 $lan2 = Test-LocalIp "192.168.1."
 $lan3 = Test-LocalIp "192.168.178."
 $lan1 = Test-LocalIp "192.168.10."
-$comPorts = @(Get-CimInstance Win32_SerialPort -ErrorAction SilentlyContinue | ForEach-Object { $_.DeviceID })
+# USB-RS485 often appears in GetPortNames but not Win32_SerialPort (PnP timing).
+$comPorts = @(
+    [System.IO.Ports.SerialPort]::GetPortNames()
+    Get-CimInstance Win32_SerialPort -ErrorAction SilentlyContinue | ForEach-Object { $_.DeviceID }
+) | Select-Object -Unique
+if ($yamlText -match "pc_usb_rs485:\s*(\S+)") {
+    $InverterCom = $Matches[1]
+}
 
 $checks["PC-A: LAN2 192.168.1.x"] = ($lan2.Count -gt 0)
 $checks["PC-A: LAN3 192.168.178.x"] = ($lan3.Count -gt 0)
@@ -87,7 +94,7 @@ $checks["PC-B: LAN1 192.168.10.x on this PC"] = ($lan1.Count -gt 0)
 $checks["PC-A: ping DUT LAN2"] = if ($lan2.Count -gt 0) { Test-PingHost $DutHost } else { $false }
 $checks["PC-B path: ping DUT LAN1"] = Test-PingHost $DutLan1
 $checks["Plant: ping EMT432"] = Test-PingHost $MeterHost
-$checks["PC-A: USB RS485 COM5"] = ($InverterCom -in $comPorts)
+$checks["PC-A: USB RS485 $InverterCom"] = ($InverterCom -in $comPorts)
 
 $dutSection = ""
 if ($RemoteDut -and $env:CCLI_TG544_PW) {

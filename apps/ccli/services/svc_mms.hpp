@@ -22,6 +22,9 @@ public:
         return poll_dso_live_command(out);
     }
     bool poll_comms_loss_fallback() { return adapter_.poll_comms_loss_fallback(); }
+    bool operating_rule_fallback_latched() const {
+        return adapter_.operating_rule_fallback_latched();
+    }
     void refresh_time_quality() { adapter_.refresh_time_quality(); }
     bool gnss_fix() const { return adapter_.gnss_fix(); }
     int client_count() const { return adapter_.client_count(); }

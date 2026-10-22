@@ -1592,6 +1592,14 @@ int MmsAdapter::client_count() const {
     return impl_->client_count;
 }
 
+bool MmsAdapter::operating_rule_fallback_latched() const {
+    if (impl_ == nullptr) {
+        return false;
+    }
+    std::lock_guard<std::mutex> lock(impl_->mu);
+    return impl_->fallback_latched;
+}
+
 #else /* !CCLI_HAVE_LIBIEC61850 */
 
 struct MmsAdapter::Impl {};
@@ -1620,6 +1628,8 @@ void MmsAdapter::update_ppv_kv(double /*ppv_kv*/) {}
 bool MmsAdapter::poll_dso_live_command(DsoLiveCommand& /*out*/) { return false; }
 
 bool MmsAdapter::poll_comms_loss_fallback() { return false; }
+
+bool MmsAdapter::operating_rule_fallback_latched() const { return false; }
 
 void MmsAdapter::refresh_time_quality() {}
 

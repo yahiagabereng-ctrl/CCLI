@@ -40,10 +40,24 @@ ubus call dido_v2 status
 echo "=== lab.yaml io (permissive_bypass must be false for cert actuation) ==="
 grep -E 'permissive_bypass|do_curtail|di_permissive|gpio:|active_' /etc/ccli/lab.yaml 2>/dev/null | head -10 || echo "WARN: no /etc/ccli/lab.yaml"
 
+echo "=== disable TesPro northbound (ccli owns 3782/2404) ==="
+uci set iec61850service.global.enabled='0' 2>/dev/null || true
+uci commit iec61850service 2>/dev/null || true
+/etc/init.d/iec61850service disable 2>/dev/null || true
+/etc/init.d/iec61850service stop 2>/dev/null || true
+/etc/init.d/iec61850-mmsd disable 2>/dev/null || true
+/etc/init.d/iec61850-mmsd stop 2>/dev/null || true
+killall iec61850d 2>/dev/null || true
+killall -9 iec61850d 2>/dev/null || true
+killall iec61850-mmsd 2>/dev/null || true
+killall -9 iec61850-mmsd 2>/dev/null || true
+sleep 1
+
 echo "=== restart ccli (reload HAL + svc_io) ==="
-/etc/init.d/ccli restart 2>/dev/null || {
-	killall ccli 2>/dev/null || true
-	sleep 1
+/etc/init.d/ccli stop 2>/dev/null || true
+killall ccli 2>/dev/null || true
+sleep 1
+/etc/init.d/ccli start 2>/dev/null || {
 	/usr/sbin/ccli --config /etc/ccli/lab.yaml >>/tmp/ccli.log 2>&1 &
 	sleep 3
 }

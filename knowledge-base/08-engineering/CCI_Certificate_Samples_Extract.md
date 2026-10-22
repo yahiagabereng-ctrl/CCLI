@@ -156,7 +156,9 @@ HiTEKS must eventually match the **certificate types** listed in Annex O O.15.4:
 | Annex O §11–12 | `CCI_Annex_O_Extract.md` | `cei-0-16-allegato-o` | **What** to certify |
 | Annex T cyber | `CCI_Annex_T_Extract.md` | `cei-0-16-allegato-t` | 61850 / PKI / TLS |
 | 62351-3 PICS | `CCI_62351-3_Extract.md` | `ccli-62351-3-extract` | TLS PICS tables |
+| 62351-100-3 tests | `CCI_62351-100-3_Extract.md` | `ccli-62351-100-3-extract` | Transport **conformance** cases |
 | 62351-4 PICS | `CCI_62351-4_Extract.md` | `ccli-62351-4-extract` | MMS E2E PICS |
+| 62351-100-4 tests | `CCI_62351-100-4_Extract.md` | `ccli-62351-100-4-extract` | MMS security **test** planning (PDF MISSING) |
 | 62351-9 PICS | `CCI_62351-9_Extract.md` | `ccli-62351-9-extract` | PKI PICS |
 | 62443-4-1 SDL | `CCI_62443-4-1_Extract.md` | `ccli-62443-4-1-extract` | SDLC evidence |
 | 62443-4-2 CR | `CCI_62443-4-2_Extract.md` | `ccli-62443-4-2-extract` | Component CR matrix |
@@ -175,7 +177,7 @@ HiTEKS must eventually match the **certificate types** listed in Annex O O.15.4:
 
 | Priority | Item | Blocks |
 |----------|------|--------|
-| P0 | **IEC 62351-100-3** PDF | Transport test procedure document |
+| ~~P0~~ | **IEC 62351-100-3** PDF | **HAVE** — `ccli-62351-100-3-extract` + OCR (2026-10-08) |
 | P0 | **61850-8-1:2011 Ed.2** PDF | UCA PICS authoritative baseline |
 | P0 | **ARERA 385/2025 + 564/2025** | Legal scope memo |
 | ~~P1~~ | ~~OCR DI.CO + CEI 0-16.pdf~~ | **DONE** — `Certificate/_extracts/*_ocr.txt` |

@@ -62,7 +62,8 @@ Phases **P0–P6** are **CLOSED** (internal lab gates). **P7** is **OPEN** (evid
 - **Include:** Server role; MMS (8-1); GetDirectory*; Get/SetDataValues; Data sets; **Unbuffered reporting**; **Control** (Operate / ctlModel per DO); **Time sync** (client); Association.
 - **Exclude (first pass):** Buffered reporting; Logging; File transfer; Setting groups; Sampled Values; **GOOSE publisher**; Client role; 9-1 / 9-2 SCSMs.
 
-**Competitor reference:** `knowledge-base/08-engineering/CCI_Certificate_Samples_Extract.md` (DNV UCA sample scope).
+**Competitor reference:** `knowledge-base/08-engineering/CCI_Certificate_Samples_Extract.md` (DNV UCA sample scope).  
+**UCA tester-accreditation drop (not DUT TP):** [`CCI_UCA_61850_Accreditation_Extract.md`](../../knowledge-base/08-engineering/CCI_UCA_61850_Accreditation_Extract.md) · `ccli-uca-61850-accreditation-extract`.
 
 ### D2 — PIXIT
 

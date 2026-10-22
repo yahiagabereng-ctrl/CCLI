@@ -92,6 +92,9 @@ int read_block_count(const ModbusPollConfig& cfg) {
     return read_block_end(cfg) - start;
 }
 
+/** Max holding registers in one FC3 block (932..981 EMT432 1P map needs 50). */
+constexpr int kModbusPollRegBuffer = 64;
+
 }  // namespace
 
 void ModbusAdapter::record_read_holding(const std::int64_t now_ms, const int start,
@@ -331,7 +334,7 @@ bool ModbusAdapter::poll_simulator(cci::core::MeasurementStore& store, const std
 
     const int start = read_block_start(cfg_);
     const int count = read_block_count(cfg_);
-    std::uint16_t regs[32]{};
+    std::uint16_t regs[kModbusPollRegBuffer]{};
     if (cfg_.reg_active_power_count >= 2 && count >= 2) {
         const int p_idx = cfg_.reg_active_power - start;
         float pf = static_cast<float>(simulated_p_kw_);
@@ -496,9 +499,9 @@ bool ModbusAdapter::poll_libmodbus(cci::core::MeasurementStore& store, const std
 
 
 
-    std::uint16_t regs[32]{};
+    std::uint16_t regs[kModbusPollRegBuffer]{};
 
-    if (reg_count <= 0 || reg_count > static_cast<int>(sizeof(regs) / sizeof(regs[0]))) {
+    if (reg_count <= 0 || reg_count > kModbusPollRegBuffer) {
 
         record_read_holding(now_ms, start, reg_count, nullptr, 0, false, "bad_map");
 

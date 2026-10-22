@@ -165,7 +165,7 @@ Usare questi **codici classe** per il routing delle query e per l’ingest dei P
 | ARERA 385/2025/R/EEL | `REGULATOR-IT` | V5 Allegati O/T/U driver (100–500 kW) | P1 | **PART** | Summarised in `CCI_Annex_O_Extract.md` §2.1; full delibera **MISSING** |
 | AiLux CCI manual (impl. baseline) | `GRID-IT` | Full module behaviour reference / riferimento comportamento modulo | P0 | **INGESTED** | `cei-0-16-cci-manual-ailux` |
 | ARERA Decision / Delibera 540/2021 | `REGULATOR-IT` | Italian market obligations tied to CEI 0-16 CCI | P0 | **INGESTED** | `arera-540-2021` → `CCI_ARERA_540_2021_Extract.md` |
-| CEI EN 61557-12:2018 | `METROLOGY` | Performance measuring / monitoring claims | P1 | **INGESTED** | `ccli-61557-12-extract` + licensed PDF in drop |
+| CEI EN 61557-12:2018 | `METROLOGY` | Performance measuring / monitoring claims | P1 | **INGESTED** | `ccli-61557-12-2018-ed2-extract` (Ed 2.0 HQ) · `ccli-61557-12-extract` (AMD1 programme) |
 | IEC 62443-3-2 | `CYBER-IACS` | Zones & conduits (architecture) | P0 | **INGESTED** | `ccli-62443-zones` + PDF `IEC 62443-3-2-2020.pdf` (drop) |
 | IEC 62443-3-3 | `CYBER-IACS` | System security requirements | P0 | **INGESTED** | `ccli-62443-3-3-extract` + PDF `IEC 62443-3-3 2013.pdf` (drop) |
 | IEC 62443-4-1 | `CYBER-IACS` | Secure development lifecycle | P0 | **INGESTED** | `ccli-62443-4-1-extract` + PDF `IEC 62443-4-1 2018.pdf` (drop) |
@@ -217,7 +217,7 @@ Usare questi **codici classe** per il routing delle query e per l’ingest dei P
 | Anti-tamper + RBAC + firewall | `CYBER-IACS`, `CYBER-PROTO` | this class doc | `iec-62443-4-2`, `iec-62351-8` |
 | SNMP / Syslog secure | `CYBER-PROTO` | this class doc | `iec-62351-7`, `iec-62351-14` |
 | DI/DO / GPS / LTE / OLED / microSD | product HW (manual) | `cei-0-16-cci-manual-ailux` | — |
-| Metrology / monitoring accuracy | `METROLOGY` | — | `ccli-61557-12-extract` (PART); `cei-en-61557-12-2018` (target) |
+| Metrology / monitoring accuracy | `METROLOGY` | — | `ccli-61557-12-2018-ed2-extract` (HAVE Ed 2.0); `ccli-61557-12-extract` (PART AMD1) |
 | Clone product CE cyber | `CYBER-EU` | `eu-2024-2847-cra` | + 62443 / 62351 corpus |
 | Renewables policy context | `ENERGY-EU` | `eu-2018-2001-red` | — |
 

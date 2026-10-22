@@ -4,6 +4,7 @@
 # lab_tr400_phase4_eth_b_ttyS1.yaml.
 #
 # Deploy: deploy-ccli-session-fix.ps1 -HostAddr 192.168.1.130 -LabYaml .../lab_tr400_phase4_eth_b_ttyS1_5ln.yaml
+# Product ship (all features, no DSO mock): apps/ccli/config/product_tr400.yaml
 
 platform: tg500
 lab:

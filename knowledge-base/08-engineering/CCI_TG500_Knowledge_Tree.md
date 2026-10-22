@@ -1,8 +1,8 @@
 # CCI Knowledge Tree — TG-500 Programme (MT798X / OpenWrt)
 
 **Document ID:** CCLI-KT-TG500-001
-**Revision:** 1.2
-**Date:** 2026-09-15
+**Revision:** 1.3
+**Date:** 2026-10-14
 **RAG source_id:** `ccli-tg500-knowledge-tree`
 **Parents:** `ccli-soc-freeze` (silicon) · `ccli-tg500-lab-platform` (DUT) · `ccli-architecture-framework` (method)
 **Status:** LIVING — regenerate status column whenever `Knowledge_Matrix.xlsx` is rebuilt
@@ -19,7 +19,7 @@
 
 ```
 CCI TG-500 Knowledge Tree
-├── K0  Corpus & RAG governance ................. 5 HAVE
+├── K0  Corpus & RAG governance ................. 6 HAVE
 ├── K1  Platform & silicon ...................... 3 HAVE · 4 PART · 0 MISS · 1 DEF
 ├── K2  OS, build & boot toolchain .............. 1 HAVE · 2 PART · 4 MISS   <-- weakest branch
 ├── K3  Network & segmentation .................. 1 HAVE · 4 PART · 2 MISS
@@ -44,7 +44,8 @@ The critical path runs **K2 → K3 → K4**: without the OpenWrt SDK (K2.2) noth
 | Node | Knowledge item | Status | RAG source_id | Risk | Gate |
 |------|----------------|--------|---------------|------|------|
 | K0.1 | Single-silicon rule (no alternate SoC in active corpus) | `[HAVE]` | `ccli-soc-freeze` | KR-015 | D2 |
-| K0.2 | OpenWrt OS freeze; Yocto removed; Pi test path | `[HAVE]` | `ccli-openwrt-freeze` | — | D6 |
+| K0.2 | OpenWrt OS freeze; Yocto removed; TesPro-only validation | `[HAVE]` | `ccli-openwrt-freeze` | — | D6 |
+| K0.6 | Product SW freeze — lab-first promote to `releases/product-cyber/` | `[HAVE]` | `ccli-product-sw-freeze` | R-PROD-SW-001 | — |
 | K0.3 | Knowledge/risk matrices regenerate from one corpus module | `[HAVE]` | `scripts/knowledge_risks_corpus.py` | — | — |
 | K0.4 | SK0146 schematic corpus (15 sheets) ingested | `[HAVE]` | `sk0146-blk_ref_*` | KL-001 | — |
 | K0.5 | RAG service reachable for ingest + probes | `[HAVE]` | — | — | — |
@@ -83,7 +84,7 @@ The critical path runs **K2 → K3 → K4**: without the OpenWrt SDK (K2.2) noth
 | K2.6 | Boot chain: bootloader → kernel → OpenWrt rootfs | `[PART]` | `ccli-tg500-lab-platform` | KR-004 | — |
 | K2.7 | Signed / A-B firmware update path on OpenWrt | `[MISS]` | — | KR-005 | — |
 
-**Validation path:** K4 runs **Pi L1** then **TR400 L2+** on bench. Host cross-compile waits on **K2.2 SDK**; on-device bootstrap is interim path.
+**Validation path:** **Host unit tests** → **TG544 L1–L4** (`lab/evidence/`) → promote **product cyber** bundle (`ccli-product-sw-freeze`). Cross-compile via **K2.2 SDK**; on-device bootstrap is interim path.
 
 ---
 
@@ -177,7 +178,8 @@ The critical path runs **K2 → K3 → K4**: without the OpenWrt SDK (K2.2) noth
 | K8.1 | Validation & mocking strategy (waves A/B) | `[HAVE]` | `ccli-validation-strategy` | — | — |
 | K8.2 | Mocking bench BOM | `[HAVE]` | `ccli-mocking-bench-bom` | — | — |
 | K8.3 | SK0146 bench crosswalk (what transfers, what does not) | `[HAVE]` | `Knowledge_Matrix.xlsx` | KL-003/004 | — |
-| K8.4 | Pi ↔ TR400 identical test vectors | `[PART]` | `ccli-app-structure`, `lab_tr400.yaml` | — | — |
+| K8.4 | Host + TG544 identical test vectors | `[PART]` | `ccli-app-structure`, `test_vectors/` | — | — |
+| K8.7 | Product cyber release bundles | `[PART]` | `ccli-product-sw-freeze`, `releases/product-cyber/` | R-PROD-SW-001 | — |
 | K8.5 | Evidence pack + records schema per REQ | `[PART]` | `Test Bench/records.py` | KL-017 | — |
 | K8.6 | Verification matrix REQ → test → pass criteria | `[PART]` | `ccli-architecture-framework` | — | D0 |
 
@@ -206,7 +208,7 @@ The critical path runs **K2 → K3 → K4**: without the OpenWrt SDK (K2.2) noth
 
 | ID | Description | Impact | Mitigation |
 |----|-------------|--------|------------|
-| R-KT-001 | SDK never supplied by TesPro | Whole K2/K4 on-target path stalls | Pi mock keeps K4 moving; escalate SDK as PO condition; hold a second gateway vendor as fallback |
+| R-KT-001 | SDK never supplied by TesPro | Whole K2/K4 on-target path stalls | On-device bootstrap + host unit tests; escalate SDK as PO condition |
 | R-KT-002 | Tree status drifts from `Knowledge_Matrix.xlsx` | Reviews quote stale readiness | Regenerate both in the same session; status column is derived, not hand-edited |
 | R-KT-003 | Vendor protocol claims taken as certification | False confidence at DSO demo | R-TG-001 discipline: own stack + own evidence |
 | R-KT-004 | TG-524 I/O count (2+2) treated as full C4 without expansion plan | PF2 demo incomplete in cabinet | Wave B fixture; document external I/O module if 5 DI / 3 DO required |

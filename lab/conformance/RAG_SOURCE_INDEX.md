@@ -67,7 +67,8 @@ powershell -File scripts\ingest-62351-100-4.ps1 -SkipSync
 | `ccli-lab-unified-cert-test-roadmap` | `LAB_UNIFIED_CERT_TEST_ROADMAP.md` | Two-PC phase order |
 | `ccli-lab-unified-tsp-5ln-execution` | `LAB_UNIFIED_TSP_5LN_EXECUTION.md` | TestPro logger map · 5-LN capture |
 | `ccli-product-specimen-5ln` | `PRODUCT_SPECIMEN_5LN.md` | 5-LN product pin |
-| `ccli-annex-o-software-matrix` | `ANNEX_O_SOFTWARE_MATRIX.md` | Annex O → SW → 5-LN DUT gaps |
+| `ccli-annex-o-software-matrix` | `ANNEX_O_SOFTWARE_MATRIX.md` | Short index → OT matrix |
+| `ccli-annex-ot-sw-gap-matrix` | `ANNEX_OT_SW_GAP_MATRIX.md` | Annex O+T → SW → 5-LN → Phase (67×6) |
 | `ccli-normative-cert-validation-matrix` | `Full Validate.md` | **All** O/M/T/U + O.15 #1–8 clause book |
 | `ccli-product-specimen-5ln-validation` | `PRODUCT_SPECIMEN_5LN_VALIDATION.md` | Compare/Browse audit |
 | `ccli-p5-fullcircle-5ln-scope` | `P5_FULLCIRCLE_5LN_SCOPE.md` | Annex T 5-LN only |

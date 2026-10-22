@@ -126,6 +126,6 @@ See runbook § **DUT deploy** and **LAN3 IP alignment** (`.30.0/24` vs `.178.0/2
 
 **Meter (plant P/Q/V):** [METER_SPECIMEN_EMT432_V_FULL.md](METER_SPECIMEN_EMT432_V_FULL.md) — bench pin · [CHRONOS_EMT432_VENDOR_REQUIREMENTS.md](CHRONOS_EMT432_VENDOR_REQUIREMENTS.md) — **all Chronos cert asks**.
 
-**Annex O (software):** [ANNEX_O_SOFTWARE_MATRIX.md](ANNEX_O_SOFTWARE_MATRIX.md) — clause → SW → 5-LN DUT gap table.
+**Annex O/T (software):** [ANNEX_OT_SW_GAP_MATRIX.md](ANNEX_OT_SW_GAP_MATRIX.md) — 55×6 clause → SW → 5-LN → Phase; index [ANNEX_O_SOFTWARE_MATRIX.md](ANNEX_O_SOFTWARE_MATRIX.md).
 
 **Keywords:** `5-LN`, `product`, `specimen`, `O.15`, `Compare`, `ccli-product-specimen-5ln`

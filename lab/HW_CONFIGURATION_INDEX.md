@@ -40,7 +40,9 @@
 
 | Asset | Path on PC | Path on DUT | Session (2026-10-14) |
 |-------|------------|-------------|----------------------|
-| **Lab yaml (cert)** | `apps/ccli/config/lab_tr400_phase4_eth_b_ttyS1_5ln.yaml` | `/etc/ccli/lab.yaml` | **Active** — Modbus **ttyS1**, io gpio 1/2 |
+| **Lab yaml (full HW + 5-LN)** | `apps/ccli/config/product_tr400.yaml` | `/etc/ccli/lab.yaml` | **Active bench** — EMT432 TCP, DIO, **5-LN cfg** (r54+ binary) |
+| **Alias** | `product_tr400_emt432_5ln.yaml` · `lab_tr400_phase4_emt432_lan3_tcp.yaml` | same | Equivalent plant/io/MMS path |
+| **Lab yaml (cert mock)** | `apps/ccli/config/lab_tr400_phase4_eth_b_ttyS1_5ln.yaml` | (alternate) | DSO mock for TSP cert only |
 | **Lab yaml (baseline)** | `apps/ccli/config/lab_tr400.yaml` | (alternate deploy) | Phase 1; Modbus **ttyS2** in file — do not mix with A1/B1 bench |
 | **5-LN MMS cfg** | `apps/ccli/config/icd/product_tr400_eth_a_5ln.cfg` | `/etc/ccli/icd/` | Session pin |
 | **HAL** | `apps/ccli/platform/platform_tg500/hal_gpio_ll.c` | in `ccli` binary | gpio == ubus channel 1–4 |
@@ -67,7 +69,9 @@ Optional P6: `annex_m_trip_monitor: { enabled: true, gpio: 3 }` in `lab_tr400.ya
 | **MMS DSO** | LAN1 | `192.168.10.1:3782` | PC-B `192.168.10.10` |
 | **IEC 104 OA** | LAN2 / br-lan | `192.168.1.130:2404` | PC-A `192.168.1.183` |
 | **Plant / meter** | LAN3 | `192.168.30.x` or `192.168.178.x` | EMT432 TCP or GOOSE |
-| **Modbus RTU mock** | **A1/B1** | **`/dev/ttyS1`** | USB-RS485 **COM5** |
+| **Plant meter (EMT432)** | **LAN3** | **`192.168.178.1` → `.250:502`** | Modbus **TCP** — **ccli** P/Q/PPV |
+| **Inverter mock (SUN2000)** | **PC USB RS485 → A1/B1** | **`COM5` → `/dev/ttyS1`** | `lab/start-bench-plant.ps1 -SunOnly` — **not** ccli backend |
+| **Modbus RTU meter (alt.)** | **A1/B1** | **`/dev/ttyS1`** | `product_tr400_rtu_a1b1.yaml` |
 | **Curtail relay** | **DIO1** | ubus ch **1** DO | 12 V coil ~38 mA |
 | **Permissive button** | **DIO2** | ubus ch **2** DI | 12 V NO key |
 | **Annex M trip (opt.)** | **DIO3** | ubus ch **3** DO | P6-03 inhibit |
@@ -86,6 +90,7 @@ Optional P6: `annex_m_trip_monitor: { enabled: true, gpio: 3 }` in `lab_tr400.ya
 | [tr400-dio-factory.cmds](tr400-dio-factory.cmds) | plink | Reset ch1–4 DO/DI modes |
 | [tr400-dio2-fix.cmds](tr400-dio2-fix.cmds) | plink | DIO2 DI-only fix |
 | [scripts/validate-dut-unified-matrix.ps1](../scripts/validate-dut-unified-matrix.ps1) | PC | Preflight + evidence · **`-FixServices`** enables GPIO |
+| [scripts/validate-bench-hw-configuration.ps1](../scripts/validate-bench-hw-configuration.ps1) | PC-A | **Full bench** — TCP 1p meter · COM5 Sun · DIO · two-PC NICs · **`-RemoteDut`** |
 | [enable-dut-gpio-full-cycle.ps1](enable-dut-gpio-full-cycle.ps1) | PC → DUT | **Enable DIO** before Wlim / U-P5-01 |
 | [tg544-openwrt/enable-dut-gpio.sh](tg544-openwrt/enable-dut-gpio.sh) | On DUT | didoservice + ubus modes + ccli restart |
 
@@ -114,15 +119,15 @@ Optional P6: `annex_m_trip_monitor: { enabled: true, gpio: 3 }` in `lab_tr400.ya
 
 ---
 
-## 7. Live DUT snapshot (2026-10-14 — `192.168.1.130`, login `root` / change from factory default)
+## 7. Live DUT snapshot (2026-10-15 — `192.168.1.130`, login `root` / change from factory default)
 
 | Check | Result |
 |-------|--------|
-| `ccli --version` | **0.1.0-r54** (P5-5LN-CERT-MODEL) |
+| `ccli --version` | **0.1.0-r55** (P5-5LN-CERT-MODEL) |
 | GD32 | **online** · FW **GD32-DIDO-F v1.0.1** |
 | ubus ch1 / ch2 | **DO** / **DI** |
-| `/etc/ccli/lab.yaml` | `modbus.device: /dev/ttyS1` · `permissive_bypass: false` · gpio **1** / **2** |
-| Permissive raw | `gd32.di[1]=0` (key open or not wired at snapshot time) |
+| `/etc/ccli/lab.yaml` | **`product_tr400.yaml`** — `modbus.device: /dev/ttyS1` · gpio **1** / **2** |
+| Full HW bench | Meter RS485 + **DIO1 relay** + **DIO2 button** — [evidence/hw/FULL_HW_BENCH_2026-10-15.md](evidence/hw/FULL_HW_BENCH_2026-10-15.md) |
 
 SSH host key (PuTTY): `SHA256:4N84xpdiJRUiipactNbXLdVa2+A4eCCrUurVDrz3qoE`
 

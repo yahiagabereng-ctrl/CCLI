@@ -71,14 +71,48 @@ DsoPhase1ApplyResult apply_dso_to_pf2_config(Pf2Config& cfg, const PlantConfig& 
     return result;
 }
 
+DsoPhase1ApplyResult apply_operating_rule_autonomous_to_pf2(const PlantConfig& plant_cfg,
+                                                             const DsoConfig& dso_cfg) {
+    DsoPhase1ApplyResult result{};
+    if (!dso_cfg.enabled) {
+        return result;
+    }
+
+    const DsoMockInputs mock = resolve_dso_mock_inputs(plant_cfg, dso_cfg);
+    result.derived = derive_active_power_kw(mock.plant, mock.commands);
+    result.applied = true;
+    result.pf2_threshold_kw = result.derived.p_effective_export_kw;
+
+    const double delta = dso_cfg.release_delta_kw > 0.0 ? dso_cfg.release_delta_kw : 5.0;
+    result.pf2_release_kw = std::max(0.0, result.pf2_threshold_kw - delta);
+    return result;
+}
+
 DsoPhase1ApplyResult apply_live_dso_commands_to_pf2(Pf2Config& cfg,
                                                     const PlantConfig& plant_cfg,
                                                     const DsoConfig& dso_cfg,
                                                     bool wlim_active,
                                                     double wmax_spt_pct,
                                                     bool wsd_active,
-                                                    double wspt_pct) {
+                                                    double wspt_pct,
+                                                    bool operating_rule_fallback) {
     DsoPhase1ApplyResult result{};
+
+    if (operating_rule_fallback && dso_cfg.enabled) {
+        const auto autonomous = apply_operating_rule_autonomous_to_pf2(plant_cfg, dso_cfg);
+        if (!autonomous.applied) {
+            return result;
+        }
+        result = autonomous;
+        cfg.threshold_kw = result.pf2_threshold_kw;
+        cfg.release_threshold_kw = result.pf2_release_kw;
+        const double delta_fb =
+            dso_cfg.release_delta_kw > 0.0 ? dso_cfg.release_delta_kw : 5.0;
+        if (cfg.release_threshold_kw >= cfg.threshold_kw && cfg.threshold_kw > 0.0) {
+            cfg.release_threshold_kw = std::max(0.0, cfg.threshold_kw - delta_fb);
+        }
+        return result;
+    }
 
     if (!dso_cfg.enabled || !cfg.use_dso_mock) {
         if (!dso_cfg.enabled) {

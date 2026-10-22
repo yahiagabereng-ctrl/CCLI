@@ -9,7 +9,12 @@ Cross-cutting project knowledge — architecture, lab platform, certification, v
 | File | RAG `source_id` | Status |
 |------|-----------------|--------|
 | `CCI_SOC_Freeze.md` | `ccli-soc-freeze` | **FROZEN** — MediaTek MT798X final product SoC |
-| `CCI_OpenWrt_Freeze.md` | `ccli-openwrt-freeze` | **FROZEN** — OpenWrt OS; Pi test path |
+| `CCI_OpenWrt_Freeze.md` | `ccli-openwrt-freeze` | **FROZEN** — OpenWrt 25.12 · TesPro only |
+| `CCI_Product_SW_Freeze.md` | `ccli-product-sw-freeze` | **ACTIVE** — lab-first · product cyber bundles |
+| `../lab/conformance/RAG_SOURCE_INDEX.md` | `ccli-rag-source-index` | **HAVE** — RAG id → path · product deploy P0 |
+| `../lab/conformance/PRODUCT_DEPLOYMENT_INIT.md` | `ccli-product-deployment-init` | **HAVE** — init checklist before release promote |
+| `../lab/conformance/dnv/DNV_UCA_PRODUCT_READINESS.md` | `ccli-dnv-product-readiness` | **HAVE** — O.15 vs product deploy |
+| `../lab/conformance/Full Validate.md` | `ccli-normative-cert-validation-matrix` | **HAVE** — all annexes + O.15 #1–8 clause book |
 | `CCI_OpenWrt_Capture_Plan.md` | `ccli-openwrt-capture-plan` | **HAVE** — procedural doc capture batches |
 | `CCI_OpenWrt_Procedural_Extract.md` | `ccli-openwrt-procedural-extract` | **HAVE (P0)** — UCI · procd · ipk · libgpiod |
 | `CCI_OpenWrt_Buildsystem_Extract.md` | `ccli-openwrt-buildsystem-extract` | **HAVE (P0)** — build host · SDK · Pi3 paths |
@@ -33,6 +38,8 @@ Cross-cutting project knowledge — architecture, lab platform, certification, v
 | `reference/vendor/tespro/Schematic-GPIO.pdf` | `ccli-tr400-gpio-schematic` | **HAVE** — OEM GPIO sheet (2026-09-17) |
 | `CCI_TG500_Knowledge_Tree.md` | `ccli-tg500-knowledge-tree` | LIVING — K0–K8 readiness tree |
 | `CCI_TesPro_Supplier_Correspondence.md` | `ccli-tespro-supplier-correspondence` | Aug 2026 — OpenWrt 24.10.5, TG-424 Pro |
+| `CCI_TesPro_Cert_Reply_2026-10_Extract.md` | `ccli-tespro-cert-reply-2026-10` | **HAVE** — 2026-10-21 vendor pack (FIPS L2, scope split, TG500 zip) |
+| `CCI_TesPro_CNAS_L5868_62368_Scope_Extract.md` | `ccli-tespro-cnas-l5868-62368-scope` | **HAVE** — CNAS unfolding p.1 ICT 62368-1 |
 | `CCI_TesPro_61850_Capture_Plan.md` | `ccli-tespro-61850-capture-plan` | **HAVE** — vendor 61850 service manual batches |
 | `CCI_TesPro_61850_Manual_Extract.md` | `ccli-tespro-61850-manual-extract` | **HAVE** — northbound MMS collector (not DSO server) |
 | `CCI_MMS_Server_vs_TesPro_Collector.md` | `ccli-mms-server-vs-tespro-collector` | **HAVE** — `ccli` + CID = DSO server; TesPro = optional client poll |
@@ -50,6 +57,7 @@ Cross-cutting project knowledge — architecture, lab platform, certification, v
 | `CCI_61850-7-2_Capture_Plan.md` | `ccli-61850-7-2-capture-plan` | **HAVE** |
 | `CCI_61850-7-2_Extract.md` | `ccli-61850-7-2-extract` | **HAVE (P0)** — ACSI / MMS services |
 | `CCI_61850-10_Extract.md` | `ccli-61850-10-extract` | **HAVE** — Ed.2.1 (2025) conformance · DNV test matrix |
+| `CCI_UCA_61850_Accreditation_Extract.md` | `ccli-uca-61850-accreditation-extract` | **HAVE** — UCA lab-accred drop vs IED need/implement |
 | `reference/iec61850/_extract_61850-10/full.txt` | `ccli-61850-10-ocr-corpus` | **HAVE** — 196 pp. OCR (2026-10-08) |
 | `CCI_61850-7-3_Capture_Plan.md` | `ccli-61850-7-3-capture-plan` | **HAVE** — CDC batches A–E |
 | `CCI_61850-7-3_Extract.md` | `ccli-61850-7-3-extract` | **HAVE (P0)** — MV/APC/ENC · P3-14 |
@@ -64,7 +72,8 @@ Cross-cutting project knowledge — architecture, lab platform, certification, v
 | `CCI_61850-8-2_Extract.md` | `ccli-61850-8-2-extract` | **PART** — screenshot body through p. 222 |
 | `../07-protocols/arera-540-2021.pdf` | `arera-540-2021` | **INGESTED** — ARERA data-exchange delibera (24 pp.) |
 | `CCI_ARERA_540_2021_Extract.md` | `arera-540-2021` | **HAVE (English)** — CCI mandate, 61850/104, timelines |
-| `CCI_61557-12_Extract.md` | `ccli-61557-12-extract` | **PART** — upgrade from licensed PDF in drop |
+| `CCI_61557-12_Extract.md` | `ccli-61557-12-extract` | **PART** — AMD1/EPMF programme extract |
+| `CCI_61557-12_2018_Ed2_Extract.md` | `ccli-61557-12-2018-ed2-extract` | **HAVE** — HQ OCR of Desktop 2018 Ed 2.0 (no EPMF) |
 | `reference/MT7986A_Datasheet_1.15.pdf` | `ccli-mt7986a-datasheet` | MT7986A v1.15 (BPI-R3 companion) |
 | `CCI_MT7986A_Datasheet_Extract.md` | `ccli-mt7986a-datasheet-extract` | **PART** — Filogic pin mux; confirm TG-524 SoC with TesPro |
 | `CCI_62443_Zones.md` | `ccli-62443-zones-extract` | **PART** — 62443-3-2 pp. 7, 11–27 + Annex A/B; TG-524 zones/conduits; SL-T 2 proposed |
@@ -79,6 +88,10 @@ Cross-cutting project knowledge — architecture, lab platform, certification, v
 | `CCI_62351-3_Capture_Plan.md` | `ccli-62351-3-capture-plan` | **HAVE (P0)** — Batch A pp. 6–19 |
 | `CCI_62351-3_Extract.md` | `ccli-62351-3-extract` | **HAVE (P0)** — §5 TLS · §8 PICS Tables 1–5 |
 | `CCI_62351-100-3_Extract.md` | `ccli-62351-100-3-extract` | **HAVE** — 62351-3 conformance **test cases** (TS 2020) |
+| `CCI_62351-100-4_Extract.md` | `ccli-62351-100-4-extract` | **HAVE (OCR)** — 62351-4 MMS test cases · table batches **PART** |
+| `CCI_62351-100-4_OCR_Corpus.md` | `ccli-62351-100-4-ocr-corpus` | **HAVE** — 115 pp. OCR (2023) |
+| `reference/iec62351/IEC_TS_62351-100-4-2023.pdf` | — | **ON DISK** (gitignored) |
+| `reference/iec62351/_extract_62351-100-4/full.txt` | `ccli-62351-100-4-ocr-corpus` | **HAVE** |
 | `reference/iec62351/_extract_62351-100-3/full.txt` | `ccli-62351-100-3-ocr-corpus` | **HAVE** — 37 pp. OCR (2026-10-08) |
 | `CCI_62351-4_Capture_Plan.md` | `ccli-62351-4-capture-plan` | **HAVE (C1 P0)** — Batches A–G |
 | `CCI_62351-4_Extract.md` | `ccli-62351-4-extract` | **HAVE (C1 P0)** — §4–§17 + Annex G + §13.2 |
@@ -111,6 +124,9 @@ Historical SoM vendor study: [`../_archive/som-study/`](../_archive/som-study/) 
 | `CCI_Clone_RE_Option.pdf` | `ccli-clone-re-option` |
 | `CCI_3Month_Italy_NoFab_Plan.md` | `ccli-3m-italy-nofab-plan` |
 | KB brief | `ccli-knowledge-base-brief` |
+| `CCI_Chronos_EMT432_Extract.md` | `ccli-chronos-emt432` | **HAVE** — EMT430/432 Modbus + bench |
+| `CCI_Chronos_Rogowski_Bench_Extract.md` | `ccli-chronos-rogowski-bench` | **HAVE** — FRC-350 + LAN3 `.102` yaml |
+| `reference/vendor/chronos/` | (PDFs) | EMT432 MI/MR · **TA_FL_ITA** Rogowski catalog |
 
 ## Missing (lab P0)
 
@@ -118,5 +134,5 @@ Historical SoM vendor study: [`../_archive/som-study/`](../_archive/som-study/) 
 - **Lab port map** — `ip link` ↔ silkscreen (WAN, LAN1–4)
 - **TesPro OpenWrt 24.10.5 cross-SDK** (cross-compile on host — on-device build is interim)
 - **TR400 / TG-424 Pro / TG-524** written SKU mapping
-- Energy analyzer Modbus register map
+- Energy analyzer Modbus register map — **PART** (Chronos EMT430_MR ingested; site meter IP `.102` in `lab_tr400_emt432_lan3_tcp_102.yaml`)
 - RED/EMC **test reports** (DoC offered; reports pending per Nicola follow-up)

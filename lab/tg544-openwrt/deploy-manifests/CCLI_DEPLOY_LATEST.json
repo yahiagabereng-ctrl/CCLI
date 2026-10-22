@@ -1,0 +1,28 @@
+﻿{
+    "release":  57,
+    "semver":  "0.1.0",
+    "icd_cfg":  "C:\\Yahia\\projects\\CCLI\\apps\\ccli\\config\\icd\\product\\product_tr400_eth_a_5ln.cfg",
+    "lab_yaml":  "c:\\Yahia\\projects\\CCLI\\apps\\ccli\\config\\product_tr400_p3_07_connect_5ln.yaml",
+    "codename":  "P5-5LN-ISO-PRES-AARE",
+    "host":  "192.168.10.1",
+    "deploy_profile":  "",
+    "binary":  "C:\\Yahia\\projects\\CCLI\\lab\\tg544-openwrt\\ccli-bin",
+    "version_full":  "0.1.0-r57",
+    "git_commit":  "ffb0f19",
+    "changes":  [
+                    "O.13.1.2 OR fallback via commissioned dso O.11 min",
+                    "MmsService operating_rule_fallback_latched forward"
+                ],
+    "timestamp_utc":  "2026-10-20T15:41:11.8423320Z",
+    "tls_dir":  "c:\\Yahia\\projects\\CCLI\\apps\\ccli\\config\\tls\\p3_07_connect",
+    "sha256":  "51afd8a74ef3e604f90fd89dbb7f0fd8f7d08c75ce6eef7f0d1fa68b7d4e0533",
+    "dut_host":  "192.168.10.1",
+    "dut_version_text":  "ccli 0.1.0-r57 (P5-5LN-ISO-PRES-AARE)",
+    "dut_sha256":  "51afd8a74ef3e604f90fd89dbb7f0fd8f7d08c75ce6eef7f0d1fa68b7d4e0533",
+    "binary_size_bytes":  7805208,
+    "apk_path":  "C:\\Yahia\\projects\\CCLI\\lab\\tg544-openwrt\\ccli-0.1.0-r57.apk",
+    "apk_sha256":  "11dc9addf609531f18d22948898eebfb254a5768a176abe4ab9fab79e0298767",
+    "apk_size_bytes":  1025405,
+    "staging_version_file":  "C:\\Yahia\\projects\\CCLI\\lab\\tg544-openwrt\\ccli-VERSION",
+    "record_updated_utc":  "2026-10-20T15:44:39.5815273Z"
+}

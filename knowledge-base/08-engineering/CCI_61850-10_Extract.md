@@ -1,15 +1,20 @@
 # IEC 61850-10 — Conformance testing extract (Edition 2.1 / AMD1:2025)
 
 **Document ID:** CCLI-61850-10-001  
-**Revision:** 1.0  
-**Date:** 2026-10-08  
+**Revision:** 1.1  
+**Date:** 2026-10-13  
+**Capture status:** **HAVE** — OCR **196** pages (2026-10-08); PDF local + gitignored  
 **RAG source_id:** `ccli-61850-10-extract`  
-**Full text:** `ccli-61850-10-ocr-corpus` → Telematry `reference/iec61850/IEC_61850-10_2025_full.txt`  
-**Corpus (OCR):** `knowledge-base/08-engineering/reference/iec61850/_extract_61850-10/full.txt`  
-**Source PDF:** `knowledge-base/08-engineering/reference/iec61850/IEC_61850-10-2025.pdf` (local; gitignored)  
-**Standard identity:** **IEC 61850-10:2012+AMD1:2025** — *Communication networks and systems for power utility automation — Part 10: Conformance testing* (Edition **2.1**, 2025-07)
+**OCR RAG id:** `ccli-61850-10-ocr-corpus`  
+**Corpus (OCR, CCLI repo):** `knowledge-base/08-engineering/reference/iec61850/_extract_61850-10/full.txt` (+ `p001.txt`…`p196.txt`)  
+**Telematry sync copy:** `documents/projects/ccli/reference/iec61850/IEC_61850-10_2025_full.txt` (same bytes as `full.txt`; **not** duplicated under CCLI `reference/iec61850/` root)  
+**Source PDF:** `knowledge-base/08-engineering/reference/iec61850/IEC_61850-10-2025.pdf` (local; covered by `knowledge-base/**/*.pdf` gitignore)  
+**Standard identity:** **IEC 61850-10:2012+AMD1:2025** — *Communication networks and systems for power utility automation — Part 10: Conformance testing* (Edition **2.1**, 2025-07) — verified on OCR title page  
 
-**Use:** DNV / UCA lab booking · HiTEKS CCI server conformance plan · Phase 7 P7-07 transport/MMS test matrix.
+**Use (accurate scope):**  
+- **This extract** = abstract **server/client/SV/tool** conformance cases for **UCA / 61850-10** lab booking and first-pass PICS scope.  
+- **Required test scope for HiTEKS** = what is marked **M** in D1 PICS + PIXIT — see `lab/conformance/LAB_TEMPLATES_VS_TEST_SCOPE.md` and `lab/conformance/LAB_REQUIREMENT_TEST_MATRIX.md`.  
+- **Not** a transport/MMS-security test matrix: cyber cases are **IEC TS 62351-100-3** (TLS) and **62351-100-4** (MMS) — programme gate **P7-07** is the **62351-100-3 cert plan**, documented in `CCI_62351-100-3_Extract.md`, **not** in Part 10.
 
 ---
 
@@ -32,14 +37,14 @@ Part 10 specifies:
 
 When submitting a device (DUT), the vendor **shall** provide:
 
-| Document | Purpose | HiTEKS CCI |
-|----------|---------|------------|
-| **PICS** | Protocol capabilities; selects test suite (61850-7-2 Annex A proforma) | **TODO** — derive from `ccli` MMS feature set |
-| **PIXIT** | Extra test parameters (timeouts, limits) — **not standardized** | **TODO** — lab values (IntgPd 4000 ms, port 3782, etc.) |
-| **MICS** | Data model in **ICD/IID** (61850-6) | **HAVE** — lab CID/ICD path `apps/ccli/config/icd/` |
-| **TICS** | Known technical issues implemented | Minimal / empty if none |
-| **Manuals** | Install/operate device | Partial (lab yaml + deploy docs) |
-| **DUT ready for test** | Frozen hardware/firmware | TG544 + `ccli` binary hash |
+| Document | Purpose | HiTEKS CCI (2026-10-13) |
+|----------|---------|-------------------------|
+| **PICS** | Protocol capabilities; selects test suite (61850-7-2 Annex A proforma) | Values **HAVE** — `lab/conformance/PICS_FILL.md` → paste into `lab/TemplatePics_*.xlsx` (**Excel paste TODO**) |
+| **PIXIT** | Extra test parameters (timeouts, limits) — **not standardized** | Values **HAVE** — `lab/conformance/PIXIT_DRAFT.md` (port **3782**, IntgPd **4000**); Word template still **MISSING** |
+| **MICS** | Data model in **ICD/IID** (61850-6) | Draft **HAVE** — `lab/conformance/MICS_DRAFT.md` + CID `apps/ccli/config/icd/lab_tg544_eth_a.cid` |
+| **TICS** | Known technical issues implemented | Draft **HAVE** — `lab/conformance/TICS_DRAFT.md` (minimal until lab TISSUES date) |
+| **Manuals** | Install/operate device | Partial — lab yaml + deploy docs + `LAB_CONFIG_GUIDE.md` |
+| **DUT ready for test** | Frozen hardware/firmware | TG544 · `ccli` **r52** class builds · record `ccli --version` + binary hash on specimen |
 
 **Conformance process (Figure 1):** Static + dynamic requirements → parameterized test suite from PICS/PIXIT → basic interconnection → capability → behaviour tests → final review → **test report**.
 
@@ -153,14 +158,15 @@ Wrong object names, wrong LD/LN, service errors on Get/Set — ensures server re
 
 > Cyber security testing of IEC 61850 devices is defined in **IEC 62351-100-4** and **IEC 62351-100-6**.
 
-**Implication for DNV meeting:**
+**Implication for lab / TUV meeting:**
 
-| Topic | Standard | HiTEKS |
-|-------|----------|--------|
-| MMS/TLS/E2E on :3782 | **62351-100-3** (transport) + **100-4** (MMS security) | Lab PEMs + TSP; firmware session layer |
+| Topic | Standard | HiTEKS status |
+|-------|----------|---------------|
+| TLS transport on **:3782** | **IEC TS 62351-100-3** (+ PID from **62351-3**) | D7 draft **HAVE** · formal cases = **P7-07 OPEN** · extract `ccli-62351-100-3-extract` |
+| MMS / ACSE / E2E security | **IEC TS 62351-100-4** | Planning extract `ccli-62351-100-4-extract` · PDF **MISSING** · ask lab if executed; dual-cert Connect evidenced in TSP |
 | GOOSE/SV security | **62351-100-6** | Defer unless GOOSE security claimed |
 
-61850-10 **does not** replace UCA/accredited **62351-100-*** test plans.
+61850-10 **does not** define or replace accredited **62351-100-*** test plans. Do **not** map **P7-07** to this extract.
 
 ---
 
@@ -188,22 +194,23 @@ Report shall include: standards cited by clause, test equipment, vendor/initiato
 
 ---
 
-## 9. HiTEKS CCI — minimum server scope for first DNV/UCA pass
+## 9. HiTEKS CCI — minimum server scope for first UCA / lab pass
 
-Based on lab evidence (P3) and CEI Annex T DSO interface:
+**First-pass PICS scope** (do not expand without quote change): server · 8-1 MMS · association · directory · get/set · datasets · **URCB** · **control** · time; **exclude** BRCB, GOOSE, SV, files, SG, IEC 104.  
+Canonical rows: `lab/conformance/LAB_REQUIREMENT_TEST_MATRIX.md`.
 
-| Priority | 61850-10 area | Lab evidence | Gap |
-|----------|---------------|--------------|-----|
-| **P0** | Table 1 documentation | Partial | Formal PICS/PIXIT/MICS pack |
-| **P0** | Table 2 SCL/ICD | CID exists | Full schema validation + ICT round-trip |
-| **P0** | sAss association | MMS connect | TLS :3782 + 62351 separate |
-| **P0** | sSrv browse/read | Client browse PASS | UCA formal cases |
-| **P0** | sRp urcb 4 s | TotW 3961 ms avg | Table 14 full optional fields |
-| **P0** | sCtl Wlim/WSd | Wlim lab PASS | Table 26 ctlModel cases |
-| **P1** | sTm time | chrony PASS | Table 31–32 accuracy |
-| **P1** | sGop GOOSE | r29 publish | Only if in PICS |
-| **P2** | sBr, sLog, sFt | Not focus | N/A in PICS |
-| **—** | §6.3 Cyber | — | **62351-100-4/6**, not 61850-10 |
+| Priority | 61850-10 area | Lab / TSP evidence (2026-10-09) | Gap to accredited report |
+|----------|---------------|--------------------------------|--------------------------|
+| **P0** | Table 1 documentation | Markdown PICS/PIXIT/MICS/TICS **HAVE** | Paste into lab Excel/Word templates |
+| **P0** | Table 2 SCL/ICD | `lab_tg544_eth_a.cid` · Compare Model scoped PASS | Full schema validation + ICT round-trip if lab requires |
+| **P0** | sAss association | **T1-01 / T1-10 PASS** on **:3782** (TLS + ACSE) | Formal sAss tables at lab |
+| **P0** | sSrv browse/read | **T1-03 / T1-04 PASS** | Formal Get*/Set* negatives |
+| **P0** | sRp urcb 4 s | **T1-05/06 PASS** IntgPd=4000 | Full Table 14 optional fields per PIXIT |
+| **P0** | sCtl Wlim/WSd | **T1-07/08 PASS** enhanced ctlModel | Full Table 26 case set |
+| **P1** | sTm time | chrony PASS · GNSS before URCB claims | Tables 31–32 accuracy class |
+| **P1** | sGop GOOSE | Lab publish exists | **N/A** unless PICS claims |
+| **P2** | sBr, sLog, sFt | Not focus | **N/A** in first-pass PICS |
+| **—** | §6.3 Cyber | Separate | **62351-100-3** (P7-07) · **100-4/6** — not Part 10 |
 
 ---
 
@@ -262,12 +269,17 @@ python scripts/extract-61850-10.py
 
 ## 12. Related corpus
 
-| Doc | RAG id |
-|-----|--------|
-| Certificate samples (DNV UCA example) | `ccli-certificate-samples-extract` |
-| Phase checklists P7-07 | `ccli-phase-regulation-checklists` |
-| Annex T cyber | `cei-0-16-allegato-t` |
-| 62351-3/4/9 extracts | `ccli-62351-*-extract` |
+| Doc | Path / RAG id | Role vs this extract |
+|-----|---------------|----------------------|
+| Lab templates → test scope | `lab/conformance/LAB_TEMPLATES_VS_TEST_SCOPE.md` · `ccli-lab-templates-test-scope` | How PICS **M** selects 61850-10 groups |
+| Requirement ↔ TSP matrix | `lab/conformance/LAB_REQUIREMENT_TEST_MATRIX.md` · `ccli-lab-requirement-test-matrix` | Executable first-pass checklist |
+| Certificate samples | `ccli-certificate-samples-extract` | Example UCA / 62351 cert scope |
+| Phase / P7-07 (100-3 plan) | `ccli-phase-regulation-checklists` · `lab/evidence/phase7/P7_README.md` | **Transport** cert plan — not Part 10 |
+| IEC TS 62351-100-3 | `ccli-62351-100-3-extract` | TLS abstract cases (Tables 1–5) |
+| IEC 62351-3 PID (D7) | `lab/conformance/D7_62351-3_PID_DRAFT.md` | Claims sheet for 100-3 |
+| IEC TS 62351-100-4 | `ccli-62351-100-4-extract` · `CCI_62351-100-4_Extract.md` | Planning **HAVE** · PDF/OCR **MISSING** |
+| Annex T / O | `cei-0-16-allegato-t` · `cei-0-16-allegato-o` | Product requirements (not test cases) |
+| 62351-3/4/9 extracts | `ccli-62351-3-extract` · `ccli-62351-4-extract` · `ccli-62351-9-extract` | Security **requirements** |
 
 ---
 

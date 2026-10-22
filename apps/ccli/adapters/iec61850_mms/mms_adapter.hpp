@@ -71,6 +71,8 @@ public:
     bool poll_wlim_command(WlimLiveCommand& out) { return poll_dso_live_command(out); }
 
     bool poll_comms_loss_fallback();
+    /** True after P3-05 latch until next MMS client connects (O.13.1.2 autonomous). */
+    bool operating_rule_fallback_latched() const;
     void refresh_time_quality();
     int client_count() const;
     bool gnss_fix() const;

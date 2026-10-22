@@ -46,6 +46,8 @@ Use this when **two Windows PCs** share one TG544 DUT:
 
 **LAN3 IP alignment:** Zone docs use **`192.168.30.0/24`**; **Chronos EMT432 bench (SN 261001102952)** uses **`192.168.178.0/24`** (meter **.250**, DUT **.178.1**, PC **`set_pc_lan3_plant_178.cmd`** → **.178.10**). See [P5_EMT432_CONNECT_SESSION.md](../evidence/phase5/P5_EMT432_CONNECT_SESSION.md). Deploy **`lab_tr400_phase4_emt432_lan3_tcp.yaml`** only after **`modbus_emt432_tcp_probe.py`** PASS on **:502**.
 
+**Rogowski FRC-350 @ `.102`:** deploy **`lab_tr400_emt432_lan3_tcp_102.yaml`** · probe **`--host 192.168.178.102`** · [P5_ROGOWSKI_FRC350_BENCH.md](../evidence/phase5/P5_ROGOWSKI_FRC350_BENCH.md).
+
 ---
 
 ## DUT deploy (pick before Phase 0)

@@ -129,4 +129,6 @@ $jsonPath = $manifestPath -replace '\.md$', '.json'
     changes        = $Changes
 } | ConvertTo-Json -Depth 4 | Set-Content -Path $jsonPath -Encoding UTF8
 
+& (Join-Path $PSScriptRoot "Update-CcliDeployRecord.ps1") -ManifestJsonPath $jsonPath
+
 Write-Output $manifestPath

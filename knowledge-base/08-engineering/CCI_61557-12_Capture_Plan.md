@@ -21,10 +21,10 @@ Full PDF needed to upgrade extract from **PART** to **HAVE** for certification e
 
 | Batch | Focus | Status |
 |-------|--------|--------|
-| **A** | Annex D fixed-block figures (MC200, 4 s, MCΔT) | **PART** in extract |
-| **B** | Annex H EPMF / gateway classification | **PART** in extract |
-| **C** | Table 3 / 8 accuracy classes | **COMPLETE** (in extract §4.5 / REQ-MET-005) |
-| **D** | Environmental reference (K55) | **HAVE** in extract |
+| **A** | Annex D fixed-block figures (MC200, 4 s, MCΔT) | **HAVE** in 2018 OCR Fig D.2/D.3 |
+| **B** | Annex H EPMF / gateway classification | **MISSING** in 2018 Ed 2.0 — **AMD1 only** |
+| **C** | Table 3 / 8 accuracy classes | **COMPLETE** (extract + 2018 OCR) |
+| **D** | Environmental reference (K55) | **HAVE** Tables 5–6 named; table cells OCR-weak |
 
 ---
 

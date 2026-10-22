@@ -1,11 +1,16 @@
-# Two-PC bench + Chronos EMT432 on LAN3 (Modbus TCP @ 192.168.178.250).
-# MMS TLS :3782 (LAN1) · 104 :2404 (LAN2) · plant reads via TCP (not RS485 mock).
-# DUT lan3 UCI: network.lan2_sec.ipaddr=192.168.178.1/24
-# PC plant: lab/set_pc_lan3_plant_178.cmd → 192.168.178.10/24
-# Probe: python lab/modbus_emt432_tcp_probe.py --host 192.168.178.250
+# Full HW bench — EMT432 1p Modbus TCP on LAN3 + DIO + TSP/104 TLS (yaml-only OK on r51+).
+# Does not use RS485 for plant reads; PC COM5 Sun mock on A1/B1 is parallel (see lab.hw).
 #
-# Deploy only after Modbus TCP :502 verified on meter (display / web UI).
-# deploy-ccli-session-fix.ps1 -HostAddr 192.168.10.1 -LabYaml .../lab_tr400_phase4_emt432_lan3_tcp.yaml
+# Plant: 192.168.178.250:502 · DUT gateway 192.168.178.1 · PC-A lab/set_pc_lan3_plant_178.cmd
+# PC-B: lab/set_pc_lan1_dso.cmd → TestPro 192.168.10.1:3782
+# PC-A: lab/set_pc_lan2_oa.cmd → SSH / 104 @ 192.168.1.130:2404
+#
+# MMS model: product_tr400_eth_a_5ln.cfg (5-LN cert — requires r54+ ccli on DUT).
+# Same plant/io as product_tr400.yaml; use product_tr400.yaml for one-file deploy.
+#
+# Yaml-only deploy (keep current ccli binary):
+#   powershell -File lab/tg544-openwrt/push-lab-yaml-to-dut.ps1 `
+#     -LabYaml apps/ccli/config/lab_tr400_phase4_emt432_lan3_tcp.yaml
 
 platform: tg500
 lab:
@@ -16,7 +21,26 @@ lab:
   meter: chronos_emt432_1p
   meter_ip: 192.168.178.250
   plant_gateway: 192.168.178.1
-  bench_note: "TSP+104+EMT432 LAN3 .178.x · SN 261001102952 · 5A TA no CT"
+  bench_note: "EMT432 TCP LAN3 · DIO1 relay · DIO2 permissive · Sun COM5 parallel · TSP+104 TLS"
+  hw:
+    plant_meter: emt432_modbus_tcp_lan3_1p
+    inverter_mock:
+      role: sun2000_rtu_sim
+      pc_usb_rs485: COM5
+      dut_terminals: A1_B1
+      dut_linux_device: /dev/ttyS1
+      ccli_polls: false
+      start_script: lab/start-bench-plant.ps1
+      sim: lab/third_party/Sun2000-100KTL-M2-Inverter-Simulator/sun2000_100ktl_m2_rtu_sim.py
+    curtail_relay: dio1_ch1_do
+    permissive_button: dio2_ch2_di
+    wiring_doc: lab/CURTAIL_BUTTON_AND_RELAY_SETUP.md
+    rs485_map: lab/evidence/phase5/P5_A1B1_RS485_HW_MAP.md
+    lan3_doc: lab/evidence/phase5/P5_EMT432_TERMINAL_WIRING.md
+    runbook: lab/conformance/TSP_TWO_PC_BENCH_RUNBOOK.md
+    two_pc:
+      pc_b_dso: "192.168.10.10 → MMS 3782 TLS"
+      pc_a_logger: "192.168.1.183 LAN2 · 192.168.178.10 LAN3 · COM5 RS485"
 
 modbus:
   backend: tcp
@@ -34,7 +58,7 @@ modbus:
   power_scale: 0.001
   reactive_scale: 0.001
   float_word_swap: true
-  reg_line_voltage: 980
+  reg_line_voltage: 905
   reg_line_voltage_count: 2
   line_voltage_scale: 0.001
 
@@ -45,7 +69,7 @@ pf2:
   min_on_s: 60
   min_off_s: 30
   stale_data_s: 10
-  use_dso_mock: true
+  use_dso_mock: false
 
 plant:
   p_imm_kw: 200
@@ -70,7 +94,7 @@ mms:
   enabled: true
   bind_address: 192.168.10.1
   tcp_port: 3782
-  model_cfg: /etc/ccli/icd/lab_tg544_eth_a.cfg
+  model_cfg: /etc/ccli/icd/product/product_tr400_eth_a_5ln.cfg
   comms_loss_fallback_s: 15
   gnss_poll_s: 15
   gnss_discipline_clock: false
@@ -87,6 +111,10 @@ mms:
   tls_revoked_cert: /etc/ccli/tls/revoked_tls.pem
   tls_crl: /etc/ccli/tls/lab_crl.pem
   tls_chain_validation: true
+
+goose:
+  enabled: false
+  publish_enabled: false
 
 iec104:
   enabled: true
@@ -120,6 +148,12 @@ io:
   di_permissive:
     gpio: 2
     active_low: true
+  annex_m_trip_monitor:
+    enabled: false
+    gpio: 3
+  do_pf2_spare:
+    gpio: 4
+    active_high: false
 
 event_log:
   enabled: true

@@ -7,7 +7,7 @@
 **Capture plan:** `ccli-openwrt-capture-plan`  
 **Parents:** `ccli-openwrt-freeze` · `ccli-tg500-knowledge-tree`  
 **Status:** **HAVE (P0 procedural)** — archive wiki + GitHub upstream  
-**Product baseline:** OpenWrt **24.10.5** on TesPro TG-524 (MT798X)
+**Product baseline:** OpenWrt **25.12** on TesPro TG-524 / TG544 (MT798X) — `ccli-openwrt-freeze`
 
 ---
 
@@ -20,7 +20,7 @@
 | REQ-OW-003 | Deploy as **`.ipk`** built from OpenWrt package Makefile | K2.4 | **DOCUMENTED** |
 | REQ-OW-004 | GPIO via **libgpiod 2.x** character device | K5 · feed Makefile | **DOCUMENTED** — v2.1.3 in 24.10 feed |
 | REQ-OW-005 | Field update preserves UCI; user packages reinstalled after sysupgrade | K2.7 | **PARTIAL** |
-| REQ-OW-006 | Pi dev path unchanged (`platform_pi`, YAML) | `ccli-openwrt-freeze` | **FROZEN** |
+| REQ-OW-006 | No active `platform_pi` path — TesPro-only validation | `ccli-openwrt-freeze` | **ARCHIVED** (Pi removed 2026-09-17) |
 
 ---
 

@@ -34,7 +34,7 @@ core/pf2/pf2_fsm     set_thresholds → DIO1
 1. **Load** `CcliConfig` (yaml) — optional TR mock when `dso.enabled && pf2.use_dso_mock`.
 2. **Live MMS** Operate on Wlim/WSd → `poll_dso_live_command` → `apply_live_dso_commands_to_pf2`.
 3. **Pf2Fsm** compares Modbus `p_kw` to enter/release thresholds.
-4. **P3-05** no Eth_A clients → clear live Wlim+WSd (Operating Rule yaml resumes).
+4. **P3-05** no Eth_A clients → clear live Wlim+WSd; while latched, **`apply_operating_rule_autonomous_to_pf2`** applies commissioned `dso` / profile (O.11 min) — footnote 223 / O.13.1.2.
 
 ## Files
 

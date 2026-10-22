@@ -8,6 +8,7 @@
 #include "cci/hal/platform.hpp"
 #include "cci/hal/time.hpp"
 #include "config/ccli_config.hpp"
+#include "config/product_cyber_gate.hpp"
 #include "dso/dso_phase1.hpp"
 #include "drv_gpio.h"
 #include "policy/net_policy.hpp"
@@ -19,6 +20,7 @@
 
 #include "modbus_adapter.hpp"
 
+#include <cstdlib>
 #include <algorithm>
 #include <atomic>
 #include <cmath>
@@ -606,6 +608,13 @@ int main(int argc, char** argv) {
     if (lab_demo) {
         app_cfg.modbus.backend = cci::core::ModbusBackendKind::Simulator;
     }
+    std::string cyber_fail;
+    const char* allow_cleartext = std::getenv("CCLI_ALLOW_CLEARTEXT_MMS");
+    if ((!allow_cleartext || allow_cleartext[0] == '\0') &&
+        !cci::core::product_cyber_config_ok(app_cfg, &cyber_fail)) {
+        std::cerr << "startup: REFUSE — product cyber gate: " << cyber_fail << '\n';
+        return 1;
+    }
     std::cout << "ccli config " << (app_cfg.loaded_from_file ? "loaded from " : "defaults (no ")
               << config_path << (app_cfg.loaded_from_file ? "" : ")") << '\n';
 
@@ -847,6 +856,7 @@ int main(int argc, char** argv) {
         /* Eth_A: DSO Wlim (O.9.2.2) + WSd (O.9.2.3 Figura 2 s.p. W) → PF2 */
         /* P3-05: no-comms → clear live Wlim/WSd (Operating Rule autonomous) */
         {
+            const bool or_fallback_latched = mms.operating_rule_fallback_latched();
             if (mms.poll_comms_loss_fallback()) {
                 std::cerr << "mms→pf2: P3-05 Operating Rule fallback (Eth_A no-comms)\n";
                 events.append({cci::hal::now().epoch_ms, "mms", "comms_loss_fallback", ""});
@@ -859,22 +869,35 @@ int main(int argc, char** argv) {
                 if (dso_cmd.dirty) {
                     cci::core::Pf2Config live_cfg = pf2.config();
                     live_cfg.use_dso_mock = true;
+                    const bool use_or_profile =
+                        or_fallback_latched || mms.operating_rule_fallback_latched();
                     const auto live = cci::core::dso::apply_live_dso_commands_to_pf2(
                         live_cfg, app_cfg.plant, app_cfg.dso, dso_cmd.wlim_active,
-                        dso_cmd.wmax_spt_pct, dso_cmd.wsd_active, dso_cmd.wspt_pct);
+                        dso_cmd.wmax_spt_pct, dso_cmd.wsd_active, dso_cmd.wspt_pct,
+                        use_or_profile);
                     if (live.applied) {
                         pf2.set_thresholds(live.pf2_threshold_kw, live.pf2_release_kw);
-                        std::cerr << "mms→pf2: Wlim=" << (dso_cmd.wlim_active ? "on" : "off")
-                                  << "@" << dso_cmd.wmax_spt_pct
-                                  << "% WSd=" << (dso_cmd.wsd_active ? "on" : "off")
-                                  << "@" << dso_cmd.wspt_pct
-                                  << "% p_wlim=" << live.derived.p_wlim_kw
-                                  << " p_wsd=" << live.derived.p_wsd_kw
-                                  << " p_eff=" << live.derived.p_effective_export_kw
-                                  << " kW → enter=" << live.pf2_threshold_kw
-                                  << " release=" << live.pf2_release_kw << " kW\n";
+                        if (use_or_profile) {
+                            std::cerr << "mms→pf2: O.13.1.2 Operating Rule (O.11 min) — Wlim active="
+                                      << (live.derived.p_wlim_kw > 0.0 ? "yes" : "no")
+                                      << " WMaxSptPct=" << (live.derived.p_wlim_kw > 0.0 ? "set" : "0")
+                                      << "% WSd active=" << (live.derived.p_wsd_kw > 0.0 ? "yes" : "no")
+                                      << " … enter=" << live.pf2_threshold_kw
+                                      << " release=" << live.pf2_release_kw << " kW\n";
+                        } else {
+                            std::cerr << "mms→pf2: Wlim=" << (dso_cmd.wlim_active ? "on" : "off")
+                                      << "@" << dso_cmd.wmax_spt_pct
+                                      << "% WSd=" << (dso_cmd.wsd_active ? "on" : "off")
+                                      << "@" << dso_cmd.wspt_pct
+                                      << "% p_wlim=" << live.derived.p_wlim_kw
+                                      << " p_wsd=" << live.derived.p_wsd_kw
+                                      << " p_eff=" << live.derived.p_effective_export_kw
+                                      << " kW → enter=" << live.pf2_threshold_kw
+                                      << " release=" << live.pf2_release_kw << " kW\n";
+                        }
                         events.append({cci::hal::now().epoch_ms, "mms",
-                                       dso_cmd.wsd_active   ? "wsd_update"
+                                       use_or_profile          ? "operating_rule_autonomous"
+                                       : dso_cmd.wsd_active   ? "wsd_update"
                                        : dso_cmd.wlim_active ? "wlim_on"
                                                             : "wlim_off"});
                     }

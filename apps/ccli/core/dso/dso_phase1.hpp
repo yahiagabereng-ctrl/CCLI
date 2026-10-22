@@ -57,6 +57,8 @@ DsoPhase1ApplyResult apply_dso_to_pf2_config(Pf2Config& cfg, const PlantConfig& 
 /**
  * Apply live Eth_A Wlim + WSd (MMS) onto PF2 thresholds.
  * Starts from yaml/TR mock, then overlays live active-power commands (O.11 min).
+ * @param operating_rule_fallback When true (O.13.1.2 / P3-05 latched), use commissioned
+ *        `dso` / profile active-P set for O.11 min() — ignore cleared live MMS overlay.
  */
 DsoPhase1ApplyResult apply_live_dso_commands_to_pf2(Pf2Config& cfg,
                                                     const PlantConfig& plant_cfg,
@@ -64,7 +66,12 @@ DsoPhase1ApplyResult apply_live_dso_commands_to_pf2(Pf2Config& cfg,
                                                     bool wlim_active,
                                                     double wmax_spt_pct,
                                                     bool wsd_active,
-                                                    double wspt_pct);
+                                                    double wspt_pct,
+                                                    bool operating_rule_fallback = false);
+
+/** O.13.1.2 autonomous profile → PF2 thresholds (yaml / tr57126_table1). */
+DsoPhase1ApplyResult apply_operating_rule_autonomous_to_pf2(const PlantConfig& plant_cfg,
+                                                             const DsoConfig& dso_cfg);
 
 struct DsoReactiveApplyResult {
     ReactivePowerDerivation derived{};

@@ -14,7 +14,8 @@ ccli_generate_version_header()
 
 # --- libiec61850 (Phase 3 MMS) ------------------------------------------------
 option(CCLI_WITH_LIBIEC61850 "Build IEC 61850 MMS with third_party/libiec61850" ON)
-option(CCLI_WITH_GOOSE "Build IEC 61850 L2 GOOSE (plant LAN) with libiec61850" ON)
+# Cert/product builds: OFF (5-LN CID has no GoCB). Lab GOOSE experiments: -DCCLI_WITH_GOOSE=ON
+option(CCLI_WITH_GOOSE "Build IEC 61850 L2 GOOSE (plant LAN) with libiec61850" OFF)
 set(CCLI_LIBIEC61850_DIR "${CMAKE_CURRENT_SOURCE_DIR}/third_party/libiec61850")
 set(CCLI_HAVE_LIBIEC61850 0)
 if(CCLI_WITH_LIBIEC61850 AND EXISTS "${CCLI_LIBIEC61850_DIR}/CMakeLists.txt")
@@ -179,13 +180,52 @@ target_link_libraries(ccli_platform PUBLIC ccli_core)
 # drv_gpio.c (in ccli_adapters) calls the low-level GPIO HAL (in ccli_platform).
 target_link_libraries(ccli_adapters PUBLIC ccli_platform)
 
-add_executable(ccli services/ccli_main.cpp)
-target_link_libraries(ccli PRIVATE ccli_services ccli_platform)
+# SK0153 product program (merged from product/apps/ccli) — default entry for cert builds.
+add_library(ccli_program STATIC
+    program/alarm.c
+    program/alarm_input.c
+    program/boot.c
+    program/commands.c
+    program/drvgpio.c
+    program/f_pf2.c
+    program/fw_config.c
+    program/outputs.c
+    program/parser_modbus.c
+    program/program_flash.c
+    program/queue_my.c
+    program/regulation.c
+    program/startup.c
+    program/synchronize.c
+    program/transmission_104.c
+    program/transmission_goose.c
+    program/transmission_mms.c
+    program/ccli_bridge.cpp
+    program/ccli_tools.cpp
+    services/svc_io.c
+)
+target_include_directories(ccli_program PUBLIC
+    ${CMAKE_CURRENT_SOURCE_DIR}/program
+    ${CMAKE_CURRENT_SOURCE_DIR}/program/inc
+    ${CMAKE_CURRENT_SOURCE_DIR}/adapters/io
+    ${CMAKE_CURRENT_SOURCE_DIR}/services
+)
+target_link_libraries(ccli_program PUBLIC ccli_services ccli_platform)
+
+option(CCLI_LEGACY_MAIN "Build services/ccli_main.cpp entry (bisect / pre-merge)" OFF)
+if(CCLI_LEGACY_MAIN)
+    add_executable(ccli services/ccli_main.cpp)
+    target_link_libraries(ccli PRIVATE ccli_services ccli_platform)
+    message(STATUS "CCLI entry: legacy ccli_main.cpp")
+else()
+    add_executable(ccli program/main.c)
+    set_target_properties(ccli PROPERTIES LINKER_LANGUAGE CXX)
+    target_link_libraries(ccli PRIVATE ccli_program ccli_services ccli_platform)
+    message(STATUS "CCLI entry: program/main.c (product + frozen cyber)")
+endif()
 if(CCLI_HAVE_LIB60870)
     target_link_libraries(ccli PRIVATE lib60870)
 endif()
 if(BUILD_PLATFORM STREQUAL "tg500")
-    # TesproOS image may ship without libstdc++.so.6; static link for lab deploy.
     target_link_options(ccli PRIVATE -static-libstdc++)
 endif()
 

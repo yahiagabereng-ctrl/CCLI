@@ -50,7 +50,7 @@ if (-not (Test-Path $SunSim)) {
 
 Write-Host ""
 Write-Host "=== SUN2000 inverter mock on $Port (A1/B1) ===" -ForegroundColor Cyan
-Write-Host "DUT yaml: lab_tr400_phase4_emt432_lan3_tcp.yaml (P/Q/PPV from meter TCP)"
-Write-Host "RS485 Sun mock is plant/inverter path — not ccli Modbus source when backend=tcp"
+Write-Host "DUT yaml: apps/ccli/config/product_tr400.yaml (P/Q/PPV from EMT432 TCP LAN3)"
+Write-Host "RS485 Sun mock on COM5 -> A1/B1 — inverter plant path; not ccli Modbus when backend=tcp"
 Write-Host ""
 python $SunSim --port $Port --baud 9600 --slave 1

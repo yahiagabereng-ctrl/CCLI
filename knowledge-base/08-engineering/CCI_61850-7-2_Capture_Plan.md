@@ -1,13 +1,13 @@
 # IEC 61850-7-2 — Capture Plan (ACSI / MMS)
 
 **Document ID:** CCLI-PROTO-61850-7-2-001  
-**Revision:** 1.0  
-**Date:** 2026-09-21  
-**RAG source_id:** `ccli-61850-7-2-capture-plan` → `ccli-61850-7-2-extract`  
-**Revision:** 1.1  
-**Normative basis:** IEC 61850-7-2 — *Communication networks and systems for power utility automation — Part 7-2: Basic information and communication structure — Abstract communication service interface (ACSI)*  
-**PDF (licensed):** `regulations/standards-drop-20260918/IEC 61850-7-2.pdf` (231 pp.)  
-**Programme link:** K4.1 · REQ-61850-001 · libiec61850 MMS server
+**Revision:** 1.2  
+**Date:** 2026-10-12  
+**RAG source_id:** `ccli-61850-7-2-capture-plan` → `ccli-61850-7-2-extract` · `ccli-61850-7-2-ocr-corpus`  
+**Normative basis:** IEC 61850-7-2:2010 — *Abstract communication service interface (ACSI)*  
+**PDF sources:** Programme drop `IEC 61850-7-2.pdf` · Ingest **BS EN 61850-7-2-2010** (Desktop doc88, 222 pp.)  
+**OCR corpus:** `reference/iec61850/_extract_61850-7-2/` via `scripts/extract-61850-7-2.py`  
+**Programme link:** K4.1 · REQ-61850-001 · libiec61850 MMS server · lab PICS (`ccli-lab-pics-fill`)
 
 ---
 
@@ -28,6 +28,7 @@
 | **C** | **Report** (BRCB/URCB), integrity period | Links TR 57-126 Table 23 | **COMPLETE** → extract §Batch C |
 | **D** | **Control** model (SBO/Direct) | PF2 / curtailment mapping | **COMPLETE** → extract §Batch D |
 | **E** | GOOSE/SV ACSI mapping (high level) | Cross-ref 62351-6 | **COMPLETE** → extract §Batch E |
+| **F** | **Annex A** PICS (Tables A.1–A.3) | Corpus **p193+** (IEC ~188+) | **COMPLETE** → extract §Batch F |
 
 ---
 

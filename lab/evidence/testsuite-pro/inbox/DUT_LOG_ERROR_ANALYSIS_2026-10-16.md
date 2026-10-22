@@ -14,6 +14,8 @@
 
 **Classification:** **Type A** — Test Suite Pro (or PC1 MMS cert/key/CID/project) aborts **after** TLS; DUT is not rejecting ACSE.
 
+**Likely DUT-side fix (2026-10-16):** yaml had `model_cfg` → **5-LN** while frozen TSP uses **`lab_tg544_eth_a.cid`**. Align DUT to `/etc/ccli/icd/lab_tg544_eth_a.cfg` (`product_tr400_p3_07_connect.yaml`) and push yaml-only; use `product_tr400_p3_07_connect_5ln.yaml` only when TSP imports the 5-LN CID.
+
 ## Example attempts (latest)
 
 ```

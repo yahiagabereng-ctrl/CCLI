@@ -5,7 +5,7 @@
 **Date:** 2026-09-15  
 **RAG source_id:** `ccli-soc-freeze`  
 **Status:** **FROZEN — FINAL PRODUCT SOC**  
-**Companion:** `CCI_TG500_Lab_Platform.md` (`ccli-tg500-lab-platform`) · `CCI_OpenWrt_Freeze.md` (`ccli-openwrt-freeze`)
+**Companion:** `CCI_TG500_Lab_Platform.md` (`ccli-tg500-lab-platform`) · `CCI_OpenWrt_Freeze.md` (`ccli-openwrt-freeze`) · `CCI_Product_SW_Freeze.md` (`ccli-product-sw-freeze`)
 
 ---
 

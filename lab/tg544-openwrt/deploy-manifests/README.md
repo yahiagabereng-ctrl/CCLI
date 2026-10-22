@@ -1,30 +1,12 @@
 # CCLI deploy manifests
 
-One file per DUT upload: **`CCLI_DEPLOY_<semver>-rN>_<timestamp>.md`** (+ `.json` sidecar).
+Every **`deploy-ccli-session-fix.ps1`** run must produce:
 
-Created by `write-deploy-manifest.ps1` (called automatically from `deploy-ccli-session-fix.ps1`).
+1. **`CCLI_DEPLOY_0.1.0-rN_YYYY-MM-DD_HHMMSS.md`** — human record (changes, SHA256, yaml, TLS, ICD)
+2. **`CCLI_DEPLOY_0.1.0-rN_YYYY-MM-DD_HHMMSS.json`** — machine sidecar
+3. **`CCLI_DEPLOY_LATEST.md` / `.json`** — rolling pointer (overwritten; cite this in evidence)
+4. **`../CCLI_SW_VERSION_AND_BINARIES.md`** — CURRENT block updated
 
-**Named lab profiles (yaml + TLS + git pin):** [`../revision-pins/`](../revision-pins/) and [`../DEPLOY_REVISION_RECAP.md`](../DEPLOY_REVISION_RECAP.md). Apply with `scripts/deploy-from-revision-pin.ps1`.
+Writer: **`../write-deploy-manifest.ps1`** · Refresher: **`../Update-CcliDeployRecord.ps1`**
 
-On the DUT after deploy:
-
-- `/etc/ccli/VERSION` — first line of `ccli --version`
-- `/etc/ccli/VERSION.json` — `ccli --version-json`
-- `/etc/ccli/DEPLOY_MANIFEST.md` — copy of the manifest uploaded with that binary
-
-**Before every deploy:**
-
-1. Edit `apps/ccli/VERSION` (bump release line)
-2. Run `scripts/sync-ccli-version.ps1`
-3. Add entry to `apps/ccli/CHANGELOG.md`
-4. Build (`wsl-build-ccli.sh`)
-5. Deploy with `-Changes` describing this upload
-
-**Lab vs product**
-
-| Path | Purpose |
-|------|---------|
-| This folder | **Lab** upload record (every bench deploy) |
-| `releases/product-cyber/<semver>-rN>/` | **Product** bundle after lab gates + cyber checklist |
-
-Normative: `knowledge-base/08-engineering/CCI_Product_SW_Freeze.md` (`ccli-product-sw-freeze`). Lab may use cleartext TSP yaml; product bundles must use **TLS :3782** only.
+Do not delete manifests for uploads that back **TSP / unified cert evidence** — they are the SHA audit trail.

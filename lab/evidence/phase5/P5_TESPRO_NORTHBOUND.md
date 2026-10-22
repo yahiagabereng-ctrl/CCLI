@@ -62,7 +62,11 @@ LuCI: **Services → IEC 61850 Protocol** → service **Running** (green).
 
 ### 3.1 Data points (leaf paths — mandatory)
 
-Delete/disable auto-generated **533** DO-level points. Keep **9** P5 points:
+Delete/disable auto-generated **533** DO-level points.
+
+**Cert / 5-LN run:** keep **7** points only — [CCLI_LAB_LUCI_5LN_ANNEX_VALIDATION.md](CCLI_LAB_LUCI_5LN_ANNEX_VALIDATION.md) · import [CCLI_LAB_5LN_cert_points.csv](CCLI_LAB_5LN_cert_points.csv). **No VArSd** (not in product 5-LN CID).
+
+**Legacy 31-LN lab northbound:** keep **9** P5 points:
 
 | Report Key | Object Reference (leaf) | FC | Interval (s) | Pass @ baseline |
 |------------|---------------------------|-----|-------------:|-----------------|

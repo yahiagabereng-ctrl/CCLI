@@ -169,8 +169,36 @@ if ($HostAddr -eq "192.168.10.1") {
     }
 }
 
+Write-Host "=== Post-deploy identity (DUT) ===" -ForegroundColor Cyan
+$dutVersionText = ""
+$dutSha = ""
+try {
+    $dutRaw = & $Plink -ssh "${User}@${HostAddr}" -pw $pw -hostkey $HostKey -batch `
+        "/usr/sbin/ccli --version; sha256sum /usr/sbin/ccli 2>/dev/null | awk '{print `$1}'"
+    $dutVersionText = ($dutRaw | Out-String).Trim()
+    if ($dutRaw -match '([a-f0-9]{64})') {
+        $dutSha = $Matches[1]
+    }
+    Write-Host $dutVersionText
+} catch {
+    Write-Warning "Could not read DUT version/SHA: $_"
+}
+
+if ($manifestPath) {
+    $manifestJson = $manifestPath -replace '\.md$', '.json'
+    if (Test-Path $manifestJson) {
+        & (Join-Path $PSScriptRoot "Update-CcliDeployRecord.ps1") `
+            -ManifestJsonPath $manifestJson `
+            -DutHost $HostAddr `
+            -DutVersionText $dutVersionText `
+            -DutSha256 $dutSha
+    }
+}
+
 Write-Host "=== Done ===" -ForegroundColor Green
 Write-Host "DUT version: ssh $User@${HostAddr} '/usr/sbin/ccli --version'"
+Write-Host "SW + binaries: lab/tg544-openwrt/CCLI_SW_VERSION_AND_BINARIES.md"
+Write-Host "Latest deploy: lab/tg544-openwrt/deploy-manifests/CCLI_DEPLOY_LATEST.md"
 if ($manifestPath) {
     Write-Host "Manifest:    $manifestPath"
 }

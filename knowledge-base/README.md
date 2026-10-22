@@ -1,14 +1,15 @@
 # CCI Knowledge Base Brief
 
 **Document ID:** CCLI-KB-001  
-**Revision:** 2.0  
-**Date:** 2026-08-10  
+**Revision:** 2.1  
+**Date:** 2026-10-14  
 **RAG source_id:** `ccli-knowledge-base-brief`  
 **Purpose:** Knowledge tree for the Original CCI project — **TesPro TG-524 / MT798X final product platform**.
 
 **On-disk root:** `c:\Yahia\projects\CCLI\knowledge-base\`  
 **Telematry mirror:** `documents/projects/ccli/`  
-**Master index:** [`DOWNLOADS.md`](DOWNLOADS.md)
+**Master index:** [`DOWNLOADS.md`](DOWNLOADS.md)  
+**Lab + product Cursor workspace:** [`../lab/WORKSPACE_LAB_AND_PRODUCT.md`](../lab/WORKSPACE_LAB_AND_PRODUCT.md) · `CCLI-Lab-And-Product.code-workspace`
 
 ---
 
@@ -29,9 +30,9 @@ Knowledge Base
 
 | Component | Language | Status |
 |-----------|----------|--------|
-| IEC 61850 MMS/GOOSE | C/C++ | NOT STARTED |
-| Modbus RTU/TCP master | C/C++ | NOT STARTED |
-| PF2 curtailment + DI/DO | C/C++ | NOT STARTED |
+| IEC 61850 MMS (62351 TLS/ACSE) | C/C++ | **PART** — TG544 lab |
+| Modbus RTU/TCP master | C/C++ | **PART** |
+| PF2 curtailment + DI/DO | C/C++ | **PART** |
 | Commissioning / web | Python | Out of cert path |
 | SK0146 AT syntax reference | docs | HAVE — `sk0146-fw-at/` |
 
@@ -62,6 +63,7 @@ Knowledge Base
 | Topic | RAG status |
 |-------|------------|
 | **OpenWrt freeze (FROZEN)** | ON DISK — `ccli-openwrt-freeze` |
+| **Product SW freeze (lab-first)** | ON DISK — `ccli-product-sw-freeze` |
 | **TG-500 knowledge tree (K0–K8)** | ON DISK — `ccli-tg500-knowledge-tree` |
 | **TG-500 platform (FROZEN — FINAL)** | ON DISK — `ccli-tg500-lab-platform` |
 | **SoC freeze (MT798X — FINAL)** | ON DISK — `ccli-soc-freeze` |
@@ -109,14 +111,14 @@ knowledge-base/
 
 ## 5. To do
 
-1. Ingest TG-500: `ingest-tg500-platform.ps1`  
-2. TesPro vendor SDK parity (optional vs upstream 25.12.5)  
-3. ARERA + cyber standards PDFs  
-4. Deploy / verify `ccli-*.apk` on TG544  
-5. MZ commercial quote for libiec61850  
+1. **Lab-first:** close remaining gates · deploy with TLS yaml · record under `lab/evidence/`  
+2. **Product:** first promote to `releases/product-cyber/<semver>-rN>/` per `ccli-product-sw-freeze`  
+3. RAG refresh (product deploy P0): `scripts/ingest-product-deploy-rag.ps1` · full: `scripts/ingest-next-phases.ps1`  
+4. TesPro vendor SDK parity (optional vs upstream 25.12.5)  
+5. Procure **62351-100-4** PDF for formal MMS cyber cases  
 
 ---
 
 ## 6. Keywords
 
-`openwrt`, `tg-524`, `tespro`, `libiec61850`, `modbus`, `pf2`, `raspberry pi`, `ccli-kb`
+`openwrt`, `tg-524`, `tespro`, `libiec61850`, `modbus`, `pf2`, `lab-first`, `product-cyber`, `ccli-kb`

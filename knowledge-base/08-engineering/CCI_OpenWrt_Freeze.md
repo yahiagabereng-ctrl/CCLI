@@ -1,11 +1,12 @@
 # CCI OpenWrt Freeze — TesPro Validation Path
 
 **Document ID:** CCLI-OS-001  
-**Revision:** 1.4  
-**Date:** 2026-09-17  
+**Revision:** 1.5  
+**Date:** 2026-10-14  
 **RAG source_id:** `ccli-openwrt-freeze`  
 **Status:** **FROZEN**  
-**Parents:** `ccli-soc-freeze` · `ccli-tg500-lab-platform` · `ccli-app-structure` · `ccli-tespro-supplier-correspondence`
+**Parents:** `ccli-soc-freeze` · `ccli-tg500-lab-platform` · `ccli-app-structure` · `ccli-tespro-supplier-correspondence`  
+**Children:** `ccli-product-sw-freeze` (lab-first product bundles · cyber profile)
 
 ---
 
@@ -40,6 +41,8 @@ apps/ccli/  — portable C/C++ (PF2, Modbus, MMS, IEC104)
 | **L2** | **TG544** + USB-RS485 A1/B1 + DIO1/DIO2 | Physical serial, ubus DIO, PF2 curtailment |
 | **L3** | TG544 + real analyzer | Register map, `.apk`, TPM, Secure Boot |
 | **L4** | TG-524 in cabinet | Thermal, EMC, field I/O expansion |
+
+**Lab-first rule:** all **L1–L4** evidence is collected on **TG544** before promoting a **product cyber** bundle (`releases/product-cyber/` · `ccli-product-sw-freeze`). Same OS/build line; product differs by **config + PKI + manifest**, not a second codebase.
 
 ---
 

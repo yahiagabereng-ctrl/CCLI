@@ -49,6 +49,8 @@ Copy **`lab\tg544-openwrt\lab-env.ps1`** from the logger to the TSP PC if you al
 
 **Security note:** Bench-only. Product/site controllers must not use this password.
 
+**SSH keys (recommended):** Set `$env:CCLI_SSH_KEY` / `$env:CCLI_SSH_PUBKEY` in `lab-env.ps1`. Deploy scripts can use `scripts/Invoke-CcliPlink.ps1`. Harden DUT: [CCLI_DUT_ADMIN_HARDENING.md](CCLI_DUT_ADMIN_HARDENING.md) · `scripts/harden-dut-admin.ps1`.
+
 ---
 
 ## 2. Test Suite Pro “login” (certificates, not a password)
@@ -66,12 +68,14 @@ MMS/TLS auth is **certificate-based**. Frozen **P3-07 Connect** profile (matches
 
 **MD5 pin** (must match DUT `/etc/ccli/tls/` for this session):
 
-| File | MD5 |
+| File | MD5 (live DUT 2026-10-16 Connect PASS) |
 |------|-----|
-| `root_CA.pem` | `7ada0cbe2be1bb4bddff7b6961461bc5` |
-| `client_tls.pem` | `524fdd81b0d87abc9dc8c1cd2c490968` |
-| `client.pem` | `fe374442fce9eea87f7a937bac1b3bea` |
-| `client_tsp.key` | `9858beb9736ad5b32b72238d0cbfa27c` |
+| `root_CA.pem` | `fa23eb4d198c74059cdf72d585eb50c6` |
+| `client_tls.pem` | `adda810ae47ced71f4880a18f93b7ddf` |
+| `client.pem` | `0b540059962d61cd897fe393074d6aac` |
+| `client_tsp.key` | `04a791a3e34ecf68521cfcb582867865` |
+
+Repo `apps/ccli/config/tls/p3_07_connect` may show different **PEM** MD5s (line wrap) but **DER + serials** match this table. Serials: CA `4DAA40028901CFFB` · transport `DC9A9E26D547EF38` · MMS `28E53F07CFE347B0`.
 
 **Connection:** IED **CCI016_01** · **`192.168.10.1:3782`** · TLS on · CID **`lab_tg544_eth_a.cid`**.
 

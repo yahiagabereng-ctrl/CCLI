@@ -75,6 +75,13 @@ lab/tg544-openwrt/libstdc++.so.6
 apps/ccli/build-p4-test/
 apps/ccli/build-mms-host/
 
+# Product tree (program/main.c) — shares lab third_party via junction
+product/apps/ccli/third_party
+product/apps/ccli/build/
+product/apps/ccli/build-*/
+product/apps/ccli/cmake-build-*/
+product/apps/ccli/build-mms-host*/
+
 # OS
 Thumbs.db
 Desktop.ini

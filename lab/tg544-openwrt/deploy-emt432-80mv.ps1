@@ -6,7 +6,7 @@
 #   powershell -File lab\tg544-openwrt\deploy-emt432-80mv.ps1 -SkipMeterWrite
 
 param(
-    [string]$MeterHost = "192.168.178.102",
+    [string]$MeterHost = "192.168.178.10",
     [string]$DutHost = "192.168.1.130",
     [switch]$SkipMeterWrite
 )

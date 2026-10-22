@@ -1,19 +1,19 @@
 ---
-description: Multi-root workspace — lab vs Official Product folder split
+description: Multi-root workspace — lab vs product tree inside one repo
 alwaysApply: true
 ---
 
 # Lab + Product workspace
 
-When **CCLI-Lab-And-Product.code-workspace** is open (two roots):
+When **CCLI-Lab-And-Product.code-workspace** is open (two roots in **one repo**):
 
-| Folder name | Role |
-|-------------|------|
-| **CCLI Lab** | Conformance, DUT r52, `lab/`, `knowledge-base/`, deploy scripts, **`ccli_main`** build |
-| **CCLI Product (apps/ccli)** | Product intent root — SK0153 **`program/`**, **`ccli_program`**, entry **`program/main.c`** (`…Official Product\apps\ccli`) |
+| Folder name | Path | Role |
+|-------------|------|------|
+| **CCLI Lab** | Repo root | Conformance, DUT deploy, `lab/`, `knowledge-base/`, **`apps/ccli`** → **`ccli_main`** |
+| **CCLI Product** | `product/apps/ccli` | SK0153 **`program/`**, **`ccli_program`**, entry **`program/main.c`** |
 
-**RAG:** Run sync/ingest from **CCLI Lab** root only (`scripts/sync-ccli-corpus-to-telematry.ps1`, `scripts/ingest-product-deploy-rag.ps1`). Telematry mirror: `documents/projects/ccli/`.
+**RAG:** Run sync/ingest from **repo root** only (`scripts/sync-ccli-corpus-to-telematry.ps1`, `scripts/ingest-product-deploy-rag.ps1`).
 
-**Shared code:** Prefer editing `core/`, `adapters/`, `services/` in the tree that owns the change; port to the other repo deliberately — do not flip lab CMake to `program/main.c`.
+**Shared code:** Port `core/`, `adapters/`, `services/` between `apps/ccli` and `product/apps/ccli` deliberately. **`third_party`** is one junction — `scripts/link-product-third-party.ps1`.
 
-Guide: `lab/WORKSPACE_LAB_AND_PRODUCT.md`
+Guide: `lab/WORKSPACE_LAB_AND_PRODUCT.md` · `product/README.md`
