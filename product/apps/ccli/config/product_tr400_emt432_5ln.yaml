@@ -1,0 +1,158 @@
+# Alias — same as product_tr400.yaml (EMT432 Modbus TCP LAN3 is the primary ship profile).
+# Requires DUT lan3: 192.168.178.1/24 and meter at 192.168.178.250:502.
+#
+# Deploy:
+#   .\lab\tg544-openwrt\deploy-ccli-session-fix.ps1 -HostAddr 192.168.1.130 `
+#     -LabYaml apps\ccli\config\product_tr400_emt432_5ln.yaml `
+#     -Changes @("product EMT432 LAN3 + 5-LN cyber")
+
+platform: tg500
+lab:
+  hostname: TG544
+  model: tespro,tr500
+  address: 192.168.1.130/24
+  role: operator_eth_b
+  meter: chronos_emt432_1p
+  meter_ip: 192.168.178.250
+  plant_gateway: 192.168.178.1
+  bench_note: "EMT432 TCP LAN3 · DIO1 relay · DIO2 permissive · Sun COM5 parallel · 5-LN MMS/104 TLS"
+  hw:
+    plant_meter: emt432_modbus_tcp_lan3_1p
+    inverter_mock:
+      role: sun2000_rtu_sim
+      pc_usb_rs485: COM5
+      dut_terminals: A1_B1
+      dut_linux_device: /dev/ttyS1
+      ccli_polls: false
+      start_script: lab/start-bench-plant.ps1
+      sim: lab/third_party/Sun2000-100KTL-M2-Inverter-Simulator/sun2000_100ktl_m2_rtu_sim.py
+    curtail_relay: dio1_ch1_do
+    permissive_button: dio2_ch2_di
+    wiring_doc: lab/CURTAIL_BUTTON_AND_RELAY_SETUP.md
+    rs485_map: lab/evidence/phase5/P5_A1B1_RS485_HW_MAP.md
+    lan3_doc: lab/evidence/phase5/P5_EMT432_TERMINAL_WIRING.md
+    runbook: lab/conformance/TSP_TWO_PC_BENCH_RUNBOOK.md
+    two_pc:
+      pc_b_dso: "192.168.10.10 → MMS 3782 TLS"
+      pc_a_logger: "192.168.1.183 LAN2 · 192.168.178.10 LAN3 · COM5 RS485"
+
+modbus:
+  backend: tcp
+  host: 192.168.178.250
+  tcp_port: 502
+  slave_id: 1
+  poll_ms: 4000
+  timeout_ms: 2000
+  retries: 3
+  trace: true
+  reg_active_power: 932
+  reg_active_power_count: 2
+  reg_reactive_power: 940
+  reg_reactive_power_count: 2
+  power_scale: 0.001
+  reactive_scale: 0.001
+  float_word_swap: true
+  reg_line_voltage: 905
+  reg_line_voltage_count: 2
+  line_voltage_scale: 0.001
+
+pf2:
+  threshold_kw: 900
+  debounce_s: 30
+  release_threshold_kw: 850
+  min_on_s: 60
+  min_off_s: 30
+  stale_data_s: 10
+  use_dso_mock: false
+
+plant:
+  p_imm_kw: 200
+  p_ass_kw: 200
+  q_ind_kvar: 50
+  q_cap_kvar: 50
+  smax_kva: 210
+  poc_ppv_kv: 0.23
+
+dso:
+  enabled: true
+  profile: tr57126_table1
+  w110_active: false
+  w110_pct: 100
+  wlim_active: false
+  wmax_spt_pct: 0
+  wsd_active: true
+  wspt_pct: 20
+  release_delta_kw: 5
+
+mms:
+  enabled: true
+  bind_address: 192.168.10.1
+  tcp_port: 3782
+  model_cfg: /etc/ccli/icd/product_tr400_eth_a_5ln.cfg
+  comms_loss_fallback_s: 15
+  gnss_poll_s: 15
+  gnss_discipline_clock: false
+  chrony_poll: true
+  tls_enabled: true
+  tls_own_key: /etc/ccli/tls/server.key
+  tls_own_cert: /etc/ccli/tls/server_tls.pem
+  tls_acse_cert: /etc/ccli/tls/server.pem
+  tls_acse_key: /etc/ccli/tls/server_acse.key
+  tls_ca_cert: /etc/ccli/tls/root_CA.pem
+  tls_client_cert: /etc/ccli/tls/client_tls.pem
+  tls_acse_client_cert: /etc/ccli/tls/client.pem
+  tls_viewer_cert: /etc/ccli/tls/viewer_tls.pem
+  tls_revoked_cert: /etc/ccli/tls/revoked_tls.pem
+  tls_crl: /etc/ccli/tls/lab_crl.pem
+  tls_chain_validation: true
+
+goose:
+  enabled: false
+  publish_enabled: false
+
+iec104:
+  enabled: true
+  bind_address: 192.168.1.130
+  tcp_port: 2404
+  common_address: 1
+  periodic_s: 4
+  comms_loss_fallback_s: 60
+  operator_rule_mode: monitor_only
+  operator_allow_commands: false
+  operator_allow_gi: true
+  operator_allow_clock_sync: false
+  operator_monitor_tot_w: true
+  ioa_tot_w: 1001
+  operator_monitor_totvar: false
+  ioa_tot_var: 1002
+  operator_monitor_ppv: false
+  ioa_ppv: 1003
+  tls_enabled: true
+  tls_own_key: /etc/ccli/tls/server.key
+  tls_own_cert: /etc/ccli/tls/server_tls.pem
+  tls_ca_cert: /etc/ccli/tls/root_CA.pem
+  tls_client_cert: /etc/ccli/tls/client_tls.pem
+
+io:
+  backend: ubus_dido_v2
+  permissive_bypass: false
+  do_curtail:
+    gpio: 1
+    active_high: false
+  di_permissive:
+    gpio: 2
+    active_low: true
+  annex_m_trip_monitor:
+    enabled: false
+    gpio: 3
+  do_pf2_spare:
+    gpio: 4
+    active_high: false
+
+event_log:
+  enabled: true
+  path: /var/lib/ccli/events.jsonl
+  syslog_enabled: true
+  syslog_host: 127.0.0.1
+  syslog_port: 514
+  watch_ifaces: lan1 lan2 lan3

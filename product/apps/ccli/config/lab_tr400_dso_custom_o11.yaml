@@ -1,0 +1,24 @@
+# Custom DSO mock — all yaml parameters exercised (O.11 min of w110 + wlim + wsd)
+# Expected p_effective on 210 kVA: min(100%, 70%, 50%) = 50% → 105 kW threshold
+pf2:
+  use_dso_mock: true
+  threshold_kw: 900
+  release_threshold_kw: 850
+plant:
+  p_imm_kw: 200
+  p_ass_kw: 200
+  q_ind_kvar: 50
+  q_cap_kvar: 50
+  smax_kva: 210
+dso:
+  enabled: true
+  profile: custom
+  w110_active: true
+  w110_pct: 100
+  wlim_active: true
+  wmax_spt_pct: 70
+  wsd_active: true
+  wspt_pct: 50
+  release_delta_kw: 5
+modbus:
+  backend: simulator

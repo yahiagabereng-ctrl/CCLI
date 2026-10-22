@@ -1,0 +1,1153 @@
+# AUTO-GENERATED from MMS_POINT_MAP.csv — do not edit by hand
+points:
+  - name: DisFR_DECP_Beh
+    object_ref: CCI016_01LD_Plant/DisFRDECP1.Beh.stVal
+    fc: ST
+    interval_s: 60
+    description: Grid connection point — available for control
+    access_role: ANY
+    access_right: READ
+    annex_scope: OBSERVABILITY
+    app_group: A2
+    function_class: availability_plant
+    function_label: Grid connection — ready for control
+    ln_class: DECP
+    ln_ref: LD_Plant/DisFRDECP1
+    clause: O.8.6
+    point_kind: status
+  - name: DisFR_DGEN_Beh
+    object_ref: CCI016_01LD_Plant/DisFRDGEN1.Beh.stVal
+    fc: ST
+    interval_s: 60
+    description: Generation block — available for control
+    access_role: ANY
+    access_right: READ
+    annex_scope: OBSERVABILITY
+    app_group: A2
+    function_class: availability_generation
+    function_label: Generation block — ready for control
+    ln_class: DGEN
+    ln_ref: LD_Plant/DisFRDGEN1
+    clause: O.8.6
+    point_kind: status
+  - name: DisFR_DSTO_Beh
+    object_ref: CCI016_01LD_Plant/DisFRDSTO1.Beh.stVal
+    fc: ST
+    interval_s: 60
+    description: Storage block — available for control
+    access_role: ANY
+    access_right: READ
+    annex_scope: OBSERVABILITY
+    app_group: A2
+    function_class: availability_storage
+    function_label: Storage block — ready for control
+    ln_class: DSTO
+    ln_ref: LD_Plant/DisFRDSTO1
+    clause: O.8.6
+    point_kind: status
+  - name: GenIdr_TotW
+    object_ref: CCI016_01LD_Plant/GenIdrMMXU1.TotW.mag.f
+    fc: MX
+    interval_s: 4
+    description: Total hydro generation — combined hydro units (kW)
+    access_role: ANY
+    access_right: READ
+    annex_scope: OBSERVABILITY
+    app_group: A3
+    function_class: measurement_gen_hydro
+    function_label: Hydro total power — every 4 s
+    ln_class: MMXU
+    ln_ref: LD_Plant/GenIdrMMXU1
+    clause: O.8.4
+    point_kind: value
+  - name: GenIdr_TotW_q
+    object_ref: CCI016_01LD_Plant/GenIdrMMXU1.TotW.q
+    fc: MX
+    interval_s: 4
+    description: Hydro total power quality flag
+    access_role: ANY
+    access_right: READ
+    annex_scope: OBSERVABILITY
+    app_group: A3
+    function_class: measurement_gen_hydro
+    function_label: Hydro total power — every 4 s
+    ln_class: MMXU
+    ln_ref: LD_Plant/GenIdrMMXU1
+    clause: O.8.4
+    point_kind: quality
+  - name: GenIdr_TotW_t
+    object_ref: CCI016_01LD_Plant/GenIdrMMXU1.TotW.t
+    fc: MX
+    interval_s: 4
+    description: Hydro total power sample time
+    access_role: ANY
+    access_right: READ
+    annex_scope: OBSERVABILITY
+    app_group: A3
+    function_class: measurement_gen_hydro
+    function_label: Hydro total power — every 4 s
+    ln_class: MMXU
+    ln_ref: LD_Plant/GenIdrMMXU1
+    clause: O.8.4
+    point_kind: timestamp
+  - name: GenPV_TotW
+    object_ref: CCI016_01LD_Plant/GenPVMMXU1.TotW.mag.f
+    fc: MX
+    interval_s: 4
+    description: Total PV generation — sum of all solar inverters (kW)
+    access_role: ANY
+    access_right: READ
+    annex_scope: OBSERVABILITY
+    app_group: A3
+    function_class: measurement_gen_pv
+    function_label: PV total power — every 4 s
+    ln_class: MMXU
+    ln_ref: LD_Plant/GenPVMMXU1
+    clause: O.8.4
+    point_kind: value
+  - name: GenPV_TotW_q
+    object_ref: CCI016_01LD_Plant/GenPVMMXU1.TotW.q
+    fc: MX
+    interval_s: 4
+    description: PV total power quality flag
+    access_role: ANY
+    access_right: READ
+    annex_scope: OBSERVABILITY
+    app_group: A3
+    function_class: measurement_gen_pv
+    function_label: PV total power — every 4 s
+    ln_class: MMXU
+    ln_ref: LD_Plant/GenPVMMXU1
+    clause: O.8.4
+    point_kind: quality
+  - name: GenPV_TotW_t
+    object_ref: CCI016_01LD_Plant/GenPVMMXU1.TotW.t
+    fc: MX
+    interval_s: 4
+    description: PV total power sample time
+    access_role: ANY
+    access_right: READ
+    annex_scope: OBSERVABILITY
+    app_group: A3
+    function_class: measurement_gen_pv
+    function_label: PV total power — every 4 s
+    ln_class: MMXU
+    ln_ref: LD_Plant/GenPVMMXU1
+    clause: O.8.4
+    point_kind: timestamp
+  - name: GenTer_TotW
+    object_ref: CCI016_01LD_Plant/GenTerMMXU1.TotW.mag.f
+    fc: MX
+    interval_s: 4
+    description: Total thermal generation — combined heat/power (kW)
+    access_role: ANY
+    access_right: READ
+    annex_scope: OBSERVABILITY
+    app_group: A3
+    function_class: measurement_gen_thermal
+    function_label: Thermal total power — every 4 s
+    ln_class: MMXU
+    ln_ref: LD_Plant/GenTerMMXU1
+    clause: O.8.4
+    point_kind: value
+  - name: GenTer_TotW_q
+    object_ref: CCI016_01LD_Plant/GenTerMMXU1.TotW.q
+    fc: MX
+    interval_s: 4
+    description: Thermal total power quality flag
+    access_role: ANY
+    access_right: READ
+    annex_scope: OBSERVABILITY
+    app_group: A3
+    function_class: measurement_gen_thermal
+    function_label: Thermal total power — every 4 s
+    ln_class: MMXU
+    ln_ref: LD_Plant/GenTerMMXU1
+    clause: O.8.4
+    point_kind: quality
+  - name: GenTer_TotW_t
+    object_ref: CCI016_01LD_Plant/GenTerMMXU1.TotW.t
+    fc: MX
+    interval_s: 4
+    description: Thermal total power sample time
+    access_role: ANY
+    access_right: READ
+    annex_scope: OBSERVABILITY
+    app_group: A3
+    function_class: measurement_gen_thermal
+    function_label: Thermal total power — every 4 s
+    ln_class: MMXU
+    ln_ref: LD_Plant/GenTerMMXU1
+    clause: O.8.4
+    point_kind: timestamp
+  - name: IDG_Pos
+    object_ref: CCI016_01LD_Plant/IDGXCBR1.Pos.stVal
+    fc: ST
+    interval_s: 60
+    description: Main grid breaker — open or closed
+    access_role: ANY
+    access_right: READ
+    annex_scope: OBSERVABILITY
+    app_group: A4
+    function_class: breaker_idg
+    function_label: Main grid breaker position
+    ln_class: XCBR
+    ln_ref: LD_Plant/IDGXCBR1
+    clause: O.8.6
+    point_kind: status
+  - name: LLN0_Mod
+    object_ref: CCI016_01LD_Plant/LLN0.Mod.stVal
+    fc: ST
+    interval_s: 300
+    description: Controller mode — logical device ON or OFF
+    access_role: ANY
+    access_right: READ
+    annex_scope: OBSERVABILITY
+    app_group: A0
+    function_class: common_controller
+    function_label: Controller and device identity
+    ln_class: LLN0
+    ln_ref: LD_Plant/LLN0
+    clause: T.3.3.1
+    point_kind: status
+  - name: LPHD_PhyHealth
+    object_ref: CCI016_01LD_Plant/LPHD1.PhyHealth.stVal
+    fc: ST
+    interval_s: 300
+    description: Controller hardware health — OK or fault
+    access_role: ANY
+    access_right: READ
+    annex_scope: OBSERVABILITY
+    app_group: A0
+    function_class: common_controller
+    function_label: Controller and device identity
+    ln_class: LPHD
+    ln_ref: LD_Plant/LPHD1
+    clause: T.3.3.4.7
+    point_kind: status
+  - name: LPHD_location
+    object_ref: CCI016_01LD_Plant/LPHD1.PhyNam.location
+    fc: DC
+    interval_s: 3600
+    description: Delivery point ID / POD code (asset inventory)
+    access_role: ANY
+    access_right: READ
+    annex_scope: OBSERVABILITY
+    app_group: A0
+    function_class: common_controller
+    function_label: Controller and device identity
+    ln_class: LPHD
+    ln_ref: LD_Plant/LPHD1
+    clause: T.3.3.4.7
+    point_kind: asset
+  - name: LPHD_swRev
+    object_ref: CCI016_01LD_Plant/LPHD1.PhyNam.swRev
+    fc: DC
+    interval_s: 3600
+    description: Controller firmware version string
+    access_role: ANY
+    access_right: READ
+    annex_scope: OBSERVABILITY
+    app_group: A0
+    function_class: common_controller
+    function_label: Controller and device identity
+    ln_class: LPHD
+    ln_ref: LD_Plant/LPHD1
+    clause: T.3.3.4.7
+    point_kind: asset
+  - name: LPHD_vendor
+    object_ref: CCI016_01LD_Plant/LPHD1.PhyNam.vendor
+    fc: DC
+    interval_s: 3600
+    description: Device manufacturer name (asset inventory)
+    access_role: ANY
+    access_right: READ
+    annex_scope: OBSERVABILITY
+    app_group: A0
+    function_class: common_controller
+    function_label: Controller and device identity
+    ln_class: LPHD
+    ln_ref: LD_Plant/LPHD1
+    clause: T.3.3.4.7
+    point_kind: asset
+  - name: PFSP_Beh
+    object_ref: CCI016_01LD_Plant/PFSPDFPF1.Beh.stVal
+    fc: ST
+    interval_s: 60
+    description: Fixed cos phi health — running OK or fault
+    access_role: ANY
+    access_right: READ
+    annex_scope: OBSERVABILITY
+    app_group: A7
+    function_class: reactive_ctrl_pfsp
+    function_label: Fixed cos phi (PFSP) — future
+    ln_class: DFPF
+    ln_ref: LD_Plant/PFSPDFPF1
+    clause: O.9.1.1
+    point_kind: status
+    o11_priority: 6
+    o11_priority_label: Fixed cos phi setpoint (PFSP)
+  - name: PFSP_FctOpSt
+    object_ref: CCI016_01LD_Plant/PFSPDFPF1.FctOpSt.stVal
+    fc: ST
+    interval_s: 60
+    description: Fixed cos phi — active state
+    access_role: ANY
+    access_right: READ
+    annex_scope: OBSERVABILITY
+    app_group: A7
+    function_class: reactive_ctrl_pfsp
+    function_label: Fixed cos phi (PFSP) — future
+    ln_class: DFPF
+    ln_ref: LD_Plant/PFSPDFPF1
+    clause: O.9.1.1
+    point_kind: status
+    o11_priority: 6
+    o11_priority_label: Fixed cos phi setpoint (PFSP)
+  - name: PFW_Beh
+    object_ref: CCI016_01LD_Plant/PFWDPFW1.Beh.stVal
+    fc: ST
+    interval_s: 60
+    description: Cos phi(P) health — running OK or fault
+    access_role: ANY
+    access_right: READ
+    annex_scope: OBSERVABILITY
+    app_group: A7
+    function_class: reactive_ctrl_pfw
+    function_label: Cos phi vs power (PFW) — future
+    ln_class: DPFW
+    ln_ref: LD_Plant/PFWDPFW1
+    clause: O.9.1.2
+    point_kind: status
+    o11_priority: 6
+    o11_priority_label: Reactive cosφ(P) control (PFW)
+  - name: PFW_FctOpSt
+    object_ref: CCI016_01LD_Plant/PFWDPFW1.FctOpSt.stVal
+    fc: ST
+    interval_s: 60
+    description: Cos phi(P) — active state
+    access_role: ANY
+    access_right: READ
+    annex_scope: OBSERVABILITY
+    app_group: A7
+    function_class: reactive_ctrl_pfw
+    function_label: Cos phi vs power (PFW) — future
+    ln_class: DPFW
+    ln_ref: LD_Plant/PFWDPFW1
+    clause: O.9.1.2
+    point_kind: status
+    o11_priority: 6
+    o11_priority_label: Reactive cosφ(P) control (PFW)
+  - name: PdC_A_phsA
+    object_ref: CCI016_01LD_Plant/PdCMMXU1.A.phsA.cVal.mag.f
+    fc: MX
+    interval_s: 4
+    description: POC phase-A current — amps on the delivery point
+    access_role: ANY
+    access_right: READ
+    annex_scope: OBSERVABILITY
+    app_group: A3
+    function_class: measurement_pdc
+    function_label: POC measurements — every 4 s
+    ln_class: MMXU
+    ln_ref: LD_Plant/PdCMMXU1
+    clause: O.8.3
+    point_kind: value
+  - name: PdC_A_phsA_q
+    object_ref: CCI016_01LD_Plant/PdCMMXU1.A.phsA.q
+    fc: MX
+    interval_s: 4
+    description: POC current quality — good, questionable, or invalid
+    access_role: ANY
+    access_right: READ
+    annex_scope: OBSERVABILITY
+    app_group: A3
+    function_class: measurement_pdc
+    function_label: POC measurements — every 4 s
+    ln_class: MMXU
+    ln_ref: LD_Plant/PdCMMXU1
+    clause: O.8.3
+    point_kind: quality
+  - name: PdC_A_phsA_t
+    object_ref: CCI016_01LD_Plant/PdCMMXU1.A.phsA.t
+    fc: MX
+    interval_s: 4
+    description: POC current timestamp — when the 4 s sample was taken
+    access_role: ANY
+    access_right: READ
+    annex_scope: OBSERVABILITY
+    app_group: A3
+    function_class: measurement_pdc
+    function_label: POC measurements — every 4 s
+    ln_class: MMXU
+    ln_ref: LD_Plant/PdCMMXU1
+    clause: O.8.3
+    point_kind: timestamp
+  - name: PdC_PPV_AB
+    object_ref: CCI016_01LD_Plant/PdCMMXU1.PPV.phsAB.cVal.mag.f
+    fc: MX
+    interval_s: 4
+    description: POC line voltage — kV between phases A and B
+    access_role: ANY
+    access_right: READ
+    annex_scope: OBSERVABILITY
+    app_group: A3
+    function_class: measurement_pdc
+    function_label: POC measurements — every 4 s
+    ln_class: MMXU
+    ln_ref: LD_Plant/PdCMMXU1
+    clause: O.8.3
+    point_kind: value
+  - name: PdC_PPV_AB_q
+    object_ref: CCI016_01LD_Plant/PdCMMXU1.PPV.phsAB.q
+    fc: MX
+    interval_s: 4
+    description: POC voltage quality — good, questionable, or invalid
+    access_role: ANY
+    access_right: READ
+    annex_scope: OBSERVABILITY
+    app_group: A3
+    function_class: measurement_pdc
+    function_label: POC measurements — every 4 s
+    ln_class: MMXU
+    ln_ref: LD_Plant/PdCMMXU1
+    clause: O.8.3
+    point_kind: quality
+  - name: PdC_PPV_AB_t
+    object_ref: CCI016_01LD_Plant/PdCMMXU1.PPV.phsAB.t
+    fc: MX
+    interval_s: 4
+    description: POC voltage timestamp — when the 4 s sample was taken
+    access_role: ANY
+    access_right: READ
+    annex_scope: OBSERVABILITY
+    app_group: A3
+    function_class: measurement_pdc
+    function_label: POC measurements — every 4 s
+    ln_class: MMXU
+    ln_ref: LD_Plant/PdCMMXU1
+    clause: O.8.3
+    point_kind: timestamp
+  - name: PdC_Qc_VArRtg
+    object_ref: CCI016_01LD_Plant/PdC_QcDPCC1.VArRtg.setMag.f
+    fc: SP
+    interval_s: 3600
+    description: Nameplate — maximum capacitive reactive (kVAr)
+    access_role: ANY
+    access_right: READ
+    annex_scope: OBSERVABILITY
+    app_group: A1
+    function_class: nameplate_pdc
+    function_label: Nameplate — plant power limits (Smax polygon)
+    ln_class: DPCC
+    ln_ref: LD_Plant/PdC_QcDPCC1
+    clause: T.3.1
+    point_kind: nameplate
+  - name: PdC_Qi_VArRtg
+    object_ref: CCI016_01LD_Plant/PdC_QiDPCC1.VArRtg.setMag.f
+    fc: SP
+    interval_s: 3600
+    description: Nameplate — maximum inductive reactive (kVAr)
+    access_role: ANY
+    access_right: READ
+    annex_scope: OBSERVABILITY
+    app_group: A1
+    function_class: nameplate_pdc
+    function_label: Nameplate — plant power limits (Smax polygon)
+    ln_class: DPCC
+    ln_ref: LD_Plant/PdC_QiDPCC1
+    clause: T.3.1
+    point_kind: nameplate
+  - name: PdC_TotVAr
+    object_ref: CCI016_01LD_Plant/PdCMMXU1.TotVAr.mag.f
+    fc: MX
+    interval_s: 4
+    description: POC reactive power — kVAr at the grid connection point
+    access_role: ANY
+    access_right: READ
+    annex_scope: OBSERVABILITY
+    app_group: A3
+    function_class: measurement_pdc
+    function_label: POC measurements — every 4 s
+    ln_class: MMXU
+    ln_ref: LD_Plant/PdCMMXU1
+    clause: O.8.3
+    point_kind: value
+  - name: PdC_TotVAr_q
+    object_ref: CCI016_01LD_Plant/PdCMMXU1.TotVAr.q
+    fc: MX
+    interval_s: 4
+    description: POC reactive power quality — good, questionable, or invalid
+    access_role: ANY
+    access_right: READ
+    annex_scope: OBSERVABILITY
+    app_group: A3
+    function_class: measurement_pdc
+    function_label: POC measurements — every 4 s
+    ln_class: MMXU
+    ln_ref: LD_Plant/PdCMMXU1
+    clause: O.8.3
+    point_kind: quality
+  - name: PdC_TotVAr_t
+    object_ref: CCI016_01LD_Plant/PdCMMXU1.TotVAr.t
+    fc: MX
+    interval_s: 4
+    description: POC reactive power timestamp — when the 4 s sample was taken
+    access_role: ANY
+    access_right: READ
+    annex_scope: OBSERVABILITY
+    app_group: A3
+    function_class: measurement_pdc
+    function_label: POC measurements — every 4 s
+    ln_class: MMXU
+    ln_ref: LD_Plant/PdCMMXU1
+    clause: O.8.3
+    point_kind: timestamp
+  - name: PdC_TotW
+    object_ref: CCI016_01LD_Plant/PdCMMXU1.TotW.mag.f
+    fc: MX
+    interval_s: 4
+    description: POC active power — how much kW the plant exports or imports
+    access_role: ANY
+    access_right: READ
+    annex_scope: OBSERVABILITY
+    app_group: A3
+    function_class: measurement_pdc
+    function_label: POC measurements — every 4 s
+    ln_class: MMXU
+    ln_ref: LD_Plant/PdCMMXU1
+    clause: O.8.3
+    point_kind: value
+  - name: PdC_TotW_q
+    object_ref: CCI016_01LD_Plant/PdCMMXU1.TotW.q
+    fc: MX
+    interval_s: 4
+    description: POC active power quality — good, questionable, or invalid
+    access_role: ANY
+    access_right: READ
+    annex_scope: OBSERVABILITY
+    app_group: A3
+    function_class: measurement_pdc
+    function_label: POC measurements — every 4 s
+    ln_class: MMXU
+    ln_ref: LD_Plant/PdCMMXU1
+    clause: O.8.3
+    point_kind: quality
+  - name: PdC_TotW_t
+    object_ref: CCI016_01LD_Plant/PdCMMXU1.TotW.t
+    fc: MX
+    interval_s: 4
+    description: POC active power timestamp — when the 4 s sample was taken
+    access_role: ANY
+    access_right: READ
+    annex_scope: OBSERVABILITY
+    app_group: A3
+    function_class: measurement_pdc
+    function_label: POC measurements — every 4 s
+    ln_class: MMXU
+    ln_ref: LD_Plant/PdCMMXU1
+    clause: O.8.3
+    point_kind: timestamp
+  - name: PdC_VA_VARtg
+    object_ref: CCI016_01LD_Plant/PdC_VADPCC1.VARtg.setMag.f
+    fc: SP
+    interval_s: 3600
+    description: Nameplate — maximum apparent power Smax (kVA)
+    access_role: ANY
+    access_right: READ
+    annex_scope: OBSERVABILITY
+    app_group: A1
+    function_class: nameplate_pdc
+    function_label: Nameplate — plant power limits (Smax polygon)
+    ln_class: DPCC
+    ln_ref: LD_Plant/PdC_VADPCC1
+    clause: T.3.1
+    point_kind: nameplate
+  - name: PdC_Wa_WRtg
+    object_ref: CCI016_01LD_Plant/PdC_WaDPCC1.WRtg.setMag.f
+    fc: SP
+    interval_s: 3600
+    description: Nameplate — maximum import power allowed (kW)
+    access_role: ANY
+    access_right: READ
+    annex_scope: OBSERVABILITY
+    app_group: A1
+    function_class: nameplate_pdc
+    function_label: Nameplate — plant power limits (Smax polygon)
+    ln_class: DPCC
+    ln_ref: LD_Plant/PdC_WaDPCC1
+    clause: T.3.1
+    point_kind: nameplate
+  - name: PdC_Wi_WRtg
+    object_ref: CCI016_01LD_Plant/PdC_WiDPCC1.WRtg.setMag.f
+    fc: SP
+    interval_s: 3600
+    description: Nameplate — maximum export power allowed (kW)
+    access_role: ANY
+    access_right: READ
+    annex_scope: OBSERVABILITY
+    app_group: A1
+    function_class: nameplate_pdc
+    function_label: Nameplate — plant power limits (Smax polygon)
+    ln_class: DPCC
+    ln_ref: LD_Plant/PdC_WiDPCC1
+    clause: T.3.1
+    point_kind: nameplate
+  - name: SGG1_TotW
+    object_ref: CCI016_01LD_Plant/SGGMMXU1.TotW.mag.f
+    fc: MX
+    interval_s: 4
+    description: Inverter group 1 — active power (kW)
+    access_role: ANY
+    access_right: READ
+    annex_scope: OBSERVABILITY
+    app_group: A3
+    function_class: measurement_sgg
+    function_label: Inverter group power — every 4 s
+    ln_class: MMXU
+    ln_ref: LD_Plant/SGGMMXU1
+    clause: O.8.4
+    point_kind: value
+  - name: SGG1_TotW_q
+    object_ref: CCI016_01LD_Plant/SGGMMXU1.TotW.q
+    fc: MX
+    interval_s: 4
+    description: Inverter group 1 — power quality flag
+    access_role: ANY
+    access_right: READ
+    annex_scope: OBSERVABILITY
+    app_group: A3
+    function_class: measurement_sgg
+    function_label: Inverter group power — every 4 s
+    ln_class: MMXU
+    ln_ref: LD_Plant/SGGMMXU1
+    clause: O.8.4
+    point_kind: quality
+  - name: SGG1_TotW_t
+    object_ref: CCI016_01LD_Plant/SGGMMXU1.TotW.t
+    fc: MX
+    interval_s: 4
+    description: Inverter group 1 — power sample time
+    access_role: ANY
+    access_right: READ
+    annex_scope: OBSERVABILITY
+    app_group: A3
+    function_class: measurement_sgg
+    function_label: Inverter group power — every 4 s
+    ln_class: MMXU
+    ln_ref: LD_Plant/SGGMMXU1
+    clause: O.8.4
+    point_kind: timestamp
+  - name: SGG2_TotW
+    object_ref: CCI016_01LD_Plant/SGGMMXU2.TotW.mag.f
+    fc: MX
+    interval_s: 4
+    description: Inverter group 2 — active power (kW)
+    access_role: ANY
+    access_right: READ
+    annex_scope: OBSERVABILITY
+    app_group: A3
+    function_class: measurement_sgg
+    function_label: Inverter group power — every 4 s
+    ln_class: MMXU
+    ln_ref: LD_Plant/SGGMMXU2
+    clause: O.8.4
+    point_kind: value
+  - name: SGG2_TotW_q
+    object_ref: CCI016_01LD_Plant/SGGMMXU2.TotW.q
+    fc: MX
+    interval_s: 4
+    description: Inverter group 2 — power quality flag
+    access_role: ANY
+    access_right: READ
+    annex_scope: OBSERVABILITY
+    app_group: A3
+    function_class: measurement_sgg
+    function_label: Inverter group power — every 4 s
+    ln_class: MMXU
+    ln_ref: LD_Plant/SGGMMXU2
+    clause: O.8.4
+    point_kind: quality
+  - name: SGG2_TotW_t
+    object_ref: CCI016_01LD_Plant/SGGMMXU2.TotW.t
+    fc: MX
+    interval_s: 4
+    description: Inverter group 2 — power sample time
+    access_role: ANY
+    access_right: READ
+    annex_scope: OBSERVABILITY
+    app_group: A3
+    function_class: measurement_sgg
+    function_label: Inverter group power — every 4 s
+    ln_class: MMXU
+    ln_ref: LD_Plant/SGGMMXU2
+    clause: O.8.4
+    point_kind: timestamp
+  - name: SSGG1_GnGrId
+    object_ref: CCI016_01LD_Plant/SSGGDGEN1.GnGrId.stVal
+    fc: ST
+    interval_s: 4
+    description: Inverter group 1 — numeric group ID
+    access_role: ANY
+    access_right: READ
+    annex_scope: OBSERVABILITY
+    app_group: A5
+    function_class: gen_group_status
+    function_label: Inverter group ID and health
+    ln_class: DGEN
+    ln_ref: LD_Plant/SSGGDGEN1
+    clause: T.3.3.1
+    point_kind: status
+  - name: SSGG1_Health
+    object_ref: CCI016_01LD_Plant/SSGGDGEN1.Health.stVal
+    fc: ST
+    interval_s: 60
+    description: Inverter group 1 — health OK or fault
+    access_role: ANY
+    access_right: READ
+    annex_scope: OBSERVABILITY
+    app_group: A5
+    function_class: gen_group_status
+    function_label: Inverter group ID and health
+    ln_class: DGEN
+    ln_ref: LD_Plant/SSGGDGEN1
+    clause: T.3.3.1
+    point_kind: status
+  - name: SSGG2_GnGrId
+    object_ref: CCI016_01LD_Plant/SSGGDGEN2.GnGrId.stVal
+    fc: ST
+    interval_s: 4
+    description: Inverter group 2 — numeric group ID
+    access_role: ANY
+    access_right: READ
+    annex_scope: OBSERVABILITY
+    app_group: A5
+    function_class: gen_group_status
+    function_label: Inverter group ID and health
+    ln_class: DGEN
+    ln_ref: LD_Plant/SSGGDGEN2
+    clause: T.3.3.1
+    point_kind: status
+  - name: SSGG2_Health
+    object_ref: CCI016_01LD_Plant/SSGGDGEN2.Health.stVal
+    fc: ST
+    interval_s: 60
+    description: Inverter group 2 — health OK or fault
+    access_role: ANY
+    access_right: READ
+    annex_scope: OBSERVABILITY
+    app_group: A5
+    function_class: gen_group_status
+    function_label: Inverter group ID and health
+    ln_class: DGEN
+    ln_ref: LD_Plant/SSGGDGEN2
+    clause: T.3.3.1
+    point_kind: status
+  - name: St_TotW
+    object_ref: CCI016_01LD_Plant/StMMXU1.TotW.mag.f
+    fc: MX
+    interval_s: 4
+    description: Storage power — charge (+) or discharge (−) in kW
+    access_role: ANY
+    access_right: READ
+    annex_scope: OBSERVABILITY
+    app_group: A3
+    function_class: measurement_storage
+    function_label: Battery storage power — every 4 s
+    ln_class: MMXU
+    ln_ref: LD_Plant/StMMXU1
+    clause: O.8.4
+    point_kind: value
+  - name: St_TotW_q
+    object_ref: CCI016_01LD_Plant/StMMXU1.TotW.q
+    fc: MX
+    interval_s: 4
+    description: Storage power quality flag
+    access_role: ANY
+    access_right: READ
+    annex_scope: OBSERVABILITY
+    app_group: A3
+    function_class: measurement_storage
+    function_label: Battery storage power — every 4 s
+    ln_class: MMXU
+    ln_ref: LD_Plant/StMMXU1
+    clause: O.8.4
+    point_kind: quality
+  - name: St_TotW_t
+    object_ref: CCI016_01LD_Plant/StMMXU1.TotW.t
+    fc: MX
+    interval_s: 4
+    description: Storage power sample time
+    access_role: ANY
+    access_right: READ
+    annex_scope: OBSERVABILITY
+    app_group: A3
+    function_class: measurement_storage
+    function_label: Battery storage power — every 4 s
+    ln_class: MMXU
+    ln_ref: LD_Plant/StMMXU1
+    clause: O.8.4
+    point_kind: timestamp
+  - name: VArSd_Beh
+    object_ref: CCI016_01LD_Plant/VArSdDVAR1.Beh.stVal
+    fc: ST
+    interval_s: 60
+    description: Reactive control health — running OK or fault
+    access_role: ANY
+    access_right: READ
+    annex_scope: OBSERVABILITY
+    app_group: A7
+    function_class: reactive_ctrl_varsd
+    function_label: DSO reactive setpoint (VArSd)
+    ln_class: DVAR
+    ln_ref: LD_Plant/VArSdDVAR1
+    clause: O.9.1.4
+    point_kind: status
+    o11_priority: 5
+    o11_priority_label: DSO reactive power setpoint (VArSd)
+  - name: VArSd_FctOpSt
+    object_ref: CCI016_01LD_Plant/VArSdDVAR1.FctOpSt.stVal
+    fc: ST
+    interval_s: 60
+    description: Reactive control — active state
+    access_role: ANY
+    access_right: READ
+    annex_scope: OBSERVABILITY
+    app_group: A7
+    function_class: reactive_ctrl_varsd
+    function_label: DSO reactive setpoint (VArSd)
+    ln_class: DVAR
+    ln_ref: LD_Plant/VArSdDVAR1
+    clause: O.9.1.4
+    point_kind: status
+    o11_priority: 5
+    o11_priority_label: DSO reactive power setpoint (VArSd)
+  - name: VArSd_Mod
+    object_ref: CCI016_01LD_Plant/VArSdDVAR1.Mod.stVal
+    fc: ST
+    interval_s: 60
+    description: Reactive setpoint mode — read ON/OFF state
+    access_role: ANY
+    access_right: READ
+    annex_scope: T98_DSO
+    app_group: A7
+    function_class: reactive_ctrl_varsd
+    function_label: DSO reactive setpoint (VArSd)
+    ln_class: DVAR
+    ln_ref: LD_Plant/VArSdDVAR1
+    clause: O.9.1.4
+    point_kind: status
+    o11_priority: 5
+    o11_priority_label: DSO reactive power setpoint (VArSd)
+  - name: VArSd_Mod_Operate
+    object_ref: CCI016_01LD_Plant/VArSdDVAR1.Mod
+    fc: CO
+    interval_s: 60
+    description: DSO command — turn reactive setpoint ON or OFF
+    access_role: DSO_OPERATOR
+    access_right: CONTROL
+    annex_scope: T98_DSO
+    operate_object_ref: CCI016_01LD_Plant/VArSdDVAR1.Mod
+    app_group: A7
+    function_class: reactive_ctrl_varsd
+    function_label: DSO reactive setpoint (VArSd)
+    ln_class: DVAR
+    ln_ref: LD_Plant/VArSdDVAR1
+    clause: O.9.1.4
+    point_kind: operate
+    o11_priority: 5
+    o11_priority_label: DSO reactive power setpoint (VArSd)
+  - name: VArSd_VArTgt
+    object_ref: CCI016_01LD_Plant/VArSdDVAR1.VArTgtSptPct.mxVal.f
+    fc: MX
+    interval_s: 60
+    description: Reactive setpoint — read target (% of Smax)
+    access_role: ANY
+    access_right: READ
+    annex_scope: T98_DSO
+    app_group: A7
+    function_class: reactive_ctrl_varsd
+    function_label: DSO reactive setpoint (VArSd)
+    ln_class: DVAR
+    ln_ref: LD_Plant/VArSdDVAR1
+    clause: O.9.1.4
+    point_kind: setpoint_read
+    o11_priority: 5
+    o11_priority_label: DSO reactive power setpoint (VArSd)
+  - name: VArSd_VArTgt_Operate
+    object_ref: CCI016_01LD_Plant/VArSdDVAR1.VArTgtSptPct
+    fc: CO
+    interval_s: 60
+    description: DSO command — set reactive target (% of Smax)
+    access_role: DSO_OPERATOR
+    access_right: CONTROL
+    annex_scope: T98_DSO
+    operate_object_ref: CCI016_01LD_Plant/VArSdDVAR1.VArTgtSptPct
+    app_group: A7
+    function_class: reactive_ctrl_varsd
+    function_label: DSO reactive setpoint (VArSd)
+    ln_class: DVAR
+    ln_ref: LD_Plant/VArSdDVAR1
+    clause: O.9.1.4
+    point_kind: operate
+    o11_priority: 5
+    o11_priority_label: DSO reactive power setpoint (VArSd)
+  - name: VArV_Beh
+    object_ref: CCI016_01LD_Plant/VArVDVVR1.Beh.stVal
+    fc: ST
+    interval_s: 60
+    description: Q(V) health — running OK or fault
+    access_role: ANY
+    access_right: READ
+    annex_scope: OBSERVABILITY
+    app_group: A7
+    function_class: reactive_ctrl_varv
+    function_label: Reactive Q(V) curve (VArV) — future
+    ln_class: DVVR
+    ln_ref: LD_Plant/VArVDVVR1
+    clause: O.9.1.3
+    point_kind: status
+    o11_priority: 6
+    o11_priority_label: Reactive Q(V) control (VArV)
+  - name: VArV_FctOpSt
+    object_ref: CCI016_01LD_Plant/VArVDVVR1.FctOpSt.stVal
+    fc: ST
+    interval_s: 60
+    description: Q(V) — active state
+    access_role: ANY
+    access_right: READ
+    annex_scope: OBSERVABILITY
+    app_group: A7
+    function_class: reactive_ctrl_varv
+    function_label: Reactive Q(V) curve (VArV) — future
+    ln_class: DVVR
+    ln_ref: LD_Plant/VArVDVVR1
+    clause: O.9.1.3
+    point_kind: status
+    o11_priority: 6
+    o11_priority_label: Reactive Q(V) control (VArV)
+  - name: WSd_Beh
+    object_ref: CCI016_01LD_Plant/WSdDAGC1.Beh.stVal
+    fc: ST
+    interval_s: 60
+    description: Power modulation health — running OK or fault
+    access_role: ANY
+    access_right: READ
+    annex_scope: OBSERVABILITY
+    app_group: A6
+    function_class: active_ctrl_wsd
+    function_label: DSO power modulation (WSd)
+    ln_class: DAGC
+    ln_ref: LD_Plant/WSdDAGC1
+    clause: O.9.2.3
+    point_kind: status
+    o11_priority: 3
+    o11_priority_label: DSO active power modulation (WSd)
+  - name: WSd_FctOpSt
+    object_ref: CCI016_01LD_Plant/WSdDAGC1.FctOpSt.stVal
+    fc: ST
+    interval_s: 60
+    description: Power modulation — active control state
+    access_role: ANY
+    access_right: READ
+    annex_scope: OBSERVABILITY
+    app_group: A6
+    function_class: active_ctrl_wsd
+    function_label: DSO power modulation (WSd)
+    ln_class: DAGC
+    ln_ref: LD_Plant/WSdDAGC1
+    clause: O.9.2.3
+    point_kind: status
+    o11_priority: 3
+    o11_priority_label: DSO active power modulation (WSd)
+  - name: WSd_Mod
+    object_ref: CCI016_01LD_Plant/WSdDAGC1.Mod.stVal
+    fc: ST
+    interval_s: 60
+    description: Power modulation mode — read ON/OFF state
+    access_role: ANY
+    access_right: READ
+    annex_scope: T98_DSO
+    app_group: A6
+    function_class: active_ctrl_wsd
+    function_label: DSO power modulation (WSd)
+    ln_class: DAGC
+    ln_ref: LD_Plant/WSdDAGC1
+    clause: O.9.2.3
+    point_kind: status
+    o11_priority: 3
+    o11_priority_label: DSO active power modulation (WSd)
+  - name: WSd_Mod_Operate
+    object_ref: CCI016_01LD_Plant/WSdDAGC1.Mod
+    fc: CO
+    interval_s: 60
+    description: DSO command — turn power modulation ON or OFF
+    access_role: DSO_OPERATOR
+    access_right: CONTROL
+    annex_scope: T98_DSO
+    operate_object_ref: CCI016_01LD_Plant/WSdDAGC1.Mod
+    app_group: A6
+    function_class: active_ctrl_wsd
+    function_label: DSO power modulation (WSd)
+    ln_class: DAGC
+    ln_ref: LD_Plant/WSdDAGC1
+    clause: O.9.2.3
+    point_kind: operate
+    o11_priority: 3
+    o11_priority_label: DSO active power modulation (WSd)
+  - name: WSd_WSpt
+    object_ref: CCI016_01LD_Plant/WSdDAGC1.WSptPct.mxVal.f
+    fc: MX
+    interval_s: 60
+    description: Power modulation setpoint — read target (% of Smax)
+    access_role: ANY
+    access_right: READ
+    annex_scope: T98_DSO
+    app_group: A6
+    function_class: active_ctrl_wsd
+    function_label: DSO power modulation (WSd)
+    ln_class: DAGC
+    ln_ref: LD_Plant/WSdDAGC1
+    clause: O.9.2.3
+    point_kind: setpoint_read
+    o11_priority: 3
+    o11_priority_label: DSO active power modulation (WSd)
+  - name: WSd_WSpt_Operate
+    object_ref: CCI016_01LD_Plant/WSdDAGC1.WSptPct
+    fc: CO
+    interval_s: 60
+    description: DSO command — set power modulation target (% of Smax)
+    access_role: DSO_OPERATOR
+    access_right: CONTROL
+    annex_scope: T98_DSO
+    operate_object_ref: CCI016_01LD_Plant/WSdDAGC1.WSptPct
+    app_group: A6
+    function_class: active_ctrl_wsd
+    function_label: DSO power modulation (WSd)
+    ln_class: DAGC
+    ln_ref: LD_Plant/WSdDAGC1
+    clause: O.9.2.3
+    point_kind: operate
+    o11_priority: 3
+    o11_priority_label: DSO active power modulation (WSd)
+  - name: Wlim_Beh
+    object_ref: CCI016_01LD_Plant/WlimDWMX1.Beh.stVal
+    fc: ST
+    interval_s: 60
+    description: Power limit health — running OK or fault
+    access_role: ANY
+    access_right: READ
+    annex_scope: OBSERVABILITY
+    app_group: A6
+    function_class: active_ctrl_wlim
+    function_label: DSO power limit (Wlim)
+    ln_class: DWMX
+    ln_ref: LD_Plant/WlimDWMX1
+    clause: O.9.2.2
+    point_kind: status
+    o11_priority: 2
+    o11_priority_label: DSO active power limitation (Wlim)
+  - name: Wlim_FctOpStAuto
+    object_ref: CCI016_01LD_Plant/WlimDWMX1.FctOpStAuto.stVal
+    fc: ST
+    interval_s: 60
+    description: Power limit — automatic mode active
+    access_role: ANY
+    access_right: READ
+    annex_scope: OBSERVABILITY
+    app_group: A6
+    function_class: active_ctrl_wlim
+    function_label: DSO power limit (Wlim)
+    ln_class: DWMX
+    ln_ref: LD_Plant/WlimDWMX1
+    clause: O.9.2.2
+    point_kind: status
+    o11_priority: 2
+    o11_priority_label: DSO active power limitation (Wlim)
+  - name: Wlim_FctOpStEx
+    object_ref: CCI016_01LD_Plant/WlimDWMX1.FctOpStEx.stVal
+    fc: ST
+    interval_s: 60
+    description: Power limit — DSO external control active
+    access_role: ANY
+    access_right: READ
+    annex_scope: OBSERVABILITY
+    app_group: A6
+    function_class: active_ctrl_wlim
+    function_label: DSO power limit (Wlim)
+    ln_class: DWMX
+    ln_ref: LD_Plant/WlimDWMX1
+    clause: O.9.2.2
+    point_kind: status
+    o11_priority: 2
+    o11_priority_label: DSO active power limitation (Wlim)
+  - name: Wlim_Mod
+    object_ref: CCI016_01LD_Plant/WlimDWMX1.Mod.stVal
+    fc: ST
+    interval_s: 60
+    description: Power limit mode — read ON/OFF state (1=on, 5=off)
+    access_role: ANY
+    access_right: READ
+    annex_scope: T98_DSO
+    app_group: A6
+    function_class: active_ctrl_wlim
+    function_label: DSO power limit (Wlim)
+    ln_class: DWMX
+    ln_ref: LD_Plant/WlimDWMX1
+    clause: O.9.2.2
+    point_kind: status
+    o11_priority: 2
+    o11_priority_label: DSO active power limitation (Wlim)
+  - name: Wlim_Mod_Operate
+    object_ref: CCI016_01LD_Plant/WlimDWMX1.Mod
+    fc: CO
+    interval_s: 60
+    description: DSO command — turn power limit function ON or OFF
+    access_role: DSO_OPERATOR
+    access_right: CONTROL
+    annex_scope: T98_DSO
+    operate_object_ref: CCI016_01LD_Plant/WlimDWMX1.Mod
+    app_group: A6
+    function_class: active_ctrl_wlim
+    function_label: DSO power limit (Wlim)
+    ln_class: DWMX
+    ln_ref: LD_Plant/WlimDWMX1
+    clause: O.9.2.2
+    point_kind: operate
+    o11_priority: 2
+    o11_priority_label: DSO active power limitation (Wlim)
+  - name: Wlim_WMax
+    object_ref: CCI016_01LD_Plant/WlimDWMX1.WMaxSptPct.mxVal.f
+    fc: MX
+    interval_s: 60
+    description: Power limit setpoint — read current limit (% of Smax)
+    access_role: ANY
+    access_right: READ
+    annex_scope: T98_DSO
+    app_group: A6
+    function_class: active_ctrl_wlim
+    function_label: DSO power limit (Wlim)
+    ln_class: DWMX
+    ln_ref: LD_Plant/WlimDWMX1
+    clause: O.9.2.2
+    point_kind: setpoint_read
+    o11_priority: 2
+    o11_priority_label: DSO active power limitation (Wlim)
+  - name: Wlim_WMax_Operate
+    object_ref: CCI016_01LD_Plant/WlimDWMX1.WMaxSptPct
+    fc: CO
+    interval_s: 60
+    description: DSO command — set power export limit (% of Smax)
+    access_role: DSO_OPERATOR
+    access_right: CONTROL
+    annex_scope: T98_DSO
+    operate_object_ref: CCI016_01LD_Plant/WlimDWMX1.WMaxSptPct
+    app_group: A6
+    function_class: active_ctrl_wlim
+    function_label: DSO power limit (Wlim)
+    ln_class: DWMX
+    ln_ref: LD_Plant/WlimDWMX1
+    clause: O.9.2.2
+    point_kind: operate
+    o11_priority: 2
+    o11_priority_label: DSO active power limitation (Wlim)

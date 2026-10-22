@@ -1,0 +1,72 @@
+# P3-07 lab profile — Solution C: UCA IOP COMBINED server cert (TLS + AARE).
+# server_combined.pem: G.6.2 subject 1.1.1.999.1.12 + digitalSignature+keyEncipherment+keyAgreement.
+# Isolation test — not Annex G.2 dual-cert product profile.
+platform: tg500
+lab:
+  hostname: TG544
+  model: tespro,tr500
+  address: 192.168.1.130/24
+modbus:
+  backend: rtu
+  device: /dev/rs485_2_uart
+  baud: 9600
+  parity: N
+  slave_id: 1
+  poll_ms: 4000
+  timeout_ms: 2000
+  retries: 3
+  trace: true
+pf2:
+  threshold_kw: 900
+  debounce_s: 30
+  release_threshold_kw: 850
+  min_on_s: 60
+  min_off_s: 30
+  stale_data_s: 10
+  use_dso_mock: true
+plant:
+  p_imm_kw: 200
+  p_ass_kw: 200
+  q_ind_kvar: 50
+  q_cap_kvar: 50
+  smax_kva: 210
+dso:
+  enabled: true
+  profile: tr57126_table1
+  w110_active: false
+  w110_pct: 100
+  wlim_active: false
+  wmax_spt_pct: 0
+  wsd_active: true
+  wspt_pct: 20
+  release_delta_kw: 5
+mms:
+  enabled: true
+  bind_address: 192.168.10.1
+  tcp_port: 3782
+  comms_loss_fallback_s: 15
+  gnss_poll_s: 15
+  gnss_discipline_clock: false
+  chrony_poll: true
+  tls_enabled: true
+  # Solution C: one COMBINED cert/key for Transport TLS and AARE auth.
+  tls_own_cert: /etc/ccli/tls/server_combined.pem
+  tls_own_key: /etc/ccli/tls/server_combined.key
+  tls_acse_cert: /etc/ccli/tls/server_combined.pem
+  tls_acse_key: /etc/ccli/tls/server_combined.key
+  tls_ca_cert: /etc/ccli/tls/root_CA.pem
+  tls_client_cert: /etc/ccli/tls/client_tls.pem
+  tls_acse_client_cert: /etc/ccli/tls/client.pem
+  tls_viewer_cert: /etc/ccli/tls/viewer_tls.pem
+  tls_revoked_cert: /etc/ccli/tls/revoked_tls.pem
+  tls_crl: /etc/ccli/tls/lab_crl.pem
+  tls_chain_validation: true
+io:
+  backend: ubus_dido_v2
+  permissive_bypass: false
+  do_curtail:
+    gpio: 1
+    active_high: false
+  di_permissive:
+    gpio: 2
+    active_low: true

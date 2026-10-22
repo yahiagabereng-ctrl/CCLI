@@ -1,0 +1,40 @@
+# Operatore Abilitato — Operating Rule profile (Eth_B IEC 60870-5-104)
+# Merge these keys under top-level `iec104:` in lab.yaml (minimal parser — flat keys only).
+# Catalog: apps/ccli/adapters/iec60870_104/iec104_operator_rule.hpp
+#
+# Annex alignment:
+#   Monitor: O.8.3 / T.3.1.3 POC quantities (TotW, TotVAr, PPV)
+#   Commands: O.10.3.1 MSD — only when operator_rule_mode=command
+#   DSO active-power commands remain Eth_A MMS (Annex T) — not on this port.
+
+iec104:
+  enabled: true
+  bind_address: 192.168.1.130
+  tcp_port: 2404
+  common_address: 1
+  periodic_s: 4
+  comms_loss_fallback_s: 60
+
+  # --- monitor_only (Phase 4 default) ---
+  operator_rule_mode: monitor_only
+  operator_allow_commands: false
+
+  # --- command mode (O.10.3.1 MSD lab) — use lab_tr400_phase4_eth_b_command.yaml ---
+  # operator_rule_mode: command
+  # operator_allow_commands: true
+  # operator_ioa_msd_sp: 3001
+
+  operator_allow_gi: true
+  operator_allow_clock_sync: false
+  operator_monitor_tot_w: true
+  ioa_tot_w: 1001
+  operator_monitor_totvar: false
+  ioa_tot_var: 1002
+  operator_monitor_ppv: false
+  ioa_ppv: 1003
+
+  tls_enabled: true
+  tls_own_key: /etc/ccli/tls/server.key
+  tls_own_cert: /etc/ccli/tls/server_tls.pem
+  tls_ca_cert: /etc/ccli/tls/root_CA.pem
+  tls_client_cert: /etc/ccli/tls/client_tls.pem

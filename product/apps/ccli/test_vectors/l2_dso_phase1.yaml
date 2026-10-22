@@ -1,0 +1,60 @@
+# L2 DSO Phase 1 — full equation mock (dso_phase1_test.cpp + --regulation-check)
+schema: ccli-test-vector/v1
+profiles:
+  legacy_lab:
+    config: apps/ccli/config/lab_tr400.yaml
+    gates: { dso.enabled: false, pf2.use_dso_mock: false }
+    expect: { pf2_threshold_kw: 900, pf2_release_kw: 850 }
+  tr57126_figura2:
+    config: apps/ccli/config/lab_tr400_dso_tr57126.yaml
+    gates: { dso.enabled: true, pf2.use_dso_mock: true, profile: tr57126_table1 }
+    expect: { wspt_pct: 20, p_effective_kw: 42, pf2_threshold_kw: 42, pf2_release_kw: 37 }
+  phase1_bench:
+    config: apps/ccli/config/lab_tr400_phase1_regulation.yaml
+    gates: { dso.enabled: true, pf2.use_dso_mock: true, profile: custom }
+    expect: { wspt_pct: 20, p_effective_kw: 42 }
+  o11_custom:
+    config: apps/ccli/config/lab_tr400_dso_custom_o11.yaml
+    expect: { p_effective_kw: 105, w110_pct: 100, wlim_pct: 70, wspt_pct: 50 }
+vectors:
+  - id: DSO-R01
+    clause: O.8.2
+    equation: "Eq (1)"
+    stimulus: { plant: tr57126_table1 }
+    expect: { smax_calc_kva: 206.15, smax_used_kva: 210 }
+  - id: DSO-R02
+    clause: O.9.2.2
+    equation: "Eq (2)"
+    stimulus: { wlim_active: true, wmax_spt_pct: 70, smax_kva: 100 }
+    expect: { p_wlim_kw: 70 }
+  - id: DSO-R03
+    clause: O.9.2.3
+    equation: "Eq (2)(4)"
+    stimulus: { dso: tr57126_table1 }
+    expect: { wspt_pct: 20, p_wsd_kw: 42, p_effective_kw: 42 }
+  - id: DSO-R03-NEG
+    clause: O.9.2.3
+    stimulus: { wspt_pct: -30, smax_kva: 100 }
+    expect: { p_effective_kw: 100, note: "import ignored Phase 1" }
+  - id: DSO-R04
+    clause: O.9.2.1
+    stimulus: { w110_active: true, w110_pct: 90, smax_kva: 100 }
+    expect: { p_effective_kw: 90 }
+  - id: DSO-O11-A
+    clause: O.11
+    equation: "Eq (5)(6)"
+    stimulus: { wlim_pct: 70, wspt_pct: 50, smax_kva: 100 }
+    expect: { p_effective_kw: 50 }
+  - id: DSO-O11-B
+    clause: O.11
+    stimulus: { wlim_pct: 70, wspt_pct: 80, smax_kva: 100 }
+    expect: { p_effective_kw: 70 }
+  - id: DSO-R06
+    clause: O.7.3.1
+    equation: "Eq (7)(8)"
+    expect: { settled_band_tolerance: 0.05, unit_test_only: true }
+  - id: DSO-L04
+    clause: L04
+    equation: "Eq (18)"
+    tool: lab/modbus_rtu_slave.py
+    expect: { ramp_kw_min: 400, ramp_kw_max: 950, period_s: 120 }

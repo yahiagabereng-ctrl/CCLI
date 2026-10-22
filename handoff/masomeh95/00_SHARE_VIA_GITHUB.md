@@ -3,7 +3,7 @@
 **Owner:** Nicola · **`yahiagabereng-ctrl/CCLI`**  
 **Web:** https://github.com/yahiagabereng-ctrl/CCLI  
 **Branch:** `main`  
-**Verify after pull:** `git log -1 --oneline` → should show **`0a9b5bc`** or newer (Oct 2026).
+**Verify after pull:** `git log -1 --oneline` → should show **`9076f57`** or newer (includes **`product/`** 5-LN tree).
 
 ---
 
@@ -69,5 +69,6 @@ git push origin main
 | [PC1_GITHUB_PULL_RUNBOOK.md](PC1_GITHUB_PULL_RUNBOOK.md) | TSP Connect + TLS |
 | [PC1_GITHUB_SYNC_AND_NETWORK.md](PC1_GITHUB_SYNC_AND_NETWORK.md) | Hotspot · no peer SSH |
 | [README_FOR_MASOMEH.md](README_FOR_MASOMEH.md) | Full handoff index |
+| [PC1_PRODUCT_5LN_CURSOR_SETUP.md](PC1_PRODUCT_5LN_CURSOR_SETUP.md) | **Product tree + 5-LN** on PC1 / Cursor |
 
 **Never** commit GitHub passwords or TLS private keys to the repo.

@@ -1,0 +1,32 @@
+# L1 Modbus register map — pymodbus / ModbusPal simulator (Wave A)
+# Real analyzer map replaces this at L3 (K4.5 / ccli-modbus-analyzer-map)
+schema: ccli-modbus-map/v1
+device: simulator
+slave_id: 1
+registers:
+  active_power_kw:
+    address: 40001
+    type: holding
+    count: 2
+    datatype: float32
+    byte_order: big_endian
+    scale: 1.0
+    unit: kW
+  reactive_power_kvar:
+    address: 40003
+    type: holding
+    count: 2
+    datatype: float32
+    scale: 1.0
+    unit: kvar
+  power_factor:
+    address: 40005
+    type: holding
+    count: 1
+    datatype: int16
+    scale: 0.001
+    unit: "1"
+poll:
+  interval_ms: 1000
+  timeout_ms: 2000
+  retries: 3

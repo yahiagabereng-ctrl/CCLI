@@ -1,0 +1,31 @@
+# L1 PF2 sequence — illustrative (validation strategy §2.2)
+schema: ccli-test-vector/v1
+vectors:
+  - id: L1-P-01
+    req: REQ-PF2-*
+    stimulus:
+      p_kw: 500
+      quality: good
+    expect:
+      curtailment_active: false
+      pf2_state: normal
+  - id: L1-P-02
+    stimulus:
+      p_kw: 700
+      quality: good
+    expect:
+      curtailment_active: false
+  - id: L1-P-03
+    stimulus:
+      p_kw: 950
+      quality: good
+      hold_s: 35
+    expect:
+      curtailment_active: true
+      pf2_state: curtail_active
+  - id: L1-P-04
+    stimulus:
+      p_kw: 1000
+      quality: good
+    expect:
+      curtailment_active: true

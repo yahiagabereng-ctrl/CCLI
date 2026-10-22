@@ -1,0 +1,21 @@
+﻿---
+description: Product intent root — SK0153 program tree (HiTEKS CCLI)
+alwaysApply: true
+---
+
+# Product intent — `apps/ccli` (this folder)
+
+**Canonical product software root:** `CCLI Official Product/apps/ccli`
+
+| Item | Location |
+|------|----------|
+| SK0153 entry | `program/main.c` |
+| Static lib | `ccli_program` in `CMakeLists.txt` |
+| Shared stack | `core/`, `adapters/`, `services/`, `platform/` |
+| Lab entry (do not switch here for cert) | sibling workspace **CCLI Lab** → `services/ccli_main.cpp` |
+
+**Multi-root workspace:** `CCLI-Lab-And-Product.code-workspace` (Lab repo root) — second folder is **this directory**.
+
+**RAG / conformance / specimen pin:** only in **CCLI Lab** — `lab/conformance/`, `knowledge-base/`, `scripts/sync-ccli-corpus-to-telematry.ps1`.
+
+**Platform:** `platform_tg500` (TG544) only.

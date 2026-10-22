@@ -1,0 +1,946 @@
+Name	Type	Value	Communication Address	Additional Info
+iecCCI016_01LD_Plant	iecCCI016_01LD_Plant	IEDExplorer.NodeLD		Dom = CCI016_01LD_Plant Var = 	
+------------- CHILD NODES -------------	------------- CHILD NODES -------------	-------------	-------------	-------------
+CCI016_01LD_Plant/DisFRDECP1.NamPlt.vendor	CCI016_01LD_Plant/DisFRDECP1.NamPlt.vendor	visible_string		Dom = CCI016_01LD_Plant Var = DisFRDECP1$DC$NamPlt$vendor	
+CCI016_01LD_Plant/DisFRDECP1.NamPlt.swRev	CCI016_01LD_Plant/DisFRDECP1.NamPlt.swRev	visible_string		Dom = CCI016_01LD_Plant Var = DisFRDECP1$DC$NamPlt$swRev	
+CCI016_01LD_Plant/DisFRDECP1.NamPlt.configRev	CCI016_01LD_Plant/DisFRDECP1.NamPlt.configRev	visible_string		Dom = CCI016_01LD_Plant Var = DisFRDECP1$DC$NamPlt$configRev	
+CCI016_01LD_Plant/DisFRDECP1.NamPlt.ldNs	CCI016_01LD_Plant/DisFRDECP1.NamPlt.ldNs	visible_string		Dom = CCI016_01LD_Plant Var = DisFRDECP1$EX$NamPlt$ldNs	
+CCI016_01LD_Plant/DisFRDECP1.NamPlt.lnNs	CCI016_01LD_Plant/DisFRDECP1.NamPlt.lnNs	visible_string	IEC61850-7-420:2019A	Dom = CCI016_01LD_Plant Var = DisFRDECP1$EX$NamPlt$lnNs	
+CCI016_01LD_Plant/DisFRDECP1.VRef.setMag.f	CCI016_01LD_Plant/DisFRDECP1.VRef.setMag.f	floating_point	0	Dom = CCI016_01LD_Plant Var = DisFRDECP1$SP$VRef$setMag$f	
+CCI016_01LD_Plant/DisFRDECP1.RefFrm.setVal	CCI016_01LD_Plant/DisFRDECP1.RefFrm.setVal	boolean	False	Dom = CCI016_01LD_Plant Var = DisFRDECP1$SP$RefFrm$setVal	
+CCI016_01LD_Plant/DisFRDECP1.ElcRefId.setVal	CCI016_01LD_Plant/DisFRDECP1.ElcRefId.setVal	visible_string		Dom = CCI016_01LD_Plant Var = DisFRDECP1$SP$ElcRefId$setVal	
+CCI016_01LD_Plant/DisFRDECP1.Beh.stVal	CCI016_01LD_Plant/DisFRDECP1.Beh.stVal	integer	1	Dom = CCI016_01LD_Plant Var = DisFRDECP1$ST$Beh$stVal	
+CCI016_01LD_Plant/DisFRDECP1.Beh.q	CCI016_01LD_Plant/DisFRDECP1.Beh.q	bit_string	0000000000000 [NONE]	Dom = CCI016_01LD_Plant Var = DisFRDECP1$ST$Beh$q	
+CCI016_01LD_Plant/DisFRDECP1.Beh.t	CCI016_01LD_Plant/DisFRDECP1.Beh.t	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = DisFRDECP1$ST$Beh$t	
+CCI016_01LD_Plant/DisFRDGEN1.NamPlt.vendor	CCI016_01LD_Plant/DisFRDGEN1.NamPlt.vendor	visible_string		Dom = CCI016_01LD_Plant Var = DisFRDGEN1$DC$NamPlt$vendor	
+CCI016_01LD_Plant/DisFRDGEN1.NamPlt.swRev	CCI016_01LD_Plant/DisFRDGEN1.NamPlt.swRev	visible_string		Dom = CCI016_01LD_Plant Var = DisFRDGEN1$DC$NamPlt$swRev	
+CCI016_01LD_Plant/DisFRDGEN1.NamPlt.configRev	CCI016_01LD_Plant/DisFRDGEN1.NamPlt.configRev	visible_string		Dom = CCI016_01LD_Plant Var = DisFRDGEN1$DC$NamPlt$configRev	
+CCI016_01LD_Plant/DisFRDGEN1.NamPlt.ldNs	CCI016_01LD_Plant/DisFRDGEN1.NamPlt.ldNs	visible_string		Dom = CCI016_01LD_Plant Var = DisFRDGEN1$EX$NamPlt$ldNs	
+CCI016_01LD_Plant/DisFRDGEN1.NamPlt.lnNs	CCI016_01LD_Plant/DisFRDGEN1.NamPlt.lnNs	visible_string	IEC61850-7-420:2019A	Dom = CCI016_01LD_Plant Var = DisFRDGEN1$EX$NamPlt$lnNs	
+CCI016_01LD_Plant/DisFRDGEN1.WMaxRtg.setMag.f	CCI016_01LD_Plant/DisFRDGEN1.WMaxRtg.setMag.f	floating_point	0	Dom = CCI016_01LD_Plant Var = DisFRDGEN1$SP$WMaxRtg$setMag$f	
+CCI016_01LD_Plant/DisFRDGEN1.VMaxRtg.setMag.f	CCI016_01LD_Plant/DisFRDGEN1.VMaxRtg.setMag.f	floating_point	0	Dom = CCI016_01LD_Plant Var = DisFRDGEN1$SP$VMaxRtg$setMag$f	
+CCI016_01LD_Plant/DisFRDGEN1.WMax.setMag.f	CCI016_01LD_Plant/DisFRDGEN1.WMax.setMag.f	floating_point	0	Dom = CCI016_01LD_Plant Var = DisFRDGEN1$SP$WMax$setMag$f	
+CCI016_01LD_Plant/DisFRDGEN1.WRmp.setMag.f	CCI016_01LD_Plant/DisFRDGEN1.WRmp.setMag.f	floating_point	0	Dom = CCI016_01LD_Plant Var = DisFRDGEN1$SP$WRmp$setMag$f	
+CCI016_01LD_Plant/DisFRDGEN1.VMax.setMag.f	CCI016_01LD_Plant/DisFRDGEN1.VMax.setMag.f	floating_point	0	Dom = CCI016_01LD_Plant Var = DisFRDGEN1$SP$VMax$setMag$f	
+CCI016_01LD_Plant/DisFRDGEN1.OutEcpRef.setSrcRef	CCI016_01LD_Plant/DisFRDGEN1.OutEcpRef.setSrcRef	visible_string		Dom = CCI016_01LD_Plant Var = DisFRDGEN1$SP$OutEcpRef$setSrcRef	
+CCI016_01LD_Plant/DisFRDGEN1.PhsConnTyp.setVal	CCI016_01LD_Plant/DisFRDGEN1.PhsConnTyp.setVal	integer	0	Dom = CCI016_01LD_Plant Var = DisFRDGEN1$SP$PhsConnTyp$setVal	
+CCI016_01LD_Plant/DisFRDGEN1.DERTyp.setVal	CCI016_01LD_Plant/DisFRDGEN1.DERTyp.setVal	integer	0	Dom = CCI016_01LD_Plant Var = DisFRDGEN1$SP$DERTyp$setVal	
+CCI016_01LD_Plant/DisFRDGEN1.DEROpSt.stVal	CCI016_01LD_Plant/DisFRDGEN1.DEROpSt.stVal	integer	0	Dom = CCI016_01LD_Plant Var = DisFRDGEN1$ST$DEROpSt$stVal	
+CCI016_01LD_Plant/DisFRDGEN1.DEROpSt.q	CCI016_01LD_Plant/DisFRDGEN1.DEROpSt.q	bit_string	0000000000000 [NONE]	Dom = CCI016_01LD_Plant Var = DisFRDGEN1$ST$DEROpSt$q	
+CCI016_01LD_Plant/DisFRDGEN1.DEROpSt.t	CCI016_01LD_Plant/DisFRDGEN1.DEROpSt.t	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = DisFRDGEN1$ST$DEROpSt$t	
+CCI016_01LD_Plant/DisFRDGEN1.Beh.stVal	CCI016_01LD_Plant/DisFRDGEN1.Beh.stVal	integer	1	Dom = CCI016_01LD_Plant Var = DisFRDGEN1$ST$Beh$stVal	
+CCI016_01LD_Plant/DisFRDGEN1.Beh.q	CCI016_01LD_Plant/DisFRDGEN1.Beh.q	bit_string	0000000000000 [NONE]	Dom = CCI016_01LD_Plant Var = DisFRDGEN1$ST$Beh$q	
+CCI016_01LD_Plant/DisFRDGEN1.Beh.t	CCI016_01LD_Plant/DisFRDGEN1.Beh.t	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = DisFRDGEN1$ST$Beh$t	
+CCI016_01LD_Plant/DisFRDSTO1.NamPlt.vendor	CCI016_01LD_Plant/DisFRDSTO1.NamPlt.vendor	visible_string		Dom = CCI016_01LD_Plant Var = DisFRDSTO1$DC$NamPlt$vendor	
+CCI016_01LD_Plant/DisFRDSTO1.NamPlt.swRev	CCI016_01LD_Plant/DisFRDSTO1.NamPlt.swRev	visible_string		Dom = CCI016_01LD_Plant Var = DisFRDSTO1$DC$NamPlt$swRev	
+CCI016_01LD_Plant/DisFRDSTO1.NamPlt.configRev	CCI016_01LD_Plant/DisFRDSTO1.NamPlt.configRev	visible_string		Dom = CCI016_01LD_Plant Var = DisFRDSTO1$DC$NamPlt$configRev	
+CCI016_01LD_Plant/DisFRDSTO1.NamPlt.ldNs	CCI016_01LD_Plant/DisFRDSTO1.NamPlt.ldNs	visible_string		Dom = CCI016_01LD_Plant Var = DisFRDSTO1$EX$NamPlt$ldNs	
+CCI016_01LD_Plant/DisFRDSTO1.NamPlt.lnNs	CCI016_01LD_Plant/DisFRDSTO1.NamPlt.lnNs	visible_string	IEC61850-7-420:2019A	Dom = CCI016_01LD_Plant Var = DisFRDSTO1$EX$NamPlt$lnNs	
+CCI016_01LD_Plant/DisFRDSTO1.EffWh.mag.f	CCI016_01LD_Plant/DisFRDSTO1.EffWh.mag.f	floating_point	0	Dom = CCI016_01LD_Plant Var = DisFRDSTO1$MX$EffWh$mag$f	
+CCI016_01LD_Plant/DisFRDSTO1.EffWh.q	CCI016_01LD_Plant/DisFRDSTO1.EffWh.q	bit_string	0000000000000 [NONE]	Dom = CCI016_01LD_Plant Var = DisFRDSTO1$MX$EffWh$q	
+CCI016_01LD_Plant/DisFRDSTO1.EffWh.t	CCI016_01LD_Plant/DisFRDSTO1.EffWh.t	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = DisFRDSTO1$MX$EffWh$t	
+CCI016_01LD_Plant/DisFRDSTO1.EffWhPct.mag.f	CCI016_01LD_Plant/DisFRDSTO1.EffWhPct.mag.f	floating_point	0	Dom = CCI016_01LD_Plant Var = DisFRDSTO1$MX$EffWhPct$mag$f	
+CCI016_01LD_Plant/DisFRDSTO1.EffWhPct.q	CCI016_01LD_Plant/DisFRDSTO1.EffWhPct.q	bit_string	0000000000000 [NONE]	Dom = CCI016_01LD_Plant Var = DisFRDSTO1$MX$EffWhPct$q	
+CCI016_01LD_Plant/DisFRDSTO1.EffWhPct.t	CCI016_01LD_Plant/DisFRDSTO1.EffWhPct.t	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = DisFRDSTO1$MX$EffWhPct$t	
+CCI016_01LD_Plant/DisFRDSTO1.EqSto.setSrcRef	CCI016_01LD_Plant/DisFRDSTO1.EqSto.setSrcRef	visible_string		Dom = CCI016_01LD_Plant Var = DisFRDSTO1$SP$EqSto$setSrcRef	
+CCI016_01LD_Plant/DisFRDSTO1.ChaWMax.setMag.f	CCI016_01LD_Plant/DisFRDSTO1.ChaWMax.setMag.f	floating_point	0	Dom = CCI016_01LD_Plant Var = DisFRDSTO1$SP$ChaWMax$setMag$f	
+CCI016_01LD_Plant/DisFRDSTO1.OutEcpRef.setSrcRef	CCI016_01LD_Plant/DisFRDSTO1.OutEcpRef.setSrcRef	visible_string		Dom = CCI016_01LD_Plant Var = DisFRDSTO1$SP$OutEcpRef$setSrcRef	
+CCI016_01LD_Plant/DisFRDSTO1.PhsConnTyp.setVal	CCI016_01LD_Plant/DisFRDSTO1.PhsConnTyp.setVal	integer	0	Dom = CCI016_01LD_Plant Var = DisFRDSTO1$SP$PhsConnTyp$setVal	
+CCI016_01LD_Plant/DisFRDSTO1.DERTyp.setVal	CCI016_01LD_Plant/DisFRDSTO1.DERTyp.setVal	integer	0	Dom = CCI016_01LD_Plant Var = DisFRDSTO1$SP$DERTyp$setVal	
+CCI016_01LD_Plant/DisFRDSTO1.DEROpSt.stVal	CCI016_01LD_Plant/DisFRDSTO1.DEROpSt.stVal	integer	0	Dom = CCI016_01LD_Plant Var = DisFRDSTO1$ST$DEROpSt$stVal	
+CCI016_01LD_Plant/DisFRDSTO1.DEROpSt.q	CCI016_01LD_Plant/DisFRDSTO1.DEROpSt.q	bit_string	0000000000000 [NONE]	Dom = CCI016_01LD_Plant Var = DisFRDSTO1$ST$DEROpSt$q	
+CCI016_01LD_Plant/DisFRDSTO1.DEROpSt.t	CCI016_01LD_Plant/DisFRDSTO1.DEROpSt.t	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = DisFRDSTO1$ST$DEROpSt$t	
+CCI016_01LD_Plant/DisFRDSTO1.Beh.stVal	CCI016_01LD_Plant/DisFRDSTO1.Beh.stVal	integer	1	Dom = CCI016_01LD_Plant Var = DisFRDSTO1$ST$Beh$stVal	
+CCI016_01LD_Plant/DisFRDSTO1.Beh.q	CCI016_01LD_Plant/DisFRDSTO1.Beh.q	bit_string	0000000000000 [NONE]	Dom = CCI016_01LD_Plant Var = DisFRDSTO1$ST$Beh$q	
+CCI016_01LD_Plant/DisFRDSTO1.Beh.t	CCI016_01LD_Plant/DisFRDSTO1.Beh.t	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = DisFRDSTO1$ST$Beh$t	
+CCI016_01LD_Plant/GenIdrMMXU1.TotW.mag.f	CCI016_01LD_Plant/GenIdrMMXU1.TotW.mag.f	floating_point	0	Dom = CCI016_01LD_Plant Var = GenIdrMMXU1$MX$TotW$mag$f	
+CCI016_01LD_Plant/GenIdrMMXU1.TotW.q	CCI016_01LD_Plant/GenIdrMMXU1.TotW.q	bit_string	0000000000000 [NONE]	Dom = CCI016_01LD_Plant Var = GenIdrMMXU1$MX$TotW$q	
+CCI016_01LD_Plant/GenIdrMMXU1.TotW.t	CCI016_01LD_Plant/GenIdrMMXU1.TotW.t	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = GenIdrMMXU1$MX$TotW$t	
+CCI016_01LD_Plant/GenIdrMMXU1.Beh.stVal	CCI016_01LD_Plant/GenIdrMMXU1.Beh.stVal	integer	1	Dom = CCI016_01LD_Plant Var = GenIdrMMXU1$ST$Beh$stVal	
+CCI016_01LD_Plant/GenIdrMMXU1.Beh.q	CCI016_01LD_Plant/GenIdrMMXU1.Beh.q	bit_string	0000000000000 [NONE]	Dom = CCI016_01LD_Plant Var = GenIdrMMXU1$ST$Beh$q	
+CCI016_01LD_Plant/GenIdrMMXU1.Beh.t	CCI016_01LD_Plant/GenIdrMMXU1.Beh.t	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = GenIdrMMXU1$ST$Beh$t	
+CCI016_01LD_Plant/GenPVMMXU1.TotW.mag.f	CCI016_01LD_Plant/GenPVMMXU1.TotW.mag.f	floating_point	0	Dom = CCI016_01LD_Plant Var = GenPVMMXU1$MX$TotW$mag$f	
+CCI016_01LD_Plant/GenPVMMXU1.TotW.q	CCI016_01LD_Plant/GenPVMMXU1.TotW.q	bit_string	0000000000000 [NONE]	Dom = CCI016_01LD_Plant Var = GenPVMMXU1$MX$TotW$q	
+CCI016_01LD_Plant/GenPVMMXU1.TotW.t	CCI016_01LD_Plant/GenPVMMXU1.TotW.t	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = GenPVMMXU1$MX$TotW$t	
+CCI016_01LD_Plant/GenPVMMXU1.Beh.stVal	CCI016_01LD_Plant/GenPVMMXU1.Beh.stVal	integer	1	Dom = CCI016_01LD_Plant Var = GenPVMMXU1$ST$Beh$stVal	
+CCI016_01LD_Plant/GenPVMMXU1.Beh.q	CCI016_01LD_Plant/GenPVMMXU1.Beh.q	bit_string	0000000000000 [NONE]	Dom = CCI016_01LD_Plant Var = GenPVMMXU1$ST$Beh$q	
+CCI016_01LD_Plant/GenPVMMXU1.Beh.t	CCI016_01LD_Plant/GenPVMMXU1.Beh.t	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = GenPVMMXU1$ST$Beh$t	
+CCI016_01LD_Plant/GenTerMMXU1.TotW.mag.f	CCI016_01LD_Plant/GenTerMMXU1.TotW.mag.f	floating_point	0	Dom = CCI016_01LD_Plant Var = GenTerMMXU1$MX$TotW$mag$f	
+CCI016_01LD_Plant/GenTerMMXU1.TotW.q	CCI016_01LD_Plant/GenTerMMXU1.TotW.q	bit_string	0000000000000 [NONE]	Dom = CCI016_01LD_Plant Var = GenTerMMXU1$MX$TotW$q	
+CCI016_01LD_Plant/GenTerMMXU1.TotW.t	CCI016_01LD_Plant/GenTerMMXU1.TotW.t	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = GenTerMMXU1$MX$TotW$t	
+CCI016_01LD_Plant/GenTerMMXU1.Beh.stVal	CCI016_01LD_Plant/GenTerMMXU1.Beh.stVal	integer	1	Dom = CCI016_01LD_Plant Var = GenTerMMXU1$ST$Beh$stVal	
+CCI016_01LD_Plant/GenTerMMXU1.Beh.q	CCI016_01LD_Plant/GenTerMMXU1.Beh.q	bit_string	0000000000000 [NONE]	Dom = CCI016_01LD_Plant Var = GenTerMMXU1$ST$Beh$q	
+CCI016_01LD_Plant/GenTerMMXU1.Beh.t	CCI016_01LD_Plant/GenTerMMXU1.Beh.t	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = GenTerMMXU1$ST$Beh$t	
+CCI016_01LD_Plant/GenWiMMXU1.TotW.mag.f	CCI016_01LD_Plant/GenWiMMXU1.TotW.mag.f	floating_point	0	Dom = CCI016_01LD_Plant Var = GenWiMMXU1$MX$TotW$mag$f	
+CCI016_01LD_Plant/GenWiMMXU1.TotW.q	CCI016_01LD_Plant/GenWiMMXU1.TotW.q	bit_string	0000000000000 [NONE]	Dom = CCI016_01LD_Plant Var = GenWiMMXU1$MX$TotW$q	
+CCI016_01LD_Plant/GenWiMMXU1.TotW.t	CCI016_01LD_Plant/GenWiMMXU1.TotW.t	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = GenWiMMXU1$MX$TotW$t	
+CCI016_01LD_Plant/GenWiMMXU1.Beh.stVal	CCI016_01LD_Plant/GenWiMMXU1.Beh.stVal	integer	1	Dom = CCI016_01LD_Plant Var = GenWiMMXU1$ST$Beh$stVal	
+CCI016_01LD_Plant/GenWiMMXU1.Beh.q	CCI016_01LD_Plant/GenWiMMXU1.Beh.q	bit_string	0000000000000 [NONE]	Dom = CCI016_01LD_Plant Var = GenWiMMXU1$ST$Beh$q	
+CCI016_01LD_Plant/GenWiMMXU1.Beh.t	CCI016_01LD_Plant/GenWiMMXU1.Beh.t	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = GenWiMMXU1$ST$Beh$t	
+CCI016_01LD_Plant/IDGXCBR1.Pos.ctlModel	CCI016_01LD_Plant/IDGXCBR1.Pos.ctlModel	integer	0	Dom = CCI016_01LD_Plant Var = IDGXCBR1$CF$Pos$ctlModel	
+CCI016_01LD_Plant/IDGXCBR1.Pos.stVal	CCI016_01LD_Plant/IDGXCBR1.Pos.stVal	bit_string	00	Dom = CCI016_01LD_Plant Var = IDGXCBR1$ST$Pos$stVal	
+CCI016_01LD_Plant/IDGXCBR1.Pos.q	CCI016_01LD_Plant/IDGXCBR1.Pos.q	bit_string	0000000000000 [NONE]	Dom = CCI016_01LD_Plant Var = IDGXCBR1$ST$Pos$q	
+CCI016_01LD_Plant/IDGXCBR1.Pos.t	CCI016_01LD_Plant/IDGXCBR1.Pos.t	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = IDGXCBR1$ST$Pos$t	
+CCI016_01LD_Plant/IDGXCBR1.BlkOpn.ctlModel	CCI016_01LD_Plant/IDGXCBR1.BlkOpn.ctlModel	integer	0	Dom = CCI016_01LD_Plant Var = IDGXCBR1$CF$BlkOpn$ctlModel	
+CCI016_01LD_Plant/IDGXCBR1.BlkOpn.stVal	CCI016_01LD_Plant/IDGXCBR1.BlkOpn.stVal	boolean	False	Dom = CCI016_01LD_Plant Var = IDGXCBR1$ST$BlkOpn$stVal	
+CCI016_01LD_Plant/IDGXCBR1.BlkOpn.q	CCI016_01LD_Plant/IDGXCBR1.BlkOpn.q	bit_string	0000000000000 [NONE]	Dom = CCI016_01LD_Plant Var = IDGXCBR1$ST$BlkOpn$q	
+CCI016_01LD_Plant/IDGXCBR1.BlkOpn.t	CCI016_01LD_Plant/IDGXCBR1.BlkOpn.t	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = IDGXCBR1$ST$BlkOpn$t	
+CCI016_01LD_Plant/IDGXCBR1.BlkCls.ctlModel	CCI016_01LD_Plant/IDGXCBR1.BlkCls.ctlModel	integer	0	Dom = CCI016_01LD_Plant Var = IDGXCBR1$CF$BlkCls$ctlModel	
+CCI016_01LD_Plant/IDGXCBR1.BlkCls.stVal	CCI016_01LD_Plant/IDGXCBR1.BlkCls.stVal	boolean	False	Dom = CCI016_01LD_Plant Var = IDGXCBR1$ST$BlkCls$stVal	
+CCI016_01LD_Plant/IDGXCBR1.BlkCls.q	CCI016_01LD_Plant/IDGXCBR1.BlkCls.q	bit_string	0000000000000 [NONE]	Dom = CCI016_01LD_Plant Var = IDGXCBR1$ST$BlkCls$q	
+CCI016_01LD_Plant/IDGXCBR1.BlkCls.t	CCI016_01LD_Plant/IDGXCBR1.BlkCls.t	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = IDGXCBR1$ST$BlkCls$t	
+CCI016_01LD_Plant/IDGXCBR1.Beh.stVal	CCI016_01LD_Plant/IDGXCBR1.Beh.stVal	integer	1	Dom = CCI016_01LD_Plant Var = IDGXCBR1$ST$Beh$stVal	
+CCI016_01LD_Plant/IDGXCBR1.Beh.q	CCI016_01LD_Plant/IDGXCBR1.Beh.q	bit_string	0000000000000 [NONE]	Dom = CCI016_01LD_Plant Var = IDGXCBR1$ST$Beh$q	
+CCI016_01LD_Plant/IDGXCBR1.Beh.t	CCI016_01LD_Plant/IDGXCBR1.Beh.t	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = IDGXCBR1$ST$Beh$t	
+CCI016_01LD_Plant/IDGXCBR1.Loc.stVal	CCI016_01LD_Plant/IDGXCBR1.Loc.stVal	boolean	False	Dom = CCI016_01LD_Plant Var = IDGXCBR1$ST$Loc$stVal	
+CCI016_01LD_Plant/IDGXCBR1.Loc.q	CCI016_01LD_Plant/IDGXCBR1.Loc.q	bit_string	0000000000000 [NONE]	Dom = CCI016_01LD_Plant Var = IDGXCBR1$ST$Loc$q	
+CCI016_01LD_Plant/IDGXCBR1.Loc.t	CCI016_01LD_Plant/IDGXCBR1.Loc.t	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = IDGXCBR1$ST$Loc$t	
+CCI016_01LD_Plant/IDGXCBR1.OpCnt.stVal	CCI016_01LD_Plant/IDGXCBR1.OpCnt.stVal	integer	0	Dom = CCI016_01LD_Plant Var = IDGXCBR1$ST$OpCnt$stVal	
+CCI016_01LD_Plant/IDGXCBR1.OpCnt.q	CCI016_01LD_Plant/IDGXCBR1.OpCnt.q	bit_string	0000000000000 [NONE]	Dom = CCI016_01LD_Plant Var = IDGXCBR1$ST$OpCnt$q	
+CCI016_01LD_Plant/IDGXCBR1.OpCnt.t	CCI016_01LD_Plant/IDGXCBR1.OpCnt.t	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = IDGXCBR1$ST$OpCnt$t	
+CCI016_01LD_Plant/LLN0.Mod.ctlModel	CCI016_01LD_Plant/LLN0.Mod.ctlModel	integer	0	Dom = CCI016_01LD_Plant Var = LLN0$CF$Mod$ctlModel	
+CCI016_01LD_Plant/LLN0.Mod.stVal	CCI016_01LD_Plant/LLN0.Mod.stVal	integer	1	Dom = CCI016_01LD_Plant Var = LLN0$ST$Mod$stVal	
+CCI016_01LD_Plant/LLN0.Mod.q	CCI016_01LD_Plant/LLN0.Mod.q	bit_string	0000000000000 [NONE]	Dom = CCI016_01LD_Plant Var = LLN0$ST$Mod$q	
+CCI016_01LD_Plant/LLN0.Mod.t	CCI016_01LD_Plant/LLN0.Mod.t	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = LLN0$ST$Mod$t	
+CCI016_01LD_Plant/LLN0.NamPlt.vendor	CCI016_01LD_Plant/LLN0.NamPlt.vendor	visible_string		Dom = CCI016_01LD_Plant Var = LLN0$DC$NamPlt$vendor	
+CCI016_01LD_Plant/LLN0.NamPlt.swRev	CCI016_01LD_Plant/LLN0.NamPlt.swRev	visible_string		Dom = CCI016_01LD_Plant Var = LLN0$DC$NamPlt$swRev	
+CCI016_01LD_Plant/LLN0.NamPlt.configRev	CCI016_01LD_Plant/LLN0.NamPlt.configRev	visible_string	20260926	Dom = CCI016_01LD_Plant Var = LLN0$DC$NamPlt$configRev	
+CCI016_01LD_Plant/LLN0.NamPlt.ldNs	CCI016_01LD_Plant/LLN0.NamPlt.ldNs	visible_string	IEC61850-7-4:2010	Dom = CCI016_01LD_Plant Var = LLN0$EX$NamPlt$ldNs	
+CCI016_01LD_Plant/LLN0.NamPlt.lnNs	CCI016_01LD_Plant/LLN0.NamPlt.lnNs	visible_string		Dom = CCI016_01LD_Plant Var = LLN0$EX$NamPlt$lnNs	
+CCI016_01LD_Plant/LLN0.Beh.stVal	CCI016_01LD_Plant/LLN0.Beh.stVal	integer	1	Dom = CCI016_01LD_Plant Var = LLN0$ST$Beh$stVal	
+CCI016_01LD_Plant/LLN0.Beh.q	CCI016_01LD_Plant/LLN0.Beh.q	bit_string	0000000000000 [NONE]	Dom = CCI016_01LD_Plant Var = LLN0$ST$Beh$q	
+CCI016_01LD_Plant/LLN0.Beh.t	CCI016_01LD_Plant/LLN0.Beh.t	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = LLN0$ST$Beh$t	
+CCI016_01LD_Plant/LLN0.Health.stVal	CCI016_01LD_Plant/LLN0.Health.stVal	integer	1	Dom = CCI016_01LD_Plant Var = LLN0$ST$Health$stVal	
+CCI016_01LD_Plant/LLN0.Health.q	CCI016_01LD_Plant/LLN0.Health.q	bit_string	0000000000000 [NONE]	Dom = CCI016_01LD_Plant Var = LLN0$ST$Health$q	
+CCI016_01LD_Plant/LLN0.Health.t	CCI016_01LD_Plant/LLN0.Health.t	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = LLN0$ST$Health$t	
+CCI016_01LD_Plant/LLN0.urcb_PdC_Mis4sec01.RptID	CCI016_01LD_Plant/LLN0.urcb_PdC_Mis4sec01.RptID	visible_string	CCI016_01LD_Plant/LLN0.urcb_PdC_Mis4sec	Dom = CCI016_01LD_Plant Var = LLN0$RP$urcb_PdC_Mis4sec01$RptID	
+CCI016_01LD_Plant/LLN0.urcb_PdC_Mis4sec01.RptEna	CCI016_01LD_Plant/LLN0.urcb_PdC_Mis4sec01.RptEna	boolean	False	Dom = CCI016_01LD_Plant Var = LLN0$RP$urcb_PdC_Mis4sec01$RptEna	
+CCI016_01LD_Plant/LLN0.urcb_PdC_Mis4sec01.Resv	CCI016_01LD_Plant/LLN0.urcb_PdC_Mis4sec01.Resv	boolean	False	Dom = CCI016_01LD_Plant Var = LLN0$RP$urcb_PdC_Mis4sec01$Resv	
+CCI016_01LD_Plant/LLN0.urcb_PdC_Mis4sec01.DatSet	CCI016_01LD_Plant/LLN0.urcb_PdC_Mis4sec01.DatSet	visible_string	CCI016_01LD_Plant/LLN0$DS_R_PdC_Mis4sec	Dom = CCI016_01LD_Plant Var = LLN0$RP$urcb_PdC_Mis4sec01$DatSet	
+CCI016_01LD_Plant/LLN0.urcb_PdC_Mis4sec01.ConfRev	CCI016_01LD_Plant/LLN0.urcb_PdC_Mis4sec01.ConfRev	unsigned	1	Dom = CCI016_01LD_Plant Var = LLN0$RP$urcb_PdC_Mis4sec01$ConfRev	
+CCI016_01LD_Plant/LLN0.urcb_PdC_Mis4sec01.OptFlds	CCI016_01LD_Plant/LLN0.urcb_PdC_Mis4sec01.OptFlds	bit_string	0111110000 [SEQ_NUM, TIME_STAMP, REASON_FOR_INCLUSION, DATA_SET, DATA_REFERENCE]	Dom = CCI016_01LD_Plant Var = LLN0$RP$urcb_PdC_Mis4sec01$OptFlds	
+CCI016_01LD_Plant/LLN0.urcb_PdC_Mis4sec01.BufTm	CCI016_01LD_Plant/LLN0.urcb_PdC_Mis4sec01.BufTm	unsigned	0	Dom = CCI016_01LD_Plant Var = LLN0$RP$urcb_PdC_Mis4sec01$BufTm	
+CCI016_01LD_Plant/LLN0.urcb_PdC_Mis4sec01.SqNum	CCI016_01LD_Plant/LLN0.urcb_PdC_Mis4sec01.SqNum	unsigned	3	Dom = CCI016_01LD_Plant Var = LLN0$RP$urcb_PdC_Mis4sec01$SqNum	
+CCI016_01LD_Plant/LLN0.urcb_PdC_Mis4sec01.TrgOps	CCI016_01LD_Plant/LLN0.urcb_PdC_Mis4sec01.TrgOps	bit_string	011011 [DATA_CHANGED, QUALITY_CHANGED, INTEGRITY, GI]	Dom = CCI016_01LD_Plant Var = LLN0$RP$urcb_PdC_Mis4sec01$TrgOps	
+CCI016_01LD_Plant/LLN0.urcb_PdC_Mis4sec01.IntgPd	CCI016_01LD_Plant/LLN0.urcb_PdC_Mis4sec01.IntgPd	unsigned	4000	Dom = CCI016_01LD_Plant Var = LLN0$RP$urcb_PdC_Mis4sec01$IntgPd	
+CCI016_01LD_Plant/LLN0.urcb_PdC_Mis4sec01.GI	CCI016_01LD_Plant/LLN0.urcb_PdC_Mis4sec01.GI	boolean	False	Dom = CCI016_01LD_Plant Var = LLN0$RP$urcb_PdC_Mis4sec01$GI	
+CCI016_01LD_Plant/LLN0.urcb_PdC_Mis4sec02.RptID	CCI016_01LD_Plant/LLN0.urcb_PdC_Mis4sec02.RptID	visible_string	CCI016_01LD_Plant/LLN0.urcb_PdC_Mis4sec	Dom = CCI016_01LD_Plant Var = LLN0$RP$urcb_PdC_Mis4sec02$RptID	
+CCI016_01LD_Plant/LLN0.urcb_PdC_Mis4sec02.RptEna	CCI016_01LD_Plant/LLN0.urcb_PdC_Mis4sec02.RptEna	boolean	False	Dom = CCI016_01LD_Plant Var = LLN0$RP$urcb_PdC_Mis4sec02$RptEna	
+CCI016_01LD_Plant/LLN0.urcb_PdC_Mis4sec02.Resv	CCI016_01LD_Plant/LLN0.urcb_PdC_Mis4sec02.Resv	boolean	False	Dom = CCI016_01LD_Plant Var = LLN0$RP$urcb_PdC_Mis4sec02$Resv	
+CCI016_01LD_Plant/LLN0.urcb_PdC_Mis4sec02.DatSet	CCI016_01LD_Plant/LLN0.urcb_PdC_Mis4sec02.DatSet	visible_string	CCI016_01LD_Plant/LLN0$DS_R_PdC_Mis4sec	Dom = CCI016_01LD_Plant Var = LLN0$RP$urcb_PdC_Mis4sec02$DatSet	
+CCI016_01LD_Plant/LLN0.urcb_PdC_Mis4sec02.ConfRev	CCI016_01LD_Plant/LLN0.urcb_PdC_Mis4sec02.ConfRev	unsigned	1	Dom = CCI016_01LD_Plant Var = LLN0$RP$urcb_PdC_Mis4sec02$ConfRev	
+CCI016_01LD_Plant/LLN0.urcb_PdC_Mis4sec02.OptFlds	CCI016_01LD_Plant/LLN0.urcb_PdC_Mis4sec02.OptFlds	bit_string	0111111110 [SEQ_NUM, TIME_STAMP, REASON_FOR_INCLUSION, DATA_SET, DATA_REFERENCE, BUFFER_OVERFLOW, ENTRY_ID, CONF_REV]	Dom = CCI016_01LD_Plant Var = LLN0$RP$urcb_PdC_Mis4sec02$OptFlds	
+CCI016_01LD_Plant/LLN0.urcb_PdC_Mis4sec02.BufTm	CCI016_01LD_Plant/LLN0.urcb_PdC_Mis4sec02.BufTm	unsigned	0	Dom = CCI016_01LD_Plant Var = LLN0$RP$urcb_PdC_Mis4sec02$BufTm	
+CCI016_01LD_Plant/LLN0.urcb_PdC_Mis4sec02.SqNum	CCI016_01LD_Plant/LLN0.urcb_PdC_Mis4sec02.SqNum	unsigned	0	Dom = CCI016_01LD_Plant Var = LLN0$RP$urcb_PdC_Mis4sec02$SqNum	
+CCI016_01LD_Plant/LLN0.urcb_PdC_Mis4sec02.TrgOps	CCI016_01LD_Plant/LLN0.urcb_PdC_Mis4sec02.TrgOps	bit_string	000011 [INTEGRITY, GI]	Dom = CCI016_01LD_Plant Var = LLN0$RP$urcb_PdC_Mis4sec02$TrgOps	
+CCI016_01LD_Plant/LLN0.urcb_PdC_Mis4sec02.IntgPd	CCI016_01LD_Plant/LLN0.urcb_PdC_Mis4sec02.IntgPd	unsigned	4000	Dom = CCI016_01LD_Plant Var = LLN0$RP$urcb_PdC_Mis4sec02$IntgPd	
+CCI016_01LD_Plant/LLN0.urcb_PdC_Mis4sec02.GI	CCI016_01LD_Plant/LLN0.urcb_PdC_Mis4sec02.GI	boolean	False	Dom = CCI016_01LD_Plant Var = LLN0$RP$urcb_PdC_Mis4sec02$GI	
+CCI016_01LD_Plant/LLN0.urcb_GenAcc_Mis4sec01.RptID	CCI016_01LD_Plant/LLN0.urcb_GenAcc_Mis4sec01.RptID	visible_string	CCI016_01LD_Plant/LLN0.urcb_GenAcc_Mis4sec	Dom = CCI016_01LD_Plant Var = LLN0$RP$urcb_GenAcc_Mis4sec01$RptID	
+CCI016_01LD_Plant/LLN0.urcb_GenAcc_Mis4sec01.RptEna	CCI016_01LD_Plant/LLN0.urcb_GenAcc_Mis4sec01.RptEna	boolean	False	Dom = CCI016_01LD_Plant Var = LLN0$RP$urcb_GenAcc_Mis4sec01$RptEna	
+CCI016_01LD_Plant/LLN0.urcb_GenAcc_Mis4sec01.Resv	CCI016_01LD_Plant/LLN0.urcb_GenAcc_Mis4sec01.Resv	boolean	False	Dom = CCI016_01LD_Plant Var = LLN0$RP$urcb_GenAcc_Mis4sec01$Resv	
+CCI016_01LD_Plant/LLN0.urcb_GenAcc_Mis4sec01.DatSet	CCI016_01LD_Plant/LLN0.urcb_GenAcc_Mis4sec01.DatSet	visible_string	CCI016_01LD_Plant/LLN0$DS_R_GenAcc_Mis4sec	Dom = CCI016_01LD_Plant Var = LLN0$RP$urcb_GenAcc_Mis4sec01$DatSet	
+CCI016_01LD_Plant/LLN0.urcb_GenAcc_Mis4sec01.ConfRev	CCI016_01LD_Plant/LLN0.urcb_GenAcc_Mis4sec01.ConfRev	unsigned	1	Dom = CCI016_01LD_Plant Var = LLN0$RP$urcb_GenAcc_Mis4sec01$ConfRev	
+CCI016_01LD_Plant/LLN0.urcb_GenAcc_Mis4sec01.OptFlds	CCI016_01LD_Plant/LLN0.urcb_GenAcc_Mis4sec01.OptFlds	bit_string	0111111110 [SEQ_NUM, TIME_STAMP, REASON_FOR_INCLUSION, DATA_SET, DATA_REFERENCE, BUFFER_OVERFLOW, ENTRY_ID, CONF_REV]	Dom = CCI016_01LD_Plant Var = LLN0$RP$urcb_GenAcc_Mis4sec01$OptFlds	
+CCI016_01LD_Plant/LLN0.urcb_GenAcc_Mis4sec01.BufTm	CCI016_01LD_Plant/LLN0.urcb_GenAcc_Mis4sec01.BufTm	unsigned	0	Dom = CCI016_01LD_Plant Var = LLN0$RP$urcb_GenAcc_Mis4sec01$BufTm	
+CCI016_01LD_Plant/LLN0.urcb_GenAcc_Mis4sec01.SqNum	CCI016_01LD_Plant/LLN0.urcb_GenAcc_Mis4sec01.SqNum	unsigned	0	Dom = CCI016_01LD_Plant Var = LLN0$RP$urcb_GenAcc_Mis4sec01$SqNum	
+CCI016_01LD_Plant/LLN0.urcb_GenAcc_Mis4sec01.TrgOps	CCI016_01LD_Plant/LLN0.urcb_GenAcc_Mis4sec01.TrgOps	bit_string	000011 [INTEGRITY, GI]	Dom = CCI016_01LD_Plant Var = LLN0$RP$urcb_GenAcc_Mis4sec01$TrgOps	
+CCI016_01LD_Plant/LLN0.urcb_GenAcc_Mis4sec01.IntgPd	CCI016_01LD_Plant/LLN0.urcb_GenAcc_Mis4sec01.IntgPd	unsigned	4000	Dom = CCI016_01LD_Plant Var = LLN0$RP$urcb_GenAcc_Mis4sec01$IntgPd	
+CCI016_01LD_Plant/LLN0.urcb_GenAcc_Mis4sec01.GI	CCI016_01LD_Plant/LLN0.urcb_GenAcc_Mis4sec01.GI	boolean	False	Dom = CCI016_01LD_Plant Var = LLN0$RP$urcb_GenAcc_Mis4sec01$GI	
+CCI016_01LD_Plant/LLN0.urcb_GenAcc_Mis4sec02.RptID	CCI016_01LD_Plant/LLN0.urcb_GenAcc_Mis4sec02.RptID	visible_string	CCI016_01LD_Plant/LLN0.urcb_GenAcc_Mis4sec	Dom = CCI016_01LD_Plant Var = LLN0$RP$urcb_GenAcc_Mis4sec02$RptID	
+CCI016_01LD_Plant/LLN0.urcb_GenAcc_Mis4sec02.RptEna	CCI016_01LD_Plant/LLN0.urcb_GenAcc_Mis4sec02.RptEna	boolean	False	Dom = CCI016_01LD_Plant Var = LLN0$RP$urcb_GenAcc_Mis4sec02$RptEna	
+CCI016_01LD_Plant/LLN0.urcb_GenAcc_Mis4sec02.Resv	CCI016_01LD_Plant/LLN0.urcb_GenAcc_Mis4sec02.Resv	boolean	False	Dom = CCI016_01LD_Plant Var = LLN0$RP$urcb_GenAcc_Mis4sec02$Resv	
+CCI016_01LD_Plant/LLN0.urcb_GenAcc_Mis4sec02.DatSet	CCI016_01LD_Plant/LLN0.urcb_GenAcc_Mis4sec02.DatSet	visible_string	CCI016_01LD_Plant/LLN0$DS_R_GenAcc_Mis4sec	Dom = CCI016_01LD_Plant Var = LLN0$RP$urcb_GenAcc_Mis4sec02$DatSet	
+CCI016_01LD_Plant/LLN0.urcb_GenAcc_Mis4sec02.ConfRev	CCI016_01LD_Plant/LLN0.urcb_GenAcc_Mis4sec02.ConfRev	unsigned	1	Dom = CCI016_01LD_Plant Var = LLN0$RP$urcb_GenAcc_Mis4sec02$ConfRev	
+CCI016_01LD_Plant/LLN0.urcb_GenAcc_Mis4sec02.OptFlds	CCI016_01LD_Plant/LLN0.urcb_GenAcc_Mis4sec02.OptFlds	bit_string	0111111110 [SEQ_NUM, TIME_STAMP, REASON_FOR_INCLUSION, DATA_SET, DATA_REFERENCE, BUFFER_OVERFLOW, ENTRY_ID, CONF_REV]	Dom = CCI016_01LD_Plant Var = LLN0$RP$urcb_GenAcc_Mis4sec02$OptFlds	
+CCI016_01LD_Plant/LLN0.urcb_GenAcc_Mis4sec02.BufTm	CCI016_01LD_Plant/LLN0.urcb_GenAcc_Mis4sec02.BufTm	unsigned	0	Dom = CCI016_01LD_Plant Var = LLN0$RP$urcb_GenAcc_Mis4sec02$BufTm	
+CCI016_01LD_Plant/LLN0.urcb_GenAcc_Mis4sec02.SqNum	CCI016_01LD_Plant/LLN0.urcb_GenAcc_Mis4sec02.SqNum	unsigned	0	Dom = CCI016_01LD_Plant Var = LLN0$RP$urcb_GenAcc_Mis4sec02$SqNum	
+CCI016_01LD_Plant/LLN0.urcb_GenAcc_Mis4sec02.TrgOps	CCI016_01LD_Plant/LLN0.urcb_GenAcc_Mis4sec02.TrgOps	bit_string	000011 [INTEGRITY, GI]	Dom = CCI016_01LD_Plant Var = LLN0$RP$urcb_GenAcc_Mis4sec02$TrgOps	
+CCI016_01LD_Plant/LLN0.urcb_GenAcc_Mis4sec02.IntgPd	CCI016_01LD_Plant/LLN0.urcb_GenAcc_Mis4sec02.IntgPd	unsigned	4000	Dom = CCI016_01LD_Plant Var = LLN0$RP$urcb_GenAcc_Mis4sec02$IntgPd	
+CCI016_01LD_Plant/LLN0.urcb_GenAcc_Mis4sec02.GI	CCI016_01LD_Plant/LLN0.urcb_GenAcc_Mis4sec02.GI	boolean	False	Dom = CCI016_01LD_Plant Var = LLN0$RP$urcb_GenAcc_Mis4sec02$GI	
+CCI016_01LD_Plant/LLN0.urcb_SingGen_Mis4sec01.RptID	CCI016_01LD_Plant/LLN0.urcb_SingGen_Mis4sec01.RptID	visible_string	CCI016_01LD_Plant/LLN0.urcb_SingGen_Mis4sec	Dom = CCI016_01LD_Plant Var = LLN0$RP$urcb_SingGen_Mis4sec01$RptID	
+CCI016_01LD_Plant/LLN0.urcb_SingGen_Mis4sec01.RptEna	CCI016_01LD_Plant/LLN0.urcb_SingGen_Mis4sec01.RptEna	boolean	False	Dom = CCI016_01LD_Plant Var = LLN0$RP$urcb_SingGen_Mis4sec01$RptEna	
+CCI016_01LD_Plant/LLN0.urcb_SingGen_Mis4sec01.Resv	CCI016_01LD_Plant/LLN0.urcb_SingGen_Mis4sec01.Resv	boolean	False	Dom = CCI016_01LD_Plant Var = LLN0$RP$urcb_SingGen_Mis4sec01$Resv	
+CCI016_01LD_Plant/LLN0.urcb_SingGen_Mis4sec01.DatSet	CCI016_01LD_Plant/LLN0.urcb_SingGen_Mis4sec01.DatSet	visible_string	CCI016_01LD_Plant/LLN0$DS_R_SingGen_Mis4sec	Dom = CCI016_01LD_Plant Var = LLN0$RP$urcb_SingGen_Mis4sec01$DatSet	
+CCI016_01LD_Plant/LLN0.urcb_SingGen_Mis4sec01.ConfRev	CCI016_01LD_Plant/LLN0.urcb_SingGen_Mis4sec01.ConfRev	unsigned	1	Dom = CCI016_01LD_Plant Var = LLN0$RP$urcb_SingGen_Mis4sec01$ConfRev	
+CCI016_01LD_Plant/LLN0.urcb_SingGen_Mis4sec01.OptFlds	CCI016_01LD_Plant/LLN0.urcb_SingGen_Mis4sec01.OptFlds	bit_string	0111111110 [SEQ_NUM, TIME_STAMP, REASON_FOR_INCLUSION, DATA_SET, DATA_REFERENCE, BUFFER_OVERFLOW, ENTRY_ID, CONF_REV]	Dom = CCI016_01LD_Plant Var = LLN0$RP$urcb_SingGen_Mis4sec01$OptFlds	
+CCI016_01LD_Plant/LLN0.urcb_SingGen_Mis4sec01.BufTm	CCI016_01LD_Plant/LLN0.urcb_SingGen_Mis4sec01.BufTm	unsigned	0	Dom = CCI016_01LD_Plant Var = LLN0$RP$urcb_SingGen_Mis4sec01$BufTm	
+CCI016_01LD_Plant/LLN0.urcb_SingGen_Mis4sec01.SqNum	CCI016_01LD_Plant/LLN0.urcb_SingGen_Mis4sec01.SqNum	unsigned	0	Dom = CCI016_01LD_Plant Var = LLN0$RP$urcb_SingGen_Mis4sec01$SqNum	
+CCI016_01LD_Plant/LLN0.urcb_SingGen_Mis4sec01.TrgOps	CCI016_01LD_Plant/LLN0.urcb_SingGen_Mis4sec01.TrgOps	bit_string	000011 [INTEGRITY, GI]	Dom = CCI016_01LD_Plant Var = LLN0$RP$urcb_SingGen_Mis4sec01$TrgOps	
+CCI016_01LD_Plant/LLN0.urcb_SingGen_Mis4sec01.IntgPd	CCI016_01LD_Plant/LLN0.urcb_SingGen_Mis4sec01.IntgPd	unsigned	4000	Dom = CCI016_01LD_Plant Var = LLN0$RP$urcb_SingGen_Mis4sec01$IntgPd	
+CCI016_01LD_Plant/LLN0.urcb_SingGen_Mis4sec01.GI	CCI016_01LD_Plant/LLN0.urcb_SingGen_Mis4sec01.GI	boolean	False	Dom = CCI016_01LD_Plant Var = LLN0$RP$urcb_SingGen_Mis4sec01$GI	
+CCI016_01LD_Plant/LLN0.urcb_SingGen_Mis4sec02.RptID	CCI016_01LD_Plant/LLN0.urcb_SingGen_Mis4sec02.RptID	visible_string	CCI016_01LD_Plant/LLN0.urcb_SingGen_Mis4sec	Dom = CCI016_01LD_Plant Var = LLN0$RP$urcb_SingGen_Mis4sec02$RptID	
+CCI016_01LD_Plant/LLN0.urcb_SingGen_Mis4sec02.RptEna	CCI016_01LD_Plant/LLN0.urcb_SingGen_Mis4sec02.RptEna	boolean	False	Dom = CCI016_01LD_Plant Var = LLN0$RP$urcb_SingGen_Mis4sec02$RptEna	
+CCI016_01LD_Plant/LLN0.urcb_SingGen_Mis4sec02.Resv	CCI016_01LD_Plant/LLN0.urcb_SingGen_Mis4sec02.Resv	boolean	False	Dom = CCI016_01LD_Plant Var = LLN0$RP$urcb_SingGen_Mis4sec02$Resv	
+CCI016_01LD_Plant/LLN0.urcb_SingGen_Mis4sec02.DatSet	CCI016_01LD_Plant/LLN0.urcb_SingGen_Mis4sec02.DatSet	visible_string	CCI016_01LD_Plant/LLN0$DS_R_SingGen_Mis4sec	Dom = CCI016_01LD_Plant Var = LLN0$RP$urcb_SingGen_Mis4sec02$DatSet	
+CCI016_01LD_Plant/LLN0.urcb_SingGen_Mis4sec02.ConfRev	CCI016_01LD_Plant/LLN0.urcb_SingGen_Mis4sec02.ConfRev	unsigned	1	Dom = CCI016_01LD_Plant Var = LLN0$RP$urcb_SingGen_Mis4sec02$ConfRev	
+CCI016_01LD_Plant/LLN0.urcb_SingGen_Mis4sec02.OptFlds	CCI016_01LD_Plant/LLN0.urcb_SingGen_Mis4sec02.OptFlds	bit_string	0111111110 [SEQ_NUM, TIME_STAMP, REASON_FOR_INCLUSION, DATA_SET, DATA_REFERENCE, BUFFER_OVERFLOW, ENTRY_ID, CONF_REV]	Dom = CCI016_01LD_Plant Var = LLN0$RP$urcb_SingGen_Mis4sec02$OptFlds	
+CCI016_01LD_Plant/LLN0.urcb_SingGen_Mis4sec02.BufTm	CCI016_01LD_Plant/LLN0.urcb_SingGen_Mis4sec02.BufTm	unsigned	0	Dom = CCI016_01LD_Plant Var = LLN0$RP$urcb_SingGen_Mis4sec02$BufTm	
+CCI016_01LD_Plant/LLN0.urcb_SingGen_Mis4sec02.SqNum	CCI016_01LD_Plant/LLN0.urcb_SingGen_Mis4sec02.SqNum	unsigned	0	Dom = CCI016_01LD_Plant Var = LLN0$RP$urcb_SingGen_Mis4sec02$SqNum	
+CCI016_01LD_Plant/LLN0.urcb_SingGen_Mis4sec02.TrgOps	CCI016_01LD_Plant/LLN0.urcb_SingGen_Mis4sec02.TrgOps	bit_string	000011 [INTEGRITY, GI]	Dom = CCI016_01LD_Plant Var = LLN0$RP$urcb_SingGen_Mis4sec02$TrgOps	
+CCI016_01LD_Plant/LLN0.urcb_SingGen_Mis4sec02.IntgPd	CCI016_01LD_Plant/LLN0.urcb_SingGen_Mis4sec02.IntgPd	unsigned	4000	Dom = CCI016_01LD_Plant Var = LLN0$RP$urcb_SingGen_Mis4sec02$IntgPd	
+CCI016_01LD_Plant/LLN0.urcb_SingGen_Mis4sec02.GI	CCI016_01LD_Plant/LLN0.urcb_SingGen_Mis4sec02.GI	boolean	False	Dom = CCI016_01LD_Plant Var = LLN0$RP$urcb_SingGen_Mis4sec02$GI	
+CCI016_01LD_Plant/LLN0.brcb_Stato_Allarmi_Segnali01.RptID	CCI016_01LD_Plant/LLN0.brcb_Stato_Allarmi_Segnali01.RptID	visible_string	CCI016_01LD_Plant/LLN0.brcb_Stato_Allarmi_Segnali	Dom = CCI016_01LD_Plant Var = LLN0$BR$brcb_Stato_Allarmi_Segnali01$RptID	
+CCI016_01LD_Plant/LLN0.brcb_Stato_Allarmi_Segnali01.RptEna	CCI016_01LD_Plant/LLN0.brcb_Stato_Allarmi_Segnali01.RptEna	boolean	False	Dom = CCI016_01LD_Plant Var = LLN0$BR$brcb_Stato_Allarmi_Segnali01$RptEna	
+CCI016_01LD_Plant/LLN0.brcb_Stato_Allarmi_Segnali01.DatSet	CCI016_01LD_Plant/LLN0.brcb_Stato_Allarmi_Segnali01.DatSet	visible_string	CCI016_01LD_Plant/LLN0$DS_R_Stato_Allarmi_Segnali	Dom = CCI016_01LD_Plant Var = LLN0$BR$brcb_Stato_Allarmi_Segnali01$DatSet	
+CCI016_01LD_Plant/LLN0.brcb_Stato_Allarmi_Segnali01.ConfRev	CCI016_01LD_Plant/LLN0.brcb_Stato_Allarmi_Segnali01.ConfRev	unsigned	1	Dom = CCI016_01LD_Plant Var = LLN0$BR$brcb_Stato_Allarmi_Segnali01$ConfRev	
+CCI016_01LD_Plant/LLN0.brcb_Stato_Allarmi_Segnali01.OptFlds	CCI016_01LD_Plant/LLN0.brcb_Stato_Allarmi_Segnali01.OptFlds	bit_string	0111111110 [SEQ_NUM, TIME_STAMP, REASON_FOR_INCLUSION, DATA_SET, DATA_REFERENCE, BUFFER_OVERFLOW, ENTRY_ID, CONF_REV]	Dom = CCI016_01LD_Plant Var = LLN0$BR$brcb_Stato_Allarmi_Segnali01$OptFlds	
+CCI016_01LD_Plant/LLN0.brcb_Stato_Allarmi_Segnali01.BufTm	CCI016_01LD_Plant/LLN0.brcb_Stato_Allarmi_Segnali01.BufTm	unsigned	250	Dom = CCI016_01LD_Plant Var = LLN0$BR$brcb_Stato_Allarmi_Segnali01$BufTm	
+CCI016_01LD_Plant/LLN0.brcb_Stato_Allarmi_Segnali01.SqNum	CCI016_01LD_Plant/LLN0.brcb_Stato_Allarmi_Segnali01.SqNum	unsigned	0	Dom = CCI016_01LD_Plant Var = LLN0$BR$brcb_Stato_Allarmi_Segnali01$SqNum	
+CCI016_01LD_Plant/LLN0.brcb_Stato_Allarmi_Segnali01.TrgOps	CCI016_01LD_Plant/LLN0.brcb_Stato_Allarmi_Segnali01.TrgOps	bit_string	011001 [DATA_CHANGED, QUALITY_CHANGED, GI]	Dom = CCI016_01LD_Plant Var = LLN0$BR$brcb_Stato_Allarmi_Segnali01$TrgOps	
+CCI016_01LD_Plant/LLN0.brcb_Stato_Allarmi_Segnali01.IntgPd	CCI016_01LD_Plant/LLN0.brcb_Stato_Allarmi_Segnali01.IntgPd	unsigned	0	Dom = CCI016_01LD_Plant Var = LLN0$BR$brcb_Stato_Allarmi_Segnali01$IntgPd	
+CCI016_01LD_Plant/LLN0.brcb_Stato_Allarmi_Segnali01.GI	CCI016_01LD_Plant/LLN0.brcb_Stato_Allarmi_Segnali01.GI	boolean	False	Dom = CCI016_01LD_Plant Var = LLN0$BR$brcb_Stato_Allarmi_Segnali01$GI	
+CCI016_01LD_Plant/LLN0.brcb_Stato_Allarmi_Segnali01.PurgeBuf	CCI016_01LD_Plant/LLN0.brcb_Stato_Allarmi_Segnali01.PurgeBuf	boolean	False	Dom = CCI016_01LD_Plant Var = LLN0$BR$brcb_Stato_Allarmi_Segnali01$PurgeBuf	
+CCI016_01LD_Plant/LLN0.brcb_Stato_Allarmi_Segnali01.EntryID	CCI016_01LD_Plant/LLN0.brcb_Stato_Allarmi_Segnali01.EntryID	octet_string	00-00-00-00-00-00-00-00	Dom = CCI016_01LD_Plant Var = LLN0$BR$brcb_Stato_Allarmi_Segnali01$EntryID	
+CCI016_01LD_Plant/LLN0.brcb_Stato_Allarmi_Segnali01.TimeofEntry	CCI016_01LD_Plant/LLN0.brcb_Stato_Allarmi_Segnali01.TimeofEntry	binary_time	1/1/1984 1:00:00 AM.0 [LOC]	Dom = CCI016_01LD_Plant Var = LLN0$BR$brcb_Stato_Allarmi_Segnali01$TimeofEntry	
+CCI016_01LD_Plant/LLN0.brcb_Stato_Allarmi_Segnali02.RptID	CCI016_01LD_Plant/LLN0.brcb_Stato_Allarmi_Segnali02.RptID	visible_string	CCI016_01LD_Plant/LLN0.brcb_Stato_Allarmi_Segnali	Dom = CCI016_01LD_Plant Var = LLN0$BR$brcb_Stato_Allarmi_Segnali02$RptID	
+CCI016_01LD_Plant/LLN0.brcb_Stato_Allarmi_Segnali02.RptEna	CCI016_01LD_Plant/LLN0.brcb_Stato_Allarmi_Segnali02.RptEna	boolean	False	Dom = CCI016_01LD_Plant Var = LLN0$BR$brcb_Stato_Allarmi_Segnali02$RptEna	
+CCI016_01LD_Plant/LLN0.brcb_Stato_Allarmi_Segnali02.DatSet	CCI016_01LD_Plant/LLN0.brcb_Stato_Allarmi_Segnali02.DatSet	visible_string	CCI016_01LD_Plant/LLN0$DS_R_Stato_Allarmi_Segnali	Dom = CCI016_01LD_Plant Var = LLN0$BR$brcb_Stato_Allarmi_Segnali02$DatSet	
+CCI016_01LD_Plant/LLN0.brcb_Stato_Allarmi_Segnali02.ConfRev	CCI016_01LD_Plant/LLN0.brcb_Stato_Allarmi_Segnali02.ConfRev	unsigned	1	Dom = CCI016_01LD_Plant Var = LLN0$BR$brcb_Stato_Allarmi_Segnali02$ConfRev	
+CCI016_01LD_Plant/LLN0.brcb_Stato_Allarmi_Segnali02.OptFlds	CCI016_01LD_Plant/LLN0.brcb_Stato_Allarmi_Segnali02.OptFlds	bit_string	0111111110 [SEQ_NUM, TIME_STAMP, REASON_FOR_INCLUSION, DATA_SET, DATA_REFERENCE, BUFFER_OVERFLOW, ENTRY_ID, CONF_REV]	Dom = CCI016_01LD_Plant Var = LLN0$BR$brcb_Stato_Allarmi_Segnali02$OptFlds	
+CCI016_01LD_Plant/LLN0.brcb_Stato_Allarmi_Segnali02.BufTm	CCI016_01LD_Plant/LLN0.brcb_Stato_Allarmi_Segnali02.BufTm	unsigned	250	Dom = CCI016_01LD_Plant Var = LLN0$BR$brcb_Stato_Allarmi_Segnali02$BufTm	
+CCI016_01LD_Plant/LLN0.brcb_Stato_Allarmi_Segnali02.SqNum	CCI016_01LD_Plant/LLN0.brcb_Stato_Allarmi_Segnali02.SqNum	unsigned	0	Dom = CCI016_01LD_Plant Var = LLN0$BR$brcb_Stato_Allarmi_Segnali02$SqNum	
+CCI016_01LD_Plant/LLN0.brcb_Stato_Allarmi_Segnali02.TrgOps	CCI016_01LD_Plant/LLN0.brcb_Stato_Allarmi_Segnali02.TrgOps	bit_string	011001 [DATA_CHANGED, QUALITY_CHANGED, GI]	Dom = CCI016_01LD_Plant Var = LLN0$BR$brcb_Stato_Allarmi_Segnali02$TrgOps	
+CCI016_01LD_Plant/LLN0.brcb_Stato_Allarmi_Segnali02.IntgPd	CCI016_01LD_Plant/LLN0.brcb_Stato_Allarmi_Segnali02.IntgPd	unsigned	0	Dom = CCI016_01LD_Plant Var = LLN0$BR$brcb_Stato_Allarmi_Segnali02$IntgPd	
+CCI016_01LD_Plant/LLN0.brcb_Stato_Allarmi_Segnali02.GI	CCI016_01LD_Plant/LLN0.brcb_Stato_Allarmi_Segnali02.GI	boolean	False	Dom = CCI016_01LD_Plant Var = LLN0$BR$brcb_Stato_Allarmi_Segnali02$GI	
+CCI016_01LD_Plant/LLN0.brcb_Stato_Allarmi_Segnali02.PurgeBuf	CCI016_01LD_Plant/LLN0.brcb_Stato_Allarmi_Segnali02.PurgeBuf	boolean	False	Dom = CCI016_01LD_Plant Var = LLN0$BR$brcb_Stato_Allarmi_Segnali02$PurgeBuf	
+CCI016_01LD_Plant/LLN0.brcb_Stato_Allarmi_Segnali02.EntryID	CCI016_01LD_Plant/LLN0.brcb_Stato_Allarmi_Segnali02.EntryID	octet_string	00-00-00-00-00-00-00-00	Dom = CCI016_01LD_Plant Var = LLN0$BR$brcb_Stato_Allarmi_Segnali02$EntryID	
+CCI016_01LD_Plant/LLN0.brcb_Stato_Allarmi_Segnali02.TimeofEntry	CCI016_01LD_Plant/LLN0.brcb_Stato_Allarmi_Segnali02.TimeofEntry	binary_time	1/1/1984 1:00:00 AM.0 [LOC]	Dom = CCI016_01LD_Plant Var = LLN0$BR$brcb_Stato_Allarmi_Segnali02$TimeofEntry	
+CCI016_01LD_Plant/GenPVMMXU1.TotW	CCI016_01LD_Plant/GenPVMMXU1.TotW	IEDExplorer.NodeDO		Dom = CCI016_01LD_Plant Var = GenPVMMXU1$MX$TotW	CCI016_01LD_Plant/LLN0$DS_R_GenAcc_Mis4sec
+CCI016_01LD_Plant/GenTerMMXU1.TotW	CCI016_01LD_Plant/GenTerMMXU1.TotW	IEDExplorer.NodeDO		Dom = CCI016_01LD_Plant Var = GenTerMMXU1$MX$TotW	CCI016_01LD_Plant/LLN0$DS_R_GenAcc_Mis4sec
+CCI016_01LD_Plant/GenIdrMMXU1.TotW	CCI016_01LD_Plant/GenIdrMMXU1.TotW	IEDExplorer.NodeDO		Dom = CCI016_01LD_Plant Var = GenIdrMMXU1$MX$TotW	CCI016_01LD_Plant/LLN0$DS_R_GenAcc_Mis4sec
+CCI016_01LD_Plant/StMMXU1.TotW	CCI016_01LD_Plant/StMMXU1.TotW	IEDExplorer.NodeDO		Dom = CCI016_01LD_Plant Var = StMMXU1$MX$TotW	CCI016_01LD_Plant/LLN0$DS_R_GenAcc_Mis4sec
+CCI016_01LD_Plant/PdCMMXU1.TotW	CCI016_01LD_Plant/PdCMMXU1.TotW	IEDExplorer.NodeDO		Dom = CCI016_01LD_Plant Var = PdCMMXU1$MX$TotW	CCI016_01LD_Plant/LLN0$DS_R_PdC_Mis4sec
+CCI016_01LD_Plant/PdCMMXU1.TotVAr	CCI016_01LD_Plant/PdCMMXU1.TotVAr	IEDExplorer.NodeDO		Dom = CCI016_01LD_Plant Var = PdCMMXU1$MX$TotVAr	CCI016_01LD_Plant/LLN0$DS_R_PdC_Mis4sec
+CCI016_01LD_Plant/PdCMMXU1.PPV	CCI016_01LD_Plant/PdCMMXU1.PPV	IEDExplorer.NodeDO		Dom = CCI016_01LD_Plant Var = PdCMMXU1$MX$PPV	CCI016_01LD_Plant/LLN0$DS_R_PdC_Mis4sec
+CCI016_01LD_Plant/PdCMMXU1.A	CCI016_01LD_Plant/PdCMMXU1.A	IEDExplorer.NodeDO		Dom = CCI016_01LD_Plant Var = PdCMMXU1$MX$A	CCI016_01LD_Plant/LLN0$DS_R_PdC_Mis4sec
+CCI016_01LD_Plant/SGGMMXU1.TotW	CCI016_01LD_Plant/SGGMMXU1.TotW	IEDExplorer.NodeDO		Dom = CCI016_01LD_Plant Var = SGGMMXU1$MX$TotW	CCI016_01LD_Plant/LLN0$DS_R_SingGen_Mis4sec
+CCI016_01LD_Plant/SSGGDGEN1.GnGrId	CCI016_01LD_Plant/SSGGDGEN1.GnGrId	IEDExplorer.NodeDO		Dom = CCI016_01LD_Plant Var = SSGGDGEN1$ST$GnGrId	CCI016_01LD_Plant/LLN0$DS_R_SingGen_Mis4sec
+CCI016_01LD_Plant/SGGMMXU2.TotW	CCI016_01LD_Plant/SGGMMXU2.TotW	IEDExplorer.NodeDO		Dom = CCI016_01LD_Plant Var = SGGMMXU2$MX$TotW	CCI016_01LD_Plant/LLN0$DS_R_SingGen_Mis4sec
+CCI016_01LD_Plant/SSGGDGEN2.GnGrId	CCI016_01LD_Plant/SSGGDGEN2.GnGrId	IEDExplorer.NodeDO		Dom = CCI016_01LD_Plant Var = SSGGDGEN2$ST$GnGrId	CCI016_01LD_Plant/LLN0$DS_R_SingGen_Mis4sec
+CCI016_01LD_Plant/DisFRDECP1.Beh	CCI016_01LD_Plant/DisFRDECP1.Beh	IEDExplorer.NodeDO		Dom = CCI016_01LD_Plant Var = DisFRDECP1$ST$Beh	CCI016_01LD_Plant/LLN0$DS_R_Stato_Allarmi_Segnali
+CCI016_01LD_Plant/DisFRDGEN1.Beh	CCI016_01LD_Plant/DisFRDGEN1.Beh	IEDExplorer.NodeDO		Dom = CCI016_01LD_Plant Var = DisFRDGEN1$ST$Beh	CCI016_01LD_Plant/LLN0$DS_R_Stato_Allarmi_Segnali
+CCI016_01LD_Plant/DisFRDSTO1.Beh	CCI016_01LD_Plant/DisFRDSTO1.Beh	IEDExplorer.NodeDO		Dom = CCI016_01LD_Plant Var = DisFRDSTO1$ST$Beh	CCI016_01LD_Plant/LLN0$DS_R_Stato_Allarmi_Segnali
+CCI016_01LD_Plant/IDGXCBR1.Pos	CCI016_01LD_Plant/IDGXCBR1.Pos	IEDExplorer.NodeDO		Dom = CCI016_01LD_Plant Var = IDGXCBR1$ST$Pos	CCI016_01LD_Plant/LLN0$DS_R_Stato_Allarmi_Segnali
+CCI016_01LD_Plant/SSGGDGEN1.Health	CCI016_01LD_Plant/SSGGDGEN1.Health	IEDExplorer.NodeDO		Dom = CCI016_01LD_Plant Var = SSGGDGEN1$ST$Health	CCI016_01LD_Plant/LLN0$DS_R_Stato_Allarmi_Segnali
+CCI016_01LD_Plant/SSGGDGEN2.Health	CCI016_01LD_Plant/SSGGDGEN2.Health	IEDExplorer.NodeDO		Dom = CCI016_01LD_Plant Var = SSGGDGEN2$ST$Health	CCI016_01LD_Plant/LLN0$DS_R_Stato_Allarmi_Segnali
+CCI016_01LD_Plant/WlimDWMX1.Beh	CCI016_01LD_Plant/WlimDWMX1.Beh	IEDExplorer.NodeDO		Dom = CCI016_01LD_Plant Var = WlimDWMX1$ST$Beh	CCI016_01LD_Plant/LLN0$DS_R_Stato_Allarmi_Segnali
+CCI016_01LD_Plant/WlimDWMX1.FctOpStAuto	CCI016_01LD_Plant/WlimDWMX1.FctOpStAuto	IEDExplorer.NodeDO		Dom = CCI016_01LD_Plant Var = WlimDWMX1$ST$FctOpStAuto	CCI016_01LD_Plant/LLN0$DS_R_Stato_Allarmi_Segnali
+CCI016_01LD_Plant/WlimDWMX1.FctOpStEx	CCI016_01LD_Plant/WlimDWMX1.FctOpStEx	IEDExplorer.NodeDO		Dom = CCI016_01LD_Plant Var = WlimDWMX1$ST$FctOpStEx	CCI016_01LD_Plant/LLN0$DS_R_Stato_Allarmi_Segnali
+CCI016_01LD_Plant/WSdDAGC1.Beh	CCI016_01LD_Plant/WSdDAGC1.Beh	IEDExplorer.NodeDO		Dom = CCI016_01LD_Plant Var = WSdDAGC1$ST$Beh	CCI016_01LD_Plant/LLN0$DS_R_Stato_Allarmi_Segnali
+CCI016_01LD_Plant/WSdDAGC1.FctOpSt	CCI016_01LD_Plant/WSdDAGC1.FctOpSt	IEDExplorer.NodeDO		Dom = CCI016_01LD_Plant Var = WSdDAGC1$ST$FctOpSt	CCI016_01LD_Plant/LLN0$DS_R_Stato_Allarmi_Segnali
+CCI016_01LD_Plant/VArSdDVAR1.Beh	CCI016_01LD_Plant/VArSdDVAR1.Beh	IEDExplorer.NodeDO		Dom = CCI016_01LD_Plant Var = VArSdDVAR1$ST$Beh	CCI016_01LD_Plant/LLN0$DS_R_Stato_Allarmi_Segnali
+CCI016_01LD_Plant/VArSdDVAR1.FctOpSt	CCI016_01LD_Plant/VArSdDVAR1.FctOpSt	IEDExplorer.NodeDO		Dom = CCI016_01LD_Plant Var = VArSdDVAR1$ST$FctOpSt	CCI016_01LD_Plant/LLN0$DS_R_Stato_Allarmi_Segnali
+CCI016_01LD_Plant/PFSPDFPF1.Beh	CCI016_01LD_Plant/PFSPDFPF1.Beh	IEDExplorer.NodeDO		Dom = CCI016_01LD_Plant Var = PFSPDFPF1$ST$Beh	CCI016_01LD_Plant/LLN0$DS_R_Stato_Allarmi_Segnali
+CCI016_01LD_Plant/PFSPDFPF1.FctOpSt	CCI016_01LD_Plant/PFSPDFPF1.FctOpSt	IEDExplorer.NodeDO		Dom = CCI016_01LD_Plant Var = PFSPDFPF1$ST$FctOpSt	CCI016_01LD_Plant/LLN0$DS_R_Stato_Allarmi_Segnali
+CCI016_01LD_Plant/VArVDVVR1.Beh	CCI016_01LD_Plant/VArVDVVR1.Beh	IEDExplorer.NodeDO		Dom = CCI016_01LD_Plant Var = VArVDVVR1$ST$Beh	CCI016_01LD_Plant/LLN0$DS_R_Stato_Allarmi_Segnali
+CCI016_01LD_Plant/VArVDVVR1.FctOpSt	CCI016_01LD_Plant/VArVDVVR1.FctOpSt	IEDExplorer.NodeDO		Dom = CCI016_01LD_Plant Var = VArVDVVR1$ST$FctOpSt	CCI016_01LD_Plant/LLN0$DS_R_Stato_Allarmi_Segnali
+CCI016_01LD_Plant/PFWDPFW1.Beh	CCI016_01LD_Plant/PFWDPFW1.Beh	IEDExplorer.NodeDO		Dom = CCI016_01LD_Plant Var = PFWDPFW1$ST$Beh	CCI016_01LD_Plant/LLN0$DS_R_Stato_Allarmi_Segnali
+CCI016_01LD_Plant/PFWDPFW1.FctOpSt	CCI016_01LD_Plant/PFWDPFW1.FctOpSt	IEDExplorer.NodeDO		Dom = CCI016_01LD_Plant Var = PFWDPFW1$ST$FctOpSt	CCI016_01LD_Plant/LLN0$DS_R_Stato_Allarmi_Segnali
+CCI016_01LD_Plant/LPHD1.PhyNam.vendor	CCI016_01LD_Plant/LPHD1.PhyNam.vendor	visible_string	Abcd_01	Dom = CCI016_01LD_Plant Var = LPHD1$DC$PhyNam$vendor	
+CCI016_01LD_Plant/LPHD1.PhyNam.swRev	CCI016_01LD_Plant/LPHD1.PhyNam.swRev	visible_string	1.0	Dom = CCI016_01LD_Plant Var = LPHD1$DC$PhyNam$swRev	
+CCI016_01LD_Plant/LPHD1.PhyNam.location	CCI016_01LD_Plant/LPHD1.PhyNam.location	visible_string	IT000E123456789	Dom = CCI016_01LD_Plant Var = LPHD1$DC$PhyNam$location	
+CCI016_01LD_Plant/LPHD1.PhyHealth.stVal	CCI016_01LD_Plant/LPHD1.PhyHealth.stVal	integer	1	Dom = CCI016_01LD_Plant Var = LPHD1$ST$PhyHealth$stVal	
+CCI016_01LD_Plant/LPHD1.PhyHealth.q	CCI016_01LD_Plant/LPHD1.PhyHealth.q	bit_string	0000000000000 [NONE]	Dom = CCI016_01LD_Plant Var = LPHD1$ST$PhyHealth$q	
+CCI016_01LD_Plant/LPHD1.PhyHealth.t	CCI016_01LD_Plant/LPHD1.PhyHealth.t	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = LPHD1$ST$PhyHealth$t	
+CCI016_01LD_Plant/LPHD1.Proxy.stVal	CCI016_01LD_Plant/LPHD1.Proxy.stVal	boolean	False	Dom = CCI016_01LD_Plant Var = LPHD1$ST$Proxy$stVal	
+CCI016_01LD_Plant/LPHD1.Proxy.q	CCI016_01LD_Plant/LPHD1.Proxy.q	bit_string	0000000000000 [NONE]	Dom = CCI016_01LD_Plant Var = LPHD1$ST$Proxy$q	
+CCI016_01LD_Plant/LPHD1.Proxy.t	CCI016_01LD_Plant/LPHD1.Proxy.t	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = LPHD1$ST$Proxy$t	
+CCI016_01LD_Plant/PdCMMXU1.TotW.mag.f	CCI016_01LD_Plant/PdCMMXU1.TotW.mag.f	floating_point	450	Dom = CCI016_01LD_Plant Var = PdCMMXU1$MX$TotW$mag$f	
+CCI016_01LD_Plant/PdCMMXU1.TotW.q	CCI016_01LD_Plant/PdCMMXU1.TotW.q	bit_string	1100000001000 [VALIDITY0, VALIDITY1, INACCURATE]	Dom = CCI016_01LD_Plant Var = PdCMMXU1$MX$TotW$q	
+CCI016_01LD_Plant/PdCMMXU1.TotW.t	CCI016_01LD_Plant/PdCMMXU1.TotW.t	utc_time	10/2/2026 11:37:27 AM.543 [LOC]	Dom = CCI016_01LD_Plant Var = PdCMMXU1$MX$TotW$t	
+CCI016_01LD_Plant/PdCMMXU1.TotVAr.mag.f	CCI016_01LD_Plant/PdCMMXU1.TotVAr.mag.f	floating_point	45	Dom = CCI016_01LD_Plant Var = PdCMMXU1$MX$TotVAr$mag$f	
+CCI016_01LD_Plant/PdCMMXU1.TotVAr.q	CCI016_01LD_Plant/PdCMMXU1.TotVAr.q	bit_string	1100000001000 [VALIDITY0, VALIDITY1, INACCURATE]	Dom = CCI016_01LD_Plant Var = PdCMMXU1$MX$TotVAr$q	
+CCI016_01LD_Plant/PdCMMXU1.TotVAr.t	CCI016_01LD_Plant/PdCMMXU1.TotVAr.t	utc_time	10/2/2026 11:37:27 AM.543 [LOC]	Dom = CCI016_01LD_Plant Var = PdCMMXU1$MX$TotVAr$t	
+CCI016_01LD_Plant/PdCMMXU1.PPV.phsAB.cVal.mag.f	CCI016_01LD_Plant/PdCMMXU1.PPV.phsAB.cVal.mag.f	floating_point	20	Dom = CCI016_01LD_Plant Var = PdCMMXU1$MX$PPV$phsAB$cVal$mag$f	
+CCI016_01LD_Plant/PdCMMXU1.PPV.phsAB.cVal.ang.f	CCI016_01LD_Plant/PdCMMXU1.PPV.phsAB.cVal.ang.f	floating_point	0	Dom = CCI016_01LD_Plant Var = PdCMMXU1$MX$PPV$phsAB$cVal$ang$f	
+CCI016_01LD_Plant/PdCMMXU1.PPV.phsAB.q	CCI016_01LD_Plant/PdCMMXU1.PPV.phsAB.q	bit_string	0000000000000 [NONE]	Dom = CCI016_01LD_Plant Var = PdCMMXU1$MX$PPV$phsAB$q	
+CCI016_01LD_Plant/PdCMMXU1.PPV.phsAB.t	CCI016_01LD_Plant/PdCMMXU1.PPV.phsAB.t	utc_time	10/2/2026 11:37:27 AM.543 [LOC]	Dom = CCI016_01LD_Plant Var = PdCMMXU1$MX$PPV$phsAB$t	
+CCI016_01LD_Plant/PdCMMXU1.PPV.phsBC.cVal.mag.f	CCI016_01LD_Plant/PdCMMXU1.PPV.phsBC.cVal.mag.f	floating_point	0	Dom = CCI016_01LD_Plant Var = PdCMMXU1$MX$PPV$phsBC$cVal$mag$f	
+CCI016_01LD_Plant/PdCMMXU1.PPV.phsBC.cVal.ang.f	CCI016_01LD_Plant/PdCMMXU1.PPV.phsBC.cVal.ang.f	floating_point	0	Dom = CCI016_01LD_Plant Var = PdCMMXU1$MX$PPV$phsBC$cVal$ang$f	
+CCI016_01LD_Plant/PdCMMXU1.PPV.phsBC.q	CCI016_01LD_Plant/PdCMMXU1.PPV.phsBC.q	bit_string	0000000000000 [NONE]	Dom = CCI016_01LD_Plant Var = PdCMMXU1$MX$PPV$phsBC$q	
+CCI016_01LD_Plant/PdCMMXU1.PPV.phsBC.t	CCI016_01LD_Plant/PdCMMXU1.PPV.phsBC.t	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = PdCMMXU1$MX$PPV$phsBC$t	
+CCI016_01LD_Plant/PdCMMXU1.PPV.phsCA.cVal.mag.f	CCI016_01LD_Plant/PdCMMXU1.PPV.phsCA.cVal.mag.f	floating_point	0	Dom = CCI016_01LD_Plant Var = PdCMMXU1$MX$PPV$phsCA$cVal$mag$f	
+CCI016_01LD_Plant/PdCMMXU1.PPV.phsCA.cVal.ang.f	CCI016_01LD_Plant/PdCMMXU1.PPV.phsCA.cVal.ang.f	floating_point	0	Dom = CCI016_01LD_Plant Var = PdCMMXU1$MX$PPV$phsCA$cVal$ang$f	
+CCI016_01LD_Plant/PdCMMXU1.PPV.phsCA.q	CCI016_01LD_Plant/PdCMMXU1.PPV.phsCA.q	bit_string	0000000000000 [NONE]	Dom = CCI016_01LD_Plant Var = PdCMMXU1$MX$PPV$phsCA$q	
+CCI016_01LD_Plant/PdCMMXU1.PPV.phsCA.t	CCI016_01LD_Plant/PdCMMXU1.PPV.phsCA.t	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = PdCMMXU1$MX$PPV$phsCA$t	
+CCI016_01LD_Plant/PdCMMXU1.A.phsA.cVal.mag.f	CCI016_01LD_Plant/PdCMMXU1.A.phsA.cVal.mag.f	floating_point	0	Dom = CCI016_01LD_Plant Var = PdCMMXU1$MX$A$phsA$cVal$mag$f	
+CCI016_01LD_Plant/PdCMMXU1.A.phsA.cVal.ang.f	CCI016_01LD_Plant/PdCMMXU1.A.phsA.cVal.ang.f	floating_point	0	Dom = CCI016_01LD_Plant Var = PdCMMXU1$MX$A$phsA$cVal$ang$f	
+CCI016_01LD_Plant/PdCMMXU1.A.phsA.q	CCI016_01LD_Plant/PdCMMXU1.A.phsA.q	bit_string	0000000000000 [NONE]	Dom = CCI016_01LD_Plant Var = PdCMMXU1$MX$A$phsA$q	
+CCI016_01LD_Plant/PdCMMXU1.A.phsA.t	CCI016_01LD_Plant/PdCMMXU1.A.phsA.t	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = PdCMMXU1$MX$A$phsA$t	
+CCI016_01LD_Plant/PdCMMXU1.A.phsB.cVal.mag.f	CCI016_01LD_Plant/PdCMMXU1.A.phsB.cVal.mag.f	floating_point	0	Dom = CCI016_01LD_Plant Var = PdCMMXU1$MX$A$phsB$cVal$mag$f	
+CCI016_01LD_Plant/PdCMMXU1.A.phsB.cVal.ang.f	CCI016_01LD_Plant/PdCMMXU1.A.phsB.cVal.ang.f	floating_point	0	Dom = CCI016_01LD_Plant Var = PdCMMXU1$MX$A$phsB$cVal$ang$f	
+CCI016_01LD_Plant/PdCMMXU1.A.phsB.q	CCI016_01LD_Plant/PdCMMXU1.A.phsB.q	bit_string	0000000000000 [NONE]	Dom = CCI016_01LD_Plant Var = PdCMMXU1$MX$A$phsB$q	
+CCI016_01LD_Plant/PdCMMXU1.A.phsB.t	CCI016_01LD_Plant/PdCMMXU1.A.phsB.t	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = PdCMMXU1$MX$A$phsB$t	
+CCI016_01LD_Plant/PdCMMXU1.A.phsC.cVal.mag.f	CCI016_01LD_Plant/PdCMMXU1.A.phsC.cVal.mag.f	floating_point	0	Dom = CCI016_01LD_Plant Var = PdCMMXU1$MX$A$phsC$cVal$mag$f	
+CCI016_01LD_Plant/PdCMMXU1.A.phsC.cVal.ang.f	CCI016_01LD_Plant/PdCMMXU1.A.phsC.cVal.ang.f	floating_point	0	Dom = CCI016_01LD_Plant Var = PdCMMXU1$MX$A$phsC$cVal$ang$f	
+CCI016_01LD_Plant/PdCMMXU1.A.phsC.q	CCI016_01LD_Plant/PdCMMXU1.A.phsC.q	bit_string	0000000000000 [NONE]	Dom = CCI016_01LD_Plant Var = PdCMMXU1$MX$A$phsC$q	
+CCI016_01LD_Plant/PdCMMXU1.A.phsC.t	CCI016_01LD_Plant/PdCMMXU1.A.phsC.t	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = PdCMMXU1$MX$A$phsC$t	
+CCI016_01LD_Plant/PdCMMXU1.Beh.stVal	CCI016_01LD_Plant/PdCMMXU1.Beh.stVal	integer	1	Dom = CCI016_01LD_Plant Var = PdCMMXU1$ST$Beh$stVal	
+CCI016_01LD_Plant/PdCMMXU1.Beh.q	CCI016_01LD_Plant/PdCMMXU1.Beh.q	bit_string	0000000000000 [NONE]	Dom = CCI016_01LD_Plant Var = PdCMMXU1$ST$Beh$q	
+CCI016_01LD_Plant/PdCMMXU1.Beh.t	CCI016_01LD_Plant/PdCMMXU1.Beh.t	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = PdCMMXU1$ST$Beh$t	
+CCI016_01LD_Plant/PdC_QcDPCC1.NamPlt.vendor	CCI016_01LD_Plant/PdC_QcDPCC1.NamPlt.vendor	visible_string		Dom = CCI016_01LD_Plant Var = PdC_QcDPCC1$DC$NamPlt$vendor	
+CCI016_01LD_Plant/PdC_QcDPCC1.NamPlt.swRev	CCI016_01LD_Plant/PdC_QcDPCC1.NamPlt.swRev	visible_string		Dom = CCI016_01LD_Plant Var = PdC_QcDPCC1$DC$NamPlt$swRev	
+CCI016_01LD_Plant/PdC_QcDPCC1.NamPlt.configRev	CCI016_01LD_Plant/PdC_QcDPCC1.NamPlt.configRev	visible_string		Dom = CCI016_01LD_Plant Var = PdC_QcDPCC1$DC$NamPlt$configRev	
+CCI016_01LD_Plant/PdC_QcDPCC1.NamPlt.ldNs	CCI016_01LD_Plant/PdC_QcDPCC1.NamPlt.ldNs	visible_string		Dom = CCI016_01LD_Plant Var = PdC_QcDPCC1$EX$NamPlt$ldNs	
+CCI016_01LD_Plant/PdC_QcDPCC1.NamPlt.lnNs	CCI016_01LD_Plant/PdC_QcDPCC1.NamPlt.lnNs	visible_string	IEC61850-7-420:2019A	Dom = CCI016_01LD_Plant Var = PdC_QcDPCC1$EX$NamPlt$lnNs	
+CCI016_01LD_Plant/PdC_QcDPCC1.AreaEpsEcpId.setVal	CCI016_01LD_Plant/PdC_QcDPCC1.AreaEpsEcpId.setVal	visible_string		Dom = CCI016_01LD_Plant Var = PdC_QcDPCC1$SP$AreaEpsEcpId$setVal	
+CCI016_01LD_Plant/PdC_QcDPCC1.AreaEpsWMax.setMag.f	CCI016_01LD_Plant/PdC_QcDPCC1.AreaEpsWMax.setMag.f	floating_point	0	Dom = CCI016_01LD_Plant Var = PdC_QcDPCC1$SP$AreaEpsWMax$setMag$f	
+CCI016_01LD_Plant/PdC_QcDPCC1.VRef.setMag.f	CCI016_01LD_Plant/PdC_QcDPCC1.VRef.setMag.f	floating_point	0	Dom = CCI016_01LD_Plant Var = PdC_QcDPCC1$SP$VRef$setMag$f	
+CCI016_01LD_Plant/PdC_QcDPCC1.VArRtg.setMag.f	CCI016_01LD_Plant/PdC_QcDPCC1.VArRtg.setMag.f	floating_point	50	Dom = CCI016_01LD_Plant Var = PdC_QcDPCC1$SP$VArRtg$setMag$f	
+CCI016_01LD_Plant/PdC_QcDPCC1.RefFrm.setVal	CCI016_01LD_Plant/PdC_QcDPCC1.RefFrm.setVal	boolean	False	Dom = CCI016_01LD_Plant Var = PdC_QcDPCC1$SP$RefFrm$setVal	
+CCI016_01LD_Plant/PdC_QcDPCC1.ElcRefId.setVal	CCI016_01LD_Plant/PdC_QcDPCC1.ElcRefId.setVal	visible_string		Dom = CCI016_01LD_Plant Var = PdC_QcDPCC1$SP$ElcRefId$setVal	
+CCI016_01LD_Plant/PdC_QcDPCC1.Beh.stVal	CCI016_01LD_Plant/PdC_QcDPCC1.Beh.stVal	integer	1	Dom = CCI016_01LD_Plant Var = PdC_QcDPCC1$ST$Beh$stVal	
+CCI016_01LD_Plant/PdC_QcDPCC1.Beh.q	CCI016_01LD_Plant/PdC_QcDPCC1.Beh.q	bit_string	0000000000000 [NONE]	Dom = CCI016_01LD_Plant Var = PdC_QcDPCC1$ST$Beh$q	
+CCI016_01LD_Plant/PdC_QcDPCC1.Beh.t	CCI016_01LD_Plant/PdC_QcDPCC1.Beh.t	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = PdC_QcDPCC1$ST$Beh$t	
+CCI016_01LD_Plant/PdC_QiDPCC1.NamPlt.vendor	CCI016_01LD_Plant/PdC_QiDPCC1.NamPlt.vendor	visible_string		Dom = CCI016_01LD_Plant Var = PdC_QiDPCC1$DC$NamPlt$vendor	
+CCI016_01LD_Plant/PdC_QiDPCC1.NamPlt.swRev	CCI016_01LD_Plant/PdC_QiDPCC1.NamPlt.swRev	visible_string		Dom = CCI016_01LD_Plant Var = PdC_QiDPCC1$DC$NamPlt$swRev	
+CCI016_01LD_Plant/PdC_QiDPCC1.NamPlt.configRev	CCI016_01LD_Plant/PdC_QiDPCC1.NamPlt.configRev	visible_string		Dom = CCI016_01LD_Plant Var = PdC_QiDPCC1$DC$NamPlt$configRev	
+CCI016_01LD_Plant/PdC_QiDPCC1.NamPlt.ldNs	CCI016_01LD_Plant/PdC_QiDPCC1.NamPlt.ldNs	visible_string		Dom = CCI016_01LD_Plant Var = PdC_QiDPCC1$EX$NamPlt$ldNs	
+CCI016_01LD_Plant/PdC_QiDPCC1.NamPlt.lnNs	CCI016_01LD_Plant/PdC_QiDPCC1.NamPlt.lnNs	visible_string	IEC61850-7-420:2019A	Dom = CCI016_01LD_Plant Var = PdC_QiDPCC1$EX$NamPlt$lnNs	
+CCI016_01LD_Plant/PdC_QiDPCC1.AreaEpsEcpId.setVal	CCI016_01LD_Plant/PdC_QiDPCC1.AreaEpsEcpId.setVal	visible_string		Dom = CCI016_01LD_Plant Var = PdC_QiDPCC1$SP$AreaEpsEcpId$setVal	
+CCI016_01LD_Plant/PdC_QiDPCC1.AreaEpsWMax.setMag.f	CCI016_01LD_Plant/PdC_QiDPCC1.AreaEpsWMax.setMag.f	floating_point	0	Dom = CCI016_01LD_Plant Var = PdC_QiDPCC1$SP$AreaEpsWMax$setMag$f	
+CCI016_01LD_Plant/PdC_QiDPCC1.VRef.setMag.f	CCI016_01LD_Plant/PdC_QiDPCC1.VRef.setMag.f	floating_point	0	Dom = CCI016_01LD_Plant Var = PdC_QiDPCC1$SP$VRef$setMag$f	
+CCI016_01LD_Plant/PdC_QiDPCC1.VArRtg.setMag.f	CCI016_01LD_Plant/PdC_QiDPCC1.VArRtg.setMag.f	floating_point	50	Dom = CCI016_01LD_Plant Var = PdC_QiDPCC1$SP$VArRtg$setMag$f	
+CCI016_01LD_Plant/PdC_QiDPCC1.RefFrm.setVal	CCI016_01LD_Plant/PdC_QiDPCC1.RefFrm.setVal	boolean	False	Dom = CCI016_01LD_Plant Var = PdC_QiDPCC1$SP$RefFrm$setVal	
+CCI016_01LD_Plant/PdC_QiDPCC1.ElcRefId.setVal	CCI016_01LD_Plant/PdC_QiDPCC1.ElcRefId.setVal	visible_string		Dom = CCI016_01LD_Plant Var = PdC_QiDPCC1$SP$ElcRefId$setVal	
+CCI016_01LD_Plant/PdC_QiDPCC1.Beh.stVal	CCI016_01LD_Plant/PdC_QiDPCC1.Beh.stVal	integer	1	Dom = CCI016_01LD_Plant Var = PdC_QiDPCC1$ST$Beh$stVal	
+CCI016_01LD_Plant/PdC_QiDPCC1.Beh.q	CCI016_01LD_Plant/PdC_QiDPCC1.Beh.q	bit_string	0000000000000 [NONE]	Dom = CCI016_01LD_Plant Var = PdC_QiDPCC1$ST$Beh$q	
+CCI016_01LD_Plant/PdC_QiDPCC1.Beh.t	CCI016_01LD_Plant/PdC_QiDPCC1.Beh.t	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = PdC_QiDPCC1$ST$Beh$t	
+CCI016_01LD_Plant/PdC_VADPCC1.NamPlt.vendor	CCI016_01LD_Plant/PdC_VADPCC1.NamPlt.vendor	visible_string		Dom = CCI016_01LD_Plant Var = PdC_VADPCC1$DC$NamPlt$vendor	
+CCI016_01LD_Plant/PdC_VADPCC1.NamPlt.swRev	CCI016_01LD_Plant/PdC_VADPCC1.NamPlt.swRev	visible_string		Dom = CCI016_01LD_Plant Var = PdC_VADPCC1$DC$NamPlt$swRev	
+CCI016_01LD_Plant/PdC_VADPCC1.NamPlt.configRev	CCI016_01LD_Plant/PdC_VADPCC1.NamPlt.configRev	visible_string		Dom = CCI016_01LD_Plant Var = PdC_VADPCC1$DC$NamPlt$configRev	
+CCI016_01LD_Plant/PdC_VADPCC1.NamPlt.ldNs	CCI016_01LD_Plant/PdC_VADPCC1.NamPlt.ldNs	visible_string		Dom = CCI016_01LD_Plant Var = PdC_VADPCC1$EX$NamPlt$ldNs	
+CCI016_01LD_Plant/PdC_VADPCC1.NamPlt.lnNs	CCI016_01LD_Plant/PdC_VADPCC1.NamPlt.lnNs	visible_string	IEC61850-7-420:2019A	Dom = CCI016_01LD_Plant Var = PdC_VADPCC1$EX$NamPlt$lnNs	
+CCI016_01LD_Plant/PdC_VADPCC1.AreaEpsEcpId.setVal	CCI016_01LD_Plant/PdC_VADPCC1.AreaEpsEcpId.setVal	visible_string		Dom = CCI016_01LD_Plant Var = PdC_VADPCC1$SP$AreaEpsEcpId$setVal	
+CCI016_01LD_Plant/PdC_VADPCC1.AreaEpsWMax.setMag.f	CCI016_01LD_Plant/PdC_VADPCC1.AreaEpsWMax.setMag.f	floating_point	0	Dom = CCI016_01LD_Plant Var = PdC_VADPCC1$SP$AreaEpsWMax$setMag$f	
+CCI016_01LD_Plant/PdC_VADPCC1.VRef.setMag.f	CCI016_01LD_Plant/PdC_VADPCC1.VRef.setMag.f	floating_point	0	Dom = CCI016_01LD_Plant Var = PdC_VADPCC1$SP$VRef$setMag$f	
+CCI016_01LD_Plant/PdC_VADPCC1.VARtg.setMag.f	CCI016_01LD_Plant/PdC_VADPCC1.VARtg.setMag.f	floating_point	210	Dom = CCI016_01LD_Plant Var = PdC_VADPCC1$SP$VARtg$setMag$f	
+CCI016_01LD_Plant/PdC_VADPCC1.RefFrm.setVal	CCI016_01LD_Plant/PdC_VADPCC1.RefFrm.setVal	boolean	False	Dom = CCI016_01LD_Plant Var = PdC_VADPCC1$SP$RefFrm$setVal	
+CCI016_01LD_Plant/PdC_VADPCC1.ElcRefId.setVal	CCI016_01LD_Plant/PdC_VADPCC1.ElcRefId.setVal	visible_string		Dom = CCI016_01LD_Plant Var = PdC_VADPCC1$SP$ElcRefId$setVal	
+CCI016_01LD_Plant/PdC_VADPCC1.Beh.stVal	CCI016_01LD_Plant/PdC_VADPCC1.Beh.stVal	integer	1	Dom = CCI016_01LD_Plant Var = PdC_VADPCC1$ST$Beh$stVal	
+CCI016_01LD_Plant/PdC_VADPCC1.Beh.q	CCI016_01LD_Plant/PdC_VADPCC1.Beh.q	bit_string	0000000000000 [NONE]	Dom = CCI016_01LD_Plant Var = PdC_VADPCC1$ST$Beh$q	
+CCI016_01LD_Plant/PdC_VADPCC1.Beh.t	CCI016_01LD_Plant/PdC_VADPCC1.Beh.t	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = PdC_VADPCC1$ST$Beh$t	
+CCI016_01LD_Plant/PdC_WaDPCC1.NamPlt.vendor	CCI016_01LD_Plant/PdC_WaDPCC1.NamPlt.vendor	visible_string		Dom = CCI016_01LD_Plant Var = PdC_WaDPCC1$DC$NamPlt$vendor	
+CCI016_01LD_Plant/PdC_WaDPCC1.NamPlt.swRev	CCI016_01LD_Plant/PdC_WaDPCC1.NamPlt.swRev	visible_string		Dom = CCI016_01LD_Plant Var = PdC_WaDPCC1$DC$NamPlt$swRev	
+CCI016_01LD_Plant/PdC_WaDPCC1.NamPlt.configRev	CCI016_01LD_Plant/PdC_WaDPCC1.NamPlt.configRev	visible_string		Dom = CCI016_01LD_Plant Var = PdC_WaDPCC1$DC$NamPlt$configRev	
+CCI016_01LD_Plant/PdC_WaDPCC1.NamPlt.ldNs	CCI016_01LD_Plant/PdC_WaDPCC1.NamPlt.ldNs	visible_string		Dom = CCI016_01LD_Plant Var = PdC_WaDPCC1$EX$NamPlt$ldNs	
+CCI016_01LD_Plant/PdC_WaDPCC1.NamPlt.lnNs	CCI016_01LD_Plant/PdC_WaDPCC1.NamPlt.lnNs	visible_string	IEC61850-7-420:2019A	Dom = CCI016_01LD_Plant Var = PdC_WaDPCC1$EX$NamPlt$lnNs	
+CCI016_01LD_Plant/PdC_WaDPCC1.AreaEpsEcpId.setVal	CCI016_01LD_Plant/PdC_WaDPCC1.AreaEpsEcpId.setVal	visible_string		Dom = CCI016_01LD_Plant Var = PdC_WaDPCC1$SP$AreaEpsEcpId$setVal	
+CCI016_01LD_Plant/PdC_WaDPCC1.AreaEpsWMax.setMag.f	CCI016_01LD_Plant/PdC_WaDPCC1.AreaEpsWMax.setMag.f	floating_point	0	Dom = CCI016_01LD_Plant Var = PdC_WaDPCC1$SP$AreaEpsWMax$setMag$f	
+CCI016_01LD_Plant/PdC_WaDPCC1.VRef.setMag.f	CCI016_01LD_Plant/PdC_WaDPCC1.VRef.setMag.f	floating_point	0	Dom = CCI016_01LD_Plant Var = PdC_WaDPCC1$SP$VRef$setMag$f	
+CCI016_01LD_Plant/PdC_WaDPCC1.WRtg.setMag.f	CCI016_01LD_Plant/PdC_WaDPCC1.WRtg.setMag.f	floating_point	200	Dom = CCI016_01LD_Plant Var = PdC_WaDPCC1$SP$WRtg$setMag$f	
+CCI016_01LD_Plant/PdC_WaDPCC1.RefFrm.setVal	CCI016_01LD_Plant/PdC_WaDPCC1.RefFrm.setVal	boolean	False	Dom = CCI016_01LD_Plant Var = PdC_WaDPCC1$SP$RefFrm$setVal	
+CCI016_01LD_Plant/PdC_WaDPCC1.ElcRefId.setVal	CCI016_01LD_Plant/PdC_WaDPCC1.ElcRefId.setVal	visible_string		Dom = CCI016_01LD_Plant Var = PdC_WaDPCC1$SP$ElcRefId$setVal	
+CCI016_01LD_Plant/PdC_WaDPCC1.Beh.stVal	CCI016_01LD_Plant/PdC_WaDPCC1.Beh.stVal	integer	1	Dom = CCI016_01LD_Plant Var = PdC_WaDPCC1$ST$Beh$stVal	
+CCI016_01LD_Plant/PdC_WaDPCC1.Beh.q	CCI016_01LD_Plant/PdC_WaDPCC1.Beh.q	bit_string	0000000000000 [NONE]	Dom = CCI016_01LD_Plant Var = PdC_WaDPCC1$ST$Beh$q	
+CCI016_01LD_Plant/PdC_WaDPCC1.Beh.t	CCI016_01LD_Plant/PdC_WaDPCC1.Beh.t	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = PdC_WaDPCC1$ST$Beh$t	
+CCI016_01LD_Plant/PdC_WiDPCC1.NamPlt.vendor	CCI016_01LD_Plant/PdC_WiDPCC1.NamPlt.vendor	visible_string		Dom = CCI016_01LD_Plant Var = PdC_WiDPCC1$DC$NamPlt$vendor	
+CCI016_01LD_Plant/PdC_WiDPCC1.NamPlt.swRev	CCI016_01LD_Plant/PdC_WiDPCC1.NamPlt.swRev	visible_string		Dom = CCI016_01LD_Plant Var = PdC_WiDPCC1$DC$NamPlt$swRev	
+CCI016_01LD_Plant/PdC_WiDPCC1.NamPlt.configRev	CCI016_01LD_Plant/PdC_WiDPCC1.NamPlt.configRev	visible_string		Dom = CCI016_01LD_Plant Var = PdC_WiDPCC1$DC$NamPlt$configRev	
+CCI016_01LD_Plant/PdC_WiDPCC1.NamPlt.ldNs	CCI016_01LD_Plant/PdC_WiDPCC1.NamPlt.ldNs	visible_string		Dom = CCI016_01LD_Plant Var = PdC_WiDPCC1$EX$NamPlt$ldNs	
+CCI016_01LD_Plant/PdC_WiDPCC1.NamPlt.lnNs	CCI016_01LD_Plant/PdC_WiDPCC1.NamPlt.lnNs	visible_string	IEC61850-7-420:2019A	Dom = CCI016_01LD_Plant Var = PdC_WiDPCC1$EX$NamPlt$lnNs	
+CCI016_01LD_Plant/PdC_WiDPCC1.AreaEpsEcpId.setVal	CCI016_01LD_Plant/PdC_WiDPCC1.AreaEpsEcpId.setVal	visible_string		Dom = CCI016_01LD_Plant Var = PdC_WiDPCC1$SP$AreaEpsEcpId$setVal	
+CCI016_01LD_Plant/PdC_WiDPCC1.AreaEpsWMax.setMag.f	CCI016_01LD_Plant/PdC_WiDPCC1.AreaEpsWMax.setMag.f	floating_point	0	Dom = CCI016_01LD_Plant Var = PdC_WiDPCC1$SP$AreaEpsWMax$setMag$f	
+CCI016_01LD_Plant/PdC_WiDPCC1.VRef.setMag.f	CCI016_01LD_Plant/PdC_WiDPCC1.VRef.setMag.f	floating_point	0	Dom = CCI016_01LD_Plant Var = PdC_WiDPCC1$SP$VRef$setMag$f	
+CCI016_01LD_Plant/PdC_WiDPCC1.WRtg.setMag.f	CCI016_01LD_Plant/PdC_WiDPCC1.WRtg.setMag.f	floating_point	200	Dom = CCI016_01LD_Plant Var = PdC_WiDPCC1$SP$WRtg$setMag$f	
+CCI016_01LD_Plant/PdC_WiDPCC1.RefFrm.setVal	CCI016_01LD_Plant/PdC_WiDPCC1.RefFrm.setVal	boolean	False	Dom = CCI016_01LD_Plant Var = PdC_WiDPCC1$SP$RefFrm$setVal	
+CCI016_01LD_Plant/PdC_WiDPCC1.ElcRefId.setVal	CCI016_01LD_Plant/PdC_WiDPCC1.ElcRefId.setVal	visible_string		Dom = CCI016_01LD_Plant Var = PdC_WiDPCC1$SP$ElcRefId$setVal	
+CCI016_01LD_Plant/PdC_WiDPCC1.Beh.stVal	CCI016_01LD_Plant/PdC_WiDPCC1.Beh.stVal	integer	1	Dom = CCI016_01LD_Plant Var = PdC_WiDPCC1$ST$Beh$stVal	
+CCI016_01LD_Plant/PdC_WiDPCC1.Beh.q	CCI016_01LD_Plant/PdC_WiDPCC1.Beh.q	bit_string	0000000000000 [NONE]	Dom = CCI016_01LD_Plant Var = PdC_WiDPCC1$ST$Beh$q	
+CCI016_01LD_Plant/PdC_WiDPCC1.Beh.t	CCI016_01LD_Plant/PdC_WiDPCC1.Beh.t	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = PdC_WiDPCC1$ST$Beh$t	
+CCI016_01LD_Plant/PFSPDFPF1.PFGnTgtSpt.ctlModel	CCI016_01LD_Plant/PFSPDFPF1.PFGnTgtSpt.ctlModel	integer	4	Dom = CCI016_01LD_Plant Var = PFSPDFPF1$CF$PFGnTgtSpt$ctlModel	
+CCI016_01LD_Plant/PFSPDFPF1.PFGnTgtSpt.Cancel.ctlVal.f	CCI016_01LD_Plant/PFSPDFPF1.PFGnTgtSpt.Cancel.ctlVal.f	floating_point	0	Dom = CCI016_01LD_Plant Var = PFSPDFPF1$CO$PFGnTgtSpt$Cancel$ctlVal$f	
+CCI016_01LD_Plant/PFSPDFPF1.PFGnTgtSpt.Cancel.origin.orCat	CCI016_01LD_Plant/PFSPDFPF1.PFGnTgtSpt.Cancel.origin.orCat	integer	0	Dom = CCI016_01LD_Plant Var = PFSPDFPF1$CO$PFGnTgtSpt$Cancel$origin$orCat	
+CCI016_01LD_Plant/PFSPDFPF1.PFGnTgtSpt.Cancel.origin.orIdent	CCI016_01LD_Plant/PFSPDFPF1.PFGnTgtSpt.Cancel.origin.orIdent	octet_string		Dom = CCI016_01LD_Plant Var = PFSPDFPF1$CO$PFGnTgtSpt$Cancel$origin$orIdent	
+CCI016_01LD_Plant/PFSPDFPF1.PFGnTgtSpt.Cancel.ctlNum	CCI016_01LD_Plant/PFSPDFPF1.PFGnTgtSpt.Cancel.ctlNum	unsigned	0	Dom = CCI016_01LD_Plant Var = PFSPDFPF1$CO$PFGnTgtSpt$Cancel$ctlNum	
+CCI016_01LD_Plant/PFSPDFPF1.PFGnTgtSpt.Cancel.T	CCI016_01LD_Plant/PFSPDFPF1.PFGnTgtSpt.Cancel.T	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = PFSPDFPF1$CO$PFGnTgtSpt$Cancel$T	
+CCI016_01LD_Plant/PFSPDFPF1.PFGnTgtSpt.Cancel.Test	CCI016_01LD_Plant/PFSPDFPF1.PFGnTgtSpt.Cancel.Test	boolean	False	Dom = CCI016_01LD_Plant Var = PFSPDFPF1$CO$PFGnTgtSpt$Cancel$Test	
+CCI016_01LD_Plant/PFSPDFPF1.PFGnTgtSpt.Oper.ctlVal.f	CCI016_01LD_Plant/PFSPDFPF1.PFGnTgtSpt.Oper.ctlVal.f	floating_point	0	Dom = CCI016_01LD_Plant Var = PFSPDFPF1$CO$PFGnTgtSpt$Oper$ctlVal$f	
+CCI016_01LD_Plant/PFSPDFPF1.PFGnTgtSpt.Oper.origin.orCat	CCI016_01LD_Plant/PFSPDFPF1.PFGnTgtSpt.Oper.origin.orCat	integer	0	Dom = CCI016_01LD_Plant Var = PFSPDFPF1$CO$PFGnTgtSpt$Oper$origin$orCat	
+CCI016_01LD_Plant/PFSPDFPF1.PFGnTgtSpt.Oper.origin.orIdent	CCI016_01LD_Plant/PFSPDFPF1.PFGnTgtSpt.Oper.origin.orIdent	octet_string		Dom = CCI016_01LD_Plant Var = PFSPDFPF1$CO$PFGnTgtSpt$Oper$origin$orIdent	
+CCI016_01LD_Plant/PFSPDFPF1.PFGnTgtSpt.Oper.ctlNum	CCI016_01LD_Plant/PFSPDFPF1.PFGnTgtSpt.Oper.ctlNum	unsigned	0	Dom = CCI016_01LD_Plant Var = PFSPDFPF1$CO$PFGnTgtSpt$Oper$ctlNum	
+CCI016_01LD_Plant/PFSPDFPF1.PFGnTgtSpt.Oper.T	CCI016_01LD_Plant/PFSPDFPF1.PFGnTgtSpt.Oper.T	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = PFSPDFPF1$CO$PFGnTgtSpt$Oper$T	
+CCI016_01LD_Plant/PFSPDFPF1.PFGnTgtSpt.Oper.Test	CCI016_01LD_Plant/PFSPDFPF1.PFGnTgtSpt.Oper.Test	boolean	False	Dom = CCI016_01LD_Plant Var = PFSPDFPF1$CO$PFGnTgtSpt$Oper$Test	
+CCI016_01LD_Plant/PFSPDFPF1.PFGnTgtSpt.Oper.Check	CCI016_01LD_Plant/PFSPDFPF1.PFGnTgtSpt.Oper.Check	bit_string	00	Dom = CCI016_01LD_Plant Var = PFSPDFPF1$CO$PFGnTgtSpt$Oper$Check	
+CCI016_01LD_Plant/PFSPDFPF1.PFGnTgtSpt.SBOw.ctlVal.f	CCI016_01LD_Plant/PFSPDFPF1.PFGnTgtSpt.SBOw.ctlVal.f	floating_point	0	Dom = CCI016_01LD_Plant Var = PFSPDFPF1$CO$PFGnTgtSpt$SBOw$ctlVal$f	
+CCI016_01LD_Plant/PFSPDFPF1.PFGnTgtSpt.SBOw.origin.orCat	CCI016_01LD_Plant/PFSPDFPF1.PFGnTgtSpt.SBOw.origin.orCat	integer	0	Dom = CCI016_01LD_Plant Var = PFSPDFPF1$CO$PFGnTgtSpt$SBOw$origin$orCat	
+CCI016_01LD_Plant/PFSPDFPF1.PFGnTgtSpt.SBOw.origin.orIdent	CCI016_01LD_Plant/PFSPDFPF1.PFGnTgtSpt.SBOw.origin.orIdent	octet_string		Dom = CCI016_01LD_Plant Var = PFSPDFPF1$CO$PFGnTgtSpt$SBOw$origin$orIdent	
+CCI016_01LD_Plant/PFSPDFPF1.PFGnTgtSpt.SBOw.ctlNum	CCI016_01LD_Plant/PFSPDFPF1.PFGnTgtSpt.SBOw.ctlNum	unsigned	0	Dom = CCI016_01LD_Plant Var = PFSPDFPF1$CO$PFGnTgtSpt$SBOw$ctlNum	
+CCI016_01LD_Plant/PFSPDFPF1.PFGnTgtSpt.SBOw.T	CCI016_01LD_Plant/PFSPDFPF1.PFGnTgtSpt.SBOw.T	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = PFSPDFPF1$CO$PFGnTgtSpt$SBOw$T	
+CCI016_01LD_Plant/PFSPDFPF1.PFGnTgtSpt.SBOw.Test	CCI016_01LD_Plant/PFSPDFPF1.PFGnTgtSpt.SBOw.Test	boolean	False	Dom = CCI016_01LD_Plant Var = PFSPDFPF1$CO$PFGnTgtSpt$SBOw$Test	
+CCI016_01LD_Plant/PFSPDFPF1.PFGnTgtSpt.SBOw.Check	CCI016_01LD_Plant/PFSPDFPF1.PFGnTgtSpt.SBOw.Check	bit_string	00	Dom = CCI016_01LD_Plant Var = PFSPDFPF1$CO$PFGnTgtSpt$SBOw$Check	
+CCI016_01LD_Plant/PFSPDFPF1.PFGnTgtSpt.mxVal.f	CCI016_01LD_Plant/PFSPDFPF1.PFGnTgtSpt.mxVal.f	floating_point	0	Dom = CCI016_01LD_Plant Var = PFSPDFPF1$MX$PFGnTgtSpt$mxVal$f	
+CCI016_01LD_Plant/PFSPDFPF1.PFGnTgtSpt.q	CCI016_01LD_Plant/PFSPDFPF1.PFGnTgtSpt.q	bit_string	0000000000000 [NONE]	Dom = CCI016_01LD_Plant Var = PFSPDFPF1$MX$PFGnTgtSpt$q	
+CCI016_01LD_Plant/PFSPDFPF1.PFGnTgtSpt.t	CCI016_01LD_Plant/PFSPDFPF1.PFGnTgtSpt.t	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = PFSPDFPF1$MX$PFGnTgtSpt$t	
+CCI016_01LD_Plant/PFSPDFPF1.PFLodTgtSpt.ctlModel	CCI016_01LD_Plant/PFSPDFPF1.PFLodTgtSpt.ctlModel	integer	4	Dom = CCI016_01LD_Plant Var = PFSPDFPF1$CF$PFLodTgtSpt$ctlModel	
+CCI016_01LD_Plant/PFSPDFPF1.PFLodTgtSpt.Cancel.ctlVal.f	CCI016_01LD_Plant/PFSPDFPF1.PFLodTgtSpt.Cancel.ctlVal.f	floating_point	0	Dom = CCI016_01LD_Plant Var = PFSPDFPF1$CO$PFLodTgtSpt$Cancel$ctlVal$f	
+CCI016_01LD_Plant/PFSPDFPF1.PFLodTgtSpt.Cancel.origin.orCat	CCI016_01LD_Plant/PFSPDFPF1.PFLodTgtSpt.Cancel.origin.orCat	integer	0	Dom = CCI016_01LD_Plant Var = PFSPDFPF1$CO$PFLodTgtSpt$Cancel$origin$orCat	
+CCI016_01LD_Plant/PFSPDFPF1.PFLodTgtSpt.Cancel.origin.orIdent	CCI016_01LD_Plant/PFSPDFPF1.PFLodTgtSpt.Cancel.origin.orIdent	octet_string		Dom = CCI016_01LD_Plant Var = PFSPDFPF1$CO$PFLodTgtSpt$Cancel$origin$orIdent	
+CCI016_01LD_Plant/PFSPDFPF1.PFLodTgtSpt.Cancel.ctlNum	CCI016_01LD_Plant/PFSPDFPF1.PFLodTgtSpt.Cancel.ctlNum	unsigned	0	Dom = CCI016_01LD_Plant Var = PFSPDFPF1$CO$PFLodTgtSpt$Cancel$ctlNum	
+CCI016_01LD_Plant/PFSPDFPF1.PFLodTgtSpt.Cancel.T	CCI016_01LD_Plant/PFSPDFPF1.PFLodTgtSpt.Cancel.T	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = PFSPDFPF1$CO$PFLodTgtSpt$Cancel$T	
+CCI016_01LD_Plant/PFSPDFPF1.PFLodTgtSpt.Cancel.Test	CCI016_01LD_Plant/PFSPDFPF1.PFLodTgtSpt.Cancel.Test	boolean	False	Dom = CCI016_01LD_Plant Var = PFSPDFPF1$CO$PFLodTgtSpt$Cancel$Test	
+CCI016_01LD_Plant/PFSPDFPF1.PFLodTgtSpt.Oper.ctlVal.f	CCI016_01LD_Plant/PFSPDFPF1.PFLodTgtSpt.Oper.ctlVal.f	floating_point	0	Dom = CCI016_01LD_Plant Var = PFSPDFPF1$CO$PFLodTgtSpt$Oper$ctlVal$f	
+CCI016_01LD_Plant/PFSPDFPF1.PFLodTgtSpt.Oper.origin.orCat	CCI016_01LD_Plant/PFSPDFPF1.PFLodTgtSpt.Oper.origin.orCat	integer	0	Dom = CCI016_01LD_Plant Var = PFSPDFPF1$CO$PFLodTgtSpt$Oper$origin$orCat	
+CCI016_01LD_Plant/PFSPDFPF1.PFLodTgtSpt.Oper.origin.orIdent	CCI016_01LD_Plant/PFSPDFPF1.PFLodTgtSpt.Oper.origin.orIdent	octet_string		Dom = CCI016_01LD_Plant Var = PFSPDFPF1$CO$PFLodTgtSpt$Oper$origin$orIdent	
+CCI016_01LD_Plant/PFSPDFPF1.PFLodTgtSpt.Oper.ctlNum	CCI016_01LD_Plant/PFSPDFPF1.PFLodTgtSpt.Oper.ctlNum	unsigned	0	Dom = CCI016_01LD_Plant Var = PFSPDFPF1$CO$PFLodTgtSpt$Oper$ctlNum	
+CCI016_01LD_Plant/PFSPDFPF1.PFLodTgtSpt.Oper.T	CCI016_01LD_Plant/PFSPDFPF1.PFLodTgtSpt.Oper.T	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = PFSPDFPF1$CO$PFLodTgtSpt$Oper$T	
+CCI016_01LD_Plant/PFSPDFPF1.PFLodTgtSpt.Oper.Test	CCI016_01LD_Plant/PFSPDFPF1.PFLodTgtSpt.Oper.Test	boolean	False	Dom = CCI016_01LD_Plant Var = PFSPDFPF1$CO$PFLodTgtSpt$Oper$Test	
+CCI016_01LD_Plant/PFSPDFPF1.PFLodTgtSpt.Oper.Check	CCI016_01LD_Plant/PFSPDFPF1.PFLodTgtSpt.Oper.Check	bit_string	00	Dom = CCI016_01LD_Plant Var = PFSPDFPF1$CO$PFLodTgtSpt$Oper$Check	
+CCI016_01LD_Plant/PFSPDFPF1.PFLodTgtSpt.SBOw.ctlVal.f	CCI016_01LD_Plant/PFSPDFPF1.PFLodTgtSpt.SBOw.ctlVal.f	floating_point	0	Dom = CCI016_01LD_Plant Var = PFSPDFPF1$CO$PFLodTgtSpt$SBOw$ctlVal$f	
+CCI016_01LD_Plant/PFSPDFPF1.PFLodTgtSpt.SBOw.origin.orCat	CCI016_01LD_Plant/PFSPDFPF1.PFLodTgtSpt.SBOw.origin.orCat	integer	0	Dom = CCI016_01LD_Plant Var = PFSPDFPF1$CO$PFLodTgtSpt$SBOw$origin$orCat	
+CCI016_01LD_Plant/PFSPDFPF1.PFLodTgtSpt.SBOw.origin.orIdent	CCI016_01LD_Plant/PFSPDFPF1.PFLodTgtSpt.SBOw.origin.orIdent	octet_string		Dom = CCI016_01LD_Plant Var = PFSPDFPF1$CO$PFLodTgtSpt$SBOw$origin$orIdent	
+CCI016_01LD_Plant/PFSPDFPF1.PFLodTgtSpt.SBOw.ctlNum	CCI016_01LD_Plant/PFSPDFPF1.PFLodTgtSpt.SBOw.ctlNum	unsigned	0	Dom = CCI016_01LD_Plant Var = PFSPDFPF1$CO$PFLodTgtSpt$SBOw$ctlNum	
+CCI016_01LD_Plant/PFSPDFPF1.PFLodTgtSpt.SBOw.T	CCI016_01LD_Plant/PFSPDFPF1.PFLodTgtSpt.SBOw.T	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = PFSPDFPF1$CO$PFLodTgtSpt$SBOw$T	
+CCI016_01LD_Plant/PFSPDFPF1.PFLodTgtSpt.SBOw.Test	CCI016_01LD_Plant/PFSPDFPF1.PFLodTgtSpt.SBOw.Test	boolean	False	Dom = CCI016_01LD_Plant Var = PFSPDFPF1$CO$PFLodTgtSpt$SBOw$Test	
+CCI016_01LD_Plant/PFSPDFPF1.PFLodTgtSpt.SBOw.Check	CCI016_01LD_Plant/PFSPDFPF1.PFLodTgtSpt.SBOw.Check	bit_string	00	Dom = CCI016_01LD_Plant Var = PFSPDFPF1$CO$PFLodTgtSpt$SBOw$Check	
+CCI016_01LD_Plant/PFSPDFPF1.PFLodTgtSpt.mxVal.f	CCI016_01LD_Plant/PFSPDFPF1.PFLodTgtSpt.mxVal.f	floating_point	0	Dom = CCI016_01LD_Plant Var = PFSPDFPF1$MX$PFLodTgtSpt$mxVal$f	
+CCI016_01LD_Plant/PFSPDFPF1.PFLodTgtSpt.q	CCI016_01LD_Plant/PFSPDFPF1.PFLodTgtSpt.q	bit_string	0000000000000 [NONE]	Dom = CCI016_01LD_Plant Var = PFSPDFPF1$MX$PFLodTgtSpt$q	
+CCI016_01LD_Plant/PFSPDFPF1.PFLodTgtSpt.t	CCI016_01LD_Plant/PFSPDFPF1.PFLodTgtSpt.t	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = PFSPDFPF1$MX$PFLodTgtSpt$t	
+CCI016_01LD_Plant/PFSPDFPF1.Mod.ctlModel	CCI016_01LD_Plant/PFSPDFPF1.Mod.ctlModel	integer	4	Dom = CCI016_01LD_Plant Var = PFSPDFPF1$CF$Mod$ctlModel	
+CCI016_01LD_Plant/PFSPDFPF1.Mod.SBOw.ctlVal	CCI016_01LD_Plant/PFSPDFPF1.Mod.SBOw.ctlVal	integer	0	Dom = CCI016_01LD_Plant Var = PFSPDFPF1$CO$Mod$SBOw$ctlVal	
+CCI016_01LD_Plant/PFSPDFPF1.Mod.SBOw.origin.orCat	CCI016_01LD_Plant/PFSPDFPF1.Mod.SBOw.origin.orCat	integer	0	Dom = CCI016_01LD_Plant Var = PFSPDFPF1$CO$Mod$SBOw$origin$orCat	
+CCI016_01LD_Plant/PFSPDFPF1.Mod.SBOw.origin.orIdent	CCI016_01LD_Plant/PFSPDFPF1.Mod.SBOw.origin.orIdent	octet_string		Dom = CCI016_01LD_Plant Var = PFSPDFPF1$CO$Mod$SBOw$origin$orIdent	
+CCI016_01LD_Plant/PFSPDFPF1.Mod.SBOw.ctlNum	CCI016_01LD_Plant/PFSPDFPF1.Mod.SBOw.ctlNum	unsigned	0	Dom = CCI016_01LD_Plant Var = PFSPDFPF1$CO$Mod$SBOw$ctlNum	
+CCI016_01LD_Plant/PFSPDFPF1.Mod.SBOw.T	CCI016_01LD_Plant/PFSPDFPF1.Mod.SBOw.T	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = PFSPDFPF1$CO$Mod$SBOw$T	
+CCI016_01LD_Plant/PFSPDFPF1.Mod.SBOw.Test	CCI016_01LD_Plant/PFSPDFPF1.Mod.SBOw.Test	boolean	False	Dom = CCI016_01LD_Plant Var = PFSPDFPF1$CO$Mod$SBOw$Test	
+CCI016_01LD_Plant/PFSPDFPF1.Mod.SBOw.Check	CCI016_01LD_Plant/PFSPDFPF1.Mod.SBOw.Check	bit_string	00	Dom = CCI016_01LD_Plant Var = PFSPDFPF1$CO$Mod$SBOw$Check	
+CCI016_01LD_Plant/PFSPDFPF1.Mod.Oper.ctlVal	CCI016_01LD_Plant/PFSPDFPF1.Mod.Oper.ctlVal	integer	0	Dom = CCI016_01LD_Plant Var = PFSPDFPF1$CO$Mod$Oper$ctlVal	
+CCI016_01LD_Plant/PFSPDFPF1.Mod.Oper.origin.orCat	CCI016_01LD_Plant/PFSPDFPF1.Mod.Oper.origin.orCat	integer	0	Dom = CCI016_01LD_Plant Var = PFSPDFPF1$CO$Mod$Oper$origin$orCat	
+CCI016_01LD_Plant/PFSPDFPF1.Mod.Oper.origin.orIdent	CCI016_01LD_Plant/PFSPDFPF1.Mod.Oper.origin.orIdent	octet_string		Dom = CCI016_01LD_Plant Var = PFSPDFPF1$CO$Mod$Oper$origin$orIdent	
+CCI016_01LD_Plant/PFSPDFPF1.Mod.Oper.ctlNum	CCI016_01LD_Plant/PFSPDFPF1.Mod.Oper.ctlNum	unsigned	0	Dom = CCI016_01LD_Plant Var = PFSPDFPF1$CO$Mod$Oper$ctlNum	
+CCI016_01LD_Plant/PFSPDFPF1.Mod.Oper.T	CCI016_01LD_Plant/PFSPDFPF1.Mod.Oper.T	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = PFSPDFPF1$CO$Mod$Oper$T	
+CCI016_01LD_Plant/PFSPDFPF1.Mod.Oper.Test	CCI016_01LD_Plant/PFSPDFPF1.Mod.Oper.Test	boolean	False	Dom = CCI016_01LD_Plant Var = PFSPDFPF1$CO$Mod$Oper$Test	
+CCI016_01LD_Plant/PFSPDFPF1.Mod.Oper.Check	CCI016_01LD_Plant/PFSPDFPF1.Mod.Oper.Check	bit_string	00	Dom = CCI016_01LD_Plant Var = PFSPDFPF1$CO$Mod$Oper$Check	
+CCI016_01LD_Plant/PFSPDFPF1.Mod.Cancel.ctlVal	CCI016_01LD_Plant/PFSPDFPF1.Mod.Cancel.ctlVal	integer	0	Dom = CCI016_01LD_Plant Var = PFSPDFPF1$CO$Mod$Cancel$ctlVal	
+CCI016_01LD_Plant/PFSPDFPF1.Mod.Cancel.origin.orCat	CCI016_01LD_Plant/PFSPDFPF1.Mod.Cancel.origin.orCat	integer	0	Dom = CCI016_01LD_Plant Var = PFSPDFPF1$CO$Mod$Cancel$origin$orCat	
+CCI016_01LD_Plant/PFSPDFPF1.Mod.Cancel.origin.orIdent	CCI016_01LD_Plant/PFSPDFPF1.Mod.Cancel.origin.orIdent	octet_string		Dom = CCI016_01LD_Plant Var = PFSPDFPF1$CO$Mod$Cancel$origin$orIdent	
+CCI016_01LD_Plant/PFSPDFPF1.Mod.Cancel.ctlNum	CCI016_01LD_Plant/PFSPDFPF1.Mod.Cancel.ctlNum	unsigned	0	Dom = CCI016_01LD_Plant Var = PFSPDFPF1$CO$Mod$Cancel$ctlNum	
+CCI016_01LD_Plant/PFSPDFPF1.Mod.Cancel.T	CCI016_01LD_Plant/PFSPDFPF1.Mod.Cancel.T	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = PFSPDFPF1$CO$Mod$Cancel$T	
+CCI016_01LD_Plant/PFSPDFPF1.Mod.Cancel.Test	CCI016_01LD_Plant/PFSPDFPF1.Mod.Cancel.Test	boolean	False	Dom = CCI016_01LD_Plant Var = PFSPDFPF1$CO$Mod$Cancel$Test	
+CCI016_01LD_Plant/PFSPDFPF1.Mod.stVal	CCI016_01LD_Plant/PFSPDFPF1.Mod.stVal	integer	5	Dom = CCI016_01LD_Plant Var = PFSPDFPF1$ST$Mod$stVal	
+CCI016_01LD_Plant/PFSPDFPF1.Mod.q	CCI016_01LD_Plant/PFSPDFPF1.Mod.q	bit_string	0000000000000 [NONE]	Dom = CCI016_01LD_Plant Var = PFSPDFPF1$ST$Mod$q	
+CCI016_01LD_Plant/PFSPDFPF1.Mod.t	CCI016_01LD_Plant/PFSPDFPF1.Mod.t	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = PFSPDFPF1$ST$Mod$t	
+CCI016_01LD_Plant/PFSPDFPF1.NamPlt.vendor	CCI016_01LD_Plant/PFSPDFPF1.NamPlt.vendor	visible_string		Dom = CCI016_01LD_Plant Var = PFSPDFPF1$DC$NamPlt$vendor	
+CCI016_01LD_Plant/PFSPDFPF1.NamPlt.swRev	CCI016_01LD_Plant/PFSPDFPF1.NamPlt.swRev	visible_string		Dom = CCI016_01LD_Plant Var = PFSPDFPF1$DC$NamPlt$swRev	
+CCI016_01LD_Plant/PFSPDFPF1.NamPlt.configRev	CCI016_01LD_Plant/PFSPDFPF1.NamPlt.configRev	visible_string		Dom = CCI016_01LD_Plant Var = PFSPDFPF1$DC$NamPlt$configRev	
+CCI016_01LD_Plant/PFSPDFPF1.NamPlt.ldNs	CCI016_01LD_Plant/PFSPDFPF1.NamPlt.ldNs	visible_string		Dom = CCI016_01LD_Plant Var = PFSPDFPF1$EX$NamPlt$ldNs	
+CCI016_01LD_Plant/PFSPDFPF1.NamPlt.lnNs	CCI016_01LD_Plant/PFSPDFPF1.NamPlt.lnNs	visible_string	(Tr)IEC61850-CEI016:2022	Dom = CCI016_01LD_Plant Var = PFSPDFPF1$EX$NamPlt$lnNs	
+CCI016_01LD_Plant/PFSPDFPF1.ReqPF.mag.f	CCI016_01LD_Plant/PFSPDFPF1.ReqPF.mag.f	floating_point	0	Dom = CCI016_01LD_Plant Var = PFSPDFPF1$MX$ReqPF$mag$f	
+CCI016_01LD_Plant/PFSPDFPF1.ReqPF.q	CCI016_01LD_Plant/PFSPDFPF1.ReqPF.q	bit_string	0000000000000 [NONE]	Dom = CCI016_01LD_Plant Var = PFSPDFPF1$MX$ReqPF$q	
+CCI016_01LD_Plant/PFSPDFPF1.ReqPF.t	CCI016_01LD_Plant/PFSPDFPF1.ReqPF.t	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = PFSPDFPF1$MX$ReqPF$t	
+CCI016_01LD_Plant/PFSPDFPF1.RmpRteUse.setVal	CCI016_01LD_Plant/PFSPDFPF1.RmpRteUse.setVal	boolean	False	Dom = CCI016_01LD_Plant Var = PFSPDFPF1$SP$RmpRteUse$setVal	
+CCI016_01LD_Plant/PFSPDFPF1.InEcpRef.setSrcRef	CCI016_01LD_Plant/PFSPDFPF1.InEcpRef.setSrcRef	visible_string		Dom = CCI016_01LD_Plant Var = PFSPDFPF1$SP$InEcpRef$setSrcRef	
+CCI016_01LD_Plant/PFSPDFPF1.ReqPFExt.stVal	CCI016_01LD_Plant/PFSPDFPF1.ReqPFExt.stVal	boolean	False	Dom = CCI016_01LD_Plant Var = PFSPDFPF1$ST$ReqPFExt$stVal	
+CCI016_01LD_Plant/PFSPDFPF1.ReqPFExt.q	CCI016_01LD_Plant/PFSPDFPF1.ReqPFExt.q	bit_string	0000000000000 [NONE]	Dom = CCI016_01LD_Plant Var = PFSPDFPF1$ST$ReqPFExt$q	
+CCI016_01LD_Plant/PFSPDFPF1.ReqPFExt.t	CCI016_01LD_Plant/PFSPDFPF1.ReqPFExt.t	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = PFSPDFPF1$ST$ReqPFExt$t	
+CCI016_01LD_Plant/PFSPDFPF1.Beh.stVal	CCI016_01LD_Plant/PFSPDFPF1.Beh.stVal	integer	5	Dom = CCI016_01LD_Plant Var = PFSPDFPF1$ST$Beh$stVal	
+CCI016_01LD_Plant/PFSPDFPF1.Beh.q	CCI016_01LD_Plant/PFSPDFPF1.Beh.q	bit_string	0000000000000 [NONE]	Dom = CCI016_01LD_Plant Var = PFSPDFPF1$ST$Beh$q	
+CCI016_01LD_Plant/PFSPDFPF1.Beh.t	CCI016_01LD_Plant/PFSPDFPF1.Beh.t	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = PFSPDFPF1$ST$Beh$t	
+CCI016_01LD_Plant/PFSPDFPF1.FctOpSt.stVal	CCI016_01LD_Plant/PFSPDFPF1.FctOpSt.stVal	integer	0	Dom = CCI016_01LD_Plant Var = PFSPDFPF1$ST$FctOpSt$stVal	
+CCI016_01LD_Plant/PFSPDFPF1.FctOpSt.q	CCI016_01LD_Plant/PFSPDFPF1.FctOpSt.q	bit_string	0000000000000 [NONE]	Dom = CCI016_01LD_Plant Var = PFSPDFPF1$ST$FctOpSt$q	
+CCI016_01LD_Plant/PFSPDFPF1.FctOpSt.t	CCI016_01LD_Plant/PFSPDFPF1.FctOpSt.t	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = PFSPDFPF1$ST$FctOpSt$t	
+CCI016_01LD_Plant/PFWDPFW1.Mod.ctlModel	CCI016_01LD_Plant/PFWDPFW1.Mod.ctlModel	integer	4	Dom = CCI016_01LD_Plant Var = PFWDPFW1$CF$Mod$ctlModel	
+CCI016_01LD_Plant/PFWDPFW1.Mod.SBOw.ctlVal	CCI016_01LD_Plant/PFWDPFW1.Mod.SBOw.ctlVal	integer	0	Dom = CCI016_01LD_Plant Var = PFWDPFW1$CO$Mod$SBOw$ctlVal	
+CCI016_01LD_Plant/PFWDPFW1.Mod.SBOw.origin.orCat	CCI016_01LD_Plant/PFWDPFW1.Mod.SBOw.origin.orCat	integer	0	Dom = CCI016_01LD_Plant Var = PFWDPFW1$CO$Mod$SBOw$origin$orCat	
+CCI016_01LD_Plant/PFWDPFW1.Mod.SBOw.origin.orIdent	CCI016_01LD_Plant/PFWDPFW1.Mod.SBOw.origin.orIdent	octet_string		Dom = CCI016_01LD_Plant Var = PFWDPFW1$CO$Mod$SBOw$origin$orIdent	
+CCI016_01LD_Plant/PFWDPFW1.Mod.SBOw.ctlNum	CCI016_01LD_Plant/PFWDPFW1.Mod.SBOw.ctlNum	unsigned	0	Dom = CCI016_01LD_Plant Var = PFWDPFW1$CO$Mod$SBOw$ctlNum	
+CCI016_01LD_Plant/PFWDPFW1.Mod.SBOw.T	CCI016_01LD_Plant/PFWDPFW1.Mod.SBOw.T	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = PFWDPFW1$CO$Mod$SBOw$T	
+CCI016_01LD_Plant/PFWDPFW1.Mod.SBOw.Test	CCI016_01LD_Plant/PFWDPFW1.Mod.SBOw.Test	boolean	False	Dom = CCI016_01LD_Plant Var = PFWDPFW1$CO$Mod$SBOw$Test	
+CCI016_01LD_Plant/PFWDPFW1.Mod.SBOw.Check	CCI016_01LD_Plant/PFWDPFW1.Mod.SBOw.Check	bit_string	00	Dom = CCI016_01LD_Plant Var = PFWDPFW1$CO$Mod$SBOw$Check	
+CCI016_01LD_Plant/PFWDPFW1.Mod.Oper.ctlVal	CCI016_01LD_Plant/PFWDPFW1.Mod.Oper.ctlVal	integer	0	Dom = CCI016_01LD_Plant Var = PFWDPFW1$CO$Mod$Oper$ctlVal	
+CCI016_01LD_Plant/PFWDPFW1.Mod.Oper.origin.orCat	CCI016_01LD_Plant/PFWDPFW1.Mod.Oper.origin.orCat	integer	0	Dom = CCI016_01LD_Plant Var = PFWDPFW1$CO$Mod$Oper$origin$orCat	
+CCI016_01LD_Plant/PFWDPFW1.Mod.Oper.origin.orIdent	CCI016_01LD_Plant/PFWDPFW1.Mod.Oper.origin.orIdent	octet_string		Dom = CCI016_01LD_Plant Var = PFWDPFW1$CO$Mod$Oper$origin$orIdent	
+CCI016_01LD_Plant/PFWDPFW1.Mod.Oper.ctlNum	CCI016_01LD_Plant/PFWDPFW1.Mod.Oper.ctlNum	unsigned	0	Dom = CCI016_01LD_Plant Var = PFWDPFW1$CO$Mod$Oper$ctlNum	
+CCI016_01LD_Plant/PFWDPFW1.Mod.Oper.T	CCI016_01LD_Plant/PFWDPFW1.Mod.Oper.T	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = PFWDPFW1$CO$Mod$Oper$T	
+CCI016_01LD_Plant/PFWDPFW1.Mod.Oper.Test	CCI016_01LD_Plant/PFWDPFW1.Mod.Oper.Test	boolean	False	Dom = CCI016_01LD_Plant Var = PFWDPFW1$CO$Mod$Oper$Test	
+CCI016_01LD_Plant/PFWDPFW1.Mod.Oper.Check	CCI016_01LD_Plant/PFWDPFW1.Mod.Oper.Check	bit_string	00	Dom = CCI016_01LD_Plant Var = PFWDPFW1$CO$Mod$Oper$Check	
+CCI016_01LD_Plant/PFWDPFW1.Mod.Cancel.ctlVal	CCI016_01LD_Plant/PFWDPFW1.Mod.Cancel.ctlVal	integer	0	Dom = CCI016_01LD_Plant Var = PFWDPFW1$CO$Mod$Cancel$ctlVal	
+CCI016_01LD_Plant/PFWDPFW1.Mod.Cancel.origin.orCat	CCI016_01LD_Plant/PFWDPFW1.Mod.Cancel.origin.orCat	integer	0	Dom = CCI016_01LD_Plant Var = PFWDPFW1$CO$Mod$Cancel$origin$orCat	
+CCI016_01LD_Plant/PFWDPFW1.Mod.Cancel.origin.orIdent	CCI016_01LD_Plant/PFWDPFW1.Mod.Cancel.origin.orIdent	octet_string		Dom = CCI016_01LD_Plant Var = PFWDPFW1$CO$Mod$Cancel$origin$orIdent	
+CCI016_01LD_Plant/PFWDPFW1.Mod.Cancel.ctlNum	CCI016_01LD_Plant/PFWDPFW1.Mod.Cancel.ctlNum	unsigned	0	Dom = CCI016_01LD_Plant Var = PFWDPFW1$CO$Mod$Cancel$ctlNum	
+CCI016_01LD_Plant/PFWDPFW1.Mod.Cancel.T	CCI016_01LD_Plant/PFWDPFW1.Mod.Cancel.T	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = PFWDPFW1$CO$Mod$Cancel$T	
+CCI016_01LD_Plant/PFWDPFW1.Mod.Cancel.Test	CCI016_01LD_Plant/PFWDPFW1.Mod.Cancel.Test	boolean	False	Dom = CCI016_01LD_Plant Var = PFWDPFW1$CO$Mod$Cancel$Test	
+CCI016_01LD_Plant/PFWDPFW1.Mod.stVal	CCI016_01LD_Plant/PFWDPFW1.Mod.stVal	integer	5	Dom = CCI016_01LD_Plant Var = PFWDPFW1$ST$Mod$stVal	
+CCI016_01LD_Plant/PFWDPFW1.Mod.q	CCI016_01LD_Plant/PFWDPFW1.Mod.q	bit_string	0000000000000 [NONE]	Dom = CCI016_01LD_Plant Var = PFWDPFW1$ST$Mod$q	
+CCI016_01LD_Plant/PFWDPFW1.Mod.t	CCI016_01LD_Plant/PFWDPFW1.Mod.t	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = PFWDPFW1$ST$Mod$t	
+CCI016_01LD_Plant/PFWDPFW1.NamPlt.vendor	CCI016_01LD_Plant/PFWDPFW1.NamPlt.vendor	visible_string		Dom = CCI016_01LD_Plant Var = PFWDPFW1$DC$NamPlt$vendor	
+CCI016_01LD_Plant/PFWDPFW1.NamPlt.swRev	CCI016_01LD_Plant/PFWDPFW1.NamPlt.swRev	visible_string		Dom = CCI016_01LD_Plant Var = PFWDPFW1$DC$NamPlt$swRev	
+CCI016_01LD_Plant/PFWDPFW1.NamPlt.configRev	CCI016_01LD_Plant/PFWDPFW1.NamPlt.configRev	visible_string		Dom = CCI016_01LD_Plant Var = PFWDPFW1$DC$NamPlt$configRev	
+CCI016_01LD_Plant/PFWDPFW1.NamPlt.ldNs	CCI016_01LD_Plant/PFWDPFW1.NamPlt.ldNs	visible_string		Dom = CCI016_01LD_Plant Var = PFWDPFW1$EX$NamPlt$ldNs	
+CCI016_01LD_Plant/PFWDPFW1.NamPlt.lnNs	CCI016_01LD_Plant/PFWDPFW1.NamPlt.lnNs	visible_string	(Tr)IEC61850-CEI016:2022	Dom = CCI016_01LD_Plant Var = PFWDPFW1$EX$NamPlt$lnNs	
+CCI016_01LD_Plant/PFWDPFW1.WSetA.setMag.f	CCI016_01LD_Plant/PFWDPFW1.WSetA.setMag.f	floating_point	0	Dom = CCI016_01LD_Plant Var = PFWDPFW1$SP$WSetA$setMag$f	
+CCI016_01LD_Plant/PFWDPFW1.PFSetA.setMag.f	CCI016_01LD_Plant/PFWDPFW1.PFSetA.setMag.f	floating_point	0	Dom = CCI016_01LD_Plant Var = PFWDPFW1$SP$PFSetA$setMag$f	
+CCI016_01LD_Plant/PFWDPFW1.WSetB.setMag.f	CCI016_01LD_Plant/PFWDPFW1.WSetB.setMag.f	floating_point	0	Dom = CCI016_01LD_Plant Var = PFWDPFW1$SP$WSetB$setMag$f	
+CCI016_01LD_Plant/PFWDPFW1.PFSetB.setMag.f	CCI016_01LD_Plant/PFWDPFW1.PFSetB.setMag.f	floating_point	0	Dom = CCI016_01LD_Plant Var = PFWDPFW1$SP$PFSetB$setMag$f	
+CCI016_01LD_Plant/PFWDPFW1.WSetC.setMag.f	CCI016_01LD_Plant/PFWDPFW1.WSetC.setMag.f	floating_point	0	Dom = CCI016_01LD_Plant Var = PFWDPFW1$SP$WSetC$setMag$f	
+CCI016_01LD_Plant/PFWDPFW1.PFSetC.setMag.f	CCI016_01LD_Plant/PFWDPFW1.PFSetC.setMag.f	floating_point	0	Dom = CCI016_01LD_Plant Var = PFWDPFW1$SP$PFSetC$setMag$f	
+CCI016_01LD_Plant/PFWDPFW1.VLkIn.setMag.f	CCI016_01LD_Plant/PFWDPFW1.VLkIn.setMag.f	floating_point	0	Dom = CCI016_01LD_Plant Var = PFWDPFW1$SP$VLkIn$setMag$f	
+CCI016_01LD_Plant/PFWDPFW1.VLkOut.setMag.f	CCI016_01LD_Plant/PFWDPFW1.VLkOut.setMag.f	floating_point	0	Dom = CCI016_01LD_Plant Var = PFWDPFW1$SP$VLkOut$setMag$f	
+CCI016_01LD_Plant/PFWDPFW1.RmpRteUse.setVal	CCI016_01LD_Plant/PFWDPFW1.RmpRteUse.setVal	boolean	False	Dom = CCI016_01LD_Plant Var = PFWDPFW1$SP$RmpRteUse$setVal	
+CCI016_01LD_Plant/PFWDPFW1.InEcpRef.setSrcRef	CCI016_01LD_Plant/PFWDPFW1.InEcpRef.setSrcRef	visible_string		Dom = CCI016_01LD_Plant Var = PFWDPFW1$SP$InEcpRef$setSrcRef	
+CCI016_01LD_Plant/PFWDPFW1.Beh.stVal	CCI016_01LD_Plant/PFWDPFW1.Beh.stVal	integer	5	Dom = CCI016_01LD_Plant Var = PFWDPFW1$ST$Beh$stVal	
+CCI016_01LD_Plant/PFWDPFW1.Beh.q	CCI016_01LD_Plant/PFWDPFW1.Beh.q	bit_string	0000000000000 [NONE]	Dom = CCI016_01LD_Plant Var = PFWDPFW1$ST$Beh$q	
+CCI016_01LD_Plant/PFWDPFW1.Beh.t	CCI016_01LD_Plant/PFWDPFW1.Beh.t	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = PFWDPFW1$ST$Beh$t	
+CCI016_01LD_Plant/PFWDPFW1.FctOpSt.stVal	CCI016_01LD_Plant/PFWDPFW1.FctOpSt.stVal	integer	0	Dom = CCI016_01LD_Plant Var = PFWDPFW1$ST$FctOpSt$stVal	
+CCI016_01LD_Plant/PFWDPFW1.FctOpSt.q	CCI016_01LD_Plant/PFWDPFW1.FctOpSt.q	bit_string	0000000000000 [NONE]	Dom = CCI016_01LD_Plant Var = PFWDPFW1$ST$FctOpSt$q	
+CCI016_01LD_Plant/PFWDPFW1.FctOpSt.t	CCI016_01LD_Plant/PFWDPFW1.FctOpSt.t	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = PFWDPFW1$ST$FctOpSt$t	
+CCI016_01LD_Plant/SGGMMXU1.TotW.mag.f	CCI016_01LD_Plant/SGGMMXU1.TotW.mag.f	floating_point	0	Dom = CCI016_01LD_Plant Var = SGGMMXU1$MX$TotW$mag$f	
+CCI016_01LD_Plant/SGGMMXU1.TotW.q	CCI016_01LD_Plant/SGGMMXU1.TotW.q	bit_string	0000000000000 [NONE]	Dom = CCI016_01LD_Plant Var = SGGMMXU1$MX$TotW$q	
+CCI016_01LD_Plant/SGGMMXU1.TotW.t	CCI016_01LD_Plant/SGGMMXU1.TotW.t	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = SGGMMXU1$MX$TotW$t	
+CCI016_01LD_Plant/SGGMMXU1.Beh.stVal	CCI016_01LD_Plant/SGGMMXU1.Beh.stVal	integer	1	Dom = CCI016_01LD_Plant Var = SGGMMXU1$ST$Beh$stVal	
+CCI016_01LD_Plant/SGGMMXU1.Beh.q	CCI016_01LD_Plant/SGGMMXU1.Beh.q	bit_string	0000000000000 [NONE]	Dom = CCI016_01LD_Plant Var = SGGMMXU1$ST$Beh$q	
+CCI016_01LD_Plant/SGGMMXU1.Beh.t	CCI016_01LD_Plant/SGGMMXU1.Beh.t	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = SGGMMXU1$ST$Beh$t	
+CCI016_01LD_Plant/SGGMMXU2.TotW.mag.f	CCI016_01LD_Plant/SGGMMXU2.TotW.mag.f	floating_point	0	Dom = CCI016_01LD_Plant Var = SGGMMXU2$MX$TotW$mag$f	
+CCI016_01LD_Plant/SGGMMXU2.TotW.q	CCI016_01LD_Plant/SGGMMXU2.TotW.q	bit_string	0000000000000 [NONE]	Dom = CCI016_01LD_Plant Var = SGGMMXU2$MX$TotW$q	
+CCI016_01LD_Plant/SGGMMXU2.TotW.t	CCI016_01LD_Plant/SGGMMXU2.TotW.t	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = SGGMMXU2$MX$TotW$t	
+CCI016_01LD_Plant/SGGMMXU2.Beh.stVal	CCI016_01LD_Plant/SGGMMXU2.Beh.stVal	integer	1	Dom = CCI016_01LD_Plant Var = SGGMMXU2$ST$Beh$stVal	
+CCI016_01LD_Plant/SGGMMXU2.Beh.q	CCI016_01LD_Plant/SGGMMXU2.Beh.q	bit_string	0000000000000 [NONE]	Dom = CCI016_01LD_Plant Var = SGGMMXU2$ST$Beh$q	
+CCI016_01LD_Plant/SGGMMXU2.Beh.t	CCI016_01LD_Plant/SGGMMXU2.Beh.t	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = SGGMMXU2$ST$Beh$t	
+CCI016_01LD_Plant/SSGGDGEN1.NamPlt.vendor	CCI016_01LD_Plant/SSGGDGEN1.NamPlt.vendor	visible_string		Dom = CCI016_01LD_Plant Var = SSGGDGEN1$DC$NamPlt$vendor	
+CCI016_01LD_Plant/SSGGDGEN1.NamPlt.swRev	CCI016_01LD_Plant/SSGGDGEN1.NamPlt.swRev	visible_string		Dom = CCI016_01LD_Plant Var = SSGGDGEN1$DC$NamPlt$swRev	
+CCI016_01LD_Plant/SSGGDGEN1.NamPlt.configRev	CCI016_01LD_Plant/SSGGDGEN1.NamPlt.configRev	visible_string		Dom = CCI016_01LD_Plant Var = SSGGDGEN1$DC$NamPlt$configRev	
+CCI016_01LD_Plant/SSGGDGEN1.NamPlt.ldNs	CCI016_01LD_Plant/SSGGDGEN1.NamPlt.ldNs	visible_string		Dom = CCI016_01LD_Plant Var = SSGGDGEN1$EX$NamPlt$ldNs	
+CCI016_01LD_Plant/SSGGDGEN1.NamPlt.lnNs	CCI016_01LD_Plant/SSGGDGEN1.NamPlt.lnNs	visible_string	(Tr)IEC61850-CEI016:2022	Dom = CCI016_01LD_Plant Var = SSGGDGEN1$EX$NamPlt$lnNs	
+CCI016_01LD_Plant/SSGGDGEN1.WMaxRtg.setMag.f	CCI016_01LD_Plant/SSGGDGEN1.WMaxRtg.setMag.f	floating_point	0	Dom = CCI016_01LD_Plant Var = SSGGDGEN1$SP$WMaxRtg$setMag$f	
+CCI016_01LD_Plant/SSGGDGEN1.VMaxRtg.setMag.f	CCI016_01LD_Plant/SSGGDGEN1.VMaxRtg.setMag.f	floating_point	0	Dom = CCI016_01LD_Plant Var = SSGGDGEN1$SP$VMaxRtg$setMag$f	
+CCI016_01LD_Plant/SSGGDGEN1.WMax.setMag.f	CCI016_01LD_Plant/SSGGDGEN1.WMax.setMag.f	floating_point	0	Dom = CCI016_01LD_Plant Var = SSGGDGEN1$SP$WMax$setMag$f	
+CCI016_01LD_Plant/SSGGDGEN1.WRmp.setMag.f	CCI016_01LD_Plant/SSGGDGEN1.WRmp.setMag.f	floating_point	0	Dom = CCI016_01LD_Plant Var = SSGGDGEN1$SP$WRmp$setMag$f	
+CCI016_01LD_Plant/SSGGDGEN1.VMax.setMag.f	CCI016_01LD_Plant/SSGGDGEN1.VMax.setMag.f	floating_point	0	Dom = CCI016_01LD_Plant Var = SSGGDGEN1$SP$VMax$setMag$f	
+CCI016_01LD_Plant/SSGGDGEN1.OutEcpRef.setSrcRef	CCI016_01LD_Plant/SSGGDGEN1.OutEcpRef.setSrcRef	visible_string		Dom = CCI016_01LD_Plant Var = SSGGDGEN1$SP$OutEcpRef$setSrcRef	
+CCI016_01LD_Plant/SSGGDGEN1.PhsConnTyp.setVal	CCI016_01LD_Plant/SSGGDGEN1.PhsConnTyp.setVal	integer	0	Dom = CCI016_01LD_Plant Var = SSGGDGEN1$SP$PhsConnTyp$setVal	
+CCI016_01LD_Plant/SSGGDGEN1.DERTyp.setVal	CCI016_01LD_Plant/SSGGDGEN1.DERTyp.setVal	integer	0	Dom = CCI016_01LD_Plant Var = SSGGDGEN1$SP$DERTyp$setVal	
+CCI016_01LD_Plant/SSGGDGEN1.DEROpSt.stVal	CCI016_01LD_Plant/SSGGDGEN1.DEROpSt.stVal	integer	0	Dom = CCI016_01LD_Plant Var = SSGGDGEN1$ST$DEROpSt$stVal	
+CCI016_01LD_Plant/SSGGDGEN1.DEROpSt.q	CCI016_01LD_Plant/SSGGDGEN1.DEROpSt.q	bit_string	0000000000000 [NONE]	Dom = CCI016_01LD_Plant Var = SSGGDGEN1$ST$DEROpSt$q	
+CCI016_01LD_Plant/SSGGDGEN1.DEROpSt.t	CCI016_01LD_Plant/SSGGDGEN1.DEROpSt.t	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = SSGGDGEN1$ST$DEROpSt$t	
+CCI016_01LD_Plant/SSGGDGEN1.Beh.stVal	CCI016_01LD_Plant/SSGGDGEN1.Beh.stVal	integer	1	Dom = CCI016_01LD_Plant Var = SSGGDGEN1$ST$Beh$stVal	
+CCI016_01LD_Plant/SSGGDGEN1.Beh.q	CCI016_01LD_Plant/SSGGDGEN1.Beh.q	bit_string	0000000000000 [NONE]	Dom = CCI016_01LD_Plant Var = SSGGDGEN1$ST$Beh$q	
+CCI016_01LD_Plant/SSGGDGEN1.Beh.t	CCI016_01LD_Plant/SSGGDGEN1.Beh.t	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = SSGGDGEN1$ST$Beh$t	
+CCI016_01LD_Plant/SSGGDGEN1.Health.stVal	CCI016_01LD_Plant/SSGGDGEN1.Health.stVal	integer	1	Dom = CCI016_01LD_Plant Var = SSGGDGEN1$ST$Health$stVal	
+CCI016_01LD_Plant/SSGGDGEN1.Health.q	CCI016_01LD_Plant/SSGGDGEN1.Health.q	bit_string	0000000000000 [NONE]	Dom = CCI016_01LD_Plant Var = SSGGDGEN1$ST$Health$q	
+CCI016_01LD_Plant/SSGGDGEN1.Health.t	CCI016_01LD_Plant/SSGGDGEN1.Health.t	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = SSGGDGEN1$ST$Health$t	
+CCI016_01LD_Plant/SSGGDGEN1.GnGrId.stVal	CCI016_01LD_Plant/SSGGDGEN1.GnGrId.stVal	integer	1	Dom = CCI016_01LD_Plant Var = SSGGDGEN1$ST$GnGrId$stVal	
+CCI016_01LD_Plant/SSGGDGEN1.GnGrId.q	CCI016_01LD_Plant/SSGGDGEN1.GnGrId.q	bit_string	0000000000000 [NONE]	Dom = CCI016_01LD_Plant Var = SSGGDGEN1$ST$GnGrId$q	
+CCI016_01LD_Plant/SSGGDGEN1.GnGrId.t	CCI016_01LD_Plant/SSGGDGEN1.GnGrId.t	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = SSGGDGEN1$ST$GnGrId$t	
+CCI016_01LD_Plant/SSGGDGEN2.NamPlt.vendor	CCI016_01LD_Plant/SSGGDGEN2.NamPlt.vendor	visible_string		Dom = CCI016_01LD_Plant Var = SSGGDGEN2$DC$NamPlt$vendor	
+CCI016_01LD_Plant/SSGGDGEN2.NamPlt.swRev	CCI016_01LD_Plant/SSGGDGEN2.NamPlt.swRev	visible_string		Dom = CCI016_01LD_Plant Var = SSGGDGEN2$DC$NamPlt$swRev	
+CCI016_01LD_Plant/SSGGDGEN2.NamPlt.configRev	CCI016_01LD_Plant/SSGGDGEN2.NamPlt.configRev	visible_string		Dom = CCI016_01LD_Plant Var = SSGGDGEN2$DC$NamPlt$configRev	
+CCI016_01LD_Plant/SSGGDGEN2.NamPlt.ldNs	CCI016_01LD_Plant/SSGGDGEN2.NamPlt.ldNs	visible_string		Dom = CCI016_01LD_Plant Var = SSGGDGEN2$EX$NamPlt$ldNs	
+CCI016_01LD_Plant/SSGGDGEN2.NamPlt.lnNs	CCI016_01LD_Plant/SSGGDGEN2.NamPlt.lnNs	visible_string	(Tr)IEC61850-CEI016:2022	Dom = CCI016_01LD_Plant Var = SSGGDGEN2$EX$NamPlt$lnNs	
+CCI016_01LD_Plant/SSGGDGEN2.WMaxRtg.setMag.f	CCI016_01LD_Plant/SSGGDGEN2.WMaxRtg.setMag.f	floating_point	0	Dom = CCI016_01LD_Plant Var = SSGGDGEN2$SP$WMaxRtg$setMag$f	
+CCI016_01LD_Plant/SSGGDGEN2.VMaxRtg.setMag.f	CCI016_01LD_Plant/SSGGDGEN2.VMaxRtg.setMag.f	floating_point	0	Dom = CCI016_01LD_Plant Var = SSGGDGEN2$SP$VMaxRtg$setMag$f	
+CCI016_01LD_Plant/SSGGDGEN2.WMax.setMag.f	CCI016_01LD_Plant/SSGGDGEN2.WMax.setMag.f	floating_point	0	Dom = CCI016_01LD_Plant Var = SSGGDGEN2$SP$WMax$setMag$f	
+CCI016_01LD_Plant/SSGGDGEN2.WRmp.setMag.f	CCI016_01LD_Plant/SSGGDGEN2.WRmp.setMag.f	floating_point	0	Dom = CCI016_01LD_Plant Var = SSGGDGEN2$SP$WRmp$setMag$f	
+CCI016_01LD_Plant/SSGGDGEN2.VMax.setMag.f	CCI016_01LD_Plant/SSGGDGEN2.VMax.setMag.f	floating_point	0	Dom = CCI016_01LD_Plant Var = SSGGDGEN2$SP$VMax$setMag$f	
+CCI016_01LD_Plant/SSGGDGEN2.OutEcpRef.setSrcRef	CCI016_01LD_Plant/SSGGDGEN2.OutEcpRef.setSrcRef	visible_string		Dom = CCI016_01LD_Plant Var = SSGGDGEN2$SP$OutEcpRef$setSrcRef	
+CCI016_01LD_Plant/SSGGDGEN2.PhsConnTyp.setVal	CCI016_01LD_Plant/SSGGDGEN2.PhsConnTyp.setVal	integer	0	Dom = CCI016_01LD_Plant Var = SSGGDGEN2$SP$PhsConnTyp$setVal	
+CCI016_01LD_Plant/SSGGDGEN2.DERTyp.setVal	CCI016_01LD_Plant/SSGGDGEN2.DERTyp.setVal	integer	0	Dom = CCI016_01LD_Plant Var = SSGGDGEN2$SP$DERTyp$setVal	
+CCI016_01LD_Plant/SSGGDGEN2.DEROpSt.stVal	CCI016_01LD_Plant/SSGGDGEN2.DEROpSt.stVal	integer	0	Dom = CCI016_01LD_Plant Var = SSGGDGEN2$ST$DEROpSt$stVal	
+CCI016_01LD_Plant/SSGGDGEN2.DEROpSt.q	CCI016_01LD_Plant/SSGGDGEN2.DEROpSt.q	bit_string	0000000000000 [NONE]	Dom = CCI016_01LD_Plant Var = SSGGDGEN2$ST$DEROpSt$q	
+CCI016_01LD_Plant/SSGGDGEN2.DEROpSt.t	CCI016_01LD_Plant/SSGGDGEN2.DEROpSt.t	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = SSGGDGEN2$ST$DEROpSt$t	
+CCI016_01LD_Plant/SSGGDGEN2.Beh.stVal	CCI016_01LD_Plant/SSGGDGEN2.Beh.stVal	integer	1	Dom = CCI016_01LD_Plant Var = SSGGDGEN2$ST$Beh$stVal	
+CCI016_01LD_Plant/SSGGDGEN2.Beh.q	CCI016_01LD_Plant/SSGGDGEN2.Beh.q	bit_string	0000000000000 [NONE]	Dom = CCI016_01LD_Plant Var = SSGGDGEN2$ST$Beh$q	
+CCI016_01LD_Plant/SSGGDGEN2.Beh.t	CCI016_01LD_Plant/SSGGDGEN2.Beh.t	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = SSGGDGEN2$ST$Beh$t	
+CCI016_01LD_Plant/SSGGDGEN2.Health.stVal	CCI016_01LD_Plant/SSGGDGEN2.Health.stVal	integer	1	Dom = CCI016_01LD_Plant Var = SSGGDGEN2$ST$Health$stVal	
+CCI016_01LD_Plant/SSGGDGEN2.Health.q	CCI016_01LD_Plant/SSGGDGEN2.Health.q	bit_string	0000000000000 [NONE]	Dom = CCI016_01LD_Plant Var = SSGGDGEN2$ST$Health$q	
+CCI016_01LD_Plant/SSGGDGEN2.Health.t	CCI016_01LD_Plant/SSGGDGEN2.Health.t	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = SSGGDGEN2$ST$Health$t	
+CCI016_01LD_Plant/SSGGDGEN2.GnGrId.stVal	CCI016_01LD_Plant/SSGGDGEN2.GnGrId.stVal	integer	2	Dom = CCI016_01LD_Plant Var = SSGGDGEN2$ST$GnGrId$stVal	
+CCI016_01LD_Plant/SSGGDGEN2.GnGrId.q	CCI016_01LD_Plant/SSGGDGEN2.GnGrId.q	bit_string	0000000000000 [NONE]	Dom = CCI016_01LD_Plant Var = SSGGDGEN2$ST$GnGrId$q	
+CCI016_01LD_Plant/SSGGDGEN2.GnGrId.t	CCI016_01LD_Plant/SSGGDGEN2.GnGrId.t	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = SSGGDGEN2$ST$GnGrId$t	
+CCI016_01LD_Plant/StMMXU1.TotW.mag.f	CCI016_01LD_Plant/StMMXU1.TotW.mag.f	floating_point	0	Dom = CCI016_01LD_Plant Var = StMMXU1$MX$TotW$mag$f	
+CCI016_01LD_Plant/StMMXU1.TotW.q	CCI016_01LD_Plant/StMMXU1.TotW.q	bit_string	0000000000000 [NONE]	Dom = CCI016_01LD_Plant Var = StMMXU1$MX$TotW$q	
+CCI016_01LD_Plant/StMMXU1.TotW.t	CCI016_01LD_Plant/StMMXU1.TotW.t	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = StMMXU1$MX$TotW$t	
+CCI016_01LD_Plant/StMMXU1.Beh.stVal	CCI016_01LD_Plant/StMMXU1.Beh.stVal	integer	1	Dom = CCI016_01LD_Plant Var = StMMXU1$ST$Beh$stVal	
+CCI016_01LD_Plant/StMMXU1.Beh.q	CCI016_01LD_Plant/StMMXU1.Beh.q	bit_string	0000000000000 [NONE]	Dom = CCI016_01LD_Plant Var = StMMXU1$ST$Beh$q	
+CCI016_01LD_Plant/StMMXU1.Beh.t	CCI016_01LD_Plant/StMMXU1.Beh.t	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = StMMXU1$ST$Beh$t	
+CCI016_01LD_Plant/VArSdDVAR1.VArTgtSptPct.ctlModel	CCI016_01LD_Plant/VArSdDVAR1.VArTgtSptPct.ctlModel	integer	3	Dom = CCI016_01LD_Plant Var = VArSdDVAR1$CF$VArTgtSptPct$ctlModel	
+CCI016_01LD_Plant/VArSdDVAR1.VArTgtSptPct.Cancel.ctlVal.f	CCI016_01LD_Plant/VArSdDVAR1.VArTgtSptPct.Cancel.ctlVal.f	floating_point	0	Dom = CCI016_01LD_Plant Var = VArSdDVAR1$CO$VArTgtSptPct$Cancel$ctlVal$f	
+CCI016_01LD_Plant/VArSdDVAR1.VArTgtSptPct.Cancel.origin.orCat	CCI016_01LD_Plant/VArSdDVAR1.VArTgtSptPct.Cancel.origin.orCat	integer	0	Dom = CCI016_01LD_Plant Var = VArSdDVAR1$CO$VArTgtSptPct$Cancel$origin$orCat	
+CCI016_01LD_Plant/VArSdDVAR1.VArTgtSptPct.Cancel.origin.orIdent	CCI016_01LD_Plant/VArSdDVAR1.VArTgtSptPct.Cancel.origin.orIdent	octet_string		Dom = CCI016_01LD_Plant Var = VArSdDVAR1$CO$VArTgtSptPct$Cancel$origin$orIdent	
+CCI016_01LD_Plant/VArSdDVAR1.VArTgtSptPct.Cancel.ctlNum	CCI016_01LD_Plant/VArSdDVAR1.VArTgtSptPct.Cancel.ctlNum	unsigned	0	Dom = CCI016_01LD_Plant Var = VArSdDVAR1$CO$VArTgtSptPct$Cancel$ctlNum	
+CCI016_01LD_Plant/VArSdDVAR1.VArTgtSptPct.Cancel.T	CCI016_01LD_Plant/VArSdDVAR1.VArTgtSptPct.Cancel.T	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = VArSdDVAR1$CO$VArTgtSptPct$Cancel$T	
+CCI016_01LD_Plant/VArSdDVAR1.VArTgtSptPct.Cancel.Test	CCI016_01LD_Plant/VArSdDVAR1.VArTgtSptPct.Cancel.Test	boolean	False	Dom = CCI016_01LD_Plant Var = VArSdDVAR1$CO$VArTgtSptPct$Cancel$Test	
+CCI016_01LD_Plant/VArSdDVAR1.VArTgtSptPct.Oper.ctlVal.f	CCI016_01LD_Plant/VArSdDVAR1.VArTgtSptPct.Oper.ctlVal.f	floating_point	0	Dom = CCI016_01LD_Plant Var = VArSdDVAR1$CO$VArTgtSptPct$Oper$ctlVal$f	
+CCI016_01LD_Plant/VArSdDVAR1.VArTgtSptPct.Oper.origin.orCat	CCI016_01LD_Plant/VArSdDVAR1.VArTgtSptPct.Oper.origin.orCat	integer	0	Dom = CCI016_01LD_Plant Var = VArSdDVAR1$CO$VArTgtSptPct$Oper$origin$orCat	
+CCI016_01LD_Plant/VArSdDVAR1.VArTgtSptPct.Oper.origin.orIdent	CCI016_01LD_Plant/VArSdDVAR1.VArTgtSptPct.Oper.origin.orIdent	octet_string		Dom = CCI016_01LD_Plant Var = VArSdDVAR1$CO$VArTgtSptPct$Oper$origin$orIdent	
+CCI016_01LD_Plant/VArSdDVAR1.VArTgtSptPct.Oper.ctlNum	CCI016_01LD_Plant/VArSdDVAR1.VArTgtSptPct.Oper.ctlNum	unsigned	0	Dom = CCI016_01LD_Plant Var = VArSdDVAR1$CO$VArTgtSptPct$Oper$ctlNum	
+CCI016_01LD_Plant/VArSdDVAR1.VArTgtSptPct.Oper.T	CCI016_01LD_Plant/VArSdDVAR1.VArTgtSptPct.Oper.T	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = VArSdDVAR1$CO$VArTgtSptPct$Oper$T	
+CCI016_01LD_Plant/VArSdDVAR1.VArTgtSptPct.Oper.Test	CCI016_01LD_Plant/VArSdDVAR1.VArTgtSptPct.Oper.Test	boolean	False	Dom = CCI016_01LD_Plant Var = VArSdDVAR1$CO$VArTgtSptPct$Oper$Test	
+CCI016_01LD_Plant/VArSdDVAR1.VArTgtSptPct.Oper.Check	CCI016_01LD_Plant/VArSdDVAR1.VArTgtSptPct.Oper.Check	bit_string	00	Dom = CCI016_01LD_Plant Var = VArSdDVAR1$CO$VArTgtSptPct$Oper$Check	
+CCI016_01LD_Plant/VArSdDVAR1.VArTgtSptPct.SBOw.ctlVal.f	CCI016_01LD_Plant/VArSdDVAR1.VArTgtSptPct.SBOw.ctlVal.f	floating_point	0	Dom = CCI016_01LD_Plant Var = VArSdDVAR1$CO$VArTgtSptPct$SBOw$ctlVal$f	
+CCI016_01LD_Plant/VArSdDVAR1.VArTgtSptPct.SBOw.origin.orCat	CCI016_01LD_Plant/VArSdDVAR1.VArTgtSptPct.SBOw.origin.orCat	integer	0	Dom = CCI016_01LD_Plant Var = VArSdDVAR1$CO$VArTgtSptPct$SBOw$origin$orCat	
+CCI016_01LD_Plant/VArSdDVAR1.VArTgtSptPct.SBOw.origin.orIdent	CCI016_01LD_Plant/VArSdDVAR1.VArTgtSptPct.SBOw.origin.orIdent	octet_string		Dom = CCI016_01LD_Plant Var = VArSdDVAR1$CO$VArTgtSptPct$SBOw$origin$orIdent	
+CCI016_01LD_Plant/VArSdDVAR1.VArTgtSptPct.SBOw.ctlNum	CCI016_01LD_Plant/VArSdDVAR1.VArTgtSptPct.SBOw.ctlNum	unsigned	0	Dom = CCI016_01LD_Plant Var = VArSdDVAR1$CO$VArTgtSptPct$SBOw$ctlNum	
+CCI016_01LD_Plant/VArSdDVAR1.VArTgtSptPct.SBOw.T	CCI016_01LD_Plant/VArSdDVAR1.VArTgtSptPct.SBOw.T	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = VArSdDVAR1$CO$VArTgtSptPct$SBOw$T	
+CCI016_01LD_Plant/VArSdDVAR1.VArTgtSptPct.SBOw.Test	CCI016_01LD_Plant/VArSdDVAR1.VArTgtSptPct.SBOw.Test	boolean	False	Dom = CCI016_01LD_Plant Var = VArSdDVAR1$CO$VArTgtSptPct$SBOw$Test	
+CCI016_01LD_Plant/VArSdDVAR1.VArTgtSptPct.SBOw.Check	CCI016_01LD_Plant/VArSdDVAR1.VArTgtSptPct.SBOw.Check	bit_string	00	Dom = CCI016_01LD_Plant Var = VArSdDVAR1$CO$VArTgtSptPct$SBOw$Check	
+CCI016_01LD_Plant/VArSdDVAR1.VArTgtSptPct.mxVal.f	CCI016_01LD_Plant/VArSdDVAR1.VArTgtSptPct.mxVal.f	floating_point	0	Dom = CCI016_01LD_Plant Var = VArSdDVAR1$MX$VArTgtSptPct$mxVal$f	
+CCI016_01LD_Plant/VArSdDVAR1.VArTgtSptPct.q	CCI016_01LD_Plant/VArSdDVAR1.VArTgtSptPct.q	bit_string	0000000000000 [NONE]	Dom = CCI016_01LD_Plant Var = VArSdDVAR1$MX$VArTgtSptPct$q	
+CCI016_01LD_Plant/VArSdDVAR1.VArTgtSptPct.t	CCI016_01LD_Plant/VArSdDVAR1.VArTgtSptPct.t	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = VArSdDVAR1$MX$VArTgtSptPct$t	
+CCI016_01LD_Plant/VArSdDVAR1.Mod.ctlModel	CCI016_01LD_Plant/VArSdDVAR1.Mod.ctlModel	integer	3	Dom = CCI016_01LD_Plant Var = VArSdDVAR1$CF$Mod$ctlModel	
+CCI016_01LD_Plant/VArSdDVAR1.Mod.SBOw.ctlVal	CCI016_01LD_Plant/VArSdDVAR1.Mod.SBOw.ctlVal	integer	0	Dom = CCI016_01LD_Plant Var = VArSdDVAR1$CO$Mod$SBOw$ctlVal	
+CCI016_01LD_Plant/VArSdDVAR1.Mod.SBOw.origin.orCat	CCI016_01LD_Plant/VArSdDVAR1.Mod.SBOw.origin.orCat	integer	0	Dom = CCI016_01LD_Plant Var = VArSdDVAR1$CO$Mod$SBOw$origin$orCat	
+CCI016_01LD_Plant/VArSdDVAR1.Mod.SBOw.origin.orIdent	CCI016_01LD_Plant/VArSdDVAR1.Mod.SBOw.origin.orIdent	octet_string		Dom = CCI016_01LD_Plant Var = VArSdDVAR1$CO$Mod$SBOw$origin$orIdent	
+CCI016_01LD_Plant/VArSdDVAR1.Mod.SBOw.ctlNum	CCI016_01LD_Plant/VArSdDVAR1.Mod.SBOw.ctlNum	unsigned	0	Dom = CCI016_01LD_Plant Var = VArSdDVAR1$CO$Mod$SBOw$ctlNum	
+CCI016_01LD_Plant/VArSdDVAR1.Mod.SBOw.T	CCI016_01LD_Plant/VArSdDVAR1.Mod.SBOw.T	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = VArSdDVAR1$CO$Mod$SBOw$T	
+CCI016_01LD_Plant/VArSdDVAR1.Mod.SBOw.Test	CCI016_01LD_Plant/VArSdDVAR1.Mod.SBOw.Test	boolean	False	Dom = CCI016_01LD_Plant Var = VArSdDVAR1$CO$Mod$SBOw$Test	
+CCI016_01LD_Plant/VArSdDVAR1.Mod.SBOw.Check	CCI016_01LD_Plant/VArSdDVAR1.Mod.SBOw.Check	bit_string	00	Dom = CCI016_01LD_Plant Var = VArSdDVAR1$CO$Mod$SBOw$Check	
+CCI016_01LD_Plant/VArSdDVAR1.Mod.Oper.ctlVal	CCI016_01LD_Plant/VArSdDVAR1.Mod.Oper.ctlVal	integer	0	Dom = CCI016_01LD_Plant Var = VArSdDVAR1$CO$Mod$Oper$ctlVal	
+CCI016_01LD_Plant/VArSdDVAR1.Mod.Oper.origin.orCat	CCI016_01LD_Plant/VArSdDVAR1.Mod.Oper.origin.orCat	integer	0	Dom = CCI016_01LD_Plant Var = VArSdDVAR1$CO$Mod$Oper$origin$orCat	
+CCI016_01LD_Plant/VArSdDVAR1.Mod.Oper.origin.orIdent	CCI016_01LD_Plant/VArSdDVAR1.Mod.Oper.origin.orIdent	octet_string		Dom = CCI016_01LD_Plant Var = VArSdDVAR1$CO$Mod$Oper$origin$orIdent	
+CCI016_01LD_Plant/VArSdDVAR1.Mod.Oper.ctlNum	CCI016_01LD_Plant/VArSdDVAR1.Mod.Oper.ctlNum	unsigned	0	Dom = CCI016_01LD_Plant Var = VArSdDVAR1$CO$Mod$Oper$ctlNum	
+CCI016_01LD_Plant/VArSdDVAR1.Mod.Oper.T	CCI016_01LD_Plant/VArSdDVAR1.Mod.Oper.T	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = VArSdDVAR1$CO$Mod$Oper$T	
+CCI016_01LD_Plant/VArSdDVAR1.Mod.Oper.Test	CCI016_01LD_Plant/VArSdDVAR1.Mod.Oper.Test	boolean	False	Dom = CCI016_01LD_Plant Var = VArSdDVAR1$CO$Mod$Oper$Test	
+CCI016_01LD_Plant/VArSdDVAR1.Mod.Oper.Check	CCI016_01LD_Plant/VArSdDVAR1.Mod.Oper.Check	bit_string	00	Dom = CCI016_01LD_Plant Var = VArSdDVAR1$CO$Mod$Oper$Check	
+CCI016_01LD_Plant/VArSdDVAR1.Mod.Cancel.ctlVal	CCI016_01LD_Plant/VArSdDVAR1.Mod.Cancel.ctlVal	integer	0	Dom = CCI016_01LD_Plant Var = VArSdDVAR1$CO$Mod$Cancel$ctlVal	
+CCI016_01LD_Plant/VArSdDVAR1.Mod.Cancel.origin.orCat	CCI016_01LD_Plant/VArSdDVAR1.Mod.Cancel.origin.orCat	integer	0	Dom = CCI016_01LD_Plant Var = VArSdDVAR1$CO$Mod$Cancel$origin$orCat	
+CCI016_01LD_Plant/VArSdDVAR1.Mod.Cancel.origin.orIdent	CCI016_01LD_Plant/VArSdDVAR1.Mod.Cancel.origin.orIdent	octet_string		Dom = CCI016_01LD_Plant Var = VArSdDVAR1$CO$Mod$Cancel$origin$orIdent	
+CCI016_01LD_Plant/VArSdDVAR1.Mod.Cancel.ctlNum	CCI016_01LD_Plant/VArSdDVAR1.Mod.Cancel.ctlNum	unsigned	0	Dom = CCI016_01LD_Plant Var = VArSdDVAR1$CO$Mod$Cancel$ctlNum	
+CCI016_01LD_Plant/VArSdDVAR1.Mod.Cancel.T	CCI016_01LD_Plant/VArSdDVAR1.Mod.Cancel.T	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = VArSdDVAR1$CO$Mod$Cancel$T	
+CCI016_01LD_Plant/VArSdDVAR1.Mod.Cancel.Test	CCI016_01LD_Plant/VArSdDVAR1.Mod.Cancel.Test	boolean	False	Dom = CCI016_01LD_Plant Var = VArSdDVAR1$CO$Mod$Cancel$Test	
+CCI016_01LD_Plant/VArSdDVAR1.Mod.stVal	CCI016_01LD_Plant/VArSdDVAR1.Mod.stVal	integer	5	Dom = CCI016_01LD_Plant Var = VArSdDVAR1$ST$Mod$stVal	
+CCI016_01LD_Plant/VArSdDVAR1.Mod.q	CCI016_01LD_Plant/VArSdDVAR1.Mod.q	bit_string	0000000000000 [NONE]	Dom = CCI016_01LD_Plant Var = VArSdDVAR1$ST$Mod$q	
+CCI016_01LD_Plant/VArSdDVAR1.Mod.t	CCI016_01LD_Plant/VArSdDVAR1.Mod.t	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = VArSdDVAR1$ST$Mod$t	
+CCI016_01LD_Plant/VArSdDVAR1.NamPlt.vendor	CCI016_01LD_Plant/VArSdDVAR1.NamPlt.vendor	visible_string		Dom = CCI016_01LD_Plant Var = VArSdDVAR1$DC$NamPlt$vendor	
+CCI016_01LD_Plant/VArSdDVAR1.NamPlt.swRev	CCI016_01LD_Plant/VArSdDVAR1.NamPlt.swRev	visible_string		Dom = CCI016_01LD_Plant Var = VArSdDVAR1$DC$NamPlt$swRev	
+CCI016_01LD_Plant/VArSdDVAR1.NamPlt.configRev	CCI016_01LD_Plant/VArSdDVAR1.NamPlt.configRev	visible_string		Dom = CCI016_01LD_Plant Var = VArSdDVAR1$DC$NamPlt$configRev	
+CCI016_01LD_Plant/VArSdDVAR1.NamPlt.ldNs	CCI016_01LD_Plant/VArSdDVAR1.NamPlt.ldNs	visible_string		Dom = CCI016_01LD_Plant Var = VArSdDVAR1$EX$NamPlt$ldNs	
+CCI016_01LD_Plant/VArSdDVAR1.NamPlt.lnNs	CCI016_01LD_Plant/VArSdDVAR1.NamPlt.lnNs	visible_string	(Tr)IEC61850-CEI016:2022	Dom = CCI016_01LD_Plant Var = VArSdDVAR1$EX$NamPlt$lnNs	
+CCI016_01LD_Plant/VArSdDVAR1.ReqVAr.mag.f	CCI016_01LD_Plant/VArSdDVAR1.ReqVAr.mag.f	floating_point	0	Dom = CCI016_01LD_Plant Var = VArSdDVAR1$MX$ReqVAr$mag$f	
+CCI016_01LD_Plant/VArSdDVAR1.ReqVAr.q	CCI016_01LD_Plant/VArSdDVAR1.ReqVAr.q	bit_string	0000000000000 [NONE]	Dom = CCI016_01LD_Plant Var = VArSdDVAR1$MX$ReqVAr$q	
+CCI016_01LD_Plant/VArSdDVAR1.ReqVAr.t	CCI016_01LD_Plant/VArSdDVAR1.ReqVAr.t	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = VArSdDVAR1$MX$ReqVAr$t	
+CCI016_01LD_Plant/VArSdDVAR1.RmpRteUse.setVal	CCI016_01LD_Plant/VArSdDVAR1.RmpRteUse.setVal	boolean	False	Dom = CCI016_01LD_Plant Var = VArSdDVAR1$SP$RmpRteUse$setVal	
+CCI016_01LD_Plant/VArSdDVAR1.InEcpRef.setSrcRef	CCI016_01LD_Plant/VArSdDVAR1.InEcpRef.setSrcRef	visible_string		Dom = CCI016_01LD_Plant Var = VArSdDVAR1$SP$InEcpRef$setSrcRef	
+CCI016_01LD_Plant/VArSdDVAR1.Beh.stVal	CCI016_01LD_Plant/VArSdDVAR1.Beh.stVal	integer	5	Dom = CCI016_01LD_Plant Var = VArSdDVAR1$ST$Beh$stVal	
+CCI016_01LD_Plant/VArSdDVAR1.Beh.q	CCI016_01LD_Plant/VArSdDVAR1.Beh.q	bit_string	0000000000000 [NONE]	Dom = CCI016_01LD_Plant Var = VArSdDVAR1$ST$Beh$q	
+CCI016_01LD_Plant/VArSdDVAR1.Beh.t	CCI016_01LD_Plant/VArSdDVAR1.Beh.t	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = VArSdDVAR1$ST$Beh$t	
+CCI016_01LD_Plant/VArSdDVAR1.FctOpSt.stVal	CCI016_01LD_Plant/VArSdDVAR1.FctOpSt.stVal	integer	0	Dom = CCI016_01LD_Plant Var = VArSdDVAR1$ST$FctOpSt$stVal	
+CCI016_01LD_Plant/VArSdDVAR1.FctOpSt.q	CCI016_01LD_Plant/VArSdDVAR1.FctOpSt.q	bit_string	0000000000000 [NONE]	Dom = CCI016_01LD_Plant Var = VArSdDVAR1$ST$FctOpSt$q	
+CCI016_01LD_Plant/VArSdDVAR1.FctOpSt.t	CCI016_01LD_Plant/VArSdDVAR1.FctOpSt.t	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = VArSdDVAR1$ST$FctOpSt$t	
+CCI016_01LD_Plant/VArVDECP1.NamPlt.vendor	CCI016_01LD_Plant/VArVDECP1.NamPlt.vendor	visible_string		Dom = CCI016_01LD_Plant Var = VArVDECP1$DC$NamPlt$vendor	
+CCI016_01LD_Plant/VArVDECP1.NamPlt.swRev	CCI016_01LD_Plant/VArVDECP1.NamPlt.swRev	visible_string		Dom = CCI016_01LD_Plant Var = VArVDECP1$DC$NamPlt$swRev	
+CCI016_01LD_Plant/VArVDECP1.NamPlt.configRev	CCI016_01LD_Plant/VArVDECP1.NamPlt.configRev	visible_string		Dom = CCI016_01LD_Plant Var = VArVDECP1$DC$NamPlt$configRev	
+CCI016_01LD_Plant/VArVDECP1.NamPlt.ldNs	CCI016_01LD_Plant/VArVDECP1.NamPlt.ldNs	visible_string		Dom = CCI016_01LD_Plant Var = VArVDECP1$EX$NamPlt$ldNs	
+CCI016_01LD_Plant/VArVDECP1.NamPlt.lnNs	CCI016_01LD_Plant/VArVDECP1.NamPlt.lnNs	visible_string	IEC61850-7-420:2019A	Dom = CCI016_01LD_Plant Var = VArVDECP1$EX$NamPlt$lnNs	
+CCI016_01LD_Plant/VArVDECP1.VRef.setMag.f	CCI016_01LD_Plant/VArVDECP1.VRef.setMag.f	floating_point	0	Dom = CCI016_01LD_Plant Var = VArVDECP1$SP$VRef$setMag$f	
+CCI016_01LD_Plant/VArVDECP1.VMax.setMag.f	CCI016_01LD_Plant/VArVDECP1.VMax.setMag.f	floating_point	0	Dom = CCI016_01LD_Plant Var = VArVDECP1$SP$VMax$setMag$f	
+CCI016_01LD_Plant/VArVDECP1.VMin.setMag.f	CCI016_01LD_Plant/VArVDECP1.VMin.setMag.f	floating_point	0	Dom = CCI016_01LD_Plant Var = VArVDECP1$SP$VMin$setMag$f	
+CCI016_01LD_Plant/VArVDECP1.RefFrm.setVal	CCI016_01LD_Plant/VArVDECP1.RefFrm.setVal	boolean	False	Dom = CCI016_01LD_Plant Var = VArVDECP1$SP$RefFrm$setVal	
+CCI016_01LD_Plant/VArVDECP1.ElcRefId.setVal	CCI016_01LD_Plant/VArVDECP1.ElcRefId.setVal	visible_string		Dom = CCI016_01LD_Plant Var = VArVDECP1$SP$ElcRefId$setVal	
+CCI016_01LD_Plant/VArVDECP1.Beh.stVal	CCI016_01LD_Plant/VArVDECP1.Beh.stVal	integer	5	Dom = CCI016_01LD_Plant Var = VArVDECP1$ST$Beh$stVal	
+CCI016_01LD_Plant/VArVDECP1.Beh.q	CCI016_01LD_Plant/VArVDECP1.Beh.q	bit_string	0000000000000 [NONE]	Dom = CCI016_01LD_Plant Var = VArVDECP1$ST$Beh$q	
+CCI016_01LD_Plant/VArVDECP1.Beh.t	CCI016_01LD_Plant/VArVDECP1.Beh.t	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = VArVDECP1$ST$Beh$t	
+CCI016_01LD_Plant/VArVDECP2.NamPlt.vendor	CCI016_01LD_Plant/VArVDECP2.NamPlt.vendor	visible_string		Dom = CCI016_01LD_Plant Var = VArVDECP2$DC$NamPlt$vendor	
+CCI016_01LD_Plant/VArVDECP2.NamPlt.swRev	CCI016_01LD_Plant/VArVDECP2.NamPlt.swRev	visible_string		Dom = CCI016_01LD_Plant Var = VArVDECP2$DC$NamPlt$swRev	
+CCI016_01LD_Plant/VArVDECP2.NamPlt.configRev	CCI016_01LD_Plant/VArVDECP2.NamPlt.configRev	visible_string		Dom = CCI016_01LD_Plant Var = VArVDECP2$DC$NamPlt$configRev	
+CCI016_01LD_Plant/VArVDECP2.NamPlt.ldNs	CCI016_01LD_Plant/VArVDECP2.NamPlt.ldNs	visible_string		Dom = CCI016_01LD_Plant Var = VArVDECP2$EX$NamPlt$ldNs	
+CCI016_01LD_Plant/VArVDECP2.NamPlt.lnNs	CCI016_01LD_Plant/VArVDECP2.NamPlt.lnNs	visible_string	IEC61850-7-420:2019A	Dom = CCI016_01LD_Plant Var = VArVDECP2$EX$NamPlt$lnNs	
+CCI016_01LD_Plant/VArVDECP2.VRef.setMag.f	CCI016_01LD_Plant/VArVDECP2.VRef.setMag.f	floating_point	0	Dom = CCI016_01LD_Plant Var = VArVDECP2$SP$VRef$setMag$f	
+CCI016_01LD_Plant/VArVDECP2.VMax.setMag.f	CCI016_01LD_Plant/VArVDECP2.VMax.setMag.f	floating_point	0	Dom = CCI016_01LD_Plant Var = VArVDECP2$SP$VMax$setMag$f	
+CCI016_01LD_Plant/VArVDECP2.VMin.setMag.f	CCI016_01LD_Plant/VArVDECP2.VMin.setMag.f	floating_point	0	Dom = CCI016_01LD_Plant Var = VArVDECP2$SP$VMin$setMag$f	
+CCI016_01LD_Plant/VArVDECP2.RefFrm.setVal	CCI016_01LD_Plant/VArVDECP2.RefFrm.setVal	boolean	False	Dom = CCI016_01LD_Plant Var = VArVDECP2$SP$RefFrm$setVal	
+CCI016_01LD_Plant/VArVDECP2.ElcRefId.setVal	CCI016_01LD_Plant/VArVDECP2.ElcRefId.setVal	visible_string		Dom = CCI016_01LD_Plant Var = VArVDECP2$SP$ElcRefId$setVal	
+CCI016_01LD_Plant/VArVDECP2.Beh.stVal	CCI016_01LD_Plant/VArVDECP2.Beh.stVal	integer	5	Dom = CCI016_01LD_Plant Var = VArVDECP2$ST$Beh$stVal	
+CCI016_01LD_Plant/VArVDECP2.Beh.q	CCI016_01LD_Plant/VArVDECP2.Beh.q	bit_string	0000000000000 [NONE]	Dom = CCI016_01LD_Plant Var = VArVDECP2$ST$Beh$q	
+CCI016_01LD_Plant/VArVDECP2.Beh.t	CCI016_01LD_Plant/VArVDECP2.Beh.t	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = VArVDECP2$ST$Beh$t	
+CCI016_01LD_Plant/VArVDPMC1.WSpt1.ctlModel	CCI016_01LD_Plant/VArVDPMC1.WSpt1.ctlModel	integer	4	Dom = CCI016_01LD_Plant Var = VArVDPMC1$CF$WSpt1$ctlModel	
+CCI016_01LD_Plant/VArVDPMC1.WSpt1.Cancel.ctlVal.f	CCI016_01LD_Plant/VArVDPMC1.WSpt1.Cancel.ctlVal.f	floating_point	0	Dom = CCI016_01LD_Plant Var = VArVDPMC1$CO$WSpt1$Cancel$ctlVal$f	
+CCI016_01LD_Plant/VArVDPMC1.WSpt1.Cancel.origin.orCat	CCI016_01LD_Plant/VArVDPMC1.WSpt1.Cancel.origin.orCat	integer	0	Dom = CCI016_01LD_Plant Var = VArVDPMC1$CO$WSpt1$Cancel$origin$orCat	
+CCI016_01LD_Plant/VArVDPMC1.WSpt1.Cancel.origin.orIdent	CCI016_01LD_Plant/VArVDPMC1.WSpt1.Cancel.origin.orIdent	octet_string		Dom = CCI016_01LD_Plant Var = VArVDPMC1$CO$WSpt1$Cancel$origin$orIdent	
+CCI016_01LD_Plant/VArVDPMC1.WSpt1.Cancel.ctlNum	CCI016_01LD_Plant/VArVDPMC1.WSpt1.Cancel.ctlNum	unsigned	0	Dom = CCI016_01LD_Plant Var = VArVDPMC1$CO$WSpt1$Cancel$ctlNum	
+CCI016_01LD_Plant/VArVDPMC1.WSpt1.Cancel.T	CCI016_01LD_Plant/VArVDPMC1.WSpt1.Cancel.T	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = VArVDPMC1$CO$WSpt1$Cancel$T	
+CCI016_01LD_Plant/VArVDPMC1.WSpt1.Cancel.Test	CCI016_01LD_Plant/VArVDPMC1.WSpt1.Cancel.Test	boolean	False	Dom = CCI016_01LD_Plant Var = VArVDPMC1$CO$WSpt1$Cancel$Test	
+CCI016_01LD_Plant/VArVDPMC1.WSpt1.Oper.ctlVal.f	CCI016_01LD_Plant/VArVDPMC1.WSpt1.Oper.ctlVal.f	floating_point	0	Dom = CCI016_01LD_Plant Var = VArVDPMC1$CO$WSpt1$Oper$ctlVal$f	
+CCI016_01LD_Plant/VArVDPMC1.WSpt1.Oper.origin.orCat	CCI016_01LD_Plant/VArVDPMC1.WSpt1.Oper.origin.orCat	integer	0	Dom = CCI016_01LD_Plant Var = VArVDPMC1$CO$WSpt1$Oper$origin$orCat	
+CCI016_01LD_Plant/VArVDPMC1.WSpt1.Oper.origin.orIdent	CCI016_01LD_Plant/VArVDPMC1.WSpt1.Oper.origin.orIdent	octet_string		Dom = CCI016_01LD_Plant Var = VArVDPMC1$CO$WSpt1$Oper$origin$orIdent	
+CCI016_01LD_Plant/VArVDPMC1.WSpt1.Oper.ctlNum	CCI016_01LD_Plant/VArVDPMC1.WSpt1.Oper.ctlNum	unsigned	0	Dom = CCI016_01LD_Plant Var = VArVDPMC1$CO$WSpt1$Oper$ctlNum	
+CCI016_01LD_Plant/VArVDPMC1.WSpt1.Oper.T	CCI016_01LD_Plant/VArVDPMC1.WSpt1.Oper.T	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = VArVDPMC1$CO$WSpt1$Oper$T	
+CCI016_01LD_Plant/VArVDPMC1.WSpt1.Oper.Test	CCI016_01LD_Plant/VArVDPMC1.WSpt1.Oper.Test	boolean	False	Dom = CCI016_01LD_Plant Var = VArVDPMC1$CO$WSpt1$Oper$Test	
+CCI016_01LD_Plant/VArVDPMC1.WSpt1.Oper.Check	CCI016_01LD_Plant/VArVDPMC1.WSpt1.Oper.Check	bit_string	00	Dom = CCI016_01LD_Plant Var = VArVDPMC1$CO$WSpt1$Oper$Check	
+CCI016_01LD_Plant/VArVDPMC1.WSpt1.SBOw.ctlVal.f	CCI016_01LD_Plant/VArVDPMC1.WSpt1.SBOw.ctlVal.f	floating_point	0	Dom = CCI016_01LD_Plant Var = VArVDPMC1$CO$WSpt1$SBOw$ctlVal$f	
+CCI016_01LD_Plant/VArVDPMC1.WSpt1.SBOw.origin.orCat	CCI016_01LD_Plant/VArVDPMC1.WSpt1.SBOw.origin.orCat	integer	0	Dom = CCI016_01LD_Plant Var = VArVDPMC1$CO$WSpt1$SBOw$origin$orCat	
+CCI016_01LD_Plant/VArVDPMC1.WSpt1.SBOw.origin.orIdent	CCI016_01LD_Plant/VArVDPMC1.WSpt1.SBOw.origin.orIdent	octet_string		Dom = CCI016_01LD_Plant Var = VArVDPMC1$CO$WSpt1$SBOw$origin$orIdent	
+CCI016_01LD_Plant/VArVDPMC1.WSpt1.SBOw.ctlNum	CCI016_01LD_Plant/VArVDPMC1.WSpt1.SBOw.ctlNum	unsigned	0	Dom = CCI016_01LD_Plant Var = VArVDPMC1$CO$WSpt1$SBOw$ctlNum	
+CCI016_01LD_Plant/VArVDPMC1.WSpt1.SBOw.T	CCI016_01LD_Plant/VArVDPMC1.WSpt1.SBOw.T	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = VArVDPMC1$CO$WSpt1$SBOw$T	
+CCI016_01LD_Plant/VArVDPMC1.WSpt1.SBOw.Test	CCI016_01LD_Plant/VArVDPMC1.WSpt1.SBOw.Test	boolean	False	Dom = CCI016_01LD_Plant Var = VArVDPMC1$CO$WSpt1$SBOw$Test	
+CCI016_01LD_Plant/VArVDPMC1.WSpt1.SBOw.Check	CCI016_01LD_Plant/VArVDPMC1.WSpt1.SBOw.Check	bit_string	00	Dom = CCI016_01LD_Plant Var = VArVDPMC1$CO$WSpt1$SBOw$Check	
+CCI016_01LD_Plant/VArVDPMC1.WSpt1.mxVal.f	CCI016_01LD_Plant/VArVDPMC1.WSpt1.mxVal.f	floating_point	0	Dom = CCI016_01LD_Plant Var = VArVDPMC1$MX$WSpt1$mxVal$f	
+CCI016_01LD_Plant/VArVDPMC1.WSpt1.q	CCI016_01LD_Plant/VArVDPMC1.WSpt1.q	bit_string	0000000000000 [NONE]	Dom = CCI016_01LD_Plant Var = VArVDPMC1$MX$WSpt1$q	
+CCI016_01LD_Plant/VArVDPMC1.WSpt1.t	CCI016_01LD_Plant/VArVDPMC1.WSpt1.t	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = VArVDPMC1$MX$WSpt1$t	
+CCI016_01LD_Plant/VArVDPMC1.NamPlt.vendor	CCI016_01LD_Plant/VArVDPMC1.NamPlt.vendor	visible_string		Dom = CCI016_01LD_Plant Var = VArVDPMC1$DC$NamPlt$vendor	
+CCI016_01LD_Plant/VArVDPMC1.NamPlt.swRev	CCI016_01LD_Plant/VArVDPMC1.NamPlt.swRev	visible_string		Dom = CCI016_01LD_Plant Var = VArVDPMC1$DC$NamPlt$swRev	
+CCI016_01LD_Plant/VArVDPMC1.NamPlt.configRev	CCI016_01LD_Plant/VArVDPMC1.NamPlt.configRev	visible_string		Dom = CCI016_01LD_Plant Var = VArVDPMC1$DC$NamPlt$configRev	
+CCI016_01LD_Plant/VArVDPMC1.NamPlt.ldNs	CCI016_01LD_Plant/VArVDPMC1.NamPlt.ldNs	visible_string		Dom = CCI016_01LD_Plant Var = VArVDPMC1$EX$NamPlt$ldNs	
+CCI016_01LD_Plant/VArVDPMC1.NamPlt.lnNs	CCI016_01LD_Plant/VArVDPMC1.NamPlt.lnNs	visible_string	IEC61850-7-420:2019A	Dom = CCI016_01LD_Plant Var = VArVDPMC1$EX$NamPlt$lnNs	
+CCI016_01LD_Plant/VArVDPMC1.DERRef.setSrcRef	CCI016_01LD_Plant/VArVDPMC1.DERRef.setSrcRef	visible_string		Dom = CCI016_01LD_Plant Var = VArVDPMC1$SP$DERRef$setSrcRef	
+CCI016_01LD_Plant/VArVDPMC1.OutEcpRef.setSrcRef	CCI016_01LD_Plant/VArVDPMC1.OutEcpRef.setSrcRef	visible_string		Dom = CCI016_01LD_Plant Var = VArVDPMC1$SP$OutEcpRef$setSrcRef	
+CCI016_01LD_Plant/VArVDPMC1.Beh.stVal	CCI016_01LD_Plant/VArVDPMC1.Beh.stVal	integer	5	Dom = CCI016_01LD_Plant Var = VArVDPMC1$ST$Beh$stVal	
+CCI016_01LD_Plant/VArVDPMC1.Beh.q	CCI016_01LD_Plant/VArVDPMC1.Beh.q	bit_string	0000000000000 [NONE]	Dom = CCI016_01LD_Plant Var = VArVDPMC1$ST$Beh$q	
+CCI016_01LD_Plant/VArVDPMC1.Beh.t	CCI016_01LD_Plant/VArVDPMC1.Beh.t	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = VArVDPMC1$ST$Beh$t	
+CCI016_01LD_Plant/VArVDPMC2.WSpt1.ctlModel	CCI016_01LD_Plant/VArVDPMC2.WSpt1.ctlModel	integer	4	Dom = CCI016_01LD_Plant Var = VArVDPMC2$CF$WSpt1$ctlModel	
+CCI016_01LD_Plant/VArVDPMC2.WSpt1.Cancel.ctlVal.f	CCI016_01LD_Plant/VArVDPMC2.WSpt1.Cancel.ctlVal.f	floating_point	0	Dom = CCI016_01LD_Plant Var = VArVDPMC2$CO$WSpt1$Cancel$ctlVal$f	
+CCI016_01LD_Plant/VArVDPMC2.WSpt1.Cancel.origin.orCat	CCI016_01LD_Plant/VArVDPMC2.WSpt1.Cancel.origin.orCat	integer	0	Dom = CCI016_01LD_Plant Var = VArVDPMC2$CO$WSpt1$Cancel$origin$orCat	
+CCI016_01LD_Plant/VArVDPMC2.WSpt1.Cancel.origin.orIdent	CCI016_01LD_Plant/VArVDPMC2.WSpt1.Cancel.origin.orIdent	octet_string		Dom = CCI016_01LD_Plant Var = VArVDPMC2$CO$WSpt1$Cancel$origin$orIdent	
+CCI016_01LD_Plant/VArVDPMC2.WSpt1.Cancel.ctlNum	CCI016_01LD_Plant/VArVDPMC2.WSpt1.Cancel.ctlNum	unsigned	0	Dom = CCI016_01LD_Plant Var = VArVDPMC2$CO$WSpt1$Cancel$ctlNum	
+CCI016_01LD_Plant/VArVDPMC2.WSpt1.Cancel.T	CCI016_01LD_Plant/VArVDPMC2.WSpt1.Cancel.T	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = VArVDPMC2$CO$WSpt1$Cancel$T	
+CCI016_01LD_Plant/VArVDPMC2.WSpt1.Cancel.Test	CCI016_01LD_Plant/VArVDPMC2.WSpt1.Cancel.Test	boolean	False	Dom = CCI016_01LD_Plant Var = VArVDPMC2$CO$WSpt1$Cancel$Test	
+CCI016_01LD_Plant/VArVDPMC2.WSpt1.Oper.ctlVal.f	CCI016_01LD_Plant/VArVDPMC2.WSpt1.Oper.ctlVal.f	floating_point	0	Dom = CCI016_01LD_Plant Var = VArVDPMC2$CO$WSpt1$Oper$ctlVal$f	
+CCI016_01LD_Plant/VArVDPMC2.WSpt1.Oper.origin.orCat	CCI016_01LD_Plant/VArVDPMC2.WSpt1.Oper.origin.orCat	integer	0	Dom = CCI016_01LD_Plant Var = VArVDPMC2$CO$WSpt1$Oper$origin$orCat	
+CCI016_01LD_Plant/VArVDPMC2.WSpt1.Oper.origin.orIdent	CCI016_01LD_Plant/VArVDPMC2.WSpt1.Oper.origin.orIdent	octet_string		Dom = CCI016_01LD_Plant Var = VArVDPMC2$CO$WSpt1$Oper$origin$orIdent	
+CCI016_01LD_Plant/VArVDPMC2.WSpt1.Oper.ctlNum	CCI016_01LD_Plant/VArVDPMC2.WSpt1.Oper.ctlNum	unsigned	0	Dom = CCI016_01LD_Plant Var = VArVDPMC2$CO$WSpt1$Oper$ctlNum	
+CCI016_01LD_Plant/VArVDPMC2.WSpt1.Oper.T	CCI016_01LD_Plant/VArVDPMC2.WSpt1.Oper.T	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = VArVDPMC2$CO$WSpt1$Oper$T	
+CCI016_01LD_Plant/VArVDPMC2.WSpt1.Oper.Test	CCI016_01LD_Plant/VArVDPMC2.WSpt1.Oper.Test	boolean	False	Dom = CCI016_01LD_Plant Var = VArVDPMC2$CO$WSpt1$Oper$Test	
+CCI016_01LD_Plant/VArVDPMC2.WSpt1.Oper.Check	CCI016_01LD_Plant/VArVDPMC2.WSpt1.Oper.Check	bit_string	00	Dom = CCI016_01LD_Plant Var = VArVDPMC2$CO$WSpt1$Oper$Check	
+CCI016_01LD_Plant/VArVDPMC2.WSpt1.SBOw.ctlVal.f	CCI016_01LD_Plant/VArVDPMC2.WSpt1.SBOw.ctlVal.f	floating_point	0	Dom = CCI016_01LD_Plant Var = VArVDPMC2$CO$WSpt1$SBOw$ctlVal$f	
+CCI016_01LD_Plant/VArVDPMC2.WSpt1.SBOw.origin.orCat	CCI016_01LD_Plant/VArVDPMC2.WSpt1.SBOw.origin.orCat	integer	0	Dom = CCI016_01LD_Plant Var = VArVDPMC2$CO$WSpt1$SBOw$origin$orCat	
+CCI016_01LD_Plant/VArVDPMC2.WSpt1.SBOw.origin.orIdent	CCI016_01LD_Plant/VArVDPMC2.WSpt1.SBOw.origin.orIdent	octet_string		Dom = CCI016_01LD_Plant Var = VArVDPMC2$CO$WSpt1$SBOw$origin$orIdent	
+CCI016_01LD_Plant/VArVDPMC2.WSpt1.SBOw.ctlNum	CCI016_01LD_Plant/VArVDPMC2.WSpt1.SBOw.ctlNum	unsigned	0	Dom = CCI016_01LD_Plant Var = VArVDPMC2$CO$WSpt1$SBOw$ctlNum	
+CCI016_01LD_Plant/VArVDPMC2.WSpt1.SBOw.T	CCI016_01LD_Plant/VArVDPMC2.WSpt1.SBOw.T	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = VArVDPMC2$CO$WSpt1$SBOw$T	
+CCI016_01LD_Plant/VArVDPMC2.WSpt1.SBOw.Test	CCI016_01LD_Plant/VArVDPMC2.WSpt1.SBOw.Test	boolean	False	Dom = CCI016_01LD_Plant Var = VArVDPMC2$CO$WSpt1$SBOw$Test	
+CCI016_01LD_Plant/VArVDPMC2.WSpt1.SBOw.Check	CCI016_01LD_Plant/VArVDPMC2.WSpt1.SBOw.Check	bit_string	00	Dom = CCI016_01LD_Plant Var = VArVDPMC2$CO$WSpt1$SBOw$Check	
+CCI016_01LD_Plant/VArVDPMC2.WSpt1.mxVal.f	CCI016_01LD_Plant/VArVDPMC2.WSpt1.mxVal.f	floating_point	0	Dom = CCI016_01LD_Plant Var = VArVDPMC2$MX$WSpt1$mxVal$f	
+CCI016_01LD_Plant/VArVDPMC2.WSpt1.q	CCI016_01LD_Plant/VArVDPMC2.WSpt1.q	bit_string	0000000000000 [NONE]	Dom = CCI016_01LD_Plant Var = VArVDPMC2$MX$WSpt1$q	
+CCI016_01LD_Plant/VArVDPMC2.WSpt1.t	CCI016_01LD_Plant/VArVDPMC2.WSpt1.t	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = VArVDPMC2$MX$WSpt1$t	
+CCI016_01LD_Plant/VArVDPMC2.NamPlt.vendor	CCI016_01LD_Plant/VArVDPMC2.NamPlt.vendor	visible_string		Dom = CCI016_01LD_Plant Var = VArVDPMC2$DC$NamPlt$vendor	
+CCI016_01LD_Plant/VArVDPMC2.NamPlt.swRev	CCI016_01LD_Plant/VArVDPMC2.NamPlt.swRev	visible_string		Dom = CCI016_01LD_Plant Var = VArVDPMC2$DC$NamPlt$swRev	
+CCI016_01LD_Plant/VArVDPMC2.NamPlt.configRev	CCI016_01LD_Plant/VArVDPMC2.NamPlt.configRev	visible_string		Dom = CCI016_01LD_Plant Var = VArVDPMC2$DC$NamPlt$configRev	
+CCI016_01LD_Plant/VArVDPMC2.NamPlt.ldNs	CCI016_01LD_Plant/VArVDPMC2.NamPlt.ldNs	visible_string		Dom = CCI016_01LD_Plant Var = VArVDPMC2$EX$NamPlt$ldNs	
+CCI016_01LD_Plant/VArVDPMC2.NamPlt.lnNs	CCI016_01LD_Plant/VArVDPMC2.NamPlt.lnNs	visible_string	IEC61850-7-420:2019A	Dom = CCI016_01LD_Plant Var = VArVDPMC2$EX$NamPlt$lnNs	
+CCI016_01LD_Plant/VArVDPMC2.DERRef.setSrcRef	CCI016_01LD_Plant/VArVDPMC2.DERRef.setSrcRef	visible_string		Dom = CCI016_01LD_Plant Var = VArVDPMC2$SP$DERRef$setSrcRef	
+CCI016_01LD_Plant/VArVDPMC2.OutEcpRef.setSrcRef	CCI016_01LD_Plant/VArVDPMC2.OutEcpRef.setSrcRef	visible_string		Dom = CCI016_01LD_Plant Var = VArVDPMC2$SP$OutEcpRef$setSrcRef	
+CCI016_01LD_Plant/VArVDPMC2.Beh.stVal	CCI016_01LD_Plant/VArVDPMC2.Beh.stVal	integer	5	Dom = CCI016_01LD_Plant Var = VArVDPMC2$ST$Beh$stVal	
+CCI016_01LD_Plant/VArVDPMC2.Beh.q	CCI016_01LD_Plant/VArVDPMC2.Beh.q	bit_string	0000000000000 [NONE]	Dom = CCI016_01LD_Plant Var = VArVDPMC2$ST$Beh$q	
+CCI016_01LD_Plant/VArVDPMC2.Beh.t	CCI016_01LD_Plant/VArVDPMC2.Beh.t	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = VArVDPMC2$ST$Beh$t	
+CCI016_01LD_Plant/VArVDVVR1.VArTgtSptPct.ctlModel	CCI016_01LD_Plant/VArVDVVR1.VArTgtSptPct.ctlModel	integer	0	Dom = CCI016_01LD_Plant Var = VArVDVVR1$CF$VArTgtSptPct$ctlModel	
+CCI016_01LD_Plant/VArVDVVR1.VArTgtSptPct.Cancel.ctlVal.f	CCI016_01LD_Plant/VArVDVVR1.VArTgtSptPct.Cancel.ctlVal.f	floating_point	0	Dom = CCI016_01LD_Plant Var = VArVDVVR1$CO$VArTgtSptPct$Cancel$ctlVal$f	
+CCI016_01LD_Plant/VArVDVVR1.VArTgtSptPct.Cancel.origin.orCat	CCI016_01LD_Plant/VArVDVVR1.VArTgtSptPct.Cancel.origin.orCat	integer	0	Dom = CCI016_01LD_Plant Var = VArVDVVR1$CO$VArTgtSptPct$Cancel$origin$orCat	
+CCI016_01LD_Plant/VArVDVVR1.VArTgtSptPct.Cancel.origin.orIdent	CCI016_01LD_Plant/VArVDVVR1.VArTgtSptPct.Cancel.origin.orIdent	octet_string		Dom = CCI016_01LD_Plant Var = VArVDVVR1$CO$VArTgtSptPct$Cancel$origin$orIdent	
+CCI016_01LD_Plant/VArVDVVR1.VArTgtSptPct.Cancel.ctlNum	CCI016_01LD_Plant/VArVDVVR1.VArTgtSptPct.Cancel.ctlNum	unsigned	0	Dom = CCI016_01LD_Plant Var = VArVDVVR1$CO$VArTgtSptPct$Cancel$ctlNum	
+CCI016_01LD_Plant/VArVDVVR1.VArTgtSptPct.Cancel.T	CCI016_01LD_Plant/VArVDVVR1.VArTgtSptPct.Cancel.T	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = VArVDVVR1$CO$VArTgtSptPct$Cancel$T	
+CCI016_01LD_Plant/VArVDVVR1.VArTgtSptPct.Cancel.Test	CCI016_01LD_Plant/VArVDVVR1.VArTgtSptPct.Cancel.Test	boolean	False	Dom = CCI016_01LD_Plant Var = VArVDVVR1$CO$VArTgtSptPct$Cancel$Test	
+CCI016_01LD_Plant/VArVDVVR1.VArTgtSptPct.Oper.ctlVal.f	CCI016_01LD_Plant/VArVDVVR1.VArTgtSptPct.Oper.ctlVal.f	floating_point	0	Dom = CCI016_01LD_Plant Var = VArVDVVR1$CO$VArTgtSptPct$Oper$ctlVal$f	
+CCI016_01LD_Plant/VArVDVVR1.VArTgtSptPct.Oper.origin.orCat	CCI016_01LD_Plant/VArVDVVR1.VArTgtSptPct.Oper.origin.orCat	integer	0	Dom = CCI016_01LD_Plant Var = VArVDVVR1$CO$VArTgtSptPct$Oper$origin$orCat	
+CCI016_01LD_Plant/VArVDVVR1.VArTgtSptPct.Oper.origin.orIdent	CCI016_01LD_Plant/VArVDVVR1.VArTgtSptPct.Oper.origin.orIdent	octet_string		Dom = CCI016_01LD_Plant Var = VArVDVVR1$CO$VArTgtSptPct$Oper$origin$orIdent	
+CCI016_01LD_Plant/VArVDVVR1.VArTgtSptPct.Oper.ctlNum	CCI016_01LD_Plant/VArVDVVR1.VArTgtSptPct.Oper.ctlNum	unsigned	0	Dom = CCI016_01LD_Plant Var = VArVDVVR1$CO$VArTgtSptPct$Oper$ctlNum	
+CCI016_01LD_Plant/VArVDVVR1.VArTgtSptPct.Oper.T	CCI016_01LD_Plant/VArVDVVR1.VArTgtSptPct.Oper.T	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = VArVDVVR1$CO$VArTgtSptPct$Oper$T	
+CCI016_01LD_Plant/VArVDVVR1.VArTgtSptPct.Oper.Test	CCI016_01LD_Plant/VArVDVVR1.VArTgtSptPct.Oper.Test	boolean	False	Dom = CCI016_01LD_Plant Var = VArVDVVR1$CO$VArTgtSptPct$Oper$Test	
+CCI016_01LD_Plant/VArVDVVR1.VArTgtSptPct.Oper.Check	CCI016_01LD_Plant/VArVDVVR1.VArTgtSptPct.Oper.Check	bit_string	00	Dom = CCI016_01LD_Plant Var = VArVDVVR1$CO$VArTgtSptPct$Oper$Check	
+CCI016_01LD_Plant/VArVDVVR1.VArTgtSptPct.SBOw.ctlVal.f	CCI016_01LD_Plant/VArVDVVR1.VArTgtSptPct.SBOw.ctlVal.f	floating_point	0	Dom = CCI016_01LD_Plant Var = VArVDVVR1$CO$VArTgtSptPct$SBOw$ctlVal$f	
+CCI016_01LD_Plant/VArVDVVR1.VArTgtSptPct.SBOw.origin.orCat	CCI016_01LD_Plant/VArVDVVR1.VArTgtSptPct.SBOw.origin.orCat	integer	0	Dom = CCI016_01LD_Plant Var = VArVDVVR1$CO$VArTgtSptPct$SBOw$origin$orCat	
+CCI016_01LD_Plant/VArVDVVR1.VArTgtSptPct.SBOw.origin.orIdent	CCI016_01LD_Plant/VArVDVVR1.VArTgtSptPct.SBOw.origin.orIdent	octet_string		Dom = CCI016_01LD_Plant Var = VArVDVVR1$CO$VArTgtSptPct$SBOw$origin$orIdent	
+CCI016_01LD_Plant/VArVDVVR1.VArTgtSptPct.SBOw.ctlNum	CCI016_01LD_Plant/VArVDVVR1.VArTgtSptPct.SBOw.ctlNum	unsigned	0	Dom = CCI016_01LD_Plant Var = VArVDVVR1$CO$VArTgtSptPct$SBOw$ctlNum	
+CCI016_01LD_Plant/VArVDVVR1.VArTgtSptPct.SBOw.T	CCI016_01LD_Plant/VArVDVVR1.VArTgtSptPct.SBOw.T	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = VArVDVVR1$CO$VArTgtSptPct$SBOw$T	
+CCI016_01LD_Plant/VArVDVVR1.VArTgtSptPct.SBOw.Test	CCI016_01LD_Plant/VArVDVVR1.VArTgtSptPct.SBOw.Test	boolean	False	Dom = CCI016_01LD_Plant Var = VArVDVVR1$CO$VArTgtSptPct$SBOw$Test	
+CCI016_01LD_Plant/VArVDVVR1.VArTgtSptPct.SBOw.Check	CCI016_01LD_Plant/VArVDVVR1.VArTgtSptPct.SBOw.Check	bit_string	00	Dom = CCI016_01LD_Plant Var = VArVDVVR1$CO$VArTgtSptPct$SBOw$Check	
+CCI016_01LD_Plant/VArVDVVR1.VArTgtSptPct.mxVal.f	CCI016_01LD_Plant/VArVDVVR1.VArTgtSptPct.mxVal.f	floating_point	0	Dom = CCI016_01LD_Plant Var = VArVDVVR1$MX$VArTgtSptPct$mxVal$f	
+CCI016_01LD_Plant/VArVDVVR1.VArTgtSptPct.q	CCI016_01LD_Plant/VArVDVVR1.VArTgtSptPct.q	bit_string	0000000000000 [NONE]	Dom = CCI016_01LD_Plant Var = VArVDVVR1$MX$VArTgtSptPct$q	
+CCI016_01LD_Plant/VArVDVVR1.VArTgtSptPct.t	CCI016_01LD_Plant/VArVDVVR1.VArTgtSptPct.t	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = VArVDVVR1$MX$VArTgtSptPct$t	
+CCI016_01LD_Plant/VArVDVVR1.Mod.ctlModel	CCI016_01LD_Plant/VArVDVVR1.Mod.ctlModel	integer	4	Dom = CCI016_01LD_Plant Var = VArVDVVR1$CF$Mod$ctlModel	
+CCI016_01LD_Plant/VArVDVVR1.Mod.SBOw.ctlVal	CCI016_01LD_Plant/VArVDVVR1.Mod.SBOw.ctlVal	integer	0	Dom = CCI016_01LD_Plant Var = VArVDVVR1$CO$Mod$SBOw$ctlVal	
+CCI016_01LD_Plant/VArVDVVR1.Mod.SBOw.origin.orCat	CCI016_01LD_Plant/VArVDVVR1.Mod.SBOw.origin.orCat	integer	0	Dom = CCI016_01LD_Plant Var = VArVDVVR1$CO$Mod$SBOw$origin$orCat	
+CCI016_01LD_Plant/VArVDVVR1.Mod.SBOw.origin.orIdent	CCI016_01LD_Plant/VArVDVVR1.Mod.SBOw.origin.orIdent	octet_string		Dom = CCI016_01LD_Plant Var = VArVDVVR1$CO$Mod$SBOw$origin$orIdent	
+CCI016_01LD_Plant/VArVDVVR1.Mod.SBOw.ctlNum	CCI016_01LD_Plant/VArVDVVR1.Mod.SBOw.ctlNum	unsigned	0	Dom = CCI016_01LD_Plant Var = VArVDVVR1$CO$Mod$SBOw$ctlNum	
+CCI016_01LD_Plant/VArVDVVR1.Mod.SBOw.T	CCI016_01LD_Plant/VArVDVVR1.Mod.SBOw.T	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = VArVDVVR1$CO$Mod$SBOw$T	
+CCI016_01LD_Plant/VArVDVVR1.Mod.SBOw.Test	CCI016_01LD_Plant/VArVDVVR1.Mod.SBOw.Test	boolean	False	Dom = CCI016_01LD_Plant Var = VArVDVVR1$CO$Mod$SBOw$Test	
+CCI016_01LD_Plant/VArVDVVR1.Mod.SBOw.Check	CCI016_01LD_Plant/VArVDVVR1.Mod.SBOw.Check	bit_string	00	Dom = CCI016_01LD_Plant Var = VArVDVVR1$CO$Mod$SBOw$Check	
+CCI016_01LD_Plant/VArVDVVR1.Mod.Oper.ctlVal	CCI016_01LD_Plant/VArVDVVR1.Mod.Oper.ctlVal	integer	0	Dom = CCI016_01LD_Plant Var = VArVDVVR1$CO$Mod$Oper$ctlVal	
+CCI016_01LD_Plant/VArVDVVR1.Mod.Oper.origin.orCat	CCI016_01LD_Plant/VArVDVVR1.Mod.Oper.origin.orCat	integer	0	Dom = CCI016_01LD_Plant Var = VArVDVVR1$CO$Mod$Oper$origin$orCat	
+CCI016_01LD_Plant/VArVDVVR1.Mod.Oper.origin.orIdent	CCI016_01LD_Plant/VArVDVVR1.Mod.Oper.origin.orIdent	octet_string		Dom = CCI016_01LD_Plant Var = VArVDVVR1$CO$Mod$Oper$origin$orIdent	
+CCI016_01LD_Plant/VArVDVVR1.Mod.Oper.ctlNum	CCI016_01LD_Plant/VArVDVVR1.Mod.Oper.ctlNum	unsigned	0	Dom = CCI016_01LD_Plant Var = VArVDVVR1$CO$Mod$Oper$ctlNum	
+CCI016_01LD_Plant/VArVDVVR1.Mod.Oper.T	CCI016_01LD_Plant/VArVDVVR1.Mod.Oper.T	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = VArVDVVR1$CO$Mod$Oper$T	
+CCI016_01LD_Plant/VArVDVVR1.Mod.Oper.Test	CCI016_01LD_Plant/VArVDVVR1.Mod.Oper.Test	boolean	False	Dom = CCI016_01LD_Plant Var = VArVDVVR1$CO$Mod$Oper$Test	
+CCI016_01LD_Plant/VArVDVVR1.Mod.Oper.Check	CCI016_01LD_Plant/VArVDVVR1.Mod.Oper.Check	bit_string	00	Dom = CCI016_01LD_Plant Var = VArVDVVR1$CO$Mod$Oper$Check	
+CCI016_01LD_Plant/VArVDVVR1.Mod.Cancel.ctlVal	CCI016_01LD_Plant/VArVDVVR1.Mod.Cancel.ctlVal	integer	0	Dom = CCI016_01LD_Plant Var = VArVDVVR1$CO$Mod$Cancel$ctlVal	
+CCI016_01LD_Plant/VArVDVVR1.Mod.Cancel.origin.orCat	CCI016_01LD_Plant/VArVDVVR1.Mod.Cancel.origin.orCat	integer	0	Dom = CCI016_01LD_Plant Var = VArVDVVR1$CO$Mod$Cancel$origin$orCat	
+CCI016_01LD_Plant/VArVDVVR1.Mod.Cancel.origin.orIdent	CCI016_01LD_Plant/VArVDVVR1.Mod.Cancel.origin.orIdent	octet_string		Dom = CCI016_01LD_Plant Var = VArVDVVR1$CO$Mod$Cancel$origin$orIdent	
+CCI016_01LD_Plant/VArVDVVR1.Mod.Cancel.ctlNum	CCI016_01LD_Plant/VArVDVVR1.Mod.Cancel.ctlNum	unsigned	0	Dom = CCI016_01LD_Plant Var = VArVDVVR1$CO$Mod$Cancel$ctlNum	
+CCI016_01LD_Plant/VArVDVVR1.Mod.Cancel.T	CCI016_01LD_Plant/VArVDVVR1.Mod.Cancel.T	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = VArVDVVR1$CO$Mod$Cancel$T	
+CCI016_01LD_Plant/VArVDVVR1.Mod.Cancel.Test	CCI016_01LD_Plant/VArVDVVR1.Mod.Cancel.Test	boolean	False	Dom = CCI016_01LD_Plant Var = VArVDVVR1$CO$Mod$Cancel$Test	
+CCI016_01LD_Plant/VArVDVVR1.Mod.stVal	CCI016_01LD_Plant/VArVDVVR1.Mod.stVal	integer	5	Dom = CCI016_01LD_Plant Var = VArVDVVR1$ST$Mod$stVal	
+CCI016_01LD_Plant/VArVDVVR1.Mod.q	CCI016_01LD_Plant/VArVDVVR1.Mod.q	bit_string	0000000000000 [NONE]	Dom = CCI016_01LD_Plant Var = VArVDVVR1$ST$Mod$q	
+CCI016_01LD_Plant/VArVDVVR1.Mod.t	CCI016_01LD_Plant/VArVDVVR1.Mod.t	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = VArVDVVR1$ST$Mod$t	
+CCI016_01LD_Plant/VArVDVVR1.VVArCrvDel.xUnits.SIUnit	CCI016_01LD_Plant/VArVDVVR1.VVArCrvDel.xUnits.SIUnit	integer	0	Dom = CCI016_01LD_Plant Var = VArVDVVR1$CF$VVArCrvDel$xUnits$SIUnit	
+CCI016_01LD_Plant/VArVDVVR1.VVArCrvDel.yUnits.SIUnit	CCI016_01LD_Plant/VArVDVVR1.VVArCrvDel.yUnits.SIUnit	integer	0	Dom = CCI016_01LD_Plant Var = VArVDVVR1$CF$VVArCrvDel$yUnits$SIUnit	
+CCI016_01LD_Plant/VArVDVVR1.VVArCrvDel.maxPts	CCI016_01LD_Plant/VArVDVVR1.VVArCrvDel.maxPts	unsigned	0	Dom = CCI016_01LD_Plant Var = VArVDVVR1$CF$VVArCrvDel$maxPts	
+CCI016_01LD_Plant/VArVDVVR1.VVArCrvDel.xD	CCI016_01LD_Plant/VArVDVVR1.VVArCrvDel.xD	visible_string		Dom = CCI016_01LD_Plant Var = VArVDVVR1$DC$VVArCrvDel$xD	
+CCI016_01LD_Plant/VArVDVVR1.VVArCrvDel.yD	CCI016_01LD_Plant/VArVDVVR1.VVArCrvDel.yD	visible_string		Dom = CCI016_01LD_Plant Var = VArVDVVR1$DC$VVArCrvDel$yD	
+CCI016_01LD_Plant/VArVDVVR1.VVArCrvDel.numPts	CCI016_01LD_Plant/VArVDVVR1.VVArCrvDel.numPts	unsigned	0	Dom = CCI016_01LD_Plant Var = VArVDVVR1$SP$VVArCrvDel$numPts	
+CCI016_01LD_Plant/VArVDVVR1.VVArCrvDel.crvPts.[0].xVal	CCI016_01LD_Plant/VArVDVVR1.VVArCrvDel.crvPts.[0].xVal	floating_point	0	Dom = CCI016_01LD_Plant Var = VArVDVVR1$SP$VVArCrvDel$crvPts$[0]$xVal	
+CCI016_01LD_Plant/VArVDVVR1.VVArCrvDel.crvPts.[0].yVal	CCI016_01LD_Plant/VArVDVVR1.VVArCrvDel.crvPts.[0].yVal	floating_point	0	Dom = CCI016_01LD_Plant Var = VArVDVVR1$SP$VVArCrvDel$crvPts$[0]$yVal	
+CCI016_01LD_Plant/VArVDVVR1.VVArCrvDel.crvPts.[1].xVal	CCI016_01LD_Plant/VArVDVVR1.VVArCrvDel.crvPts.[1].xVal	floating_point	0	Dom = CCI016_01LD_Plant Var = VArVDVVR1$SP$VVArCrvDel$crvPts$[1]$xVal	
+CCI016_01LD_Plant/VArVDVVR1.VVArCrvDel.crvPts.[1].yVal	CCI016_01LD_Plant/VArVDVVR1.VVArCrvDel.crvPts.[1].yVal	floating_point	0	Dom = CCI016_01LD_Plant Var = VArVDVVR1$SP$VVArCrvDel$crvPts$[1]$yVal	
+CCI016_01LD_Plant/VArVDVVR1.VVArCrvDel.crvPts.[2].xVal	CCI016_01LD_Plant/VArVDVVR1.VVArCrvDel.crvPts.[2].xVal	floating_point	0	Dom = CCI016_01LD_Plant Var = VArVDVVR1$SP$VVArCrvDel$crvPts$[2]$xVal	
+CCI016_01LD_Plant/VArVDVVR1.VVArCrvDel.crvPts.[2].yVal	CCI016_01LD_Plant/VArVDVVR1.VVArCrvDel.crvPts.[2].yVal	floating_point	0	Dom = CCI016_01LD_Plant Var = VArVDVVR1$SP$VVArCrvDel$crvPts$[2]$yVal	
+CCI016_01LD_Plant/VArVDVVR1.VVArCrvDel.crvPts.[3].xVal	CCI016_01LD_Plant/VArVDVVR1.VVArCrvDel.crvPts.[3].xVal	floating_point	0	Dom = CCI016_01LD_Plant Var = VArVDVVR1$SP$VVArCrvDel$crvPts$[3]$xVal	
+CCI016_01LD_Plant/VArVDVVR1.VVArCrvDel.crvPts.[3].yVal	CCI016_01LD_Plant/VArVDVVR1.VVArCrvDel.crvPts.[3].yVal	floating_point	0	Dom = CCI016_01LD_Plant Var = VArVDVVR1$SP$VVArCrvDel$crvPts$[3]$yVal	
+CCI016_01LD_Plant/VArVDVVR1.VVArCrvDel.crvPts.[4].xVal	CCI016_01LD_Plant/VArVDVVR1.VVArCrvDel.crvPts.[4].xVal	floating_point	0	Dom = CCI016_01LD_Plant Var = VArVDVVR1$SP$VVArCrvDel$crvPts$[4]$xVal	
+CCI016_01LD_Plant/VArVDVVR1.VVArCrvDel.crvPts.[4].yVal	CCI016_01LD_Plant/VArVDVVR1.VVArCrvDel.crvPts.[4].yVal	floating_point	0	Dom = CCI016_01LD_Plant Var = VArVDVVR1$SP$VVArCrvDel$crvPts$[4]$yVal	
+CCI016_01LD_Plant/VArVDVVR1.VVArCrvDel.crvPts.[5].xVal	CCI016_01LD_Plant/VArVDVVR1.VVArCrvDel.crvPts.[5].xVal	floating_point	0	Dom = CCI016_01LD_Plant Var = VArVDVVR1$SP$VVArCrvDel$crvPts$[5]$xVal	
+CCI016_01LD_Plant/VArVDVVR1.VVArCrvDel.crvPts.[5].yVal	CCI016_01LD_Plant/VArVDVVR1.VVArCrvDel.crvPts.[5].yVal	floating_point	0	Dom = CCI016_01LD_Plant Var = VArVDVVR1$SP$VVArCrvDel$crvPts$[5]$yVal	
+CCI016_01LD_Plant/VArVDVVR1.VVArCrvDel.crvPts.[6].xVal	CCI016_01LD_Plant/VArVDVVR1.VVArCrvDel.crvPts.[6].xVal	floating_point	0	Dom = CCI016_01LD_Plant Var = VArVDVVR1$SP$VVArCrvDel$crvPts$[6]$xVal	
+CCI016_01LD_Plant/VArVDVVR1.VVArCrvDel.crvPts.[6].yVal	CCI016_01LD_Plant/VArVDVVR1.VVArCrvDel.crvPts.[6].yVal	floating_point	0	Dom = CCI016_01LD_Plant Var = VArVDVVR1$SP$VVArCrvDel$crvPts$[6]$yVal	
+CCI016_01LD_Plant/VArVDVVR1.VVArCrvDel.crvPts.[7].xVal	CCI016_01LD_Plant/VArVDVVR1.VVArCrvDel.crvPts.[7].xVal	floating_point	0	Dom = CCI016_01LD_Plant Var = VArVDVVR1$SP$VVArCrvDel$crvPts$[7]$xVal	
+CCI016_01LD_Plant/VArVDVVR1.VVArCrvDel.crvPts.[7].yVal	CCI016_01LD_Plant/VArVDVVR1.VVArCrvDel.crvPts.[7].yVal	floating_point	0	Dom = CCI016_01LD_Plant Var = VArVDVVR1$SP$VVArCrvDel$crvPts$[7]$yVal	
+CCI016_01LD_Plant/VArVDVVR1.VVArCrvDel.crvPts.[8].xVal	CCI016_01LD_Plant/VArVDVVR1.VVArCrvDel.crvPts.[8].xVal	floating_point	0	Dom = CCI016_01LD_Plant Var = VArVDVVR1$SP$VVArCrvDel$crvPts$[8]$xVal	
+CCI016_01LD_Plant/VArVDVVR1.VVArCrvDel.crvPts.[8].yVal	CCI016_01LD_Plant/VArVDVVR1.VVArCrvDel.crvPts.[8].yVal	floating_point	0	Dom = CCI016_01LD_Plant Var = VArVDVVR1$SP$VVArCrvDel$crvPts$[8]$yVal	
+CCI016_01LD_Plant/VArVDVVR1.VVArCrvDel.crvPts.[9].xVal	CCI016_01LD_Plant/VArVDVVR1.VVArCrvDel.crvPts.[9].xVal	floating_point	0	Dom = CCI016_01LD_Plant Var = VArVDVVR1$SP$VVArCrvDel$crvPts$[9]$xVal	
+CCI016_01LD_Plant/VArVDVVR1.VVArCrvDel.crvPts.[9].yVal	CCI016_01LD_Plant/VArVDVVR1.VVArCrvDel.crvPts.[9].yVal	floating_point	0	Dom = CCI016_01LD_Plant Var = VArVDVVR1$SP$VVArCrvDel$crvPts$[9]$yVal	
+CCI016_01LD_Plant/VArVDVVR1.VVArCrvDel.crvPts.[10].xVal	CCI016_01LD_Plant/VArVDVVR1.VVArCrvDel.crvPts.[10].xVal	floating_point	0	Dom = CCI016_01LD_Plant Var = VArVDVVR1$SP$VVArCrvDel$crvPts$[10]$xVal	
+CCI016_01LD_Plant/VArVDVVR1.VVArCrvDel.crvPts.[10].yVal	CCI016_01LD_Plant/VArVDVVR1.VVArCrvDel.crvPts.[10].yVal	floating_point	0	Dom = CCI016_01LD_Plant Var = VArVDVVR1$SP$VVArCrvDel$crvPts$[10]$yVal	
+CCI016_01LD_Plant/VArVDVVR1.VVArCrvDel.crvPts.[11].xVal	CCI016_01LD_Plant/VArVDVVR1.VVArCrvDel.crvPts.[11].xVal	floating_point	0	Dom = CCI016_01LD_Plant Var = VArVDVVR1$SP$VVArCrvDel$crvPts$[11]$xVal	
+CCI016_01LD_Plant/VArVDVVR1.VVArCrvDel.crvPts.[11].yVal	CCI016_01LD_Plant/VArVDVVR1.VVArCrvDel.crvPts.[11].yVal	floating_point	0	Dom = CCI016_01LD_Plant Var = VArVDVVR1$SP$VVArCrvDel$crvPts$[11]$yVal	
+CCI016_01LD_Plant/VArVDVVR1.VVArCrvDel.crvPts.[12].xVal	CCI016_01LD_Plant/VArVDVVR1.VVArCrvDel.crvPts.[12].xVal	floating_point	0	Dom = CCI016_01LD_Plant Var = VArVDVVR1$SP$VVArCrvDel$crvPts$[12]$xVal	
+CCI016_01LD_Plant/VArVDVVR1.VVArCrvDel.crvPts.[12].yVal	CCI016_01LD_Plant/VArVDVVR1.VVArCrvDel.crvPts.[12].yVal	floating_point	0	Dom = CCI016_01LD_Plant Var = VArVDVVR1$SP$VVArCrvDel$crvPts$[12]$yVal	
+CCI016_01LD_Plant/VArVDVVR1.VVArCrvDel.crvPts.[13].xVal	CCI016_01LD_Plant/VArVDVVR1.VVArCrvDel.crvPts.[13].xVal	floating_point	0	Dom = CCI016_01LD_Plant Var = VArVDVVR1$SP$VVArCrvDel$crvPts$[13]$xVal	
+CCI016_01LD_Plant/VArVDVVR1.VVArCrvDel.crvPts.[13].yVal	CCI016_01LD_Plant/VArVDVVR1.VVArCrvDel.crvPts.[13].yVal	floating_point	0	Dom = CCI016_01LD_Plant Var = VArVDVVR1$SP$VVArCrvDel$crvPts$[13]$yVal	
+CCI016_01LD_Plant/VArVDVVR1.VVArCrvDel.crvPts.[14].xVal	CCI016_01LD_Plant/VArVDVVR1.VVArCrvDel.crvPts.[14].xVal	floating_point	0	Dom = CCI016_01LD_Plant Var = VArVDVVR1$SP$VVArCrvDel$crvPts$[14]$xVal	
+CCI016_01LD_Plant/VArVDVVR1.VVArCrvDel.crvPts.[14].yVal	CCI016_01LD_Plant/VArVDVVR1.VVArCrvDel.crvPts.[14].yVal	floating_point	0	Dom = CCI016_01LD_Plant Var = VArVDVVR1$SP$VVArCrvDel$crvPts$[14]$yVal	
+CCI016_01LD_Plant/VArVDVVR1.VVArCrvDel.crvPts.[15].xVal	CCI016_01LD_Plant/VArVDVVR1.VVArCrvDel.crvPts.[15].xVal	floating_point	0	Dom = CCI016_01LD_Plant Var = VArVDVVR1$SP$VVArCrvDel$crvPts$[15]$xVal	
+CCI016_01LD_Plant/VArVDVVR1.VVArCrvDel.crvPts.[15].yVal	CCI016_01LD_Plant/VArVDVVR1.VVArCrvDel.crvPts.[15].yVal	floating_point	0	Dom = CCI016_01LD_Plant Var = VArVDVVR1$SP$VVArCrvDel$crvPts$[15]$yVal	
+CCI016_01LD_Plant/VArVDVVR1.NamPlt.vendor	CCI016_01LD_Plant/VArVDVVR1.NamPlt.vendor	visible_string		Dom = CCI016_01LD_Plant Var = VArVDVVR1$DC$NamPlt$vendor	
+CCI016_01LD_Plant/VArVDVVR1.NamPlt.swRev	CCI016_01LD_Plant/VArVDVVR1.NamPlt.swRev	visible_string		Dom = CCI016_01LD_Plant Var = VArVDVVR1$DC$NamPlt$swRev	
+CCI016_01LD_Plant/VArVDVVR1.NamPlt.configRev	CCI016_01LD_Plant/VArVDVVR1.NamPlt.configRev	visible_string		Dom = CCI016_01LD_Plant Var = VArVDVVR1$DC$NamPlt$configRev	
+CCI016_01LD_Plant/VArVDVVR1.NamPlt.ldNs	CCI016_01LD_Plant/VArVDVVR1.NamPlt.ldNs	visible_string		Dom = CCI016_01LD_Plant Var = VArVDVVR1$EX$NamPlt$ldNs	
+CCI016_01LD_Plant/VArVDVVR1.NamPlt.lnNs	CCI016_01LD_Plant/VArVDVVR1.NamPlt.lnNs	visible_string	(Tr)IEC61850-CEI016:2022	Dom = CCI016_01LD_Plant Var = VArVDVVR1$EX$NamPlt$lnNs	
+CCI016_01LD_Plant/VArVDVVR1.VRefEsp.mag.f	CCI016_01LD_Plant/VArVDVVR1.VRefEsp.mag.f	floating_point	0	Dom = CCI016_01LD_Plant Var = VArVDVVR1$MX$VRefEsp$mag$f	
+CCI016_01LD_Plant/VArVDVVR1.VRefEsp.q	CCI016_01LD_Plant/VArVDVVR1.VRefEsp.q	bit_string	0000000000000 [NONE]	Dom = CCI016_01LD_Plant Var = VArVDVVR1$MX$VRefEsp$q	
+CCI016_01LD_Plant/VArVDVVR1.VRefEsp.t	CCI016_01LD_Plant/VArVDVVR1.VRefEsp.t	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = VArVDVVR1$MX$VRefEsp$t	
+CCI016_01LD_Plant/VArVDVVR1.ReqVAr.mag.f	CCI016_01LD_Plant/VArVDVVR1.ReqVAr.mag.f	floating_point	0	Dom = CCI016_01LD_Plant Var = VArVDVVR1$MX$ReqVAr$mag$f	
+CCI016_01LD_Plant/VArVDVVR1.ReqVAr.q	CCI016_01LD_Plant/VArVDVVR1.ReqVAr.q	bit_string	0000000000000 [NONE]	Dom = CCI016_01LD_Plant Var = VArVDVVR1$MX$ReqVAr$q	
+CCI016_01LD_Plant/VArVDVVR1.ReqVAr.t	CCI016_01LD_Plant/VArVDVVR1.ReqVAr.t	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = VArVDVVR1$MX$ReqVAr$t	
+CCI016_01LD_Plant/VArVDVVR1.RmpRteUse.setVal	CCI016_01LD_Plant/VArVDVVR1.RmpRteUse.setVal	boolean	False	Dom = CCI016_01LD_Plant Var = VArVDVVR1$SP$RmpRteUse$setVal	
+CCI016_01LD_Plant/VArVDVVR1.InEcpRef.setSrcRef	CCI016_01LD_Plant/VArVDVVR1.InEcpRef.setSrcRef	visible_string		Dom = CCI016_01LD_Plant Var = VArVDVVR1$SP$InEcpRef$setSrcRef	
+CCI016_01LD_Plant/VArVDVVR1.K.setMag.f	CCI016_01LD_Plant/VArVDVVR1.K.setMag.f	floating_point	0	Dom = CCI016_01LD_Plant Var = VArVDVVR1$SP$K$setMag$f	
+CCI016_01LD_Plant/VArVDVVR1.Beh.stVal	CCI016_01LD_Plant/VArVDVVR1.Beh.stVal	integer	5	Dom = CCI016_01LD_Plant Var = VArVDVVR1$ST$Beh$stVal	
+CCI016_01LD_Plant/VArVDVVR1.Beh.q	CCI016_01LD_Plant/VArVDVVR1.Beh.q	bit_string	0000000000000 [NONE]	Dom = CCI016_01LD_Plant Var = VArVDVVR1$ST$Beh$q	
+CCI016_01LD_Plant/VArVDVVR1.Beh.t	CCI016_01LD_Plant/VArVDVVR1.Beh.t	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = VArVDVVR1$ST$Beh$t	
+CCI016_01LD_Plant/VArVDVVR1.FctOpSt.stVal	CCI016_01LD_Plant/VArVDVVR1.FctOpSt.stVal	integer	0	Dom = CCI016_01LD_Plant Var = VArVDVVR1$ST$FctOpSt$stVal	
+CCI016_01LD_Plant/VArVDVVR1.FctOpSt.q	CCI016_01LD_Plant/VArVDVVR1.FctOpSt.q	bit_string	0000000000000 [NONE]	Dom = CCI016_01LD_Plant Var = VArVDVVR1$ST$FctOpSt$q	
+CCI016_01LD_Plant/VArVDVVR1.FctOpSt.t	CCI016_01LD_Plant/VArVDVVR1.FctOpSt.t	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = VArVDVVR1$ST$FctOpSt$t	
+CCI016_01LD_Plant/WlimDWMX1.WMaxSptPct.ctlModel	CCI016_01LD_Plant/WlimDWMX1.WMaxSptPct.ctlModel	integer	3	Dom = CCI016_01LD_Plant Var = WlimDWMX1$CF$WMaxSptPct$ctlModel	
+CCI016_01LD_Plant/WlimDWMX1.WMaxSptPct.Cancel.ctlVal.f	CCI016_01LD_Plant/WlimDWMX1.WMaxSptPct.Cancel.ctlVal.f	floating_point	0	Dom = CCI016_01LD_Plant Var = WlimDWMX1$CO$WMaxSptPct$Cancel$ctlVal$f	
+CCI016_01LD_Plant/WlimDWMX1.WMaxSptPct.Cancel.origin.orCat	CCI016_01LD_Plant/WlimDWMX1.WMaxSptPct.Cancel.origin.orCat	integer	0	Dom = CCI016_01LD_Plant Var = WlimDWMX1$CO$WMaxSptPct$Cancel$origin$orCat	
+CCI016_01LD_Plant/WlimDWMX1.WMaxSptPct.Cancel.origin.orIdent	CCI016_01LD_Plant/WlimDWMX1.WMaxSptPct.Cancel.origin.orIdent	octet_string		Dom = CCI016_01LD_Plant Var = WlimDWMX1$CO$WMaxSptPct$Cancel$origin$orIdent	
+CCI016_01LD_Plant/WlimDWMX1.WMaxSptPct.Cancel.ctlNum	CCI016_01LD_Plant/WlimDWMX1.WMaxSptPct.Cancel.ctlNum	unsigned	0	Dom = CCI016_01LD_Plant Var = WlimDWMX1$CO$WMaxSptPct$Cancel$ctlNum	
+CCI016_01LD_Plant/WlimDWMX1.WMaxSptPct.Cancel.T	CCI016_01LD_Plant/WlimDWMX1.WMaxSptPct.Cancel.T	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = WlimDWMX1$CO$WMaxSptPct$Cancel$T	
+CCI016_01LD_Plant/WlimDWMX1.WMaxSptPct.Cancel.Test	CCI016_01LD_Plant/WlimDWMX1.WMaxSptPct.Cancel.Test	boolean	False	Dom = CCI016_01LD_Plant Var = WlimDWMX1$CO$WMaxSptPct$Cancel$Test	
+CCI016_01LD_Plant/WlimDWMX1.WMaxSptPct.Oper.ctlVal.f	CCI016_01LD_Plant/WlimDWMX1.WMaxSptPct.Oper.ctlVal.f	floating_point	0	Dom = CCI016_01LD_Plant Var = WlimDWMX1$CO$WMaxSptPct$Oper$ctlVal$f	
+CCI016_01LD_Plant/WlimDWMX1.WMaxSptPct.Oper.origin.orCat	CCI016_01LD_Plant/WlimDWMX1.WMaxSptPct.Oper.origin.orCat	integer	0	Dom = CCI016_01LD_Plant Var = WlimDWMX1$CO$WMaxSptPct$Oper$origin$orCat	
+CCI016_01LD_Plant/WlimDWMX1.WMaxSptPct.Oper.origin.orIdent	CCI016_01LD_Plant/WlimDWMX1.WMaxSptPct.Oper.origin.orIdent	octet_string		Dom = CCI016_01LD_Plant Var = WlimDWMX1$CO$WMaxSptPct$Oper$origin$orIdent	
+CCI016_01LD_Plant/WlimDWMX1.WMaxSptPct.Oper.ctlNum	CCI016_01LD_Plant/WlimDWMX1.WMaxSptPct.Oper.ctlNum	unsigned	0	Dom = CCI016_01LD_Plant Var = WlimDWMX1$CO$WMaxSptPct$Oper$ctlNum	
+CCI016_01LD_Plant/WlimDWMX1.WMaxSptPct.Oper.T	CCI016_01LD_Plant/WlimDWMX1.WMaxSptPct.Oper.T	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = WlimDWMX1$CO$WMaxSptPct$Oper$T	
+CCI016_01LD_Plant/WlimDWMX1.WMaxSptPct.Oper.Test	CCI016_01LD_Plant/WlimDWMX1.WMaxSptPct.Oper.Test	boolean	False	Dom = CCI016_01LD_Plant Var = WlimDWMX1$CO$WMaxSptPct$Oper$Test	
+CCI016_01LD_Plant/WlimDWMX1.WMaxSptPct.Oper.Check	CCI016_01LD_Plant/WlimDWMX1.WMaxSptPct.Oper.Check	bit_string	00	Dom = CCI016_01LD_Plant Var = WlimDWMX1$CO$WMaxSptPct$Oper$Check	
+CCI016_01LD_Plant/WlimDWMX1.WMaxSptPct.SBOw.ctlVal.f	CCI016_01LD_Plant/WlimDWMX1.WMaxSptPct.SBOw.ctlVal.f	floating_point	0	Dom = CCI016_01LD_Plant Var = WlimDWMX1$CO$WMaxSptPct$SBOw$ctlVal$f	
+CCI016_01LD_Plant/WlimDWMX1.WMaxSptPct.SBOw.origin.orCat	CCI016_01LD_Plant/WlimDWMX1.WMaxSptPct.SBOw.origin.orCat	integer	0	Dom = CCI016_01LD_Plant Var = WlimDWMX1$CO$WMaxSptPct$SBOw$origin$orCat	
+CCI016_01LD_Plant/WlimDWMX1.WMaxSptPct.SBOw.origin.orIdent	CCI016_01LD_Plant/WlimDWMX1.WMaxSptPct.SBOw.origin.orIdent	octet_string		Dom = CCI016_01LD_Plant Var = WlimDWMX1$CO$WMaxSptPct$SBOw$origin$orIdent	
+CCI016_01LD_Plant/WlimDWMX1.WMaxSptPct.SBOw.ctlNum	CCI016_01LD_Plant/WlimDWMX1.WMaxSptPct.SBOw.ctlNum	unsigned	0	Dom = CCI016_01LD_Plant Var = WlimDWMX1$CO$WMaxSptPct$SBOw$ctlNum	
+CCI016_01LD_Plant/WlimDWMX1.WMaxSptPct.SBOw.T	CCI016_01LD_Plant/WlimDWMX1.WMaxSptPct.SBOw.T	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = WlimDWMX1$CO$WMaxSptPct$SBOw$T	
+CCI016_01LD_Plant/WlimDWMX1.WMaxSptPct.SBOw.Test	CCI016_01LD_Plant/WlimDWMX1.WMaxSptPct.SBOw.Test	boolean	False	Dom = CCI016_01LD_Plant Var = WlimDWMX1$CO$WMaxSptPct$SBOw$Test	
+CCI016_01LD_Plant/WlimDWMX1.WMaxSptPct.SBOw.Check	CCI016_01LD_Plant/WlimDWMX1.WMaxSptPct.SBOw.Check	bit_string	00	Dom = CCI016_01LD_Plant Var = WlimDWMX1$CO$WMaxSptPct$SBOw$Check	
+CCI016_01LD_Plant/WlimDWMX1.WMaxSptPct.mxVal.f	CCI016_01LD_Plant/WlimDWMX1.WMaxSptPct.mxVal.f	floating_point	0	Dom = CCI016_01LD_Plant Var = WlimDWMX1$MX$WMaxSptPct$mxVal$f	
+CCI016_01LD_Plant/WlimDWMX1.WMaxSptPct.q	CCI016_01LD_Plant/WlimDWMX1.WMaxSptPct.q	bit_string	0000000000000 [NONE]	Dom = CCI016_01LD_Plant Var = WlimDWMX1$MX$WMaxSptPct$q	
+CCI016_01LD_Plant/WlimDWMX1.WMaxSptPct.t	CCI016_01LD_Plant/WlimDWMX1.WMaxSptPct.t	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = WlimDWMX1$MX$WMaxSptPct$t	
+CCI016_01LD_Plant/WlimDWMX1.Mod.ctlModel	CCI016_01LD_Plant/WlimDWMX1.Mod.ctlModel	integer	3	Dom = CCI016_01LD_Plant Var = WlimDWMX1$CF$Mod$ctlModel	
+CCI016_01LD_Plant/WlimDWMX1.Mod.SBOw.ctlVal	CCI016_01LD_Plant/WlimDWMX1.Mod.SBOw.ctlVal	integer	0	Dom = CCI016_01LD_Plant Var = WlimDWMX1$CO$Mod$SBOw$ctlVal	
+CCI016_01LD_Plant/WlimDWMX1.Mod.SBOw.origin.orCat	CCI016_01LD_Plant/WlimDWMX1.Mod.SBOw.origin.orCat	integer	0	Dom = CCI016_01LD_Plant Var = WlimDWMX1$CO$Mod$SBOw$origin$orCat	
+CCI016_01LD_Plant/WlimDWMX1.Mod.SBOw.origin.orIdent	CCI016_01LD_Plant/WlimDWMX1.Mod.SBOw.origin.orIdent	octet_string		Dom = CCI016_01LD_Plant Var = WlimDWMX1$CO$Mod$SBOw$origin$orIdent	
+CCI016_01LD_Plant/WlimDWMX1.Mod.SBOw.ctlNum	CCI016_01LD_Plant/WlimDWMX1.Mod.SBOw.ctlNum	unsigned	0	Dom = CCI016_01LD_Plant Var = WlimDWMX1$CO$Mod$SBOw$ctlNum	
+CCI016_01LD_Plant/WlimDWMX1.Mod.SBOw.T	CCI016_01LD_Plant/WlimDWMX1.Mod.SBOw.T	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = WlimDWMX1$CO$Mod$SBOw$T	
+CCI016_01LD_Plant/WlimDWMX1.Mod.SBOw.Test	CCI016_01LD_Plant/WlimDWMX1.Mod.SBOw.Test	boolean	False	Dom = CCI016_01LD_Plant Var = WlimDWMX1$CO$Mod$SBOw$Test	
+CCI016_01LD_Plant/WlimDWMX1.Mod.SBOw.Check	CCI016_01LD_Plant/WlimDWMX1.Mod.SBOw.Check	bit_string	00	Dom = CCI016_01LD_Plant Var = WlimDWMX1$CO$Mod$SBOw$Check	
+CCI016_01LD_Plant/WlimDWMX1.Mod.Oper.ctlVal	CCI016_01LD_Plant/WlimDWMX1.Mod.Oper.ctlVal	integer	0	Dom = CCI016_01LD_Plant Var = WlimDWMX1$CO$Mod$Oper$ctlVal	
+CCI016_01LD_Plant/WlimDWMX1.Mod.Oper.origin.orCat	CCI016_01LD_Plant/WlimDWMX1.Mod.Oper.origin.orCat	integer	0	Dom = CCI016_01LD_Plant Var = WlimDWMX1$CO$Mod$Oper$origin$orCat	
+CCI016_01LD_Plant/WlimDWMX1.Mod.Oper.origin.orIdent	CCI016_01LD_Plant/WlimDWMX1.Mod.Oper.origin.orIdent	octet_string		Dom = CCI016_01LD_Plant Var = WlimDWMX1$CO$Mod$Oper$origin$orIdent	
+CCI016_01LD_Plant/WlimDWMX1.Mod.Oper.ctlNum	CCI016_01LD_Plant/WlimDWMX1.Mod.Oper.ctlNum	unsigned	0	Dom = CCI016_01LD_Plant Var = WlimDWMX1$CO$Mod$Oper$ctlNum	
+CCI016_01LD_Plant/WlimDWMX1.Mod.Oper.T	CCI016_01LD_Plant/WlimDWMX1.Mod.Oper.T	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = WlimDWMX1$CO$Mod$Oper$T	
+CCI016_01LD_Plant/WlimDWMX1.Mod.Oper.Test	CCI016_01LD_Plant/WlimDWMX1.Mod.Oper.Test	boolean	False	Dom = CCI016_01LD_Plant Var = WlimDWMX1$CO$Mod$Oper$Test	
+CCI016_01LD_Plant/WlimDWMX1.Mod.Oper.Check	CCI016_01LD_Plant/WlimDWMX1.Mod.Oper.Check	bit_string	00	Dom = CCI016_01LD_Plant Var = WlimDWMX1$CO$Mod$Oper$Check	
+CCI016_01LD_Plant/WlimDWMX1.Mod.Cancel.ctlVal	CCI016_01LD_Plant/WlimDWMX1.Mod.Cancel.ctlVal	integer	0	Dom = CCI016_01LD_Plant Var = WlimDWMX1$CO$Mod$Cancel$ctlVal	
+CCI016_01LD_Plant/WlimDWMX1.Mod.Cancel.origin.orCat	CCI016_01LD_Plant/WlimDWMX1.Mod.Cancel.origin.orCat	integer	0	Dom = CCI016_01LD_Plant Var = WlimDWMX1$CO$Mod$Cancel$origin$orCat	
+CCI016_01LD_Plant/WlimDWMX1.Mod.Cancel.origin.orIdent	CCI016_01LD_Plant/WlimDWMX1.Mod.Cancel.origin.orIdent	octet_string		Dom = CCI016_01LD_Plant Var = WlimDWMX1$CO$Mod$Cancel$origin$orIdent	
+CCI016_01LD_Plant/WlimDWMX1.Mod.Cancel.ctlNum	CCI016_01LD_Plant/WlimDWMX1.Mod.Cancel.ctlNum	unsigned	0	Dom = CCI016_01LD_Plant Var = WlimDWMX1$CO$Mod$Cancel$ctlNum	
+CCI016_01LD_Plant/WlimDWMX1.Mod.Cancel.T	CCI016_01LD_Plant/WlimDWMX1.Mod.Cancel.T	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = WlimDWMX1$CO$Mod$Cancel$T	
+CCI016_01LD_Plant/WlimDWMX1.Mod.Cancel.Test	CCI016_01LD_Plant/WlimDWMX1.Mod.Cancel.Test	boolean	False	Dom = CCI016_01LD_Plant Var = WlimDWMX1$CO$Mod$Cancel$Test	
+CCI016_01LD_Plant/WlimDWMX1.Mod.stVal	CCI016_01LD_Plant/WlimDWMX1.Mod.stVal	integer	5	Dom = CCI016_01LD_Plant Var = WlimDWMX1$ST$Mod$stVal	
+CCI016_01LD_Plant/WlimDWMX1.Mod.q	CCI016_01LD_Plant/WlimDWMX1.Mod.q	bit_string	0000000000000 [NONE]	Dom = CCI016_01LD_Plant Var = WlimDWMX1$ST$Mod$q	
+CCI016_01LD_Plant/WlimDWMX1.Mod.t	CCI016_01LD_Plant/WlimDWMX1.Mod.t	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = WlimDWMX1$ST$Mod$t	
+CCI016_01LD_Plant/WlimDWMX1.NamPlt.vendor	CCI016_01LD_Plant/WlimDWMX1.NamPlt.vendor	visible_string		Dom = CCI016_01LD_Plant Var = WlimDWMX1$DC$NamPlt$vendor	
+CCI016_01LD_Plant/WlimDWMX1.NamPlt.swRev	CCI016_01LD_Plant/WlimDWMX1.NamPlt.swRev	visible_string		Dom = CCI016_01LD_Plant Var = WlimDWMX1$DC$NamPlt$swRev	
+CCI016_01LD_Plant/WlimDWMX1.NamPlt.configRev	CCI016_01LD_Plant/WlimDWMX1.NamPlt.configRev	visible_string		Dom = CCI016_01LD_Plant Var = WlimDWMX1$DC$NamPlt$configRev	
+CCI016_01LD_Plant/WlimDWMX1.NamPlt.ldNs	CCI016_01LD_Plant/WlimDWMX1.NamPlt.ldNs	visible_string		Dom = CCI016_01LD_Plant Var = WlimDWMX1$EX$NamPlt$ldNs	
+CCI016_01LD_Plant/WlimDWMX1.NamPlt.lnNs	CCI016_01LD_Plant/WlimDWMX1.NamPlt.lnNs	visible_string	(Tr)IEC61850-CEI016:2022	Dom = CCI016_01LD_Plant Var = WlimDWMX1$EX$NamPlt$lnNs	
+CCI016_01LD_Plant/WlimDWMX1.RmpRteUse.setVal	CCI016_01LD_Plant/WlimDWMX1.RmpRteUse.setVal	boolean	False	Dom = CCI016_01LD_Plant Var = WlimDWMX1$SP$RmpRteUse$setVal	
+CCI016_01LD_Plant/WlimDWMX1.InEcpRef.setSrcRef	CCI016_01LD_Plant/WlimDWMX1.InEcpRef.setSrcRef	visible_string		Dom = CCI016_01LD_Plant Var = WlimDWMX1$SP$InEcpRef$setSrcRef	
+CCI016_01LD_Plant/WlimDWMX1.Beh.stVal	CCI016_01LD_Plant/WlimDWMX1.Beh.stVal	integer	5	Dom = CCI016_01LD_Plant Var = WlimDWMX1$ST$Beh$stVal	
+CCI016_01LD_Plant/WlimDWMX1.Beh.q	CCI016_01LD_Plant/WlimDWMX1.Beh.q	bit_string	0000000000000 [NONE]	Dom = CCI016_01LD_Plant Var = WlimDWMX1$ST$Beh$q	
+CCI016_01LD_Plant/WlimDWMX1.Beh.t	CCI016_01LD_Plant/WlimDWMX1.Beh.t	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = WlimDWMX1$ST$Beh$t	
+CCI016_01LD_Plant/WlimDWMX1.FctOpStAuto.stVal	CCI016_01LD_Plant/WlimDWMX1.FctOpStAuto.stVal	integer	0	Dom = CCI016_01LD_Plant Var = WlimDWMX1$ST$FctOpStAuto$stVal	
+CCI016_01LD_Plant/WlimDWMX1.FctOpStAuto.q	CCI016_01LD_Plant/WlimDWMX1.FctOpStAuto.q	bit_string	0000000000000 [NONE]	Dom = CCI016_01LD_Plant Var = WlimDWMX1$ST$FctOpStAuto$q	
+CCI016_01LD_Plant/WlimDWMX1.FctOpStAuto.t	CCI016_01LD_Plant/WlimDWMX1.FctOpStAuto.t	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = WlimDWMX1$ST$FctOpStAuto$t	
+CCI016_01LD_Plant/WlimDWMX1.FctOpStEx.stVal	CCI016_01LD_Plant/WlimDWMX1.FctOpStEx.stVal	integer	0	Dom = CCI016_01LD_Plant Var = WlimDWMX1$ST$FctOpStEx$stVal	
+CCI016_01LD_Plant/WlimDWMX1.FctOpStEx.q	CCI016_01LD_Plant/WlimDWMX1.FctOpStEx.q	bit_string	0000000000000 [NONE]	Dom = CCI016_01LD_Plant Var = WlimDWMX1$ST$FctOpStEx$q	
+CCI016_01LD_Plant/WlimDWMX1.FctOpStEx.t	CCI016_01LD_Plant/WlimDWMX1.FctOpStEx.t	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = WlimDWMX1$ST$FctOpStEx$t	
+CCI016_01LD_Plant/WSdDAGC1.WSptPct.ctlModel	CCI016_01LD_Plant/WSdDAGC1.WSptPct.ctlModel	integer	3	Dom = CCI016_01LD_Plant Var = WSdDAGC1$CF$WSptPct$ctlModel	
+CCI016_01LD_Plant/WSdDAGC1.WSptPct.Cancel.ctlVal.f	CCI016_01LD_Plant/WSdDAGC1.WSptPct.Cancel.ctlVal.f	floating_point	0	Dom = CCI016_01LD_Plant Var = WSdDAGC1$CO$WSptPct$Cancel$ctlVal$f	
+CCI016_01LD_Plant/WSdDAGC1.WSptPct.Cancel.origin.orCat	CCI016_01LD_Plant/WSdDAGC1.WSptPct.Cancel.origin.orCat	integer	0	Dom = CCI016_01LD_Plant Var = WSdDAGC1$CO$WSptPct$Cancel$origin$orCat	
+CCI016_01LD_Plant/WSdDAGC1.WSptPct.Cancel.origin.orIdent	CCI016_01LD_Plant/WSdDAGC1.WSptPct.Cancel.origin.orIdent	octet_string		Dom = CCI016_01LD_Plant Var = WSdDAGC1$CO$WSptPct$Cancel$origin$orIdent	
+CCI016_01LD_Plant/WSdDAGC1.WSptPct.Cancel.ctlNum	CCI016_01LD_Plant/WSdDAGC1.WSptPct.Cancel.ctlNum	unsigned	0	Dom = CCI016_01LD_Plant Var = WSdDAGC1$CO$WSptPct$Cancel$ctlNum	
+CCI016_01LD_Plant/WSdDAGC1.WSptPct.Cancel.T	CCI016_01LD_Plant/WSdDAGC1.WSptPct.Cancel.T	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = WSdDAGC1$CO$WSptPct$Cancel$T	
+CCI016_01LD_Plant/WSdDAGC1.WSptPct.Cancel.Test	CCI016_01LD_Plant/WSdDAGC1.WSptPct.Cancel.Test	boolean	False	Dom = CCI016_01LD_Plant Var = WSdDAGC1$CO$WSptPct$Cancel$Test	
+CCI016_01LD_Plant/WSdDAGC1.WSptPct.Oper.ctlVal.f	CCI016_01LD_Plant/WSdDAGC1.WSptPct.Oper.ctlVal.f	floating_point	0	Dom = CCI016_01LD_Plant Var = WSdDAGC1$CO$WSptPct$Oper$ctlVal$f	
+CCI016_01LD_Plant/WSdDAGC1.WSptPct.Oper.origin.orCat	CCI016_01LD_Plant/WSdDAGC1.WSptPct.Oper.origin.orCat	integer	0	Dom = CCI016_01LD_Plant Var = WSdDAGC1$CO$WSptPct$Oper$origin$orCat	
+CCI016_01LD_Plant/WSdDAGC1.WSptPct.Oper.origin.orIdent	CCI016_01LD_Plant/WSdDAGC1.WSptPct.Oper.origin.orIdent	octet_string		Dom = CCI016_01LD_Plant Var = WSdDAGC1$CO$WSptPct$Oper$origin$orIdent	
+CCI016_01LD_Plant/WSdDAGC1.WSptPct.Oper.ctlNum	CCI016_01LD_Plant/WSdDAGC1.WSptPct.Oper.ctlNum	unsigned	0	Dom = CCI016_01LD_Plant Var = WSdDAGC1$CO$WSptPct$Oper$ctlNum	
+CCI016_01LD_Plant/WSdDAGC1.WSptPct.Oper.T	CCI016_01LD_Plant/WSdDAGC1.WSptPct.Oper.T	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = WSdDAGC1$CO$WSptPct$Oper$T	
+CCI016_01LD_Plant/WSdDAGC1.WSptPct.Oper.Test	CCI016_01LD_Plant/WSdDAGC1.WSptPct.Oper.Test	boolean	False	Dom = CCI016_01LD_Plant Var = WSdDAGC1$CO$WSptPct$Oper$Test	
+CCI016_01LD_Plant/WSdDAGC1.WSptPct.Oper.Check	CCI016_01LD_Plant/WSdDAGC1.WSptPct.Oper.Check	bit_string	00	Dom = CCI016_01LD_Plant Var = WSdDAGC1$CO$WSptPct$Oper$Check	
+CCI016_01LD_Plant/WSdDAGC1.WSptPct.SBOw.ctlVal.f	CCI016_01LD_Plant/WSdDAGC1.WSptPct.SBOw.ctlVal.f	floating_point	0	Dom = CCI016_01LD_Plant Var = WSdDAGC1$CO$WSptPct$SBOw$ctlVal$f	
+CCI016_01LD_Plant/WSdDAGC1.WSptPct.SBOw.origin.orCat	CCI016_01LD_Plant/WSdDAGC1.WSptPct.SBOw.origin.orCat	integer	0	Dom = CCI016_01LD_Plant Var = WSdDAGC1$CO$WSptPct$SBOw$origin$orCat	
+CCI016_01LD_Plant/WSdDAGC1.WSptPct.SBOw.origin.orIdent	CCI016_01LD_Plant/WSdDAGC1.WSptPct.SBOw.origin.orIdent	octet_string		Dom = CCI016_01LD_Plant Var = WSdDAGC1$CO$WSptPct$SBOw$origin$orIdent	
+CCI016_01LD_Plant/WSdDAGC1.WSptPct.SBOw.ctlNum	CCI016_01LD_Plant/WSdDAGC1.WSptPct.SBOw.ctlNum	unsigned	0	Dom = CCI016_01LD_Plant Var = WSdDAGC1$CO$WSptPct$SBOw$ctlNum	
+CCI016_01LD_Plant/WSdDAGC1.WSptPct.SBOw.T	CCI016_01LD_Plant/WSdDAGC1.WSptPct.SBOw.T	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = WSdDAGC1$CO$WSptPct$SBOw$T	
+CCI016_01LD_Plant/WSdDAGC1.WSptPct.SBOw.Test	CCI016_01LD_Plant/WSdDAGC1.WSptPct.SBOw.Test	boolean	False	Dom = CCI016_01LD_Plant Var = WSdDAGC1$CO$WSptPct$SBOw$Test	
+CCI016_01LD_Plant/WSdDAGC1.WSptPct.SBOw.Check	CCI016_01LD_Plant/WSdDAGC1.WSptPct.SBOw.Check	bit_string	00	Dom = CCI016_01LD_Plant Var = WSdDAGC1$CO$WSptPct$SBOw$Check	
+CCI016_01LD_Plant/WSdDAGC1.WSptPct.mxVal.f	CCI016_01LD_Plant/WSdDAGC1.WSptPct.mxVal.f	floating_point	20	Dom = CCI016_01LD_Plant Var = WSdDAGC1$MX$WSptPct$mxVal$f	
+CCI016_01LD_Plant/WSdDAGC1.WSptPct.q	CCI016_01LD_Plant/WSdDAGC1.WSptPct.q	bit_string	0000000000000 [NONE]	Dom = CCI016_01LD_Plant Var = WSdDAGC1$MX$WSptPct$q	
+CCI016_01LD_Plant/WSdDAGC1.WSptPct.t	CCI016_01LD_Plant/WSdDAGC1.WSptPct.t	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = WSdDAGC1$MX$WSptPct$t	
+CCI016_01LD_Plant/WSdDAGC1.Mod.ctlModel	CCI016_01LD_Plant/WSdDAGC1.Mod.ctlModel	integer	3	Dom = CCI016_01LD_Plant Var = WSdDAGC1$CF$Mod$ctlModel	
+CCI016_01LD_Plant/WSdDAGC1.Mod.SBOw.ctlVal	CCI016_01LD_Plant/WSdDAGC1.Mod.SBOw.ctlVal	integer	0	Dom = CCI016_01LD_Plant Var = WSdDAGC1$CO$Mod$SBOw$ctlVal	
+CCI016_01LD_Plant/WSdDAGC1.Mod.SBOw.origin.orCat	CCI016_01LD_Plant/WSdDAGC1.Mod.SBOw.origin.orCat	integer	0	Dom = CCI016_01LD_Plant Var = WSdDAGC1$CO$Mod$SBOw$origin$orCat	
+CCI016_01LD_Plant/WSdDAGC1.Mod.SBOw.origin.orIdent	CCI016_01LD_Plant/WSdDAGC1.Mod.SBOw.origin.orIdent	octet_string		Dom = CCI016_01LD_Plant Var = WSdDAGC1$CO$Mod$SBOw$origin$orIdent	
+CCI016_01LD_Plant/WSdDAGC1.Mod.SBOw.ctlNum	CCI016_01LD_Plant/WSdDAGC1.Mod.SBOw.ctlNum	unsigned	0	Dom = CCI016_01LD_Plant Var = WSdDAGC1$CO$Mod$SBOw$ctlNum	
+CCI016_01LD_Plant/WSdDAGC1.Mod.SBOw.T	CCI016_01LD_Plant/WSdDAGC1.Mod.SBOw.T	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = WSdDAGC1$CO$Mod$SBOw$T	
+CCI016_01LD_Plant/WSdDAGC1.Mod.SBOw.Test	CCI016_01LD_Plant/WSdDAGC1.Mod.SBOw.Test	boolean	False	Dom = CCI016_01LD_Plant Var = WSdDAGC1$CO$Mod$SBOw$Test	
+CCI016_01LD_Plant/WSdDAGC1.Mod.SBOw.Check	CCI016_01LD_Plant/WSdDAGC1.Mod.SBOw.Check	bit_string	00	Dom = CCI016_01LD_Plant Var = WSdDAGC1$CO$Mod$SBOw$Check	
+CCI016_01LD_Plant/WSdDAGC1.Mod.Oper.ctlVal	CCI016_01LD_Plant/WSdDAGC1.Mod.Oper.ctlVal	integer	0	Dom = CCI016_01LD_Plant Var = WSdDAGC1$CO$Mod$Oper$ctlVal	
+CCI016_01LD_Plant/WSdDAGC1.Mod.Oper.origin.orCat	CCI016_01LD_Plant/WSdDAGC1.Mod.Oper.origin.orCat	integer	0	Dom = CCI016_01LD_Plant Var = WSdDAGC1$CO$Mod$Oper$origin$orCat	
+CCI016_01LD_Plant/WSdDAGC1.Mod.Oper.origin.orIdent	CCI016_01LD_Plant/WSdDAGC1.Mod.Oper.origin.orIdent	octet_string		Dom = CCI016_01LD_Plant Var = WSdDAGC1$CO$Mod$Oper$origin$orIdent	
+CCI016_01LD_Plant/WSdDAGC1.Mod.Oper.ctlNum	CCI016_01LD_Plant/WSdDAGC1.Mod.Oper.ctlNum	unsigned	0	Dom = CCI016_01LD_Plant Var = WSdDAGC1$CO$Mod$Oper$ctlNum	
+CCI016_01LD_Plant/WSdDAGC1.Mod.Oper.T	CCI016_01LD_Plant/WSdDAGC1.Mod.Oper.T	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = WSdDAGC1$CO$Mod$Oper$T	
+CCI016_01LD_Plant/WSdDAGC1.Mod.Oper.Test	CCI016_01LD_Plant/WSdDAGC1.Mod.Oper.Test	boolean	False	Dom = CCI016_01LD_Plant Var = WSdDAGC1$CO$Mod$Oper$Test	
+CCI016_01LD_Plant/WSdDAGC1.Mod.Oper.Check	CCI016_01LD_Plant/WSdDAGC1.Mod.Oper.Check	bit_string	00	Dom = CCI016_01LD_Plant Var = WSdDAGC1$CO$Mod$Oper$Check	
+CCI016_01LD_Plant/WSdDAGC1.Mod.Cancel.ctlVal	CCI016_01LD_Plant/WSdDAGC1.Mod.Cancel.ctlVal	integer	0	Dom = CCI016_01LD_Plant Var = WSdDAGC1$CO$Mod$Cancel$ctlVal	
+CCI016_01LD_Plant/WSdDAGC1.Mod.Cancel.origin.orCat	CCI016_01LD_Plant/WSdDAGC1.Mod.Cancel.origin.orCat	integer	0	Dom = CCI016_01LD_Plant Var = WSdDAGC1$CO$Mod$Cancel$origin$orCat	
+CCI016_01LD_Plant/WSdDAGC1.Mod.Cancel.origin.orIdent	CCI016_01LD_Plant/WSdDAGC1.Mod.Cancel.origin.orIdent	octet_string		Dom = CCI016_01LD_Plant Var = WSdDAGC1$CO$Mod$Cancel$origin$orIdent	
+CCI016_01LD_Plant/WSdDAGC1.Mod.Cancel.ctlNum	CCI016_01LD_Plant/WSdDAGC1.Mod.Cancel.ctlNum	unsigned	0	Dom = CCI016_01LD_Plant Var = WSdDAGC1$CO$Mod$Cancel$ctlNum	
+CCI016_01LD_Plant/WSdDAGC1.Mod.Cancel.T	CCI016_01LD_Plant/WSdDAGC1.Mod.Cancel.T	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = WSdDAGC1$CO$Mod$Cancel$T	
+CCI016_01LD_Plant/WSdDAGC1.Mod.Cancel.Test	CCI016_01LD_Plant/WSdDAGC1.Mod.Cancel.Test	boolean	False	Dom = CCI016_01LD_Plant Var = WSdDAGC1$CO$Mod$Cancel$Test	
+CCI016_01LD_Plant/WSdDAGC1.Mod.stVal	CCI016_01LD_Plant/WSdDAGC1.Mod.stVal	integer	5	Dom = CCI016_01LD_Plant Var = WSdDAGC1$ST$Mod$stVal	
+CCI016_01LD_Plant/WSdDAGC1.Mod.q	CCI016_01LD_Plant/WSdDAGC1.Mod.q	bit_string	0000000000000 [NONE]	Dom = CCI016_01LD_Plant Var = WSdDAGC1$ST$Mod$q	
+CCI016_01LD_Plant/WSdDAGC1.Mod.t	CCI016_01LD_Plant/WSdDAGC1.Mod.t	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = WSdDAGC1$ST$Mod$t	
+CCI016_01LD_Plant/WSdDAGC1.NamPlt.vendor	CCI016_01LD_Plant/WSdDAGC1.NamPlt.vendor	visible_string		Dom = CCI016_01LD_Plant Var = WSdDAGC1$DC$NamPlt$vendor	
+CCI016_01LD_Plant/WSdDAGC1.NamPlt.swRev	CCI016_01LD_Plant/WSdDAGC1.NamPlt.swRev	visible_string		Dom = CCI016_01LD_Plant Var = WSdDAGC1$DC$NamPlt$swRev	
+CCI016_01LD_Plant/WSdDAGC1.NamPlt.configRev	CCI016_01LD_Plant/WSdDAGC1.NamPlt.configRev	visible_string		Dom = CCI016_01LD_Plant Var = WSdDAGC1$DC$NamPlt$configRev	
+CCI016_01LD_Plant/WSdDAGC1.NamPlt.ldNs	CCI016_01LD_Plant/WSdDAGC1.NamPlt.ldNs	visible_string		Dom = CCI016_01LD_Plant Var = WSdDAGC1$EX$NamPlt$ldNs	
+CCI016_01LD_Plant/WSdDAGC1.NamPlt.lnNs	CCI016_01LD_Plant/WSdDAGC1.NamPlt.lnNs	visible_string	(Tr)IEC61850-CEI016:2022	Dom = CCI016_01LD_Plant Var = WSdDAGC1$EX$NamPlt$lnNs	
+CCI016_01LD_Plant/WSdDAGC1.ReqW.mag.f	CCI016_01LD_Plant/WSdDAGC1.ReqW.mag.f	floating_point	0	Dom = CCI016_01LD_Plant Var = WSdDAGC1$MX$ReqW$mag$f	
+CCI016_01LD_Plant/WSdDAGC1.ReqW.q	CCI016_01LD_Plant/WSdDAGC1.ReqW.q	bit_string	0000000000000 [NONE]	Dom = CCI016_01LD_Plant Var = WSdDAGC1$MX$ReqW$q	
+CCI016_01LD_Plant/WSdDAGC1.ReqW.t	CCI016_01LD_Plant/WSdDAGC1.ReqW.t	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = WSdDAGC1$MX$ReqW$t	
+CCI016_01LD_Plant/WSdDAGC1.RmpRteUse.setVal	CCI016_01LD_Plant/WSdDAGC1.RmpRteUse.setVal	boolean	False	Dom = CCI016_01LD_Plant Var = WSdDAGC1$SP$RmpRteUse$setVal	
+CCI016_01LD_Plant/WSdDAGC1.InEcpRef.setSrcRef	CCI016_01LD_Plant/WSdDAGC1.InEcpRef.setSrcRef	visible_string		Dom = CCI016_01LD_Plant Var = WSdDAGC1$SP$InEcpRef$setSrcRef	
+CCI016_01LD_Plant/WSdDAGC1.Beh.stVal	CCI016_01LD_Plant/WSdDAGC1.Beh.stVal	integer	1	Dom = CCI016_01LD_Plant Var = WSdDAGC1$ST$Beh$stVal	
+CCI016_01LD_Plant/WSdDAGC1.Beh.q	CCI016_01LD_Plant/WSdDAGC1.Beh.q	bit_string	0000000000000 [NONE]	Dom = CCI016_01LD_Plant Var = WSdDAGC1$ST$Beh$q	
+CCI016_01LD_Plant/WSdDAGC1.Beh.t	CCI016_01LD_Plant/WSdDAGC1.Beh.t	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = WSdDAGC1$ST$Beh$t	
+CCI016_01LD_Plant/WSdDAGC1.FctOpSt.stVal	CCI016_01LD_Plant/WSdDAGC1.FctOpSt.stVal	integer	0	Dom = CCI016_01LD_Plant Var = WSdDAGC1$ST$FctOpSt$stVal	
+CCI016_01LD_Plant/WSdDAGC1.FctOpSt.q	CCI016_01LD_Plant/WSdDAGC1.FctOpSt.q	bit_string	0000000000000 [NONE]	Dom = CCI016_01LD_Plant Var = WSdDAGC1$ST$FctOpSt$q	
+CCI016_01LD_Plant/WSdDAGC1.FctOpSt.t	CCI016_01LD_Plant/WSdDAGC1.FctOpSt.t	utc_time	1/1/1970 1:00:00 AM.000 [LOC]	Dom = CCI016_01LD_Plant Var = WSdDAGC1$ST$FctOpSt$t	
