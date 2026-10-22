@@ -59,7 +59,43 @@ enum class ModbusBackendKind : std::uint8_t {
 
 };
 
-
+/** EMT432 holding-register commissioning (lab yaml modbus.commissioning). */
+struct ModbusCommissioningConfig {
+    /** Must match code kRevision in modbus_emt432_commissioning_revision.hpp (0 = ignore). */
+    int    revision{5};
+    bool   enabled{false};
+    bool   apply_once{true};
+    /** 40011 offset 10 — verify Rogowski mounted_version == 1. */
+    bool   verify_mounted_version{true};
+    /** 40232 offset 231 — RMW single phase + integrator ON. */
+    bool   write_meas_1p_integrator{false};
+    /** 40232 bit 15 — filtered measurement enabled (MR Measurement_Config). */
+    bool   write_filtered_measurement{false};
+    /** 40235 offset 234 — float32 Rogowski sensitivity [V/A]. */
+    bool   write_rogowski_sensitivity{false};
+    double rogowski_sensitivity_v_per_a{0.000085};
+    /** 40234 — 0 = user TA (cert typical). */
+    bool   verify_ta_chronos_register{true};
+    bool   write_ta_chronos_register{false};
+    /** 40237/40239/40241/40243/40245/40247 bench defaults (direct VT, no ripple cut). */
+    bool   verify_transducer_bench_defaults{true};
+    bool   write_transducer_bench_defaults{false};
+    double ta_transducer_delay_deg{0.0};
+    double tv_transducer_ratio{1.0};
+    double tv_transducer_delay_deg{0.0};
+    double minimum_voltage_ripple{0.0};
+    /** 40245 — non-zero forces I to 0 below threshold (critical for Rogowski low current). */
+    double minimum_current_ripple{0.0};
+    /** 40247 — non-zero forces P/Q/S to 0 below threshold. */
+    double minimum_power_ripple{0.0};
+    /** 40256 — MR Energy_unit_factor; 4 = kWh. */
+    bool   verify_energy_unit_kwh{true};
+    bool   write_energy_unit_kwh{false};
+    /** 40232 bit 9 — MR Energy saving enabled. */
+    bool   write_energy_saving{false};
+    /** After commissioning, FC3 read KWh1/KVARh1/KVAh1/KWh_SUM (lab log). */
+    bool   log_energy_readings{true};
+};
 
 struct ModbusConfig {
 
@@ -94,7 +130,7 @@ struct ModbusConfig {
 
     int reg_reactive_power_count{2};
 
-    /** Holding offset for line V (EMT432 1P V_L1_N @905, PLC 40906). -1 = use plant.poc_ppv_kv. Not @980 (L1-L2 peak). */
+    /** Holding offset for line V (EMT432 1P V_L1_N @906, PLC 40907). -1 = use plant.poc_ppv_kv. Not @980 (L1-L2 peak). */
     int reg_line_voltage{-1};
 
     int reg_line_voltage_count{2};
@@ -112,6 +148,8 @@ struct ModbusConfig {
 
     /** stderr log on each successful Modbus poll (lab bus trace). */
     bool trace{false};
+
+    ModbusCommissioningConfig commissioning{};
 };
 
 /** Phase 3 — IEC 61850 MMS on Eth_A (LAN1). */

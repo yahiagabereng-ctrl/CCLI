@@ -1,0 +1,19 @@
+﻿{
+    "release":  57,
+    "semver":  "0.1.0",
+    "icd_cfg":  "C:\\Yahia\\projects\\CCLI\\apps\\ccli\\config\\icd\\lab_tg544_eth_a.cfg",
+    "lab_yaml":  "c:\\Yahia\\projects\\CCLI\\apps\\ccli\\config\\lab_tr400_emt432_lan3_tcp_102.yaml",
+    "codename":  "P5-5LN-ISO-PRES-AARE",
+    "host":  "192.168.1.130",
+    "deploy_profile":  "",
+    "binary":  "C:\\Yahia\\projects\\CCLI\\lab\\tg544-openwrt\\ccli-bin",
+    "version_full":  "0.1.0-r57",
+    "git_commit":  "f6deecb",
+    "changes":  [
+                    "EMT432 commissioning rev5 40245/40247",
+                    "lab yaml revision 5"
+                ],
+    "timestamp_utc":  "2026-10-22T13:49:22.0034911Z",
+    "tls_dir":  "C:\\Yahia\\projects\\CCLI\\apps\\ccli\\config\\tls",
+    "sha256":  "8c465f482534452d2379fc348ad3e1f845a4560199286ab1b2ab470c162aa825"
+}

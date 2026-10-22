@@ -32,7 +32,7 @@
 | **REQ-MTR-005a** | **Cert register pin:** [EMT432_CERT_REGISTER_PIN.md](EMT432_CERT_REGISTER_PIN.md) — **40235 = 0.000085**, **40232** 1P+integrator, **932/940/905** | Deploy + verify | **SETUP** |
 | **REQ-MTR-005b** | **Catalog FRC-350-100mV:** **100 mV/kA** → **40235 = 0.0001** | `TA_FL_ITA` | **HAVE** |
 | **REQ-MTR-006** | 1P bench: **40232** single-phase + integrator bit13 **ON** | MR bits 1–2 / 13 | **SETUP** |
-| **REQ-MTR-007** | ccli 1P map: **P1 932 · Q1 940 · V_L1_N 905** · scale 0.001 · `float_word_swap: true` | MR + libmodbus 0-based from 40001 | **HAVE** (V was 906 — first-fail) |
+| **REQ-MTR-007** | ccli 1P map: **P1 932 · Q1 940 · V_L1_N 906** (40907) · scale 0.001 · `float_word_swap: true` | EMT430_MR Rev2 · offset = PLC−40001 | **HAVE** (see EMT432_MR_REGISTER_VALIDATION.md) |
 | **REQ-MTR-008** | CCI publishes only P/Q/V totals. Full PQ/harmonics stay on the meter | 61557-12 §4.8.1.1 | **HAVE** |
 
 ### Support answer — 85 mV or 100 mV?
@@ -110,8 +110,8 @@ Seven independent mistakes. Any one zeros or garbage-fills TotW/PPV.
 |---|-------------------|--------------|--------|
 | **1** | Factory **40235 = 1.0** (or typed **85** / **100** into Rapporto TA) | Rogowski field is **V/A**. 1.0 → I/P ~0. 85 or 100 → worse | **0.0001** |
 | **2** | **40232** left **3P 4W + integrator OFF** (raw 518) | 1P wiring + di/dt coil without integrator | bits 1–2 = 0, bit13 = 1 |
-| **3** | Mapped **P_SUM 938** + **V_L1_L2_peak 980** (3P family defaults) | 1P: L2 open → L-L peak ~0; PPV dies | **P1 932 · V_L1_N 905** |
-| **4** | Voltage offset **906** (`40906 − 40000`) | libmodbus is **40001-based**. P1 used **932 = 40933−40001**. V must be **905 = 40906−40001** | **905** |
+| **3** | Mapped **P_SUM 938** + **V_L1_L2_peak 980** (3P family defaults) | 1P: L2 open → L-L peak ~0; PPV dies | **P1 932 · V_L1_N 906** |
+| **4** | Voltage at **905** (treated 40906 as V float) | **40906** is **u16 alarm** in MR; **V_L1_N float @40907** → offset **906** | **906** |
 | **5** | `float_word_swap: false` | EMT432 TCP is low-word-first | **true** |
 | **6** | Missing `power_scale: 0.001` | Meter speaks **W**; MMS wants **kW** | **0.001** |
 | **7** | Meter IP **.10** = PC **.10** | No TCP :502 | Meter **.102** |
@@ -132,7 +132,7 @@ UI **Impostazioni Potenze** (screenshot 2026-10-21): Rapporto TA/TV, cutoffs, RM
 | Connection | UI / script | **40232** | 1P + bit13 |
 | P | EMT432 P1 | ccli TotW | **932** × 0.001 |
 | Q | EMT432 Q1 | ccli TotVAr | **940** × 0.001 |
-| V | EMT432 V_L1_N RMS | ccli PPV | **905** × 0.001 |
+| V | EMT432 V_L1_N RMS | ccli PPV | **906** × 0.001 |
 | POC | ccli | DSO | 61850 5-LN |
 
 ---

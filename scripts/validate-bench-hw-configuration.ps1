@@ -71,9 +71,11 @@ $checks["SPEC: MMS 3782 + 104 2404 TLS"] =
 $checks["SPEC: 5-LN model_cfg"] = $yamlText -match "product_tr400_eth_a_5ln\.cfg"
 $checks["SPEC: use_dso_mock false"] = $yamlText -match "use_dso_mock:\s*false"
 if ($ConfigYaml -match "emt432") {
-    $checks["SPEC: Rogowski 80 mV/kA metadata"] =
-        ($yamlText -match "rogowski_sensitivity_mv_per_ka:\s*80") -and
-        ($yamlText -match "rogowski_reg_40235_v_per_a:\s*0\.00008")
+    $checks["SPEC: Rogowski 85 mV/kA metadata"] =
+        ($yamlText -match "rogowski_sensitivity_mv_per_ka:\s*85") -and
+        ($yamlText -match "rogowski_reg_40235_v_per_a:\s*0\.000085")
+    $checks["SPEC: EMT432 cert register pin doc"] =
+        $yamlText -match "EMT432_CERT_REGISTER_PIN\.md"
 }
 
 $lan2 = Test-LocalIp "192.168.1."

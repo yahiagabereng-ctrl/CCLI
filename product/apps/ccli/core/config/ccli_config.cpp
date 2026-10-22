@@ -167,6 +167,85 @@ CcliConfig load_config(const std::string& path) {
             continue;
         }
 
+        if (top == "modbus") {
+            if (ind == 2 && value.empty()) {
+                sub = key;
+                continue;
+            }
+            if (ind == 2 && !value.empty()) {
+                sub.clear();
+            }
+            if (ind == 4 && sub == "commissioning" && !value.empty()) {
+                if (key == "revision") {
+                    cfg.modbus.commissioning.revision = std::atoi(value.c_str());
+                } else if (key == "enabled") {
+                    cfg.modbus.commissioning.enabled =
+                        parse_bool(value, cfg.modbus.commissioning.enabled);
+                } else if (key == "apply_once") {
+                    cfg.modbus.commissioning.apply_once =
+                        parse_bool(value, cfg.modbus.commissioning.apply_once);
+                } else if (key == "verify_mounted_version") {
+                    cfg.modbus.commissioning.verify_mounted_version =
+                        parse_bool(value, cfg.modbus.commissioning.verify_mounted_version);
+                } else if (key == "write_meas_1p_integrator") {
+                    cfg.modbus.commissioning.write_meas_1p_integrator =
+                        parse_bool(value, cfg.modbus.commissioning.write_meas_1p_integrator);
+                } else if (key == "write_filtered_measurement") {
+                    cfg.modbus.commissioning.write_filtered_measurement =
+                        parse_bool(value, cfg.modbus.commissioning.write_filtered_measurement);
+                } else if (key == "write_rogowski_sensitivity") {
+                    cfg.modbus.commissioning.write_rogowski_sensitivity =
+                        parse_bool(value, cfg.modbus.commissioning.write_rogowski_sensitivity);
+                } else if (key == "rogowski_sensitivity_v_per_a") {
+                    cfg.modbus.commissioning.rogowski_sensitivity_v_per_a =
+                        std::strtod(value.c_str(), nullptr);
+                } else if (key == "verify_ta_chronos_register") {
+                    cfg.modbus.commissioning.verify_ta_chronos_register =
+                        parse_bool(value, cfg.modbus.commissioning.verify_ta_chronos_register);
+                } else if (key == "write_ta_chronos_register") {
+                    cfg.modbus.commissioning.write_ta_chronos_register =
+                        parse_bool(value, cfg.modbus.commissioning.write_ta_chronos_register);
+                } else if (key == "verify_transducer_bench_defaults") {
+                    cfg.modbus.commissioning.verify_transducer_bench_defaults = parse_bool(
+                        value, cfg.modbus.commissioning.verify_transducer_bench_defaults);
+                } else if (key == "write_transducer_bench_defaults") {
+                    cfg.modbus.commissioning.write_transducer_bench_defaults = parse_bool(
+                        value, cfg.modbus.commissioning.write_transducer_bench_defaults);
+                } else if (key == "ta_transducer_delay_deg") {
+                    cfg.modbus.commissioning.ta_transducer_delay_deg =
+                        std::strtod(value.c_str(), nullptr);
+                } else if (key == "tv_transducer_ratio") {
+                    cfg.modbus.commissioning.tv_transducer_ratio =
+                        std::strtod(value.c_str(), nullptr);
+                } else if (key == "tv_transducer_delay_deg") {
+                    cfg.modbus.commissioning.tv_transducer_delay_deg =
+                        std::strtod(value.c_str(), nullptr);
+                } else if (key == "minimum_voltage_ripple") {
+                    cfg.modbus.commissioning.minimum_voltage_ripple =
+                        std::strtod(value.c_str(), nullptr);
+                } else if (key == "minimum_current_ripple") {
+                    cfg.modbus.commissioning.minimum_current_ripple =
+                        std::strtod(value.c_str(), nullptr);
+                } else if (key == "minimum_power_ripple") {
+                    cfg.modbus.commissioning.minimum_power_ripple =
+                        std::strtod(value.c_str(), nullptr);
+                } else if (key == "verify_energy_unit_kwh") {
+                    cfg.modbus.commissioning.verify_energy_unit_kwh =
+                        parse_bool(value, cfg.modbus.commissioning.verify_energy_unit_kwh);
+                } else if (key == "write_energy_unit_kwh") {
+                    cfg.modbus.commissioning.write_energy_unit_kwh =
+                        parse_bool(value, cfg.modbus.commissioning.write_energy_unit_kwh);
+                } else if (key == "write_energy_saving") {
+                    cfg.modbus.commissioning.write_energy_saving =
+                        parse_bool(value, cfg.modbus.commissioning.write_energy_saving);
+                } else if (key == "log_energy_readings") {
+                    cfg.modbus.commissioning.log_energy_readings =
+                        parse_bool(value, cfg.modbus.commissioning.log_energy_readings);
+                }
+                continue;
+            }
+        }
+
         if (top == "modbus" && ind == 2 && !value.empty()) {
             /* `backend` selects simulator vs libmodbus. `mode` (rtu/tcp) is transport
              * detail for RTU bench docs — do not treat it as an override of backend. */

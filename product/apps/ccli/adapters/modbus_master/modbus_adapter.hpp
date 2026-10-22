@@ -2,6 +2,7 @@
 
 
 
+#include "config/ccli_config.hpp"
 #include "measurement/measurement_store.hpp"
 
 
@@ -88,6 +89,8 @@ struct ModbusPollConfig {
 
     bool        float_word_swap{false};
 
+    core::ModbusCommissioningConfig commissioning{};
+
 };
 
 
@@ -129,9 +132,14 @@ public:
 
     const ModbusPollConfig& poll_config() const { return cfg_; }
 
+    /** True after apply_once commissioning attempt (pass or fail). */
+    bool commissioning_attempted() const { return commissioning_attempted_; }
 
+    bool commissioning_ok() const { return commissioning_ok_; }
 
 private:
+
+    void try_commissioning_once();
 
     bool poll_simulator(cci::core::MeasurementStore& store, std::int64_t now_ms);
 
@@ -166,7 +174,9 @@ private:
 
     ModbusExchangeRecord last_exchange_{};
 
+    bool commissioning_attempted_{false};
 
+    bool commissioning_ok_{false};
 
 #ifdef CCLI_MODBUS_LIBMODBUS
 

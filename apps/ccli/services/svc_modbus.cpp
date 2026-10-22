@@ -58,6 +58,8 @@ adapters::ModbusPollConfig modbus_poll_from_config(const core::CcliConfig& app_c
 
     out.float_word_swap = m.float_word_swap;
 
+    out.commissioning = m.commissioning;
+
     if (m.backend == core::ModbusBackendKind::Rtu) {
 
         out.backend = adapters::ModbusBackend::LibmodbusRtu;

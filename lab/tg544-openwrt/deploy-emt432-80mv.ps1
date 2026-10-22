@@ -4,13 +4,17 @@
 #   . .\lab\tg544-openwrt\lab-env.ps1
 #   powershell -File lab\tg544-openwrt\deploy-emt432-80mv.ps1
 #   powershell -File lab\tg544-openwrt\deploy-emt432-80mv.ps1 -DutHost 192.168.178.1   # SSH via plant LAN3
-#   powershell -File lab\tg544-openwrt\deploy-emt432-80mv.ps1 -SkipMeterWrite
+#   powershell -File lab\tg544-openwrt\deploy-emt432-80mv.ps1              # yaml + ccli restart only
+#   powershell -File lab\tg544-openwrt\deploy-emt432-80mv.ps1 -ApplyCertPin  # also write meter 40232/40235
+#   powershell -File lab\tg544-openwrt\deploy-emt432-80mv.ps1 -ApplyCertPin -SensitivityMvKa 100
 
 param(
     [string]$MeterHost = "192.168.178.10",
     [string]$DutHost = "192.168.1.130",
+    [switch]$ApplyCertPin,
     [switch]$SkipMeterWrite,
-    [switch]$UseSshTunnel
+    [switch]$UseSshTunnel,
+    [double]$SensitivityMvKa = 85
 )
 
 $ErrorActionPreference = "Stop"
@@ -33,10 +37,14 @@ function Test-PingHost([string]$Target) {
 
 function Invoke-MeterCertPin {
     param([string]$ProbeHost, [int]$ProbePort)
-    python $RogowskiScript --host $ProbeHost --port $ProbePort --apply-cert-pin
+    python $RogowskiScript --host $ProbeHost --port $ProbePort --apply-cert-pin `
+        --set-sensitivity-mvka $SensitivityMvKa
 }
 
-if (-not $SkipMeterWrite) {
+# Back-compat: -SkipMeterWrite still disables meter; default is yaml-only unless -ApplyCertPin.
+$doMeterWrite = $ApplyCertPin -and -not $SkipMeterWrite
+
+if ($doMeterWrite) {
     Write-Host "=== EMT432 cert register pin (EMT432_CERT_REGISTER_PIN.md) ===" -ForegroundColor Cyan
     $meterOk = $false
     if (Test-PingHost $MeterHost) {
@@ -65,6 +73,9 @@ if (-not $SkipMeterWrite) {
         Write-Warning "Meter cert pin failed. Use LAN3 cable, or lab-env + this script (auto-tunnel from LAN2)."
         throw "EMT432 cert register pin not applied; fix before cert session."
     }
+} else {
+    Write-Host "=== Skip meter Modbus writes (yaml + ccli only) ===" -ForegroundColor Yellow
+    Write-Host "  Use -ApplyCertPin when you must write 40232/40235. Rewriting 40235 can zero P/I until load/UI settle."
 }
 
 Write-Host "=== Push lab.yaml to DUT ===" -ForegroundColor Cyan

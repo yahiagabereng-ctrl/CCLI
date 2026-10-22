@@ -81,7 +81,7 @@ For **230 V 1P bench**: set single-phase + wire L1/N + one TA on I1.
 | `P1` | 40933 | 932 | RMS active power line 1 [W] | 1P bench TotW |
 | `Q1` | 40941 | 940 | RMS reactive power line 1 [VAR] | 1P bench TotVAr |
 | `Frequency` | 40973 | 972 | Frequency [Hz] | Grid frequency |
-| `V_L1_N` | 40906 | **905** | RMS star voltage L1-N [V] | **1P PPV** (not 906) |
+| `V_L1_N` | 40907 | **906** | RMS star voltage L1-N [V] | **1P PPV** (40906 is u16 alarm, not V) |
 | `V_L1_L2_peak` | 40981 | 980 | Line voltage L1-L2 peak [V] | 3P diagnose only — 1P ~0 |
 | `TA_Transducer_ratio` | 40235 | 234 | 5A: CT ratio. Rogowski: **V/A** | FRC-350-100mV → **0.0001** |
 | `V_L1_N_peak` | 40975 | 974 | Star voltage L1-N peak [V] | — |

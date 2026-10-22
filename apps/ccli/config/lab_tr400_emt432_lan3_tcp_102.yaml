@@ -2,9 +2,9 @@
 # Register SoT: lab/conformance/EMT432_CERT_REGISTER_PIN.md
 # Specimen: lab/conformance/METER_SPECIMEN_EMT432_V_FULL.md
 # Plant: meter 192.168.178.10:502 · DUT LAN3 192.168.178.1 · PC-A 192.168.178.11 (set_pc_lan3_plant_178.cmd)
-# Coil 85 mV/kA (lab). 40235 = 0.000085 V/A. V offset 905 (not 906).
+# Coil 85 mV/kA (lab). 40235 = 0.000085 V/A. V_L1_N MR 40907 → offset 906 (40906 is u16, not V).
 #
-# Deploy (meter 40235 + yaml):
+# Deploy (yaml + optional ccli commissioning on DUT; PC -ApplyCertPin still available):
 #   . .\lab\tg544-openwrt\lab-env.ps1
 #   powershell -File lab/tg544-openwrt/deploy-emt432-80mv.ps1
 # From LAN3 only: -DutHost 192.168.178.1
@@ -62,10 +62,34 @@ modbus:
   power_scale: 0.001
   reactive_scale: 0.001
   float_word_swap: true
-  # V_L1_N RMS @40906 → 40906-40001 = 905 (906 was first-adapt off-by-one)
-  reg_line_voltage: 905
+  # V_L1_N RMS @40907 → offset 906 (EMT430_MR Rev2; see lab/conformance/EMT432_MR_REGISTER_VALIDATION.md)
+  reg_line_voltage: 906
   reg_line_voltage_count: 2
   line_voltage_scale: 0.001
+  # Meter holding writes on ccli start (see lab/conformance/EMT432_CCLI_COMMISSIONING_MAP.md)
+  commissioning:
+    revision: 5
+    enabled: true
+    apply_once: true
+    verify_mounted_version: true
+    write_meas_1p_integrator: true
+    write_filtered_measurement: true
+    verify_ta_chronos_register: true
+    write_ta_chronos_register: true
+    verify_transducer_bench_defaults: true
+    write_transducer_bench_defaults: true
+    ta_transducer_delay_deg: 0
+    tv_transducer_ratio: 1.0
+    tv_transducer_delay_deg: 0
+    minimum_voltage_ripple: 0
+    minimum_current_ripple: 0
+    minimum_power_ripple: 0
+    verify_energy_unit_kwh: true
+    write_energy_unit_kwh: true
+    write_energy_saving: true
+    log_energy_readings: true
+    write_rogowski_sensitivity: false
+    rogowski_sensitivity_v_per_a: 0.000085
 
 pf2:
   threshold_kw: 900
@@ -113,8 +137,7 @@ mms:
   tls_client_cert: /etc/ccli/tls/client_tls.pem
   tls_acse_client_cert: /etc/ccli/tls/client.pem
   tls_viewer_cert: /etc/ccli/tls/viewer_tls.pem
-  tls_revoked_cert: /etc/ccli/tls/revoked_tls.pem
-  tls_crl: /etc/ccli/tls/lab_crl.pem
+  # P3-07 TestPro Connect: crl off (see product_tr400_p3_07_connect_5ln.yaml). Re-enable for U-T3-04.
   tls_chain_validation: true
 
 goose:

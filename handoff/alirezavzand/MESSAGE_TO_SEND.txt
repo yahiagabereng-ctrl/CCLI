@@ -28,4 +28,10 @@ PC-A plant/logger (unchanged):
   handoff/alirezavzand/PCA_UNIFIED_CERT_START_ALIREZA.md
   lab/conformance/LAB_UNIFIED_CERT_TEST_MATRIX.md
 
+**EMT432 Modbus (2026-10-22, main):**
+  handoff/alirezavzand/EMT432_MODBUS_COMMISSIONING_ALIREZA.md
+  lab yaml: apps/ccli/config/lab_tr400_emt432_lan3_tcp_102.yaml (commissioning rev 5)
+  Deploy: lab/tg544-openwrt/deploy-emt432-80mv.ps1
+  Live dump: lab/emt432_dump_registers_one_ssh.ps1 → modbus_emt432_<date>.txt for U-P0-03/04
+
 Yahia

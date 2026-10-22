@@ -6,14 +6,17 @@ device: chronos_emt432
 vendor: Chronos srl
 product_url: https://chronos-tech.it/prodotti/chronos/emt432/
 notes:
-  - Cert register pin: lab/conformance/EMT432_CERT_REGISTER_PIN.md (85 mV/kA, 932/940/905)
+  - Cert register pin: lab/conformance/EMT432_CERT_REGISTER_PIN.md (85 mV/kA, 932/940/906)
+  - Basjes cross-check: apps/ccli/config/modbus/chronos_emt432_basjes.yaml · lab/emt432_validate_register_map.py
   - Frozen specimen: EMT432.V.FULL + FRC-350-100mV — lab/conformance/METER_SPECIMEN_EMT432_V_FULL.md
   - Default RTU: 9600 8N1, slave ID 1 (reg modbus_RTU_baudrate=3, parity=0).
   - Float32: 2 holding regs, TCP low-word-first (ccli float_word_swap: true).
   - P/Q in W and VAR — scale 0.001 for kW/kvar. Offsets = PLC address - 40001.
   - Order code I = TA 5A; V = 333 mV / Rogowski (NOT 85 mV). Coil FRC-350 = 100 mV/kA.
-  - 1P runtime: P1 932, Q1 940, V_L1_N 905. Do not use P_SUM/938 or V_L1_L2_peak/980 on 1P.
+  - 1P runtime: P1 932, Q1 940, V_L1_N 906 (40907). Do not use P_SUM/938 or V_L1_L2_peak/980 on 1P.
   - 40235 Rogowski sensitivity [V/A] = (mV/kA)/1e6. Bench pin 85 → 0.000085; FRC-350-100mV → 0.0001. Factory 1.0 = 5A CT.
+  - 40232 bit13 integrator ON (Rogowski); optional lab bit15 filtered measurement via modbus.commissioning.write_filtered_measurement.
+  - RMS realtime floats 40907-40985 — lab/conformance/EMT432_RMS_REALTIME_HOLDING_SPEC.md (FC3 hr:906 # 80).
 
 registers:
   active_power_w:
@@ -66,15 +69,15 @@ registers:
 
   line_voltage_l1_n_rms_v:
     name: V_L1_N
-    address: 40906
-    offset_40001: 905
+    address: 40907
+    offset_40001: 906
     type: holding
     count: 2
     datatype: float32
     byte_order: big_endian
     scale: 0.001
     unit: V
-    description: "RMS star voltage L1-N [V] — 1P PPV source (not 906)"
+    description: "RMS star voltage L1-N [V] — 1P PPV; MR 40907 (40906 is u16 alarm, not V)"
 
   line_voltage_l1_l2_peak_v:
     name: V_L1_L2_peak
@@ -87,6 +90,18 @@ registers:
     scale: 0.001
     unit: V
     description: "Line voltage L1-L2 peak [V] — diagnose only; 1P ~0"
+
+  line_current_l1_a:
+    name: I_L1
+    address: 40923
+    offset_40001: 922
+    type: holding
+    count: 2
+    datatype: float32
+    byte_order: big_endian
+    scale: 1.0
+    unit: A
+    description: "RMS line current L1 [A]"
 
   frequency_hz:
     name: Frequency
@@ -106,5 +121,30 @@ registers:
     modbus_parity_code: { address: 40230, offset_40001: 229 }
     modbus_stop_bit_code: { address: 40231, offset_40001: 230 }
     measurement_config: { address: 40232, offset_40001: 231 }
-    ta_chronos_profile: { address: 40234, offset_40001: 233 }
+    ta_chronos_profile: { address: 40234, offset_40001: 233, bench: 0_user_ta }
     ta_transducer_ratio: { address: 40235, offset_40001: 234, unit: V/A_when_rogowski, bench_85mvka: 0.000085, frc350_100mv: 0.0001 }
+    ta_transducer_delay_deg: { address: 40237, offset_40001: 236, bench: 0 }
+    tv_transducer_ratio: { address: 40239, offset_40001: 238, bench_direct_vt: 1.0 }
+    tv_transducer_delay_deg: { address: 40241, offset_40001: 240, bench: 0 }
+    minimum_voltage_ripple: { address: 40243, offset_40001: 242, bench: 0, note: "non-zero forces V to zero below threshold" }
+    minimum_current_ripple: { address: 40245, offset_40001: 244, bench: 0, note: "non-zero forces I to zero below threshold — Rogowski accuracy" }
+    minimum_power_ripple: { address: 40247, offset_40001: 246, bench: 0, note: "non-zero forces P/Q/S to zero below threshold" }
+    energy_unit_factor: { address: 40256, offset_40001: 255, bench_kwh: 4 }
+  energy_int64_wh_tenth:
+    doc: lab/conformance/EMT432_ENERGY_HOLDING_SPEC.md
+    datatype: int64
+    count: 4
+    scale_to_kwh: 0.0001
+    kwh1: { address: 40716, offset_40001: 715 }
+    kwh_sum: { address: 40729, offset_40001: 728 }
+    kvarh1: { address: 40765, offset_40001: 764 }
+    kvarh_sum: { address: 40777, offset_40001: 776 }
+    kvah1: { address: 40845, offset_40001: 844 }
+    kvah_sum: { address: 40857, offset_40001: 856 }
+  realtime_rms_contiguous:
+    doc: lab/conformance/EMT432_RMS_REALTIME_HOLDING_SPEC.md
+    start_address: 40907
+    start_offset_40001: 906
+    float_signals: 40
+    holding_register_count: 80
+    end_address: 40985

@@ -1,5 +1,7 @@
 #include "modbus_adapter.hpp"
 
+#include "modbus_emt432_commissioning.hpp"
+
 #include <cstdio>
 #include <cstring>
 #include <iomanip>
@@ -375,6 +377,34 @@ void ModbusAdapter::close_libmodbus() {
 
 
 
+void ModbusAdapter::try_commissioning_once() {
+    if (cfg_.commissioning.apply_once && commissioning_attempted_) {
+        return;
+    }
+    if (!cfg_.commissioning.enabled) {
+        return;
+    }
+    if (cfg_.backend != ModbusBackend::LibmodbusTcp &&
+        cfg_.backend != ModbusBackend::LibmodbusRtu) {
+        return;
+    }
+#ifdef CCLI_MODBUS_LIBMODBUS
+    if (!ensure_libmodbus_connected()) {
+        return;
+    }
+    commissioning_ok_ =
+        emt432_apply_commissioning(libmodbus_ctx_, cfg_.commissioning, cfg_.float_word_swap);
+    if (cfg_.commissioning.apply_once) {
+        commissioning_attempted_ = true;
+    }
+#else
+    if (cfg_.commissioning.apply_once) {
+        commissioning_attempted_ = true;
+    }
+    commissioning_ok_ = false;
+#endif
+}
+
 bool ModbusAdapter::ensure_libmodbus_connected() {
 
 #ifdef CCLI_MODBUS_LIBMODBUS
@@ -489,7 +519,7 @@ bool ModbusAdapter::poll_libmodbus(cci::core::MeasurementStore& store, const std
 
     }
 
-
+    try_commissioning_once();
 
     modbus_t* ctx = static_cast<modbus_t*>(libmodbus_ctx_);
 

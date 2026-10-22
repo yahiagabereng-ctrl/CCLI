@@ -80,6 +80,7 @@ target_include_directories(ccli_core PUBLIC
 
 set(CCLI_ADAPTERS_SOURCES
     adapters/modbus_master/modbus_adapter.cpp
+    adapters/modbus_master/modbus_emt432_commissioning.cpp
     adapters/iec61850_goose/goose_adapter.cpp
     adapters/iec61850_mms/mms_adapter.cpp
     adapters/iec61850_mms/mms_acse_auth.cpp

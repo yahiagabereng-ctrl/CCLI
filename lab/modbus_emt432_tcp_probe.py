@@ -75,7 +75,8 @@ def probe_host(host: str, port: int, unit: int, timeout: float, *, word_swap: bo
     integrator = bool((meas_cfg >> 13) & 1) if meas_cfg is not None else None
     mode_names = {0: "single phase", 1: "3P 3W 2TA", 2: "3P 3W 3TA", 3: "3P 4W 3TA+N"}
 
-    v_ln_rms = read_f32(client, 905, unit, word_swap=word_swap)  # V_L1_N RMS @40906
+    v_ln_rms = read_f32(client, 906, unit, word_swap=word_swap)  # V_L1_N RMS @40907 (40906=u16 alarm)
+    i_l1 = read_f32(client, 922, unit, word_swap=word_swap)  # I_L1 RMS @40923
     v_ln = read_f32(client, 974, unit, word_swap=word_swap)  # V_L1_N_peak @40975
     v_l1_l2 = read_f32(client, 980, unit, word_swap=word_swap)  # V_L1_L2_peak @40981
     freq = read_f32(client, 972, unit, word_swap=word_swap)
@@ -92,7 +93,9 @@ def probe_host(host: str, port: int, unit: int, timeout: float, *, word_swap: bo
         if integrator is not None:
             print(f"    integrator bit13 (Rogowski): {'ON' if integrator else 'OFF — run emt432_rogowski_config.py --apply-1p-rogowski'}")
     if v_ln_rms is not None:
-        print(f"  V_L1_N RMS @40906/905: {v_ln_rms:.1f} V  -> PPV ~ {v_ln_rms / 1000.0:.4f} kV (frozen 1P map)")
+        print(f"  V_L1_N RMS @40907/906: {v_ln_rms:.1f} V  -> PPV ~ {v_ln_rms / 1000.0:.4f} kV (EMT430_MR)")
+    if i_l1 is not None:
+        print(f"  I_L1 RMS @40923/922: {i_l1:.3f} A")
     if v_ln is not None:
         print(f"  V_L1_N_peak @40975: {v_ln:.1f} V")
     if v_l1_l2 is not None:
