@@ -70,16 +70,16 @@ netstat -tlnp | grep -E '3782|2404'
 | Item | Value |
 |------|-------|
 | **Software** | **0.1.0-r57** (P5-5LN-ISO-PRES-AARE) |
-| **Git (build tree)** | `ffb0f19` |
-| **DUT SSH** | `root@192.168.10.1` (LAN1 `192.168.10.1` or LAN2 `192.168.1.130`) |
+| **Git (build tree)** | `2516bc8` |
+| **DUT SSH** | `root@192.168.1.130` (LAN1 `192.168.10.1` or LAN2 `192.168.1.130`) |
 | **Staging `ccli-bin`** | SHA256 `51afd8a74ef3e604f90fd89dbb7f0fd8f7d08c75ce6eef7f0d1fa68b7d4e0533` (7805208 B) |
-| **OpenWrt APK** | ``ccli-0.1.0-r57.apk`` SHA256 ``11dc9addf609531f18d22948898eebfb254a5768a176abe4ab9fab79e0298767`` |
-| **DUT `/usr/sbin/ccli`** | SHA256 `51afd8a74ef3e604f90fd89dbb7f0fd8f7d08c75ce6eef7f0d1fa68b7d4e0533` **MATCH** |
+| **OpenWrt APK** | `ccli-0.1.0-r57.apk` SHA256 `11dc9addf609531f18d22948898eebfb254a5768a176abe4ab9fab79e0298767` |
+| **DUT `/usr/sbin/ccli`** | *(deploy to capture)* |
 | **Config on DUT** | `/etc/ccli/lab.yaml` = `product_tr400_p3_07_connect_5ln.yaml` |
-| **Last manifest** | [CCLI_DEPLOY_0.1.0-r57_2026-10-20_174111.md](deploy-manifests/CCLI_DEPLOY_0.1.0-r57_2026-10-20_174111.md) |
-| **Updated (UTC)** | 2026-10-20T15:44:39.5815273Z |
+| **Last manifest** | [CCLI_DEPLOY_0.1.0-r57_2026-10-22_145239.md](deploy-manifests/CCLI_DEPLOY_0.1.0-r57_2026-10-22_145239.md) |
+| **Updated (UTC)** | 2026-10-22T12:54:09.4800619Z |
 
-**Changes in last deploy:** O.13.1.2 OR fallback via commissioned dso O.11 min; MmsService operating_rule_fallback_latched forward
+**Changes in last deploy:** Product r57 5-LN deploy 2026-10-22; product_tr400_p3_07_connect_5ln.yaml; p3_07_connect TLS
 <!-- CURRENT_END -->
 
 ---
@@ -89,4 +89,6 @@ netstat -tlnp | grep -E '3782|2404'
 - [`deploy-manifests/README.md`](deploy-manifests/README.md)
 - [`LAB_ACCESS_FREEZE.md`](../LAB_ACCESS_FREEZE.md) â€” LAN1/LAN2 IPs
 - [`../conformance/LAB_UNIFIED_SESSION_PIN_2026-10-14.md`](../conformance/LAB_UNIFIED_SESSION_PIN_2026-10-14.md) â€” update session pin when DUT binary changes
+
+
 

@@ -1,0 +1,35 @@
+P5 deploy + load confirmation — 2026-10-22 (PC2 plant / LAN2 SSH)
+================================================================
+
+DEPLOY (deploy-emt432-80mv.ps1)
+  - EMT432 cert pin via SSH tunnel 127.0.0.1:15002 -> 192.168.178.10:502: APPLY OK
+  - 40011=1 Rogowski, 40232=8848 (1P + integrator ON), 40235=8.5e-05 (85 mV/kA)
+  - push lab_tr400_emt432_lan3_tcp_102.yaml -> 192.168.1.130: OK
+  - 5-LN cfg SHA match, ccli restart: 0.1.0-r57
+
+RAG (localhost:8001)
+  - Added source ccli-emt432-cert-register-pin to rag-product-deploy-sources.json
+  - Sync 192 files; enqueue lab-specimen: most jobs 500; ccli-chronos-emt432-ui queued
+  - POST /v1/query: PASS — cites P1 932, Q1 940, V 905, 40232/40235 (ccli-chronos-emt432-ui)
+
+LOAD / POWER CONFIRM (load reported open on bench)
+  - 8x verify-cert-pin @932: P1 = 0 W (stable)
+  - modbus_emt432_tcp_probe.py @932/940/905:
+      P1=0 W, Q1=0, V_L1_N RMS=0 V, f=0 Hz
+      V_L1_N_peak=573 V, V_L1_L2_peak=573 V (3P-style peaks; ignore for 1P PPV)
+  - DUT logread modbus: P=0kW Q=0kvar (reads OK, no read_fail)
+
+VERDICT
+  - Software deploy + cert register pin: PASS
+  - Expected ~1.6 kW with heater load: NOT CONFIRMED (meter reports 0 W / 0 V RMS)
+
+NEXT (physical, before blaming map)
+  1. EMT432 LCD: P1, I1, V L1-N with load closed (not open circuit)
+  2. If LCD shows kW but Modbus 0: UI cutoff / comms filter (Electrical settings)
+  3. If LCD also 0: Rogowski on loaded conductor, L1-N voltage present, breaker closed
+  4. Optional meter power-cycle after 40235 write; re-run deploy-emt432-80mv.ps1
+
+Commands (PC2):
+  . .\lab\tg544-openwrt\lab-env.ps1
+  powershell -File lab\tg544-openwrt\deploy-emt432-80mv.ps1
+  powershell -File lab\tg544-openwrt\verify-emt432-lan3.ps1 -MeterHost178 192.168.178.10 -UseSshTunnel

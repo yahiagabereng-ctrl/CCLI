@@ -1,7 +1,8 @@
-# Full HW bench — EMT432.V.FULL + Rogowski (80 mV/kA bench pin; FRC-350 catalog = 100 mV/kA).
-# Pin: lab/conformance/METER_SPECIMEN_EMT432_V_FULL.md
+# Full HW bench — EMT432.V.FULL + Rogowski 85 mV/kA (cert register pin).
+# Register SoT: lab/conformance/EMT432_CERT_REGISTER_PIN.md
+# Specimen: lab/conformance/METER_SPECIMEN_EMT432_V_FULL.md
 # Plant: meter 192.168.178.10:502 · DUT LAN3 192.168.178.1 · PC-A 192.168.178.11 (set_pc_lan3_plant_178.cmd)
-# Coil 80 mV/kA (Chronos support). 40235 = 0.00008 V/A. V offset 905 (not 906).
+# Coil 85 mV/kA (lab). 40235 = 0.000085 V/A. V offset 905 (not 906).
 #
 # Deploy (meter 40235 + yaml):
 #   . .\lab\tg544-openwrt\lab-env.ps1
@@ -22,11 +23,11 @@ lab:
   bench_note: "EMT432.V.FULL TCP .10 · PC plant .11 · Rogowski · DIO1/DIO2 · Sun COM5 · TSP+104 TLS"
   hw:
     plant_meter: emt432_v_full_modbus_tcp_lan3_1p
-    current_sensor: chronos_frc_rogowski_80mvka
-    rogowski_sensitivity_mv_per_ka: 80
-    rogowski_reg_40235_v_per_a: 0.00008
-    rogowski_not_mv: 85
+    current_sensor: chronos_frc_rogowski_85mvka
+    rogowski_sensitivity_mv_per_ka: 85
+    rogowski_reg_40235_v_per_a: 0.000085
     specimen_doc: lab/conformance/METER_SPECIMEN_EMT432_V_FULL.md
+    cert_register_pin: lab/conformance/EMT432_CERT_REGISTER_PIN.md
     rogowski_doc: knowledge-base/08-engineering/CCI_Chronos_Rogowski_Bench_Extract.md
     inverter_mock:
       role: sun2000_rtu_sim

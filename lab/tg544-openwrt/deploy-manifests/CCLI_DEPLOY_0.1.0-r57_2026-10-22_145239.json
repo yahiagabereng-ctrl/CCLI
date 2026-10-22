@@ -1,0 +1,20 @@
+﻿{
+    "release":  57,
+    "semver":  "0.1.0",
+    "icd_cfg":  "C:\\Yahia\\projects\\CCLI\\apps\\ccli\\config\\icd\\product\\product_tr400_eth_a_5ln.cfg",
+    "lab_yaml":  "apps\\ccli\\config\\product_tr400_p3_07_connect_5ln.yaml",
+    "codename":  "P5-5LN-ISO-PRES-AARE",
+    "host":  "192.168.1.130",
+    "deploy_profile":  "PRODUCT-5LN-CERT",
+    "binary":  "C:\\Yahia\\projects\\CCLI\\lab\\tg544-openwrt\\ccli-bin",
+    "version_full":  "0.1.0-r57",
+    "git_commit":  "2516bc8",
+    "changes":  [
+                    "Product r57 5-LN deploy 2026-10-22",
+                    "product_tr400_p3_07_connect_5ln.yaml",
+                    "p3_07_connect TLS"
+                ],
+    "timestamp_utc":  "2026-10-22T12:52:39.7626659Z",
+    "tls_dir":  "apps\\ccli\\config\\tls\\p3_07_connect",
+    "sha256":  "51afd8a74ef3e604f90fd89dbb7f0fd8f7d08c75ce6eef7f0d1fa68b7d4e0533"
+}

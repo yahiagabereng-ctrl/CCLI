@@ -90,26 +90,113 @@ def apply_1p_rogowski(reg: int) -> int:
     return reg
 
 
+def verify_cert_pin(
+    client: ModbusTcpClient, unit: int, *, word_swap: bool = True
+) -> Tuple[bool, list[str]]:
+    """Return (ok, messages) against EMT432_CERT_REGISTER_PIN.md."""
+    lines: list[str] = []
+    ok = True
+
+    mounted = read_u16(client, OFF_MOUNTED, unit)
+    if mounted != CERT_MOUNTED_VERSION:
+        ok = False
+        lines.append(f"FAIL 40011 mounted_version: {mounted} (expected {CERT_MOUNTED_VERSION})")
+    else:
+        lines.append(f"PASS 40011 mounted_version: {mounted}")
+
+    meas = read_u16(client, OFF_MEAS_CFG, unit)
+    if meas is None:
+        ok = False
+        lines.append("FAIL 40232: read error")
+    else:
+        d = decode_meas_cfg(meas)
+        if d["connection_mode"] != 0 or not d["integrator_rogowski"]:
+            ok = False
+            lines.append(
+                f"FAIL 40232: raw={meas} (0x{meas:x}) mode={d['connection_mode']} "
+                f"integrator={d['integrator_rogowski']}"
+            )
+        else:
+            lines.append(
+                f"PASS 40232: raw={meas} (0x{meas:x}) 1P + integrator ON"
+            )
+
+    ta_ch = read_u16(client, OFF_TA_CHRONOS, unit)
+    if ta_ch is not None and ta_ch != CERT_TA_CHRONOS_REG:
+        lines.append(f"WARN 40234 TA_Chronos_register: {ta_ch} (typical {CERT_TA_CHRONOS_REG})")
+    elif ta_ch is not None:
+        lines.append(f"PASS 40234 TA_Chronos_register: {ta_ch}")
+
+    sens = read_f32(client, OFF_TA_SENS, unit, word_swap=word_swap)
+    if sens is None:
+        ok = False
+        lines.append("FAIL 40235: read error")
+    elif abs(sens - CERT_SENS_V_PER_A) > CERT_SENS_TOLERANCE:
+        ok = False
+        lines.append(f"FAIL 40235 sensitivity: {sens:g} (expected {CERT_SENS_V_PER_A})")
+    else:
+        lines.append(f"PASS 40235 sensitivity: {sens:g} V/A ({CERT_MV_PER_KA:g} mV/kA)")
+
+    for name, off in CERT_MODBUS_MAP.items():
+        val = read_f32(client, off, unit, word_swap=word_swap)
+        if val is None:
+            ok = False
+            lines.append(f"FAIL offset {off} ({name}): read error")
+        else:
+            lines.append(f"READ offset {off} ({name}): {val:g}")
+
+    lines.append("CERT PIN: PASS" if ok else "CERT PIN: FAIL")
+    return ok, lines
+
+
+def apply_cert_pin(client: ModbusTcpClient, unit: int, *, word_swap: bool = True) -> bool:
+    """Apply REQ-EMT-CERT-001/002 then verify."""
+    cur = read_u16(client, OFF_MEAS_CFG, unit)
+    if cur is None:
+        return False
+    new = apply_1p_rogowski(cur)
+    if not write_u16(client, OFF_MEAS_CFG, new, unit):
+        return False
+    if not write_f32(
+        client, OFF_TA_SENS, CERT_SENS_V_PER_A, unit, word_swap=word_swap
+    ):
+        return False
+    ok, _ = verify_cert_pin(client, unit, word_swap=word_swap)
+    return ok
+
+
 def mv_per_ka_to_v_per_a(mv_per_ka: float) -> float:
     return mv_per_ka / 1_000_000.0
 
 
-BENCH_MV_KA_DEFAULT = 80.0
+BENCH_MV_KA_DEFAULT = 85.0
+
+# CCLI-LAB-EMT432-CERT-PIN-001 — lab/conformance/EMT432_CERT_REGISTER_PIN.md
+CERT_MV_PER_KA = 85.0
+CERT_SENS_V_PER_A = 0.000085
+CERT_MOUNTED_VERSION = 1
+CERT_TA_CHRONOS_REG = 0
+CERT_SENS_TOLERANCE = 1e-8
+CERT_MODBUS_MAP = {
+    "p1_w": 932,
+    "q1_var": 940,
+    "v_l1n_rms_v": 905,
+}
 
 
 def describe_sensitivity_v_per_a(sens: float) -> str:
     """Human-readable verdict for 40235 Rogowski [V/A] (shared with tcp probe)."""
-    if abs(sens - 0.00008) < 1e-8:
-        return "OK 80 mV/kA (40235=0.00008). Bench pin."
+    if abs(sens - 0.000085) < 1e-8:
+        return "OK 85 mV/kA (40235=0.000085). Bench pin."
     if abs(sens - 0.0001) < 1e-8:
         return "OK 100 mV/kA (FRC-350-100mV catalog)."
-    if abs(sens - 0.000085) < 1e-8:
-        return "WARN 85 mV/kA — no Chronos SKU; confirm coil label."
+    if abs(sens - 0.00008) < 1e-8:
+        return "OK 80 mV/kA (40235=0.00008). Legacy bench."
     if abs(sens - 1.0) < 0.05:
         return f"FAIL factory 1.0 (5A ratio). Use --set-sensitivity-mvka {BENCH_MV_KA_DEFAULT:g} or 100."
     if abs(sens - 85.0) < 0.5 or abs(sens - 100.0) < 0.5:
         return "FAIL typed mV into V/A field. Use --set-sensitivity-mvka, not 85/100 in register."
-    return f"WARN unexpected V/A {sens:g} — expected 0.00008 (80) or 0.0001 (100)."
+    return f"WARN unexpected V/A {sens:g} — expected 0.000085 (85) or 0.0001 (100)."
 
 
 def print_config(host: str, unit: int, *, word_swap: bool, client: ModbusTcpClient) -> None:
@@ -165,6 +252,16 @@ def main() -> int:
         help="Write 40232: single phase + integrator ON (read-modify-write)",
     )
     ap.add_argument(
+        "--apply-cert-pin",
+        action="store_true",
+        help=f"Write cert pin: 40232 1P+integrator + 40235={CERT_SENS_V_PER_A} ({CERT_MV_PER_KA:g} mV/kA)",
+    )
+    ap.add_argument(
+        "--verify-cert-pin",
+        action="store_true",
+        help="Verify EMT432_CERT_REGISTER_PIN.md (exit 1 on FAIL)",
+    )
+    ap.add_argument(
         "--set-sensitivity-v-a",
         type=float,
         default=None,
@@ -193,6 +290,29 @@ def main() -> int:
 
     print("CONNECT OK")
     print_config(args.host, args.unit, word_swap=word_swap, client=client)
+
+    exit_code = 0
+
+    if args.apply_cert_pin:
+        if not apply_cert_pin(client, args.unit, word_swap=word_swap):
+            print("APPLY CERT PIN FAILED")
+            exit_code = 1
+        else:
+            print("APPLY CERT PIN OK")
+        ok, vlines = verify_cert_pin(client, args.unit, word_swap=word_swap)
+        for line in vlines:
+            print(line)
+        if not ok:
+            exit_code = 1
+        client.close()
+        return exit_code
+
+    if args.verify_cert_pin:
+        ok, vlines = verify_cert_pin(client, args.unit, word_swap=word_swap)
+        for line in vlines:
+            print(line)
+        client.close()
+        return 0 if ok else 1
 
     if args.apply_1p_rogowski:
         cur = read_u16(client, OFF_MEAS_CFG, args.unit)

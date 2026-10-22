@@ -29,7 +29,7 @@
 | **REQ-MTR-003** | Do **not** treat **85** as Rogowski class | Flyer **85–265 V L-N** (volts) | **HAVE** — support FAQ |
 | **REQ-MTR-004** | Meter **.V** input = **333 mV** nominal, Vmax 500 mV, internal integrator | Web + flyer | **HAVE** |
 | **REQ-MTR-005** | Write **40235** = **V/A** for coil (not factory 1.0; not raw mV in UI) | EMT430_MR `TA_Transducer_ratio` | **SETUP** |
-| **REQ-MTR-005a** | **Bench deploy (2026-10):** **80 mV/kA** → **40235 = 0.00008** · yaml `rogowski_sensitivity_mv_per_ka: 80` | Chronos support + coil label | **SETUP** |
+| **REQ-MTR-005a** | **Cert register pin:** [EMT432_CERT_REGISTER_PIN.md](EMT432_CERT_REGISTER_PIN.md) — **40235 = 0.000085**, **40232** 1P+integrator, **932/940/905** | Deploy + verify | **SETUP** |
 | **REQ-MTR-005b** | **Catalog FRC-350-100mV:** **100 mV/kA** → **40235 = 0.0001** | `TA_FL_ITA` | **HAVE** |
 | **REQ-MTR-006** | 1P bench: **40232** single-phase + integrator bit13 **ON** | MR bits 1–2 / 13 | **SETUP** |
 | **REQ-MTR-007** | ccli 1P map: **P1 932 · Q1 940 · V_L1_N 905** · scale 0.001 · `float_word_swap: true` | MR + libmodbus 0-based from 40001 | **HAVE** (V was 906 — first-fail) |
