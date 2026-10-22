@@ -3,7 +3,8 @@
 **When:** PC-B is on LAN1, DUT is deployed, ready for **Connect**.  
 **Revision pin:** **`P3-07-TSP-CONNECT`** · firmware **`0.1.0-r55`** · TLS **`p3_07_connect`** · **crl=off**  
 **Access freeze:** [`lab/LAB_ACCESS_FREEZE.md`](../../lab/LAB_ACCESS_FREEZE.md) (same SSH + TLS MD5 on logger and PC1)  
-**Hotspot / no PC↔PC SSH:** [PC1_GITHUB_SYNC_AND_NETWORK.md](PC1_GITHUB_SYNC_AND_NETWORK.md) — push on dev, pull here.
+**Hotspot / no PC↔PC SSH:** [PC1_GITHUB_SYNC_AND_NETWORK.md](PC1_GITHUB_SYNC_AND_NETWORK.md) — push on dev, pull here.  
+**Remote:** canonical repo **`https://github.com/yahiagabereng-ctrl/CCLI.git`** (owner account). PC1 **pull only** — do not push to Masomeh’s GitHub fork.
 
 ---
 
@@ -11,8 +12,10 @@
 
 ```powershell
 cd D:\CCLI\CCLI\CCLI
-# first time: git clone https://github.com/yahiagabereng-ctrl/CCLI.git D:\CCLI\CCLI\CCLI
+# first time — owner repo only (not a personal fork):
+# git clone https://github.com/yahiagabereng-ctrl/CCLI.git D:\CCLI\CCLI\CCLI
 
+git remote -v
 git fetch origin
 git pull origin main
 git log -1 --oneline

@@ -1,10 +1,26 @@
 # PC1 — GitHub sync when hotspot blocks PC ↔ PC SSH
 
 **Document ID:** CCLI-HANDOFF-PC1-SYNC-001  
-**Revision:** 1.0  
+**Revision:** 1.1  
 **Date:** 2026-10-22  
 **Audience:** PC-B (Test Suite Pro), logger PC (PC-A), dev with Cursor  
 **Companion:** [PC1_GITHUB_PULL_RUNBOOK.md](PC1_GITHUB_PULL_RUNBOOK.md) · [TSP_TWO_PC_BENCH_RUNBOOK.md](../../lab/conformance/TSP_TWO_PC_BENCH_RUNBOOK.md)
+
+---
+
+## Repository (single canonical remote)
+
+| Role | GitHub | Git |
+|------|--------|-----|
+| **Owner / push** | **`yahiagabereng-ctrl/CCLI`** (Nicola programme account) | `git push origin main` from dev or logger PC only |
+| **PC1 bench (TestPro)** | Same repo — **pull read-only** | `git pull origin main` — do **not** push to a personal fork |
+| **`handoff/masomeh95/`** | Folder name = bench operator handoff | **Not** a separate GitHub user or remote |
+
+```text
+origin  https://github.com/yahiagabereng-ctrl/CCLI.git  (fetch + push on owner machines)
+```
+
+PC1 may use any GitHub login that has **read** access (collaborator or shared PAT); commits always land on **`yahiagabereng-ctrl/CCLI`**, not Masomeh’s account.
 
 ---
 
@@ -12,7 +28,7 @@
 
 Two Windows PCs share one **mobile hotspot** (e.g. dev on **Wi‑Fi**, PC1 on **USB tether**). **Cursor Remote SSH** between them only works if both get IPs on the **same subnet** and the phone allows **client-to-client** traffic. Many hotspots **isolate** clients: internet works, **ping between laptops fails**.
 
-**Programme default:** sync bench scripts, CID, yaml, and docs via **GitHub** (`push` on dev/logger → `git pull` on PC1). Do **not** commit TLS private keys, `lab/keys/`, or field-pack PEM trees.
+**Programme default:** sync bench scripts, CID, yaml, and docs via **GitHub** (**push** on **owner** dev/logger → **`git pull`** on PC1). Do **not** commit TLS private keys, `lab/keys/`, or field-pack PEM trees.
 
 ---
 
@@ -45,14 +61,15 @@ To use SSH later: enable **OpenSSH Server** on PC1, allow **TCP 22**, and fix ho
 
 ## GitHub workflow (primary)
 
-### Dev / logger (after changes)
+### Owner dev / logger (after changes — **yahiagabereng-ctrl**)
 
 ```powershell
-cd C:\Yahia\projects\CCLI   # your clone path
+cd C:\Yahia\projects\CCLI   # clone must point at yahiagabereng-ctrl/CCLI
+git remote -v                # expect origin → github.com/yahiagabereng-ctrl/CCLI.git
 git status
 git add …                    # never add lab/keys, CCLI_TSP_FIELD_PACK/tls, passwords
 git commit -m "…"
-git push origin main
+git push origin main         # owner credentials only
 ```
 
 Note the tip: `git log -1 --oneline` (e.g. bench sync commits include `lab/conformance/ANNEX_OT_SW_GAP_MATRIX.md`, 5-LN CID, `lab/tg544-openwrt/ccli-bin`).
