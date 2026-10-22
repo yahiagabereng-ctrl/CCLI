@@ -55,6 +55,8 @@ See `apps/ccli/third_party/README.md` for versions and license notes.
 
 **Test Suite Pro on PC1 (your role = PC-B / LAN1):** read **[TSP_PC1_START_MASOMEH.md](TSP_PC1_START_MASOMEH.md)** first, then **[PC1_LOG_CAPTURE_REQUIREMENTS.md](PC1_LOG_CAPTURE_REQUIREMENTS.md)** (Wireshark + logger every row).
 
+**EMT432 + TestPro vendor requirements (2026-10-22):** **[MASOMEH_EMT432_TESPRO_REQUIREMENTS.md](MASOMEH_EMT432_TESPRO_REQUIREMENTS.md)** · [CHRONOS_EMT432_VENDOR_REQUIREMENTS.md](CHRONOS_EMT432_VENDOR_REQUIREMENTS.md) · [TESPRO_VENDOR_REQUIREMENTS_HANDOFF.md](TESPRO_VENDOR_REQUIREMENTS_HANDOFF.md) — field pack: `00q_*` / `00s_*` / `00u_*` after `stage-tsp-field-pack.ps1`.
+
 Yahia may push the field pack to `D:\CCLI_TSP_FIELD_PACK` on PC1. Open **`00_START_PC1_MASOMEH.md`** inside that folder.
 
 Build pack yourself on PC1:

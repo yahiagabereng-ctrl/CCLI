@@ -32,18 +32,18 @@
 |------|------|--------|
 | CID | `apps/ccli/config/icd/product/product_tr400_eth_a_5ln.cid` | **DONE 2026-10-14** — `validate-5ln-cid.ps1` **PASS** |
 | cfg | `apps/ccli/config/icd/product/product_tr400_eth_a_5ln.cfg` | **DONE** — `gen-mms-model-cfg.ps1` (5 LNs, URCB options 159) |
-| DUT deploy | `/etc/ccli/icd/product_tr400_eth_a_5ln.cfg` | **DEPLOYED 2026-10-14** — SHA verified = repo cfg |
+| DUT deploy | `/etc/ccli/icd/product/product_tr400_eth_a_5ln.cfg` | **DEPLOYED 2026-10-15** — use `scripts/push-5ln-product-cfg-to-dut.ps1` (deploy script path fixed r55) |
 | Cert-run yaml | `apps/ccli/config/lab_tr400_phase4_eth_b_ttyS1_5ln.yaml` | `model_cfg` → product cfg; lab 31-LN stays in `..._ttyS1.yaml` |
 | PICS Cover | Declare **5-LN** + firmware semver | [PICS_FILLED_WORKBOOK.md](PICS_FILLED_WORKBOOK.md) |
 | MICS | Model matches **same** CID | [MICS_DRAFT.md](MICS_DRAFT.md) — trim from lab draft |
 
-| Field | Value (session 2026-10-14) |
+| Field | Value (session 2026-10-16) |
 |-------|-----------------------------|
-| CID History rev | **1** (`when=2026-10-14`, trimmed from lab rev 9) |
-| CID SHA-256 | `68C72E7F87D1C65B04A3E42925E727815EC8B1A421E0DC65296C7C65B3CF2582` |
-| `LLN0.NamPlt.configRev` | **20261014** |
-| cfg SHA-256 | `7E13DE139559ADC68DA0BBAE0C8AB0BD20ABDED6AF3472A9974CD4A5BC6A3146` (6604 bytes) |
-| `ccli --version` | **0.1.0-r54** (`P5-5LN-CERT-MODEL`) — reactive LNs optional in MMS adapter |
+| CID History rev | **2** (`when=2026-10-16`, TrgOps dchg/qchg/dupd + trgOps=Dyn) |
+| CID SHA-256 | `D4F291F78166981B92091156E5B9A0868C56096F765BE3E71DA86E88297E5020` |
+| `LLN0.NamPlt.configRev` | **20261016** |
+| cfg SHA-256 | `98EEA48FFA0DB63D71467B452A9966CF7422E98D6E2C949EE515CBDFCC842104` (6604 bytes) |
+| `ccli --version` | **0.1.0-r55** (`P5-5LN-CERT-MODEL`) — reactive LNs optional in MMS adapter |
 | DUT boot log | `mms: full CID model loaded from /etc/ccli/icd/product_tr400_eth_a_5ln.cfg` · VArSd/PFSP **inactive** notices |
 | LN count (Compare) | **5** |
 
@@ -62,6 +62,27 @@ Pre-Compare gate:
 ```powershell
 powershell -File scripts\validate-5ln-cid.ps1
 ```
+
+### CID revision discipline (any model edit)
+
+After **any** change to `product_tr400_eth_a_5ln.cid`, append History and bump identifiers **before** Compare or deploy:
+
+```powershell
+powershell -File scripts\bump-5ln-cid-revision.ps1 `
+  -What "One-line summary of SCL change" `
+  -Why "U-T1-02 Compare / waiver / annex alignment" `
+  -RegenCfg -SyncProduct
+```
+
+The script updates:
+
+| Field | Rule |
+|-------|------|
+| `<Header revision="N">` | `N` = previous + 1 |
+| `<History><Hitem … revision="N" when="YYYY-MM-DD" what="…" /></History>` | New row per edit (lab CID pattern) |
+| `LLN0.NamPlt.configRev` | `YYYYMMDD` (default: today) |
+
+Then update this document (**History rev**, **configRev**, **CID/cfg SHA-256**), `scripts/validate-5ln-stack.ps1` pin constants, DUT cfg push, TSP re-import CID, LuCI ICD path refresh (`enable-dut-luci-iec61850.ps1`).
 
 **CID exists (2026-10-14):** U-T1-02 Compare and U-T1-03 browse are **unblocked** — TSP must import `cid\product_tr400_eth_a_5ln.cid` and DUT must run `lab_tr400_phase4_eth_b_ttyS1_5ln.yaml` (check session header `ccli --version` ≥ r54).
 
@@ -102,5 +123,9 @@ See runbook § **DUT deploy** and **LAN3 IP alignment** (`.30.0/24` vs `.178.0/2
 | `ccli-product-specimen-5ln` | This pin |
 | `ccli-lab-specimen-version` | Lab 31-LN reference only |
 | `ccli-tsp-two-pc-bench-runbook` | PC-A / PC-B roles |
+
+**Meter (plant P/Q/V):** [METER_SPECIMEN_EMT432_V_FULL.md](METER_SPECIMEN_EMT432_V_FULL.md) — bench pin · [CHRONOS_EMT432_VENDOR_REQUIREMENTS.md](CHRONOS_EMT432_VENDOR_REQUIREMENTS.md) — **all Chronos cert asks**.
+
+**Annex O (software):** [ANNEX_O_SOFTWARE_MATRIX.md](ANNEX_O_SOFTWARE_MATRIX.md) — clause → SW → 5-LN DUT gap table.
 
 **Keywords:** `5-LN`, `product`, `specimen`, `O.15`, `Compare`, `ccli-product-specimen-5ln`

@@ -8,6 +8,8 @@ Usage (PC on plant LAN3):
   # Bench B — EMT432 factory-style (SN 261001102952):
   lab/set_pc_lan3_plant_178.cmd  # Admin → 192.168.178.10/24
   python lab/modbus_emt432_tcp_probe.py --host 192.168.178.250
+  # Rogowski / new meter on LAN3:
+  python lab/modbus_emt432_tcp_probe.py --host 192.168.178.102
 
 Scan /24 for Modbus TCP slave 1:
   python lab/modbus_emt432_tcp_probe.py --scan --subnet 192.168.178
@@ -22,6 +24,7 @@ from __future__ import annotations
 import argparse
 import struct
 import sys
+from pathlib import Path
 from typing import Optional
 
 try:
@@ -29,6 +32,9 @@ try:
 except ImportError:
     print("Install: pip install pymodbus", file=sys.stderr)
     sys.exit(1)
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from emt432_rogowski_config import describe_sensitivity_v_per_a  # noqa: E402
 
 
 def f32_be(hi: int, lo: int, *, word_swap: bool = True) -> float:
@@ -66,25 +72,34 @@ def probe_host(host: str, port: int, unit: int, timeout: float, *, word_swap: bo
     mounted = read_u16(client, 10, unit)  # mounted_version @ 40011
     meas_cfg = read_u16(client, 231, unit)  # 40232
     mode = (meas_cfg >> 1) & 0x3 if meas_cfg is not None else None
+    integrator = bool((meas_cfg >> 13) & 1) if meas_cfg is not None else None
     mode_names = {0: "single phase", 1: "3P 3W 2TA", 2: "3P 3W 3TA", 3: "3P 4W 3TA+N"}
 
+    v_ln_rms = read_f32(client, 905, unit, word_swap=word_swap)  # V_L1_N RMS @40906
     v_ln = read_f32(client, 974, unit, word_swap=word_swap)  # V_L1_N_peak @40975
     v_l1_l2 = read_f32(client, 980, unit, word_swap=word_swap)  # V_L1_L2_peak @40981
     freq = read_f32(client, 972, unit, word_swap=word_swap)
     p1 = read_f32(client, 932, unit, word_swap=word_swap)
     q1 = read_f32(client, 940, unit, word_swap=word_swap)
+    sens = read_f32(client, 234, unit, word_swap=word_swap)  # 40235 V/A
 
     if feat is not None:
         print(f"  feature_version @40015: {feat} ({'Full' if feat else 'Base'})")
     if mounted is not None:
         print(f"  mounted_version @40011: {mounted} ({'5A TA' if mounted == 0 else '333mV/Rog'})")
     if mode is not None:
-        print(f"  Measurement_Config @40232 mode: {mode} = {mode_names.get(mode, '?')}")
+        print(f"  Measurement_Config @40232: raw={meas_cfg} mode={mode} ({mode_names.get(mode, '?')})")
+        if integrator is not None:
+            print(f"    integrator bit13 (Rogowski): {'ON' if integrator else 'OFF — run emt432_rogowski_config.py --apply-1p-rogowski'}")
+    if v_ln_rms is not None:
+        print(f"  V_L1_N RMS @40906/905: {v_ln_rms:.1f} V  -> PPV ~ {v_ln_rms / 1000.0:.4f} kV (frozen 1P map)")
     if v_ln is not None:
         print(f"  V_L1_N_peak @40975: {v_ln:.1f} V")
     if v_l1_l2 is not None:
-        ppv_kv = v_l1_l2 / 1000.0
-        print(f"  V_L1_L2_peak @40981: {v_l1_l2:.1f} V  -> PPV.phsAB ~ {ppv_kv:.4f} kV (ccli line_voltage_scale 0.001)")
+        print(f"  V_L1_L2_peak @40981: {v_l1_l2:.1f} V  (1P often ~0 — do not map to PPV)")
+    if sens is not None:
+        print(f"  40235 sensitivity [V/A]: {sens:g}")
+        print(f"    {describe_sensitivity_v_per_a(sens)}")
     if freq is not None:
         print(f"  Frequency @40973: {freq:.3f} Hz")
     if p1 is not None:

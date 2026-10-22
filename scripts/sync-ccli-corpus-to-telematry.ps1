@@ -24,7 +24,9 @@ $engPatterns = @(
     "CCI_SOC_Freeze.md",
     "CCI_TG500_Lab_Platform.md",
     "CCI_OpenWrt_Freeze.md",
-    "CCI_Product_SW_Freeze.md"
+    "CCI_Product_SW_Freeze.md",
+    "CCI_Chronos_EMT432_Web*.md",
+    "CCI_Chronos_EMT432_Vendor_Requirements.md"
 )
 
 $count = 0
@@ -147,6 +149,28 @@ if (Test-Path $TspId) {
     New-Item -ItemType Directory -Path $TelTspDoc -Force | Out-Null
     Copy-Item $TspId (Join-Path $TelTspDoc "TSP_TEST_IDENTIFICATION_POST_CONNECT.md") -Force
     $count++
+}
+
+# Lab P5 EMT432 UI evidence + portal SOP (Rogowski bench)
+$TelP5 = Join-Path $TelematryRoot "documents\projects\ccli\lab\evidence\phase5"
+$LabP5 = Join-Path $Repo "lab\evidence\phase5"
+if (Test-Path $LabP5) {
+    New-Item -ItemType Directory -Path $TelP5 -Force | Out-Null
+    foreach ($pat in @("P5_EMT432*.md", "P5_ROGOWSKI*.md")) {
+        Get-ChildItem $LabP5 -Filter $pat -ErrorAction SilentlyContinue | ForEach-Object {
+            Copy-Item $_.FullName (Join-Path $TelP5 $_.Name) -Force
+            $count++
+        }
+    }
+    $uiImg = Join-Path $LabP5 "emt432_ui_2026-10-21"
+    if (Test-Path $uiImg) {
+        $TelUi = Join-Path $TelP5 "emt432_ui_2026-10-21"
+        New-Item -ItemType Directory -Path $TelUi -Force | Out-Null
+        Get-ChildItem $uiImg -Filter "*.png" -ErrorAction SilentlyContinue | ForEach-Object {
+            Copy-Item $_.FullName (Join-Path $TelUi $_.Name) -Force
+            $count++
+        }
+    }
 }
 
 # Handoff docs referenced by unified matrix RAG (U-P0-10)

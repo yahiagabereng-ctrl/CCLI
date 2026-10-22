@@ -6,10 +6,13 @@ device: chronos_emt432
 vendor: Chronos srl
 product_url: https://chronos-tech.it/prodotti/chronos/emt432/
 notes:
+  - Frozen specimen: EMT432.V.FULL + FRC-350-100mV — lab/conformance/METER_SPECIMEN_EMT432_V_FULL.md
   - Default RTU: 9600 8N1, slave ID 1 (reg modbus_RTU_baudrate=3, parity=0).
-  - Float32 values use 2 consecutive holding registers (big-endian per bench verify).
-  - P/Q in W and VAR — scale 0.001 for kW/kvar in ccli if needed.
-  - Order code suffix I = TA 5A; V = 333mV/Rogowski.
+  - Float32: 2 holding regs, TCP low-word-first (ccli float_word_swap: true).
+  - P/Q in W and VAR — scale 0.001 for kW/kvar. Offsets = PLC address - 40001.
+  - Order code I = TA 5A; V = 333 mV / Rogowski (NOT 85 mV). Coil FRC-350 = 100 mV/kA.
+  - 1P runtime: P1 932, Q1 940, V_L1_N 905. Do not use P_SUM/938 or V_L1_L2_peak/980 on 1P.
+  - 40235 Rogowski sensitivity [V/A] = (mV/kA)/1e6. Bench pin 80 → 0.00008; FRC-350-100mV → 0.0001. Factory 1.0 = 5A CT.
 
 registers:
   active_power_w:
@@ -60,6 +63,18 @@ registers:
     unit: VAR
     description: "RMS reactive power line 1 [VAR]"
 
+  line_voltage_l1_n_rms_v:
+    name: V_L1_N
+    address: 40906
+    offset_40001: 905
+    type: holding
+    count: 2
+    datatype: float32
+    byte_order: big_endian
+    scale: 0.001
+    unit: V
+    description: "RMS star voltage L1-N [V] — 1P PPV source (not 906)"
+
   line_voltage_l1_l2_peak_v:
     name: V_L1_L2_peak
     address: 40981
@@ -70,7 +85,7 @@ registers:
     byte_order: big_endian
     scale: 0.001
     unit: V
-    description: "Line voltage L1-L2 peak [V]"
+    description: "Line voltage L1-L2 peak [V] — diagnose only; 1P ~0"
 
   frequency_hz:
     name: Frequency
@@ -89,3 +104,6 @@ registers:
     modbus_baud_code: { address: 40229, offset_40001: 228 }
     modbus_parity_code: { address: 40230, offset_40001: 229 }
     modbus_stop_bit_code: { address: 40231, offset_40001: 230 }
+    measurement_config: { address: 40232, offset_40001: 231 }
+    ta_chronos_profile: { address: 40234, offset_40001: 233 }
+    ta_transducer_ratio: { address: 40235, offset_40001: 234, unit: V/A_when_rogowski, bench_80mvka: 0.00008, frc350_100mv: 0.0001 }

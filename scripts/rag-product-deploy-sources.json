@@ -1,7 +1,7 @@
 {
   "schema": "ccli-rag-registry-v1",
   "purpose": "Product deployment + DNV/TSP P0 sources — enqueued by ingest-next-phases.ps1 and ingest-product-deploy-rag.ps1",
-  "updated": "2026-10-14-unified-matrix-1.3",
+  "updated": "2026-10-21-tespro-cert-reply",
   "sources": [
     { "source_id": "ccli-knowledge-base-brief", "relative": "projects/ccli/engineering/Knowledge_Base_Brief.md", "cluster": "governance" },
     { "source_id": "ccli-rag-source-index", "relative": "projects/ccli/lab/conformance/RAG_SOURCE_INDEX.md", "cluster": "governance" },
@@ -22,8 +22,11 @@
     { "source_id": "ccli-lab-session-2026-10-09-annex-runbook", "relative": "projects/ccli/lab/conformance/LAB_SESSION_2026-10-09_ANNEX_RUNBOOK.md", "cluster": "lab-specimen" },
     { "source_id": "ccli-lab-scl-dataset-placement", "relative": "projects/ccli/lab/conformance/SCL_DATASET_PLACEMENT.md", "cluster": "lab-specimen" },
     { "source_id": "ccli-lab-unified-cert-test-matrix", "relative": "projects/ccli/lab/conformance/LAB_UNIFIED_CERT_TEST_MATRIX.md", "cluster": "test-req" },
+    { "source_id": "ccli-normative-cert-validation-matrix", "relative": "projects/ccli/lab/conformance/Full Validate.md", "cluster": "test-req" },
+    { "source_id": "ccli-annex-o-software-matrix", "relative": "projects/ccli/lab/conformance/ANNEX_O_SOFTWARE_MATRIX.md", "cluster": "test-req" },
     { "source_id": "ccli-lab-unified-session-pin-2026-10-14", "relative": "projects/ccli/lab/conformance/LAB_UNIFIED_SESSION_PIN_2026-10-14.md", "cluster": "test-req" },
     { "source_id": "ccli-pc1-log-capture-requirements", "relative": "projects/ccli/lab/handoff/masomeh95/PC1_LOG_CAPTURE_REQUIREMENTS.md", "cluster": "tsp" },
+    { "source_id": "ccli-masomeh-emt432-tespro-req", "relative": "projects/ccli/lab/handoff/masomeh95/MASOMEH_EMT432_TESPRO_REQUIREMENTS.md", "cluster": "lab-specimen" },
     { "source_id": "ccli-pca-unified-cert-start-alireza", "relative": "projects/ccli/lab/handoff/alirezavzand/PCA_UNIFIED_CERT_START_ALIREZA.md", "cluster": "test-req" },
     { "source_id": "ccli-tls-wireshark-handoff-alireza", "relative": "projects/ccli/lab/evidence/TLS_WIRESHARK_HANDOFF_ALIREZA.md", "cluster": "tsp" },
     { "source_id": "ccli-ejbca-handoff-alireza", "relative": "projects/ccli/lab/evidence/EJBCA_HANDOFF_ALIREZA.md", "cluster": "cyber" },
@@ -70,6 +73,23 @@
     { "source_id": "ccli-62443-zones-extract", "relative": "projects/ccli/engineering/CCI_62443_Zones.md", "cluster": "cyber" },
     { "source_id": "ccli-k63-ceremony-sop", "relative": "projects/ccli/engineering/CCI_K6.3_Key_Ceremony_SOP.md", "cluster": "cyber" },
     { "source_id": "ccli-certificate-samples-extract", "relative": "projects/ccli/engineering/CCI_Certificate_Samples_Extract.md", "cluster": "dnv" },
-    { "source_id": "ccli-dnv-product-readiness", "relative": "projects/ccli/lab/conformance/dnv/DNV_UCA_PRODUCT_READINESS.md", "cluster": "dnv" }
+    { "source_id": "ccli-dnv-product-readiness", "relative": "projects/ccli/lab/conformance/dnv/DNV_UCA_PRODUCT_READINESS.md", "cluster": "dnv" },
+    { "source_id": "ccli-uca-61850-accreditation-extract", "relative": "projects/ccli/engineering/CCI_UCA_61850_Accreditation_Extract.md", "cluster": "dnv" },
+    { "source_id": "ccli-meter-specimen-emt432-v-full", "relative": "projects/ccli/lab/conformance/METER_SPECIMEN_EMT432_V_FULL.md", "cluster": "lab-specimen" },
+    { "source_id": "ccli-chronos-emt432-vendor-requirements", "relative": "projects/ccli/engineering/CCI_Chronos_EMT432_Vendor_Requirements.md", "cluster": "lab-specimen" },
+    { "source_id": "ccli-chronos-emt432", "relative": "projects/ccli/engineering/CCI_Chronos_EMT432_Extract.md", "cluster": "lab-specimen" },
+    { "source_id": "ccli-chronos-rogowski-bench", "relative": "projects/ccli/engineering/CCI_Chronos_Rogowski_Bench_Extract.md", "cluster": "lab-specimen" },
+    { "source_id": "ccli-chronos-emt432-ui", "relative": "projects/ccli/engineering/CCI_Chronos_EMT432_Web_UI_Capabilities.md", "cluster": "lab-specimen" },
+    { "source_id": "ccli-emt432-portal-step-by-step", "relative": "projects/ccli/lab/evidence/phase5/P5_EMT432_PORTAL_STEP_BY_STEP.md", "cluster": "lab-specimen" },
+    { "source_id": "ccli-emt432-ui-confirm-2026-10-21", "relative": "projects/ccli/lab/evidence/phase5/P5_EMT432_UI_CONFIRM_2026-10-21.md", "cluster": "lab-specimen" },
+    { "source_id": "ccli-lab-p5-rogowski-frc350-bench", "relative": "projects/ccli/lab/evidence/phase5/P5_ROGOWSKI_FRC350_BENCH.md", "cluster": "lab-specimen" },
+    { "source_id": "ccli-tespro-cert-reply-2026-10", "relative": "projects/ccli/engineering/CCI_TesPro_Cert_Reply_2026-10_Extract.md", "cluster": "dnv" },
+    { "source_id": "ccli-61557-12-tespro-vendor-map", "relative": "projects/ccli/lab/conformance/61557-12_TESPRO_VENDOR_MAP.md", "cluster": "dnv" },
+    { "source_id": "ccli-61557-12-clauses-vs-tespro", "relative": "projects/ccli/lab/conformance/61557-12_CLAUSES_VS_TESPRO.md", "cluster": "dnv" },
+    { "source_id": "ccli-tespro-cnas-l5868-62368-scope", "relative": "projects/ccli/engineering/CCI_TesPro_CNAS_L5868_62368_Scope_Extract.md", "cluster": "dnv" },
+    { "source_id": "ccli-61557-12-2018-scan", "relative": "projects/ccli/engineering/CCI_61557-12_2018_Scan.md", "cluster": "dnv" },
+    { "source_id": "ccli-61557-12-2018-ed2-extract", "relative": "projects/ccli/engineering/CCI_61557-12_2018_Ed2_Extract.md", "cluster": "dnv" },
+    { "source_id": "ccli-tespro-scope-allocation-2026-10", "relative": "projects/ccli/reference/vendor/tespro/2026-10-cert-reply/_extracts/TesPro-Certification-Scope-Allocation-Statement-EN.txt", "cluster": "dnv" },
+    { "source_id": "ccli-tespro-fips-140-2-l2-policy", "relative": "projects/ccli/reference/vendor/tespro/2026-10-cert-reply/_extracts/FIPS_140_2_Level_2_Non-Proprietary_Security_Policy.txt", "cluster": "cyber" }
   ]
 }

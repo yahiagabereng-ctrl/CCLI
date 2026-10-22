@@ -1,8 +1,9 @@
-# Ingest Chronos EMT432 manuals + Modbus map into CCLI corpus.
+# Ingest Chronos EMT432 manuals + Modbus map + TA/Rogowski catalog into CCLI corpus.
 param(
     [string]$RefDir = "",
     [switch]$SkipDownload,
-    [switch]$SkipExtract
+    [switch]$SkipExtract,
+    [switch]$SkipRogowski
 )
 
 $ErrorActionPreference = "Stop"
@@ -16,6 +17,7 @@ $Urls = @{
     "EMT432_MI-ITA.pdf" = "https://static.chronos-tech.it/EMT_432_MI_ITA_9fcf8aaff7.pdf"
     "EMT432_FL-ITA.pdf" = "https://static.chronos-tech.it/EMT_432_FL_ITA_8f0283606e.pdf"
     "EMT430_MR.pdf"     = "https://static.chronos-tech.it/EMT_430_MR_cb7f1d080e.pdf"
+    "TA_FL_ITA.pdf"     = "https://static.chronos-tech.it/TA_FL_ITA_cb6650f79f.pdf"
 }
 
 New-Item -ItemType Directory -Force -Path $RefDir | Out-Null
@@ -37,7 +39,15 @@ if (-not $SkipExtract) {
     Write-Host "=== Extract engineering corpus ===" -ForegroundColor Cyan
     python (Join-Path $Repo "scripts\extract-chronos-emt432.py") --ref-dir $RefDir
     if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+    if (-not $SkipRogowski) {
+        Write-Host "=== Extract Rogowski / FRC bench corpus ===" -ForegroundColor Cyan
+        python (Join-Path $Repo "scripts\extract-chronos-rogowski.py") --ref-dir $RefDir
+        if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+    }
 }
 
 Write-Host "Done. Extract: knowledge-base/08-engineering/CCI_Chronos_EMT432_Extract.md" -ForegroundColor Green
+Write-Host "Rogowski: knowledge-base/08-engineering/CCI_Chronos_Rogowski_Bench_Extract.md" -ForegroundColor Green
 Write-Host "Map: apps/ccli/config/modbus/chronos_emt432_map.yaml" -ForegroundColor Green
+Write-Host "Bench yaml: apps/ccli/config/lab_tr400_emt432_lan3_tcp_102.yaml" -ForegroundColor Green
+Write-Host "UI RAG: scripts/ingest-chronos-emt432-ui-rag.ps1 (-SyncOnly or enqueue Telematry)" -ForegroundColor Green

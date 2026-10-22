@@ -94,7 +94,7 @@ struct ModbusConfig {
 
     int reg_reactive_power_count{2};
 
-    /** Holding offset for line-line V (EMT432 @980). -1 = disabled (use plant.poc_ppv_kv). */
+    /** Holding offset for line V (EMT432 1P V_L1_N @905, PLC 40906). -1 = use plant.poc_ppv_kv. Not @980 (L1-L2 peak). */
     int reg_line_voltage{-1};
 
     int reg_line_voltage_count{2};

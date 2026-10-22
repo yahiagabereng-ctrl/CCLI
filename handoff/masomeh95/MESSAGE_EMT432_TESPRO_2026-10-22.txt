@@ -1,0 +1,23 @@
+Hi Masomeh,
+
+Pushed EMT432 (Chronos) + TestPro vendor requirement docs — read first:
+
+  handoff/masomeh95/MASOMEH_EMT432_TESPRO_REQUIREMENTS.md
+
+Also in repo:
+  CHRONOS_EMT432_VENDOR_REQUIREMENTS.md  (all Chronos cert asks, O.15 #2)
+  TESPRO_VENDOR_REQUIREMENTS_HANDOFF.md    (TesPro 9-row minimal status)
+
+After git pull, refresh field pack:
+  powershell -File scripts\stage-tsp-field-pack.ps1 -Dest D:\CCLI_TSP_FIELD_PACK
+
+New pack files:
+  00q_MASOMEH_EMT432_TESPRO_REQUIREMENTS.md
+  00q1_CHRONOS_EMT432_VENDOR_REQUIREMENTS.md
+  00s_TESPRO_VENDOR_REQUIREMENTS.md
+  00u_METER_SPECIMEN_EMT432.md
+  00v_61557-12_TESPRO_VENDOR_MAP.md
+
+You still run TSP on PC-B; EMT432 Modbus/meter is PC-A (Yahia). Do not mark O.15 #2 PASS from TesPro row 6 alone — Chronos 61557-12 is still OPEN.
+
+Yahia

@@ -18,10 +18,11 @@
 # RS485-only meter on A1/B1: product_tr400_rtu_a1b1.yaml
 # TSP cert + single RTU slave @40001: lab_tr400_phase4_eth_b_ttyS1_5ln.yaml
 #
-# Deploy:
-#   .\lab\tg544-openwrt\deploy-ccli-session-fix.ps1 -HostAddr 192.168.1.130 `
-#     -LabYaml apps\ccli\config\product_tr400.yaml `
-#     -Changes @("product: EMT432 Modbus TCP LAN3 + full HW I/O")
+# Ship / accredited cyber (EJBCA + CRL) — requires TestPro field pack refresh.
+#
+# Bench with UNCHANGED TestPro (r51 P3-07 Connect TLS): use
+#   product_tr400_p3_07_connect.yaml + deploy-product-fw-same-cyber.ps1
+# NOT this file with apps/ccli/config/tls (breaks existing TSP trust).
 
 platform: tg500
 lab:
@@ -67,7 +68,8 @@ modbus:
   power_scale: 0.001
   reactive_scale: 0.001
   float_word_swap: true
-  reg_line_voltage: 980
+  # RMS L1-N (screen ~230 V) offset 905 (40906); not V_L1_L2_peak @980.
+  reg_line_voltage: 905
   reg_line_voltage_count: 2
   line_voltage_scale: 0.001
 

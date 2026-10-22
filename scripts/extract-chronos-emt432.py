@@ -33,8 +33,10 @@ KEY_REGISTERS = (
     "P1",
     "Q1",
     "Frequency",
+    "V_L1_N",
     "V_L1_L2_peak",
     "V_L1_N_peak",
+    "TA_Transducer_ratio",
     "modbus_RTU_address",
     "modbus_RTU_baudrate",
     "modbus_RTU_parity",
@@ -90,6 +92,24 @@ CURATED_REGISTERS: dict[str, dict[str, str]] = {
         "default": "0",
         "address": "40973",
         "offset": "972",
+    },
+    "V_L1_N": {
+        "name": "V_L1_N",
+        "description": "RMS star voltage L1-N [V]",
+        "type": "float",
+        "rw": "RO",
+        "default": "0",
+        "address": "40906",
+        "offset": "905",
+    },
+    "TA_Transducer_ratio": {
+        "name": "TA_Transducer_ratio",
+        "description": "5A: CT ratio M/N. Rogowski: sensitivity [V/A]. FRC-350-100mV=0.0001. Not 85 mV.",
+        "type": "float",
+        "rw": "R/W",
+        "default": "1",
+        "address": "40235",
+        "offset": "234",
     },
     "V_L1_L2_peak": {
         "name": "V_L1_L2_peak",
@@ -259,6 +279,7 @@ def write_modbus_yaml(regs: list[dict[str, str]], path: Path) -> None:
     q = reg("Q_SUM")
     p1 = reg("P1")
     q1 = reg("Q1")
+    vln = reg("V_L1_N")
     vll = reg("V_L1_L2_peak")
     freq = reg("Frequency")
 
@@ -273,8 +294,10 @@ def write_modbus_yaml(regs: list[dict[str, str]], path: Path) -> None:
         "notes:",
         "  - Default RTU: 9600 8N1, slave ID 1 (reg modbus_RTU_baudrate=3, parity=0).",
         "  - Float32 values use 2 consecutive holding registers (big-endian per bench verify).",
-        "  - P/Q in W and VAR — scale 0.001 for kW/kvar in ccli if needed.",
-        "  - Order code suffix I = TA 5A; V = 333mV/Rogowski.",
+        "  - Frozen specimen: EMT432.V.FULL + FRC-350-100mV — lab/conformance/METER_SPECIMEN_EMT432_V_FULL.md",
+        "  - P/Q in W and VAR — scale 0.001 for kW/kvar. Offsets = PLC address - 40001.",
+        "  - Order code I = TA 5A; V = 333 mV / Rogowski (NOT 85 mV). FRC-350 = 100 mV/kA.",
+        "  - 1P runtime: P1 932, Q1 940, V_L1_N 905.",
         "",
         "registers:",
     ]
@@ -303,6 +326,7 @@ def write_modbus_yaml(regs: list[dict[str, str]], path: Path) -> None:
     add_block("reactive_power_var", q, "VAR", "0.001")
     add_block("active_power_l1_w", p1, "W", "0.001")
     add_block("reactive_power_l1_var", q1, "VAR", "0.001")
+    add_block("line_voltage_l1_n_rms_v", vln, "V", "0.001")
     add_block("line_voltage_l1_l2_peak_v", vll, "V", "0.001")
     add_block("frequency_hz", freq, "Hz", "1.0")
 
@@ -311,6 +335,8 @@ def write_modbus_yaml(regs: list[dict[str, str]], path: Path) -> None:
         ("modbus_baud_code", reg("modbus_RTU_baudrate")),
         ("modbus_parity_code", reg("modbus_RTU_parity")),
         ("modbus_stop_bit_code", reg("modbus_RTU_Stop_bit")),
+        ("measurement_config", reg("Measurement_Configuration_Register")),
+        ("ta_transducer_ratio", reg("TA_Transducer_ratio")),
     ]
     lines.append("  comm_config_holding:")
     for key, r in comm:
@@ -412,7 +438,14 @@ def build_markdown(
             "- `2` → 3P 3-wire 3 TA",
             "- `3` → 3P 4-wire 3 TA + N",
             "",
-            "For **230 V 1P bench**: set single-phase + wire L1/N + one TA on I1.",
+            "For **230 V 1P bench**: set single-phase + wire L1/N + one TA/FRC on I1.",
+            "",
+            "### Rogowski sensitivity (40235 `TA_Transducer_ratio`)",
+            "",
+            "Float. **5 A input:** CT ratio M/N (600:5 → 120). **Rogowski:** sensitivity **[V/A]**.",
+            "FRC-350-100mV = **100 mV/kA** → **0.0001 V/A**. Chronos has **no 85 mV** coil.",
+            "Flyer **85–265 V** is L-N **voltage range**, not mV class. Factory default **1.0** is 5 A.",
+            "See `lab/conformance/METER_SPECIMEN_EMT432_V_FULL.md`.",
             "",
             "---",
             "",
@@ -428,7 +461,9 @@ def build_markdown(
         "Q_SUM": "PdCMMXU1.TotVAr (kvar, scale 0.001)",
         "P1": "1P bench TotW",
         "Q1": "1P bench TotVAr",
-        "V_L1_L2_peak": "PPV proxy (verify vs RMS avg regs)",
+        "V_L1_N": "1P PPV (offset 905, not 906)",
+        "V_L1_L2_peak": "3P diagnose only — 1P ~0",
+        "TA_Transducer_ratio": "40235 V/A · FRC-350 = 0.0001",
         "Frequency": "Grid frequency",
     }
     for r in key_rows:

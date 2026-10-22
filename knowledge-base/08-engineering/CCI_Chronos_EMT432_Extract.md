@@ -1,7 +1,7 @@
 # Chronos EMT432 — engineering extract
 
 **Document ID:** CCLI-CHRONOS-EMT432-001  
-**Date:** 2026-10-05  
+**Date:** 2026-10-21  
 **RAG source_id:** `ccli-chronos-emt432`  
 **Vendor:** [Chronos srl](https://chronos-tech.it/) · Selvazzano Dentro (PD), Italy  
 **Product:** EMT432 three-phase network analyzer (Base / Full)  
@@ -18,6 +18,7 @@
 | `reference/vendor/chronos/EMT432_FL-ITA.pdf` | Product flyer IT |
 | `reference/vendor/chronos/EMT430_MR.pdf` | Modbus register map Rev2 (EMT430/432 family) |
 | `apps/ccli/config/modbus/chronos_emt432_map.yaml` | CCLI register YAML (generated) |
+| `knowledge-base/08-engineering/CCI_Chronos_EMT432_Web_UI_Capabilities.md` | Web UI capabilities + CCLI integration gaps (bench SN 261001085352) |
 
 **Download URLs (static CDN):**
 
@@ -35,7 +36,8 @@
 | Aux supply | 10–36 V DC or 13–26 V AC |
 | VT range L-N | 85–265 V AC |
 | VT range L-L | 150–450 V AC |
-| Current inputs | **I** = TA 5 A · **V** = 333 mV / Rogowski (internal integrator) |
+| Current inputs | **I** = TA 5 A · **V** = **333 mV** / Rogowski (internal integrator) |
+| Frozen SKU | **EMT432.V.FULL** + **FRC-350-100mV** (100 mV/kA · **not 85 mV**) |
 | Comms | RS485 Modbus RTU · Ethernet/WiFi Modbus TCP · NFC |
 | Accuracy (vendor) | Class 0.2S EN 62053-22 · ±0.1% rdg P @ 25°C |
 | Class II | **No PE bond** on instrument (EN 61140) |
@@ -79,7 +81,9 @@ For **230 V 1P bench**: set single-phase + wire L1/N + one TA on I1.
 | `P1` | 40933 | 932 | RMS active power line 1 [W] | 1P bench TotW |
 | `Q1` | 40941 | 940 | RMS reactive power line 1 [VAR] | 1P bench TotVAr |
 | `Frequency` | 40973 | 972 | Frequency [Hz] | Grid frequency |
-| `V_L1_L2_peak` | 40981 | 980 | Line voltage L1-L2 peak [V] | PPV proxy (verify vs RMS avg regs) |
+| `V_L1_N` | 40906 | **905** | RMS star voltage L1-N [V] | **1P PPV** (not 906) |
+| `V_L1_L2_peak` | 40981 | 980 | Line voltage L1-L2 peak [V] | 3P diagnose only — 1P ~0 |
+| `TA_Transducer_ratio` | 40235 | 234 | 5A: CT ratio. Rogowski: **V/A** | FRC-350-100mV → **0.0001** |
 | `V_L1_N_peak` | 40975 | 974 | Star voltage L1-N peak [V] | — |
 | `modbus_RTU_address` | 40227 | 226 | Modbus RTU slave address | — |
 | `modbus_RTU_baudrate` | 40229 | 228 | Baudrate code 0=1200..7=115200 | — |
@@ -95,23 +99,18 @@ For **230 V 1P bench**: set single-phase + wire L1/N + one TA on I1.
 
 ## Lab wiring — 230 V monofase (no Rogowski)
 
-From MI-ITA § schemi di collegamento + bench photo (2026-10-05):
+From MI-ITA § schemi di collegamento:
 
-- **Monofase, 2 fili, connessione con 1 TA** — L1, N, I1 on one CT; L2/L3 open.
-- **Pow+ / Pow-** = **18–36 V DC aux only** — **never** connect 230 V mains here.
-- RS485 screw block: **G** (GND) · **B** (B−) · **A** (A+) → TG544 A1/B1.
+- **Monofase, 2 fili, connessione con 1 TA** — L, N, I1 on one CT.
+- RS485: terminals **A+ / B- / GND** (3.5 mm 3-pole); multi-drop A/B/G.
 - **Class II — do not bond instrument PE**; avoid N–PE current.
-
-**Terminal diagram:** `lab/evidence/phase5/P5_EMT432_TERMINAL_WIRING.md`
 
 ### CCLI bench topology
 
 ```text
-24 V DC → Pow+ / Pow-     (aux — energise before or with mains)
-230 V L+N → L1 + N        (L2, L3 open)
-CT 5A     → I1 S1 / S2    (optional; without CT: V/f OK, P/Q ≈ 0)
+230 V L+N → EMT432 L1 + N (+ TA 5A on I1 when available)
 RS485 A/B/G → TG544 A1/B1 (/dev/ttyS1)
-Optional: COM5 pymodbus slave remains plant Q command path (FC16 on A2/B2)
+Optional: COM5 pymodbus slave remains plant Q command path (FC16)
 ```
 
 ---

@@ -1,9 +1,9 @@
-# Product bench (EMT432 TCP + DIO + 5-LN model) with P3-07 Connect TLS.
-# Use ONLY when TestPro imports product_tr400_eth_a_5ln.cid (MMS key = client_tsp.key in both slots).
-# For unchanged Oct-08 TSP (lab_tg544_eth_a.cid), deploy product_tr400_p3_07_connect.yaml instead.
-#
+# DEPRECATED duplicate — canonical single application file:
+#   apps/ccli/config/ccli_application.yaml  →  /etc/ccli/ccli_application.yaml
 # Deploy:
-#   powershell -File lab/tg544-openwrt/deploy-product-fw-same-cyber.ps1 -LabYaml apps\ccli\config\product_tr400_p3_07_connect_5ln.yaml
+#   powershell -File scripts\push-ccli-application-config.ps1 -RestartCcli
+# Or legacy:
+#   powershell -File lab/tg544-openwrt/deploy-product-fw-same-cyber.ps1 -LabYaml apps\ccli\config\ccli_application.yaml
 
 platform: tg500
 lab:
@@ -45,7 +45,9 @@ modbus:
   power_scale: 0.001
   reactive_scale: 0.001
   float_word_swap: true
-  reg_line_voltage: 980
+  # RMS phase voltage (screen ~230 V), NOT V_L1_L2_peak @980 (~337 V).
+  # Offset 905 = PLC 40906 V_L1_N RMS; × 0.001 → PdCMMXU1.PPV ~ 0.23 kV (not 906 / not 980).
+  reg_line_voltage: 905
   reg_line_voltage_count: 2
   line_voltage_scale: 0.001
 

@@ -1,8 +1,8 @@
 # CCLI RAG source index — product deployment P0
 
 **Document ID:** CCLI-RAG-INDEX-001  
-**Revision:** 1.4  
-**Date:** 2026-10-14  
+**Revision:** 1.6  
+**Date:** 2026-10-21  
 **Matrix:** rev **1.4** — **U-CYB-1003/1004-*** vs `ccli-62351-100-3-extract` / `ccli-62351-100-4-extract` · Phase **0a** **U-P0-09…11**
 **RAG source_id:** `ccli-rag-source-index`  
 **Registry (machine):** `scripts/rag-product-deploy-sources.json`  
@@ -28,6 +28,9 @@ powershell -File scripts\ingest-62351-100-4.ps1
 
 # 4) Full programme ingest (bulk + legacy priority + registry merge)
 powershell -File scripts\ingest-next-phases.ps1 -SkipDocker
+
+# UCA IUG tester-accreditation drop (need vs implement)
+powershell -File scripts\ingest-uca-61850.ps1
 
 # Finalize (product + accredited/TSP test requirements)
 powershell -File scripts\ingest-product-deploy-rag.ps1
@@ -64,6 +67,8 @@ powershell -File scripts\ingest-62351-100-4.ps1 -SkipSync
 | `ccli-lab-unified-cert-test-roadmap` | `LAB_UNIFIED_CERT_TEST_ROADMAP.md` | Two-PC phase order |
 | `ccli-lab-unified-tsp-5ln-execution` | `LAB_UNIFIED_TSP_5LN_EXECUTION.md` | TestPro logger map · 5-LN capture |
 | `ccli-product-specimen-5ln` | `PRODUCT_SPECIMEN_5LN.md` | 5-LN product pin |
+| `ccli-annex-o-software-matrix` | `ANNEX_O_SOFTWARE_MATRIX.md` | Annex O → SW → 5-LN DUT gaps |
+| `ccli-normative-cert-validation-matrix` | `Full Validate.md` | **All** O/M/T/U + O.15 #1–8 clause book |
 | `ccli-product-specimen-5ln-validation` | `PRODUCT_SPECIMEN_5LN_VALIDATION.md` | Compare/Browse audit |
 | `ccli-p5-fullcircle-5ln-scope` | `P5_FULLCIRCLE_5LN_SCOPE.md` | Annex T 5-LN only |
 | `ccli-tsp-two-pc-bench-runbook` | `TSP_TWO_PC_BENCH_RUNBOOK.md` | Two-PC execution |
@@ -78,6 +83,7 @@ powershell -File scripts\ingest-62351-100-4.ps1 -SkipSync
 | `ccli-lab-templates-test-scope` | `LAB_TEMPLATES_VS_TEST_SCOPE.md` | Template vs accredited scope |
 | `ccli-lab-uca-document-checklist` | `2026-10-08_UCA_Document_Phase_Checklist.md` | D1–D7 |
 | `ccli-61850-10-extract` | `CCI_61850-10_Extract.md` | Abstract test groups |
+| `ccli-uca-61850-accreditation-extract` | `CCI_UCA_61850_Accreditation_Extract.md` | UCA tester-accred pack vs IED CBs we implement |
 | `ccli-62351-100-3-extract` | `CCI_62351-100-3_Extract.md` | Accredited TLS cases |
 | `ccli-tsp-test-identification` | `lab/evidence/.../TSP_TEST_IDENTIFICATION_POST_CONNECT.md` | Tier 1–4 steps |
 | `ccli-lab-requirement-test-matrix-cyber` | `LAB_REQUIREMENT_TEST_MATRIX_CYBER.md` | 62351 / D7 / Tier 3 cyber checklist |
@@ -85,6 +91,12 @@ powershell -File scripts\ingest-62351-100-4.ps1 -SkipSync
 | `ccli-62351-9-extract` | `CCI_62351-9_Extract.md` | CRL (**U-T3-04**) |
 | `ccli-phase-regulation-checklists` | `CCI_Phase_Regulation_Checklists.md` | IEC 104 (**U-P4-***) |
 | `ccli-61557-12-extract` | `CCI_61557-12_Extract.md` | **U-ACC-04** programme |
+| `ccli-tespro-cert-reply-2026-10` | `CCI_TesPro_Cert_Reply_2026-10_Extract.md` | TesPro 2026-10-21 vendor pack · O.15 #2/#3/#8 split |
+| `ccli-61557-12-tespro-vendor-map` | `lab/conformance/61557-12_TESPRO_VENDOR_MAP.md` | TesPro asks vs 61557-12 align only |
+| `ccli-61557-12-clauses-vs-tespro` | `lab/conformance/61557-12_CLAUSES_VS_TESPRO.md` | Ed 2.0 clauses vs TesPro Scope respond |
+| `ccli-tespro-cnas-l5868-62368-scope` | `CCI_TesPro_CNAS_L5868_62368_Scope_Extract.md` | CNAS L5868 unfolding p.1 — ICT 62368-1 |
+| `ccli-61557-12-2018-scan` | `CCI_61557-12_2018_Scan.md` | Full OCR 2018 Ed 2.0 — no EPMF |
+| `ccli-61557-12-2018-ed2-extract` | `CCI_61557-12_2018_Ed2_Extract.md` | HQ clause extract of Desktop 2018 PDF |
 | `ccli-62443-4-2-extract` | `CCI_62443-4-2_Extract.md` | **U-ACC-05** programme |
 | `cei-0-16-consolidata-2025-12` | `CCI_CEI_0-16_Consolidated.md` | **U-ACC-06** programme |
 
@@ -95,6 +107,8 @@ powershell -File scripts\ingest-62351-100-4.ps1 -SkipSync
 | source_id | Repo path | Role |
 |-----------|-----------|------|
 | `ccli-lab-specimen-version` | `lab/conformance/LAB_SPECIMEN_VERSION.md` | CID rev 9 · cfg SHA |
+| `ccli-meter-specimen-emt432-v-full` | `lab/conformance/METER_SPECIMEN_EMT432_V_FULL.md` | EMT432.V.FULL + FRC-350-100mV · 85 vs 100 mV |
+| `ccli-chronos-emt432-vendor-requirements` | `knowledge-base/08-engineering/CCI_Chronos_EMT432_Vendor_Requirements.md` (canonical copy also `lab/conformance/CHRONOS_EMT432_VENDOR_REQUIREMENTS.md`) | Chronos certificates + REQ-CHR · O.15 #2 vendor ask |
 | `ccli-lab-dut-finalize-cert-path` | `lab/conformance/DUT_LAB_FINALIZE_AND_CERT_PATH.md` | TSP vs UCA certificate |
 | `ccli-lab-pics-fill` | `lab/conformance/PICS_FILL.md` | PICS M/N/A |
 | `ccli-lab-cid-pics-alignment` | `lab/conformance/CID_PICS_ALIGNMENT.md` | Services trim |
@@ -131,9 +145,12 @@ powershell -File scripts\ingest-62351-100-4.ps1 -SkipSync
 |-----|------------|
 | **62351-100-4** table rows in extract | OCR **HAVE**; batch Table 2–4 into extract **PART** |
 | Licensed IEC PDF (non-doc88) | Prefer IEC webshop copy for accredited submit |
+| **Annex U** extract | Operating Rule timers — see `ccli-normative-cert-validation-matrix` §D |
 | **PIXIT** Word template | Paste from `PIXIT_DRAFT.md` |
 | **5-LN product CID** in `apps/ccli/config/icd/product/` | Block **U-T1-02** until committed; pin: `ccli-product-specimen-5ln` |
 | TesPro vendor OpenWrt SDK | Upstream SDK in `lab/tg544-openwrt/` |
+| TesPro ISO 9001 PDF | Claimed in reply; **not** in 2026-10 drop |
+| TesPro TG544 EU CE / EMC / LVD | Drop has CNAS/A2LA **lab** cards only |
 
 ---
 
