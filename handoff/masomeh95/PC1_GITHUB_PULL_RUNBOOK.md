@@ -2,7 +2,8 @@
 
 **When:** PC-B is on LAN1, DUT is deployed, ready for **Connect**.  
 **Revision pin:** **`P3-07-TSP-CONNECT`** · firmware **`0.1.0-r55`** · TLS **`p3_07_connect`** · **crl=off**  
-**Access freeze:** [`lab/LAB_ACCESS_FREEZE.md`](../../lab/LAB_ACCESS_FREEZE.md) (same SSH + TLS MD5 on logger and PC1)
+**Access freeze:** [`lab/LAB_ACCESS_FREEZE.md`](../../lab/LAB_ACCESS_FREEZE.md) (same SSH + TLS MD5 on logger and PC1)  
+**Hotspot / no PC↔PC SSH:** [PC1_GITHUB_SYNC_AND_NETWORK.md](PC1_GITHUB_SYNC_AND_NETWORK.md) — push on dev, pull here.
 
 ---
 

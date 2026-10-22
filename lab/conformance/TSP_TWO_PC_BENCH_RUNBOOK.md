@@ -15,6 +15,8 @@ Use this when **two Windows PCs** share one TG544 DUT:
 
 **Rule:** Do **not** run Test Suite Pro on PC-A. Do **not** bridge LAN1↔LAN2 on one switch with DSO traffic mixed with operator traffic without isolation (Phase 2).
 
+**Sync scripts/docs when PCs share a mobile hotspot (no peer SSH):** [PC1_GITHUB_SYNC_AND_NETWORK.md](../../handoff/masomeh95/PC1_GITHUB_SYNC_AND_NETWORK.md) · PC1 pull: [PC1_GITHUB_PULL_RUNBOOK.md](../../handoff/masomeh95/PC1_GITHUB_PULL_RUNBOOK.md).
+
 ---
 
 ## Topology
