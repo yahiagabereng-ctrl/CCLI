@@ -23,7 +23,22 @@ namespace cci::adapters {
 
 namespace {
 
-
+/** On Modbus errors, keep last P/Q/PPV so MMS does not flash to zero between polls. */
+cci::core::Measurement measurement_stale_preserve(const cci::core::MeasurementStore& store,
+                                                  const std::int64_t timestamp_ms,
+                                                  const std::string& source) {
+    cci::core::Measurement m = store.snapshot();
+    const bool had_values =
+        m.quality == cci::core::DataQuality::Good ||
+        m.quality == cci::core::DataQuality::Stale;
+    if (!had_values) {
+        m = cci::core::Measurement{};
+    }
+    m.quality = cci::core::DataQuality::Stale;
+    m.timestamp_ms = timestamp_ms;
+    m.source = source;
+    return m;
+}
 
 void float32_to_regs_be(const double value, std::uint16_t& hi, std::uint16_t& lo) {
     float f = static_cast<float>(value);
@@ -73,6 +88,9 @@ int read_block_start(const ModbusPollConfig& cfg) {
     if (cfg.reg_line_voltage >= 0 && cfg.reg_line_voltage < start) {
         start = cfg.reg_line_voltage;
     }
+    if (cfg.reg_phase_a_current >= 0 && cfg.reg_phase_a_current < start) {
+        start = cfg.reg_phase_a_current;
+    }
     return start;
 }
 
@@ -86,6 +104,12 @@ int read_block_end(const ModbusPollConfig& cfg) {
             end = v_end;
         }
     }
+    if (cfg.reg_phase_a_current >= 0) {
+        const int i_end = cfg.reg_phase_a_current + cfg.reg_phase_a_current_count;
+        if (i_end > end) {
+            end = i_end;
+        }
+    }
     return end;
 }
 
@@ -94,10 +118,13 @@ int read_block_count(const ModbusPollConfig& cfg) {
     return read_block_end(cfg) - start;
 }
 
-/** Max holding registers in one FC3 block (932..981 EMT432 1P map needs 50). */
-constexpr int kModbusPollRegBuffer = 64;
+/** Max holding registers in one FC3 block (EMT432 RMS block 906..985 needs ~80). */
+constexpr int kModbusPollRegBuffer = 96;
 
 }  // namespace
+
+double decode_phase_a_current_a(const ModbusPollConfig& cfg, const int start,
+                                const std::uint16_t* regs, const int reg_count);
 
 void ModbusAdapter::record_read_holding(const std::int64_t now_ms, const int start,
                                         const int count, const std::uint16_t* regs,
@@ -129,6 +156,8 @@ void ModbusAdapter::record_read_holding(const std::int64_t now_ms, const int sta
     }
     last_exchange_.p_kw = 0.0;
     last_exchange_.q_kvar = 0.0;
+    last_exchange_.phs_a_a = 0.0;
+    last_exchange_.has_phs_a_a = false;
     if (success && regs != nullptr && reg_count > 0) {
         const int p_idx = cfg_.reg_active_power - start;
         const int q_idx = cfg_.reg_reactive_power - start;
@@ -146,6 +175,11 @@ void ModbusAdapter::record_read_holding(const std::int64_t now_ms, const int sta
         }
         last_exchange_.p_kw *= cfg_.power_scale;
         last_exchange_.q_kvar *= cfg_.reactive_scale;
+        if (cfg_.reg_phase_a_current >= 0) {
+            last_exchange_.phs_a_a =
+                decode_phase_a_current_a(cfg_, start, regs, reg_count);
+            last_exchange_.has_phs_a_a = true;
+        }
     }
 }
 
@@ -162,6 +196,23 @@ double decode_line_voltage_kv(const ModbusPollConfig& cfg, const int start,
     }
     if (cfg.reg_line_voltage_count == 1 && v_idx >= 0 && v_idx < reg_count) {
         return static_cast<double>(regs[v_idx]) * cfg.line_voltage_scale;
+    }
+    return 0.0;
+}
+
+double decode_phase_a_current_a(const ModbusPollConfig& cfg, const int start,
+                                const std::uint16_t* regs, const int reg_count) {
+    if (cfg.reg_phase_a_current < 0) {
+        return 0.0;
+    }
+    const int i_idx = cfg.reg_phase_a_current - start;
+    if (cfg.reg_phase_a_current_count >= 2 && (i_idx + 1) < reg_count) {
+        const double a =
+            regs_to_float32_pair(regs[i_idx], regs[i_idx + 1], cfg.float_word_swap);
+        return a * cfg.phase_a_current_scale;
+    }
+    if (cfg.reg_phase_a_current_count == 1 && i_idx >= 0 && i_idx < reg_count) {
+        return static_cast<double>(regs[i_idx]) * cfg.phase_a_current_scale;
     }
     return 0.0;
 }
@@ -505,15 +556,8 @@ bool ModbusAdapter::poll_libmodbus(cci::core::MeasurementStore& store, const std
         const int count = read_block_count(cfg_);
         record_read_holding(now_ms, start, count, nullptr, 0, false, "connect_fail");
 
-        cci::core::Measurement m{};
-
-        m.quality = cci::core::DataQuality::Stale;
-
-        m.timestamp_ms = now_ms - (cfg_.timeout_ms + 1);
-
-        m.source = source;
-
-        store.update(m);
+        store.update(measurement_stale_preserve(
+            store, now_ms - (cfg_.timeout_ms + 1), source));
 
         return false;
 
@@ -551,15 +595,8 @@ bool ModbusAdapter::poll_libmodbus(cci::core::MeasurementStore& store, const std
 
         close_libmodbus();
 
-        cci::core::Measurement m{};
-
-        m.quality = cci::core::DataQuality::Stale;
-
-        m.timestamp_ms = now_ms - (cfg_.timeout_ms + 1);
-
-        m.source = source;
-
-        store.update(m);
+        store.update(measurement_stale_preserve(
+            store, now_ms - (cfg_.timeout_ms + 1), source));
 
         return false;
 
@@ -610,6 +647,11 @@ bool ModbusAdapter::poll_libmodbus(cci::core::MeasurementStore& store, const std
     if (cfg_.reg_line_voltage >= 0) {
         m.ppv_kv = decode_line_voltage_kv(cfg_, start, regs, reg_count);
         m.has_ppv_kv = true;
+    }
+
+    if (cfg_.reg_phase_a_current >= 0) {
+        m.phs_a_a = decode_phase_a_current_a(cfg_, start, regs, reg_count);
+        m.has_phs_a_a = true;
     }
 
     m.pf = 0.98;

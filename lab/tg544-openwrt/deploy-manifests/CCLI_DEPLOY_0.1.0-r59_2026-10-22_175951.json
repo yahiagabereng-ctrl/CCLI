@@ -1,0 +1,20 @@
+﻿{
+    "release":  59,
+    "semver":  "0.1.0",
+    "icd_cfg":  "C:\\Yahia\\projects\\CCLI\\apps\\ccli\\config\\icd\\product\\product_tr400_eth_a_5ln.cfg",
+    "lab_yaml":  "apps\\ccli\\config\\product_tr400_p3_07_connect_5ln.yaml",
+    "codename":  "P5-EMT432-A-PHSA-WIRE",
+    "host":  "192.168.1.130",
+    "deploy_profile":  "",
+    "binary":  "C:\\Yahia\\projects\\CCLI\\lab\\tg544-openwrt\\ccli-bin",
+    "version_full":  "0.1.0-r59",
+    "git_commit":  "546d489",
+    "changes":  [
+                    "r59 P5-EMT432-A-PHSA-WIRE",
+                    "product_tr400_p3_07_connect_5ln.yaml reg 922",
+                    "P3-07 TLS"
+                ],
+    "timestamp_utc":  "2026-10-22T15:59:51.7859760Z",
+    "tls_dir":  "apps\\ccli\\config\\tls\\p3_07_connect",
+    "sha256":  "860799f8712f32836995cdf987c14d360354120cd260454d9418fbe88604a15f"
+}

@@ -41,6 +41,9 @@ struct ModbusExchangeRecord {
     std::string raw_regs_hex;
     double      p_kw{0.0};
     double      q_kvar{0.0};
+    /** Decoded I1 (A) when reg_phase_a_current >= 0 and read succeeded. */
+    double      phs_a_a{0.0};
+    bool        has_phs_a_a{false};
     bool        success{false};
     std::string error;
     std::int64_t exchange_ms{0};
@@ -82,6 +85,12 @@ struct ModbusPollConfig {
     int         reg_line_voltage_count{2};
 
     double      line_voltage_scale{0.001};
+
+    int         reg_phase_a_current{-1};
+
+    int         reg_phase_a_current_count{2};
+
+    double      phase_a_current_scale{1.0};
 
     double      power_scale{1.0};
 

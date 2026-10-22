@@ -1,0 +1,20 @@
+﻿{
+    "release":  60,
+    "semver":  "0.1.0",
+    "icd_cfg":  "C:\\Yahia\\projects\\CCLI\\apps\\ccli\\config\\icd\\product\\product_tr400_eth_a_5ln.cfg",
+    "lab_yaml":  "apps\\ccli\\config\\product_tr400_p3_07_connect_5ln.yaml",
+    "codename":  "P5-EMT432-A-PHSA-PUBLISH",
+    "host":  "192.168.1.130",
+    "deploy_profile":  "",
+    "binary":  "C:\\Yahia\\projects\\CCLI\\lab\\tg544-openwrt\\ccli-bin",
+    "version_full":  "0.1.0-r60",
+    "git_commit":  "546d489",
+    "changes":  [
+                    "r60 P5-EMT432-A-PHSA-PUBLISH",
+                    "MMS_FLOAT wire + URCB leaf DE",
+                    "bench phs_a_a + modbus I1 trace"
+                ],
+    "timestamp_utc":  "2026-10-22T16:13:55.7507285Z",
+    "tls_dir":  "apps\\ccli\\config\\tls\\p3_07_connect",
+    "sha256":  "f7b7bb10efa9bdf54fe4b415c9e492977d3b18f13155889742ea2fbee1960d47"
+}

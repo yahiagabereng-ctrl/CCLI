@@ -138,6 +138,14 @@ struct ModbusConfig {
     /** V to kV for MMS PPV (default 0.001). */
     double line_voltage_scale{0.001};
 
+    /** Holding offset for I1 (EMT432 @922, PLC 40923). -1 = do not map A.phsA. */
+    int reg_phase_a_current{-1};
+
+    int reg_phase_a_current_count{2};
+
+    /** A for MMS A.phsA (default 1.0). */
+    double phase_a_current_scale{1.0};
+
     /** Multiply decoded P/Q before store (EMT432 P1/Q1 are W/VAR → use 0.001). */
     double power_scale{1.0};
 

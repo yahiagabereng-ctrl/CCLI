@@ -48,7 +48,7 @@ modbus:
   reactive_scale: 0.001
   float_word_swap: true
   # RMS L1-N (screen ~230 V) offset 905 (40906); not V_L1_L2_peak @980.
-  reg_line_voltage: 905
+  reg_line_voltage: 906
   reg_line_voltage_count: 2
   line_voltage_scale: 0.001
 

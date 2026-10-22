@@ -99,6 +99,8 @@ typedef struct
     double q_kvar;
     double ppv_kv;                    /* PdCMMXU1.PPV: meter V_L1_L2 (modbus.reg_line_voltage) or plant.poc_ppv_kv */
     bool   ppv_from_meter;            /* true when ppv_kv came from the Modbus meter */
+    double phs_a_a;                   /* PdCMMXU1.A.phsA (EMT432 I1 @922) */
+    bool   has_phs_a_a;
     u8     quality;                   /* CCLI_BRIDGE__QUALITY__* */
 } CCLI_BRIDGE__MEASUREMENT;
 
@@ -197,7 +199,8 @@ bool CcliBridge_Pf2_CurtailmentActive (void);
 /* Eth_A IEC 61850 MMS */
 bool CcliBridge_Mms_Start                 (void);
 void CcliBridge_Mms_Stop                  (void);
-void CcliBridge_Mms_PublishMeasurement    (double p_kw, double q_kvar, double ppv_kv);
+void CcliBridge_Mms_PublishMeasurement    (double p_kw, double q_kvar, double ppv_kv,
+                                           double phs_a_a, bool has_phs_a_a);
 void CcliBridge_Mms_RefreshTimeQuality    (void);
 bool CcliBridge_Mms_GnssFix               (void);
 bool CcliBridge_Mms_PollCommsLossFallback (void);

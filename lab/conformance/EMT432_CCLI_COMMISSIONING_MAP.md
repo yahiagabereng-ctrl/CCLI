@@ -68,15 +68,15 @@ Full MR text: [EMT432_TRANSUCER_HOLDING_SPEC.md](EMT432_TRANSUCER_HOLDING_SPEC.m
 |-----|--------|--------|----------|-------|-----|
 | 40933 | **932** | P1 [W] | `reg_active_power: 932` | `power_scale: 0.001` | TotW kW |
 | 40941 | **940** | Q1 [VAR] | `reg_reactive_power: 940` | `reactive_scale: 0.001` | TotVAr |
-| 40907 | **906** | V_L1_N [V] | `reg_line_voltage: 906` | `line_voltage_scale: 0.001` | PPV kV |
+| 40907 | **906** | V_L1_N [V] | `reg_line_voltage: 906` | `line_voltage_scale: 0.001` | PPV.phsAB kV |
+| 40923 | **922** | I1 [A] | `reg_phase_a_current: 922` | `phase_a_current_scale: 1.0` | A.phsA A |
 
 **Common decode:** `float_word_swap: true` (Chronos TCP float32).
 
-**Optional diagnostics (add later under `reg_*` or separate poll block):**
+**Optional diagnostics (not on MMS yet):**
 
 | PLC | Offset | Signal |
 |-----|--------|--------|
-| 40923 | 922 | I1 [A] |
 | 40973 | 972 | Frequency [Hz] |
 
 Do **not** map PPV to **905** (40906 is u16 alarm, not voltage).

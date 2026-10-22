@@ -52,7 +52,7 @@ modbus:
   power_scale: 0.001
   reactive_scale: 0.001
   float_word_swap: true
-  reg_line_voltage: 905
+  reg_line_voltage: 906
   reg_line_voltage_count: 2
   line_voltage_scale: 0.001
 
@@ -90,6 +90,8 @@ mms:
   tcp_port: 3782
   model_cfg: /etc/ccli/icd/product_tr400_eth_a_5ln.cfg
   comms_loss_fallback_s: 15
+  # GNSS: gnss_poll_s>0 polls sim-manager; also run enable-dut-gnss.ps1 (ubus gnss_start).
+  # TotW/TotVAr q=Questionable until fix + chrony ±100 ms (T.3.3.4.5); not Modbus quality.
   gnss_poll_s: 15
   gnss_discipline_clock: false
   chrony_poll: true

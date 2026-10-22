@@ -1,7 +1,7 @@
 # Full HW bench — EMT432 1p Modbus TCP on LAN3 + DIO + TSP/104 TLS (yaml-only OK on r51+).
 # Does not use RS485 for plant reads; PC COM5 Sun mock on A1/B1 is parallel (see lab.hw).
 #
-# Plant: 192.168.178.250:502 · DUT gateway 192.168.178.1 · PC-A lab/set_pc_lan3_plant_178.cmd
+# Plant: 192.168.178.10:502 (bench meter; doc default .250) · DUT gateway 192.168.178.1
 # PC-B: lab/set_pc_lan1_dso.cmd → TestPro 192.168.10.1:3782
 # PC-A: lab/set_pc_lan2_oa.cmd → SSH / 104 @ 192.168.1.130:2404
 #
@@ -19,7 +19,7 @@ lab:
   address: 192.168.1.130/24
   role: operator_eth_b
   meter: chronos_emt432_1p
-  meter_ip: 192.168.178.250
+  meter_ip: 192.168.178.10
   plant_gateway: 192.168.178.1
   bench_note: "EMT432 TCP LAN3 · DIO1 relay · DIO2 permissive · Sun COM5 parallel · TSP+104 TLS"
   hw:
@@ -44,7 +44,7 @@ lab:
 
 modbus:
   backend: tcp
-  host: 192.168.178.250
+  host: 192.168.178.10
   tcp_port: 502
   slave_id: 1
   poll_ms: 4000
@@ -61,6 +61,9 @@ modbus:
   reg_line_voltage: 906
   reg_line_voltage_count: 2
   line_voltage_scale: 0.001
+  reg_phase_a_current: 922
+  reg_phase_a_current_count: 2
+  phase_a_current_scale: 1.0
 
 pf2:
   threshold_kw: 900
@@ -96,6 +99,7 @@ mms:
   tcp_port: 3782
   model_cfg: /etc/ccli/icd/product/product_tr400_eth_a_5ln.cfg
   comms_loss_fallback_s: 15
+  # GNSS: gnss_poll_s>0 + lab/tg544-openwrt/enable-dut-gnss.ps1 (ubus gnss_start).
   gnss_poll_s: 15
   gnss_discipline_clock: false
   chrony_poll: true

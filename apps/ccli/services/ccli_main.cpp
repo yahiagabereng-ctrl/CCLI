@@ -125,6 +125,8 @@ void write_bench_status_file(const std::string& path, const cci::core::CcliConfi
         << "  \"ts_ms\": " << m.timestamp_ms << ",\n"
         << "  \"p_kw\": " << m.p_kw << ",\n"
         << "  \"q_kvar\": " << m.q_kvar << ",\n"
+        << "  \"phs_a_a\": " << (m.has_phs_a_a ? m.phs_a_a : 0.0) << ",\n"
+        << "  \"has_phs_a_a\": " << (m.has_phs_a_a ? "true" : "false") << ",\n"
         << "  \"quality\": \"" << quality_string(m.quality) << "\",\n"
         << "  \"pf2_reason\": \"" << pf2_st.reason << "\",\n"
         << "  \"curtailment_commanded\": " << (curtailment_commanded ? "true" : "false")
@@ -209,6 +211,7 @@ void write_bench_status_file(const std::string& path, const cci::core::CcliConfi
         << "      \"link\": \"" << link_state_string(z.modbus_link_state) << "\",\n"
         << "      \"last_exchange_ms\": " << mb.exchange_ms << ",\n"
         << "      \"last_success\": " << (mb.success ? "true" : "false") << ",\n"
+        << "      \"last_phs_a_a\": " << (mb.has_phs_a_a ? mb.phs_a_a : 0.0) << ",\n"
         << "      \"last_error\": \"" << json_escape_str(mb.error) << "\",\n"
         << "      \"goose_enabled\": " << (cfg.goose.enabled ? "true" : "false") << ",\n"
         << "      \"goose_interface\": \"" << json_escape_str(cfg.goose.interface) << "\",\n"
@@ -848,6 +851,9 @@ int main(int argc, char** argv) {
             const double ppv_kv =
                 m.has_ppv_kv ? m.ppv_kv : app_cfg.plant.poc_ppv_kv;
             mms.update_ppv_kv(ppv_kv);
+            if (app_cfg.modbus.reg_phase_a_current >= 0) {
+                mms.update_phs_a_a(m.has_phs_a_a ? m.phs_a_a : 0.0);
+            }
             iec104.update_tot_w_kw(m.p_kw);
         }
         mms.refresh_time_quality();
@@ -1098,7 +1104,16 @@ int main(int argc, char** argv) {
                 if (!tr.raw_regs_hex.empty()) {
                     std::cerr << " raw=" << tr.raw_regs_hex;
                 }
-                std::cerr << " P=" << m.p_kw << "kW pf2=" << pf2.last_state().reason
+                std::cerr << " P=" << m.p_kw << "kW";
+                if (ex.has_phs_a_a) {
+                    std::cerr << " I1=" << ex.phs_a_a << "A";
+                } else if (m.has_phs_a_a) {
+                    std::cerr << " I1=" << m.phs_a_a << "A";
+                }
+                if (m.has_ppv_kv) {
+                    std::cerr << " Vln=" << (m.ppv_kv * 1000.0) << "V";
+                }
+                std::cerr << " pf2=" << pf2.last_state().reason
                           << " curtail=" << (commanded ? "yes" : "no")
                           << " DO=" << (do_state ? "ON" : "OFF") << "\n";
             }

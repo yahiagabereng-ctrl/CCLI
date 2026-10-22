@@ -1,27 +1,24 @@
 ﻿{
-    "release":  57,
+    "release":  61,
     "semver":  "0.1.0",
-    "icd_cfg":  "C:\\Yahia\\projects\\CCLI\\apps\\ccli\\config\\icd\\lab_tg544_eth_a.cfg",
-    "lab_yaml":  "c:\\Yahia\\projects\\CCLI\\apps\\ccli\\config\\lab_tr400_emt432_lan3_tcp_102.yaml",
-    "codename":  "P5-5LN-ISO-PRES-AARE",
+    "icd_cfg":  "C:\\Yahia\\projects\\CCLI\\apps\\ccli\\config\\icd\\product\\product_tr400_eth_a_5ln.cfg",
+    "lab_yaml":  "apps\\ccli\\config\\product_tr400_p3_07_connect_5ln.yaml",
+    "codename":  "P5-EMT432-A-PHSA-BRIDGE",
     "host":  "192.168.1.130",
     "deploy_profile":  "",
     "binary":  "C:\\Yahia\\projects\\CCLI\\lab\\tg544-openwrt\\ccli-bin",
-    "version_full":  "0.1.0-r57",
-    "git_commit":  "f6deecb",
+    "version_full":  "0.1.0-r61",
+    "git_commit":  "546d489",
     "changes":  [
-                    "EMT432 commissioning rev5 40245/40247",
-                    "lab yaml revision 5"
+                    "r61 bridge TransmissionMms publishes A.phsA",
+                    "EMT432 I1 from Modbus to MMS"
                 ],
-    "timestamp_utc":  "2026-10-22T13:49:22.0034911Z",
-    "tls_dir":  "C:\\Yahia\\projects\\CCLI\\apps\\ccli\\config\\tls",
-    "sha256":  "8c465f482534452d2379fc348ad3e1f845a4560199286ab1b2ab470c162aa825",
+    "timestamp_utc":  "2026-10-22T16:17:48.7277867Z",
+    "tls_dir":  "apps\\ccli\\config\\tls\\p3_07_connect",
+    "sha256":  "448007a2bd89e594e4df788bbc47dfd39535d45b5aa0b5b940c6fe8c07383819",
     "dut_host":  "192.168.1.130",
-    "dut_version_text":  "ccli 0.1.0-r57 (P5-5LN-ISO-PRES-AARE)\r\n  semver:   0.1.0\r\n  release:  r57\r\n  git:      unknown\r\n  built:    2026-06-29T12:59:20Z UTC\r\n  platform: tg500\r\n8c465f482534452d2379fc348ad3e1f845a4560199286ab1b2ab470c162aa825",
-    "binary_size_bytes":  7814328,
-    "apk_path":  "C:\\Yahia\\projects\\CCLI\\lab\\tg544-openwrt\\ccli-0.1.0-r57.apk",
-    "apk_sha256":  "30048f9cff28ca58af812ca1c6e3b0068411766526b4e22d110431a0c63425ec",
-    "apk_size_bytes":  1031855,
+    "dut_version_text":  "ccli 0.1.0-r61 (P5-EMT432-A-PHSA-BRIDGE)\r\n  semver:   0.1.0\r\n  release:  r61\r\n  git:      unknown\r\n  built:    2026-06-29T12:59:20Z UTC\r\n  platform: tg500\r\n448007a2bd89e594e4df788bbc47dfd39535d45b5aa0b5b940c6fe8c07383819",
+    "binary_size_bytes":  7814864,
     "staging_version_file":  "C:\\Yahia\\projects\\CCLI\\lab\\tg544-openwrt\\ccli-VERSION",
-    "record_updated_utc":  "2026-10-22T13:50:33.4963416Z"
+    "record_updated_utc":  "2026-10-22T16:18:48.1527612Z"
 }

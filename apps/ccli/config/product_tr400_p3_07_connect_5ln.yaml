@@ -12,7 +12,7 @@ lab:
   address: 192.168.1.130/24
   role: operator_eth_b
   meter: chronos_emt432_1p
-  meter_ip: 192.168.178.250
+  meter_ip: 192.168.178.10
   plant_gateway: 192.168.178.1
   bench_note: "5-LN product model · EMT432 TCP · P3-07 Connect TLS · DIO"
   hw:
@@ -31,7 +31,7 @@ lab:
 
 modbus:
   backend: tcp
-  host: 192.168.178.250
+  host: 192.168.178.10
   tcp_port: 502
   slave_id: 1
   poll_ms: 4000
@@ -47,9 +47,12 @@ modbus:
   float_word_swap: true
   # RMS phase voltage (screen ~230 V), NOT V_L1_L2_peak @980 (~337 V).
   # Offset 905 = PLC 40906 V_L1_N RMS; × 0.001 → PdCMMXU1.PPV ~ 0.23 kV (not 906 / not 980).
-  reg_line_voltage: 905
+  reg_line_voltage: 906
   reg_line_voltage_count: 2
   line_voltage_scale: 0.001
+  reg_phase_a_current: 922
+  reg_phase_a_current_count: 2
+  phase_a_current_scale: 1.0
 
 pf2:
   threshold_kw: 900

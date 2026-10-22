@@ -69,17 +69,17 @@ netstat -tlnp | grep -E '3782|2404'
 
 | Item | Value |
 |------|-------|
-| **Software** | **0.1.0-r57** (P5-5LN-ISO-PRES-AARE) |
-| **Git (build tree)** | `f6deecb` |
+| **Software** | **0.1.0-r61** (P5-EMT432-A-PHSA-BRIDGE) |
+| **Git (build tree)** | `546d489` |
 | **DUT SSH** | `root@192.168.1.130` (LAN1 `192.168.10.1` or LAN2 `192.168.1.130`) |
-| **Staging `ccli-bin`** | SHA256 `8c465f482534452d2379fc348ad3e1f845a4560199286ab1b2ab470c162aa825` (7814328 B) |
-| **OpenWrt APK** | `ccli-0.1.0-r57.apk` SHA256 `30048f9cff28ca58af812ca1c6e3b0068411766526b4e22d110431a0c63425ec` |
+| **Staging `ccli-bin`** | SHA256 `448007a2bd89e594e4df788bbc47dfd39535d45b5aa0b5b940c6fe8c07383819` (7814864 B) |
+| **OpenWrt APK** | - |
 | **DUT `/usr/sbin/ccli`** | *(deploy to capture)* |
-| **Config on DUT** | `/etc/ccli/lab.yaml` = `lab_tr400_emt432_lan3_tcp_102.yaml` |
-| **Last manifest** | [CCLI_DEPLOY_0.1.0-r57_2026-10-22_154921.md](deploy-manifests/CCLI_DEPLOY_0.1.0-r57_2026-10-22_154921.md) |
-| **Updated (UTC)** | 2026-10-22T13:50:33.4963416Z |
+| **Config on DUT** | `/etc/ccli/lab.yaml` = `product_tr400_p3_07_connect_5ln.yaml` |
+| **Last manifest** | [CCLI_DEPLOY_0.1.0-r61_2026-10-22_181748.md](deploy-manifests/CCLI_DEPLOY_0.1.0-r61_2026-10-22_181748.md) |
+| **Updated (UTC)** | 2026-10-22T16:18:48.1527612Z |
 
-**Changes in last deploy:** EMT432 commissioning rev5 40245/40247; lab yaml revision 5
+**Changes in last deploy:** r61 bridge TransmissionMms publishes A.phsA; EMT432 I1 from Modbus to MMS
 <!-- CURRENT_END -->
 
 ---
@@ -89,6 +89,20 @@ netstat -tlnp | grep -E '3782|2404'
 - [`deploy-manifests/README.md`](deploy-manifests/README.md)
 - [`LAB_ACCESS_FREEZE.md`](../LAB_ACCESS_FREEZE.md) â€” LAN1/LAN2 IPs
 - [`../conformance/LAB_UNIFIED_SESSION_PIN_2026-10-14.md`](../conformance/LAB_UNIFIED_SESSION_PIN_2026-10-14.md) â€” update session pin when DUT binary changes
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

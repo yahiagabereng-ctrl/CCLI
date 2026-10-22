@@ -77,7 +77,8 @@ void TransmissionMms_PublishTask(u32 tick)
     (void)tick;
 
     CcliBridge_Measurement_Get(&measurement);
-    CcliBridge_Mms_PublishMeasurement(measurement.p_kw, measurement.q_kvar, measurement.ppv_kv);
+    CcliBridge_Mms_PublishMeasurement(measurement.p_kw, measurement.q_kvar, measurement.ppv_kv,
+                                      measurement.phs_a_a, measurement.has_phs_a_a);
 }
 
 

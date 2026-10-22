@@ -114,6 +114,15 @@ int main(int argc, char** argv) {
         printf("READ FAIL PPV.phsAB.cVal.mag.f err=%d\n", error);
     }
 
+    MmsValue* i1 = IedConnection_readObject(
+        con, &error, "CCI016_01LD_Plant/PdCMMXU1.A.phsA.cVal.mag.f", IEC61850_FC_MX);
+    if (error == IED_ERROR_OK && i1 != NULL) {
+        printf("READ OK A.phsA.cVal.mag.f=%.3f\n", (double)MmsValue_toFloat(i1));
+        MmsValue_delete(i1);
+    } else {
+        printf("READ FAIL A.phsA.cVal.mag.f err=%d\n", error);
+    }
+
     IedConnection_close(con);
     IedConnection_destroy(con);
     TLSConfiguration_destroy(tlsConfig);

@@ -61,6 +61,8 @@ public:
     void update_totvar_kvar(double q_kvar);
     /** P5-M08 / T.3.1.3 — phase-phase V at POC (kV); PPV.phsAB lab path. */
     void update_ppv_kv(double ppv_kv);
+    /** EMT432 I1 (A) → PdCMMXU1.A.phsA.cVal.mag.f */
+    void update_phs_a_a(double amps);
 
     /**
      * If a new Wlim/WSd control arrived, copy snapshot and clear dirty.

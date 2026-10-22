@@ -411,7 +411,13 @@ void CcliBridge_Modbus_Trace(bool curtailment_commanded, bool do_curtail_on) {
     if (!tr.raw_regs_hex.empty()) {
         std::cerr << " raw=" << tr.raw_regs_hex;
     }
-    std::cerr << " P=" << m.p_kw << "kW pf2=" << g_rt.pf2->last_state().reason
+    std::cerr << " P=" << m.p_kw << "kW";
+    if (ex.has_phs_a_a) {
+        std::cerr << " I1=" << ex.phs_a_a << "A";
+    } else if (m.has_phs_a_a) {
+        std::cerr << " I1=" << m.phs_a_a << "A";
+    }
+    std::cerr << " pf2=" << g_rt.pf2->last_state().reason
               << " curtail=" << (curtailment_commanded ? "yes" : "no")
               << " DO=" << (do_curtail_on ? "ON" : "OFF") << "\n";
 }
@@ -424,6 +430,8 @@ void CcliBridge_Measurement_Get(CCLI_BRIDGE__MEASUREMENT* ptr_data) {
     /* P5-PPV: meter line voltage when modbus.reg_line_voltage is set, else plant constant. */
     ptr_data->ppv_from_meter = m.has_ppv_kv;
     ptr_data->ppv_kv = m.has_ppv_kv ? m.ppv_kv : g_rt.cfg.plant.poc_ppv_kv;
+    ptr_data->phs_a_a = m.phs_a_a;
+    ptr_data->has_phs_a_a = m.has_phs_a_a;
     switch (m.quality) {
         case cci::core::DataQuality::Good:
             ptr_data->quality = CCLI_BRIDGE__QUALITY__GOOD;
@@ -463,10 +471,14 @@ bool CcliBridge_Mms_Start(void) {
 
 void CcliBridge_Mms_Stop(void) { g_rt.mms->stop(); }
 
-void CcliBridge_Mms_PublishMeasurement(double p_kw, double q_kvar, double ppv_kv) {
+void CcliBridge_Mms_PublishMeasurement(double p_kw, double q_kvar, double ppv_kv,
+                                     double phs_a_a, bool has_phs_a_a) {
     g_rt.mms->update_tot_w_kw(p_kw);
     g_rt.mms->update_totvar_kvar(q_kvar);
     g_rt.mms->update_ppv_kv(ppv_kv);
+    if (has_phs_a_a || g_rt.cfg.modbus.reg_phase_a_current >= 0) {
+        g_rt.mms->update_phs_a_a(has_phs_a_a ? phs_a_a : 0.0);
+    }
 }
 
 void CcliBridge_Mms_RefreshTimeQuality(void) { g_rt.mms->refresh_time_quality(); }
