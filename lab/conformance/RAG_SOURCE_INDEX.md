@@ -65,6 +65,7 @@ powershell -File scripts\ingest-62351-100-4.ps1 -SkipSync
 | `ccli-lab-unified-session-pin-2026-10-14` | `LAB_UNIFIED_SESSION_PIN_2026-10-14.md` | r53 deploy pin · **U-P0-11** |
 | `ccli-pc1-log-capture-requirements` | `handoff/masomeh95/PC1_LOG_CAPTURE_REQUIREMENTS.md` | PC-B logger · **U-P0-10** |
 | `ccli-pc1-github-sync-network` | `handoff/masomeh95/PC1_GITHUB_SYNC_AND_NETWORK.md` | Owner `yahiagabereng-ctrl/CCLI` push · PC1 pull · hotspot |
+| `ccli-pc1-other-device-setup` | `handoff/masomeh95/PC1_OTHER_DEVICE_SETUP.md` | Second PC: clone, auth, USB pack, no secrets in git |
 | `ccli-lab-unified-cert-test-roadmap` | `LAB_UNIFIED_CERT_TEST_ROADMAP.md` | Two-PC phase order |
 | `ccli-lab-unified-tsp-5ln-execution` | `LAB_UNIFIED_TSP_5LN_EXECUTION.md` | TestPro logger map · 5-LN capture |
 | `ccli-product-specimen-5ln` | `PRODUCT_SPECIMEN_5LN.md` | 5-LN product pin |

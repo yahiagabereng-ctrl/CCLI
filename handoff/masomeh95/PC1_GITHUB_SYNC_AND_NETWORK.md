@@ -85,7 +85,8 @@ git log -1 --oneline
 
 Then continue [PC1_GITHUB_PULL_RUNBOOK.md](PC1_GITHUB_PULL_RUNBOOK.md): `ensure-lab-env.ps1`, `pc1-p3-07-connect-preflight.ps1`, **`set_pc_lan1_dso.cmd`**, `ping 192.168.10.1`.
 
-**GitHub auth on PC1:** Windows Credential Manager or a **PAT** — never store passwords in the repo or in chat.
+**GitHub auth on PC1:** Windows Credential Manager or a **PAT** — never store passwords in the repo or in chat.  
+**First-time other PC:** [PC1_OTHER_DEVICE_SETUP.md](PC1_OTHER_DEVICE_SETUP.md) (clone, collaborator, USB field pack).
 
 ---
 
