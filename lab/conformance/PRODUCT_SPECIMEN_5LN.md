@@ -39,10 +39,10 @@
 
 | Field | Value (session 2026-10-22) |
 |-------|-----------------------------|
-| CID History rev | **3** (`when=2026-10-22`, SCL Verify template/Services cleanup) |
-| CID SHA-256 | `80DDA98BDEC50AD4E14D39D2E58B409AA61349E2410D729F4532FA7725948D2C` |
+| CID History rev | **4** (`when=2026-10-22`, ENS DOType dedupe + APC/ENC timeout defaults) |
+| CID SHA-256 | `431047507CDC16B117EA1740A37805C4235F9CDF6A22D6C2F724F6CCEAA8BB4B` |
 | `LLN0.NamPlt.configRev` | **20261022** |
-| cfg SHA-256 | `99C1707E746467A879DE94CE8880F8FA21D8DD48DB896EE8A6586623AB492498` (5946 bytes) |
+| cfg SHA-256 | `A4F8845382C4D09FC14B3F10EDB03AE3FAB51FB73FD8D1322B2391EDD4AE568E` (5946 bytes) |
 | `ccli --version` | **0.1.0-r55** (`P5-5LN-CERT-MODEL`) — reactive LNs optional in MMS adapter |
 | DUT boot log | `mms: full CID model loaded from /etc/ccli/icd/product_tr400_eth_a_5ln.cfg` · VArSd/PFSP **inactive** notices |
 | LN count (Compare) | **5** |

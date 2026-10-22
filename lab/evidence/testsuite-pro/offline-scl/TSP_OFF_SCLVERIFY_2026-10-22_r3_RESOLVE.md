@@ -1,6 +1,6 @@
 # TSP SCL Verify — product 5-LN CID rev 3 (2026-10-22)
 
-**CID:** `apps/ccli/config/icd/product/product_tr400_eth_a_5ln.cid` (Header **revision 3**, `configRev` **20261022**)  
+**CID:** `apps/ccli/config/icd/product/product_tr400_eth_a_5ln.cid` (Header **revision 4**, `configRev` **20261022**)  
 **Prior export:** `scl verify 10.22.2026.csv` (field pack rev 1) — **0 Error**, 19 Warning, 4 Recommendation, 5 Information.
 
 ## Resolved in rev 3 (engineering)
@@ -11,6 +11,13 @@
 | Duplicate `EnumType` Mod/Beh, Health/PhyHealth | Single enum; `ENS_2_Beh` → `Mod`, `ENS_1_PhyHealth` → `Health` |
 | Duplicate `DAType` APC/ENC Operate vs SelectWithValue | Removed `APCSelectWithValue_1` / `ENCSelectWithValue_1`; dropped unused `SBOw` (direct ctlModel) |
 | `sboTimeout` / `operTimeout` not set (×4) | Added DOType DAs + instance `DAI` on Wlim/WSd APC/ENC control DOs (30000 / 5000 ms) |
+
+## Rev 4 (confirm CSV follow-up)
+
+| TSP message | Fix |
+|-------------|-----|
+| Duplicate `ENS_1_PhyHealth` / `ENS_1_Health` | LPHD `PhyHealth` → `ENS_1_Health`; removed duplicate DOType |
+| `operTimeout` not set (×4 on Wlim/WSd APC/ENC) | `<Val>` on `sboTimeout`/`operTimeout` in `APC_1_WMaxSpt` and `ENC_2_Mod` DOTypes; CDC attribute order normalized |
 
 ## Accepted (cannot remove without dropping CEI LNs)
 
