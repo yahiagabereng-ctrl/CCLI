@@ -37,12 +37,12 @@
 | PICS Cover | Declare **5-LN** + firmware semver | [PICS_FILLED_WORKBOOK.md](PICS_FILLED_WORKBOOK.md) |
 | MICS | Model matches **same** CID | [MICS_DRAFT.md](MICS_DRAFT.md) — trim from lab draft |
 
-| Field | Value (session 2026-10-16) |
+| Field | Value (session 2026-10-22) |
 |-------|-----------------------------|
-| CID History rev | **2** (`when=2026-10-16`, TrgOps dchg/qchg/dupd + trgOps=Dyn) |
-| CID SHA-256 | `D4F291F78166981B92091156E5B9A0868C56096F765BE3E71DA86E88297E5020` |
-| `LLN0.NamPlt.configRev` | **20261016** |
-| cfg SHA-256 | `98EEA48FFA0DB63D71467B452A9966CF7422E98D6E2C949EE515CBDFCC842104` (6604 bytes) |
+| CID History rev | **3** (`when=2026-10-22`, SCL Verify template/Services cleanup) |
+| CID SHA-256 | `80DDA98BDEC50AD4E14D39D2E58B409AA61349E2410D729F4532FA7725948D2C` |
+| `LLN0.NamPlt.configRev` | **20261022** |
+| cfg SHA-256 | `99C1707E746467A879DE94CE8880F8FA21D8DD48DB896EE8A6586623AB492498` (5946 bytes) |
 | `ccli --version` | **0.1.0-r55** (`P5-5LN-CERT-MODEL`) — reactive LNs optional in MMS adapter |
 | DUT boot log | `mms: full CID model loaded from /etc/ccli/icd/product_tr400_eth_a_5ln.cfg` · VArSd/PFSP **inactive** notices |
 | LN count (Compare) | **5** |

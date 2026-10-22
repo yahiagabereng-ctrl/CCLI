@@ -1,9 +1,10 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <SCL xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:sxy="http://www.iec.ch/61850/2003/SCLcoordinates" xsi:schemaLocation="http://www.iec.ch/61850/2003/SCL SCL.xsd" version="2007" revision="B" release="4" xmlns="http://www.iec.ch/61850/2003/SCL">
-<Header id="CCI_Oss_Contr_5LN" version="1" revision="2" toolID="" nameStructure="IEDName">
+<Header id="CCI_Oss_Contr_5LN" version="1" revision="3" toolID="" nameStructure="IEDName">
 <History>
 <Hitem version="1" revision="1" when="2026-10-14" what="Product 5-LN O.15 certificate model: LLN0 + LPHD1 + PdCMMXU1 + WlimDWMX1 + WSdDAGC1; DS_R_PdC_Mis4sec + urcb_PdC_Mis4sec only; no GOOSE/BRCB; trimmed from lab_tg544_eth_a.cid History rev 9" who="CCLI" why="PRODUCT_SPECIMEN_5LN — U-T1-02/U-T1-03 cert Compare" />
 <Hitem version="1" revision="2" when="2026-10-16" what="URCB TrgOps dchg/qchg/dupd; ReportSettings trgOps=Dyn for T1-05b-d" who="CCLI" why="SetURCB dchg writable; PICS S27-1" />
+<Hitem version="1" revision="3" when="2026-10-22" what="SCL Verify cleanup: remove TimerActivatedControl; dedupe EnumType/DAType; APC/ENC direct ctl timeouts; drop unused SBOw" who="CCLI" why="TSP SCL Verify 2026-10-22 warnings" />
 </History>
 </Header>
 <Communication>
@@ -36,7 +37,6 @@
 <ConfReportControl max="10" bufMode="unbuffered" bufConf="false" />
 <GetCBValues />
 <FileHandling />
-<TimerActivatedControl />
 <ClientServices bufReport="false" goose="false" readLog="false" unbufReport="true" supportsLdName="true" maxAttributes="200" maxReports="10" />
 <DataObjectDirectory />
 <ReportSettings cbName="Fix" datSet="Fix" rptID="Fix" optFields="Fix" bufTime="Fix" trgOps="Dyn" intgPd="Fix" resvTms="false" owner="false" />
@@ -80,7 +80,7 @@
 </DOI>
 <DOI name="NamPlt" desc="">
 <DAI name="configRev">
-<Val>20261016</Val>
+<Val>20261022</Val>
 </DAI>
 <DAI name="ldNs" desc="">
 <Val>IEC61850-7-4:2010</Val>
@@ -185,6 +185,12 @@
 <DAI name="ctlModel">
 <Val>direct-with-enhanced-security</Val>
 </DAI>
+<DAI name="sboTimeout">
+<Val>30000</Val>
+</DAI>
+<DAI name="operTimeout">
+<Val>5000</Val>
+</DAI>
 </DOI>
 <DOI name="Mod" desc="Attivazione/disattivazione funzionamento [5 = Inattiva, 1 = Attiva]">
 <DAI name="stVal">
@@ -192,6 +198,12 @@
 </DAI>
 <DAI name="ctlModel">
 <Val>direct-with-enhanced-security</Val>
+</DAI>
+<DAI name="sboTimeout">
+<Val>30000</Val>
+</DAI>
+<DAI name="operTimeout">
+<Val>5000</Val>
 </DAI>
 </DOI>
 </LN>
@@ -210,6 +222,12 @@
 <DAI name="ctlModel">
 <Val>direct-with-enhanced-security</Val>
 </DAI>
+<DAI name="sboTimeout">
+<Val>30000</Val>
+</DAI>
+<DAI name="operTimeout">
+<Val>5000</Val>
+</DAI>
 <SDI name="mxVal" desc="Setpoint W in immissione/assorbimento al PdC (percentuale con segno rispetto a Smax di Impianto) [0..100]">
 <DAI name="f" desc="Valore default set-point">
 <Val>20</Val>
@@ -222,6 +240,12 @@
 </DAI>
 <DAI name="ctlModel">
 <Val>direct-with-enhanced-security</Val>
+</DAI>
+<DAI name="sboTimeout">
+<Val>30000</Val>
+</DAI>
+<DAI name="operTimeout">
+<Val>5000</Val>
 </DAI>
 </DOI>
 </LN>
@@ -275,7 +299,7 @@
 <DA name="ctlModel" type="CtlModelKind" bType="Enum" fc="CF" />
 </DOType>
 <DOType id="ENS_2_Beh" cdc="ENS">
-<DA name="stVal" type="Beh" bType="Enum" fc="ST" dchg="true" dupd="true" />
+<DA name="stVal" type="Mod" bType="Enum" fc="ST" dchg="true" dupd="true" />
 <DA name="q" bType="Quality" fc="ST" qchg="true" />
 <DA name="t" bType="Timestamp" fc="ST" />
 </DOType>
@@ -290,7 +314,7 @@
 <DA name="location" bType="VisString255" fc="DC" />
 </DOType>
 <DOType id="ENS_1_PhyHealth" cdc="ENS">
-<DA name="stVal" type="PhyHealth" bType="Enum" fc="ST" dchg="true" dupd="true" />
+<DA name="stVal" type="Health" bType="Enum" fc="ST" dchg="true" dupd="true" />
 <DA name="q" bType="Quality" fc="ST" qchg="true" />
 <DA name="t" bType="Timestamp" fc="ST" />
 </DOType>
@@ -329,8 +353,9 @@
 <DOType id="APC_1_WMaxSpt" cdc="APC">
 <DA name="Cancel" type="APCCancel_1" bType="Struct" fc="CO" />
 <DA name="Oper" type="APCOperate_1" bType="Struct" fc="CO" />
-<DA name="SBOw" type="APCSelectWithValue_1" bType="Struct" fc="CO" />
 <DA name="ctlModel" type="CtlModelKind" bType="Enum" fc="CF" />
+<DA name="sboTimeout" bType="INT32U" fc="CF" />
+<DA name="operTimeout" bType="INT32U" fc="CF" />
 <DA name="mxVal" type="AnalogueValue_1" bType="Struct" fc="MX" dchg="true" />
 <DA name="q" bType="Quality" fc="MX" qchg="true" />
 <DA name="t" bType="Timestamp" fc="MX" />
@@ -340,9 +365,10 @@
 <DA name="q" bType="Quality" fc="ST" qchg="true" />
 <DA name="t" bType="Timestamp" fc="ST" />
 <DA name="ctlModel" type="CtlModelKind" bType="Enum" fc="CF" />
-<DA name="SBOw" type="ENCSelectWithValue_1" bType="Struct" fc="CO" />
 <DA name="Oper" type="ENCOperate_1" bType="Struct" fc="CO" />
 <DA name="Cancel" type="ENCCancel_1" bType="Struct" fc="CO" />
+<DA name="sboTimeout" bType="INT32U" fc="CF" />
+<DA name="operTimeout" bType="INT32U" fc="CF" />
 </DOType>
 <DOType id="ENS_2_FctOpSt" cdc="ENS">
 <DA name="stVal" type="DERFunctionState" bType="Enum" fc="ST" dchg="true" dupd="true" />
@@ -368,22 +394,6 @@
 </DAType>
 <DAType id="APCOperate_1">
 <BDA name="ctlVal" type="AnalogueValue_1" bType="Struct" />
-<BDA name="origin" type="Originator_1" bType="Struct" />
-<BDA name="ctlNum" bType="INT8U" />
-<BDA name="T" bType="Timestamp" />
-<BDA name="Test" bType="BOOLEAN" />
-<BDA name="Check" bType="Check" />
-</DAType>
-<DAType id="APCSelectWithValue_1">
-<BDA name="ctlVal" type="AnalogueValue_1" bType="Struct" />
-<BDA name="origin" type="Originator_1" bType="Struct" />
-<BDA name="ctlNum" bType="INT8U" />
-<BDA name="T" bType="Timestamp" />
-<BDA name="Test" bType="BOOLEAN" />
-<BDA name="Check" bType="Check" />
-</DAType>
-<DAType id="ENCSelectWithValue_1">
-<BDA name="ctlVal" type="Mod" bType="Enum" />
 <BDA name="origin" type="Originator_1" bType="Struct" />
 <BDA name="ctlNum" bType="INT8U" />
 <BDA name="T" bType="Timestamp" />
@@ -426,19 +436,7 @@
 <EnumVal ord="3">direct-with-enhanced-security</EnumVal>
 <EnumVal ord="4">sbo-with-enhanced-security</EnumVal>
 </EnumType>
-<EnumType id="Beh">
-<EnumVal ord="1">on</EnumVal>
-<EnumVal ord="2">blocked</EnumVal>
-<EnumVal ord="3">test</EnumVal>
-<EnumVal ord="4">test/blocked</EnumVal>
-<EnumVal ord="5">off</EnumVal>
-</EnumType>
 <EnumType id="Health">
-<EnumVal ord="1">Ok</EnumVal>
-<EnumVal ord="2">Warning</EnumVal>
-<EnumVal ord="3">Alarm</EnumVal>
-</EnumType>
-<EnumType id="PhyHealth">
 <EnumVal ord="1">Ok</EnumVal>
 <EnumVal ord="2">Warning</EnumVal>
 <EnumVal ord="3">Alarm</EnumVal>
