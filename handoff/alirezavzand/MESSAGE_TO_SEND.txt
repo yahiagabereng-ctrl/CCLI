@@ -32,6 +32,10 @@ PC-A plant/logger (unchanged):
   handoff/alirezavzand/EMT432_MODBUS_COMMISSIONING_ALIREZA.md
   lab yaml: apps/ccli/config/lab_tr400_emt432_lan3_tcp_102.yaml (commissioning rev 5)
   Deploy: lab/tg544-openwrt/deploy-emt432-80mv.ps1
-  Live dump: lab/emt432_dump_registers_one_ssh.ps1 → modbus_emt432_<date>.txt for U-P0-03/04
+  Live dump: lab/emt432_dump_registers_one_ssh.ps1 -FullLogs → modbus_emt432_<date>.txt for U-P0-03/04
+
+**Load register report (2026-10-22):**
+  handoff/alirezavzand/EMT432_LOAD_REGISTER_REPORT_2026-10-22.md
+  lab/evidence/phase5/EMT432_DUT_FULL_REGISTER_LOG_2026-10-22_load2.txt  (~1.87 kW, I~8.3 A, V~225 V)
 
 Yahia
