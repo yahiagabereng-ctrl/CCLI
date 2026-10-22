@@ -1,6 +1,7 @@
 # CCLI — code handoff for Masomeh (masomeh95)
 
-**Date:** 2026-10-16  
+**Date:** 2026-10-22  
+**Share via GitHub (other PC):** **[00_SHARE_VIA_GITHUB.md](00_SHARE_VIA_GITHUB.md)** ← start here  
 **Repo:** https://github.com/yahiagabereng-ctrl/CCLI  
 **PC1 Connect session (git pull):** **[PC1_GITHUB_PULL_RUNBOOK.md](PC1_GITHUB_PULL_RUNBOOK.md)** — revision pin **P3-07-TSP-CONNECT**, frozen SSH/TLS, **`setup-pc1-p3-07-connect.ps1`**.  
 **5-LN EJBCA matrix:** **`setup-pc1-testpro-from-git.ps1`** · [PC1_PULL_TLS_DUT_ALIGNED.md](PC1_PULL_TLS_DUT_ALIGNED.md).
