@@ -31,6 +31,7 @@ This freeze pins **how ccli reads the EMT432** and maps **`PdCMMXU1`** (TotW, To
 | Item | Value |
 |------|--------|
 | **ccli release** | **0.1.0-r64** · ELF SHA-256 `967df2764819c3b616e5467a16a3f9a923b4002ad1ca4a73d156d16e91ab2df7` |
+| **Product bundle** | `releases/product-cyber/0.1.0-r64/` · lab pin `lab/tg544-openwrt/ccli-bin.r64.p5-emt432-cmv-ang-urcb-pf1` |
 | **Yaml** | `apps/ccli/config/product_tr400_p3_07_connect_5ln.yaml` SHA-256 `366a7d06100d13cff0d1f1c1c2ecdc171aa8e548c4dcccbf9e9f3860b04713a4` |
 | **ICD cfg** | `apps/ccli/config/icd/product/product_tr400_eth_a_5ln.cfg` SHA-256 `68fc1de01c67037ca502945f0c7a94628b0847f7da7f342f5f4f7d102a0f5741` |
 | **MMS map code rev** | **1** (`modbus_emt432_mms_map_revision.hpp`) |

@@ -11,6 +11,8 @@
 | Item | Value |
 |------|--------|
 | **Firmware** | **ccli 0.1.0-r64** `P5-EMT432-CMV-ANG-URCB-PF1` |
+| **Bundle** | `releases/product-cyber/0.1.0-r64/` (APK + ELF + yaml/cfg/cid) |
+| **Lab pin** | `lab/tg544-openwrt/ccli-bin.r64.p5-emt432-cmv-ang-urcb-pf1` |
 | **ELF SHA-256** | `967df2764819c3b616e5467a16a3f9a923b4002ad1ca4a73d156d16e91ab2df7` |
 | **Yaml** | `apps/ccli/config/product_tr400_p3_07_connect_5ln.yaml` |
 | **ICD cfg** | `apps/ccli/config/icd/product/product_tr400_eth_a_5ln.cfg` (URCB includes **ang.f**) |
