@@ -18,6 +18,6 @@ Also:
 
 RULE: Chronos STA reports are EMT130/EMT430 only — do NOT mark O.15 #2 / 61557-12 PASS on EMT432 bench.
 
-Commit: (see git log -1 after pull)
+Commit: 006afad (main) — Add Chronos S.T.A. annex map and Masomeh handoff for O.15 #2.
 
 Questions → Yahia.

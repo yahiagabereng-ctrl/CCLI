@@ -1,4 +1,5 @@
 Masomeh — Chronos S.T.A. + annex mapping pushed 2026-10-23
+Git: 006afad on main
 
 Pull CCLI main, then re-stage field pack:
   git pull origin main
