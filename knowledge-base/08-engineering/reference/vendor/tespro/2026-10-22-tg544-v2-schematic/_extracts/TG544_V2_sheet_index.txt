@@ -1,0 +1,1 @@
+PAGE 1: blocks = POWER, SIM Card, Gigabit Ethernet, SFP Fiber to RJ45, TPM 2.0, Isolated RS-485, Isolated RS-232, Isolated DI*6 & DO*6, USB Type-A Port, USB to UART, TF Card Reader, LED & Reset, Hall, Connector

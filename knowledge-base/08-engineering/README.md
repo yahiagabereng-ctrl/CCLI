@@ -33,9 +33,11 @@ Cross-cutting project knowledge — architecture, lab platform, certification, v
 | `testsuite-pro/` | `ccli-testsuite-pro-raw` / `…-help` | raw web + offline help drop |
 | `CCI_TR400_Capture_Plan.md` | `ccli-tr400-capture-plan` | **PLAN** — OEM user manual capture batches |
 | `CCI_TR400_Extract.md` | `ccli-tr400-user-manual-extract` | **HAVE** — 49 pp. auto-extract (v1.0 EN) |
-| `CCI_TR400_GPIO_Schematic_Extract.md` | `ccli-tr400-gpio-schematic-extract` | **HAVE** — GD32 DIO vs REQ-IO / Allegato O (start) |
+| `CCI_TR400_GPIO_Schematic_Extract.md` | `ccli-tr400-gpio-schematic-extract` | **HAVE** — GD32 DIO vs REQ-IO / Allegato O (4 ch, 2026-09-17) |
+| `CCI_TG544_V2_Schematic_Extract.md` | `ccli-tg544-v2-schematic-extract` | **HAVE** — full TG-544 V2 vs supplier table (2026-10-22) |
 | `reference/TR400_User_Manual_EN_v1.0.pdf` | `ccli-tr400-user-manual` | **INGESTED** — real HW user manual v1.0 EN |
 | `reference/vendor/tespro/Schematic-GPIO.pdf` | `ccli-tr400-gpio-schematic` | **HAVE** — OEM GPIO sheet (2026-09-17) |
+| `reference/vendor/tespro/2026-10-22-tg544-v2-schematic/TG544_V2_Schematic.pdf` | `ccli-tg544-v2-schematic` | **HAVE** — full board schematic (2026-10-22) |
 | `CCI_TG500_Knowledge_Tree.md` | `ccli-tg500-knowledge-tree` | LIVING — K0–K8 readiness tree |
 | `CCI_TesPro_Supplier_Correspondence.md` | `ccli-tespro-supplier-correspondence` | Aug 2026 — OpenWrt 24.10.5, TG-424 Pro |
 | `CCI_TesPro_Cert_Reply_2026-10_Extract.md` | `ccli-tespro-cert-reply-2026-10` | **HAVE** — 2026-10-21 vendor pack (FIPS L2, scope split, TG500 zip) |

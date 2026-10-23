@@ -1,0 +1,46 @@
+﻿# BENCH_HW_VALIDATION - 2026-10-22
+generated: 2026-10-22 14:11:12
+canonical: apps/ccli/config/lab_tr400_emt432_lan3_tcp_102.yaml
+meter_host: 192.168.178.10
+topology: PC-B DSO LAN1 TSP | PC-A logger LAN2+LAN3+COM5 | EMT TCP 1p/Rogowski | Sun A1/B1 | DIO1 relay DIO2 key
+
+- [x] SPEC: Modbus TCP EMT432 1p
+- [x] SPEC: DIO1 relay + DIO2 key
+- [x] SPEC: Sun mock COM5 to ttyS1
+- [x] SPEC: MMS 3782 + 104 2404 TLS
+- [x] SPEC: 5-LN model_cfg
+- [x] SPEC: use_dso_mock false
+- [x] SPEC: Rogowski 80 mV/kA metadata
+- [x] PC-A: LAN2 192.168.1.x
+- [ ] PC-A: LAN3 192.168.178.x
+- [ ] PC-B: LAN1 192.168.10.x on this PC
+- [x] PC-A: ping DUT LAN2
+- [ ] PC-B path: ping DUT LAN1
+- [ ] Plant: ping EMT432
+- [x] PC-A: USB RS485 COM5
+- [x] DUT: modbus backend tcp
+- [x] DUT: use_dso_mock false
+- [x] DUT: 5-LN model_cfg
+- [x] DUT: modbus no read_fail
+- [x] DUT: GD32 online
+- [x] DUT: ch1 DO ch2 DI
+- [x] DUT: ccli r54+
+
+DUT version: ccli 0.1.0-r57 (P5-5LN-ISO-PRES-AARE)
+DUT yaml:
+backend: tcp
+  backend: ubus_dido_v2
+  hostname: TG544
+  host: 192.168.178.10
+  syslog_host: 127.0.0.1
+      dut_linux_device: /dev/ttyS1
+  use_dso_mock: false
+  model_cfg: /etc/ccli/icd/product/product_tr400_eth_a_5ln.cfg
+modbus:
+Wed Oct 21 23:08:34 2026 daemon.err ccli[30306]: modbus: FC3 ReadHoldingRegisters unit=1 addr=40906 qty=37 -> P=0kW Q=0kvar raw=0x0000 0x7431 0x4366 0x0000 0x0000 0x0000 0x0000 0xa2cb 0x4299 0x6b74 0x4366 0x0000 0x0000 0x0000 0x0000 0x9cf8 0x4299 0x0000 0x0000 0x0000 0x0000 0x0000 0x0000 0x0000 0x0000 0x0000 0x0000 0x0000 0x0000 0x0000 0x0000 0x0000 0x0000 0x0000 0x0000 0x0000 0x0000 P=0kW pf2=ok curtail=no DO=OFF
+Wed Oct 21 23:08:38 2026 daemon.err ccli[30306]: modbus: FC3 ReadHoldingRegisters unit=1 addr=40906 qty=37 -> P=0kW Q=0kvar raw=0x0000 0x3589 0x4366 0x0000 0x0000 0x0000 0x0000 0x7906 0x4299 0x2cdc 0x4366 0x0000 0x0000 0x0000 0x0000 0x733d 0x4299 0x0000 0x0000 0x0000 0x0000 0x0000 0x0000 0x0000 0x0000 0x0000 0x0000 0x0000 0x0000 0x0000 0x0000 0x0000 0x0000 0x0000 0x0000 0x0000 0x0000 P=0kW pf2=ok curtail=no DO=OFF
+Wed Oct 21 23:08:42 2026 daemon.err ccli[30306]: modbus: FC3 ReadHoldingRegisters unit=1 addr=40906 qty=37 -> P=0kW Q=0kvar raw=0x0000 0x475b 0x4366 0x0000 0x0000 0x0000 0x0000 0x84e7 0x4299 0x3e99 0x4366 0x0000 0x0000 0x0000 0x0000 0x7f11 0x4299 0x0000 0x0000 0x0000 0x0000 0x0000 0x0000 0x0000 0x0000 0x0000 0x0000 0x0000 0x0000 0x0000 0x0000 0x0000 0x0000 0x0000 0x0000 0x0000 0x0000 P=0kW pf2=ok curtail=no DO=OFF
+uci:
+do
+di
+

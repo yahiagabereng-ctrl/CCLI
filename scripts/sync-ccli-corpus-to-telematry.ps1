@@ -134,6 +134,29 @@ if (Test-Path $LabMeet) {
     }
 }
 
+# TesPro TG-544 V2 schematic + datasheet text extracts (RAG)
+$Tg544Src = Join-Path $Repo "knowledge-base\08-engineering\reference\vendor\tespro\2026-10-22-tg544-v2-schematic"
+$TelTg544 = Join-Path $TelematryRoot "documents\projects\ccli\reference\vendor\tespro\2026-10-22-tg544-v2-schematic"
+if (Test-Path $Tg544Src) {
+    foreach ($sub in @("_extracts", "datasheets\_extracts")) {
+        $srcDir = Join-Path $Tg544Src $sub
+        if (-not (Test-Path $srcDir)) { continue }
+        Get-ChildItem $srcDir -Filter "*.txt" -File -ErrorAction SilentlyContinue | ForEach-Object {
+            $rel = $sub -replace '\\', '/'
+            $dest = Join-Path $TelTg544 ($rel + '\' + $_.Name)
+            New-Item -ItemType Directory -Path (Split-Path $dest) -Force | Out-Null
+            Copy-Item $_.FullName $dest -Force
+            $count++
+        }
+    }
+    Get-ChildItem (Join-Path $Repo "lab\evidence\hw") -Filter "TG544_V2*.md" -ErrorAction SilentlyContinue | ForEach-Object {
+        $TelHw = Join-Path $TelematryRoot "documents\projects\ccli\lab\evidence\hw"
+        New-Item -ItemType Directory -Path $TelHw -Force | Out-Null
+        Copy-Item $_.FullName (Join-Path $TelHw $_.Name) -Force
+        $count++
+    }
+}
+
 # Chronos vendor PDFs (manuals, MR, TA, S.T.A. type-test reports)
 $ChronosSrc = Join-Path $Repo "knowledge-base\08-engineering\reference\vendor\chronos"
 $TelChronos = Join-Path $TelematryRoot "documents\projects\ccli\reference\vendor\chronos"

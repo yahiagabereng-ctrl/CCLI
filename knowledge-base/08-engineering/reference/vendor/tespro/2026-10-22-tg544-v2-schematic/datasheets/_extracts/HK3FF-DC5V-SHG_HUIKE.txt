@@ -1,0 +1,246 @@
+# HK3FF-DC5V-SHG_HUIKE.pdf
+
+
+----- PAGE 1 of 3 -----
+HK 3FF
+SUBMINIATURE HIGH POWER RELAY
+Features
+●15A switching capability
+●1 Form A &C configurations
+●Subminiature, standard PCB layout
+●Plastic sealed and flux proofed types available
+●Environmental friendly product (RoHS compliant)
+●Outline Dimensions: (19.0 x 15.5 x 15.8) mm
+1
+■CONTACT DATA
+Contact Form
+1A, 1C
+Contact Material
+Silver Alloy
+Contact Ratings
+10A 277VAC 30VDC
+Max Switching Voltage
+16VDC
+Max Switching Current
+15A
+Max Switching Power
+2770VA 210W
+Contact Resistance
+100MΩ(at 1A 6VDC)
+Electrical Life
+1X105Ops(30Ops/min)
+Mechanical Life
+1X107Ops(300Ops/min)
+■GENERAL DATA
+Insulation Resistance
+100MΩ 500VDC
+Dielectric Strength
+Between coil & contacts
+1500VAC 1min
+Between open contacts
+750VAC 1min
+Operate Time
+Max. 10ms
+Release Time
+Max. 5ms
+Temperature Range
+- 40℃to +70℃
+Shcok Resistance
+Functional
+98m/s2 (10g)
+Destructive
+980m/s2 (100g)
+Vibration Resistance
+10 to 55Hz 1.5mm
+Humidity
+35% to 85% RH
+Weight
+Approx. 10g
+Safety Standard
+CUL TüV CQC
+■COIL DATA
+Nominal Voltage
+(VDC)
+Coil Resistance at 20℃± 10%(Ω)
+Max Operate Voltage
+(VDC)
+Min Release Voltage
+(VDC)
+Max Applicate Voltage
+(VDC)
+0.36W
+0.45W
+3
+25
+20
+2.25
+0.3
+3.9
+5
+70
+55
+3.75
+0.5
+6.5
+6
+100
+80
+4.50
+0.6
+7.8
+9
+225
+180
+6.75
+0.9
+11.7
+12
+400
+320
+9.00
+1.2
+15.6
+24
+1600
+1280
+18.00
+2.4
+31.2
+48
+6400
+5100
+36.00
+4.8
+62.4
+
+
+----- PAGE 2 of 3 -----
+15.8
+16.2
+15.8
+16.2
+6
+6
+6
+6
+ORDERING INFORMATION
+HK3FF
+-
+DC
+6V
+-
+S
+D
+X
+X
+X
+Special request code
+G: RoHS
+Mounting termination
+NIL:PCB
+Contact Form
+1C 1A 1B NIL:1C
+Coil Power
+H:0.36W D:0.45W
+Type of Sealing
+NIL: Flow Solder Type
+S: Plastic Sealed Type
+Coil Voltage
+3V,5V,6V,9V,12V,24V,48V
+Coil Type
+DC
+Type
+HK3FF
+OUTLINE DIMENSIONS, WIRING DIAGRAM AND PCBOARD LAYOUT
+Unit: mm
+Outline Dimensions
+PCB Layout
+Wiring Diagram
+19
+15.5
+(Bottom view)
+(Bottom view)
+1 Form A
+0.3
+4
+0.4
+2
+12.2
+1
+3.4
+19
+15.5
+1 Form C
+0.3
+4
+0.4
+2
+12.2
+1
+3.4
+Remark: 1) In case of no tolerance shown in outline dimension: outline dimension ≤1mm, tolerance should be ±0.2mm; outline dimension >1mm
+and≤5mm, tolerance should be ±0.3mm; outline dimension >5mm, tolerance should be ±0.4mm.
+2) The tolerance without indicating for PCB layout is always ±0.1mm.
+2
+4－φ1.3
+5－φ1.3
+
+
+----- PAGE 3 of 3 -----
+Contact Current (A)
+Operations (X10000 OPS)
+Temperature rise (K)
+Disclaimer
+This datasheet is for the customers’ reference. All the specifications are subject to change without notice.
+We could not evaluate all the performance and all the parameters for every possible application. Thus the user should be in a tight position
+choose the suitable product for their own application. lf there is any query, please contact Ever-way for the technical service. However, it is the
+user’s responsibility to determine which product should be used only.
+CHARACTERISTIC CURVES
+MAXIMUM SWITCHING POWER
+ENDURANCE CURVE
+COIL TEMPERATURE RISE
+100
+70
+AC(1H)
+15
+10
+100
+50
+250VAC/30VDC Resistiwe Load
+1HT type
+60
+50
+10A
+DC(1Z,1H)
+1
+AC(1Z)
+10
+1Z type
+5
+1ZT,1H type
+40
+5A
+30
+0A
+20
+10
+100
+1000
+0
+5
+10
+15
+0
+80
+90
+100
+110
+120
+130
+Contact Voltage (V)
+Contact Current (A)
+Percentage Of Nominal Coil Voltage
+(Relay mounting distance should
+be less than 10mm.)
+COPYRIGHT 2011© NINGBO BOLE INTL CO.,LTD. | EVER-WAY INDUSTRY COMPANY LIMITED
+3

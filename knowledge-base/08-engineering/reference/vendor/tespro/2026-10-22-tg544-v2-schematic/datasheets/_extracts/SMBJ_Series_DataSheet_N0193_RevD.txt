@@ -1,0 +1,815 @@
+# SMBJ_Series_DataSheet_N0193_RevD.pdf
+
+
+----- PAGE 1 of 5 -----
+Technical Data
+Automotive Qualified
+Data Sheet N0193, Rev. D
+SMBJ SERIES
+SMBJ SERIES SURFACE MOUNT
+TRANSIENT VOLTAGE SUPPRESSOR
+Notes: 1. Non-repetitive current pulse , per Fig. 3 and derated above TA = 25°C per Fig. 2.
+2. Mounted on 5.0mm²（0.013mm thick）land areas.
+3. Measured on 8.3ms single half sine wave or equivalent square wave, duty cycle=4pulses per minute maximum.
+Features
+Circuit Diagram
+Mechanical Data
+Maximum Ratings and Thermal Characteristics@TA=25°C unless otherwise specified
+Parameter
+Symbol
+Value
+Units
+Peak Pulse Power Dissipation at
+TA=25°C by 10x1000μs Waveform
+(Fig.1)(Note 1), (Note 2)
+PPPM
+600
+W
+Peak Forward Surge Current, 8.3ms
+Single Half Sine Wave (Note 2),(Note 3)
+IFSM
+100
+A
+Typical Thermal Resistance Junction to Lead
+RθJL
+20
+°C/W
+Typical Thermal Resistance Junction to Ambient
+RθJA
+100
+°C/W
+Operating Junction and Storage
+Temperature Range
+TJ,TSTG
+-55 to 150
+°C
+●
+Case: SMB Low Profile Molded Plastic
+●
+Terminals: Solder Plated , Solderable per MIL-STD
+750, Method 2026
+●
+Polarity: Cathode Band or Cathode Notch
+●
+Weight:0.093 grams(approx.)
+●
+Glass Passivated Die Construction
+●
+600W Peak Pulse Power Dissipation
+●
+5.0V- 200V Standoff Voltage
+●
+Uni- and Bi-Directional Versions Available
+●
+Excellent Clamping Capability
+●
+Fast Response Time
+●
+Plastic Case Material has UL Flammability
+Classification Rating 94V-O
+●
+“-A” is an AEC-Q101 qualified device
+●
+RoHS Compliant
+●
+All SMC Parts are Traceable to the Wafer Lot
+●
+Additional testing can be offered upon request
+SMB
+Unipolar
+Bipolar
+
+
+----- PAGE 2 of 5 -----
+Technical Data
+Automotive Qualified
+Data Sheet N0193, Rev. D
+SMBJ SERIES
+Electrical Characteristics @TA=25°C unless otherwise specified
+UNI-POLAR
+BI-POLAR
+DEVICE
+MARKING
+CODE
+REVERSE
+STAND-
+OFF
+VOLTAGE
+VRWM (V)
+BREAKD
+OWN
+VOLTAGE
+VBR (V)
+MIN.
+@IT
+BREAKDO
+WN
+VOLTAGE
+VBR (V)
+MAX.
+@IT
+TEST
+CUR
+RENT
+IT(M
+A)
+MAXMUM
+CLAMPING
+VOLTAGE
+@IPP
+VC(V)
+PEAK
+PULSE
+CURRE
+NT
+IPP(A)
+REVERSE
+LEAKAGE
+@VRWM
+IR(uA)
+UNI
+BI
+SMBJ5.0A
+SMBJ5.0CA
+KE
+AE
+5
+6.4
+7
+10
+9.2
+65.3
+800
+SMBJ6.0A
+SMBJ6.0CA
+KG
+AG
+6
+6.67
+7.37
+10
+10.3
+58.3
+800
+SMBJ6.5A
+SMBJ6.5CA
+KK
+AK
+6.5
+7.22
+7.98
+10
+11.2
+53.6
+500
+SMBJ7.0A
+SMBJ7.0CA
+KM
+AM
+7
+7.78
+8.6
+10
+12
+50
+200
+SMBJ7.5A
+SMBJ7.5CA
+KP
+AP
+7.5
+8.33
+9.21
+1
+12.9
+46.6
+100
+SMBJ8.0A
+SMBJ8.0CA
+KR
+AR
+8
+8.89
+9.83
+1
+13.6
+44.2
+50
+SMBJ8.5A
+SMBJ8.5CA
+KT
+AT
+8.5
+9.44
+10.4
+1
+14.4
+41.7
+20
+SMBJ9.0A
+SMBJ9.0CA
+KV
+AV
+9
+10
+11.1
+1
+15.4
+39
+10
+SMBJ10A
+SMBJ10CA
+KX
+AX
+10
+11.1
+12.3
+1
+17
+35.3
+5
+SMBJ11A
+SMBJ11CA
+KZ
+AZ
+11
+12.2
+13.5
+1
+18.2
+33
+5
+SMBJ12A
+SMBJ12CA
+LE
+BE
+12
+13.3
+14.7
+1
+19.9
+30.2
+5
+SMBJ13A
+SMBJ13CA
+LG
+BG
+13
+14.4
+15.9
+1
+21.5
+28
+5
+SMBJ14A
+SMBJ14CA
+LK
+BK
+14
+15.6
+17.2
+1
+23.2
+25.9
+5
+SMBJ15A
+SMBJ15CA
+LM
+BM
+15
+16.7
+18.5
+1
+24.4
+24.6
+5
+SMBJ16A
+SMBJ16CA
+LP
+BP
+16
+17.8
+19.7
+1
+26
+23.1
+5
+SMBJ17A
+SMBJ17CA
+LR
+BR
+17
+18.9
+20.9
+1
+27.6
+21.8
+5
+SMBJ18A
+SMBJ18CA
+LT
+BT
+18
+20
+22.1
+1
+29.2
+20.6
+5
+SMBJ20A
+SMBJ20CA
+LV
+BV
+20
+22.2
+24.5
+1
+32.4
+18.6
+5
+SMBJ22A
+SMBJ22CA
+LX
+BX
+22
+24.4
+26.9
+1
+35.5
+16.9
+5
+SMBJ24A
+SMBJ24CA
+LZ
+BZ
+24
+26.7
+29.5
+1
+38.9
+15.5
+5
+SMBJ26A
+SMBJ26CA
+ME
+CE
+26
+28.9
+31.9
+1
+42.1
+14.3
+5
+SMBJ28A
+SMBJ28CA
+MG
+CG
+28
+31.1
+34.4
+1
+45.4
+13.3
+5
+SMBJ30A
+SMBJ30CA
+MK
+CK
+30
+33.3
+36.8
+1
+48.4
+12.4
+5
+SMBJ33A
+SMBJ33CA
+MM
+CM
+33
+36.7
+40.6
+1
+53.3
+11.3
+5
+SMBJ36A
+SMBJ36CA
+MP
+CP
+36
+40
+44.2
+1
+58.1
+10.4
+5
+SMBJ40A
+SMBJ40CA
+MR
+CR
+40
+44.4
+49.1
+1
+64.5
+9.3
+5
+SMBJ43A
+SMBJ43CA
+MT
+CT
+43
+47.8
+52.8
+1
+69.4
+8.7
+5
+SMBJ45A
+SMBJ45CA
+MV
+CV
+45
+50
+55.3
+1
+72.7
+8.3
+5
+SMBJ48A
+SMBJ48CA
+MX
+CX
+48
+53.3
+58.9
+1
+77.4
+7.8
+5
+SMBJ51A
+SMBJ51CA
+MZ
+CZ
+51
+56.7
+62.7
+1
+82.4
+7.3
+5
+SMBJ54A
+SMBJ54CA
+NE
+DE
+54
+60
+66.3
+1
+87.1
+6.9
+5
+SMBJ58A
+SMBJ58CA
+NG
+DG
+58
+64.4
+71.2
+1
+93.6
+6.5
+5
+SMBJ60A
+SMBJ60CA
+NK
+DK
+60
+66.7
+73.7
+1
+96.8
+6.2
+5
+SMBJ64A
+SMBJ64CA
+NM
+DM
+64
+71.1
+78.6
+1
+103
+5.9
+5
+SMBJ70A
+SMBJ70CA
+NP
+DP
+70
+77.8
+86
+1
+113
+5.3
+5
+SMBJ75A
+SMBJ75CA
+NR
+DR
+75
+83.3
+92.1
+1
+121
+5
+5
+SMBJ78A
+SMBJ78CA
+NT
+DT
+78
+86.7
+95.8
+1
+126
+4.8
+5
+SMBJ85A
+SMBJ85CA
+NV
+DV
+85
+94.4
+104
+1
+137
+4.4
+5
+SMBJ90A
+SMBJ90CA
+NX
+DX
+90
+100
+111
+1
+146
+4.1
+5
+SMBJ100A
+SMBJ100CA
+NZ
+DZ
+100
+111
+123
+1
+162
+3.7
+5
+SMBJ110A
+SMBJ110CA
+PE
+EE
+110
+122
+135
+1
+177
+3.4
+5
+SMBJ120A
+SMBJ120CA
+PG
+EG
+120
+133
+147
+1
+193
+3.1
+5
+SMBJ130A
+SMBJ130CA
+PK
+EK
+130
+144
+159
+1
+209
+2.9
+5
+SMBJ150A
+SMBJ150CA
+PM
+EM
+150
+167
+185
+1
+243
+2.5
+5
+SMBJ160A
+SMBJ160CA
+PP
+EP
+160
+178
+197
+1
+259
+2.3
+5
+SMBJ170A
+SMBJ170CA
+PR
+ER
+170
+189
+209
+1
+275
+2.2
+5
+SMBJ180A
+SMBJ180CA
+PT
+ET
+180
+201
+222
+1
+292
+2.1
+1
+SMBJ200A
+SMBJ200CA
+PV
+EV
+200
+224
+247
+1
+324
+1.9
+1
+
+
+----- PAGE 3 of 5 -----
+Technical Data
+Automotive Qualified
+Data Sheet N0193, Rev. D
+SMBJ SERIES
+Ratings and Characteristics Curves
+
+
+----- PAGE 4 of 5 -----
+Technical Data
+Automotive Qualified
+Data Sheet N0193, Rev. D
+SMBJ SERIES
+For information on tape and reel specifications, including part
+orientation and tape sizes, please refer to our tape and reel
+packaging specification.
+Ordering Information
+Marking Diagram
+Device
+Package
+Shipping
+SMBJ SERIES
+SMB (Pb-Free)
+3000pcs / reel
+SMBJ SERIES TR
+SMB (Pb-Free)
+3000pcs / reel
+Mechanical Dimensions SMB
+SMB/DO-214AA
+Dim.
+Min.
+Max.
+Min.
+Max.
+A
+3.30
+3.94
+0.130
+0.155
+B
+4.06
+4.70
+0.160
+0.185
+C
+1.80
+2.20
+0.071
+0.087
+D
+0.152
+0.305
+0.006
+0.012
+E
+4.80
+5.59
+0.189
+0.220
+F
+2.10
+2.60
+0.083
+0.102
+G
+0.051
+0.203
+0.002
+0.008
+H
+0.76
+1.52
+0.030
+0.060
+In Millimeters
+In inches
+Carrier Tape Specification SMB
+SYMBOL
+Millimeters
+Min.
+Max.
+A
+3.99
+4.19
+B
+5.72
+5.92
+C
+3.23
+3.43
+d
+1.40
+1.60
+E
+1.40
+1.60
+F
+5.60
+5.70
+P
+7.90
+8.10
+P0
+3.90
+4.10
+P1
+1.90
+2.10
+T
+-
+0.60
+W
+11.80
+12.20
+Where XXXXX is YYWWL
+KE/AE
+= Marking code
+YY
+= Year
+WW
+= Week
+L
+= Lot Number
+Cautions：Molding resin
+Epoxy resin UL:94V-0
+SMBJ5.0A
+SMBJ5.0CA
+
+
+----- PAGE 5 of 5 -----
+Technical Data
+Automotive Qualified
+Data Sheet N0193, Rev. D
+SMBJ SERIES
+DISCLAIMER:
+1- The information given herein, including the specifications and dimensions, is subject to change without prior notice
+to improve product characteristics. Before ordering, purchasers are advised to contact the SMC Diode Solutions sales
+department for the latest version of the datasheet(s).
+2- In cases where extremely high reliability is required (such as use in nuclear power control, aerospace and aviation,
+traffic equipment, medical equipment , and safety equipment) , safety should be ensured by using semiconductor
+devices that feature assured safety or by means of users’ fail-safe precautions or other arrangement .
+3- In no event shall SMC Diode Solutions be liable for any damages that may result from an accident or any other cause
+during operation of the user’s units according to the datasheet(s). SMC Diode Solution assumes no responsibility for any
+intellectual property claims or any other problems that may result from applications of information, products or circuits
+described in the datasheets.
+4- In no event shall SMC Diode Solutions be liable for any failure in a semiconductor device or any secondary damage
+resulting from use at a value exceeding the absolute maximum rating.
+5- No license is granted by the datasheet(s) under any patents or other rights of any third party or SMC Diode Solutions.
+6- The datasheet(s) may not be reproduced or duplicated, in any form, in whole or part, without the expressed written
+permission of SMC Diode Solutions.
+7- The products (technologies) described in the datasheet(s) are not to be provided to any party whose purpose in their
+application will hinder maintenance of international peace and safety nor are they to be applied to that purpose by
+their direct purchasers or any third party. When exporting these products (technologies), the necessary procedures are
+to be taken in accordance with related laws and regulations..

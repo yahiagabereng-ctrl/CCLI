@@ -1,8 +1,26 @@
 # CCLI unified cert — handoff for Alireza (@alirezavzand)
 
-**Date:** 2026-10-16  
+**Date:** 2026-10-23 (TG-544 V2 schematic handoff added)  
 **Repo:** https://github.com/yahiagabereng-ctrl/CCLI  
 **GitHub:** `alirezavzand` (collaborator)
+
+---
+
+## TG-544 V2 schematic review (2026-10-23) — **start here for HW**
+
+**Git commit:** `TBD` — after `git pull origin main`, run `git log -1 --oneline` or use SHA below once pinned.
+
+| Item | Path |
+|------|------|
+| **Handoff SOP** | **[TG544_V2_SCHEMATIC_REVIEW_ALIREZA.md](TG544_V2_SCHEMATIC_REVIEW_ALIREZA.md)** |
+| **Schematic PDF** | [`knowledge-base/08-engineering/reference/vendor/tespro/2026-10-22-tg544-v2-schematic/TG544_V2_Schematic.pdf`](../../knowledge-base/08-engineering/reference/vendor/tespro/2026-10-22-tg544-v2-schematic/TG544_V2_Schematic.pdf) |
+| **Checklist** | [`lab/evidence/hw/TG544_V2_SCHEMATIC_REVIEW_2026-10-23.md`](../../lab/evidence/hw/TG544_V2_SCHEMATIC_REVIEW_2026-10-23.md) |
+| **Req × sheet matrix** | [`lab/evidence/hw/TG544_V2_REQUIREMENT_SHEET_VERIFY_MATRIX.md`](../../lab/evidence/hw/TG544_V2_REQUIREMENT_SHEET_VERIFY_MATRIX.md) |
+| **Analysis extract** | [`knowledge-base/08-engineering/CCI_TG544_V2_Schematic_Extract.md`](../../knowledge-base/08-engineering/CCI_TG544_V2_Schematic_Extract.md) |
+| **Datasheet tracker** | [`lab/evidence/hw/TG544_V2_DATASHEET_TRACKER.md`](../../lab/evidence/hw/TG544_V2_DATASHEET_TRACKER.md) |
+| **Chat blurb** | [`MESSAGE_TO_SEND.txt`](MESSAGE_TO_SEND.txt) (TG-544 section at bottom) |
+
+Baseline supplier table (not cert xlsx): `knowledge-base/08-engineering/TesPro_Gateway_Specifications_Response_Form.pdf` (local PDF).
 
 ---
 

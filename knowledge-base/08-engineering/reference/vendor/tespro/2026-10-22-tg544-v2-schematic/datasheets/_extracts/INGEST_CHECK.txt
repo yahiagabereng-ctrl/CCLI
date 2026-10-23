@@ -1,0 +1,16 @@
+# TG544 V2 datasheets ingest check
+OK=13 WARN=0 FAIL=0
+
+OK		BL3085_I47_Belling_V2.3_cn.pdf	pages=10	chars=4991
+OK		CA-IS3721HS_Chipanalog_CA-IS372x_V1.08_en.pdf	pages=25	chars=34124
+OK		DMP10H400SK3-13_DiodesInc.pdf	pages=6	chars=9802
+OK		GD32F330xx_Datasheet_Rev_3.0.pdf	pages=88	chars=103976
+OK		HK3FF-DC5V-SHG_HUIKE.pdf	pages=3	chars=2624
+OK		MT7986A_Datasheet_1.15_interim_for_MT7987.pdf	pages=23	chars=23382
+OK		PCAQ7060MW-301_Prodtech_Spec.pdf	pages=14	chars=12409
+OK		SK56L_MCC_Schottky.pdf	pages=5	chars=5316
+OK		SLB9673_Infineon_DataSheet_Rev1.4.pdf	pages=49	chars=69730
+OK		SMBJ_Series_DataSheet_N0193_RevD.pdf	pages=5	chars=6042
+OK		SMBJ_Series_Littelfuse.pdf	pages=6	chars=10565
+OK		TLP291-4_Toshiba.pdf	pages=11	chars=18763
+OK		WM1302_Seeed_LoRaWAN_Module.pdf	pages=7	chars=3786

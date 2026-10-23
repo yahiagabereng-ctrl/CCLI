@@ -1,0 +1,471 @@
+# SK56L_MCC_Schottky.pdf
+
+
+----- PAGE 1 of 5 -----
+MCCSEMI.COM
+Rev.4-1-07242023
+1/4
+Features
+Maximum Ratings @ 25°C (Unless Otherwise Specified)
+• Halogen Free. "Green" Device (Note 1)
+• Epoxy Meets UL 94 V-0 Flammability Rating
+• Moisture Sensitivity Level 1
+• Lead Free Finish/RoHS Compliant (Note 2)("P" Suffix Designates RoHS
+Compliant. See Ordering Information)
+• High Current Capability
+• For Surface Mount Application
+2. High Temperature Solder Exemption Applied, see EU Directive Annex 7a.
+Note: 1. Halogen free "Green” products are defined as those which contain <900ppm bromine, 
+<900ppm chlorine (<1500ppm total Br + Cl) and <1000ppm antimony compounds.
+Internal Structure
+Marking code
+5 Amp
+Schottky Rectifier
+20 to 100 Volts
+1
+2
+Pin
+Description
+Simplified outline
+Graphic symbol
+1
+Cathode
+2
+Anode
+1
+2
+XXXX = Marking code
+XXXX
+MCC
+Part Number
+SK52L
+SK53L
+SK54L
+SK55L
+SK56L
+SK52
+SK53
+SK54
+SK55
+SK56
+Marking Code
+SMC (DO-214AB)
+MIN
+MAX
+MIN
+MAX
+A
+0.079
+0.103
+2.00
+2.62
+B
+0.108
+0.128
+2.75
+3.25
+C
+0.002
+0.008
+0.051
+0.203
+D
+0.006
+0.012
+0.152
+0.305
+E
+0.030
+0.060
+0.76
+1.52
+F
+0.305
+0.320
+7.75
+8.13
+G
+0.260
+0.280
+6.60
+7.11
+H
+0.220
+0.245
+5.59
+6.22
+DIMENSIONS
+DIM
+INCHES
+MM
+NOTE
+2.50mm
+3.30mm
+ 
+Suggested Solder Pad Layout 
+4.40mm
+G
+H
+E
+D
+F
+A
+B
+C
+Cathode Mark
+Peak Repetitive
+Reverse Voltage
+VRRM
+Working Peak
+Reverse Voltage
+VRWM
+DC Blocking Voltage
+VR
+RMS Reverse
+Voltage
+VRMS
+14
+V
+Average Rectified 
+Forward Current 
+@ TL=90°C
+ IF(AV)
+A
+Non-Repetitive Peak 
+Surge Current @
+8.3ms Half Sine Wave
+ IFSM
+A
+Parameter
+Symbol
+Value
+Unit
+20
+V
+5
+100
+21
+30
+28
+40
+35
+50
+42
+60
+56
+80
+70
+100
+I2t Rating for Fusing 
+@1ms≤t≤8.3ms
+I2t
+41.5
+A2s
+SK
+52L
+SK
+53L
+SK
+SK
+SK
+SK
+SK
+510L
+54L
+55L
+56L
+58L
+SK58L
+SK58
+SK510L
+SK510
+SK52L THRU SK510L
+
+
+----- PAGE 2 of 5 -----
+MCCSEMI.COM
+Rev.4-1-07242023
+2/4
+Thermal characteristics
+Note:
+1.Mounted on P.C.B. with 16mm*16mm copper pad areas.
+Parameter
+Symbol
+Test   Conditions
+Min
+Typ
+Max
+Unit
+Forward Voltage
+V
+Electrical Characteristics @ 25°C Unless Otherwise Specified
+VF
+0.55
+0.75
+0.85
+pF
+VR=4V;f=1MHz;TJ=25°C
+275
+195
+135
+Reverse Current
+IR
+0.1
+50
+mA
+Junction Capacitance
+CJ
+Symbol
+Parameter
+Conditions
+Min
+Typ
+Max
+Unit
+Operating Junction Temperature Range
+-55
+150
+°C
+Storage Temperature Range
+-55
+150
+°C
+Rth(J-L)
+Thermal Resistance from Junction to Lead
+Note 1
+16
+°C/W
+TJ
+Tstg
+Rth(J-A)
+Thermal Resistance from Junction to Ambient
+Note 1
+65
+°C/W
+at Rated VR;TJ=25°C   
+at Rated VR;TJ=125°C  
+IF=5A;TJ=25°C
+IF=5A;TJ=25°C
+IF=5A;TJ=25°C 
+SK52L THRU SK510L
+SK52L~SK54L 
+SK55L~SK56L
+SK58L~SK510L
+SK52L~SK56L
+SK58L~SK510L
+at Rated VR;TJ=25°C   
+at Rated VR;TJ=125°C  
+0.01
+10
+SK52L~SK54L 
+SK55L~SK56L
+SK58L~SK510L
+
+
+----- PAGE 3 of 5 -----
+MCCSEMI.COM
+Rev.4-1-07242023
+3/4
+ Curve Characteristics
+Curve Characteristics
+Fig. 1 - Forward Current Derating Curve
+Fig. 3 - Typical Forward Characteristics
+Fig. 4 - Typical Reverse Leakage Characteristics
+Fig. 2 - Maximum Non-Repetitive Peak Forward Surge 
+Current
+10
+Number of Cycles at 60 Hz
+SK52L THRU SK510L
+0
+25
+50
+75
+100
+125
+150
+0
+1
+2
+3
+4
+5
+6
+Average Forward Current (A)
+Lead Temperature (°C)
+Resistive or Inductive Load
+1
+100
+0
+20
+40
+60
+80
+100
+120
+Peak Forward Surge Current (A)
+8.3 
+8.3 ms
+ms Single Half Sine Wave
+20
+100
+1
+10
+100
+1000
+10000
+SK52L~SK54L
+TJ=125°C
+TJ=75°C
+Reverse Current (μA)
+40 
+60 
+80 
+TJ=25°C
+Percent of Rated Peak Reverse Voltage (%)
+Fig. 5 - Typical Forward Characteristics
+Fig. 6 - Typical Reverse Leakage Characteristics
+0.01
+0.1
+1
+10
+20
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+1.2
+SK55L~SK56L
+Forward Voltage (V)
+Forward Current (A)
+TJ=25°C
+   =75°C
+ =125°C
+20
+100
+1
+10
+100
+1000
+10000
+SK55L~SK56L
+TJ=125°C
+TJ=75°C
+Reverse Current (μA)
+40 
+60 
+80 
+TJ=25°C
+Percent of Rated Peak Reverse Voltage (%)
+0.01
+0.1
+1
+10
+20
+0.0
+0.2
+0.8
+1.0
+0.4
+0.6
+Forward Voltage (V)
+Forward Current (A)
+TJ=25°C
+   =75°C
+ =125°C
+SK52L~SK54L
+
+
+----- PAGE 4 of 5 -----
+MCCSEMI.COM
+Rev.4-1-07242023
+3/4
+ Curve Characteristics
+Curve Characteristics
+Fig. 9 - Typical Capacitance Characteristics
+SK52L THRU SK510L
+Fig. 7 - Typical Forward Characteristics
+Fig. 8 - Typical Reverse Leakage Characteristics
+0.01
+0.1
+1
+10
+20
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+1.2
+SK58L~SK510L
+Forward Voltage (V)
+Forward Current (A)
+TJ=25°C
+   =75°C
+ =125°C
+20
+100
+0.01
+0.1
+1
+10
+100
+1000
+SK58L~SK510L
+TJ=125°C
+TJ=75°C
+Reverse Current (μA)
+40 
+60 
+80 
+TJ=25°C
+Percent of Rated Peak Reverse Voltage (%)
+0.1
+1
+100
+10
+100
+1000
+Junction Capacitance (pF)
+10
+Reverse Voltage (V)
+TJ=25°C
+f=1MHz
+SK52L~SK54L
+SK55L~SK56L
+SK58L~SK510L
+
+
+----- PAGE 5 of 5 -----
+MCCSEMI.COM
+Rev.4-1-07242023
+4/4
+ Ordering Information
+Device
+Packing
+Part Number-TP
+Tape&Reel:3Kpcs/Reel
+***IMPORTANT NOTICE***
+Counterfeiting of semiconductor parts is a growing problem in the industry. Micro Commercial Components (MCC) is taking
+strong measures to protect ourselves and our customers from the proliferation of counterfeit parts. MCC strongly encourages
+customers to purchase MCC parts either directly from MCC or from Authorized MCC Distributors who are listed by country on
+our web page cited below. Products customers buy either from MCC directly or from Authorized MCC Distributors are genuine
+parts, have full traceability, meet MCC's quality standards for handling and storage. MCC will not provide any warranty
+coverage or other assistance for parts bought from Unauthorized Sources. MCC is committed to combat this global
+problem and encourage our customers to do their part in stopping this practice by buying direct or from authorized
+distributors.
+***LIFE SUPPORT***
+MCC's products are not authorized for use as critical components in life support devices or systems without the express 
+written approval of Micro Commercial Components Corporation.
+***CUSTOMER AWARENESS***
+Micro Commercial Components Corp. reserves the right to make changes without further notice to any product herein to 
+make corrections, modifications , enhancements , improvements , or other changes . Micro Commercial Components 
+Corp . does not assume any liability arising out of the application or use of any product described herein; neither does it 
+convey any license under its patent rights ,nor the rights of others . The user of products in such applications shall assume all 
+risks of such use and will agree to hold Micro Commercial Components Corp . and all the companies whose products are 
+represented on our website, harmless against all damages. Micro Commercial Components Corp. products are sold subject 
+to the general terms and conditions of commercial sale, as published at 
+https://www.mccsemi.com/Home/TermsAndConditions.
+SK52L THRU SK510L

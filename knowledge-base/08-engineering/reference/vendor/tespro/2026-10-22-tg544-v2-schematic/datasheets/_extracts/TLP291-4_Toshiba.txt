@@ -1,0 +1,1011 @@
+# TLP291-4_Toshiba.pdf
+
+
+----- PAGE 1 of 11 -----
+TLP291-4
+1
+Photocouplers
+Infrared LED & Photo Transistor
+TLP291-4
+TLP291-4
+TLP291-4
+TLP291-4
+Start of commercial production
+2012-03
+1. 
+1. 
+1. 
+1. Applications
+Applications
+Applications
+Applications
+•
+Programmable Logic Controllers (PLCs)
+•
+Switching Power Supplies
+•
+Simplex/Multiplex Data Transmission
+2. 
+2. 
+2. 
+2. General
+General
+General
+General
+The Toshiba TLP291-4 consists of phototransistors optically coupled to an infrared LED. The TLP291-4
+Photocoupler is housed in the very small and thin SO16 package.
+Since the TLP291-4 is guaranteed over a wide operating temperature range (Ta = -55 to 110 ), it is suitable for
+high-density surface mount applications such as programmable controllers.
+3. 
+3. 
+3. 
+3. Features
+Features
+Features
+Features
+(1)
+Collector-emitter voltage: 80 V (min)
+(2)
+Current transfer ratio: 50 % (min)
+GB Rank: 100 % (min)
+(3)
+Isolation voltage: 2500 Vrms (min)
+(4)
+Operating temperature: -55 to 110 
+(5)
+Safety standards
+     UL-recognized: UL 1577, File No.E67349
+     cUL-recognized: CSA Component Acceptance Service No.5A File No.E67349
+     VDE-approved: EN 60747-5-5 (Note 1)
+(Note 1)
+(Note 1)
+(Note 1)
+     CQC-approved: GB4943.1, GB8898  Thailand Factory
+Note 1: When a VDE approved type is needed, please designate the Option (V4)
+Option (V4)
+Option (V4)
+Option (V4).
+4. 
+4. 
+4. 
+4. Packaging and Pin Assignment
+Packaging and Pin Assignment
+Packaging and Pin Assignment
+Packaging and Pin Assignment
+11-11F1
+1, 3, 5, 7: Anode
+2, 4, 6, 8: Cathode
+9, 11, 13, 15: Emitter
+10, 12, 14, 16: Collector
+2019-11-29
+Rev.8.0
+©2015-2019
+Toshiba Electronic Devices & Storage Corporation 
+
+
+----- PAGE 2 of 11 -----
+TLP291-4
+2
+5. 
+5. 
+5. 
+5. Principle of Operation
+Principle of Operation
+Principle of Operation
+Principle of Operation
+5.1. 
+5.1. 
+5.1. 
+5.1. Mechanical Parameters
+Mechanical Parameters
+Mechanical Parameters
+Mechanical Parameters
+Characteristics
+Creepage distances
+Clearance
+Internal isolation thickness
+Min
+5.0
+5.0
+0.1
+Unit
+mm
+6. 
+6. 
+6. 
+6. Absolute Maximum Ratings (Note) (Unless otherwise specified, T
+Absolute Maximum Ratings (Note) (Unless otherwise specified, T
+Absolute Maximum Ratings (Note) (Unless otherwise specified, T
+Absolute Maximum Ratings (Note) (Unless otherwise specified, Ta = 25 
+ = 25 
+ = 25 
+ = 25 )
+LED
+Detector
+Common
+Characteristics
+Input forward current
+Input forward current derating
+Input forward current (pulsed)
+Input reverse voltage
+Input power dissipation
+Input power dissipation
+derating (1 circuit)
+Junction temperature
+Collector-emitter voltage
+Emitter-collector voltage
+Collector current
+Collector power dissipation
+Collector power dissipation
+derating (1 circuit)
+Junction temperature
+Operating temperature
+Storage temperature
+Lead soldering temperature
+Total power dissipation
+Isolation voltage
+(Ta ≥ 50 )
+(Ta ≥ 50 )
+(Ta ≥ 25 )
+(10 s)
+(AC, 60 s, R.H. ≤ 60 %)
+Symbol
+IF
+∆IF/∆Ta
+IFP
+VR
+PD
+∆PD/∆Ta
+Tj
+VCEO
+VECO
+IC
+PC
+∆PC/∆Ta
+Tj
+Topr
+Tstg
+Tsol
+PT
+BVS
+Note
+(Note 2)
+Rating
+50
+-0.67
+1
+5
+70
+-0.93
+125
+80
+7
+50
+100
+-1.0
+125
+-55 to 110
+-55 to 125
+260
+170
+2500
+Unit
+mA
+mA/
+A
+V
+mW
+mW/
+
+V
+V
+mA
+mW
+mW/
+
+
+
+
+mW
+Vrms
+Note:
+Using continuously under heavy loads (e.g. the application of high temperature/current/voltage and the
+significant change in temperature, etc.) may cause this product to decrease in the reliability significantly even
+if the operating conditions (i.e. operating temperature/current/voltage, etc.) are within the absolute maximum
+ratings.
+Please design the appropriate reliability upon reviewing the Toshiba Semiconductor Reliability Handbook
+("Handling Precautions"/"Derating Concept and Methods") and individual reliability data (i.e. reliability test
+report and estimated failure rate, etc).
+Note 1: Pulse width (PW) ≤ 100 µs, f = 100 Hz
+Note 2: This device is considered as a two-terminal device: All pins on the LED side are shorted together, and all pin
+on the photodetector side are shorted together.
+2019-11-29
+Rev.8.0
+©2015-2019
+Toshiba Electronic Devices & Storage Corporation 
+
+
+----- PAGE 3 of 11 -----
+TLP291-4
+3
+7. 
+7. 
+7. 
+7. Electrical Characteristics (Unless otherwise specified, T
+Electrical Characteristics (Unless otherwise specified, T
+Electrical Characteristics (Unless otherwise specified, T
+Electrical Characteristics (Unless otherwise specified, Ta = 25 
+ = 25 
+ = 25 
+ = 25 )
+LED
+Detector
+Characteristics
+Input forward voltage
+Input reverse current
+Input capacitance
+Collector-emitter breakdown
+voltage
+Emitter-collector breakdown
+voltage
+Dark Current
+Collector-emitter capacitance
+Symbol
+VF
+IR
+Ct
+V(BR)CEO
+V(BR)ECO
+IDARK
+CCE
+Note
+Test Condition
+IF = 10 mA
+VR = 5 V
+V = 0 V, f = 1 MHz
+IC = 0.5 mA
+IE = 0.1 mA
+VCE = 48 V
+VCE = 48 V, Ta = 85 
+V = 0 V, f = 1 MHz
+Min
+1.1
+
+
+80
+7
+
+
+
+Typ.
+1.20
+
+30
+
+
+0.01
+2
+10
+Max
+1.4
+10
+
+
+
+0.1
+50
+
+Unit
+V
+µA
+pF
+V
+µA
+pF
+8. 
+8. 
+8. 
+8. Coupled Electrical Characteristics (Unless otherwise specified, T
+Coupled Electrical Characteristics (Unless otherwise specified, T
+Coupled Electrical Characteristics (Unless otherwise specified, T
+Coupled Electrical Characteristics (Unless otherwise specified, Ta = 25 
+ = 25 
+ = 25 
+ = 25 )
+Characteristics
+Current transfer ratio
+Saturated current transfer ratio
+Collector-emitter saturation
+voltage
+OFF-state collector current
+Symbol
+IC/IF
+IC/IF(sat)
+VCE(sat)
+IC(off)
+Note
+(Note 1)
+Test Condition
+IF = 5 mA, VCE = 5 V
+IF = 5 mA, VCE = 5 V, Rank GB
+IF = 1 mA, VCE = 0.4 V
+IF = 1 mA, VCE = 0.4 V, Rank GB
+IC = 2.4 mA, IF = 8 mA
+IC = 0.2 mA, IF = 1 mA
+IC = 0.2 mA, IF = 1 mA, Rank GB
+VF = 0.7 V, VCE = 48 V
+Min
+50
+100
+
+30
+
+
+
+
+Typ.
+
+
+60
+
+
+0.2
+
+
+Max
+400
+400
+
+
+0.4
+
+0.4
+10
+Unit
+%
+V
+µA
+Note 1: See Table 8.1 for current transfer ratio.
+Table 
+Table 
+Table 
+Table 8.1
+8.1
+8.1
+8.1
+Current transfer ratio (CTR) Rank (Note) (Unless otherwise specified, T
+Current transfer ratio (CTR) Rank (Note) (Unless otherwise specified, T
+Current transfer ratio (CTR) Rank (Note) (Unless otherwise specified, T
+Current transfer ratio (CTR) Rank (Note) (Unless otherwise specified, Ta = 25 
+ = 25 
+ = 25 
+ = 25 )
+Rank
+Blank
+GB
+Test Condition
+IF = 5 mA, VCE = 5 V
+Current
+transfer
+ratio IC/IF
+Min
+50
+100
+Current
+transfer
+ratio IC/IF
+Max
+400
+400
+Marking of
+Classification
+Blank,GB
+GB
+Unit
+%
+Note:
+Specify both the part number and a rank in this format when ordering.
+Example: TLP291-4(GB,E
+For safety standard certification, however, specify the part number alone.
+Example: TLP291-4(GB,E: TLP291-4
+9. 
+9. 
+9. 
+9. Isolation Characteristics (Unless otherwise specified, T
+Isolation Characteristics (Unless otherwise specified, T
+Isolation Characteristics (Unless otherwise specified, T
+Isolation Characteristics (Unless otherwise specified, Ta = 25 
+ = 25 
+ = 25 
+ = 25 )
+Characteristics
+Total capacitance (input to
+output)
+Isolation resistance
+Isolation voltage
+Symbol
+CS
+RS
+BVS
+Note
+(Note 1)
+(Note 1) 
+(Note 1)
+Test Conditions
+VS = 0 V, f = 1 MHz
+VS = 500 V, R.H. ≤ 60 %
+AC, 60 s
+Min
+
+1012
+2500
+Typ.
+0.8
+1014
+
+Max
+
+
+
+Unit
+pF
+Ω
+Vrms
+Note 1: This device is considered as a two-terminal device: All pins on the LED side are shorted together, and all pin
+on the photodetector side are shorted together.
+2019-11-29
+Rev.8.0
+©2015-2019
+Toshiba Electronic Devices & Storage Corporation 
+
+
+----- PAGE 4 of 11 -----
+TLP291-4
+4
+10. 
+10. 
+10. 
+10. Switching Characteristics (Unless otherwise specified, T
+Switching Characteristics (Unless otherwise specified, T
+Switching Characteristics (Unless otherwise specified, T
+Switching Characteristics (Unless otherwise specified, Ta = 25 
+ = 25 
+ = 25 
+ = 25 )
+Characteristics
+Rise time
+Fall time
+Turn-on time
+Turn-off time
+Turn-on time
+Storage time
+Turn-off time
+Symbol
+tr
+tf
+ton
+toff
+ton
+ts
+toff
+Note
+Test Condition
+VCC = 10 V, IC = 2 mA,
+RL = 100 Ω
+See Figure 10.1
+RL = 1.9 kΩ, VCC = 5 V, 
+IF = 16 mA
+Min
+
+
+
+
+
+
+
+Typ.
+2
+3
+3
+3
+2
+25
+60
+Max
+
+
+
+
+
+
+
+Unit
+µs
+Fig. 
+Fig. 
+Fig. 
+Fig. 10.1
+10.1
+10.1
+10.1
+Switching Time Test Circuit and Waveform
+Switching Time Test Circuit and Waveform
+Switching Time Test Circuit and Waveform
+Switching Time Test Circuit and Waveform
+2019-11-29
+Rev.8.0
+©2015-2019
+Toshiba Electronic Devices & Storage Corporation 
+
+
+----- PAGE 5 of 11 -----
+TLP291-4
+5
+11. 
+11. 
+11. 
+11. Characteristics Curves (Note)
+Characteristics Curves (Note)
+Characteristics Curves (Note)
+Characteristics Curves (Note)
+Fig. 
+Fig. 
+Fig. 
+Fig. 11.1
+11.1
+11.1
+11.1
+IF - T
+ - T
+ - T
+ - Ta
+Fig. 
+Fig. 
+Fig. 
+Fig. 11.2
+11.2
+11.2
+11.2
+PC - T
+ - T
+ - T
+ - Ta
+Fig. 
+Fig. 
+Fig. 
+Fig. 11.3
+11.3
+11.3
+11.3
+IFP
+FP
+FP
+FP - D
+ - D
+ - D
+ - DR
+Fig. 
+Fig. 
+Fig. 
+Fig. 11.4
+11.4
+11.4
+11.4
+IF - V
+ - V
+ - V
+ - VF
+Fig. 
+Fig. 
+Fig. 
+Fig. 11.5
+11.5
+11.5
+11.5
+∆VF/∆Ta - I
+ - I
+ - I
+ - IF
+Fig. 
+Fig. 
+Fig. 
+Fig. 11.6
+11.6
+11.6
+11.6
+IFP
+FP
+FP
+FP - V
+ - V
+ - V
+ - VFP
+FP
+FP
+FP
+2019-11-29
+Rev.8.0
+©2015-2019
+Toshiba Electronic Devices & Storage Corporation 
+
+
+----- PAGE 6 of 11 -----
+TLP291-4
+6
+Fig. 
+Fig. 
+Fig. 
+Fig. 11.7
+11.7
+11.7
+11.7
+IC - V
+ - V
+ - V
+ - VCEO
+CEO
+CEO
+CEO
+Fig. 
+Fig. 
+Fig. 
+Fig. 11.8
+11.8
+11.8
+11.8
+IC - V
+ - V
+ - V
+ - VCEO
+CEO
+CEO
+CEO
+Fig. 
+Fig. 
+Fig. 
+Fig. 11.9
+11.9
+11.9
+11.9
+IC - I
+ - I
+ - I
+ - IF
+Fig. 
+Fig. 
+Fig. 
+Fig. 11.10
+11.10
+11.10
+11.10
+IDARK
+DARK
+DARK
+DARK - T
+ - T
+ - T
+ - Ta
+Fig. 
+Fig. 
+Fig. 
+Fig. 11.11
+11.11
+11.11
+11.11
+IC/I/I/I/IF - I
+ - I
+ - I
+ - IF                       
+                       
+                       
+                       
+2019-11-29
+Rev.8.0
+©2015-2019
+Toshiba Electronic Devices & Storage Corporation 
+
+
+----- PAGE 7 of 11 -----
+TLP291-4
+7
+Fig. 
+Fig. 
+Fig. 
+Fig. 11.12
+11.12
+11.12
+11.12
+VCE(sat)
+CE(sat)
+CE(sat)
+CE(sat) - T
+ - T
+ - T
+ - Ta
+Fig. 
+Fig. 
+Fig. 
+Fig. 11.13
+11.13
+11.13
+11.13
+IC - T
+ - T
+ - T
+ - Ta
+Fig. 
+Fig. 
+Fig. 
+Fig. 11.14
+11.14
+11.14
+11.14
+Switching Time - R
+Switching Time - R
+Switching Time - R
+Switching Time - RL
+Fig. 
+Fig. 
+Fig. 
+Fig. 11.15
+11.15
+11.15
+11.15
+Switching Time - T
+Switching Time - T
+Switching Time - T
+Switching Time - Ta
+Note:
+The above characteristics curves are presented for reference only and not guaranteed by production test,
+unless otherwise noted.
+2019-11-29
+Rev.8.0
+©2015-2019
+Toshiba Electronic Devices & Storage Corporation 
+
+
+----- PAGE 8 of 11 -----
+TLP291-4
+8
+12. 
+12. 
+12. 
+12. Soldering and Storage
+Soldering and Storage
+Soldering and Storage
+Soldering and Storage
+12.1. 
+12.1. 
+12.1. 
+12.1. Precautions for Soldering
+Precautions for Soldering
+Precautions for Soldering
+Precautions for Soldering
+The soldering temperature should be controlled as closely as possible to the conditions shown below, irrespective
+of whether a soldering iron or a reflow soldering method is used.
+•
+When using soldering reflow.
+The soldering temperature profile is based on the package surface temperature.
+(See the figure shown below, which is based on the package surface temperature.)
+Reflow soldering must be performed once or twice.
+The mounting should be completed with the interval from the first to the last mountings being 2 weeks.
+An Example of a Temperature Profile When Lead(Pb)-Free Solder Is Used
+An Example of a Temperature Profile When Lead(Pb)-Free Solder Is Used
+An Example of a Temperature Profile When Lead(Pb)-Free Solder Is Used
+An Example of a Temperature Profile When Lead(Pb)-Free Solder Is Used
+•
+When using soldering flow
+Preheat the device at a temperature of 150  (package surface temperature) for 60 to 120 seconds.
+Mounting condition of 260  within 10 seconds is recommended.
+Flow soldering must be performed once.
+•
+When using soldering Iron
+Complete soldering within 10 seconds for lead temperature not exceeding 260  or within 3 seconds not
+exceeding 350 
+Heating by soldering iron must be done only once per lead.
+12.2. 
+12.2. 
+12.2. 
+12.2. Precautions for General Storage
+Precautions for General Storage
+Precautions for General Storage
+Precautions for General Storage
+•
+Avoid storage locations where devices may be exposed to moisture or direct sunlight.
+•
+Follow the precautions printed on the packing label of the device for transportation and storage.
+•
+Keep the storage location temperature and humidity within a range of 5  to 35  and 45 % to 75 %,
+respectively.
+•
+Do not store the products in locations with poisonous gases (especially corrosive gases) or in dusty
+conditions.
+•
+Store the products in locations with minimal temperature fluctuations. Rapid temperature changes during
+storage can cause condensation, resulting in lead oxidation or corrosion, which will deteriorate the
+solderability of the leads.
+•
+When restoring devices after removal from their packing, use anti-static containers.
+•
+Do not allow loads to be applied directly to devices while they are in storage.
+•
+If devices have been stored for more than two years under normal storage conditions, it is recommended
+that you check the leads for ease of soldering prior to use.
+2019-11-29
+Rev.8.0
+©2015-2019
+Toshiba Electronic Devices & Storage Corporation 
+
+
+----- PAGE 9 of 11 -----
+TLP291-4
+9
+13. 
+13. 
+13. 
+13. Land Pattern Dimensions (for reference only)
+Land Pattern Dimensions (for reference only)
+Land Pattern Dimensions (for reference only)
+Land Pattern Dimensions (for reference only)
+Unit: mm
+Unit: mm
+Unit: mm
+Unit: mm
+14. 
+14. 
+14. 
+14. Marking
+Marking
+Marking
+Marking
+15. 
+15. 
+15. 
+15. Ordering Information
+Ordering Information
+Ordering Information
+Ordering Information
+When placing an order, please specify the part number, CTR rank, tape type and quantity as shown in the
+following example.
+Example) TLP291-4(GB-TP,E  2000 pcs
+  Part number: TLP291-4
+  CTR rank: (GB
+  Tape type: TP
+  [[G]]/RoHS COMPATIBLE: E (Note 1)
+(Note 1)
+(Note 1)
+(Note 1)
+  Quantity (must be a multiple of 2000): 2000 pcs
+Note 1: Please contact your Toshiba sales representative for details on environmental information such as the product's
+RoHS  compatibility.
+RoHS is the Directive 2011/65/EU of the European Parliament and of the Council of 8 June 2011 on  the
+restriction of the use of certain hazardous substances in electrical and electronic equipment.
+2019-11-29
+Rev.8.0
+©2015-2019
+Toshiba Electronic Devices & Storage Corporation 
+
+
+----- PAGE 10 of 11 -----
+TLP291-4
+10
+ 
+Package Dimensions
+Package Dimensions
+Package Dimensions
+Package Dimensions
+Unit: mm
+Weight: 0.19 g (typ.)
+Package Name(s) 
+TOSHIBA: 11-11F1
+2019-11-29
+Rev.8.0
+©2015-2019
+Toshiba Electronic Devices & Storage Corporation 
+
+
+----- PAGE 11 of 11 -----
+TLP291-4
+11
+https://toshiba.semicon-storage.com/
+RESTRICTIONS ON PRODUCT USE
+RESTRICTIONS ON PRODUCT USE
+RESTRICTIONS ON PRODUCT USE
+RESTRICTIONS ON PRODUCT USE
+Toshiba Corporation and its subsidiaries and affiliates are collectively referred to as "TOSHIBA".
+Hardware, software and systems described in this document are collectively referred to as "Product".
+•
+TOSHIBA reserves the right to make changes to the information in this document and related Product without notice.
+•
+This document and any information herein may not be reproduced without prior written permission from TOSHIBA. Even with TOSHIBA's
+written permission, reproduction is permissible only if reproduction is without alteration/omission.
+•
+Though TOSHIBA works continually to improve Product's quality and reliability, Product can malfunction or fail. Customers are responsible
+for complying with safety standards and for providing adequate designs and safeguards for their hardware, software and systems which
+minimize risk and avoid situations in which a malfunction or failure of Product could cause loss of human life, bodily injury or damage
+to property, including data loss or corruption. Before customers use the Product, create designs including the Product, or incorporate
+the Product into their own applications, customers must also refer to and comply with (a) the latest versions of all relevant TOSHIBA
+information, including without limitation, this document, the specifications, the data sheets and application notes for Product and the
+precautions and conditions set forth in the "TOSHIBA Semiconductor Reliability Handbook" and (b) the instructions for the application
+with which the Product will be used with or for. Customers are solely responsible for all aspects of their own product design or applications,
+including but not limited to (a) determining the appropriateness of the use of this Product in such design or applications; (b) evaluating
+and determining the applicability of any information contained in this document, or in charts, diagrams, programs, algorithms, sample
+application circuits, or any other referenced documents; and (c) validating all operating parameters for such designs and applications. 
+TOSHIBA ASSUMES NO LIABILITY FOR CUSTOMERS' PRODUCT DESIGN OR APPLICATIONS.
+TOSHIBA ASSUMES NO LIABILITY FOR CUSTOMERS' PRODUCT DESIGN OR APPLICATIONS.
+TOSHIBA ASSUMES NO LIABILITY FOR CUSTOMERS' PRODUCT DESIGN OR APPLICATIONS.
+TOSHIBA ASSUMES NO LIABILITY FOR CUSTOMERS' PRODUCT DESIGN OR APPLICATIONS.
+•
+PRODUCT IS NEITHER INTENDED NOR WARRANTED FOR USE IN EQUIPMENTS OR SYSTEMS THAT REQUIRE
+EXTRAORDINARILY HIGH LEVELS OF QUALITY AND/OR RELIABILITY, AND/OR A MALFUNCTION OR FAILURE OF WHICH MAY
+CAUSE LOSS OF HUMAN LIFE, BODILY INJURY, SERIOUS PROPERTY DAMAGE AND/OR SERIOUS PUBLIC IMPACT
+("UNINTENDED USE"). 
+Except for specific applications as expressly stated in this document, Unintended Use includes, without limitation, equipment used in
+nuclear facilities, equipment used in the aerospace industry, lifesaving and/or life supporting medical equipment, equipment used for
+automobiles, trains, ships and other transportation, traffic signaling equipment, equipment used to control combustions or explosions,
+safety devices, elevators and escalators, and devices related to power plant.
+IF YOU USE PRODUCT FOR UNINTENDED USE, TOSHIBA ASSUMES NO LIABILITY FOR PRODUCT.
+For details, please contact your TOSHIBA sales representative or contact us via our website.
+•
+Do not disassemble, analyze, reverse-engineer, alter, modify, translate or copy Product, whether in whole or in part.
+•
+Product shall not be used for or incorporated into any products or systems whose manufacture, use, or sale is prohibited under any
+applicable laws or regulations.
+•
+The information contained herein is presented only as guidance for Product use. No responsibility is assumed by TOSHIBA for any
+infringement of patents or any other intellectual property rights of third parties that may result from the use of Product. No license to any
+intellectual property right is granted by this document, whether express or implied, by estoppel or otherwise.
+•
+ABSENT A WRITTEN SIGNED AGREEMENT, EXCEPT AS PROVIDED IN THE RELEVANT TERMS AND CONDITIONS OF SALE
+ABSENT A WRITTEN SIGNED AGREEMENT, EXCEPT AS PROVIDED IN THE RELEVANT TERMS AND CONDITIONS OF SALE
+ABSENT A WRITTEN SIGNED AGREEMENT, EXCEPT AS PROVIDED IN THE RELEVANT TERMS AND CONDITIONS OF SALE
+ABSENT A WRITTEN SIGNED AGREEMENT, EXCEPT AS PROVIDED IN THE RELEVANT TERMS AND CONDITIONS OF SALE
+FOR PRODUCT, AND TO THE MAXIMUM EXTENT ALLOWABLE BY LAW, TOSHIBA (1) ASSUMES NO LIABILITY WHATSOEVER,
+FOR PRODUCT, AND TO THE MAXIMUM EXTENT ALLOWABLE BY LAW, TOSHIBA (1) ASSUMES NO LIABILITY WHATSOEVER,
+FOR PRODUCT, AND TO THE MAXIMUM EXTENT ALLOWABLE BY LAW, TOSHIBA (1) ASSUMES NO LIABILITY WHATSOEVER,
+FOR PRODUCT, AND TO THE MAXIMUM EXTENT ALLOWABLE BY LAW, TOSHIBA (1) ASSUMES NO LIABILITY WHATSOEVER,
+INCLUDING WITHOUT LIMITATION, INDIRECT, CONSEQUENTIAL, SPECIAL, OR INCIDENTAL DAMAGES OR LOSS, INCLUDING
+INCLUDING WITHOUT LIMITATION, INDIRECT, CONSEQUENTIAL, SPECIAL, OR INCIDENTAL DAMAGES OR LOSS, INCLUDING
+INCLUDING WITHOUT LIMITATION, INDIRECT, CONSEQUENTIAL, SPECIAL, OR INCIDENTAL DAMAGES OR LOSS, INCLUDING
+INCLUDING WITHOUT LIMITATION, INDIRECT, CONSEQUENTIAL, SPECIAL, OR INCIDENTAL DAMAGES OR LOSS, INCLUDING
+WITHOUT LIMITATION, LOSS OF PROFITS, LOSS OF OPPORTUNITIES, BUSINESS INTERRUPTION AND LOSS OF DATA, AND
+WITHOUT LIMITATION, LOSS OF PROFITS, LOSS OF OPPORTUNITIES, BUSINESS INTERRUPTION AND LOSS OF DATA, AND
+WITHOUT LIMITATION, LOSS OF PROFITS, LOSS OF OPPORTUNITIES, BUSINESS INTERRUPTION AND LOSS OF DATA, AND
+WITHOUT LIMITATION, LOSS OF PROFITS, LOSS OF OPPORTUNITIES, BUSINESS INTERRUPTION AND LOSS OF DATA, AND
+(2) DISCLAIMS ANY AND ALL EXPRESS OR IMPLIED WARRANTIES AND CONDITIONS RELATED TO SALE, USE OF PRODUCT,
+(2) DISCLAIMS ANY AND ALL EXPRESS OR IMPLIED WARRANTIES AND CONDITIONS RELATED TO SALE, USE OF PRODUCT,
+(2) DISCLAIMS ANY AND ALL EXPRESS OR IMPLIED WARRANTIES AND CONDITIONS RELATED TO SALE, USE OF PRODUCT,
+(2) DISCLAIMS ANY AND ALL EXPRESS OR IMPLIED WARRANTIES AND CONDITIONS RELATED TO SALE, USE OF PRODUCT,
+OR INFORMATION, INCLUDING WARRANTIES OR CONDITIONS OF MERCHANTABILITY, FITNESS FOR A PARTICULAR
+OR INFORMATION, INCLUDING WARRANTIES OR CONDITIONS OF MERCHANTABILITY, FITNESS FOR A PARTICULAR
+OR INFORMATION, INCLUDING WARRANTIES OR CONDITIONS OF MERCHANTABILITY, FITNESS FOR A PARTICULAR
+OR INFORMATION, INCLUDING WARRANTIES OR CONDITIONS OF MERCHANTABILITY, FITNESS FOR A PARTICULAR
+PURPOSE, ACCURACY OF INFORMATION, OR NONINFRINGEMENT.
+PURPOSE, ACCURACY OF INFORMATION, OR NONINFRINGEMENT.
+PURPOSE, ACCURACY OF INFORMATION, OR NONINFRINGEMENT.
+PURPOSE, ACCURACY OF INFORMATION, OR NONINFRINGEMENT.
+•
+GaAs (Gallium Arsenide) is used in Product. GaAs is harmful to humans if consumed or absorbed, whether in the form of dust or vapor.
+Handle with care and do not break, cut, crush, grind, dissolve chemically or otherwise expose GaAs in Product.
+•
+Do not use or otherwise make available Product or related software or technology for any military purposes, including without limitation,
+for the design, development, use, stockpiling or manufacturing of nuclear, chemical, or biological weapons or missile technology products
+(mass destruction weapons). Product and related software and technology may be controlled under the applicable export laws and
+regulations including, without limitation, the Japanese Foreign Exchange and Foreign Trade Law and the U.S. Export Administration
+Regulations. Export and re-export of Product or related software or technology are strictly prohibited except in compliance with all
+applicable export laws and regulations.
+•
+Please contact your TOSHIBA sales representative for details as to environmental matters such as the RoHS compatibility of Product.
+Please use Product in compliance with all applicable laws and regulations that regulate the inclusion or use of controlled substances,
+including without limitation, the EU RoHS Directive. TOSHIBA ASSUMES NO LIABILITY FOR DAMAGES OR LOSSES OCCURRING
+ TOSHIBA ASSUMES NO LIABILITY FOR DAMAGES OR LOSSES OCCURRING
+ TOSHIBA ASSUMES NO LIABILITY FOR DAMAGES OR LOSSES OCCURRING
+ TOSHIBA ASSUMES NO LIABILITY FOR DAMAGES OR LOSSES OCCURRING
+AS A RESULT OF NONCOMPLIANCE WITH APPLICABLE LAWS AND REGULATIONS.
+AS A RESULT OF NONCOMPLIANCE WITH APPLICABLE LAWS AND REGULATIONS.
+AS A RESULT OF NONCOMPLIANCE WITH APPLICABLE LAWS AND REGULATIONS.
+AS A RESULT OF NONCOMPLIANCE WITH APPLICABLE LAWS AND REGULATIONS.
+2019-11-29
+Rev.8.0
+©2015-2019
+Toshiba Electronic Devices & Storage Corporation 

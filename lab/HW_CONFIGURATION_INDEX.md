@@ -28,7 +28,8 @@
 | **Single-PC full bench** | [conformance/TSP_PC_FULL_BENCH_HW.md](conformance/TSP_PC_FULL_BENCH_HW.md) | **HAVE** | NIC IPs + COM5 |
 | **Annex M trip (DIO3)** | [evidence/phase6/P6-03_ANNEX_M_INHIBIT.md](evidence/phase6/P6-03_ANNEX_M_INHIBIT.md) | **HAVE** | ch3 DO trip mock |
 | **I/O voltage class gap** | [evidence/phase6/P6-06_IO_VOLTAGE_GAP.md](evidence/phase6/P6-06_IO_VOLTAGE_GAP.md) | **GAP doc** | Lab 12 V ≠ product 250 V/3 A |
-| **Schematic extract** | [knowledge-base/08-engineering/CCI_TR400_GPIO_Schematic_Extract.md](../knowledge-base/08-engineering/CCI_TR400_GPIO_Schematic_Extract.md) | **HAVE** | Vendor GPIO |
+| **Schematic extract (GPIO 4ch)** | [knowledge-base/08-engineering/CCI_TR400_GPIO_Schematic_Extract.md](../knowledge-base/08-engineering/CCI_TR400_GPIO_Schematic_Extract.md) | **HAVE** | 2026-09-17 sheet |
+| **Schematic TG-544 V2 + review** | [CCI_TG544_V2_Schematic_Extract.md](../knowledge-base/08-engineering/CCI_TG544_V2_Schematic_Extract.md) · [TG544_V2_SCHEMATIC_REVIEW_2026-10-23.md](evidence/hw/TG544_V2_SCHEMATIC_REVIEW_2026-10-23.md) · **[Req×sheet matrix](evidence/hw/TG544_V2_REQUIREMENT_SHEET_VERIFY_MATRIX.md)** · **[Datasheet tracker](evidence/hw/TG544_V2_DATASHEET_TRACKER.md)** | **HAVE** | 2026-10-22 supplier drop |
 | **I/O peripheral** | [knowledge-base/08-engineering/CCI_TR500_IO_Peripheral.md](../knowledge-base/08-engineering/CCI_TR500_IO_Peripheral.md) | **HAVE** | Corpus |
 | **Runtime dataflow** | [Architecture/CCI_Runtime_Dataflow_Architecture.md](../Architecture/CCI_Runtime_Dataflow_Architecture.md) | **HAVE** | DIO1 path |
 | **OpenWrt freeze L2** | [knowledge-base/08-engineering/CCI_OpenWrt_Freeze.md](../knowledge-base/08-engineering/CCI_OpenWrt_Freeze.md) | **HAVE** | ttyS1 + DIO1/2 |

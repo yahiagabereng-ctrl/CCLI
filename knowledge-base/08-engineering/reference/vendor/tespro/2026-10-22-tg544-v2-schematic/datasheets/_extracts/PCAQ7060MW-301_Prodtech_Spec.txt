@@ -1,0 +1,1203 @@
+# PCAQ7060MW-301_Prodtech_Spec.pdf
+
+
+----- PAGE 1 of 14 -----
+Page 1 / 14
+PuLuoDe Electronic Technology (Shenzhen) Co., LTD
+深圳市寶安區石岩三聯工業區B棟311
+Keysight:E4991B
+ Chroma:16502 3302
+產品系列
+測試頻率
+Series
+TEST FREQUENCY
+客戶名稱
+Supplly P/N
+發版號
+Version
+贴片共模电感
+Customer
+客戶編碼
+製品規格書
+SPECIFICATION FOR APPROVAL
+產品編碼
+測試設備
+P/N
+TEST INSTRUMENT
+ A3.0
+PCAQ7060~1513 series
+Customer P/N
+產品系列
+CHECKED
+Peter
+承認日期
+Endorsement Date
+備註
+Note
+譜羅德電子科技（深圳）有限公司
+確認
+   更多规格请访问谱罗德官方网站
+下载或者扫描二维码通过微信小程序
+获取
+贴片共模电感
+https://www.prodtech.cn/
+PuLuoDe Electronic Technology (Shenzhen) Co. LTD
+SMD Common Mode Choke
+PREPARED
+客戶簽章
+:
+:
+:
+:
+:
+製作
+APPROVED
+審查
+谱罗德电子科技（深圳）有限公司
+100MHZ / 0.3V
+Ben
+PCAQ7060~1513 series
+ A3.0
+Yuki
+Customer  Approval
+2022-9-23
+客戶承認
+:
+:
+Series
+產品編碼
+
+
+----- PAGE 2 of 14 -----
+Page 2 / 14
+谱罗德电子科技（深圳）有限公司
+PuLuoDe Electronic Technology (Shenzhen) Co., LTD
+深圳市寶安區石岩三聯工業區B棟311
+Keysight:E4991B
+ Chroma:16502 3302
+ A3.0
+PCAQ7060~1513 series
+贴片共模电感
+Version
+REVISON ITEM
+BEFORE REVISON
+AFTER REVISON
+修訂記錄
+REVISION RECORD
+產品編碼 
+測試設備
+P/N
+TEST INSTRUMENT
+產品系列
+測試頻率
+Series
+TEST FREQUENCY
+   更多规格请访问谱罗德官方网站
+下载或者扫描二维码通过微信小程序
+获取
+https://www.prodtech.cn/
+100MHZ / 0.3V
+DATE
+ A3.0
+First Version
+2022-9-23
+
+
+----- PAGE 3 of 14 -----
+产品特点
+Features
+¤
+¤
+¤
+¤
+編碼解釋
+Code interpretation
+封裝尺寸
+Dimension
+d
+3.2
+3.7
+5.2
+6
+©
+©
+©
+©
+©
+Page 3 / 14
+The announcements  is on page 14
+谱罗德电子科技（深圳）有限公司
+PuLuoDe Electronic Technology (Shenzhen) Co., LTD
+深圳市寶安區石岩三聯工業區B棟311
+Takes up less PCB real estate and save more power
+規格參數基於環境溫度25℃取得
+All test Data is referenced to 25℃ ambient
+電感工作環境溫度 :  -40℃ ~ 125℃
+Operating temperature range -40 °C to +125 °C
+加載额定電流會使電感溫度上升大約  40℃ (電感初始溫度+上升溫度=電感最終溫度）
+Typical Rated Current would cause an approximately △T of 40℃
+務必考慮最終的產品設計，元器件佈局，線路板走線，以及使用環境過程中，電感最終溫度不得超過125℃
+   更多规格请访问谱罗德官方网站
+下载或者扫描二维码通过微信小程
+序获取
+c
+E
+F
+G
+a
+b
+3.7
+3.5
+12
+The operating temperature of inductance do not exceed 125℃
+Keysight:E4991B
+ Chroma:16502 3302
+1.7±0.3
+3.5Typ
+1.5 Typ
+2.5±0.5
+7.0Typ
+2.5 Typ
+7 0 1
+阻抗值
+Impedance
+7 0 6 0 M W
+尺寸系列
+Dimension
+TEST FREQUENCY
+阻抗范围广，适用于不同频率的信号噪音抑制
+30Ω~4000Ω are optional for different noise level and signal frequency
+产品薄，尺寸小，高频共模噪声抑制效果好
+ Low profile，Small size ，Prevention of common mode noise at high frequency
+SMD结构便于SMT生产自动化贴片
+SMD structure is convenient for SMT production automation patch
+超小超薄的结构减少PCB的占用面积
+使用電感時，請查閱第13頁注意事項
+https://www.prodtech.cn/
+A
+B
+C
+D
+7060
+ A3.0
+封裝尺寸
+Dimension
+產品編碼 
+PCAQ7060~1513 series
+測試設備
+P/N
+TEST INSTRUMENT
+推薦的焊盤尺寸
+Recommaned Land Pattern
+(mm)
+產品系列
+贴片共模电感
+測試頻率
+100MHZ / 0.3V
+Series
+P C A Q
+類別碼
+Category code
+6.4Max
+2.7±0.5
+5.3
+9.0±0.5
+7.0±0.5
+4.8MAX
+1.5±0.3
+1.7±0.3
+5.7Typ
+2.0 Typ
+2
+2.2
+7.3
+7.0±0.5
+6.0±0.5
+3.8MAX
+1.5±0.3
+9070
+1211
+1513
+2.7±0.5
+3.0±0.5
+9.0Typ
+3.3 Typ
+焊盤尺寸
+Land Pattern
+9.5
+15.0±0.5 13.0±0.5
+6.5MAX
+3.5
+3.2
+2
+2.2
+封装尺寸
+Dimension
+系列
+Series
+12.0±0.5 10.8±0.5
+
+
+----- PAGE 4 of 14 -----
+7060 Series
+9070 Series
+Page 4 / 14
+PCAQ7060MW-152P
+1300
+1500
+21
+10
+2500
+80
+PCAQ9070MW-302
+2500
+3000
+80
+10
+2000
+80
+1700
+2200
+60
+10
+2500
+80
+PCAQ9070MW-272
+2000
+2700
+86
+10
+2000
+80
+https://www.prodtech.cn/
+PCAQ9070MW-102
+750
+10
+4000
+80
+PCAQ9070MW-222
+1000
+13
+谱罗德电子科技（深圳）有限公司
+PuLuoDe Electronic Technology (Shenzhen) Co., LTD
+深圳市寶安區石岩三聯工業區B棟311
+PCAQ9070MW-152
+1300
+1500
+20
+10
+3500
+80
+產品編碼
+P/N
+@ 25 ℃ Ambient Temperture
+阻抗
+Impedance
+DCR
+絕緣性
+（IR）
+額定電流
+（Rated Current)
+額定電壓
+（Rated Voltage）
+Ω
+mΩ
+MΩ
+Min
+Typ
+Max
+Min
+mA
+V
+PCAQ7060MW-132
+910
+1300
+21
+10
+2500
+10
+6000
+   更多规格请访问谱罗德官方网站
+下载或者扫描二维码通过微信小程序
+获取
+80
+PCAQ9070MW-501
+450
+600
+8
+10
+5500
+80
+PCAQ9070MW-701
+500
+700
+10
+10
+5000
+80
+PCAQ9070MW-301
+225
+300
+6
+80
+PCAQ7060MW-102
+800
+1020
+17
+10
+3000
+80
+PCAQ7060MW-601
+500
+700
+15
+10
+4000
+500
+700
+15
+10
+80
+PCAQ7060MW-272
+產品系列
+贴片共模电感
+測試頻率
+100MHZ / 0.3V
+Series
+TEST FREQUENCY
+Min
+Typ
+Max
+Min
+mA
+V
+產品編碼
+P/N
+@ 25 ℃ Ambient Temperture
+DCR
+mΩ
+絕緣性
+（IR）
+MΩ
+阻抗
+Impedance
+Ω
+額定電流
+（Rated Current)
+額定電壓
+（Rated Voltage）
+ A3.0
+電氣特性
+ELECTRICAL CHARACTERISTICS
+產品編碼 
+PCAQ7060~1513 series
+測試設備
+P/N
+TEST INSTRUMENT
+Keysight:E4991B
+ Chroma:16502 3302
+PCAQ7060MW-302
+2500
+3000
+75
+10
+PCAQ7060MW-701
+5
+10
+PCAQ7060MW-501
+275
+350
+10
+10
+PCAQ7060MW-301
+225
+300
+10
+10
+PCAQ7060MW-101
+100
+10
+PCAQ7060MW-400
+40
+2000
+80
+15000
+80
+5000
+80
+5000
+140
+10
+70
+9000
+80
+4000
+80
+900
+80
+2700
+63
+10
+1000
+80
+
+
+----- PAGE 5 of 14 -----
+1211 Series
+10
+4000
+125
+1513 Series
+Page 5 / 14
+125
+PCAQ1513MW-102
+800
+1000
+12
+10
+9000
+125
+PCAQ1513MW-701
+500
+700
+7
+10
+10000
+125
+PCAQ1513MW-551
+450
+PCAQ1513MW-152
+1300
+1500
+35
+10
+PCAQ1513MW-501
+400
+500
+8
+10
+11000
+谱罗德电子科技（深圳）有限公司
+PuLuoDe Electronic Technology (Shenzhen) Co., LTD
+深圳市寶安區石岩三聯工業區B棟311
+   更多规格请访问谱罗德官方网站
+下载或者扫描二维码通过微信小程序
+获取
+https://www.prodtech.cn/
+8000
+125
+PCAQ1513MW-222
+1800
+2200
+50
+10
+6000
+125
+PCAQ1513MW-302
+2500
+3000
+75
+額定電流
+（Rated Current)
+額定電壓
+（Rated Voltage）
+Ω
+mΩ
+550
+5.5
+10
+10000
+125
+2300
+2700
+50
+10
+1500
+V
+PCAQ1513MW-301
+200
+300
+6
+10
+13000
+125
+MΩ
+Min
+Typ
+Max
+Min
+mA
+產品編碼
+P/N
+@ 25 ℃ Ambient Temperture
+阻抗
+Impedance
+DCR
+絕緣性
+（IR）
+1800
+125
+PCAQ1211MW-202
+1400
+2200
+24
+10
+4000
+125
+PCAQ1211MW-402
+3300
+4000
+100
+10
+2000
+125
+PCAQ1211MW-302
+2500
+3000
+90
+10
+1100
+125
+PCAQ1211MW-272
+125
+PCAQ1211MW-152
+1000
+1500
+16
+10
+5000
+125
+PCAQ1211MW-800
+80
+230
+2
+10
+10000
+PCAQ1211MW-501
+250
+500
+2
+10
+10000
+125
+PCAQ1211MW-701
+500
+700
+Min
+Typ
+Max
+Min
+mA
+V
+產品編碼
+P/N
+@ 25 ℃ Ambient Temperture
+阻抗
+Impedance
+DCR
+絕緣性
+（IR）
+額定電流
+（Rated Current)
+額定電壓
+（Rated Voltage）
+Ω
+mΩ
+MΩ
+產品系列
+贴片共模电感
+測試頻率
+100MHZ / 0.3V
+Series
+TEST FREQUENCY
+ A3.0
+電氣特性
+ELECTRICAL CHARACTERISTICS
+產品編碼 
+PCAQ7060~1513 series
+測試設備
+P/N
+TEST INSTRUMENT
+Keysight:E4991B
+ Chroma:16502 3302
+6
+10
+8000
+125
+PCAQ1211MW-801
+600
+800
+8
+10
+8000
+125
+PCAQ1211MW-102
+750
+1000
+14
+10
+6000
+125
+125
+PCAQ1211MW-222
+2200
+2500
+35
+10
+
+
+----- PAGE 6 of 14 -----
+特性曲線
+Performance Curves
+Page 6 / 14
+   更多规格请访问谱罗德官方网站
+下载或者扫描二维码通过微信小程序
+获取
+https://www.prodtech.cn/
+產品系列
+贴片共模电感
+測試頻率
+100MHZ / 0.3V
+Series
+TEST FREQUENCY
+谱罗德电子科技（深圳）有限公司
+PuLuoDe Electronic Technology (Shenzhen) Co., LTD
+深圳市寶安區石岩三聯工業區B棟311
+ A3.0
+電氣特性
+ELECTRICAL CHARACTERISTICS
+產品編碼 
+PCAQ7060~1513 series
+測試設備
+P/N
+TEST INSTRUMENT
+Keysight:E4991B
+ Chroma:16502 3302
+共模特性（Common Mode）
+差模特性（Differential Mode）
+PCAQ7060MW-400
+PCAQ7060MW-101
+PCAQ7060MW-301
+PCAQ7060MW-501
+PCAQ7060MW-601
+PCAQ7060MW-701
+PCAQ7060MW-102
+PCAQ7060MW-132
+PCAQ7060MW-272
+PCAQ7060MW-302
+PCAQ7060MW-152
+
+
+----- PAGE 7 of 14 -----
+特性曲線
+Performance Curves
+Page 7 / 14
+ A3.0
+電氣特性
+ELECTRICAL CHARACTERISTICS
+產品編碼 
+PCAQ7060~1513 series
+測試設備
+P/N
+TEST INSTRUMENT
+Keysight:E4991B
+ Chroma:16502 3302
+   更多规格请访问谱罗德官方网站
+下载或者扫描二维码通过微信小程序
+获取
+https://www.prodtech.cn/
+產品系列
+贴片共模电感
+測試頻率
+100MHZ / 0.3V
+Series
+TEST FREQUENCY
+谱罗德电子科技（深圳）有限公司
+PuLuoDe Electronic Technology (Shenzhen) Co., LTD
+深圳市寶安區石岩三聯工業區B棟311
+共模特性（Common Mode）
+差模特性（Differential Mode）
+PCAQ9070MW-301
+PCAQ9070MW-501
+PCAQ9070MW-102
+PCAQ9070MW-222
+PCAQ9070MW-701
+PCAQ9070MW-272
+PCAQ9070MW-302
+PCAQ1211MW-800
+PCAQ1211MW-501
+PCAQ1211MW-701
+PCAQ1211MW-801
+PCAQ1211MW-102
+
+
+----- PAGE 8 of 14 -----
+特性曲線
+Performance Curves
+Page 8 / 14
+ A3.0
+電氣特性
+ELECTRICAL CHARACTERISTICS
+產品編碼 
+PCAQ7060~1513 series
+測試設備
+P/N
+TEST INSTRUMENT
+Keysight:E4991B
+ Chroma:16502 3302
+   更多规格请访问谱罗德官方网站
+下载或者扫描二维码通过微信小程序
+获取
+https://www.prodtech.cn/
+產品系列
+贴片共模电感
+測試頻率
+100MHZ / 0.3V
+Series
+TEST FREQUENCY
+谱罗德电子科技（深圳）有限公司
+PuLuoDe Electronic Technology (Shenzhen) Co., LTD
+深圳市寶安區石岩三聯工業區B棟311
+共模特性（Common Mode）
+差模特性（Differential Mode）
+PCAQ1211MW-152
+PCAQ1211MW-202
+PCAQ1211MW-222
+PCAQ1211MW-272
+PCAQ1211MW-302
+PCAQ1513MW-301
+PCAQ1513MW-501
+PCAQ1513MW-551
+PCAQ1513MW-701
+PCAQ1513MW-102
+PCAQ1211MW-402
+
+
+----- PAGE 9 of 14 -----
+電路結構
+Connections
+◎電感內置两組線圈
+◎
+Inductor Contents two (2) Set(s) of Coil
+內部構造
+Internal Structure
+焊接溫度（推荐）
+Recommended Soldering Temperature Graph
+电感顶部使用白色喷码印字标识
+3:
+磁芯 / Core
+電極 / Electrode
+線圈 / Coil
+Mark color: white
+贴片共模电感
+ A3.0
+PCAQ7060~1513 series
+產品系列
+測試頻率
+Series
+TEST FREQUENCY
+特性
+CHARACTERISTICS
+產品編碼 
+測試設備
+P/N
+TEST INSTRUMENT
+100MHZ / 0.3V
+Keysight:E4991B
+ Chroma:16502 3302
+谱罗德电子科技（深圳）有限公司
+PuLuoDe Electronic Technology (Shenzhen) Co., LTD
+深圳市寶安區石岩三聯工業區B棟311
+C
+10 Sec
+   更多规格请访问谱罗德官方网站
+下载或者扫描二维码通过微信小程序
+获取
+https://www.prodtech.cn/
+D
+150℃
+E
+60~240 Sec
+Page 9 / 14
+A
+1:
+2:
+B
+4:
+顶盖 / Base
+260℃
+230℃
+℃
+
+
+
+
+
+
+
+
+1
+2
+3
+1
+2
+4
+3
+4
+
+
+----- PAGE 10 of 14 -----
+机械可靠性测试
+The surface of terminal/pin tested shall 
+Solder heat proof: 
+be covered with new solder by 95%
+Preheating: 180 ±10℃  90 seconds
+ Soldering: 255 ±5℃ for 3 ±1 sec
+Inductance change within ± 5% Without 
+Drop down with 981m/s2 (100G) shock
+mechanical damage
+Attitude upon a rubber block method shock 
+testing machinem, 3 tests.
+Inductance change within ± 5% Without 
+Vibration frequency: 
+mechanical damage
+10Hz to 55Hz to 10Hz 60  seconds cycle
+Vibration time:   2 hours
+老化测试
+Inductance change within ± 5% Without 
+-40℃, (30 mins) -> room temp. (5 mins) ->
+mechanical damage
+125℃, (30 mins) -> room temp. (5 mins)
+100 cycles
+Inductance change within ± 5% Without 
+Apply IDC current @ 85℃ ambient
+mechanical damage
+Duration: 500 hrs
+Inductance change within ± 5% Without 
+Apply IDC current @ 60℃ ambient
+mechanical damage
+Humidity: 90~95％
+Duration: 500 hrs
+Inductance change within ± 5% Without 
+Storing Temp.
+mechanical damage
+-40 ±2 ℃ for total 500 +4/-0 hours
+Inductance change within ± 5% Without 
+Storing Temp.
+mechanical damage
+125 ±2 ℃ for total 500 +4/-0 hours
+Page 10 / 14
+Method Used
+試驗要求
+試驗方法
+100MHZ / 0.3V
+贴片共模电感
+Specification & Requirement
+測試頻率
+Method Used
+試驗方法
+ 冷熱衝擊
+Thermal Shock
+耐熱性
+Heat Resistance
+耐濕性
+Humidity
+Resistance
+Specification & Requirement
+ITEM
+可焊性實驗
+Solderability
+機械衝擊
+Shock
+振動實驗
+Vibration
+實驗名稱
+試驗要求
+Aging Reliability 
+ITEM
+   更多规格请访问谱罗德官方网站
+下载或者扫描二维码通过微信小程序
+获取
+https://www.prodtech.cn/
+低溫存儲實驗
+Low Temp. Storing
+高溫存儲實驗
+High Temp.
+Storing
+谱罗德电子科技（深圳）有限公司
+PuLuoDe Electronic Technology (Shenzhen) Co., LTD
+深圳市寶安區石岩三聯工業區B棟311
+Series
+TEST FREQUENCY
+實驗名稱
+產品系列
+Mechanical Reliability
+信賴性實驗
+RELIABILITY TEST
+產品編碼 
+測試設備
+P/N
+TEST INSTRUMENT
+ A3.0
+PCAQ7060~1513 series
+Keysight:E4991B
+ Chroma:16502 3302
+
+
+----- PAGE 11 of 14 -----
+載帶卷盤尺寸 : (mm)
+Packing  Dimension
+Page 11 / 14
+PuLuoDe Electronic Technology (Shenzhen) Co., LTD
+深圳市寶安區石岩三聯工業區B棟311
+Keysight:E4991B
+ Chroma:16502 3302
+L
+9070
+1211
+前後預留大約30空格
+Series
+7060
+C
+W
+Po
+4.0
+4.0
+A
+B
+24.5
+系列
+330
+100
+24.5
+16
+330
+100
+330
+100
+16.5
+16
+12
+https://www.prodtech.cn/
+   更多规格请访问谱罗德官方网站
+下载或者扫描二维码通过微信小程
+序获取
+330
+100
+16.5
+16
+前後預留大約30空格
+前後預留大約30空格
+前後預留大約30空格
+12
+4.0
+24
+20
+4.0
+谱罗德电子科技（深圳）有限公司
+24
+TEST FREQUENCY
+1513
+ A3.0
+包裝方式
+PACKING FOR SMD
+產品編碼 
+PCAQ7060~1513 series
+測試設備
+P/N
+TEST INSTRUMENT
+產品系列
+贴片共模电感
+測試頻率
+100MHZ / 0.3V
+Series
+P
+A
+B
+C
+
+
+----- PAGE 12 of 14 -----
+載帶內產品排列方式：
+載帶剝離力：
+Inductance Packing Method
+Typical Pulling Force
+裝箱數量：
+Package Quantity
+Page 12 / 14
+谱罗德电子科技（深圳）有限公司
+PuLuoDe Electronic Technology (Shenzhen) Co., LTD
+深圳市寶安區石岩三聯工業區B棟311
+7060
+1500pcs
+800pcs
+Keysight:E4991B
+ Chroma:16502 3302
+3200pcs
+9070
+700pcs
+1400pcs
+4800pcs
+1211
+500pcs
+1000pcs
+4000pcs
+20~120 gf
+首字對孔
+The First mark is on the side of the gear hole
+贴片共模电感
+產品系列
+   更多规格请访问谱罗德官方网站
+下载或者扫描二维码通过微信小程
+序获取
+包裝方式
+PACKING FOR SMD
+產品編碼 
+測試設備
+P/N
+TEST INSTRUMENT
+外箱
+13500pcs
+系列
+卷盘
+内盒
+外箱
+ A3.0
+100MHZ / 0.3V
+PCAQ7060~1513 series
+測試頻率
+Series
+TEST FREQUENCY
+https://www.prodtech.cn/
+卷盘
+MPQ
+内盒
+Middle box
+Series
+MPQ
+Middle box
+Outer box
+4500pcs
+Outer box
+1513
+400pcs
+XXX
+XXX
+
+
+----- PAGE 13 of 14 -----
+©
+©
+©
+©
+©
+©
+©
+©
+©
+©
+©
+1 軍用設備
+8
+關係到國防安全的設備
+2 運輸設備（汽車，軌道交通產品，船舶等）
+9
+其他被認定為特殊用途的設備
+3 航空，航太設備
+4 發電控制設備
+5 核動力相關設備
+6 爆炸引燃控制設備
+7 交通控制設備
+Page 13 / 14
+本產品適用於一般電子設備，如：AV設備，通信設備，家電產品，娛樂設備，電腦設備，個人設備，辦公設
+備，計測設備，工業機器人等。且該一般電子設備需在常規的操作和使用方法環境下使用。
+對於需要高度安全性和可靠性的，或者因本產品失效造成設備故障，誤操作，運轉不良等危及到人的生命身體
+及財產安全，以及對社會產生較大不良影響的特殊用途，設計使用前務必同本公司溝通，設計使用者如在未取
+得我司書面同意狀況下使用造成任何後果，我司不予承擔。特殊用途包含但不限定如下清單：
+   更多规格请访问谱罗德官方网站
+下载或者扫描二维码通过微信小程序
+获取
+https://www.prodtech.cn/
+谱罗德电子科技（深圳）有限公司
+PuLuoDe Electronic Technology (Shenzhen) Co., LTD
+深圳市寶安區石岩三聯工業區B棟311
+注意事項
+產品通電後溫度會隨電流的增大而上升，設計時請務必考慮留有餘量。
+過高的靜電會對產品產生永久性損害，請注意靜電防護。
+產品通電過程請勿觸摸產品任何部位，防止觸電。
+本產品作為磁性產品，設計時請務必考慮周邊元器件與本產品可能產生的相互影響。
+產品焊接後需重新拆卸焊接修正時，請遵循規格書規定的條件範圍；過高的加熱溫度以及反復的拆
+卸可能會導致產品失效。
+產品請勿接觸清洗劑，酒精等液體，這會侵蝕產品本體，從而導致產品失效。
+產品焊接到線路板後，請注意不可因線路板整體變形或局部變形而施加給電感剩餘應力，這可能
+會導致電感發生破裂，脫落，以致失效。
+使用本產品時，請注意以下事項
+產品保存期限為12個月，保存條件：溫度5~40℃，濕度10~75%RH以內，超過保存期限可能會使
+產品端子電極發生氧化。
+請勿在極端環境下使用和保存（高鹽，強酸，強鹼，強輻射等）。
+產品焊接前，請進行預熱；預熱溫度與焊接溫度之間溫差建議控制在150℃以內。
+
+
+----- PAGE 14 of 14 -----
+©
+©
+©
+©
+©
+©
+©
+©
+©
+©
+1  Military equipment
+8
+Medical equipment
+2 Transportation equipment (cars, trains, ships, etc.)
+9
+3 Aerospace/aviation equipment
+4 Power-generation control equipment
+5 Atomic energy-related equipment　
+6 Explosive ignition control equipment
+7 Transportation control equipment
+Page 14 / 14
+ANNOUNCEMENTS
+When embedding a printed circuit board where a chip is mounted to a set, be sure that residual stress is not
+given to the chip due to the overall distortion of the printed circuit board  and
+partial distortion such as at screw tightening portions.
+Self heating (Rated Current or Irms) occurs when the power is turned ON, so the tolerance should be
+sufficient for the set thermal design.
+Too high static electricity will cause permanent damage to the product, please pay attention to
+electrostatic protection.
+As a magnetic product, the design must consider the possible interaction between peripheral components and
+the product.
+Before soldering, be sure to preheat components:The preheating temperature should be set so that
+The temperature difference between the solder temperature and chip temperature does not exceed 150°C.
+Soldering corrections after mounting should be within the range of the conditions determined 
+in the specifications.If overheated, a short circuit, performance deterioration, or lifespan  
+shortening may occur. Repeated disassembly may invalidate the inductance
+Please read this before using the product.
+The product storage life is 12 months，Storage Temperature：TEMP.5~40℃；RH10%~75%. Please use the
+ product within the warranty period
+Do not use or store in locations where there are conditions such as gas corrosion 
+(salt, acid, alkali, radiation etc.）.
+   更多规格请访问谱罗德官方网站
+下载或者扫描二维码通过微信小程序
+获取
+https://www.prodtech.cn/
+The cleaning agent can not be used for these products. This may corrode the inductor
+Other applications that are notconsidered
+general-purpose applications
+谱罗德电子科技（深圳）有限公司
+PuLuoDe Electronic Technology (Shenzhen) Co., LTD
+深圳市寶安區石岩三聯工業區B棟311
+The products listed on this catalog are intended for use in general electronic equipment (AV equipment,
+telecommunications equipment, home appliances, amusement equipment, computer equipment, personal
+equipment, office equipment, measurement equipment, industrial robots) under a normal operation and use
+condition.
+The products are not designed or warranted to meet the requirements of the applications listed below,
+whose performance and/or quality require a more stringent level of safety or reliability, or whose
+failure, malfunction or trouble could cause serious damage to society,
+person or property.
+If you intend to use the products in the applications listed below or if you have special requirements
+exceeding the range or conditions set forth in the each catalog, please contact PROD.  Otherwise, PROD
+will not bear the serious consequences caused by product quality problems

@@ -1,0 +1,42 @@
+﻿# BENCH_HW_VALIDATION - 2026-10-16
+generated: 2026-10-16 12:36:21
+canonical: apps/ccli/config/product_tr400.yaml
+topology: PC-B DSO LAN1 TSP | PC-A logger LAN2+LAN3+COM5 | EMT432 TCP 1p | Sun A1/B1 | DIO1 relay DIO2 key
+
+- [x] SPEC: Modbus TCP EMT432 1p
+- [x] SPEC: DIO1 relay + DIO2 key
+- [x] SPEC: Sun mock COM5 to ttyS1
+- [x] SPEC: MMS 3782 + 104 2404 TLS
+- [x] SPEC: 5-LN model_cfg
+- [x] SPEC: use_dso_mock false
+- [x] PC-A: LAN2 192.168.1.x
+- [ ] PC-A: LAN3 192.168.178.x
+- [ ] PC-B: LAN1 192.168.10.x on this PC
+- [x] PC-A: ping DUT LAN2
+- [ ] PC-B path: ping DUT LAN1
+- [ ] Plant: ping EMT432
+- [ ] PC-A: USB RS485 COM5
+- [ ] DUT: modbus backend tcp
+- [ ] DUT: use_dso_mock false
+- [ ] DUT: 5-LN model_cfg
+- [ ] DUT: modbus no read_fail
+- [x] DUT: GD32 online
+- [x] DUT: ch1 DO ch2 DI
+- [ ] DUT: ccli r54+
+
+DUT version: ccli 0.1.0-r51 (P3-07-AARE-SIGN-RAW-GT)
+DUT yaml:
+backend: rtu
+  backend: ubus_dido_v2
+  hostname: TG544
+  device: /dev/ttyS1
+  use_dso_mock: true
+  model_cfg: /etc/ccli/icd/lab_tg544_eth_a.cfg
+modbus:
+Fri Oct 16 18:36:18 2026 daemon.err ccli[25395]: modbus: FC3 ReadHoldingRegisters unit=1 addr=40001 qty=4 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+Fri Oct 16 18:36:24 2026 daemon.err ccli[25395]: modbus: FC3 ReadHoldingRegisters unit=1 addr=40001 qty=4 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+Fri Oct 16 18:36:27 2026 daemon.err ccli[25395]: modbus: FC3 ReadHoldingRegisters unit=1 addr=40001 qty=4 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+uci:
+do
+di
+

@@ -1,0 +1,147 @@
+# WM1302_Seeed_LoRaWAN_Module.pdf
+
+
+----- PAGE 1 of 7 -----
+INDUSTRIAL PRODUCT DATASHEET
+WM1302 LoRaWAN Gateway
+Module (USB) - US915
+WM1302 LoRaWAN Gateway Module (USB) - US915: a CE/FCC certified mini-PCIe
+LoRaWAN gateway module based on Semtech® SX1302, offering low power
+consumption, high sensitivity, and TX power up to 26 dBm for LPWAN gateway…
+SKU
+114992991
+UPDATED
+2026-10-16 10:53:53
+PRICE
+$29.00(Excl. VAT)
+
+
+----- PAGE 2 of 7 -----
+Overview
+The WM1302 LoRaWAN Gateway Module (USB) - US915 is a mini-PCIe form-factor LoRaWAN
+gateway module based on the Semtech® SX1302, featuring extremely low power consumption,
+ultra-low operating temperature, high sensitivity down to -139 dBm @SF12, and TX power up to
+26 dBm @3.3V. It is CE and FCC certified and designed for LPWAN gateway devices, long-
+distance wireless communication application development, and Long Range/LoRaWAN
+application learning and research.
+2
+WM1302 LoRaWAN Gateway Module (USB) - US915
+WM1302 LoRaWAN Gateway Module (USB) - US915
+
+
+----- PAGE 3 of 7 -----
+Key Features
+WM1302 module is a new generation of LoRaWAN gateway module in mini-PCIe form-factor based on Semtech®
+SX1302. It features extremely low power consumption, and outstanding performance with CE, FCC certified.
+Powered by Semtech® SX1302 baseband LoRa® chip, extremely low power consumption, and high performance.
+Mini-PCIe form factor with the standard 52-pin golden finger, easy to integrate with various gateway devices. 
+Ultra-low operating temperature, no additional heat dissipation needed, reducing the size of LoRaWAN gateway.
+High sensitivity down to -139 dBm @SF12 with SX1250 TX/RX front-end; TX power up to 26 dBm @3.3V.
+Certified with CE, FCC. Simplify the final product certification process.
+WM1302 module is a new generation of LoRaWAN gateway module with a mini-PCIe form factor. Based on the
+Semtech® SX1302 baseband LoRaWAN® chip, WM1302 unlocks the greater potential capacity of long-range wireless
+transmission for gateway products. It features higher sensitivity, less power consumption, and lower operating
+temperature compared with the previous SX1301 and SX1308 LoRa® chips. 
+WM1302 LoRaWAN gateway module has SPI and USB versions on both US915 and EU868 frequency bands, enabling
+you to have a wide range of LoRaWAN frequency plan options to choose including EU868, US915, AS923, AS920, AU915,
+KR920, and IN865.
+WM1302 module is CE, FCC certified, which helps simplify the development and certification process of the LoRaWAN
+gateway devices.
+WM1302 is designed for M2M and IoT applications and can be widely applied in LPWAN gateway-supported scenarios.
+It would be a perfect choice for you to significantly reduce the technical difficulties and time-consumption when
+developing the Long Range gateway devices, including LoRaWAN gateway, etc.
+3
+WM1302 LoRaWAN Gateway Module (USB) - US915
+WM1302 LoRaWAN Gateway Module (USB) - US915
+
+
+----- PAGE 4 of 7 -----
+Product Gallery
+Specification
+Region
+EU868
+US915
+Frequency
+863-870MHz
+902-928MHz
+4
+WM1302 LoRaWAN Gateway Module (USB) - US915
+WM1302 LoRaWAN Gateway Module (USB) - US915
+
+
+----- PAGE 5 of 7 -----
+Region
+EU868
+US915
+Sensitivity
+-125dBm @125K/SF7
+-139dBm @125K/SF12
+-125dBm @125K/SF7
+-139dBm @125K/SF12
+TX Power
+26 dBm (with 3.3V power supply)
+25 dBm (with 3.3V power supply)
+LEDs
+Power: Green Config: Red TX: Green RX: Blue
+Form Factor
+Mini PCIe, 52pin Golden Finger
+Power Consumption (SPI
+version)
+Standby: 7.5 mA
+TX maximum power: 415 mA
+RX: 40 mA
+Power Consumption (USB
+version)
+Standby: 20 mA
+TX maximum power: 425 mA
+RX: 53 mA
+LBT(Listen Before Talk)
+Support
+Antenna Connector
+U.FL
+Operating Temperature
+-40°C to 85°C
+Dimensions
+30 mm (width) × 50.95 mm (length)
+Certification
+CE
+5
+WM1302 LoRaWAN Gateway Module (USB) - US915
+WM1302 LoRaWAN Gateway Module (USB) - US915
+
+
+----- PAGE 6 of 7 -----
+Hardware Overview
+6
+WM1302 LoRaWAN Gateway Module (USB) - US915
+WM1302 LoRaWAN Gateway Module (USB) - US915
+
+
+----- PAGE 7 of 7 -----
+Applications
+LPWAN Gateway devices development
+Any long-distance wireless communication application development
+Long Range and LoRaWAN application learn and research
+Compliance & Logistics
+HSCODE
+8517799000
+USHSCODE
+8517620090
+UPC
+EUHSCODE
+8517180000
+COO
+CHINA
+Resource Links
+https://www.seeedstudio.com/WM1302-LoRaWAN-Gateway-Module-Without-SX1262-USB-US915-p-5602.html
+Semtech SX1302 Datasheet
+Pinout Detail
+Seeed Technology Co.,Ltd.
+9F, Building G3, International E City,
+Zhongshanyuan Road, Nanshan, Shenzhen, China
+Tel: +86 0755-80695676
+Web: www.seeed.cc
+Shop: www.seeedstudio.com
+7
+WM1302 LoRaWAN Gateway Module (USB) - US915
+WM1302 LoRaWAN Gateway Module (USB) - US915

@@ -1,0 +1,1029 @@
+# BL3085_I47_Belling_V2.3_cn.pdf
+
+
+----- PAGE 1 of 10 -----
+ 
+BL3085(I47) 
+ 
+www.belling.com.cn                                                           V2.3   
+Page- 1 - 
+具有失效保护功能(Fail-Safe)、低功耗、限摆率的  
+RS-485 收发器 
+产品概述 
+BL3085是一款半双工的RS-485收发器，芯片内部包含一路驱动器和一路接收器。 
+BL3085使用限摆率驱动器，能显著减小EMI和由于不恰当的终端匹配电缆所引起的反射，并实现
+高达500kbps（5V供电时）的无差错数据传输。BL3085内置失效保护电路，保证接收器输入端在开路
+或短路时，接收器的输出端处于逻辑高电平状态。 
+BL3085接收器输入阻抗为1/8单位负载，允许多达256个收发器挂接在总线上，实现半双工通信。
+BL3085 I/O引脚具有±15kV IEC 61000-4-2接触放电保护能力。 
+ 
+产品特性                                                方框图  
+➢ 
++3.3V或+5V工作电压 
+➢ 
+内置失效保护电路 
+➢ 
+最大传输速率：500kbps（5V供电时） 
+250kbps（3.3V供电时） 
+➢ 
+总线允许挂接多达256个收发器 
+➢ 
+I/O引脚ESD保护：±15kV IEC 61000-4-2，接触放电 
+➢ 
+SOP8封装 
+                                                  
+应用领域       
+➢ 
+智能电表 
+➢ 
+采集终端 
+➢ 
+工业控制 
+➢ 
+安防监控
+ 
+注：芯片版本“I47”由芯片丝印第二排的前三位确定 
+ 
+
+
+----- PAGE 2 of 10 -----
+ 
+BL3085(I47) 
+ 
+www.belling.com.cn                                                           V2.3   
+Page2 
+订货信息                                     丝印信息 
+ 
+ 
+ 
+其中：“I47”为芯片版本号 
+“SSSSS”代表卡号的第4 至8 位 
+ 
+管脚定义 
+序号 
+名称 
+功        能 
+1 
+RO 
+接收器输出 
+2 
+/RE 
+接收器输出使能。当/RE 为低电平时RO 输出有效；当/RE
+为高电平时RO 为高阻态 
+3 
+DE 
+驱动器输出使能。DE 为高电平时驱动器输出有效，DE 为低
+电平时输出为高阻态 
+4 
+DI 
+驱动器输入 
+5 
+GND 
+接地 
+6 
+A 
+接收器同相输入和驱动器同相输出 
+7 
+B 
+接收器反相输入和驱动器反相输出 
+8 
+VCC 
+电源 
+ 
+驱动器真值表 
+输入 
+输出 
+/RE 
+DE 
+DI 
+A 
+B 
+X 
+1 
+1 
+1 
+0 
+X 
+1 
+0 
+0 
+1 
+0 
+0 
+X 
+High-Z 
+High-Z 
+1 
+0 
+X 
+Shutdown（High-Z） 
+ 
+ 
+型号 
+封装 
+丝印 
+BL3085(I47) 
+SOP8 
+BL3085 
+I47SSSSS 
+
+
+----- PAGE 3 of 10 -----
+ 
+BL3085(I47) 
+ 
+www.belling.com.cn                                                           V2.3   
+Page3 
+ 
+接收器真值表 
+输入 
+输出 
+/RE 
+DE 
+A-B 
+RO 
+0 
+X 
+>-50mV 
+1 
+0 
+X 
+<-200mV 
+0 
+0 
+X 
+开路/短路 
+1 
+1 
+1 
+X 
+High-Z 
+1 
+0 
+X 
+Shutdown（High-Z） 
+ 
+极限参数 
+参  数 
+符  号 
+极限值 
+单  位 
+工作电压 
+VCC 
++7 
+V 
+控制输入电压 
+/RE, DE 
+-0.3 到VCC+0.3 
+V 
+驱动器输入电压 
+DI 
+-0.3 到VCC+0.3 
+V 
+驱动器输出电压 
+A, B 
+±13 
+V 
+接收器输入电压 
+A, B 
+±13 
+V 
+接收器输出电压 
+RO 
+-0.3～VCC+0.3 
+V 
+ 
+温度范围 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+规定的使用温度 
+-40~+85℃ 
+极限使用温度 
+-55~+125℃ 
+存储温度 
+-65~+150℃ 
+
+
+----- PAGE 4 of 10 -----
+BL3085(I47) 
+ 
+www.belling.com.cn                                                           V2.3   
+Page4 
+直流电气特性（5V供电） 
+（VCC=+5V±5℅,TA=-40℃～+85℃，典型值在VCC=+5V，TA＝25℃）（注释1） 
+参数 
+符号 
+测试条件 
+最小值 
+典型值 
+最大值 
+单位 
+工作电压 
+Vcc 
+ 
+4.5 
+ 
+5.5 
+V 
+驱动器 
+差分驱动器输出（无
+负载） 
+VOD1 
+图 1 
+ 
+ 
+VCC 
+V 
+差分驱动器输出 
+VOD2 
+图 1，R=27Ω 
+1.5 
+ 
+ 
+V 
+差分输出电压的幅度
+变化（注释2） 
+∆VOD 
+图 1，R=27Ω 
+ 
+ 
+0.2 
+V 
+驱动器共模输出电压 
+VOC 
+图 1，R=27Ω 
+1.0 
+ 
+3.0 
+V 
+共模电压的幅度变化
+（注释2） 
+∆VOC 
+图 1，R=27Ω 
+ 
+ 
+0.2 
+V 
+输入高电压 
+VIH 
+DE,DI,/RE 
+2.0 
+ 
+ 
+V 
+输入低电压 
+VIL 
+DE,DI,/RE 
+ 
+ 
+0.8 
+V 
+DI 输入迟滞 
+VHYS 
+ 
+ 
+100 
+ 
+mV 
+输入电流（A，B） 
+IIN4 
+DE=GND 
+VCC=GND 
+or 5.25V 
+VIN=12V 
+ 
+ 
+125 
+µA 
+VIN=-7V 
+-75 
+ 
+ 
+驱动器短路输出电流 
+IOSD 
+A Pin Short to B Pin 
+-100 
+ 
+100 
+mA 
+接收器 
+接收器差分阈值电压 
+VTH 
+-7V≤VCM≤12V 
+-200 
+-125 
+-50 
+mV 
+接收器输入迟滞 
+△VTH 
+ 
+ 
+40 
+ 
+mV 
+接收器输出高电压 
+VOH 
+IO=-8mA,VID=-50mV 
+4.0 
+ 
+ 
+V 
+接收器输出低电压 
+VOL 
+IO=8mA,VID=-200mV 
+ 
+ 
+0.4 
+V 
+接收器三态输出电流 
+IOZR 
+ 
+ 
+ 
+±1 
+µA 
+接收器输入阻抗 
+RIN 
+-7V≤VCM≤12V 
+96 
+ 
+ 
+K Ω 
+接收器输出短路电流 
+IOSR 
+0V≤VRO≤VCC 
+±7 
+ 
+±95 
+mA 
+供电电流 
+供电电流 
+ICC 
+No load , 
+/RE=DI= 
+GND or VCC 
+DE=VCC 
+ 
+350 
+600 
+µA 
+DE=GND 
+ 
+370 
+600 
+µA 
+待机模式供电电流 
+ISHDN 
+DE=GND, /RE= VCC，
+DI=VCC or GND 
+ 
+ 
+10 
+µA 
+ 
+ 
+
+
+----- PAGE 5 of 10 -----
+BL3085(I47) 
+ 
+www.belling.com.cn                                                           V2.3   
+Page5 
+直流电气特性(3.3V供电) 
+（VCC=+3.3V±5℅,TA=-40℃～+85℃，典型值在VCC=+3.3V，TA＝25℃）（注释1） 
+参数 
+符号 
+测试条件 
+最小值 
+典型值 
+最大值 
+单位 
+工作电压 
+Vcc 
+ 
+3 
+ 
+3.6 
+V 
+驱动器 
+差分驱动器输出（无
+负载） 
+VOD1 
+图 1 
+ 
+ 
+VCC 
+V 
+差分驱动器输出 
+VOD2 
+图 1，R=27Ω 
+0.8 
+1.15 
+ 
+V 
+差分输出电压的幅度
+变化（注释2） 
+∆VOD 
+图 1，R=27Ω 
+ 
+ 
+0.2 
+V 
+驱动器共模输出电压 
+VOC 
+图 1，R=27Ω 
+1 
+ 
+3 
+V 
+共模电压的幅度变化
+（注释2） 
+∆VOC 
+图 1，R=27Ω 
+ 
+ 
+0.2 
+V 
+输入高电压 
+VIH 
+DE,DI,/RE 
+2.0 
+ 
+ 
+V 
+输入低电压 
+VIL 
+DE,DI,/RE 
+ 
+ 
+0.8 
+V 
+DI 输入迟滞 
+VHYS 
+ 
+ 
+100 
+ 
+mV 
+输入电流（A，B） 
+IIN4 
+DE=GND 
+VCC=GND 
+or 3.6V 
+VIN=12V 
+ 
+ 
+125 
+µA 
+VIN=-7V 
+-75 
+ 
+ 
+驱动器短路输出电流 
+IOSD 
+A Pin Short to B Pin 
+-100 
+ 
+100 
+mA 
+接收器 
+接收器差分阈值电压 
+VTH 
+-7V≤VCM≤12V 
+-200 
+-125 
+-50 
+mV 
+接收器输入迟滞 
+△VTH 
+ 
+ 
+40 
+ 
+mV 
+接收器输出高电压 
+VOH 
+IO=-1.5mA,VID=-50mV 
+VCC-0.5 
+ 
+ 
+V 
+接收器输出低电压 
+VOL 
+IO=2.5mA,VID=-200mV 
+ 
+ 
+0.4 
+V 
+接收器三态输出电流 
+IOZR 
+ 
+ 
+ 
+±1 
+µA 
+接收器输入阻抗 
+RIN 
+-7V≤VCM≤12V 
+96 
+ 
+ 
+K Ω 
+接收器输出短路电流 
+IOSR 
+0V≤VRO≤VCC 
+±7 
+ 
+±95 
+mA 
+供电电流 
+供电电流 
+ICC 
+No load , 
+/RE=DI= 
+GND or VCC 
+DE=VCC 
+ 
+270 
+600 
+µA 
+DE=GND 
+ 
+290 
+600 
+µA 
+待机模式供电电流 
+ISHDN 
+DE=GND, /RE= VCC，
+DI=VCC or GND 
+ 
+ 
+10 
+µA 
+注释1：进入器件的所有电流为正，从器件输出的所有电流为负；如果无特殊说明所有电压都是对地电压。 
+注释2：当DI 输入改变状态时，△VOD 和△VOC 分别为VOD 和VOC 的变化量。 
+ 
+
+
+----- PAGE 6 of 10 -----
+BL3085(I47) 
+ 
+www.belling.com.cn                                                           V2.3   
+Page6 
+传输特性（5V供电） 
+（VCC=+5V±5℅,TA=-40℃～+85℃，典型值在VCC=+5V，TA＝25℃） 
+参数 
+符号 
+条件 
+最小值 典型值 最大值 
+单位 
+驱动器输入到输
+出延迟 
+t DPLH 
+图 3 和 5，RDIFF=54Ω 
+CL1=CL2=100pF 
+  
+300 
+800 
+ns 
+t DPHL 
+  
+300 
+800 
+驱动器输出延迟
+差
+|TDPLH 
+– 
+TDPHL| 
+t DSKEW 
+图 3 和 5，RDIFF=54Ω 
+CL1=CL2=100pF 
+  
+  
+100 
+ns 
+驱动器上升或下
+降时间 
+tDR, tDF 
+图 3 和 5，RDIFF=54Ω 
+CL1=CL2=100pF 
+  
+420 
+900 
+ns 
+最大速率 
+F MAX 
+  
+500 
+  
+  
+kbps 
+驱动器使能到输
+出高电平 
+t DZH 
+图 4 和 6，CL=100pF S2 
+Closed 
+  
+  
+300 
+ns 
+驱动器使能到输
+出低电平 
+t DZL 
+图 4 和 6，CL=100pF S1 
+Closed 
+  
+  
+500 
+ns 
+驱动器从输出低
+到关断时间 
+t DLZ 
+图 4 和 6 ，CL=15pF S1 
+Closed 
+  
+  
+900 
+ns 
+驱动器从输出高
+到关断时间 
+t DHZ 
+图 4 和 6 ，CL=15pF S2 
+Closed 
+  
+  
+800 
+ns 
+接收器输入输出
+延迟 
+t RPLH 
+t RPHL 
+图 7 和 9，
+ 
+; 
+rise 
+and 
+fall 
+time 
+of 
+VID≦15ns
+ 
+150 
+300 
+ns 
+|TRPLH – TRPHL| 
+接收器输入输出
+延迟之差 
+t RSKD 
+图 7 和 9，
+ 
+; rise and fall time of 
+VID≦15ns
+ 
+10 
+ 
+ns 
+接收器使能到输
+出低 
+t RZL 
+图 2 和 8 ，CRL=15pF S1 
+Closed 
+  
+20 
+50 
+ns 
+接收器使能到输
+出高 
+t RZH 
+图 2 和 8 ，CRL=15pF S2 
+Closed 
+  
+20 
+50 
+ns 
+接收器从输出低
+到关断 
+t RLZ 
+图 2 和 8 ，CRL=15pF S1 
+Closed 
+  
+30 
+60 
+ns 
+接收器从输出高
+到关断 
+t RHZ 
+图 2 和 8 ，CRL=15pF S2 
+Closed 
+  
+30 
+60 
+ns 
+电路关断时间 
+t SHDN 
+  
+  
+500 
+1000 
+ns 
+从待机到输出高
+的驱动器使能 
+t DZH(SHDN) 图 4 和6 ，CL=100pF S2 
+Closed 
+  
+  
+2500 
+ns 
+
+
+----- PAGE 7 of 10 -----
+BL3085(I47) 
+ 
+www.belling.com.cn                                                           V2.3   
+Page7 
+从待机到输出低
+的驱动器使能 
+t DZL(SHDN) 
+图 4 和 6，CL=100pF S1 
+Closed 
+  
+  
+2500 
+ns 
+从待机到输出高
+的接收器使能 
+t RZH(SHDN) 图 2 和 8 ，CRL=15pF S2 
+Closed 
+  
+  
+2500 
+ns 
+从待机到输出低
+的接收器使能 
+t RZL(SHDN) 
+图 2 和 8 ，CRL=15pF S1 
+Closed 
+  
+  
+2500 
+ns 
+ 
+传输特性（3.3V供电） 
+（VCC=+3.3V±5℅,TA=-40℃～+85℃，典型值在VCC=+3.3V，TA＝25℃） 
+参数 
+符号 
+条件 
+最小值 典型值 最大值 
+单位 
+驱动器输入到输
+出延迟 
+t DPLH 
+图 3 和 5，RDIFF=54Ω 
+CL1=CL2=100pF 
+  
+280 
+800 
+ns 
+t DPHL 
+  
+280 
+800 
+驱动器输出延迟
+差
+|TDPLH 
+– 
+TDPHL| 
+t DSKEW 
+图 3 和 5，RDIFF=54Ω 
+CL1=CL2=100pF 
+  
+  
+100 
+ns 
+驱动器上升或下
+降时间 
+tDR, tDF 
+图 3 和 5，RDIFF=54Ω 
+CL1=CL2=100pF 
+  
+450 
+900 
+ns 
+最大速率 
+F MAX 
+  
+250 
+  
+  
+kbps 
+驱动器使能到输
+出高电平 
+t DZH 
+图 4 和 6，CL=100pF S2 
+Closed 
+  
+  
+300 
+ns 
+驱动器使能到输
+出低电平 
+t DZL 
+图 4 和 6，CL=100pF S1 
+Closed 
+  
+  
+500 
+ns 
+驱动器从输出低
+到关断时间 
+t DLZ 
+图 4 和 6 ，CL=15pF S1 
+Closed 
+  
+  
+900 
+ns 
+驱动器从输出高
+到关断时间 
+t DHZ 
+图 4 和 6 ，CL=15pF S2 
+Closed 
+  
+  
+800 
+ns 
+接收器输入输出
+延迟 
+t RPLH 
+t RPHL 
+图 7 和 9，
+ 
+; 
+rise 
+and 
+fall 
+time 
+of 
+VID≦15ns
+ 
+150 
+300 
+ns 
+|TRPLH – TRPHL| 
+接收器输入输出
+延迟之差 
+t RSKD 
+图 7 和 9，
+ 
+; rise and fall time of 
+VID≦15ns
+ 
+10 
+ 
+ns 
+接收器使能到输
+出低 
+t RZL 
+图 2 和 8 ，CRL=15pF S1 
+Closed 
+  
+20 
+50 
+ns 
+接收器使能到输
+出高 
+t RZH 
+图 2 和 8 ，CRL=15pF S2 
+Closed 
+  
+20 
+50 
+ns 
+
+
+----- PAGE 8 of 10 -----
+BL3085(I47) 
+ 
+www.belling.com.cn                                                           V2.3   
+Page8 
+接收器从输出低
+到关断 
+t RLZ 
+图 2 和 8 ，CRL=15pF S1 
+Closed 
+  
+30 
+60 
+ns 
+接收器从输出高
+到关断 
+t RHZ 
+图 2 和 8 ，CRL=15pF S2 
+Closed 
+  
+30 
+60 
+ns 
+电路关断时间 
+t SHDN 
+  
+  
+500 
+1000 
+ns 
+从待机到输出高
+的驱动器使能 
+t DZH(SHDN) 图 4 和6 ，CL=100pF S2 
+Closed 
+  
+  
+2500 
+ns 
+从待机到输出低
+的驱动器使能 
+t DZL(SHDN) 
+图 4 和 6，CL=100pF S1 
+Closed 
+  
+  
+2500 
+ns 
+从待机到输出高
+的接收器使能 
+t RZH(SHDN) 图 2 和 8 ，CRL=15pF S2 
+Closed 
+  
+  
+2500 
+ns 
+从待机到输出低
+的接收器使能 
+t RZL(SHDN) 
+图 2 和 8 ，CRL=15pF S1 
+Closed 
+  
+  
+2500 
+ns 
+ 
+测试电路 
+           
+ 
+ 
+图 1：Driver DC Test Load               图 2：Receiver Enable/Disable Timing Test Load 
+ 
+ 
+ 
+ 
+ 
+图 3：Driver Timing Test Circuit                图 4：Driver Enable/Disable Timing Test Load 
+ 
+ 
+
+
+----- PAGE 9 of 10 -----
+BL3085(I47) 
+ 
+www.belling.com.cn                                                           V2.3   
+Page9 
+ 
+ 
+ 
+ 
+ 
+ 
+图 5：Driver Propagation Delays                图 6：Driver Enable and Disable Times 
+ 
+ 
+ 
+ 
+ 
+  
+图 7：Receiver Propagation Delays               图 8：Receiver Enable and Disable Times 
+ 
+ 
+ 
+图 9：Receiver Propagation Delay Test Circuit 
+ 
+典型应用图 
+ 
+ 
+ 
+ 
+图10 典型半双工RS-485网络 
+
+
+----- PAGE 10 of 10 -----
+BL3085(I47) 
+ 
+www.belling.com.cn                                                           V2.3   
+Page10 
+封装尺寸（SOP8） 
+ 

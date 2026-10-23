@@ -1,0 +1,13 @@
+﻿OK CA-IS3721HS_Chipanalog_CA-IS372x_V1.08_en.pdf (1327591 B)
+OK BL3085_I47_Belling_V2.3_cn.pdf (917729 B)
+OK HK3FF-DC5V-SHG_HUIKE.pdf (9375 B)
+FAIL SMBJ33CA_Littelfuse.pdf: The remote server returned an error: (403) Forbidden.
+FAIL SMBJ18CA_Littelfuse.pdf: The remote server returned an error: (403) Forbidden.
+FAIL SMDJ36CA_Littelfuse.pdf: The remote server returned an error: (403) Forbidden.
+FAIL TLP291_Toshiba.pdf: The remote server returned an error: (403) Forbidden.
+WARN small file (0 B): GD32F330CBT6_GigaDevice.pdf
+OK DMP10H400SK3-13_DiodesInc.pdf (518963 B)
+FAIL SP3232_Sipex_MaxLinear.pdf: The operation has timed out.
+OK B0303S-1WR3_Mornsun.pdf (22732 B)
+FAIL SLB9673_Infineon_FIPS_policy_ref.pdf: The request was aborted: The connection was closed unexpectedly.
+FAIL K0805L050BR_Littelfuse.pdf: The remote server returned an error: (403) Forbidden.

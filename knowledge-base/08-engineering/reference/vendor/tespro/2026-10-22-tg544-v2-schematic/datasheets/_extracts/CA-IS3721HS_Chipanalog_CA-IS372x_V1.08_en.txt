@@ -1,0 +1,3364 @@
+# CA-IS3721HS_Chipanalog_CA-IS372x_V1.08_en.pdf
+
+
+----- PAGE 1 of 25 -----
+ 
+ 
+CA-IS3720, CA-IS3721, CA-IS3722 
+Shanghai Chipanalog Microelectronics Co., Ltd.                                                                                            Version 1.08 
+Copyright © 2020, Chipanalog Incorporated 
+ 1 
+Shanghai Chipanalog Microelectronics Co., Ltd. 
+ CA-IS372x High-Speed Dual-Channel Digital Isolators
+1. 
+Features 
+• 
+Data rate: DC to 150Mbps  
+• 
+Robust isolation barrier 
+◼ 
+High lifetime: >40 years 
+◼ 
+Up to 5000 VRMS isolation rating (Wide body 
+packages) 
+◼ 
+±150 kV/μs typical CMTI 
+• 
+Wide supply range: 2.5V to 5.5V  
+• 
+Wide operating temperature range: -40°C to 125°C  
+• 
+No start-up initialization required  
+• 
+Default output High (CA-IS372xH) and Low (CA-
+IS372xL) Options  
+• 
+High electromagnetic immunity  
+• 
+Low power consumption  
+◼ 
+1.5mA per channel at 1Mbps with VDD = 5.0V   
+◼ 
+6.6mA per channel at 100Mbps with VDD = 5.0V  
+• 
+Best in class propagation delay and skew 
+◼ 
+12ns typical propagation delay  
+◼ 
+2ns propagation delay skew (chip -to-chip)  
+◼ 
+1ns pulse width distortion  
+◼ 
+5ns minimum pulse width  
+• 
+Schmitt trigger inputs  
+• 
+ Package options  
+◼ 
+ Narrow-body SOIC8(S) package  
+◼ 
+ Wide-body SOIC8(G) package  
+◼ 
+ Wide-body SOIC16(W) package  
+• 
+Safety regulatory approvals 
+◼ 
+VDE certification according to DIN EN IEC 60747-
+17(VDE 0884-17): 2021-10 
+◼ 
+UL certification according to UL 1577 
+◼ 
+CQC certification according to GB4943.1-2022 
+◼ 
+TUV certification  
+ 
+2. 
+Applications 
+• 
+Industrial Automation  
+• 
+Motor Control  
+• 
+Medical Systems  
+• 
+Isolated Power Supplies  
+• 
+Solar Inverters  
+• 
+Isolated RS485, CAN, RS232 etc. 
+ 
+ 
+3. 
+General Description  
+The CA-IS372x devices are high-performance dual - 
+channel digital isolators with up to 3.75kVRMS (narrow-
+body package) and 5kVRMS (wide-body package) isolation 
+rating and ultra-fast data rate. The CA-IS372x devices 
+provide high electromagnetic immunity and low emissions 
+at low power consumption, while isolating CMOS digital 
+I/O. Each isolation channel has a logic input and output 
+buffer separated by capacitive silicon dioxide (SiO2) 
+insulation barrier, and each channel input integrated 
+Schmitt trigger to provide excellent noise immunity.  
+ 
+The CA-IS3720 features two channels transferring digital 
+signals in one direction for applications such as isolated 
+digital I/O. The CA-IS3721/CA-IS3722 devices have 2 
+channels with 1 channel in each direction, making them 
+ideal for isolating the Tx and Rx lines of a transceiver, such 
+as RS485, CAN etc. communication. When the input is 
+either not powered or is open-circuit, the default output is 
+low for devices with suffix L and high for devices with 
+suffix H. 
+ 
+The CA-IS372x family are specified over the -40°C to 
++125°C operating temperature range and are available in 
+8-pin SOIC narrow body package, 8-pin SOIC wide body 
+package and 16-pin SOIC wide body package. 
+ 
+Device information 
+Part number 
+Package 
+Package size (NOM) 
+CA-IS3720 
+CA-IS3721 
+CA-IS3722 
+SOIC8-NB (S) 
+4.90 mm × 3.90 mm 
+SOIC8-WB (G) 
+5.85 mm ×7.50 mm 
+SOIC16-WB (W) 
+10.30mm ×7.50 mm 
+ 
+Simplified Channel Structure 
+Driver
+Isolation 
+Barrier
+RX
+VOUT
+Channel B side
+VIN
+Channel A side
+Schmitt Trigger
+Mixer
+Driver
+GNDA
+GNDB
+ 
+GNDA and GNDB are the isolated grounds for A side and B side respectively. 
+
+
+----- PAGE 2 of 25 -----
+CA-IS3720, CA-IS3721, CA-IS3722                                                                                                       
+  
+Version 1.08                                                                                                              Shanghai Chipanalog Microelectronics Co., Ltd. 
+2                                                                                                                                                                               Copyright © 2020, Chipanalog Incorporated 
+Shanghai Chipanalog Microelectronics Co., Ltd. 
+ 
+4. 
+Ordering Information
+Table 4-1. Ordering Information 
+Part Number  
+Number of Inputs  
+A Side  
+Number of Inputs  
+B Side  
+Default 
+Output  
+Isolation  
+Rating 
+(kVRMS)  
+Output 
+Enable  
+Package  
+CA-IS3720LS 
+2 
+0 
+Low 
+3.75 
+N/A 
+SOIC8-NB 
+CA-IS3720LG 
+2 
+0 
+Low 
+5.0 
+N/A 
+SOIC8-WB 
+CA-IS3720LW 
+2 
+0 
+Low 
+5.0 
+N/A 
+SOIC16-WB 
+CA-IS3720HS 
+2 
+0 
+High 
+3.75 
+N/A 
+SOIC8-NB 
+CA-IS3720HG 
+2 
+0 
+High 
+5.0 
+N/A 
+SOIC8-WB 
+CA-IS3720HW 
+2 
+0 
+High 
+5.0 
+N/A 
+SOIC16-WB 
+CA-IS3721LS 
+1 
+1 
+Low 
+3.75 
+N/A 
+SOIC8-NB 
+CA-IS3721LG 
+1 
+1 
+Low 
+5.0 
+N/A 
+SOIC8-WB 
+CA-IS3721LW 
+1 
+1 
+Low 
+5.0 
+N/A 
+SOIC16-WB 
+CA-IS3721HS 
+1 
+1 
+High 
+3.75 
+N/A 
+SOIC8-NB 
+CA-IS3721HG 
+1 
+1 
+High 
+5.0 
+N/A 
+SOIC8-WB 
+CA-IS3721HW 
+1 
+1 
+High 
+5.0 
+N/A 
+SOIC16-WB 
+CA-IS3722LS 
+1 
+1 
+Low 
+3.75 
+N/A 
+SOIC8-NB 
+CA-IS3722LG 
+1 
+1 
+Low 
+5.0 
+N/A 
+SOIC8-WB 
+CA-IS3722LW 
+1 
+1 
+Low 
+5.0 
+N/A 
+SOIC16-WB 
+CA-IS3722HS 
+1 
+1 
+High 
+3.75 
+N/A 
+SOIC8-NB 
+CA-IS3722HG 
+1 
+1 
+High 
+5.0 
+N/A 
+SOIC8-WB 
+CA-IS3722HW 
+1 
+1 
+High 
+5.0 
+N/A 
+SOIC16-WB 
+ 
+ 
+
+
+----- PAGE 3 of 25 -----
+ 
+ 
+     CA-IS3720, CA-IS3721, CA-IS3722 
+Shanghai Chipanalog Microelectronics Co., Ltd.                                                                                             Version 1.08                  
+Copyright © 2020, Chipanalog Incorporated 
+   3 
+Shanghai Chipanalog Microelectronics Co., Ltd. 
+ 
+Contents
+1. 
+Features .............................................................1 
+2. 
+Applications ........................................................1 
+3. 
+General Description ............................................1 
+4. 
+Ordering Information ..........................................2 
+5. 
+Revision History ..................................................3 
+6. 
+Pin Configuration and Functions ..........................4 
+7. 
+Specifications .....................................................6 
+7.1. 
+Absolute Maximum Ratings1 ............................... 6 
+7.2. 
+ESD Ratings .......................................................... 6 
+7.3. 
+Recommended Operating Conditions ................. 6 
+7.4. 
+Thermal Information ........................................... 7 
+7.5. 
+Power Ratings...................................................... 7 
+7.6. 
+Insulation Specifications ..................................... 8 
+7.7. 
+Safety-Related Certifications ............................... 9 
+7.8. 
+Electrical Characteristics ................................... 10 
+7.8.1. 
+VDDA = VDDB = 5 V ± 10%, TA = -40 to 125°C........ 10 
+7.8.2. 
+VDDA = VDDB = 3.3 V ± 10%, TA = -40 to 125°C ..... 10 
+7.8.3. 
+VDDA = VDDB = 2.5 V ± 5%, TA = -40 to 125°C....... 10 
+7.9. 
+Supply Current Characteristics .......................... 11 
+7.9.1. 
+VDDA = VDDB = 5 V ± 10%, TA = -40 to 125°C........ 11 
+7.9.2. 
+VDDA = VDDB = 3.3 V ± 10%, TA = -40 to 125°C .... 12 
+7.9.3. 
+VDDA = VDDB = 2.5 V ± 5%, TA = -40 to 125°C ...... 13 
+7.10. 
+Timing Characteristics ....................................... 14 
+7.10.1. 
+VDDA = VDDB = 5 V ± 10%, TA = -40 to 125°C ... 14 
+7.10.2. 
+VDDA = VDDB = 3.3V ± 10%, TA = -40 to 125°C. 14 
+7.10.3. 
+VDDA = VDDB = 2.5V ± 5%, TA = -40 to 125°C... 14 
+8. 
+Parameter Measurement Information ............... 15 
+9. 
+Detailed Description ......................................... 17 
+9.1. 
+Overview ........................................................... 17 
+9.2. 
+Functional Block Diagram ................................. 17 
+9.3. 
+Device Operation Modes .................................. 18 
+10. Application and Implementation ....................... 19 
+11. Package Information ......................................... 20 
+11.1. 
+8-Pin SOIC Package Outline ............................... 20 
+11.2. 
+8-Pin Wide Body SOIC Package Outline ............ 21 
+11.3. 
+16-Pin Wide Body SOIC Package Outline .......... 22 
+12. Soldering Temperature (reflow) Profile .............. 23 
+13. Tape and Reel Information ................................ 24 
+14. Important Statement ........................................ 25 
+ 
+ 
+5. 
+Revision History
+ 
+Revision Number 
+Description 
+Revision Date 
+Page Changed 
+Version 1.00 
+N/A 
+ 
+N/A 
+Version 1.01 
+Changed VIORM to 1414V, changed VIOWM AC RMS value to 1000V and DC value to 1414V. 
+Updated Power Ratings table. 
+ 
+8,11, 12, 13 
+Version 1.02 
+Changed VIT+(IN) minimum value to 2.0V, changed VIT-(IN) maximum value to 0.8V; removed 
+VI(HYS). 
+ 
+10 
+Version 1.03 
+Changed the description of VIT+(IN) to logic input high level threshold, changed VIT-(IN) to 
+logic input low level threshold 
+ 
+10 
+Version 1.04 
+Changed POD and tape reel information 
+2022/12/15 
+20,21,22,24 
+Version 1.05 
+Updated VDE Certification information 
+2023/09/01 
+9 
+Version 1.06 
+1.Updated VDE certification standard about VIMP and VIOSM 
+2.Updated TUV Certification number of IEC 62368-1 standard 
+2024/04/01 
+9 
+10 
+Version 1.07 
+Change the TUV Certification number to the Client reference number  
+Update the recommended land pattern of SOIC8-WB and SOIC16-WB 
+2024/09/26 
+8 
+21~22 
+Version 1.08 
+Add TUV certification for SOIC8-NB package for IEC 62368-1 standard 
+2024/12/17 
+8 
+
+
+----- PAGE 4 of 25 -----
+CA-IS3720, CA-IS3721, CA-IS3722          
+ 
+ 
+Version 1.08                                                                                             Shanghai Chipanalog Microelectronics Co., Ltd. 
+4                                                                                                                                                                             Copyright © 2020, Chipanalog Incorporated 
+Shanghai Chipanalog Microelectronics Co., Ltd. 
+6. 
+Pin Configuration and Functions 
+2
+7
+VI1
+VO1
+TX
+RX
+3
+6
+VI2
+VO2
+TX
+RX
+CA-IS3720 8-Pin SOIC Top View
+5
+4
+GNDB
+GNDA
+1
+8
+VDDA
+VDDB
+ISOLATION   
+BARRIER
+6
+3
+VI2
+VO2
+TX
+RX
+5
+4
+GNDB
+GNDA
+1
+2
+8
+7
+VDDA
+VI1
+VDDB
+VO1
+ISOLATION   
+BARRIER
+TX
+RX
+CA-IS3721 8-Pin SOIC Top View
+7
+2
+VI1
+VO1
+TX
+RX
+3
+6
+VI2
+VO2
+TX
+RX
+CA-IS3722 8-Pin SOIC Top View
+5
+4
+GNDB
+GNDA
+1
+8
+VDDA
+VDDB
+ISOLATION   
+BARRIER
+ 
+Figure 6-1. CA-IS372x 8-Pin SOIC Narrow body and 8-Pin Wide body SOIC Packages Top View 
+ 
+Table 6-1. Pin description for the CA-IS372x 8-Pin SOIC Narrow body and 8-Pin Wide body SOIC packages  
+SOIC8 Pin#  
+Name 
+Type 
+Description 
+CA-IS3720 
+CA-IS3721 
+CA-IS3722 
+1 
+1 
+1  
+VDDA  
+Supply  
+Power supply for side A. 
+2 
+2 
+7 
+VI1 
+Digital I/O  
+Digital input 1 on side A/B, corresponds to logic output 1 
+on side B/A. 
+3 
+6 
+3  
+VI2  
+Digital I/O  
+Digital input 2 on side A/B, corresponds to logic output 2 
+on side B/A. 
+4 
+4 
+4  
+GNDA  
+Ground  
+Ground reference for side A. 
+5 
+5 
+5  
+GNDB  
+Ground  
+Ground reference for side B. 
+7 
+7 
+2  
+VO1  
+Digital I/O  
+Digital output 1 on side B/A, VO1 is the logic output for 
+the VI1 input on side A/B.  
+6 
+3 
+6  
+VO2  
+Digital I/O  
+Digital output 2 on side B/A, VO2 is the logic output for 
+the VI2 input on side A/B. 
+8 
+8 
+8  
+VDDB  
+Supply  
+Power supply for Side B. 
+ 
+ 
+
+
+----- PAGE 5 of 25 -----
+ 
+ 
+CA-IS3720, CA-IS3721, CA-IS3722 
+Shanghai Chipanalog Microelectronics Co., Ltd.                                                                                            Version 1.08                   
+Copyright © 2020, Chipanalog Incorporated 
+5 
+Shanghai Chipanalog Microelectronics Co., Ltd. 
+4
+13
+VI1
+VO1
+TX
+RX
+13
+4
+VI1
+VO1
+TX
+RX
+5
+12
+VI2
+VO2
+TX
+RX
+CA-IS3722 16-Pin SOIC WB Top View
+12
+5
+VI2
+VO2
+TX
+RX
+11
+6
+NC
+NC
+3
+4
+7
+8
+1
+2
+14
+13
+10
+9
+16
+15
+NC
+GNDA
+VDDA
+VI1
+GNDA
+NC
+GNDB
+NC
+VDDB
+VO1
+NC
+GNDB
+ISOLATION   BARRIER
+TX
+RX
+CA-IS3721 16-Pin SOIC WB Top View
+11
+6
+NC
+NC
+3
+7
+8
+1
+2
+14
+10
+9
+16
+15
+NC
+GNDA
+VDDA
+GNDA
+NC
+GNDB
+NC
+VDDB
+NC
+GNDB
+ISOLATION   BARRIER
+5
+12
+VI2
+VO2
+TX
+RX
+CA-IS3720 16-Pin SOIC WB Top View
+11
+6
+NC
+NC
+3
+7
+8
+1
+2
+14
+10
+9
+16
+15
+NC
+GNDA
+VDDA
+GNDA
+NC
+GNDB
+NC
+VDDB
+NC
+GNDB
+ISOLATION   BARRIER
+ 
+Figure 6-2. CA-IS372x 16-Pin SOIC Wide Body Package Top View 
+ 
+Table 6-2. Pin Description for the CA-IS372x 16-Pin SOIC Wide body package  
+SOIC-16 Pin# 
+Name  
+Type  
+Description 
+CA-IS3720 
+CA-IS3721 
+CA-IS3722 
+1, 7 
+1, 7 
+1, 7 
+GNDA  
+Ground  
+Ground reference for side A. 
+2, 6, 8  
+2, 6, 8  
+2, 6, 8  
+NC1 
+No Connect 
+Not internally connected. They can be left floating, tied to VDDA or 
+tied to GNDA. 
+3 
+3 
+3 
+VDDA  
+Supply  
+Power supply for side A. 
+4 
+4 
+13 
+VI1 
+Digital I/O  
+Digital input 1 on side A/B, corresponds to logic output 1 on side 
+B/A. 
+5 
+12 
+5 
+VI2  
+Digital I/O  
+Digital input 2 on side A/B, corresponds to logic output 2 on side 
+B/A. 
+10, 11, 15 
+10, 11, 15 
+10, 11, 15 
+NC1 
+No Connect 
+Not internally connected. They can be left floating, tied to VDDB or 
+tied to GNDB. 
+9, 16 
+9, 16 
+9, 16 
+GNDB  
+Ground  
+Ground reference for side B. 
+13 
+13 
+4 
+VO1  
+Digital I/O  
+Digital output 1 on side B/A, VO1 is the logic output for the VI1 
+input on side A/B. 
+12 
+5 
+12 
+VO2  
+Digital I/O  
+Digital output 2 on side B/A, VO2 is the logic output for the VI2 
+input on side A/B. 
+14 
+14 
+14 
+VDDB  
+Supply  
+Power supply for side B. 
+Note:  
+1. No Connection. These pins are not internally connected. They can be left floating, tied to VDD_ or tied to GND_.  
+ 
+ 
+
+
+----- PAGE 6 of 25 -----
+CA-IS3720, CA-IS3721, CA-IS3722          
+ 
+ 
+Version 1.08                                                                                             Shanghai Chipanalog Microelectronics Co., Ltd. 
+6                                                                                                                                                                             Copyright © 2020, Chipanalog Incorporated 
+Shanghai Chipanalog Microelectronics Co., Ltd. 
+7. 
+Specifications 
+7.1. Absolute Maximum Ratings1 
+Parameters 
+Minimum 
+value 
+Maximum 
+value 
+Unit 
+VDDA, VDDB  
+ 
+          Power supply voltage2 
+-0.5 
+7.0 
+V 
+VIN 
+ 
+ 
+ 
+ 
+ 
+Voltage at VIx, VOx, ENx  
+-0.5 
+VDD_ + 0.53 
+V 
+IO 
+  
+ 
+ 
+ 
+ 
+Output current 
+-20 
+20 
+mA 
+TJ 
+  
+ 
+ 
+ 
+ 
+Operating Junction temperature 
+ 
+150 
+°C 
+TSTG   
+ 
+ 
+ 
+          Storage temperature range 
+-65 
+150 
+°C 
+Notes: 
+1. 
+The stresses listed under “Absolute Maximum Ratings” are stress ratings only, not for functional operation condition. Exposure to absolute 
+maximum rating conditions for extended periods may cause permanent damage to the device. 
+2. 
+All voltage values are with respect to the local ground terminal (GNDA or GNDB) and are peak voltage values.  
+3. 
+Maximum voltage must not be exceed 7 V.  
+ 
+7.2. ESD Ratings 
+ 
+ 
+Numerical 
+value 
+Unit 
+VESD  
+Electrostatic 
+discharge 
+Human body model (HBM), per ANSI/ESDA/JEDEC JS-001, all pins1 
+±6000 
+V 
+Charged device model (CDM), per JEDEC Specification JESD22-C101, all pins2 
+±2000 
+ 
+Notes: 
+1. 
+Per JEDEC document JEP155,  500V HBM allows safe manufacturing of standard ESD control process. 
+2. 
+Per JEDEC document JEP157, 250V HBM allows safe manufacturing of standard ESD control process. 
+ 
+7.3. Recommended Operating Conditions 
+Parameters 
+Minimum 
+value 
+Typical 
+value 
+Maximum 
+value 
+Unit 
+VDDA, VDDB                                                Supply Voltage  
+2.375 
+          3.3 
+ 
+ 
+5.5 
+V 
+VDD（UVLO+）                  VDD Undervoltage-Lockout Threshold When Supply Voltage is Rising 
+1.95  
+ 
+2.24  
+ 
+2.375 
+V 
+VDD（UVLO-）                            VDD Undervoltage-Lockout Threshold When Supply Voltage is Falling 
+1.88  
+ 
+2.10  
+ 
+2.325 
+V 
+VHYS（UVLO）                         VDD Undervoltage-Lockout Threshold Hysteresis  
+70 
+ 
+ 
+140  
+ 
+250 
+mV 
+IOH 
+ 
+ 
+                 High-level Output Current  
+ 
+VDDO1 = 5V 
+-4 
+mA 
+VDDO = 3.3V 
+-2 
+VDDO = 2.5V 
+-1 
+IOL 
+ 
+ 
+                 Low-level Output Current  
+ 
+VDDO = 5V 
+ 
+ 
+ 
+ 
+ 
+ 
+    4 
+mA 
+VDDO = 3.3V 
+ 
+ 
+ 
+ 
+ 
+ 
+    2 
+VDDO = 2.5V 
+ 
+ 
+ 
+ 
+ 
+ 
+    1 
+VIH 
+ 
+ 
+                 High-level Input Voltage  
+ 
+2.0 
+V 
+VIL 
+ 
+ 
+                Low-level Input Voltage  
+ 
+ 
+ 
+ 
+ 
+ 
+0.8 
+V 
+DR 
+ 
+ 
+                       Data Rate  
+0 
+ 
+ 
+ 
+ 
+ 
+150 
+Mbps 
+TA 
+ 
+ 
+              Ambient Temperature  
+-40  
+ 
+27 
+ 
+ 
+125 
+°C 
+Note: 
+1. 
+VDDO = Output-side supply VDD.  
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+----- PAGE 7 of 25 -----
+ 
+ 
+CA-IS3720, CA-IS3721, CA-IS3722 
+Shanghai Chipanalog Microelectronics Co., Ltd.                                                                                            Version 1.08                   
+Copyright © 2020, Chipanalog Incorporated 
+7 
+Shanghai Chipanalog Microelectronics Co., Ltd. 
+7.4. Thermal Information 
+ 
+Thermal Metric 
+CA-IS372x 
+Unit 
+SOIC8 
+SOIC8-WB(G) 
+SOIC16-WB(W) 
+RθJA  
+ 
+ 
+Junction-to-ambient thermal resistance 
+109.0  
+92.3  
+83.4 
+°C/W 
+ 
+7.5. Power Ratings 
+ 
+Parameters 
+Test Conditions 
+Minimum 
+value 
+Typical 
+value 
+Maximum 
+value 
+Unit 
+CA-IS3720 
+PD 
+ 
+Maximum Power Dissipation  
+VDDA = VDDB = 5.5 V, CL = 15 pF, TJ = 150°C, 
+Input a 75-MHz 50% duty cycle square 
+wave  
+120  
+mW 
+PDA 
+ 
+Maximum Power Dissipation on Side-A  
+20 
+ 
+mW 
+PDB 
+ 
+Maximum Power Dissipation on Side-B  
+100  
+mW 
+CA-IS3721 
+PD 
+ 
+Maximum Power Dissipation  
+VDDA = VDDB = 5.5 V, CL = 15 pF, TJ = 150°C, 
+Input a 75-MHz 50% duty cycle square 
+wave  
+120  
+mW 
+PDA 
+ 
+Maximum Power Dissipation on Side-A  
+60 
+ 
+mW 
+PDB 
+ 
+Maximum Power Dissipation on Side-B  
+60 
+ 
+mW 
+CA-IS3722 
+PD 
+ 
+Maximum Power Dissipation  
+VDDA = VDDB = 5.5 V, CL = 15 pF, TJ = 150°C, 
+Input a 75-MHz 50% duty cycle square 
+wave  
+120  
+mW 
+PDA 
+ 
+Maximum Power Dissipation on Side-A  
+60 
+ 
+mW 
+PDB 
+ 
+Maximum Power Dissipation on Side-B  
+60 
+ 
+mW 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+----- PAGE 8 of 25 -----
+CA-IS3720, CA-IS3721, CA-IS3722          
+ 
+ 
+Version 1.08                                                                                             Shanghai Chipanalog Microelectronics Co., Ltd. 
+8                                                                                                                                                                             Copyright © 2020, Chipanalog Incorporated 
+Shanghai Chipanalog Microelectronics Co., Ltd. 
+ 
+7.6. Insulation Specifications 
+Parameters 
+Test Conditions 
+Value 
+Unit 
+G/W 
+S 
+CLR  
+External clearance  
+Shortest terminal-to-terminal distance through air  
+8 
+4 
+mm 
+CPG  
+External creepage  
+Shortest terminal-to-terminal distance across the 
+package surface  
+8 
+4 
+mm 
+DTI  
+Distance through the insulation  
+Minimum internal gap (internal clearance)  
+28 
+28 
+μm 
+CTI 
+ 
+Comparative tracking index  
+DIN EN 60112 (VDE 0303-11); IEC 60112 
+>600 
+>600 
+V 
+ 
+ 
+Material group  
+According to IEC 60664-1  
+I 
+I 
+ 
+ 
+ 
+Overvoltage category per IEC 60664-1  
+Rated mains voltage ≤ 150 VRMS 
+I-IV 
+I-IV 
+ 
+Rated mains voltage ≤ 300 VRMS  
+I-IV 
+I-III 
+Rated mains voltage ≤ 600 VRMS  
+I-IV 
+n/a 
+Rated mains voltage ≤ 1000 VRMS  
+I-III 
+n/a 
+DIN V VDE V 0884-17:2021-101 
+VIORM           Maximum repetitive peak isolation voltage  
+ 
+AC voltage (bipolar)  
+1414 
+566 
+VPK 
+VIOWM          Maximum working isolation voltage  
+ 
+AC voltage; Time dependent dielectric breakdown 
+(TDDB) Test  
+1000 
+400 
+VRMS 
+DC voltage  
+1414 
+566 
+VDC 
+VIOTM           Maximum transient isolation voltage  
+ 
+VTEST = VIOTM,  
+t = 60 s (qualification);  
+VTEST = 1.2 × VIOTM,  
+t= 1 s (100% production)  
+7070 
+5300 
+VPK 
+VIMP          Maximum impulse voltage 
+1.2/50 µs waveform per IEC 62368-1 
+8701 
+5000 
+VPK 
+VIOSM           Maximum surge isolation voltage 2 
+ 
+VIOSM ≥ 1.3 × VIMP; Tested in oil (qualification test) , 
+1.2/50 µs waveform per IEC 62368-1 
+11312 
+6500 
+VPK 
+qpd 
+ 
+Apparent charge 3 
+Method a, After Input-Output safety test subgroup 2/3,  
+Vini = VIOTM, tini = 60 s;  
+Vpd(m) = 1.2 × VIORM, tm = 10 s  
+≤5 
+≤5 
+pC 
+Method a, After environmental tests subgroup 1,  
+Vini = VIOTM, tini = 60 s;  
+Vpd(m) = 1.6 × VIORM, tm = 10 s  
+≤5 
+≤5 
+Method b, At routine test (100% production) and 
+preconditioning (type test)  
+Vini = 1.2 × VIOTM, tini = 1 s;  
+Vpd(m) = 1.875 × VIORM, tm = 1 s (W/G) 
+Vpd(m) = 1.5 × VIORM, tm = 1 s (S) 
+≤5 
+≤5 
+CIO 
+ 
+Barrier capacitance, input to output 4 
+VIO = 0.4 × sin (2πft), f = 1 MHz 
+~0.5 
+~0.5 
+pF 
+RIO 
+ 
+Isolation resistance 4 
+VIO = 500 V, TA = 25°C 
+>1012 
+>1012 
+Ω 
+VIO = 500 V, 100°C ≤ TA ≤ 125°C 
+>1011 
+>1011 
+VIO = 500 V at TS = 150°C 
+>109 
+>109 
+ 
+ 
+Pollution degree  
+ 
+2 
+2 
+ 
+UL 1577 
+VISO  
+Maximum withstanding isolation voltage  
+VTEST = VISO , t = 60 s (qualification),  
+VTEST = 1.2 × VISO , t = 1 s (100% production test)  
+5000 
+3750 
+VRMS 
+Notes: 
+1. 
+This coupler is suitable for “safe electrical insulation” only within the safety ratings. Compliance with the safety ratings shall be ensured by 
+means of suitable protective circuits. 
+2. 
+Devices are immersed in oil during surge characterization. 
+3. 
+The characterization charge is discharging charge (pd) caused by partial discharge. 
+4. 
+Capacitance and resistance are measured with all pins on field-side and logic-side tied together. 
+
+
+----- PAGE 9 of 25 -----
+ 
+ 
+CA-IS3720, CA-IS3721, CA-IS3722 
+Shanghai Chipanalog Microelectronics Co., Ltd.                                                                                            Version 1.08                   
+Copyright © 2020, Chipanalog Incorporated 
+9 
+Shanghai Chipanalog Microelectronics Co., Ltd. 
+7.7. Safety-Related Certifications 
+ 
+VDE 
+UL 
+CQC 
+TUV 
+Certified according to DIN EN 
+IEC 60747-17 (VDE 0884-
+17):2021-10; EN IEC 60747-
+17:2020+AC:2021 
+Certified according to UL 
+1577 Component 
+Recognition Program  
+Certified according to GB 4943.1-
+2022 
+Certified according to EN 61010-1 and EN 
+62368-1 
+Basic Isolation (SOIC8-NB):  
+VIORM：566Vpk 
+VIOTM：5300Vpk 
+VIOSM：6500Vpk 
+ 
+Reinforced Isolation (SOIC16-
+WB / SOIC8-WB):  
+VIORM：1414Vpk 
+VIOTM：7070Vpk 
+VIOSM：11312Vpk 
+Single protection: 
+SOIC8-NB: 3750VRMS 
+SOIC8-WB: 5000VRMS 
+SOIC16-WB: 5000VRMS  
+SOIC8-NB: Basic insulation  
+SOIC8-WB: Reinforced insulation 
+SOIC16-WB: Reinforced insulation 
+（Altitude ≤ 5000m） 
+EN 61010-1 
+SOIC8-WB: 5000VRMS 
+SOIC16-WB: 5000VRMS 
+SOIC8-NB: 3750VRMS  
+ 
+EN 62368-1 
+SOIC8-WB: 5000VRMS 
+SOIC16-WB: 5000VRMS 
+SOIC8-NB: 3750VRMS  
+ 
+Certification number: 
+40057278(Reinforced) 
+40052786(Basic) 
+Certificate number: E511334  
+Certificate number:  
+SOIC8-NB: CQC24001452685 
+SOIC8-WB: CQC24001434134 
+SOIC16-WB: CQC23001406424 
+Client reference number: 
+2253313 
+ 
+ 
+ 
+
+
+----- PAGE 10 of 25 -----
+CA-IS3720, CA-IS3721, CA-IS3722          
+ 
+ 
+Version 1.08                                                                                             Shanghai Chipanalog Microelectronics Co., Ltd. 
+10                                                                                                                                                                            Copyright © 2020, Chipanalog Incorporated 
+Shanghai Chipanalog Microelectronics Co., Ltd. 
+7.8. Electrical Characteristics 
+7.8.1. VDDA = VDDB = 5 V ± 10%, TA = -40 to 125°C 
+PARAMETER  
+TEST CONDITIONS  
+MIN     
+TYPE   
+MAX 
+UNIT 
+VOH  
+High-level Output Voltage  
+IOH = -4mA; See Figure 8-1 
+VDDO1-0.4      4.8 
+V 
+VOL 
+ 
+Low-level Output Voltage  
+IOL = 4mA; See Figure 8-1 
+ 
+ 
+ 0.2  
+0.4 
+V 
+VIT+(IN) 
+Logic input high level  threshold 
+ 
+2.0 
+ 
+ 
+ 
+ 
+V 
+VIT-(IN)                Logic input low level  threshold 
+ 
+ 
+ 
+ 
+ 
+0.8 
+V 
+IIH 
+ 
+High-Level Input Leakage Current  
+VIH = VDDA at INx or ENx 
+ 
+ 
+ 
+ 
+ 20 
+µA 
+IIL 
+ 
+Low-Level Input Leakage Current  
+VIL = 0 V at INx 
+-20 
+µA 
+ZO 
+ 
+Output Impedance2  
+ 
+ 
+ 
+50 
+Ω 
+CMTI           Common-mode Transient Immunity  
+VI = VDDI 1or 0 V, VCM = 1200 V; See Figure 8-3 
+100  
+150 
+kV/µs 
+CI 
+ 
+Input Capacitance3  
+VI = VDD/ 2 + 0.4×sin(2πft), f = 1 MHz, VDD = 5V 
+ 
+ 
+2 
+pF 
+Notes:  
+1. VDDI = Input-side VDD supply voltage, VDDO = Output-side VDD supply voltage.  
+2. The nominal output impedance of each isolator driver is 50 Ω ± 40%.  
+3. Measured from pin to Ground. 
+7.8.2. VDDA = VDDB = 3.3 V ± 10%, TA = -40 to 125°C 
+PARAMETER  
+TEST CONDITIONS  
+MIN     
+TYPE   
+MAX 
+UNIT 
+VOH  
+High-level Output Voltage  
+IOH = -2mA; See Figure 8-1 
+VDDO1-0.4   3.1 
+V 
+VOL 
+ 
+Low-level Output Voltage  
+IOL = 2mA; See Figure 8-1 
+ 
+ 
+  0.2  
+0.4 
+V 
+VIT+(IN) 
+Logic input high level  threshold 
+ 
+2.0           
+V 
+VIT-(IN)                Logic input low level  threshold 
+ 
+ 
+ 
+                      0.8 
+V 
+IIH 
+ 
+High-Level Input Leakage Current  
+VIH = VDDA at Ax or Bx or ENx 
+ 
+ 
+ 
+ 
+20 
+µA 
+IIL 
+ 
+Low-Level Input Leakage Current  
+VIL = 0 V at Ax or Bx 
+-20 
+µA 
+ZO 
+ 
+Output Impedance2  
+ 
+ 
+ 
+50 
+Ω 
+CMTI           Common-mode Transient Immunity  
+VI = VDDI1 or 0 V, VCM = 1200 V; See Figure 8-3 
+100  
+150 
+kV/µs 
+CI 
+ 
+Input Capacitance3  
+VI = VDD/ 2 + 0.4×sin(2πft), f = 1 MHz, VDD = 3.3 V 
+ 
+ 
+2 
+pF 
+Notes:  
+1. VDDI = Input-side VDD supply voltage, VDDO = Output-side VDD supply voltage.  
+2. The nominal output impedance of each isolator driver is 50 Ω ± 40%.  
+3. Measured from pin to Ground. 
+ 
+7.8.3. VDDA = VDDB = 2.5 V ± 5%, TA = -40 to 125°C 
+ 
+PARAMETER  
+TEST CONDITIONS  
+MIN     
+TYPE   
+MAX 
+UNIT 
+VOH  
+High-level Output Voltage  
+IOH = -1mA; See Figure 8-1 
+VDDO1-0.4 2.3 
+V 
+VOL 
+ 
+Low-level Output Voltage  
+IOL = 1mA; See Figure 8-1 
+ 
+ 
+0.2 
+ 
+0.4 
+V 
+VIT+(IN) 
+Logic input high level  threshold 
+ 
+ 
+ 
+ 
+          2.0 
+V 
+VIT-(IN)                Logic input low level  threshold 
+ 
+0.8 
+V 
+IIH 
+ 
+High-Level Input Leakage Current  
+VIH = VDDA at Ax or Bx or ENx 
+ 
+ 
+ 
+ 
+20 
+µA 
+IIL 
+ 
+Low-Level Input Leakage Current  
+VIL = 0 V at Ax or Bx 
+-20 
+µA 
+ZO 
+ 
+Output Impedance2  
+ 
+ 
+ 
+50 
+Ω 
+CMTI           Common-mode Transient Immunity  
+VI = VDDI1 or 0 V, VCM = 1200 V; See Figure 8-3  
+100  
+150 
+kV/µs 
+CI 
+ 
+Input Capacitance3  
+VI = VDD/ 2 + 0.4×sin(2πft), f = 1 MHz, VDD = 3.3 V 
+ 
+ 
+2 
+pF 
+Notes:  
+1. VDDI = Input-side VDD supply voltage, VDDO = Output-side VDD supply voltage.  
+2. The nominal output impedance of each isolator driver is 50 Ω ± 40%.  
+3. Measured from pin to Ground.  
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+----- PAGE 11 of 25 -----
+ 
+ 
+CA-IS3720, CA-IS3721, CA-IS3722 
+Shanghai Chipanalog Microelectronics Co., Ltd.                                                                                            Version 1.08                   
+Copyright © 2020, Chipanalog Incorporated 
+    11 
+Shanghai Chipanalog Microelectronics Co., Ltd. 
+7.9. Supply Current Characteristics 
+7.9.1. VDDA = VDDB = 5 V ± 10%, TA = -40 to 125°C 
+PARAMETER 
+TEST CONDITIONS 
+SUPPLY 
+CURRENT 
+MIN 
+TYP 
+MAX 
+UNIT 
+CA-IS3720 
+Supply Current – DC Signal  
+VIN = 0V (CA-IS3720L); 
+VIN = VDDI1 (CA-IS3720H) 
+IDDA 
+ 
+0.9 
+1.3 
+mA 
+IDDB 
+ 
+1.4 
+2.2 
+VIN = VDDI (CA-IS3720L); 
+VIN = 0V(CA-IS3720H) 
+IDDA 
+ 
+2.5 
+4.1 
+IDDB 
+ 
+1.5 
+2.3 
+Supply Current – AC Signal  
+All Channels Switching with 5V, 50% 
+Duty Cycle Square Wave Clock Input; 
+CL = 15 pF for Each Channel. 
+1Mbps 
+(500kHz) 
+IDDA 
+ 
+1.7 
+2.7 
+IDDB 
+ 
+2.2 
+3.2 
+10Mbps 
+(5MHz) 
+IDDA 
+ 
+1.8 
+2.9 
+IDDB 
+ 
+8.8 
+11.8 
+100Mbps 
+(50MHz) 
+IDDA 
+ 
+2.5 
+3.9 
+IDDB 
+ 
+22 
+30.0 
+CA-IS3721 
+Supply Current – DC Signal  
+VIN = 0V (CA-IS3721L); 
+VIN = VDDI (CA-IS3721H) 
+IDDA 
+ 
+1.6 
+3.2 
+mA 
+IDDB 
+ 
+1.6 
+3.2 
+VIN = VDDI (CA-IS3721L); 
+VIN = 0V(CA-IS3721H) 
+IDDA 
+ 
+2.9 
+5.8 
+IDDB 
+ 
+2.9 
+5.8 
+Supply Current – AC Signal  
+All Channels Switching with 5V, 50% 
+Duty Cycle Square Wave Clock Input; 
+CL = 15 pF for Each Channel. 
+1Mbps 
+(500kHz) 
+IDDA 
+ 
+2.1 
+3.2 
+IDDB 
+ 
+2.1 
+3.2 
+10Mbps 
+(5MHz) 
+IDDA 
+ 
+5.6 
+7.8 
+IDDB 
+ 
+5.6 
+7.8 
+100Mbps 
+(50MHz) 
+IDDA 
+ 
+12.9 
+22 
+IDDB 
+ 
+12.9 
+22 
+CA-IS3722 
+Supply Current – DC Signal  
+VIN = 0V (CA-IS3722L); 
+VIN = VDDI (CA-IS3722H) 
+IDDA 
+ 
+1.6 
+3.2 
+mA 
+IDDB 
+ 
+1.6 
+3.2 
+VIN = VDDI (CA-IS3722L); 
+VIN = 0V(CA-IS3722H) 
+IDDA 
+ 
+2.9 
+5.8 
+IDDB 
+ 
+2.9 
+5.8 
+Supply Current – AC Signal  
+All Channels Switching with 5V, 50% 
+Duty Cycle Square Wave Clock Input; 
+CL = 15 pF for Each Channel. 
+1Mbps 
+(500kHz) 
+IDDA 
+ 
+2.1 
+3.2 
+IDDB 
+ 
+2.1 
+3.2 
+10Mbps 
+(5MHz) 
+IDDA 
+ 
+5.6 
+7.8 
+IDDB 
+ 
+5.6 
+7.8 
+100Mbps 
+(50MHz) 
+IDDA 
+ 
+12.9 
+22 
+IDDB 
+ 
+12.9 
+22 
+Note:  
+1. 
+VDDI = Input-side supply voltage VDD. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+----- PAGE 12 of 25 -----
+CA-IS3720, CA-IS3721, CA-IS3722          
+ 
+ 
+Version 1.08                                                                                             Shanghai Chipanalog Microelectronics Co., Ltd. 
+12                                                                                                                                                                            Copyright © 2020, Chipanalog Incorporated 
+Shanghai Chipanalog Microelectronics Co., Ltd. 
+7.9.2. VDDA = VDDB = 3.3 V ± 10%, TA = -40 to 125°C 
+ 
+PARAMETER 
+TEST CONDITIONS 
+SUPPLY 
+CURRENT 
+MIN 
+TYP 
+MAX 
+UNIT 
+CA-IS3720 
+Supply Current – DC Signal  
+VIN = 0V (CA-IS3720L); 
+VIN = VDDI1 (CA-IS3720H) 
+IDDA 
+ 
+0.8 
+1.3 
+mA 
+IDDB 
+ 
+1.3 
+2.0 
+VIN = VDDI (CA-IS3720L); 
+VIN = 0V(CA-IS3720H) 
+IDDA 
+ 
+2.4 
+4.0 
+IDDB 
+ 
+1.4 
+2.2 
+Supply Current – AC Signal  
+All Channels Switching with 3.3V, 50% 
+Duty Cycle Square Wave Clock Input; 
+CL = 15 pF for Each Channel. 
+1Mbps 
+(500kHz) 
+IDDA 
+ 
+1.6 
+2.7 
+IDDB 
+ 
+1.9 
+2.7 
+10Mbps 
+(5MHz) 
+IDDA 
+ 
+1.7 
+2.7 
+IDDB 
+ 
+6.2 
+8.4 
+100Mbps 
+(50MHz) 
+IDDA 
+ 
+2.2 
+3.5 
+IDDB 
+ 
+14.4 
+19.7 
+CA-IS3721 
+Supply Current – DC Signal  
+VIN = 0V (CA-IS3721L); 
+VIN = VDDI (CA-IS3721H) 
+IDDA 
+ 
+1.2 
+1.9 
+mA 
+IDDB 
+ 
+1.2 
+1.9 
+VIN = VDDI (CA-IS3721L); 
+VIN = 0V(CA-IS3721H) 
+IDDA 
+ 
+2.3 
+3.3 
+IDDB 
+ 
+2.3 
+3.3 
+Supply Current – AC Signal  
+All Channels Switching with 3.3V, 50% 
+Duty Cycle Square Wave Clock Input; 
+CL = 15 pF for Each Channel. 
+1Mbps 
+(500kHz) 
+IDDA 
+ 
+1.9 
+2.9 
+IDDB 
+ 
+1.9 
+2.9 
+10Mbps 
+(5MHz) 
+IDDA 
+ 
+4.2 
+5.9 
+IDDB 
+ 
+4.2 
+5.9 
+100Mbps 
+(50MHz) 
+IDDA 
+ 
+8.8 
+12.1 
+IDDB 
+ 
+8.8 
+12.1 
+CA-IS3722 
+Supply Current – DC Signal  
+VIN = 0V (CA-IS3722L); 
+VIN = VDDI (CA-IS3722H) 
+IDDA 
+ 
+1.2 
+1.9 
+mA 
+IDDB 
+ 
+1.2 
+1.9 
+VIN = VDDI (CA-IS3722L); 
+VIN = 0V(CA-IS3722H) 
+IDDA 
+ 
+2.3 
+3.3 
+IDDB 
+ 
+2.3 
+3.3 
+Supply Current – AC Signal  
+All Channels Switching with 3.3V, 50% 
+Duty Cycle Square Wave Clock Input; 
+CL = 15 pF for Each Channel. 
+1Mbps 
+(500kHz) 
+IDDA 
+ 
+1.9 
+2.9 
+IDDB 
+ 
+1.9 
+2.9 
+10Mbps 
+(5MHz) 
+IDDA 
+ 
+4.2 
+5.9 
+IDDB 
+ 
+4.2 
+5.9 
+100Mbps 
+(50MHz) 
+IDDA 
+ 
+8.8 
+12.1 
+IDDB 
+ 
+8.8 
+12.1 
+Note:  
+1. 
+VDDI = Input-side supply VDD . 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+----- PAGE 13 of 25 -----
+ 
+ 
+CA-IS3720, CA-IS3721, CA-IS3722 
+Shanghai Chipanalog Microelectronics Co., Ltd.                                                                                            Version 1.08                   
+Copyright © 2020, Chipanalog Incorporated 
+    13 
+Shanghai Chipanalog Microelectronics Co., Ltd. 
+7.9.3. VDDA = VDDB = 2.5 V ± 5%, TA = -40 to 125°C 
+PARAMETER 
+TEST CONDITIONS 
+SUPPLY 
+CURRENT 
+MIN 
+TYP 
+MAX 
+UNIT 
+CA-IS3720 
+Supply Current – DC Signal  
+VIN = 0V (CA-IS3720L); 
+VIN = VDDI1 (CA-IS3720H) 
+IDDA 
+ 
+0.8 
+1.2 
+mA 
+IDDB 
+ 
+1.4 
+2.0 
+VIN = VDDI (CA-IS3720L); 
+VIN = 0V(CA-IS3720H) 
+IDDA 
+ 
+2.4 
+4.0 
+IDDB 
+ 
+1.4 
+2.1 
+Supply Current – AC Signal  
+All Channels Switching with 2.5V, 
+50% Duty Cycle Square Wave Clock 
+Input; CL = 15 pF for Each Channel. 
+1Mbps 
+(500kHz) 
+IDDA 
+ 
+1.6 
+2.6 
+IDDB 
+ 
+1.7 
+2.5 
+10Mbps 
+(5MHz) 
+IDDA 
+ 
+1.7 
+2.7 
+IDDB 
+ 
+5.0 
+6.8 
+100Mbps 
+(50MHz) 
+IDDA 
+ 
+2.1 
+3.4 
+IDDB 
+ 
+10.8 
+14.7 
+CA-IS3721 
+Supply Current – DC Signal  
+VIN = 0V (CA-IS3721L); 
+VIN = VDDI (CA-IS3721H) 
+IDDA 
+ 
+1.5 
+1.9 
+mA 
+IDDB 
+ 
+1.5 
+1.9 
+VIN = VDDI (CA-IS3721L); 
+VIN = 0V(CA-IS3721H) 
+IDDA 
+ 
+2.1 
+3.1 
+IDDB 
+ 
+2.1 
+3.1 
+Supply Current – AC Signal  
+All Channels Switching with 2.5V, 
+50% Duty Cycle Square Wave Clock 
+Input; CL = 15 pF for Each Channel. 
+1Mbps 
+(500kHz) 
+IDDA 
+ 
+1.9 
+2.8 
+IDDB 
+ 
+1.9 
+2.8 
+10Mbps 
+(5MHz) 
+IDDA 
+ 
+3.6 
+5.2 
+IDDB 
+ 
+3.6 
+5.2 
+100Mbps 
+(50MHz) 
+IDDA 
+ 
+6.9 
+9.5 
+IDDB 
+ 
+6.9 
+9.5 
+CA-IS3722 
+Supply Current – DC Signal  
+VIN = 0V (CA-IS3722L); 
+VIN = VDDI (CA-IS3722H) 
+IDDA 
+ 
+1.5 
+1.9 
+mA 
+IDDB 
+ 
+1.5 
+1.9 
+VIN = VDDI (CA-IS3722L); 
+VIN = 0V(CA-IS3722H) 
+IDDA 
+ 
+2.1 
+3.1 
+IDDB 
+ 
+2.1 
+3.1 
+Supply Current – AC Signal  
+All Channels Switching with 2.5V, 
+50% Duty Cycle Square Wave Clock 
+Input; CL = 15 pF for Each Channel. 
+1Mbps 
+(500kHz) 
+IDDA 
+ 
+1.9 
+2.8 
+IDDB 
+ 
+1.9 
+2.8 
+10Mbps 
+(5MHz) 
+IDDA 
+ 
+3.6 
+5.2 
+IDDB 
+ 
+3.6 
+5.2 
+100Mbps 
+(50MHz) 
+IDDA 
+ 
+6.9 
+9.5 
+IDDB 
+ 
+6.9 
+9.5 
+Note:  
+1. 
+VDDI = Input-side supply VDD. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+----- PAGE 14 of 25 -----
+CA-IS3720, CA-IS3721, CA-IS3722          
+ 
+ 
+Version 1.08                                                                                             Shanghai Chipanalog Microelectronics Co., Ltd. 
+14                                                                                                                                                                          Copyright © 2020, Chipanalog Incorporated 
+Shanghai Chipanalog Microelectronics Co., Ltd. 
+7.10. Timing Characteristics 
+7.10.1. VDDA = VDDB = 5 V ± 10%, TA = -40 to 125°C 
+PARAMETER 
+TEST CONDITIONS 
+MIN 
+TYP 
+MAX 
+UNIT 
+DR 
+ 
+                               Data Rate  
+ 
+0 
+ 
+150 
+Mbps 
+PWmin 
+                                 Minimum Pulse Width  
+ 
+ 
+ 
+5.0 
+ns 
+tPLH, tPHL 
+                     Propagation Delay Time  
+See Figure 8-1 
+5.0 
+12.0 
+15.0 
+ns 
+PWD  
+                     Pulse Width Distortion |tPLH - tPHL|  
+ 
+0.2 
+4.5 
+ns 
+tsk(o)  
+                              Channel-to-channel Output Skew Time1  
+Same-direction 
+ 
+ 
+0.4 
+2.5 
+ns 
+tsk(pp)  
+                             Chip -to-chip Output Skew Time2 
+ 
+2.0 
+4.5 
+ns 
+tr 
+ 
+                    Output Signal Rise Time  
+See Figure 8-1 
+ 
+2.5 
+4.0 
+ns 
+tf 
+ 
+                            Output Signal Fall Time  
+See Figure 8-1 
+ 
+2.5 
+4.0 
+ns 
+tDO 
+                            Default Output Delay Time from Input Power 
+Loss  
+See Figure 8-2 
+ 
+8 
+12 
+ns 
+tSU 
+ 
+                          Start-up Time  
+ 
+ 
+15 
+40 
+µs 
+Notes:  
+1. 
+tsk(o) is the skew between outputs of a single device with all driving inputs connected together and the outputs switching in the same 
+direction while driving identical loads.  
+2. 
+tsk(pp) is the magnitude of the difference in propagation delay times between any terminals of different devices switching in the same 
+direction while operating at identical supply voltages, temperature, input signals and loads. 
+ 
+7.10.2. VDDA = VDDB = 3.3V ± 10%, TA = -40 to 125°C 
+PARAMETER 
+TEST CONDITIONS 
+MIN 
+TYP 
+MAX 
+UNIT 
+DR 
+ 
+                               Data Rate  
+ 
+0 
+ 
+150 
+Mbps 
+PWmin 
+                                    Minimum Pulse Width  
+ 
+ 
+ 
+5.0 
+ns 
+tPLH, tPHL 
+                        Propagation Delay Time  
+See Figure 8-1 
+5.0 
+12.0 
+15.0 
+ns 
+PWD  
+                       Pulse Width Distortion |tPLH - tPHL|  
+ 
+0.2 
+4.5 
+ns 
+tsk(o)  
+                                  Channel-to-channel Output Skew Time1  
+Same-direction 
+ 
+ 
+0.4 
+2.5 
+ns 
+tsk(pp)  
+                                  Chip -to-chip Output Skew Time2 
+ 
+2.0 
+4.5 
+ns 
+tr 
+ 
+                      Output Signal Rise Time  
+See Figure 8-1 
+ 
+2.5 
+4.0 
+ns 
+tf 
+ 
+                                 Output Signal Fall Time  
+See Figure 8-1 
+ 
+2.5 
+4.0 
+ns 
+tDO 
+                                Default Output Delay Time from Input 
+Power Loss  
+See Figure 8-2 
+ 
+8 
+12 
+ns 
+tSU 
+ 
+                                     Start-up Time  
+ 
+ 
+15 
+40 
+µs 
+Notes:  
+1. 
+tsk(o) is the skew between outputs of a single device with all driving inputs connected together and the outputs switching in the same 
+direction while driving identical loads.  
+2. 
+tsk(pp) is the magnitude of the difference in propagation delay times between any terminals of different devices switching in the same 
+direction while operating at identical supply voltages, temperature, input signals and loads. 
+ 
+7.10.3. VDDA = VDDB = 2.5V ± 5%, TA = -40 to 125°C 
+PARAMETER 
+TEST CONDITIONS 
+MIN 
+TYP 
+MAX 
+UNIT 
+DR 
+ 
+Data Rate  
+ 
+0 
+ 
+150 
+Mbps 
+PWmin 
+Minimum Pulse Width  
+ 
+ 
+ 
+5.0 
+ns 
+tPLH, tPHL 
+Propagation Delay Time  
+See Figure 8-1 
+5.0 
+12.0 
+15.0 
+ns 
+PWD  
+Pulse Width Distortion |tPLH - tPHL|  
+ 
+0.2 
+5.0 
+ns 
+tsk(o)  
+Channel-to-channel Output Skew Time1  
+Same-direction 
+ 
+ 
+0.4 
+2.5 
+ns 
+tsk(pp)  
+Chip -to-chip Output Skew Time2 
+ 
+2.0 
+5.0 
+ns 
+tr 
+ 
+Output Signal Rise Time  
+See Figure 8-1 
+ 
+2.5 
+4.0 
+ns 
+tf 
+ 
+Output Signal Fall Time  
+See Figure 8-1 
+ 
+2.5 
+4.0 
+ns 
+tDO 
+         Default Output Delay Time from Input Power Loss  
+See Figure 8-2 
+ 
+8 
+12 
+ns 
+tSU 
+ 
+Start-up Time  
+ 
+ 
+15 
+40 
+µs 
+
+
+----- PAGE 15 of 25 -----
+ 
+ 
+CA-IS3720, CA-IS3721, CA-IS3722 
+Shanghai Chipanalog Microelectronics Co., Ltd.                                                                                            Version 1.08                   
+Copyright © 2020, Chipanalog Incorporated 
+      15 
+Shanghai Chipanalog Microelectronics Co., Ltd. 
+Notes:  
+1. 
+tsk(o) is the skew between outputs of a single device with all driving inputs connected together and the outputs switching in the same 
+direction while driving identical loads.  
+2. 
+tsk(pp) is the magnitude of the difference in propagation delay times between any terminals of different devices switching in the same 
+direction while operating at identical supply voltages, temperature, input signals and loads. 
+8. 
+Parameter Measurement Information 
+IN
+OUT
+Isolation Barrier
+50Ω
+CL
+2
+VIN
+1
+VOUT
+VIN
+VOUT
+50%
+50%
+50%
+50%
+90%
+10%
+tr
+tf
+tPLH
+tPHL
+ 
+Notes:  
+1. A square wave generator provide VIN input signal with characteristics: frequency ≤100kHz, 50% duty cycle, tr≤3ns, tf≤3ns, Zout 
+= 50Ω. At the input, 50 Ω resistor is required to terminate input generator signal. It is not needed in actual application. 
+2. CL = 15pF and includes external circuit (instrumentation and fixture etc.) capacitance. Since the load capacitance influence 
+the output rising time, it’s a key factor in the timing characteristic measurement. 
+  
+Figure 8-1. Switching Characteristics Test Circuit and Voltage Waveforms 
+ 
+ 
+ 
+ 
+IN
+OUT
+Isolation Barrier
+CL
+2
+VDDI
+1
+VOUT
+VDDO
+IN = 0 V for CA-IS372xH
+IN = VDDI for CA-IS372xL
+VDDO
+50%
+tDO
+VOUT
+VDDI
+2.15V
+Default High for CA-IS372xH
+Default Low for CA-IS372xL
+0V
+VOH
+VOL
+ 
+ 
+Notes:  
+1. Power Supply Ramp Rate = 10 mV/ns. VDDI should be over 2.15V and less than 5.5V.  
+2. CL = 15pF and includes external circuit (instrumentation and fixture etc.) capacitance. Since the load capacitance influence 
+the output rising time, it’s a key factor in the timing characteristic measurement.  
+Figure 8-2. Default Output Delay Time Test Circuit and Voltage Waveforms 
+ 
+
+
+----- PAGE 16 of 25 -----
+CA-IS3720, CA-IS3721, CA-IS3722          
+ 
+ 
+Version 1.08                                                                                             Shanghai Chipanalog Microelectronics Co., Ltd. 
+16                                                                                                                                                                          Copyright © 2020, Chipanalog Incorporated 
+Shanghai Chipanalog Microelectronics Co., Ltd. 
+IN
+OUT
+Isolation Barrier
+CL
+2
+VOUT
+3
+VDDO
+VDDI
+High 
+Voltage 
+Surge 
+Generator1
+GNDA
+GNDB
+CBP
+4
+CBP
+4
+ 
+ 
+Notes:  
+1. The High Voltage Surge Generator generates repetitive surges with > 1kV, <10ns rise time and fall time to reach common-
+mode transient noise with > 100kV/μs slew rate.  
+2. CL = 15pF and includes external circuit (instrumentation and fixture etc.) capacitance.  
+3. Pass-fail criteria: The output must remain stable whenever the high voltage surges occurs.  
+4. CBP is bypass capacitor, 0.1uF ~ 1uF.  
+Figure 8-3. Common-Mode Transient Immunity Test Circuit 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+----- PAGE 17 of 25 -----
+ 
+ 
+CA-IS3720, CA-IS3721, CA-IS3722 
+Shanghai Chipanalog Microelectronics Co., Ltd.                                                                                            Version 1.08                   
+Copyright © 2020, Chipanalog Incorporated 
+      17 
+Shanghai Chipanalog Microelectronics Co., Ltd. 
+9. 
+Detailed Description 
+9.1. Overview 
+The CA-IS372x devices are a family of 2-channel digital galvanic isolators using Chipanalog’s full differential capacitive 
+isolation technology. These devices have an ON-OFF keying (OOK) modulation scheme to transfer digital signals across the SiO2 
+based isolation barrier between circuits with different power domains. The transmitter sends a high frequency carrier across 
+the barrier to represent one digital state and sends no signal to represent the other digital state. The receiver demodulates the 
+signal and recovery input signal at output through a buffer stage. With this OOK architecture, the CA-IS372x family of devices 
+build a robust data transmission path between different power domains, without any special start-up initialization 
+requirements.  
+These devices also incorporate advanced full differential techniques to maximize the CMTI performance and minimize the 
+radiated emissions due the high frequency carrier and IO buffer switching. The conceptual block diagram of a digital capacitive 
+isolator, Figure 9-1, shows a functional block diagram of a typical channel; Figure 9-2 shows the operating waveform of a 
+typical channel. 
+9.2. Functional Block Diagram 
+Modulator
+Demodulator
+Driver
+VIN
+VOUT
+Transmitter (TX)
+Receiver (RX)
+Isolation
+Barrier
+RF Carrier 
+Generator
+Schmitt 
+Trigger
+ 
+Figure 9-1. Functional Block Diagram of a Single Channel 
+VIN
+VOUT
+Signal through 
+isolation barrier
+ 
+Figure 9-2. Conceptual Operation Waveform of a Single Channel 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+----- PAGE 18 of 25 -----
+CA-IS3720, CA-IS3721, CA-IS3722          
+ 
+ 
+Version 1.08                                                                                             Shanghai Chipanalog Microelectronics Co., Ltd. 
+18                                                                                                                                                                          Copyright © 2020, Chipanalog Incorporated 
+Shanghai Chipanalog Microelectronics Co., Ltd. 
+9.3. Device Operation Modes 
+Table 9-1 lists the operation modes for the CA-IS372x devices. 
+Table 9-1 Operation Mode Table 
+VDDI1 
+VDDO 
+INPUT(Ax/Bx) 2 
+OUTPUT (Ax/Bx) 
+OPERATION  
+PU 
+PU 
+H 
+H 
+Normal operation mode:  
+A channel output follows the logic state of the input.  
+L 
+L 
+Open 
+Default 
+Default output, fail-safe mode:  
+If a channel input is open, the corresponding channel output goes to the default 
+logic state (Low for CA-IS372xL and High for CA-IS372xH) 
+PD 
+PU 
+X 
+Default 
+Default output, fail-safe mode:  
+When VDDI is unpowered, the corresponding channel output goes to the default 
+logic state (Low for CA-IS372xL and High for CA-IS372xH)  
+X 
+PD 
+X 
+Undetermined 
+When VDDO is unpowered, the output states are undetermined.3  
+Notes:  
+1. VDDI = Input-side supply VDD; VDDO = Output-side supply VDD; PU = Powered up (VDD_ ≥VDD(UVLO+) ); PD = Powered down (VDD_ ≤ VDD(UVLO_)); X = 
+Irrelevant; H = High level; L = Low level.  
+2. A strongly driven input signal can weakly power the floating VDD through an internal protection diode and cause undetermined output.  
+3. The outputs are in undetermined state when VDD(UVLO+) < VDDI, VDDO < VDD(UVLO-).  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+----- PAGE 19 of 25 -----
+ 
+ 
+CA-IS3720, CA-IS3721, CA-IS3722 
+Shanghai Chipanalog Microelectronics Co., Ltd.                                                                                            Version 1.08                   
+3 
+Copyright © 2020, Chipanalog Incorporated 
+  19 
+Shanghai Chipanalog Microelectronics Co., Ltd. 
+10. Application and Implementation 
+Unlike optocouplers, which require external components to improve performance, provide bias, or limit current, the CA-
+IS372x devices only require two external bypass capacitors to operate. To reduce ripple and the chance of introducing data 
+errors, bypass VDDA and VDDB pins with 0.1μF to 1μF low-ESR ceramic capacitors to GNDA and GNDB, respectively. Place the 
+bypass capacitors as close to the power supply input pins as possible. Figure 10-1 and Figure 10-2 show typical operating 
+circuit of the CA-IS372x devices.  
+ 
+0.1uF
+IN1
+OUT1
+IN2
+OUT2
+0.1uF
+B2
+A2
+TX
+RX
+NC
+NC
+NC
+GNDA
+VDDA
+A1
+GNDA
+NC
+GNDB
+NC
+VDDB
+B1
+NC
+GNDB
+ISOLATION   BARRIER
+TX
+RX
+VDD1
+VDD2
+ 
+Figure 10-1.  CA-IS3721 Typical Application Schematic 
+ 
+RX
+TX
+Am-1
+Bm-1
+INm-1
+OUTm-1
+RX
+TX
+A1
+B1
+IN1
+OUT1
+Bm
+Am
+TX
+RX
+INm
+OUTm
+Bn
+An
+TX
+RX
+INn
+OUTn
+GNDA
+VDDA
+VDDB
+GNDB
+ISOLATION   BARRIER
+0.1uF
+0.1uF
+CA-IS37xx Series Products
+VDD1
+VDD2
+ 
+Figure 10-2. Typical Applications for the CA-IS37xx Series Digital Isolators 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+----- PAGE 20 of 25 -----
+CA-IS3720, CA-IS3721, CA-IS3722          
+ 
+ 
+Version 1.08                                                                                             Shanghai Chipanalog Microelectronics Co., Ltd. 
+20                                                                                                                                                                          Copyright © 2020, Chipanalog Incorporated 
+Shanghai Chipanalog Microelectronics Co., Ltd. 
+11. Package Information 
+11.1. 8-Pin SOIC Package Outline 
+These figures show the package details and the recommended land pattern details for the CA-IS372x digital isolator in 8-
+pin narrow-body SOIC package. The values for the dimensions are shown in millimeters. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+----- PAGE 21 of 25 -----
+ 
+ 
+CA-IS3720, CA-IS3721, CA-IS3722 
+Shanghai Chipanalog Microelectronics Co., Ltd.                                                                                            Version 1.08                   
+3 
+Copyright © 2020, Chipanalog Incorporated 
+  21 
+Shanghai Chipanalog Microelectronics Co., Ltd. 
+11.2. 8-Pin Wide Body SOIC Package Outline 
+These figures show the package details and the recommended land pattern details for the CA-IS372x digital isolator in 8-
+pin wide body SOIC package. The values for the dimensions are shown in millimeters. 
+ 
+ 
+ 
+ 
+ 
+
+
+----- PAGE 22 of 25 -----
+CA-IS3720, CA-IS3721, CA-IS3722          
+ 
+ 
+Version 1.08                                                                                             Shanghai Chipanalog Microelectronics Co., Ltd. 
+22                                                                                                                                                                          Copyright © 2020, Chipanalog Incorporated 
+Shanghai Chipanalog Microelectronics Co., Ltd. 
+11.3. 16-Pin Wide Body SOIC Package Outline 
+These figures show the package details and the recommended land pattern details for the CA-IS372x digital isolator in 16-
+pin wide body SOIC package. The values for the dimensions are shown in millimeters. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+----- PAGE 23 of 25 -----
+ 
+ 
+CA-IS3720, CA-IS3721, CA-IS3722 
+Shanghai Chipanalog Microelectronics Co., Ltd.                                                                                            Version 1.08                   
+3 
+Copyright © 2020, Chipanalog Incorporated 
+  23 
+Shanghai Chipanalog Microelectronics Co., Ltd. 
+12. Soldering Temperature (reflow) Profile 
+ 
+ts
+TP
+tP
+tL
+Tsmin
+Tsmax
+Time from 25°C to peak temperature TP
+Max. ramp-up rate = 3°C/s
+TP-5°C
+Package surface temperature
+Time
+TL
+25°C
+Max. ramp-down rate = 6°C/s
+ 
+Figure. 12-1 Soldering Temperature (reflow) Profile  
+ 
+Table 12-1 Soldering Temperature Parameters 
+Profile Feature 
+Pb-Free Soldering  
+Ramp-up rate (TL = 217°C to peak TP) 
+3°C/s max 
+Time ts of preheat temp (Tsmin = 150°C to Tsmax = 200°C) 
+60~120 seconds 
+Time tL to be maintained above 217°C 
+60~150 seconds 
+Peak temperature TP 
+260°C 
+Time tP within 5°C of actual peak temp 
+30 seconds max 
+Ramp-down rate (peak TP to TL = 217°C) 
+6°C/s max 
+Time from 25°C to peak temperature TP 
+8 minutes max 
+ 
+ 
+ 
+
+
+----- PAGE 24 of 25 -----
+CA-IS3720, CA-IS3721, CA-IS3722          
+ 
+ 
+Version 1.08                                                                                             Shanghai Chipanalog Microelectronics Co., Ltd. 
+24                                                                                                                                                                          Copyright © 2020, Chipanalog Incorporated 
+Shanghai Chipanalog Microelectronics Co., Ltd. 
+REEL DIMENSIONS 
+13. Tape and Reel Information 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+*All dimensions are nominal 
+Device 
+Package 
+Type 
+Package 
+Drawing 
+Pins 
+SPQ 
+Reel 
+Diameter 
+(mm) 
+Reel Width 
+W1 (mm) 
+A0 
+(mm) 
+B0 
+(mm) 
+K0 
+(mm) 
+P1 
+(mm) 
+W 
+(mm) 
+Pin1 
+Quadrant 
+CA-IS3720LS 
+SOIC 
+S 
+8 
+2500 
+330 
+12.4 
+6.40 
+5.40 
+2.10 
+8.00 
+12.00 
+Q1 
+CA-IS3720LG 
+SOIC 
+G 
+8 
+1000 
+330 
+16.4 
+11.95 
+6.15 
+3.20 
+16.00 
+16.00 
+Q1 
+CA-IS3720LW 
+SOIC 
+W 
+16 
+1000 
+330 
+16.4 
+10.90 
+10.70 
+3.20 
+12.00 
+16.00 
+Q1 
+CA-IS3720HS 
+SOIC 
+S 
+8 
+2500 
+330 
+12.4 
+6.40 
+5.40 
+2.10 
+8.00 
+12.00 
+Q1 
+CA-IS3720HG 
+SOIC 
+G 
+8 
+1000 
+330 
+16.4 
+11.95 
+6.15 
+3.20 
+16.00 
+16.00 
+Q1 
+CA-IS3720HW 
+SOIC 
+W 
+16 
+1000 
+330 
+16.4 
+10.90 
+10.70 
+3.20 
+12.00 
+16.00 
+Q1 
+CA-IS3721LS 
+SOIC 
+S 
+8 
+2500 
+330 
+12.4 
+6.40 
+5.40 
+2.10 
+8.00 
+12.00 
+Q1 
+CA-IS3721LG 
+SOIC 
+G 
+8 
+1000 
+330 
+16.4 
+11.95 
+6.15 
+3.20 
+16.00 
+16.00 
+Q1 
+CA-IS3721LW 
+SOIC 
+W 
+16 
+1000 
+330 
+16.4 
+10.90 
+10.70 
+3.20 
+12.00 
+16.00 
+Q1 
+CA-IS3721HS 
+SOIC 
+S 
+8 
+2500 
+330 
+12.4 
+6.40 
+5.40 
+2.10 
+8.00 
+12.00 
+Q1 
+CA-IS3721HG 
+SOIC 
+G 
+8 
+1000 
+330 
+16.4 
+11.95 
+6.15 
+3.20 
+16.00 
+16.00 
+Q1 
+CA-IS3721HW 
+SOIC 
+W 
+16 
+1000 
+330 
+16.4 
+10.90 
+10.70 
+3.20 
+12.00 
+16.00 
+Q1 
+CA-IS3722LS 
+SOIC 
+S 
+8 
+2500 
+330 
+12.4 
+6.40 
+5.40 
+2.10 
+8.00 
+12.00 
+Q1 
+CA-IS3722LG 
+SOIC 
+G 
+8 
+1000 
+330 
+16.4 
+11.95 
+6.15 
+3.20 
+16.00 
+16.00 
+Q1 
+CA-IS3722LW 
+SOIC 
+W 
+16 
+1000 
+330 
+16.4 
+10.90 
+10.70 
+3.20 
+12.00 
+16.00 
+Q1 
+CA-IS3722HS 
+SOIC 
+S 
+8 
+2500 
+330 
+12.4 
+6.40 
+5.40 
+2.10 
+8.00 
+12.00 
+Q1 
+CA-IS3722HG 
+SOIC 
+G 
+8 
+1000 
+330 
+16.4 
+11.95 
+6.15 
+3.20 
+16.00 
+16.00 
+Q1 
+CA-IS3722HW 
+SOIC 
+W 
+16 
+1000 
+330 
+16.4 
+10.90 
+10.70 
+3.20 
+12.00 
+16.00 
+Q1 
+A0 
+Dimension designed to accommodate the component width 
+B0 
+Dimension designed to accommodate the component length 
+K0 
+Dimension designed to accommodate the component thickness 
+W 
+Overall width of the carrier tape 
+P1 
+Pitch between successive cavity centers 
+TAPE DIMENSIONS 
+QUADRANT ASSIGNMENTS FOR PIN 1 ORIENTATION IN TAPE 
+
+
+----- PAGE 25 of 25 -----
+ 
+ 
+CA-IS3720, CA-IS3721, CA-IS3722 
+Shanghai Chipanalog Microelectronics Co., Ltd.                                                                                            Version 1.08                   
+3 
+Copyright © 2020, Chipanalog Incorporated 
+  25 
+Shanghai Chipanalog Microelectronics Co., Ltd. 
+14. Important Statement 
+The above information is for reference only and used for helping Chipanalog customers with design, research and 
+development. Chipanalog reserves the rights to change the above information due to technological innovation without 
+advance notice. 
+ 
+All Chipanalog products pass ex-factory test. As for specific practical applications, customers need to be responsible for 
+evaluating and determining whether the products are applicable or not by themselves. Chipanalog's authorization for 
+customers to use the resources are only limited to development of the related applications of the Chipanalog products. In 
+addition to this, the resources cannot be copied or shown, and Chipanalog is not responsible for any claims, compensations, 
+costs, losses, liabilities and the like arising from the use of the resources. 
+ 
+Trademark information 
+Chipanalog Inc.® and Chipanalog® are registered trademarks of Chipanalog. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+http://www.chipanalog.com 
+ 
