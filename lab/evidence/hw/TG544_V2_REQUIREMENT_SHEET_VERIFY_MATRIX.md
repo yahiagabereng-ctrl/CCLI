@@ -4,7 +4,7 @@
 **Date:** 2026-10-23  
 **Schematic:** `knowledge-base/08-engineering/reference/vendor/tespro/2026-10-22-tg544-v2-schematic/TG544_V2_Schematic.pdf`  
 **Supplier ask:** HiTEKS gateway requirements table (PPT / response form rows 1–16)  
-**Datasheet tracker:** [TG544_V2_DATASHEET_TRACKER.md](TG544_V2_DATASHEET_TRACKER.md)  
+**Datasheet tracker:** [TG544_V2_DATASHEET_TRACKER.md](TG544_V2_DATASHEET_TRACKER.md) · **Ingest score:** [TG544_V2_DATASHEET_INGEST_SCORE_2026-10-23.md](TG544_V2_DATASHEET_INGEST_SCORE_2026-10-23.md)  
 **RAG source_id:** `ccli-tg544-v2-requirement-sheet-matrix`
 
 ---
@@ -56,10 +56,10 @@ If TesPro also supplied **multi-page Altium exports**, map **S01–S14** to thei
 | **REQ-GW-06b** | 6 | **100BaseFX** LC 1310 nm (Eth_A) | — | — | ○ | ● | — | — | — | — | — | — | — | — | — | — | GAP | **SFP module PN** (FX) |
 | **REQ-GW-06c** | 6 | **10/100 TX SFP** (Eth_B) | — | — | ○ | ● | — | — | — | — | — | — | — | — | — | — | OPEN | **SFP copper** module PN |
 | **REQ-GW-07** | 7 | USB >2× | — | — | ○ | — | — | — | — | — | ● | ○ | — | — | — | ○ | PART | USB-C **918-518K** |
-| **REQ-GW-08** | 8 | 2× RS485 isolated | — | — | — | — | — | ● | ○ | — | — | — | — | — | — | ○ | PART | **BL3085**, **CA-IS3721** |
+| **REQ-GW-08** | 8 | 2× RS485 isolated | — | — | — | — | — | ● | ○ | — | — | — | — | — | — | ○ | PART | **BL3085**, **CA-IS3721**, **B0303S** DS HAVE |
 | **REQ-GW-09** | 9 | TPM 2.0 | — | — | ○ | — | ● | — | — | — | — | — | — | — | — | — | PASS | **SLB9673** (HAVE policy) |
-| **REQ-GW-10a** | 10 | 12 V input / 12–36 V | ● | — | — | — | — | — | — | — | — | — | — | — | — | ○ | PART | Buck **U1**, **SMDJ36CA** |
-| **REQ-GW-10b** | 10 | **Input fuse / protection** | ● | — | — | — | — | — | — | — | ○ | — | — | — | — | — | PART | **F1** USB only; DC fuse OPEN |
+| **REQ-GW-10a** | 10 | 12 V input / 12–36 V | ● | — | — | — | — | — | — | — | — | — | — | — | — | ○ | PART | **SK510/SK56** DS HAVE; **SMDJ36CA** GAP; **MVR1812** wrong DS (0805 on disk) |
+| **REQ-GW-10b** | 10 | **Input fuse / protection** | ● | — | — | — | — | — | — | — | ○ | — | — | — | — | — | PART | **F1 K0805L050BR** DS HAVE; main DC fuse OPEN |
 | **REQ-GW-11** | 11 | OpenWrt / C++ | — | — | — | — | — | — | — | — | — | — | — | — | — | — | N/A | Software |
 | **REQ-GW-12** | 12 | IEC 61850 SCD/CID | — | — | — | — | — | — | — | — | — | — | — | — | — | — | N/A | HiTEKS **`ccli` CID** |
 | **REQ-GW-13** | 13 | IEC 62351 | — | — | ○ | — | ○ | — | — | — | — | — | — | — | — | — | N/A | FW / PKI docs |
@@ -68,7 +68,7 @@ If TesPro also supplied **multi-page Altium exports**, map **S01–S14** to thei
 | **REQ-GW-16a** | 16 | **6× DI** schematic | — | — | — | — | — | — | — | ● | — | — | — | — | — | ○ | PASS | **GD32F330** |
 | **REQ-GW-16b** | 16 | **6× DO** schematic | — | — | — | — | — | — | — | ● | — | — | — | — | — | ○ | PASS | **HK3FF** relay |
 | **REQ-GW-16c** | 16 | **10–120 V DI** class | — | — | — | — | — | — | — | ● | — | — | — | — | — | — | GAP | **SMBJ33CA** (wrong class) |
-| **REQ-GW-16d** | 16 | **250 V / 3 A DO** | — | — | — | — | — | — | — | ● | — | — | — | — | — | — | OPEN | **HK3FF** contact rating |
+| **REQ-GW-16d** | 16 | **250 V / 3 A DO** | — | — | — | — | — | — | — | ● | — | — | — | — | — | — | PART | **HK3FF** DS **10 A @ 277 VAC** — confirm vs **3 A** curtail |
 
 ---
 
@@ -83,7 +83,7 @@ If TesPro also supplied **multi-page Altium exports**, map **S01–S14** to thei
 | **REQ-O-UPS** | O.13.3 backup ≥1 h | ● | — | — | — | — | — | — | GAP | External UPS (lab DRC) |
 | **REQ-O-DIO** | O.9.2 curtail DO | — | — | — | — | — | ● | — | PART | Rating vs HK3FF |
 | **REQ-IO-004** | 5 DI 10–120 V / 3 DO 250 V | — | — | — | — | — | ● | — | GAP | 6+6 but wrong class |
-| **V-IO-003** | RS485 iso evidence | — | — | — | — | ● | — | — | PART | Need CA-IS3721 DS |
+| **V-IO-003** | RS485 iso evidence | — | — | — | — | ● | — | — | PART | **CA-IS3721**, **B0303S**, **B3D090L-C**, SMBJ18 series — hipot narrative still open |
 | **V-SEC-002** | TPM present | — | — | ○ | — | — | — | — | ● | PASS | SLB9673 |
 | **V-SEC-004** | Hall tamper | — | — | — | — | — | — | ● | PART | Hall IC MPN on PDF |
 
@@ -99,7 +99,7 @@ If TesPro also supplied **multi-page Altium exports**, map **S01–S14** to thei
 | **S04 SFP** | **U30** cage pinout; host bus; approved module list |
 | **S05 TPM** | **SLB9673** power, I2C, decoupling |
 | **S06 RS485** | **2× BL3085**; **CA-IS3721** on each UART; **A1/A2** TVS **SMBJ18CA**; **J3** pinout |
-| **S07 RS232** | **SP3232**; shared iso domain with 485 |
+| **S07 RS232** | **SP3232** (DS: **SP3222B/3232B** family); shared iso domain with 485 |
 | **S08 DIO** | **J1/J2** pinout **DO1–6/DI1–6**; **K1–K6**; **TLP291**; **SMBJ33CA**; **TR600-350** |
 | **S09 USB-A** | **F1 K0805L050BR**; ESD |
 | **S10 UART** | **FT232** debug only — not CEI commissioning IF |

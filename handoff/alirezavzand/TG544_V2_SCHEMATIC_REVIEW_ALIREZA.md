@@ -77,8 +77,9 @@ powershell -File scripts/ingest-tespro-tg544-v2-schematic.ps1 -ExtractOnly
 |-----|--------|
 | SFP FX + copper approved PNs | TesPro |
 | Port map WAN/LAN/SFP ↔ Eth_A/Eth_B | TesPro + bench |
-| **B0303S-1WR3** Mornsun PDF (404 fetch) | Manual DS download |
 | **SMDJ36CA** / exact **SMBJ33/18** line items | Distributor DS |
+| **MVR1812-470G** (sheet) vs **MVR0805** DS on disk | Get correct varistor DS |
+| **TR600-150 / TR600-350** PTC | Distributor DS |
 | WM1302 Seeed LoRaWAN PDF vs 4G block label | Confirm MPN on schematic |
 
 ---

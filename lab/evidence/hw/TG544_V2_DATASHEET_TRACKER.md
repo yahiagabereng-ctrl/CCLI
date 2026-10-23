@@ -27,9 +27,9 @@
 | **TLP291(GB-TP,SE)** | DIO opto | REQ-GW-16 | **HAVE** — `datasheets/TLP291-4_Toshiba.pdf` | — | Isolation voltage |
 | **GD32F330CBT6** | DIO MCU | REQ-GW-16 | **HAVE** — `datasheets/GD32F330xx_Datasheet_Rev_3.0.pdf` | — | GPIO abs max |
 | **PCAQ7060MW-301** | CM choke (with **C89**) | REQ-GW-10 | **HAVE** — `datasheets/PCAQ7060MW-301_Prodtech_Spec.pdf` | — | CM impedance, safety |
-| **SK510L-TP** / **SK56L-TP** | Input OR Schottky | REQ-GW-10 | **PART** — `SK56L_MCC_Schottky.pdf` | **GET** SK510L-TP | Vr, If, reverse protection |
+| **SK510L-TP** / **SK56L-TP** | Input OR Schottky | REQ-GW-10 | **HAVE** — `SK56L_MCC_Schottky.pdf` + **`SK510AFL-TP_MCC_Schottky.pdf`** | **VERIFY** AFL vs **L** suffix on BOM | **SK510AFL:** **100 V** / **5 A**; **SK56L:** **60 V** |
 | **DMP10H400SK3-13** | P-FET reverse protect | REQ-GW-10 | **HAVE** — `datasheets/DMP10H400SK3-13_DiodesInc.pdf` | — | Vds, Id |
-| **K0805L050BR** | USB fuse **F1** | REQ-GW-10b | **MISSING** | **DOWNLOAD** | 500 mA hold — **not** main DC fuse |
+| **K0805L050BR** | USB fuse **F1** | REQ-GW-10b | **HAVE** — `K0805L_Series_Littelfuse_PTC.pdf` (LCSC C2892412) | — | **500 mA** hold in series table — **not** main DC fuse |
 
 ---
 
@@ -39,13 +39,13 @@
 |-----|----------|---------|--------|
 | **WM1302** | Radio module (schematic ref) | **PART** — `WM1302_Seeed_LoRaWAN_Module.pdf` | **VERIFY** MPN on sheet vs Seeed LoRaWAN DS; GET TesPro integration guide |
 | **FT232RNL** | USB-UART | MISSING | GET — lab debug only |
-| **SP3232** | RS232 | MISSING | GET |
-| **B0303S-1WR3** | RS485 isolated DC-DC | **FAIL** — `_bad/B0303S-1WR3_Mornsun.pdf` (404 HTML) | Re-download valid Mornsun PDF; extract **isolation voltage** |
+| **SP3232** | RS232 | **PART** — `SP3222B_RS232_Anap.pdf` (SP3222B/**3232B** family) | Confirm **U9** marking vs SP3232 |
+| **B0303S-1WR3** | RS485 isolated DC-DC | **HAVE** — `datasheets/B0303S-1WR3_Mornsun.pdf` | — (iso **1500 VDC** 1 min / **3000 VDC** 1 s per Mornsun B_S-1WR3 series) |
 | **918-518K2023D50012** | USB-C connector | MISSING | GET |
 | **PRTR5V0U2X** | USB ESD | MISSING | GET Nexperia |
-| **B3D090L-C** | GDT surge | MISSING | GET |
-| **TR600-150 / TR600-350** | PTC | MISSING | GET Bel / description on sheet |
-| **MVR1812-470G** | Varistor RV1 | MISSING | GET |
+| **B3D090L-C** | GDT surge | **HAVE** — `B3D090L-C_GDT.pdf` | — |
+| **TR600-150 / TR600-350** | PTC (DIO field) | **MISSING** | GET Bel / Bourns **TR600** |
+| **MVR1812-470G** | Varistor RV1 | **PART** — `MVR0805-470G_Varistor.pdf` only | **GET MVR1812-470G** — wrong package on disk |
 | **Hall sensor** (read ref from PDF) | Tamper S13 | MISSING | GET — TI DRV5032 **HAVE** in cert drop for *different* use |
 | **G6K-2F-Y3VDC** | Old 4-ch relay | N/A V2 | Keep for **Schematic-GPIO.pdf** diff only |
 | Buck **U1** (read ref) | 12 V → rails | MISSING | GET from BOM on S01 |
@@ -87,7 +87,7 @@ powershell -File scripts/ingest-tespro-tg544-v2-schematic.ps1
 powershell -File scripts/sync-ccli-corpus-to-telematry.ps1
 ```
 
-**Last ingest check:** `datasheets/_extracts/INGEST_CHECK.txt` — **13 OK**, Mornsun B0303S quarantined under `datasheets/_bad/`.
+**Last ingest check:** `datasheets/_extracts/INGEST_CHECK.txt` — **20 OK** · score sheet [TG544_V2_DATASHEET_INGEST_SCORE_2026-10-23.md](TG544_V2_DATASHEET_INGEST_SCORE_2026-10-23.md)
 
 Update **In repo** column to **HAVE** when file lands; link path in [TG544_V2_REQUIREMENT_SHEET_VERIFY_MATRIX.md](TG544_V2_REQUIREMENT_SHEET_VERIFY_MATRIX.md) verify log.
 

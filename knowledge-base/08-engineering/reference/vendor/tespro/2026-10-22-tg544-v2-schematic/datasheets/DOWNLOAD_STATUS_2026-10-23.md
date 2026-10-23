@@ -1,6 +1,6 @@
 # Datasheet download & ingest status — 2026-10-23 (updated)
 
-**Ingest check:** `datasheets/_extracts/INGEST_CHECK.txt` — **OK=13 FAIL=0** (after quarantining bad Mornsun fetch).
+**Ingest check:** `datasheets/_extracts/INGEST_CHECK.txt` — **OK=14 FAIL=0** (B0303S-1WR3 Mornsun DS validated 2026-10-23).
 
 Re-run:
 
@@ -24,18 +24,19 @@ powershell -File scripts/ingest-tespro-tg544-v2-schematic.ps1
 | `TLP291-4_Toshiba.pdf` | TLP291(GB-TP,SE) | OK | Photocoupler — confirm **3750 Vrms** class in table |
 | `SMBJ_Series_Littelfuse.pdf` | SMBJ** / SMBJ33CA | **PART** | Series DS — need line item **SMBJ33CA**, **SMBJ18CA** |
 | `SMBJ_Series_DataSheet_N0193_RevD.pdf` | SMBJ series | **PART** | Duplicate series coverage |
-| `SK56L_MCC_Schottky.pdf` | SK56L-TP | **PART** | Schottky — **SK510L-TP** still missing |
+| `SK56L_MCC_Schottky.pdf` | SK56L-TP + **SK510L-TP** | OK | MCC family **SK52L thru SK510L** — **SK510L** **100 V** / **5 A**; **SK56L** **60 V** / **5 A** |
 | `PCAQ7060MW-301_Prodtech_Spec.pdf` | PCAQ7060MW-301 | OK | CM choke / PA spec (Prodtech/Würth class) |
 | `WM1302_Seeed_LoRaWAN_Module.pdf` | WM1302 | **VERIFY** | Seeed **LoRaWAN** module DS — confirm schematic radio is WM1302 vs 4G MPN |
+| `B0303S-1WR3_Mornsun.pdf` | B0303S-1WR3 | OK | **3.3 V → 3.3 V** iso DC-DC; **1500 VDC** 1 min / **3000 VDC** 1 s (5 V-input class note in series table) |
 
 **Also in folder (no PDF extract):** `SLB9673_FIPS140_L2_Security_Policy.txt` — security policy supplement only.
 
-## Failed / quarantined
+## Quarantined (superseded)
 
-| File | Issue | Action |
-|------|-------|--------|
-| `_bad/B0303S-1WR3_Mornsun.pdf` | HTML 404 (~22 KB), not PDF | Manual download from [Mornsun B0303S-1WR3](https://www.mornsun-power.com/html/pdf/B0303S-1WR3.pdf) or distributor |
-| `_bad/B0303S-1WR3_Mornsun_try2.pdf` | HTML error page | Removed from ingest set |
+| File | Issue |
+|------|-------|
+| `_bad/B0303S-1WR3_Mornsun.pdf` | Old HTML 404 fetch — replaced by valid DS in folder root |
+| `_bad/B0303S-1WR3_Mornsun_try2.pdf` | Failed curl retry |
 
 ## Still missing (manual / TesPro)
 
@@ -44,7 +45,6 @@ powershell -File scripts/ingest-tespro-tg544-v2-schematic.ps1
 | **SMDJ36CA** | Not in SMBJ series PDFs — separate **SMDJ** package DS |
 | **SMBJ33CA**, **SMBJ18CA** | Prefer exact MPN pages (series OK for narrative only) |
 | **SP3232** | RS232 — retry Analog SP3232E DS |
-| **SK510L-TP** | OR Schottky pair mate on S01 |
 | **K0805L050BR**, **B3D090L-C**, **TR600-***, **MVR1812-470G** | Protection BOM |
 | **918-518K2023D50012**, **PRTR5V0U2X** | USB-C / ESD |
 | **SFP FX 1310 nm + copper 10/100** | **TesPro only** + port role map |

@@ -1,0 +1,685 @@
+# B0303S-1WR3_Mornsun.pdf
+
+
+----- PAGE 1 of 6 -----
+DC/DC Converter
+B_S-1WR3 Series
+2026.09.07-A/7
+Page 1 of 6
+MORNSUN Guangzhou Science & Technology Co., Ltd. reserves the copyright and right of final interpretation
+Selection Guide
+Certification
+Part No.
+Input Voltage (VDC)
+Output
+Full Load
+Efficiency (%)
+Min./Typ.
+Capacitive
+Load(µF)
+Max.
+Nominal
+(Range)
+Voltage
+(VDC)
+Current (mA)
+Max./Min.
+--
+B0303S-1WR3
+3.3
+(2.97-3.63)
+3.3
+303/30
+75/79
+2400
+B0305S-1WR3
+5
+200/20
+78/82
+2400
+B0312S-1WR3
+12
+83/8
+78/82
+560
+B0315S-1WR3
+15
+67/7
+78/82
+560
+B0324S-1WR3
+24
+42/4
+80/84
+220
+EN/BS EN
+B0503S-1WR3
+5
+(4.5-5.5)
+3.3
+303/30
+70/74
+2400
+B0505S-1WR3
+5
+200/20
+78/82
+2400
+B0509S-1WR3
+9
+111/12
+79/83
+1000
+B0512S-1WR3
+12
+84/9
+79/83
+560
+B0515S-1WR3
+15
+67/7
+79/83
+560
+B0524S-1WR3
+24
+42/4
+81/85
+220
+EN/BS EN/IEC
+B1203S-1WR3
+12
+(10.8-13.2)
+3.3
+303/30
+71/75
+2400
+B1205S-1WR3
+5
+200/20
+76/80
+2400
+B1209S-1WR3
+9
+111/12
+76/80
+1000
+B1212S-1WR3
+12
+83/9
+76/80
+560
+B1215S-1WR3
+15
+67/7
+77/81
+560
+B1224S-1WR3
+24
+42/5
+77/81
+220
+B1505S-1WR3
+15
+(13.5-16.5)
+5
+200/20
+76/80
+2400
+B1509S-1WR3
+9
+111/12
+76/80
+1000
+B1512S-1WR3
+12
+83/9
+76/80
+560
+B1515S-1WR3
+15
+67/7
+77/81
+560
+--
+B1524S-1WR3
+24
+42/5
+77/81
+220
+EN/BS EN/IEC
+B2403S-1WR3
+24
+(21.6-26.4)
+3.3
+303/30
+69/75
+2400
+B2405S-1WR3
+5
+200/20
+73/79
+2400
+B2409S-1WR3
+9
+111/12
+74/80
+1000
+B2412S-1WR3
+12
+83/9
+75/81
+560
+B2415S-1WR3
+15
+67/7
+75/81
+560
+B2424S-1WR3
+24
+42/5
+75/81
+220
+1W isolated DC-DC converter
+Fixed input voltage, unregulated single output
+Patent Protection
+Report
+Report
+CB
+RoHS
+EN 62368-1
+BS EN 62368-1
+IEC 62368-1
+FEATURES
+Continuous short-circuit protection
+No-load input current as low as 8mA
+Operating ambient temperature range:
+-40℃to +105℃
+High efficiency up to 85%
+I/O isolation test voltage: 1.5k VDC
+Industry standard pin-out
+B_S-1WR3 series are specially designed for applications where an isolated voltage is required in a distributed power supply system. They are
+suitable for: pure digital circuits, low frequency analog circuits, relay-driven circuits and data switching circuits.
+
+
+----- PAGE 2 of 6 -----
+DC/DC Converter
+B_S-1WR3 Series
+2026.09.07-A/7
+Page 2 of 6
+MORNSUN Guangzhou Science & Technology Co., Ltd. reserves the copyright and right of final interpretation
+Input Specifications
+Item
+Operating Conditions
+Min.
+Typ.
+Max.
+Unit
+Input Current
+(full load / no-load)
+3.3V input
+3.3VDC output
+--
+384/10
+405/--
+mA
+Other output
+--
+370/18
+389/--
+Input Current
+(full load / no-load)
+5V input
+3.3VDC output
+--
+271/8
+286/--
+mA
+5VDC output
+--
+244/8
+257/--
+9VDC/12VDC/15VDC output
+--
+241/12
+254/--
+24VDC output
+--
+241/18
+254/--
+12V input
+3.3VDC output
+--
+112/8
+118/--
+5VDC/9VDC/12VDC output
+--
+105/8
+110/--
+15VDC/24VDC output
+--
+103/8
+109 /--
+15V input
+5VDC/9VDC/12VDC output
+--
+84/8
+88/--
+15VDC/24VDC output
+--
+83/8
+87/--
+24V input
+3.3VDC output
+--
+56/8
+61/--
+5VDC output
+--
+53/8
+58/--
+9VDC output
+--
+53/8
+57/--
+12VDC/15VDC/24VDC output
+--
+52/8
+56/--
+Reflected Ripple Current
+--
+15
+--
+Surge Voltage(1sec. max.)
+3.3VDC input
+-0.7
+--
+5
+VDC
+5VDC input
+-0.7
+--
+9
+12VDC input
+-0.7
+--
+18
+15VDC input
+-0.7
+--
+21
+24VDC input
+-0.7
+--
+30
+Input Filter
+Capacitance filter
+Hot Plug
+Unavailable
+Note: * Refer to DC-DC Converter Application Notes for detailed description of reflected ripple current test method.
+Output Specifications
+Item
+Operating Conditions
+Min.
+Typ.
+Max.
+Unit
+Voltage Accuracy
+See output regulation curves (Fig. 1)
+Linear Regulation
+Input voltage change: ±1%
+3.3VDC output
+--
+--
+1.5
+--
+Other output
+--
+--
+1.2
+Load Regulation
+3.3VDC input
+10%-100% load
+3.3VDC output
+--
+12
+18
+%
+Other output
+--
+8
+15
+5VDC input
+10%-100% load
+3.3VDC output
+--
+15
+20
+5VDC output
+--
+10
+15
+9VDC output
+--
+8
+10
+12VDC output
+--
+7
+10
+15VDC output
+--
+6
+10
+24VDC output
+--
+5
+10
+12VDC/15VDC/24VVDC input
+10%-100% load
+3.3VDC output
+--
+8
+20
+5VDC output
+--
+5
+15
+9VDC output
+--
+3
+10
+12VDC output
+--
+3
+10
+15VDC output
+--
+3
+10
+24VDC output
+--
+2
+10
+Ripple & Noise*
+20MHz bandwidth
+Other output
+--
+30
+75
+mVp-p
+24VDC output
+--
+50
+100
+Temperature Coefficient
+Full load
+--
+±0.02
+--
+%/℃
+Short-Circuit Protection
+Continuous, self-recovery
+Note:* The “parallel cable” method is used for Ripple and Noise test, please refer to DC-DC Converter Application Notes for specific information.
+
+
+----- PAGE 3 of 6 -----
+DC/DC Converter
+B_S-1WR3 Series
+2026.09.07-A/7
+Page 3 of 6
+MORNSUN Guangzhou Science & Technology Co., Ltd. reserves the copyright and right of final interpretation
+General Specifications
+Item
+Operating Conditions
+Min.
+Typ.
+Max.
+Unit
+Isolation
+Input-output electric strength test for 1 minute with a
+leakage current of 1mA max.
+1500
+--
+--
+VDC
+5V input, input-output electric strength test for 1
+second with a leakage current of 1mA max.
+3000
+--
+--
+Insulation Resistance
+Input-output resistance at 500VDC
+1000
+--
+--
+MΩ
+Isolation Capacitance
+Input-output capacitance at 100kHz/0.1V
+--
+20
+--
+pF
+Operating Temperature
+3.3V input
+Derating when operating
+temperature≥100℃, (see Fig. 2)
+-40
+--
+105
+℃
+Other input
+Derating when operating
+temperature≥85℃, (see Fig. 2)
+Storage Temperature
+-55
+--
+125
+Case Temperature Rise
+Ta=25℃
+--
+25
+--
+Pin Soldering Resistance
+Temperature
+Soldering spot is 1.5mm away from case for 10 seconds
+--
+--
+300
+Storage Humidity
+Non-condensing
+5V input
+--
+--
+95
+%RH
+Other output
+5
+--
+95
+Vibration
+3.3V/12V/15V/24V input
+10-150Hz, 5G, 0.75mm. along X, Y and Z
+Switching Frequency
+3.3V input, full load, nominal input voltage
+--
+220
+--
+kHz
+5V input, full load, nominal input voltage
+--
+270
+--
+12V/15V/24V input, full load, nominal input voltage
+--
+260
+--
+MTBF
+MIL-HDBK-217F @ 25℃
+3500
+--
+--
+k hours
+Note:②The pin resistance temperature is not the actual set temperature of the soldering iron, but the temperature required for a good solder joint. The actual set
+temperature by the customer needs to be determined based on the thickness of the PCB, the size of the copper cladding, the power of the soldering iron, and
+the selection of the soldering iron tip.
+Electromagnetic Compatibility (EMC)
+Emissions
+CE
+CISPR32/EN55032
+CLASS B
+RE
+CISPR32/EN55032
+CLASS B
+Immunity
+ESD
+IEC/EN61000-4-2
+Air ±8kV, Contact ±6kV
+perf. Criteria B
+Note: Refer to Fig.4 for recommended circuit test.
+Typical Characteristic Curves
+3.3VDC output
+3.3/5VDC input other output
+Mechanical Specifications
+Case Material
+Black plastic; flame-retardant and heat-resistant (UL94 V-0)
+Dimensions
+11.60 x 6.00 x 10.16 mm
+Weight
+1.3g (Typ.)
+Cooling Method
+Free air convection
+
+
+----- PAGE 4 of 6 -----
+DC/DC Converter
+B_S-1WR3 Series
+2026.09.07-A/7
+Page 4 of 6
+MORNSUN Guangzhou Science & Technology Co., Ltd. reserves the copyright and right of final interpretation
+12VDC/15VDC/24VDC input
+Other output
+Fig. 1
+3.3VDC input
+5VDC/12VDC/15VDC/24VDC input
+Fig. 2
+
+
+----- PAGE 5 of 6 -----
+DC/DC Converter
+B_S-1WR3 Series
+2026.09.07-A/7
+Page 5 of 6
+MORNSUN Guangzhou Science & Technology Co., Ltd. reserves the copyright and right of final interpretation
+Design Reference
+1. Typical application
+Input and/or output ripple can be further reduced, by connecting a filter capacitor from the input and/or output terminals to ground as
+shown in Fig.3.
+Choosing suitable filter capacitor values is very important for a smooth operation of the modules, particularly to avoid start-up problems
+caused by capacitor values that are too high. For recommended input and output capacitor values refer to Table 1.
+Vin
+GND
++Vo
+0V
+DC
+Cin
+DC
+Cout
+Fig.3
+Table 1: Recommended input and output capacitor values
+Vin
+Cin
+Vo
+Cout
+3.3VDC
+10µF/25V
+3.3VDC
+10µF/16V
+5VDC
+4.7µF/16V
+5VDC
+10µF/16V
+12VDC
+2.2µF/25V
+9VDC
+2.2µF/16V
+15VDC
+2.2µF/25V
+12VDC
+2.2µF/25V
+24VDC
+1µF/50V
+15VDC
+1µF/25V
+--
+--
+24VDC
+1µF/50V
+2. EMC compliance circuit
+Fig. 4
+Table 2: Recommended EMC filter values
+Input voltage
+3.3DVC
+5DVC
+12/15/24DVC
+Output voltage
+3.3/5VDC
+12/15/24VDC
+3.3/5/9VDC
+12/15/24VDC
+--
+Emissions
+C1/C2 4.7µF /16V
+4.7µF/16V
+4.7µF/25V
+4.7µF/25V
+4.7µF/50V
+CY
+--
+270pF /4kVDC
+VISHAY
+HGZ102MBP
+100pF/4kV
+1000pF/4kV
+270pF/2kV
+C3
+Refer to the Cout in table 1
+LDM
+6.8µH
+3. For additional information please refer to DC-DC converter application notes on
+www.mornsun-power.com
+(Vin=12V)
+
+
+----- PAGE 6 of 6 -----
+DC/DC Converter
+B_S-1WR3 Series
+2026.09.07-A/7
+Page 6 of 6
+MORNSUN Guangzhou Science & Technology Co., Ltd. reserves the copyright and right of final interpretation
+Dimensions and Recommended Layout
+Notes:
+1.
+For additional information on Product Packaging please refer to www.mornsun-power.com. Packaging bag number: 58200003;
+2.
+If the product is not operated within the required load range, the product performance cannot be guaranteed to comply with all
+parameters in the datasheet;
+3.
+The maximum capacitive load offered were tested at input voltage range and full load;
+4.
+Unless otherwise specified, parameters in this datasheet were measured under the conditions of Ta=25℃, humidity<75%RH with nominal
+input voltage and rated output load;
+5.
+All index testing methods in this datasheet are based on our company corporate standards;
+6.
+We can provide product customization service, please contact our technicians directly for specific information;
+7.
+Products are related to laws and regulations: see "Features" and "EMC";
+8.
+Our products shall be classified according to ISO14001 and related environmental laws and regulations, and shall be handled by
+qualified units.
+MORNSUN Guangzhou Science & Technology Co., Ltd.
+Address: No. 8 Nanyun 4th Road, Huangpu District, Guangzhou, China
+Tel: 86-20-38601850
+Fax: 86-20-38601272
+E-mail: info@mornsun.cn
+www.mornsun-power.com

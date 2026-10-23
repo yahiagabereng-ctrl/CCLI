@@ -1,0 +1,321 @@
+# K0805L_Series_Littelfuse_PTC.pdf
+
+
+----- PAGE 1 of 2 -----
+Features
+◆ Surface Mount Devices
+◆ Standard 0805mils footprint
+◆ Surface mount packaging for automated assembly
+◆ Compatible with Pb and Pb-free solder re flow profiles. 
+◆ UL(E352136), C-UL(E352136), TUV(R50306074)
+◆ RoHS, Reach, HF compliance
+Applications
+◆ Mobile phones
+◆ PC motherboards
+◆ PDAS/Digital cameras
+◆ USB port protection
+◆ HDMI source protection
+◆ Game console port protection
+P/N
+IH, (A)
+0.10
+0.10
+0.20
+0.35
+0.50
+0.75
+1.00
+1.10
+IT, (A)
+0.30
+0.30
+0.50
+0.75
+1.00
+1.50
+2.00
+2.20
+V max, (V)
+24.0
+15.0
+9.0
+6.0
+6.0
+6.0
+6.0
+6.0
+I max, (A)
+100
+100
+100
+100
+100
+100
+100
+100
+(A)
+0.5
+0.5
+8.0
+8.0
+8.0
+8.0
+8.0
+8.0
+(Sec.)
+1.50
+1.50
+0.02
+0.10
+0.10
+0.20
+0.30
+0.30
+Pd typ, (W)
+0.50
+0.50
+0.50
+0.50
+0.50
+0.60
+0.60
+0.60
+R min,
+1.000
+1.000
+0.650
+0.250
+0.150
+0.090
+0.060
+0.060
+R1 max,
+7.500
+7.50
+3.500
+1.200
+0.900
+0.350
+0.250
+0.210
+B
+A
+D
+C
+Top and Bottom View
+Side View
+P/N
+1
+1
+2
+3
+4
+5
+6
+6
+Min.
+2.00
+2.00
+2.00
+2.00
+2.00
+2.00
+2.00
+2.00
+Max.
+2.30
+2.30
+2.30
+2.30
+2.30
+2.30
+2.30
+2.30
+Min.
+1.20
+1.20
+1.20
+1.20
+1.20
+1.20
+1.20
+1.20
+Max.
+1.50
+1.50
+1.50
+1.50
+1.50
+1.50
+1.50
+1.50
+Min.
+0.55
+0.55
+0.55
+0.40
+0.40
+0.60
+0.60
+0.60
+Max.
+0.95
+0.95
+0.95
+0.80
+0.80
+1.00
+1.00
+1.00
+Min.
+0.20
+0.20
+0.20
+0.20
+0.20
+0.20
+0.20
+0.20
+A 
+B 
+C 
+D
+电气特性 ：
+产品尺寸 (Unit: mm) ：
+1
+1
+Part Identification
+Marking
+（标识）
+最大动作时间
+消耗功率
+电阻范围（Ω）
+保持电流
+跳脱电流
+最大电压
+最大电流
+K0805L010/24AR
+K0805L010AR
+K0805L020AR
+K0805L035BR
+K0805L050BR
+K0805L075AR
+K0805L100AR
+K0805L110AR
+K0805L010/24AR
+K0805L010AR
+K0805L020AR
+K0805L035BR
+K0805L050BR
+K0805L075AR
+K0805L100AR
+K0805L110AR
+ 
+ 
+ K0805L Series
+1/2
+
+
+----- PAGE 2 of 2 -----
+P/N
+-20℃
+0.13
+0.13
+0.25
+0.44
+0.62
+0.90
+1.35
+1.35
+0℃
+0.12
+0.12
+0.23
+0.39
+0.55
+0.79
+1.20
+1.20
+25℃
+0.10
+0.10
+0.20
+0.35
+0.50
+0.75
+1.00
+1.10
+40℃
+0.09
+0.09
+0.17
+0.30
+0.40
+0.63
+0.92
+0.92
+50℃
+0.08
+0.08
+0.14
+0.27
+0.37
+0.57
+0.84
+0.84
+60℃
+0.07
+0.07
+0.12
+0.24
+0.33
+0.53
+0.75
+0.75
+70℃
+0.06
+0.06
+0.10
+0.20
+0.29
+0.42
+0.65
+0.65
+85℃
+0.05
+0.05
+0.07
+0.14
+0.23
+0.35
+0.52
+0.52
+工作环境温度
+-40℃
+0.15
+0.15
+0.28
+0.47
+0.68
+1.00
+1.45
+1.45
+环境温度与工作电流关系特性曲线 ：  
+动作电流时间曲线表 ：
+The Time to Trip curves represent typical performance 
+of a device in a simulated application environment. 
+Actual performance in specific customer applications 
+may differ from these values due to the influence of 
+other variables.
+K0805L010/24AR
+K0805L010AR
+K0805L020AR
+K0805L035BR
+K0805L050BR
+K0805L075AR
+K0805L100AR
+K0805L110AR
+2/2
+ 
+ 
+ K0805L Series

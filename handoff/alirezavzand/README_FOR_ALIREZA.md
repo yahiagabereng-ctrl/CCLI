@@ -18,6 +18,7 @@
 | **Req × sheet matrix** | [`lab/evidence/hw/TG544_V2_REQUIREMENT_SHEET_VERIFY_MATRIX.md`](../../lab/evidence/hw/TG544_V2_REQUIREMENT_SHEET_VERIFY_MATRIX.md) |
 | **Analysis extract** | [`knowledge-base/08-engineering/CCI_TG544_V2_Schematic_Extract.md`](../../knowledge-base/08-engineering/CCI_TG544_V2_Schematic_Extract.md) |
 | **Datasheet tracker** | [`lab/evidence/hw/TG544_V2_DATASHEET_TRACKER.md`](../../lab/evidence/hw/TG544_V2_DATASHEET_TRACKER.md) |
+| **Ingest score (20 PDFs)** | [`lab/evidence/hw/TG544_V2_DATASHEET_INGEST_SCORE_2026-10-23.md`](../../lab/evidence/hw/TG544_V2_DATASHEET_INGEST_SCORE_2026-10-23.md) |
 | **Chat blurb** | [`MESSAGE_TO_SEND.txt`](MESSAGE_TO_SEND.txt) (TG-544 section at bottom) |
 
 Baseline supplier table (not cert xlsx): `knowledge-base/08-engineering/TesPro_Gateway_Specifications_Response_Form.pdf` (local PDF).

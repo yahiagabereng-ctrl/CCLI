@@ -1,0 +1,2895 @@
+# SP3222B_RS232_Anap.pdf
+
+
+----- PAGE 1 of 18 -----
+1
+Rev. 6/30/03                             SP3222B/3232B True +3.0 to +5.5V RS-232 Transceivers
+© Copyright 2003 Sipex Corporation
+True +3.0V to +5.5V RS-232 Transceivers
+SP3222B/3232B
+DESCRIPTION
+■ Meets true EIA/TIA-232-F Standards
+from a +3.0V to +5.5V power supply
+■ 250kbps Transmission Rate Under Load
+■ 1µA Low-Power Shutdown with Receivers
+Active (SP3222B)
+■ Interoperable with RS-232 down to +2.7V
+power source
+■ ESD Specifications:
+    ±2kV Human Body Model
+SELECTION TABLE
+®
+L
+E
+D
+O
+M
+s
+e
+il
+p
+p
+u
+S
+r
+e
+w
+o
+P
+2
+3
+2
+-
+S
+R
+s
+r
+e
+v
+ir
+D
+2
+3
+2
+-
+S
+R
+s
+r
+e
+v
+i
+e
+c
+e
+R
+l
+a
+n
+r
+e
+t
+x
+E
+s
+t
+n
+e
+n
+o
+p
+m
+o
+C
+n
+w
+o
+d
+t
+u
+h
+S
+L
+T
+T
+e
+t
+a
+t
+S
+-
+3
+f
+o
+.
+o
+N
+s
+n
+i
+P
+B
+2
+2
+2
+3
+P
+S
+V
+5
+.
+5
++
+o
+t
+V
+0
+.
+3
++
+2
+2
+4
+s
+e
+Y
+s
+e
+Y
+0
+2
+,
+8
+1
+B
+2
+3
+2
+3
+P
+S
+V
+5
+.
+5
++
+o
+t
+V
+0
+.
+3
++
+2
+2
+4
+o
+N
+o
+N
+6
+1
+The SP3222B/3232B series is an RS-232 transceiver solution intended for portable or hand-
+held applications such as notebook or palmtop computers.  The SP3222B/3232B series has
+a high-efficiency, charge-pump power supply that requires only 0.1µF capacitors in 3.3V
+operation.  This charge pump allows the SP3222B/3232B series to deliver true RS-232
+performance from a single power supply ranging from +3.0V to +5.5V.  The ESD tolerance
+of the SP3222B/3232B devices are over ±15kV for both Human Body Model and IEC1000-
+4-2 Air discharge test methods.  The SP3222B device has a low-power shutdown mode where
+the devices' driver outputs and charge pumps are disabled.  During shutdown, the supply
+current falls to less than 1µA.
+
+
+----- PAGE 2 of 18 -----
+Rev. 6/30/03                             SP3222B/3232B True +3.0 to +5.5V RS-232 Transceivers
+© Copyright 2003 Sipex Corporation
+2
+NOTE 1:  V+ and V- can have maximum magnitudes of 7V, but their absolute difference cannot exceed 13V.
+NOTE 2:  Driver Input hysteresis is typically 250mV.
+ABSOLUTE MAXIMUM RATINGS
+These are stress ratings only and functional
+operation of the device at these ratings or any other
+above those indicated in the operation sections of
+the specifications below is not implied. Exposure to
+absolute maximum rating conditions for extended
+periods of time may affect reliability and cause
+permanent damage to the device.
+VCC...................................................... -0.3V to +6.0V
+V+ (NOTE 1) ...................................... -0.3V to +7.0V
+V- (NOTE 1) ....................................... +0.3V to -7.0V
+V+ + |V-|  (NOTE 1)........................................... +13V
+ICC (DC VCC or GND current)......................... ±100mA
+Input Voltages
+TxIN, EN ............................................ -0.3V to +6.0V
+RxIN .................................................................. ±25V
+Output Voltages
+TxOUT ........................................................... ±13.2V
+RxOUT ..................................... -0.3V to (VCC + 0.3V)
+Short-Circuit Duration
+TxOUT .................................................... Continuous
+Storage Temperature ...................... -65°C to +150°C
+Power 
+Dissipation 
+Per 
+Package
+20-pin SSOP (derate 9.25mW/oC above +70oC) ........ 750mW
+18-pin PDIP (derate 15.2mW/oC above +70oC) ....... 1220mW
+18-pin SOIC (derate 15.7mW/oC above +70oC) ....... 1260mW
+20-pin TSSOP (derate 11.1mW/oC above +70oC) ...... 890mW
+16-pin SSOP (derate 9.69mW/oC above +70oC) ........ 775mW
+16-pin PDIP (derate 14.3mW/oC above +70oC) ....... 1150mW
+16-pin Wide SOIC (derate 11.2mW/oC above +70oC) .... 900mW
+16-pin TSSOP (derate 10.5mW/oC above +70oC) ...... 850mW
+16-pin nSOIC (derate 13.57mW/°C above +70°C) ...... 1086mW
+SPECIFICATIONS
+Unless otherwise noted, the following specifications apply for VCC = +3.0V to +5.5V with TAMB = TMIN to TMAX, C1 to
+C4=0.1µF
+PARAMETER
+MIN.
+TYP.
+MAX.
+UNITS
+CONDITIONS
+DC CHARACTERISTICS
+Supply Current
+0.3
+1.0
+mA
+no load, TAMB = +25°C, VCC = 3.3V,
+TxIN = VCC or GND
+Shutdown Supply Current
+1.0
+10
+µA
+SHDN = GND,  TAMB = +25°C,
+VCC = +3.3V, TxIN = VCC or GND
+LOGIC INPUTS AND RECEIVER OUTPUTS
+Input Logic Threshold LOW
+0.8
+V
+TxIN, EN, SHDN, Note 2
+Input Logic Threshold HIGH
+2.0
+V
+VCC = 3.3V, Note 2
+2.4
+V
+VCC = 5.0V, Note 2
+Input Leakage Current
+±0.01
+±1.0
+µA
+TxIN, EN, SHDN,  TAMB = +25°C,
+ VIN = 0V to VCC
+Output Leakage Current
+±0.05
+±10
+µA
+receivers disabled, VOUT = 0V to VCC
+Output Voltage LOW
+0.4
+V
+IOUT  = 1.6mA
+Output Voltage HIGH
+VCC-0.6
+VCC-0.1
+V
+IOUT  = -1.0mA
+DRIVER OUTPUTS
+Output Voltage Swing
+±5.0
+±5.4
+V
+3kΩ load to ground at all driver
+outputs, TAMB = +25°C
+Output Resistance
+300
+Ω
+VCC = V+ = V- = 0V, TOUT  = +2V
+Output Short-Circuit Current
+±35
+±60
+mA
+VOUT = 0V
+Output Leakage Current
+±25
+µA
+VOUT = ±12V,VCC= 0V,
+or 3.0V to 5.5V,  drivers disabled
+
+
+----- PAGE 3 of 18 -----
+3
+Rev. 6/30/03                             SP3222B/3232B True +3.0 to +5.5V RS-232 Transceivers
+© Copyright 2003 Sipex Corporation
+R
+E
+T
+E
+M
+A
+R
+A
+P
+.
+N
+I
+M
+.
+P
+Y
+T
+.
+X
+A
+M
+S
+T
+I
+N
+U
+S
+N
+O
+I
+T
+I
+D
+N
+O
+C
+S
+T
+U
+P
+N
+I
+R
+E
+V
+I
+E
+C
+E
+R
+e
+g
+n
+a
+R
+e
+g
+a
+tlo
+V
+t
+u
+p
+n
+I
+5
+2
+-
+5
+2
++
+V
+W
+O
+L
+dlo
+h
+s
+e
+r
+h
+T
+t
+u
+p
+n
+I
+6
+.
+0
+8
+.
+0
+2
+.
+1
+5
+.
+1
+V
+V C
+C
+V
+3
+.
+3
+=
+V C
+C
+V
+0
+.
+5
+=
+H
+G
+I
+H
+dlo
+h
+s
+e
+r
+h
+T
+t
+u
+p
+n
+I
+5
+.
+1
+8
+.
+1
+4
+.
+2
+4
+.
+2
+V
+V C
+C
+V
+3
+.
+3
+=
+V C
+C
+V
+0
+.
+5
+=
+sis
+e
+r
+e
+ts
+y
+H
+t
+u
+p
+n
+I
+3
+.
+0
+V
+e
+c
+n
+a
+tsis
+e
+R
+t
+u
+p
+n
+I
+3
+5
+7
+kΩ
+S
+C
+I
+T
+S
+I
+R
+E
+T
+C
+A
+R
+A
+H
+C
+G
+N
+I
+M
+I
+T
+e
+t
+a
+R
+a
+t
+a
+D
+m
+u
+m
+ix
+a
+M
+0
+5
+2
+s
+p
+b
+k
+RL
+k
+3
+=
+ΩC
+,
+L
+g
+nih
+cti
+w
+s
+r
+e
+vir
+d
+e
+n
+o
+,
+F
+p
+0
+0
+0
+1
+=
+y
+ale
+D
+n
+oit
+a
+g
+a
+p
+o
+r
+P
+r
+e
+vie
+c
+e
+R
+5
+1
+.
+0
+5
+1
+.
+0
+µs
+t
+L
+H
+P
+C
+,
+T
+U
+O
+x
+R
+o
+t
+N
+Ix
+R
+,
+L
+F
+p
+0
+5
+1
+=
+t
+H
+L
+P
+C
+,
+T
+U
+O
+x
+R
+o
+t
+N
+Ix
+R
+,
+L
+F
+p
+0
+5
+1
+=
+e
+m
+i
+T
+elb
+a
+n
+E
+t
+u
+p
+t
+u
+O
+r
+e
+vie
+c
+e
+R
+0
+0
+2
+s
+n
+e
+m
+i
+T
+elb
+a
+si
+D
+t
+u
+p
+t
+u
+O
+r
+e
+vie
+c
+e
+R
+0
+0
+2
+s
+n
+w
+e
+k
+S
+r
+e
+vir
+D
+0
+0
+1
+s
+n
+t
+|
+L
+H
+P
+t
+-
+H
+L
+P
+T
+,|
+B
+M
+A
+5
+2
+=
+oC
+w
+e
+k
+S
+r
+e
+vie
+c
+e
+R
+0
+5
+s
+n
+t
+|
+L
+H
+P
+t
+-
+H
+L
+P
+|
+e
+t
+a
+R
+w
+el
+S
+n
+oig
+e
+R
+-
+n
+oitis
+n
+a
+r
+T
+0
+3
+/
+V µs
+V C
+C
+R
+,
+V
+3
+.
+3
+=
+L
+K
+3
+=
+ΩT
+,
+B
+M
+A
+5
+2
+=
+o ,
+C
+V
+0
+.
+3
++
+o
+t
+V
+0
+.
+3
+-
+m
+o
+rf
+n
+e
+k
+a
+t
+st
+n
+e
+m
+e
+r
+u
+s
+a
+e
+m
+V
+0
+.
+3
+-
+o
+t
+V
+0
+.
+3
++
+r
+o
+SPECIFICATIONS (continued)
+Unless otherwise noted, the following specifications apply for VCC = +3.0V to +5.5V with TAMB = TMIN to TMAX , C1 to
+C4=0.1µF. Typical Values apply at VCC = +3.3V or +5.5V and TAMB = 25oC.
+
+
+----- PAGE 4 of 18 -----
+Rev. 6/30/03                             SP3222B/3232B True +3.0 to +5.5V RS-232 Transceivers
+© Copyright 2003 Sipex Corporation
+4
+Figure 1.  Transmitter Output Voltage vs Load
+Capacitance.
+Figure 2.  Slew Rate vs Load Capacitance.
+Figure 3.  Supply Current vs Load Capacitance when
+Transmitting Data.
+TYPICAL PERFORMANCE CHARACTERISTICS
+Unless otherwise noted, the following performance characteristics apply for VCC = +3.3V, 250kbps data rates, all drivers
+loaded with 3kΩ, 0.1µF charge pump capacitors, and TAMB = +25°C.
+30
+25
+20
+15
+10
+5
+0
+0
+500
+1000
+2000
+3000
+4000
+5000
+Slew rate (V/µs)
+Load Capacitance (pF)
+- Slew
++ Slew
+T1 at 250Kbps
+T2 at 15.6Kbps
+All TX loaded 3K // CLoad
+Figure 4.  Supply Current vs Supply Voltage.
+6
+4
+2
+0
+-2
+-4
+-6
+2.7
+3
+3.5
+4
+4.5
+5
+Supply Voltage (V)
+Transmitter Output
+Voltage (V)
+TxOUT -
+TxOUT +
+T1 at 250Kbps
+T2 at 15.6Kbps
+All TX loaded 3K // 1000 pF
+Figure 5.  Transmitter Output Voltage vs Supply
+Voltage.
+35
+30
+25
+20
+15
+10
+5
+0
+Supply Current (mA)
+Load Capacitance (pF)
+0
+1000
+2000
+3000
+4000
+5000
+250Kbps
+125Kbps
+20Kbps
+T1 at Full Data Rate
+T2 at 1/16 Data Rate
+All TX loaded 3K // CLoad
+6
+4
+2
+0
+-2
+-4
+-6
+0
+1000
+2000
+3000
+4000
+5000
+TxOUT +
+TxOUT -
+Transmitter Output
+Voltage (V)
+Load Capacitance (pF)
+T1 at 250Kbps
+T2 at 15.6Kbps
+All TX loaded 3K // CLoad
+16
+14
+12
+10
+8
+6
+4
+2
+0
+2.7
+3
+3.5
+4
+4.5
+5
+Supply Current (mA)
+Supply Voltage (V)
+1 Transmitter at 250Kbps
+1 Transmitter at 15.6Kbps
+All transmitters loaded with 3K // 1000pf
+
+
+----- PAGE 5 of 18 -----
+5
+Rev. 6/30/03                             SP3222B/3232B True +3.0 to +5.5V RS-232 Transceivers
+© Copyright 2003 Sipex Corporation
+E
+M
+A
+N
+N
+O
+I
+T
+C
+N
+U
+F
+R
+E
+B
+M
+U
+N
+N
+I
+P
+B
+2
+2
+2
+3
+P
+S
+B
+2
+3
+2
+3
+P
+S
+O
+S
+/
+P
+I
+D
+P
+O
+S
+S
+P
+O
+S
+S
+T
+N
+E
+.
+n
+oit
+a
+r
+e
+p
+o
+la
+m
+r
+o
+n
+r
+o
+f
+W
+O
+L
+cig
+ol
+ylp
+p
+A
+.
+elb
+a
+n
+E
+r
+e
+vie
+c
+e
+R
+.)
+e
+t
+a
+ts
+Z
+-
+h
+gih
+(
+st
+u
+p
+t
+u
+o
+r
+e
+vie
+c
+e
+r
+e
+h
+t
+elb
+a
+sid
+o
+t
+H
+G
+I
+H
+cig
+ol
+ylp
+p
+A
+1
+1
+-
++
+1
+C
+.r
+o
+tic
+a
+p
+a
+c
+p
+m
+u
+p
+-
+e
+g
+r
+a
+h
+c
+r
+elb
+u
+o
+d
+e
+g
+a
+tlo
+v
+e
+h
+t
+f
+o
+la
+ni
+m
+r
+e
+t
+e
+vitis
+o
+P
+2
+2
+1
++
+V
+.
+p
+m
+u
+p
+e
+g
+r
+a
+h
+c
+e
+h
+t
+y
+b
+d
+e
+t
+a
+r
+e
+n
+e
+g
+V
+5
+.
+5
++
+3
+3
+2
+-
+1
+C
+.r
+o
+tic
+a
+p
+a
+c
+p
+m
+u
+p
+-
+e
+g
+r
+a
+h
+c
+r
+elb
+u
+o
+d
+e
+g
+a
+tlo
+v
+e
+h
+t
+f
+o
+la
+ni
+m
+r
+e
+t
+e
+vit
+a
+g
+e
+N
+4
+4
+3
++
+2
+C
+.r
+o
+tic
+a
+p
+a
+c
+p
+m
+u
+p
+-
+e
+g
+r
+a
+h
+c
+g
+nitr
+e
+v
+ni
+e
+h
+t
+f
+o
+la
+ni
+m
+r
+e
+t
+e
+vitis
+o
+P
+5
+5
+4
+-
+2
+C
+.r
+o
+tic
+a
+p
+a
+c
+p
+m
+u
+p
+-
+e
+g
+r
+a
+h
+c
+g
+nitr
+e
+v
+ni
+e
+h
+t
+f
+o
+la
+ni
+m
+r
+e
+t
+e
+vit
+a
+g
+e
+N
+6
+6
+5
+-
+V
+.
+p
+m
+u
+p
+e
+g
+r
+a
+h
+c
+e
+h
+t
+y
+b
+d
+e
+t
+a
+r
+e
+n
+e
+g
+V
+5
+.
+5
+-
+7
+7
+6
+T
+U
+O
+1
+T
+.t
+u
+p
+t
+u
+o
+r
+e
+vir
+d
+2
+3
+2
+-
+S
+R
+5
+1
+7
+1
+4
+1
+T
+U
+O
+2
+T
+.t
+u
+p
+t
+u
+o
+r
+e
+vir
+d
+2
+3
+2
+-
+S
+R
+8
+8
+7
+N
+I
+1
+R
+.t
+u
+p
+ni
+r
+e
+vie
+c
+e
+r
+2
+3
+2
+-
+S
+R
+4
+1
+6
+1
+3
+1
+N
+I
+2
+R
+.t
+u
+p
+ni
+r
+e
+vie
+c
+e
+r
+2
+3
+2
+-
+S
+R
+9
+9
+8
+T
+U
+O
+1
+R
+.t
+u
+p
+t
+u
+o
+r
+e
+v
+eic
+e
+r
+S
+O
+M
+C
+/
+L
+T
+T
+3
+1
+5
+1
+2
+1
+T
+U
+O
+2
+R
+.t
+u
+p
+t
+u
+o
+r
+e
+v
+eic
+e
+r
+S
+O
+M
+C
+/
+L
+T
+T
+0
+1
+0
+1
+9
+N
+I
+1
+T
+.t
+u
+p
+ni
+r
+e
+vir
+d
+S
+O
+M
+C
+/
+L
+T
+T
+2
+1
+3
+1
+1
+1
+N
+I
+2
+T
+.t
+u
+p
+ni
+r
+e
+vir
+d
+S
+O
+M
+C
+/
+L
+T
+T
+1
+1
+2
+1
+0
+1
+D
+N
+G
+.
+d
+n
+u
+o
+r
+G
+6
+1
+8
+1
+5
+1
+V C
+C
+e
+g
+a
+tlo
+v
+ylp
+p
+u
+s
+V
+5
+.
+5
++
+o
+t
+V
+0
+.
+3
++
+7
+1
+9
+1
+6
+1
+N
+D
+H
+S
+.
+n
+oit
+a
+r
+e
+p
+o
+e
+civ
+e
+d
+la
+m
+r
+o
+n
+r
+o
+f
+H
+G
+I
+H
+e
+vir
+D
+.t
+u
+p
+n
+Ilo
+rt
+n
+o
+C
+n
+w
+o
+d
+t
+u
+h
+S
+-
+n
+o
+e
+h
+t
+d
+n
+a
+)t
+u
+p
+t
+u
+o
+Z
+-
+h
+gih
+(
+s
+r
+e
+vir
+d
+e
+h
+t
+n
+w
+o
+d
+t
+u
+h
+s
+o
+t
+W
+O
+L
+e
+vir
+D
+.ylp
+p
+u
+s
+r
+e
+w
+o
+p
+d
+r
+a
+o
+b
+8
+1
+0
+2
+-
+.
+C
+.
+N
+.tc
+e
+n
+n
+o
+C
+o
+N
+-
+4
+1
+,
+1
+1
+-
+Table 1.  Device Pin Description
+
+
+----- PAGE 6 of 18 -----
+Rev. 6/30/03                             SP3222B/3232B True +3.0 to +5.5V RS-232 Transceivers
+© Copyright 2003 Sipex Corporation
+6
+Figure 7.  Pinout Configuration for the SP3232B
+Figure 6.  Pinout Configurations for the SP3222B
+V-
+1
+2
+3
+4
+17
+18
+19
+20
+5
+6
+7
+16
+15
+14
+SHDN
+C1+
+V+
+C1-
+C2+
+C2-
+N.C.
+EN
+R1IN
+GND
+VCC
+T1OUT
+N.C.
+8
+9
+10
+11
+12
+13
+R2IN
+R2OUT
+SP3222B
+T2OUT
+T1IN
+T2IN
+R1OUT
+SSOP/TSSOP
+V-
+1
+2
+3
+4
+15
+16
+17
+18
+5
+6
+7
+14
+13
+12
+SHDN
+C1+
+V+
+C1-
+C2+
+C2-
+EN
+R1IN
+GND
+VCC
+T1OUT
+8
+9
+10
+11
+R2IN
+SP3222B
+T2OUT
+T2IN
+T1IN
+R1OUT
+DIP/SO
+R2OUT
+V-
+1
+2
+3
+4
+13
+14
+15
+16
+5
+6
+7
+12
+11
+10
+C1+
+V+
+C1-
+C2+
+C2-
+R1IN
+R2IN
+GND
+VCC
+T1OUT
+T2IN
+8
+9
+SP3232B
+T1IN
+R1OUT
+R2OUT
+T2OUT
+
+
+----- PAGE 7 of 18 -----
+7
+Rev. 6/30/03                             SP3222B/3232B True +3.0 to +5.5V RS-232 Transceivers
+© Copyright 2003 Sipex Corporation
+Figure 8.  SP3222B Typical Operating Circuits
+Figure 9.  SP3232B Typical Operating Circuit
+SP3222B
+2
+4
+6
+5
+3
+7
+19
+GND
+T1IN
+T2IN
+T1OUT
+T2OUT
+C1+
+C1-
+C2+
+C2-
+V+
+V-
+VCC
+13
+12
+0.1µF
+0.1µF
+0.1µF
++
+C2
+C5
+C1
++
++
+*C3
+C4
++
++
+0.1µF
+0.1µF
+ 8
+17
+RS-232
+OUTPUTS
+RS-232
+INPUTS
+LOGIC
+INPUTS
+VCC
+18
+1
+5kΩ
+R1IN
+R1OUT
+15
+9
+5kΩ
+R2IN
+R2OUT
+10
+16
+LOGIC
+OUTPUTS
+EN
+20
+SHDN
+*can be returned to
+  either VCC or GND
+SSOP
+TSSOP
+SP3222B
+2
+4
+6
+5
+3
+7
+17
+GND
+T1IN
+T2IN
+T1OUT
+T2OUT
+C1+
+C1-
+C2+
+C2-
+V+
+V-
+VCC
+12
+11
+0.1µF
+0.1µF
+0.1µF
++
+C2
+C5
+C1
++
++
+*C3
+C4
++
++
+0.1µF
+0.1µF
+8
+15
+RS-232
+OUTPUTS
+RS-232
+INPUTS
+LOGIC
+INPUTS
+VCC
+16
+1
+5kΩ
+R1IN
+R1OUT
+13
+9
+5kΩ
+R2IN
+R2OUT
+10
+14
+LOGIC
+OUTPUTS
+EN
+18
+SHDN
+*can be returned to
+  either VCC or GND
+DIP/SO
+SP3232B
+1
+3
+5
+4
+2
+6
+16
+GND
+T1IN
+T2IN
+T1OUT
+T2OUT
+C1+
+C1-
+C2+
+C2-
+V+
+V-
+VCC
+11
+10
+0.1µF
+0.1µF
+0.1µF
++
+C2
+C5
+C1
++
++
+*C3
+C4
++
++
+0.1µF
+0.1µF
+14
+7
+RS-232
+OUTPUTS
+RS-232
+INPUTS
+LOGIC
+INPUTS
+VCC
+15
+5kΩ
+R1IN
+R1OUT
+12
+13
+5kΩ
+R2IN
+R2OUT
+9
+8
+LOGIC
+OUTPUTS
+*can be returned to
+  either VCC or GND
+
+
+----- PAGE 8 of 18 -----
+Rev. 6/30/03                             SP3222B/3232B True +3.0 to +5.5V RS-232 Transceivers
+© Copyright 2003 Sipex Corporation
+8
+DESCRIPTION
+The SP3222B/3232B transceivers meet the EIA/
+TIA-232 and V.28/V.24 communication proto-
+cols and can be implemented in battery-pow-
+ered,  portable, or hand-held applications such
+as notebook or palmtop computers.  The
+SP3222B/3232B devices all feature Sipex's pro-
+prietary on-board charge pump circuitry that
+generates 2 x VCC for RS-232 voltage levels
+from a single +3.0V to +5.5V power supply.
+This series is ideal for +3.3V-only systems,
+mixed +3.3V to +5.5V systems, or +5.0V-only
+systems that require true RS-232 performance.
+The SP3222B/3232B series have drivers that
+operate at a typical data rate of 250kbps fully
+loaded.
+The SP3222B and SP3232B are 2-driver/2-
+receiver devices ideal for portable or hand-held
+applications.  The SP3222B features a 1µA
+shutdown mode that reduces power consump-
+tion and extends battery life in portable systems.
+Its receivers remain active in shutdown mode,
+allowing external devices such as modems to be
+monitored using only 1µA supply current.
+THEORY OF OPERATION
+The SP3222B/3232B series are made up of
+three basic circuit blocks:  1.  Drivers,  2.
+Receivers,  and 3.  the Sipex proprietary charge
+pump.
+Drivers
+The drivers are inverting level transmitters that
+convert TTL or CMOS logic levels to ±5.0V
+EIA/TIA-232 levels inverted relative to the in-
+put logic levels.  Typically, the RS-232 output
+voltage swing is ±5.5V with no load and at least
+±5V minimum fully loaded.  The driver outputs
+are protected against infinite short-circuits to
+ground without degradation in reliability.  Driver
+outputs will meet EIA/TIA-562 levels of ±3.7V
+with supply voltages as low as 2.7V.
+The drivers can guarantee a data rate of  250kbps
+fully loaded with 3KΩ in parallel with 1000pF,
+ensuring compatibility with PC-to-PC commu-
+nication software.
+The slew rate of the driver output is internally
+limited to a maximum of 30V/µs in order to
+meet the EIA standards (EIA RS-232D 2.1.7,
+Paragraph 5).  The transition of the loaded
+output from HIGH to LOW also meets the
+monotonicity requirements of the standard.
+Figure 10 shows a loopback test circuit used to
+the RS-232 drivers.  Figure 11 shows the test
+results of the loopback circuit with all drivers
+active at 120kbps with RS-232 loads in parallel
+with 1000pF capacitors.  Figure 12 shows the
+test results where one driver was active at
+250kbps and all drivers loaded with an RS-232
+receiver in parallel with a 1000pF capacitor.  A
+solid RS-232 data transmission rate of 250kbps
+provides compatibility with many designs in
+personal computer peripherals and LAN appli-
+cations.
+The SP3222B driver's output stages are turned
+off (tri-state) when the device is in shutdown
+mode. When the power is off, the SP3222B
+device permits the outputs to be driven up to
+±12V.  The driver's inputs do not have pull-up
+resistors. Designers should connect unused in-
+puts to VCC or GND.
+In the shutdown mode, the supply current falls
+to less than 1µA, where SHDN = LOW.  When
+the SP3222B device is shut down, the device's
+driver outputs are disabled (tri-stated) and the
+charge pumps are turned off with V+ pulled
+down to VCC and V- pulled to GND.  The time
+required to exit shutdown is typically 100µs.
+Connect SHDN to VCC if the shutdown mode is
+not used.
+
+
+----- PAGE 9 of 18 -----
+9
+Rev. 6/30/03                             SP3222B/3232B True +3.0 to +5.5V RS-232 Transceivers
+© Copyright 2003 Sipex Corporation
+Figure 11.  Driver Loopback Test Results at 120kbps
+Figure 12.  Driver Loopback Test Results at 250 kbps
+Figure 10.  SP3222B/3232B Driver Loopback Test Circuit
+SP3222B
+SP3232B
+GND
+TxIN
+TxOUT
+C1+
+C1-
+C2+
+C2-
+V+
+V-
+VCC
+0.1µF
+0.1µF
+0.1µF
++
+C2
+C5
+C1
++
++
+C3
+C4
++
++
+0.1µF
+0.1µF
+LOGIC
+INPUTS
+VCC
+5kΩ
+RxIN
+RxOUT
+LOGIC
+OUTPUTS
+EN*
+*SHDN
+1000pF
+VCC
+* SP3222EB only
+
+
+----- PAGE 10 of 18 -----
+Rev. 6/30/03                             SP3222B/3232B True +3.0 to +5.5V RS-232 Transceivers
+© Copyright 2003 Sipex Corporation
+10
+Receivers
+The receivers convert EIA/TIA-232 levels to
+TTL or CMOS logic output levels.  The SP3222B
+receivers have an inverting tri-state output.  These
+receiver outputs (RxOUT) are tri-stated when
+the enable control EN = HIGH.  In the shutdown
+mode, the receivers can be active or inactive.
+EN has no effect on TxOUT.  The truth table
+logic of the SP3222B driver and receiver out-
+puts can be found in Table 2.
+Since receiver input is usually from a transmis-
+sion line where long cable lengths and system
+interference can degrade the signal, the inputs
+have a typical hysteresis margin of 300mV.  This
+ensures that the receiver is virtually immune to
+noisy transmission lines.  Should an input be left
+unconnected, a 5kΩ pulldown resistor to ground
+will commit the output of the receiver to a HIGH
+state.
+Charge Pump
+The charge pump is a Sipex–patented design
+(5,306,954) and uses a unique approach com-
+pared to older less–efficient designs.  The charge
+pump still requires four external capacitors, but
+uses a four–phase voltage shifting technique to
+attain symmetrical 5.5V power supplies.  The
+internal power supply consists of a regulated
+dual charge pump that provides output voltages
+5.5V regardless of the input voltage (VCC) over
+the +3.0V to +5.5V range.
+In most circumstances, decoupling the power
+supply can be achieved adequately using a 0.1µF
+bypass capacitor at C5 (refer to Figures 8 and 9).
+In applications that are sensitive to power-sup-
+ply noise, decouple VCC to ground with a capaci-
+tor of the same value as charge-pump capacitor
+C1.  Physically connect bypass capacitors as
+close to the IC as possible.
+The charge pumps operate in a discontinuous
+mode using an internal oscillator.  If the output
+voltages are less than a magnitude of 5.5V, the
+charge pumps are enabled.  If the output voltage
+exceed a magnitude of 5.5V, the charge pumps
+are disabled.  This oscillator controls the four
+phases of the voltage shifting. A description of
+each phase follows.
+Phase 1
+— VSS charge storage — During this phase of
+the clock cycle, the positive side of capacitors
+C1 and C2 are initially charged to VCC.  Cl
++ is
+then switched to GND and the charge in C1
+– is
+transferred to C2
+–.  Since C2
++ is connected to
+VCC, the voltage potential across capacitor C2
+is now 2 times VCC.
+Phase 2
+— VSS transfer — Phase two of the clock con-
+nects the negative terminal of C2 to the VSS
+storage capacitor and the positive terminal of C2
+to GND.  This transfers a negative generated
+voltage to C3.  This generated voltage is regu-
+lated to a minimum voltage of -5.5V.  Simulta-
+neous with the transfer of the voltage to C3, the
+positive side of capacitor C1 is switched to VCC
+and the negative side is connected to GND.
+Phase 3
+— VDD charge storage — The third phase of the
+clock is identical to the first phase — the charge
+transferred in C1 produces –VCC in the negative
+terminal of C1, which is applied to the negative
+side of capacitor C2.  Since C2
++ is at VCC, the
+voltage potential across C2 is 2 times VCC.
+Phase 4
+— VDD transfer — The fourth phase of the clock
+connects the negative terminal of C2 to GND,
+and transfers this positive generated voltage
+across C2 to C4, the VDD storage capacitor.
+Table 2. SP3222B Truth Table Logic for Shutdown and
+Enable Control
+N
+D
+H
+S
+N
+E
+T
+U
+O
+x
+T
+T
+U
+O
+x
+R
+0
+0
+e
+t
+a
+ts
+-ir
+T
+e
+vitc
+A
+0
+1
+e
+t
+a
+ts
+-ir
+T
+e
+t
+a
+ts
+-ir
+T
+1
+0
+e
+vitc
+A
+e
+vitc
+A
+1
+1
+e
+vitc
+A
+e
+t
+a
+ts
+-ir
+T
+
+
+----- PAGE 11 of 18 -----
+11
+Rev. 6/30/03                             SP3222B/3232B True +3.0 to +5.5V RS-232 Transceivers
+© Copyright 2003 Sipex Corporation
+This voltage is regulated to +5.5V.  At this
+voltage, the internal oscillator is disabled.  Si-
+multaneous with the transfer of the voltage to
+C4, the positive side of capacitor C1 is switched
+to VCC and the negative side is connected to
+GND, allowing the charge pump cycle to begin
+again.  The charge pump cycle will continue as
+long as the operational conditions for the inter-
+nal oscillator are present.
+Since both V+ and V– are separately generated
+from VCC; in a no–load condition V+ and V– will
+be symmetrical.  Older charge pump approaches
+that generate V– from V+ will show a decrease in
+the magnitude of V–  compared to V+ due to the
+inherent inefficiencies in the design.
+The clock rate for the charge pump typically
+operates at 250kHz.  The external capacitors can
+be as low as 0.1µF with a 16V breakdown
+voltage rating.
+ESD Tolerance
+The SP3222B/3232B series incorporates
+ruggedized ESD cells on all driver output and
+receiver input pins. The ESD structure is
+improved over our previous family for more
+rugged applications and environments sensitive
+to electrostatic discharges and associated
+transients.
+The Human Body Model has been the generally
+accepted ESD testing method for semiconduc-
+tors.  This method is also specified in MIL-STD-
+883, Method 3015.7 for ESD testing. The premise
+of this ESD test is to simulate the human body’s
+potential to store electrostatic energy and
+discharge it to an integrated circuit.
+The simulation is performed by using a test
+model as shown in Figure 18.  This method
+will test the IC’s capability to withstand an
+ESD transient during normal handling such as
+in manufacturing areas where the ICs tend to
+be handled frequently.
+For the Human Body Model, the current
+limiting resistor (RS) and the source capacitor
+(CS) are 1.5kΩ and 100pF, respectively.
+Figure 13. Charge Pump — Phase 1
+Figure 14. Charge Pump — Phase 2
+VCC = +5V
+–5V
+–5V
++5V
+VSS Storage Capacitor
+VDD Storage Capacitor
+C1
+C2
+C3
+C4
++
++
++
++
+–
+–
+–
+–
+VCC = +5V
+–10V
+VSS Storage Capacitor
+VDD Storage Capacitor
+C1
+C2
+C3
+C4
++
++
++
++
+–
+–
+–
+–
+
+
+----- PAGE 12 of 18 -----
+Rev. 6/30/03                             SP3222B/3232B True +3.0 to +5.5V RS-232 Transceivers
+© Copyright 2003 Sipex Corporation
+12
+Figure 15. Charge Pump Waveforms
+Figure 16. Charge Pump — Phase 3
+Figure 17. Charge Pump — Phase 4
+Figure 18.  ESD Test Circuit for Human Body Model
+Ch1   2.00V   Ch2   2.00V   M 1.00µs  Ch1   5.48V
+2
+1
+T
+T
+[
+]
+T
++6V
+a) C2+
+b) C2-
+GND
+GND
+-6V
+VCC = +5V
+–5V
++5V
+–5V
+VSS Storage Capacitor
+VDD Storage Capacitor
+C1
+C2
+C3
+C4
++
++
++
++
+–
+–
+–
+–
+VCC = +5V
++10V
+VSS Storage Capacitor
+VDD Storage Capacitor
+C1
+C2
+C3
+C4
++
++
++
++
+–
+–
+–
+–
+RC
+CS
+RS
+SW1
+SW2
+RC
+Device
+Under
+Test
+DC Power
+Source
+CS
+RS
+SW1
+SW2
+
+
+----- PAGE 13 of 18 -----
+13
+Rev. 6/30/03                             SP3222B/3232B True +3.0 to +5.5V RS-232 Transceivers
+© Copyright 2003 Sipex Corporation
+D
+E
+H
+PACKAGE: PLASTIC SHRINK
+SMALL OUTLINE
+(SSOP)
+DIMENSIONS (Inches)
+Minimum/Maximum
+(mm)
+20–PIN
+A
+A1
+Ø
+L
+B
+e
+A
+A1
+B
+D
+E
+e
+H
+L
+Ø
+0.068/0.078
+(1.73/1.99)
+0.002/0.008
+(0.05/0.21)
+0.010/0.015
+(0.25/0.38)
+0.278/0.289
+(7.07/7.33)
+0.205/0.212
+(5.20/5.38)
+0.0256 BSC
+(0.65 BSC)
+0.301/0.311
+(7.65/7.90)
+0.022/0.037
+(0.55/0.95)
+0°/8°
+(0°/8°)
+16–PIN
+0.068/0.078
+(1.73/1.99)
+0.002/0.008
+(0.05/0.21)
+0.010/0.015
+(0.25/0.38)
+0.239/0.249
+(6.07/6.33)
+0.205/0.212
+(5.20/5.38)
+0.0256 BSC
+(0.65 BSC)
+0.301/0.311
+(7.65/7.90)
+0.022/0.037
+(0.55/0.95)
+0°/8°
+(0°/8°)
+
+
+----- PAGE 14 of 18 -----
+Rev. 6/30/03                             SP3222B/3232B True +3.0 to +5.5V RS-232 Transceivers
+© Copyright 2003 Sipex Corporation
+14
+D
+ALTERNATE
+END PINS
+(BOTH ENDS)
+D1 = 0.005" min.
+(0.127 min.)
+E
+PACKAGE:
+PLASTIC
+DUAL–IN–LINE
+(NARROW)
+A = 0.210" max.
+(5.334 max).
+E1
+C
+Ø
+L
+A2
+A1 = 0.015" min.
+(0.381min.)
+B
+B1
+e = 0.100 BSC
+(2.540 BSC)
+eA = 0.300 BSC
+(7.620 BSC)
+DIMENSIONS (Inches)
+Minimum/Maximum
+(mm)
+A2
+B
+B1
+C
+D
+E
+E1
+L
+Ø
+16–PIN
+0.115/0.195
+(2.921/4.953)
+0.014/0.022
+(0.356/0.559)
+0.045/0.070
+(1.143/1.778)
+0.008/0.014
+(0.203/0.356)
+0.780/0.800
+(19.812/20.320)
+0.300/0.325
+(7.620/8.255)
+0.240/0.280
+(6.096/7.112)
+0.115/0.150
+(2.921/3.810)
+0°/ 15°
+(0°/15°)
+18–PIN
+0.115/0.195
+(2.921/4.953)
+0.014/0.022
+(0.356/0.559)
+0.045/0.070
+(1.143/1.778)
+0.008/0.014
+(0.203/0.356)
+0.880/0.920
+(22.352/23.368)
+0.300/0.325
+(7.620/8.255)
+0.240/0.280
+(6.096/7.112)
+0.115/0.150
+(2.921/3.810)
+0°/ 15°
+(0°/15°)
+
+
+----- PAGE 15 of 18 -----
+15
+Rev. 6/30/03                             SP3222B/3232B True +3.0 to +5.5V RS-232 Transceivers
+© Copyright 2003 Sipex Corporation
+D
+E
+H
+PACKAGE:
+PLASTIC
+SMALL OUTLINE (SOIC)
+(WIDE)
+DIMENSIONS (Inches)
+Minimum/Maximum
+(mm)
+A
+A1
+Ø
+L
+B
+e
+A
+A1
+B
+D
+E
+e
+H
+L
+Ø
+16–PIN
+0.090/0.104
+(2.29/2.649)
+0.004/0.012
+(0.102/0.300)
+0.013/0.020
+(0.330/0.508)
+0.398/0.413
+(10.10/10.49)
+0.291/0.299
+(7.402/7.600)
+0.050 BSC
+(1.270 BSC)
+0.394/0.419
+(10.00/10.64)
+0.016/0.050
+(0.406/1.270)
+0°/8°
+(0°/8°)
+18–PIN
+0.090/0.104
+(2.29/2.649))
+0.004/0.012
+(0.102/0.300)
+0.013/0.020
+(0.330/0.508)
+0.447/0.463
+(11.35/11.74)
+0.291/0.299
+(7.402/7.600)
+0.050 BSC
+(1.270 BSC)
+0.394/0.419
+(10.00/10.64)
+0.016/0.050
+(0.406/1.270)
+0°/8°
+(0°/8°)
+
+
+----- PAGE 16 of 18 -----
+Rev. 6/30/03                             SP3222B/3232B True +3.0 to +5.5V RS-232 Transceivers
+© Copyright 2003 Sipex Corporation
+16
+D
+E
+H
+PACKAGE:
+PLASTIC
+SMALL OUTLINE (SOIC)
+(NARROW)
+DIMENSIONS (Inches)
+Minimum/Maximum
+(mm)
+A
+A1
+Ø
+L
+B
+e
+h x 45°
+A
+A1
+B
+D
+E
+e
+H
+h
+L
+Ø
+16–PIN
+0.053/0.069
+(1.346/1.748)
+0.004/0.010
+(0.102/0.249)
+0.013/0.020
+(0.330/0.508)
+0.386/0.394
+(9.802/10.000)
+0.150/0.157
+(3.802/3.988)
+0.050 BSC
+(1.270 BSC)
+0.228/0.244
+(5.801/6.198)
+0.010/0.020
+(0.254/0.498)
+0.016/0.050
+(0.406/1.270)
+0°/8°
+(0°/8°)
+
+
+----- PAGE 17 of 18 -----
+17
+Rev. 6/30/03                             SP3222B/3232B True +3.0 to +5.5V RS-232 Transceivers
+© Copyright 2003 Sipex Corporation
+Gage
+Plane
+1.0 OIA
+e
+0.169 (4.30)
+0.177 (4.50)
+0.252 BSC (6.4 BSC)
+0’-8’ 12’REF
+0.039 (1.0)
+e/2
+0.039 (1.0)
+0.126 BSC (3.2 BSC)
+ D
+0.007 (0.19)
+0.012 (0.30)
+0.033 (0.85)
+0.037 (0.95)
+0.002 (0.05)
+0.006 (0.15)
+0.043 (1.10) Max
+(θ3)
+1.0 REF
+0.020 (0.50)
+0.026 (0.75)
+(θ1)
+0.004 (0.09) Min
+0.004 (0.09) Min
+0.010 (0.25)
+(θ2)
+0.008 (0.20)
+DIMENSIONS
+in inches (mm) Minimum/Maximum
+Symbol
+14 Lead
+16 Lead
+20 Lead
+24 Lead
+28 Lead
+38 Lead
+D
+0.193/0.201
+0.193/0.201 0.252/0.260 0.303/0.311 0.378/0.386 0.378/0.386
+(4.90/5.10)
+(4.90/5.10)
+(6.40/6.60)
+(7.70/7.90)
+(9.60/9.80)
+(9.60/9.80)
+e
+0.026 BSC
+0.026 BSC
+0.026 BSC
+0.026 BSC
+0.026 BSC
+0.020 BSC
+(0.65 BSC)
+(0.65 BSC)
+(0.65 BSC)
+(0.65 BSC)
+(0.65 BSC)
+(0.50 BSC)
+PACKAGE: PLASTIC THIN
+SMALL OUTLINE
+(TSSOP)
+
+
+----- PAGE 18 of 18 -----
+Rev. 6/30/03                             SP3222B/3232B True +3.0 to +5.5V RS-232 Transceivers
+© Copyright 2003 Sipex Corporation
+18
+ORDERING INFORMATION
+Model
+Temperature Range
+Package Type
+SP3222BCA ............................................. 0˚C to +70˚C .......................................... 20-Pin SSOP
+SP3222BCP ............................................. 0˚C to +70˚C ............................................ 18-Pin PDIP
+SP3222BCT ............................................. 0˚C to +70˚C ........................................ 18-Pin WSOIC
+SP3222BCY ............................................. 0˚C to +70˚C ........................................ 20-Pin TSSOP
+SP3222BEA ............................................ -40˚C to +85˚C ........................................ 20-Pin SSOP
+SP3222BEP ............................................ -40˚C to +85˚C .......................................... 18-Pin PDIP
+SP3222BET ............................................ -40˚C to +85˚C ...................................... 18-Pin WSOIC
+SP3222BEY ............................................ -40˚C to +85˚C ...................................... 20-Pin TSSOP
+SP3232BCA ............................................. 0˚C to +70˚C .......................................... 16-Pin SSOP
+SP3232BCP ............................................. 0˚C to +70˚C ............................................ 16-Pin PDIP
+SP3232BCT ............................................. 0˚C to +70˚C ........................................ 16-Pin WSOIC
+SP3232BCN ............................................. 0˚C to +70˚C ......................................... 16-Pin nSOIC
+SP3232BCY ............................................. 0˚C to +70˚C ........................................ 16-Pin TSSOP
+SP3232BEA ............................................ -40˚C to +85˚C ........................................ 16-Pin SSOP
+SP3232BEP ............................................ -40˚C to +85˚C .......................................... 16-Pin PDIP
+SP3232BET ............................................ -40˚C to +85˚C ...................................... 16-Pin WSOIC
+SP3232BEN ............................................ -40˚C to +85˚C ....................................... 16-Pin nSOIC
+SP3232BEY ............................................ -40˚C to +85˚C ...................................... 16-Pin TSSOP
+Corporation
+ANALOG EXCELLENCE
+Sipex Corporation reserves the right to make changes to any products described herein. Sipex does not assume any liability arising out of the
+application or use of any product or circuit described herein; neither does it convey any license under its patent rights nor the rights of others.
+Sipex Corporation
+Headquarters and
+Sales Office
+233 South Hillview Drive
+Milpitas, CA 95035
+TEL: (408) 934-7500
+FAX: (408) 935-7600
+Sales Office
+22 Linnell Circle
+Billerica, MA  01821
+TEL: (978) 667-8700
+FAX: (978) 670-9001
+e-mail: sales@sipex.com
+Please consult the factory for pricing and availability on a Tape-On-Reel option.

@@ -1,0 +1,470 @@
+# B3D090L-C_GDT.pdf
+
+
+----- PAGE 1 of 3 -----
+ 
+ 
+ 
+  
+ 
+  1 / 3 
+ 
+B3D090L-C 
+Specifications are subject to change without notice. 
+Customers should verify actual device performance in their specific applications 
+  www.bencent.com.cn 
+Order Code:  B3D090L-C 
+Gas Discharge Tube 
+Version: A0  2013-09-17 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+` 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Surface Mounting Design 7.6×5.0×5.8mm 
+High Current Handling Capability 5,000A @ 8/20μs  
+Low Capacitance and Insertion Loss 
+Quick Response and Long Service Life 
+Moisture sensitivity level：Level 1 
+Electrical Parameter  
+RS485/232/422 
+Schematic Symbol 
+Application information 
+Package (Top View) 
+Features 
+ 
+Exterior 
+SMD 
+Agency Approvals 
+DC Breakdown Voltage 1)2) 
+100V/s 
+68-112 
+V 
+Impulse Spark-over Voltage 
+At 1kV/μs 
+for 99 % of measured values  ≤ 700 
+V 
+At 1kV/μs 
+Typical values of distribution  ≤ 600 
+V 
+Impulse Discharge Current 3) 
+8/20μs 
+5,000 
+A 
+Arc Voltage 
+At 1A 
+~8 
+V 
+Insulation Resistance 
+DC=50V 
+≥1 
+GΩ 
+Capacitance at 1MHz 
+VDC=0.5V 
+≤1.5 
+pF 
+Weight 
+ 
+~1.1 
+g 
+Operating And Storage Temperature 
+ 
+-40-90 
+℃ 
+Marking 
+ 
+Bencent Logo YY MM B3D090L-C（YY：year 
+of production，MM：month of production） 
+ 
+1) At delivery AQL 0.65 level II  GB/T 2828.1-2003 
+2) In ionized mode  
+3) Terms and waveforms in accordance with ITU-T Rec. K. 12; IEC 61643-21  
+Icon 
+Description 
+ 
+Compliance with 2011/65/EU 
+ 
+Compliance with IEC61249-2-21:2003 
+ 
+Mean lead free 
+ 
+UL Certificated E232249 
+3 
+2 
+1 
+1 
+3 
+2 
+
+
+----- PAGE 2 of 3 -----
+ 
+ 
+ 
+  
+ 
+  2 / 3 
+ 
+B3D090L-C 
+Specifications are subject to change without notice. 
+Customers should verify actual device performance in their specific applications 
+  www.bencent.com.cn 
+Order Code:  B3D090L-C 
+Gas Discharge Tube 
+Version: A0  2013-09-17 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+REF 
+mm 
+inch 
+A 
+9.6 
+0.378 
+B 
+1.5 
+0.059 
+C 
+1.5 
+0.059 
+D 
+5.0 
+0.197 
+B3D      090      L          - C      
+(1)        (2)      ( 3)         (4)       
+(1) Bencent 3-Electrode SMD Gas Discharge Tube 
+7.6×5.0×5.8mm 
+(2)  DC Breakdown Voltage, e.g., 090=90V 
+(3) Surge Rating @8/20
+μs, 
+L=5,000A（Total Impulse 
+Discharge Current 5,000A @ 8/20μs ） 
+(4)  “-C”Means it is Suitable for High-Speed SMT 
+Part Numbering System 
+Environmental Reliability Characteristics 
+Lead Material 
+Copper 
+Body Material 
+Ceramics 
+Terminal Finish 
+100% Matte-Tin Plated 
+Product Characteristics 
+Testing items 
+Technical standards 
+High Temperature Storage Test 
+Temperature: 85℃ 
+Time:2H 
+Low Temperature Storage Test 
+Temperature: -40℃ 
+Time:2H 
+Vibration 
+Frequency：10-500Hz  
+Amplitude：0.15mm 
+Time：45min 
+Resistance of soldering heat 
+Temperature: 260±5℃ 
+Time of dip soldering：10s，1time 
+Note: Up-screen program can be specified by customer’s request via contacting Bencent service 
+Solderability test 
+Solderability 
+Solder Pot Temperature: 
+245℃±5℃ 
+Solder Dwell Time: 
+4-6 seconds 
+Recommended Soldering Pad  
+Product Dimensions 
+REF 
+mm 
+inch 
+A 
+7.6±0.3 
+0.299±0.012 
+B 
+0.5±0.2 
+0.020±0.008 
+C 
+1.6±0.2 
+0.063±0.008 
+D 
+0.5±0.2 
+0.020±0.008 
+E 
+5.0±0.2 
+0.197±0.008 
+F 
+5.0±0.2 
+0.197±0.008 
+G 
+5.8±0.3 
+0.228±0.012 
+A 
+B 
+C 
+D 
+E 
+F 
+G 
+D 
+B 
+A 
+C 
+
+
+----- PAGE 3 of 3 -----
+ 
+ 
+ 
+  
+ 
+  3 / 3 
+ 
+B3D090L-C 
+Specifications are subject to change without notice. 
+Customers should verify actual device performance in their specific applications 
+  www.bencent.com.cn 
+Order Code:  B3D090L-C 
+Gas Discharge Tube 
+Version: A0  2013-09-17 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Reflow Condition 
+Pb-Free assembly 
+Pre 
+Heat 
+Temperature Min 
+150°C 
+Temperature Max 
+200°C 
+Time （min to max） 
+60 – 180 secs 
+Average ramp up rate（Liquids）Tamp
+（TL
+3°C/second max 
+） to peal 
+TS(max) to TL
+3°C/second max 
+ - Ramp-up Rate 
+Reflow 
+- Temperature (TL
+217°C 
+) 
+(Liquids) 
+- Temperature (TL
+60 – 150 seconds 
+) 
+Peak Temperature (TP
+260+0/-5 °C 
+) 
+Time within 5°C of actual peak 
+Temperature (tp) 
+~10 seconds 
+Ramp-down Rate 
+6°C/second max 
+Time 25°C to peak Temperature (TP
+8 minutes Max. 
+) 
+Do not exceed 
+260°C 
+REF 
+mm 
+inch 
+A 
+5.4±0.1 
+ 0.216±0.004 
+B 
+8.4±0.1 
+ 0.331±0.004 
+d 
+Φ 1.5±0.1 
+Φ 0.059±0.004 
+P0 
+4.0±0.1 
+0.157±0.004 
+P1 
+2.0±0.1 
+0.079±0.004 
+P 
+8.0±0.1 
+0.315±0.004 
+E 
+1.75±0.1 
+0.069±0.004 
+F 
+7.5±0.1 
+0.295±0.004 
+W 
+16.0±0.3 
+ 0.630± 0.012 
+D 
+Φ 330.0 
+Φ 13.0 
+D1 
+Φ 50Min 
+Φ 1.97Min 
+D2 
+Φ 13±0.15 
+0.512±0.006 
+W1 
+16.8±2.0 
+0.661±0.079 
+Package  Reel  Information 
+Reflow Profile 
+Outline 
+Reel 
+(PCS) 
+Per Carton 
+(PCS) 
+Reel Diameter (mm) 
+Carton Size(mm) 
+L 
+W 
+H 
+TAPING 
+1,000 
+16,000 
+330 
+360 
+360 
+380 
+ 
+tP 
+Ramp-down 
+TP 
+TL 
+TS(max) 
+TS(min) 
+25 
+time to peak temper ature 
+Time 
+Temperature 
+Critical Zone 
+TL to TP 
+TL 
+Preheat 
+Ramp-up 
+tS 

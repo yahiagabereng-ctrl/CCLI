@@ -1,0 +1,331 @@
+# SK52L_MCC_Schottky.pdf
+
+
+----- PAGE 1 of 3 -----
+SK52L
+THRU
+SK510L
+5 Amp Schottky
+Rectifier
+20 to 100 Volts
+Features
+• 
+High Current Capability 
+• 
+For Surface Mount Applications
+• 
+Higher Temp Soldering : 250     for 10 Seconds At Terminals
+• 
+Available on Tape and Reel
+Maximum Ratings
+• 
+Operating Junction Temperature: -55°C to +125°C
+• 
+Storage Temperature: -55°C to +150°C
+MCC
+Catalog
+Number
+Device
+Marking
+Maximum
+Reccurrent
+Peak Reverse
+Voltage
+Maximum
+RMS
+Voltage
+Maximum
+DC
+Blocking
+Voltage
+SK52L        SK52L 
+20V 
+14V 
+20V
+SK53L        SK53L 
+30V 
+21V 
+30V
+SK54L        SK54L 
+40V 
+28V 
+40V
+SK56L        SK56L 
+60V 
+42V 
+60V
+SK58L        SK58L 
+80V 
+56V 
+80V
+SK510L      SK510L             100V                   70V              100V
+Electrical Characteristics @ 25°C Unless Otherwise Specified
+Average Forward
+Current
+IF(AV) 
+5.0A 
+TA = 120°C
+Peak Forward Surge
+Current
+IFSM 
+100A 
+8.3ms, half sine
+Maximum
+Instantaneous
+Forward Voltage
+VF 
+.55V
+.75V
+IFM = 5.0A;
+TJ = 25°C
+Maximum DC
+Reverse Current At
+Rated DC Blocking
+Voltage
+IR 
+1.0mA
+20mA
+TJ = 25°C
+TJ = 100°C
+Typical Junction
+Capacitance
+CJ 
+200pF 
+Measured at
+1.0MHz, VR=4.0V
+*Pulse test: Pulse width 200 µsec, Duty cycle 2%
+www.mccsemi.com
+SK58L-510L 
+                 .85V 
+SK52L-54L   
+SK56L
+  
+0.060”
+0.185
+0.121”
+SUGGESTED SOLDER
+PAD LAYOUT
+ DO-214AB
+(SMCJ) (LEAD FRAME)
+A
+B
+D
+C
+E
+F
+G
+H
+DIMENSIONS
+INCHES
+MM
+DIM 
+MIN 
+MAX 
+MIN 
+MAX 
+NOTE
+A 
+.260 
+   .280
+ 
+6.60              7.11 
+B 
+.220 
+.245
+ 
+5.59               6.22
+C 
+.006 
+.012   
+ 0.15 
+ 0.31
+D    
+.030 
+  . 060 
+   0. 76 
+     1..52
+E 
+.305                .320 
+ 
+7.75               8.13
+F 
+.079 
+.103
+ 
+2.00            
+2.62
+G 
+.108 
+  
+.128 
+  2.75                3.25
+H 
+.002 
+.008 
+      
+0.050 
+  0.203
+°C
+M C C
+	
+omponents
+21201 Itasca Street Chatsworth
+
+	 !"#
+$
+%    !"#
+
+
+----- PAGE 2 of 3 -----
+Average Forward Rectified Current  -  Amperes versus 
+Ambient Temperature  - °C 
+Figure 2 
+Forward Derating Curve 
+60 
+80 
+120 
+140 
+160 
+180 
+0 
+1 
+2 
+3 
+Single Phase, Half Wave 
+60Hz Resistive or Inductive Load 
+Amps 
+°C 
+100 
+4 
+5 
+6 
+Figure 3 
+Junction Capacitance 
+.1 
+.2 
+1 
+.4 
+2 
+10 
+20 
+40 
+4 
+100 200 
+10 
+20 
+60 
+100 
+200 
+100
+pF 
+Volts 
+600 
+400 
+40 
+400 
+1000 
+TJ=25°C 
+Figure 1 
+Typical Forward Characteristics 
+Instantaneous Forward Current - Amperes versus 
+Instantaneous Forward Voltage - Volts 
+Volts 
+40 
+60 
+ 200 
+100 
+Amps 
+.2 
+1.2 
+.4 
+.6 
+.8 
+1.0 
+.1 
+.2 
+.4 
+.6 
+1 
+2 
+4 
+6 
+10 
+20 
+25°C 
+400 
+600 
+1000
+1.4 
+SK52L -SK54L
+SK56L
+www.mccsemi .com
+M C C
+SK52L thru SK510L
+Junction Capacitance - pF versus 
+Reverse Voltage - Volts 
+SK58L -SK510L
+
+
+----- PAGE 3 of 3 -----
+ 
+Figure 4 
+Typical Reverse Characteristics 
+Instantaneous Reverse Leakage Current - MicroAmperes versus 
+Percent Of Rated Peak Reverse Voltage - Volts 
+Volts 
+.4 
+.6 
+2 
+1 
+µAmps 
+20 
+120 
+40 
+60 
+80 
+100 
+.001 
+.002 
+.004 
+.006 
+.01 
+.02 
+.04 
+.06 
+.1 
+.2 
+4 
+6 
+10 
+140 
+1 
+100 
+4 
+0 
+50
+75 
+8 
+Figure 5 
+Peak Forward Surge Current 
+Peak Forward Surge Current - Amperes versus 
+Number Of Cycles At 60Hz - Cycles  
+Amps 
+Cycles 
+2 
+6 
+10 20 
+60 80 
+40
+100
+150 
+www.mccsemi .com
+M C C
+SK52L thru SK510L
+ 
+25°C 
+ 
+75°C 
+ 
+100°C 
+125
+25

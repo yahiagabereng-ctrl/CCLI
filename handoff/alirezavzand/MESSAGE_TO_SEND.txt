@@ -51,6 +51,8 @@ PC-A plant/logger (unchanged):
   PDF: knowledge-base/08-engineering/reference/vendor/tespro/2026-10-22-tg544-v2-schematic/TG544_V2_Schematic.pdf
   Checklist + matrix: lab/evidence/hw/TG544_V2_SCHEMATIC_REVIEW_2026-10-23.md
                       lab/evidence/hw/TG544_V2_REQUIREMENT_SHEET_VERIFY_MATRIX.md
+  Datasheet ingest: lab/evidence/hw/TG544_V2_DATASHEET_INGEST_SCORE_2026-10-23.md (20/20 PDF OK)
   Please fill PASS/PART/GAP on visual pass (Eth_A SFP, DC fuse, DIO voltage class, ubus map).
+  Note: SK510AFL-TP DS vs SK510L-TP on sheet — verify BOM.
 
 Yahia

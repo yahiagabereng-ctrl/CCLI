@@ -1,0 +1,532 @@
+# MVR0805-470G_Varistor.pdf
+
+
+----- PAGE 1 of 5 -----
+ 
+ 
+1 Electrical Characteristics 
+1.1 Technical Data                                  Symbol             Value           Unit    
+Maximum allowable continuous AC voltage*1 
+VRMS 
+30.0 
+V 
+Maximum allowable continuous DC voltage   
+VDC 
+38.0 
+V 
+Varistor voltage Measured*2 
+VB 
+47(42.3-51.7) 
+V 
+Typical capacitance value measured*3 
+C 
+280 
+pF 
+Typical capacitance value tolerance   
+ 
+±40 
+% 
+Maximum clamping voltage measured*4 
+VC 
+77 
+V 
+Rated peak single pulse transient current at *5 
+I P 
+80 
+A 
+1.2 Reference Data                                                                             
+Maximum Energy Absorption 10/1000µs 
+E 
+0.2 
+J 
+Response time 
+T rise 
+<2 
+ns 
+Leakage current at VDC (At initial state) 
+IL 
+<50 
+µΑ 
+Leakage current at VDC (After reliability Test) 
+ ILA 
+<100 
+µΑ 
+Operating ambient temperature 
+ 
+-40~+125 
+℃ 
+Storage temperature 
+ 
+-40~+125 
+℃ 
+Reflow temperature profile(Recommend) 
+ 
+260 
+℃ 
+1.3 Other Data                                                                                 
+Body 
+ZnO 
+End termination 
+Ag/Ni/Sn 
+Packaging 
+Bulk/Tape 
+Complies with Standard 
+IEC61000-4-5 
+Notes: 
+ 
+*1 AC voltage at 50~60Hz 
+  
+*2 Varistor voltage 
+Measured at 1mA DC 
+*3 Capacitance 
+Measured at f=1MHz,Vrms=0.5V 
+*4 Maximum clamping voltage 
+Measured at 2A by 8/20µs Pulse 
+*5 Rated peak single pulse transient current 
+Measured by 8/20µs Pulse 
+             
+Size:                                              Unit：mm 
+ 
+ 
+Type 
+Length（L） Width（W） 
+High（H） 
+Termination（L1） 
+0805 
+2.00±0.20 
+1.20±0.20 
+0.80±0.20 
+0.30±0.20 
+ 
+L 
+W
+H
+L1 
+ 
+ 
+MVR0805-470G
+Rev : 
+                        www.leiditech.com 
+01.06.2015
+1/5
+
+
+----- PAGE 2 of 5 -----
+2. Ordering information 
+ 
+2.1 standards 
+ 
+ 
+ 
+ 
+ 
+MVR 
+0805 
+- 
+470 
+G 
+① 
+② 
+ 
+③ 
+④ 
+ 
+①MVR: Series name  
+②0805 : Chip size –0805 (2.0 x 1.2 mm) size 
+③470 : Varistor voltage(Breakdown voltage) - 47Vdc 
+④G : General absorption,low clamping voltage 
+ 
+3.Size 
+ 
+Model 
+1005(0402) 
+1608(0603) 
+2012(0805) 
+3216(1206) 
+3225(1210) 
+4532(1812) 
+5750(2220) 
+8050(3220) 
+Length(L) 
+1.00±0.15 
+1.60±0.20 
+2.00±0.20 
+3.20±0.20 
+3.20±0.20 
+4.50±0.30 
+5.70±0.30 
+8.0±0.30 
+Width(W) 
+0.50±0.15 
+0.80±0.20 
+1.20±0.20 
+1.60±0.20 
+2.50±0.20 
+3.20±0.20 
+5.00±0.30 
+5.00±0.30 
+High(H) 
+0.70max 
+0.90max 
+1.30max 
+1.60max 
+2.50max 
+3.20max 
+4.50max 
+4.50max 
+                            
+ 
+ 
+ 
+ 
+ 
+5.Surge Wave Form 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+IEC61000-4-5 Standards     
+ 
+L 
+W
+H
+L1 
+T1 
+T2 
+ 
+ 
+SEVERITY LEVEL 
+T1 
+T2 
+1 
+8 uS 
+20 uS 
+2 
+10 uS 
+1000 uS 
+ 
+8/20µs waveform current 
+MVR0805-470G
+Rev : 
+                        www.leiditech.com 
+01.06.2015
+2/5
+
+
+----- PAGE 3 of 5 -----
+ 
+6.Enviromental Reliability Test 
+ 
+Characteristic 
+Test method and description 
+High Temperature Storage 
+The specimen shall be subjected to 125℃ for 1000 hours in a thermostatic bath without 
+load and then stored at room temperature and humidity for 1 to 2 hours. The change of 
+varistor voltage shall be within 10%. 
+Temperature Cycle 
+The 
+temperature 
+cycle 
+of 
+specified 
+temperature shall be repeated five times and 
+then stored at room temperature and 
+humidity for one two hours. The change of 
+varistor voltage shall be within 10%and 
+mechanical damage shall be examined. 
+Step 
+Temperature 
+Period 
+1 
+-40±3℃ 
+30min±3 
+2 
+Room Temperature 1~2hours 
+3 
+125±2℃ 
+30min±3 
+4 
+Room Temperature 1~2hours 
+High Temperature Load 
+After being continuously applied the maximum allowable voltage at 85℃ for 
+1000hours, the specimen shall be stored at room temperature and humidity for one or 
+hours, the change of varistor voltage shall be within 10%. 
+Damp Heat Load/ 
+Humidity Load 
+The specimen should be subjected to 40℃,90 to 95%RH environment, and the 
+maximum allowable voltage applied for 1000 hours, then stored at room temperature 
+and humidity for one or two hours. The change of varistor voltage shall be within 10%. 
+Low Temperature Storage 
+The specimen should be subjected to -40℃, without load for 1000 hours and then 
+stored at room temperature for one two hours. The change of varistor voltage shall be 
+within 10%. 
+ 
+7.Soldering Recommendation 
+The principal techniques used for the soldering of components in surface mount technology are infrared 
+reflow and wave soldering. 
+ 
+7.1 Pb free solder paste 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+MVR0805-470G
+Rev : 
+                        www.leiditech.com 
+01.06.2015
+3/5
+
+
+----- PAGE 4 of 5 -----
+7.2 Repair soldering 
+7.2.1 Allowable time and temperature for making correction with a soldering iron: 350 ± 10 ℃, 3 sec. 
+7.2.2 Optimum solder amount when corrections are made using a soldering iron 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+7.3 Soldering guidelines 
+7.3.1 Our chip varistors are designed for reflow soldering only. Do not use flow soldering 
+7.3.2  Use non-activated flux (Cl content 0.2% max.) 
+7.3.3 Follow the recommended soldering conditions to avoid varistor damage. 
+ 
+8 Packaging Specification  
+ 
+8.1 Carrier tape transparent cover tape should be heat-sealed to carry the products, and the reel should be used to 
+reel the carrier tape. 
+8.2 The adhesion of the heat-sealed cover tape shall be 40﹢20/﹣15 grams. 
+8.3 Both the head and the end portion of taping shall be empty for reel package and SMT auto-pickup machine. 
+And a normal paper tape shall be connected in the head of taping for the operator handle. 
+ 
+ 
+MVR0805-470G
+Rev : 
+                        www.leiditech.com 
+01.06.2015
+4/5
+
+
+----- PAGE 5 of 5 -----
+type 
+A0 
+±0.10 
+B0 
+±0.10 
+K0 
+±0.10 
+T 
+±0.05 
+T2 
+±0.05 
+D0 
++0.10 
+D1 
+±0.05 
+P1 
+±0.10 
+P2 
+±0.05 
+P0 
+±0.05 
+W 
+±0.20 
+E 
+±0.10 
+F 
+±0.05 
+0402 
+1.08 
+1.88 
+1.04 
+0.22 
+0.87 
+1.50 
+1.00 
+4.00 
+2.00 
+4.00 
+8.00 
+1.75 
+3.50 
+0603 
+1.08 
+1.88 
+1.04 
+0.22 
+1.17 
+1.50 
+1.00 
+4.00 
+2.00 
+4.00 
+8.00 
+1.75 
+3.50 
+0805 
+1.42 
+2.30 
+1.04 
+0.22 
+1.26 
+1.50 
+1.00 
+4.00 
+2.00 
+4.00 
+8.00 
+1.75 
+3.50 
+1206 
+1.88 
+3.50 
+1.27 
+0.20 
+1.49 
+1.50 
+1.00 
+4.00 
+2.00 
+4.00 
+8.00 
+1.75 
+3.50 
+1210 
+2.18 
+3.46 
+1.45 
+0.22 
+1.77 
+1.50 
+1.00 
+4.00 
+2.00 
+4.00 
+8.00 
+1.75 
+3.50 
+1812 
+3.66 
+4.95 
+1.74 
+0.25 
+1.99 
+1.50 
+1.50 
+8.00 
+2.00 
+4.00 12.00 1.75 
+5.50 
+2220 
+5.10 
+5.97 
+2.80 
+0.25 
+3.05 
+1.50 
+1.50 
+8.00 
+2.00 
+4.00 12.00 1.75 
+5.50 
+3220 
+5.50 
+8.50 
+2.80 
+0.30 
+3.50 
+1.50 
+1.50 
+8.00 
+2.00 
+4.00 16.00 1.75 
+7.50 
+ 
+9. reel dimension 
+ 
+ 
+type 
+A 
+B 
+C 
+D 
+E 
+W 
+W1 
+0402-1210 
+178.0±1.0 
+60.0±0.5 
+13.0±0.2 
+21.0±0.2 
+2.0±0.5 
+9.0±0.50 
+1.5±0.15 
+1812-3220 
+178.0±1.0 
+60.0±0.5 
+13.5±0.1 
+21.0±0.2 
+2.0±0.5 
+13.6±0.2 
+1.5±0.15 
+ 
+type 
+0402 
+0603 
+0805 
+1206 
+  1210 
+1812 
+2220 
+3220 
+quantity 
+paper 
+10000 
+4000 
+4000 
+- 
+- 
+- 
+- 
+- 
+ 
+plastic 
+- 
+- 
+- 
+3000 
+3000 
+2000/3000 
+1000 
+800/1000 
+1000 
+ 
+MVR0805-470G
+Shanghai Leiditech Electronic Co.,Ltd 
+Email: sale1@leiditech.com 
+Tel :  +86- 021 50828806 
+Fax : +86- 021 50477059 
+Rev : 
+                        www.leiditech.com 
+01.06.2015
+5/5
