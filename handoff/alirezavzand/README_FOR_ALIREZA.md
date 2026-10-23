@@ -8,7 +8,7 @@
 
 ## TG-544 V2 schematic review (2026-10-23) — **start here for HW**
 
-**Git commit:** `TBD` — after `git pull origin main`, run `git log -1 --oneline` or use SHA below once pinned.
+**Git commit:** **`23c3270`** — `git pull origin main` then optional `git checkout 23c3270`
 
 | Item | Path |
 |------|------|

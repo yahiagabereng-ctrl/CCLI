@@ -1,7 +1,7 @@
 # TG-544 V2 schematic — review handoff for Alireza
 
 **Date:** 2026-10-23  
-**Git commit:** *(filled after push — see [README_FOR_ALIREZA.md](README_FOR_ALIREZA.md))*  
+**Git commit:** **`23c3270`**  
 **Scope:** HiTEKS **gateway requirements table** (PPT response form) × TesPro **TG-544 V2** schematic (supplier drop 2026-10-22). **Not** the cert workbook `TESPRO_VENDOR_ASK_CERT.xlsx`.
 
 ---
@@ -13,7 +13,7 @@ git clone https://github.com/yahiagabereng-ctrl/CCLI.git
 cd CCLI
 git pull origin main
 # Pin to handoff commit (replace with SHA from README):
-# git checkout <COMMIT_SHA>
+# git checkout 23c3270
 ```
 
 **Start here (order):**
