@@ -46,7 +46,7 @@ PC-A plant/logger (unchanged):
   PASS log: lab/evidence/phase5/P5_EMT432_LN_VERIFY_2026-10-23_091200.txt
 
 **TG-544 V2 schematic review (2026-10-23, git pull main):**
-  Commit: 23c3270  (handoff/alirezavzand/README_FOR_ALIREZA.md)
+  Commit: eac5ec2  (datasheet re-ingest 20/20 + matrix — README_FOR_ALIREZA.md)
   Start: handoff/alirezavzand/TG544_V2_SCHEMATIC_REVIEW_ALIREZA.md
   PDF: knowledge-base/08-engineering/reference/vendor/tespro/2026-10-22-tg544-v2-schematic/TG544_V2_Schematic.pdf
   Checklist + matrix: lab/evidence/hw/TG544_V2_SCHEMATIC_REVIEW_2026-10-23.md

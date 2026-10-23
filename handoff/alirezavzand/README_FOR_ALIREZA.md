@@ -8,7 +8,7 @@
 
 ## TG-544 V2 schematic review (2026-10-23) — **start here for HW**
 
-**Git commit:** **`23c3270`** — `git pull origin main` then optional `git checkout 23c3270`
+**Git commit:** **`eac5ec2`** (TG544 schematic + **20/20** datasheet ingests) — `git pull origin main` · prior pack **`23c3270`**
 
 | Item | Path |
 |------|------|
