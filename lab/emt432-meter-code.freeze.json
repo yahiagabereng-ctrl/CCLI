@@ -1,0 +1,60 @@
+{
+  "document_id": "CCLI-LAB-EMT432-METER-CODE-FREEZE-001",
+  "revision": "1.0",
+  "effective_date": "2026-10-23",
+  "markdown": "lab/conformance/EMT432_METER_CODE_FREEZE.md",
+  "mms_map_code_revision": 1,
+  "ccli": {
+    "semver": "0.1.0",
+    "release": "r64",
+    "codename": "P5-EMT432-CMV-ANG-URCB-PF1",
+    "elf_sha256": "967df2764819c3b616e5467a16a3f9a923b4002ad1ca4a73d156d16e91ab2df7"
+  },
+  "meter": {
+    "host": "192.168.178.10",
+    "tcp_port": 502,
+    "unit_id": 1,
+    "float_word_swap": true,
+    "fc3_start_plc": 40907,
+    "fc3_qty": 52,
+    "poll_ms": 4000
+  },
+  "registers_offset_from_40001": {
+    "reg_line_voltage": 906,
+    "reg_phase_a_current": 922,
+    "reg_active_power": 932,
+    "reg_reactive_power": 940,
+    "reg_ppv_phs_bc": 916,
+    "reg_ppv_phs_ca": 918,
+    "reg_phase_b_current": 924,
+    "reg_phase_c_current": 926,
+    "reg_active_power_l2": 934,
+    "reg_active_power_l3": 936,
+    "reg_reactive_power_l2": 942,
+    "reg_reactive_power_l3": 944,
+    "reg_power_factor": 956
+  },
+  "scales": {
+    "power_scale": 0.001,
+    "reactive_scale": 0.001,
+    "line_voltage_scale": 0.001,
+    "phase_a_current_scale": 1.0
+  },
+  "yaml_flags": {
+    "poll_pdc_3ph": true,
+    "backend": "tcp"
+  },
+  "sha256": {
+    "product_tr400_p3_07_connect_5ln.yaml": "366a7d06100d13cff0d1f1c1c2ecdc171aa8e548c4dcccbf9e9f3860b04713a4",
+    "product_tr400_eth_a_5ln.cfg": "68fc1de01c67037ca502945f0c7a94628b0847f7da7f342f5f4f7d102a0f5741"
+  },
+  "verify_tolerances": {
+    "p_kw_abs": 0.02,
+    "q_kvar_abs": 0.005,
+    "i_a_abs": 0.05,
+    "ppv_kv_abs": 0.002,
+    "ang_deg_abs": 0.15
+  },
+  "evidence_log": "lab/evidence/phase5/P5_EMT432_LN_VERIFY_2026-10-23_091200.txt",
+  "commissioning_revision_note": "Writes use modbus_emt432_commissioning kRevision=5; not replaced by this freeze."
+}

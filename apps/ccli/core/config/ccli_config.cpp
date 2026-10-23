@@ -7,6 +7,7 @@
  *               ignored. Not a general YAML parser.
  *=============================================================================*/
 #include "config/ccli_config.hpp"
+#include "config/modbus_pdc_config.hpp"
 
 #include <cctype>
 #include <cstdlib>
@@ -301,6 +302,28 @@ CcliConfig load_config(const std::string& path) {
                 cfg.modbus.reg_phase_a_current_count = std::atoi(value.c_str());
             } else if (key == "phase_a_current_scale") {
                 cfg.modbus.phase_a_current_scale = std::strtod(value.c_str(), nullptr);
+            } else if (key == "poll_pdc_3ph") {
+                cfg.modbus.poll_pdc_3ph = parse_bool(value, cfg.modbus.poll_pdc_3ph);
+            } else if (key == "reg_phase_b_current") {
+                cfg.modbus.reg_phase_b_current = std::atoi(value.c_str());
+            } else if (key == "reg_phase_c_current") {
+                cfg.modbus.reg_phase_c_current = std::atoi(value.c_str());
+            } else if (key == "reg_ppv_phs_bc") {
+                cfg.modbus.reg_ppv_phs_bc = std::atoi(value.c_str());
+            } else if (key == "reg_ppv_phs_ca") {
+                cfg.modbus.reg_ppv_phs_ca = std::atoi(value.c_str());
+            } else if (key == "reg_active_power_l2") {
+                cfg.modbus.reg_active_power_l2 = std::atoi(value.c_str());
+            } else if (key == "reg_active_power_l3") {
+                cfg.modbus.reg_active_power_l3 = std::atoi(value.c_str());
+            } else if (key == "reg_reactive_power_l2") {
+                cfg.modbus.reg_reactive_power_l2 = std::atoi(value.c_str());
+            } else if (key == "reg_reactive_power_l3") {
+                cfg.modbus.reg_reactive_power_l3 = std::atoi(value.c_str());
+            } else if (key == "reg_power_factor") {
+                cfg.modbus.reg_power_factor = std::atoi(value.c_str());
+            } else if (key == "reg_power_factor_count") {
+                cfg.modbus.reg_power_factor_count = std::atoi(value.c_str());
             } else if (key == "power_scale") {
                 cfg.modbus.power_scale = std::strtod(value.c_str(), nullptr);
             } else if (key == "reactive_scale") {
@@ -503,6 +526,7 @@ CcliConfig load_config(const std::string& path) {
         }
     }
 
+    apply_modbus_pdc_defaults(cfg.modbus);
     cfg.loaded_from_file = true;
     return cfg;
 }

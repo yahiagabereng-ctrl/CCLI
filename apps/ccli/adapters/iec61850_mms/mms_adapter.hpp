@@ -1,6 +1,7 @@
 #pragma once
 
 #include "config/ccli_config.hpp"
+#include "measurement/pdc_mmxu_phasors.hpp"
 
 #include <functional>
 #include <string>
@@ -63,6 +64,8 @@ public:
     void update_ppv_kv(double ppv_kv);
     /** EMT432 I1 (A) → PdCMMXU1.A.phsA.cVal.mag.f */
     void update_phs_a_a(double amps);
+    /** PPV DEL + A WYE CMV magnitudes and angles (1P and 3P). */
+    void update_pdc_phasors(const core::PdcMmxuPhasors& pdc);
 
     /**
      * If a new Wlim/WSd control arrived, copy snapshot and clear dirty.

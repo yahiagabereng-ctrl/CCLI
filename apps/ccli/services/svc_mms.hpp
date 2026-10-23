@@ -16,6 +16,9 @@ public:
     void update_totvar_kvar(double q_kvar) { adapter_.update_totvar_kvar(q_kvar); }
     void update_ppv_kv(double ppv_kv) { adapter_.update_ppv_kv(ppv_kv); }
     void update_phs_a_a(double amps) { adapter_.update_phs_a_a(amps); }
+    void update_pdc_phasors(const core::PdcMmxuPhasors& pdc) {
+        adapter_.update_pdc_phasors(pdc);
+    }
     bool poll_dso_live_command(adapters::DsoLiveCommand& out) {
         return adapter_.poll_dso_live_command(out);
     }

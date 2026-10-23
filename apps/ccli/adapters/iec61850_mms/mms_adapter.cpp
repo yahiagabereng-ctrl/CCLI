@@ -148,11 +148,29 @@ struct MmsAdapter::Impl {
     DataAttribute* totvar_t{nullptr};
     DataAttribute* totvar_q{nullptr};
     DataAttribute* ppv_phsab_mag{nullptr};
+    DataAttribute* ppv_phsab_ang{nullptr};
     DataAttribute* ppv_phsab_t{nullptr};
     DataAttribute* ppv_phsab_q{nullptr};
+    DataAttribute* ppv_phsbc_mag{nullptr};
+    DataAttribute* ppv_phsbc_ang{nullptr};
+    DataAttribute* ppv_phsbc_t{nullptr};
+    DataAttribute* ppv_phsbc_q{nullptr};
+    DataAttribute* ppv_phsca_mag{nullptr};
+    DataAttribute* ppv_phsca_ang{nullptr};
+    DataAttribute* ppv_phsca_t{nullptr};
+    DataAttribute* ppv_phsca_q{nullptr};
     DataAttribute* aphsa_mag{nullptr};
+    DataAttribute* aphsa_ang{nullptr};
     DataAttribute* aphsa_t{nullptr};
     DataAttribute* aphsa_q{nullptr};
+    DataAttribute* aphsb_mag{nullptr};
+    DataAttribute* aphsb_ang{nullptr};
+    DataAttribute* aphsb_t{nullptr};
+    DataAttribute* aphsb_q{nullptr};
+    DataAttribute* aphsc_mag{nullptr};
+    DataAttribute* aphsc_ang{nullptr};
+    DataAttribute* aphsc_t{nullptr};
+    DataAttribute* aphsc_q{nullptr};
     DataAttribute* wlim_mod_stval{nullptr};
     DataAttribute* wmax_mxval{nullptr};
     DataAttribute* wsd_mod_stval{nullptr};
@@ -655,11 +673,30 @@ static DataAttribute* model_mx_float_f(IedModel* model, const char* ln_ref,
             }
         }
     }
-    if (da == nullptr || da->mmsValue == nullptr ||
-        MmsValue_getType(da->mmsValue) != MMS_FLOAT) {
+    if (da == nullptr) {
+        return nullptr;
+    }
+    if (da->mmsValue != nullptr && MmsValue_getType(da->mmsValue) != MMS_FLOAT) {
         return nullptr;
     }
     return da;
+}
+
+static DataAttribute* model_mx_float_f_ln(IedModel* model, const char* ln_ref,
+                                          const char* do_rel_path) {
+    DataAttribute* da = model_mx_float_f(model, ln_ref, do_rel_path);
+    if (da != nullptr) {
+        return da;
+    }
+    ModelNode* ln = IedModel_getModelNodeByShortObjectReference(model, ln_ref);
+    if (ln == nullptr) {
+        return nullptr;
+    }
+    ModelNode* node = ModelNode_getChildWithFc(ln, do_rel_path, IEC61850_FC_MX);
+    if (node != nullptr && ModelNode_getType(node) == DataAttributeModelType) {
+        return reinterpret_cast<DataAttribute*>(node);
+    }
+    return nullptr;
 }
 
 bool MmsAdapter::Impl::wire_cfg_runtime_nodes(MmsAdapter::Impl* impl) {
@@ -705,11 +742,34 @@ bool MmsAdapter::Impl::wire_cfg_runtime_nodes(MmsAdapter::Impl* impl) {
     impl->totvar_q = model_da(model, "LD_Plant/PdCMMXU1.TotVAr.q");
     impl->ppv_phsab_mag =
         model_mx_float_f(model, "LD_Plant/PdCMMXU1", "PPV.phsAB.cVal.mag.f");
+    impl->ppv_phsab_ang =
+        model_mx_float_f_ln(model, "LD_Plant/PdCMMXU1", "PPV.phsAB.cVal.ang.f");
     impl->ppv_phsab_t = model_da(model, "LD_Plant/PdCMMXU1.PPV.phsAB.t");
     impl->ppv_phsab_q = model_da(model, "LD_Plant/PdCMMXU1.PPV.phsAB.q");
+    impl->ppv_phsbc_mag =
+        model_mx_float_f(model, "LD_Plant/PdCMMXU1", "PPV.phsBC.cVal.mag.f");
+    impl->ppv_phsbc_ang =
+        model_mx_float_f_ln(model, "LD_Plant/PdCMMXU1", "PPV.phsBC.cVal.ang.f");
+    impl->ppv_phsbc_t = model_da(model, "LD_Plant/PdCMMXU1.PPV.phsBC.t");
+    impl->ppv_phsbc_q = model_da(model, "LD_Plant/PdCMMXU1.PPV.phsBC.q");
+    impl->ppv_phsca_mag =
+        model_mx_float_f(model, "LD_Plant/PdCMMXU1", "PPV.phsCA.cVal.mag.f");
+    impl->ppv_phsca_ang =
+        model_mx_float_f_ln(model, "LD_Plant/PdCMMXU1", "PPV.phsCA.cVal.ang.f");
+    impl->ppv_phsca_t = model_da(model, "LD_Plant/PdCMMXU1.PPV.phsCA.t");
+    impl->ppv_phsca_q = model_da(model, "LD_Plant/PdCMMXU1.PPV.phsCA.q");
     impl->aphsa_mag = model_mx_float_f(model, "LD_Plant/PdCMMXU1", "A.phsA.cVal.mag.f");
+    impl->aphsa_ang = model_mx_float_f_ln(model, "LD_Plant/PdCMMXU1", "A.phsA.cVal.ang.f");
     impl->aphsa_t = model_da(model, "LD_Plant/PdCMMXU1.A.phsA.t");
     impl->aphsa_q = model_da(model, "LD_Plant/PdCMMXU1.A.phsA.q");
+    impl->aphsb_mag = model_mx_float_f(model, "LD_Plant/PdCMMXU1", "A.phsB.cVal.mag.f");
+    impl->aphsb_ang = model_mx_float_f_ln(model, "LD_Plant/PdCMMXU1", "A.phsB.cVal.ang.f");
+    impl->aphsb_t = model_da(model, "LD_Plant/PdCMMXU1.A.phsB.t");
+    impl->aphsb_q = model_da(model, "LD_Plant/PdCMMXU1.A.phsB.q");
+    impl->aphsc_mag = model_mx_float_f(model, "LD_Plant/PdCMMXU1", "A.phsC.cVal.mag.f");
+    impl->aphsc_ang = model_mx_float_f_ln(model, "LD_Plant/PdCMMXU1", "A.phsC.cVal.ang.f");
+    impl->aphsc_t = model_da(model, "LD_Plant/PdCMMXU1.A.phsC.t");
+    impl->aphsc_q = model_da(model, "LD_Plant/PdCMMXU1.A.phsC.q");
     if (impl->aphsa_t == nullptr || impl->aphsa_q == nullptr) {
         ModelNode* ln = IedModel_getModelNodeByShortObjectReference(model, "LD_Plant/PdCMMXU1");
         if (ln != nullptr) {
@@ -751,6 +811,16 @@ bool MmsAdapter::Impl::wire_cfg_runtime_nodes(MmsAdapter::Impl* impl) {
         std::fprintf(stderr,
                      "mms: PdCMMXU1.A.phsA.cVal.mag.f wired (EMT432 I1 @922) init=%.3fA\n",
                      static_cast<double>(init));
+    }
+    if (impl->aphsa_ang == nullptr) {
+        std::fprintf(stderr,
+                     "mms: PdCMMXU1.A.phsA.cVal.ang.f NOT wired — phase angle will stay 0 "
+                     "on MMS\n");
+    } else {
+        std::fprintf(stderr, "mms: PdCMMXU1.A.phsA.cVal.ang.f wired (atan2 Q1,P1 deg)\n");
+    }
+    if (impl->ppv_phsab_ang == nullptr) {
+        std::fprintf(stderr, "mms: PdCMMXU1.PPV.phsAB.cVal.ang.f NOT wired\n");
     }
     return true;
 }
@@ -1448,6 +1518,56 @@ void MmsAdapter::update_phs_a_a(double amps) {
     IedServer_unlockDataModel(impl_->server);
 }
 
+namespace {
+
+void update_cmv_leaf(IedServer server, DataAttribute* mag, DataAttribute* ang,
+                     DataAttribute* t, const double mag_val, const double ang_deg) {
+    const std::int64_t now = Hal_getTimeInMs();
+    if (t != nullptr) {
+        IedServer_updateUTCTimeAttributeValue(server, t, now);
+    }
+    if (mag != nullptr) {
+        IedServer_updateFloatAttributeValue(server, mag, static_cast<float>(mag_val));
+    }
+    if (ang != nullptr) {
+        IedServer_updateFloatAttributeValue(server, ang, static_cast<float>(ang_deg));
+    }
+}
+
+}  // namespace
+
+void MmsAdapter::update_pdc_phasors(const core::PdcMmxuPhasors& pdc) {
+    if (impl_ == nullptr || !impl_->running || impl_->server == nullptr || !pdc.valid) {
+        return;
+    }
+    IedServer_lockDataModel(impl_->server);
+    IedServer srv = impl_->server;
+    update_cmv_leaf(srv, impl_->ppv_phsab_mag, impl_->ppv_phsab_ang, impl_->ppv_phsab_t,
+                    pdc.ppv_ab_kv, pdc.ppv_ab_ang_deg);
+    update_cmv_leaf(srv, impl_->ppv_phsbc_mag, impl_->ppv_phsbc_ang, impl_->ppv_phsbc_t,
+                    pdc.ppv_bc_kv, pdc.ppv_bc_ang_deg);
+    update_cmv_leaf(srv, impl_->ppv_phsca_mag, impl_->ppv_phsca_ang, impl_->ppv_phsca_t,
+                    pdc.ppv_ca_kv, pdc.ppv_ca_ang_deg);
+    update_cmv_leaf(srv, impl_->aphsa_mag, impl_->aphsa_ang, impl_->aphsa_t, pdc.a_phs_a,
+                    pdc.a_phs_a_ang_deg);
+    update_cmv_leaf(srv, impl_->aphsb_mag, impl_->aphsb_ang, impl_->aphsb_t, pdc.a_phs_b,
+                    pdc.a_phs_b_ang_deg);
+    update_cmv_leaf(srv, impl_->aphsc_mag, impl_->aphsc_ang, impl_->aphsc_t, pdc.a_phs_c,
+                    pdc.a_phs_c_ang_deg);
+    static std::int64_t last_ang_log_ms = 0;
+    const std::int64_t now = Hal_getTimeInMs();
+    if (impl_->aphsa_ang != nullptr &&
+        (std::fabs(pdc.a_phs_a_ang_deg) > 0.05 ||
+         std::fabs(pdc.ppv_ab_ang_deg) > 0.05) &&
+        (last_ang_log_ms == 0 || (now - last_ang_log_ms) > 30000)) {
+        last_ang_log_ms = now;
+        std::fprintf(stderr,
+                     "mms: PdCMMXU1 angles publish A.phsA.ang=%.2fdeg PPV.phsAB.ang=%.2fdeg\n",
+                     pdc.a_phs_a_ang_deg, pdc.ppv_ab_ang_deg);
+    }
+    IedServer_unlockDataModel(impl_->server);
+}
+
 void MmsAdapter::refresh_time_quality() {
     if (impl_ == nullptr || !impl_->running || impl_->server == nullptr) {
         return;
@@ -1562,6 +1682,18 @@ void MmsAdapter::refresh_time_quality() {
     }
     if (impl_->aphsa_q != nullptr) {
         IedServer_updateQuality(impl_->server, impl_->aphsa_q, poc_q);
+    }
+    if (impl_->ppv_phsbc_q != nullptr) {
+        IedServer_updateQuality(impl_->server, impl_->ppv_phsbc_q, poc_q);
+    }
+    if (impl_->ppv_phsca_q != nullptr) {
+        IedServer_updateQuality(impl_->server, impl_->ppv_phsca_q, poc_q);
+    }
+    if (impl_->aphsb_q != nullptr) {
+        IedServer_updateQuality(impl_->server, impl_->aphsb_q, poc_q);
+    }
+    if (impl_->aphsc_q != nullptr) {
+        IedServer_updateQuality(impl_->server, impl_->aphsc_q, poc_q);
     }
 
     if (!state_changed && ok && within_100 && fix && chrony_ok) {
@@ -1728,6 +1860,8 @@ void MmsAdapter::update_totvar_kvar(double /*q_kvar*/) {}
 void MmsAdapter::update_ppv_kv(double /*ppv_kv*/) {}
 
 void MmsAdapter::update_phs_a_a(double /*amps*/) {}
+
+void MmsAdapter::update_pdc_phasors(const core::PdcMmxuPhasors& /*pdc*/) {}
 
 bool MmsAdapter::poll_dso_live_command(DsoLiveCommand& /*out*/) { return false; }
 

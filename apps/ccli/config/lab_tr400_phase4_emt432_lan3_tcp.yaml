@@ -64,6 +64,7 @@ modbus:
   reg_phase_a_current: 922
   reg_phase_a_current_count: 2
   phase_a_current_scale: 1.0
+  poll_pdc_3ph: true
 
 pf2:
   threshold_kw: 900

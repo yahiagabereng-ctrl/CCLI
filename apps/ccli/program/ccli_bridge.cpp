@@ -21,6 +21,7 @@
 #include "cci/hal/platform.hpp"
 #include "cci/hal/time.hpp"
 #include "config/ccli_config.hpp"
+#include "measurement/pdc_mmxu_phasors.hpp"
 #include "dso/dso_phase1.hpp"
 #include "event/event_store.hpp"
 #include "event/link_monitor.hpp"
@@ -411,11 +412,15 @@ void CcliBridge_Modbus_Trace(bool curtailment_commanded, bool do_curtail_on) {
     if (!tr.raw_regs_hex.empty()) {
         std::cerr << " raw=" << tr.raw_regs_hex;
     }
-    std::cerr << " P=" << m.p_kw << "kW";
+    std::cerr << " P=" << m.p_kw << "kW Q=" << m.q_kvar << "kvar";
     if (ex.has_phs_a_a) {
         std::cerr << " I1=" << ex.phs_a_a << "A";
     } else if (m.has_phs_a_a) {
         std::cerr << " I1=" << m.phs_a_a << "A";
+    }
+    if (m.pdc.valid) {
+        std::cerr << " AngA=" << m.pdc.a_phs_a_ang_deg << "deg"
+                  << " AngPPVab=" << m.pdc.ppv_ab_ang_deg << "deg";
     }
     std::cerr << " pf2=" << g_rt.pf2->last_state().reason
               << " curtail=" << (curtailment_commanded ? "yes" : "no")
@@ -432,6 +437,34 @@ void CcliBridge_Measurement_Get(CCLI_BRIDGE__MEASUREMENT* ptr_data) {
     ptr_data->ppv_kv = m.has_ppv_kv ? m.ppv_kv : g_rt.cfg.plant.poc_ppv_kv;
     ptr_data->phs_a_a = m.phs_a_a;
     ptr_data->has_phs_a_a = m.has_phs_a_a;
+    ptr_data->has_pdc_phasors = m.pdc.valid;
+    if (m.pdc.valid) {
+        ptr_data->ppv_kv = m.pdc.ppv_ab_kv;
+        ptr_data->ppv_from_meter = m.has_ppv_kv || g_rt.cfg.modbus.reg_line_voltage >= 0;
+        ptr_data->ppv_bc_kv = m.pdc.ppv_bc_kv;
+        ptr_data->ppv_ca_kv = m.pdc.ppv_ca_kv;
+        ptr_data->ppv_ab_ang = m.pdc.ppv_ab_ang_deg;
+        ptr_data->ppv_bc_ang = m.pdc.ppv_bc_ang_deg;
+        ptr_data->ppv_ca_ang = m.pdc.ppv_ca_ang_deg;
+        ptr_data->phs_a_a = m.pdc.a_phs_a;
+        ptr_data->phs_b_a = m.pdc.a_phs_b;
+        ptr_data->phs_c_a = m.pdc.a_phs_c;
+        ptr_data->phs_a_ang = m.pdc.a_phs_a_ang_deg;
+        ptr_data->phs_b_ang = m.pdc.a_phs_b_ang_deg;
+        ptr_data->phs_c_ang = m.pdc.a_phs_c_ang_deg;
+        ptr_data->has_phs_a_a = true;
+    } else {
+        ptr_data->ppv_bc_kv = 0.0;
+        ptr_data->ppv_ca_kv = 0.0;
+        ptr_data->ppv_ab_ang = 0.0;
+        ptr_data->ppv_bc_ang = 0.0;
+        ptr_data->ppv_ca_ang = 0.0;
+        ptr_data->phs_b_a = 0.0;
+        ptr_data->phs_c_a = 0.0;
+        ptr_data->phs_a_ang = 0.0;
+        ptr_data->phs_b_ang = 0.0;
+        ptr_data->phs_c_ang = 0.0;
+    }
     switch (m.quality) {
         case cci::core::DataQuality::Good:
             ptr_data->quality = CCLI_BRIDGE__QUALITY__GOOD;
@@ -473,11 +506,34 @@ void CcliBridge_Mms_Stop(void) { g_rt.mms->stop(); }
 
 void CcliBridge_Mms_PublishMeasurement(double p_kw, double q_kvar, double ppv_kv,
                                      double phs_a_a, bool has_phs_a_a) {
+    CCLI_BRIDGE__MEASUREMENT snap{};
+    CcliBridge_Measurement_Get(&snap);
+    (void)ppv_kv;
+    (void)phs_a_a;
+    (void)has_phs_a_a;
     g_rt.mms->update_tot_w_kw(p_kw);
     g_rt.mms->update_totvar_kvar(q_kvar);
-    g_rt.mms->update_ppv_kv(ppv_kv);
-    if (has_phs_a_a || g_rt.cfg.modbus.reg_phase_a_current >= 0) {
-        g_rt.mms->update_phs_a_a(has_phs_a_a ? phs_a_a : 0.0);
+    if (snap.has_pdc_phasors) {
+        cci::core::PdcMmxuPhasors pdc{};
+        pdc.valid = true;
+        pdc.ppv_ab_kv = snap.ppv_kv;
+        pdc.ppv_bc_kv = snap.ppv_bc_kv;
+        pdc.ppv_ca_kv = snap.ppv_ca_kv;
+        pdc.ppv_ab_ang_deg = snap.ppv_ab_ang;
+        pdc.ppv_bc_ang_deg = snap.ppv_bc_ang;
+        pdc.ppv_ca_ang_deg = snap.ppv_ca_ang;
+        pdc.a_phs_a = snap.phs_a_a;
+        pdc.a_phs_b = snap.phs_b_a;
+        pdc.a_phs_c = snap.phs_c_a;
+        pdc.a_phs_a_ang_deg = snap.phs_a_ang;
+        pdc.a_phs_b_ang_deg = snap.phs_b_ang;
+        pdc.a_phs_c_ang_deg = snap.phs_c_ang;
+        g_rt.mms->update_pdc_phasors(pdc);
+    } else {
+        g_rt.mms->update_ppv_kv(snap.ppv_kv);
+        if (snap.has_phs_a_a || g_rt.cfg.modbus.reg_phase_a_current >= 0) {
+            g_rt.mms->update_phs_a_a(snap.has_phs_a_a ? snap.phs_a_a : 0.0);
+        }
     }
 }
 

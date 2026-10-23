@@ -101,6 +101,17 @@ typedef struct
     bool   ppv_from_meter;            /* true when ppv_kv came from the Modbus meter */
     double phs_a_a;                   /* PdCMMXU1.A.phsA (EMT432 I1 @922) */
     bool   has_phs_a_a;
+    bool   has_pdc_phasors;           /* PPV DEL + A WYE CMV (mag + ang) */
+    double ppv_bc_kv;
+    double ppv_ca_kv;
+    double ppv_ab_ang;
+    double ppv_bc_ang;
+    double ppv_ca_ang;
+    double phs_b_a;
+    double phs_c_a;
+    double phs_a_ang;
+    double phs_b_ang;
+    double phs_c_ang;
     u8     quality;                   /* CCLI_BRIDGE__QUALITY__* */
 } CCLI_BRIDGE__MEASUREMENT;
 

@@ -1,24 +1,26 @@
 ﻿{
-    "release":  61,
+    "release":  64,
     "semver":  "0.1.0",
     "icd_cfg":  "C:\\Yahia\\projects\\CCLI\\apps\\ccli\\config\\icd\\product\\product_tr400_eth_a_5ln.cfg",
-    "lab_yaml":  "apps\\ccli\\config\\product_tr400_p3_07_connect_5ln.yaml",
-    "codename":  "P5-EMT432-A-PHSA-BRIDGE",
+    "lab_yaml":  "c:\\Yahia\\projects\\CCLI\\apps\\ccli\\config\\product_tr400_p3_07_connect_5ln.yaml",
+    "codename":  "P5-EMT432-CMV-ANG-URCB-PF1",
     "host":  "192.168.1.130",
     "deploy_profile":  "",
     "binary":  "C:\\Yahia\\projects\\CCLI\\lab\\tg544-openwrt\\ccli-bin",
-    "version_full":  "0.1.0-r61",
-    "git_commit":  "546d489",
+    "version_full":  "0.1.0-r64",
+    "git_commit":  "cfa34dd",
     "changes":  [
-                    "r61 bridge TransmissionMms publishes A.phsA",
-                    "EMT432 I1 from Modbus to MMS"
+                    "r64 URCB ang plus PF1 fallback"
                 ],
-    "timestamp_utc":  "2026-10-22T16:17:48.7277867Z",
-    "tls_dir":  "apps\\ccli\\config\\tls\\p3_07_connect",
-    "sha256":  "448007a2bd89e594e4df788bbc47dfd39535d45b5aa0b5b940c6fe8c07383819",
+    "timestamp_utc":  "2026-10-22T16:55:59.5180813Z",
+    "tls_dir":  "c:\\Yahia\\projects\\CCLI\\apps\\ccli\\config\\tls\\p3_07_connect",
+    "sha256":  "967df2764819c3b616e5467a16a3f9a923b4002ad1ca4a73d156d16e91ab2df7",
     "dut_host":  "192.168.1.130",
-    "dut_version_text":  "ccli 0.1.0-r61 (P5-EMT432-A-PHSA-BRIDGE)\r\n  semver:   0.1.0\r\n  release:  r61\r\n  git:      unknown\r\n  built:    2026-06-29T12:59:20Z UTC\r\n  platform: tg500\r\n448007a2bd89e594e4df788bbc47dfd39535d45b5aa0b5b940c6fe8c07383819",
-    "binary_size_bytes":  7814864,
+    "dut_version_text":  "ccli 0.1.0-r64 (P5-EMT432-CMV-ANG-URCB-PF1)\r\n  semver:   0.1.0\r\n  release:  r64\r\n  git:      unknown\r\n  built:    2026-06-29T12:59:20Z UTC\r\n  platform: tg500\r\n967df2764819c3b616e5467a16a3f9a923b4002ad1ca4a73d156d16e91ab2df7",
+    "binary_size_bytes":  7824384,
+    "apk_path":  "C:\\Yahia\\projects\\CCLI\\lab\\tg544-openwrt\\ccli-0.1.0-r64.apk",
+    "apk_sha256":  "cbd21ab2c2b820680d8a1419ecc0e897348fa1a93d6b12e2635a9deb80cf2b7c",
+    "apk_size_bytes":  1037276,
     "staging_version_file":  "C:\\Yahia\\projects\\CCLI\\lab\\tg544-openwrt\\ccli-VERSION",
-    "record_updated_utc":  "2026-10-22T16:18:48.1527612Z"
+    "record_updated_utc":  "2026-10-22T16:57:07.1118613Z"
 }

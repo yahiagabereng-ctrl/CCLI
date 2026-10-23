@@ -146,6 +146,24 @@ struct ModbusConfig {
     /** A for MMS A.phsA (default 1.0). */
     double phase_a_current_scale{1.0};
 
+    /** When true, poll EMT432 3φ PPV/A offsets (924–944); 1P leaves read ~0. */
+    bool poll_pdc_3ph{false};
+
+    int reg_phase_b_current{-1};
+    int reg_phase_b_current_count{2};
+    int reg_phase_c_current{-1};
+    int reg_phase_c_current_count{2};
+    int reg_ppv_phs_bc{-1};
+    int reg_ppv_phs_ca{-1};
+    int reg_active_power_l2{-1};
+    int reg_active_power_l3{-1};
+    int reg_reactive_power_l2{-1};
+    int reg_reactive_power_l3{-1};
+
+    /** PF1 float offset (EMT432 @956). Used when Q1 ≈ 0 for CMV ang.f. -1 = off. */
+    int reg_power_factor{-1};
+    int reg_power_factor_count{2};
+
     /** Multiply decoded P/Q before store (EMT432 P1/Q1 are W/VAR → use 0.001). */
     double power_scale{1.0};
 

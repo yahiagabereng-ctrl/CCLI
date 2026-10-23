@@ -38,4 +38,11 @@ PC-A plant/logger (unchanged):
   handoff/alirezavzand/EMT432_LOAD_REGISTER_REPORT_2026-10-22.md
   lab/evidence/phase5/EMT432_DUT_FULL_REGISTER_LOG_2026-10-22_load2.txt  (~1.87 kW, I~8.3 A, V~225 V)
 
+**EMT432 → PdCMMXU1 LN map (2026-10-23, git pull main):**
+  handoff/alirezavzand/EMT432_METER_LN_R64_ALIREZA.md
+  ccli 0.1.0-r64 · ELF 967df2764819c3b616e5467a16a3f9a923b4002ad1ca4a73d156d16e91ab2df7
+  Freeze: lab/conformance/EMT432_METER_CODE_FREEZE.md
+  Verify: scripts/verify-emt432-meter-code-freeze.ps1
+  PASS log: lab/evidence/phase5/P5_EMT432_LN_VERIFY_2026-10-23_091200.txt
+
 Yahia

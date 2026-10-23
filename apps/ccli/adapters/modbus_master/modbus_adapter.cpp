@@ -1,6 +1,9 @@
 #include "modbus_adapter.hpp"
 
 #include "modbus_emt432_commissioning.hpp"
+#include "modbus_pdc_decode.hpp"
+
+#include "config/modbus_pdc_config.hpp"
 
 #include <cstdio>
 #include <cstring>
@@ -31,7 +34,13 @@ cci::core::Measurement measurement_stale_preserve(const cci::core::MeasurementSt
     const bool had_values =
         m.quality == cci::core::DataQuality::Good ||
         m.quality == cci::core::DataQuality::Stale;
-    if (!had_values) {
+    if (had_values) {
+        m.pdc = store.snapshot().pdc;
+        m.phs_a_a = store.snapshot().phs_a_a;
+        m.has_phs_a_a = store.snapshot().has_phs_a_a;
+        m.ppv_kv = store.snapshot().ppv_kv;
+        m.has_ppv_kv = store.snapshot().has_ppv_kv;
+    } else {
         m = cci::core::Measurement{};
     }
     m.quality = cci::core::DataQuality::Stale;
@@ -82,15 +91,35 @@ std::string regs_hex_string(const std::uint16_t* regs, const int n) {
     return os.str();
 }
 
+void consider_reg_min(const int reg, int& start) {
+    if (reg >= 0 && reg < start) {
+        start = reg;
+    }
+}
+
+void consider_reg_end(const int reg, const int count, int& end) {
+    if (reg >= 0) {
+        const int e = reg + count;
+        if (e > end) {
+            end = e;
+        }
+    }
+}
+
 int read_block_start(const ModbusPollConfig& cfg) {
     int start = cfg.reg_active_power < cfg.reg_reactive_power ? cfg.reg_active_power
                                                               : cfg.reg_reactive_power;
-    if (cfg.reg_line_voltage >= 0 && cfg.reg_line_voltage < start) {
-        start = cfg.reg_line_voltage;
-    }
-    if (cfg.reg_phase_a_current >= 0 && cfg.reg_phase_a_current < start) {
-        start = cfg.reg_phase_a_current;
-    }
+    consider_reg_min(cfg.reg_line_voltage, start);
+    consider_reg_min(cfg.reg_phase_a_current, start);
+    consider_reg_min(cfg.reg_phase_b_current, start);
+    consider_reg_min(cfg.reg_phase_c_current, start);
+    consider_reg_min(cfg.reg_ppv_phs_bc, start);
+    consider_reg_min(cfg.reg_ppv_phs_ca, start);
+    consider_reg_min(cfg.reg_active_power_l2, start);
+    consider_reg_min(cfg.reg_active_power_l3, start);
+    consider_reg_min(cfg.reg_reactive_power_l2, start);
+    consider_reg_min(cfg.reg_reactive_power_l3, start);
+    consider_reg_min(cfg.reg_power_factor, start);
     return start;
 }
 
@@ -98,18 +127,17 @@ int read_block_end(const ModbusPollConfig& cfg) {
     const int p_end = cfg.reg_active_power + cfg.reg_active_power_count;
     const int q_end = cfg.reg_reactive_power + cfg.reg_reactive_power_count;
     int end = p_end > q_end ? p_end : q_end;
-    if (cfg.reg_line_voltage >= 0) {
-        const int v_end = cfg.reg_line_voltage + cfg.reg_line_voltage_count;
-        if (v_end > end) {
-            end = v_end;
-        }
-    }
-    if (cfg.reg_phase_a_current >= 0) {
-        const int i_end = cfg.reg_phase_a_current + cfg.reg_phase_a_current_count;
-        if (i_end > end) {
-            end = i_end;
-        }
-    }
+    consider_reg_end(cfg.reg_line_voltage, cfg.reg_line_voltage_count, end);
+    consider_reg_end(cfg.reg_phase_a_current, cfg.reg_phase_a_current_count, end);
+    consider_reg_end(cfg.reg_phase_b_current, cfg.reg_phase_b_current_count, end);
+    consider_reg_end(cfg.reg_phase_c_current, cfg.reg_phase_c_current_count, end);
+    consider_reg_end(cfg.reg_ppv_phs_bc, 2, end);
+    consider_reg_end(cfg.reg_ppv_phs_ca, 2, end);
+    consider_reg_end(cfg.reg_active_power_l2, 2, end);
+    consider_reg_end(cfg.reg_active_power_l3, 2, end);
+    consider_reg_end(cfg.reg_reactive_power_l2, 2, end);
+    consider_reg_end(cfg.reg_reactive_power_l3, 2, end);
+    consider_reg_end(cfg.reg_power_factor, cfg.reg_power_factor_count, end);
     return end;
 }
 
@@ -217,7 +245,33 @@ double decode_phase_a_current_a(const ModbusPollConfig& cfg, const int start,
     return 0.0;
 }
 
-ModbusAdapter::ModbusAdapter(ModbusPollConfig cfg) : cfg_(std::move(cfg)) {}
+ModbusAdapter::ModbusAdapter(ModbusPollConfig cfg) : cfg_(std::move(cfg)) {
+    cci::core::ModbusConfig tmp{};
+    tmp.poll_pdc_3ph = cfg_.poll_pdc_3ph;
+    tmp.reg_phase_b_current = cfg_.reg_phase_b_current;
+    tmp.reg_phase_c_current = cfg_.reg_phase_c_current;
+    tmp.reg_ppv_phs_bc = cfg_.reg_ppv_phs_bc;
+    tmp.reg_ppv_phs_ca = cfg_.reg_ppv_phs_ca;
+    tmp.reg_active_power_l2 = cfg_.reg_active_power_l2;
+    tmp.reg_active_power_l3 = cfg_.reg_active_power_l3;
+    tmp.reg_reactive_power_l2 = cfg_.reg_reactive_power_l2;
+    tmp.reg_reactive_power_l3 = cfg_.reg_reactive_power_l3;
+    tmp.reg_power_factor = cfg_.reg_power_factor;
+    tmp.reg_power_factor_count = cfg_.reg_power_factor_count;
+    tmp.reg_phase_b_current_count = cfg_.reg_phase_b_current_count;
+    tmp.reg_phase_c_current_count = cfg_.reg_phase_c_current_count;
+    cci::core::apply_modbus_pdc_defaults(tmp);
+    cfg_.reg_phase_b_current = tmp.reg_phase_b_current;
+    cfg_.reg_phase_c_current = tmp.reg_phase_c_current;
+    cfg_.reg_ppv_phs_bc = tmp.reg_ppv_phs_bc;
+    cfg_.reg_ppv_phs_ca = tmp.reg_ppv_phs_ca;
+    cfg_.reg_active_power_l2 = tmp.reg_active_power_l2;
+    cfg_.reg_active_power_l3 = tmp.reg_active_power_l3;
+    cfg_.reg_reactive_power_l2 = tmp.reg_reactive_power_l2;
+    cfg_.reg_reactive_power_l3 = tmp.reg_reactive_power_l3;
+    cfg_.reg_power_factor = tmp.reg_power_factor;
+    cfg_.reg_power_factor_count = tmp.reg_power_factor_count;
+}
 
 
 
@@ -652,6 +706,11 @@ bool ModbusAdapter::poll_libmodbus(cci::core::MeasurementStore& store, const std
     if (cfg_.reg_phase_a_current >= 0) {
         m.phs_a_a = decode_phase_a_current_a(cfg_, start, regs, reg_count);
         m.has_phs_a_a = true;
+    }
+
+    decode_pdc_mmxu_from_regs(cfg_, start, regs, reg_count, m.pdc);
+    if (m.pdc.valid && m.has_phs_a_a) {
+        m.phs_a_a = m.pdc.a_phs_a;
     }
 
     m.pf = 0.98;

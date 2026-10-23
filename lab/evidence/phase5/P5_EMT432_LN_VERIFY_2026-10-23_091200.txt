@@ -1,0 +1,58 @@
+# EMT432 Modbus vs PdCMMXU1 (LN) — paired verification log
+# Document: CCLI-LAB-EMT432-LN-VERIFY (evidence)
+# Date (local): 2026-10-23 09:12:00 (Europe/Rome)
+# Operator: yahia (automated bench + SSH)
+# DUT: TG544 root@192.168.1.130 · ccli 0.1.0-r64 (P5-EMT432-CMV-ANG-URCB-PF1)
+# Meter: Chronos EMT432 @ 192.168.178.10:502 unit=1 (yaml host on DUT lan3)
+# Method: PC SSH tunnel 127.0.0.1:15002 -> 192.168.178.10:502 + DUT logread modbus trace
+# Freeze ref: lab/emt432-meter-code.freeze.json · lab/conformance/EMT432_METER_CODE_FREEZE.md
+
+[09:10:19] DUT reachable LAN2 · MMS 192.168.10.1:3782 ccli pid 5001
+[09:11:04] verify-emt432-lan3.ps1 (178.250 tunnel) PART — wrong meter IP; bench uses .10 per /etc/ccli/lab.yaml
+[09:12:00] Paired sample (PASS)
+
+=== EMT432 direct probe (modbus_emt432_tcp_probe.py) ===
+  V_L1_N RMS @906:     225.8 V   -> PPV 0.2258 kV
+  I_L1 RMS @922:       8.294 A
+  P1 @932:             1872.6 W  -> 1.873 kW
+  Q1 @940:             -30.9 VAR -> -0.031 kvar
+  atan2(Q1,P1):        -0.944 deg (computed)
+  mounted_version @10: 1 (Rogowski)
+  40232:               mode=0 single phase, integrator bit13 ON
+  Frequency @972:      50.029 Hz
+  VERDICT:             PASS (Modbus TCP read)
+
+=== DUT ccli decode (same registers -> Measurement -> MMS) ===
+  log: Fri Oct 23 01:07:27 2026 ccli[5001] modbus FC3 addr=40907 qty=52
+  P:                   1.87256 kW
+  Q:                   -0.0308747 kvar
+  I1:                  8.29399 A
+  AngA:                -0.944607 deg
+  AngPPVab:            -0.944607 deg
+  pf2:                 ok
+
+=== EMT432 vs LN source (ccli store) ===
+| Quantity        | EMT432 probe | ccli/MMS path | Delta   | Result |
+|-----------------|-------------|---------------|---------|--------|
+| TotW kW         | 1.873       | 1.873         | ~0      | PASS   |
+| TotVAr kvar     | -0.031      | -0.031        | ~0      | PASS   |
+| A.phsA A        | 8.294       | 8.294         | ~0      | PASS   |
+| PPV phsAB kV    | 0.2258      | (906 block)   | ~0      | PASS   |
+| A.phsA ang deg  | -0.944      | -0.945        | <0.01   | PASS   |
+| PPV phsAB ang   | (1P rule)   | -0.945        | = AngA  | PASS   |
+
+=== MMS object refs (TestPro / cert CSV) ===
+  TotW.mag.f              CCI016_01LD_Plant/PdCMMXU1.TotW.mag.f
+  TotVAr.mag.f            CCI016_01LD_Plant/PdCMMXU1.TotVAr.mag.f
+  PPV.phsAB.cVal.mag.f    CCI016_01LD_Plant/PdCMMXU1.PPV.phsAB.cVal.mag.f
+  PPV.phsAB.cVal.ang.f    CCI016_01LD_Plant/PdCMMXU1.PPV.phsAB.cVal.ang.f
+  A.phsA.cVal.mag.f       CCI016_01LD_Plant/PdCMMXU1.A.phsA.cVal.mag.f
+  A.phsA.cVal.ang.f       CCI016_01LD_Plant/PdCMMXU1.A.phsA.cVal.ang.f
+  URCB DS_R_PdC_Mis4sec   includes mag.f + ang.f for PPV AB and A phsA (r64 cfg)
+
+=== Notes ===
+- Angle from atan2(Q1,P1) on W/VAR floats; PF1 @956 when |Q| < ~5 var (r64).
+- Do not map PPV to 980 (L1-L2 peak) or 40906 (u16 alarm).
+- Commissioning revision (writes): 5.0 — separate from MMS poll map freeze rev 1.
+
+VERDICT: PASS — EMT432 realtime block matches PdCMMXU1 publish path for Milestone A bench specimen @ 192.168.178.10

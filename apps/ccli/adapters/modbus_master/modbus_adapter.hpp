@@ -92,6 +92,32 @@ struct ModbusPollConfig {
 
     double      phase_a_current_scale{1.0};
 
+    bool        poll_pdc_3ph{false};
+
+    int         reg_phase_b_current{-1};
+
+    int         reg_phase_b_current_count{2};
+
+    int         reg_phase_c_current{-1};
+
+    int         reg_phase_c_current_count{2};
+
+    int         reg_ppv_phs_bc{-1};
+
+    int         reg_ppv_phs_ca{-1};
+
+    int         reg_active_power_l2{-1};
+
+    int         reg_active_power_l3{-1};
+
+    int         reg_reactive_power_l2{-1};
+
+    int         reg_reactive_power_l3{-1};
+
+    int         reg_power_factor{-1};
+
+    int         reg_power_factor_count{2};
+
     double      power_scale{1.0};
 
     double      reactive_scale{1.0};

@@ -7,6 +7,25 @@ Format: **`semver-rN`** — bump **N** in `VERSION` line 2 and `package/ccli/Mak
 
 ---
 
+## 0.1.0-r62 — P5-EMT432-PDC-3PH-CMV (2026-10-22)
+
+### Added
+
+- **PdCMMXU1 full CMV path:** `PPV.phsAB/BC/CA` **mag.f + ang.f** and `A.phsA/B/C` **mag.f + ang.f** from EMT432 RMS block when **`modbus.poll_pdc_3ph: true`** (auto offsets 916–944).
+- **1P Rogowski:** unused legs read ~0; **I** angle from **atan2(Q1,P1)**; **PPV** angles 0°. **3P:** nominal DEL voltage angles −120°/120° when I2/I3 or V_BC active.
+- **`modbus_pdc_decode`**, **`PdcMmxuPhasors`**, **`MmsAdapter::update_pdc_phasors`**.
+
+### Changed
+
+- Lab/product yaml: **`poll_pdc_3ph: true`** on **`product_tr400_p3_07_connect_5ln.yaml`** and **`lab_tr400_phase4_emt432_lan3_tcp.yaml`**.
+- Commissioning map §2 documents 3φ register → MMS mapping.
+
+### Deploy
+
+Manifest **`CCLI_DEPLOY_0.1.0-r62_2026-10-22_183656`**. ELF SHA `20a974f1…` · DUT **`192.168.1.130`** · Modbus block **40907 qty=40** with **`poll_pdc_3ph: true`**.
+
+---
+
 ## 0.1.0-r61 — P5-EMT432-A-PHSA-BRIDGE (2026-10-22)
 
 ### Fixed

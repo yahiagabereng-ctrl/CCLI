@@ -6,7 +6,8 @@
 **RAG source_id:** `ccli-emt432-cert-register-pin`  
 **Parent:** [METER_SPECIMEN_EMT432_V_FULL.md](METER_SPECIMEN_EMT432_V_FULL.md)  
 **Deploy:** `lab/tg544-openwrt/deploy-emt432-80mv.ps1` · `lab/emt432_rogowski_config.py --apply-cert-pin`  
-**DUT yaml:** `apps/ccli/config/lab_tr400_emt432_lan3_tcp_102.yaml` · **CCLI commissioning map:** [EMT432_CCLI_COMMISSIONING_MAP.md](EMT432_CCLI_COMMISSIONING_MAP.md) · **TA/TV holding:** [EMT432_TRANSUCER_HOLDING_SPEC.md](EMT432_TRANSUCER_HOLDING_SPEC.md)
+**DUT yaml:** `apps/ccli/config/lab_tr400_emt432_lan3_tcp_102.yaml` · **CCLI commissioning map:** [EMT432_CCLI_COMMISSIONING_MAP.md](EMT432_CCLI_COMMISSIONING_MAP.md) · **TA/TV holding:** [EMT432_TRANSUCER_HOLDING_SPEC.md](EMT432_TRANSUCER_HOLDING_SPEC.md)  
+**MMS poll + CMV freeze (r64):** [EMT432_METER_CODE_FREEZE.md](EMT432_METER_CODE_FREEZE.md) · `lab/emt432-meter-code.freeze.json`
 
 This is the **only** Modbus + yaml map approved for **5-LN Milestone A** and **O.15 #2** meter evidence on specimen **EMT432.V.FULL** + **85 mV/kA** Rogowski. Do not change offsets or scales without bumping this revision.
 

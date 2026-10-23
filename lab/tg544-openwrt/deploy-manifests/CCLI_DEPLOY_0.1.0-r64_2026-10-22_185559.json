@@ -1,0 +1,18 @@
+﻿{
+    "release":  64,
+    "semver":  "0.1.0",
+    "icd_cfg":  "C:\\Yahia\\projects\\CCLI\\apps\\ccli\\config\\icd\\product\\product_tr400_eth_a_5ln.cfg",
+    "lab_yaml":  "c:\\Yahia\\projects\\CCLI\\apps\\ccli\\config\\product_tr400_p3_07_connect_5ln.yaml",
+    "codename":  "P5-EMT432-CMV-ANG-URCB-PF1",
+    "host":  "192.168.1.130",
+    "deploy_profile":  "",
+    "binary":  "C:\\Yahia\\projects\\CCLI\\lab\\tg544-openwrt\\ccli-bin",
+    "version_full":  "0.1.0-r64",
+    "git_commit":  "cfa34dd",
+    "changes":  [
+                    "r64 URCB ang plus PF1 fallback"
+                ],
+    "timestamp_utc":  "2026-10-22T16:55:59.5180813Z",
+    "tls_dir":  "c:\\Yahia\\projects\\CCLI\\apps\\ccli\\config\\tls\\p3_07_connect",
+    "sha256":  "967df2764819c3b616e5467a16a3f9a923b4002ad1ca4a73d156d16e91ab2df7"
+}

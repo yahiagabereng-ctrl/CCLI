@@ -848,11 +848,15 @@ int main(int argc, char** argv) {
             }
             mms.update_tot_w_kw(m.p_kw);
             mms.update_totvar_kvar(m.q_kvar);
-            const double ppv_kv =
-                m.has_ppv_kv ? m.ppv_kv : app_cfg.plant.poc_ppv_kv;
-            mms.update_ppv_kv(ppv_kv);
-            if (app_cfg.modbus.reg_phase_a_current >= 0) {
-                mms.update_phs_a_a(m.has_phs_a_a ? m.phs_a_a : 0.0);
+            if (m.pdc.valid) {
+                mms.update_pdc_phasors(m.pdc);
+            } else {
+                const double ppv_kv =
+                    m.has_ppv_kv ? m.ppv_kv : app_cfg.plant.poc_ppv_kv;
+                mms.update_ppv_kv(ppv_kv);
+                if (app_cfg.modbus.reg_phase_a_current >= 0) {
+                    mms.update_phs_a_a(m.has_phs_a_a ? m.phs_a_a : 0.0);
+                }
             }
             iec104.update_tot_w_kw(m.p_kw);
         }

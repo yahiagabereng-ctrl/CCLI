@@ -58,6 +58,32 @@ adapters::ModbusPollConfig modbus_poll_from_config(const core::CcliConfig& app_c
 
     out.phase_a_current_scale = m.phase_a_current_scale;
 
+    out.poll_pdc_3ph = m.poll_pdc_3ph;
+
+    out.reg_phase_b_current = m.reg_phase_b_current;
+
+    out.reg_phase_b_current_count = m.reg_phase_b_current_count;
+
+    out.reg_phase_c_current = m.reg_phase_c_current;
+
+    out.reg_phase_c_current_count = m.reg_phase_c_current_count;
+
+    out.reg_ppv_phs_bc = m.reg_ppv_phs_bc;
+
+    out.reg_ppv_phs_ca = m.reg_ppv_phs_ca;
+
+    out.reg_active_power_l2 = m.reg_active_power_l2;
+
+    out.reg_active_power_l3 = m.reg_active_power_l3;
+
+    out.reg_reactive_power_l2 = m.reg_reactive_power_l2;
+
+    out.reg_reactive_power_l3 = m.reg_reactive_power_l3;
+
+    out.reg_power_factor = m.reg_power_factor;
+
+    out.reg_power_factor_count = m.reg_power_factor_count;
+
     out.power_scale = m.power_scale;
 
     out.reactive_scale = m.reactive_scale;

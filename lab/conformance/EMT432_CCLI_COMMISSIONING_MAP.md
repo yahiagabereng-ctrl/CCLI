@@ -71,6 +71,18 @@ Full MR text: [EMT432_TRANSUCER_HOLDING_SPEC.md](EMT432_TRANSUCER_HOLDING_SPEC.m
 | 40907 | **906** | V_L1_N [V] | `reg_line_voltage: 906` | `line_voltage_scale: 0.001` | PPV.phsAB kV |
 | 40923 | **922** | I1 [A] | `reg_phase_a_current: 922` | `phase_a_current_scale: 1.0` | A.phsA A |
 
+**Optional 3φ PdC CMV (`poll_pdc_3ph: true`) — auto offsets if unset:**
+
+| Offset | Signal | MMS |
+|--------|--------|-----|
+| **916** | V_L2_L3 | PPV.phsBC mag (kV) |
+| **918** | V_L3_L1 | PPV.phsCA mag |
+| **924 / 926** | I2 / I3 | A.phsB / A.phsC |
+| **934 / 936** | P2 / P3 | A.phsB/C **ang** via atan2(Q,P) |
+| **942 / 944** | Q2 / Q3 | (paired with P2/P3) |
+
+**Angles:** no Modbus `ang.f` register — CCLI sets **I** angle from **P/Q** (W/VAR); if **|Q1| < ~5 var** use **PF1 @956** (r64); **PPV** ang tracks **A.phsA** (1P) or nominal −120°/120° when 3φ active. **Freeze:** [EMT432_METER_CODE_FREEZE.md](EMT432_METER_CODE_FREEZE.md) · evidence `P5_EMT432_LN_VERIFY_2026-10-23_091200.txt`.
+
 **Common decode:** `float_word_swap: true` (Chronos TCP float32).
 
 **Optional diagnostics (not on MMS yet):**
