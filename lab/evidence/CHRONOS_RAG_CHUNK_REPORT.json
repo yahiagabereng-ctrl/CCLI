@@ -1,0 +1,177 @@
+{
+  "sources": [
+    {
+      "source_id": "ccli-chronos-emt432",
+      "kind": "md",
+      "chunks": 11,
+      "scored": 0,
+      "verdict": "PASS_MD"
+    },
+    {
+      "source_id": "ccli-chronos-rogowski-bench",
+      "kind": "md",
+      "chunks": 8,
+      "scored": 0,
+      "verdict": "PASS_MD"
+    },
+    {
+      "source_id": "ccli-chronos-emt432-vendor-requirements",
+      "kind": "md",
+      "chunks": 30,
+      "scored": 0,
+      "verdict": "PASS_MD"
+    },
+    {
+      "source_id": "ccli-chronos-sta-test-reports",
+      "kind": "md",
+      "chunks": 24,
+      "scored": 0,
+      "verdict": "PASS_MD"
+    },
+    {
+      "source_id": "ccli-chronos-emt432-ui",
+      "kind": "md",
+      "chunks": 24,
+      "scored": 0,
+      "verdict": "PASS_MD"
+    },
+    {
+      "source_id": "ccli-chronos-sta-annex-map",
+      "kind": "md",
+      "chunks": 26,
+      "scored": 0,
+      "verdict": "PASS_MD"
+    },
+    {
+      "source_id": "ccli-meter-specimen-emt432-v-full",
+      "kind": "md",
+      "chunks": 17,
+      "scored": 0,
+      "verdict": "PASS_MD"
+    },
+    {
+      "source_id": "ccli-emt432-cert-register-pin",
+      "kind": "md",
+      "chunks": 7,
+      "scored": 0,
+      "verdict": "PASS_MD"
+    },
+    {
+      "source_id": "ccli-emt432-commissioning-map",
+      "kind": "md",
+      "chunks": 7,
+      "scored": 0,
+      "verdict": "PASS_MD"
+    },
+    {
+      "source_id": "ccli-emt432-meter-code-freeze",
+      "kind": "md",
+      "chunks": 6,
+      "scored": 0,
+      "verdict": "PASS_MD"
+    },
+    {
+      "source_id": "ccli-emt432-mr-register-validation",
+      "kind": "md",
+      "chunks": 6,
+      "scored": 0,
+      "verdict": "PASS_MD"
+    },
+    {
+      "source_id": "ccli-emt432-portal-step-by-step",
+      "kind": "md",
+      "chunks": 13,
+      "scored": 0,
+      "verdict": "PASS_MD"
+    },
+    {
+      "source_id": "ccli-lab-p5-rogowski-frc350-bench",
+      "kind": "md",
+      "chunks": 6,
+      "scored": 0,
+      "verdict": "PASS_MD"
+    },
+    {
+      "source_id": "ccli-chronos-pdf-emt432-mi-eng",
+      "kind": "pdf",
+      "chunks": 20,
+      "scored": 20,
+      "mean_quality": 0.8847,
+      "grade": "B",
+      "verdict": "PASS"
+    },
+    {
+      "source_id": "ccli-chronos-pdf-emt432-mi-ita",
+      "kind": "pdf",
+      "chunks": 19,
+      "scored": 19,
+      "mean_quality": 0.8611,
+      "grade": "B",
+      "verdict": "PASS"
+    },
+    {
+      "source_id": "ccli-chronos-pdf-emt432-fl-ita",
+      "kind": "pdf",
+      "chunks": 5,
+      "scored": 5,
+      "mean_quality": 0.8617,
+      "grade": "B",
+      "verdict": "PASS"
+    },
+    {
+      "source_id": "ccli-chronos-pdf-emt430-mr",
+      "kind": "pdf",
+      "chunks": 332,
+      "scored": 332,
+      "mean_quality": 0.9818,
+      "grade": "A",
+      "verdict": "PASS"
+    },
+    {
+      "source_id": "ccli-chronos-pdf-ta-fl-ita",
+      "kind": "pdf",
+      "chunks": 10,
+      "scored": 10,
+      "mean_quality": 0.9207,
+      "grade": "A",
+      "verdict": "PASS"
+    },
+    {
+      "source_id": "ccli-chronos-pdf-sta-emc-emt130",
+      "kind": "pdf",
+      "chunks": 78,
+      "scored": 78,
+      "mean_quality": 0.8947,
+      "grade": "B",
+      "verdict": "PASS"
+    },
+    {
+      "source_id": "ccli-chronos-pdf-sta-emc-emt430",
+      "kind": "pdf",
+      "chunks": 79,
+      "scored": 78,
+      "mean_quality": 0.8956,
+      "grade": "B",
+      "verdict": "PASS"
+    },
+    {
+      "source_id": "ccli-chronos-pdf-sta-61010-emt130",
+      "kind": "pdf",
+      "chunks": 194,
+      "scored": 125,
+      "mean_quality": 0.8844,
+      "grade": "B",
+      "verdict": "PASS"
+    },
+    {
+      "source_id": "ccli-chronos-pdf-sta-61010-emt430",
+      "kind": "pdf",
+      "chunks": 194,
+      "scored": 121,
+      "mean_quality": 0.8871,
+      "grade": "B",
+      "verdict": "PASS"
+    }
+  ],
+  "chronos_pack": true
+}

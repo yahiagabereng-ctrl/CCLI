@@ -26,7 +26,8 @@ $engPatterns = @(
     "CCI_OpenWrt_Freeze.md",
     "CCI_Product_SW_Freeze.md",
     "CCI_Chronos_EMT432_Web*.md",
-    "CCI_Chronos_EMT432_Vendor_Requirements.md"
+    "CCI_Chronos_EMT432_Vendor_Requirements.md",
+    "CCI_Chronos_STA_Test_Reports_Extract.md"
 )
 
 $count = 0
@@ -129,6 +130,19 @@ if (Test-Path $LabMeet) {
     New-Item -ItemType Directory -Path $TelLab -Force | Out-Null
     Get-ChildItem $LabMeet -Filter "*.md" -ErrorAction SilentlyContinue | ForEach-Object {
         Copy-Item $_.FullName (Join-Path $TelLab $_.Name) -Force
+        $count++
+    }
+}
+
+# Chronos vendor PDFs (manuals, MR, TA, S.T.A. type-test reports)
+$ChronosSrc = Join-Path $Repo "knowledge-base\08-engineering\reference\vendor\chronos"
+$TelChronos = Join-Path $TelematryRoot "documents\projects\ccli\reference\vendor\chronos"
+if (Test-Path $ChronosSrc) {
+    Get-ChildItem $ChronosSrc -Recurse -Filter "*.pdf" -File -ErrorAction SilentlyContinue | ForEach-Object {
+        $relFromChronos = $_.FullName.Substring($ChronosSrc.Length).TrimStart('\')
+        $dest = Join-Path $TelChronos $relFromChronos
+        New-Item -ItemType Directory -Path (Split-Path $dest) -Force | Out-Null
+        Copy-Item $_.FullName $dest -Force
         $count++
     }
 }

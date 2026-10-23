@@ -1,0 +1,21 @@
+Masomeh — Chronos S.T.A. + annex mapping pushed 2026-10-23
+
+Pull CCLI main, then re-stage field pack:
+  git pull origin main
+  powershell -File scripts\stage-tsp-field-pack.ps1 -Dest D:\CCLI_TSP_FIELD_PACK
+
+START HERE (new):
+  handoff/masomeh95/MASOMEH_CHRONOS_STA_ANNEX_HANDOFF.md
+  (field pack: 00q4_MASOMEH_CHRONOS_STA_ANNEX_HANDOFF.md)
+
+Also in pack:
+  00q2_CHRONOS_STA_ANNEX_MAP.md     — full O / 61557 tables
+  00q3_CHRONOS_RAG_CHUNK_REPORT.json — 22 Chronos RAG sources ingested (not #2 PASS)
+
+KEY FOR TSP / UNIFIED MATRIX:
+  - Chronos sent STA reports for EMT130 + EMT430 only (61010-2-030 + 61326-1).
+  - Bench meter is EMT432.V.FULL — do NOT mark O.15 #2 / 61557-12 PASS.
+  - 62053-22 and 61326 EMC are NOT substitutes for 61557-12 type-test.
+  - TesPro gateway stays 61557 N/A (00v map unchanged).
+
+Your job unchanged: MMS/logger evidence when PC-A runs EMT432 yaml — see 00q_MASOMEH_EMT432_TESPRO_REQUIREMENTS.md.

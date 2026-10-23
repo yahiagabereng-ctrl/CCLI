@@ -14,11 +14,36 @@
 | `EMT430_MR.pdf` | Modbus register map Rev2 (EMT430/432 family) |
 | `TA_FL_ITA.pdf` | CT / Rogowski catalog IT (FRC-350, KCT, CP, …) |
 
-## Ingest
+## Type-test reports (S.T.A. — 2026)
+
+**Drop folder:** `CHRONOS/CHRONOS/` (intake)  
+**Canonical:** `2026-sta-reports/` · extract `CCI_Chronos_STA_Test_Reports_Extract.md`  
+**Annex map:** `lab/conformance/CHRONOS_STA_REPORTS_ANNEX_MAP.md` (**ingest PDF + `_extracts` first**, then map)
+
+```powershell
+# Manual extract after adding PDFs under 2026-sta-reports/
+$dest = "knowledge-base/08-engineering/reference/vendor/chronos/2026-sta-reports"
+python -c "from pathlib import Path; import re; from pypdf import PdfReader; d=Path(r'$dest'); o=d/'_extracts'; o.mkdir(exist_ok=True); [ (o/(re.sub(r'[^\\w\\-]+','_',p.stem)[:80]+'.txt')).write_text('\\n'.join('\\n----- PAGE %d -----\\n'%(i+1)+(pg.extract_text() or '') for i,pg in enumerate(PdfReader(str(p)).pages)), encoding='utf-8') for p in sorted(d.glob('*.pdf')) ]"
+```
+
+## Ingest (manuals + Modbus)
 
 ```powershell
 .\scripts\ingest-chronos-emt432.ps1
 ```
+
+## RAG (all Chronos PDF + MD + chunk check)
+
+Requires Telematry RAG on `http://localhost:8001` (`docker compose up -d rag-python` in Telematry System).
+
+```powershell
+powershell -File scripts\ingest-chronos-all-rag.ps1
+powershell -File scripts\ingest-chronos-all-rag.ps1 -CheckScoresOnly -SkipSync
+```
+
+- **Markdown:** pass = chunks present (no `chunk_quality_score` on structured MD).
+- **PDF:** pass = `chunk_quality_score` mean ≥ 0.50; scorecards under `_chunk_score/`.
+- Report: `lab/evidence/CHRONOS_RAG_CHUNK_REPORT.json`.
 
 Outputs:
 

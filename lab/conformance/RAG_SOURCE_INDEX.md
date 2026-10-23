@@ -114,6 +114,8 @@ powershell -File scripts\ingest-62351-100-4.ps1 -SkipSync
 | `ccli-lab-specimen-version` | `lab/conformance/LAB_SPECIMEN_VERSION.md` | CID rev 9 · cfg SHA |
 | `ccli-meter-specimen-emt432-v-full` | `lab/conformance/METER_SPECIMEN_EMT432_V_FULL.md` | EMT432.V.FULL + FRC-350-100mV · 85 vs 100 mV |
 | `ccli-chronos-emt432-vendor-requirements` | `knowledge-base/08-engineering/CCI_Chronos_EMT432_Vendor_Requirements.md` (canonical copy also `lab/conformance/CHRONOS_EMT432_VENDOR_REQUIREMENTS.md`) | Chronos certificates + REQ-CHR · O.15 #2 vendor ask |
+| `ccli-chronos-sta-test-reports` | `knowledge-base/08-engineering/CCI_Chronos_STA_Test_Reports_Extract.md` | S.T.A. C25305/C25306 ingest extract |
+| `ccli-chronos-sta-annex-map` | `lab/conformance/CHRONOS_STA_REPORTS_ANNEX_MAP.md` | STA reports → Annex O / 61557 annex map |
 | `ccli-lab-dut-finalize-cert-path` | `lab/conformance/DUT_LAB_FINALIZE_AND_CERT_PATH.md` | TSP vs UCA certificate |
 | `ccli-lab-pics-fill` | `lab/conformance/PICS_FILL.md` | PICS M/N/A |
 | `ccli-lab-cid-pics-alignment` | `lab/conformance/CID_PICS_ALIGNMENT.md` | Services trim |

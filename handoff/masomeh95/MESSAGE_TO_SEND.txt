@@ -1,35 +1,23 @@
-Hi Masomeh,
+Masomeh — Chronos S.T.A. annex handoff (2026-10-23)
 
-Yahia deployed DUT **2026-10-15 ~18:16 UTC**:
-  **ccli 0.1.0-r55** (apk upgrade r51→r55) · **p3_07_connect** TLS · **lab_tg544_eth_a.cfg** · **crl=off**
-  **192.168.10.1:3782** · preflight **PASS** (3782 = ccli)
+Pull latest main, then refresh field pack on your TSP PC:
 
-Use the attached **CCLI_TSP_CONNECT_MIN** folder (or zip) for TestPro TLS login.
+  cd C:\Yahia\projects\CCLI
+  git pull origin main
+  powershell -File scripts\stage-tsp-field-pack.ps1 -Dest D:\CCLI_TSP_FIELD_PACK
 
-**Read first:** 00t_PC1_FIX_WRONG_TRANSPORT_CERT.md
+READ FIRST:
+  handoff/masomeh95/MASOMEH_CHRONOS_STA_ANNEX_HANDOFF.md
+  (or field pack: 00q4_MASOMEH_CHRONOS_STA_ANNEX_HANDOFF.md)
 
-TSP files (browse every path — do not reuse old paths):
-  Trust               →  tls\root_CA.pem
-  Transport TLS cert  →  tls\client_tls.pem   (serial DC:9A:9E…, CN=DSO_OPERATOR)
-  Transport TLS key   →  tls\client_tsp.key
-  MMS cert            →  tls\client.pem       (serial 28:E5:3F:07…, OID 1.12)
-  MMS key             →  tls\client_tsp.key   (SAME file in both key slots)
-  CRL / revoked       →  EMPTY / off
+Also:
+  00q2_CHRONOS_STA_ANNEX_MAP.md
+  00q3_CHRONOS_RAG_CHUNK_REPORT.json
+  00q5_MESSAGE_CHRONOS_STA_2026-10-23.txt
+  00q_MASOMEH_EMT432_TESPRO_REQUIREMENTS.md (updated index)
 
-Connection:
-  IED **CCI016_01** · server **192.168.10.1:3782** · TLS on
-  CID **cid\lab_tg544_eth_a.cid**
-  PC LAN1 **192.168.10.10/24** · Sisco OFF · TLS 1.3 OFF
+RULE: Chronos STA reports are EMT130/EMT430 only — do NOT mark O.15 #2 / 61557-12 PASS on EMT432 bench.
 
-MD5 must match DUT:
-  7ada0cbe2be1bb4bddff7b6961461bc5  root_CA.pem
-  524fdd81b0d87abc9dc8c1cd2c490968  client_tls.pem
-  fe374442fce9eea87f7a937bac1b3bea  client.pem
-  9858beb9736ad5b32b72238d0cbfa27c  client_tsp.key
+Commit: (see git log -1 after pull)
 
-Or git pull + scripts\setup-pc1-p3-07-connect.ps1 -Dest D:\CCLI_TSP_FIELD_PACK
-
-When ready: message **ready** for one Connect (Yahia captures DUT log).
-Pass = **Initiate Response Success** + DUT **ACSE auth ACCEPT**.
-
-Yahia
+Questions → Yahia.

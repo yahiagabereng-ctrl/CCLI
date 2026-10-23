@@ -7,7 +7,8 @@
 **Audience:** Chronos srl · HiTEKS procurement · #2 type-test lab · bench integrators  
 **Parents:** `ccli-meter-specimen-emt432-v-full` · `ccli-chronos-emt432` · `ccli-normative-cert-validation-matrix` · `cei-0-16-allegato-o-extract`  
 **Bench pin (detail):** [METER_SPECIMEN_EMT432_V_FULL.md](METER_SPECIMEN_EMT432_V_FULL.md)  
-**Register / UI:** [CCI_Chronos_EMT432_Extract.md](../../knowledge-base/08-engineering/CCI_Chronos_EMT432_Extract.md) · `apps/ccli/config/modbus/chronos_emt432_map.yaml`
+**Register / UI:** [CCI_Chronos_EMT432_Extract.md](../../knowledge-base/08-engineering/CCI_Chronos_EMT432_Extract.md) · `apps/ccli/config/modbus/chronos_emt432_map.yaml`  
+**Engineering mirror (same text):** [CCI_Chronos_EMT432_Vendor_Requirements.md](../../knowledge-base/08-engineering/CCI_Chronos_EMT432_Vendor_Requirements.md)
 
 **Role in programme:** **EMT432.V.FULL** + **FRC-350** Rogowski = **PMD front-end** on the **O.15 #2 / O.13.2** measurement chain. **TesPro TG544** is **not** the measuring object (comms-only; 61557 **N/A** on gateway). **HiTEKS `ccli`** polls Modbus and publishes **TotW / TotVAr / PPV** only — full PQ/harmonics remain on the meter.
 
@@ -54,16 +55,16 @@
 
 ## Vendor deliverables — certificates and reports
 
-Use as **Chronos ask list** (spreadsheet / letter). Status = corpus **2026-10-22**.
+Use as **Chronos ask list** (spreadsheet / letter). Status = corpus **2026-10-23** (STA pack ingested — see [CHRONOS_STA_REPORTS_ANNEX_MAP.md](CHRONOS_STA_REPORTS_ANNEX_MAP.md)).
 
 | NO. | Deliverable | Shall contain | O.15 / norm link | Status |
 |-----|-------------|---------------|------------------|--------|
 | **1** | **IEC/CEI EN 61557-12** type-test **certificate or full report** on **EMT432.V.FULL** (PMD) | Test lab name, report ID, edition (**2018+AMD1:2021** if EPMF split), scope (1P/3P, Rogowski) | **#2** | **MISS** |
 | **2** | **EN 62053-22 / 62053-24** conformity evidence (class **0,2S**) | Cert or report ID — **explicitly not a substitute for row 1** | Supports **REQ-CHR-001** | **PART** (datasheet only) |
-| **3** | **IEC 61010-1** test report + **CE DoC** for **EMT432** | Applied standards, model, SN range | **#2** safety | **OPEN** |
-| **4** | **IEC 61010-2-*** part report** (as claimed on DoC) | Match O **2-201** vs 61557 **2-030** with HiTEKS #2 lab | **#2** | **OPEN** |
-| **5** | **EMC report** (61557 PMD tables or EN 61326 on analyzer) | Report ID, class, ports | **#2** EMC | **MISS** |
-| **6** | **K55 / climatic** test evidence | −5…+55 °C or 60068 series reference | **#2** | **OPEN** |
+| **3** | **IEC 61010-1** test report + **CE DoC** for **EMT432** | Applied standards, model, SN range | **#2** safety | **PART** — **C25306_01** on **EMT130/430** only; **EMT432 + DoC OPEN** |
+| **4** | **IEC 61010-2-*** part report** (as claimed on DoC) | Match O **2-201** vs 61557 **2-030** with HiTEKS #2 lab | **#2** | **PART** — **61010-2-030 HAVE** (STA); O text **2-201** gap remains |
+| **5** | **EMC report** (61557 PMD tables or EN 61326 on analyzer) | Report ID, class, ports | **#2** EMC | **PART** — **C25305-ACR_01/02** · **61326-1** (not 61557 tables) |
+| **6** | **K55 / climatic** test evidence | −5…+55 °C or 60068 series reference | **#2** | **PART** — declared **−25…+65 °C** on 61010 forms; **60068 report ID OPEN** |
 | **7** | **FRC-350-100mV** (or supplied coil) test / class statement | **≤ 0,5** sensor class · **61010-1** / **61326-1** as applicable | **O.13.2** · Annex F | **PART** |
 | **8** | **Rogowski coil label** photo + **mV/kA** written confirmation (bench **80** vs catalog **100**) | Traceability for **40235** | **REQ-CHR-011** | **OPEN** if disputed |
 | **9** | **Modbus / firmware** stability statement for **FW 008** (or frozen FW for cert build) | Register map **EMT430_MR Rev2** alignment | Integration | **HAVE** map |

@@ -5,7 +5,9 @@ Pushed EMT432 (Chronos) + TestPro vendor requirement docs — read first:
   handoff/masomeh95/MASOMEH_EMT432_TESPRO_REQUIREMENTS.md
 
 Also in repo:
+  MASOMEH_CHRONOS_STA_ANNEX_HANDOFF.md  (2026-10-23 STA vs Annex O / 61557)
   CHRONOS_EMT432_VENDOR_REQUIREMENTS.md  (all Chronos cert asks, O.15 #2)
+  MESSAGE_CHRONOS_STA_2026-10-23.txt
   TESPRO_VENDOR_REQUIREMENTS_HANDOFF.md    (TesPro 9-row minimal status)
 
 After git pull, refresh field pack:

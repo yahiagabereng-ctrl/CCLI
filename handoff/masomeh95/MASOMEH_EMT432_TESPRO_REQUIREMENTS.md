@@ -1,6 +1,6 @@
 # Masomeh — EMT432 (Chronos) + TestPro vendor requirements
 
-**Date:** 2026-10-22  
+**Date:** 2026-10-23 (Chronos STA annex handoff added)  
 **Role:** PC-B / TSP · LAN1 **192.168.10.10** · logger evidence  
 **PC-A (Yahia):** LAN3 plant **192.168.178.10** · EMT432 **.102** · DUT **.178.1** / LAN2 **192.168.1.130**
 
@@ -13,13 +13,17 @@ You do **not** own vendor certificate closure — use this pack to **know scope*
 | # | Document | Purpose |
 |---|----------|---------|
 | 1 | **[MASOMEH_EMT432_TESPRO_REQUIREMENTS.md](MASOMEH_EMT432_TESPRO_REQUIREMENTS.md)** | This index |
-| 2 | **[CHRONOS_EMT432_VENDOR_REQUIREMENTS.md](CHRONOS_EMT432_VENDOR_REQUIREMENTS.md)** | All Chronos cert asks (O.15 **#2**) + Modbus pin |
-| 3 | **[TESPRO_VENDOR_REQUIREMENTS_HANDOFF.md](TESPRO_VENDOR_REQUIREMENTS_HANDOFF.md)** | TesPro 9-row reply vs O.15 **#2/#3/#8** |
-| 4 | [METER_SPECIMEN_EMT432_V_FULL.md](../../lab/conformance/METER_SPECIMEN_EMT432_V_FULL.md) | Bench wiring · 905 · 80 mV/kA deploy |
-| 5 | [61557-12_TESPRO_VENDOR_MAP.md](../../lab/conformance/61557-12_TESPRO_VENDOR_MAP.md) | Full TesPro vs 61557 map |
-| 6 | [TSP_TWO_PC_BENCH_RUNBOOK.md](../../lab/conformance/TSP_TWO_PC_BENCH_RUNBOOK.md) | Two-PC roles |
+| 2 | **[MASOMEH_CHRONOS_STA_ANNEX_HANDOFF.md](MASOMEH_CHRONOS_STA_ANNEX_HANDOFF.md)** | **NEW 2026-10-23** — S.T.A. reports vs Annex O / 61557 · RAG · do-not-PASS |
+| 3 | **[CHRONOS_EMT432_VENDOR_REQUIREMENTS.md](CHRONOS_EMT432_VENDOR_REQUIREMENTS.md)** | All Chronos cert asks (O.15 **#2**) + Modbus pin |
+| 4 | **[TESPRO_VENDOR_REQUIREMENTS_HANDOFF.md](TESPRO_VENDOR_REQUIREMENTS_HANDOFF.md)** | TesPro 9-row reply vs O.15 **#2/#3/#8** |
+| 5 | [METER_SPECIMEN_EMT432_V_FULL.md](../../lab/conformance/METER_SPECIMEN_EMT432_V_FULL.md) | Bench wiring · 905 · 80 mV/kA deploy |
+| 6 | [61557-12_TESPRO_VENDOR_MAP.md](../../lab/conformance/61557-12_TESPRO_VENDOR_MAP.md) | Full TesPro vs 61557 map |
+| 7 | [CHRONOS_STA_REPORTS_ANNEX_MAP.md](../../lab/conformance/CHRONOS_STA_REPORTS_ANNEX_MAP.md) | Full annex tables (lab canonical) |
+| 8 | [TSP_TWO_PC_BENCH_RUNBOOK.md](../../lab/conformance/TSP_TWO_PC_BENCH_RUNBOOK.md) | Two-PC roles |
 
-Field pack copies (after `stage-tsp-field-pack.ps1`): **`00q_MASOMEH_EMT432_TESPRO_REQUIREMENTS.md`**, **`00q1_CHRONOS_EMT432_VENDOR_REQUIREMENTS.md`**, **`00s_TESPRO_VENDOR_REQUIREMENTS.md`**, **`00u_METER_SPECIMEN_EMT432.md`**, **`00v_61557-12_TESPRO_VENDOR_MAP.md`**.
+Field pack copies (after `stage-tsp-field-pack.ps1`): **`00q_*`**, **`00q1_*`**, **`00q2_CHRONOS_STA_ANNEX_MAP.md`**, **`00q3_CHRONOS_RAG_CHUNK_REPORT.json`**, **`00q4_MASOMEH_CHRONOS_STA_ANNEX_HANDOFF.md`**, **`00s_*`**, **`00u_*`**, **`00v_*`**.
+
+Short message: **[MESSAGE_CHRONOS_STA_2026-10-23.txt](MESSAGE_CHRONOS_STA_2026-10-23.txt)**.
 
 ---
 
