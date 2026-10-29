@@ -1,0 +1,104 @@
+{
+  "ts_ms": 1792414416638,
+  "p_kw": 0,
+  "q_kvar": 0,
+  "quality": "stale",
+  "pf2_reason": "stale_or_invalid",
+  "curtailment_commanded": false,
+  "permissive_ok": false,
+  "annex_m_trip_active": false,
+  "do_curtail_on": false,
+  "dso_applied": true,
+  "derived": {
+    "smax_calc_kva": 206.155,
+    "smax_used_kva": 210,
+    "p_wsd_kw": 0,
+    "p_wlim_kw": 0,
+    "p_w110_kw": 0,
+    "p_wsa_kw": 0,
+    "p_effective_kw": 210,
+    "pf2_enter_kw": 210,
+    "pf2_release_kw": 205
+  },
+  "pf2_debounce_s": 30,
+  "stale_data_s": 10,
+  "zones": {
+    "dso": {
+      "enabled": true,
+      "running": true,
+      "bind": "192.168.0.1",
+      "port": 3782,
+      "tls": true,
+      "clients": 0,
+      "gnss_fix": false,
+      "comms_loss_fallback_s": 15,
+      "setpoint_min_interval_s": 3,
+      "cmd_seen": true,
+      "wlim_active": false,
+      "wlim_pct": 0,
+      "wsd_active": false,
+      "wsd_pct": 0,
+      "varsd_active": false,
+      "varsd_pct": 0,
+      "pfsp_active": false,
+      "pfsp_cosphi": 1,
+      "pfsp_generation": true,
+      "wsa_active": false,
+      "wsa_pct": 100,
+      "varsa_active": false,
+      "varsa_pct": 0,
+      "ppv_kv": 20
+    },
+    "operator": {
+      "enabled": false,
+      "running": false,
+      "bind": "192.168.1.130",
+      "port": 2404,
+      "tls": false,
+      "clients": 0,
+      "common_address": 1,
+      "periodic_s": 4,
+      "comms_loss_fallback_s": 60,
+      "mode": "monitor_only",
+      "allow_commands": false,
+      "allow_gi": true,
+      "allow_clock_sync": false,
+      "ioa": [
+        {"name": "TotW", "ioa": 1001, "enabled": true, "published": false, "value": 0, "unit": "kW"},
+        {"name": "TotVAr", "ioa": 1002, "enabled": false, "published": false, "value": 0, "unit": "kVAr"},
+        {"name": "PPV", "ioa": 1003, "enabled": false, "published": false, "value": 20, "unit": "kV"}
+      ]
+    },
+    "plant": {
+      "modbus_backend": "rtu",
+      "modbus_device": "/dev/rs485_2_uart",
+      "modbus_host": "",
+      "modbus_tcp_port": 502,
+      "modbus_baud": 9600,
+      "modbus_slave_id": 1,
+      "poll_ms": 4000,
+      "link": "down",
+      "last_exchange_ms": 1792414418639,
+      "last_success": false,
+      "last_error": "read_fail",
+      "goose_enabled": false,
+      "goose_interface": "eth0",
+      "goose_publish": false
+    }
+  }
+}
+Reference ID    : 00000000 ()
+Stratum         : 0
+Ref time (UTC)  : Thu Jan 01 00:00:00 1970
+System time     : 0.000000000 seconds fast of NTP time
+Last offset     : +0.000000000 seconds
+RMS offset      : 0.000000000 seconds
+Frequency       : 0.000 ppm slow
+Residual freq   : +0.000 ppm
+Skew            : 0.000 ppm
+Root delay      : 1.000000000 seconds
+Root dispersion : 1.000000000 seconds
+Update interval : 0.0 seconds
+Leap status     : Not synchronised
+Mon Oct 19 20:29:56 2026 daemon.err ccli[5043]: mms: ACSE auth REJECT — Profile A role/policy verification failed
+Mon Oct 19 20:50:30 2026 daemon.err ccli[5043]: mms: ACSE auth REJECT — Profile A role/policy verification failed

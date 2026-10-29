@@ -1,0 +1,41 @@
+{
+  "note": "Engineering source review 2026-10-23 for native E2E integration, abort/resilience, and BER representation changes. The current e2e_server.cpp fingerprint includes constructed BER ACSE version/identifier/control signature/certificate-path handling and passed the current 8/8 native E2E host CTests, including constructed handshake and transfer cases. Original TLS baseline and dual-certificate manifest remain intact. Supersessions include the prior r63 TSP auth-syntax/BER-length correction, native overlay composition, and strict native configuration. Explicit TLS additions are repeated configured client pins and native startup-failure cleanup. This fingerprint record is not normative conformance or device evidence. Follow-up review: shared RSA/ECDSA parameter policy and schema-aware AlgorithmIdentifier extensions; verification recorded in BER review-fix evidence. Field campaign review: enforce complete CONNECT presentation payload cap before parsing; see size/resource/TX campaign evidence.",
+  "superseded_extension_sources": {
+    "scripts/generate_mms_certificate_auth.py": {
+      "original": "912dbde99b1102961cd2f62a91fb97154abe1bca035b5127a09b144000e2f978",
+      "reviewed_lf_sha256": "fa764e139f4b1ac250cca32e6a72b3a77268dd7359837b4a6ef04a057b204975"
+    },
+    "apps/ccli/cmake/mms_certificate_auth.cmake": {
+      "original": "ac891aedecda55edb7268cc72bb9eddab1fce0e07850bb84615f0071c0a71949",
+      "reviewed_lf_sha256": "f802d59dad90db0e56bdf40d51ad3e0cba41fc2f139058dbfc1b7c3e526b8336"
+    },
+    "apps/ccli/core/config/ccli_config.hpp": {
+      "original": "52871241e2892d0949b11619a3099a6e25a4f353b782c6ac955478370cf96d25",
+      "reviewed_lf_sha256": "54b1cf408e0408e3f32d636f3187fa7f2375851bed6f1e6749c1492c2a50beaf"
+    },
+    "apps/ccli/core/config/ccli_config.cpp": {
+      "original": "87a6373d9847e2fab292994f94a83ac4eef2a702c8da500150ab4a7098be21da",
+      "reviewed_lf_sha256": "b5e099a5130740633ffefa82e6f908b7ae2234aa0d90d0940cea8017b0ec94a2"
+    }
+  },
+  "reviewed_source_lf_sha256": {
+    "scripts/generate_mms_certificate_auth.py": "fa764e139f4b1ac250cca32e6a72b3a77268dd7359837b4a6ef04a057b204975",
+    "apps/ccli/cmake/mms_certificate_auth.cmake": "f802d59dad90db0e56bdf40d51ad3e0cba41fc2f139058dbfc1b7c3e526b8336",
+    "apps/ccli/core/config/ccli_config.hpp": "54b1cf408e0408e3f32d636f3187fa7f2375851bed6f1e6749c1492c2a50beaf",
+    "apps/ccli/core/config/ccli_config.cpp": "b5e099a5130740633ffefa82e6f908b7ae2234aa0d90d0940cea8017b0ec94a2",
+    "scripts/generate_mms_e2e.py": "4ba058e1f0e5f052aac787b0111b8d2ad127d363b90fee6f88740aa74e75ea00",
+    "apps/ccli/adapters/iec61850_mms/mms_adapter.cpp": "e56ec4db940d2b8b626ab1f15f3197b88634a6c2dcfcaf6bf4d18b5a3cc30400",
+    "apps/ccli/adapters/iec61850_mms/e2e/e2e_server.cpp": "aa8b25d232d0e7771342a771ed25e3d6a020545ef8d64e0e8a162fdd9879be5e",
+    "apps/ccli/adapters/iec61850_mms/e2e/e2e_server.hpp": "6449a07a8183b907e16203b6f1fab4c6678b8f36558235739d4e1ce6d90e8316",
+    "apps/ccli/adapters/iec61850_mms/e2e/e2e_osi_bridge.h": "ea3b4c085d5a21e56184aa12fb2086a91f967c7de0c10433e38a1a07917fab7c",
+    "apps/ccli/cmake/patch_mbedtls_3_6_crl_scope.py": "eca334d5ae073f174e3fcb31d21210bda3de528ef2c8d803423909adfce6cae4",
+    "apps/ccli/adapters/iec61850_mms/e2e/e2e_mbedtls_crl.hpp": "2486a72f5fb48364b196af0c1dccbd5a1e950c4ad8742ff83966f1f5dbcf5577",
+    "apps/ccli/third_party/libiec61850/third_party/mbedtls/mbedtls-3.6.0/library/x509_crl.c": "1d216c3d97ae200e4d3da34c410ad14563e89816c6c0a3ef8b4096565849395a"
+  },
+  "additional_tls_configuration_calls": [
+    "TLSConfiguration_addAllowedCertificateFromFile(impl->tls,cert.c_str())){std::fprintf(stderr,\"mms:TLSfailedtoloadallowedclientcertificate%s\\n\",cert.c_str());",
+    "TLSConfiguration_destroy(impl->tls);",
+    "TLSConfiguration_destroy(impl->tls);"
+  ],
+  "additional_known_certificate_gate": "||!cfg.tls.allowed_client_certs.empty()"
+}

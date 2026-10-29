@@ -1,0 +1,8 @@
+{ "p_kw": 85.119, "q_kvar": 0, "quality": "good", "ts_ms": 1793273548299 }
+{ "p_kw": 85.119, "q_kvar": 0, "quality": "good", "ts_ms": 1793273548299 }
+CONFIG_CHECK_EXIT=0
+{"ts_ms":1793273557000,"ts_o14":"2026/10/29 11:32:37","category":"security","type":"firmware_updater","detail":"firmware_updater:UPDATE_DEFERRED TPM unavailable","sequence":11840}
+{"ts_ms":1793273561992,"ts_o14":"2026/10/29 11:32:41","category":"security","type":"security","detail":"platform_auth:replayed","sequence":11841,"iec_id":"IEC62351-14:1.1","mnemonic":"LOGIN_SUCCESS","severity":"notice","text":"Login success","source":"TR500","app_name":"dropbear","peer_info":"192.168.0.137:60000","user_id":"root","role":"","P.Service":"SSH"}
+ccli: HiTEKS CCLI user-space firmware: PF2 FSM, Modbus, IEC 61850 MMS (Eth_A), IEC 60870-5-104 (Eth_B). Platform HAL: platform_tg500 on TesPro TG544 / TR500 / TG-524 (MT798X).
+ccli: https://github.com/hiteks/ccli
+ccli: 3776 KiB

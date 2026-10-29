@@ -36,6 +36,10 @@ ActivePowerDerivation derive_active_power_kw(const PlantEnvelope& plant,
         }
     }
 
+    if (dso.wsa_active) {
+        out.p_wsa_kw = pct_smax_to_kw(dso.wsa_spt_pct, out.smax_kva_used);
+        p_cap = std::min(p_cap, out.p_wsa_kw);
+    }
     out.p_effective_export_kw = p_cap;
     return out;
 }

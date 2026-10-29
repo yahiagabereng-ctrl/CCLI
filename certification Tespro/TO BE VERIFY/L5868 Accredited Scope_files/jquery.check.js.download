@@ -1,0 +1,142 @@
+/**
+ * 
+ * javascript校验函数
+ * 
+ * 
+ */
+/*jQuery.check = {
+	isEmail : function(value) {
+		alert(value);
+		return /^((([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*)|((\x22)((((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(([\x01-\x08\x0b\x0c\x0e-\x1f\x7f]|\x21|[\x23-\x5b]|[\x5d-\x7e]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(\\([\x01-\x09\x0b\x0c\x0d-\x7f]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))))*(((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(\x22)))@((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?$/i.test(value);
+  	},
+	isEmpty : function(value) {
+  		return $.trim(value).length <= 0;
+  	}
+};
+*/
+(function($) {
+	$.extend({
+		/**
+		 * 校验email
+		 * 
+		 */
+		isEmail : function(value) {
+			return /^((([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*)|((\x22)((((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(([\x01-\x08\x0b\x0c\x0e-\x1f\x7f]|\x21|[\x23-\x5b]|[\x5d-\x7e]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(\\([\x01-\x09\x0b\x0c\x0d-\x7f]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))))*(((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(\x22)))@((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?$/i.test(value);
+		},
+		/**
+		 * 校验是否为空
+		 * 
+		 */
+		isEmpty : function(value) {
+			return $.trim(value).length <= 0;
+		},
+		/**
+		 * 校验数字
+		 * 
+		 */
+		isDigit : function(value) {
+			return /^\d+$/.test(value);
+		},
+		/**
+		 * 校验十进制数字
+		 * 
+		 */
+		isNumber : function(value) {
+			return /^-?(?:\d+|\d{1,3}(?:,\d{3})+)(?:\.\d+)?$/.test(value);
+		},
+		/**
+		 * 校验url
+		 * 
+		 */
+		isURL : function(value) {
+			return /^(https?|ftp):\/\/(((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:)*@)?(((\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5]))|((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?)(:\d*)?)(\/((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)+(\/(([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)*)*)?)?(\?((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|[\uE000-\uF8FF]|\/|\?)*)?(\#((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|\/|\?)*)?$/i.test(value);
+		},
+		/**
+		 * 校验范围
+		 * 
+		 */
+		isInRange : function(value, min, max) {
+				return ( value >= min && value <= max );
+		},
+		/**
+		 * 校验最大值
+		 * 
+		 */
+		isLessThanMax : function(value, max) {
+				return ( value <= max );
+		},
+		/**
+		 * 校验最小值
+		 * 
+		 */
+		isGreaterThanMin : function(value, min) {
+				return ( value >= min );
+		},
+		/**
+		 * 校验可接受内容
+		 * 
+		 */
+//		isAccepted: function(value, param) {
+//			param = typeof param == "string" ? param : "png|jpe?g|gif";
+//			return value.match(new RegExp(".(" + param + ")$", "i")); 
+//		},
+		/**
+		 * 校验是否相等
+		 * 
+		 */
+		isEqualTo: function(value, param) {
+			return value == param;		
+		}
+		,
+		/**
+		 * 校验手机
+		 * 
+		 */
+		isMobile: function(value) {
+			return /13[5,6,7,8,9]\d{8}/.test(value) || /13[0,1,2,3,4]\d{8}/.test(value);		
+		},	
+		/**
+		 * 校验电话号码格式：010-xxxxxxxx
+		 * 
+		 */
+		isTel: function(value) {
+			return /^\d{3,4}-\d{7,8}(-\d{3,4})?$/.test(value);		
+		},	
+		/**
+		 * 校验货币
+		 * 
+		 */
+		isCurrency: function(value) {
+			return /^\d{0,}.\d{2}$/g.test(value);		
+		},	
+		/**
+		 * 校验身份证
+		 * 
+		 */
+		isIDCard: function(value) {
+			return /^[1-9]\d{7}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}$/.test(value) || /^[1-9]\d{5}[1-9]\d{3}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])((\d{4})|\d{3}[A-Z])$/.test(value);		
+		},	
+		/**
+		 * 校验整数
+		 * 
+		 */
+		isInteger: function(value) {
+			return /^[0-9]+$/.test(value);		
+		},	
+		/**
+		 * 校验字母数字
+		 * 
+		 */
+		isAlphaNumber: function(value) {
+			return /^[A-Za-z0-9]+$/.test(value);		
+		},
+		/**
+		 * 校验字母
+		 * 
+		 */
+		isAlpha: function(value) {
+			return /^[A-Za-z]+$/.test(value);		
+		}
+	});
+})(jQuery);
+

@@ -1,0 +1,12 @@
+/*
+扩展datatalbe 样式
+*/
+
+
+/*
+去除hidden 栏 粗线问题
+*/
+
+th.yui-dt-hidden,
+tr.yui-dt-odd .yui-dt-hidden,
+tr.yui-dt-even .yui-dt-hidden {display:none;}

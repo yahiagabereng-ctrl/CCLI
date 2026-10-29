@@ -257,16 +257,25 @@ int run_event_dump(const std::string& config_path, std::size_t count, bool json_
     if (count == 0 || count > cci::core::EventStore::kMaxEvents) {
         count = cci::core::EventStore::kMaxEvents;
     }
-    return cci::core::EventStore::dump_to_stream(std::cout, cfg.event_log.path, count, json_out);
+    int result = cci::core::EventStore::dump_to_stream(std::cout, cfg.event_log.path, count, json_out);
+    std::cout.flush();
+    if (!std::cout.good()) result = 1;
+    if (!cci::core::EventStore::audit_log_read(cfg.event_log.path, result == 0)) {
+        std::cerr << "event-dump: could not persist read audit request\n";
+        return 1;
+    }
+    return result;
 }
 
 int run_event_wrap_test() {
     const std::string path = "/tmp/ccli-event-wrap-test.jsonl";
     std::remove(path.c_str());
+    std::remove((path + ".1").c_str());
     const bool ok = cci::core::EventStore::run_wrap_test(path);
     std::cout << (ok ? "P7-01 wrap test: PASS (2048 events, oldest dropped)\n"
                      : "P7-01 wrap test: FAIL\n");
     std::remove(path.c_str());
+    std::remove((path + ".1").c_str());
     return ok ? 0 : 1;
 }
 

@@ -1,0 +1,33 @@
+{
+  "host": "127.0.0.1",
+  "port": 3784,
+  "command": "write",
+  "reference": "CCI016_01LD_Plant/WlimDWMX1.Mod.ctlModel",
+  "passed": true,
+  "events": [
+    {
+      "kind": "association",
+      "reference": "127.0.0.1",
+      "error": 0,
+      "error_text": "",
+      "value": "mutual TLS 1.2 + ACSE certificate authentication",
+      "observed_utc": "2026-10-19T08:40:37.947197+00:00"
+    },
+    {
+      "kind": "write",
+      "reference": "CCI016_01LD_Plant/WlimDWMX1.Mod.ctlModel",
+      "error": 0,
+      "error_text": "",
+      "value": "2",
+      "observed_utc": "2026-10-19T08:40:38.008095+00:00"
+    },
+    {
+      "kind": "read",
+      "reference": "CCI016_01LD_Plant/WlimDWMX1.Mod.ctlModel",
+      "error": 0,
+      "error_text": "",
+      "value": "2",
+      "observed_utc": "2026-10-19T08:40:38.048881+00:00"
+    }
+  ]
+}

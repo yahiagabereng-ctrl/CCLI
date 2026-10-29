@@ -1,0 +1,37 @@
+{
+  "host": "127.0.0.1",
+  "port": 3784,
+  "command": "operate",
+  "reference": "CCI016_01LD_Plant/WlimDWMX1.Mod",
+  "passed": true,
+  "events": [
+    {
+      "kind": "association",
+      "reference": "127.0.0.1",
+      "error": 0,
+      "value": "mutual TLS 1.2 + ACSE certificate authentication",
+      "observed_utc": "2026-10-19T08:37:30.143279+00:00"
+    },
+    {
+      "kind": "control_model",
+      "reference": "CCI016_01LD_Plant/WlimDWMX1.Mod",
+      "error": 0,
+      "value": "3",
+      "observed_utc": "2026-10-19T08:37:30.214543+00:00"
+    },
+    {
+      "kind": "operate",
+      "reference": "CCI016_01LD_Plant/WlimDWMX1.Mod",
+      "error": 0,
+      "value": "request accepted",
+      "observed_utc": "2026-10-19T08:37:30.234967+00:00"
+    },
+    {
+      "kind": "termination",
+      "reference": "CCI016_01LD_Plant/WlimDWMX1.Mod",
+      "error": 0,
+      "value": "error=0 addCause=0",
+      "observed_utc": "2026-10-19T08:37:30.245247+00:00"
+    }
+  ]
+}

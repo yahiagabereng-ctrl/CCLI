@@ -1,0 +1,540 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0143)https://www.cnas.org.cn/LAS_FQ/publish/lab/signatoryListEn.jsp?baseInfoId=f6808888cdf947a5bdb6951c4cda2417&certUpdateTs=1&validate=&attactdate= -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+	<title>授权签字人</title> <!-- 自动生成 /publish/lab/signatoryListEn.jsp JS　CSS　-->
+<link rel="stylesheet" type="text/css" href="./fonts.css">
+ <link rel="stylesheet" type="text/css" href="./container.css">
+ <link rel="stylesheet" type="text/css" href="./datatable.css">
+ <link rel="stylesheet" type="text/css" href="./datatable_ext.css">
+ <link rel="stylesheet" type="text/css" href="./button.css">
+ <link rel="stylesheet" type="text/css" href="./menu.css">
+ <link rel="stylesheet" type="text/css" href="./container.css">
+ <link rel="stylesheet" type="text/css" href="./button.css">
+ <link rel="stylesheet" type="text/css" href="./resize.css">
+ <script type="text/javascript" src="./jquery.min.js.download"></script>
+<script type="text/javascript" src="./jquery.metadata.js.download"></script>
+<script type="text/javascript" src="./yuiloader-min.js.download"></script>
+<script type="text/javascript" src="./yahoo-dom-event-min.js.download"></script>
+<script type="text/javascript" src="./dragdrop-min.js.download"></script>
+<script type="text/javascript" src="./element-min.js.download"></script>
+<script type="text/javascript" src="./animation-min.js.download"></script>
+<script type="text/javascript" src="./datasource-min.js.download"></script>
+<script type="text/javascript" src="./datatable-min.js.download"></script>
+<script type="text/javascript" src="./connection-min.js.download"></script>
+<script type="text/javascript" src="./json-min.js.download"></script>
+<script type="text/javascript" src="./paginator-min.js.download"></script>
+<script type="text/javascript" src="./caf-paginator.js.download"></script>
+<script type="text/javascript" src="./button-min.js.download"></script>
+<script type="text/javascript" src="./caf-util-min.js.download"></script>
+<script type="text/javascript" src="./caf-datatable.js.download"></script>
+<script type="text/javascript" src="./caf-datatable-filter.js.download"></script>
+<script type="text/javascript" src="./container-min.js.download"></script>
+<script type="text/javascript" src="./button-min.js.download">"></script>
+<script type="text/javascript" src="./menu-min.js.download">"></script>
+<script type="text/javascript" src="./resize-min.js.download"></script>
+<script type="text/javascript" src="./jquery.validate.js.download"></script>
+<script type="text/javascript" src="./jquery.validate.extend.js.download"></script>
+<script type="text/javascript" src="./jquery.check.js.download"></script>
+<!-- 自动生成JS　CSS结束　-->
+	
+
+	<!-- message tag
+-->
+ 
+
+	<script type="text/javascript" src="./public.js.download"></script>
+	<script type="text/javascript" src="./jquery.blockUI.js.download"></script>
+	<link href="./globle.css" rel="stylesheet" type="text/css">
+		<script language="javascript">
+		var setNullValueFormatter = function(elCell, oRecord, oColumn, oData) { 
+	  		elCell.innerHTML="";
+		};
+			//调用查询方法
+			function _query() {
+				pirl_refresh(document.getElementById('queryForm'));
+			}
+			$(function() {
+				$(
+						'input[type="button"],input[type="submit"],input[type="reset"]')
+						.addClass('btn');
+				$(".commonTable").each(function() {
+					fmtTableBackground(this);
+				});
+				_query();
+				$('#queryForm').validate();
+			});
+			$.validator.setDefaults({
+				submitHandler : function(form) {
+					if (form.id == 'queryForm') {
+						_query();
+						return;
+					}
+				}
+			});
+			var ascendPublishFmt = function(elCell, oRecord, oColumn, oData){
+				$(elCell).append($('<a>',{href:'javascript:void(0)',click:function(){
+					top.openTopWindow({
+					    title:'Retrospect'
+					    , url: '/LAS_FQ/publish/toBaseAbilityAscendEn.action'
+					    , data:{status:oRecord.getData('status'),ascendInfoList:[
+							{abilityItem:'PersonType',abilityId:oRecord.getData('personTypeId'),abilityItemName:'Name',abilityShowVal:oRecord.getData('nameEn')}
+					    ]}
+					    , width: 550
+					    , height:200
+					});
+				}}).append(bStatusEnHtml(oData)));
+			};
+		</script>
+<style type="text/css"></style></head>
+
+<body class="lib yui-skin-sam"><div id="yui-dt-colresizerproxy" class="yui-dt-resizerproxy"></div>
+	<form id="queryForm" name="queryForm" method="post" novalidate="novalidate">
+		<input type="hidden" name="baseinfoId" value="f6808888cdf947a5bdb6951c4cda2417">
+		<input type="hidden" name="category" value="103004">
+		<table class="commonTable" id="commonTable" cellpadding="0" cellspacing="0" width="100%" style="margin: 0px;">
+			<tbody><tr class="colorLight">
+				<td width="15%" align="left">Name</td>
+				<td align="left"><input type="text" name="nameEn" size="20" style="width:98%">
+				</td>
+				<td width="15%" align="left">Authorized Scope of Signature</td>
+				<td align="left"><input type="text" name="authorizedFieldEn" style="width:98%" size="20"></td>
+			</tr>
+			<tr>
+				<td width="15%" align="left">Address</td>
+				<td align="left">
+					
+						
+						
+						
+					
+
+
+
+
+
+
+
+
+<select id="branchId" name="branchId" style="max-width:600px;">
+	
+		
+		<option value="0c655198985b49a78f44a50498083ddd">Room 101, No.7, Zone 2, Xinxing Industrial Park, Fuhai Road, Xinhe, Fuhai Subdistrict, Bao'an District, Shenzhen, Guangdong, China</option>
+		
+	
+</select>
+<input type="hidden" name="effBranchIds" value="'0c655198985b49a78f44a50498083ddd'">
+
+				</td>
+				 <td colspan="2">
+					 
+					 
+				 </td>
+				</tr>
+				<tr class="colorLight">
+				<td colspan="4" align="center"><input type="submit" id="" value="Search" class="btn">
+&nbsp;<input type="reset" value="Reset" class="btn">
+</td>
+			</tr>
+		</tbody></table>
+	</form>
+	<div id="pirl" class="yui-dt yui-dt-scrollable"><div class="yui-dt-mask" style="display: none;"></div><div class="yui-dt-hd" style="background-color: rgb(242, 242, 242); width: 1892px;"><table><colgroup><col><col><col><col><col><col><col></colgroup><thead style=""><tr class="yui-dt-first yui-dt-last"><th id="yui-dt0-fixedth-num" rowspan="1" colspan="1" class="yui-dt0-col-num yui-dt-col-num yui-dt-sortable yui-dt-resizeable"><div class="yui-dt-resizerliner"><div id="yui-dt0-th-num-liner" class="yui-dt-liner"><span class="yui-dt-label"><a href="https://www.cnas.org.cn/LAS_FQ/publish/lab/yui-dt0-href-num" title="单击按照升序排序" class="yui-dt-sortable">No.</a></span></div><div id="yui-dt0-fixedth-num-resizer" class="yui-dt-resizer" style="inset: auto 0px 0px auto; height: 20px;"></div></div></th><th id="yui-dt0-fixedth-nameEn" rowspan="1" colspan="1" class="yui-dt0-col-nameEn yui-dt-col-nameEn yui-dt-resizeable"><div class="yui-dt-resizerliner"><div id="yui-dt0-th-nameEn-liner" class="yui-dt-liner"><span class="yui-dt-label">Name</span></div><div id="yui-dt0-fixedth-nameEn-resizer" class="yui-dt-resizer" style="inset: auto 0px 0px auto; height: 20px;"></div></div></th><th id="yui-dt0-fixedth-authorizedFieldEn" rowspan="1" colspan="1" class="yui-dt0-col-authorizedFieldEn yui-dt-col-authorizedFieldEn yui-dt-resizeable"><div class="yui-dt-resizerliner"><div id="yui-dt0-th-authorizedFieldEn-liner" class="yui-dt-liner"><span class="yui-dt-label">Authorized Scope of Signature</span></div><div id="yui-dt0-fixedth-authorizedFieldEn-resizer" class="yui-dt-resizer" style="inset: auto 0px 0px auto; height: 20px;"></div></div></th><th id="yui-dt0-fixedth-noteEn" rowspan="1" colspan="1" class="yui-dt0-col-noteEn yui-dt-col-noteEn yui-dt-resizeable"><div class="yui-dt-resizerliner"><div id="yui-dt0-th-noteEn-liner" class="yui-dt-liner"><span class="yui-dt-label">Note</span></div><div id="yui-dt0-fixedth-noteEn-resizer" class="yui-dt-resizer" style="inset: auto 0px 0px auto; height: 20px;"></div></div></th><th id="yui-dt0-fixedth-status" rowspan="1" colspan="1" class="yui-dt0-col-status yui-dt-col-status yui-dt-resizeable"><div class="yui-dt-resizerliner"><div id="yui-dt0-th-status-liner" class="yui-dt-liner"><span class="yui-dt-label">Status</span></div><div id="yui-dt0-fixedth-status-resizer" class="yui-dt-resizer" style="inset: auto 0px 0px auto; height: 20px;"></div></div></th><th id="yui-dt0-fixedth-branchId" rowspan="1" colspan="1" class="yui-dt0-col-branchId yui-dt-col-branchId yui-dt-hidden yui-dt-resizeable"><div class="yui-dt-resizerliner"><div id="yui-dt0-th-branchId-liner" class="yui-dt-liner"><span class="yui-dt-label">branchId</span></div><div id="yui-dt0-fixedth-branchId-resizer" class="yui-dt-resizer" style="inset: auto 0px 0px auto; height: 0px;"></div></div></th><th id="yui-dt0-fixedth-personTypeId" rowspan="1" colspan="1" class="yui-dt0-col-personTypeId yui-dt-col-personTypeId yui-dt-hidden yui-dt-resizeable" style="border-right: 1px solid rgb(242, 242, 242);"><div class="yui-dt-resizerliner"><div id="yui-dt0-th-personTypeId-liner" class="yui-dt-liner"><span class="yui-dt-label">personTypeId</span></div><div id="yui-dt0-fixedth-personTypeId-resizer" class="yui-dt-resizer" style="inset: auto 0px 0px auto; height: 0px;"></div></div></th></tr></thead></table></div><div class="yui-dt-bd" style="height: 805px; width: 1892px;"><table summary="" style="margin-top: 0px;"><thead><tr><th id="yui-dt0-th-num" rowspan="1" colspan="1" class="yui-dt-first">No.</th><th id="yui-dt0-th-nameEn" rowspan="1" colspan="1">Name</th><th id="yui-dt0-th-authorizedFieldEn" rowspan="1" colspan="1">Authorized Scope of Signature</th><th id="yui-dt0-th-noteEn" rowspan="1" colspan="1">Note</th><th id="yui-dt0-th-status" rowspan="1" colspan="1">Status</th><th id="yui-dt0-th-branchId" rowspan="1" colspan="1">branchId</th><th id="yui-dt0-th-personTypeId" rowspan="1" colspan="1" class="yui-dt-last">personTypeId</th></tr></thead><tbody class="yui-dt-message" style="display: none;"><tr class="yui-dt-first yui-dt-last"><td colspan="7" class="yui-dt-first yui-dt-last"><div class="yui-dt-liner yui-dt-loading yui-dt-empty">Loading...</div></td></tr></tbody><tbody tabindex="0" class="yui-dt-data" style=""><tr id="yui-rec0" class="yui-dt-first yui-dt-even" style=""><td headers="yui-dt0-th-num " class="yui-dt0-col-num yui-dt-col-num yui-dt-sortable yui-dt-resizeable yui-dt-first"><div class="yui-dt-liner">1</div></td><td headers="yui-dt0-th-nameEn " class="yui-dt0-col-nameEn yui-dt-col-nameEn yui-dt-resizeable"><div class="yui-dt-liner">Leon Chen</div></td><td headers="yui-dt0-th-authorizedFieldEn " class="yui-dt0-col-authorizedFieldEn yui-dt-col-authorizedFieldEn yui-dt-resizeable"><div class="yui-dt-liner">Approved test items  for  Electromagnetic compatibility,  Radio &amp; Telecommunication</div></td><td headers="yui-dt0-th-noteEn " class="yui-dt0-col-noteEn yui-dt-col-noteEn yui-dt-resizeable"><div class="yui-dt-liner"></div></td><td headers="yui-dt0-th-status " class="yui-dt0-col-status yui-dt-col-status yui-dt-resizeable"><div class="yui-dt-liner"><a href="javascript:void(0)">Effectivity</a></div></td><td headers="yui-dt0-th-branchId " class="yui-dt0-col-branchId yui-dt-col-branchId yui-dt-hidden yui-dt-resizeable"><div class="yui-dt-liner">0c655198985b49a78f44a50498083ddd</div></td><td headers="yui-dt0-th-personTypeId " class="yui-dt0-col-personTypeId yui-dt-col-personTypeId yui-dt-hidden yui-dt-resizeable yui-dt-last"><div class="yui-dt-liner">fad323c256864354bb993ec3cefaae67</div></td></tr><tr id="yui-rec1" class="yui-dt-odd" style=""><td headers="yui-dt0-th-num " class="yui-dt0-col-num yui-dt-col-num yui-dt-sortable yui-dt-resizeable yui-dt-first"><div class="yui-dt-liner">2</div></td><td headers="yui-dt0-th-nameEn " class="yui-dt0-col-nameEn yui-dt-col-nameEn yui-dt-resizeable"><div class="yui-dt-liner">Tom Xue</div></td><td headers="yui-dt0-th-authorizedFieldEn " class="yui-dt0-col-authorizedFieldEn yui-dt-col-authorizedFieldEn yui-dt-resizeable"><div class="yui-dt-liner">Approved test items  for battery and safety test items</div></td><td headers="yui-dt0-th-noteEn " class="yui-dt0-col-noteEn yui-dt-col-noteEn yui-dt-resizeable"><div class="yui-dt-liner"></div></td><td headers="yui-dt0-th-status " class="yui-dt0-col-status yui-dt-col-status yui-dt-resizeable"><div class="yui-dt-liner"><a href="javascript:void(0)">Effectivity</a></div></td><td headers="yui-dt0-th-branchId " class="yui-dt0-col-branchId yui-dt-col-branchId yui-dt-hidden yui-dt-resizeable"><div class="yui-dt-liner">0c655198985b49a78f44a50498083ddd</div></td><td headers="yui-dt0-th-personTypeId " class="yui-dt0-col-personTypeId yui-dt-col-personTypeId yui-dt-hidden yui-dt-resizeable yui-dt-last"><div class="yui-dt-liner">97483c508e4d48899fea3d27102d05d7</div></td></tr><tr id="yui-rec2" class="yui-dt-even" style=""><td headers="yui-dt0-th-num " class="yui-dt0-col-num yui-dt-col-num yui-dt-sortable yui-dt-resizeable yui-dt-first"><div class="yui-dt-liner">3</div></td><td headers="yui-dt0-th-nameEn " class="yui-dt0-col-nameEn yui-dt-col-nameEn yui-dt-resizeable"><div class="yui-dt-liner">Tina Huang</div></td><td headers="yui-dt0-th-authorizedFieldEn " class="yui-dt0-col-authorizedFieldEn yui-dt-col-authorizedFieldEn yui-dt-resizeable"><div class="yui-dt-liner">Approved test items in the field of chemistry</div></td><td headers="yui-dt0-th-noteEn " class="yui-dt0-col-noteEn yui-dt-col-noteEn yui-dt-resizeable"><div class="yui-dt-liner"></div></td><td headers="yui-dt0-th-status " class="yui-dt0-col-status yui-dt-col-status yui-dt-resizeable"><div class="yui-dt-liner"><a href="javascript:void(0)">Effectivity</a></div></td><td headers="yui-dt0-th-branchId " class="yui-dt0-col-branchId yui-dt-col-branchId yui-dt-hidden yui-dt-resizeable"><div class="yui-dt-liner">0c655198985b49a78f44a50498083ddd</div></td><td headers="yui-dt0-th-personTypeId " class="yui-dt0-col-personTypeId yui-dt-col-personTypeId yui-dt-hidden yui-dt-resizeable yui-dt-last"><div class="yui-dt-liner">fade21fd47db45bcad945c0ad772f9bd</div></td></tr><tr id="yui-rec3" class="yui-dt-odd" style=""><td headers="yui-dt0-th-num " class="yui-dt0-col-num yui-dt-col-num yui-dt-sortable yui-dt-resizeable yui-dt-first"><div class="yui-dt-liner">4</div></td><td headers="yui-dt0-th-nameEn " class="yui-dt0-col-nameEn yui-dt-col-nameEn yui-dt-resizeable"><div class="yui-dt-liner">Lewis Lian</div></td><td headers="yui-dt0-th-authorizedFieldEn " class="yui-dt0-col-authorizedFieldEn yui-dt-col-authorizedFieldEn yui-dt-resizeable"><div class="yui-dt-liner">Approved test items for Electromagnetic compatibility, Radio &amp; Telecommunication, battery and safety</div></td><td headers="yui-dt0-th-noteEn " class="yui-dt0-col-noteEn yui-dt-col-noteEn yui-dt-resizeable"><div class="yui-dt-liner"></div></td><td headers="yui-dt0-th-status " class="yui-dt0-col-status yui-dt-col-status yui-dt-resizeable"><div class="yui-dt-liner"><a href="javascript:void(0)">Effectivity</a></div></td><td headers="yui-dt0-th-branchId " class="yui-dt0-col-branchId yui-dt-col-branchId yui-dt-hidden yui-dt-resizeable"><div class="yui-dt-liner">0c655198985b49a78f44a50498083ddd</div></td><td headers="yui-dt0-th-personTypeId " class="yui-dt0-col-personTypeId yui-dt-col-personTypeId yui-dt-hidden yui-dt-resizeable yui-dt-last"><div class="yui-dt-liner">07d311c559ce413c84925d2c3cf16fb1</div></td></tr><tr id="yui-rec4" class="yui-dt-last yui-dt-even" style=""><td headers="yui-dt0-th-num " class="yui-dt0-col-num yui-dt-col-num yui-dt-sortable yui-dt-resizeable yui-dt-first"><div class="yui-dt-liner">5</div></td><td headers="yui-dt0-th-nameEn " class="yui-dt0-col-nameEn yui-dt-col-nameEn yui-dt-resizeable"><div class="yui-dt-liner">Derick Dong</div></td><td headers="yui-dt0-th-authorizedFieldEn " class="yui-dt0-col-authorizedFieldEn yui-dt-col-authorizedFieldEn yui-dt-resizeable"><div class="yui-dt-liner">Approved test items for battery and safety</div></td><td headers="yui-dt0-th-noteEn " class="yui-dt0-col-noteEn yui-dt-col-noteEn yui-dt-resizeable"><div class="yui-dt-liner"></div></td><td headers="yui-dt0-th-status " class="yui-dt0-col-status yui-dt-col-status yui-dt-resizeable"><div class="yui-dt-liner"><a href="javascript:void(0)">Effectivity</a></div></td><td headers="yui-dt0-th-branchId " class="yui-dt0-col-branchId yui-dt-col-branchId yui-dt-hidden yui-dt-resizeable"><div class="yui-dt-liner">0c655198985b49a78f44a50498083ddd</div></td><td headers="yui-dt0-th-personTypeId " class="yui-dt0-col-personTypeId yui-dt-col-personTypeId yui-dt-hidden yui-dt-resizeable yui-dt-last"><div class="yui-dt-liner">0704f27f2f6d4f9bbaaf08463bb6ce87</div></td></tr></tbody></table></div></div>
+	<div id="paginatorContainer" class="pager yui-pg-container" style=""><table width="100%" class="tablepaging"><tbody><tr><td width="20px"><span id="yui-pg0-0-first-span" class="yui-pg-first"><img src="./firstnull.gif" border="0" title="首页" style="border-width:0px;vertical-align:center"></span></td><td width="20px"><span id="yui-pg0-0-prev-span" class="yui-pg-previous"><img src="./prevnull.gif" border="0" title="上一页" style="border-width:0px;vertical-align:center"></span></td><td valign="middle" width="150px" align="center">Page&nbsp;<input id="yui-pg0-0-pageGoto-input" class="yui-pg-pageGoto">&nbsp;&nbsp;Total&nbsp;<span id="yui-pg0-0-totalPages-span" class="yui-pg-totalPages">1</span></td><td width="20px"><span id="yui-pg0-0-next-span" class="yui-pg-next"><img src="./nextnull.gif" border="0" title="下一页" style="border-width:0px;vertical-align:center"></span></td><td width="20px"><span id="yui-pg0-0-last-span" class="yui-pg-last"><img src="./lastnull.gif" border="0" title="尾页" style="border-width:0px;vertical-align:center"></span></td><td width="10px"></td><td width="120"><select onchange="pirlReQuery(this.options[this.options.selectedIndex].value);"><option value="10">10</option><option value="30">30</option><option value="50">50</option><option value="100" selected="">100</option></select>/page</td><td width="10px" align="right"><img src="./refresh.gif" style="CURSOR: hand" border="0" title="refresh" onclick="pirlReQuery();"></td><td align="right">Show&nbsp;<span id="yui-pg0-0-startRecord-span" class="yui-pg-startRecord">1</span>-<span id="yui-pg0-0-endRecord-span" class="yui-pg-endRecord">5</span>&nbsp;&nbsp; Total records&nbsp;<span id="yui-pg0-0-totalRecords-span" class="yui-pg-totalRecords">5</span>&nbsp;&nbsp;&nbsp;</td></tr></tbody></table></div>
+	
+		
+		
+		
+		
+        
+		
+        
+		
+		
+
+		
+	
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+String.prototype.trim = function(){return   this.replace(/(^\s*)|(\s*$)/g, "");}
+
+
+
+var prevParam_f74596a5971b46b99382f82f3ef8f190='';
+var resumbitRequestParaStr_f74596a5971b46b99382f82f3ef8f190='';
+	resumbitRequestParaStr_f74596a5971b46b99382f82f3ef8f190='&startIndex=0&sizePerPage=100';
+var paraArrays_f74596a5971b46b99382f82f3ef8f190= new Array({"name":"baseinfoId","value":"f6808888cdf947a5bdb6951c4cda2417"});
+var providerArrays_f74596a5971b46b99382f82f3ef8f190= new Array();
+var columnArrays_f74596a5971b46b99382f82f3ef8f190= [{key:"num",label:"No.",hidden:false,resizeable:true,sortable:true,formatter:seqFormatter,width:40},{key:"nameEn",label:"Name",hidden:false,resizeable:true,width:120},{key:"authorizedFieldEn",label:"Authorized Scope of Signature",hidden:false,resizeable:true,sortable:false,width:400},{key:"noteEn",label:"Note",hidden:false,resizeable:true,sortable:false,formatter:setNullValueFormatter,width:200},{key:"status",label:"Status",hidden:false,resizeable:true,formatter:ascendPublishFmt,width:70},{key:"branchId",label:"branchId",hidden:true,resizeable:true},{key:"personTypeId",label:"personTypeId",hidden:true,resizeable:true}];
+var exportColumn_f74596a5971b46b99382f82f3ef8f190= '';
+var exportName_f74596a5971b46b99382f82f3ef8f190= '';
+
+var generateRequest_f74596a5971b46b99382f82f3ef8f190 = function(oState, oSelf) {  
+	var reqStr ='';
+	var startIndex ='';     
+	var sizePerPage ='';
+	   
+	var sortbykey='';
+	var sortbydir='';
+		
+	if (oState.sortedBy){
+		var v1= oState.sortedBy.key;
+		var v2= oState.sortedBy.dir;
+		try{
+			v1 = pirlReplaceSortedKeyDir(v1,v2);
+		}catch(e){}
+		sortbykey= "sortedByKey=" + v1;
+		sortbydir="sortedByDir=" + v2 ;
+	}
+	if (oState.pagination){
+		startIndex ="startIndex="+oState.pagination.recordOffset;     
+		sizePerPage = "sizePerPage="+oState.pagination.rowsPerPage;
+	}
+	
+	if (sortbykey!=''){reqStr+='&'+sortbykey;}
+	if (sortbydir!=''){reqStr+='&'+sortbydir;}
+	if (startIndex!=''){reqStr+='&'+startIndex;}
+	if (sizePerPage!=''){reqStr+='&'+sizePerPage;}
+	         
+	if (paraArrays_f74596a5971b46b99382f82f3ef8f190.length!=0){
+		for (var i = 0;i<paraArrays_f74596a5971b46b99382f82f3ef8f190.length;i++){
+	    	var name = paraArrays_f74596a5971b46b99382f82f3ef8f190[i].name;//.replace("\"","\\\"");
+	    	var value = paraArrays_f74596a5971b46b99382f82f3ef8f190[i].value;//.replace("\"","\\\"");
+	    	reqStr+="&"+name+"="+encodeURIComponent(value);
+	    }
+	}      
+	    
+	if (providerArrays_f74596a5971b46b99382f82f3ef8f190.length!=0){
+	    for (var i = 0;i<providerArrays_f74596a5971b46b99382f82f3ef8f190.length;i++){
+	    	var name = providerArrays_f74596a5971b46b99382f82f3ef8f190[i].name;//.replace("\"","\\\"");
+	    	var value = providerArrays_f74596a5971b46b99382f82f3ef8f190[i].value;//.replace("\"","\\\"");
+	    	reqStr+="&"+name+"="+encodeURIComponent(value);
+	    }
+	} 
+	prevParam_f74596a5971b46b99382f82f3ef8f190=reqStr;  
+	return  reqStr;  
+}; 
+var pirlRefresh = function(){
+	var param = arguments[0];
+	__pirlRefresh(param);
+	 
+};
+
+var pirlReQueryRefresh = function(){
+	var param = arguments[0];
+	__pirlReQueryRefresh(param);
+	 
+};
+var pirlReQuery=function(){  
+	var param = arguments[0];
+	__pirlReQuery(param);
+ 
+}; 
+ 
+var __pirlReQuery=function(sizePerPage){  
+	if(sizePerPage){
+		resumbitRequestParaStr_f74596a5971b46b99382f82f3ef8f190=pirlReplaceSizePerPage(resumbitRequestParaStr_f74596a5971b46b99382f82f3ef8f190,sizePerPage);
+    	prevParam_f74596a5971b46b99382f82f3ef8f190=pirlReplaceSizePerPage(prevParam_f74596a5971b46b99382f82f3ef8f190,sizePerPage);
+    }
+    __pirlReQueryRefresh(prevParam_f74596a5971b46b99382f82f3ef8f190);
+}; 
+
+var __pirlRefresh = function(){
+ 	pirl.showTableMessage('Loading...');
+ 	var object = arguments[0];
+ 	var url='';
+ 	
+ 	paraArrays_f74596a5971b46b99382f82f3ef8f190=new Array();
+ 
+ 	var elecount=0;//参数数组计数
+ 	
+    if (typeof(object)=='string'){
+   		url=object;
+    	var codeStr='';
+		var array =url.split('&');
+		
+		for(var i = 0;i<array.length;i++){
+			paraArrays_f74596a5971b46b99382f82f3ef8f190[elecount++]={"name":array[i].substring(0,array[i].indexOf('=')),"value":array[i].substring(array[i].indexOf('=')+1,array[i].length)};
+		}
+ 
+ 		url = encodeURI(url);
+ 
+    }else {
+     
+    	var form=object;
+    
+	   for(var i=0;i<form.elements.length;i++){
+	  	 	var el=form.elements[i];
+	   		if(el.type=='text'||el.type=='hidden'||el.type=='textarea'){
+	   			if (el.name!=''&&el.value!=''){
+	   			   el.value =el.value.trim();
+				   paraArrays_f74596a5971b46b99382f82f3ef8f190[elecount++]={"name":el.name,"value":el.value};
+		       	   url+='&'+el.name+'='+encodeURIComponent(el.value);
+	   			}
+	        }else if (el.type=='radio'||el.type=='checkbox'){
+				if (el.checked){
+					if (el.name!=''&&el.value!=''){
+						 paraArrays_f74596a5971b46b99382f82f3ef8f190[elecount++]={"name":el.name,"value":el.value};
+		       			 url+='&'+el.name+'='+encodeURIComponent(el.value);
+	   				}
+				}
+	        }else if (el.tagName=='SELECT'){
+				for (var selcount=0;selcount<el.options.length ;selcount++ ){
+	
+					if (el.options[selcount].selected){
+						if (el.options[selcount].value!=''){
+							 paraArrays_f74596a5971b46b99382f82f3ef8f190[elecount++]={"name":el.name,"value":el.options[selcount].value};
+		       				url+='&'+el.name+'='+encodeURIComponent(el.options[selcount].value);
+	   					}
+					}
+				}
+			} 
+	  	 }
+
+    }
+ 
+    url=url+resumbitRequestParaStr_f74596a5971b46b99382f82f3ef8f190;
+ 
+ 
+    var codeStr='';
+    if (providerArrays_f74596a5971b46b99382f82f3ef8f190.length!=0){
+    	for (var i = 0;i<providerArrays_f74596a5971b46b99382f82f3ef8f190.length;i++){
+	    		var name = providerArrays_f74596a5971b46b99382f82f3ef8f190[i].name;
+	    		var value = providerArrays_f74596a5971b46b99382f82f3ef8f190[i].value;
+	    		codeStr+='&'+name+'='+encodeURIComponent(value);
+	    }
+	    
+	    
+    	if (url==''&&codeStr!=''){
+    		codeStr=codeStr.substring(1,codeStr.length);
+    	}
+    	
+    	url=url+codeStr;
+    }
+
+    var customFilter='';
+	 try{
+    	customFilter=getpirlCustomFilter();
+    }catch(e){ }
+    url+=customFilter;
+ 
+  prevParam_f74596a5971b46b99382f82f3ef8f190=url;  
+  //	alert(url);
+	dataSource_f74596a5971b46b99382f82f3ef8f190.sendRequest(url,
+	 	oCallback_f74596a5971b46b99382f82f3ef8f190
+	);
+
+};
+
+
+
+var __pirlReQueryRefresh = function(){
+ 	pirl.showTableMessage('读取中...');
+ 	
+ 	
+ 	var object = arguments[0];
+ 	var url=object;
+ 
+    var customFilter='';
+	 try{
+    	customFilter=getpirlCustomFilter();
+    }catch(e){ }
+    url+=customFilter;
+ 
+  prevParam_f74596a5971b46b99382f82f3ef8f190=url;  
+ 	//alert(url);
+	dataSource_f74596a5971b46b99382f82f3ef8f190.sendRequest(url,
+	 	oCallback_f74596a5971b46b99382f82f3ef8f190
+	);
+
+}
+
+
+
+ var  pirlReplaceSizePerPage=function(url,sizePerPage){
+			var s = 'sizePerPage='+sizePerPage;
+			var newurl=url.replace(/startIndex=(\d+)/g,'startIndex=0');
+			newurl=newurl.replace(/sizePerPage=(\d+)/g,s);
+	 
+ 	 		return newurl;
+};
+
+var pirl_refresh  =pirlRefresh; 
+</script>
+
+<script>
+var authInterceptDoFunctionMethodParam_f74596a5971b46b99382f82f3ef8f190=null;
+var authInterceptDoFunctionMethod_f74596a5971b46b99382f82f3ef8f190=null;
+var authInterceptDoFunctionThis_f74596a5971b46b99382f82f3ef8f190=null;
+var authInterceptDoFunctionEvent_f74596a5971b46b99382f82f3ef8f190=null;
+var pirlAuthInterceptKeydownSearch =function(evt){ 
+	evt = (evt) ? evt : ((window.event) ? window.event : "") ;
+	keyCode = evt.keyCode ? evt.keyCode : (evt.which ? evt.which : evt.charCode); 
+	if (keyCode == 13) { 
+	pirlAuthInterceptDoFunction();
+	} 
+};
+</script>   
+
+
+ <script>
+
+pirlAuthInterceptDivShow =function(obj,event,method,param){
+	authInterceptDoFunctionThis_f74596a5971b46b99382f82f3ef8f190=null;
+	authInterceptDoFunctionMethod_f74596a5971b46b99382f82f3ef8f190=null;
+	authInterceptDoFunctionMethodParam_f74596a5971b46b99382f82f3ef8f190=null;
+	authInterceptDoFunctionMethodEvent_f74596a5971b46b99382f82f3ef8f190=null;
+ 
+				
+	authInterceptDoFunctionThis_f74596a5971b46b99382f82f3ef8f190=obj;
+	authInterceptDoFunctionMethod_f74596a5971b46b99382f82f3ef8f190=method;
+	authInterceptDoFunctionMethodParam_f74596a5971b46b99382f82f3ef8f190=param;
+	authInterceptDoFunctionMethodEvent_f74596a5971b46b99382f82f3ef8f190=event;
+	try{
+		if (authInterceptDoFunctionMethodParam_f74596a5971b46b99382f82f3ef8f190){
+			if (authInterceptDoFunctionThis_f74596a5971b46b99382f82f3ef8f190){
+				authInterceptDoFunctionMethod_f74596a5971b46b99382f82f3ef8f190.call(authInterceptDoFunctionThis_f74596a5971b46b99382f82f3ef8f190,authInterceptDoFunctionMethodParam_f74596a5971b46b99382f82f3ef8f190);
+			}
+							
+		}else{
+			authInterceptDoFunctionMethod_f74596a5971b46b99382f82f3ef8f190.call(authInterceptDoFunctionThis_f74596a5971b46b99382f82f3ef8f190);
+		}
+	}catch(e){alert(e);}
+};
+ 
+</script>    
+
+<!-- start datatable id ：pirl -->
+
+
+
+<script>
+var columnSet_f74596a5971b46b99382f82f3ef8f190 = new YAHOO.widget.ColumnSet([{key:"num",label:"No.",hidden:false,resizeable:true,sortable:true,formatter:seqFormatter,width:40},{key:"nameEn",label:"Name",hidden:false,resizeable:true,width:120},{key:"authorizedFieldEn",label:"Authorized Scope of Signature",hidden:false,resizeable:true,sortable:false,width:400},{key:"noteEn",label:"Note",hidden:false,resizeable:true,sortable:false,formatter:setNullValueFormatter,width:200},{key:"status",label:"Status",hidden:false,resizeable:true,formatter:ascendPublishFmt,width:70},{key:"branchId",label:"branchId",hidden:true,resizeable:true},{key:"personTypeId",label:"personTypeId",hidden:true,resizeable:true}]);  
+		
+var dataSource_f74596a5971b46b99382f82f3ef8f190 = new YAHOO.util.XHRDataSource("/LAS_FQ/publish/queryPublishSignatory.action?");                   
+
+dataSource_f74596a5971b46b99382f82f3ef8f190.responseType  = YAHOO.util.DataSource.TYPE_JSON;  
+											 
+dataSource_f74596a5971b46b99382f82f3ef8f190.connMethodPost = true;
+
+dataSource_f74596a5971b46b99382f82f3ef8f190.connXhrMode = "queueRequests";
+ 	   
+
+dataSource_f74596a5971b46b99382f82f3ef8f190.responseSchema = {
+	fields: [{key:"num"},{key:"nameEn"},{key:"authorizedFieldEn"},{key:"noteEn"},{key:"status"},{key:"branchId"},{key:"personTypeId"}]
+,resultsList: "data"
+,metaFields: { totalRecords: "totalSize",startIndex: "startIndex",rowsPerPage:"sizePerPage"  } 
+};  
+	       
+
+
+                 
+var configs_f74596a5971b46b99382f82f3ef8f190 = {paginator:new YAHOO.widget.Paginator({agentMethod:pirlAuthInterceptDivShow,rowsPerPage:100,firstPageLinkLabel:"<img src='/LAS_FQ/images/page/food23.gif'  border='0' title='首页' style='border-width:0px;cursor:hand;vertical-align:center'/>,<img src='/LAS_FQ/images/page/firstnull.gif'  border='0' title='首页' style='border-width:0px;vertical-align:center'/>",lastPageLinkLabel:"<img src='/LAS_FQ/images/page/food24.gif'  border='0' title='尾页' style='border-width:0px;cursor:hand;vertical-align:center'/>,<img src='/LAS_FQ/images/page/lastnull.gif'  border='0' title='尾页' style='border-width:0px;vertical-align:center'/>",previousPageLinkLabel:"<img src='/LAS_FQ/images/page/food26.gif'  border='0' title='上一页' style='border-width:0px;cursor:hand;vertical-align:center'/>,<img src='/LAS_FQ/images/page/prevnull.gif'  border='0' title='上一页' style='border-width:0px;vertical-align:center'/>",nextPageLinkLabel:"<img src='/LAS_FQ/images/page/food25.gif'  border='0' title='下一页' style='border-width:0px;cursor:hand;vertical-align:center'/>,<img src='/LAS_FQ/images/page/nextnull.gif'  border='0' title='下一页' style='border-width:0px;vertical-align:center'/>",containers:"paginatorContainer",template:"<table width='100%' class='tablepaging'><tr><td width='20px'>{FirstPageImgLink}</td><td width='20px'>{PreviousPageImgLink}</td><td valign='middle' width='150px' align='center'>Page&nbsp;{PageGoto}&nbsp;&nbsp;Total&nbsp;{TotalPages}</td><td width='20px'>{NextPageImgLink}</td><td width='20px'>{LastPageImgLink}</td><td width='10px' ><td width='120'><select onChange='pirlReQuery(this.options[this.options.selectedIndex].value);' ><option value='10'>10</option><option value='30' >30</option><option value='50' >50</option><option value='100'  selected >100</option></select>/page</td></td><td width='10px' align='right' ><img src='/LAS_FQ/images/page/refresh.gif' style='CURSOR: hand'  border='0' title='refresh' style='border-width:0px;vertical-align:center' onclick='pirlReQuery();'/></td><td align='right' >Show&nbsp;{StartRecord}-{EndRecord}&nbsp;&nbsp; Total records&nbsp;{TotalRecords}&nbsp;&nbsp;&nbsp;</td></tr></table>",pageReportTemplate:"第&nbsp;{currentPage}&nbsp;页&nbsp;&nbsp;总页数:&nbsp;{totalPages}&nbsp;&nbsp;总记录数:&nbsp;{totalRecords}&nbsp;&nbsp;{startIndex}{endIndex} {startRecord}{endRecord}"}),initialRequest:"startIndex=0&sizePerPage=100&baseinfoId=f6808888cdf947a5bdb6951c4cda2417",dynamicData:true,initialLoad:false,generateRequest:generateRequest_f74596a5971b46b99382f82f3ef8f190,draggableColumns:false,scrollable:true,width:"100%",height:"300px",MSG_ERROR:'Data error.',MSG_EMPTY:'No records found.',MSG_LOADING:'Loading data...'};
+ 
+var pirl = new 
+YAHOO.widget.ScrollingDataTable
+("pirl", columnSet_f74596a5971b46b99382f82f3ef8f190, dataSource_f74596a5971b46b99382f82f3ef8f190,configs_f74596a5971b46b99382f82f3ef8f190);
+<!-- subscribe -->
+
+	// 行高亮
+	//dataTable.subscribe("rowMouseoverEvent",dataTable.onEventHighlightRow); 
+	//dataTable.subscribe("rowMouseoutEvent",dataTable.onEventUnhighlightRow); 
+//
+// yui:subscribe name="rowDblclickEvent" event="rowDblclickEvent('abc',callBack)" --> function rowDblclickEvent(oArgs,str,callBack)
+//
+// function functionName(oArgs){ 
+//				
+//		            var oRecord = DataTable.getRecord(oArgs.target); 
+//		            alert(YAHOO.lang.dump(oRecord.getData())); 
+//		}
+
+		 
+ 
+  
+	var oCallback_f74596a5971b46b99382f82f3ef8f190= { 
+	success: function(sRequest, oResponse, oPayload){
+
+  	pirl.onDataReturnInitializeTable(sRequest,oResponse,oPayload) ;
+   	var paginator = pirl.get('paginator');
+   	if (paginator){
+   		paginator.set('rowsPerPage', oResponse.meta.rowsPerPage);
+ 	 	paginator.set('totalRecords', oResponse.meta.totalRecords);
+		paginator.set('recordOffset', oResponse.meta.startIndex);
+	//alert('p-rowsPerPage'+oResponse.meta.rowsPerPage+',p-totalRecords'+oResponse.meta.totalRecords+',p-recordOffset'+oResponse.meta.startIndex);
+ 	  
+		 	
+		 		document.getElementById('paginatorContainer').style.display='';
+ 	  
+   }
+}, 
+	failure : function(sRequest, oResponse, oPayload){
+
+
+	pirl.onDataReturnInitializeTable(sRequest,oResponse,oPayload) ;
+	var paginator = pirl.get('paginator');
+	if (paginator){
+		paginator.set('rowsPerPage', oResponse.meta.rowsPerPage);
+		paginator.set('totalRecords', oResponse.meta.totalRecords);
+ 		paginator.set('recordOffset', oResponse.meta.startIndex);
+ 	  
+		 		document.getElementById('paginatorContainer').style.display='';
+   }
+   
+}, 
+   scope : pirl, 
+   argument: pirl.getState() 
+}; 
+
+
+
+pirl.doBeforeLoadData = function(oRequest, oResponse, oPayload) {
+	 // alert(YAHOO.lang.dump(oResponse));
+        var meta = oResponse.meta;
+        oPayload.totalRecords = meta.totalRecords || oPayload.totalRecords;
+        oPayload.pagination = {
+            rowsPerPage: meta.rowsPerPage ,
+            recordOffset: meta.startIndex 
+        };
+        try{
+       	 pirldoBeforeLoadData(oRequest, oResponse, oPayload);
+        }catch(e){}
+        return true;
+    };
+
+
+	function pirlInitDtScrollDiv(){
+		initDtScrollDiv('pirl','',0,0);
+	}
+ 
+ 			YAHOO.util.Event.onDOMReady(function(){
+ 				pirl.addListener('postRenderEvent', function(request , response ){
+ 
+				 pirlInitDtScrollDiv();
+
+				});
+		
+		 		pirlInitDtScrollDiv();
+		 		
+		 		try{$(window).resize(function(){pirlInitDtScrollDiv(); });}catch(e){alert(e);}
+			});
+ 	
+ 			
+ 			
+ 		
+
+</script>
+<!-- end datatable id ：pirl  -->
+
+</body></html>

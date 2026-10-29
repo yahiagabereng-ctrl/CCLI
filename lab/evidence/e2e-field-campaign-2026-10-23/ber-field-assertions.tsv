@@ -1,0 +1,277 @@
+kind	assertion	result	mutations	accepted	rejected
+FIELD	ClearToken1/sigAlg omission	PASS	0	0	0
+FIELD	ClearToken1/sigAlg duplicate	PASS	0	0	0
+FIELD	ClearToken1/sigAlg wrong type	PASS	0	0	0
+FIELD	ClearToken1/sigAlg reordered	PASS	0	0	0
+FIELD	ClearToken1/pkCert omission	PASS	0	0	0
+FIELD	ClearToken1/pkCert duplicate	PASS	0	0	0
+FIELD	ClearToken1/pkCert wrong type	PASS	0	0	0
+FIELD	ClearToken1/pkCert reordered	PASS	0	0	0
+FIELD	ClearToken1/certPath omission	PASS	0	0	0
+FIELD	ClearToken1/certPath duplicate	PASS	0	0	0
+FIELD	ClearToken1/certPath reordered	PASS	0	0	0
+FIELD	ClearToken1/version omission	PASS	0	0	0
+FIELD	ClearToken1/version duplicate	PASS	0	0	0
+FIELD	ClearToken1/version reordered	PASS	0	0	0
+FIELD	ClearToken1/assoID omission	PASS	0	0	0
+FIELD	ClearToken1/assoID duplicate	PASS	0	0	0
+FIELD	ClearToken1/assoID wrong type	PASS	0	0	0
+FIELD	ClearToken1/assoID reordered	PASS	0	0	0
+FIELD	ClearToken1/dHKey omission	PASS	0	0	0
+FIELD	ClearToken1/dHKey duplicate	PASS	0	0	0
+FIELD	ClearToken1/dHKey wrong type	PASS	0	0	0
+FIELD	ClearToken1/dHKey reordered	PASS	0	0	0
+FIELD	ClearToken1/hmac omission	PASS	0	0	0
+FIELD	ClearToken1/hmac duplicate	PASS	0	0	0
+FIELD	ClearToken1/hmac wrong type	PASS	0	0	0
+FIELD	ClearToken1/hmac reordered	PASS	0	0	0
+FIELD	ClearToken1/time omission	PASS	0	0	0
+FIELD	ClearToken1/time duplicate	PASS	0	0	0
+FIELD	ClearToken1/time wrong type	PASS	0	0	0
+FIELD	ClearToken1/time reordered	PASS	0	0	0
+FIELD	ClearToken1/encr-mode omission	PASS	0	0	0
+FIELD	ClearToken1/encr-mode duplicate	PASS	0	0	0
+FIELD	ClearToken1/encr-mode wrong type	PASS	0	0	0
+FIELD	ClearToken1/encr-mode reordered	PASS	0	0	0
+FIELD	ClearToken1/confParams omission	PASS	0	0	0
+FIELD	ClearToken1/confParams extension-tag collision	PASS	0	0	0
+FIELD	ClearToken1/confParams wrong type	PASS	0	0	0
+FIELD	ClearToken1/confParams reordered	PASS	0	0	0
+FIELD	ClearToken1/attCert omission	PASS	0	0	0
+FIELD	ClearToken1/attCert extension-tag collision	PASS	0	0	0
+FIELD	ClearToken2/version omission	PASS	0	0	0
+FIELD	ClearToken2/version duplicate	PASS	0	0	0
+FIELD	ClearToken2/version reordered	PASS	0	0	0
+FIELD	ClearToken2/assoID omission	PASS	0	0	0
+FIELD	ClearToken2/assoID duplicate	PASS	0	0	0
+FIELD	ClearToken2/assoID wrong type	PASS	0	0	0
+FIELD	ClearToken2/assoID reordered	PASS	0	0	0
+FIELD	ClearToken2/time omission	PASS	0	0	0
+FIELD	ClearToken2/time duplicate	PASS	0	0	0
+FIELD	ClearToken2/time wrong type	PASS	0	0	0
+FIELD	ClearToken2/time reordered	PASS	0	0	0
+FIELD	ClearToken2/seq omission	PASS	0	0	0
+FIELD	ClearToken2/seq duplicate	PASS	0	0	0
+FIELD	ClearToken2/seq wrong type	PASS	0	0	0
+FIELD	ClearToken2/seq reordered	PASS	0	0	0
+FIELD	ClearToken2/iv omission	PASS	0	0	0
+FIELD	ClearToken2/iv duplicate	PASS	0	0	0
+FIELD	ClearToken2/iv reordered	PASS	0	0	0
+FIELD	ClearToken2/rekey omission	PASS	0	0	0
+FIELD	ClearToken2/rekey duplicate	PASS	0	0	0
+FIELD	ClearToken2/rekey reordered	PASS	0	0	0
+FIELD	ClearToken2/reqRekey omission	PASS	0	0	0
+FIELD	ClearToken2/reqRekey duplicate	PASS	0	0	0
+FIELD	ClearToken2/reqRekey reordered	PASS	0	0	0
+FIELD	ClearToken2/changedKey omission	PASS	0	0	0
+FIELD	ClearToken2/changedKey duplicate	PASS	0	0	0
+FIELD	ClearToken3/sigAlg omission	PASS	0	0	0
+FIELD	ClearToken3/sigAlg duplicate	PASS	0	0	0
+FIELD	ClearToken3/sigAlg wrong type	PASS	0	0	0
+FIELD	ClearToken3/sigAlg reordered	PASS	0	0	0
+FIELD	ClearToken3/version omission	PASS	0	0	0
+FIELD	ClearToken3/version duplicate	PASS	0	0	0
+FIELD	ClearToken3/version reordered	PASS	0	0	0
+FIELD	ClearToken3/assoID omission	PASS	0	0	0
+FIELD	ClearToken3/assoID duplicate	PASS	0	0	0
+FIELD	ClearToken3/assoID reordered	PASS	0	0	0
+FIELD	ClearToken3/time omission	PASS	0	0	0
+FIELD	ClearToken3/time duplicate	PASS	0	0	0
+FIELD	ClearToken3/time wrong type	PASS	0	0	0
+FIELD	ClearToken3/time reordered	PASS	0	0	0
+FIELD	ClearToken3/pkCert omission	PASS	0	0	0
+FIELD	ClearToken3/pkCert extension-tag collision	PASS	0	0	0
+FIELD	ClearToken3/pkCert wrong type	PASS	0	0	0
+FIELD	ClearToken3/pkCert reordered	PASS	0	0	0
+FIELD	ClearToken3/certPath omission	PASS	0	0	0
+FIELD	ClearToken3/certPath extension-tag collision	PASS	0	0	0
+FIELD	Authenticator/nonce omission	PASS	0	0	0
+FIELD	Authenticator/nonce duplicate	PASS	0	0	0
+FIELD	Authenticator/nonce order/extension ambiguity	PASS	0	0	0
+FIELD	Authenticator/algo omission	PASS	0	0	0
+FIELD	Authenticator/algo duplicate	PASS	0	0	0
+FIELD	Authenticator/algo wrong type	PASS	0	0	0
+FIELD	Authenticator/algo reordered	PASS	0	0	0
+FIELD	Authenticator/icv omission	PASS	0	0	0
+FIELD	Authenticator/icv extension-tag collision	PASS	0	0	0
+FIELD	Authenticator/icv wrong type	PASS	0	0	0
+FIELD	SignedMessage-0/tbs omission	PASS	0	0	0
+FIELD	SignedMessage-0/tbs duplicate	PASS	0	0	0
+FIELD	SignedMessage-0/tbs wrong type	PASS	0	0	0
+FIELD	SignedMessage-0/tbs reordered	PASS	0	0	0
+FIELD	SignedMessage-0/sign omission	PASS	0	0	0
+FIELD	SignedMessage-0/sign duplicate	PASS	0	0	0
+FIELD	SignedMessage-0/sign wrong type	PASS	0	0	0
+FIELD	SignedMessage-1/tbs omission	PASS	0	0	0
+FIELD	SignedMessage-1/tbs duplicate	PASS	0	0	0
+FIELD	SignedMessage-1/tbs wrong type	PASS	0	0	0
+FIELD	SignedMessage-1/tbs reordered	PASS	0	0	0
+FIELD	SignedMessage-1/sign omission	PASS	0	0	0
+FIELD	SignedMessage-1/sign duplicate	PASS	0	0	0
+FIELD	SignedMessage-1/sign wrong type	PASS	0	0	0
+FIELD	SignedMessage-2/tbs omission	PASS	0	0	0
+FIELD	SignedMessage-2/tbs duplicate	PASS	0	0	0
+FIELD	SignedMessage-2/tbs wrong type	PASS	0	0	0
+FIELD	SignedMessage-2/tbs reordered	PASS	0	0	0
+FIELD	SignedMessage-2/sign omission	PASS	0	0	0
+FIELD	SignedMessage-2/sign duplicate	PASS	0	0	0
+FIELD	SignedMessage-2/sign wrong type	PASS	0	0	0
+FIELD	SignedMessage-3/tbs omission	PASS	0	0	0
+FIELD	SignedMessage-3/tbs duplicate	PASS	0	0	0
+FIELD	SignedMessage-3/tbs wrong type	PASS	0	0	0
+FIELD	SignedMessage-3/tbs reordered	PASS	0	0	0
+FIELD	SignedMessage-3/sign omission	PASS	0	0	0
+FIELD	SignedMessage-3/sign duplicate	PASS	0	0	0
+FIELD	SignedMessage-3/sign wrong type	PASS	0	0	0
+FIELD	SignedMessage-4/tbs omission	PASS	0	0	0
+FIELD	SignedMessage-4/tbs duplicate	PASS	0	0	0
+FIELD	SignedMessage-4/tbs wrong type	PASS	0	0	0
+FIELD	SignedMessage-4/tbs reordered	PASS	0	0	0
+FIELD	SignedMessage-4/sign omission	PASS	0	0	0
+FIELD	SignedMessage-4/sign duplicate	PASS	0	0	0
+FIELD	SignedMessage-4/sign wrong type	PASS	0	0	0
+FIELD	SignedMessage-5/tbs omission	PASS	0	0	0
+FIELD	SignedMessage-5/tbs duplicate	PASS	0	0	0
+FIELD	SignedMessage-5/tbs wrong type	PASS	0	0	0
+FIELD	SignedMessage-5/tbs reordered	PASS	0	0	0
+FIELD	SignedMessage-5/sign omission	PASS	0	0	0
+FIELD	SignedMessage-5/sign duplicate	PASS	0	0	0
+FIELD	SignedMessage-5/sign wrong type	PASS	0	0	0
+FIELD	SignedMessage-6/tbs omission	PASS	0	0	0
+FIELD	SignedMessage-6/tbs duplicate	PASS	0	0	0
+FIELD	SignedMessage-6/tbs wrong type	PASS	0	0	0
+FIELD	SignedMessage-6/tbs reordered	PASS	0	0	0
+FIELD	SignedMessage-6/sign omission	PASS	0	0	0
+FIELD	SignedMessage-6/sign duplicate	PASS	0	0	0
+FIELD	SignedMessage-6/sign wrong type	PASS	0	0	0
+FIELD	SignedMessage-7/tbs omission	PASS	0	0	0
+FIELD	SignedMessage-7/tbs duplicate	PASS	0	0	0
+FIELD	SignedMessage-7/tbs wrong type	PASS	0	0	0
+FIELD	SignedMessage-7/tbs reordered	PASS	0	0	0
+FIELD	SignedMessage-7/sign omission	PASS	0	0	0
+FIELD	SignedMessage-7/sign duplicate	PASS	0	0	0
+FIELD	SignedMessage-7/sign wrong type	PASS	0	0	0
+FIELD	HandshakeReq/pp omission	PASS	0	0	0
+FIELD	HandshakeReq/pp duplicate	PASS	0	0	0
+FIELD	HandshakeReq/pp wrong type	PASS	0	0	0
+FIELD	HandshakeReq/pp reordered	PASS	0	0	0
+FIELD	HandshakeReq/tbs omission	PASS	0	0	0
+FIELD	HandshakeReq/tbs duplicate	PASS	0	0	0
+FIELD	HandshakeReq/tbs wrong type	PASS	0	0	0
+FIELD	HandshakeReq/tbs reordered	PASS	0	0	0
+FIELD	HandshakeReq/sign omission	PASS	0	0	0
+FIELD	HandshakeReq/sign duplicate	PASS	0	0	0
+FIELD	HandshakeReq/sign wrong type	PASS	0	0	0
+FIELD	Signature/algo omission	PASS	0	0	0
+FIELD	Signature/algo duplicate	PASS	0	0	0
+FIELD	Signature/algo wrong type	PASS	0	0	0
+FIELD	Signature/algo reordered	PASS	0	0	0
+FIELD	Signature/sign omission	PASS	0	0	0
+FIELD	Signature/sign extension-tag collision	PASS	0	0	0
+FIELD	Signature/sign wrong type	PASS	0	0	0
+FIELD	DiffieHellmanSet/groupId omission	PASS	0	0	0
+FIELD	DiffieHellmanSet/groupId duplicate	PASS	0	0	0
+FIELD	DiffieHellmanSet/groupId wrong type	PASS	0	0	0
+FIELD	DiffieHellmanSet/groupId reordered	PASS	0	0	0
+FIELD	DiffieHellmanSet/dhPublicKey omission	PASS	0	0	0
+FIELD	DiffieHellmanSet/dhPublicKey extension-tag collision	PASS	0	0	0
+FIELD	DiffieHellmanSet/dhPublicKey wrong type	PASS	0	0	0
+FIELD	non-aea/encr omission	PASS	0	0	0
+FIELD	non-aea/encr duplicate	PASS	0	0	0
+FIELD	non-aea/encr reordered	PASS	0	0	0
+FIELD	non-aea/icvAlgID omission	PASS	0	0	0
+FIELD	non-aea/icvAlgID duplicate	PASS	0	0	0
+FIELD	non-aea/icvAlgID wrong type	PASS	0	0	0
+FIELD	ClearTransfer/tbp omission	PASS	0	0	0
+FIELD	ClearTransfer/tbp duplicate	PASS	0	0	0
+FIELD	ClearTransfer/tbp wrong type	PASS	0	0	0
+FIELD	ClearTransfer/tbp reordered	PASS	0	0	0
+FIELD	ClearTransfer/auth omission	PASS	0	0	0
+FIELD	ClearTransfer/auth duplicate	PASS	0	0	0
+FIELD	ClearTransfer/auth wrong type	PASS	0	0	0
+FIELD	BER named bits/trailing zero/padding equivalent v1	PASS	0	0	0
+FIELD	BER named bits/trailing zero/padding equivalent v1	PASS	0	0	0
+FIELD	BER named bits/trailing zero/padding equivalent v1	PASS	0	0	0
+FIELD	BER named bits/trailing zero/padding equivalent v1	PASS	0	0	0
+FIELD	invalid BIT STRING segments/unused bits	PASS	0	0	0
+FIELD	invalid BIT STRING segments/unused bits	PASS	0	0	0
+FIELD	invalid BIT STRING segments/unused bits	PASS	0	0	0
+FIELD	invalid BIT STRING segments/unused bits	PASS	0	0	0
+FIELD	default encoded byte budget N-1/N/N+1	PASS	0	0	0
+FIELD	default encoded byte budget N-1/N/N+1	PASS	0	0	0
+FIELD	default encoded byte budget N-1/N/N+1	PASS	0	0	0
+FIELD	sequence signed/minimal/overflow range	PASS	0	0	0
+FIELD	sequence signed/minimal/overflow range	PASS	0	0	0
+FIELD	sequence signed/minimal/overflow range	PASS	0	0	0
+FIELD	sequence signed/minimal/overflow range	PASS	0	0	0
+FIELD	sequence signed/minimal/overflow range	PASS	0	0	0
+FIELD	sequence signed/minimal/overflow range	PASS	0	0	0
+FIELD	sequence signed/minimal/overflow range	PASS	0	0	0
+FIELD	invalid association ID grammar/UTF8	PASS	0	0	0
+FIELD	invalid association ID grammar/UTF8	PASS	0	0	0
+FIELD	invalid association ID grammar/UTF8	PASS	0	0	0
+FIELD	invalid association ID grammar/UTF8	PASS	0	0	0
+FIELD	invalid association ID grammar/UTF8	PASS	0	0	0
+FIELD	invalid association ID grammar/UTF8	PASS	0	0	0
+FIELD	invalid association ID grammar/UTF8	PASS	0	0	0
+FIELD	invalid association ID grammar/UTF8	PASS	0	0	0
+FIELD	invalid association ID grammar/UTF8	PASS	0	0	0
+FIELD	invalid association ID grammar/UTF8	PASS	0	0	0
+FIELD	invalid association ID grammar/UTF8	PASS	0	0	0
+FIELD	invalid association ID grammar/UTF8	PASS	0	0	0
+FIELD	invalid boolean form/empty rekey	PASS	0	0	0
+FIELD	invalid boolean form/empty rekey	PASS	0	0	0
+FIELD	invalid boolean form/empty rekey	PASS	0	0	0
+FIELD	NMTOKEN invalid UTF8/alphabet	PASS	0	0	0
+FIELD	NMTOKEN invalid UTF8/alphabet	PASS	0	0	0
+FIELD	NMTOKEN invalid UTF8/alphabet	PASS	0	0	0
+FIELD	NMTOKEN invalid UTF8/alphabet	PASS	0	0	0
+FIELD	NMTOKEN invalid UTF8/alphabet	PASS	0	0	0
+FIELD	NMTOKEN invalid UTF8/alphabet	PASS	0	0	0
+FIELD	NMTOKEN invalid UTF8/alphabet	PASS	0	0	0
+FIELD	valid time precision/calendar/offset	PASS	0	0	0
+FIELD	valid time precision/calendar/offset	PASS	0	0	0
+FIELD	valid time precision/calendar/offset	PASS	0	0	0
+FIELD	valid time precision/calendar/offset	PASS	0	0	0
+FIELD	valid time precision/calendar/offset	PASS	0	0	0
+FIELD	valid time precision/calendar/offset	PASS	0	0	0
+FIELD	valid time precision/calendar/offset	PASS	0	0	0
+FIELD	invalid time calendar/format/offset	PASS	0	0	0
+FIELD	invalid time calendar/format/offset	PASS	0	0	0
+FIELD	invalid time calendar/format/offset	PASS	0	0	0
+FIELD	invalid time calendar/format/offset	PASS	0	0	0
+FIELD	invalid time calendar/format/offset	PASS	0	0	0
+FIELD	invalid time calendar/format/offset	PASS	0	0	0
+FIELD	invalid time calendar/format/offset	PASS	0	0	0
+FIELD	invalid time calendar/format/offset	PASS	0	0	0
+FIELD	invalid time calendar/format/offset	PASS	0	0	0
+FIELD	invalid time calendar/format/offset	PASS	0	0	0
+FIELD	invalid time calendar/format/offset	PASS	0	0	0
+FIELD	invalid time calendar/format/offset	PASS	0	0	0
+SEED	ClearToken1#1	PASS	19456	7629	11827
+SEED	ClearToken2#1	PASS	15872	9168	6704
+SEED	ClearToken3#1	PASS	12288	7443	4845
+SEED	Authenticator#1	PASS	3584	905	2679
+SEED	SignedMessage-0#1	PASS	24320	9041	15279
+SEED	SignedMessage-1#1	PASS	17152	8854	8298
+SEED	SignedMessage-2#1	PASS	17408	8860	8548
+SEED	SignedMessage-3#1	PASS	17408	8860	8548
+SEED	SignedMessage-4#1	PASS	17408	8860	8548
+SEED	SignedMessage-5#1	PASS	17152	8855	8297
+SEED	SignedMessage-6#1	PASS	16640	8607	8033
+SEED	SignedMessage-7#1	PASS	16640	8607	8033
+SEED	HandshakeReq#1	PASS	28160	10291	17869
+SEED	Signature#1	PASS	2816	647	2169
+SEED	DiffieHellmanSet#1	PASS	2048	390	1658
+SEED	non-aea#1	PASS	4608	780	3828
+SEED	ClearTransfer#1	PASS	15616	5974	9642
+SEED	OSI-AssoReq#1	PASS	30464	10427	20037
+SEED	OSI-AssoRsp#1	PASS	26624	9177	17447
+SEED	OSI-AssoRsp#2	PASS	19456	8991	10465
+SEED	OSI-AssoRsp#3	PASS	19712	8997	10715
+SEED	OSI-AssoAbr#1	PASS	19712	8998	10714
+SEED	OSI-AssoAbr#2	PASS	19712	8998	10714
+SEED	OSI-AssoAbr#3	PASS	19456	8993	10463
+SEED	OSI-AssoRelReq#1	PASS	18944	8743	10201
+SEED	OSI-AssoRelRsp#1	PASS	18944	8743	10201
+SEED	Presentation#1	PASS	17920	10476	7444

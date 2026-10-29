@@ -15,8 +15,9 @@ services:
       # Prefer regenerating appserver TLS for hostname=localhost.
       APPSERVER_HOSTNAME: localhost
     ports:
-      - "8080:8080"
-      - "8443:8443"
+      # Host ports 8080/8443 are occupied on this Windows workstation.
+      - "9080:8080"
+      - "9443:8443"
     volumes:
       # Must mount /mnt/persistent (not /opt/keyfactor/secrets/persistent) — see Keyfactor docker docs.
       - ejbca-data:/mnt/persistent

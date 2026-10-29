@@ -1,0 +1,8 @@
+Mon Oct 26 13:28:57 UTC 2026
+ccli 0.1.0-r65 (CEI57-142-AGGREGATOR)
+  semver:   0.1.0
+0cb065916fbc1b867a9942a7f3e2d59d0bd4bbccb5f8f959c0ceda92f53050dc  /usr/sbin/ccli
+28836fe50d36d47126ff05192d1568bcaba39d443ddbf5e5706dc55118cf1626  /etc/ccli/lab.yaml
+9246bb687b410463d325f15519e0e2566a9e9095f3b731774a13f798845974ee  /etc/ccli/rbac-dual/trust/tls-crl-bundle.pem
+15480 root      5296 S    /usr/sbin/ccli --config /etc/ccli/lab.yaml
+tcp        0      0 192.168.0.1:3782        0.0.0.0:*               LISTEN      15480/ccli

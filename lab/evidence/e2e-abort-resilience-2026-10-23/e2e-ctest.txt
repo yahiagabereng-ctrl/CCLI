@@ -1,0 +1,324 @@
+Start testing: Oct 23 11:58 CEST
+----------------------------------------------------------
+11/21 Testing: e2e_codec
+11/21 Test: e2e_codec
+Command: "/mnt/c/Users/Administrator/Desktop/CCLI Alireza/CCLI Merged/apps/ccli/build-e2e-crypto/OPTIONAL/e2e_codec_test"
+Directory: /mnt/c/Users/Administrator/Desktop/CCLI Alireza/CCLI Merged/apps/ccli/build-e2e-crypto/OPTIONAL
+"e2e_codec" start time: Oct 23 11:58 CEST
+Output:
+----------------------------------------------------------
+E2E codec and transfer-sequence checks passed
+<end of output>
+Test time =   0.02 sec
+----------------------------------------------------------
+Test Passed.
+"e2e_codec" end time: Oct 23 11:58 CEST
+"e2e_codec" time elapsed: 00:00:00
+----------------------------------------------------------
+
+12/21 Testing: e2e_crypto_generate_fixtures
+12/21 Test: e2e_crypto_generate_fixtures
+Command: "/usr/bin/python3" "/mnt/c/Users/Administrator/Desktop/CCLI Alireza/CCLI Merged/apps/ccli/tests/unit/e2e_crypto_fixtures.py" "--out" "/mnt/c/Users/Administrator/Desktop/CCLI Alireza/CCLI Merged/apps/ccli/build-e2e-crypto/e2e-crypto-fixtures"
+Directory: /mnt/c/Users/Administrator/Desktop/CCLI Alireza/CCLI Merged/apps/ccli/build-e2e-crypto/OPTIONAL
+"e2e_crypto_generate_fixtures" start time: Oct 23 11:58 CEST
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.98 sec
+----------------------------------------------------------
+Test Passed.
+"e2e_crypto_generate_fixtures" end time: Oct 23 11:58 CEST
+"e2e_crypto_generate_fixtures" time elapsed: 00:00:00
+----------------------------------------------------------
+
+13/21 Testing: e2e_crypto_provider_checks
+13/21 Test: e2e_crypto_provider_checks
+Command: "/mnt/c/Users/Administrator/Desktop/CCLI Alireza/CCLI Merged/apps/ccli/build-e2e-crypto/OPTIONAL/e2e_crypto_test" "/mnt/c/Users/Administrator/Desktop/CCLI Alireza/CCLI Merged/apps/ccli/build-e2e-crypto/e2e-crypto-fixtures"
+Directory: /mnt/c/Users/Administrator/Desktop/CCLI Alireza/CCLI Merged/apps/ccli/build-e2e-crypto/OPTIONAL
+"e2e_crypto_provider_checks" start time: Oct 23 11:58 CEST
+Output:
+----------------------------------------------------------
+E2E crypto provider checks passed
+<end of output>
+Test time =   0.45 sec
+----------------------------------------------------------
+Test Passed.
+"e2e_crypto_provider_checks" end time: Oct 23 11:58 CEST
+"e2e_crypto_provider_checks" time elapsed: 00:00:00
+----------------------------------------------------------
+
+14/21 Testing: e2e_identity_generate_fixtures
+14/21 Test: e2e_identity_generate_fixtures
+Command: "/usr/bin/python3" "/mnt/c/Users/Administrator/Desktop/CCLI Alireza/CCLI Merged/apps/ccli/tests/unit/e2e_identity_fixtures.py" "--out" "/mnt/c/Users/Administrator/Desktop/CCLI Alireza/CCLI Merged/apps/ccli/build-e2e-crypto/e2e-identity-fixtures"
+Directory: /mnt/c/Users/Administrator/Desktop/CCLI Alireza/CCLI Merged/apps/ccli/build-e2e-crypto/OPTIONAL
+"e2e_identity_generate_fixtures" start time: Oct 23 11:58 CEST
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   1.83 sec
+----------------------------------------------------------
+Test Passed.
+"e2e_identity_generate_fixtures" end time: Oct 23 11:58 CEST
+"e2e_identity_generate_fixtures" time elapsed: 00:00:01
+----------------------------------------------------------
+
+15/21 Testing: e2e_identity_profile_checks
+15/21 Test: e2e_identity_profile_checks
+Command: "/mnt/c/Users/Administrator/Desktop/CCLI Alireza/CCLI Merged/apps/ccli/build-e2e-crypto/OPTIONAL/e2e_identity_test" "/mnt/c/Users/Administrator/Desktop/CCLI Alireza/CCLI Merged/apps/ccli/build-e2e-crypto/e2e-identity-fixtures"
+Directory: /mnt/c/Users/Administrator/Desktop/CCLI Alireza/CCLI Merged/apps/ccli/build-e2e-crypto/OPTIONAL
+"e2e_identity_profile_checks" start time: Oct 23 11:58 CEST
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.15 sec
+----------------------------------------------------------
+Test Passed.
+"e2e_identity_profile_checks" end time: Oct 23 11:58 CEST
+"e2e_identity_profile_checks" time elapsed: 00:00:00
+----------------------------------------------------------
+
+16/21 Testing: e2e_native_stack
+16/21 Test: e2e_native_stack
+Command: "/usr/bin/python3" "/mnt/c/Users/Administrator/Desktop/CCLI Alireza/CCLI Merged/apps/ccli/tests/unit/e2e_native_stack_test.py" "--server" "/mnt/c/Users/Administrator/Desktop/CCLI Alireza/CCLI Merged/apps/ccli/build-e2e-crypto/OPTIONAL/e2e_native_server_test" "--fixtures" "/mnt/c/Users/Administrator/Desktop/CCLI Alireza/CCLI Merged/apps/ccli/build-e2e-crypto/e2e-native-fixtures" "--probe" "/mnt/c/Users/Administrator/Desktop/CCLI Alireza/CCLI Merged/apps/ccli/tools/mms-client/e2e_probe.py"
+Directory: /mnt/c/Users/Administrator/Desktop/CCLI Alireza/CCLI Merged/apps/ccli/build-e2e-crypto/OPTIONAL
+"e2e_native_stack" start time: Oct 23 11:58 CEST
+Output:
+----------------------------------------------------------
+PASS RSA hmac handshake/protected report/read/rekey/read/release
+PASS RSA gmac128 handshake/protected report/read/rekey/read/release
+PASS RSA gmac256 handshake/protected report/read/rekey/read/release
+PASS signed reject bad_identity
+PASS provider abort forbidden_auth
+PASS signed reject replayed_handshake
+PASS signed reject invalid_signature
+PASS OSI diagnostic indirect_reference
+PASS signed abort invalid_icv
+PASS signed abort replayed_transfer
+PASS OSI diagnostic wrong_context
+PASS signed abort wrong_association
+PASS signed abort expired_time
+PASS signed abort initial_sequence
+PASS signed abort client_reqrekey
+PASS signed abort client_changedkey
+PASS signed abort unexpected_iv
+PASS signed abort missing_nonce
+PASS signed abort reused_nonce
+PASS signed abort wrong_algorithm
+PASS invalid packets rejected before application read dispatch; 14 authorized reads
+PASS ECDSA hmac handshake/protected report/read/rekey/read/release
+PASS ECDSA gmac128 handshake/protected report/read/rekey/read/release
+PASS ECDSA gmac256 handshake/protected report/read/rekey/read/release
+PASS signed reject bad_identity
+PASS provider abort forbidden_auth
+PASS signed reject replayed_handshake
+PASS signed reject invalid_signature
+PASS OSI diagnostic indirect_reference
+PASS signed abort invalid_icv
+PASS signed abort replayed_transfer
+PASS OSI diagnostic wrong_context
+PASS signed abort wrong_association
+PASS signed abort expired_time
+PASS signed abort initial_sequence
+PASS signed abort client_reqrekey
+PASS signed abort client_changedkey
+PASS signed abort unexpected_iv
+PASS signed abort missing_nonce
+PASS signed abort reused_nonce
+PASS signed abort wrong_algorithm
+PASS invalid packets rejected before application read dispatch; 14 authorized reads
+PASS actual MmsAdapter native DSO read/rekey/release, object-scope denial and uncommissioned-identity denial
+<end of output>
+Test time =  17.40 sec
+----------------------------------------------------------
+Test Passed.
+"e2e_native_stack" end time: Oct 23 11:58 CEST
+"e2e_native_stack" time elapsed: 00:00:17
+----------------------------------------------------------
+
+17/21 Testing: e2e_native_resilience
+17/21 Test: e2e_native_resilience
+Command: "/usr/bin/python3" "/mnt/c/Users/Administrator/Desktop/CCLI Alireza/CCLI Merged/apps/ccli/tests/unit/e2e_native_stack_test.py" "--server" "/mnt/c/Users/Administrator/Desktop/CCLI Alireza/CCLI Merged/apps/ccli/build-e2e-crypto/OPTIONAL/e2e_native_server_test" "--fixtures" "/mnt/c/Users/Administrator/Desktop/CCLI Alireza/CCLI Merged/apps/ccli/build-e2e-crypto/e2e-resilience-fixtures" "--probe" "/mnt/c/Users/Administrator/Desktop/CCLI Alireza/CCLI Merged/apps/ccli/tools/mms-client/e2e_probe.py" "--resilience"
+Directory: /mnt/c/Users/Administrator/Desktop/CCLI Alireza/CCLI Merged/apps/ccli/build-e2e-crypto/OPTIONAL
+"e2e_native_resilience" start time: Oct 23 11:58 CEST
+Output:
+----------------------------------------------------------
+PASS RSA hmac handshake/protected report/read/rekey/read/release
+PASS RSA gmac128 handshake/protected report/read/rekey/read/release
+PASS RSA gmac256 handshake/protected report/read/rekey/read/release
+PASS signed reject bad_identity
+PASS provider abort forbidden_auth
+PASS signed reject replayed_handshake
+PASS signed reject invalid_signature
+PASS OSI diagnostic indirect_reference
+PASS signed abort invalid_icv
+PASS signed abort replayed_transfer
+PASS OSI diagnostic wrong_context
+PASS signed abort wrong_association
+PASS signed abort expired_time
+PASS signed abort initial_sequence
+PASS signed abort client_reqrekey
+PASS signed abort client_changedkey
+PASS signed abort unexpected_iv
+PASS signed abort missing_nonce
+PASS signed abort reused_nonce
+PASS signed abort wrong_algorithm
+PASS handshake resilience version
+PASS handshake resilience signature-before-version
+PASS handshake resilience protocol
+PASS handshake resilience hmac
+PASS handshake resilience group
+PASS handshake resilience public-value
+PASS handshake resilience time
+PASS handshake resilience future-time
+PASS handshake resilience icv
+PASS handshake resilience AEA
+PASS handshake resilience encryption
+PASS handshake resilience signature-algorithm-mismatch
+PASS handshake resilience invalid-client-ID
+PASS handshake resilience application-init
+PASS ACSE resilience duplicate
+PASS ACSE resilience version
+PASS ACSE resilience called-AP
+PASS ACSE resilience called-AE
+PASS ACSE resilience context
+PASS ACSE resilience malformed-context
+PASS ACSE resilience missing-AP
+PASS authenticated transfer resilience version
+PASS authenticated transfer resilience ICV-before-version
+PASS authenticated transfer resilience negative-sequence
+PASS authenticated transfer resilience duplicate-token
+PASS authenticated transfer resilience future-time
+PASS authenticated transfer resilience invalid-rekey
+PASS authenticated transfer resilience oversized-MMS
+PASS authenticated transfer resilience missing-auth
+PASS authenticated transfer resilience encrypted-choice
+PASS presentation resilience missing-PCI
+PASS presentation resilience wide-PCI
+PASS presentation resilience empty-user-data
+PASS presentation resilience truncated-BER
+PASS presentation resilience deep-indefinite
+PASS exact indefinite-TBP ICV/EOC
+PASS same-time increment and new-time sequence reset
+PASS timestamp/sequence resilience older-pair-replay
+PASS timestamp/sequence resilience unseen-regressed-time
+PASS timestamp/sequence resilience same-time-gap
+PASS timestamp/sequence resilience new-time-nonzero
+PASS MMS negotiated PDU cap matches native serialization bounds
+PASS control resilience release-signature
+PASS control resilience release-ID
+PASS control resilience release-time
+PASS control resilience release-version
+PASS control resilience release-path
+PASS control resilience release-reference
+PASS control resilience release-kernel
+PASS control resilience abort-signature
+PASS signed peer abort 0xa0
+PASS signed peer abort 0xa1
+PASS signed peer abort 0xa2
+PASS peer provider/OSI abort without response None
+PASS peer provider/OSI abort without response 1
+PASS peer provider/OSI abort without response 2
+PASS peer provider/OSI abort without response 3
+PASS MMS callback requests signed ApplAbort with preserved diagnostic
+PASS four concurrent independent associations/rekey/cleanup
+PASS abrupt disconnect during reporting releases ownership and permits reconnect
+PASS injected monotonic epoch renewal and ignored-request expiry hmac
+PASS injected monotonic epoch renewal and ignored-request expiry gmac128
+PASS injected monotonic epoch renewal and ignored-request expiry gmac256
+PASS bounded replay-cache exhaustion, no excess dispatch and healthy reconnect
+PASS invalid packets rejected before application read dispatch; 117 authorized reads
+PASS ECDSA hmac handshake/protected report/read/rekey/read/release
+PASS ECDSA gmac128 handshake/protected report/read/rekey/read/release
+PASS ECDSA gmac256 handshake/protected report/read/rekey/read/release
+PASS signed reject bad_identity
+PASS provider abort forbidden_auth
+PASS signed reject replayed_handshake
+PASS signed reject invalid_signature
+PASS OSI diagnostic indirect_reference
+PASS signed abort invalid_icv
+PASS signed abort replayed_transfer
+PASS OSI diagnostic wrong_context
+PASS signed abort wrong_association
+PASS signed abort expired_time
+PASS signed abort initial_sequence
+PASS signed abort client_reqrekey
+PASS signed abort client_changedkey
+PASS signed abort unexpected_iv
+PASS signed abort missing_nonce
+PASS signed abort reused_nonce
+PASS signed abort wrong_algorithm
+PASS handshake resilience version
+PASS handshake resilience signature-before-version
+PASS handshake resilience protocol
+PASS handshake resilience hmac
+PASS handshake resilience group
+PASS handshake resilience public-value
+PASS handshake resilience time
+PASS handshake resilience future-time
+PASS handshake resilience icv
+PASS handshake resilience AEA
+PASS handshake resilience encryption
+PASS handshake resilience signature-algorithm-mismatch
+PASS handshake resilience invalid-client-ID
+PASS handshake resilience application-init
+PASS ACSE resilience duplicate
+PASS ACSE resilience version
+PASS ACSE resilience called-AP
+PASS ACSE resilience called-AE
+PASS ACSE resilience context
+PASS ACSE resilience malformed-context
+PASS ACSE resilience missing-AP
+PASS authenticated transfer resilience version
+PASS authenticated transfer resilience ICV-before-version
+PASS authenticated transfer resilience negative-sequence
+PASS authenticated transfer resilience duplicate-token
+PASS authenticated transfer resilience future-time
+PASS authenticated transfer resilience invalid-rekey
+PASS authenticated transfer resilience oversized-MMS
+PASS authenticated transfer resilience missing-auth
+PASS authenticated transfer resilience encrypted-choice
+PASS presentation resilience missing-PCI
+PASS presentation resilience wide-PCI
+PASS presentation resilience empty-user-data
+PASS presentation resilience truncated-BER
+PASS presentation resilience deep-indefinite
+PASS exact indefinite-TBP ICV/EOC
+PASS same-time increment and new-time sequence reset
+PASS timestamp/sequence resilience older-pair-replay
+PASS timestamp/sequence resilience unseen-regressed-time
+PASS timestamp/sequence resilience same-time-gap
+PASS timestamp/sequence resilience new-time-nonzero
+PASS MMS negotiated PDU cap matches native serialization bounds
+PASS control resilience release-signature
+PASS control resilience release-ID
+PASS control resilience release-time
+PASS control resilience release-version
+PASS control resilience release-path
+PASS control resilience release-reference
+PASS control resilience release-kernel
+PASS control resilience abort-signature
+PASS signed peer abort 0xa0
+PASS signed peer abort 0xa1
+PASS signed peer abort 0xa2
+PASS peer provider/OSI abort without response None
+PASS peer provider/OSI abort without response 1
+PASS peer provider/OSI abort without response 2
+PASS peer provider/OSI abort without response 3
+PASS MMS callback requests signed ApplAbort with preserved diagnostic
+PASS four concurrent independent associations/rekey/cleanup
+PASS abrupt disconnect during reporting releases ownership and permits reconnect
+PASS injected monotonic epoch renewal and ignored-request expiry hmac
+PASS injected monotonic epoch renewal and ignored-request expiry gmac128
+PASS injected monotonic epoch renewal and ignored-request expiry gmac256
+PASS bounded replay-cache exhaustion, no excess dispatch and healthy reconnect
+PASS invalid packets rejected before application read dispatch; 117 authorized reads
+PASS actual MmsAdapter native DSO read/rekey/release, object-scope denial and uncommissioned-identity denial
+<end of output>
+Test time =  55.03 sec
+----------------------------------------------------------
+Test Passed.
+"e2e_native_resilience" end time: Oct 23 11:59 CEST
+"e2e_native_resilience" time elapsed: 00:00:55
+----------------------------------------------------------
+
+End testing: Oct 23 11:59 CEST

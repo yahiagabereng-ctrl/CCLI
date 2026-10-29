@@ -1,0 +1,74 @@
+{
+  "host": "192.168.0.1",
+  "port": 3782,
+  "command": "check",
+  "reference": "",
+  "connection_mode": "single-command",
+  "passed": false,
+  "events": [
+    {
+      "kind": "wire_profile",
+      "reference": "",
+      "error": 0,
+      "error_text": "",
+      "value": "TSP observed association: MMS/ACSE/auth contexts 3/1/5, COTP TPDU 1024",
+      "observed_utc": "2026-10-21T08:53:33.622491+00:00"
+    },
+    {
+      "kind": "association",
+      "reference": "192.168.0.1",
+      "error": 0,
+      "error_text": "",
+      "value": "mutual TLS 1.2 + TLS peer identity authentication",
+      "observed_utc": "2026-10-21T08:53:33.752630+00:00"
+    },
+    {
+      "kind": "directory",
+      "reference": "",
+      "error": 0,
+      "error_text": "",
+      "value": "devices",
+      "observed_utc": "2026-10-21T08:53:33.783364+00:00"
+    },
+    {
+      "kind": "entry",
+      "reference": "",
+      "error": 0,
+      "error_text": "",
+      "value": "CCI016_01LD_Plant",
+      "observed_utc": "2026-10-21T08:53:33.783462+00:00"
+    },
+    {
+      "kind": "read",
+      "reference": "CCI016_01LD_Plant/PdCMMXU1.TotW.mag.f",
+      "error": 21,
+      "error_text": "access-denied",
+      "value": "error 3",
+      "observed_utc": "2026-10-21T08:53:33.803718+00:00"
+    },
+    {
+      "kind": "read",
+      "reference": "CCI016_01LD_Plant/PdCMMXU1.TotVAr.mag.f",
+      "error": 21,
+      "error_text": "access-denied",
+      "value": "error 3",
+      "observed_utc": "2026-10-21T08:53:33.824213+00:00"
+    },
+    {
+      "kind": "read",
+      "reference": "CCI016_01LD_Plant/PdCMMXU1.TotW.q",
+      "error": 21,
+      "error_text": "access-denied",
+      "value": "error 3",
+      "observed_utc": "2026-10-21T08:53:33.834825+00:00"
+    },
+    {
+      "kind": "read",
+      "reference": "CCI016_01LD_Plant/PdCMMXU1.TotW.t",
+      "error": 21,
+      "error_text": "access-denied",
+      "value": "error 3",
+      "observed_utc": "2026-10-21T08:53:33.845215+00:00"
+    }
+  ]
+}

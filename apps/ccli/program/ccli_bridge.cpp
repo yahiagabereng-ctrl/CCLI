@@ -92,7 +92,8 @@ void apply_dso_live_command(const cci::adapters::DsoLiveCommand& dso_cmd) {
         live_cfg.use_dso_mock = true;
         const auto live = cci::core::dso::apply_live_dso_commands_to_pf2(
             live_cfg, cfg.plant, cfg.dso, dso_cmd.wlim_active, dso_cmd.wmax_spt_pct,
-            dso_cmd.wsd_active, dso_cmd.wspt_pct, use_or_profile);
+            dso_cmd.wsd_active, dso_cmd.wspt_pct,
+            dso_cmd.wsa_active, dso_cmd.wsa_spt_pct, use_or_profile);
         if (live.applied) {
             pf2.set_thresholds(live.pf2_threshold_kw, live.pf2_release_kw);
             if (use_or_profile) {
@@ -296,8 +297,10 @@ bool CcliBridge_Config_Load(const ascii* config_path, bool lab_demo,
 void CcliBridge_Event_Open(void) {
     const auto& c = g_rt.cfg;
     g_rt.measurements = std::make_unique<cci::core::MeasurementStore>();
+    g_rt.elog_cfg = static_cast<const cci::core::EventLogConfig&>(c.event_log);
     g_rt.elog_cfg.enabled = c.event_log.enabled;
     g_rt.elog_cfg.path = c.event_log.path;
+    g_rt.elog_cfg.platform_audit_enabled = c.event_log.platform_audit_enabled;
     g_rt.elog_cfg.syslog_enabled = c.event_log.syslog_enabled;
     g_rt.elog_cfg.syslog_host = c.event_log.syslog_host;
     g_rt.elog_cfg.syslog_port = c.event_log.syslog_port;
@@ -490,7 +493,27 @@ bool CcliBridge_Mms_Start(void) {
     const cci::adapters::MmsAuditFn mms_audit = [events](const std::string& detail) {
         events->append({cci::hal::now().epoch_ms, "mms", detail});
     };
-    if (!g_rt.mms->start(c.mms, mms_audit)) {
+    const cci::adapters::MmsTimeSyncAuditFn time_sync_audit =
+        [events](const std::string& iec_id, const std::string& source,
+                 const std::int64_t offset_ms, const bool gnss_fix,
+                 const bool synchronized) {
+            if (events == nullptr) return false;
+            cci::core::EventRecord event;
+            event.timestamp_ms = cci::hal::now().epoch_ms;
+            event.type = "time_sync";
+            event.category = "security";
+            event.detail = "time_sync: source=" + source + " offset_ms=" +
+                std::to_string(offset_ms) + " gnss_fix=" + (gnss_fix ? "true" : "false") +
+                " synchronized=" + (synchronized ? "true" : "false");
+            event.iec_id = iec_id;
+            event.app_name = "time-sync";
+            event.parameters.emplace_back("P.Source", source);
+            event.parameters.emplace_back("P.OffsetMs", std::to_string(offset_ms));
+            event.parameters.emplace_back("P.GnssFix", gnss_fix ? "true" : "false");
+            event.parameters.emplace_back("P.Synchronized", synchronized ? "true" : "false");
+            return events->append(std::move(event));
+        };
+    if (!g_rt.mms->start(c.mms, mms_audit, time_sync_audit)) {
         std::cerr << "mms: FAILED to bind " << c.mms.bind_address << ":" << c.mms.tcp_port
                   << (c.mms.tls.enabled ? " (TLS)" : "")
                   << " — disable TesPro IEC61850 LuCI or check LAN1 IP/certs\n";

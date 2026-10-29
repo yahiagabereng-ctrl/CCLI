@@ -6,7 +6,7 @@
 #   powershell -File scripts\push-ccli-application-config.ps1 -RestartCcli
 
 param(
-    [string]$HostAddr = "192.168.1.130",
+    [string]$HostAddr = "192.168.0.1",
     [switch]$RestartCcli
 )
 
@@ -14,7 +14,7 @@ $ErrorActionPreference = "Stop"
 $Repo = Split-Path -Parent $PSScriptRoot
 . (Join-Path $Repo "scripts\Invoke-CcliPlink.ps1")
 
-$Src = Join-Path $Repo "apps\ccli\config\ccli_application.yaml"
+$Src = Join-Path $Repo "apps\ccli\config\lab_tespro_192_168_0_1_23ln.yaml"
 if (-not (Test-Path $Src)) { throw "Missing $Src" }
 
 $Remote = "/etc/ccli/ccli_application.yaml"

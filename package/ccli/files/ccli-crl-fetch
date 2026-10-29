@@ -1,0 +1,66 @@
+#!/bin/sh
+# Fetch one issuer's public CRL into a protected cache. Does not restart CCLI.
+# Usage: ccli-crl-fetch URL PINNED_CA CACHE_DIRECTORY
+set -eu
+umask 077
+fail() { logger -t ccli-crl "CRL refresh failed: $*"; echo "$*" >&2; exit 1; }
+[ "$#" -eq 3 ] || fail 'usage: ccli-crl-fetch URL PINNED_CA CACHE_DIRECTORY'
+url=$1 ca=$2 cache=$3
+case "$url" in http://*|https://*) ;; *) fail 'only HTTP(S) CRL endpoints supported';; esac
+for tool in curl openssl date mktemp; do command -v "$tool" >/dev/null || fail "missing dependency: $tool"; done
+[ -f "$ca" ] && [ ! -L "$ca" ] || fail 'pinned CA must be a regular file'
+[ ! -L "$cache" ] || fail 'cache must not be a symlink'
+mkdir -p "$cache"
+[ "$(ls -nd "$cache" | awk '{print $3}')" = "$(id -u)" ] || fail 'cache must belong to updater user'
+chmod 700 "$cache"
+mkdir "$cache/.lock" 2>/dev/null || fail 'another refresh is running (or stale lock needs inspection)'
+stage=
+cleanup() { [ -z "$stage" ] || rm -rf "$stage"; rmdir "$cache/.lock"; }
+trap cleanup EXIT
+trap 'exit 1' HUP INT TERM
+stage=$(mktemp -d "$cache/stage.XXXXXX")
+curl --fail --silent --show-error --location --max-redirs 3 --proto '=http,https' \
+    --proto-redir '=http,https' --connect-timeout 10 --max-time 45 \
+    --max-filesize 1048576 --output "$stage/download" "$url" || fail 'download failed'
+[ "$(wc -c < "$stage/download")" -le 1048576 ] || fail 'CRL too large'
+openssl crl -in "$stage/download" -out "$stage/crl.pem" 2>/dev/null || \
+    openssl crl -inform DER -in "$stage/download" -out "$stage/crl.pem" 2>/dev/null || fail 'invalid CRL encoding'
+openssl crl -in "$stage/crl.pem" -verify -CAfile "$ca" -noout >/dev/null 2>&1 || fail 'CRL signature does not match pinned issuer'
+issuer=$(openssl crl -in "$stage/crl.pem" -issuer -noout -nameopt RFC2253 | sed 's/^issuer= *//')
+subject=$(openssl x509 -in "$ca" -subject -noout -nameopt RFC2253 | sed 's/^subject= *//')
+[ "$issuer" = "$subject" ] || fail 'CRL issuer differs from pinned CA subject'
+# Delta and restricted-scope CRLs cannot replace a complete issuer CRL.
+openssl crl -in "$stage/crl.pem" -text -noout > "$stage/text"
+if grep -Eq 'Delta CRL Indicator|Issuing Distribution Point' "$stage/text"; then fail 'delta or restricted-scope CRL unsupported'; fi
+epoch() {
+    date -u -d "$1" +%s 2>/dev/null || date -u -D '%b %e %H:%M:%S %Y GMT' -d "$1" +%s
+}
+first=$(epoch "$(openssl crl -in "$stage/crl.pem" -lastupdate -noout | cut -d= -f2-)") || fail 'cannot parse thisUpdate'
+last=$(epoch "$(openssl crl -in "$stage/crl.pem" -nextupdate -noout | cut -d= -f2-)") || fail 'cannot parse nextUpdate'
+now=$(date -u +%s)
+[ "$first" -le "$now" ] && [ "$last" -gt "$now" ] || fail 'CRL not currently valid; verify device clock'
+[ "$last" -gt "$first" ] || fail 'CRL validity interval must be positive'
+if [ "$((last-now))" -le 21600 ]; then
+    logger -t ccli-crl "Warning: issuer CRL expires within six hours (nextUpdate_epoch=$last)"
+fi
+number() {
+    n=$(openssl crl -in "$1" -crlnumber -noout | sed -n 's/^crlNumber=0x//p' | tr 'a-f' 'A-F' | sed 's/^0*//')
+    case "$n" in *[!0-9A-F]*) return 1;; esac
+    [ -n "$n" ] || { openssl crl -in "$1" -crlnumber -noout | grep -q 'crlNumber=0x0' || return 1; n=0; }
+    printf '%s' "$n"
+}
+new=$(number "$stage/crl.pem") || fail 'CRL number required'
+if [ -e "$cache/crl.pem" ]; then
+    [ -f "$cache/crl.pem" ] && [ ! -L "$cache/crl.pem" ] || fail 'unsafe cached CRL'
+    old=$(number "$cache/crl.pem") || fail 'cached CRL number invalid'
+    if [ "$new" = "$old" ]; then
+        cmp -s "$stage/crl.pem" "$cache/crl.pem" || fail 'different CRL with reused number'
+        exit 0
+    fi
+    [ "${#new}" -gt "${#old}" ] || { [ "${#new}" -eq "${#old}" ] && [ "$(printf '%s\n%s\n' "$old" "$new" | LC_ALL=C sort | tail -n 1)" = "$new" ]; } || fail 'CRL rollback rejected'
+    previous=$(epoch "$(openssl crl -in "$cache/crl.pem" -lastupdate -noout | cut -d= -f2-)") || fail 'cached thisUpdate invalid'
+    [ "$first" -ge "$previous" ] || fail 'CRL issue time rollback rejected'
+fi
+chmod 600 "$stage/crl.pem"
+mv -f "$stage/crl.pem" "$cache/crl.pem"
+logger -t ccli-crl "Validated CRL cached: number=$new nextUpdate_epoch=$last (activation separate)"

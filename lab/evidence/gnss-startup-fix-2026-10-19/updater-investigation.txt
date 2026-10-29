@@ -1,0 +1,26 @@
+1791964686|AUTHORIZATION_ACCEPTED|transaction=d8b717d0-bcb0-49c3-b6bd-bddc075ccccd subject=C=IT,O=HiTEKS,OU=Firmware Update Operators,CN=Alireza sha256 Fingerprint=BD:92:62:91:43:95:CD:88:5E:D2:4C:89:A7:D9:BA:A2:50:4C:F4:77:BF:94:11:DF:87:89:B3:FF:F6:5B:D1:73
+1791964686|INSTALL_STARTED|transaction=d8b717d0-bcb0-49c3-b6bd-bddc075ccccd packages=1
+1791964702|UPDATE_SUCCEEDED|transaction=d8b717d0-bcb0-49c3-b6bd-bddc075ccccd
+1791967086|AUTHORIZATION_ACCEPTED|transaction=728fb079-a42b-4489-be60-7148c82636f8 subject=C=IT,O=HiTEKS,OU=Firmware Update Operators,CN=Alireza sha256 Fingerprint=BD:92:62:91:43:95:CD:88:5E:D2:4C:89:A7:D9:BA:A2:50:4C:F4:77:BF:94:11:DF:87:89:B3:FF:F6:5B:D1:73
+1791967087|INSTALL_STARTED|transaction=728fb079-a42b-4489-be60-7148c82636f8 packages=1
+1791967098|UPDATE_SUCCEEDED|transaction=728fb079-a42b-4489-be60-7148c82636f8
+1792156528|AUTHORIZATION_ACCEPTED|transaction=4c19bfb9-773a-44ff-9bb6-65b967e7ad93 subject=C=IT,O=HiTEKS,OU=Firmware Update Operators,CN=Alireza sha256 Fingerprint=BD:92:62:91:43:95:CD:88:5E:D2:4C:89:A7:D9:BA:A2:50:4C:F4:77:BF:94:11:DF:87:89:B3:FF:F6:5B:D1:73
+1792156528|INSTALL_STARTED|transaction=4c19bfb9-773a-44ff-9bb6-65b967e7ad93 packages=1
+1792156552|UPDATE_SUCCEEDED|transaction=4c19bfb9-773a-44ff-9bb6-65b967e7ad93
+1792158058|AUTHORIZATION_ACCEPTED|transaction=b0293bf7-71b6-4d6c-813e-96273313c812 subject=C=IT,O=HiTEKS,OU=Firmware Update Operators,CN=Alireza sha256 Fingerprint=BD:92:62:91:43:95:CD:88:5E:D2:4C:89:A7:D9:BA:A2:50:4C:F4:77:BF:94:11:DF:87:89:B3:FF:F6:5B:D1:73
+1792158058|INSTALL_STARTED|transaction=b0293bf7-71b6-4d6c-813e-96273313c812 packages=1
+1792158087|UPDATE_SUCCEEDED|transaction=b0293bf7-71b6-4d6c-813e-96273313c812
+861ec666a0aced3b9c97ac0d210c2bffe4c14233d7cd5ef8e3ef66ad4fbca4d0  /usr/sbin/ccli
+346e0b653d224231c542e664cf50ada443835e44436e3fe43705b5825a203c5c  /etc/ccli/lab.yaml
+c14c53e036acc0587583311e68f150b5e672deb81eec8eedd82bbe114b7b0b4c  /etc/init.d/gnss
+commissioning-manifest.xml
+commissioning-policy.xml
+commissioning-scopes.xml
+identity-bindings.xml
+permission-library.xml
+ 5045 root      4788 S    /usr/sbin/ccli --config /etc/ccli/lab.yaml
+ 9901 root      1328 S    grep /usr/sbin/ccli
+{
+	"supported": true,
+	"powered_on": false
+}

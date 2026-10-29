@@ -22,7 +22,7 @@ Using offset **905** reads the u16 at 40906 plus the **first word** of the volta
 | Signal | PLC addr | Offset @40001 | ccli yaml | MR name |
 |--------|----------|---------------|-----------|---------|
 | V_L1_N RMS | **40907** | **906** | `reg_line_voltage: 906` | `V_L1_N` |
-| I_L1 RMS | 40923 | 922 | (not in ccli today) | `I_L1` |
+| I_L1 RMS | 40923 | 922 | `reg_phase_a_current: 922` | `I_L1` |
 | P1 | 40933 | 932 | `reg_active_power: 932` | `P1` |
 | Q1 | 40941 | 940 | `reg_reactive_power: 940` | `Q1` |
 | Frequency | 40973 | 972 | — | `Frequency` |

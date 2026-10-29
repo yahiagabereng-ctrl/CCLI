@@ -1,0 +1,62 @@
+[
+  {
+    "case": "operate-with-readback",
+    "passed": true
+  },
+  {
+    "case": "immediate-status-matches",
+    "passed": true
+  },
+  {
+    "case": "immediate-status-is-on",
+    "passed": true
+  },
+  {
+    "case": "browse-same-association",
+    "passed": true
+  },
+  {
+    "case": "read-after-idle",
+    "passed": true
+  },
+  {
+    "case": "mode-stays-on-past-fallback",
+    "passed": true
+  },
+  {
+    "case": "bad-read",
+    "passed": true
+  },
+  {
+    "case": "read-after-error",
+    "passed": true
+  },
+  {
+    "case": "cancel-watch",
+    "passed": true
+  },
+  {
+    "case": "read-after-cancel",
+    "passed": true
+  },
+  {
+    "case": "one-connection-for-all-actions",
+    "passed": true
+  },
+  {
+    "case": "read-after-disconnect",
+    "passed": true
+  },
+  {
+    "case": "fallback-still-works-after-exit",
+    "passed": true
+  },
+  {
+    "case": "connection-loss-detected",
+    "passed": true
+  },
+  {
+    "case": "lost-connection-does-not-resend",
+    "passed": true
+  }
+]

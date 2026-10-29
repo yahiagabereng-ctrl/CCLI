@@ -124,9 +124,9 @@ Notation: **m** mandatory · **o** optional · **x** excluded · **c** CCI claim
 | Feature | 62351-3 | CCI fill |
 |---------|---------|----------|
 | Multiple CA roots | o | **o** (lab: one EJBCA root) |
-| Max cert 8192 bytes | m | **m** |
+| Max TLS certificate 8192 DER octets | m | **m** (enforced per certificate; documented for product operators) |
 | RFC 5280 validation | m | **m** (`chain_validation: true`) |
-| CRL | m | **m** when `tls_crl` loaded · **PART** if DUT `crl=off` for TSP |
+| CRL | m | **m** when TLS is enabled; startup rejects missing/invalid `tls_crl` |
 | OCSP | o | **x** first pass |
 | Cert white-list | o | **c** — allow-list PEMs |
 
@@ -154,10 +154,12 @@ Notation: **m** mandatory · **o** optional · **x** excluded · **c** CCI claim
 | TLS EE (Cert A) | `server_tls.pem` / `client_tls.pem` (+ keys) |
 | Dual cert G.2 | Declared for app stack — **ACSE Cert B** belongs in **62351-4 PID**, not this sheet |
 | CA | Lab EJBCA `root_CA.pem` |
-| CRL path | `/etc/ccli/tls/lab_crl.pem` when enabled |
+| CRL path | `/etc/ccli/tls/lab_crl.pem` required when TLS is enabled; operator provisions and renews the signed bundle |
 | CRL unreachable mid-session | Do **not** drop session (62351-3 §5.6.4.4) — confirm on DUT |
 | No client cert | Handshake / association **fails** (TSP T3-01) |
-| Revoked cert | Fail if CRL loaded (TSP T3-04) |
+| Revoked cert | TLS handshake/active session terminated and separately alarmed when CRL identifies revocation (TSP T3-04) |
+| Maximum TLS certificate | 8,192 DER octets per certificate; larger certificates are rejected and alarmed |
+| Trust anchors | CA bundle parser accepts a PEM bundle with at least five roots; host regression covers a client chain rooted at the fifth CA |
 | Application context | IEC 61850-8-1 MMS (for 100-3 §4.3.1) |
 | Station role | **Server** (client station tests N/A unless claimed) |
 
@@ -171,7 +173,7 @@ Notation: **m** mandatory · **o** optional · **x** excluded · **c** CCI claim
 |------|---------|----------|-----|
 | Exact cipher IANA list | Intent **c** | DUT dump on submit build | Capture before quote lock |
 | Resumption / reneg timers | **PART** | PIXIT numbers agreed with lab | Confirm vs Allegato T / CRL period |
-| OCSP | **x** | Allegato T also cites OCSP | Defer or add later PID rev |
+| OCSP | **x** | Out of scope for this profile; no stapled OCSP response is provided or claimed |
 | Lab PID Word/Excel template | Markdown HAVE | Lab form paste | **TODO** |
 | 62351-100-3 Tables 4–5 | Pre-lab TSP PASS | Accredited report | **P7-07 OPEN** |
 | 62351-100-4 PDF | Planning extract | Case IDs | **MISSING** |

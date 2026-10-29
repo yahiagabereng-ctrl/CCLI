@@ -1,0 +1,15 @@
+ccli 0.1.0-r61 (AGGREGATOR-PQ-BENCH)
+  semver:   0.1.0
+  release:  r61
+  git:      unknown
+  built:    2026-10-19T10:41:59Z UTC
+  platform: tg500
+13504
+861ec666a0aced3b9c97ac0d210c2bffe4c14233d7cd5ef8e3ef66ad4fbca4d0  /usr/sbin/ccli
+346e0b653d224231c542e664cf50ada443835e44436e3fe43705b5825a203c5c  /etc/ccli/lab.yaml
+6571986abeb2fb998683738239a2c66f1517e06f5163f58513788a8a514539b4  /etc/ccli/rbac-dual/package/commissioning-manifest.xml
+d9461c767b16e210acc0270bcd5672f416da177e8b865c4277c3c9663db19a3e  /etc/ccli/rbac-dual/package/commissioning-policy.xml
+41385c990f18b7530a97cb86feb5bb8cb3e7da4257d22a6167b9f4c33373209b  /etc/ccli/rbac-dual/package/commissioning-scopes.xml
+a3cfa2b5419342c4df48c2e1279ed9c0ec9351411a6b5906814c7148a4a5c60e  /etc/ccli/rbac-dual/package/identity-bindings.xml
+c984e3ace0e0e2efeb1e7ee864a36ee430d8411bb172c78d52e098784e337df1  /etc/ccli/rbac-dual/package/permission-library.xml
+AGGREGATOR_R61_APPLIED backup=/etc/ccli/aggregator-backup-20261019

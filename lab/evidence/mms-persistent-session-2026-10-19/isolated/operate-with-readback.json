@@ -1,0 +1,66 @@
+{
+  "host": "127.0.0.1",
+  "port": 3784,
+  "command": "operate",
+  "reference": "CCI016_01LD_Plant/WlimDWMX1.Mod",
+  "connection_mode": "persistent",
+  "passed": true,
+  "events": [
+    {
+      "kind": "control_model",
+      "reference": "CCI016_01LD_Plant/WlimDWMX1.Mod",
+      "error": 0,
+      "error_text": "",
+      "value": "3 direct-enhanced",
+      "observed_utc": "2026-10-19T09:39:27.434875+00:00"
+    },
+    {
+      "kind": "control_type",
+      "reference": "CCI016_01LD_Plant/WlimDWMX1.Mod",
+      "error": 0,
+      "error_text": "",
+      "value": "int32",
+      "observed_utc": "2026-10-19T09:39:27.434979+00:00"
+    },
+    {
+      "kind": "operate",
+      "reference": "CCI016_01LD_Plant/WlimDWMX1.Mod",
+      "error": 0,
+      "error_text": "",
+      "value": "request accepted",
+      "observed_utc": "2026-10-19T09:39:27.465656+00:00"
+    },
+    {
+      "kind": "termination",
+      "reference": "CCI016_01LD_Plant/WlimDWMX1.Mod",
+      "error": 0,
+      "error_text": "",
+      "value": "error=0 addCause=0",
+      "observed_utc": "2026-10-19T09:39:27.465692+00:00"
+    },
+    {
+      "kind": "readback",
+      "reference": "CCI016_01LD_Plant/WlimDWMX1.Mod",
+      "error": 0,
+      "error_text": "",
+      "value": "reading status on the same MMS association",
+      "observed_utc": "2026-10-19T09:39:27.565808+00:00"
+    },
+    {
+      "kind": "read",
+      "reference": "CCI016_01LD_Plant/WlimDWMX1.Mod.stVal",
+      "error": 0,
+      "error_text": "",
+      "value": "1",
+      "observed_utc": "2026-10-19T09:39:27.598314+00:00"
+    },
+    {
+      "kind": "readback_match",
+      "reference": "CCI016_01LD_Plant/WlimDWMX1.Mod.stVal",
+      "error": 0,
+      "error_text": "",
+      "value": "matches requested value",
+      "observed_utc": "2026-10-19T09:39:27.598360+00:00"
+    }
+  ]
+}

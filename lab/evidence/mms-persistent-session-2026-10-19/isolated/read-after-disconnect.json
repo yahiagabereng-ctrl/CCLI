@@ -1,0 +1,18 @@
+{
+  "host": "127.0.0.1",
+  "port": 3784,
+  "command": "read",
+  "reference": "CCI016_01LD_Plant/WlimDWMX1.Mod.stVal",
+  "connection_mode": "persistent",
+  "passed": true,
+  "events": [
+    {
+      "kind": "read",
+      "reference": "CCI016_01LD_Plant/WlimDWMX1.Mod.stVal",
+      "error": 0,
+      "error_text": "",
+      "value": "5",
+      "observed_utc": "2026-10-19T09:40:06.397334+00:00"
+    }
+  ]
+}

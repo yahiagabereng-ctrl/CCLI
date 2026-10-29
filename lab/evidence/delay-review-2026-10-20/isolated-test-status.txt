@@ -1,0 +1,15 @@
+       20 /etc/ccli/rbac-test-20261016/logfix-r62-20261020/events.jsonl
+     2048 /etc/ccli/rbac-test-20261016/logfix-r62-20261020/events.jsonl.1
+     2068 total
+     basic constraints : CA=false
+     key usage         : Digital Signature, Key Encipherment
+
+{"rbac":true,"event":"TLS_SECURITY_EVENT","severity":"notice","policy":"urn:iec:62351:8:IS:1.0:rps-root:8ef16ebb-65d6-4b2e-bad4-6729129eb412","sequence":3,"service":"TLS","object":"","reason":"Info: Session established with cipher suite TLS-RSA-WITH-AES-128-CBC-SHA256"}
+mms: client CONNECT count=1
+client_connect
+TLS:  mbedtls_ssl_read returned -0x1
+{"rbac":true,"event":"TLS_SECURITY_EVENT","severity":"alarm","policy":"urn:iec:62351:8:IS:1.0:rps-root:8ef16ebb-65d6-4b2e-bad4-6729129eb412","sequence":3,"service":"TLS","object":"","reason":"Alarm: handshake failed for unknown reason"}
+mms: client DISCONNECT count=0
+client_disconnect
+event_store: read log segment failed for /tmp/ccli-event-rotation-21569168115102/failure.jsonl: Is a directory; audit persistence degraded
+event_store: rotate log segment failed for /tmp/ccli-event-rotation-21569168115102/failure.jsonl: Is a directory; audit persistence degraded

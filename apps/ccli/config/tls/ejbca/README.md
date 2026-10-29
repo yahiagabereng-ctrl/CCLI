@@ -8,9 +8,5 @@ Issued by `scripts/issue_ejbca_cli_pki.py` via addendentity + createcert.
 | `server_tls.pem` + `server.key` | CCLI-Cert-A-TLS |
 | `server.pem` + `server_acse.key` | CCLI-Cert-B-E2E-MMS |
 | `client.pem` / `client_tls.pem` | operator dual |
-| `revoked.pem` / `revoked_tls.pem` | REVOKED_CLIENT (revoked in CA) |
-| `lab_crl.pem` | EJBCA-published CRL (PEM) |
-
-Sync to DUT/TSP: `powershell -File scripts/sync-ejbca-tls-to-product.ps1 -Verify`
 
 Verify: `python scripts/verify_annex_pki.py --dir C:\Yahia\projects\CCLI\apps\ccli\config\tls\ejbca`

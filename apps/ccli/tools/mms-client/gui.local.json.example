@@ -1,0 +1,15 @@
+{
+  "host": "192.168.0.1",
+  "port": 3782,
+  "ap_title": "1.1.1.999.1",
+  "ae_qualifier": 12,
+  "auth_mode": "certificate",
+  "ca": "/mnt/c/path/to/root_CA.pem",
+  "mms_ca": "",
+  "tls_cert": "/mnt/c/path/to/tls-client.pem",
+  "tls_key": "/mnt/c/path/to/tls-client.key",
+  "identity_cert": "/mnt/c/path/to/application-identity.pem",
+  "identity_key": "/mnt/c/path/to/application-identity.key",
+  "binary": "/mnt/c/path/to/ccli-mms-client",
+  "profile": "client"
+}

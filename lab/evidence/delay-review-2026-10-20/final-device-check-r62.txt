@@ -1,0 +1,7 @@
+PROTECTED_FILES_AND_ORIGINAL_AUDIT_SEGMENT_PASS
+13080
+tcp        0      0 192.168.0.1:3782        0.0.0.0:*               LISTEN      13080/ccli
+ISOLATED_LISTENER_STOPPED
+       84 /etc/ccli/security-events/events.jsonl
+     2048 /etc/ccli/security-events/events.jsonl.1
+     2132 total

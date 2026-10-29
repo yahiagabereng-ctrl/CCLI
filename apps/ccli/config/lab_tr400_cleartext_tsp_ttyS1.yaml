@@ -84,6 +84,7 @@ iec104:
   operator_monitor_ppv: false
   ioa_ppv: 1003
   tls_enabled: true
+  tls_crl: /etc/ccli/tls/lab_crl.pem
   tls_own_key: /etc/ccli/tls/server.key
   tls_own_cert: /etc/ccli/tls/server_tls.pem
   tls_ca_cert: /etc/ccli/tls/root_CA.pem
@@ -105,7 +106,7 @@ io:
 event_log:
   enabled: true
   path: /var/lib/ccli/events.jsonl
-  syslog_enabled: true
+  syslog_enabled: false # Commission TLS collector credentials before enabling
   syslog_host: 127.0.0.1
-  syslog_port: 514
+  syslog_port: 6514
   watch_ifaces: lan1 lan2

@@ -1,0 +1,80 @@
+﻿table,printed_pages,applicability,subject,mapped_in
+1,17,M,PIXIT base,PRE
+2,18,M,PIXIT security,PRE
+3,19-20,M,OSI applicability summary,CASE
+4,21-22,EXCLUDED-XMPP,XMPP applicability summary,scope
+5,23,M,Base profile,DECL
+6,23,M,Handshake declarations,DECL
+7,23,M/C-TERM,Association declarations,DECL
+8,23,M,OSI EnvPDU declaration,DECL
+9,23-24,M,OSI subclasses,DECL/FIELD
+10,24,M,SecPDU subclasses,DECL/FIELD
+11,24,M,Encryption mode,DECL
+12,24-25,M/C-crypto,Crypto declarations,DECL/CORE
+13,25,M,ASN.1 object identifier,DECL
+14,26,EXCLUDED-DUT-CLIENT,Client handshake/release,TEQ reference
+15,27,M,Server handshake/release,CASE
+16,28,EXCLUDED-DUT-CLIENT,Client association resilience,TEQ reference
+17,29,M,Server association resilience,CASE
+18,30,M-adapt-roles,Clear data exchange,CASE/S08
+19,30,EXCLUDED-DUT-CLIENT,Client clear-transfer resilience,TEQ reference
+20,31,M,Server clear-transfer resilience,CASE
+21,32,C-ENC; source missing,Encrypted exchange,CASE/S01
+22,33,EXCLUDED-DUT-CLIENT,Client encrypted context errors,TEQ reference
+23,34,C-ENC,Server encrypted context errors,CASE
+24,35,TEQ-reference; server response M,Client-originated rekey,CASE/S07/S08
+25,36,M,Server-originated rekey,CASE/S07
+26,38-48,EXCLUDED-XMPP,XMPP declarations/procedures,scope
+27,38-48,EXCLUDED-XMPP,XMPP declarations/procedures,scope
+28,38-48,EXCLUDED-XMPP,XMPP declarations/procedures,scope
+29,38-48,EXCLUDED-XMPP,XMPP declarations/procedures,scope
+30,38-48,EXCLUDED-XMPP,XMPP declarations/procedures,scope
+31,38-48,EXCLUDED-XMPP,XMPP declarations/procedures,scope
+32,38-48,EXCLUDED-XMPP,XMPP declarations/procedures,scope
+33,38-48,EXCLUDED-XMPP,XMPP declarations/procedures,scope
+34,38-48,EXCLUDED-XMPP,XMPP declarations/procedures,scope
+35,38-48,EXCLUDED-XMPP,XMPP declarations/procedures,scope
+36,38-48,EXCLUDED-XMPP,XMPP declarations/procedures,scope
+37,38-48,EXCLUDED-XMPP,XMPP declarations/procedures,scope
+38,38-48,EXCLUDED-XMPP,XMPP declarations/procedures,scope
+39,38-48,EXCLUDED-XMPP,XMPP declarations/procedures,scope
+40,38-48,EXCLUDED-XMPP,XMPP declarations/procedures,scope
+41,38-48,EXCLUDED-XMPP,XMPP declarations/procedures,scope
+42,38-48,EXCLUDED-XMPP,XMPP declarations/procedures,scope
+43,38-48,EXCLUDED-XMPP,XMPP declarations/procedures,scope
+44,38-48,EXCLUDED-XMPP,XMPP declarations/procedures,scope
+45,38-48,EXCLUDED-XMPP,XMPP declarations/procedures,scope
+46,38-48,EXCLUDED-XMPP,XMPP declarations/procedures,scope
+47,38-48,EXCLUDED-XMPP,XMPP declarations/procedures,scope
+48,38-48,EXCLUDED-XMPP,XMPP declarations/procedures,scope
+49,50-54,EXCLUDED-DUT-CLIENT,Client handshake resilience,TEQ reference
+50,55-59,M/trigger conditions,Server handshake resilience,CASE
+51,59-60,M,Server clear resilience,CASE/CORE
+52,61-63,EXCLUDED-DUT-CLIENT,Client clear resilience,TEQ reference
+53,64-66,EXCLUDED-DUT-CLIENT,Client encrypted resilience,TEQ reference
+54,66-68,C-ENC,Server encrypted resilience,CASE/S10
+55,69-71,M-RX,HandshakeReq,FIELD/CORE
+56,71-74,M-TX,HandshakeAcc,FIELD/CORE
+57,75-76,M-TX,ApplicationReject,FIELD/CORE
+58,77-78,M-TX,HandshakeSecReject,FIELD/CORE
+59,79-80,M-RX; no server TX,Client handshake abort,FIELD/CORE
+60,81-82,M-RX/TX,Security transfer abort,FIELD/CORE
+61,83-84,M-RX/TX,Application abort,FIELD/CORE
+62,85-86,M-RX,Client ClearTransfer,FIELD/CORE
+63,87-88,M-TX,Server ClearTransfer,FIELD/CORE
+64,89-90,C-ENC-RX,Client EncrTransfer,FIELD/CORE
+65,90-92,C-ENC-TX,Server EncrTransfer,FIELD/CORE
+66,93-94,C-TERM (selected),ReleaseReq,FIELD/CORE
+67,95-96,C-TERM (selected),ReleaseRsp,FIELD/CORE
+68,96-97,M-RX,AARQ native wrapper,FIELD/CORE
+69,99-100,M-TX,AARE native wrapper,FIELD/CORE
+70,101,M-RX/TEQ-reference,Client ABRT,FIELD/CORE
+71,102,M-TX,Server ABRT,FIELD/CORE
+72,103,M-RX/TX,Clear presentation wrapper,FIELD/CORE
+73,103,C-ENC,Encrypted presentation wrapper,FIELD/CORE
+74,104,C-TERM (selected),RLRQ wrapper,FIELD/CORE
+75,105,C-TERM (selected),RLRE wrapper,FIELD/CORE
+76,106-109,EXCLUDED-XMPP,XMPP stanza subclass,scope; Table 77 source missing
+77,106-109,EXCLUDED-XMPP,XMPP stanza subclass,scope; Table 77 source missing
+78,106-109,EXCLUDED-XMPP,XMPP stanza subclass,scope; Table 77 source missing
+79,106-109,EXCLUDED-XMPP,XMPP stanza subclass,scope; Table 77 source missing

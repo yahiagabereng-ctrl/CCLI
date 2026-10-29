@@ -1,0 +1,26 @@
+{
+  "host": "192.168.0.1",
+  "port": 3782,
+  "command": "read",
+  "reference": "CCI016_01LD_Plant/PdCMMXU1.TotW.mag.f",
+  "connection_mode": "single-command",
+  "passed": false,
+  "events": [
+    {
+      "kind": "wire_profile",
+      "reference": "",
+      "error": 0,
+      "error_text": "",
+      "value": "TSP observed association: MMS/ACSE/auth contexts 3/1/5, COTP TPDU 1024",
+      "observed_utc": "2026-10-20T15:14:07.753809+00:00"
+    },
+    {
+      "kind": "association",
+      "reference": "192.168.0.1",
+      "error": 5,
+      "error_text": "",
+      "value": "mutual TLS 1.2 + ACSE certificate authentication",
+      "observed_utc": "2026-10-20T15:14:07.890252+00:00"
+    }
+  ]
+}

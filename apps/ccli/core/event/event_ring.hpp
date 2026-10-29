@@ -3,6 +3,7 @@
 #include <cstdint>
 #include <string>
 #include <vector>
+#include <utility>
 
 namespace cci::core {
 
@@ -12,6 +13,18 @@ struct EventRecord {
     std::string detail;
     /** Annex O.14 category; filled by EventStore if empty. */
     std::string category;
+    /** IEC 62351-14 Table 2. Empty ID means an O.14-only operational record. */
+    std::uint32_t sequence{0};
+    std::string iec_id;
+    std::string mnemonic;
+    std::string severity;
+    std::string text;
+    std::string source;
+    std::string app_name;
+    std::string peer_info;
+    std::string user_id;
+    std::string role;
+    std::vector<std::pair<std::string, std::string>> parameters;
 };
 
 class EventRing {

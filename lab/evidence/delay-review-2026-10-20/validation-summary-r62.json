@@ -1,0 +1,12 @@
+{
+  "live_connections_passed": 10,
+  "cotp_min_ms": 5.109599998831982,
+  "cotp_max_ms": 12.614700000995072,
+  "tls_min_ms": 28.125500000896864,
+  "tls_max_ms": 75.3264000013587,
+  "signed_mms_read_passed": true,
+  "retained_events": 2048,
+  "fresh_events": 81,
+  "fresh_rbac_records_roundtrip_valid": 26,
+  "built_sources_match_current_workspace": true
+}

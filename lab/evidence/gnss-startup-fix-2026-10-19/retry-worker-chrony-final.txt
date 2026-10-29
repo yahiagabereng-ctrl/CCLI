@@ -1,0 +1,32 @@
+Mon Oct 19 14:36:22 UTC 2026
+Reference ID    : 474E5353 (GNSS)
+Stratum         : 1
+Ref time (UTC)  : Mon Oct 19 14:36:02 2026
+System time     : 0.000000000 seconds fast of NTP time
+Last offset     : -1984.143676758 seconds
+RMS offset      : 1984.143676758 seconds
+Frequency       : 0.000 ppm slow
+Residual freq   : -13141.627 ppm
+Skew            : 1000000.000 ppm
+Root delay      : 0.500000000 seconds
+Root dispersion : 20.711559296 seconds
+Update interval : 0.0 seconds
+Leap status     : Normal
+
+  .-- Source mode  '^' = server, '=' = peer, '#' = local clock.
+ / .- Source state '*' = current best, '+' = combined, '-' = not combined,
+| /             'x' = may be in error, '~' = too variable, '?' = unusable.
+||                                                 .- xxxx [ yyyy ] +/- zzzz
+||      Reachability register (octal) -.           |  xxxx = adjusted offset,
+||      Log2(Polling interval) --.      |          |  yyyy = measured offset,
+||                                \     |          |  zzzz = estimated error.
+||                                 |    |           \
+MS Name/IP address         Stratum Poll Reach LastRx Last sample               
+===============================================================================
+#* GNSS                          0   4    35    19   +222ms[ -1984s] +/-  250ms
+Mon Oct 19 22:01:49 2026 daemon.err sh[3955]: gnss_chrony_sock: sample offset_ms=1983208 ok
+Mon Oct 19 22:02:13 2026 daemon.err sh[3955]: gnss_chrony_sock: sample offset_ms=1983111 ok
+Mon Oct 19 22:02:35 2026 daemon.err sh[3955]: gnss_chrony_sock: sample offset_ms=1984018 ok
+Mon Oct 19 22:02:59 2026 daemon.err sh[3955]: gnss_chrony_sock: sample offset_ms=1983922 ok
+Mon Oct 19 22:03:08 2026 daemon.info chronyd[3954]: Selected source GNSS
+Mon Oct 19 22:36:12 2026 daemon.warn chronyd[3954]: System clock was stepped by 1984.143724 seconds

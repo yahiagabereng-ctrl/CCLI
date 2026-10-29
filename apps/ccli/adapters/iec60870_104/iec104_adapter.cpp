@@ -45,6 +45,8 @@
 #include <iostream>
 
 #include <string>
+#include <deque>
+#include <mutex>
 
 
 
@@ -225,6 +227,24 @@ struct Iec104Adapter::Impl {
     CS104_Slave slave{nullptr};
 
     void* tls_config{nullptr};  /* P4-03 / 62351-3 — TLSConfiguration */
+    Iec104TlsEvents tls_events;
+    std::mutex tls_events_mutex;
+    std::deque<std::string> tls_events_pending;
+    unsigned tls_events_dropped{0};
+
+    static void tls_event(void* parameter, int level, int code, const char* message) {
+        auto* self = static_cast<Impl*>(parameter);
+        std::string detail = "TLS_SECURITY_EVENT severity=" +
+            std::string(level == 0 ? "notice" : level == 1 ? "warning" : "alarm") +
+            " code=" + std::to_string(code) + " " + (message ? message : "TLS event");
+        std::cerr << "iec104: " << detail << "\n";
+        std::lock_guard<std::mutex> lock(self->tls_events_mutex);
+        if (self->tls_events_pending.size() >= 256) {
+            ++self->tls_events_dropped;
+            return;
+        }
+        self->tls_events_pending.push_back(std::move(detail));
+    }
 
     CS101_AppLayerParameters alParams{nullptr};
 
@@ -686,7 +706,8 @@ bool Iec104Adapter::start(const core::Iec104Config& cfg) {
 
         std::string tls_err;
 
-        if (!iec104_create_tls_config(cfg.tls, &impl->tls_config, tls_err)) {
+        impl->tls_events = {Impl::tls_event, impl};
+        if (!iec104_create_tls_config(cfg.tls, &impl->tls_config, tls_err, &impl->tls_events)) {
 
             delete impl;
 
@@ -1001,6 +1022,27 @@ bool Iec104Adapter::poll_operator_audit(OperatorAuditEvent& out) {
 }
 
 
+
+bool Iec104Adapter::poll_security_event(std::string& detail) {
+#if defined(CCLI_HAVE_LIB60870)
+    if (!impl_) return false;
+    std::lock_guard<std::mutex> lock(impl_->tls_events_mutex);
+    if (!impl_->tls_events_pending.empty()) {
+        detail = std::move(impl_->tls_events_pending.front());
+        impl_->tls_events_pending.pop_front();
+        return true;
+    }
+    if (impl_->tls_events_dropped) {
+        detail = "TLS_SECURITY_EVENT severity=alarm event_queue_overflow dropped=" +
+            std::to_string(impl_->tls_events_dropped);
+        impl_->tls_events_dropped = 0;
+        return true;
+    }
+#else
+    (void)detail;
+#endif
+    return false;
+}
 
 int Iec104Adapter::client_count() const {
 

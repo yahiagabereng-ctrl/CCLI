@@ -1,0 +1,143 @@
+#!/bin/sh /etc/rc.common
+
+START=95
+STOP=10
+
+USE_PROCD=1
+
+PROG=/usr/sbin/seriald
+CONF=/etc/config/serialservice
+
+# TR500/TG500 RS485-2 别名兼底: RS485-2 走板载 FT232R (USB 口 *-1.5),
+# 与 GD32 协处理器 FT232R (*-1.1) VID:PID 相同 (0403:6001), 必须按
+# sysfs 物理口位区分; hotplug 规则正常时由其创建, 未命中时由本函数补建。
+rs485_2_ensure_alias() {
+	local board tty dir lvl dev tvid tpid
+	board="$(cat /tmp/sysinfo/board_name 2>/dev/null)"
+	case "$board" in
+		tespro,tr500|tespro,tg500) ;;
+		*) return 0 ;;
+	esac
+	[ -e /dev/rs485_2_uart ] && return 0
+	for tty in /sys/class/tty/ttyUSB*; do
+		[ -e "$tty" ] || continue
+		dir=$(readlink -f "$tty/device" 2>/dev/null)
+		lvl=0
+		while [ -n "$dir" ] && [ $lvl -lt 6 ] && [ ! -e "$dir/idVendor" ]; do
+			dir=${dir%/*}; lvl=$((lvl+1))
+		done
+		[ -e "$dir/idVendor" ] || continue
+		tvid=$(cat "$dir/idVendor" 2>/dev/null)
+		tpid=$(cat "$dir/idProduct" 2>/dev/null)
+		[ "$tvid" = "0403" ] && [ "$tpid" = "6001" ] || continue
+		dev=$(basename "$dir" 2>/dev/null)
+		case "$dev" in
+			*-1.5)
+				ln -sf "/dev/${tty##*/}" /dev/rs485_2_uart
+				logger -t serialservice "RS485-2 alias: /dev/rs485_2_uart -> /dev/${tty##*/} (init bootstrap)"
+				return 0
+				;;
+		esac
+	done
+	return 1
+}
+
+start_service() {
+	config_load serialservice
+	
+	local enabled
+	config_get enabled settings enabled 0
+	
+	[ "$enabled" -eq 0 ] && {
+		echo "Serial service is disabled in config"
+		return 1
+	}
+	
+	# 补齐 RS485-2 固定别名 (hotplug 未命中时)
+	rs485_2_ensure_alias
+	
+	# Add multicast route for 239.0.0.x (seriald listens on lo interface)
+	# Without this route, serialctl cannot reach seriald via multicast
+	ip route add 239.0.0.0/8 dev lo 2>/dev/null || ip route replace 239.0.0.0/8 dev lo
+	
+	procd_open_instance
+	procd_set_param command $PROG
+	# 优化respawn参数：300秒窗口，1秒快速重启，无限重试
+	procd_set_param respawn 300 1 0
+	procd_set_param stdout 1
+	procd_set_param stderr 1
+	procd_set_param file $CONF
+	procd_close_instance
+}
+
+stop_service() {
+	# Remove multicast route on stop
+	ip route del 239.0.0.0/8 dev lo 2>/dev/null || true
+}
+
+reload_service() {
+	procd_send_signal serialservice
+}
+
+service_triggers() {
+	procd_add_reload_trigger "serialservice"
+}
+
+config global 'settings'
+	option enabled '1'
+	option port_count '3'
+
+config serial 'port1'
+	option enabled '1'
+	option name 'RS232'
+	option device '/dev/ttyS0'
+	option baudrate '9600'
+	option parity 'none'
+	option databits '8'
+	option stopbits '1'
+	option flowcontrol 'none'
+	option mode 'shared'
+	option multicast_addr '239.0.0.1'
+	option tx_port '10001'
+	option rx_port '10002'
+	option ctrl_port '10003'
+	option lock_timeout '300'
+	option lock_timeout_warn '60'
+	option buffer_size '8192'
+
+config serial 'port2'
+	option enabled '1'
+	option name 'RS485-1'
+	option device '/dev/ttyS1'
+	option baudrate '9600'
+	option parity 'none'
+	option databits '8'
+	option stopbits '1'
+	option flowcontrol 'none'
+	option mode 'shared'
+	option multicast_addr '239.0.0.2'
+	option tx_port '10011'
+	option rx_port '10012'
+	option ctrl_port '10013'
+	option lock_timeout '300'
+	option lock_timeout_warn '60'
+	option buffer_size '8192'
+
+config serial 'port3'
+	option enabled '1'
+	option name 'RS485-2'
+	option device '/dev/rs485_2_uart'
+	option baudrate '9600'
+	option parity 'none'
+	option databits '8'
+	option stopbits '1'
+	option flowcontrol 'none'
+	option mode 'shared'
+	option multicast_addr '239.0.0.3'
+	option tx_port '10021'
+	option rx_port '10022'
+	option ctrl_port '10023'
+	option lock_timeout '300'
+	option lock_timeout_warn '60'
+	option buffer_size '8192'
+

@@ -1,0 +1,57 @@
+{
+  "host": "127.0.0.1",
+  "port": 3784,
+  "command": "reports-gi",
+  "reference": "CCI016_01LD_Plant/LLN0.RP.urcb_PdC_Mis4sec",
+  "passed": false,
+  "events": [
+    {
+      "kind": "association",
+      "reference": "127.0.0.1",
+      "error": 0,
+      "error_text": "",
+      "value": "mutual TLS 1.2 + ACSE certificate authentication",
+      "observed_utc": "2026-10-19T08:44:21.186773+00:00"
+    },
+    {
+      "kind": "rcb",
+      "reference": "CCI016_01LD_Plant/LLN0.RP.urcb_PdC_Mis4sec",
+      "error": 0,
+      "error_text": "",
+      "value": "enabled=false dataset=CCI016_01LD_Plant/LLN0$DS_R_PdC_Mis4sec",
+      "observed_utc": "2026-10-19T08:44:21.258168+00:00"
+    },
+    {
+      "kind": "report-enable",
+      "reference": "CCI016_01LD_Plant/LLN0.RP.urcb_PdC_Mis4sec",
+      "error": 0,
+      "error_text": "",
+      "value": "",
+      "observed_utc": "2026-10-19T08:44:21.359987+00:00"
+    },
+    {
+      "kind": "report-GI",
+      "reference": "CCI016_01LD_Plant/LLN0.RP.urcb_PdC_Mis4sec",
+      "error": 21,
+      "error_text": "access-denied",
+      "value": "",
+      "observed_utc": "2026-10-19T08:44:21.390664+00:00"
+    },
+    {
+      "kind": "report",
+      "reference": "CCI016_01LD_Plant/LLN0.RP.urcb_PdC_Mis4sec",
+      "error": 0,
+      "error_text": "",
+      "value": "{{{12.000000},1100000001000,20261019084421.383Z},(null),(null)}",
+      "observed_utc": "2026-10-19T08:44:21.411192+00:00"
+    },
+    {
+      "kind": "report-disable",
+      "reference": "CCI016_01LD_Plant/LLN0.RP.urcb_PdC_Mis4sec",
+      "error": 0,
+      "error_text": "",
+      "value": "received=1",
+      "observed_utc": "2026-10-19T08:44:21.452068+00:00"
+    }
+  ]
+}

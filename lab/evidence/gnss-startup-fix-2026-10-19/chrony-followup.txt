@@ -1,0 +1,39 @@
+Mon Oct 19 13:39:30 UTC 2026
+Reference ID    : 474E5353 (GNSS)
+Stratum         : 1
+Ref time (UTC)  : Mon Oct 19 13:39:01 2026
+System time     : 0.000000000 seconds fast of NTP time
+Last offset     : -2227.630126953 seconds
+RMS offset      : 2227.630126953 seconds
+Frequency       : 0.000 ppm slow
+Residual freq   : +4024.228 ppm
+Skew            : 1000000.000 ppm
+Root delay      : 0.500000000 seconds
+Root dispersion : 29.390245438 seconds
+Update interval : 0.0 seconds
+Leap status     : Normal
+
+  .-- Source mode  '^' = server, '=' = peer, '#' = local clock.
+ / .- Source state '*' = current best, '+' = combined, '-' = not combined,
+| /             'x' = may be in error, '~' = too variable, '?' = unusable.
+||                                                 .- xxxx [ yyyy ] +/- zzzz
+||      Reachability register (octal) -.           |  xxxx = adjusted offset,
+||      Log2(Polling interval) --.      |          |  yyyy = measured offset,
+||                                \     |          |  zzzz = estimated error.
+||                                 |    |           \
+MS Name/IP address         Stratum Poll Reach LastRx Last sample               
+===============================================================================
+#* GNSS                          0   4    26    28    -13ms[ -2228s] +/-  250ms
+Name/IP Address            NP  NR  Span  Frequency  Freq Skew  Offset  Std Dev
+==============================================================================
+GNSS                        3   3    48  +4024.228  30997.436   +103ms  1660us
+Mon Oct 19 20:59:56 2026 daemon.err sh[3953]: gnss_chrony_sock: no GNSS fix
+Mon Oct 19 21:00:15 2026 daemon.err sh[3953]: gnss_chrony_sock: no GNSS fix
+Mon Oct 19 21:00:43 2026 daemon.err sh[3953]: gnss_chrony_sock: no GNSS fix
+Mon Oct 19 21:01:06 2026 daemon.err sh[3953]: gnss_chrony_sock: sample offset_ms=2227837 ok
+Mon Oct 19 21:01:31 2026 daemon.err sh[3953]: gnss_chrony_sock: sample offset_ms=2227738 ok
+Mon Oct 19 21:01:54 2026 daemon.err sh[3953]: gnss_chrony_sock: sample offset_ms=2227643 ok
+Mon Oct 19 21:01:57 2026 daemon.info chronyd[3952]: Selected source GNSS
+Mon Oct 19 21:39:05 2026 daemon.warn chronyd[3952]: System clock wrong by 2227.630174 seconds
+Mon Oct 19 21:39:05 2026 daemon.warn chronyd[3952]: System clock was stepped by 2227.630174 seconds
+Mon Oct 19 21:39:25 2026 daemon.err sh[3953]: gnss_chrony_sock: sample offset_ms=-82 ok

@@ -1,0 +1,11 @@
+{
+  "session_bytes": 1597,
+  "presentation_bytes": 1569,
+  "aarq_bytes": 1471,
+  "fields": {
+    "0xa2": "a20706052901876701",
+    "0xa3": "a30302010c",
+    "0xa6": "a6020600",
+    "0xa7": "a70302010c"
+  }
+}

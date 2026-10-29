@@ -1,0 +1,57 @@
+{
+  "host": "192.168.0.1",
+  "port": 3782,
+  "command": "watch",
+  "passed": true,
+  "events": [
+    {
+      "kind": "association",
+      "reference": "192.168.0.1",
+      "error": 0,
+      "value": "mutual TLS 1.2 + ACSE certificate authentication",
+      "observed_utc": "2026-10-19T08:16:18.752794+00:00"
+    },
+    {
+      "kind": "read",
+      "reference": "CCI016_01LD_Plant/PdCMMXU1.TotW.t",
+      "error": 0,
+      "value": "20261019081614.536Z",
+      "observed_utc": "2026-10-19T08:16:18.783486+00:00"
+    },
+    {
+      "kind": "time_quality",
+      "reference": "CCI016_01LD_Plant/PdCMMXU1.TotW.t",
+      "error": 0,
+      "value": "epoch_ms=1792397774536 clockNotSynchronized=0",
+      "observed_utc": "2026-10-19T08:16:18.783603+00:00"
+    },
+    {
+      "kind": "read",
+      "reference": "CCI016_01LD_Plant/PdCMMXU1.TotW.t",
+      "error": 0,
+      "value": "20261019081614.536Z",
+      "observed_utc": "2026-10-19T08:16:19.802755+00:00"
+    },
+    {
+      "kind": "time_quality",
+      "reference": "CCI016_01LD_Plant/PdCMMXU1.TotW.t",
+      "error": 0,
+      "value": "epoch_ms=1792397774536 clockNotSynchronized=0",
+      "observed_utc": "2026-10-19T08:16:19.802894+00:00"
+    },
+    {
+      "kind": "read",
+      "reference": "CCI016_01LD_Plant/PdCMMXU1.TotW.t",
+      "error": 0,
+      "value": "20261019081614.536Z",
+      "observed_utc": "2026-10-19T08:16:20.821389+00:00"
+    },
+    {
+      "kind": "time_quality",
+      "reference": "CCI016_01LD_Plant/PdCMMXU1.TotW.t",
+      "error": 0,
+      "value": "epoch_ms=1792397774536 clockNotSynchronized=0",
+      "observed_utc": "2026-10-19T08:16:20.821514+00:00"
+    }
+  ]
+}

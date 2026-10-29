@@ -1,0 +1,24 @@
+﻿# Wireshark summary (auto)
+pcap: C:\Users\Firmware Engineer\Desktop\product\CCLI\lab\evidence\testsuite-pro\pcap\TSP_P3_01_CONNECT_2026-10-20.pcapng
+pcap_bytes: 53356
+frame_count: 143
+tls_frames: 50
+mms_dissector_frames: 0
+filter_hint: host 192.168.0.1 and port 3782
+decrypt: lab/evidence/testsuite-pro/pcap/README.md
+
+--- tshark -q -z io,stat,0 ---
+
+===================================
+| IO Statistics                   |
+|                                 |
+| Duration: 16.6 secs             |
+| Interval: 16.6 secs             |
+|                                 |
+| Col  1: Frames and bytes        |
+|---------------------------------|
+|              |1               | |
+| Interval     | Frames | Bytes | |
+|-------------------------------| |
+|  0.0 <> 16.6 |    143 | 48244 | |
+===================================

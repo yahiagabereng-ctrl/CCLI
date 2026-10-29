@@ -16,6 +16,7 @@ public:
     bool poll_operator_audit(adapters::Iec104Adapter::OperatorAuditEvent& out) {
         return adapter_.poll_operator_audit(out);
     }
+    bool poll_security_event(std::string& detail) { return adapter_.poll_security_event(detail); }
     int client_count() const { return adapter_.client_count(); }
 
 private:

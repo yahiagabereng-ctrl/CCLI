@@ -1,0 +1,1007 @@
+
+YAHOO.namespace("caf.table");
+
+YAHOO.caf.table.CURRENT_PROCESS_INDEX="currentProcessIndex";
+
+
+YAHOO.caf.table.addRowAtTop = function(){
+	
+	var table = arguments[0];
+	var data = arguments[1];
+	YAHOO.caf.table.addRow(table,data, 0); 
+	
+};
+
+YAHOO.caf.table.addRowAtBottom = function(){
+	var table = arguments[0];
+	var data = arguments[1];
+	YAHOO.caf.table.addRow(table,data, table.getRecordSet().getRecords().length); 
+	
+};
+
+YAHOO.caf.table.addRow = function(){
+	var table = arguments[0];
+	var data = arguments[1];
+	var index = arguments[2];
+	table.addRow(data, index); 
+};
+
+YAHOO.caf.table.updateRow = function(){
+	
+	var table = arguments[0];
+	var data = arguments[1];
+	var index = arguments[2];
+	
+	table.updateRow(index,data); 
+	//alert('update'+data);
+};
+
+YAHOO.caf.table.deleteRowAtTop = function(){
+	var table = arguments[0];
+	YAHOO.caf.table.deleteRow(table,0); 
+	
+};
+
+YAHOO.caf.table.deleteRowAtBottom = function(){
+	var table = arguments[0];
+	YAHOO.caf.table.deleteRow(table,table.getRecordSet().getRecords().length); 
+};
+
+YAHOO.caf.table.deleteRow = function(){
+	var table = arguments[0];
+	var index = arguments[1];
+	table.deleteRow(index); 
+};
+
+
+
+
+/***
+ * 窗口确定按钮中取得窗口中的数据
+ * 参数1 table 表格定义
+ * 参数2 页面html对象名称前缀
+ */
+YAHOO.caf.table.getFormDataByTableMapping=function(){
+	var mnp = '';
+	var table = arguments[0];
+	if (!table){
+		return;
+	}
+	var columns=table.getColumnSet().getDefinitions();
+	var tempa = arguments[1];
+	if (tempa&&tempa!=''){
+		mnp=tempa;
+	}
+	//alert(mnp);
+	var data=new Object();
+
+	for (var i=0;i<columns.length;i++){
+		//alert(items);
+		var key= columns[i]["key"];
+		var elName=mnp==''?key:mnp+key;
+	//	alert(elName);
+		var  el =document.getElementsByName(elName);
+		if (el){
+			if (el.length == 1){
+				//alert(elName+':'+oRecordData[items]+el.innerHTML);
+				if (el[0].value){
+					
+					data[key]=el[0].value;
+				}else{
+					data[key]='';
+				}
+			}else{
+				var cv = YAHOO.caf.utils.getCheckBoxValue(elName);
+				var str='';
+				var append =false;
+				if (cv.checkedValue.length>0){
+					for(var j =0;j<cv.checkedValue.length;j++){
+						if (append){
+							str+=','+cv.checkedValue[j];
+						}else{
+							str+= cv.checkedValue[j];
+							append=true;
+						}
+					}
+				}
+				data[key]=str;
+			}
+			
+		}else{
+			data[key]=null;
+		}
+	}
+	//var data = buildData(name,age,name1);
+	//alert('123123'+YAHOO.lang.dump(data));
+	return data;
+};
+
+
+/***
+ * 将列表中的记录同步到html对象中
+ */
+/***
+ * 弹出窗口时 将列表数据同步到窗口中
+ * 参数1 列表record 对象 
+ * 参数 2 页面对象名称前缀XXX.
+ *会根据record对象中列名称 查找页面对象并赋值。
+ */
+YAHOO.caf.table.recordData2Html =function(){
+	var mnp = '';
+	var oRecord = arguments[0];
+	if (!oRecord){
+		return;
+	}
+	var tempa = arguments[1];
+	if (tempa&&tempa!=''){
+		mnp=tempa;
+	}
+	//alert(mnp);
+	var oRecordData = oRecord.getData();
+	for (items in oRecordData){
+		//alert(items);
+		var elName=mnp==''?items:mnp+items;
+		//alert(elName);
+		var  el =document.getElementsByName(elName);
+		if (el){
+			if (el.length == 1){
+				//alert(elName+':'+oRecordData[items]+el.innerHTML);
+				if (oRecordData[items]){
+					
+					el[0].value= oRecordData[items];
+				}else{
+					el[0].value='';
+				}
+			}else{
+				YAHOO.caf.utils.setUnChecked(elName);
+				if (oRecordData[items]){
+					YAHOO.caf.utils.setChecked(elName,oRecordData[items]);
+				}
+			}
+			
+		}
+	}
+
+};
+
+
+
+
+
+/**
+ * 提交整个表格中的数据
+ */
+YAHOO.caf.table.submitFormAndTableDatas= function(){
+
+
+	
+	var form;
+	var table;
+	var tablePrefix;	
+ 	var actionurl;
+
+   	if (arguments[0]){
+   		actionurl=arguments[0];
+    }else{
+		return;
+    }
+	
+    if (arguments[1]){
+    	form=arguments[1];
+    }
+    if (arguments[2]){
+    	table=arguments[2];
+    }
+    if (arguments[3]){
+    	tablePrefix=arguments[3];
+    }else{
+    	tablePrefix='';
+    }
+
+	//alert(form);
+	//alert(table.getRecordSet());
+	var stra= new StrAccumulator();
+	stra.setSplit('&');
+
+    var recordSetUrls=null;
+    if(table!=null){
+    	recordSetUrls = YAHOO.caf.table.recordSetToParametersUrl(table.getRecordSet(),tablePrefix); 
+    }
+  
+     var formToParasUrl=YAHOO.caf.utils.formToParametersUrl(form);  // alert(recordArray.length);
+  
+     	if (formToParasUrl!=''){
+   		stra.append(formToParasUrl);
+   	}	  
+ 	if (recordSetUrls!=''){
+ 		stra.append(recordSetUrls);
+   	}
+   	actionurl=actionurl+'?'+stra.getString();
+   //	alert(actionurl);
+	YAHOO.caf.utils.postSubmit(actionurl);
+};
+
+
+/***
+ * 将一个recordSet对象中的所有record对象属性值生成一个url
+ */
+YAHOO.caf.table.recordSetToParametersUrl=function(){
+	
+	var recordSet= arguments[0];
+	if (!recordSet){
+		return '';
+	}
+	var prefix= arguments[1];
+	if (!prefix){
+		prefix='';
+	}
+	
+	var stra= new StrAccumulator();
+	stra.setSplit('&');
+	
+	  var recordArray = recordSet.getRecords(); 
+ 	  // alert(recordArray.length);
+ 	   var v='';
+ 	 //  alert(YAHOO.lang.dump(stra));
+ 	   for (var i=0;i<recordArray.length;i++){
+ 		   var record = recordArray[i];
+ 		   for (items in record.getData()){
+ 			//   alert((prefix+items+'='));
+ 			   stra.append((prefix+items+'=')+(record.getData(items)?record.getData(items):''));
+ 			}	
+ 	   }
+	return stra.getString();
+
+};
+
+/***
+ * 
+ *script 
+ 			config对象 
+ 			{
+ 				debug:false,
+				 action:'/sample/dt/addUpdRowTableUpd.action',
+				 table:table,
+				 prefix:'',
+				 index:列表中新建行的id 默认是选中行的id
+				 confirm:true,
+				 confirmMessage:'确定添加记录 ?'
+				 postProcess:function(){formdialog.hide();}//方法调用最后调用
+				 preProcess:function(){formdialog.hide();}//方法调用最前调用
+				 prePostProcess: newdata,data //数据库添加数据完毕后调用 更新类表中数据的主键
+				 参数一 返回添加数据，参数二 列表记录 
+				 var addAfter = function(){
+					  	var response=arguments[0];
+					  	var data=arguments[1];
+					
+					  	 var newdata = YAHOO.lang.JSON.parse(response);
+					
+					 	//alert("newdata"+YAHOO.lang.dump(newdata["model"]));
+					 	//alert((newdata["model"])["id"]);
+					  	data["id"]=(newdata["model"])["id"];
+					 	//alert("new data"+YAHOO.lang.dump(data));
+				}
+			 } 
+ 
+ */
+YAHOO.caf.table.tableAdd = function(){
+  	var config=arguments[0];
+	
+  	if (config.debug==undefined){
+		config.debug=false;
+	}
+	if(config.debug){	
+		alert('config.debug'+config.debug);
+	}
+	
+  	if (!config){
+		return;
+	}
+
+	if(config.debug){	
+		alert('config'+config);
+	}
+  	
+	if (config.table==undefined){
+		return;
+	}
+	if(config.debug){	
+		alert('config.table'+config.table);
+	}
+  	
+	
+	if (config.confirm==undefined){
+		config.confirm=true;
+	}
+	
+
+	if (!config.prefix){
+		config.prefix='';
+	}
+	
+	if (!config.confirmMessage){
+		config.confirmMessage='确定添加记录 ?';
+	}
+	if(config.debug){	
+		alert('config.confirmMessage'+config.confirmMessage);
+	}
+	if (config.index==undefined){
+		if (config.table[YAHOO.caf.table.CURRENT_PROCESS_INDEX]!=undefined){
+			config.index=YAHOO.caf.table.getCurrentProcessIndex(config.table);
+		}else{
+			config.index = 0;
+		}
+	}
+	if(config.debug){	
+		alert('config.preProcessBefore');
+	}
+	if (config.preProcess!=undefined){
+		config.preProcess();
+	}
+
+	
+	 var data = YAHOO.caf.table.getFormDataByTableMapping(config.table,config.prefix);
+
+	 var datastr=YAHOO.caf.utils.serial(data);
+		if(config.debug){	
+			alert(YAHOO.lang.dump( datastr));
+		}
+	var ajaxUpdateHandleSuccess = function(o){ 
+		if(o.responseText !== undefined){ 
+		//	alert(YAHOO.lang.dump( o.responseText));
+			if (config.prePostProcess!=undefined){
+					var newObj=YAHOO.lang.JSON.parse(o.responseText);
+					config.prePostProcess(newObj,data);
+			}	
+			if(config.debug){	
+				alert("ajaxUpdateHandleSuccess new data"+YAHOO.lang.dump(data));
+			}
+			YAHOO.caf.table.addRow(config.table,data,config.index);
+			YAHOO.caf.table.setCurrentProcessIndex(config.table,YAHOO.caf.table.getTableSelectRowIndex(config.table));
+		
+		}else{
+			if(config.debug){
+				alert('ajaxAddHandleSuccess Failure');
+			}
+		}
+	}; 
+		
+	var ajaxUpdateHandleFailure = function(o){ 
+		if(config.debug){
+			alert('ajaxUpdateHandleFailure');
+		}
+	};		
+
+	var callback = { 
+		success:ajaxUpdateHandleSuccess,
+		failure:ajaxUpdateHandleFailure, 
+		argument: {}, 
+		timeout: 10000 
+	}; 
+	var request;
+
+	if (config.confirm){
+	
+		if(confirm(config.confirmMessage)) {
+			
+			if (config.action==undefined){
+				YAHOO.caf.table.addRow(config.table,data,config.index);
+				//操作完成后要更新列表被选中记录的值
+				YAHOO.caf.table.setCurrentProcessIndex(config.table,YAHOO.caf.table.getTableSelectRowIndex(config.table));
+			}else{
+				request=YAHOO.util.Connect.asyncRequest('POST', config.action, callback, datastr);
+			}
+			if(config.debug){
+				alert("Initiating request; tId: " + request.tId + ".", "info", "example"); 
+			}
+		//	formdialog.hide();
+	  	}else{
+	  		return;
+	  	}
+	}else{
+		if (config.action==undefined){
+			YAHOO.caf.table.addRow(config.table,data,config.index);
+		}else{
+			request=YAHOO.util.Connect.asyncRequest('POST', config.action, callback, datastr);
+		}
+		if(config.debug){
+			alert("Initiating request; tId: " + (request ? request.tId : '') + ".", "info", "example"); 
+		}	
+		
+	}
+	if (config.postProcess!=undefined){
+		config.postProcess();
+	}
+};
+
+
+
+
+/***
+ * 
+ *script  config对象 {
+ 				debug:false,
+				 action:'/sample/dt/addUpdRowTableUpd.action',
+				 table:table,
+				 prefix:'',
+				 index:列表中更新行的id 默认是选中行的id,
+				 confirm:true,
+				 confirmMessage:'你确定修改记录 ?',
+			     postProcess:function(){formdialog.hide();},
+			     preProcess:function:function(){}
+			     prePostProcess:function:function(){}
+			 } 
+ 
+ */
+YAHOO.caf.table.tableUpdate = function(){
+  	var config=arguments[0];
+	if (!config){
+		return;
+	}
+	
+	if (config.table==undefined){
+		return;
+	}
+	if (config.confirm==undefined){
+		config.confirm=true;
+	}
+	if (config.debug==undefined){
+		config.debug=false;
+	}
+	if (!config.prefix){
+		config.prefix='';
+	}
+	
+	if (!config.confirmMessage){
+		config.confirmMessage='确定修改记录 ?';
+	}
+	
+	if (config.index==undefined){
+		if (config.table[YAHOO.caf.table.CURRENT_PROCESS_INDEX]!=undefined){
+			config.index=YAHOO.caf.table.getCurrentProcessIndex(config.table);
+		}else{
+			config.index = 0;
+		}
+//		 var srows = config.table.getSelectedRows();
+//		 config.index = config.table.getRecordIndex( config.table.getRecord(srows[0]).getId());
+	}
+	if (config.preProcess!=undefined){
+		config.preProcess();
+	}
+
+	
+	 var data = YAHOO.caf.table.getFormDataByTableMapping(aaa,config.prefix);
+
+	 var datastr=YAHOO.caf.utils.serial(data);
+		//	alert(YAHOO.lang.dump( datastr));
+	var ajaxUpdateHandleSuccess = function(o){ 
+		if(o.responseText !== undefined){ 
+		//	alert(YAHOO.lang.dump( o.responseText));
+			if (config.prePostProcess!=undefined){
+				var newObj=YAHOO.lang.JSON.parse(o.responseText);
+				config.prePostProcess(newObj,data);
+			}
+			 YAHOO.caf.table.updateRow(config.table,data,config.index);
+			 YAHOO.caf.table.setCurrentProcessIndex(config.table,YAHOO.caf.table.getTableSelectRowIndex(config.table));
+		}else{
+			if(config.debug){
+				alert('ajaxAddHandleSuccess Failure');
+			}
+		}
+	}; 
+		
+	var ajaxUpdateHandleFailure = function(o){ 
+		if(config.debug){
+			alert('ajaxUpdateHandleFailure');
+		}
+	};		
+
+	var callback = { 
+		success:ajaxUpdateHandleSuccess,
+		failure:ajaxUpdateHandleFailure, 
+		argument: {}, 
+		timeout: 10000 
+	}; 
+	var request;
+
+	if (config.confirm){
+	
+		if(confirm(config.confirmMessage)) {
+			if (config.action==undefined){
+			
+				 YAHOO.caf.table.updateRow(config.table,data,config.index);
+				 YAHOO.caf.table.setCurrentProcessIndex(config.table,YAHOO.caf.table.getTableSelectRowIndex(config.table));
+			}else{
+				request=YAHOO.util.Connect.asyncRequest('POST', config.action, callback, datastr);
+			}
+			
+			
+			if(config.debug){
+				alert("Initiating request; tId: " + request.tId + ".", "info", "example"); 
+			}
+		//	formdialog.hide();
+	  	}else{
+	  		return;
+	  	}
+	}else{
+		if (config.action==undefined){
+			 YAHOO.caf.table.updateRow(config.table,data,config.index);
+		}else{
+			request=YAHOO.util.Connect.asyncRequest('POST', config.action, callback, datastr);
+		}
+		if(config.debug){
+			alert("Initiating request; tId: " +  (request ? request.tId : '') + ".", "info", "example"); 
+		}	
+	}
+	if (config.postProcess!=undefined){
+		config.postProcess();
+	}
+};
+
+
+/***
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ */
+YAHOO.caf.table.tableDelete =function(){
+  	var config=arguments[0];
+	if (!config){
+		return;
+	}
+
+	if (config.table==undefined){
+		return;
+	}
+	if (config.confirm==undefined){
+		config.confirm=true;
+	}
+	if (config.debug==undefined){
+		config.debug=false;
+	}
+	if (!config.prefix){
+		config.prefix='';
+	}
+	
+	if (!config.confirmMessage){
+		config.confirmMessage='确定删除记录 ?';
+	}
+	
+	if (config.index==undefined){
+		if (config.table[YAHOO.caf.table.CURRENT_PROCESS_INDEX]!=undefined){
+			config.index=YAHOO.caf.table.getCurrentProcessIndex(config.table);
+		}else{
+			config.index = 0;
+		}
+	}
+
+	if (config.preProcess){
+		config.preProcess();
+	}
+
+	
+	var oRecord = config.table.getRecord(config.index);
+	if(config.debug){
+		alert('oRecord:'+oRecord);
+	}
+	 var datastr=YAHOO.caf.utils.serial(oRecord.getData());
+	if(config.debug){
+		alert('datastr:'+datastr);
+	}
+	 //	alert(YAHOO.lang.dump( datastr));
+	var ajaxUpdateHandleSuccess = function(o){ 
+		if(o.responseText !== undefined){ 
+		//	alert(YAHOO.lang.dump( o.responseText));
+			if (config.prePostProcess!=undefined){
+				var newObj=YAHOO.lang.JSON.parse(o.responseText);
+				config.prePostProcess(newObj,data);
+			}	
+			YAHOO.caf.table.deleteRow(config.table,config.index);	
+			YAHOO.caf.table.setCurrentProcessIndex(config.table,YAHOO.caf.table.getTableSelectRowIndex(config.table));
+			var id = config.table.getContainerEl().id;
+			try{
+				 eval(id+'ReQuery()'); 
+			}catch(e){
+		 
+			}
+		}else{
+			if(config.debug){
+				alert('ajaxAddHandleSuccess Failure');
+			}
+		}
+	}; 
+		
+	var ajaxUpdateHandleFailure = function(o){ 
+		if(config.debug){
+			alert('ajaxUpdateHandleFailure');
+		}
+		var id = config.table.getContainerEl().id;
+		try{
+			 eval(id+'ReQuery()'); 
+		}catch(e){
+	 
+		}
+	};		
+
+	var callback = { 
+		success:ajaxUpdateHandleSuccess,
+		failure:ajaxUpdateHandleFailure, 
+		argument: {}, 
+		timeout: 10000 
+	}; 
+	var request;
+	var datastr=YAHOO.caf.utils.serial(oRecord.getData());
+	if(config.debug){
+		alert('datastr:'+datastr);
+	}
+	if (config.confirm){
+	
+		if(confirm(config.confirmMessage)) {
+			if (config.action==undefined){
+				
+				YAHOO.caf.table.deleteRow(config.table,config.index);
+				YAHOO.caf.table.setCurrentProcessIndex(config.table,YAHOO.caf.table.getTableSelectRowIndex(config.table));
+			}else{
+				request=YAHOO.util.Connect.asyncRequest('POST', config.action, callback, datastr);
+			}
+			if(config.debug){
+				alert("Initiating request; tId: " + request.tId + ".", "info", "example"); 
+			}
+		//	formdialog.hide();
+	  	}else{
+	  		return;
+	  	}
+	}else{
+		if (config.action==undefined){
+			
+			YAHOO.caf.table.deleteRow(config.table,config.index);	
+		}else{
+			request=YAHOO.util.Connect.asyncRequest('POST', config.action, callback, datastr);
+		}
+		if(config.debug){
+			alert("Initiating request; tId: " +  (request ? request.tId : '') + ".", "info", "example"); 
+		}	
+		
+	}
+	if (config.postProcess!=undefined){
+		config.postProcess();
+	}
+	
+	
+};
+
+/****
+ * 根据列表数据列的定义和页面元素名称前缀查找页面元素 并置空
+ * input''
+ * select 第一个选中
+ * radio checkbox 无选中
+ * 
+ */
+YAHOO.caf.table.removeDataByTableMapping=function(){
+	var mnp = '';
+	var table = arguments[0];
+	if (!table){
+		return;
+	}
+	var columns=table.getColumnSet().getDefinitions();
+	var tempa = arguments[1];
+	if (tempa&&tempa!=''){
+		mnp=tempa;
+	}
+	//alert(mnp);
+
+	for (var i=0;i<columns.length;i++){
+		//alert(items);
+		var key= columns[i]["key"];
+		var elName=mnp==''?key:mnp+key;
+		
+		var  el =document.getElementsByName(elName);
+		if (el){
+			if (el.length == 1){
+			
+				if (el[0].type=='text'||el[0].type=='hidden'||el[0].type=='textarea'){
+				//	alert(elName);
+					el[0].value='';
+				}else if(el[0].tagName=='SELECT'){
+					if (el[0].options.length&&el[0].options.length!=0){
+						el[0].options[0].selected=true;
+					}
+					//for(var z = 0;z<el[0].options.length;z++){
+						//el[0].options[z].selected=false;
+					//}
+				//	alert(elName);
+				}
+			}else{
+				var cv = YAHOO.caf.utils.setUnChecked(elName);
+
+			}
+			
+		}
+	}
+	//var data = buildData(name,age,name1);
+	//alert('123123'+YAHOO.lang.dump(data));
+};
+
+YAHOO.caf.table.getTableSelectRowIndex = function(){
+	
+	var table = arguments[0];
+	if (!table){
+		return 0;
+	}else{
+		 var srows = table.getSelectedRows();
+		 if (srows==undefined||srows.length==0){
+			 
+			 return 0;
+		 }else{
+			 
+			 return table.getRecordIndex( table.getRecord(srows[0]).getId());
+		 }
+			
+		
+	}
+}
+
+
+
+//将当前选中行记录索引设置到表格中当前操作记录索引
+YAHOO.caf.table.setCurrentProcessIndex = function(){
+	
+	var table = arguments[0];
+	var index = arguments[1];
+	if (!table){
+		return;
+	}
+	if (!index){
+		table[YAHOO.caf.table.CURRENT_PROCESS_INDEX]=0;
+	}else{
+		table[YAHOO.caf.table.CURRENT_PROCESS_INDEX]=index;
+	}
+}
+
+//取得表格中当前操作记录索引
+YAHOO.caf.table.getCurrentProcessIndex = function(){
+	
+	var table = arguments[0];
+	if (!table){
+		return;
+	}else{
+		
+		return table[YAHOO.caf.table.CURRENT_PROCESS_INDEX];
+	}
+}
+
+
+/**
+ * 封装表格单击记录事件
+ */
+YAHOO.caf.table.rowClickSelectRowEvent = function(){
+	var oArgs = arguments[0];
+	var table = arguments[1];
+	var callBack = arguments[2];
+	table.unselectAllRows();
+	table.selectRow(table.getTrEl(table.getRecordIndex(table.getRecord(oArgs.target).getId()))); 
+	
+	 	YAHOO.caf.table.setCurrentProcessIndex(table,YAHOO.caf.table.getTableSelectRowIndex(table));
+	 if (callBack){
+		callBack();
+	}
+}
+
+/**
+ * 封装表格双击记录事件
+ */
+YAHOO.caf.table.rowDblClickSelectRowEvent = function(){
+	var oArgs = arguments[0];
+	var table = arguments[1];
+	var callBack = arguments[2];
+	table.unselectAllRows();
+	table.selectRow(table.getTrEl(table.getRecordIndex(table.getRecord(oArgs.target).getId()))); 
+	YAHOO.caf.table.setCurrentProcessIndex(table,YAHOO.caf.table.getTableSelectRowIndex(table));
+	
+	if (callBack){
+		callBack();
+	}
+
+}
+
+
+
+function initDtScrollDiv(datatableId, paginatorContainer,
+		otherDecreaseHeight, otherDecreaseWidth, ele) {
+		
+		var decreaseHeight = otherDecreaseHeight!=null?otherDecreaseHeight:0;
+		var pcheight = 0;
+		if(paginatorContainer == ''){
+			paginatorContainer = 'paginatorContainer';
+		}
+		if($('#'+paginatorContainer).length != 0){
+			pcheight = $('#'+paginatorContainer).height();;
+		}
+		var yuiTable = eval(datatableId);
+		var hddiv = yuiTable.getHdContainerEl();
+		var bddiv = yuiTable.getBdContainerEl();
+		$(hddiv).width(10);//减小原table的高宽,以避免页面因为表格而增加滚动条
+		$(bddiv).width(10);
+		$(bddiv).height(10);
+//		var dtDivs = document.getElementById(datatableId).getElementsByTagName('DIV');
+//		var bddiv;
+//		var hddiv;
+//		for ( var i = 0; i < dtDivs.length; i++) {
+//			if ((dtDivs[i].className).indexOf('yui-dt-bd') != -1) {
+//				bddiv = dtDivs[i];
+//				break;
+//			}
+//		}
+//
+//		for ( var i = 0; i < dtDivs.length; i++) {
+//			if ((dtDivs[i].className).indexOf('yui-dt-hd') != -1) {
+//				hddiv = dtDivs[i];
+//				break;
+//			}
+//		}
+
+	if (bddiv) {
+
+		var docbodych = 0;
+		var ddbch = 0;
+
+		var docbodw = 0;
+		var ddbw = 0;
+		if (ele) {
+			docbodych = document.getElementById(ele).clientHeight;
+			docbodw = document.getElementById(ele).clientWidth;
+		// docbodych =$(document.getElementById(ele)).height();
+
+		// ddbch=bddiv.offsetTop;
+// alert(docbodych);
+		// alert(ddbch);
+			try {
+	
+				bddiv.style.height = (docbodych - pcheight - decreaseHeight)+ 'px';
+		
+				bddiv.style.width = (docbodw - otherDecreaseWidth) + 'px';
+		
+				if (hddiv) {
+					hddiv.style.width = (docbodw - otherDecreaseWidth) + 'px';
+				}
+			} catch (e) {}
+		} else {
+//			docbodych = document.body.clientHeight;
+//			docbodw = document.body.clientWidth;
+			docbodych = $('body').prop('clientHeight');
+			docbodw = $('body').prop('clientWidth');
+	
+			ddbch = $(bddiv).position().top;
+
+// alert('ABC1'+ddbch);
+// alert('ABC3'+(docbodych-pcheight-ddbch-decreaseHeight)+'px');/
+			try {
+				$(bddiv).height(docbodych - pcheight - ddbch - decreaseHeight-2);
+				$(bddiv).width(docbodw - otherDecreaseWidth-2);//-2 计算上border宽
+				//bddiv.style.height = (docbodych - pcheight - ddbch - decreaseHeight)+ 'px';
+				//bddiv.style.width = (docbodw - otherDecreaseWidth) + 'px';
+		
+				if (hddiv) {
+					$(hddiv).width($(bddiv).width());
+					//hddiv.style.width = (docbodw - otherDecreaseWidth) + 'px';
+				}
+	// alert(3);
+			} catch (e) {}
+		}
+	}
+}
+function initDtScrollDivWithOff(datatableId,paginatorContainer,otherDecreaseHeight,off){
+ 	var decreaseHeight=otherDecreaseHeight||50;
+ 	var pcheight=0;
+
+	var dtDivs = document.getElementById(datatableId).getElementsByTagName('DIV');
+	var bddiv;
+	for(var i=0;i<dtDivs.length;i++){
+		if ((dtDivs[i].className).indexOf('yui-dt-bd')!=-1){
+ 
+			bddiv= dtDivs[i];
+	 		break;
+		}
+		//if (hddiv&&bddiv){
+			//break;
+		//}
+	}
+
+	if (bddiv){
+	
+
+		var docbodych =0;
+		var ddbch=0;
+	 
+		 	docbodych =document.body.clientHeight;
+			 ddbch=$(bddiv).position().top;
+			 
+		// alert('ABC1'+docbodych);
+		//	 alert('ABC2'+ddbch);
+		 //	alert('ABC3'+(docbodych-pcheight-ddbch-decreaseHeight)+'px');/
+			 try
+			 {
+	 		bddiv.style.height=((docbodych)*off-pcheight-decreaseHeight)+'px';
+			 }catch(e){}
+	 
+	}
+} 
+
+function dtScrollDivDebounceOnResize(callback, delay, context){  
+	 
+	  // alert(1);
+	    if (typeof(callback) == "function") {  
+	      
+		    delay = delay || 300;  
+		    context = context || null;  
+		    var timeout;  
+		    var runIt = function(){  
+		            callback.apply(context);  
+		        };  
+		    return (function(){  
+		        window.clearTimeout(timeout);  
+		        timeout = window.setTimeout(runIt, delay);  
+		    }); 
+	    }else{
+	 	 //  alert(2);
+	     	delay = delay || 300;  
+		    context = context || null;  
+		    var timeout;  
+		    var runIt = function(){
+		    		for(var z=0;z<callback.length;z++){
+		    			//alert('callback'+z);
+		            	callback[z].apply(context);  
+		            }
+		     	 
+		        };  
+		 	 //  alert(3);
+		    return (function(){  
+		        window.clearTimeout(timeout);  
+		        timeout = window.setTimeout(runIt, delay);  
+		    }); 
+	 
+	    }
+	}
+//yui 2.7 将datatable 放到table tag 里会发生 排序异常，点任何排序 都只操作一个排序
+// 临时解决方法为：
+YAHOO.widget.DataTable.prototype.getTdEl = function(cell) {
+	var Dom = YAHOO.util.Dom, lang = YAHOO.lang, elCell, el = Dom.get(cell);
+	// Validate HTML element
+	if (el && (el.ownerDocument == document)) {
+		// Validate TD element
+		if (el.nodeName.toLowerCase() != "td") {
+			// Traverse up the DOM to find the corresponding TR element
+			elCell = Dom.getAncestorByTagName(el, "td");
+		} else {
+			elCell = el;
+		}
+		// Make sure the TD is in this TBODY
+		if (elCell && (elCell.parentNode.parentNode == this._elTbody)) {
+			// Now we can return the TD element
+			return elCell;
+		}
+	} else if (cell) {
+		var oRecord, nColKeyIndex;
+		if (lang.isString(cell.columnKey) && lang.isString(cell.recordId)) {
+			oRecord = this.getRecord(cell.recordId);
+			var oColumn = this.getColumn(cell.columnKey);
+			if (oColumn) {
+				nColKeyIndex = oColumn.getKeyIndex();
+			}
+		}
+		if (cell.record && cell.column && cell.column.getKeyIndex) {
+			oRecord = cell.record;
+			nColKeyIndex = cell.column.getKeyIndex();
+		}
+		var elRow = this.getTrEl(oRecord);
+		if ((nColKeyIndex !== null) && elRow && elRow.cells
+				&& elRow.cells.length > 0) {
+			return elRow.cells[nColKeyIndex] || null;
+		}
+	}
+	return null;
+};
