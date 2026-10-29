@@ -1,0 +1,25 @@
+{
+  "passed": true,
+  "idle_seconds": 20,
+  "state": "CONNECTED",
+  "before": [
+    {
+      "kind": "read",
+      "reference": "CCI016_01LD_Plant/WlimDWMX1.Mod.stVal",
+      "error": 0,
+      "error_text": "",
+      "value": "5",
+      "observed_utc": "2026-10-19T09:38:32.324262+00:00"
+    }
+  ],
+  "after": [
+    {
+      "kind": "read",
+      "reference": "CCI016_01LD_Plant/WlimDWMX1.Mod.stVal",
+      "error": 0,
+      "error_text": "",
+      "value": "5",
+      "observed_utc": "2026-10-19T09:38:52.343106+00:00"
+    }
+  ]
+}

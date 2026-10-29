@@ -1,0 +1,298 @@
+[
+  {
+    "case": "initial-state",
+    "status": {
+      "ts_ms": 1792407085198,
+      "p_kw": 10,
+      "q_kvar": 1,
+      "quality": "good",
+      "pf2_reason": "ok",
+      "curtailment_commanded": false,
+      "permissive_ok": false,
+      "annex_m_trip_active": false,
+      "do_curtail_on": false,
+      "dso_applied": true,
+      "derived": {
+        "smax_calc_kva": 206.155,
+        "smax_used_kva": 210,
+        "p_wsd_kw": 42,
+        "p_wlim_kw": 0,
+        "p_w110_kw": 0,
+        "p_wsa_kw": 0,
+        "p_effective_kw": 42,
+        "pf2_enter_kw": 42,
+        "pf2_release_kw": 37
+      },
+      "pf2_debounce_s": 30,
+      "stale_data_s": 10,
+      "zones": {
+        "dso": {
+          "enabled": true,
+          "running": true,
+          "bind": "192.168.0.1",
+          "port": 3782,
+          "tls": true,
+          "clients": 0,
+          "gnss_fix": true,
+          "comms_loss_fallback_s": 15,
+          "setpoint_min_interval_s": 3,
+          "cmd_seen": false,
+          "wlim_active": false,
+          "wlim_pct": 0,
+          "wsd_active": true,
+          "wsd_pct": 20,
+          "varsd_active": false,
+          "varsd_pct": 0,
+          "pfsp_active": false,
+          "pfsp_cosphi": 1,
+          "pfsp_generation": true,
+          "wsa_active": false,
+          "wsa_pct": 100,
+          "varsa_active": false,
+          "varsa_pct": 0,
+          "ppv_kv": 20
+        },
+        "operator": {
+          "enabled": false,
+          "running": false,
+          "bind": "192.168.1.130",
+          "port": 2404,
+          "tls": false,
+          "clients": 0,
+          "common_address": 1,
+          "periodic_s": 4,
+          "comms_loss_fallback_s": 60,
+          "mode": "monitor_only",
+          "allow_commands": false,
+          "allow_gi": true,
+          "allow_clock_sync": false,
+          "ioa": [
+            {
+              "name": "TotW",
+              "ioa": 1001,
+              "enabled": true,
+              "published": false,
+              "value": 10,
+              "unit": "kW"
+            },
+            {
+              "name": "TotVAr",
+              "ioa": 1002,
+              "enabled": false,
+              "published": false,
+              "value": 1,
+              "unit": "kVAr"
+            },
+            {
+              "name": "PPV",
+              "ioa": 1003,
+              "enabled": false,
+              "published": false,
+              "value": 20,
+              "unit": "kV"
+            }
+          ]
+        },
+        "plant": {
+          "modbus_backend": "rtu",
+          "modbus_device": "/dev/rs485_2_uart",
+          "modbus_host": "",
+          "modbus_tcp_port": 502,
+          "modbus_baud": 9600,
+          "modbus_slave_id": 1,
+          "poll_ms": 4000,
+          "link": "up",
+          "last_exchange_ms": 1792407085198,
+          "last_success": true,
+          "last_error": "",
+          "goose_enabled": false,
+          "goose_interface": "eth0",
+          "goose_publish": false
+        }
+      }
+    }
+  },
+  {
+    "case": "P-setpoint-10pct",
+    "events": [
+      {
+        "kind": "control_model",
+        "reference": "CCI016_01LD_Plant/WSaDAGC1.WSptPct",
+        "error": 0,
+        "error_text": "",
+        "value": "3 direct-enhanced",
+        "observed_utc": "2026-10-19T10:51:30.955422+00:00"
+      },
+      {
+        "kind": "control_type",
+        "reference": "CCI016_01LD_Plant/WSaDAGC1.WSptPct",
+        "error": 0,
+        "error_text": "",
+        "value": "float",
+        "observed_utc": "2026-10-19T10:51:30.955465+00:00"
+      },
+      {
+        "kind": "operate",
+        "reference": "CCI016_01LD_Plant/WSaDAGC1.WSptPct",
+        "error": 0,
+        "error_text": "",
+        "value": "request accepted",
+        "observed_utc": "2026-10-19T10:51:30.965765+00:00"
+      },
+      {
+        "kind": "termination",
+        "reference": "CCI016_01LD_Plant/WSaDAGC1.WSptPct",
+        "error": 0,
+        "error_text": "",
+        "value": "error=0 addCause=0",
+        "observed_utc": "2026-10-19T10:51:30.986298+00:00"
+      },
+      {
+        "kind": "readback",
+        "reference": "CCI016_01LD_Plant/WSaDAGC1.WSptPct",
+        "error": 0,
+        "error_text": "",
+        "value": "reading status on the same MMS association",
+        "observed_utc": "2026-10-19T10:51:31.065952+00:00"
+      },
+      {
+        "kind": "read",
+        "reference": "CCI016_01LD_Plant/WSaDAGC1.WSptPct.mxVal.f",
+        "error": 0,
+        "error_text": "",
+        "value": "10.000000",
+        "observed_utc": "2026-10-19T10:51:31.088332+00:00"
+      },
+      {
+        "kind": "readback_match",
+        "reference": "CCI016_01LD_Plant/WSaDAGC1.WSptPct.mxVal.f",
+        "error": 0,
+        "error_text": "",
+        "value": "matches requested value",
+        "observed_utc": "2026-10-19T10:51:31.088373+00:00"
+      }
+    ]
+  },
+  {
+    "case": "P-mode-on",
+    "events": [
+      {
+        "kind": "control_model",
+        "reference": "CCI016_01LD_Plant/WSaDAGC1.Mod",
+        "error": 0,
+        "error_text": "",
+        "value": "3 direct-enhanced",
+        "observed_utc": "2026-10-19T10:51:31.170193+00:00"
+      },
+      {
+        "kind": "control_type",
+        "reference": "CCI016_01LD_Plant/WSaDAGC1.Mod",
+        "error": 0,
+        "error_text": "",
+        "value": "int32",
+        "observed_utc": "2026-10-19T10:51:31.170230+00:00"
+      },
+      {
+        "kind": "operate",
+        "reference": "CCI016_01LD_Plant/WSaDAGC1.Mod",
+        "error": 0,
+        "error_text": "",
+        "value": "request accepted",
+        "observed_utc": "2026-10-19T10:51:31.190896+00:00"
+      },
+      {
+        "kind": "termination",
+        "reference": "CCI016_01LD_Plant/WSaDAGC1.Mod",
+        "error": 0,
+        "error_text": "",
+        "value": "error=0 addCause=0",
+        "observed_utc": "2026-10-19T10:51:31.231497+00:00"
+      },
+      {
+        "kind": "readback",
+        "reference": "CCI016_01LD_Plant/WSaDAGC1.Mod",
+        "error": 0,
+        "error_text": "",
+        "value": "reading status on the same MMS association",
+        "observed_utc": "2026-10-19T10:51:31.291691+00:00"
+      },
+      {
+        "kind": "read",
+        "reference": "CCI016_01LD_Plant/WSaDAGC1.Mod.stVal",
+        "error": 0,
+        "error_text": "",
+        "value": "1",
+        "observed_utc": "2026-10-19T10:51:31.303370+00:00"
+      },
+      {
+        "kind": "readback_match",
+        "reference": "CCI016_01LD_Plant/WSaDAGC1.Mod.stVal",
+        "error": 0,
+        "error_text": "",
+        "value": "matches requested value",
+        "observed_utc": "2026-10-19T10:51:31.303431+00:00"
+      }
+    ]
+  },
+  {
+    "case": "cleanup-Q-off",
+    "events": [
+      {
+        "kind": "control_model",
+        "reference": "CCI016_01LD_Plant/VArSaDVAR1.Mod",
+        "error": 0,
+        "error_text": "",
+        "value": "3 direct-enhanced",
+        "observed_utc": "2026-10-19T10:51:46.064905+00:00"
+      },
+      {
+        "kind": "control_type",
+        "reference": "CCI016_01LD_Plant/VArSaDVAR1.Mod",
+        "error": 0,
+        "error_text": "",
+        "value": "int32",
+        "observed_utc": "2026-10-19T10:51:46.064941+00:00"
+      },
+      {
+        "kind": "operate",
+        "reference": "CCI016_01LD_Plant/VArSaDVAR1.Mod",
+        "error": 0,
+        "error_text": "",
+        "value": "request accepted",
+        "observed_utc": "2026-10-19T10:51:46.095309+00:00"
+      },
+      {
+        "kind": "termination",
+        "reference": "CCI016_01LD_Plant/VArSaDVAR1.Mod",
+        "error": 0,
+        "error_text": "",
+        "value": "error=0 addCause=0",
+        "observed_utc": "2026-10-19T10:51:46.125845+00:00"
+      },
+      {
+        "kind": "readback",
+        "reference": "CCI016_01LD_Plant/VArSaDVAR1.Mod",
+        "error": 0,
+        "error_text": "",
+        "value": "reading status on the same MMS association",
+        "observed_utc": "2026-10-19T10:51:46.195548+00:00"
+      },
+      {
+        "kind": "read",
+        "reference": "CCI016_01LD_Plant/VArSaDVAR1.Mod.stVal",
+        "error": 0,
+        "error_text": "",
+        "value": "5",
+        "observed_utc": "2026-10-19T10:51:46.217319+00:00"
+      },
+      {
+        "kind": "readback_match",
+        "reference": "CCI016_01LD_Plant/VArSaDVAR1.Mod.stVal",
+        "error": 0,
+        "error_text": "",
+        "value": "matches requested value",
+        "observed_utc": "2026-10-19T10:51:46.217357+00:00"
+      }
+    ]
+  }
+]

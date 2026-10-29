@@ -1,0 +1,5 @@
+Mon Oct 19 12:54:39 UTC 2026
+4691
+lrwx------    1 root     root            64 Oct 19 20:26 12 -> /dev/ttyUSB1
+1
+/dev/ttyUSB1

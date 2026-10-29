@@ -1,0 +1,9 @@
+{
+  "captured_session_length": 1586,
+  "captured_presentation_length": 1558,
+  "tsp_authentication_abstract_syntax": "1.0.840.0.1.1.4.1",
+  "server_generated_authentication_abstract_syntax": "1.0.840.0.0.1.1.4.1",
+  "tsp_abstract_syntax_hex": "2886480001010401",
+  "server_abstract_syntax_hex": "288648000001010401",
+  "pcap_sha256": "01426025f507f75d96d6b7b80e51006766e03482f98ada721358e2834bf33eb0"
+}

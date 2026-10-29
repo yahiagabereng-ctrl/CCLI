@@ -1,0 +1,2067 @@
+Start testing: Oct 23 15:39 CEST
+----------------------------------------------------------
+10/22 Testing: mms_acse_p307_acse_auth
+10/22 Test: mms_acse_p307_acse_auth
+Command: "/mnt/c/Users/Administrator/Desktop/CCLI Alireza/CCLI Merged/apps/ccli/build-e2e-crypto/OPTIONAL/mms_acse_auth_test"
+Directory: /mnt/c/Users/Administrator/Desktop/CCLI Alireza/CCLI Merged/apps/ccli/build-e2e-crypto/OPTIONAL
+"mms_acse_p307_acse_auth" start time: Oct 23 15:39 CEST
+Output:
+----------------------------------------------------------
+mms_acse_auth_test: PASS (ACSE + Profile A + commissioning policy)
+<end of output>
+Test time =   0.07 sec
+----------------------------------------------------------
+Test Passed.
+"mms_acse_p307_acse_auth" end time: Oct 23 15:39 CEST
+"mms_acse_p307_acse_auth" time elapsed: 00:00:00
+----------------------------------------------------------
+
+19/22 Testing: mms_rbac_generate_certificates
+19/22 Test: mms_rbac_generate_certificates
+Command: "/usr/bin/python3" "/mnt/c/Users/Administrator/Desktop/CCLI Alireza/CCLI Merged/apps/ccli/tests/integration/rbac_fixture.py" "--source" "/mnt/c/Users/Administrator/Desktop/CCLI Alireza/CCLI Merged/apps/ccli" "--out" "/mnt/c/Users/Administrator/Desktop/CCLI Alireza/CCLI Merged/apps/ccli/build-e2e-crypto/rbac-security-fixtures"
+Directory: /mnt/c/Users/Administrator/Desktop/CCLI Alireza/CCLI Merged/apps/ccli/build-e2e-crypto/OPTIONAL
+"mms_rbac_generate_certificates" start time: Oct 23 15:39 CEST
+Output:
+----------------------------------------------------------
+Generated isolated certificate and signed-package fixtures: /mnt/c/Users/Administrator/Desktop/CCLI Alireza/CCLI Merged/apps/ccli/build-e2e-crypto/rbac-security-fixtures/run-b3f967f9742346c0b8d85147c391a6bb
+<end of output>
+Test time =   7.65 sec
+----------------------------------------------------------
+Test Passed.
+"mms_rbac_generate_certificates" end time: Oct 23 15:39 CEST
+"mms_rbac_generate_certificates" time elapsed: 00:00:07
+----------------------------------------------------------
+
+20/22 Testing: mms_rbac_signed_security
+20/22 Test: mms_rbac_signed_security
+Command: "/mnt/c/Users/Administrator/Desktop/CCLI Alireza/CCLI Merged/apps/ccli/build-e2e-crypto/OPTIONAL/mms_rbac_security_test" "/mnt/c/Users/Administrator/Desktop/CCLI Alireza/CCLI Merged/apps/ccli/build-e2e-crypto/rbac-security-fixtures"
+Directory: /mnt/c/Users/Administrator/Desktop/CCLI Alireza/CCLI Merged/apps/ccli/build-e2e-crypto/OPTIONAL
+"mms_rbac_signed_security" start time: Oct 23 15:39 CEST
+Output:
+----------------------------------------------------------
+mms_rbac_security_test: PASS (signed commissioning, actor binding, certificates, CRL, revisions, proof replay)
+<end of output>
+Test time =   1.40 sec
+----------------------------------------------------------
+Test Passed.
+"mms_rbac_signed_security" end time: Oct 23 15:39 CEST
+"mms_rbac_signed_security" time elapsed: 00:00:01
+----------------------------------------------------------
+
+21/22 Testing: mms_rbac_tls_authorization
+21/22 Test: mms_rbac_tls_authorization
+Command: "/mnt/c/Users/Administrator/Desktop/CCLI Alireza/CCLI Merged/apps/ccli/build-e2e-crypto/OPTIONAL/mms_rbac_tls_test" "/mnt/c/Users/Administrator/Desktop/CCLI Alireza/CCLI Merged/apps/ccli/build-e2e-crypto/rbac-security-fixtures"
+Directory: /mnt/c/Users/Administrator/Desktop/CCLI Alireza/CCLI Merged/apps/ccli/build-e2e-crypto/OPTIONAL
+"mms_rbac_tls_authorization" start time: Oct 23 15:39 CEST
+Output:
+----------------------------------------------------------
+mms: O.7.3.3 set-point spacing gate ON (3 s)
+mms: full CID model loaded from /mnt/c/Users/Administrator/Desktop/CCLI Alireza/CCLI Merged/apps/ccli/build-e2e-crypto/rbac-security-fixtures/run-b3f967f9742346c0b8d85147c391a6bb/model.cfg
+mms: TLS CRL loaded /mnt/c/Users/Administrator/Desktop/CCLI Alireza/CCLI Merged/apps/ccli/build-e2e-crypto/rbac-security-fixtures/run-b3f967f9742346c0b8d85147c391a6bb/base.crl.pem
+mms: AARE 62351-4 responder auth ready (cert=769 octets)
+mms: explicit certificate authentication and signed AARE bridge enabled
+mms: listening on 127.0.0.1:57337 tls=on acse_tls_auth=on rbac=on crl=on fallback_s=0 gnss_poll_s=0 chrony=off discipline=off model=full_cid_cfg
+TLS: Verify cert: depth 1
+TLS:    flags: 00000000
+TLS:   cert. version     : 3
+  serial number     : 49:A1:23:21:7E:BB:4A:8D:AF:01:01:84:C1:F9:1F:7A:3B:C4:1B:CB
+  issuer name       : CN=ca
+  subject name      : CN=ca
+  issued  on        : 2026-10-20 13:39:30
+  expires on        : 2026-11-22 13:39:30
+  signed using      : RSA with SHA-256
+  RSA key size      : 2048 bits
+  basic constraints : CA=true
+  key usage         : Digital Signature, Key Cert Sign, CRL Sign
+
+TLS: Verify cert: depth 0
+TLS:    flags: 00000000
+TLS:   cert. version     : 3
+  serial number     : 2C:CC:EB:B0:31:A7:95:E8:57:06:DB:62:24:C0:26:18:DC:82:38:E1
+  issuer name       : CN=ca
+  subject name      : CN=server
+  issued  on        : 2026-10-20 13:39:30
+  expires on        : 2026-11-22 13:39:30
+  signed using      : RSA with SHA-256
+  RSA key size      : 2048 bits
+  basic constraints : CA=false
+  subject alt name  :
+      iPAddress : 127.0.0.1
+      dNSName : localhost
+  key usage         : Digital Signature, Key Encipherment
+  ext key usage     : TLS Web Server Authentication
+
+TLS: Verify cert: depth 1
+TLS:    flags: 00000000
+TLS:   cert. version     : 3
+  serial number     : 49:A1:23:21:7E:BB:4A:8D:AF:01:01:84:C1:F9:1F:7A:3B:C4:1B:CB
+  issuer name       : CN=ca
+  subject name      : CN=ca
+  issued  on        : 2026-10-20 13:39:30
+  expires on        : 2026-11-22 13:39:30
+  signed using      : RSA with SHA-256
+  RSA key size      : 2048 bits
+  basic constraints : CA=true
+  key usage         : Digital Signature, Key Cert Sign, CRL Sign
+
+TLS: Verify cert: depth 0
+TLS:    flags: 00000000
+TLS:   cert. version     : 3
+  serial number     : 72:64:C5:F7:10:0E:A8:3D:59:0D:01:04:B9:3A:21:48:8E:B0:32:B7
+  issuer name       : CN=ca
+  subject name      : CN=transport
+  issued  on        : 2026-10-20 13:39:30
+  expires on        : 2026-11-22 13:39:30
+  signed using      : RSA with SHA-256
+  RSA key size      : 2048 bits
+  basic constraints : CA=false
+  key usage         : Digital Signature, Key Encipherment
+  ext key usage     : TLS Web Client Authentication
+
+TLS: Check against list of allowed certs
+TLS: Compare With:
+TLS:      cert. version     : 3
+     serial number     : 72:64:C5:F7:10:0E:A8:3D:59:0D:01:04:B9:3A:21:48:8E:B0:32:B7
+     issuer name       : CN=ca
+     subject name      : CN=transport
+     issued  on        : 2026-10-20 13:39:30
+     expires on        : 2026-11-22 13:39:30
+     signed using      : RSA with SHA-256
+     RSA key size      : 2048 bits
+     basic constraints : CA=false
+     key usage         : Digital Signature, Key Encipherment
+     ext key usage     : TLS Web Client Authentication
+
+mms: client CONNECT count=1
+TLS:  connection was closed gracefully
+mms: client DISCONNECT count=0
+mms: O.7.3.3 set-point spacing gate ON (3 s)
+mms: full CID model loaded from /mnt/c/Users/Administrator/Desktop/CCLI Alireza/CCLI Merged/apps/ccli/build-e2e-crypto/rbac-security-fixtures/run-b3f967f9742346c0b8d85147c391a6bb/model.cfg
+mms: TLS CRL loaded /mnt/c/Users/Administrator/Desktop/CCLI Alireza/CCLI Merged/apps/ccli/build-e2e-crypto/rbac-security-fixtures/run-b3f967f9742346c0b8d85147c391a6bb/base.crl.pem
+mms: AARE 62351-4 responder auth ready (cert=769 octets)
+mms: explicit certificate authentication and signed AARE bridge enabled
+mms: listening on 127.0.0.1:42065 tls=on acse_tls_auth=on rbac=on crl=on fallback_s=0 gnss_poll_s=0 chrony=off discipline=off model=full_cid_cfg
+TLS: Verify cert: depth 1
+TLS:    flags: 00000000
+TLS:   cert. version     : 3
+  serial number     : 49:A1:23:21:7E:BB:4A:8D:AF:01:01:84:C1:F9:1F:7A:3B:C4:1B:CB
+  issuer name       : CN=ca
+  subject name      : CN=ca
+  issued  on        : 2026-10-20 13:39:30
+  expires on        : 2026-11-22 13:39:30
+  signed using      : RSA with SHA-256
+  RSA key size      : 2048 bits
+  basic constraints : CA=true
+  key usage         : Digital Signature, Key Cert Sign, CRL Sign
+
+TLS: Verify cert: depth 0
+TLS:    flags: 00000000
+TLS:   cert. version     : 3
+  serial number     : 2C:CC:EB:B0:31:A7:95:E8:57:06:DB:62:24:C0:26:18:DC:82:38:E1
+  issuer name       : CN=ca
+  subject name      : CN=server
+  issued  on        : 2026-10-20 13:39:30
+  expires on        : 2026-11-22 13:39:30
+  signed using      : RSA with SHA-256
+  RSA key size      : 2048 bits
+  basic constraints : CA=false
+  subject alt name  :
+      iPAddress : 127.0.0.1
+      dNSName : localhost
+  key usage         : Digital Signature, Key Encipherment
+  ext key usage     : TLS Web Server Authentication
+
+TLS: Verify cert: depth 1
+TLS:    flags: 00000000
+TLS:   cert. version     : 3
+  serial number     : 49:A1:23:21:7E:BB:4A:8D:AF:01:01:84:C1:F9:1F:7A:3B:C4:1B:CB
+  issuer name       : CN=ca
+  subject name      : CN=ca
+  issued  on        : 2026-10-20 13:39:30
+  expires on        : 2026-11-22 13:39:30
+  signed using      : RSA with SHA-256
+  RSA key size      : 2048 bits
+  basic constraints : CA=true
+  key usage         : Digital Signature, Key Cert Sign, CRL Sign
+
+TLS: Verify cert: depth 0
+TLS:    flags: 00000002
+TLS:   cert. version     : 3
+  serial number     : 1D:EC:41:0F:94:0D:67:AD:A2:BF:61:80:B5:1F:7B:01:99:3A:86:5B
+  issuer name       : CN=ca
+  subject name      : CN=revoked
+  issued  on        : 2026-10-20 13:39:30
+  expires on        : 2026-11-22 13:39:30
+  signed using      : RSA with SHA-256
+  RSA key size      : 2048 bits
+  basic constraints : CA=false
+  key usage         : Digital Signature, Key Encipherment
+  ext key usage     : TLS Web Client Authentication
+
+TLS: Check against list of allowed certs
+TLS: Compare With:
+TLS:      cert. version     : 3
+     serial number     : 1D:EC:41:0F:94:0D:67:AD:A2:BF:61:80:B5:1F:7B:01:99:3A:86:5B
+     issuer name       : CN=ca
+     subject name      : CN=revoked
+     issued  on        : 2026-10-20 13:39:30
+     expires on        : 2026-11-22 13:39:30
+     signed using      : RSA with SHA-256
+     RSA key size      : 2048 bits
+     basic constraints : CA=false
+     key usage         : Digital Signature, Key Encipherment
+     ext key usage     : TLS Web Client Authentication
+
+TLS: handshake failed - mbedtls_ssl_handshake returned -0x2700
+TLS: handshake failed - mbedtls_ssl_handshake returned -0x1
+mms: O.7.3.3 set-point spacing gate ON (3 s)
+mms: full CID model loaded from /mnt/c/Users/Administrator/Desktop/CCLI Alireza/CCLI Merged/apps/ccli/build-e2e-crypto/rbac-security-fixtures/run-b3f967f9742346c0b8d85147c391a6bb/model.cfg
+mms: TLS CRL loaded /mnt/c/Users/Administrator/Desktop/CCLI Alireza/CCLI Merged/apps/ccli/build-e2e-crypto/rbac-security-fixtures/run-b3f967f9742346c0b8d85147c391a6bb/base.crl.pem
+mms: AARE 62351-4 responder auth ready (cert=769 octets)
+mms: explicit certificate authentication and signed AARE bridge enabled
+mms: listening on 127.0.0.1:42517 tls=on acse_tls_auth=on rbac=on crl=on fallback_s=0 gnss_poll_s=0 chrony=off discipline=off model=full_cid_cfg
+TLS: Verify cert: depth 1
+TLS:    flags: 00000000
+TLS:   cert. version     : 3
+  serial number     : 49:A1:23:21:7E:BB:4A:8D:AF:01:01:84:C1:F9:1F:7A:3B:C4:1B:CB
+  issuer name       : CN=ca
+  subject name      : CN=ca
+  issued  on        : 2026-10-20 13:39:30
+  expires on        : 2026-11-22 13:39:30
+  signed using      : RSA with SHA-256
+  RSA key size      : 2048 bits
+  basic constraints : CA=true
+  key usage         : Digital Signature, Key Cert Sign, CRL Sign
+
+TLS: Verify cert: depth 0
+TLS:    flags: 00000000
+TLS:   cert. version     : 3
+  serial number     : 2C:CC:EB:B0:31:A7:95:E8:57:06:DB:62:24:C0:26:18:DC:82:38:E1
+  issuer name       : CN=ca
+  subject name      : CN=server
+  issued  on        : 2026-10-20 13:39:30
+  expires on        : 2026-11-22 13:39:30
+  signed using      : RSA with SHA-256
+  RSA key size      : 2048 bits
+  basic constraints : CA=false
+  subject alt name  :
+      iPAddress : 127.0.0.1
+      dNSName : localhost
+  key usage         : Digital Signature, Key Encipherment
+  ext key usage     : TLS Web Server Authentication
+
+TLS: Verify cert: depth 1
+TLS:    flags: 00000000
+TLS:   cert. version     : 3
+  serial number     : 49:A1:23:21:7E:BB:4A:8D:AF:01:01:84:C1:F9:1F:7A:3B:C4:1B:CB
+  issuer name       : CN=ca
+  subject name      : CN=ca
+  issued  on        : 2026-10-20 13:39:30
+  expires on        : 2026-11-22 13:39:30
+  signed using      : RSA with SHA-256
+  RSA key size      : 2048 bits
+  basic constraints : CA=true
+  key usage         : Digital Signature, Key Cert Sign, CRL Sign
+
+TLS: Verify cert: depth 0
+TLS:    flags: 00000001
+TLS:   cert. version     : 3
+  serial number     : 20:DA:1F:9D:CF:11:EF:3B:2D:9C:04:4B:B8:0B:65:BA:B7:AD:A4:77
+  issuer name       : CN=ca
+  subject name      : CN=expired
+  issued  on        : 2026-10-20 13:39:30
+  expires on        : 2026-10-22 13:39:30
+  signed using      : RSA with SHA-256
+  RSA key size      : 2048 bits
+  basic constraints : CA=false
+  key usage         : Digital Signature, Key Encipherment
+  ext key usage     : TLS Web Client Authentication
+
+TLS: Check against list of allowed certs
+TLS: Compare With:
+TLS:      cert. version     : 3
+     serial number     : 20:DA:1F:9D:CF:11:EF:3B:2D:9C:04:4B:B8:0B:65:BA:B7:AD:A4:77
+     issuer name       : CN=ca
+     subject name      : CN=expired
+     issued  on        : 2026-10-20 13:39:30
+     expires on        : 2026-10-22 13:39:30
+     signed using      : RSA with SHA-256
+     RSA key size      : 2048 bits
+     basic constraints : CA=false
+     key usage         : Digital Signature, Key Encipherment
+     ext key usage     : TLS Web Client Authentication
+
+TLS: handshake failed - mbedtls_ssl_handshake returned -0x2700
+TLS: handshake failed - mbedtls_ssl_handshake returned -0x1
+mms: O.7.3.3 set-point spacing gate ON (3 s)
+mms: full CID model loaded from /mnt/c/Users/Administrator/Desktop/CCLI Alireza/CCLI Merged/apps/ccli/build-e2e-crypto/rbac-security-fixtures/run-b3f967f9742346c0b8d85147c391a6bb/model.cfg
+mms: TLS CRL loaded /mnt/c/Users/Administrator/Desktop/CCLI Alireza/CCLI Merged/apps/ccli/build-e2e-crypto/rbac-security-fixtures/run-b3f967f9742346c0b8d85147c391a6bb/base.crl.pem
+mms: AARE 62351-4 responder auth ready (cert=769 octets)
+mms: explicit certificate authentication and signed AARE bridge enabled
+mms: listening on 127.0.0.1:50375 tls=on acse_tls_auth=on rbac=on crl=on fallback_s=0 gnss_poll_s=0 chrony=off discipline=off model=full_cid_cfg
+TLS: Verify cert: depth 1
+TLS:    flags: 00000000
+TLS:   cert. version     : 3
+  serial number     : 49:A1:23:21:7E:BB:4A:8D:AF:01:01:84:C1:F9:1F:7A:3B:C4:1B:CB
+  issuer name       : CN=ca
+  subject name      : CN=ca
+  issued  on        : 2026-10-20 13:39:30
+  expires on        : 2026-11-22 13:39:30
+  signed using      : RSA with SHA-256
+  RSA key size      : 2048 bits
+  basic constraints : CA=true
+  key usage         : Digital Signature, Key Cert Sign, CRL Sign
+
+TLS: Verify cert: depth 0
+TLS:    flags: 00000000
+TLS:   cert. version     : 3
+  serial number     : 2C:CC:EB:B0:31:A7:95:E8:57:06:DB:62:24:C0:26:18:DC:82:38:E1
+  issuer name       : CN=ca
+  subject name      : CN=server
+  issued  on        : 2026-10-20 13:39:30
+  expires on        : 2026-11-22 13:39:30
+  signed using      : RSA with SHA-256
+  RSA key size      : 2048 bits
+  basic constraints : CA=false
+  subject alt name  :
+      iPAddress : 127.0.0.1
+      dNSName : localhost
+  key usage         : Digital Signature, Key Encipherment
+  ext key usage     : TLS Web Server Authentication
+
+TLS: Verify cert: depth 0
+TLS:    flags: 00000008
+TLS:   cert. version     : 3
+  serial number     : 72:26:8D:1E:39:06:57:A1:86:07:E5:A5:1D:7A:78:E4:0A:CF:09:FA
+  issuer name       : CN=rogue_ca
+  subject name      : CN=wrong_issuer
+  issued  on        : 2026-10-20 13:39:30
+  expires on        : 2026-11-22 13:39:30
+  signed using      : RSA with SHA-256
+  RSA key size      : 2048 bits
+  basic constraints : CA=false
+  key usage         : Digital Signature, Key Encipherment
+  ext key usage     : TLS Web Client Authentication
+
+TLS: Check against list of allowed certs
+TLS: Compare With:
+TLS:      cert. version     : 3
+     serial number     : 72:26:8D:1E:39:06:57:A1:86:07:E5:A5:1D:7A:78:E4:0A:CF:09:FA
+     issuer name       : CN=rogue_ca
+     subject name      : CN=wrong_issuer
+     issued  on        : 2026-10-20 13:39:30
+     expires on        : 2026-11-22 13:39:30
+     signed using      : RSA with SHA-256
+     RSA key size      : 2048 bits
+     basic constraints : CA=false
+     key usage         : Digital Signature, Key Encipherment
+     ext key usage     : TLS Web Client Authentication
+
+TLS: handshake failed - mbedtls_ssl_handshake returned -0x2700
+TLS: handshake failed - mbedtls_ssl_handshake returned -0x1
+mms: O.7.3.3 set-point spacing gate ON (3 s)
+mms: full CID model loaded from /mnt/c/Users/Administrator/Desktop/CCLI Alireza/CCLI Merged/apps/ccli/build-e2e-crypto/rbac-security-fixtures/run-b3f967f9742346c0b8d85147c391a6bb/model.cfg
+mms: TLS CRL loaded /mnt/c/Users/Administrator/Desktop/CCLI Alireza/CCLI Merged/apps/ccli/build-e2e-crypto/rbac-security-fixtures/run-b3f967f9742346c0b8d85147c391a6bb/base.crl.pem
+mms: AARE 62351-4 responder auth ready (cert=769 octets)
+mms: explicit certificate authentication and signed AARE bridge enabled
+mms: listening on 127.0.0.1:56735 tls=on acse_tls_auth=on rbac=on crl=on fallback_s=0 gnss_poll_s=0 chrony=off discipline=off model=full_cid_cfg
+TLS: Verify cert: depth 1
+TLS:    flags: 00000000
+TLS:   cert. version     : 3
+  serial number     : 49:A1:23:21:7E:BB:4A:8D:AF:01:01:84:C1:F9:1F:7A:3B:C4:1B:CB
+  issuer name       : CN=ca
+  subject name      : CN=ca
+  issued  on        : 2026-10-20 13:39:30
+  expires on        : 2026-11-22 13:39:30
+  signed using      : RSA with SHA-256
+  RSA key size      : 2048 bits
+  basic constraints : CA=true
+  key usage         : Digital Signature, Key Cert Sign, CRL Sign
+
+TLS: Verify cert: depth 0
+TLS:    flags: 00000000
+TLS:   cert. version     : 3
+  serial number     : 2C:CC:EB:B0:31:A7:95:E8:57:06:DB:62:24:C0:26:18:DC:82:38:E1
+  issuer name       : CN=ca
+  subject name      : CN=server
+  issued  on        : 2026-10-20 13:39:30
+  expires on        : 2026-11-22 13:39:30
+  signed using      : RSA with SHA-256
+  RSA key size      : 2048 bits
+  basic constraints : CA=false
+  subject alt name  :
+      iPAddress : 127.0.0.1
+      dNSName : localhost
+  key usage         : Digital Signature, Key Encipherment
+  ext key usage     : TLS Web Server Authentication
+
+TLS: Verify cert: depth 1
+TLS:    flags: 00000000
+TLS:   cert. version     : 3
+  serial number     : 49:A1:23:21:7E:BB:4A:8D:AF:01:01:84:C1:F9:1F:7A:3B:C4:1B:CB
+  issuer name       : CN=ca
+  subject name      : CN=ca
+  issued  on        : 2026-10-20 13:39:30
+  expires on        : 2026-11-22 13:39:30
+  signed using      : RSA with SHA-256
+  RSA key size      : 2048 bits
+  basic constraints : CA=true
+  key usage         : Digital Signature, Key Cert Sign, CRL Sign
+
+TLS: Verify cert: depth 0
+TLS:    flags: 00000000
+TLS:   cert. version     : 3
+  serial number     : 23:23:A9:FC:B4:3C:53:A4:86:FF:0C:3C:B9:DB:32:66:71:9B:C6:93
+  issuer name       : CN=ca
+  subject name      : CN=unconfigured
+  issued  on        : 2026-10-20 13:39:30
+  expires on        : 2026-11-22 13:39:30
+  signed using      : RSA with SHA-256
+  RSA key size      : 2048 bits
+  basic constraints : CA=false
+  key usage         : Digital Signature, Key Encipherment
+  ext key usage     : TLS Web Client Authentication
+
+TLS: Check against list of allowed certs
+TLS: Compare With:
+TLS:      cert. version     : 3
+     serial number     : 72:64:C5:F7:10:0E:A8:3D:59:0D:01:04:B9:3A:21:48:8E:B0:32:B7
+     issuer name       : CN=ca
+     subject name      : CN=transport
+     issued  on        : 2026-10-20 13:39:30
+     expires on        : 2026-11-22 13:39:30
+     signed using      : RSA with SHA-256
+     RSA key size      : 2048 bits
+     basic constraints : CA=false
+     key usage         : Digital Signature, Key Encipherment
+     ext key usage     : TLS Web Client Authentication
+
+TLS: Compare With:
+TLS:      cert. version     : 3
+     serial number     : 53:FA:BB:33:C0:DA:66:5A:CC:35:50:43:1E:2C:58:26:9B:02:30:B6
+     issuer name       : CN=ca
+     subject name      : CN=dso
+     issued  on        : 2026-10-20 13:39:30
+     expires on        : 2026-11-22 13:39:30
+     signed using      : RSA with SHA-256
+     RSA key size      : 2048 bits
+     basic constraints : CA=false
+     key usage         : Digital Signature, Key Encipherment
+     ext key usage     : TLS Web Client Authentication
+
+TLS: Compare With:
+TLS:      cert. version     : 3
+     serial number     : 78:60:A0:E8:92:F4:35:5A:22:1E:B3:E3:9E:A9:10:E1:23:D5:74:75
+     issuer name       : CN=ca
+     subject name      : CN=unified_viewer
+     issued  on        : 2026-10-20 13:39:30
+     expires on        : 2026-11-22 13:39:30
+     signed using      : RSA with SHA-256
+     RSA key size      : 2048 bits
+     basic constraints : CA=false
+     key usage         : Digital Signature, Key Encipherment
+     ext key usage     : TLS Web Client Authentication
+
+TLS: handshake failed - mbedtls_ssl_handshake returned -0xffffffff
+TLS: handshake failed - mbedtls_ssl_handshake returned -0x1
+mms: O.7.3.3 set-point spacing gate ON (3 s)
+mms: full CID model loaded from /mnt/c/Users/Administrator/Desktop/CCLI Alireza/CCLI Merged/apps/ccli/build-e2e-crypto/rbac-security-fixtures/run-b3f967f9742346c0b8d85147c391a6bb/model.cfg
+mms: TLS CRL loaded /mnt/c/Users/Administrator/Desktop/CCLI Alireza/CCLI Merged/apps/ccli/build-e2e-crypto/rbac-security-fixtures/run-b3f967f9742346c0b8d85147c391a6bb/stale.crl.pem
+mms: AARE 62351-4 responder auth ready (cert=769 octets)
+mms: explicit certificate authentication and signed AARE bridge enabled
+mms: listening on 127.0.0.1:42019 tls=on acse_tls_auth=on rbac=on crl=on fallback_s=0 gnss_poll_s=0 chrony=off discipline=off model=full_cid_cfg
+TLS: Verify cert: depth 1
+TLS:    flags: 00000000
+TLS:   cert. version     : 3
+  serial number     : 49:A1:23:21:7E:BB:4A:8D:AF:01:01:84:C1:F9:1F:7A:3B:C4:1B:CB
+  issuer name       : CN=ca
+  subject name      : CN=ca
+  issued  on        : 2026-10-20 13:39:30
+  expires on        : 2026-11-22 13:39:30
+  signed using      : RSA with SHA-256
+  RSA key size      : 2048 bits
+  basic constraints : CA=true
+  key usage         : Digital Signature, Key Cert Sign, CRL Sign
+
+TLS: Verify cert: depth 0
+TLS:    flags: 00000000
+TLS:   cert. version     : 3
+  serial number     : 2C:CC:EB:B0:31:A7:95:E8:57:06:DB:62:24:C0:26:18:DC:82:38:E1
+  issuer name       : CN=ca
+  subject name      : CN=server
+  issued  on        : 2026-10-20 13:39:30
+  expires on        : 2026-11-22 13:39:30
+  signed using      : RSA with SHA-256
+  RSA key size      : 2048 bits
+  basic constraints : CA=false
+  subject alt name  :
+      iPAddress : 127.0.0.1
+      dNSName : localhost
+  key usage         : Digital Signature, Key Encipherment
+  ext key usage     : TLS Web Server Authentication
+
+TLS: Verify cert: depth 1
+TLS:    flags: 00000000
+TLS:   cert. version     : 3
+  serial number     : 49:A1:23:21:7E:BB:4A:8D:AF:01:01:84:C1:F9:1F:7A:3B:C4:1B:CB
+  issuer name       : CN=ca
+  subject name      : CN=ca
+  issued  on        : 2026-10-20 13:39:30
+  expires on        : 2026-11-22 13:39:30
+  signed using      : RSA with SHA-256
+  RSA key size      : 2048 bits
+  basic constraints : CA=true
+  key usage         : Digital Signature, Key Cert Sign, CRL Sign
+
+TLS: Verify cert: depth 0
+TLS:    flags: 00000020
+TLS:   cert. version     : 3
+  serial number     : 72:64:C5:F7:10:0E:A8:3D:59:0D:01:04:B9:3A:21:48:8E:B0:32:B7
+  issuer name       : CN=ca
+  subject name      : CN=transport
+  issued  on        : 2026-10-20 13:39:30
+  expires on        : 2026-11-22 13:39:30
+  signed using      : RSA with SHA-256
+  RSA key size      : 2048 bits
+  basic constraints : CA=false
+  key usage         : Digital Signature, Key Encipherment
+  ext key usage     : TLS Web Client Authentication
+
+TLS: Check against list of allowed certs
+TLS: Compare With:
+TLS:      cert. version     : 3
+     serial number     : 72:64:C5:F7:10:0E:A8:3D:59:0D:01:04:B9:3A:21:48:8E:B0:32:B7
+     issuer name       : CN=ca
+     subject name      : CN=transport
+     issued  on        : 2026-10-20 13:39:30
+     expires on        : 2026-11-22 13:39:30
+     signed using      : RSA with SHA-256
+     RSA key size      : 2048 bits
+     basic constraints : CA=false
+     key usage         : Digital Signature, Key Encipherment
+     ext key usage     : TLS Web Client Authentication
+
+TLS: handshake failed - mbedtls_ssl_handshake returned -0x2700
+TLS: handshake failed - mbedtls_ssl_handshake returned -0x1
+mms: O.7.3.3 set-point spacing gate ON (3 s)
+mms: full CID model loaded from /mnt/c/Users/Administrator/Desktop/CCLI Alireza/CCLI Merged/apps/ccli/build-e2e-crypto/rbac-security-fixtures/run-b3f967f9742346c0b8d85147c391a6bb/model.cfg
+mms: TLS CRL loaded /mnt/c/Users/Administrator/Desktop/CCLI Alireza/CCLI Merged/apps/ccli/build-e2e-crypto/rbac-security-fixtures/run-b3f967f9742346c0b8d85147c391a6bb/bad_signature.crl.pem
+mms: AARE 62351-4 responder auth ready (cert=769 octets)
+mms: explicit certificate authentication and signed AARE bridge enabled
+mms: listening on 127.0.0.1:53157 tls=on acse_tls_auth=on rbac=on crl=on fallback_s=0 gnss_poll_s=0 chrony=off discipline=off model=full_cid_cfg
+TLS: Verify cert: depth 1
+TLS:    flags: 00000000
+TLS:   cert. version     : 3
+  serial number     : 49:A1:23:21:7E:BB:4A:8D:AF:01:01:84:C1:F9:1F:7A:3B:C4:1B:CB
+  issuer name       : CN=ca
+  subject name      : CN=ca
+  issued  on        : 2026-10-20 13:39:30
+  expires on        : 2026-11-22 13:39:30
+  signed using      : RSA with SHA-256
+  RSA key size      : 2048 bits
+  basic constraints : CA=true
+  key usage         : Digital Signature, Key Cert Sign, CRL Sign
+
+TLS: Verify cert: depth 0
+TLS:    flags: 00000000
+TLS:   cert. version     : 3
+  serial number     : 2C:CC:EB:B0:31:A7:95:E8:57:06:DB:62:24:C0:26:18:DC:82:38:E1
+  issuer name       : CN=ca
+  subject name      : CN=server
+  issued  on        : 2026-10-20 13:39:30
+  expires on        : 2026-11-22 13:39:30
+  signed using      : RSA with SHA-256
+  RSA key size      : 2048 bits
+  basic constraints : CA=false
+  subject alt name  :
+      iPAddress : 127.0.0.1
+      dNSName : localhost
+  key usage         : Digital Signature, Key Encipherment
+  ext key usage     : TLS Web Server Authentication
+
+TLS: Verify cert: depth 1
+TLS:    flags: 00000000
+TLS:   cert. version     : 3
+  serial number     : 49:A1:23:21:7E:BB:4A:8D:AF:01:01:84:C1:F9:1F:7A:3B:C4:1B:CB
+  issuer name       : CN=ca
+  subject name      : CN=ca
+  issued  on        : 2026-10-20 13:39:30
+  expires on        : 2026-11-22 13:39:30
+  signed using      : RSA with SHA-256
+  RSA key size      : 2048 bits
+  basic constraints : CA=true
+  key usage         : Digital Signature, Key Cert Sign, CRL Sign
+
+TLS: Verify cert: depth 0
+TLS:    flags: 00000010
+TLS:   cert. version     : 3
+  serial number     : 72:64:C5:F7:10:0E:A8:3D:59:0D:01:04:B9:3A:21:48:8E:B0:32:B7
+  issuer name       : CN=ca
+  subject name      : CN=transport
+  issued  on        : 2026-10-20 13:39:30
+  expires on        : 2026-11-22 13:39:30
+  signed using      : RSA with SHA-256
+  RSA key size      : 2048 bits
+  basic constraints : CA=false
+  key usage         : Digital Signature, Key Encipherment
+  ext key usage     : TLS Web Client Authentication
+
+TLS: Check against list of allowed certs
+TLS: Compare With:
+TLS:      cert. version     : 3
+     serial number     : 72:64:C5:F7:10:0E:A8:3D:59:0D:01:04:B9:3A:21:48:8E:B0:32:B7
+     issuer name       : CN=ca
+     subject name      : CN=transport
+     issued  on        : 2026-10-20 13:39:30
+     expires on        : 2026-11-22 13:39:30
+     signed using      : RSA with SHA-256
+     RSA key size      : 2048 bits
+     basic constraints : CA=false
+     key usage         : Digital Signature, Key Encipherment
+     ext key usage     : TLS Web Client Authentication
+
+TLS: handshake failed - mbedtls_ssl_handshake returned -0x2700
+TLS: handshake failed - mbedtls_ssl_handshake returned -0x1
+mms: O.7.3.3 set-point spacing gate ON (3 s)
+mms: full CID model loaded from /mnt/c/Users/Administrator/Desktop/CCLI Alireza/CCLI Merged/apps/ccli/build-e2e-crypto/rbac-security-fixtures/run-b3f967f9742346c0b8d85147c391a6bb/model.cfg
+mms: TLS CRL loaded /mnt/c/Users/Administrator/Desktop/CCLI Alireza/CCLI Merged/apps/ccli/build-e2e-crypto/rbac-security-fixtures/run-b3f967f9742346c0b8d85147c391a6bb/base.crl.pem
+mms: AARE 62351-4 responder auth ready (cert=769 octets)
+mms: explicit certificate authentication and signed AARE bridge enabled
+mms: listening on 127.0.0.1:39375 tls=on acse_tls_auth=on rbac=on crl=on fallback_s=0 gnss_poll_s=0 chrony=off discipline=off model=full_cid_cfg
+TLS: Verify cert: depth 1
+TLS:    flags: 00000000
+TLS:   cert. version     : 3
+  serial number     : 49:A1:23:21:7E:BB:4A:8D:AF:01:01:84:C1:F9:1F:7A:3B:C4:1B:CB
+  issuer name       : CN=ca
+  subject name      : CN=ca
+  issued  on        : 2026-10-20 13:39:30
+  expires on        : 2026-11-22 13:39:30
+  signed using      : RSA with SHA-256
+  RSA key size      : 2048 bits
+  basic constraints : CA=true
+  key usage         : Digital Signature, Key Cert Sign, CRL Sign
+
+TLS: Verify cert: depth 0
+TLS:    flags: 00000000
+TLS:   cert. version     : 3
+  serial number     : 2C:CC:EB:B0:31:A7:95:E8:57:06:DB:62:24:C0:26:18:DC:82:38:E1
+  issuer name       : CN=ca
+  subject name      : CN=server
+  issued  on        : 2026-10-20 13:39:30
+  expires on        : 2026-11-22 13:39:30
+  signed using      : RSA with SHA-256
+  RSA key size      : 2048 bits
+  basic constraints : CA=false
+  subject alt name  :
+      iPAddress : 127.0.0.1
+      dNSName : localhost
+  key usage         : Digital Signature, Key Encipherment
+  ext key usage     : TLS Web Server Authentication
+
+TLS: Verify cert: depth 0
+TLS:    flags: 00000008
+TLS:   cert. version     : 3
+  serial number     : 72:26:8D:1E:39:06:57:A1:86:07:E5:A5:1D:7A:78:E4:0A:CF:09:FA
+  issuer name       : CN=rogue_ca
+  subject name      : CN=wrong_issuer
+  issued  on        : 2026-10-20 13:39:30
+  expires on        : 2026-11-22 13:39:30
+  signed using      : RSA with SHA-256
+  RSA key size      : 2048 bits
+  basic constraints : CA=false
+  key usage         : Digital Signature, Key Encipherment
+  ext key usage     : TLS Web Client Authentication
+
+TLS: Check against list of allowed certs
+TLS: Compare With:
+TLS:      cert. version     : 3
+     serial number     : 72:26:8D:1E:39:06:57:A1:86:07:E5:A5:1D:7A:78:E4:0A:CF:09:FA
+     issuer name       : CN=rogue_ca
+     subject name      : CN=wrong_issuer
+     issued  on        : 2026-10-20 13:39:30
+     expires on        : 2026-11-22 13:39:30
+     signed using      : RSA with SHA-256
+     RSA key size      : 2048 bits
+     basic constraints : CA=false
+     key usage         : Digital Signature, Key Encipherment
+     ext key usage     : TLS Web Client Authentication
+
+mms: client CONNECT count=1
+TLS:  connection was closed gracefully
+mms: client DISCONNECT count=0
+mms: O.7.3.3 set-point spacing gate ON (3 s)
+mms: full CID model loaded from /mnt/c/Users/Administrator/Desktop/CCLI Alireza/CCLI Merged/apps/ccli/build-e2e-crypto/rbac-security-fixtures/run-b3f967f9742346c0b8d85147c391a6bb/model.cfg
+mms: TLS CRL loaded /mnt/c/Users/Administrator/Desktop/CCLI Alireza/CCLI Merged/apps/ccli/build-e2e-crypto/rbac-security-fixtures/run-b3f967f9742346c0b8d85147c391a6bb/base.crl.pem
+mms: AARE 62351-4 responder auth ready (cert=769 octets)
+mms: explicit certificate authentication and signed AARE bridge enabled
+mms: listening on 127.0.0.1:34477 tls=on acse_tls_auth=on rbac=on crl=on fallback_s=0 gnss_poll_s=0 chrony=off discipline=off model=full_cid_cfg
+TLS: Verify cert: depth 1
+TLS:    flags: 00000000
+TLS:   cert. version     : 3
+  serial number     : 49:A1:23:21:7E:BB:4A:8D:AF:01:01:84:C1:F9:1F:7A:3B:C4:1B:CB
+  issuer name       : CN=ca
+  subject name      : CN=ca
+  issued  on        : 2026-10-20 13:39:30
+  expires on        : 2026-11-22 13:39:30
+  signed using      : RSA with SHA-256
+  RSA key size      : 2048 bits
+  basic constraints : CA=true
+  key usage         : Digital Signature, Key Cert Sign, CRL Sign
+
+TLS: Verify cert: depth 0
+TLS:    flags: 00000000
+TLS:   cert. version     : 3
+  serial number     : 2C:CC:EB:B0:31:A7:95:E8:57:06:DB:62:24:C0:26:18:DC:82:38:E1
+  issuer name       : CN=ca
+  subject name      : CN=server
+  issued  on        : 2026-10-20 13:39:30
+  expires on        : 2026-11-22 13:39:30
+  signed using      : RSA with SHA-256
+  RSA key size      : 2048 bits
+  basic constraints : CA=false
+  subject alt name  :
+      iPAddress : 127.0.0.1
+      dNSName : localhost
+  key usage         : Digital Signature, Key Encipherment
+  ext key usage     : TLS Web Server Authentication
+
+TLS: Verify cert: depth 1
+TLS:    flags: 00000000
+TLS:   cert. version     : 3
+  serial number     : 49:A1:23:21:7E:BB:4A:8D:AF:01:01:84:C1:F9:1F:7A:3B:C4:1B:CB
+  issuer name       : CN=ca
+  subject name      : CN=ca
+  issued  on        : 2026-10-20 13:39:30
+  expires on        : 2026-11-22 13:39:30
+  signed using      : RSA with SHA-256
+  RSA key size      : 2048 bits
+  basic constraints : CA=true
+  key usage         : Digital Signature, Key Cert Sign, CRL Sign
+
+TLS: Verify cert: depth 0
+TLS:    flags: 00000002
+TLS:   cert. version     : 3
+  serial number     : 1D:EC:41:0F:94:0D:67:AD:A2:BF:61:80:B5:1F:7B:01:99:3A:86:5B
+  issuer name       : CN=ca
+  subject name      : CN=revoked
+  issued  on        : 2026-10-20 13:39:30
+  expires on        : 2026-11-22 13:39:30
+  signed using      : RSA with SHA-256
+  RSA key size      : 2048 bits
+  basic constraints : CA=false
+  key usage         : Digital Signature, Key Encipherment
+  ext key usage     : TLS Web Client Authentication
+
+TLS: Check against list of allowed certs
+TLS: Compare With:
+TLS:      cert. version     : 3
+     serial number     : 1D:EC:41:0F:94:0D:67:AD:A2:BF:61:80:B5:1F:7B:01:99:3A:86:5B
+     issuer name       : CN=ca
+     subject name      : CN=revoked
+     issued  on        : 2026-10-20 13:39:30
+     expires on        : 2026-11-22 13:39:30
+     signed using      : RSA with SHA-256
+     RSA key size      : 2048 bits
+     basic constraints : CA=false
+     key usage         : Digital Signature, Key Encipherment
+     ext key usage     : TLS Web Client Authentication
+
+TLS: handshake failed - mbedtls_ssl_handshake returned -0x2700
+TLS: handshake failed - mbedtls_ssl_handshake returned -0x1
+mms: O.7.3.3 set-point spacing gate ON (3 s)
+mms: full CID model loaded from /mnt/c/Users/Administrator/Desktop/CCLI Alireza/CCLI Merged/apps/ccli/build-e2e-crypto/rbac-security-fixtures/run-b3f967f9742346c0b8d85147c391a6bb/model.cfg
+mms: TLS CRL loaded /mnt/c/Users/Administrator/Desktop/CCLI Alireza/CCLI Merged/apps/ccli/build-e2e-crypto/rbac-security-fixtures/run-b3f967f9742346c0b8d85147c391a6bb/base.crl.pem
+mms: AARE 62351-4 responder auth ready (cert=769 octets)
+mms: explicit certificate authentication and signed AARE bridge enabled
+mms: listening on 127.0.0.1:55721 tls=on acse_tls_auth=on rbac=on crl=on fallback_s=0 gnss_poll_s=0 chrony=off discipline=off model=full_cid_cfg
+TLS: Verify cert: depth 1
+TLS:    flags: 00000000
+TLS:   cert. version     : 3
+  serial number     : 49:A1:23:21:7E:BB:4A:8D:AF:01:01:84:C1:F9:1F:7A:3B:C4:1B:CB
+  issuer name       : CN=ca
+  subject name      : CN=ca
+  issued  on        : 2026-10-20 13:39:30
+  expires on        : 2026-11-22 13:39:30
+  signed using      : RSA with SHA-256
+  RSA key size      : 2048 bits
+  basic constraints : CA=true
+  key usage         : Digital Signature, Key Cert Sign, CRL Sign
+
+TLS: Verify cert: depth 0
+TLS:    flags: 00000000
+TLS:   cert. version     : 3
+  serial number     : 2C:CC:EB:B0:31:A7:95:E8:57:06:DB:62:24:C0:26:18:DC:82:38:E1
+  issuer name       : CN=ca
+  subject name      : CN=server
+  issued  on        : 2026-10-20 13:39:30
+  expires on        : 2026-11-22 13:39:30
+  signed using      : RSA with SHA-256
+  RSA key size      : 2048 bits
+  basic constraints : CA=false
+  subject alt name  :
+      iPAddress : 127.0.0.1
+      dNSName : localhost
+  key usage         : Digital Signature, Key Encipherment
+  ext key usage     : TLS Web Server Authentication
+
+TLS: Verify cert: depth 1
+TLS:    flags: 00000000
+TLS:   cert. version     : 3
+  serial number     : 49:A1:23:21:7E:BB:4A:8D:AF:01:01:84:C1:F9:1F:7A:3B:C4:1B:CB
+  issuer name       : CN=ca
+  subject name      : CN=ca
+  issued  on        : 2026-10-20 13:39:30
+  expires on        : 2026-11-22 13:39:30
+  signed using      : RSA with SHA-256
+  RSA key size      : 2048 bits
+  basic constraints : CA=true
+  key usage         : Digital Signature, Key Cert Sign, CRL Sign
+
+TLS: Verify cert: depth 0
+TLS:    flags: 00000001
+TLS:   cert. version     : 3
+  serial number     : 20:DA:1F:9D:CF:11:EF:3B:2D:9C:04:4B:B8:0B:65:BA:B7:AD:A4:77
+  issuer name       : CN=ca
+  subject name      : CN=expired
+  issued  on        : 2026-10-20 13:39:30
+  expires on        : 2026-10-22 13:39:30
+  signed using      : RSA with SHA-256
+  RSA key size      : 2048 bits
+  basic constraints : CA=false
+  key usage         : Digital Signature, Key Encipherment
+  ext key usage     : TLS Web Client Authentication
+
+TLS: Check against list of allowed certs
+TLS: Compare With:
+TLS:      cert. version     : 3
+     serial number     : 20:DA:1F:9D:CF:11:EF:3B:2D:9C:04:4B:B8:0B:65:BA:B7:AD:A4:77
+     issuer name       : CN=ca
+     subject name      : CN=expired
+     issued  on        : 2026-10-20 13:39:30
+     expires on        : 2026-10-22 13:39:30
+     signed using      : RSA with SHA-256
+     RSA key size      : 2048 bits
+     basic constraints : CA=false
+     key usage         : Digital Signature, Key Encipherment
+     ext key usage     : TLS Web Client Authentication
+
+TLS: handshake failed - mbedtls_ssl_handshake returned -0x2700
+TLS: handshake failed - mbedtls_ssl_handshake returned -0x1
+mms: O.7.3.3 set-point spacing gate ON (3 s)
+mms: full CID model loaded from /mnt/c/Users/Administrator/Desktop/CCLI Alireza/CCLI Merged/apps/ccli/build-e2e-crypto/rbac-security-fixtures/run-b3f967f9742346c0b8d85147c391a6bb/model.cfg
+mms: AARE 62351-4 responder auth ready (cert=769 octets)
+mms: explicit certificate authentication and signed AARE bridge enabled
+mms: listening on 127.0.0.1:54869 tls=on acse_tls_auth=on rbac=on crl=off fallback_s=0 gnss_poll_s=0 chrony=off discipline=off model=full_cid_cfg
+TLS: Verify cert: depth 1
+TLS:    flags: 00000000
+TLS:   cert. version     : 3
+  serial number     : 49:A1:23:21:7E:BB:4A:8D:AF:01:01:84:C1:F9:1F:7A:3B:C4:1B:CB
+  issuer name       : CN=ca
+  subject name      : CN=ca
+  issued  on        : 2026-10-20 13:39:30
+  expires on        : 2026-11-22 13:39:30
+  signed using      : RSA with SHA-256
+  RSA key size      : 2048 bits
+  basic constraints : CA=true
+  key usage         : Digital Signature, Key Cert Sign, CRL Sign
+
+TLS: Verify cert: depth 0
+TLS:    flags: 00000000
+TLS:   cert. version     : 3
+  serial number     : 2C:CC:EB:B0:31:A7:95:E8:57:06:DB:62:24:C0:26:18:DC:82:38:E1
+  issuer name       : CN=ca
+  subject name      : CN=server
+  issued  on        : 2026-10-20 13:39:30
+  expires on        : 2026-11-22 13:39:30
+  signed using      : RSA with SHA-256
+  RSA key size      : 2048 bits
+  basic constraints : CA=false
+  subject alt name  :
+      iPAddress : 127.0.0.1
+      dNSName : localhost
+  key usage         : Digital Signature, Key Encipherment
+  ext key usage     : TLS Web Server Authentication
+
+TLS: Verify cert: depth 1
+TLS:    flags: 00000000
+TLS:   cert. version     : 3
+  serial number     : 49:A1:23:21:7E:BB:4A:8D:AF:01:01:84:C1:F9:1F:7A:3B:C4:1B:CB
+  issuer name       : CN=ca
+  subject name      : CN=ca
+  issued  on        : 2026-10-20 13:39:30
+  expires on        : 2026-11-22 13:39:30
+  signed using      : RSA with SHA-256
+  RSA key size      : 2048 bits
+  basic constraints : CA=true
+  key usage         : Digital Signature, Key Cert Sign, CRL Sign
+
+TLS: Verify cert: depth 0
+TLS:    flags: 00000000
+TLS:   cert. version     : 3
+  serial number     : 72:64:C5:F7:10:0E:A8:3D:59:0D:01:04:B9:3A:21:48:8E:B0:32:B7
+  issuer name       : CN=ca
+  subject name      : CN=transport
+  issued  on        : 2026-10-20 13:39:30
+  expires on        : 2026-11-22 13:39:30
+  signed using      : RSA with SHA-256
+  RSA key size      : 2048 bits
+  basic constraints : CA=false
+  key usage         : Digital Signature, Key Encipherment
+  ext key usage     : TLS Web Client Authentication
+
+TLS: Check against list of allowed certs
+TLS: Compare With:
+TLS:      cert. version     : 3
+     serial number     : 72:64:C5:F7:10:0E:A8:3D:59:0D:01:04:B9:3A:21:48:8E:B0:32:B7
+     issuer name       : CN=ca
+     subject name      : CN=transport
+     issued  on        : 2026-10-20 13:39:30
+     expires on        : 2026-11-22 13:39:30
+     signed using      : RSA with SHA-256
+     RSA key size      : 2048 bits
+     basic constraints : CA=false
+     key usage         : Digital Signature, Key Encipherment
+     ext key usage     : TLS Web Client Authentication
+
+mms: client CONNECT count=1
+mms: iso session CONNECT (payload=180)
+mms: ACSE auth ACCEPT — mech=TLS role=DSO_OPERATOR cert=744 octets
+TLS:  connection was closed gracefully
+mms: client DISCONNECT count=0
+mms: O.7.3.3 set-point spacing gate ON (3 s)
+mms: full CID model loaded from /mnt/c/Users/Administrator/Desktop/CCLI Alireza/CCLI Merged/apps/ccli/build-e2e-crypto/rbac-security-fixtures/run-b3f967f9742346c0b8d85147c391a6bb/model.cfg
+mms: Profile A commissioning policy urn:iec:62351:8:IS:1.0:rps-root:8ef16ebb-65d6-4b2e-bad4-6729129eb412 revision 1.0 loaded
+mms: AARE 62351-4 responder auth ready (cert=769 octets)
+mms: explicit certificate authentication and signed AARE bridge enabled
+mms: listening on 127.0.0.1:35465 tls=on acse_tls_auth=on rbac=on crl=off fallback_s=0 gnss_poll_s=0 chrony=off discipline=off model=full_cid_cfg
+TLS: Verify cert: depth 1
+TLS:    flags: 00000000
+TLS:   cert. version     : 3
+  serial number     : 49:A1:23:21:7E:BB:4A:8D:AF:01:01:84:C1:F9:1F:7A:3B:C4:1B:CB
+  issuer name       : CN=ca
+  subject name      : CN=ca
+  issued  on        : 2026-10-20 13:39:30
+  expires on        : 2026-11-22 13:39:30
+  signed using      : RSA with SHA-256
+  RSA key size      : 2048 bits
+  basic constraints : CA=true
+  key usage         : Digital Signature, Key Cert Sign, CRL Sign
+
+TLS: Verify cert: depth 0
+TLS:    flags: 00000000
+TLS:   cert. version     : 3
+  serial number     : 2C:CC:EB:B0:31:A7:95:E8:57:06:DB:62:24:C0:26:18:DC:82:38:E1
+  issuer name       : CN=ca
+  subject name      : CN=server
+  issued  on        : 2026-10-20 13:39:30
+  expires on        : 2026-11-22 13:39:30
+  signed using      : RSA with SHA-256
+  RSA key size      : 2048 bits
+  basic constraints : CA=false
+  subject alt name  :
+      iPAddress : 127.0.0.1
+      dNSName : localhost
+  key usage         : Digital Signature, Key Encipherment
+  ext key usage     : TLS Web Server Authentication
+
+TLS: Verify cert: depth 1
+TLS:    flags: 00000000
+TLS:   cert. version     : 3
+  serial number     : 49:A1:23:21:7E:BB:4A:8D:AF:01:01:84:C1:F9:1F:7A:3B:C4:1B:CB
+  issuer name       : CN=ca
+  subject name      : CN=ca
+  issued  on        : 2026-10-20 13:39:30
+  expires on        : 2026-11-22 13:39:30
+  signed using      : RSA with SHA-256
+  RSA key size      : 2048 bits
+  basic constraints : CA=true
+  key usage         : Digital Signature, Key Cert Sign, CRL Sign
+
+TLS: Verify cert: depth 0
+TLS:    flags: 00000000
+TLS:   cert. version     : 3
+  serial number     : 76:FE:7B:DB:2D:3F:DF:8D:69:BD:6A:7B:3B:A3:F3:8F:A1:57:00:BD
+  issuer name       : CN=ca
+  subject name      : CN=unified_dso
+  issued  on        : 2026-10-20 13:39:30
+  expires on        : 2026-11-22 13:39:30
+  signed using      : RSA with SHA-256
+  RSA key size      : 2048 bits
+  basic constraints : CA=false
+  key usage         : Digital Signature, Key Encipherment
+  ext key usage     : TLS Web Client Authentication
+
+TLS: Check against list of allowed certs
+TLS: Compare With:
+TLS:      cert. version     : 3
+     serial number     : 76:FE:7B:DB:2D:3F:DF:8D:69:BD:6A:7B:3B:A3:F3:8F:A1:57:00:BD
+     issuer name       : CN=ca
+     subject name      : CN=unified_dso
+     issued  on        : 2026-10-20 13:39:30
+     expires on        : 2026-11-22 13:39:30
+     signed using      : RSA with SHA-256
+     RSA key size      : 2048 bits
+     basic constraints : CA=false
+     key usage         : Digital Signature, Key Encipherment
+     ext key usage     : TLS Web Client Authentication
+
+mms: client CONNECT count=1
+mms: iso session CONNECT (payload=180)
+mms: ACSE auth ACCEPT — Profile A role token
+{"rbac":true,"event":"ASSOCIATION_AUTH_OK","severity":"notice","policy":"urn:iec:62351:8:IS:1.0:rps-root:8ef16ebb-65d6-4b2e-bad4-6729129eb412","sequence":2,"service":"ASSOCIATION","object":"","reason":"identity bound to authenticated transport","subject":"CN=unified_dso","issuer":"CN=ca","serial":"76:FE:7B:DB:2D:3F:DF:8D:69:BD:6A:7B:3B:A3:F3:8F:A1:57:00:BD","sha256":"a7e740442714e76064cd73eafd7935bf81984e75d753a0a69ca5eeca0fb0f598","peer":"127.0.0.1:59014","transport_sha256":"a7e740442714e76064cd73eafd7935bf81984e75d753a0a69ca5eeca0fb0f598","actor":"DSO","roles":[{"id":-1,"aor":"DSO","revision":1,"definition":"IEC 62351-8-CEI016:2021"}]}
+{"rbac":true,"event":"MMS_ACCESS_DENIED","severity":"alarm","policy":"urn:iec:62351:8:IS:1.0:rps-root:8ef16ebb-65d6-4b2e-bad4-6729129eb412","sequence":2,"service":"READVALUES","object":"LD_Plant/LLN0.NamPlt","reason":"permission or object scope denied","subject":"CN=unified_dso","issuer":"CN=ca","serial":"76:FE:7B:DB:2D:3F:DF:8D:69:BD:6A:7B:3B:A3:F3:8F:A1:57:00:BD","sha256":"a7e740442714e76064cd73eafd7935bf81984e75d753a0a69ca5eeca0fb0f598","peer":"127.0.0.1:59014","transport_sha256":"a7e740442714e76064cd73eafd7935bf81984e75d753a0a69ca5eeca0fb0f598","actor":"DSO","roles":[{"id":-1,"aor":"DSO","revision":1,"definition":"IEC 62351-8-CEI016:2021"}]}
+read denied: CCI016_01LD_Plant/LLN0.NamPlt.vendor error=0 access=3
+{"rbac":true,"event":"MMS_ACCESS_DENIED","severity":"alarm","policy":"urn:iec:62351:8:IS:1.0:rps-root:8ef16ebb-65d6-4b2e-bad4-6729129eb412","sequence":2,"service":"CONFIG","object":"LD_Plant/LPHD1.PhyNam.vendor","reason":"permission or object scope denied","subject":"CN=unified_dso","issuer":"CN=ca","serial":"76:FE:7B:DB:2D:3F:DF:8D:69:BD:6A:7B:3B:A3:F3:8F:A1:57:00:BD","sha256":"a7e740442714e76064cd73eafd7935bf81984e75d753a0a69ca5eeca0fb0f598","peer":"127.0.0.1:59014","transport_sha256":"a7e740442714e76064cd73eafd7935bf81984e75d753a0a69ca5eeca0fb0f598","actor":"DSO","roles":[{"id":-1,"aor":"DSO","revision":1,"definition":"IEC 62351-8-CEI016:2021"}]}
+TLS: Verify cert: depth 1
+TLS:    flags: 00000000
+TLS:   cert. version     : 3
+  serial number     : 49:A1:23:21:7E:BB:4A:8D:AF:01:01:84:C1:F9:1F:7A:3B:C4:1B:CB
+  issuer name       : CN=ca
+  subject name      : CN=ca
+  issued  on        : 2026-10-20 13:39:30
+  expires on        : 2026-11-22 13:39:30
+  signed using      : RSA with SHA-256
+  RSA key size      : 2048 bits
+  basic constraints : CA=true
+  key usage         : Digital Signature, Key Cert Sign, CRL Sign
+
+TLS: Verify cert: depth 0
+TLS:    flags: 00000000
+TLS:   cert. version     : 3
+  serial number     : 2C:CC:EB:B0:31:A7:95:E8:57:06:DB:62:24:C0:26:18:DC:82:38:E1
+  issuer name       : CN=ca
+  subject name      : CN=server
+  issued  on        : 2026-10-20 13:39:30
+  expires on        : 2026-11-22 13:39:30
+  signed using      : RSA with SHA-256
+  RSA key size      : 2048 bits
+  basic constraints : CA=false
+  subject alt name  :
+      iPAddress : 127.0.0.1
+      dNSName : localhost
+  key usage         : Digital Signature, Key Encipherment
+  ext key usage     : TLS Web Server Authentication
+
+TLS: Verify cert: depth 1
+TLS:    flags: 00000000
+TLS:   cert. version     : 3
+  serial number     : 49:A1:23:21:7E:BB:4A:8D:AF:01:01:84:C1:F9:1F:7A:3B:C4:1B:CB
+  issuer name       : CN=ca
+  subject name      : CN=ca
+  issued  on        : 2026-10-20 13:39:30
+  expires on        : 2026-11-22 13:39:30
+  signed using      : RSA with SHA-256
+  RSA key size      : 2048 bits
+  basic constraints : CA=true
+  key usage         : Digital Signature, Key Cert Sign, CRL Sign
+
+TLS: Verify cert: depth 0
+TLS:    flags: 00000000
+TLS:   cert. version     : 3
+  serial number     : 78:60:A0:E8:92:F4:35:5A:22:1E:B3:E3:9E:A9:10:E1:23:D5:74:75
+  issuer name       : CN=ca
+  subject name      : CN=unified_viewer
+  issued  on        : 2026-10-20 13:39:30
+  expires on        : 2026-11-22 13:39:30
+  signed using      : RSA with SHA-256
+  RSA key size      : 2048 bits
+  basic constraints : CA=false
+  key usage         : Digital Signature, Key Encipherment
+  ext key usage     : TLS Web Client Authentication
+
+TLS: Check against list of allowed certs
+TLS: Compare With:
+TLS:      cert. version     : 3
+     serial number     : 76:FE:7B:DB:2D:3F:DF:8D:69:BD:6A:7B:3B:A3:F3:8F:A1:57:00:BD
+     issuer name       : CN=ca
+     subject name      : CN=unified_dso
+     issued  on        : 2026-10-20 13:39:30
+     expires on        : 2026-11-22 13:39:30
+     signed using      : RSA with SHA-256
+     RSA key size      : 2048 bits
+     basic constraints : CA=false
+     key usage         : Digital Signature, Key Encipherment
+     ext key usage     : TLS Web Client Authentication
+
+TLS: Compare With:
+TLS:      cert. version     : 3
+     serial number     : 3F:DD:BD:BF:77:85:31:8A:AA:E4:2E:0B:15:CA:AE:AA:54:C6:1C:09
+     issuer name       : CN=ca
+     subject name      : CN=owner_rev0
+     issued  on        : 2026-10-20 13:39:30
+     expires on        : 2026-11-22 13:39:30
+     signed using      : RSA with SHA-256
+     RSA key size      : 2048 bits
+     basic constraints : CA=false
+     key usage         : Digital Signature, Key Encipherment
+     ext key usage     : TLS Web Client Authentication
+
+TLS: Compare With:
+TLS:      cert. version     : 3
+     serial number     : 78:60:A0:E8:92:F4:35:5A:22:1E:B3:E3:9E:A9:10:E1:23:D5:74:75
+     issuer name       : CN=ca
+     subject name      : CN=unified_viewer
+     issued  on        : 2026-10-20 13:39:30
+     expires on        : 2026-11-22 13:39:30
+     signed using      : RSA with SHA-256
+     RSA key size      : 2048 bits
+     basic constraints : CA=false
+     key usage         : Digital Signature, Key Encipherment
+     ext key usage     : TLS Web Client Authentication
+
+mms: client CONNECT count=2
+mms: iso session CONNECT (payload=180)
+mms: ACSE auth ACCEPT — Profile A role token
+{"rbac":true,"event":"ASSOCIATION_AUTH_OK","severity":"notice","policy":"urn:iec:62351:8:IS:1.0:rps-root:8ef16ebb-65d6-4b2e-bad4-6729129eb412","sequence":2,"service":"ASSOCIATION","object":"","reason":"identity bound to authenticated transport","subject":"CN=unified_viewer","issuer":"CN=ca","serial":"78:60:A0:E8:92:F4:35:5A:22:1E:B3:E3:9E:A9:10:E1:23:D5:74:75","sha256":"d71b5fb93d1690bfa3c184eead81726f50f5f929f46f20874fc1ef01f1d3a73f","peer":"127.0.0.1:59016","transport_sha256":"d71b5fb93d1690bfa3c184eead81726f50f5f929f46f20874fc1ef01f1d3a73f","actor":"OWNER","roles":[{"id":0,"aor":"CCI","revision":1,"definition":"IEC62351-8"}]}
+{"rbac":true,"event":"MMS_ACCESS_DENIED","severity":"alarm","policy":"urn:iec:62351:8:IS:1.0:rps-root:8ef16ebb-65d6-4b2e-bad4-6729129eb412","sequence":2,"service":"READVALUES","object":"LD_Plant/LLN0.NamPlt","reason":"permission or object scope denied","subject":"CN=unified_viewer","issuer":"CN=ca","serial":"78:60:A0:E8:92:F4:35:5A:22:1E:B3:E3:9E:A9:10:E1:23:D5:74:75","sha256":"d71b5fb93d1690bfa3c184eead81726f50f5f929f46f20874fc1ef01f1d3a73f","peer":"127.0.0.1:59016","transport_sha256":"d71b5fb93d1690bfa3c184eead81726f50f5f929f46f20874fc1ef01f1d3a73f","actor":"OWNER","roles":[{"id":0,"aor":"CCI","revision":1,"definition":"IEC62351-8"}]}
+read denied: CCI016_01LD_Plant/LLN0.NamPlt.vendor error=0 access=3
+{"rbac":true,"event":"MMS_ACCESS_DENIED","severity":"alarm","policy":"urn:iec:62351:8:IS:1.0:rps-root:8ef16ebb-65d6-4b2e-bad4-6729129eb412","sequence":2,"service":"CONFIG","object":"LD_Plant/WlimDWMX1.WMaxSptPct.ctlModel","reason":"permission or object scope denied","subject":"CN=unified_viewer","issuer":"CN=ca","serial":"78:60:A0:E8:92:F4:35:5A:22:1E:B3:E3:9E:A9:10:E1:23:D5:74:75","sha256":"d71b5fb93d1690bfa3c184eead81726f50f5f929f46f20874fc1ef01f1d3a73f","peer":"127.0.0.1:59016","transport_sha256":"d71b5fb93d1690bfa3c184eead81726f50f5f929f46f20874fc1ef01f1d3a73f","actor":"OWNER","roles":[{"id":0,"aor":"CCI","revision":1,"definition":"IEC62351-8"}]}
+TLS: Verify cert: depth 1
+TLS:    flags: 00000000
+TLS:   cert. version     : 3
+  serial number     : 49:A1:23:21:7E:BB:4A:8D:AF:01:01:84:C1:F9:1F:7A:3B:C4:1B:CB
+  issuer name       : CN=ca
+  subject name      : CN=ca
+  issued  on        : 2026-10-20 13:39:30
+  expires on        : 2026-11-22 13:39:30
+  signed using      : RSA with SHA-256
+  RSA key size      : 2048 bits
+  basic constraints : CA=true
+  key usage         : Digital Signature, Key Cert Sign, CRL Sign
+
+TLS: Verify cert: depth 0
+TLS:    flags: 00000000
+TLS:   cert. version     : 3
+  serial number     : 2C:CC:EB:B0:31:A7:95:E8:57:06:DB:62:24:C0:26:18:DC:82:38:E1
+  issuer name       : CN=ca
+  subject name      : CN=server
+  issued  on        : 2026-10-20 13:39:30
+  expires on        : 2026-11-22 13:39:30
+  signed using      : RSA with SHA-256
+  RSA key size      : 2048 bits
+  basic constraints : CA=false
+  subject alt name  :
+      iPAddress : 127.0.0.1
+      dNSName : localhost
+  key usage         : Digital Signature, Key Encipherment
+  ext key usage     : TLS Web Server Authentication
+
+TLS: Verify cert: depth 1
+TLS:    flags: 00000000
+TLS:   cert. version     : 3
+  serial number     : 49:A1:23:21:7E:BB:4A:8D:AF:01:01:84:C1:F9:1F:7A:3B:C4:1B:CB
+  issuer name       : CN=ca
+  subject name      : CN=ca
+  issued  on        : 2026-10-20 13:39:30
+  expires on        : 2026-11-22 13:39:30
+  signed using      : RSA with SHA-256
+  RSA key size      : 2048 bits
+  basic constraints : CA=true
+  key usage         : Digital Signature, Key Cert Sign, CRL Sign
+
+TLS: Verify cert: depth 0
+TLS:    flags: 00000000
+TLS:   cert. version     : 3
+  serial number     : 3F:DD:BD:BF:77:85:31:8A:AA:E4:2E:0B:15:CA:AE:AA:54:C6:1C:09
+  issuer name       : CN=ca
+  subject name      : CN=owner_rev0
+  issued  on        : 2026-10-20 13:39:30
+  expires on        : 2026-11-22 13:39:30
+  signed using      : RSA with SHA-256
+  RSA key size      : 2048 bits
+  basic constraints : CA=false
+  key usage         : Digital Signature, Key Encipherment
+  ext key usage     : TLS Web Client Authentication
+
+TLS: Check against list of allowed certs
+TLS: Compare With:
+TLS:      cert. version     : 3
+     serial number     : 76:FE:7B:DB:2D:3F:DF:8D:69:BD:6A:7B:3B:A3:F3:8F:A1:57:00:BD
+     issuer name       : CN=ca
+     subject name      : CN=unified_dso
+     issued  on        : 2026-10-20 13:39:30
+     expires on        : 2026-11-22 13:39:30
+     signed using      : RSA with SHA-256
+     RSA key size      : 2048 bits
+     basic constraints : CA=false
+     key usage         : Digital Signature, Key Encipherment
+     ext key usage     : TLS Web Client Authentication
+
+TLS: Compare With:
+TLS:      cert. version     : 3
+     serial number     : 3F:DD:BD:BF:77:85:31:8A:AA:E4:2E:0B:15:CA:AE:AA:54:C6:1C:09
+     issuer name       : CN=ca
+     subject name      : CN=owner_rev0
+     issued  on        : 2026-10-20 13:39:30
+     expires on        : 2026-11-22 13:39:30
+     signed using      : RSA with SHA-256
+     RSA key size      : 2048 bits
+     basic constraints : CA=false
+     key usage         : Digital Signature, Key Encipherment
+     ext key usage     : TLS Web Client Authentication
+
+mms: client CONNECT count=3
+mms: iso session CONNECT (payload=180)
+mms: ACSE auth ACCEPT — Profile A role token
+{"rbac":true,"event":"ASSOCIATION_AUTH_OK","severity":"notice","policy":"urn:iec:62351:8:IS:1.0:rps-root:8ef16ebb-65d6-4b2e-bad4-6729129eb412","sequence":2,"service":"ASSOCIATION","object":"","reason":"identity bound to authenticated transport","subject":"CN=owner_rev0","issuer":"CN=ca","serial":"3F:DD:BD:BF:77:85:31:8A:AA:E4:2E:0B:15:CA:AE:AA:54:C6:1C:09","sha256":"1721efa22b54b67c1f24b6a002eca0fa8f6a6daa1c76a25da4aaed13d8e340d8","peer":"127.0.0.1:59018","transport_sha256":"1721efa22b54b67c1f24b6a002eca0fa8f6a6daa1c76a25da4aaed13d8e340d8","actor":"OWNER","roles":[{"id":2,"aor":"CCI","revision":0,"definition":"IEC62351-8"}]}
+{"rbac":true,"event":"MMS_ACCESS_DENIED","severity":"alarm","policy":"urn:iec:62351:8:IS:1.0:rps-root:8ef16ebb-65d6-4b2e-bad4-6729129eb412","sequence":2,"service":"READVALUES","object":"LD_Plant/PdCMMXU1.TotW","reason":"identity chain, lifetime or revocation verification failed","subject":"CN=unified_dso","issuer":"CN=ca","serial":"76:FE:7B:DB:2D:3F:DF:8D:69:BD:6A:7B:3B:A3:F3:8F:A1:57:00:BD","sha256":"a7e740442714e76064cd73eafd7935bf81984e75d753a0a69ca5eeca0fb0f598","peer":"127.0.0.1:59014","transport_sha256":"a7e740442714e76064cd73eafd7935bf81984e75d753a0a69ca5eeca0fb0f598","actor":"DSO","roles":[{"id":-1,"aor":"DSO","revision":1,"definition":"IEC 62351-8-CEI016:2021"}]}
+read denied: CCI016_01LD_Plant/PdCMMXU1.TotW.mag.f error=0 access=3
+TLS:  connection was closed gracefully
+{"rbac":true,"event":"ASSOCIATION_RELEASE","severity":"notice","policy":"urn:iec:62351:8:IS:1.0:rps-root:8ef16ebb-65d6-4b2e-bad4-6729129eb412","sequence":2,"service":"ASSOCIATION","object":"","reason":"disconnected","subject":"CN=owner_rev0","issuer":"CN=ca","serial":"3F:DD:BD:BF:77:85:31:8A:AA:E4:2E:0B:15:CA:AE:AA:54:C6:1C:09","sha256":"1721efa22b54b67c1f24b6a002eca0fa8f6a6daa1c76a25da4aaed13d8e340d8","peer":"127.0.0.1:59018","transport_sha256":"1721efa22b54b67c1f24b6a002eca0fa8f6a6daa1c76a25da4aaed13d8e340d8","actor":"OWNER","roles":[{"id":2,"aor":"CCI","revision":0,"definition":"IEC62351-8"}]}
+mms: client DISCONNECT count=2
+TLS:  connection was closed gracefully
+{"rbac":true,"event":"ASSOCIATION_RELEASE","severity":"notice","policy":"urn:iec:62351:8:IS:1.0:rps-root:8ef16ebb-65d6-4b2e-bad4-6729129eb412","sequence":2,"service":"ASSOCIATION","object":"","reason":"disconnected","subject":"CN=unified_viewer","issuer":"CN=ca","serial":"78:60:A0:E8:92:F4:35:5A:22:1E:B3:E3:9E:A9:10:E1:23:D5:74:75","sha256":"d71b5fb93d1690bfa3c184eead81726f50f5f929f46f20874fc1ef01f1d3a73f","peer":"127.0.0.1:59016","transport_sha256":"d71b5fb93d1690bfa3c184eead81726f50f5f929f46f20874fc1ef01f1d3a73f","actor":"OWNER","roles":[{"id":0,"aor":"CCI","revision":1,"definition":"IEC62351-8"}]}
+mms: client DISCONNECT count=1
+TLS:  connection was closed gracefully
+{"rbac":true,"event":"ASSOCIATION_RELEASE","severity":"notice","policy":"urn:iec:62351:8:IS:1.0:rps-root:8ef16ebb-65d6-4b2e-bad4-6729129eb412","sequence":2,"service":"ASSOCIATION","object":"","reason":"disconnected","subject":"CN=unified_dso","issuer":"CN=ca","serial":"76:FE:7B:DB:2D:3F:DF:8D:69:BD:6A:7B:3B:A3:F3:8F:A1:57:00:BD","sha256":"a7e740442714e76064cd73eafd7935bf81984e75d753a0a69ca5eeca0fb0f598","peer":"127.0.0.1:59014","transport_sha256":"a7e740442714e76064cd73eafd7935bf81984e75d753a0a69ca5eeca0fb0f598","actor":"DSO","roles":[{"id":-1,"aor":"DSO","revision":1,"definition":"IEC 62351-8-CEI016:2021"}]}
+mms: client DISCONNECT count=0
+mms: O.7.3.3 set-point spacing gate ON (3 s)
+mms: AARE 62351-4 responder auth ready (cert=769 octets)
+mms: explicit certificate authentication and signed AARE bridge enabled
+mms: listening on 127.0.0.1:52247 tls=on acse_tls_auth=on rbac=on crl=off fallback_s=0 gnss_poll_s=0 chrony=off discipline=off model=mvp_handbuilt
+TLS: Verify cert: depth 1
+TLS:    flags: 00000000
+TLS:   cert. version     : 3
+  serial number     : 49:A1:23:21:7E:BB:4A:8D:AF:01:01:84:C1:F9:1F:7A:3B:C4:1B:CB
+  issuer name       : CN=ca
+  subject name      : CN=ca
+  issued  on        : 2026-10-20 13:39:30
+  expires on        : 2026-11-22 13:39:30
+  signed using      : RSA with SHA-256
+  RSA key size      : 2048 bits
+  basic constraints : CA=true
+  key usage         : Digital Signature, Key Cert Sign, CRL Sign
+
+TLS: Verify cert: depth 0
+TLS:    flags: 00000000
+TLS:   cert. version     : 3
+  serial number     : 2C:CC:EB:B0:31:A7:95:E8:57:06:DB:62:24:C0:26:18:DC:82:38:E1
+  issuer name       : CN=ca
+  subject name      : CN=server
+  issued  on        : 2026-10-20 13:39:30
+  expires on        : 2026-11-22 13:39:30
+  signed using      : RSA with SHA-256
+  RSA key size      : 2048 bits
+  basic constraints : CA=false
+  subject alt name  :
+      iPAddress : 127.0.0.1
+      dNSName : localhost
+  key usage         : Digital Signature, Key Encipherment
+  ext key usage     : TLS Web Server Authentication
+
+TLS: Verify cert: depth 1
+TLS:    flags: 00000000
+TLS:   cert. version     : 3
+  serial number     : 49:A1:23:21:7E:BB:4A:8D:AF:01:01:84:C1:F9:1F:7A:3B:C4:1B:CB
+  issuer name       : CN=ca
+  subject name      : CN=ca
+  issued  on        : 2026-10-20 13:39:30
+  expires on        : 2026-11-22 13:39:30
+  signed using      : RSA with SHA-256
+  RSA key size      : 2048 bits
+  basic constraints : CA=true
+  key usage         : Digital Signature, Key Cert Sign, CRL Sign
+
+TLS: Verify cert: depth 0
+TLS:    flags: 00000000
+TLS:   cert. version     : 3
+  serial number     : 72:64:C5:F7:10:0E:A8:3D:59:0D:01:04:B9:3A:21:48:8E:B0:32:B7
+  issuer name       : CN=ca
+  subject name      : CN=transport
+  issued  on        : 2026-10-20 13:39:30
+  expires on        : 2026-11-22 13:39:30
+  signed using      : RSA with SHA-256
+  RSA key size      : 2048 bits
+  basic constraints : CA=false
+  key usage         : Digital Signature, Key Encipherment
+  ext key usage     : TLS Web Client Authentication
+
+TLS: Check against list of allowed certs
+TLS: Compare With:
+TLS:      cert. version     : 3
+     serial number     : 72:64:C5:F7:10:0E:A8:3D:59:0D:01:04:B9:3A:21:48:8E:B0:32:B7
+     issuer name       : CN=ca
+     subject name      : CN=transport
+     issued  on        : 2026-10-20 13:39:30
+     expires on        : 2026-11-22 13:39:30
+     signed using      : RSA with SHA-256
+     RSA key size      : 2048 bits
+     basic constraints : CA=false
+     key usage         : Digital Signature, Key Encipherment
+     ext key usage     : TLS Web Client Authentication
+
+mms: client CONNECT count=1
+mms: iso session CONNECT (payload=180)
+mms: ACSE auth ACCEPT — mech=TLS role=DSO_OPERATOR cert=744 octets
+TLS:  connection was closed gracefully
+mms: client DISCONNECT count=0
+mms: O.7.3.3 set-point spacing gate ON (3 s)
+mms: full CID model loaded from /mnt/c/Users/Administrator/Desktop/CCLI Alireza/CCLI Merged/apps/ccli/build-e2e-crypto/rbac-security-fixtures/run-b3f967f9742346c0b8d85147c391a6bb/aggregator-model.cfg
+mms: AARE 62351-4 responder auth ready (cert=769 octets)
+mms: explicit certificate authentication and signed AARE bridge enabled
+mms: listening on 127.0.0.1:42961 tls=on acse_tls_auth=on rbac=on crl=off fallback_s=0 gnss_poll_s=0 chrony=off discipline=off model=full_cid_cfg
+TLS: Verify cert: depth 1
+TLS:    flags: 00000000
+TLS:   cert. version     : 3
+  serial number     : 49:A1:23:21:7E:BB:4A:8D:AF:01:01:84:C1:F9:1F:7A:3B:C4:1B:CB
+  issuer name       : CN=ca
+  subject name      : CN=ca
+  issued  on        : 2026-10-20 13:39:30
+  expires on        : 2026-11-22 13:39:30
+  signed using      : RSA with SHA-256
+  RSA key size      : 2048 bits
+  basic constraints : CA=true
+  key usage         : Digital Signature, Key Cert Sign, CRL Sign
+
+TLS: Verify cert: depth 0
+TLS:    flags: 00000000
+TLS:   cert. version     : 3
+  serial number     : 2C:CC:EB:B0:31:A7:95:E8:57:06:DB:62:24:C0:26:18:DC:82:38:E1
+  issuer name       : CN=ca
+  subject name      : CN=server
+  issued  on        : 2026-10-20 13:39:30
+  expires on        : 2026-11-22 13:39:30
+  signed using      : RSA with SHA-256
+  RSA key size      : 2048 bits
+  basic constraints : CA=false
+  subject alt name  :
+      iPAddress : 127.0.0.1
+      dNSName : localhost
+  key usage         : Digital Signature, Key Encipherment
+  ext key usage     : TLS Web Server Authentication
+
+TLS: Verify cert: depth 1
+TLS:    flags: 00000000
+TLS:   cert. version     : 3
+  serial number     : 49:A1:23:21:7E:BB:4A:8D:AF:01:01:84:C1:F9:1F:7A:3B:C4:1B:CB
+  issuer name       : CN=ca
+  subject name      : CN=ca
+  issued  on        : 2026-10-20 13:39:30
+  expires on        : 2026-11-22 13:39:30
+  signed using      : RSA with SHA-256
+  RSA key size      : 2048 bits
+  basic constraints : CA=true
+  key usage         : Digital Signature, Key Cert Sign, CRL Sign
+
+TLS: Verify cert: depth 0
+TLS:    flags: 00000000
+TLS:   cert. version     : 3
+  serial number     : 72:64:C5:F7:10:0E:A8:3D:59:0D:01:04:B9:3A:21:48:8E:B0:32:B7
+  issuer name       : CN=ca
+  subject name      : CN=transport
+  issued  on        : 2026-10-20 13:39:30
+  expires on        : 2026-11-22 13:39:30
+  signed using      : RSA with SHA-256
+  RSA key size      : 2048 bits
+  basic constraints : CA=false
+  key usage         : Digital Signature, Key Encipherment
+  ext key usage     : TLS Web Client Authentication
+
+TLS: Check against list of allowed certs
+TLS: Compare With:
+TLS:      cert. version     : 3
+     serial number     : 72:64:C5:F7:10:0E:A8:3D:59:0D:01:04:B9:3A:21:48:8E:B0:32:B7
+     issuer name       : CN=ca
+     subject name      : CN=transport
+     issued  on        : 2026-10-20 13:39:30
+     expires on        : 2026-11-22 13:39:30
+     signed using      : RSA with SHA-256
+     RSA key size      : 2048 bits
+     basic constraints : CA=false
+     key usage         : Digital Signature, Key Encipherment
+     ext key usage     : TLS Web Client Authentication
+
+mms: client CONNECT count=1
+mms: iso session CONNECT (payload=180)
+mms: ACSE auth ACCEPT — mech=TLS role=DSO_OPERATOR cert=744 octets
+TLS:  connection was closed gracefully
+mms: client DISCONNECT count=0
+mms: O.7.3.3 set-point spacing gate OFF (0 s)
+mms: Profile A commissioning policy urn:iec:62351:8:IS:1.0:rps-root:8ef16ebb-65d6-4b2e-bad4-6729129eb412 revision 1.0 loaded
+mms: AARE 62351-4 responder auth ready (cert=769 octets)
+mms: explicit certificate authentication and signed AARE bridge enabled
+mms: listening on 127.0.0.1:41239 tls=on acse_tls_auth=on rbac=on crl=off fallback_s=0 gnss_poll_s=0 chrony=off discipline=off model=mvp_handbuilt
+TLS: Verify cert: depth 1
+TLS:    flags: 00000000
+TLS:   cert. version     : 3
+  serial number     : 49:A1:23:21:7E:BB:4A:8D:AF:01:01:84:C1:F9:1F:7A:3B:C4:1B:CB
+  issuer name       : CN=ca
+  subject name      : CN=ca
+  issued  on        : 2026-10-20 13:39:30
+  expires on        : 2026-11-22 13:39:30
+  signed using      : RSA with SHA-256
+  RSA key size      : 2048 bits
+  basic constraints : CA=true
+  key usage         : Digital Signature, Key Cert Sign, CRL Sign
+
+TLS: Verify cert: depth 0
+TLS:    flags: 00000000
+TLS:   cert. version     : 3
+  serial number     : 2C:CC:EB:B0:31:A7:95:E8:57:06:DB:62:24:C0:26:18:DC:82:38:E1
+  issuer name       : CN=ca
+  subject name      : CN=server
+  issued  on        : 2026-10-20 13:39:30
+  expires on        : 2026-11-22 13:39:30
+  signed using      : RSA with SHA-256
+  RSA key size      : 2048 bits
+  basic constraints : CA=false
+  subject alt name  :
+      iPAddress : 127.0.0.1
+      dNSName : localhost
+  key usage         : Digital Signature, Key Encipherment
+  ext key usage     : TLS Web Server Authentication
+
+TLS: Verify cert: depth 1
+TLS:    flags: 00000000
+TLS:   cert. version     : 3
+  serial number     : 49:A1:23:21:7E:BB:4A:8D:AF:01:01:84:C1:F9:1F:7A:3B:C4:1B:CB
+  issuer name       : CN=ca
+  subject name      : CN=ca
+  issued  on        : 2026-10-20 13:39:30
+  expires on        : 2026-11-22 13:39:30
+  signed using      : RSA with SHA-256
+  RSA key size      : 2048 bits
+  basic constraints : CA=true
+  key usage         : Digital Signature, Key Cert Sign, CRL Sign
+
+TLS: Verify cert: depth 0
+TLS:    flags: 00000000
+TLS:   cert. version     : 3
+  serial number     : 34:D7:AC:8B:DF:6F:89:17:31:FE:76:D4:CF:3C:4D:7F:4B:4A:D3:BD
+  issuer name       : CN=ca
+  subject name      : CN=unified_aggregator
+  issued  on        : 2026-10-20 13:39:30
+  expires on        : 2026-11-22 13:39:30
+  signed using      : RSA with SHA-256
+  RSA key size      : 2048 bits
+  basic constraints : CA=false
+  key usage         : Digital Signature, Key Encipherment
+  ext key usage     : TLS Web Client Authentication
+
+TLS: Check against list of allowed certs
+TLS: Compare With:
+TLS:      cert. version     : 3
+     serial number     : 76:FE:7B:DB:2D:3F:DF:8D:69:BD:6A:7B:3B:A3:F3:8F:A1:57:00:BD
+     issuer name       : CN=ca
+     subject name      : CN=unified_dso
+     issued  on        : 2026-10-20 13:39:30
+     expires on        : 2026-11-22 13:39:30
+     signed using      : RSA with SHA-256
+     RSA key size      : 2048 bits
+     basic constraints : CA=false
+     key usage         : Digital Signature, Key Encipherment
+     ext key usage     : TLS Web Client Authentication
+
+TLS: Compare With:
+TLS:      cert. version     : 3
+     serial number     : 3F:DD:BD:BF:77:85:31:8A:AA:E4:2E:0B:15:CA:AE:AA:54:C6:1C:09
+     issuer name       : CN=ca
+     subject name      : CN=owner_rev0
+     issued  on        : 2026-10-20 13:39:30
+     expires on        : 2026-11-22 13:39:30
+     signed using      : RSA with SHA-256
+     RSA key size      : 2048 bits
+     basic constraints : CA=false
+     key usage         : Digital Signature, Key Encipherment
+     ext key usage     : TLS Web Client Authentication
+
+TLS: Compare With:
+TLS:      cert. version     : 3
+     serial number     : 78:60:A0:E8:92:F4:35:5A:22:1E:B3:E3:9E:A9:10:E1:23:D5:74:75
+     issuer name       : CN=ca
+     subject name      : CN=unified_viewer
+     issued  on        : 2026-10-20 13:39:30
+     expires on        : 2026-11-22 13:39:30
+     signed using      : RSA with SHA-256
+     RSA key size      : 2048 bits
+     basic constraints : CA=false
+     key usage         : Digital Signature, Key Encipherment
+     ext key usage     : TLS Web Client Authentication
+
+TLS: Compare With:
+TLS:      cert. version     : 3
+     serial number     : 34:D7:AC:8B:DF:6F:89:17:31:FE:76:D4:CF:3C:4D:7F:4B:4A:D3:BD
+     issuer name       : CN=ca
+     subject name      : CN=unified_aggregator
+     issued  on        : 2026-10-20 13:39:30
+     expires on        : 2026-11-22 13:39:30
+     signed using      : RSA with SHA-256
+     RSA key size      : 2048 bits
+     basic constraints : CA=false
+     key usage         : Digital Signature, Key Encipherment
+     ext key usage     : TLS Web Client Authentication
+
+mms: client CONNECT count=1
+mms: iso session CONNECT (payload=180)
+mms: ACSE auth ACCEPT — Profile A role token
+TLS: Verify cert: depth 1
+TLS:    flags: 00000000
+TLS:   cert. version     : 3
+  serial number     : 49:A1:23:21:7E:BB:4A:8D:AF:01:01:84:C1:F9:1F:7A:3B:C4:1B:CB
+  issuer name       : CN=ca
+  subject name      : CN=ca
+  issued  on        : 2026-10-20 13:39:30
+  expires on        : 2026-11-22 13:39:30
+  signed using      : RSA with SHA-256
+  RSA key size      : 2048 bits
+  basic constraints : CA=true
+  key usage         : Digital Signature, Key Cert Sign, CRL Sign
+
+TLS: Verify cert: depth 0
+TLS:    flags: 00000000
+TLS:   cert. version     : 3
+  serial number     : 2C:CC:EB:B0:31:A7:95:E8:57:06:DB:62:24:C0:26:18:DC:82:38:E1
+  issuer name       : CN=ca
+  subject name      : CN=server
+  issued  on        : 2026-10-20 13:39:30
+  expires on        : 2026-11-22 13:39:30
+  signed using      : RSA with SHA-256
+  RSA key size      : 2048 bits
+  basic constraints : CA=false
+  subject alt name  :
+      iPAddress : 127.0.0.1
+      dNSName : localhost
+  key usage         : Digital Signature, Key Encipherment
+  ext key usage     : TLS Web Server Authentication
+
+TLS: Verify cert: depth 1
+TLS:    flags: 00000000
+TLS:   cert. version     : 3
+  serial number     : 49:A1:23:21:7E:BB:4A:8D:AF:01:01:84:C1:F9:1F:7A:3B:C4:1B:CB
+  issuer name       : CN=ca
+  subject name      : CN=ca
+  issued  on        : 2026-10-20 13:39:30
+  expires on        : 2026-11-22 13:39:30
+  signed using      : RSA with SHA-256
+  RSA key size      : 2048 bits
+  basic constraints : CA=true
+  key usage         : Digital Signature, Key Cert Sign, CRL Sign
+
+TLS: Verify cert: depth 0
+TLS:    flags: 00000000
+TLS:   cert. version     : 3
+  serial number     : 76:FE:7B:DB:2D:3F:DF:8D:69:BD:6A:7B:3B:A3:F3:8F:A1:57:00:BD
+  issuer name       : CN=ca
+  subject name      : CN=unified_dso
+  issued  on        : 2026-10-20 13:39:30
+  expires on        : 2026-11-22 13:39:30
+  signed using      : RSA with SHA-256
+  RSA key size      : 2048 bits
+  basic constraints : CA=false
+  key usage         : Digital Signature, Key Encipherment
+  ext key usage     : TLS Web Client Authentication
+
+TLS: Check against list of allowed certs
+TLS: Compare With:
+TLS:      cert. version     : 3
+     serial number     : 76:FE:7B:DB:2D:3F:DF:8D:69:BD:6A:7B:3B:A3:F3:8F:A1:57:00:BD
+     issuer name       : CN=ca
+     subject name      : CN=unified_dso
+     issued  on        : 2026-10-20 13:39:30
+     expires on        : 2026-11-22 13:39:30
+     signed using      : RSA with SHA-256
+     RSA key size      : 2048 bits
+     basic constraints : CA=false
+     key usage         : Digital Signature, Key Encipherment
+     ext key usage     : TLS Web Client Authentication
+
+mms: client CONNECT count=2
+mms: iso session CONNECT (payload=180)
+mms: ACSE auth ACCEPT — Profile A role token
+{"rbac":true,"event":"ASSOCIATION_AUTH_OK","severity":"notice","policy":"urn:iec:62351:8:IS:1.0:rps-root:8ef16ebb-65d6-4b2e-bad4-6729129eb412","sequence":2,"service":"ASSOCIATION","object":"","reason":"identity bound to authenticated transport","subject":"CN=unified_aggregator","issuer":"CN=ca","serial":"34:D7:AC:8B:DF:6F:89:17:31:FE:76:D4:CF:3C:4D:7F:4B:4A:D3:BD","sha256":"3308ac7ca0962fc62da8597c4cf74cba7e9c3f427e24fc1c3381c2a2566b3643","peer":"127.0.0.1:41934","transport_sha256":"3308ac7ca0962fc62da8597c4cf74cba7e9c3f427e24fc1c3381c2a2566b3643","actor":"AGGREGATOR","roles":[{"id":-2,"aor":"AGGREGATOR","revision":1,"definition":"IEC 62351-8-CEI016:2021"}]}
+{"rbac":true,"event":"ASSOCIATION_AUTH_OK","severity":"notice","policy":"urn:iec:62351:8:IS:1.0:rps-root:8ef16ebb-65d6-4b2e-bad4-6729129eb412","sequence":2,"service":"ASSOCIATION","object":"","reason":"identity bound to authenticated transport","subject":"CN=unified_dso","issuer":"CN=ca","serial":"76:FE:7B:DB:2D:3F:DF:8D:69:BD:6A:7B:3B:A3:F3:8F:A1:57:00:BD","sha256":"a7e740442714e76064cd73eafd7935bf81984e75d753a0a69ca5eeca0fb0f598","peer":"127.0.0.1:41944","transport_sha256":"a7e740442714e76064cd73eafd7935bf81984e75d753a0a69ca5eeca0fb0f598","actor":"DSO","roles":[{"id":-1,"aor":"DSO","revision":1,"definition":"IEC 62351-8-CEI016:2021"}]}
+{"rbac":true,"event":"MMS_ACCESS_DENIED","severity":"alarm","policy":"urn:iec:62351:8:IS:1.0:rps-root:8ef16ebb-65d6-4b2e-bad4-6729129eb412","sequence":2,"service":"READVALUES","object":"LD_Plant/PdCiMMXU1.TotW","reason":"permission or object scope denied","subject":"CN=unified_dso","issuer":"CN=ca","serial":"76:FE:7B:DB:2D:3F:DF:8D:69:BD:6A:7B:3B:A3:F3:8F:A1:57:00:BD","sha256":"a7e740442714e76064cd73eafd7935bf81984e75d753a0a69ca5eeca0fb0f598","peer":"127.0.0.1:41944","transport_sha256":"a7e740442714e76064cd73eafd7935bf81984e75d753a0a69ca5eeca0fb0f598","actor":"DSO","roles":[{"id":-1,"aor":"DSO","revision":1,"definition":"IEC 62351-8-CEI016:2021"}]}
+read denied: CCI016_01LD_Plant/PdCiMMXU1.TotW.mag.f error=0 access=3
+{"rbac":true,"event":"MMS_ACCESS_DENIED","severity":"alarm","policy":"urn:iec:62351:8:IS:1.0:rps-root:8ef16ebb-65d6-4b2e-bad4-6729129eb412","sequence":2,"service":"READVALUES","object":"LD_Plant/PdCMMXU1.TotW","reason":"permission or object scope denied","subject":"CN=unified_aggregator","issuer":"CN=ca","serial":"34:D7:AC:8B:DF:6F:89:17:31:FE:76:D4:CF:3C:4D:7F:4B:4A:D3:BD","sha256":"3308ac7ca0962fc62da8597c4cf74cba7e9c3f427e24fc1c3381c2a2566b3643","peer":"127.0.0.1:41934","transport_sha256":"3308ac7ca0962fc62da8597c4cf74cba7e9c3f427e24fc1c3381c2a2566b3643","actor":"AGGREGATOR","roles":[{"id":-2,"aor":"AGGREGATOR","revision":1,"definition":"IEC 62351-8-CEI016:2021"}]}
+read denied: CCI016_01LD_Plant/PdCMMXU1.TotW.mag.f error=0 access=3
+{"rbac":true,"event":"MMS_ACCESS_DENIED","severity":"alarm","policy":"urn:iec:62351:8:IS:1.0:rps-root:8ef16ebb-65d6-4b2e-bad4-6729129eb412","sequence":2,"service":"CONFIG","object":"LD_Plant/WSaDAGC1.Mod.ctlModel","reason":"permission or object scope denied","subject":"CN=unified_aggregator","issuer":"CN=ca","serial":"34:D7:AC:8B:DF:6F:89:17:31:FE:76:D4:CF:3C:4D:7F:4B:4A:D3:BD","sha256":"3308ac7ca0962fc62da8597c4cf74cba7e9c3f427e24fc1c3381c2a2566b3643","peer":"127.0.0.1:41934","transport_sha256":"3308ac7ca0962fc62da8597c4cf74cba7e9c3f427e24fc1c3381c2a2566b3643","actor":"AGGREGATOR","roles":[{"id":-2,"aor":"AGGREGATOR","revision":1,"definition":"IEC 62351-8-CEI016:2021"}]}
+{"rbac":true,"event":"MMS_ACCESS_DENIED","severity":"alarm","policy":"urn:iec:62351:8:IS:1.0:rps-root:8ef16ebb-65d6-4b2e-bad4-6729129eb412","sequence":2,"service":"READVALUES","object":"LD_Plant/WSaDAGC1.Mod","reason":"permission or object scope denied","subject":"CN=unified_dso","issuer":"CN=ca","serial":"76:FE:7B:DB:2D:3F:DF:8D:69:BD:6A:7B:3B:A3:F3:8F:A1:57:00:BD","sha256":"a7e740442714e76064cd73eafd7935bf81984e75d753a0a69ca5eeca0fb0f598","peer":"127.0.0.1:41944","transport_sha256":"a7e740442714e76064cd73eafd7935bf81984e75d753a0a69ca5eeca0fb0f598","actor":"DSO","roles":[{"id":-1,"aor":"DSO","revision":1,"definition":"IEC 62351-8-CEI016:2021"}]}
+{"rbac":true,"event":"MMS_ACCESS_DENIED","severity":"alarm","policy":"urn:iec:62351:8:IS:1.0:rps-root:8ef16ebb-65d6-4b2e-bad4-6729129eb412","sequence":2,"service":"CONFIG","object":"LD_Plant/VArSaDVAR1.Mod.ctlModel","reason":"permission or object scope denied","subject":"CN=unified_aggregator","issuer":"CN=ca","serial":"34:D7:AC:8B:DF:6F:89:17:31:FE:76:D4:CF:3C:4D:7F:4B:4A:D3:BD","sha256":"3308ac7ca0962fc62da8597c4cf74cba7e9c3f427e24fc1c3381c2a2566b3643","peer":"127.0.0.1:41934","transport_sha256":"3308ac7ca0962fc62da8597c4cf74cba7e9c3f427e24fc1c3381c2a2566b3643","actor":"AGGREGATOR","roles":[{"id":-2,"aor":"AGGREGATOR","revision":1,"definition":"IEC 62351-8-CEI016:2021"}]}
+{"rbac":true,"event":"MMS_ACCESS_DENIED","severity":"alarm","policy":"urn:iec:62351:8:IS:1.0:rps-root:8ef16ebb-65d6-4b2e-bad4-6729129eb412","sequence":2,"service":"READVALUES","object":"LD_Plant/VArSaDVAR1.Mod","reason":"permission or object scope denied","subject":"CN=unified_dso","issuer":"CN=ca","serial":"76:FE:7B:DB:2D:3F:DF:8D:69:BD:6A:7B:3B:A3:F3:8F:A1:57:00:BD","sha256":"a7e740442714e76064cd73eafd7935bf81984e75d753a0a69ca5eeca0fb0f598","peer":"127.0.0.1:41944","transport_sha256":"a7e740442714e76064cd73eafd7935bf81984e75d753a0a69ca5eeca0fb0f598","actor":"DSO","roles":[{"id":-1,"aor":"DSO","revision":1,"definition":"IEC 62351-8-CEI016:2021"}]}
+{"rbac":true,"event":"MMS_ACCESS_DENIED","severity":"alarm","policy":"urn:iec:62351:8:IS:1.0:rps-root:8ef16ebb-65d6-4b2e-bad4-6729129eb412","sequence":2,"service":"CONFIG","object":"LD_Plant/WSaDAGC1.WSptPct.ctlModel","reason":"permission or object scope denied","subject":"CN=unified_aggregator","issuer":"CN=ca","serial":"34:D7:AC:8B:DF:6F:89:17:31:FE:76:D4:CF:3C:4D:7F:4B:4A:D3:BD","sha256":"3308ac7ca0962fc62da8597c4cf74cba7e9c3f427e24fc1c3381c2a2566b3643","peer":"127.0.0.1:41934","transport_sha256":"3308ac7ca0962fc62da8597c4cf74cba7e9c3f427e24fc1c3381c2a2566b3643","actor":"AGGREGATOR","roles":[{"id":-2,"aor":"AGGREGATOR","revision":1,"definition":"IEC 62351-8-CEI016:2021"}]}
+{"rbac":true,"event":"MMS_ACCESS_DENIED","severity":"alarm","policy":"urn:iec:62351:8:IS:1.0:rps-root:8ef16ebb-65d6-4b2e-bad4-6729129eb412","sequence":2,"service":"READVALUES","object":"LD_Plant/WSaDAGC1.WSptPct","reason":"permission or object scope denied","subject":"CN=unified_dso","issuer":"CN=ca","serial":"76:FE:7B:DB:2D:3F:DF:8D:69:BD:6A:7B:3B:A3:F3:8F:A1:57:00:BD","sha256":"a7e740442714e76064cd73eafd7935bf81984e75d753a0a69ca5eeca0fb0f598","peer":"127.0.0.1:41944","transport_sha256":"a7e740442714e76064cd73eafd7935bf81984e75d753a0a69ca5eeca0fb0f598","actor":"DSO","roles":[{"id":-1,"aor":"DSO","revision":1,"definition":"IEC 62351-8-CEI016:2021"}]}
+{"rbac":true,"event":"MMS_ACCESS_DENIED","severity":"alarm","policy":"urn:iec:62351:8:IS:1.0:rps-root:8ef16ebb-65d6-4b2e-bad4-6729129eb412","sequence":2,"service":"CONFIG","object":"LD_Plant/VArSaDVAR1.VArTgtSptPct.ctlModel","reason":"permission or object scope denied","subject":"CN=unified_aggregator","issuer":"CN=ca","serial":"34:D7:AC:8B:DF:6F:89:17:31:FE:76:D4:CF:3C:4D:7F:4B:4A:D3:BD","sha256":"3308ac7ca0962fc62da8597c4cf74cba7e9c3f427e24fc1c3381c2a2566b3643","peer":"127.0.0.1:41934","transport_sha256":"3308ac7ca0962fc62da8597c4cf74cba7e9c3f427e24fc1c3381c2a2566b3643","actor":"AGGREGATOR","roles":[{"id":-2,"aor":"AGGREGATOR","revision":1,"definition":"IEC 62351-8-CEI016:2021"}]}
+{"rbac":true,"event":"MMS_ACCESS_DENIED","severity":"alarm","policy":"urn:iec:62351:8:IS:1.0:rps-root:8ef16ebb-65d6-4b2e-bad4-6729129eb412","sequence":2,"service":"READVALUES","object":"LD_Plant/VArSaDVAR1.VArTgtSptPct","reason":"permission or object scope denied","subject":"CN=unified_dso","issuer":"CN=ca","serial":"76:FE:7B:DB:2D:3F:DF:8D:69:BD:6A:7B:3B:A3:F3:8F:A1:57:00:BD","sha256":"a7e740442714e76064cd73eafd7935bf81984e75d753a0a69ca5eeca0fb0f598","peer":"127.0.0.1:41944","transport_sha256":"a7e740442714e76064cd73eafd7935bf81984e75d753a0a69ca5eeca0fb0f598","actor":"DSO","roles":[{"id":-1,"aor":"DSO","revision":1,"definition":"IEC 62351-8-CEI016:2021"}]}
+TLS: Verify cert: depth 1
+TLS:    flags: 00000000
+TLS:   cert. version     : 3
+  serial number     : 49:A1:23:21:7E:BB:4A:8D:AF:01:01:84:C1:F9:1F:7A:3B:C4:1B:CB
+  issuer name       : CN=ca
+  subject name      : CN=ca
+  issued  on        : 2026-10-20 13:39:30
+  expires on        : 2026-11-22 13:39:30
+  signed using      : RSA with SHA-256
+  RSA key size      : 2048 bits
+  basic constraints : CA=true
+  key usage         : Digital Signature, Key Cert Sign, CRL Sign
+
+TLS: Verify cert: depth 0
+TLS:    flags: 00000000
+TLS:   cert. version     : 3
+  serial number     : 2C:CC:EB:B0:31:A7:95:E8:57:06:DB:62:24:C0:26:18:DC:82:38:E1
+  issuer name       : CN=ca
+  subject name      : CN=server
+  issued  on        : 2026-10-20 13:39:30
+  expires on        : 2026-11-22 13:39:30
+  signed using      : RSA with SHA-256
+  RSA key size      : 2048 bits
+  basic constraints : CA=false
+  subject alt name  :
+      iPAddress : 127.0.0.1
+      dNSName : localhost
+  key usage         : Digital Signature, Key Encipherment
+  ext key usage     : TLS Web Server Authentication
+
+TLS: Verify cert: depth 1
+TLS:    flags: 00000000
+TLS:   cert. version     : 3
+  serial number     : 49:A1:23:21:7E:BB:4A:8D:AF:01:01:84:C1:F9:1F:7A:3B:C4:1B:CB
+  issuer name       : CN=ca
+  subject name      : CN=ca
+  issued  on        : 2026-10-20 13:39:30
+  expires on        : 2026-11-22 13:39:30
+  signed using      : RSA with SHA-256
+  RSA key size      : 2048 bits
+  basic constraints : CA=true
+  key usage         : Digital Signature, Key Cert Sign, CRL Sign
+
+TLS: Verify cert: depth 0
+TLS:    flags: 00000000
+TLS:   cert. version     : 3
+  serial number     : 34:D7:AC:8B:DF:6F:89:17:31:FE:76:D4:CF:3C:4D:7F:4B:4A:D3:BD
+  issuer name       : CN=ca
+  subject name      : CN=unified_aggregator
+  issued  on        : 2026-10-20 13:39:30
+  expires on        : 2026-11-22 13:39:30
+  signed using      : RSA with SHA-256
+  RSA key size      : 2048 bits
+  basic constraints : CA=false
+  key usage         : Digital Signature, Key Encipherment
+  ext key usage     : TLS Web Client Authentication
+
+TLS: Check against list of allowed certs
+TLS: Compare With:
+TLS:      cert. version     : 3
+     serial number     : 76:FE:7B:DB:2D:3F:DF:8D:69:BD:6A:7B:3B:A3:F3:8F:A1:57:00:BD
+     issuer name       : CN=ca
+     subject name      : CN=unified_dso
+     issued  on        : 2026-10-20 13:39:30
+     expires on        : 2026-11-22 13:39:30
+     signed using      : RSA with SHA-256
+     RSA key size      : 2048 bits
+     basic constraints : CA=false
+     key usage         : Digital Signature, Key Encipherment
+     ext key usage     : TLS Web Client Authentication
+
+TLS: Compare With:
+TLS:      cert. version     : 3
+     serial number     : 3F:DD:BD:BF:77:85:31:8A:AA:E4:2E:0B:15:CA:AE:AA:54:C6:1C:09
+     issuer name       : CN=ca
+     subject name      : CN=owner_rev0
+     issued  on        : 2026-10-20 13:39:30
+     expires on        : 2026-11-22 13:39:30
+     signed using      : RSA with SHA-256
+     RSA key size      : 2048 bits
+     basic constraints : CA=false
+     key usage         : Digital Signature, Key Encipherment
+     ext key usage     : TLS Web Client Authentication
+
+TLS: Compare With:
+TLS:      cert. version     : 3
+     serial number     : 78:60:A0:E8:92:F4:35:5A:22:1E:B3:E3:9E:A9:10:E1:23:D5:74:75
+     issuer name       : CN=ca
+     subject name      : CN=unified_viewer
+     issued  on        : 2026-10-20 13:39:30
+     expires on        : 2026-11-22 13:39:30
+     signed using      : RSA with SHA-256
+     RSA key size      : 2048 bits
+     basic constraints : CA=false
+     key usage         : Digital Signature, Key Encipherment
+     ext key usage     : TLS Web Client Authentication
+
+TLS: Compare With:
+TLS:      cert. version     : 3
+     serial number     : 34:D7:AC:8B:DF:6F:89:17:31:FE:76:D4:CF:3C:4D:7F:4B:4A:D3:BD
+     issuer name       : CN=ca
+     subject name      : CN=unified_aggregator
+     issued  on        : 2026-10-20 13:39:30
+     expires on        : 2026-11-22 13:39:30
+     signed using      : RSA with SHA-256
+     RSA key size      : 2048 bits
+     basic constraints : CA=false
+     key usage         : Digital Signature, Key Encipherment
+     ext key usage     : TLS Web Client Authentication
+
+mms: client CONNECT count=3
+mms: iso session CONNECT (payload=180)
+mms: ACSE auth ACCEPT — Profile A role token
+{"rbac":true,"event":"ASSOCIATION_AUTH_OK","severity":"notice","policy":"urn:iec:62351:8:IS:1.0:rps-root:8ef16ebb-65d6-4b2e-bad4-6729129eb412","sequence":2,"service":"ASSOCIATION","object":"","reason":"identity bound to authenticated transport","subject":"CN=unified_aggregator","issuer":"CN=ca","serial":"34:D7:AC:8B:DF:6F:89:17:31:FE:76:D4:CF:3C:4D:7F:4B:4A:D3:BD","sha256":"3308ac7ca0962fc62da8597c4cf74cba7e9c3f427e24fc1c3381c2a2566b3643","peer":"127.0.0.1:41954","transport_sha256":"3308ac7ca0962fc62da8597c4cf74cba7e9c3f427e24fc1c3381c2a2566b3643","actor":"AGGREGATOR","roles":[{"id":-2,"aor":"AGGREGATOR","revision":1,"definition":"IEC 62351-8-CEI016:2021"}]}
+TLS:  connection was closed gracefully
+{"rbac":true,"event":"ASSOCIATION_RELEASE","severity":"notice","policy":"urn:iec:62351:8:IS:1.0:rps-root:8ef16ebb-65d6-4b2e-bad4-6729129eb412","sequence":2,"service":"ASSOCIATION","object":"","reason":"disconnected","subject":"CN=unified_aggregator","issuer":"CN=ca","serial":"34:D7:AC:8B:DF:6F:89:17:31:FE:76:D4:CF:3C:4D:7F:4B:4A:D3:BD","sha256":"3308ac7ca0962fc62da8597c4cf74cba7e9c3f427e24fc1c3381c2a2566b3643","peer":"127.0.0.1:41954","transport_sha256":"3308ac7ca0962fc62da8597c4cf74cba7e9c3f427e24fc1c3381c2a2566b3643","actor":"AGGREGATOR","roles":[{"id":-2,"aor":"AGGREGATOR","revision":1,"definition":"IEC 62351-8-CEI016:2021"}]}
+mms: client DISCONNECT count=2
+TLS:  connection was closed gracefully
+{"rbac":true,"event":"ASSOCIATION_RELEASE","severity":"notice","policy":"urn:iec:62351:8:IS:1.0:rps-root:8ef16ebb-65d6-4b2e-bad4-6729129eb412","sequence":2,"service":"ASSOCIATION","object":"","reason":"disconnected","subject":"CN=unified_dso","issuer":"CN=ca","serial":"76:FE:7B:DB:2D:3F:DF:8D:69:BD:6A:7B:3B:A3:F3:8F:A1:57:00:BD","sha256":"a7e740442714e76064cd73eafd7935bf81984e75d753a0a69ca5eeca0fb0f598","peer":"127.0.0.1:41944","transport_sha256":"a7e740442714e76064cd73eafd7935bf81984e75d753a0a69ca5eeca0fb0f598","actor":"DSO","roles":[{"id":-1,"aor":"DSO","revision":1,"definition":"IEC 62351-8-CEI016:2021"}]}
+mms: client DISCONNECT count=1
+TLS:  connection was closed gracefully
+{"rbac":true,"event":"ASSOCIATION_RELEASE","severity":"notice","policy":"urn:iec:62351:8:IS:1.0:rps-root:8ef16ebb-65d6-4b2e-bad4-6729129eb412","sequence":2,"service":"ASSOCIATION","object":"","reason":"disconnected","subject":"CN=unified_aggregator","issuer":"CN=ca","serial":"34:D7:AC:8B:DF:6F:89:17:31:FE:76:D4:CF:3C:4D:7F:4B:4A:D3:BD","sha256":"3308ac7ca0962fc62da8597c4cf74cba7e9c3f427e24fc1c3381c2a2566b3643","peer":"127.0.0.1:41934","transport_sha256":"3308ac7ca0962fc62da8597c4cf74cba7e9c3f427e24fc1c3381c2a2566b3643","actor":"AGGREGATOR","roles":[{"id":-2,"aor":"AGGREGATOR","revision":1,"definition":"IEC 62351-8-CEI016:2021"}]}
+mms: client DISCONNECT count=0
+mms: Aggregator plant outputs require a validated signed P/Q backend; startup refused
+mms: O.7.3.3 set-point spacing gate OFF (0 s)
+mms: full CID model loaded from /mnt/c/Users/Administrator/Desktop/CCLI Alireza/CCLI Merged/apps/ccli/build-e2e-crypto/rbac-security-fixtures/run-b3f967f9742346c0b8d85147c391a6bb/aggregator-model.cfg
+mms: Profile A commissioning policy urn:iec:62351:8:IS:1.0:rps-root:8ef16ebb-65d6-4b2e-bad4-6729129eb412 revision 1.0 loaded
+mms: AARE 62351-4 responder auth ready (cert=769 octets)
+mms: explicit certificate authentication and signed AARE bridge enabled
+mms: listening on 127.0.0.1:41307 tls=on acse_tls_auth=on rbac=on crl=off fallback_s=0 gnss_poll_s=0 chrony=off discipline=off model=full_cid_cfg
+TLS: Verify cert: depth 1
+TLS:    flags: 00000000
+TLS:   cert. version     : 3
+  serial number     : 49:A1:23:21:7E:BB:4A:8D:AF:01:01:84:C1:F9:1F:7A:3B:C4:1B:CB
+  issuer name       : CN=ca
+  subject name      : CN=ca
+  issued  on        : 2026-10-20 13:39:30
+  expires on        : 2026-11-22 13:39:30
+  signed using      : RSA with SHA-256
+  RSA key size      : 2048 bits
+  basic constraints : CA=true
+  key usage         : Digital Signature, Key Cert Sign, CRL Sign
+
+TLS: Verify cert: depth 0
+TLS:    flags: 00000000
+TLS:   cert. version     : 3
+  serial number     : 2C:CC:EB:B0:31:A7:95:E8:57:06:DB:62:24:C0:26:18:DC:82:38:E1
+  issuer name       : CN=ca
+  subject name      : CN=server
+  issued  on        : 2026-10-20 13:39:30
+  expires on        : 2026-11-22 13:39:30
+  signed using      : RSA with SHA-256
+  RSA key size      : 2048 bits
+  basic constraints : CA=false
+  subject alt name  :
+      iPAddress : 127.0.0.1
+      dNSName : localhost
+  key usage         : Digital Signature, Key Encipherment
+  ext key usage     : TLS Web Server Authentication
+
+TLS: Verify cert: depth 1
+TLS:    flags: 00000000
+TLS:   cert. version     : 3
+  serial number     : 49:A1:23:21:7E:BB:4A:8D:AF:01:01:84:C1:F9:1F:7A:3B:C4:1B:CB
+  issuer name       : CN=ca
+  subject name      : CN=ca
+  issued  on        : 2026-10-20 13:39:30
+  expires on        : 2026-11-22 13:39:30
+  signed using      : RSA with SHA-256
+  RSA key size      : 2048 bits
+  basic constraints : CA=true
+  key usage         : Digital Signature, Key Cert Sign, CRL Sign
+
+TLS: Verify cert: depth 0
+TLS:    flags: 00000000
+TLS:   cert. version     : 3
+  serial number     : 34:D7:AC:8B:DF:6F:89:17:31:FE:76:D4:CF:3C:4D:7F:4B:4A:D3:BD
+  issuer name       : CN=ca
+  subject name      : CN=unified_aggregator
+  issued  on        : 2026-10-20 13:39:30
+  expires on        : 2026-11-22 13:39:30
+  signed using      : RSA with SHA-256
+  RSA key size      : 2048 bits
+  basic constraints : CA=false
+  key usage         : Digital Signature, Key Encipherment
+  ext key usage     : TLS Web Client Authentication
+
+TLS: Check against list of allowed certs
+TLS: Compare With:
+TLS:      cert. version     : 3
+     serial number     : 76:FE:7B:DB:2D:3F:DF:8D:69:BD:6A:7B:3B:A3:F3:8F:A1:57:00:BD
+     issuer name       : CN=ca
+     subject name      : CN=unified_dso
+     issued  on        : 2026-10-20 13:39:30
+     expires on        : 2026-11-22 13:39:30
+     signed using      : RSA with SHA-256
+     RSA key size      : 2048 bits
+     basic constraints : CA=false
+     key usage         : Digital Signature, Key Encipherment
+     ext key usage     : TLS Web Client Authentication
+
+TLS: Compare With:
+TLS:      cert. version     : 3
+     serial number     : 3F:DD:BD:BF:77:85:31:8A:AA:E4:2E:0B:15:CA:AE:AA:54:C6:1C:09
+     issuer name       : CN=ca
+     subject name      : CN=owner_rev0
+     issued  on        : 2026-10-20 13:39:30
+     expires on        : 2026-11-22 13:39:30
+     signed using      : RSA with SHA-256
+     RSA key size      : 2048 bits
+     basic constraints : CA=false
+     key usage         : Digital Signature, Key Encipherment
+     ext key usage     : TLS Web Client Authentication
+
+TLS: Compare With:
+TLS:      cert. version     : 3
+     serial number     : 78:60:A0:E8:92:F4:35:5A:22:1E:B3:E3:9E:A9:10:E1:23:D5:74:75
+     issuer name       : CN=ca
+     subject name      : CN=unified_viewer
+     issued  on        : 2026-10-20 13:39:30
+     expires on        : 2026-11-22 13:39:30
+     signed using      : RSA with SHA-256
+     RSA key size      : 2048 bits
+     basic constraints : CA=false
+     key usage         : Digital Signature, Key Encipherment
+     ext key usage     : TLS Web Client Authentication
+
+TLS: Compare With:
+TLS:      cert. version     : 3
+     serial number     : 34:D7:AC:8B:DF:6F:89:17:31:FE:76:D4:CF:3C:4D:7F:4B:4A:D3:BD
+     issuer name       : CN=ca
+     subject name      : CN=unified_aggregator
+     issued  on        : 2026-10-20 13:39:30
+     expires on        : 2026-11-22 13:39:30
+     signed using      : RSA with SHA-256
+     RSA key size      : 2048 bits
+     basic constraints : CA=false
+     key usage         : Digital Signature, Key Encipherment
+     ext key usage     : TLS Web Client Authentication
+
+mms: client CONNECT count=1
+mms: iso session CONNECT (payload=180)
+mms: ACSE auth ACCEPT — Profile A role token
+TLS: Verify cert: depth 1
+TLS:    flags: 00000000
+TLS:   cert. version     : 3
+  serial number     : 49:A1:23:21:7E:BB:4A:8D:AF:01:01:84:C1:F9:1F:7A:3B:C4:1B:CB
+  issuer name       : CN=ca
+  subject name      : CN=ca
+  issued  on        : 2026-10-20 13:39:30
+  expires on        : 2026-11-22 13:39:30
+  signed using      : RSA with SHA-256
+  RSA key size      : 2048 bits
+  basic constraints : CA=true
+  key usage         : Digital Signature, Key Cert Sign, CRL Sign
+
+TLS: Verify cert: depth 0
+TLS:    flags: 00000000
+TLS:   cert. version     : 3
+  serial number     : 2C:CC:EB:B0:31:A7:95:E8:57:06:DB:62:24:C0:26:18:DC:82:38:E1
+  issuer name       : CN=ca
+  subject name      : CN=server
+  issued  on        : 2026-10-20 13:39:30
+  expires on        : 2026-11-22 13:39:30
+  signed using      : RSA with SHA-256
+  RSA key size      : 2048 bits
+  basic constraints : CA=false
+  subject alt name  :
+      iPAddress : 127.0.0.1
+      dNSName : localhost
+  key usage         : Digital Signature, Key Encipherment
+  ext key usage     : TLS Web Server Authentication
+
+TLS: Verify cert: depth 1
+TLS:    flags: 00000000
+TLS:   cert. version     : 3
+  serial number     : 49:A1:23:21:7E:BB:4A:8D:AF:01:01:84:C1:F9:1F:7A:3B:C4:1B:CB
+  issuer name       : CN=ca
+  subject name      : CN=ca
+  issued  on        : 2026-10-20 13:39:30
+  expires on        : 2026-11-22 13:39:30
+  signed using      : RSA with SHA-256
+  RSA key size      : 2048 bits
+  basic constraints : CA=true
+  key usage         : Digital Signature, Key Cert Sign, CRL Sign
+
+TLS: Verify cert: depth 0
+TLS:    flags: 00000000
+TLS:   cert. version     : 3
+  serial number     : 76:FE:7B:DB:2D:3F:DF:8D:69:BD:6A:7B:3B:A3:F3:8F:A1:57:00:BD
+  issuer name       : CN=ca
+  subject name      : CN=unified_dso
+  issued  on        : 2026-10-20 13:39:30
+  expires on        : 2026-11-22 13:39:30
+  signed using      : RSA with SHA-256
+  RSA key size      : 2048 bits
+  basic constraints : CA=false
+  key usage         : Digital Signature, Key Encipherment
+  ext key usage     : TLS Web Client Authentication
+
+TLS: Check against list of allowed certs
+TLS: Compare With:
+TLS:      cert. version     : 3
+     serial number     : 76:FE:7B:DB:2D:3F:DF:8D:69:BD:6A:7B:3B:A3:F3:8F:A1:57:00:BD
+     issuer name       : CN=ca
+     subject name      : CN=unified_dso
+     issued  on        : 2026-10-20 13:39:30
+     expires on        : 2026-11-22 13:39:30
+     signed using      : RSA with SHA-256
+     RSA key size      : 2048 bits
+     basic constraints : CA=false
+     key usage         : Digital Signature, Key Encipherment
+     ext key usage     : TLS Web Client Authentication
+
+mms: client CONNECT count=2
+mms: iso session CONNECT (payload=180)
+mms: ACSE auth ACCEPT — Profile A role token
+Aggregator CEI model, signed controls, measurements, statuses, datasets, concurrent buffered/unbuffered reports and actor boundaries: PASS
+{"rbac":true,"event":"ASSOCIATION_AUTH_OK","severity":"notice","policy":"urn:iec:62351:8:IS:1.0:rps-root:8ef16ebb-65d6-4b2e-bad4-6729129eb412","sequence":2,"service":"ASSOCIATION","object":"","reason":"identity bound to authenticated transport","subject":"CN=unified_aggregator","issuer":"CN=ca","serial":"34:D7:AC:8B:DF:6F:89:17:31:FE:76:D4:CF:3C:4D:7F:4B:4A:D3:BD","sha256":"3308ac7ca0962fc62da8597c4cf74cba7e9c3f427e24fc1c3381c2a2566b3643","peer":"127.0.0.1:32802","transport_sha256":"3308ac7ca0962fc62da8597c4cf74cba7e9c3f427e24fc1c3381c2a2566b3643","actor":"AGGREGATOR","roles":[{"id":-2,"aor":"AGGREGATOR","revision":1,"definition":"IEC 62351-8-CEI016:2021"}]}
+{"rbac":true,"event":"ASSOCIATION_AUTH_OK","severity":"notice","policy":"urn:iec:62351:8:IS:1.0:rps-root:8ef16ebb-65d6-4b2e-bad4-6729129eb412","sequence":2,"service":"ASSOCIATION","object":"","reason":"identity bound to authenticated transport","subject":"CN=unified_dso","issuer":"CN=ca","serial":"76:FE:7B:DB:2D:3F:DF:8D:69:BD:6A:7B:3B:A3:F3:8F:A1:57:00:BD","sha256":"a7e740442714e76064cd73eafd7935bf81984e75d753a0a69ca5eeca0fb0f598","peer":"127.0.0.1:32812","transport_sha256":"a7e740442714e76064cd73eafd7935bf81984e75d753a0a69ca5eeca0fb0f598","actor":"DSO","roles":[{"id":-1,"aor":"DSO","revision":1,"definition":"IEC 62351-8-CEI016:2021"}]}
+{"rbac":true,"event":"MMS_ACCESS_DENIED","severity":"alarm","policy":"urn:iec:62351:8:IS:1.0:rps-root:8ef16ebb-65d6-4b2e-bad4-6729129eb412","sequence":2,"service":"READVALUES","object":"LD_Plant/PdCiMMXU1.TotW","reason":"permission or object scope denied","subject":"CN=unified_dso","issuer":"CN=ca","serial":"76:FE:7B:DB:2D:3F:DF:8D:69:BD:6A:7B:3B:A3:F3:8F:A1:57:00:BD","sha256":"a7e740442714e76064cd73eafd7935bf81984e75d753a0a69ca5eeca0fb0f598","peer":"127.0.0.1:32812","transport_sha256":"a7e740442714e76064cd73eafd7935bf81984e75d753a0a69ca5eeca0fb0f598","actor":"DSO","roles":[{"id":-1,"aor":"DSO","revision":1,"definition":"IEC 62351-8-CEI016:2021"}]}
+read denied: CCI016_01LD_Plant/PdCiMMXU1.TotW.mag.f error=0 access=3
+{"rbac":true,"event":"MMS_ACCESS_DENIED","severity":"alarm","policy":"urn:iec:62351:8:IS:1.0:rps-root:8ef16ebb-65d6-4b2e-bad4-6729129eb412","sequence":2,"service":"READVALUES","object":"LD_Plant/PdCMMXU1.TotW","reason":"permission or object scope denied","subject":"CN=unified_aggregator","issuer":"CN=ca","serial":"34:D7:AC:8B:DF:6F:89:17:31:FE:76:D4:CF:3C:4D:7F:4B:4A:D3:BD","sha256":"3308ac7ca0962fc62da8597c4cf74cba7e9c3f427e24fc1c3381c2a2566b3643","peer":"127.0.0.1:32802","transport_sha256":"3308ac7ca0962fc62da8597c4cf74cba7e9c3f427e24fc1c3381c2a2566b3643","actor":"AGGREGATOR","roles":[{"id":-2,"aor":"AGGREGATOR","revision":1,"definition":"IEC 62351-8-CEI016:2021"}]}
+read denied: CCI016_01LD_Plant/PdCMMXU1.TotW.mag.f error=0 access=3
+{"rbac":true,"event":"MMS_ACCESS_DENIED","severity":"alarm","policy":"urn:iec:62351:8:IS:1.0:rps-root:8ef16ebb-65d6-4b2e-bad4-6729129eb412","sequence":2,"service":"CONFIG","object":"LD_Plant/WSaDAGC1.Mod.ctlModel","reason":"permission or object scope denied","subject":"CN=unified_aggregator","issuer":"CN=ca","serial":"34:D7:AC:8B:DF:6F:89:17:31:FE:76:D4:CF:3C:4D:7F:4B:4A:D3:BD","sha256":"3308ac7ca0962fc62da8597c4cf74cba7e9c3f427e24fc1c3381c2a2566b3643","peer":"127.0.0.1:32802","transport_sha256":"3308ac7ca0962fc62da8597c4cf74cba7e9c3f427e24fc1c3381c2a2566b3643","actor":"AGGREGATOR","roles":[{"id":-2,"aor":"AGGREGATOR","revision":1,"definition":"IEC 62351-8-CEI016:2021"}]}
+{"rbac":true,"event":"MMS_ACCESS_DENIED","severity":"alarm","policy":"urn:iec:62351:8:IS:1.0:rps-root:8ef16ebb-65d6-4b2e-bad4-6729129eb412","sequence":2,"service":"READVALUES","object":"LD_Plant/WSaDAGC1.Mod","reason":"permission or object scope denied","subject":"CN=unified_dso","issuer":"CN=ca","serial":"76:FE:7B:DB:2D:3F:DF:8D:69:BD:6A:7B:3B:A3:F3:8F:A1:57:00:BD","sha256":"a7e740442714e76064cd73eafd7935bf81984e75d753a0a69ca5eeca0fb0f598","peer":"127.0.0.1:32812","transport_sha256":"a7e740442714e76064cd73eafd7935bf81984e75d753a0a69ca5eeca0fb0f598","actor":"DSO","roles":[{"id":-1,"aor":"DSO","revision":1,"definition":"IEC 62351-8-CEI016:2021"}]}
+{"rbac":true,"event":"MMS_ACCESS_DENIED","severity":"alarm","policy":"urn:iec:62351:8:IS:1.0:rps-root:8ef16ebb-65d6-4b2e-bad4-6729129eb412","sequence":2,"service":"CONFIG","object":"LD_Plant/VArSaDVAR1.Mod.ctlModel","reason":"permission or object scope denied","subject":"CN=unified_aggregator","issuer":"CN=ca","serial":"34:D7:AC:8B:DF:6F:89:17:31:FE:76:D4:CF:3C:4D:7F:4B:4A:D3:BD","sha256":"3308ac7ca0962fc62da8597c4cf74cba7e9c3f427e24fc1c3381c2a2566b3643","peer":"127.0.0.1:32802","transport_sha256":"3308ac7ca0962fc62da8597c4cf74cba7e9c3f427e24fc1c3381c2a2566b3643","actor":"AGGREGATOR","roles":[{"id":-2,"aor":"AGGREGATOR","revision":1,"definition":"IEC 62351-8-CEI016:2021"}]}
+{"rbac":true,"event":"MMS_ACCESS_DENIED","severity":"alarm","policy":"urn:iec:62351:8:IS:1.0:rps-root:8ef16ebb-65d6-4b2e-bad4-6729129eb412","sequence":2,"service":"READVALUES","object":"LD_Plant/VArSaDVAR1.Mod","reason":"permission or object scope denied","subject":"CN=unified_dso","issuer":"CN=ca","serial":"76:FE:7B:DB:2D:3F:DF:8D:69:BD:6A:7B:3B:A3:F3:8F:A1:57:00:BD","sha256":"a7e740442714e76064cd73eafd7935bf81984e75d753a0a69ca5eeca0fb0f598","peer":"127.0.0.1:32812","transport_sha256":"a7e740442714e76064cd73eafd7935bf81984e75d753a0a69ca5eeca0fb0f598","actor":"DSO","roles":[{"id":-1,"aor":"DSO","revision":1,"definition":"IEC 62351-8-CEI016:2021"}]}
+{"rbac":true,"event":"MMS_ACCESS_DENIED","severity":"alarm","policy":"urn:iec:62351:8:IS:1.0:rps-root:8ef16ebb-65d6-4b2e-bad4-6729129eb412","sequence":2,"service":"CONFIG","object":"LD_Plant/WSaDAGC1.WSptPct.ctlModel","reason":"permission or object scope denied","subject":"CN=unified_aggregator","issuer":"CN=ca","serial":"34:D7:AC:8B:DF:6F:89:17:31:FE:76:D4:CF:3C:4D:7F:4B:4A:D3:BD","sha256":"3308ac7ca0962fc62da8597c4cf74cba7e9c3f427e24fc1c3381c2a2566b3643","peer":"127.0.0.1:32802","transport_sha256":"3308ac7ca0962fc62da8597c4cf74cba7e9c3f427e24fc1c3381c2a2566b3643","actor":"AGGREGATOR","roles":[{"id":-2,"aor":"AGGREGATOR","revision":1,"definition":"IEC 62351-8-CEI016:2021"}]}
+{"rbac":true,"event":"MMS_ACCESS_DENIED","severity":"alarm","policy":"urn:iec:62351:8:IS:1.0:rps-root:8ef16ebb-65d6-4b2e-bad4-6729129eb412","sequence":2,"service":"READVALUES","object":"LD_Plant/WSaDAGC1.WSptPct","reason":"permission or object scope denied","subject":"CN=unified_dso","issuer":"CN=ca","serial":"76:FE:7B:DB:2D:3F:DF:8D:69:BD:6A:7B:3B:A3:F3:8F:A1:57:00:BD","sha256":"a7e740442714e76064cd73eafd7935bf81984e75d753a0a69ca5eeca0fb0f598","peer":"127.0.0.1:32812","transport_sha256":"a7e740442714e76064cd73eafd7935bf81984e75d753a0a69ca5eeca0fb0f598","actor":"DSO","roles":[{"id":-1,"aor":"DSO","revision":1,"definition":"IEC 62351-8-CEI016:2021"}]}
+{"rbac":true,"event":"MMS_ACCESS_DENIED","severity":"alarm","policy":"urn:iec:62351:8:IS:1.0:rps-root:8ef16ebb-65d6-4b2e-bad4-6729129eb412","sequence":2,"service":"CONFIG","object":"LD_Plant/VArSaDVAR1.VArTgtSptPct.ctlModel","reason":"permission or object scope denied","subject":"CN=unified_aggregator","issuer":"CN=ca","serial":"34:D7:AC:8B:DF:6F:89:17:31:FE:76:D4:CF:3C:4D:7F:4B:4A:D3:BD","sha256":"3308ac7ca0962fc62da8597c4cf74cba7e9c3f427e24fc1c3381c2a2566b3643","peer":"127.0.0.1:32802","transport_sha256":"3308ac7ca0962fc62da8597c4cf74cba7e9c3f427e24fc1c3381c2a2566b3643","actor":"AGGREGATOR","roles":[{"id":-2,"aor":"AGGREGATOR","revision":1,"definition":"IEC 62351-8-CEI016:2021"}]}
+{"rbac":true,"event":"MMS_ACCESS_DENIED","severity":"alarm","policy":"urn:iec:62351:8:IS:1.0:rps-root:8ef16ebb-65d6-4b2e-bad4-6729129eb412","sequence":2,"service":"READVALUES","object":"LD_Plant/VArSaDVAR1.VArTgtSptPct","reason":"permission or object scope denied","subject":"CN=unified_dso","issuer":"CN=ca","serial":"76:FE:7B:DB:2D:3F:DF:8D:69:BD:6A:7B:3B:A3:F3:8F:A1:57:00:BD","sha256":"a7e740442714e76064cd73eafd7935bf81984e75d753a0a69ca5eeca0fb0f598","peer":"127.0.0.1:32812","transport_sha256":"a7e740442714e76064cd73eafd7935bf81984e75d753a0a69ca5eeca0fb0f598","actor":"DSO","roles":[{"id":-1,"aor":"DSO","revision":1,"definition":"IEC 62351-8-CEI016:2021"}]}
+TLS: Verify cert: depth 1
+TLS:    flags: 00000000
+TLS:   cert. version     : 3
+  serial number     : 49:A1:23:21:7E:BB:4A:8D:AF:01:01:84:C1:F9:1F:7A:3B:C4:1B:CB
+  issuer name       : CN=ca
+  subject name      : CN=ca
+  issued  on        : 2026-10-20 13:39:30
+  expires on        : 2026-11-22 13:39:30
+  signed using      : RSA with SHA-256
+  RSA key size      : 2048 bits
+  basic constraints : CA=true
+  key usage         : Digital Signature, Key Cert Sign, CRL Sign
+
+TLS: Verify cert: depth 0
+TLS:    flags: 00000000
+TLS:   cert. version     : 3
+  serial number     : 2C:CC:EB:B0:31:A7:95:E8:57:06:DB:62:24:C0:26:18:DC:82:38:E1
+  issuer name       : CN=ca
+  subject name      : CN=server
+  issued  on        : 2026-10-20 13:39:30
+  expires on        : 2026-11-22 13:39:30
+  signed using      : RSA with SHA-256
+  RSA key size      : 2048 bits
+  basic constraints : CA=false
+  subject alt name  :
+      iPAddress : 127.0.0.1
+      dNSName : localhost
+  key usage         : Digital Signature, Key Encipherment
+  ext key usage     : TLS Web Server Authentication
+
+TLS: Verify cert: depth 1
+TLS:    flags: 00000000
+TLS:   cert. version     : 3
+  serial number     : 49:A1:23:21:7E:BB:4A:8D:AF:01:01:84:C1:F9:1F:7A:3B:C4:1B:CB
+  issuer name       : CN=ca
+  subject name      : CN=ca
+  issued  on        : 2026-10-20 13:39:30
+  expires on        : 2026-11-22 13:39:30
+  signed using      : RSA with SHA-256
+  RSA key size      : 2048 bits
+  basic constraints : CA=true
+  key usage         : Digital Signature, Key Cert Sign, CRL Sign
+
+TLS: Verify cert: depth 0
+TLS:    flags: 00000000
+TLS:   cert. version     : 3
+  serial number     : 34:D7:AC:8B:DF:6F:89:17:31:FE:76:D4:CF:3C:4D:7F:4B:4A:D3:BD
+  issuer name       : CN=ca
+  subject name      : CN=unified_aggregator
+  issued  on        : 2026-10-20 13:39:30
+  expires on        : 2026-11-22 13:39:30
+  signed using      : RSA with SHA-256
+  RSA key size      : 2048 bits
+  basic constraints : CA=false
+  key usage         : Digital Signature, Key Encipherment
+  ext key usage     : TLS Web Client Authentication
+
+TLS: Check against list of allowed certs
+TLS: Compare With:
+TLS:      cert. version     : 3
+     serial number     : 76:FE:7B:DB:2D:3F:DF:8D:69:BD:6A:7B:3B:A3:F3:8F:A1:57:00:BD
+     issuer name       : CN=ca
+     subject name      : CN=unified_dso
+     issued  on        : 2026-10-20 13:39:30
+     expires on        : 2026-11-22 13:39:30
+     signed using      : RSA with SHA-256
+     RSA key size      : 2048 bits
+     basic constraints : CA=false
+     key usage         : Digital Signature, Key Encipherment
+     ext key usage     : TLS Web Client Authentication
+
+TLS: Compare With:
+TLS:      cert. version     : 3
+     serial number     : 3F:DD:BD:BF:77:85:31:8A:AA:E4:2E:0B:15:CA:AE:AA:54:C6:1C:09
+     issuer name       : CN=ca
+     subject name      : CN=owner_rev0
+     issued  on        : 2026-10-20 13:39:30
+     expires on        : 2026-11-22 13:39:30
+     signed using      : RSA with SHA-256
+     RSA key size      : 2048 bits
+     basic constraints : CA=false
+     key usage         : Digital Signature, Key Encipherment
+     ext key usage     : TLS Web Client Authentication
+
+TLS: Compare With:
+TLS:      cert. version     : 3
+     serial number     : 78:60:A0:E8:92:F4:35:5A:22:1E:B3:E3:9E:A9:10:E1:23:D5:74:75
+     issuer name       : CN=ca
+     subject name      : CN=unified_viewer
+     issued  on        : 2026-10-20 13:39:30
+     expires on        : 2026-11-22 13:39:30
+     signed using      : RSA with SHA-256
+     RSA key size      : 2048 bits
+     basic constraints : CA=false
+     key usage         : Digital Signature, Key Encipherment
+     ext key usage     : TLS Web Client Authentication
+
+TLS: Compare With:
+TLS:      cert. version     : 3
+     serial number     : 34:D7:AC:8B:DF:6F:89:17:31:FE:76:D4:CF:3C:4D:7F:4B:4A:D3:BD
+     issuer name       : CN=ca
+     subject name      : CN=unified_aggregator
+     issued  on        : 2026-10-20 13:39:30
+     expires on        : 2026-11-22 13:39:30
+     signed using      : RSA with SHA-256
+     RSA key size      : 2048 bits
+     basic constraints : CA=false
+     key usage         : Digital Signature, Key Encipherment
+     ext key usage     : TLS Web Client Authentication
+
+mms: client CONNECT count=3
+mms: iso session CONNECT (payload=180)
+mms: ACSE auth ACCEPT — Profile A role token
+{"rbac":true,"event":"ASSOCIATION_AUTH_OK","severity":"notice","policy":"urn:iec:62351:8:IS:1.0:rps-root:8ef16ebb-65d6-4b2e-bad4-6729129eb412","sequence":2,"service":"ASSOCIATION","object":"","reason":"identity bound to authenticated transport","subject":"CN=unified_aggregator","issuer":"CN=ca","serial":"34:D7:AC:8B:DF:6F:89:17:31:FE:76:D4:CF:3C:4D:7F:4B:4A:D3:BD","sha256":"3308ac7ca0962fc62da8597c4cf74cba7e9c3f427e24fc1c3381c2a2566b3643","peer":"127.0.0.1:32824","transport_sha256":"3308ac7ca0962fc62da8597c4cf74cba7e9c3f427e24fc1c3381c2a2566b3643","actor":"AGGREGATOR","roles":[{"id":-2,"aor":"AGGREGATOR","revision":1,"definition":"IEC 62351-8-CEI016:2021"}]}
+TLS:  connection was closed gracefully
+{"rbac":true,"event":"ASSOCIATION_RELEASE","severity":"notice","policy":"urn:iec:62351:8:IS:1.0:rps-root:8ef16ebb-65d6-4b2e-bad4-6729129eb412","sequence":2,"service":"ASSOCIATION","object":"","reason":"disconnected","subject":"CN=unified_aggregator","issuer":"CN=ca","serial":"34:D7:AC:8B:DF:6F:89:17:31:FE:76:D4:CF:3C:4D:7F:4B:4A:D3:BD","sha256":"3308ac7ca0962fc62da8597c4cf74cba7e9c3f427e24fc1c3381c2a2566b3643","peer":"127.0.0.1:32824","transport_sha256":"3308ac7ca0962fc62da8597c4cf74cba7e9c3f427e24fc1c3381c2a2566b3643","actor":"AGGREGATOR","roles":[{"id":-2,"aor":"AGGREGATOR","revision":1,"definition":"IEC 62351-8-CEI016:2021"}]}
+mms: client DISCONNECT count=2
+TLS:  connection was closed gracefully
+{"rbac":true,"event":"ASSOCIATION_RELEASE","severity":"notice","policy":"urn:iec:62351:8:IS:1.0:rps-root:8ef16ebb-65d6-4b2e-bad4-6729129eb412","sequence":2,"service":"ASSOCIATION","object":"","reason":"disconnected","subject":"CN=unified_dso","issuer":"CN=ca","serial":"76:FE:7B:DB:2D:3F:DF:8D:69:BD:6A:7B:3B:A3:F3:8F:A1:57:00:BD","sha256":"a7e740442714e76064cd73eafd7935bf81984e75d753a0a69ca5eeca0fb0f598","peer":"127.0.0.1:32812","transport_sha256":"a7e740442714e76064cd73eafd7935bf81984e75d753a0a69ca5eeca0fb0f598","actor":"DSO","roles":[{"id":-1,"aor":"DSO","revision":1,"definition":"IEC 62351-8-CEI016:2021"}]}
+mms: client DISCONNECT count=1
+TLS:  connection was closed gracefully
+{"rbac":true,"event":"ASSOCIATION_RELEASE","severity":"notice","policy":"urn:iec:62351:8:IS:1.0:rps-root:8ef16ebb-65d6-4b2e-bad4-6729129eb412","sequence":2,"service":"ASSOCIATION","object":"","reason":"disconnected","subject":"CN=unified_aggregator","issuer":"CN=ca","serial":"34:D7:AC:8B:DF:6F:89:17:31:FE:76:D4:CF:3C:4D:7F:4B:4A:D3:BD","sha256":"3308ac7ca0962fc62da8597c4cf74cba7e9c3f427e24fc1c3381c2a2566b3643","peer":"127.0.0.1:32802","transport_sha256":"3308ac7ca0962fc62da8597c4cf74cba7e9c3f427e24fc1c3381c2a2566b3643","actor":"AGGREGATOR","roles":[{"id":-2,"aor":"AGGREGATOR","revision":1,"definition":"IEC 62351-8-CEI016:2021"}]}
+mms: client DISCONNECT count=0
+mms: Aggregator plant outputs require a validated signed P/Q backend; startup refused
+Aggregator CEI model, signed controls, measurements, statuses, datasets, concurrent buffered/unbuffered reports and actor boundaries: PASS
+mms_rbac_tls_test: PASS (legacy TLS, role TLS, reads/writes, dataset/report scope, revision 0, live revocation)
+<end of output>
+Test time =  17.31 sec
+----------------------------------------------------------
+Test Passed.
+"mms_rbac_tls_authorization" end time: Oct 23 15:39 CEST
+"mms_rbac_tls_authorization" time elapsed: 00:00:17
+----------------------------------------------------------
+
+22/22 Testing: mms_rbac_tls_source_baseline
+22/22 Test: mms_rbac_tls_source_baseline
+Command: "/usr/bin/python3" "/mnt/c/Users/Administrator/Desktop/CCLI Alireza/CCLI Merged/apps/ccli/../../scripts/check_rbac_tls_baseline.py"
+Directory: /mnt/c/Users/Administrator/Desktop/CCLI Alireza/CCLI Merged/apps/ccli/build-e2e-crypto/OPTIONAL
+"mms_rbac_tls_source_baseline" start time: Oct 23 15:39 CEST
+Output:
+----------------------------------------------------------
+PASS: original TLS baseline plus documented integration extensions match; configured trust settings unchanged.
+<end of output>
+Test time =   0.57 sec
+----------------------------------------------------------
+Test Passed.
+"mms_rbac_tls_source_baseline" end time: Oct 23 15:39 CEST
+"mms_rbac_tls_source_baseline" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Oct 23 15:39 CEST

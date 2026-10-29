@@ -61,6 +61,15 @@ mms:
   gnss_poll_s: 15
   gnss_discipline_clock: false
   chrony_poll: true
+  # Owner-authorized Profile A policy. Enable after EJBCA Profile A test
+  # certificates and the commissioning package have been installed.
+  rbac_profile_a: false
+  # rbac_policy: /etc/ccli/rbac/commissioning-policy.xml
+  # rbac_owner_cert: /etc/ccli/rbac-trust/owner.pem
+  # rbac_activation_state: /var/lib/ccli/rbac/activation.state
+  # rbac_identity_ca: /etc/ccli/tls/root_CA.pem
+  # rbac_identity_crl: /etc/ccli/rbac-trust/identity.crl.pem
+  # Install permission-library.xml and commissioning-scopes.xml in the same directory.
   tls_enabled: true
   tls_own_key: /etc/ccli/tls/server.key
   tls_own_cert: /etc/ccli/tls/server_tls.pem
@@ -93,6 +102,7 @@ iec104:
   operator_monitor_ppv: false
   ioa_ppv: 1003
   tls_enabled: true
+  tls_crl: /etc/ccli/tls/lab_crl.pem
   tls_own_key: /etc/ccli/tls/server.key
   tls_own_cert: /etc/ccli/tls/server_tls.pem
   tls_ca_cert: /etc/ccli/tls/root_CA.pem
@@ -111,7 +121,7 @@ io:
 event_log:
   enabled: true
   path: /var/lib/ccli/events.jsonl
-  syslog_enabled: true
+  syslog_enabled: false # Commission TLS collector credentials before enabling
   syslog_host: 127.0.0.1
-  syslog_port: 514
+  syslog_port: 6514
   watch_ifaces: lan1 lan2

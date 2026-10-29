@@ -1,0 +1,17 @@
+
+[ ca ]
+default_ca = CA_default
+[ CA_default ]
+dir = .
+database = ./index.txt
+serial = ./serial
+certificate = ./root_CA.pem
+private_key = ./root_CA.key
+default_md = sha256
+default_crl_days = 30
+policy = policy_any
+[ policy_any ]
+commonName = optional
+countryName = optional
+organizationName = optional
+organizationalUnitName = optional

@@ -1,0 +1,639 @@
+#%SCHEMA: 676B6370
+# ADB block, size: 8464, compat: 0, ver: 0
+info:
+  name: ccli
+  version: 0.1.0-r71
+  hashes: 04f471f93294a94a9f5ccf21696f74e9bb6ee9f7
+  description: |
+    HiTEKS CCLI user-space firmware: PF2 FSM, Modbus, IEC 61850 MMS (Eth_A), IEC 60870-5-104 (Eth_B). Platform HAL: platform_tg500 on TesPro TG544 / TR500 / TG-524 (MT798X).
+  arch: aarch64_cortex-a53
+  license: Proprietary
+  origin: /mnt/c/Users/Administrator/Desktop/CCLI Alireza/CCLI Merged/package/ccli
+  maintainer: HiTEKS CCLI
+  url: https://github.com/hiteks/ccli
+  installed-size: 3742323
+  depends: # 2 items
+    - libc
+    - libmodbus
+  provides: # 1 items
+    - ccli-any
+paths: # 22 items
+  - acl:
+      mode: 0755
+      user: adminavz
+      group: adminavz
+  - name: etc
+    acl:
+      mode: 0755
+      user: adminavz
+      group: adminavz
+  - name: etc/ccli
+    acl:
+      mode: 0755
+      user: adminavz
+      group: adminavz
+    files: # 1 items
+      - name: lab.yaml
+        acl:
+          mode: 0600
+          user: adminavz
+          group: adminavz
+        size: 4225
+        mtime: 1782737960
+        hash: a09da95f8b6146d7cc338db1d075b7f0af9067ba10187e236cb7f02b610dd6ee
+  - name: etc/ccli/icd
+    acl:
+      mode: 0755
+      user: adminavz
+      group: adminavz
+    files: # 2 items
+      - name: product_tr400_eth_a_all_mandatory.cfg
+        acl:
+          mode: 0600
+          user: adminavz
+          group: adminavz
+        size: 14884
+        mtime: 1782737960
+        hash: 5b055efbfde98f188cbdb874121bef41f0485dd1ff1a1bcddfdd4a68b3cf42b5
+      - name: product_tr400_eth_a_all_mandatory.cid
+        acl:
+          mode: 0600
+          user: adminavz
+          group: adminavz
+        size: 27325
+        mtime: 1782737960
+        hash: 8d56b735206fcf9f40e0e135048b7dc400abac10fa104a009a62f40af2e02393
+  - name: etc/config
+    acl:
+      mode: 0755
+      user: adminavz
+      group: adminavz
+    files: # 1 items
+      - name: ccli
+        acl:
+          mode: 0600
+          user: adminavz
+          group: adminavz
+        size: 966
+        mtime: 1782737960
+        hash: f19ce527cca2a649f2128580a91580feac329903ec693ddebb4a6a74d7fab35e
+  - name: etc/init.d
+    acl:
+      mode: 0755
+      user: adminavz
+      group: adminavz
+    files: # 1 items
+      - name: ccli
+        acl:
+          mode: 0755
+          user: adminavz
+          group: adminavz
+        size: 1502
+        mtime: 1782737960
+        hash: c6099b50ff1abdb19058b15db0a854b5ffa548d89e0dcdc3393f5058532c215c
+  - name: etc/uci-defaults
+    acl:
+      mode: 0755
+      user: adminavz
+      group: adminavz
+    files: # 1 items
+      - name: 99-ccli-enable
+        acl:
+          mode: 0755
+          user: adminavz
+          group: adminavz
+        size: 118
+        mtime: 1782737960
+        hash: 02f77a394eeaec8489023c7400446e9275d286450b9292f4efd2ffb08f89d381
+  - name: lib
+    acl:
+      mode: 0755
+      user: adminavz
+      group: adminavz
+  - name: lib/apk
+    acl:
+      mode: 0755
+      user: adminavz
+      group: adminavz
+  - name: lib/apk/packages
+    acl:
+      mode: 0755
+      user: adminavz
+      group: adminavz
+    files: # 3 items
+      - name: ccli.conffiles
+        acl:
+          mode: 0644
+          user: adminavz
+          group: adminavz
+        size: 36
+        mtime: 1782737960
+        hash: 875299e2541cbae1253601449f2cd7cf3e1fbedb16f88fbf02261c553faf69ad
+      - name: ccli.conffiles_static
+        acl:
+          mode: 0644
+          user: adminavz
+          group: adminavz
+        size: 166
+        mtime: 1782737960
+        hash: b79b49e42e76bdd7e0fe6ee50cbd5b44b9be28377b60c81e895c6c787eb3b45e
+      - name: ccli.list
+        acl:
+          mode: 0644
+          user: adminavz
+          group: adminavz
+        size: 1714
+        mtime: 1782737960
+        hash: d5a6ca26cb3eec9edc3ea67ba2f9e83ac17af77975659236834747bc0a9c1a00
+  - name: usr
+    acl:
+      mode: 0755
+      user: adminavz
+      group: adminavz
+  - name: usr/sbin
+    acl:
+      mode: 0755
+      user: adminavz
+      group: adminavz
+    files: # 1 items
+      - name: ccli
+        acl:
+          mode: 0755
+          user: adminavz
+          group: adminavz
+        size: 2476803
+        mtime: 1782737960
+        hash: 76f8ba487ec2acb62a509fa9bbcd6befa8c289ee274ac7a5ddfa83a7da77a6cf
+  - name: usr/share
+    acl:
+      mode: 0755
+      user: adminavz
+      group: adminavz
+  - name: usr/share/ccli
+    acl:
+      mode: 0755
+      user: adminavz
+      group: adminavz
+  - name: usr/share/ccli/config
+    acl:
+      mode: 0755
+      user: adminavz
+      group: adminavz
+  - name: usr/share/ccli/config/icd
+    acl:
+      mode: 0755
+      user: adminavz
+      group: adminavz
+    files: # 15 items
+      - name: ICD1.txt
+        acl:
+          mode: 0755
+          user: adminavz
+          group: adminavz
+        size: 164121
+        mtime: 1782737960
+        hash: 9bd0a7b8f9e82f9ccf4f4943ea1be27026b56f2ecffa9d3e3c62ecf3c7a2cec2
+      - name: ICD2.txt
+        acl:
+          mode: 0755
+          user: adminavz
+          group: adminavz
+        size: 164121
+        mtime: 1782737960
+        hash: 9bd0a7b8f9e82f9ccf4f4943ea1be27026b56f2ecffa9d3e3c62ecf3c7a2cec2
+      - name: ICD3.txt
+        acl:
+          mode: 0755
+          user: adminavz
+          group: adminavz
+        size: 164121
+        mtime: 1782737960
+        hash: 9bd0a7b8f9e82f9ccf4f4943ea1be27026b56f2ecffa9d3e3c62ecf3c7a2cec2
+      - name: README.md
+        acl:
+          mode: 0755
+          user: adminavz
+          group: adminavz
+        size: 3016
+        mtime: 1782737960
+        hash: 00faf8ee75ca2551ffdcffe61fbc8d4530ee6e343d072655b5aca31dcc3eaa43
+      - name: Reort.xls
+        acl:
+          mode: 0755
+          user: adminavz
+          group: adminavz
+        size: 169608
+        mtime: 1782737960
+        hash: fee286d3f538eedb26ebb682d1f2ff69f48ef66b2bf2cfe69891e37db59818f7
+      - name: Report 2.xlsx
+        acl:
+          mode: 0755
+          user: adminavz
+          group: adminavz
+        size: 7638
+        mtime: 1782737960
+        hash: 943a163492f1eab68d8f70bcd47caae48e5ff0244f759868dd1b273e2dc6bcff
+      - name: Report 3.xlsx
+        acl:
+          mode: 0755
+          user: adminavz
+          group: adminavz
+        size: 7621
+        mtime: 1782737960
+        hash: 17e5ea458ce6b4fb978aaee9e068dece4126c04fa11648eedab19044bd65e394
+      - name: Report.xlsx
+        acl:
+          mode: 0755
+          user: adminavz
+          group: adminavz
+        size: 11977
+        mtime: 1782737960
+        hash: 4bc76a3fa61e1ccc95ac22c8e39893bb0fbb5bd0bb00dd8b7eb5c2b32ea48d56
+      - name: Report4.csv
+        acl:
+          mode: 0755
+          user: adminavz
+          group: adminavz
+        size: 5111
+        mtime: 1782737960
+        hash: f4573c4edcbd8e6357c2489a016b065107eba976d1c1fe9a9e80329c31fd1d84
+      - name: cei-tr-57-126-example.cid
+        acl:
+          mode: 0755
+          user: adminavz
+          group: adminavz
+        size: 42319
+        mtime: 1782737960
+        hash: 84100517ea37bf0f5fbde7b2af97b80752e707091db4f8a745f489457831a943
+      - name: lab_tg544_aggregator.cfg
+        acl:
+          mode: 0755
+          user: adminavz
+          group: adminavz
+        size: 38717
+        mtime: 1782737960
+        hash: b45a4c1b2e94078079f343359e501824769a0a1a490d0a8935be8ce3925e8152
+      - name: lab_tg544_aggregator.cid
+        acl:
+          mode: 0755
+          user: adminavz
+          group: adminavz
+        size: 66178
+        mtime: 1782737960
+        hash: 74bcebcea0682c611c233064b765e1f49812b7e6209b357788c34ebc5eb49360
+      - name: lab_tg544_eth_a.cfg
+        acl:
+          mode: 0755
+          user: adminavz
+          group: adminavz
+        size: 33697
+        mtime: 1782737960
+        hash: d964de4a4d0c7686f9e3a396401493f032788b523dd94518b03fdaabbd771e9f
+      - name: lab_tg544_eth_a.cid
+        acl:
+          mode: 0755
+          user: adminavz
+          group: adminavz
+        size: 46484
+        mtime: 1782737960
+        hash: 8951beb18eb9157a672755d3b17d8ff9acf481855bfcc5c1ce15b472a39f8552
+      - name: signal_map.yaml
+        acl:
+          mode: 0755
+          user: adminavz
+          group: adminavz
+        size: 34169
+        mtime: 1782737960
+        hash: bb54584c647d04f0af4fa21ab1b9ea2c439bab2fac910d21529ae53205d46bbb
+  - name: usr/share/ccli/config/icd/product
+    acl:
+      mode: 0755
+      user: adminavz
+      group: adminavz
+    files: # 4 items
+      - name: product_tr400_eth_a_5ln.cfg
+        acl:
+          mode: 0755
+          user: adminavz
+          group: adminavz
+        size: 6099
+        mtime: 1782737960
+        hash: 86f39e87c31cec56598fce81f16d03c37258dc7ec8e13d5b42a672ac5ac557f7
+      - name: product_tr400_eth_a_5ln.cid
+        acl:
+          mode: 0755
+          user: adminavz
+          group: adminavz
+        size: 15489
+        mtime: 1782737960
+        hash: 431047507cdc16b117ea1740a37805c4235f9cdf6a22d6c2f724f6cceaa8bb4b
+      - name: product_tr400_eth_a_all_mandatory.cfg
+        acl:
+          mode: 0755
+          user: adminavz
+          group: adminavz
+        size: 14884
+        mtime: 1782737960
+        hash: 5b055efbfde98f188cbdb874121bef41f0485dd1ff1a1bcddfdd4a68b3cf42b5
+      - name: product_tr400_eth_a_all_mandatory.cid
+        acl:
+          mode: 0755
+          user: adminavz
+          group: adminavz
+        size: 27325
+        mtime: 1782737960
+        hash: 8d56b735206fcf9f40e0e135048b7dc400abac10fa104a009a62f40af2e02393
+  - name: usr/share/ccli/config/modbus
+    acl:
+      mode: 0755
+      user: adminavz
+      group: adminavz
+    files: # 4 items
+      - name: README.md
+        acl:
+          mode: 0755
+          user: adminavz
+          group: adminavz
+        size: 98
+        mtime: 1782737960
+        hash: 2d0e8ca024c7a6083d487a9cb92e5befab004e809cd81ee51dfb2a1afe54ccdc
+      - name: chronos_emt432_basjes.yaml
+        acl:
+          mode: 0755
+          user: adminavz
+          group: adminavz
+        size: 8265
+        mtime: 1782737960
+        hash: 56a72897d2579bc6da155f2ffe513d503ddfbed9c3584044114e8667b3652047
+      - name: chronos_emt432_map.yaml
+        acl:
+          mode: 0755
+          user: adminavz
+          group: adminavz
+        size: 5500
+        mtime: 1782737960
+        hash: 9005f1c5137dc8dcbd7944cf7ff8f0048990162761dc812195d497c19a0da4e9
+      - name: simulator_map.yaml
+        acl:
+          mode: 0755
+          user: adminavz
+          group: adminavz
+        size: 689
+        mtime: 1782737960
+        hash: eb4d563768a71ea9140ed269de8b1aa656bece4cfd4476906643ed6f45461498
+  - name: usr/share/ccli/config/rbac
+    acl:
+      mode: 0755
+      user: adminavz
+      group: adminavz
+    files: # 5 items
+      - name: README.md
+        acl:
+          mode: 0755
+          user: adminavz
+          group: adminavz
+        size: 7622
+        mtime: 1782737960
+        hash: 711dee0ca0072fa87e99f00d9eb5180f4c1950701ecf55b0adef8d3566ffcaeb
+      - name: commissioning-policy.xml
+        acl:
+          mode: 0755
+          user: adminavz
+          group: adminavz
+        size: 29511
+        mtime: 1782737960
+        hash: d9461c767b16e210acc0270bcd5672f416da177e8b865c4277c3c9663db19a3e
+      - name: commissioning-scopes.xml
+        acl:
+          mode: 0755
+          user: adminavz
+          group: adminavz
+        size: 34748
+        mtime: 1782737960
+        hash: 8a5db24e940d864b0d30709abad454325090c42c3fcd0561caab09e200d5cfda
+      - name: identity-bindings.xml
+        acl:
+          mode: 0755
+          user: adminavz
+          group: adminavz
+        size: 252
+        mtime: 1782737960
+        hash: 41e17a716782822ecf4bea30e7eef81716b0a26eb290e9acb090cc8fc0f0cb0f
+      - name: permission-library.xml
+        acl:
+          mode: 0755
+          user: adminavz
+          group: adminavz
+        size: 21207
+        mtime: 1782737960
+        hash: c984e3ace0e0e2efeb1e7ee864a36ee430d8411bb172c78d52e098784e337df1
+  - name: www
+    acl:
+      mode: 0755
+      user: adminavz
+      group: adminavz
+  - name: www/ccli
+    acl:
+      mode: 0755
+      user: adminavz
+      group: adminavz
+    files: # 5 items
+      - name: index.html
+        acl:
+          mode: 0777
+          user: adminavz
+          group: adminavz
+        size: 336
+        mtime: 1782737960
+        hash: 6ece278792e02329327e747adedb3b568163e43f3ef9767359c68e4716a50e53
+      - name: mock_console.html
+        acl:
+          mode: 0777
+          user: adminavz
+          group: adminavz
+        size: 23492
+        mtime: 1782737960
+        hash: 4b656421bacc3437d205cf0be9071e25d0bf887884ed85f18e4c31b6fe9a8a27
+      - name: plant_map.json
+        acl:
+          mode: 0777
+          user: adminavz
+          group: adminavz
+        size: 8461
+        mtime: 1782737960
+        hash: 2f3921aa5bba996896acf99b2102930dd9a49f145f743377c528bf74bac8eff0
+      - name: zone_dashboard.html
+        acl:
+          mode: 0777
+          user: adminavz
+          group: adminavz
+        size: 23264
+        mtime: 1782737960
+        hash: 9bcb5c4f466ad1ed4ac6f1ce1c31f3f39c9b468448466b4bde196af8105221e2
+      - name: zone_dashboard.js
+        acl:
+          mode: 0777
+          user: adminavz
+          group: adminavz
+        size: 26827
+        mtime: 1782737960
+        hash: 548faedf3c916b41b9d2284075eb8a19c0a0be54c44f5d6af94fda600ee14ef5
+  - name: www/cgi-bin
+    acl:
+      mode: 0755
+      user: adminavz
+      group: adminavz
+    files: # 1 items
+      - name: ccli-bench
+        acl:
+          mode: 0755
+          user: adminavz
+          group: adminavz
+        size: 1617
+        mtime: 1782737960
+        hash: bcac8c82f0ab6ebeb4111abb63e8ad1611ec027dd52479693d89bfb627879bcf
+scripts:
+  pre-install: |
+    #!/bin/sh
+    set -eu
+    [ -n "${IPKG_INSTROOT:-}" ] && exit 0
+    umask 077
+    pending=/etc/ccli-upgrade.pending
+    [ ! -e "$pending" ] || { echo "CCLI: unfinished upgrade preservation at $pending" >&2; exit 1; }
+    backup=$(mktemp -d /etc/ccli-upgrade.XXXXXX)
+    [ ! -d /etc/ccli ] || cp -a /etc/ccli "$backup/ccli"
+    [ ! -f /etc/config/ccli ] || cp -p /etc/config/ccli "$backup/uci-ccli"
+    printf '%s\n' "$backup" > "$pending"
+    chmod 600 "$pending"
+    echo "CCLI: live configuration and credentials saved in $backup"
+  post-install: |
+    #!/bin/sh
+    [ "${IPKG_NO_SCRIPT}" = "1" ] && exit 0
+    [ -s ${IPKG_INSTROOT}/lib/functions.sh ] || exit 0
+    . ${IPKG_INSTROOT}/lib/functions.sh
+    export root="${IPKG_INSTROOT}"
+    export pkgname="ccli"
+    add_group_and_user
+    default_postinst
+    set -eu
+    if [ -z "${IPKG_INSTROOT:-}" ]; then
+    	if [ -f /etc/ccli-upgrade.pending ]; then
+    		backup=$(cat /etc/ccli-upgrade.pending)
+    		case "$backup" in /etc/ccli-upgrade.??????) ;; *) echo "Invalid CCLI backup path" >&2; exit 1;; esac
+    		[ -d "$backup" ] && [ ! -L "$backup" ] || exit 1
+    		if [ -d "$backup/ccli" ]; then
+    			mkdir -p /etc/ccli
+    			cp -a "$backup/ccli/." /etc/ccli/
+    		fi
+    		[ ! -f "$backup/uci-ccli" ] || cp -p "$backup/uci-ccli" /etc/config/ccli
+    		: > /etc/ccli-upgrade.hold
+    		chmod 600 /etc/ccli-upgrade.hold
+    		rm -f /etc/ccli-upgrade.pending
+    		echo "CCLI: configuration restored; backup retained at $backup"
+    	fi
+    	# Ensure the init script is visible to LuCI's rc backend even when an APK
+    	# built on a bind-mounted Windows/WSL tree preserves a non-root owner.
+    	chown root:root /usr/sbin/ccli /etc/init.d/ccli /etc/uci-defaults/99-ccli-enable 2>/dev/null || true
+    	chown -R root:root /usr/share/ccli/config 2>/dev/null || true
+    	echo "CCLI: verify configuration, remove /etc/ccli-upgrade.hold and start CCLI explicitly."
+    fi
+    exit 0
+  pre-deinstall: |
+    #!/bin/sh
+    [ -s ${IPKG_INSTROOT}/lib/functions.sh ] || exit 0
+    . ${IPKG_INSTROOT}/lib/functions.sh
+    export root="${IPKG_INSTROOT}"
+    export pkgname="ccli"
+    default_prerm
+  pre-upgrade: |
+    #!/bin/sh
+    export PKG_UPGRADE=1
+    set -eu
+    [ -n "${IPKG_INSTROOT:-}" ] && exit 0
+    umask 077
+    pending=/etc/ccli-upgrade.pending
+    [ ! -e "$pending" ] || { echo "CCLI: unfinished upgrade preservation at $pending" >&2; exit 1; }
+    backup=$(mktemp -d /etc/ccli-upgrade.XXXXXX)
+    [ ! -d /etc/ccli ] || cp -a /etc/ccli "$backup/ccli"
+    [ ! -f /etc/config/ccli ] || cp -p /etc/config/ccli "$backup/uci-ccli"
+    printf '%s\n' "$backup" > "$pending"
+    chmod 600 "$pending"
+    echo "CCLI: live configuration and credentials saved in $backup"
+  post-upgrade: |
+    #!/bin/sh
+    export PKG_UPGRADE=1
+    [ "${IPKG_NO_SCRIPT}" = "1" ] && exit 0
+    [ -s ${IPKG_INSTROOT}/lib/functions.sh ] || exit 0
+    . ${IPKG_INSTROOT}/lib/functions.sh
+    export root="${IPKG_INSTROOT}"
+    export pkgname="ccli"
+    add_group_and_user
+    default_postinst
+    set -eu
+    if [ -z "${IPKG_INSTROOT:-}" ]; then
+    	if [ -f /etc/ccli-upgrade.pending ]; then
+    		backup=$(cat /etc/ccli-upgrade.pending)
+    		case "$backup" in /etc/ccli-upgrade.??????) ;; *) echo "Invalid CCLI backup path" >&2; exit 1;; esac
+    		[ -d "$backup" ] && [ ! -L "$backup" ] || exit 1
+    		if [ -d "$backup/ccli" ]; then
+    			mkdir -p /etc/ccli
+    			cp -a "$backup/ccli/." /etc/ccli/
+    		fi
+    		[ ! -f "$backup/uci-ccli" ] || cp -p "$backup/uci-ccli" /etc/config/ccli
+    		: > /etc/ccli-upgrade.hold
+    		chmod 600 /etc/ccli-upgrade.hold
+    		rm -f /etc/ccli-upgrade.pending
+    		echo "CCLI: configuration restored; backup retained at $backup"
+    	fi
+    	# Ensure the init script is visible to LuCI's rc backend even when an APK
+    	# built on a bind-mounted Windows/WSL tree preserves a non-root owner.
+    	chown root:root /usr/sbin/ccli /etc/init.d/ccli /etc/uci-defaults/99-ccli-enable 2>/dev/null || true
+    	chown -R root:root /usr/share/ccli/config 2>/dev/null || true
+    	echo "CCLI: verify configuration, remove /etc/ccli-upgrade.hold and start CCLI explicitly."
+    fi
+    exit 0
+# sig v00 h04 098a2252e8b517645f400e4c9ece41ce304402207366241c007f5f20cfa20c7dab7bcb2aa1192863aa900feeb2f12465d1046e870220..: OK
+# data block, size: 4233
+# data block, size: 14892
+# data block, size: 27333
+# data block, size: 974
+# data block, size: 1510
+# data block, size: 126
+# data block, size: 44
+# data block, size: 174
+# data block, size: 1722
+# data block, size: 2476811
+# data block, size: 164129
+# data block, size: 164129
+# data block, size: 164129
+# data block, size: 3024
+# data block, size: 169616
+# data block, size: 7646
+# data block, size: 7629
+# data block, size: 11985
+# data block, size: 5119
+# data block, size: 42327
+# data block, size: 38725
+# data block, size: 66186
+# data block, size: 33705
+# data block, size: 46492
+# data block, size: 34177
+# data block, size: 6107
+# data block, size: 15497
+# data block, size: 14892
+# data block, size: 27333
+# data block, size: 106
+# data block, size: 8273
+# data block, size: 5508
+# data block, size: 697
+# data block, size: 7630
+# data block, size: 29519
+# data block, size: 34756
+# data block, size: 260
+# data block, size: 21215
+# data block, size: 344
+# data block, size: 23500
+# data block, size: 8469
+# data block, size: 23272
+# data block, size: 26835
+# data block, size: 1625

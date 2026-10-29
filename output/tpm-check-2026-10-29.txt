@@ -1,0 +1,58 @@
+TPM check after physical power cycle
+Date: 2026-10-29
+Target: root@192.168.0.1 (current connected Tespro)
+Kernel: 6.12.68
+Uptime at first check: 2 minutes (device clock 12:53:56)
+Source: live SSH commands, not historical evidence from another device.
+
+Device nodes:
+crw------- root root 10,224 /dev/tpm0
+crw------- root root 249,65536 /dev/tpmrm0
+
+Boot log:
+[   11.235791] tpm_tis_i2c 0-002e: 2.0 TPM (device-id 0x1C, rev-id 22)
+[   11.256505] tpm tpm0: A TPM error (256) occurred attempting the self test
+[   11.263337] tpm tpm0: starting up the TPM manually
+
+tpm2_getcap properties-fixed (selected fields):
+FAMILY_INDICATOR: 2.0
+MANUFACTURER: raw 0x49465800, IFX
+VENDOR_STRING_1: SLB9
+VENDOR_STRING_2: 673
+FIRMWARE_VERSION_1: 0x1A000D
+FIRMWARE_VERSION_2: 0x456A00
+MODES: TPMA_MODES_FIPS_140_2
+
+tpm2_gettestresult:
+status: success
+data: 0010aa2900000000000000
+
+tpm2_getrandom --hex 16:
+f4c18b78e75b2be60d08525d1ce60371
+
+Conclusion:
+TPM access recovered after the user's physical power cycle. The kernel
+recognized TPM 2.0, created both character devices, and TPM capability,
+test-result and random-number commands succeeded. The initial boot self-test
+message was followed by kernel startup and successful subsequent commands.
+No -62 timeout appears in the current boot's TPM log.
+This establishes current TPM access, not IDevID provisioning, key custody,
+or reliable recovery across future power interruptions.
+
+Follow-up usability check on the same live device:
+- tpm2_gettestresult: success.
+- Algorithms include RSA, RSASSA, RSAPSS, ECDSA, SHA-256, SHA-384 and AES.
+- Supported ECC curves: NIST P-256, NIST P-384, BN P-256.
+- Persistent 0x81010000: RSA-2048 restricted decrypt/storage object.
+- Persistent 0x81010010 and 0x81010011: RSA-2048 RSASSA/SHA-256 signing
+  objects, with fixedtpm|fixedparent|sensitivedataorigin|userwithauth|sign.
+  Only public attributes were read; signing authorization was not exercised.
+- NV indexes 0x1500016 (8 bytes, counter), 0x1500017 (1952 bytes),
+  0x1500018 (703 bytes), 0x1500019 (178 bytes) are present and written.
+- Firmware updater --status: TPM available; counter 0x1500016;
+  operator CA/CRL and manufacturer-key indexes configured as above.
+- Device ID reported by firmware updater: CCI-0008CCFD041F.
+- OpenSSL default provider works (3.5.5). Loading provider tpm2 fails because
+  /usr/lib/ossl-modules/tpm2.so is absent. This is an integration gap for
+  applications that need the OpenSSL TPM provider; TPM tools still work.
+- No key generation, NV writes, signing, deletion, or reprovisioning performed.

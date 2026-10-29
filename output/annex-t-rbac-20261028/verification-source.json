@@ -1,0 +1,15 @@
+{
+  "base_commit": "15b0a9c51e368bdbad98e4e71d3784a6cfb7b6b5",
+  "source": "/tmp/ccli-annext-rbac-source-20261028",
+  "overlay_sha256": {
+    "apps/ccli/adapters/iec61850_mms/mms_adapter.cpp": "292baa0e3844941d628c1a2befead2cc0b72fa42e9c1e74287708878f878d43d",
+    "apps/ccli/adapters/iec61850_mms/mms_rbac.cpp": "e5161bf5766bf240d353be2cb4f1e0ee28f2d4e8fe070e727bb581cc041ea041",
+    "apps/ccli/adapters/iec61850_mms/mms_rbac.hpp": "1157214a797756a4b4eaaff95a0023e5412a5a6be37d7d550f89d2fa717ac44c",
+    "apps/ccli/config/rbac/commissioning-scopes.xml": "ea98c88065d81b83c269ce53d8ef4de05fe343f4adbd674456f681ca28690f57",
+    "apps/ccli/config/rbac/README.md": "b0d55cd202b6058d88c9ee23f555622174853e59c89a45f07618dc3ae2cc9438",
+    "apps/ccli/tests/integration/mms_rbac_tls_test.cpp": "82fe58210d4e4c9ba0ced926a0f3132634fd81bf4c32f17cd4a4050123421b86",
+    "apps/ccli/tests/integration/rbac_fixture.py": "3f5501a51c05947ddbfd44cd3cbb904888c62506fda8a136a15a1a203f3d246d",
+    "apps/ccli/tests/unit/mms_acse_auth_test.cpp": "8fb19daa72815dd21ce1ff6c0e91e8c498232d6fe12d92b8af6cf6b5cfd6b625"
+  },
+  "note": "Repository baseline plus Annex T RBAC changes; concurrent event/syslog and TLS working-tree changes excluded."
+}

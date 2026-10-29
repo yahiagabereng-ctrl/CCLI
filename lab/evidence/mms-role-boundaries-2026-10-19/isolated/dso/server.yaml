@@ -1,0 +1,28 @@
+mms:
+  enabled: true
+  bind_address: 127.0.0.1
+  tcp_port: 3784
+  comms_loss_fallback_s: 0
+  rbac_profile_a: true
+  rbac_policy: /mnt/c/Users/Administrator/Desktop/CCLI Alireza/CCLI/lab/ejbca-staging/rbac/dual-certificate/commissioning-sequence3/commissioning-policy.xml
+  rbac_owner_cert: /mnt/c/Users/Administrator/Desktop/CCLI Alireza/CCLI/lab/ejbca-staging/rbac/owner-signer/owner-signer.pem
+  rbac_activation_state: /mnt/c/Users/Administrator/Desktop/CCLI Alireza/CCLI Merged/lab/evidence/mms-role-boundaries-2026-10-19/isolated/dso/activation.state
+  rbac_identity_ca: /mnt/c/Users/Administrator/Desktop/CCLI Alireza/CCLI/lab/ejbca-staging/rbac/rbac_ca.pem
+  rbac_identity_crl: /mnt/c/Users/Administrator/Desktop/CCLI Alireza/CCLI/lab/ejbca-staging/rbac/rbac_crl.pem
+  tls_enabled: true
+  tls_chain_validation: true
+  tls_own_cert: /mnt/c/Users/Administrator/Desktop/CCLI Alireza/CCLI/apps/ccli/config/tls/server_tls.pem
+  tls_own_key: /mnt/c/Users/Administrator/Desktop/CCLI Alireza/CCLI/apps/ccli/config/tls/server.key
+  tls_acse_cert: /mnt/c/Users/Administrator/Desktop/CCLI Alireza/CCLI/apps/ccli/config/tls/server.pem
+  tls_acse_key: /mnt/c/Users/Administrator/Desktop/CCLI Alireza/CCLI/apps/ccli/config/tls/server_acse.key
+  tls_ca_cert: /mnt/c/Users/Administrator/Desktop/CCLI Alireza/CCLI/lab/ejbca-staging/rbac/dual-certificate/main-test/ca-bundle.pem
+  tls_crl: /mnt/c/Users/Administrator/Desktop/CCLI Alireza/CCLI/lab/ejbca-staging/rbac/dual-certificate/main-test/crl-bundle.pem
+  tls_client_cert: /mnt/c/Users/Administrator/Desktop/CCLI Alireza/CCLI/lab/ejbca-staging/rbac/dso/dso.pem
+  tls_acse_client_cert: /mnt/c/Users/Administrator/Desktop/CCLI Alireza/CCLI/apps/ccli/config/tls/viewer_tls.pem
+  tls_viewer_cert: /mnt/c/Users/Administrator/Desktop/CCLI Alireza/CCLI/lab/ejbca-staging/rbac/viewer-r1/viewer-r1.pem
+  tls_revoked_cert: /mnt/c/Users/Administrator/Desktop/CCLI Alireza/CCLI/lab/ejbca-staging/rbac/negative-revoked/negative-revoked.pem
+  tls_additional_client_cert: /mnt/c/Users/Administrator/Desktop/CCLI Alireza/CCLI/apps/ccli/config/tls/client_tls.pem
+event_log:
+  enabled: true
+  path: /mnt/c/Users/Administrator/Desktop/CCLI Alireza/CCLI Merged/lab/evidence/mms-role-boundaries-2026-10-19/isolated/dso/events.jsonl
+  syslog_enabled: false

@@ -1,0 +1,100 @@
+var cafDataTableDeleteRow = function(table,id){
+//alert(id);
+	table.deleteRow(id);
+}
+
+var cafDataTableAppendRow = function(table,id,insertType,insertValue){
+//alert(id);
+  
+	            
+	                var record = YAHOO.widget.DataTable._cloneObject(data); 
+	                //record.row = 1;//
+					//record.row =table.getRecordSet().getLength(); 
+	 
+					table.addRow(record,table.getRecordIndex(id)+1); 
+ 
+}
+
+var cafDataTableInsertRow = function(table,id,insertType,insertValue){
+//alert(id);
+  var data = {item:"",op:"",insertType:insertType,insertValue:insertValue}; 
+	            
+	                var record = YAHOO.widget.DataTable._cloneObject(data); 
+	                //record.row = 1;//
+					//record.row =table.getRecordSet().getLength(); 
+	 
+					table.addRow(record,table.getRecordIndex(id)); 
+ 
+}
+
+
+
+
+var cafDataTableOperArr =[{'flag':'eq','label':'=','desc':'等于'},
+			  {'flag':'ne','label':'!=','desc':'不等于'},
+			  {'flag':'like','label':'like','desc':'像'},
+			  {'flag':'nlike','label':'no like','desc':'不像'},
+			  {'flag':'startWith','label':'like','desc':'开头'},
+			  {'flag':'endWith','label':'like','desc':'结尾'},
+			  {'flag':'gt','label':'>','desc':'大于'},
+			  {'flag':'gte','label':'>=','desc':'大于等于'},
+			  {'flag':'lt','label':'<','desc':'小于'},
+			  {'flag':'lte','label':'<=','desc':'小于等于'}
+			  ];
+
+var getSelected = function(element){
+	if('SELECT'==element.tagName.toUpperCase()){
+		for (var i=0; element.options.length; i++)
+		{
+			if (element.options[i].selected)
+			{
+		//	alert(YAHOO.lang.dump(element.options[i]));
+			//alert(element.options[i].getAttribute('clabel')+' '+element.options[i].getAttribute('ctype'));
+				return {"flag":element.options[i].value,"label":element.options[i].getAttribute('clabel')};
+			} 
+		}
+		
+	}
+
+}
+
+
+
+var cafDataTableLogicArr =[{'flag':'and','desc':'并且','label':'and'},
+			  {'flag':'or','desc':'或者','label':'or'},
+			  {'flag':'z','desc':'(','label':'('},
+			  {'flag':'y','desc':')','label':')'}];
+
+function bulidCafDataTableLogic(value){
+	var r ='<select name=\'customFilterLogic\' >';
+
+	for (var i=0;i<cafDataTableLogicArr.length; i++){
+		
+		r+='<option value=\''+cafDataTableLogicArr[i].flag+'\' clabel=\''+cafDataTableLogicArr[i].label+'\'';
+		if (value&&value==cafDataTableLogicArr[i].flag){
+		 
+			r+=' selected ';
+		}
+		r+='\>'+cafDataTableLogicArr[i].desc+'</option>';
+	}
+	r +='</select>';
+	r+='<input type="hidden" name=\'customFilterColumn\' />';
+	r+='<input type="hidden" name=\'customFilterOper\' />';
+	r+='<input type="hidden" name=\'customFilterValue\' />';
+	return r;
+
+}
+
+
+function bulidCafDataTableOper(){
+	var r ='<select name=\'customFilterOper\' >';
+
+	for (var i=0;i<cafDataTableOperArr.length; i++){
+		r+=('<option value=\''+cafDataTableOperArr[i].flag+'\' clabel=\''+cafDataTableOperArr[i].label+'\'>'+cafDataTableOperArr[i].desc+'</option>');
+ 
+	}
+	r +='</select>';
+	return r;
+
+}
+	  

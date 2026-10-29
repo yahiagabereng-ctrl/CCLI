@@ -1,0 +1,81 @@
+{
+  "host": "192.168.0.1",
+  "port": 3782,
+  "command": "check",
+  "reference": "",
+  "passed": true,
+  "events": [
+    {
+      "kind": "association",
+      "reference": "192.168.0.1",
+      "error": 0,
+      "error_text": "",
+      "value": "mutual TLS 1.2 + ACSE certificate authentication",
+      "observed_utc": "2026-10-19T09:05:24.445865+00:00"
+    },
+    {
+      "kind": "directory",
+      "reference": "",
+      "error": 0,
+      "error_text": "",
+      "value": "devices",
+      "observed_utc": "2026-10-19T09:05:24.476775+00:00"
+    },
+    {
+      "kind": "entry",
+      "reference": "",
+      "error": 0,
+      "error_text": "",
+      "value": "CCI016_01LD_Plant",
+      "observed_utc": "2026-10-19T09:05:24.476891+00:00"
+    },
+    {
+      "kind": "read",
+      "reference": "CCI016_01LD_Plant/PdCMMXU1.TotW.mag.f",
+      "error": 0,
+      "error_text": "",
+      "value": "10.000000",
+      "observed_utc": "2026-10-19T09:05:24.487025+00:00"
+    },
+    {
+      "kind": "read",
+      "reference": "CCI016_01LD_Plant/PdCMMXU1.TotVAr.mag.f",
+      "error": 0,
+      "error_text": "",
+      "value": "1.000000",
+      "observed_utc": "2026-10-19T09:05:24.507454+00:00"
+    },
+    {
+      "kind": "read",
+      "reference": "CCI016_01LD_Plant/PdCMMXU1.TotW.q",
+      "error": 0,
+      "error_text": "",
+      "value": "0000000000000",
+      "observed_utc": "2026-10-19T09:05:24.517658+00:00"
+    },
+    {
+      "kind": "quality",
+      "reference": "CCI016_01LD_Plant/PdCMMXU1.TotW.q",
+      "error": 0,
+      "error_text": "",
+      "value": "good raw=0 oldData=0 inaccurate=0",
+      "observed_utc": "2026-10-19T09:05:24.517769+00:00"
+    },
+    {
+      "kind": "read",
+      "reference": "CCI016_01LD_Plant/PdCMMXU1.TotW.t",
+      "error": 0,
+      "error_text": "",
+      "value": "20261019090522.050Z",
+      "observed_utc": "2026-10-19T09:05:24.528000+00:00"
+    },
+    {
+      "kind": "time_quality",
+      "reference": "CCI016_01LD_Plant/PdCMMXU1.TotW.t",
+      "error": 0,
+      "error_text": "",
+      "value": "epoch_ms=1792400722050 clockNotSynchronized=0",
+      "observed_utc": "2026-10-19T09:05:24.528118+00:00"
+    }
+  ]
+}

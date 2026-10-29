@@ -1,0 +1,18 @@
+{
+  "host": "127.0.0.1",
+  "port": 3784,
+  "command": "read",
+  "reference": "CCI016_01LD_Plant/WlimDWMX1.Mod.DoesNotExist",
+  "connection_mode": "persistent",
+  "passed": false,
+  "events": [
+    {
+      "kind": "read",
+      "reference": "CCI016_01LD_Plant/WlimDWMX1.Mod.DoesNotExist",
+      "error": -1,
+      "error_text": "",
+      "value": "error 10",
+      "observed_utc": "2026-10-19T09:39:47.754986+00:00"
+    }
+  ]
+}

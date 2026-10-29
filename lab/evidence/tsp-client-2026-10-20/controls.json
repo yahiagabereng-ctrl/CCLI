@@ -1,0 +1,270 @@
+{
+  "passed": true,
+  "plant_io": false,
+  "port": 3783,
+  "checks": [
+    {
+      "role": "dso",
+      "case": "read",
+      "passed": true,
+      "events": [
+        {
+          "kind": "read",
+          "reference": "CCI016_01LD_Plant/WlimDWMX1.Mod.stVal",
+          "error": 0,
+          "error_text": "",
+          "value": "5",
+          "observed_utc": "2026-10-20T15:20:27.213502+00:00"
+        }
+      ]
+    },
+    {
+      "role": "dso",
+      "case": "configuration-write",
+      "passed": true,
+      "events": [
+        {
+          "kind": "write",
+          "reference": "CCI016_01LD_Plant/WlimDWMX1.WMaxSptPct.ctlModel",
+          "error": 0,
+          "error_text": "",
+          "value": "3",
+          "observed_utc": "2026-10-20T15:20:27.223712+00:00"
+        },
+        {
+          "kind": "read",
+          "reference": "CCI016_01LD_Plant/WlimDWMX1.WMaxSptPct.ctlModel",
+          "error": 0,
+          "error_text": "",
+          "value": "3",
+          "observed_utc": "2026-10-20T15:20:27.244390+00:00"
+        }
+      ]
+    },
+    {
+      "role": "dso",
+      "case": "operate",
+      "passed": true,
+      "events": [
+        {
+          "kind": "control_model",
+          "reference": "CCI016_01LD_Plant/WlimDWMX1.Mod",
+          "error": 0,
+          "error_text": "",
+          "value": "3 direct-enhanced",
+          "observed_utc": "2026-10-20T15:20:27.264961+00:00"
+        },
+        {
+          "kind": "control_type",
+          "reference": "CCI016_01LD_Plant/WlimDWMX1.Mod",
+          "error": 0,
+          "error_text": "",
+          "value": "int32",
+          "observed_utc": "2026-10-20T15:20:27.265014+00:00"
+        },
+        {
+          "kind": "operate",
+          "reference": "CCI016_01LD_Plant/WlimDWMX1.Mod",
+          "error": 0,
+          "error_text": "",
+          "value": "request accepted",
+          "observed_utc": "2026-10-20T15:20:27.275457+00:00"
+        },
+        {
+          "kind": "termination",
+          "reference": "CCI016_01LD_Plant/WlimDWMX1.Mod",
+          "error": 0,
+          "error_text": "",
+          "value": "error=0 addCause=0",
+          "observed_utc": "2026-10-20T15:20:27.275495+00:00"
+        },
+        {
+          "kind": "readback",
+          "reference": "CCI016_01LD_Plant/WlimDWMX1.Mod",
+          "error": 0,
+          "error_text": "",
+          "value": "reading status on the same MMS association",
+          "observed_utc": "2026-10-20T15:20:27.375519+00:00"
+        },
+        {
+          "kind": "read",
+          "reference": "CCI016_01LD_Plant/WlimDWMX1.Mod.stVal",
+          "error": 0,
+          "error_text": "",
+          "value": "1",
+          "observed_utc": "2026-10-20T15:20:27.387191+00:00"
+        },
+        {
+          "kind": "readback_match",
+          "reference": "CCI016_01LD_Plant/WlimDWMX1.Mod.stVal",
+          "error": 0,
+          "error_text": "",
+          "value": "matches requested value",
+          "observed_utc": "2026-10-20T15:20:27.387219+00:00"
+        }
+      ]
+    },
+    {
+      "role": "dso",
+      "case": "operate-off",
+      "passed": true,
+      "events": [
+        {
+          "kind": "control_model",
+          "reference": "CCI016_01LD_Plant/WlimDWMX1.Mod",
+          "error": 0,
+          "error_text": "",
+          "value": "3 direct-enhanced",
+          "observed_utc": "2026-10-20T15:20:27.417774+00:00"
+        },
+        {
+          "kind": "control_type",
+          "reference": "CCI016_01LD_Plant/WlimDWMX1.Mod",
+          "error": 0,
+          "error_text": "",
+          "value": "int32",
+          "observed_utc": "2026-10-20T15:20:27.417813+00:00"
+        },
+        {
+          "kind": "operate",
+          "reference": "CCI016_01LD_Plant/WlimDWMX1.Mod",
+          "error": 0,
+          "error_text": "",
+          "value": "request accepted",
+          "observed_utc": "2026-10-20T15:20:27.427942+00:00"
+        },
+        {
+          "kind": "termination",
+          "reference": "CCI016_01LD_Plant/WlimDWMX1.Mod",
+          "error": 0,
+          "error_text": "",
+          "value": "error=0 addCause=0",
+          "observed_utc": "2026-10-20T15:20:27.427968+00:00"
+        },
+        {
+          "kind": "readback",
+          "reference": "CCI016_01LD_Plant/WlimDWMX1.Mod",
+          "error": 0,
+          "error_text": "",
+          "value": "reading status on the same MMS association",
+          "observed_utc": "2026-10-20T15:20:27.528129+00:00"
+        },
+        {
+          "kind": "read",
+          "reference": "CCI016_01LD_Plant/WlimDWMX1.Mod.stVal",
+          "error": 0,
+          "error_text": "",
+          "value": "5",
+          "observed_utc": "2026-10-20T15:20:27.539675+00:00"
+        },
+        {
+          "kind": "readback_match",
+          "reference": "CCI016_01LD_Plant/WlimDWMX1.Mod.stVal",
+          "error": 0,
+          "error_text": "",
+          "value": "matches requested value",
+          "observed_utc": "2026-10-20T15:20:27.539704+00:00"
+        }
+      ]
+    },
+    {
+      "role": "dso",
+      "case": "read-after-control-or-denial",
+      "passed": true,
+      "events": [
+        {
+          "kind": "read",
+          "reference": "CCI016_01LD_Plant/WlimDWMX1.Mod.stVal",
+          "error": 0,
+          "error_text": "",
+          "value": "5",
+          "observed_utc": "2026-10-20T15:20:27.549856+00:00"
+        }
+      ]
+    },
+    {
+      "role": "viewer",
+      "case": "read",
+      "passed": true,
+      "events": [
+        {
+          "kind": "read",
+          "reference": "CCI016_01LD_Plant/WlimDWMX1.Mod.stVal",
+          "error": 0,
+          "error_text": "",
+          "value": "5",
+          "observed_utc": "2026-10-20T15:20:27.933160+00:00"
+        }
+      ]
+    },
+    {
+      "role": "viewer",
+      "case": "configuration-write",
+      "passed": true,
+      "events": [
+        {
+          "kind": "write",
+          "reference": "CCI016_01LD_Plant/WlimDWMX1.WMaxSptPct.ctlModel",
+          "error": 21,
+          "error_text": "access-denied",
+          "value": "3",
+          "observed_utc": "2026-10-20T15:20:27.943459+00:00"
+        }
+      ]
+    },
+    {
+      "role": "viewer",
+      "case": "operate",
+      "passed": true,
+      "events": [
+        {
+          "kind": "control_model",
+          "reference": "CCI016_01LD_Plant/WlimDWMX1.Mod",
+          "error": 0,
+          "error_text": "",
+          "value": "3 direct-enhanced",
+          "observed_utc": "2026-10-20T15:20:27.974321+00:00"
+        },
+        {
+          "kind": "control_type",
+          "reference": "CCI016_01LD_Plant/WlimDWMX1.Mod",
+          "error": 0,
+          "error_text": "",
+          "value": "int32",
+          "observed_utc": "2026-10-20T15:20:27.974353+00:00"
+        },
+        {
+          "kind": "operate",
+          "reference": "CCI016_01LD_Plant/WlimDWMX1.Mod",
+          "error": 1,
+          "error_text": "",
+          "value": "request rejected",
+          "observed_utc": "2026-10-20T15:20:27.984844+00:00"
+        },
+        {
+          "kind": "control_error",
+          "reference": "CCI016_01LD_Plant/WlimDWMX1.Mod",
+          "error": 21,
+          "error_text": "access-denied",
+          "value": "error=0 addCause=0",
+          "observed_utc": "2026-10-20T15:20:27.984899+00:00"
+        }
+      ]
+    },
+    {
+      "role": "viewer",
+      "case": "read-after-control-or-denial",
+      "passed": true,
+      "events": [
+        {
+          "kind": "read",
+          "reference": "CCI016_01LD_Plant/WlimDWMX1.Mod.stVal",
+          "error": 0,
+          "error_text": "",
+          "value": "5",
+          "observed_utc": "2026-10-20T15:20:27.994900+00:00"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+[
+  {
+    "File": "ccli_acse_bridge.c",
+    "EquivalentIgnoringLineEndings": false
+  },
+  {
+    "File": "ccli_acse_bridge.h",
+    "EquivalentIgnoringLineEndings": true
+  },
+  {
+    "File": "gnss_time.cpp",
+    "EquivalentIgnoringLineEndings": true
+  },
+  {
+    "File": "gnss_time.hpp",
+    "EquivalentIgnoringLineEndings": true
+  },
+  {
+    "File": "mms_aare_auth.cpp",
+    "EquivalentIgnoringLineEndings": true
+  },
+  {
+    "File": "mms_aare_auth.hpp",
+    "EquivalentIgnoringLineEndings": true
+  },
+  {
+    "File": "mms_acse_auth.cpp",
+    "EquivalentIgnoringLineEndings": true
+  },
+  {
+    "File": "mms_acse_auth.hpp",
+    "EquivalentIgnoringLineEndings": true
+  },
+  {
+    "File": "mms_adapter.cpp",
+    "EquivalentIgnoringLineEndings": true
+  },
+  {
+    "File": "mms_adapter.hpp",
+    "EquivalentIgnoringLineEndings": true
+  },
+  {
+    "File": "mms_certificate_auth_bridge.h",
+    "EquivalentIgnoringLineEndings": true
+  },
+  {
+    "File": "mms_rbac_security.cpp",
+    "EquivalentIgnoringLineEndings": true
+  },
+  {
+    "File": "mms_rbac_security.hpp",
+    "EquivalentIgnoringLineEndings": true
+  },
+  {
+    "File": "mms_rbac.cpp",
+    "EquivalentIgnoringLineEndings": true
+  },
+  {
+    "File": "mms_rbac.hpp",
+    "EquivalentIgnoringLineEndings": true
+  },
+  {
+    "File": "mms_xacml.cpp",
+    "EquivalentIgnoringLineEndings": true
+  },
+  {
+    "File": "mms_xacml.hpp",
+    "EquivalentIgnoringLineEndings": true
+  }
+]

@@ -1,0 +1,4 @@
+# These scripts execute on Linux/OpenWrt even when checked out on Windows.
+package/ccli/files/ccli-crl* text eol=lf
+lab/tg544-openwrt/commission-crl-pull.sh text eol=lf
+lab/tg544-openwrt/build-ccli-local-untrusted.sh text eol=lf

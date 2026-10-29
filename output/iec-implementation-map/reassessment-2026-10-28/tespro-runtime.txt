@@ -1,0 +1,125 @@
+Read-only Tespro observations collected on 28 October 2026, approximately 08:41–08:48 UTC.
+No firmware, account, trust or network setting was changed during this reassessment.
+Commands selected only non-secret settings and public CRL metadata. No private keys, passwords or Wi-Fi PSKs are included.
+
+date -u; /usr/sbin/ccli --version; ps | grep '[c]cli'; netstat -ln
+t 2>/dev/null; uci show dropbear; uci show firewall | grep -E '\.input=|\.output
+=|\.forward=|\.name=|\.network='; ip -4 addr show br-lan; chronyc tracking | hea
+d -14
+Wed Oct 28 08:41:17 UTC 2026
+ccli 0.1.0-r71 (CEI57-142-AGGREGATOR)
+  semver:   0.1.0
+  release:  r71
+  git:      unknown
+  built:    2026-06-29T12:59:20Z UTC
+  platform: tg500
+ 5138 root      6096 S    /usr/sbin/ccli --config /etc/ccli/lab.yaml
+Active Internet connections (only servers)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State       
+tcp        0      0 192.168.0.1:3782        0.0.0.0:*               LISTEN      
+tcp        0      0 127.0.0.1:53            0.0.0.0:*               LISTEN      
+tcp        0      0 192.168.178.1:53        0.0.0.0:*               LISTEN      
+tcp        0      0 192.168.0.1:53          0.0.0.0:*               LISTEN      
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      
+tcp        0      0 0.0.0.0:21              0.0.0.0:*               LISTEN      
+tcp        0      0 0.0.0.0:80              0.0.0.0:*               LISTEN      
+tcp        0      0 0.0.0.0:443             0.0.0.0:*               LISTEN      
+tcp        0      0 fd70:de51:68f0::1:53    :::*                    LISTEN      
+tcp        0      0 fe80::20c:43ff:fe26:600f:53 :::*                    LISTEN  
+ 
+
+tcp        0      0 fe80::20c:43ff:fe26:600f:53 :::*                    LISTEN  
+ 
+
+tcp        0      0 :::22                   :::*                    LISTEN      
+tcp        0      0 :::80                   :::*                    LISTEN      
+tcp        0      0 :::443                  :::*                    LISTEN      
+tcp        0      0 ::1:53                  :::*                    LISTEN      
+dropbear.main=dropbear
+dropbear.main.enable='1'
+dropbear.main.PasswordAuth='on'
+dropbear.main.RootPasswordAuth='on'
+dropbear.main.Port='22'
+firewall.@defaults[0].input='REJECT'
+firewall.@defaults[0].output='ACCEPT'
+firewall.@defaults[0].forward='REJECT'
+firewall.@zone[0].name='lan'
+firewall.@zone[0].network='lan'
+firewall.@zone[0].input='ACCEPT'
+firewall.@zone[0].output='ACCEPT'
+firewall.@zone[0].forward='ACCEPT'
+firewall.@zone[1].name='wan'
+firewall.@zone[1].network='wan' 'wan6' 'wwan' 'wwan'
+firewall.@zone[1].input='REJECT'
+firewall.@zone[1].output='ACCEPT'
+firewall.@zone[1].forward='DROP'
+firewall.@rule[0].name='Allow-DHCP-Renew'
+firewall.@rule[1].name='Allow-Ping'
+firewall.@rule[2].name='Allow-IGMP'
+firewall.@rule[3].name='Allow-DHCPv6'
+firewall.@rule[4].name='Allow-MLD'
+firewall.@rule[5].name='Allow-ICMPv6-Input'
+firewall.@rule[6].name='Allow-ICMPv6-Forward'
+firewall.@rule[7].name='Allow-IPSec-ESP'
+firewall.@rule[8].name='Allow-ISAKMP'
+8: br-lan: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP qle
+en 1000
+    inet 192.168.0.1/24 brd 192.168.0.255 scope global br-lan
+       valid_lft forever preferred_lft forever
+    inet 192.168.178.1/24 brd 192.168.178.255 scope global br-lan
+       valid_lft forever preferred_lft forever
+Reference ID    : 474E5353 (GNSS)
+Stratum         : 1
+Ref time (UTC)  : Wed Oct 28 08:41:00 2026
+System time     : 0.052552227 seconds fast of NTP time
+Last offset     : +0.010630380 seconds
+RMS offset      : 0.182589635 seconds
+Frequency       : 0.000 ppm slow
+Residual freq   : +1526.491 ppm
+Skew            : 1000000.000 ppm
+Root delay      : 0.500000000 seconds
+Root dispersion : 16.732875824 seconds
+Update interval : 32.0 seconds
+Leap status     : Normal
+root@TR500:~#
+
+sha256sum /usr/sbin/ccli /etc/ccli/lab.yaml /etc/ccli/rbac-dual/tr
+ust/tls-crl-bundle.pem; ls /sys/class/net/br-lan/brif; logread | grep 'mms:     time
+_quality' | tail -1
+76f8ba487ec2acb62a509fa9bbcd6befa8c289ee274ac7a5ddfa83a7da77a6cf  /usr/sbin/ccli
+0eadbbde0e33343403305a26a3c3ad485c74f41c98199f8d13d4b59e93954482  /etc/ccli/lab.
+.yaml
+790a018ac443a026b640bfeb676f51fcead6ed123047e8680e851cf408aa942b  /etc/ccli/rbac
+c-dual/trust/tls-crl-bundle.pem
+lan1        lan2        lan3        phy0.0-ap0  phy0.1-ap0
+Wed Oct 28 09:43:59 2026 daemon.err ccli[5138]: mms: time_quality chrony offset_
+_ms=-106 within_pm100=no leap=Normal ref=474E5353 gnss_fix=1 clockNotSynchronized
+d=1 (T.3.3.4.5)
+root@TR500:~# 
+
+uci show wireless | grep -E '\.mode=|\.encryption=|\.disabled=|\.n
+etwork='; ls -l /etc/ccli/security-events/events.jsonl* 2>/dev/null
+wireless.radio0.disabled='0'
+wireless.default_radio0.network='lan'
+wireless.default_radio0.mode='ap'
+wireless.default_radio0.encryption='psk2'
+wireless.default_radio0.disabled='0'
+wireless.radio1.disabled='0'
+wireless.default_radio1.network='lan'
+wireless.default_radio1.mode='ap'
+wireless.default_radio1.encryption='psk2'
+wireless.default_radio1.disabled='0'
+-rw-r-----    1 root     root        775099 Oct 28 09:45 /etc/ccli/security-even
+nts/events.jsonl
+-rw-r-----    1 root     root        653370 Oct 27 14:48 /etc/ccli/security-even
+nts/events.jsonl.1
+root@TR500:~#
+
+openssl crl -in /etc/ccli/rbac-dual/trust/tls-crl-bundle.pem -noou
+t -issuer -nextupdate; openssl crl -in /etc/ccli/rbac-dual/trust/rbac_crl.pem -n
+oout -issuer -nextupdate
+issuer=C=IT, O=HiTEKS, OU=CCLI-Lab, CN=CCLI_Lab_Root_CA
+nextUpdate=Oct 29 19:36:10 2026 GMT
+issuer=CN=CCLI RBAC Lab CA, O=HiTEKS, C=IT
+nextUpdate=Nov  2 09:04:57 2026 GMT
+root@TR500:~#

@@ -1,0 +1,33 @@
+21119
+tcp        0      0 192.168.0.1:3782        0.0.0.0:*               LISTEN      21119/ccli
+e61fdf9c5b14be9dac84edffe61d8b6bab650d6546a7e4c722fc2075ce819188  /usr/sbin/ccli
+346e0b653d224231c542e664cf50ada443835e44436e3fe43705b5825a203c5c  /etc/ccli/lab.yaml
+6571986abeb2fb998683738239a2c66f1517e06f5163f58513788a8a514539b4  /etc/ccli/rbac-dual/package/commissioning-manifest.xml
+d9461c767b16e210acc0270bcd5672f416da177e8b865c4277c3c9663db19a3e  /etc/ccli/rbac-dual/package/commissioning-policy.xml
+41385c990f18b7530a97cb86feb5bb8cb3e7da4257d22a6167b9f4c33373209b  /etc/ccli/rbac-dual/package/commissioning-scopes.xml
+a3cfa2b5419342c4df48c2e1279ed9c0ec9351411a6b5906814c7148a4a5c60e  /etc/ccli/rbac-dual/package/identity-bindings.xml
+c984e3ace0e0e2efeb1e7ee864a36ee430d8411bb172c78d52e098784e337df1  /etc/ccli/rbac-dual/package/permission-library.xml
+Mon Oct 19 18:21:50 2026 daemon.err ccli[21119]: modbus: FC3 ReadHoldingRegisters unit=1 addr=100001 qty=6 -> P=10kW Q=1kvar raw=0x4120 0x0000 0x3f80 0x0000 0x43c8 0x0000 P=10kW pf2=ok curtail=no DO=OFF
+Mon Oct 19 18:21:54 2026 daemon.err ccli[21119]: modbus: FC3 ReadHoldingRegisters unit=1 addr=100001 qty=6 -> P=10kW Q=1kvar raw=0x4120 0x0000 0x3f80 0x0000 0x43c8 0x199a P=10kW pf2=ok curtail=no DO=OFF
+Mon Oct 19 18:22:01 2026 daemon.err ccli[21119]: modbus: FC3 ReadHoldingRegisters unit=1 addr=100001 qty=6 -> P=10kW Q=1kvar raw=0x4120 0x0000 0x3f80 0x0000 0x43c8 0x0000 P=10kW pf2=ok curtail=no DO=OFF
+Mon Oct 19 18:22:05 2026 daemon.err ccli[21119]: modbus: FC3 ReadHoldingRegisters unit=1 addr=100001 qty=6 -> P=10kW Q=1kvar raw=0x4120 0x0000 0x3f80 0x0000 0x43c7 0xcccd P=10kW pf2=ok curtail=no DO=OFF
+{
+  "ts_ms": 1792405310615,
+  "p_kw": 10,
+  "q_kvar": 1,
+  "quality": "good",
+  "pf2_reason": "ok",
+  "curtailment_commanded": false,
+  "permissive_ok": false,
+  "annex_m_trip_active": false,
+  "do_curtail_on": false,
+  "dso_applied": true,
+  "derived": {
+    "smax_calc_kva": 206.155,
+    "smax_used_kva": 210,
+    "p_wsd_kw": 42,
+    "p_wlim_kw": 0,
+    "p_w110_kw": 0,
+    "p_effective_kw": 42,
+    "pf2_enter_kw": 42,
+    "pf2_release_kw": 37

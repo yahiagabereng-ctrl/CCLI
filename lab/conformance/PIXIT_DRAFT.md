@@ -94,8 +94,8 @@ RBAC: VIEWER associate OK; Operate **denied**.
 | Item | Value |
 |------|--------|
 | TLS | **1.2 only** — min and max `TLS_VERSION_TLS_1_2` (r56+; **TLS 1.3 not** offered on MMS/104) |
-| Mutual auth | Required (client cert allow-list) |
-| Cert | RSA **2048**; max **8192** octets |
+| Mutual auth | Required (mutual CA-chain validation; optional repeatable exact peer-certificate allow-list, also available for IEC 104) |
+| Cert | RSA >=2048 / P-256; maximum **8,192 DER octets per certificate**, enforced on local and peer certificate chains for MMS and IEC 104 |
 | CA | Lab EJBCA root |
 | Dual cert (Annex T G.2) | TLS = `server_tls.pem` · ACSE = `server.pem` |
 | CRL | Loaded when `tls_crl` set (`lab_crl.pem`) |

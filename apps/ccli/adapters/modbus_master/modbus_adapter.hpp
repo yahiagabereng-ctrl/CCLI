@@ -213,11 +213,9 @@ private:
 
     bool commissioning_ok_{false};
 
-#ifdef CCLI_MODBUS_LIBMODBUS
-
-    void* libmodbus_ctx_{nullptr}; /* modbus_t* — opaque to keep header free of modbus.h */
-
-#endif
+    // Keep the layout identical for callers: the backend compile definition
+    // is PRIVATE to ccli_adapters, while services embed this class by value.
+    void* libmodbus_ctx_{nullptr}; /* modbus_t*; no public libmodbus dependency */
 
 };
 

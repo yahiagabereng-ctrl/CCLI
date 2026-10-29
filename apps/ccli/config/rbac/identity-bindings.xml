@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Commission actual EJBCA certificate fingerprints with scripts/commission_rbac.py.
+     The empty template cannot activate Profile A. No example identity is trusted. -->
+<IdentityBindings Version="1.0" />

@@ -1,0 +1,32 @@
+[
+  {
+    "case": "nodes",
+    "passed": true,
+    "exit_code": 0
+  },
+  {
+    "case": "objects",
+    "passed": true,
+    "exit_code": 0
+  },
+  {
+    "case": "datasets",
+    "passed": true,
+    "exit_code": 0
+  },
+  {
+    "case": "read",
+    "passed": true,
+    "exit_code": 0
+  },
+  {
+    "case": "watch",
+    "passed": true,
+    "exit_code": 0
+  },
+  {
+    "case": "missing-object",
+    "passed": true,
+    "exit_code": 1
+  }
+]

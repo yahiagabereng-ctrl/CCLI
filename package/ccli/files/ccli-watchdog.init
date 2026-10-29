@@ -1,0 +1,45 @@
+#!/bin/sh /etc/rc.common
+
+START=99
+STOP=10
+USE_PROCD=1
+
+positive_uci() {
+	local value default
+	value=$(uci -q get "$1" 2>/dev/null)
+	default="$2"
+	case "$value" in
+		''|*[!0-9]*) echo "$default" ;;
+		0) echo "$default" ;;
+		*) echo "$value" ;;
+	esac
+}
+
+start_service() {
+	local enabled ccli_enabled stale check grace boot_grace
+	enabled=$(uci -q get ccli.watchdog.enabled 2>/dev/null)
+	ccli_enabled=$(uci -q get ccli.main.enabled 2>/dev/null)
+	[ "$enabled" = "0" ] && return 0
+	[ "$ccli_enabled" = "0" ] && return 0
+
+	# 8 s is below PF2's 10 s stale-data safety bound but above the configured
+	# 2 s × 3 Modbus retry window. /dev/watchdog is deliberately not opened here.
+	stale=$(positive_uci ccli.watchdog.stale_timeout_s 8)
+	check=$(positive_uci ccli.watchdog.check_interval_s 1)
+	grace=$(positive_uci ccli.watchdog.kill_grace_s 2)
+	boot_grace=$(positive_uci ccli.watchdog.startup_grace_s 30)
+
+	procd_open_instance
+	procd_set_param command /usr/sbin/ccli-watchdog --health-file /var/run/ccli-health \
+		--stale-timeout "$stale" --check-interval "$check" --kill-grace "$grace" \
+		--startup-grace "$boot_grace"
+	procd_set_param respawn 3600 5 5
+	procd_set_param file /etc/config/ccli
+	procd_set_param stdout 1
+	procd_set_param stderr 1
+	procd_close_instance
+}
+
+service_triggers() {
+	procd_add_reload_trigger "ccli"
+}

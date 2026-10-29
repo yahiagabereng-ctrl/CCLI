@@ -1,0 +1,33 @@
+﻿# CCLI TSP evidence
+tsp_id: T1-01
+tsp_version: 
+pc_ip: 192.168.0.115
+dut_ip: 192.168.0.1
+dut_port: 3782
+tls: true
+cid: apps/ccli/config/icd/product/product_tr400_eth_a_5ln.cid
+specimen: 5-LN
+ccli_pkg: 0.1.0-r53
+gate: P3_01
+tool: CONNECT
+operator: Nicola
+date: 2026-10-20
+result: IN_PROGRESS
+hint: Connect CCI016_01 :3782 mutual TLS; System Status screenshot optional.
+
+--- TSP Output / notes (paste below) ---
+
+capture_started_utc: 2026-10-20 12:11:26 UTC
+pcap: C:\Users\Firmware Engineer\Desktop\product\CCLI\lab\evidence\testsuite-pro\pcap\TSP_P3_01_CONNECT_2026-10-20.pcapng
+dut_log: C:\Users\Firmware Engineer\Desktop\product\CCLI\lab\evidence\testsuite-pro\inbox\TSP_P3_01_CONNECT_2026-10-20_DUT_LOG.txt
+wire_summary: C:\Users\Firmware Engineer\Desktop\product\CCLI\lab\evidence\testsuite-pro\inbox\TSP_P3_01_CONNECT_2026-10-20_WIRE.txt
+
+--- TSP Output / notes (paste below) ---
+
+
+
+--- capture_stopped_utc: 2026-10-20 12:12:31 UTC ---
+
+dut_log: C:\Users\Firmware Engineer\Desktop\product\CCLI\lab\evidence\testsuite-pro\inbox\TSP_P3_01_CONNECT_2026-10-20_DUT_LOG.txt
+pcap_bytes: 48548
+wire_summary: C:\Users\Firmware Engineer\Desktop\product\CCLI\lab\evidence\testsuite-pro\inbox\TSP_P3_01_CONNECT_2026-10-20_WIRE.txt

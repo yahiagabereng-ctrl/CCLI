@@ -1,0 +1,52 @@
+[
+  {
+    "case": "final-write",
+    "passed": true,
+    "exit_code": 0
+  },
+  {
+    "case": "final-operate",
+    "passed": true,
+    "exit_code": 0
+  },
+  {
+    "case": "final-viewer-denial",
+    "passed": true,
+    "exit_code": 1
+  },
+  {
+    "case": "final-reports",
+    "passed": true,
+    "exit_code": 0
+  },
+  {
+    "case": "final-report-cleanup",
+    "passed": true,
+    "exit_code": 0
+  },
+  {
+    "case": "final-GI-denied",
+    "passed": true,
+    "exit_code": 1
+  },
+  {
+    "case": "final-static-dataset",
+    "passed": true,
+    "exit_code": 0
+  },
+  {
+    "case": "final-dynamic-disabled",
+    "passed": true,
+    "exit_code": 1
+  },
+  {
+    "case": "final-validation",
+    "passed": true,
+    "exit_code": 2
+  },
+  {
+    "case": "final-menu",
+    "passed": true,
+    "exit_code": 0
+  }
+]

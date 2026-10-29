@@ -6,10 +6,13 @@
 #include <cstddef>
 #include <iosfwd>
 #include <mutex>
+#include <memory>
 #include <string>
 #include <vector>
 
 namespace cci::core {
+class SyslogSender;
+class PlatformEventMonitor;
 
 /** O.14 rolling event log configuration (P7-01 / P7-03). */
 struct EventLogConfig {
@@ -17,7 +20,25 @@ struct EventLogConfig {
     std::string path{"/var/lib/ccli/events.jsonl"};
     bool        syslog_enabled{false};
     std::string syslog_host{"127.0.0.1"};
-    int         syslog_port{514};
+    int         syslog_port{6514};
+    std::string syslog_source;
+    std::string syslog_app_name{"ccli"};
+    std::string syslog_tls_ca;
+    std::string syslog_tls_cert;
+    std::string syslog_tls_key;
+    std::string syslog_tls_crl;
+    /** RFC 5425 end-entity authorization: SHA-256 of the collector DER leaf. */
+    std::string syslog_tls_peer_sha256;
+    /** Import OpenWrt management authentication and account-database events. */
+    bool        platform_audit_enabled{true};
+    /** Canonical firmware-updater persistent audit path on TesPro/OpenWrt. */
+    std::string platform_updater_audit_path{
+        "/mnt/mmcblk0/firmware-updater/security-audit.log"};
+    /** Files whose replacement should be recorded as a configuration change. */
+    std::vector<std::string> platform_credential_paths;
+    int syslog_revocation_check_s{3600};
+    int syslog_renegotiation_s{43200};
+    int syslog_resumption_s{3600};
 };
 
 enum class FirmwareBootKind { First, Unchanged, Updated };
@@ -27,14 +48,27 @@ struct FirmwareBootNote {
     std::string      detail;
 };
 
-/** In-memory ring (2048) with append-only persistence. No public erase. */
+/** Latest 2048 events, persisted in two append-only rotating segments.
+ * Each segment holds at most 2048 lines; reads expose the latest 2048 events
+ * across path + path.1. Rotation never rewrites retained records.
+ */
 class EventStore {
 public:
     static constexpr std::size_t kMaxEvents = EventRing::kMaxEvents;
 
-    explicit EventStore(EventLogConfig cfg = {});
+    /** Read-only instances load history without starting producers or changing files. */
+    explicit EventStore(EventLogConfig cfg = {}, bool read_only = false);
+    ~EventStore();
 
-    void append(EventRecord ev);
+    /** False on persistence failure or malformed explicit IEC metadata.
+     * Raw input remains locally available; remote delivery is asynchronous. */
+    bool append(EventRecord ev);
+    static bool audit_log_read(const std::string& path, bool success);
+    /** Durable spool for recognized platform authentication events. */
+    static bool audit_platform_auth(const std::string& path, const EventRecord& event);
+    bool persistence_ok() const;
+    /** Latched false after a forwarding fault; local append success is separate. */
+    bool syslog_ok() const;
     std::vector<EventRecord> recent(std::size_t max_count) const;
     std::size_t size() const;
 
@@ -63,18 +97,27 @@ public:
 private:
     EventRing      ring_;
     EventLogConfig cfg_;
+    bool read_only_{false};
     mutable std::mutex mu_;
+    std::size_t current_lines_{0};
+    bool needs_separator_{false};
+    bool persistence_ok_{true};
+    bool syslog_ok_{true};
+    std::uint32_t last_sequence_{0};
+    std::unique_ptr<SyslogSender> sender_;
+    std::unique_ptr<PlatformEventMonitor> platform_monitor_;
 
     void load_from_file();
-    void persist_line(const EventRecord& ev);
-    void rewrite_file_from_ring();
-    void apply_file_mode() const;
-    void syslog_send(const EventRecord& ev) const;
+    void load_segment(const std::string& path, bool current);
+    bool persist_line(const EventRecord& ev);
+    bool persistence_error(const char* operation);
+    void syslog_failure(const std::string& reason);
+    bool append_impl(EventRecord ev, bool forward);
 };
 
 std::string format_o14_timestamp(std::int64_t epoch_ms);
 
-/** RFC 5424 syslog line (PRI = local0.notice or .warning). */
+/** IEC 62351-14 RFC 5424 message, or empty for an unmapped/invalid event. */
 std::string format_rfc5424(const EventRecord& ev, const std::string& hostname,
                            const std::string& app_name);
 

@@ -1,0 +1,26 @@
+{
+  "note": "Source/document snapshot at the user-requested pause. This is NOT a source-to-binary verification manifest. The standalone sanitizer log is evidence only for the earlier run; no integrated or ARM64 BER verification occurred.",
+  "historical_verified_phase": "lab/evidence/e2e-abort-resilience-2026-10-23/RESULTS.md",
+  "source_file_byte_sha256_at_pause": {
+    "apps/ccli/adapters/iec61850_mms/e2e/ber_codec.hpp": "6b1d1a24104a7bab459c45667a3b35cd87395d3279cba92b086dab058fae7d6c",
+    "apps/ccli/adapters/iec61850_mms/e2e/ber_codec.cpp": "3286c966333da1675c10039b150d2939683a3ea3db5fdc2d313d2bf40f9d1984",
+    "apps/ccli/adapters/iec61850_mms/e2e/e2e_codec.hpp": "3761877fb3ad609de34b121ef065660cfdd44c6cdfe295f516c0aa52edeb41a4",
+    "apps/ccli/adapters/iec61850_mms/e2e/e2e_codec.cpp": "1d343169b58650b540e8011c0bd152833a66700f6e88693a242dea0809baabe6",
+    "apps/ccli/adapters/iec61850_mms/e2e/e2e_association.hpp": "9cafe9803cd122375fdef0cc45f7da2f92607279dac8b8d0084c3ec29636ed88",
+    "apps/ccli/adapters/iec61850_mms/e2e/e2e_association.cpp": "a5af19e44bc9cc955a80a161a63bf45217f40abb41c3bd399bffd71ff2ad2fc4",
+    "apps/ccli/adapters/iec61850_mms/e2e/e2e_wire.hpp": "de649d648d6005eb4837a2bd723e6f467432d6653440ffbb30cdd5576b49aac6",
+    "apps/ccli/adapters/iec61850_mms/e2e/e2e_server.cpp": "a22e10feb7816b8e0dbcda0bdd9c00cef0f714ade15e8f74a6b1c351d3bcec46",
+    "apps/ccli/tests/unit/e2e_ber_field_test.cpp": "49c5d768a96ade60c6e3268bac23b8091538c0c9fadc885197a79d1179226bbd",
+    "apps/ccli/tests/unit/CMakeLists.txt": "0be143e360fc892a971287220f25858169b2be7200e6b7cfcdf10ca1246146f8",
+    "apps/ccli/tools/mms-client/e2e_probe.py": "7f90c76b38e2b499b968b0641d438c94c295f125955a39186b7edd17a1079f71",
+    "scripts/check_e2e_ber_sanitizers.sh": "f229598246f34c1cb2bda1cd5bc699dd69c7672b4d55e9846f2ec75b951fe20e",
+    "lab/conformance/e2e/BER_FIELD_COVERAGE.md": "44ab8e06ff6f8f438914d7d81460f875347456d438d3445faaa20dbe2727967e",
+    "lab/conformance/e2e/BER_FIELD_HANDOFF.md": "87148821169d1f5adfd1f960ad59fc69dbdbfae345183e26a34d5e2d681e965a",
+    "lab/conformance/e2e/ber-field-map.csv": "f29ca50db268b6f85ea4ccd74df30104639d6769340c44e175bf89f83614ba10",
+    "lab/conformance/e2e/ber-field-map-inventory.json": "f434d91cf66b1d395f0af20d5f0ffb45f21cc94b3bd6c3c60d3ff3e10485f03e",
+    "lab/conformance/e2e/generate_ber_field_map.py": "c217f6dd23eb690ef270d6529e7b741a7414343d46cd6cdcea2613eac82d7d4f",
+    "lab/conformance/e2e/IMPLEMENTATION_PLAN.md": "df603a82145f25421e03038d592130a931f5cfa63491f9a6a7b935c7019831a3",
+    "lab/conformance/e2e/requirements.csv": "721fec22839c32c30a938ace85d8e719a00522d1212054d09a20cc39d41b8d28"
+  },
+  "standalone_log_sha256": "4e1e64e9ded2a15963c3ca9fa712f061564aaedc093b7eafa5c14e8f25c8a8b4"
+}

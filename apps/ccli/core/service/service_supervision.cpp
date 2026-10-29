@@ -5,6 +5,7 @@
 #include <cstdlib>
 #include <cstring>
 #include <fcntl.h>
+#include <time.h>
 #include <unistd.h>
 
 #include <fstream>
@@ -17,6 +18,8 @@ namespace {
 
 constexpr const char* kCrashTombstonePath = "/var/lib/ccli/crash.tombstone";
 constexpr const char* kRunningMarkerPath = "/var/run/ccli-running";
+constexpr const char* kHealthPath = "/var/run/ccli-health";
+constexpr const char* kHealthTempPath = "/var/run/ccli-health.tmp";
 
 std::atomic<bool>* g_running_flag = nullptr;
 ServiceSupervision::SafeStateHook g_safe_state_hook = nullptr;
@@ -79,6 +82,14 @@ void remove_file_if_exists(const char* path) {
     }
 }
 
+std::int64_t monotonic_ms() {
+    struct timespec ts {};
+    if (clock_gettime(CLOCK_MONOTONIC, &ts) != 0) {
+        return -1;
+    }
+    return static_cast<std::int64_t>(ts.tv_sec) * 1000 + ts.tv_nsec / 1000000;
+}
+
 }  // namespace
 
 void ServiceSupervision::set_safe_state_hook(SafeStateHook hook) {
@@ -128,6 +139,7 @@ CrashRecoveryInfo ServiceSupervision::startup_check() {
 }
 
 void ServiceSupervision::mark_running() {
+    remove_file_if_exists(kHealthPath);
     const int fd = open(kRunningMarkerPath, O_WRONLY | O_CREAT | O_TRUNC, 0644);
     if (fd < 0) {
         return;
@@ -140,9 +152,38 @@ void ServiceSupervision::mark_running() {
     close(fd);
 }
 
+void ServiceSupervision::watchdog_main_loop_tick() {
+    static std::int64_t last_publish_ms = -1;
+    static unsigned long sequence = 0;
+
+    const std::int64_t now_ms = monotonic_ms();
+    if (now_ms < 0 ||
+        (last_publish_ms >= 0 && now_ms - last_publish_ms < kHealthPublishIntervalMs)) {
+        return;
+    }
+
+    const int fd = open(kHealthTempPath, O_WRONLY | O_CREAT | O_TRUNC, 0644);
+    if (fd < 0) {
+        return;
+    }
+    char buf[128];
+    const int len = snprintf(buf, sizeof(buf),
+                             "version=1\npid=%d\nmonotonic_ms=%lld\nsequence=%lu\n",
+                             static_cast<int>(getpid()), static_cast<long long>(now_ms),
+                             ++sequence);
+    if (len > 0 && static_cast<std::size_t>(len) < sizeof(buf) &&
+        write(fd, buf, static_cast<std::size_t>(len)) == len) {
+        (void)rename(kHealthTempPath, kHealthPath);
+        last_publish_ms = now_ms;
+    }
+    close(fd);
+}
+
 void ServiceSupervision::mark_clean_shutdown() {
     remove_file_if_exists(kRunningMarkerPath);
     remove_file_if_exists(kCrashTombstonePath);
+    remove_file_if_exists(kHealthPath);
+    remove_file_if_exists(kHealthTempPath);
 }
 
 void ServiceSupervision::procd_watchdog_ping() {

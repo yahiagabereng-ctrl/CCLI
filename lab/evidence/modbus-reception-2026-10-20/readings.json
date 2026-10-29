@@ -1,0 +1,131 @@
+{
+  "identity": "viewer-r0",
+  "read_only": true,
+  "checks": [
+    {
+      "reference": "CCI016_01LD_Plant/PdCMMXU1.TotW.mag.f",
+      "exit_code": 0,
+      "events": [
+        {
+          "kind": "read",
+          "reference": "CCI016_01LD_Plant/PdCMMXU1.TotW.mag.f",
+          "error": 0,
+          "error_text": "",
+          "value": "0.000000",
+          "observed_utc": "2026-10-20T07:41:34.457572+00:00"
+        }
+      ]
+    },
+    {
+      "reference": "CCI016_01LD_Plant/PdCMMXU1.TotVAr.mag.f",
+      "exit_code": 0,
+      "events": [
+        {
+          "kind": "read",
+          "reference": "CCI016_01LD_Plant/PdCMMXU1.TotVAr.mag.f",
+          "error": 0,
+          "error_text": "",
+          "value": "0.000000",
+          "observed_utc": "2026-10-20T07:41:36.148835+00:00"
+        }
+      ]
+    },
+    {
+      "reference": "CCI016_01LD_Plant/PdCMMXU1.TotW.q",
+      "exit_code": 0,
+      "events": [
+        {
+          "kind": "read",
+          "reference": "CCI016_01LD_Plant/PdCMMXU1.TotW.q",
+          "error": 0,
+          "error_text": "",
+          "value": "0000000000000",
+          "observed_utc": "2026-10-20T07:41:37.861472+00:00"
+        },
+        {
+          "kind": "quality",
+          "reference": "CCI016_01LD_Plant/PdCMMXU1.TotW.q",
+          "error": 0,
+          "error_text": "",
+          "value": "good raw=0 oldData=0 inaccurate=0",
+          "observed_utc": "2026-10-20T07:41:37.861564+00:00"
+        }
+      ]
+    },
+    {
+      "reference": "CCI016_01LD_Plant/PdCMMXU1.TotVAr.q",
+      "exit_code": 0,
+      "events": [
+        {
+          "kind": "read",
+          "reference": "CCI016_01LD_Plant/PdCMMXU1.TotVAr.q",
+          "error": 0,
+          "error_text": "",
+          "value": "0000000000000",
+          "observed_utc": "2026-10-20T07:41:39.827813+00:00"
+        },
+        {
+          "kind": "quality",
+          "reference": "CCI016_01LD_Plant/PdCMMXU1.TotVAr.q",
+          "error": 0,
+          "error_text": "",
+          "value": "good raw=0 oldData=0 inaccurate=0",
+          "observed_utc": "2026-10-20T07:41:39.827902+00:00"
+        }
+      ]
+    },
+    {
+      "reference": "CCI016_01LD_Plant/PdCMMXU1.TotW.t",
+      "exit_code": 0,
+      "events": [
+        {
+          "kind": "read",
+          "reference": "CCI016_01LD_Plant/PdCMMXU1.TotW.t",
+          "error": 0,
+          "error_text": "",
+          "value": "20261020074131.902Z",
+          "observed_utc": "2026-10-20T07:41:41.946796+00:00"
+        },
+        {
+          "kind": "time_quality",
+          "reference": "CCI016_01LD_Plant/PdCMMXU1.TotW.t",
+          "error": 0,
+          "error_text": "",
+          "value": "epoch_ms=1792482091902 clockNotSynchronized=0",
+          "observed_utc": "2026-10-20T07:41:41.946886+00:00"
+        }
+      ]
+    },
+    {
+      "reference": "CCI016_01LD_Plant/PdCMMXU1.TotW.mag.f",
+      "command": "watch",
+      "exit_code": 0,
+      "events": [
+        {
+          "kind": "read",
+          "reference": "CCI016_01LD_Plant/PdCMMXU1.TotW.mag.f",
+          "error": 0,
+          "error_text": "",
+          "value": "0.000000",
+          "observed_utc": "2026-10-20T07:41:43.881970+00:00"
+        },
+        {
+          "kind": "read",
+          "reference": "CCI016_01LD_Plant/PdCMMXU1.TotW.mag.f",
+          "error": 0,
+          "error_text": "",
+          "value": "0.000000",
+          "observed_utc": "2026-10-20T07:41:46.295130+00:00"
+        },
+        {
+          "kind": "read",
+          "reference": "CCI016_01LD_Plant/PdCMMXU1.TotW.mag.f",
+          "error": 0,
+          "error_text": "",
+          "value": "0.000000",
+          "observed_utc": "2026-10-20T07:41:49.311523+00:00"
+        }
+      ]
+    }
+  ]
+}

@@ -1,5 +1,6 @@
 #include "mms_aare_auth.hpp"
 #include "ccli_acse_bridge.h"
+#include "mms_certificate_auth_bridge.h"
 
 #include <cstdio>
 #include <cstring>
@@ -173,6 +174,10 @@ int build_mms_auth_value(uint8_t* out, int max_out) {
     }
 
     uint8_t seq_body[8192];
+    // Check all nested wrappers before any copy into fixed-sized buffers.
+    if (g_server_cert_der.size() + static_cast<size_t>(gt_len) + sig_len + 64 > sizeof(seq_body) ||
+        g_server_cert_der.size() + static_cast<size_t>(gt_len) + sig_len + 64 > static_cast<size_t>(max_out))
+        return -1;
     int seq_len = 0;
     seq_len = append_tl(seq_body, seq_len, 0x80, g_server_cert_der.data(),
                         static_cast<int>(g_server_cert_der.size()));
@@ -259,12 +264,10 @@ bool mms_aare_auth_configure(const std::string& cert_pem_path, const std::string
 }
 
 void mms_aare_auth_register_acse_bridge() {
-    AcseConnection_setCcliRespondingApTitle(kMmsRespondingApTitle, kMmsRespondingAeQualifier);
-    AcseConnection_setCcliAareAuthBuilder(ccli_aare_auth_build_tramp);
-    std::fprintf(stderr, "mms: AARE responding titles AP=%s AE=%d\n",
-                 kMmsRespondingApTitle, kMmsRespondingAeQualifier);
+    CcliDualCert_setResponderAddress(kMmsRespondingApTitle, kMmsRespondingAeQualifier);
+    CcliDualCert_setAareAuthBuilder(ccli_aare_auth_build_tramp);
+    std::fprintf(stderr, "mms: explicit certificate authentication and signed AARE bridge enabled\n");
 }
 
-#endif
-
 }  // namespace cci::adapters
+#endif

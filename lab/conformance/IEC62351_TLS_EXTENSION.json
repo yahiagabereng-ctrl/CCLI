@@ -1,0 +1,150 @@
+{
+  "scope": "User requested IEC 62351-3 TLS corrections on 2026-10-26 and 2026-10-27; transport security and published CRL replacement. Authorized Tespro deployments are recorded in lab/tg544-openwrt/deploy-manifests.",
+  "changes": [
+    "Exactly the four mandatory TLS 1.2 cipher suites; conditional NULL and optional AES-256 suites stay disabled",
+    "RSA >=2048 and secp256r1 ECDSA support, SHA-256 required/preferred, and policy controls for optional SHA-384/SHA-512",
+    "RSA key-length alarms and SHA-1 deprecation warning with strict rejection",
+    "Reject absent ClientHello signature_algorithms before server signing on initial handshakes and renegotiations; warn and alarm on the provider SHA-1 fallback",
+    "Strict local/peer chain validation and key pairing; pins preserve verification errors",
+    "Per-certificate 8,192-octet DER maximum on local and peer TLS chains, with a required alarm and handshake rejection above the limit",
+    "MMS and IEC 104 peer-certificate absence, endpoint-identity failure, and authorized-CA individual-certificate alarms",
+    "Repeatable IEC 104 exact-certificate pins in addition to mandatory issuer-chain validation",
+    "Connection-owned authenticated CRL refresh and idle revocation checks",
+    "Expired authenticated CRLs warn without blocking listener startup or ending established sessions; initial peer verification still enforces CRL freshness",
+    "Bounded monotonic renegotiation with 30-second completion deadline",
+    "Full handshakes until safe peer identity restoration on resumption is implemented",
+    "MMS and IEC 104 TLS security events"
+  ],
+  "remaining_gaps": [
+    "OCSP stapling and direct OCSP retrieval",
+    "Authenticated automatic CRL distribution",
+    "Re-enabling safe session resumption",
+    "Device/independent conformance validation"
+  ],
+  "reviewed_source_lf_sha256": {
+    "apps/ccli/CMakeLists.txt": "78db7f6df4ea0eaaaa7e7ea63d74f86b9e414f93107f36dc3115d10b41e88927",
+    "apps/ccli/adapters/iec61850_mms/mms_adapter.cpp": "7f6bb24faad0ba9b4cf4ee8b5aeb6a78c84739141fb3c4d7bde750644bc3053c",
+    "apps/ccli/core/config/ccli_config.cpp": "0d98b7da406d5a2bf9b198d4aa2b296c20c0b0f74fa06f815cf7791a2f430610",
+    "apps/ccli/core/config/ccli_config.hpp": "656b30faa02f4c270ccf600f5378651b01d587dc2435e825d3139d56895a0977",
+    "apps/ccli/cmake/tls_allowlist_validation.cmake": "9f27c29c35b5f4cd4b01587b574989952f8db412ae8e591eea91a58a599137ac",
+    "apps/ccli/cmake/iec62351_tls_overlay.py": "252d335a28bd36f88e25a022483d5f4952ca36fd1084125440850fcfc1af5a63",
+    "apps/ccli/cmake/tls_idle_tick.py": "0467bfbed76fdd4671cad04c81693ba7992b704e4e1dfb8930e8db0dc8fd1f01",
+    "apps/ccli/cmake/tls_idle_tick.cmake": "6a89005dc7d2951d96df81445de2673f30e54bde900cdffa2f677d308b01a16d",
+    "apps/ccli/adapters/security/iec62351_tls.h": "9e68e5253067543ee49903a56231ddce57ae2fc911dd2b0db9aae624c71602ff",
+    "apps/ccli/adapters/security/iec62351_backend.inc": "e4c327d34165bb0eb1f21ac0c467cfe516b27764c2340a33ac63ddb7b47af599",
+    "apps/ccli/adapters/security/mbedtls_config.h": "f298bef1bc1eaadd47c170120514bcf1114102204f9e7156fb0a36e6547c1461",
+    "apps/ccli/adapters/iec60870_104/iec104_tls.cpp": "b55e528246e434396e681ab833752458fbdf1205e2692075e11b2d3edaaee828",
+    "apps/ccli/adapters/iec60870_104/iec104_tls.hpp": "abbb92507eadc0a2895b7f376f70d54e74162259432d64c3e5e7d03e71b43e73",
+    "apps/ccli/adapters/iec60870_104/iec104_adapter.cpp": "27923b71a1d3a19f3b30dc9e5fdb82db3eebb81ed9550720185f3d28705f78d3",
+    "apps/ccli/adapters/iec60870_104/iec104_adapter.hpp": "9139bd604a854a399d28e42d387a3fe8688bada4819c0981e5c4465d44e21fce",
+    "apps/ccli/services/ccli_main.cpp": "21852d2f436392f1958dbfedf5b9948a5f43b7f99f4a1237b1f1c23f36ddc5ff",
+    "apps/ccli/services/svc_iec104.hpp": "afc4a857927ed1a98cf9e2e1a0da691f96da7629bbc284c15bf98de2b8e41dd2",
+    "apps/ccli/tests/integration/iec62351_tls_probe.cpp": "ddade11b6e8f916a887569e8b87bbf56fd2f7d786b1411cdf0a1fdd431c394d4",
+    "apps/ccli/tests/integration/iec62351_tls_test.py": "1a7240a69967aa62fdf94d443ad67e2362f1954df96099d4f99972caee601040",
+    "apps/ccli/tests/unit/tls_allowlist_config_test.cpp": "408e1955bb15083f55b158d423649b1a81e8fab5f29705aafca6faae9b238a0d"
+  },
+  "superseded_sources": {
+    "apps/ccli/adapters/iec61850_mms/mms_adapter.cpp": {
+      "original": "e56ec4db940d2b8b626ab1f15f3197b88634a6c2dcfcaf6bf4d18b5a3cc30400",
+      "reviewed_lf_sha256": "7f6bb24faad0ba9b4cf4ee8b5aeb6a78c84739141fb3c4d7bde750644bc3053c"
+    },
+    "apps/ccli/core/config/ccli_config.cpp": {
+      "original": "b5e099a5130740633ffefa82e6f908b7ae2234aa0d90d0940cea8017b0ec94a2",
+      "reviewed_lf_sha256": "0d98b7da406d5a2bf9b198d4aa2b296c20c0b0f74fa06f815cf7791a2f430610"
+    },
+    "apps/ccli/core/config/ccli_config.hpp": {
+      "original": "54b1cf408e0408e3f32d636f3187fa7f2375851bed6f1e6749c1492c2a50beaf",
+      "reviewed_lf_sha256": "656b30faa02f4c270ccf600f5378651b01d587dc2435e825d3139d56895a0977"
+    },
+    "apps/ccli/cmake/tls_allowlist_validation.cmake": {
+      "original": "78d355174e205340ec969f8718f118a4f0aedf533d38ecdb201c44ad4f61d5b5",
+      "reviewed_lf_sha256": "9f27c29c35b5f4cd4b01587b574989952f8db412ae8e591eea91a58a599137ac"
+    }
+  },
+  "additional_lab_tls_settings": [
+    {
+      "index": 13,
+      "line": "tls_crl: /etc/ccli/tls/lab_crl.pem"
+    }
+  ],
+  "previous_tls_calls": [
+    "TLSConfiguration_setMinTlsVersion(impl->tls,TLS_VERSION_TLS_1_2);",
+    "TLSConfiguration_setMaxTlsVersion(impl->tls,TLS_VERSION_TLS_1_2);",
+    "TLSConfiguration_setChainValidation(impl->tls,cfg.tls.chain_validation);",
+    "TLSConfiguration_setAllowOnlyKnownCertificates(impl->tls,have_allow);",
+    "TLSConfiguration_setOwnKeyFromFile(impl->tls,cfg.tls.own_key.c_str(),nullptr)){std::fprintf(stderr,\"mms:TLSfailedtoloadownkey%s\\n\",cfg.tls.own_key.c_str());",
+    "TLSConfiguration_destroy(impl->tls);",
+    "TLSConfiguration_setOwnCertificateFromFile(impl->tls,cfg.tls.own_cert.c_str())){std::fprintf(stderr,\"mms:TLSfailedtoloadowncert%s\\n\",cfg.tls.own_cert.c_str());",
+    "TLSConfiguration_destroy(impl->tls);",
+    "TLSConfiguration_addCACertificateFromFile(impl->tls,cfg.tls.ca_cert.c_str())){std::fprintf(stderr,\"mms:TLSfailedtoloadCA%s\\n\",cfg.tls.ca_cert.c_str());",
+    "TLSConfiguration_destroy(impl->tls);",
+    "TLSConfiguration_addCRLFromFile(impl->tls,cfg.tls.crl_path.c_str())){std::fprintf(stderr,\"mms:TLSfailedtoloadCRL%s\\n\",cfg.tls.crl_path.c_str());",
+    "TLSConfiguration_destroy(impl->tls);",
+    "TLSConfiguration_addAllowedCertificateFromFile(impl->tls,cfg.tls.client_cert.c_str())){std::fprintf(stderr,\"mms:TLSfailedtoloadDSOallowlist%s\\n\",cfg.tls.client_cert.c_str());",
+    "TLSConfiguration_destroy(impl->tls);",
+    "TLSConfiguration_destroy(impl->tls);",
+    "TLSConfiguration_destroy(impl->tls);",
+    "TLSConfiguration_addAllowedCertificateFromFile(impl->tls,cfg.tls.acse_client_cert.c_str())){std::fprintf(stderr,\"mms:TLSfailedtoloadDSOACSEallowlist%s\\n\",cfg.tls.acse_client_cert.c_str());",
+    "TLSConfiguration_destroy(impl->tls);",
+    "TLSConfiguration_addAllowedCertificateFromFile(impl->tls,cfg.tls.viewer_cert.c_str())){std::fprintf(stderr,\"mms:TLSfailedtoloadVIEWERallowlist%s\\n\",cfg.tls.viewer_cert.c_str());",
+    "TLSConfiguration_destroy(impl->tls);",
+    "TLSConfiguration_destroy(impl->tls);",
+    "TLSConfiguration_addAllowedCertificateFromFile(impl->tls,cfg.tls.revoked_cert.c_str())){std::fprintf(stderr,\"mms:TLSfailedtoloadrevokedallowlist%s\\n\",cfg.tls.revoked_cert.c_str());",
+    "TLSConfiguration_destroy(impl->tls);",
+    "TLSConfiguration_addAllowedCertificateFromFile(impl->tls,cfg.tls.additional_client_cert.c_str())){std::fprintf(stderr,\"mms:TLSfailedtoloadadditionalclientallowlist%s\\n\",cfg.tls.additional_client_cert.c_str());",
+    "TLSConfiguration_destroy(impl->tls);",
+    "TLSConfiguration_addAllowedCertificateFromFile(impl->tls,cert.c_str())){std::fprintf(stderr,\"mms:TLSfailedtoloadallowedclientcertificate%s\\n\",cert.c_str());",
+    "TLSConfiguration_destroy(impl->tls);",
+    "TLSConfiguration_destroy(impl->tls);",
+    "TLSConfiguration_destroy(impl->tls);",
+    "TLSConfiguration_destroy(impl->tls);",
+    "TLSConfiguration_destroy(impl_->tls);"
+  ],
+  "reviewed_tls_calls": [
+    "TLSConfiguration_setMinTlsVersion(impl->tls,TLS_VERSION_TLS_1_2);",
+    "TLSConfiguration_setMaxTlsVersion(impl->tls,TLS_VERSION_TLS_1_2);",
+    "TLSConfiguration_setChainValidation(impl->tls,cfg.tls.chain_validation);",
+    "TLSConfiguration_setAllowOnlyKnownCertificates(impl->tls,have_allow);",
+    "TLSConfiguration_setOwnKeyFromFile(impl->tls,cfg.tls.own_key.c_str(),nullptr)){impl->security_audit(\"TLS_SECURITY_EVENT\",\"alarm\",nullptr,\"TLS\",std::to_string(TLS_EVENT_CODE_ALM_CERT_UNAVAILABLE),\"alarm:endpointcertificateunavailable\");",
+    "TLSConfiguration_destroy(impl->tls);",
+    "TLSConfiguration_setOwnCertificateFromFile(impl->tls,cfg.tls.own_cert.c_str())){impl->security_audit(\"TLS_SECURITY_EVENT\",\"alarm\",nullptr,\"TLS\",std::to_string(TLS_EVENT_CODE_ALM_CERT_UNAVAILABLE),\"alarm:endpointcertificateunavailable\");",
+    "TLSConfiguration_destroy(impl->tls);",
+    "TLSConfiguration_addCACertificateFromFile(impl->tls,cfg.tls.ca_cert.c_str())){std::fprintf(stderr,\"mms:TLSfailedtoloadCA%s\\n\",cfg.tls.ca_cert.c_str());",
+    "TLSConfiguration_destroy(impl->tls);",
+    "TLSConfiguration_addCRLFromFile(impl->tls,cfg.tls.crl_path.c_str())){impl->security_audit(\"TLS_SECURITY_EVENT\",\"alarm\",nullptr,\"TLS\",std::to_string(CCLI_TLS_EVENT_CODE_CRL),\"alarm:configuredTLSCRLcouldnotbeloaded\");",
+    "TLSConfiguration_destroy(impl->tls);",
+    "TLSConfiguration_destroy(impl->tls);",
+    "TLSConfiguration_addAllowedCertificateFromFile(impl->tls,cfg.tls.client_cert.c_str())){std::fprintf(stderr,\"mms:TLSfailedtoloadDSOallowlist%s\\n\",cfg.tls.client_cert.c_str());",
+    "TLSConfiguration_destroy(impl->tls);",
+    "TLSConfiguration_destroy(impl->tls);",
+    "TLSConfiguration_destroy(impl->tls);",
+    "TLSConfiguration_addAllowedCertificateFromFile(impl->tls,cfg.tls.acse_client_cert.c_str())){std::fprintf(stderr,\"mms:TLSfailedtoloadDSOACSEallowlist%s\\n\",cfg.tls.acse_client_cert.c_str());",
+    "TLSConfiguration_destroy(impl->tls);",
+    "TLSConfiguration_addAllowedCertificateFromFile(impl->tls,cfg.tls.viewer_cert.c_str())){std::fprintf(stderr,\"mms:TLSfailedtoloadVIEWERallowlist%s\\n\",cfg.tls.viewer_cert.c_str());",
+    "TLSConfiguration_destroy(impl->tls);",
+    "TLSConfiguration_destroy(impl->tls);",
+    "TLSConfiguration_addAllowedCertificateFromFile(impl->tls,cfg.tls.revoked_cert.c_str())){std::fprintf(stderr,\"mms:TLSfailedtoloadrevokedallowlist%s\\n\",cfg.tls.revoked_cert.c_str());",
+    "TLSConfiguration_destroy(impl->tls);",
+    "TLSConfiguration_addAllowedCertificateFromFile(impl->tls,cfg.tls.additional_client_cert.c_str())){std::fprintf(stderr,\"mms:TLSfailedtoloadadditionalclientallowlist%s\\n\",cfg.tls.additional_client_cert.c_str());",
+    "TLSConfiguration_destroy(impl->tls);",
+    "TLSConfiguration_addAllowedCertificateFromFile(impl->tls,cert.c_str())){std::fprintf(stderr,\"mms:TLSfailedtoloadallowedclientcertificate%s\\n\",cert.c_str());",
+    "TLSConfiguration_destroy(impl->tls);",
+    "TLSConfiguration_destroy(impl->tls);",
+    "TLSConfiguration_destroy(impl->tls);",
+    "TLSConfiguration_destroy(impl->tls);",
+    "TLSConfiguration_destroy(impl->tls);",
+    "TLSConfiguration_destroy(impl_->tls);"
+  ],
+  "owner_merge_review": {
+    "source_commit": "e6d6ce0",
+    "review_record": "lab/conformance/OWNER_BRANCH_MERGE_2026-10-27.md",
+    "previous_reviewed_fingerprints": {
+      "apps/ccli/CMakeLists.txt": "cdd631bc65603d69e5436935b3bd522c3f9e639281d2a4ddfe88290f98f163e6",
+      "apps/ccli/adapters/iec61850_mms/mms_adapter.cpp": "a8a1864ee6abaf624f7d94459a9c5291ca6a5b04f448725242626ad757aa8d15",
+      "apps/ccli/core/config/ccli_config.cpp": "2180219b41eb9c5d5173228cb26d4b42acb56b72c03959683c70d050f4b04124",
+      "apps/ccli/core/config/ccli_config.hpp": "763c3fba7272464fc4ddce6abcabeb44784130f1638c17ee509ba3fd0baeb881",
+      "apps/ccli/services/ccli_main.cpp": "5367ea4c47ba562ddf8589b05d911ffe62a0d602913410d3f84c354c5200e1bb"
+    },
+    "scope": "Only five explicitly reviewed meter/build/DSO integration files. MMS security startup, security configuration structures and remaining TLS-reviewed files verified unchanged."
+  }
+}

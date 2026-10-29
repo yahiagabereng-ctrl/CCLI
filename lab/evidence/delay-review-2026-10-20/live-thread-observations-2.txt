@@ -1,0 +1,67 @@
+SAMPLE 19961.73 5136=do_select 5990=do_sys_poll 
+CPU 5136 utime=554 stime=17736
+CPU 5990 utime=4046 stime=54634
+343310 /etc/ccli/security-events/events.jsonl
+SAMPLE 19962.74 5136=do_select 5990=spi_nor_prep_and_lock_pe 
+l-wx------    1 root     root            64 Oct 20 20:39 6 -> /etc/ccli/security-events/events.jsonl
+CPU 5136 utime=554 stime=17736
+CPU 5990 utime=4049 stime=54667
+95192 /etc/ccli/security-events/events.jsonl
+SAMPLE 19963.76 5136=pipe_read 5990=0 
+l-wx------    1 root     root            64 Oct 20 20:39 6 -> /etc/ccli/security-events/events.jsonl
+CPU 5136 utime=554 stime=17736
+CPU 5990 utime=4049 stime=54707
+224115 /etc/ccli/security-events/events.jsonl
+SAMPLE 19964.78 5136=pipe_read 5990=0 
+l-wx------    1 root     root            64 Oct 20 20:39 6 -> /etc/ccli/security-events/events.jsonl
+CPU 5136 utime=554 stime=17736
+CPU 5990 utime=4051 stime=54727
+295435 /etc/ccli/security-events/events.jsonl
+SAMPLE 19965.80 5136=futex_wait_queue 5990=0 
+l-wx------    1 root     root            64 Oct 20 18:17 4 -> /etc/ccli/security-events/events.jsonl
+CPU 5136 utime=554 stime=17736
+CPU 5990 utime=4052 stime=54750
+20637 /etc/ccli/security-events/events.jsonl
+SAMPLE 19966.81 5136=futex_wait_queue 5990=0 
+l-wx------    1 root     root            64 Oct 20 18:17 4 -> /etc/ccli/security-events/events.jsonl
+CPU 5136 utime=554 stime=17736
+CPU 5990 utime=4053 stime=54779
+112258 /etc/ccli/security-events/events.jsonl
+SAMPLE 19967.83 5136=pipe_read 5990=jffs2_write_begin 
+l-wx------    1 root     root            64 Oct 20 20:39 6 -> /etc/ccli/security-events/events.jsonl
+CPU 5136 utime=554 stime=17736
+CPU 5990 utime=4054 stime=54854
+15274 /etc/ccli/security-events/events.jsonl
+SAMPLE 19968.84 5136=do_select 5990=spi_nor_prep_and_lock_pe 
+l-wx------    1 root     root            64 Oct 20 20:39 6 -> /etc/ccli/security-events/events.jsonl
+CPU 5136 utime=554 stime=17736
+CPU 5990 utime=4054 stime=54876
+79724 /etc/ccli/security-events/events.jsonl
+SAMPLE 19969.86 5136=do_select 5990=0 
+l-wx------    1 root     root            64 Oct 20 20:39 6 -> /etc/ccli/security-events/events.jsonl
+CPU 5136 utime=554 stime=17736
+CPU 5990 utime=4054 stime=54908
+183323 /etc/ccli/security-events/events.jsonl
+SAMPLE 19970.87 5136=pipe_read 5990=spi_nor_prep_and_lock_pe 
+l-wx------    1 root     root            64 Oct 20 20:39 6 -> /etc/ccli/security-events/events.jsonl
+CPU 5136 utime=554 stime=17736
+CPU 5990 utime=4055 stime=54968
+38671 /etc/ccli/security-events/events.jsonl
+SAMPLE 19971.89 5136=pipe_read 5990=0 
+l-wx------    1 root     root            64 Oct 20 20:39 6 -> /etc/ccli/security-events/events.jsonl
+CPU 5136 utime=554 stime=17736
+CPU 5990 utime=4055 stime=54988
+98071 /etc/ccli/security-events/events.jsonl
+SAMPLE 19972.90 5136=pipe_read 5990=spi_nor_prep_and_lock_pe 
+l-wx------    1 root     root            64 Oct 20 20:39 6 -> /etc/ccli/security-events/events.jsonl
+CPU 5136 utime=554 stime=17736
+CPU 5990 utime=4056 stime=55042
+272568 /etc/ccli/security-events/events.jsonl
+{"ts_ms":1792499959012,"ts_o14":"2026/10/20 12:39:19","category":"o14.comms_dso","type":"mms","detail":"client_disconnect"}
+{"ts_ms":1792499980950,"ts_o14":"2026/10/20 12:39:40","category":"o14.comms_dso","type":"mms","detail":"comms_loss_fallback"}
+{"ts_ms":1792499983857,"ts_o14":"2026/10/20 12:39:43","category":"o14.priority","type":"priority","detail":"autonomous_after_eth_a_loss"}
+{"ts_ms":1792499986132,"ts_o14":"2026/10/20 12:39:46","category":"o14.dso_command","type":"mms","detail":"wlim_off"}
+{"ts_ms":1792500015796,"ts_o14":"2026/10/20 12:40:15","category":"o14.security","type":"mms","detail":"{\"rbac\":true,\"event\":\"TLS_SECURITY_EVENT\",\"severity\":\"notice\",\"policy\":\"urn:iec:62351:8:IS:1.0:rps-root:8ef16ebb-65d6-4b2e-bad4-6729129eb412\",\"sequence\":3,\"service\":\"TLS\",\"object\":\"\",\"reason\":\"Info: Session established with cipher suite TLS-RSA-WITH-AES-128-CBC-SHA256\"}"}
+{"ts_ms":1792500018601,"ts_o14":"2026/10/20 12:40:18","category":"o14.comms_dso","type":"mms","detail":"client_connect"}
+{"ts_ms":1792500021309,"ts_o14":"2026/10/20 12:40:21","category":"o14.security","type":"mms","detail":"{\"rbac\":true,\"event\":\"TLS_SECURITY_EVENT\",\"severity\":\"alarm\",\"policy\":\"urn:iec:62351:8:IS:1.0:rps-root:8ef16ebb-65d6-4b2e-bad4-6729129eb412\",\"sequence\":3,\"service\":\"TLS\",\"object\":\"\",\"reason\":\"Alarm: handshake failed for unknown reason\"}"}
+{"ts_ms":1792500024060,"ts_o14":"2026/10/20 12:40:24","category":"o14.comms_dso","type":"mms","detail":"client_disconnect"}

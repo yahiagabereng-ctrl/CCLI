@@ -1,0 +1,42 @@
+STASE-MMS-Authentication-value {iso(1) standard(0) iec62351(62351) part4(4)
+  modules(0) handshake1(31) version1(1) }
+DEFINITIONS IMPLICIT TAGS ::=
+BEGIN
+
+Authentication-value ::= CHOICE {
+  external           [2] IMPLICIT SEQUENCE {
+    identification         CHOICE {
+      indirect-reference   INTEGER },  -- the presentation-context-identifier
+                                       -- for the mmsAuthenticationAS abstract
+                                       -- syntax
+    encoding             CHOICE {
+      single-ASN1-type [0] MMS-Authentication-value } } }
+
+MMS-Authentication-value ::= CHOICE {
+  certificate-based          [0]  IMPLICIT SEQUENCE {
+    authentication-Certificate [0]  IMPLICIT SignatureCertificate,
+    time                       [1]  IMPLICIT GeneralizedTime,
+    signature                  [2]  IMPLICIT SignedValue,
+    ... },
+  ... }
+
+SignatureCertificate ::= OCTET STRING
+--  (CONTAINING Certificate ENCODED BY der)
+
+SignedValue ::= OCTET STRING
+
+ALGORITHM ::= CLASS {
+  &Type          OPTIONAL,
+  &id            OBJECT IDENTIFIER UNIQUE }
+WITH SYNTAX {
+  [PARMS        &Type]
+  IDENTIFIED BY &id }
+
+sha256WithRSAEncryptionAlgorithm ALGORITHM ::= { -- IETF RFC 5754
+  PARMS         NULL
+  IDENTIFIED BY sha256WithRSAEncryption }
+
+sha256WithRSAEncryption OBJECT IDENTIFIER ::= { iso(1) member-body(2) us(840)
+  rsadsi(113549) pkcs(1) pkcs-1(1) sha256WithRSAEncryption(11) }
+
+END -- STASE-MMS-Authentication-value

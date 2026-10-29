@@ -23,6 +23,8 @@ apps/ccli/cmake-build-*/
 
 # Python
 __pycache__/
+apps/ccli/tools/mms-client/client.local.json
+lab/inverter-simulator-bridge/simulator.pid
 *.pyc
 .venv/
 
@@ -44,13 +46,51 @@ lab/tg544-openwrt/lab-env.ps1
 .env
 .env.*
 *.credentials
-lab/tmp_*.pem
-lab/testpro/staged/
+lab/testpro/staged/**
+!lab/testpro/staged/**/
+!lab/testpro/staged/**/*.key
+!lab/testpro/staged/**/*.key.enc
+!lab/testpro/staged/**/*.pem
+!lab/testpro/staged/**/*.crt
+!lab/testpro/staged/**/*.cer
+!lab/testpro/staged/**/*.p12
+!lab/testpro/staged/**/*.pfx
+!lab/testpro/staged/**/*.jks
+!lab/testpro/staged/**/*.keystore
 
 # TLS lab PKI is tracked in the private repo (apps/ccli/config/tls/)
 apps/ccli/config/tls/__pycache__/
-# EJBCA CA PKCS#12 staging (contains CA private key) — regenerate via provision script
-lab/ejbca-staging/
+# Keep EJBCA staging PKI files in Git; other staging data remains ignored
+lab/ejbca-staging/**
+!lab/ejbca-staging/**/
+!lab/ejbca-staging/**/*.key
+!lab/ejbca-staging/**/*.key.enc
+!lab/ejbca-staging/**/*.pem
+!lab/ejbca-staging/**/*.crt
+!lab/ejbca-staging/**/*.cer
+!lab/ejbca-staging/**/*.der
+!lab/ejbca-staging/**/*.p12
+!lab/ejbca-staging/**/*.pfx
+!lab/ejbca-staging/**/*.jks
+!lab/ejbca-staging/**/*.keystore
+
+# Local downloads, extracted reference bundles, and generated lab artifacts
+.codex-downloads/
+Normativa/
+TG500_Uart_Upgrade/
+tmp/
+**/dist/
+usr/
+lib/
+*.bin
+*.zip
+!apps/ccli/adapters/iec61850_mms/e2e/spec/iec62351-4-ed1.1/iec62351-4ed1.1b.zip
+tespro_com8_*.txt
+tespro_support_capture_*.zip
+
+# Lab TLS credentials and generated certificate database
+etc/ccli/tls/**/index.txt
+etc/ccli/tls/**/serial
 
 # Large local reference / corpus — keep on disk, not in git (>100 MB)
 Standards_pdf*/
@@ -86,3 +126,26 @@ product/apps/ccli/build-mms-host*/
 Thumbs.db
 Desktop.ini
 .DS_Store
+
+# Local merge build/network evidence; never commit lab artifacts.
+/lab/merge-validation/
+apps/ccli/tools/mms-client/*.local.json
+apps/ccli/config/EJBCA RBAC/**
+!apps/ccli/config/EJBCA RBAC/**/
+!apps/ccli/config/EJBCA RBAC/**/*.key
+!apps/ccli/config/EJBCA RBAC/**/*.key.enc
+!apps/ccli/config/EJBCA RBAC/**/*.pem
+!apps/ccli/config/EJBCA RBAC/**/*.crt
+!apps/ccli/config/EJBCA RBAC/**/*.cer
+!apps/ccli/config/EJBCA RBAC/**/*.p12
+!apps/ccli/config/EJBCA RBAC/**/*.pfx
+!apps/ccli/config/EJBCA RBAC/**/*.jks
+!apps/ccli/config/EJBCA RBAC/**/*.keystore
+/lab/evidence/delay-review-2026-10-20/ccli-r62
+/lab/evidence/delay-review-2026-10-20/mms-rbac-device-server-r62
+/lab/evidence/delay-review-2026-10-20/event-store-rotation-test
+/lab/evidence/delay-review-2026-10-20/run3/ccli-r63
+/lab/evidence/delay-review-2026-10-20/run3/mms-rbac-device-server-r63
+
+# CCLI PKI and signing keys are versioned for the private GitHub repository.
+# Keep access to that remote restricted; never package private keys into APKs or USB bundles.

@@ -1,0 +1,72 @@
+[
+  {
+    "attempt": 1,
+    "port": 3782,
+    "utc": "2026-10-20T13:11:46.174591+00:00",
+    "passed": false,
+    "error": "TimeoutError('timed out')"
+  },
+  {
+    "attempt": 2,
+    "port": 3782,
+    "utc": "2026-10-20T13:11:48.497973+00:00",
+    "passed": false,
+    "error": "TimeoutError('timed out')"
+  },
+  {
+    "attempt": 3,
+    "port": 3782,
+    "utc": "2026-10-20T13:11:50.811611+00:00",
+    "passed": false,
+    "error": "TimeoutError('timed out')"
+  },
+  {
+    "attempt": 4,
+    "port": 3782,
+    "utc": "2026-10-20T13:11:53.114162+00:00",
+    "passed": false,
+    "error": "TimeoutError('timed out')"
+  },
+  {
+    "attempt": 5,
+    "port": 3782,
+    "utc": "2026-10-20T13:11:55.417382+00:00",
+    "passed": false,
+    "error": "TimeoutError('timed out')"
+  },
+  {
+    "attempt": 6,
+    "port": 3782,
+    "utc": "2026-10-20T13:11:57.722441+00:00",
+    "passed": false,
+    "error": "TimeoutError('timed out')"
+  },
+  {
+    "attempt": 7,
+    "port": 3782,
+    "utc": "2026-10-20T13:12:00.023350+00:00",
+    "passed": false,
+    "error": "TimeoutError('timed out')"
+  },
+  {
+    "attempt": 8,
+    "port": 3782,
+    "utc": "2026-10-20T13:12:02.339304+00:00",
+    "passed": false,
+    "error": "TimeoutError('timed out')"
+  },
+  {
+    "attempt": 9,
+    "port": 3782,
+    "utc": "2026-10-20T13:12:04.642053+00:00",
+    "passed": false,
+    "error": "TimeoutError('timed out')"
+  },
+  {
+    "attempt": 10,
+    "port": 3782,
+    "utc": "2026-10-20T13:12:06.957979+00:00",
+    "passed": false,
+    "error": "TimeoutError('timed out')"
+  }
+]

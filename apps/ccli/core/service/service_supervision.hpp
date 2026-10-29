@@ -20,6 +20,7 @@ struct CrashRecoveryInfo {
 class ServiceSupervision {
 public:
     static constexpr int kDefaultWatchdogPingS = 30;
+    static constexpr int kHealthPublishIntervalMs = 250;
 
     using SafeStateHook = void (*)();
 
@@ -34,6 +35,13 @@ public:
 
     /** Mark daemon running (removed on clean shutdown). */
     static void mark_running();
+
+    /**
+     * Publish completed control-loop progress for the independent watchdog.
+     * The record contains CLOCK_MONOTONIC time and is written atomically to
+     * /var/run/ccli-health; this is deliberately independent of ubus/MQTT.
+     */
+    static void watchdog_main_loop_tick();
 
     /** Remove running marker and tombstone after graceful exit. */
     static void mark_clean_shutdown();

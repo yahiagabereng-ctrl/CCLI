@@ -1,0 +1,1283 @@
+[
+  {
+    "case": "P-setpoint",
+    "passed": true,
+    "command": "operate",
+    "reference": "CCI016_01LD_Plant/WSaDAGC1.WSptPct",
+    "expected": "allow",
+    "events": [
+      {
+        "kind": "control_model",
+        "reference": "CCI016_01LD_Plant/WSaDAGC1.WSptPct",
+        "error": 0,
+        "error_text": "",
+        "value": "3 direct-enhanced",
+        "observed_utc": "2026-10-19T10:43:23.212257+00:00"
+      },
+      {
+        "kind": "control_type",
+        "reference": "CCI016_01LD_Plant/WSaDAGC1.WSptPct",
+        "error": 0,
+        "error_text": "",
+        "value": "float",
+        "observed_utc": "2026-10-19T10:43:23.212303+00:00"
+      },
+      {
+        "kind": "operate",
+        "reference": "CCI016_01LD_Plant/WSaDAGC1.WSptPct",
+        "error": 0,
+        "error_text": "",
+        "value": "request accepted",
+        "observed_utc": "2026-10-19T10:43:23.242841+00:00"
+      },
+      {
+        "kind": "termination",
+        "reference": "CCI016_01LD_Plant/WSaDAGC1.WSptPct",
+        "error": 0,
+        "error_text": "",
+        "value": "error=0 addCause=0",
+        "observed_utc": "2026-10-19T10:43:23.273403+00:00"
+      },
+      {
+        "kind": "readback",
+        "reference": "CCI016_01LD_Plant/WSaDAGC1.WSptPct",
+        "error": 0,
+        "error_text": "",
+        "value": "reading status on the same MMS association",
+        "observed_utc": "2026-10-19T10:43:23.343199+00:00"
+      },
+      {
+        "kind": "read",
+        "reference": "CCI016_01LD_Plant/WSaDAGC1.WSptPct.mxVal.f",
+        "error": 0,
+        "error_text": "",
+        "value": "10.000000",
+        "observed_utc": "2026-10-19T10:43:23.375276+00:00"
+      },
+      {
+        "kind": "readback_match",
+        "reference": "CCI016_01LD_Plant/WSaDAGC1.WSptPct.mxVal.f",
+        "error": 0,
+        "error_text": "",
+        "value": "matches requested value",
+        "observed_utc": "2026-10-19T10:43:23.375315+00:00"
+      }
+    ]
+  },
+  {
+    "case": "setpoint-spacing-enforced",
+    "passed": true,
+    "command": "operate",
+    "reference": "CCI016_01LD_Plant/WSaDAGC1.WSptPct",
+    "expected": "rejected",
+    "events": [
+      {
+        "kind": "control_model",
+        "reference": "CCI016_01LD_Plant/WSaDAGC1.WSptPct",
+        "error": 0,
+        "error_text": "",
+        "value": "3 direct-enhanced",
+        "observed_utc": "2026-10-19T10:43:23.450873+00:00"
+      },
+      {
+        "kind": "control_type",
+        "reference": "CCI016_01LD_Plant/WSaDAGC1.WSptPct",
+        "error": 0,
+        "error_text": "",
+        "value": "float",
+        "observed_utc": "2026-10-19T10:43:23.450928+00:00"
+      },
+      {
+        "kind": "operate",
+        "reference": "CCI016_01LD_Plant/WSaDAGC1.WSptPct",
+        "error": 0,
+        "error_text": "",
+        "value": "request accepted",
+        "observed_utc": "2026-10-19T10:43:23.511947+00:00"
+      },
+      {
+        "kind": "termination",
+        "reference": "CCI016_01LD_Plant/WSaDAGC1.WSptPct",
+        "error": 0,
+        "error_text": "",
+        "value": "error=0 addCause=0",
+        "observed_utc": "2026-10-19T10:43:23.552908+00:00"
+      },
+      {
+        "kind": "readback",
+        "reference": "CCI016_01LD_Plant/WSaDAGC1.WSptPct",
+        "error": 0,
+        "error_text": "",
+        "value": "reading status on the same MMS association",
+        "observed_utc": "2026-10-19T10:43:23.612274+00:00"
+      },
+      {
+        "kind": "read",
+        "reference": "CCI016_01LD_Plant/WSaDAGC1.WSptPct.mxVal.f",
+        "error": 0,
+        "error_text": "",
+        "value": "10.000000",
+        "observed_utc": "2026-10-19T10:43:23.655048+00:00"
+      },
+      {
+        "kind": "readback_match",
+        "reference": "CCI016_01LD_Plant/WSaDAGC1.WSptPct.mxVal.f",
+        "error": 1,
+        "error_text": "",
+        "value": "read succeeded but status differs from the requested value",
+        "observed_utc": "2026-10-19T10:43:23.655103+00:00"
+      }
+    ]
+  },
+  {
+    "case": "P-mode-on",
+    "passed": true,
+    "command": "operate",
+    "reference": "CCI016_01LD_Plant/WSaDAGC1.Mod",
+    "expected": "allow",
+    "events": [
+      {
+        "kind": "control_model",
+        "reference": "CCI016_01LD_Plant/WSaDAGC1.Mod",
+        "error": 0,
+        "error_text": "",
+        "value": "3 direct-enhanced",
+        "observed_utc": "2026-10-19T10:43:23.889856+00:00"
+      },
+      {
+        "kind": "control_type",
+        "reference": "CCI016_01LD_Plant/WSaDAGC1.Mod",
+        "error": 0,
+        "error_text": "",
+        "value": "int32",
+        "observed_utc": "2026-10-19T10:43:23.889905+00:00"
+      },
+      {
+        "kind": "operate",
+        "reference": "CCI016_01LD_Plant/WSaDAGC1.Mod",
+        "error": 0,
+        "error_text": "",
+        "value": "request accepted",
+        "observed_utc": "2026-10-19T10:43:24.022478+00:00"
+      },
+      {
+        "kind": "termination",
+        "reference": "CCI016_01LD_Plant/WSaDAGC1.Mod",
+        "error": 0,
+        "error_text": "",
+        "value": "error=0 addCause=0",
+        "observed_utc": "2026-10-19T10:43:24.084172+00:00"
+      },
+      {
+        "kind": "readback",
+        "reference": "CCI016_01LD_Plant/WSaDAGC1.Mod",
+        "error": 0,
+        "error_text": "",
+        "value": "reading status on the same MMS association",
+        "observed_utc": "2026-10-19T10:43:24.122819+00:00"
+      },
+      {
+        "kind": "read",
+        "reference": "CCI016_01LD_Plant/WSaDAGC1.Mod.stVal",
+        "error": 0,
+        "error_text": "",
+        "value": "1",
+        "observed_utc": "2026-10-19T10:43:24.247280+00:00"
+      },
+      {
+        "kind": "readback_match",
+        "reference": "CCI016_01LD_Plant/WSaDAGC1.Mod.stVal",
+        "error": 0,
+        "error_text": "",
+        "value": "matches requested value",
+        "observed_utc": "2026-10-19T10:43:24.247325+00:00"
+      }
+    ]
+  },
+  {
+    "case": "P-affects-export-ceiling",
+    "passed": true,
+    "derived": [
+      "21.000000",
+      "0.000000",
+      "none"
+    ]
+  },
+  {
+    "case": "P-reject--1",
+    "passed": true,
+    "command": "operate",
+    "reference": "CCI016_01LD_Plant/WSaDAGC1.WSptPct",
+    "expected": "rejected",
+    "events": [
+      {
+        "kind": "control_model",
+        "reference": "CCI016_01LD_Plant/WSaDAGC1.WSptPct",
+        "error": 0,
+        "error_text": "",
+        "value": "3 direct-enhanced",
+        "observed_utc": "2026-10-19T10:43:24.359920+00:00"
+      },
+      {
+        "kind": "control_type",
+        "reference": "CCI016_01LD_Plant/WSaDAGC1.WSptPct",
+        "error": 0,
+        "error_text": "",
+        "value": "float",
+        "observed_utc": "2026-10-19T10:43:24.359970+00:00"
+      },
+      {
+        "kind": "operate",
+        "reference": "CCI016_01LD_Plant/WSaDAGC1.WSptPct",
+        "error": 0,
+        "error_text": "",
+        "value": "request accepted",
+        "observed_utc": "2026-10-19T10:43:24.400588+00:00"
+      },
+      {
+        "kind": "termination",
+        "reference": "CCI016_01LD_Plant/WSaDAGC1.WSptPct",
+        "error": 0,
+        "error_text": "",
+        "value": "error=0 addCause=0",
+        "observed_utc": "2026-10-19T10:43:24.421016+00:00"
+      },
+      {
+        "kind": "readback",
+        "reference": "CCI016_01LD_Plant/WSaDAGC1.WSptPct",
+        "error": 0,
+        "error_text": "",
+        "value": "reading status on the same MMS association",
+        "observed_utc": "2026-10-19T10:43:24.500836+00:00"
+      },
+      {
+        "kind": "read",
+        "reference": "CCI016_01LD_Plant/WSaDAGC1.WSptPct.mxVal.f",
+        "error": 0,
+        "error_text": "",
+        "value": "10.000000",
+        "observed_utc": "2026-10-19T10:43:24.523140+00:00"
+      },
+      {
+        "kind": "readback_match",
+        "reference": "CCI016_01LD_Plant/WSaDAGC1.WSptPct.mxVal.f",
+        "error": 1,
+        "error_text": "",
+        "value": "read succeeded but status differs from the requested value",
+        "observed_utc": "2026-10-19T10:43:24.523176+00:00"
+      }
+    ]
+  },
+  {
+    "case": "P-reject-101",
+    "passed": true,
+    "command": "operate",
+    "reference": "CCI016_01LD_Plant/WSaDAGC1.WSptPct",
+    "expected": "rejected",
+    "events": [
+      {
+        "kind": "control_model",
+        "reference": "CCI016_01LD_Plant/WSaDAGC1.WSptPct",
+        "error": 0,
+        "error_text": "",
+        "value": "3 direct-enhanced",
+        "observed_utc": "2026-10-19T10:43:24.584565+00:00"
+      },
+      {
+        "kind": "control_type",
+        "reference": "CCI016_01LD_Plant/WSaDAGC1.WSptPct",
+        "error": 0,
+        "error_text": "",
+        "value": "float",
+        "observed_utc": "2026-10-19T10:43:24.584610+00:00"
+      },
+      {
+        "kind": "operate",
+        "reference": "CCI016_01LD_Plant/WSaDAGC1.WSptPct",
+        "error": 0,
+        "error_text": "",
+        "value": "request accepted",
+        "observed_utc": "2026-10-19T10:43:24.615022+00:00"
+      },
+      {
+        "kind": "termination",
+        "reference": "CCI016_01LD_Plant/WSaDAGC1.WSptPct",
+        "error": 0,
+        "error_text": "",
+        "value": "error=0 addCause=0",
+        "observed_utc": "2026-10-19T10:43:24.635401+00:00"
+      },
+      {
+        "kind": "readback",
+        "reference": "CCI016_01LD_Plant/WSaDAGC1.WSptPct",
+        "error": 0,
+        "error_text": "",
+        "value": "reading status on the same MMS association",
+        "observed_utc": "2026-10-19T10:43:24.715281+00:00"
+      },
+      {
+        "kind": "read",
+        "reference": "CCI016_01LD_Plant/WSaDAGC1.WSptPct.mxVal.f",
+        "error": 0,
+        "error_text": "",
+        "value": "10.000000",
+        "observed_utc": "2026-10-19T10:43:24.737545+00:00"
+      },
+      {
+        "kind": "readback_match",
+        "reference": "CCI016_01LD_Plant/WSaDAGC1.WSptPct.mxVal.f",
+        "error": 1,
+        "error_text": "",
+        "value": "read succeeded but status differs from the requested value",
+        "observed_utc": "2026-10-19T10:43:24.737587+00:00"
+      }
+    ]
+  },
+  {
+    "case": "mode-reject-0",
+    "passed": true,
+    "command": "operate",
+    "reference": "CCI016_01LD_Plant/WSaDAGC1.Mod",
+    "expected": "rejected",
+    "events": [
+      {
+        "kind": "control_model",
+        "reference": "CCI016_01LD_Plant/WSaDAGC1.Mod",
+        "error": 0,
+        "error_text": "",
+        "value": "3 direct-enhanced",
+        "observed_utc": "2026-10-19T10:43:24.798830+00:00"
+      },
+      {
+        "kind": "control_type",
+        "reference": "CCI016_01LD_Plant/WSaDAGC1.Mod",
+        "error": 0,
+        "error_text": "",
+        "value": "int32",
+        "observed_utc": "2026-10-19T10:43:24.798875+00:00"
+      },
+      {
+        "kind": "operate",
+        "reference": "CCI016_01LD_Plant/WSaDAGC1.Mod",
+        "error": 0,
+        "error_text": "",
+        "value": "request accepted",
+        "observed_utc": "2026-10-19T10:43:24.829400+00:00"
+      },
+      {
+        "kind": "termination",
+        "reference": "CCI016_01LD_Plant/WSaDAGC1.Mod",
+        "error": 0,
+        "error_text": "",
+        "value": "error=0 addCause=0",
+        "observed_utc": "2026-10-19T10:43:24.829435+00:00"
+      },
+      {
+        "kind": "readback",
+        "reference": "CCI016_01LD_Plant/WSaDAGC1.Mod",
+        "error": 0,
+        "error_text": "",
+        "value": "reading status on the same MMS association",
+        "observed_utc": "2026-10-19T10:43:24.929628+00:00"
+      },
+      {
+        "kind": "read",
+        "reference": "CCI016_01LD_Plant/WSaDAGC1.Mod.stVal",
+        "error": 0,
+        "error_text": "",
+        "value": "1",
+        "observed_utc": "2026-10-19T10:43:24.961762+00:00"
+      },
+      {
+        "kind": "readback_match",
+        "reference": "CCI016_01LD_Plant/WSaDAGC1.Mod.stVal",
+        "error": 1,
+        "error_text": "",
+        "value": "read succeeded but status differs from the requested value",
+        "observed_utc": "2026-10-19T10:43:24.961797+00:00"
+      }
+    ]
+  },
+  {
+    "case": "mode-reject-2",
+    "passed": true,
+    "command": "operate",
+    "reference": "CCI016_01LD_Plant/WSaDAGC1.Mod",
+    "expected": "rejected",
+    "events": [
+      {
+        "kind": "control_model",
+        "reference": "CCI016_01LD_Plant/WSaDAGC1.Mod",
+        "error": 0,
+        "error_text": "",
+        "value": "3 direct-enhanced",
+        "observed_utc": "2026-10-19T10:43:25.012827+00:00"
+      },
+      {
+        "kind": "control_type",
+        "reference": "CCI016_01LD_Plant/WSaDAGC1.Mod",
+        "error": 0,
+        "error_text": "",
+        "value": "int32",
+        "observed_utc": "2026-10-19T10:43:25.012862+00:00"
+      },
+      {
+        "kind": "operate",
+        "reference": "CCI016_01LD_Plant/WSaDAGC1.Mod",
+        "error": 0,
+        "error_text": "",
+        "value": "request accepted",
+        "observed_utc": "2026-10-19T10:43:25.053718+00:00"
+      },
+      {
+        "kind": "termination",
+        "reference": "CCI016_01LD_Plant/WSaDAGC1.Mod",
+        "error": 0,
+        "error_text": "",
+        "value": "error=0 addCause=0",
+        "observed_utc": "2026-10-19T10:43:25.053765+00:00"
+      },
+      {
+        "kind": "readback",
+        "reference": "CCI016_01LD_Plant/WSaDAGC1.Mod",
+        "error": 0,
+        "error_text": "",
+        "value": "reading status on the same MMS association",
+        "observed_utc": "2026-10-19T10:43:25.153848+00:00"
+      },
+      {
+        "kind": "read",
+        "reference": "CCI016_01LD_Plant/WSaDAGC1.Mod.stVal",
+        "error": 0,
+        "error_text": "",
+        "value": "1",
+        "observed_utc": "2026-10-19T10:43:25.175821+00:00"
+      },
+      {
+        "kind": "readback_match",
+        "reference": "CCI016_01LD_Plant/WSaDAGC1.Mod.stVal",
+        "error": 1,
+        "error_text": "",
+        "value": "read succeeded but status differs from the requested value",
+        "observed_utc": "2026-10-19T10:43:25.175867+00:00"
+      }
+    ]
+  },
+  {
+    "case": "mode-reject-7",
+    "passed": true,
+    "command": "operate",
+    "reference": "CCI016_01LD_Plant/WSaDAGC1.Mod",
+    "expected": "rejected",
+    "events": [
+      {
+        "kind": "control_model",
+        "reference": "CCI016_01LD_Plant/WSaDAGC1.Mod",
+        "error": 0,
+        "error_text": "",
+        "value": "3 direct-enhanced",
+        "observed_utc": "2026-10-19T10:43:25.226728+00:00"
+      },
+      {
+        "kind": "control_type",
+        "reference": "CCI016_01LD_Plant/WSaDAGC1.Mod",
+        "error": 0,
+        "error_text": "",
+        "value": "int32",
+        "observed_utc": "2026-10-19T10:43:25.226763+00:00"
+      },
+      {
+        "kind": "operate",
+        "reference": "CCI016_01LD_Plant/WSaDAGC1.Mod",
+        "error": 0,
+        "error_text": "",
+        "value": "request accepted",
+        "observed_utc": "2026-10-19T10:43:25.247254+00:00"
+      },
+      {
+        "kind": "termination",
+        "reference": "CCI016_01LD_Plant/WSaDAGC1.Mod",
+        "error": 0,
+        "error_text": "",
+        "value": "error=0 addCause=0",
+        "observed_utc": "2026-10-19T10:43:25.247303+00:00"
+      },
+      {
+        "kind": "readback",
+        "reference": "CCI016_01LD_Plant/WSaDAGC1.Mod",
+        "error": 0,
+        "error_text": "",
+        "value": "reading status on the same MMS association",
+        "observed_utc": "2026-10-19T10:43:25.347506+00:00"
+      },
+      {
+        "kind": "read",
+        "reference": "CCI016_01LD_Plant/WSaDAGC1.Mod.stVal",
+        "error": 0,
+        "error_text": "",
+        "value": "1",
+        "observed_utc": "2026-10-19T10:43:25.379409+00:00"
+      },
+      {
+        "kind": "readback_match",
+        "reference": "CCI016_01LD_Plant/WSaDAGC1.Mod.stVal",
+        "error": 1,
+        "error_text": "",
+        "value": "read succeeded but status differs from the requested value",
+        "observed_utc": "2026-10-19T10:43:25.379441+00:00"
+      }
+    ]
+  },
+  {
+    "case": "P-unchanged-after-invalid-values",
+    "passed": true,
+    "command": "read",
+    "reference": "CCI016_01LD_Plant/WSaDAGC1.WSptPct.mxVal.f",
+    "expected": "allow",
+    "events": [
+      {
+        "kind": "read",
+        "reference": "CCI016_01LD_Plant/WSaDAGC1.WSptPct.mxVal.f",
+        "error": 0,
+        "error_text": "",
+        "value": "10.000000",
+        "observed_utc": "2026-10-19T10:43:25.420237+00:00"
+      }
+    ]
+  },
+  {
+    "case": "invalid-P-writes-do-not-change-state",
+    "passed": true
+  },
+  {
+    "case": "Q-setpoint",
+    "passed": true,
+    "command": "operate",
+    "reference": "CCI016_01LD_Plant/VArSaDVAR1.VArTgtSptPct",
+    "expected": "allow",
+    "events": [
+      {
+        "kind": "control_model",
+        "reference": "CCI016_01LD_Plant/VArSaDVAR1.VArTgtSptPct",
+        "error": 0,
+        "error_text": "",
+        "value": "3 direct-enhanced",
+        "observed_utc": "2026-10-19T10:43:28.596881+00:00"
+      },
+      {
+        "kind": "control_type",
+        "reference": "CCI016_01LD_Plant/VArSaDVAR1.VArTgtSptPct",
+        "error": 0,
+        "error_text": "",
+        "value": "float",
+        "observed_utc": "2026-10-19T10:43:28.596931+00:00"
+      },
+      {
+        "kind": "operate",
+        "reference": "CCI016_01LD_Plant/VArSaDVAR1.VArTgtSptPct",
+        "error": 0,
+        "error_text": "",
+        "value": "request accepted",
+        "observed_utc": "2026-10-19T10:43:28.627561+00:00"
+      },
+      {
+        "kind": "termination",
+        "reference": "CCI016_01LD_Plant/VArSaDVAR1.VArTgtSptPct",
+        "error": 0,
+        "error_text": "",
+        "value": "error=0 addCause=0",
+        "observed_utc": "2026-10-19T10:43:28.658152+00:00"
+      },
+      {
+        "kind": "readback",
+        "reference": "CCI016_01LD_Plant/VArSaDVAR1.VArTgtSptPct",
+        "error": 0,
+        "error_text": "",
+        "value": "reading status on the same MMS association",
+        "observed_utc": "2026-10-19T10:43:28.727837+00:00"
+      },
+      {
+        "kind": "read",
+        "reference": "CCI016_01LD_Plant/VArSaDVAR1.VArTgtSptPct.mxVal.f",
+        "error": 0,
+        "error_text": "",
+        "value": "-10.000000",
+        "observed_utc": "2026-10-19T10:43:28.760173+00:00"
+      },
+      {
+        "kind": "readback_match",
+        "reference": "CCI016_01LD_Plant/VArSaDVAR1.VArTgtSptPct.mxVal.f",
+        "error": 0,
+        "error_text": "",
+        "value": "matches requested value",
+        "observed_utc": "2026-10-19T10:43:28.760221+00:00"
+      }
+    ]
+  },
+  {
+    "case": "Q-mode-on",
+    "passed": true,
+    "command": "operate",
+    "reference": "CCI016_01LD_Plant/VArSaDVAR1.Mod",
+    "expected": "allow",
+    "events": [
+      {
+        "kind": "control_model",
+        "reference": "CCI016_01LD_Plant/VArSaDVAR1.Mod",
+        "error": 0,
+        "error_text": "",
+        "value": "3 direct-enhanced",
+        "observed_utc": "2026-10-19T10:43:28.811215+00:00"
+      },
+      {
+        "kind": "control_type",
+        "reference": "CCI016_01LD_Plant/VArSaDVAR1.Mod",
+        "error": 0,
+        "error_text": "",
+        "value": "int32",
+        "observed_utc": "2026-10-19T10:43:28.811258+00:00"
+      },
+      {
+        "kind": "operate",
+        "reference": "CCI016_01LD_Plant/VArSaDVAR1.Mod",
+        "error": 0,
+        "error_text": "",
+        "value": "request accepted",
+        "observed_utc": "2026-10-19T10:43:28.831604+00:00"
+      },
+      {
+        "kind": "termination",
+        "reference": "CCI016_01LD_Plant/VArSaDVAR1.Mod",
+        "error": 0,
+        "error_text": "",
+        "value": "error=0 addCause=0",
+        "observed_utc": "2026-10-19T10:43:28.852063+00:00"
+      },
+      {
+        "kind": "readback",
+        "reference": "CCI016_01LD_Plant/VArSaDVAR1.Mod",
+        "error": 0,
+        "error_text": "",
+        "value": "reading status on the same MMS association",
+        "observed_utc": "2026-10-19T10:43:28.931808+00:00"
+      },
+      {
+        "kind": "read",
+        "reference": "CCI016_01LD_Plant/VArSaDVAR1.Mod.stVal",
+        "error": 0,
+        "error_text": "",
+        "value": "1",
+        "observed_utc": "2026-10-19T10:43:28.954062+00:00"
+      },
+      {
+        "kind": "readback_match",
+        "reference": "CCI016_01LD_Plant/VArSaDVAR1.Mod.stVal",
+        "error": 0,
+        "error_text": "",
+        "value": "matches requested value",
+        "observed_utc": "2026-10-19T10:43:28.954136+00:00"
+      }
+    ]
+  },
+  {
+    "case": "Q-affects-reactive-selection",
+    "passed": true,
+    "derived": [
+      "21.000000",
+      "-21.000000",
+      "AGGREGATOR_VArSa"
+    ]
+  },
+  {
+    "case": "Q-reject--101",
+    "passed": true,
+    "command": "operate",
+    "reference": "CCI016_01LD_Plant/VArSaDVAR1.VArTgtSptPct",
+    "expected": "rejected",
+    "events": [
+      {
+        "kind": "control_model",
+        "reference": "CCI016_01LD_Plant/VArSaDVAR1.VArTgtSptPct",
+        "error": 0,
+        "error_text": "",
+        "value": "3 direct-enhanced",
+        "observed_utc": "2026-10-19T10:43:29.045832+00:00"
+      },
+      {
+        "kind": "control_type",
+        "reference": "CCI016_01LD_Plant/VArSaDVAR1.VArTgtSptPct",
+        "error": 0,
+        "error_text": "",
+        "value": "float",
+        "observed_utc": "2026-10-19T10:43:29.045910+00:00"
+      },
+      {
+        "kind": "operate",
+        "reference": "CCI016_01LD_Plant/VArSaDVAR1.VArTgtSptPct",
+        "error": 0,
+        "error_text": "",
+        "value": "request accepted",
+        "observed_utc": "2026-10-19T10:43:29.076404+00:00"
+      },
+      {
+        "kind": "termination",
+        "reference": "CCI016_01LD_Plant/VArSaDVAR1.VArTgtSptPct",
+        "error": 0,
+        "error_text": "",
+        "value": "error=0 addCause=0",
+        "observed_utc": "2026-10-19T10:43:29.096771+00:00"
+      },
+      {
+        "kind": "readback",
+        "reference": "CCI016_01LD_Plant/VArSaDVAR1.VArTgtSptPct",
+        "error": 0,
+        "error_text": "",
+        "value": "reading status on the same MMS association",
+        "observed_utc": "2026-10-19T10:43:29.176730+00:00"
+      },
+      {
+        "kind": "read",
+        "reference": "CCI016_01LD_Plant/VArSaDVAR1.VArTgtSptPct.mxVal.f",
+        "error": 0,
+        "error_text": "",
+        "value": "-10.000000",
+        "observed_utc": "2026-10-19T10:43:29.198552+00:00"
+      },
+      {
+        "kind": "readback_match",
+        "reference": "CCI016_01LD_Plant/VArSaDVAR1.VArTgtSptPct.mxVal.f",
+        "error": 1,
+        "error_text": "",
+        "value": "read succeeded but status differs from the requested value",
+        "observed_utc": "2026-10-19T10:43:29.198582+00:00"
+      }
+    ]
+  },
+  {
+    "case": "Q-reject-101",
+    "passed": true,
+    "command": "operate",
+    "reference": "CCI016_01LD_Plant/VArSaDVAR1.VArTgtSptPct",
+    "expected": "rejected",
+    "events": [
+      {
+        "kind": "control_model",
+        "reference": "CCI016_01LD_Plant/VArSaDVAR1.VArTgtSptPct",
+        "error": 0,
+        "error_text": "",
+        "value": "3 direct-enhanced",
+        "observed_utc": "2026-10-19T10:43:29.249884+00:00"
+      },
+      {
+        "kind": "control_type",
+        "reference": "CCI016_01LD_Plant/VArSaDVAR1.VArTgtSptPct",
+        "error": 0,
+        "error_text": "",
+        "value": "float",
+        "observed_utc": "2026-10-19T10:43:29.249935+00:00"
+      },
+      {
+        "kind": "operate",
+        "reference": "CCI016_01LD_Plant/VArSaDVAR1.VArTgtSptPct",
+        "error": 0,
+        "error_text": "",
+        "value": "request accepted",
+        "observed_utc": "2026-10-19T10:43:29.280405+00:00"
+      },
+      {
+        "kind": "termination",
+        "reference": "CCI016_01LD_Plant/VArSaDVAR1.VArTgtSptPct",
+        "error": 0,
+        "error_text": "",
+        "value": "error=0 addCause=0",
+        "observed_utc": "2026-10-19T10:43:29.301002+00:00"
+      },
+      {
+        "kind": "readback",
+        "reference": "CCI016_01LD_Plant/VArSaDVAR1.VArTgtSptPct",
+        "error": 0,
+        "error_text": "",
+        "value": "reading status on the same MMS association",
+        "observed_utc": "2026-10-19T10:43:29.380775+00:00"
+      },
+      {
+        "kind": "read",
+        "reference": "CCI016_01LD_Plant/VArSaDVAR1.VArTgtSptPct.mxVal.f",
+        "error": 0,
+        "error_text": "",
+        "value": "-10.000000",
+        "observed_utc": "2026-10-19T10:43:29.413225+00:00"
+      },
+      {
+        "kind": "readback_match",
+        "reference": "CCI016_01LD_Plant/VArSaDVAR1.VArTgtSptPct.mxVal.f",
+        "error": 1,
+        "error_text": "",
+        "value": "read succeeded but status differs from the requested value",
+        "observed_utc": "2026-10-19T10:43:29.413267+00:00"
+      }
+    ]
+  },
+  {
+    "case": "aggregator-cannot-control-DSO",
+    "passed": true,
+    "command": "operate",
+    "reference": "CCI016_01LD_Plant/WlimDWMX1.Mod",
+    "expected": "access-denied",
+    "events": [
+      {
+        "kind": "read",
+        "reference": "CCI016_01LD_Plant/WlimDWMX1.Mod.ctlModel",
+        "error": 21,
+        "error_text": "access-denied",
+        "value": "error 3",
+        "observed_utc": "2026-10-19T10:43:29.495064+00:00"
+      },
+      {
+        "kind": "operate",
+        "reference": "CCI016_01LD_Plant/WlimDWMX1.Mod",
+        "error": 1,
+        "error_text": "",
+        "value": "cannot read control model; check object reference and access",
+        "observed_utc": "2026-10-19T10:43:29.495100+00:00"
+      }
+    ]
+  },
+  {
+    "case": "DSO-cannot-control-aggregator",
+    "passed": true,
+    "command": "operate",
+    "reference": "CCI016_01LD_Plant/WSaDAGC1.Mod",
+    "expected": "access-denied",
+    "events": [
+      {
+        "kind": "read",
+        "reference": "CCI016_01LD_Plant/WSaDAGC1.Mod.ctlModel",
+        "error": 21,
+        "error_text": "access-denied",
+        "value": "error 3",
+        "observed_utc": "2026-10-19T10:43:30.003910+00:00"
+      },
+      {
+        "kind": "operate",
+        "reference": "CCI016_01LD_Plant/WSaDAGC1.Mod",
+        "error": 1,
+        "error_text": "",
+        "value": "cannot read control model; check object reference and access",
+        "observed_utc": "2026-10-19T10:43:30.003962+00:00"
+      }
+    ]
+  },
+  {
+    "case": "DSO-Q-setpoint",
+    "passed": true,
+    "command": "operate",
+    "reference": "CCI016_01LD_Plant/VArSdDVAR1.VArTgtSptPct",
+    "expected": "allow",
+    "events": [
+      {
+        "kind": "control_model",
+        "reference": "CCI016_01LD_Plant/VArSdDVAR1.VArTgtSptPct",
+        "error": 0,
+        "error_text": "",
+        "value": "3 direct-enhanced",
+        "observed_utc": "2026-10-19T10:43:33.186501+00:00"
+      },
+      {
+        "kind": "control_type",
+        "reference": "CCI016_01LD_Plant/VArSdDVAR1.VArTgtSptPct",
+        "error": 0,
+        "error_text": "",
+        "value": "float",
+        "observed_utc": "2026-10-19T10:43:33.186742+00:00"
+      },
+      {
+        "kind": "operate",
+        "reference": "CCI016_01LD_Plant/VArSdDVAR1.VArTgtSptPct",
+        "error": 0,
+        "error_text": "",
+        "value": "request accepted",
+        "observed_utc": "2026-10-19T10:43:33.207163+00:00"
+      },
+      {
+        "kind": "termination",
+        "reference": "CCI016_01LD_Plant/VArSdDVAR1.VArTgtSptPct",
+        "error": 0,
+        "error_text": "",
+        "value": "error=0 addCause=0",
+        "observed_utc": "2026-10-19T10:43:33.218246+00:00"
+      },
+      {
+        "kind": "readback",
+        "reference": "CCI016_01LD_Plant/VArSdDVAR1.VArTgtSptPct",
+        "error": 0,
+        "error_text": "",
+        "value": "reading status on the same MMS association",
+        "observed_utc": "2026-10-19T10:43:33.307353+00:00"
+      },
+      {
+        "kind": "read",
+        "reference": "CCI016_01LD_Plant/VArSdDVAR1.VArTgtSptPct.mxVal.f",
+        "error": 0,
+        "error_text": "",
+        "value": "20.000000",
+        "observed_utc": "2026-10-19T10:43:33.330046+00:00"
+      },
+      {
+        "kind": "readback_match",
+        "reference": "CCI016_01LD_Plant/VArSdDVAR1.VArTgtSptPct.mxVal.f",
+        "error": 0,
+        "error_text": "",
+        "value": "matches requested value",
+        "observed_utc": "2026-10-19T10:43:33.330079+00:00"
+      }
+    ]
+  },
+  {
+    "case": "DSO-Q-on",
+    "passed": true,
+    "command": "operate",
+    "reference": "CCI016_01LD_Plant/VArSdDVAR1.Mod",
+    "expected": "allow",
+    "events": [
+      {
+        "kind": "control_model",
+        "reference": "CCI016_01LD_Plant/VArSdDVAR1.Mod",
+        "error": 0,
+        "error_text": "",
+        "value": "3 direct-enhanced",
+        "observed_utc": "2026-10-19T10:43:33.381106+00:00"
+      },
+      {
+        "kind": "control_type",
+        "reference": "CCI016_01LD_Plant/VArSdDVAR1.Mod",
+        "error": 0,
+        "error_text": "",
+        "value": "int32",
+        "observed_utc": "2026-10-19T10:43:33.381147+00:00"
+      },
+      {
+        "kind": "operate",
+        "reference": "CCI016_01LD_Plant/VArSdDVAR1.Mod",
+        "error": 0,
+        "error_text": "",
+        "value": "request accepted",
+        "observed_utc": "2026-10-19T10:43:33.401488+00:00"
+      },
+      {
+        "kind": "termination",
+        "reference": "CCI016_01LD_Plant/VArSdDVAR1.Mod",
+        "error": 0,
+        "error_text": "",
+        "value": "error=0 addCause=0",
+        "observed_utc": "2026-10-19T10:43:33.401524+00:00"
+      },
+      {
+        "kind": "readback",
+        "reference": "CCI016_01LD_Plant/VArSdDVAR1.Mod",
+        "error": 0,
+        "error_text": "",
+        "value": "reading status on the same MMS association",
+        "observed_utc": "2026-10-19T10:43:33.501701+00:00"
+      },
+      {
+        "kind": "read",
+        "reference": "CCI016_01LD_Plant/VArSdDVAR1.Mod.stVal",
+        "error": 0,
+        "error_text": "",
+        "value": "1",
+        "observed_utc": "2026-10-19T10:43:33.523393+00:00"
+      },
+      {
+        "kind": "readback_match",
+        "reference": "CCI016_01LD_Plant/VArSdDVAR1.Mod.stVal",
+        "error": 0,
+        "error_text": "",
+        "value": "matches requested value",
+        "observed_utc": "2026-10-19T10:43:33.523438+00:00"
+      }
+    ]
+  },
+  {
+    "case": "DSO-Q-takes-priority",
+    "passed": true,
+    "derived": [
+      "21.000000",
+      "42.000000",
+      "DSO_VArSd"
+    ]
+  },
+  {
+    "case": "aggregator-Q-request-under-DSO",
+    "passed": true,
+    "command": "operate",
+    "reference": "CCI016_01LD_Plant/VArSaDVAR1.VArTgtSptPct",
+    "expected": "allow",
+    "events": [
+      {
+        "kind": "control_model",
+        "reference": "CCI016_01LD_Plant/VArSaDVAR1.VArTgtSptPct",
+        "error": 0,
+        "error_text": "",
+        "value": "3 direct-enhanced",
+        "observed_utc": "2026-10-19T10:43:36.918662+00:00"
+      },
+      {
+        "kind": "control_type",
+        "reference": "CCI016_01LD_Plant/VArSaDVAR1.VArTgtSptPct",
+        "error": 0,
+        "error_text": "",
+        "value": "float",
+        "observed_utc": "2026-10-19T10:43:36.918695+00:00"
+      },
+      {
+        "kind": "operate",
+        "reference": "CCI016_01LD_Plant/VArSaDVAR1.VArTgtSptPct",
+        "error": 0,
+        "error_text": "",
+        "value": "request accepted",
+        "observed_utc": "2026-10-19T10:43:36.949164+00:00"
+      },
+      {
+        "kind": "termination",
+        "reference": "CCI016_01LD_Plant/VArSaDVAR1.VArTgtSptPct",
+        "error": 0,
+        "error_text": "",
+        "value": "error=0 addCause=0",
+        "observed_utc": "2026-10-19T10:43:36.969967+00:00"
+      },
+      {
+        "kind": "readback",
+        "reference": "CCI016_01LD_Plant/VArSaDVAR1.VArTgtSptPct",
+        "error": 0,
+        "error_text": "",
+        "value": "reading status on the same MMS association",
+        "observed_utc": "2026-10-19T10:43:37.049426+00:00"
+      },
+      {
+        "kind": "read",
+        "reference": "CCI016_01LD_Plant/VArSaDVAR1.VArTgtSptPct.mxVal.f",
+        "error": 0,
+        "error_text": "",
+        "value": "-15.000000",
+        "observed_utc": "2026-10-19T10:43:37.091835+00:00"
+      },
+      {
+        "kind": "readback_match",
+        "reference": "CCI016_01LD_Plant/VArSaDVAR1.VArTgtSptPct.mxVal.f",
+        "error": 0,
+        "error_text": "",
+        "value": "matches requested value",
+        "observed_utc": "2026-10-19T10:43:37.091874+00:00"
+      }
+    ]
+  },
+  {
+    "case": "aggregator-cannot-override-DSO-Q",
+    "passed": true,
+    "derived": [
+      "21.000000",
+      "42.000000",
+      "DSO_VArSd"
+    ]
+  },
+  {
+    "case": "DSO-Q-off",
+    "passed": true,
+    "command": "operate",
+    "reference": "CCI016_01LD_Plant/VArSdDVAR1.Mod",
+    "expected": "allow",
+    "events": [
+      {
+        "kind": "control_model",
+        "reference": "CCI016_01LD_Plant/VArSdDVAR1.Mod",
+        "error": 0,
+        "error_text": "",
+        "value": "3 direct-enhanced",
+        "observed_utc": "2026-10-19T10:43:37.405581+00:00"
+      },
+      {
+        "kind": "control_type",
+        "reference": "CCI016_01LD_Plant/VArSdDVAR1.Mod",
+        "error": 0,
+        "error_text": "",
+        "value": "int32",
+        "observed_utc": "2026-10-19T10:43:37.405621+00:00"
+      },
+      {
+        "kind": "operate",
+        "reference": "CCI016_01LD_Plant/VArSdDVAR1.Mod",
+        "error": 0,
+        "error_text": "",
+        "value": "request accepted",
+        "observed_utc": "2026-10-19T10:43:37.446259+00:00"
+      },
+      {
+        "kind": "termination",
+        "reference": "CCI016_01LD_Plant/VArSdDVAR1.Mod",
+        "error": 0,
+        "error_text": "",
+        "value": "error=0 addCause=0",
+        "observed_utc": "2026-10-19T10:43:37.456569+00:00"
+      },
+      {
+        "kind": "readback",
+        "reference": "CCI016_01LD_Plant/VArSdDVAR1.Mod",
+        "error": 0,
+        "error_text": "",
+        "value": "reading status on the same MMS association",
+        "observed_utc": "2026-10-19T10:43:37.546658+00:00"
+      },
+      {
+        "kind": "read",
+        "reference": "CCI016_01LD_Plant/VArSdDVAR1.Mod.stVal",
+        "error": 0,
+        "error_text": "",
+        "value": "5",
+        "observed_utc": "2026-10-19T10:43:37.568927+00:00"
+      },
+      {
+        "kind": "readback_match",
+        "reference": "CCI016_01LD_Plant/VArSdDVAR1.Mod.stVal",
+        "error": 0,
+        "error_text": "",
+        "value": "matches requested value",
+        "observed_utc": "2026-10-19T10:43:37.568963+00:00"
+      }
+    ]
+  },
+  {
+    "case": "DSO-release-restores-aggregator-Q",
+    "passed": true,
+    "derived": [
+      "21.000000",
+      "-31.500000",
+      "AGGREGATOR_VArSa"
+    ]
+  },
+  {
+    "case": "viewer-cannot-control-aggregator",
+    "passed": true,
+    "command": "operate",
+    "reference": "CCI016_01LD_Plant/VArSaDVAR1.Mod",
+    "expected": "access-denied",
+    "events": [
+      {
+        "kind": "control_model",
+        "reference": "CCI016_01LD_Plant/VArSaDVAR1.Mod",
+        "error": 0,
+        "error_text": "",
+        "value": "3 direct-enhanced",
+        "observed_utc": "2026-10-19T10:43:37.995653+00:00"
+      },
+      {
+        "kind": "control_type",
+        "reference": "CCI016_01LD_Plant/VArSaDVAR1.Mod",
+        "error": 0,
+        "error_text": "",
+        "value": "int32",
+        "observed_utc": "2026-10-19T10:43:37.995690+00:00"
+      },
+      {
+        "kind": "operate",
+        "reference": "CCI016_01LD_Plant/VArSaDVAR1.Mod",
+        "error": 1,
+        "error_text": "",
+        "value": "request rejected",
+        "observed_utc": "2026-10-19T10:43:38.077330+00:00"
+      },
+      {
+        "kind": "control_error",
+        "reference": "CCI016_01LD_Plant/VArSaDVAR1.Mod",
+        "error": 21,
+        "error_text": "access-denied",
+        "value": "error=0 addCause=0",
+        "observed_utc": "2026-10-19T10:43:38.077369+00:00"
+      }
+    ]
+  },
+  {
+    "case": "fallback-P-mode",
+    "passed": true,
+    "command": "read",
+    "reference": "CCI016_01LD_Plant/WSaDAGC1.Mod.stVal",
+    "expected": "allow",
+    "events": [
+      {
+        "kind": "read",
+        "reference": "CCI016_01LD_Plant/WSaDAGC1.Mod.stVal",
+        "error": 0,
+        "error_text": "",
+        "value": "5",
+        "observed_utc": "2026-10-19T10:43:41.691420+00:00"
+      }
+    ]
+  },
+  {
+    "case": "fallback-P-mode-matches",
+    "passed": true
+  },
+  {
+    "case": "fallback-Q-mode",
+    "passed": true,
+    "command": "read",
+    "reference": "CCI016_01LD_Plant/VArSaDVAR1.Mod.stVal",
+    "expected": "allow",
+    "events": [
+      {
+        "kind": "read",
+        "reference": "CCI016_01LD_Plant/VArSaDVAR1.Mod.stVal",
+        "error": 0,
+        "error_text": "",
+        "value": "5",
+        "observed_utc": "2026-10-19T10:43:41.823891+00:00"
+      }
+    ]
+  },
+  {
+    "case": "fallback-Q-mode-matches",
+    "passed": true
+  },
+  {
+    "case": "fallback-P-value",
+    "passed": true,
+    "command": "read",
+    "reference": "CCI016_01LD_Plant/WSaDAGC1.WSptPct.mxVal.f",
+    "expected": "allow",
+    "events": [
+      {
+        "kind": "read",
+        "reference": "CCI016_01LD_Plant/WSaDAGC1.WSptPct.mxVal.f",
+        "error": 0,
+        "error_text": "",
+        "value": "100.000000",
+        "observed_utc": "2026-10-19T10:43:41.925902+00:00"
+      }
+    ]
+  },
+  {
+    "case": "fallback-P-value-matches",
+    "passed": true
+  },
+  {
+    "case": "fallback-Q-value",
+    "passed": true,
+    "command": "read",
+    "reference": "CCI016_01LD_Plant/VArSaDVAR1.VArTgtSptPct.mxVal.f",
+    "expected": "allow",
+    "events": [
+      {
+        "kind": "read",
+        "reference": "CCI016_01LD_Plant/VArSaDVAR1.VArTgtSptPct.mxVal.f",
+        "error": 0,
+        "error_text": "",
+        "value": "0.000000",
+        "observed_utc": "2026-10-19T10:43:42.027851+00:00"
+      }
+    ]
+  },
+  {
+    "case": "fallback-Q-value-matches",
+    "passed": true
+  }
+]

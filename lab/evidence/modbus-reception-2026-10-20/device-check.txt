@@ -1,0 +1,44 @@
+Tue Oct 20 15:42:23 CST 2026
+modbus:
+  backend: rtu
+  device: /dev/rs485_2_uart
+  baud: 9600
+  parity: N
+  slave_id: 1
+  poll_ms: 4000
+  timeout_ms: 2000
+  retries: 3
+  reg_active_power: 60000
+  reg_active_power_count: 2
+  reg_reactive_power: 60002
+  reg_reactive_power_count: 2
+  reg_line_voltage: 60004
+  reg_line_voltage_count: 2
+  power_scale: 1
+  reactive_scale: 1
+  line_voltage_scale: 0.001
+  float_word_swap: false
+  trace: true
+pf2:
+lrwxrwxrwx    1 root     root            12 Oct 19 23:20 /dev/rs485_2_uart -> /dev/ttyUSB1
+crw-rw----    1 root     dialout   188,   0 Oct 20 15:42 /dev/ttyUSB0
+crw-rw----    1 root     dialout   188,   1 Oct 20 15:42 /dev/ttyUSB1
+crw-rw----    1 root     dialout   188,   2 Oct 20 15:42 /dev/ttyUSB2
+crw-rw----    1 root     dialout   188,   3 Oct 19 23:20 /dev/ttyUSB3
+crw-rw----    1 root     dialout   188,   4 Oct 19 23:20 /dev/ttyUSB4
+crw-rw----    1 root     dialout   188,   5 Oct 19 23:20 /dev/ttyUSB5
+crw-rw----    1 root     dialout   188,   6 Oct 19 23:20 /dev/ttyUSB6
+crw-rw----    1 root     dialout   188,   7 Oct 19 23:20 /dev/ttyUSB7
+crw-rw----    1 root     dialout   188,   8 Oct 19 23:20 /dev/ttyUSB8
+Tue Oct 20 15:40:57 2026 daemon.err ccli[5136]: modbus: FC3 ReadHoldingRegisters unit=1 addr=100001 qty=6 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+Tue Oct 20 15:41:08 2026 daemon.err ccli[5136]: modbus: FC3 ReadHoldingRegisters unit=1 addr=100001 qty=6 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+Tue Oct 20 15:41:10 2026 daemon.err ccli[5136]: modbus: FC3 ReadHoldingRegisters unit=1 addr=100001 qty=6 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+Tue Oct 20 15:41:15 2026 daemon.err ccli[5136]: modbus: FC3 ReadHoldingRegisters unit=1 addr=100001 qty=6 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+Tue Oct 20 15:41:28 2026 daemon.err ccli[5136]: modbus: FC3 ReadHoldingRegisters unit=1 addr=100001 qty=6 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+Tue Oct 20 15:41:40 2026 daemon.err ccli[5136]: modbus: FC3 ReadHoldingRegisters unit=1 addr=100001 qty=6 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+Tue Oct 20 15:41:43 2026 daemon.err ccli[5136]: modbus: FC3 ReadHoldingRegisters unit=1 addr=100001 qty=6 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+Tue Oct 20 15:41:56 2026 daemon.err ccli[5136]: modbus: FC3 ReadHoldingRegisters unit=1 addr=100001 qty=6 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+Tue Oct 20 15:41:58 2026 daemon.err ccli[5136]: modbus: FC3 ReadHoldingRegisters unit=1 addr=100001 qty=6 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+Tue Oct 20 15:42:02 2026 daemon.err ccli[5136]: modbus: FC3 ReadHoldingRegisters unit=1 addr=100001 qty=6 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+Tue Oct 20 15:42:14 2026 daemon.err ccli[5136]: modbus: FC3 ReadHoldingRegisters unit=1 addr=100001 qty=6 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF
+Tue Oct 20 15:42:18 2026 daemon.err ccli[5136]: modbus: FC3 ReadHoldingRegisters unit=1 addr=100001 qty=6 -> P=0kW Q=0kvar ERR=read_fail P=0kW pf2=stale_or_invalid curtail=no DO=OFF

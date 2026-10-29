@@ -1,0 +1,36 @@
+#!/bin/sh
+
+STATE_DIR=/var/run/test-revoke
+write_status() {
+    mkdir -p "$STATE_DIR"
+    {
+        echo "name=test-revoke"
+        echo "version=1.0.0-r1"
+        echo "status=running"
+        echo "updated_at=$(date -Iseconds 2>/dev/null || date)"
+    } > "$STATE_DIR/status"
+}
+
+case "${1:-status}" in
+    daemon|--daemon)
+        write_status
+        while :; do
+            sleep 10
+            write_status
+        done
+        ;;
+    status|--status)
+        if [ -s "$STATE_DIR/status" ]; then
+            cat "$STATE_DIR/status"
+        else
+            echo "name=test-revoke"
+            echo "version=1.0.0-r1"
+            echo "status=not-running"
+            exit 1
+        fi
+        ;;
+    *)
+        echo "Usage: $0 {daemon|status}" >&2
+        exit 2
+        ;;
+esac

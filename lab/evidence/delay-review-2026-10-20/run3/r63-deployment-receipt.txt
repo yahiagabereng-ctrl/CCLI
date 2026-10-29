@@ -1,0 +1,16 @@
+RESTARTING_CCI_SERVICE_ONLY_NO_DEVICE_REBOOT
+VERIFIED_R63_LISTENER_OWNER pid=12191
+BOTH_EXISTING_AUDIT_SEGMENTS_PRESERVED
+ccli 0.1.0-r63 (TSP-PRESENTATION-CONTEXT)
+  semver:   0.1.0
+  release:  r63
+  git:      unknown
+  built:    2026-10-20T13:44:35Z UTC
+  platform: tg500
+cd1b233b41c8d5360846ec447458fb1fbb599d9eaf8e57c8b162a1c2cdfda2de  /usr/sbin/ccli
+346e0b653d224231c542e664cf50ada443835e44436e3fe43705b5825a203c5c  /etc/ccli/lab.yaml
+      164 /etc/ccli/security-events/events.jsonl
+     2048 /etc/ccli/security-events/events.jsonl.1
+     2212 total
+PROTECTED_CONFIGURATION_AND_CREDENTIAL_HASHES_UNCHANGED
+R63_APPLIED backup=/etc/ccli/tsp-r63-backup-20261020

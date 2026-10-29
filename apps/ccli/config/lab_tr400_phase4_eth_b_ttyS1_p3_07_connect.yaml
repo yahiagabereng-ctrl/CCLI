@@ -67,6 +67,7 @@ mms:
   gnss_discipline_clock: false
   chrony_poll: true
   tls_enabled: true
+  tls_crl: /etc/ccli/tls/lab_crl.pem
   tls_own_key: /etc/ccli/tls/server.key
   tls_own_cert: /etc/ccli/tls/server_tls.pem
   tls_acse_cert: /etc/ccli/tls/server.pem
@@ -95,6 +96,7 @@ iec104:
   operator_monitor_ppv: false
   ioa_ppv: 1003
   tls_enabled: true
+  tls_crl: /etc/ccli/tls/lab_crl.pem
   tls_own_key: /etc/ccli/tls/server.key
   tls_own_cert: /etc/ccli/tls/server_tls.pem
   tls_ca_cert: /etc/ccli/tls/root_CA.pem

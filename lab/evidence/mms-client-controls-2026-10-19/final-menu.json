@@ -1,0 +1,33 @@
+{
+  "host": "127.0.0.1",
+  "port": 3784,
+  "command": "browse",
+  "reference": "",
+  "passed": true,
+  "events": [
+    {
+      "kind": "association",
+      "reference": "127.0.0.1",
+      "error": 0,
+      "error_text": "",
+      "value": "mutual TLS 1.2 + ACSE certificate authentication",
+      "observed_utc": "2026-10-19T08:44:34.124866+00:00"
+    },
+    {
+      "kind": "directory",
+      "reference": "",
+      "error": 0,
+      "error_text": "",
+      "value": "devices",
+      "observed_utc": "2026-10-19T08:44:34.490639+00:00"
+    },
+    {
+      "kind": "entry",
+      "reference": "",
+      "error": 0,
+      "error_text": "",
+      "value": "CCI016_01LD_Plant",
+      "observed_utc": "2026-10-19T08:44:34.490682+00:00"
+    }
+  ]
+}

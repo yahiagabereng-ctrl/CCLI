@@ -1,0 +1,209 @@
+{
+  "host": "127.0.0.1",
+  "port": 3784,
+  "command": "reports",
+  "reference": "CCI016_01LD_Plant/LLN0.RP.urcb_PdC_Mis4sec",
+  "passed": true,
+  "events": [
+    {
+      "kind": "association",
+      "reference": "127.0.0.1",
+      "error": 0,
+      "error_text": "",
+      "value": "mutual TLS 1.2 + ACSE certificate authentication",
+      "observed_utc": "2026-10-19T08:44:13.783478+00:00"
+    },
+    {
+      "kind": "rcb",
+      "reference": "CCI016_01LD_Plant/LLN0.RP.urcb_PdC_Mis4sec",
+      "error": 0,
+      "error_text": "",
+      "value": "enabled=false dataset=CCI016_01LD_Plant/LLN0$DS_R_PdC_Mis4sec",
+      "observed_utc": "2026-10-19T08:44:13.844667+00:00"
+    },
+    {
+      "kind": "report-enable",
+      "reference": "CCI016_01LD_Plant/LLN0.RP.urcb_PdC_Mis4sec",
+      "error": 0,
+      "error_text": "",
+      "value": "",
+      "observed_utc": "2026-10-19T08:44:13.946269+00:00"
+    },
+    {
+      "kind": "report",
+      "reference": "CCI016_01LD_Plant/LLN0.RP.urcb_PdC_Mis4sec",
+      "error": 0,
+      "error_text": "",
+      "value": "{{{13.000000},1100000001000,20261019084414.091Z},(null),(null)}",
+      "observed_utc": "2026-10-19T08:44:14.129390+00:00"
+    },
+    {
+      "kind": "report",
+      "reference": "CCI016_01LD_Plant/LLN0.RP.urcb_PdC_Mis4sec",
+      "error": 0,
+      "error_text": "",
+      "value": "{{{12.000000},1100000001000,20261019084414.341Z},(null),(null)}",
+      "observed_utc": "2026-10-19T08:44:14.373884+00:00"
+    },
+    {
+      "kind": "report",
+      "reference": "CCI016_01LD_Plant/LLN0.RP.urcb_PdC_Mis4sec",
+      "error": 0,
+      "error_text": "",
+      "value": "{{{13.000000},1100000001000,20261019084414.591Z},(null),(null)}",
+      "observed_utc": "2026-10-19T08:44:14.617809+00:00"
+    },
+    {
+      "kind": "report",
+      "reference": "CCI016_01LD_Plant/LLN0.RP.urcb_PdC_Mis4sec",
+      "error": 0,
+      "error_text": "",
+      "value": "{{{12.000000},1100000001000,20261019084414.841Z},(null),(null)}",
+      "observed_utc": "2026-10-19T08:44:14.882383+00:00"
+    },
+    {
+      "kind": "report",
+      "reference": "CCI016_01LD_Plant/LLN0.RP.urcb_PdC_Mis4sec",
+      "error": 0,
+      "error_text": "",
+      "value": "{{{13.000000},1100000001000,20261019084415.092Z},(null),(null)}",
+      "observed_utc": "2026-10-19T08:44:15.136596+00:00"
+    },
+    {
+      "kind": "report",
+      "reference": "CCI016_01LD_Plant/LLN0.RP.urcb_PdC_Mis4sec",
+      "error": 0,
+      "error_text": "",
+      "value": "{{{12.000000},1100000001000,20261019084415.342Z},(null),(null)}",
+      "observed_utc": "2026-10-19T08:44:15.370632+00:00"
+    },
+    {
+      "kind": "report",
+      "reference": "CCI016_01LD_Plant/LLN0.RP.urcb_PdC_Mis4sec",
+      "error": 0,
+      "error_text": "",
+      "value": "{{{13.000000},1100000001000,20261019084415.592Z},(null),(null)}",
+      "observed_utc": "2026-10-19T08:44:15.625044+00:00"
+    },
+    {
+      "kind": "report",
+      "reference": "CCI016_01LD_Plant/LLN0.RP.urcb_PdC_Mis4sec",
+      "error": 0,
+      "error_text": "",
+      "value": "{{{12.000000},1100000001000,20261019084415.842Z},(null),(null)}",
+      "observed_utc": "2026-10-19T08:44:16.062759+00:00"
+    },
+    {
+      "kind": "report",
+      "reference": "CCI016_01LD_Plant/LLN0.RP.urcb_PdC_Mis4sec",
+      "error": 0,
+      "error_text": "",
+      "value": "{{{13.000000},1100000001000,20261019084416.092Z},(null),(null)}",
+      "observed_utc": "2026-10-19T08:44:16.256901+00:00"
+    },
+    {
+      "kind": "report",
+      "reference": "CCI016_01LD_Plant/LLN0.RP.urcb_PdC_Mis4sec",
+      "error": 0,
+      "error_text": "",
+      "value": "{{{12.000000},1100000001000,20261019084416.343Z},(null),(null)}",
+      "observed_utc": "2026-10-19T08:44:16.368665+00:00"
+    },
+    {
+      "kind": "report",
+      "reference": "CCI016_01LD_Plant/LLN0.RP.urcb_PdC_Mis4sec",
+      "error": 0,
+      "error_text": "",
+      "value": "{{{13.000000},1100000001000,20261019084416.593Z},(null),(null)}",
+      "observed_utc": "2026-10-19T08:44:16.633414+00:00"
+    },
+    {
+      "kind": "report",
+      "reference": "CCI016_01LD_Plant/LLN0.RP.urcb_PdC_Mis4sec",
+      "error": 0,
+      "error_text": "",
+      "value": "{{{12.000000},1100000001000,20261019084416.843Z},(null),(null)}",
+      "observed_utc": "2026-10-19T08:44:16.877822+00:00"
+    },
+    {
+      "kind": "report",
+      "reference": "CCI016_01LD_Plant/LLN0.RP.urcb_PdC_Mis4sec",
+      "error": 0,
+      "error_text": "",
+      "value": "{{{13.000000},1100000001000,20261019084417.093Z},(null),(null)}",
+      "observed_utc": "2026-10-19T08:44:17.142267+00:00"
+    },
+    {
+      "kind": "report",
+      "reference": "CCI016_01LD_Plant/LLN0.RP.urcb_PdC_Mis4sec",
+      "error": 0,
+      "error_text": "",
+      "value": "{{{12.000000},1100000001000,20261019084417.343Z},(null),(null)}",
+      "observed_utc": "2026-10-19T08:44:17.376603+00:00"
+    },
+    {
+      "kind": "report",
+      "reference": "CCI016_01LD_Plant/LLN0.RP.urcb_PdC_Mis4sec",
+      "error": 0,
+      "error_text": "",
+      "value": "{{{13.000000},1100000001000,20261019084417.593Z},(null),(null)}",
+      "observed_utc": "2026-10-19T08:44:17.621010+00:00"
+    },
+    {
+      "kind": "report",
+      "reference": "CCI016_01LD_Plant/LLN0.RP.urcb_PdC_Mis4sec",
+      "error": 0,
+      "error_text": "",
+      "value": "{{{12.000000},1100000001000,20261019084417.844Z},(null),(null)}",
+      "observed_utc": "2026-10-19T08:44:17.875803+00:00"
+    },
+    {
+      "kind": "report",
+      "reference": "CCI016_01LD_Plant/LLN0.RP.urcb_PdC_Mis4sec",
+      "error": 0,
+      "error_text": "",
+      "value": "{{{12.000000},1100000001000,20261019084417.844Z},{{2.000000},1100000001000,20261019084417.844Z},0.400000}",
+      "observed_utc": "2026-10-19T08:44:17.967548+00:00"
+    },
+    {
+      "kind": "report",
+      "reference": "CCI016_01LD_Plant/LLN0.RP.urcb_PdC_Mis4sec",
+      "error": 0,
+      "error_text": "",
+      "value": "{{{13.000000},1100000001000,20261019084418.094Z},{{2.000000},1100000001000,20261019084417.844Z},0.400000}",
+      "observed_utc": "2026-10-19T08:44:18.140562+00:00"
+    },
+    {
+      "kind": "report",
+      "reference": "CCI016_01LD_Plant/LLN0.RP.urcb_PdC_Mis4sec",
+      "error": 0,
+      "error_text": "",
+      "value": "{{{12.000000},1100000001000,20261019084418.344Z},{{2.000000},1100000001000,20261019084417.844Z},0.400000}",
+      "observed_utc": "2026-10-19T08:44:18.374539+00:00"
+    },
+    {
+      "kind": "report",
+      "reference": "CCI016_01LD_Plant/LLN0.RP.urcb_PdC_Mis4sec",
+      "error": 0,
+      "error_text": "",
+      "value": "{{{13.000000},1100000001000,20261019084418.594Z},{{2.000000},1100000001000,20261019084417.844Z},0.400000}",
+      "observed_utc": "2026-10-19T08:44:18.628685+00:00"
+    },
+    {
+      "kind": "report",
+      "reference": "CCI016_01LD_Plant/LLN0.RP.urcb_PdC_Mis4sec",
+      "error": 0,
+      "error_text": "",
+      "value": "{{{12.000000},1100000001000,20261019084418.844Z},{{2.000000},1100000001000,20261019084417.844Z},0.400000}",
+      "observed_utc": "2026-10-19T08:44:18.872819+00:00"
+    },
+    {
+      "kind": "report-disable",
+      "reference": "CCI016_01LD_Plant/LLN0.RP.urcb_PdC_Mis4sec",
+      "error": 0,
+      "error_text": "",
+      "value": "received=21",
+      "observed_utc": "2026-10-19T08:44:18.984793+00:00"
+    }
+  ]
+}

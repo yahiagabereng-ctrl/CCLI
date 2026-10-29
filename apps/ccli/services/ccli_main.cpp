@@ -29,6 +29,8 @@
 #include <cstdint>
 #include <fstream>
 #include <iostream>
+#include <memory>
+#include <stdexcept>
 #include <cstdio>
 #include <sstream>
 #include <string>
@@ -108,7 +110,9 @@ const char* link_state_string(const int s) {
 }
 
 void write_bench_status_file(const std::string& path, const cci::core::CcliConfig& cfg,
-                             const cci::core::Measurement& m, const cci::core::Pf2State& pf2_st,
+                             const cci::core::Measurement& m,
+                             const cci::core::Measurement& inverter_m,
+                             const cci::core::Pf2State& pf2_st,
                              const bool curtailment_commanded, const bool permissive_ok,
                              const bool annex_m_trip_active, const bool do_curtail_on,
                              const cci::core::dso::DsoPhase1ApplyResult& dso_apply,
@@ -128,6 +132,10 @@ void write_bench_status_file(const std::string& path, const cci::core::CcliConfi
         << "  \"phs_a_a\": " << (m.has_phs_a_a ? m.phs_a_a : 0.0) << ",\n"
         << "  \"has_phs_a_a\": " << (m.has_phs_a_a ? "true" : "false") << ",\n"
         << "  \"quality\": \"" << quality_string(m.quality) << "\",\n"
+        << "  \"inverter\": {\"p_kw\": " << inverter_m.p_kw
+        << ", \"q_kvar\": " << inverter_m.q_kvar
+        << ", \"quality\": \"" << quality_string(inverter_m.quality)
+        << "\", \"ts_ms\": " << inverter_m.timestamp_ms << "},\n"
         << "  \"pf2_reason\": \"" << pf2_st.reason << "\",\n"
         << "  \"curtailment_commanded\": " << (curtailment_commanded ? "true" : "false")
         << ",\n"
@@ -142,6 +150,7 @@ void write_bench_status_file(const std::string& path, const cci::core::CcliConfi
         << "    \"p_wsd_kw\": " << d.p_wsd_kw << ",\n"
         << "    \"p_wlim_kw\": " << d.p_wlim_kw << ",\n"
         << "    \"p_w110_kw\": " << d.p_w110_kw << ",\n"
+        << "    \"p_wsa_kw\": " << d.p_wsa_kw << ",\n"
         << "    \"p_effective_kw\": " << d.p_effective_export_kw << ",\n"
         << "    \"pf2_enter_kw\": " << dso_apply.pf2_threshold_kw << ",\n"
         << "    \"pf2_release_kw\": " << dso_apply.pf2_release_kw << "\n"
@@ -169,6 +178,10 @@ void write_bench_status_file(const std::string& path, const cci::core::CcliConfi
         << "      \"pfsp_active\": " << (c.pfsp_active ? "true" : "false") << ",\n"
         << "      \"pfsp_cosphi\": " << c.pfsp_cosphi << ",\n"
         << "      \"pfsp_generation\": " << (c.pfsp_generation ? "true" : "false") << ",\n"
+        << "      \"wsa_active\": " << (c.wsa_active ? "true" : "false") << ",\n"
+        << "      \"wsa_pct\": " << c.wsa_spt_pct << ",\n"
+        << "      \"varsa_active\": " << (c.varsa_active ? "true" : "false") << ",\n"
+        << "      \"varsa_pct\": " << c.varsa_spt_pct << ",\n"
         << "      \"ppv_kv\": " << cfg.plant.poc_ppv_kv << "\n"
         << "    },\n"
         << "    \"operator\": {\n"
@@ -208,6 +221,11 @@ void write_bench_status_file(const std::string& path, const cci::core::CcliConfi
         << "      \"modbus_baud\": " << cfg.modbus.baud << ",\n"
         << "      \"modbus_slave_id\": " << cfg.modbus.slave_id << ",\n"
         << "      \"poll_ms\": " << cfg.modbus.poll_ms << ",\n"
+        << "      \"inverter_modbus_enabled\": "
+        << (cfg.inverter_modbus.enabled ? "true" : "false") << ",\n"
+        << "      \"inverter_modbus_device\": \""
+        << json_escape_str(cfg.inverter_modbus.device) << "\",\n"
+        << "      \"inverter_modbus_poll_ms\": " << cfg.inverter_modbus.poll_ms << ",\n"
         << "      \"link\": \"" << link_state_string(z.modbus_link_state) << "\",\n"
         << "      \"last_exchange_ms\": " << mb.exchange_ms << ",\n"
         << "      \"last_success\": " << (mb.success ? "true" : "false") << ",\n"
@@ -272,16 +290,25 @@ int run_event_dump(const std::string& config_path, std::size_t count, bool json_
     if (count == 0 || count > cci::core::EventStore::kMaxEvents) {
         count = cci::core::EventStore::kMaxEvents;
     }
-    return cci::core::EventStore::dump_to_stream(std::cout, cfg.event_log.path, count, json_out);
+    int result = cci::core::EventStore::dump_to_stream(std::cout, cfg.event_log.path, count, json_out);
+    std::cout.flush();
+    if (!std::cout.good()) result = 1;
+    if (!cci::core::EventStore::audit_log_read(cfg.event_log.path, result == 0)) {
+        std::cerr << "event-dump: could not persist read audit request\n";
+        return 1;
+    }
+    return result;
 }
 
 int run_event_wrap_test() {
     const std::string path = "/tmp/ccli-event-wrap-test.jsonl";
     std::remove(path.c_str());
+    std::remove((path + ".1").c_str());
     const bool ok = cci::core::EventStore::run_wrap_test(path);
     std::cout << (ok ? "P7-01 wrap test: PASS (2048 events, oldest dropped)\n"
                      : "P7-01 wrap test: FAIL\n");
     std::remove(path.c_str());
+    std::remove((path + ".1").c_str());
     return ok ? 0 : 1;
 }
 
@@ -649,13 +676,16 @@ int main(int argc, char** argv) {
     }
 
     cci::core::MeasurementStore measurements;
-    cci::core::EventLogConfig elog_cfg;
-    elog_cfg.enabled = app_cfg.event_log.enabled;
-    elog_cfg.path = app_cfg.event_log.path;
-    elog_cfg.syslog_enabled = app_cfg.event_log.syslog_enabled;
-    elog_cfg.syslog_host = app_cfg.event_log.syslog_host;
-    elog_cfg.syslog_port = app_cfg.event_log.syslog_port;
-    cci::core::EventStore events(elog_cfg);
+    cci::core::MeasurementStore inverter_measurements;
+    cci::core::EventLogConfig elog_cfg = app_cfg.event_log;
+    std::unique_ptr<cci::core::EventStore> event_store;
+    try {
+        event_store = std::make_unique<cci::core::EventStore>(elog_cfg);
+    } catch (const std::invalid_argument& error) {
+        std::cerr << "event logger configuration rejected: " << error.what() << '\n';
+        return 2;
+    }
+    auto& events = *event_store;
     const auto log_event = [&events](const std::string& type, const std::string& detail) {
         events.append({cci::hal::now().epoch_ms, type, detail, ""});
     };
@@ -697,11 +727,25 @@ int main(int argc, char** argv) {
     cci::core::ServiceSupervision::mark_running();
 
     cci::services::ModbusService modbus(measurements, app_cfg);
+    std::unique_ptr<cci::services::ModbusService> inverter_modbus;
+    if (app_cfg.inverter_modbus.enabled) {
+        inverter_modbus = std::make_unique<cci::services::ModbusService>(
+            inverter_measurements, app_cfg.inverter_modbus);
+        if (!inverter_modbus->start_background()) {
+            std::cerr << "inverter-modbus: failed to start background RTU poller\n";
+            inverter_modbus.reset();
+        } else {
+            std::cerr << "inverter-modbus: RTU reader started device="
+                      << app_cfg.inverter_modbus.device << " unit="
+                      << app_cfg.inverter_modbus.slave_id << " poll_ms="
+                      << app_cfg.inverter_modbus.poll_ms << "\n";
+        }
+    }
 
     cci::core::Pf2Config pf2_cfg = app_cfg.pf2;
 
     /* Phase 1 CEI mock: optional rewrite of PF2 kW thresholds from O.8.2 / O.11 (core/dso/). */
-    const auto dso_apply =
+    auto dso_apply =
         cci::core::dso::apply_dso_to_pf2_config(pf2_cfg, app_cfg.plant, app_cfg.dso);
     if (dso_apply.applied) {
         std::cerr << "dso-phase1: O.8.2/O.11 mock — Smax_calc=" << dso_apply.derived.smax_kva_calc
@@ -746,7 +790,30 @@ int main(int argc, char** argv) {
             [&events](const std::string& detail) {
                 events.append({cci::hal::now().epoch_ms, "mms", detail});
             };
-        if (!mms.start(app_cfg.mms, mms_audit)) {
+        const cci::adapters::MmsTimeSyncAuditFn time_sync_audit =
+            [&events](const std::string& iec_id, const std::string& source,
+                      const std::int64_t offset_ms, const bool gnss_fix,
+                      const bool synchronized) {
+                cci::core::EventRecord event;
+                event.timestamp_ms = cci::hal::now().epoch_ms;
+                event.type = "time_sync";
+                event.category = "security";
+                event.detail = "time_sync: source=" + source + " offset_ms=" +
+                    std::to_string(offset_ms) + " gnss_fix=" + (gnss_fix ? "true" : "false") +
+                    " synchronized=" + (synchronized ? "true" : "false");
+                event.iec_id = iec_id;
+                event.app_name = "time-sync";
+                event.parameters.emplace_back("P.Source", source);
+                event.parameters.emplace_back("P.OffsetMs", std::to_string(offset_ms));
+                event.parameters.emplace_back("P.GnssFix", gnss_fix ? "true" : "false");
+                event.parameters.emplace_back("P.Synchronized", synchronized ? "true" : "false");
+                return events.append(std::move(event));
+            };
+        const bool rbac_audit_ready = !app_cfg.mms.rbac_profile_a ||
+            (app_cfg.event_log.enabled && !app_cfg.event_log.path.empty() && events.persistence_ok());
+        if (!rbac_audit_ready)
+            std::cerr << "mms: Profile A requires the configured security event store\n";
+        if (!rbac_audit_ready || !mms.start(app_cfg.mms, mms_audit, time_sync_audit)) {
             std::cerr << "mms: FAILED to bind " << app_cfg.mms.bind_address << ":"
                       << app_cfg.mms.tcp_port
                       << (app_cfg.mms.tls.enabled ? " (TLS)" : "")
@@ -795,10 +862,17 @@ int main(int argc, char** argv) {
     std::int64_t last_mb_trace_ms = -1;
     int modbus_link_state = 0; /* 0=unknown, 1=up, -1=down */
     cci::core::DataQuality last_meter_quality = cci::core::DataQuality::Invalid;
+    std::int64_t last_inverter_timestamp_ms = 0;
     bool permissive_tracked = false;
     bool last_permissive_di = false;
     bool last_annex_m_trip = annex_m0;
     cci::adapters::DsoLiveCommand last_dso_cmd{};
+    const auto initial_power = cci::core::dso::resolve_dso_mock_inputs(app_cfg.plant, app_cfg.dso);
+    last_dso_cmd.wlim_active = app_cfg.dso.enabled && initial_power.commands.wlim_active;
+    last_dso_cmd.wmax_spt_pct = initial_power.commands.wmax_spt_pct;
+    last_dso_cmd.wsd_active = app_cfg.dso.enabled && initial_power.commands.wsd_active;
+    last_dso_cmd.wspt_pct = initial_power.commands.wspt_pct;
+    bool reactive_command_was_active = false;
     bool dso_cmd_seen = false;
     int goose_link_state = 0; /* 0=unknown, 1=up, -1=down */
     const auto watch_ifaces = cci::core::split_watch_ifaces(app_cfg.event_log.watch_ifaces);
@@ -834,6 +908,20 @@ int main(int argc, char** argv) {
 
         {
             const cci::core::Measurement m = measurements.snapshot();
+            if (inverter_modbus) {
+                const cci::core::Measurement inverter = inverter_measurements.snapshot();
+                if (inverter.timestamp_ms != 0 &&
+                    inverter.timestamp_ms != last_inverter_timestamp_ms) {
+                    mms.update_gen_pv_active_power_kw(inverter.p_kw, inverter.quality);
+                    if (app_cfg.inverter_modbus.trace) {
+                        std::cerr << "inverter-modbus: RTU P=" << inverter.p_kw
+                                  << "kW Q=" << inverter.q_kvar << "kvar quality="
+                                  << quality_string(inverter.quality) << " device="
+                                  << app_cfg.inverter_modbus.device << "\n";
+                    }
+                    last_inverter_timestamp_ms = inverter.timestamp_ms;
+                }
+            }
             if (m.quality != last_meter_quality) {
                 if (m.quality == cci::core::DataQuality::Good) {
                     log_event("meter", last_meter_quality == cci::core::DataQuality::Stale
@@ -848,6 +936,7 @@ int main(int argc, char** argv) {
             }
             mms.update_tot_w_kw(m.p_kw);
             mms.update_totvar_kvar(m.q_kvar);
+            mms.update_aggregator_measurement_quality(m.quality);
             if (m.pdc.valid) {
                 mms.update_pdc_phasors(m.pdc);
             } else {
@@ -874,9 +963,10 @@ int main(int argc, char** argv) {
             }
             cci::adapters::DsoLiveCommand dso_cmd{};
             if (mms.poll_dso_live_command(dso_cmd) && dso_cmd.valid) {
-                last_dso_cmd = dso_cmd;
+                last_dso_cmd.merge_update(dso_cmd);
+                dso_cmd = last_dso_cmd.for_plant(app_cfg.mms.aggregator_plant_outputs_enabled);
                 dso_cmd_seen = true;
-                if (dso_cmd.dirty) {
+                if (dso_cmd.dirty || dso_cmd.aggregator_dirty) {
                     cci::core::Pf2Config live_cfg = pf2.config();
                     live_cfg.use_dso_mock = true;
                     const bool use_or_profile =
@@ -884,8 +974,9 @@ int main(int argc, char** argv) {
                     const auto live = cci::core::dso::apply_live_dso_commands_to_pf2(
                         live_cfg, app_cfg.plant, app_cfg.dso, dso_cmd.wlim_active,
                         dso_cmd.wmax_spt_pct, dso_cmd.wsd_active, dso_cmd.wspt_pct,
-                        use_or_profile);
+                        dso_cmd.wsa_active, dso_cmd.wsa_spt_pct, use_or_profile);
                     if (live.applied) {
+                        dso_apply = live;
                         pf2.set_thresholds(live.pf2_threshold_kw, live.pf2_release_kw);
                         if (use_or_profile) {
                             std::cerr << "mms→pf2: O.13.1.2 Operating Rule (O.11 min) — Wlim active="
@@ -912,83 +1003,21 @@ int main(int argc, char** argv) {
                                                             : "wlim_off"});
                     }
                 }
-                if (dso_cmd.reactive_dirty) {
-                    const auto m_snap = measurements.snapshot();
-                    const double p_kw = m_snap.p_kw;
-
-                    if (dso_cmd.pfsp_dirty) {
-                        const auto q_pfsp = cci::core::dso::apply_live_pfsp_command(
-                            app_cfg.plant, app_cfg.dso, dso_cmd.pfsp_active,
-                            dso_cmd.pfsp_cosphi, dso_cmd.pfsp_generation, p_kw);
-                        const int mod_val = dso_cmd.pfsp_active ? 1 : 5;
-                        if (q_pfsp.applied) {
-                            if (modbus.write_reactive_kvar(q_pfsp.derived.q_target_kvar)) {
-                                std::cerr << "mms→plant: PFSP on cosφ="
-                                          << dso_cmd.pfsp_cosphi << " P=" << p_kw
-                                          << " kW → Q=" << q_pfsp.derived.q_target_kvar
-                                          << " kvar [O.9.1.1 P5-R02]\n";
-                                events.append({cci::hal::now().epoch_ms, "mms",
-                                               "pfsp_operate mod=" + std::to_string(mod_val) +
-                                                   " cosphi=" +
-                                                   std::to_string(dso_cmd.pfsp_cosphi) +
-                                                   " p_kw=" + std::to_string(p_kw) +
-                                                   " q_kvar=" +
-                                                   std::to_string(q_pfsp.derived.q_target_kvar) +
-                                                   " result=ok"});
-                            } else {
-                                events.append({cci::hal::now().epoch_ms, "mms",
-                                               "pfsp_operate mod=" + std::to_string(mod_val) +
-                                                   " cosphi=" +
-                                                   std::to_string(dso_cmd.pfsp_cosphi) +
-                                                   " p_kw=" + std::to_string(p_kw) +
-                                                   " q_kvar=" +
-                                                   std::to_string(q_pfsp.derived.q_target_kvar) +
-                                                   " result=plant_write_fail"});
-                            }
-                        } else {
-                            events.append({cci::hal::now().epoch_ms, "mms",
-                                           "pfsp_operate mod=5 cosphi=" +
-                                               std::to_string(dso_cmd.pfsp_cosphi) +
-                                               " q_kvar=0 result=cleared"});
-                        }
-                    }
-
-                    if (!dso_cmd.pfsp_dirty) {
-                        const auto q_cmd = cci::core::dso::apply_live_varsd_command(
-                            app_cfg.plant, app_cfg.dso, dso_cmd.varsd_active,
-                            dso_cmd.vartgt_spt_pct);
-                        if (q_cmd.applied) {
-                            const int mod_val = dso_cmd.varsd_active ? 1 : 5;
-                            if (modbus.write_reactive_kvar(q_cmd.derived.q_target_kvar)) {
-                                std::cerr << "mms→plant: VArSd on @" << dso_cmd.vartgt_spt_pct
-                                          << "% Smax → Q=" << q_cmd.derived.q_target_kvar
-                                          << " kvar [O.9.1.4 P5-R01]\n";
-                                events.append({cci::hal::now().epoch_ms, "mms",
-                                               "varsd_operate mod=" + std::to_string(mod_val) +
-                                                   " pct=" +
-                                                   std::to_string(dso_cmd.vartgt_spt_pct) +
-                                                   " q_kvar=" +
-                                                   std::to_string(q_cmd.derived.q_target_kvar) +
-                                                   " result=ok"});
-                            } else {
-                                std::cerr << "mms→plant: VArSd Q write FAILED q="
-                                          << q_cmd.derived.q_target_kvar << " kvar\n";
-                                events.append({cci::hal::now().epoch_ms, "mms",
-                                               "varsd_operate mod=" + std::to_string(mod_val) +
-                                                   " pct=" +
-                                                   std::to_string(dso_cmd.vartgt_spt_pct) +
-                                                   " q_kvar=" +
-                                                   std::to_string(q_cmd.derived.q_target_kvar) +
-                                                   " result=plant_write_fail"});
-                            }
-                        } else {
-                            std::cerr << "mms→plant: VArSd off — plant Q command cleared "
-                                         "[O.9.1.4]\n";
-                            events.append({cci::hal::now().epoch_ms, "mms",
-                                           "varsd_operate mod=5 pct=" +
-                                               std::to_string(dso_cmd.vartgt_spt_pct) +
-                                               " q_kvar=0 result=cleared"});
-                        }
+                if (dso_cmd.reactive_dirty || dso_cmd.aggregator_reactive_dirty) {
+                    const auto selected = cci::core::dso::select_live_reactive_command(
+                        app_cfg.plant, app_cfg.dso, dso_cmd.varsd_active, dso_cmd.vartgt_spt_pct,
+                        dso_cmd.pfsp_active, dso_cmd.pfsp_cosphi, dso_cmd.pfsp_generation,
+                        measurements.snapshot().p_kw, dso_cmd.varsa_active, dso_cmd.varsa_spt_pct);
+                    // Clear a previously issued Q command on off/fallback, without an unsolicited
+                    // plant write when merely editing an inactive function's setpoint.
+                    if (selected.command.applied || reactive_command_was_active) {
+                        const double q = selected.command.applied ? selected.command.derived.q_target_kvar : 0.0;
+                        const bool written = modbus.write_reactive_kvar(q);
+                        events.append({cci::hal::now().epoch_ms, "mms",
+                            std::string("reactive_command source=") + selected.source +
+                            " q_kvar=" + std::to_string(q) +
+                            (written ? " result=ok" : " result=plant_write_fail")});
+                        if (written) reactive_command_was_active = selected.command.applied;
                     }
                 }
             }
@@ -1009,6 +1038,12 @@ int main(int argc, char** argv) {
                 std::cerr << "iec104: " << detail << "\n";
                 events.append({cci::hal::now().epoch_ms, "iec104", detail});
             }
+        }
+
+        {
+            std::string tls_event;
+            while (iec104.poll_security_event(tls_event))
+                events.append({cci::hal::now().epoch_ms, "iec104", tls_event});
         }
 
         const bool commanded = pf2.curtailment_active();
@@ -1094,6 +1129,7 @@ int main(int argc, char** argv) {
             zs.modbus_link_state = modbus_link_state;
             zs.modbus_last = modbus.last_exchange();
             write_bench_status_file(kBenchStatusPath, app_cfg, measurements.snapshot(),
+                                    inverter_measurements.snapshot(),
                                     pf2.last_state(), commanded, permissive_ok, annex_m_trip,
                                     do_state, dso_apply, zs);
         }
@@ -1126,6 +1162,10 @@ int main(int argc, char** argv) {
         if ((loop_count % watchdog_interval) == 0 && loop_count > 0) {
             cci::core::ServiceSupervision::procd_watchdog_ping();
         }
+
+        // Publish only after this complete control iteration. The independent
+        // ccli-watchdog treats an 8 s-old monotonic timestamp as a stall.
+        cci::core::ServiceSupervision::watchdog_main_loop_tick();
 
         ++loop_count;
         usleep(100000);

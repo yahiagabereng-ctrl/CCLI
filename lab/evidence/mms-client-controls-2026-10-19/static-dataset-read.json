@@ -1,0 +1,25 @@
+{
+  "host": "127.0.0.1",
+  "port": 3784,
+  "command": "dataset-read",
+  "reference": "CCI016_01LD_Plant/LLN0.DS_R_PdC_Mis4sec",
+  "passed": true,
+  "events": [
+    {
+      "kind": "association",
+      "reference": "127.0.0.1",
+      "error": 0,
+      "error_text": "",
+      "value": "mutual TLS 1.2 + ACSE certificate authentication",
+      "observed_utc": "2026-10-19T08:40:32.736645+00:00"
+    },
+    {
+      "kind": "dataset-read",
+      "reference": "CCI016_01LD_Plant/LLN0.DS_R_PdC_Mis4sec",
+      "error": 0,
+      "error_text": "",
+      "value": "{{{13.000000},1100000001000,20261019084032.585Z},{{2.000000},1100000001000,20261019084032.585Z},0.400000}",
+      "observed_utc": "2026-10-19T08:40:32.860189+00:00"
+    }
+  ]
+}

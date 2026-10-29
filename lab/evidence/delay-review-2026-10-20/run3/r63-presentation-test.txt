@@ -1,0 +1,7 @@
+unchanged-TSP-capture: PASS accepted=1 contexts=3 acse=1 mms=3
+legacy-extra-zero-alias: PASS accepted=1 contexts=3 acse=1 mms=3
+unknown-auth-syntax-rejected: PASS accepted=0 contexts=3 acse=1 mms=3
+two-context-client: PASS accepted=1 contexts=2 acse=1 mms=3
+four-contexts-rejected: PASS accepted=0 contexts=4 acse=1 mms=3
+generated-cert-roundtrip-and-BER-lengths: PASS accepted=1 contexts=3 acse=1 mms=3
+generated-tls-roundtrip-and-BER-lengths: PASS accepted=1 contexts=2 acse=1 mms=3

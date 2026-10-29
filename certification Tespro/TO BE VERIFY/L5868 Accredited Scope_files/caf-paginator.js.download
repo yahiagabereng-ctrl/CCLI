@@ -1,0 +1,1838 @@
+var Paginator = YAHOO.widget.Paginator,
+    l         = YAHOO.lang;
+/**
+ * @author zhangyi
+ */
+Paginator.ui.CurrentPage = function (p) {
+    this.paginator = p;
+
+    p.subscribe('recordOffsetChange',this.update,this,true);
+    p.subscribe('rowsPerPageChange',this.update,this,true);
+    p.subscribe('totalRecordsChange',this.update,this,true);
+    p.subscribe('destroy',this.destroy,this,true);
+
+    // TODO: make this work
+};
+
+/**
+ * Decorates Paginator instances with new attributes. Called during
+ * Paginator instantiation.
+ * @method init
+ * @param p {Paginator} Paginator instance to decorate
+ * @static
+ */
+Paginator.ui.CurrentPage.init = function (p) {
+
+    /**
+     * Used as innerHTML for the first page link/span.
+     * @attribute firstPageLinkLabel
+     * @default '&lt;&lt;&nbsp;first'
+     */
+    p.setAttributeConfig('currentPageLabel', {
+
+        value :''+ (p.getPageRecords() ? p.getCurrentPage() : 0)+'',
+        validator : l.isString
+    });
+
+    /**
+     * CSS class assigned to the link/span
+     * @attribute firstPageLinkClass
+     * @default 'yui-pg-first'
+     */
+    p.setAttributeConfig('currentPageClass', {
+        value : 'yui-pg-currentPage',
+        validator : l.isString
+    });
+};
+
+// Instance members and methods
+Paginator.ui.CurrentPage.prototype = {
+
+    /**
+     * The currently placed HTMLElement node
+     * @property current
+     * @type HTMLElement
+     * @private
+     */
+    current   : null,
+
+    /**
+     * Link node
+     * @property link
+     * @type HTMLElement
+     * @private
+     */
+    link      : null,
+
+    /**
+     * Span node (inactive link)
+     * @property span
+     * @type HTMLElement
+     * @private
+     */
+    span      : null,
+
+    /**
+     * Generate the nodes and return the appropriate node given the current
+     * pagination state.
+     * @method render
+     * @param id_base {string} used to create unique ids for generated nodes
+     * @return {HTMLElement}
+     */
+    render : function (id_base) {
+        var p     = this.paginator,
+            c     = p.get('currentPageClass'),
+            label = p.get('currentPageLabel');
+
+        this.span     = document.createElement('span');
+        this.span.id        = id_base + '-currentPage-span';
+        this.span.className = c;
+        this.span.innerHTML =''+ (p.getPageRecords() ? p.getCurrentPage() : 0)+'';
+  
+        this.current =this.span;
+        return this.current;
+    },
+
+    /**
+     * Swap the link and span nodes if appropriate.
+     * @method update
+     * @param e {CustomEvent} The calling change event
+     */
+    update : function (e) {
+        if (e && e.prevValue === e.newValue) {
+            return;
+        }
+        var p     = this.paginator;
+        var par = this.current ? this.current.parentNode : null;
+      
+            if (par && this.current === this.span) {
+//                par.replaceChild(this.span,this.current);
+//                this.current = this.span;
+            	var obj = document.getElementById(this.span.id);
+               
+            	obj.innerHTML =''+(p.getPageRecords() ? p.getCurrentPage() : 0)+'';
+            }
+     
+           
+        
+    },
+
+    /**
+     * Removes the link/span node and clears event listeners
+     * removal.
+     * @method destroy
+     * @private
+     */
+    destroy : function () {
+      // YAHOO.util.Event.purgeElement(this.link);
+        this.current.parentNode.removeChild(this.current);
+        this.link = this.span = null;
+    },
+
+    /**
+     * Listener for the link's onclick event.  Pass new value to setPage method.
+     * @method onClick
+     * @param e {DOMEvent} The click event
+     */
+    onClick : function (e) {
+        YAHOO.util.Event.stopEvent(e);
+      //  this.paginator.setPage(1);
+    }
+};
+//############################################################################################
+//#############totalPages######
+//############################################################################################
+//############################################################################################
+Paginator.ui.TotalPages = function (p) {
+    this.paginator = p;
+
+    p.subscribe('recordOffsetChange',this.update,this,true);
+    p.subscribe('rowsPerPageChange',this.update,this,true);
+    p.subscribe('totalRecordsChange',this.update,this,true);
+    p.subscribe('destroy',this.destroy,this,true);
+
+    // TODO: make this work
+};
+
+/**
+ * Decorates Paginator instances with new attributes. Called during
+ * Paginator instantiation.
+ * @method init
+ * @param p {Paginator} Paginator instance to decorate
+ * @static
+ */
+Paginator.ui.TotalPages.init = function (p) {
+
+    /**
+     * Used as innerHTML for the first page link/span.
+     * @attribute firstPageLinkLabel
+     * @default '&lt;&lt;&nbsp;first'
+     */
+    p.setAttributeConfig('totalPagesLabel', {
+
+        value :'',
+        validator : l.isString
+    });
+
+    /**
+     * CSS class assigned to the link/span
+     * @attribute firstPageLinkClass
+     * @default 'yui-pg-first'
+     */
+    p.setAttributeConfig('totalPagesClass', {
+        value : 'yui-pg-totalPages',
+        validator : l.isString
+    });
+};
+
+// Instance members and methods
+Paginator.ui.TotalPages.prototype = {
+
+    /**
+     * The currently placed HTMLElement node
+     * @property current
+     * @type HTMLElement
+     * @private
+     */
+    current   : null,
+
+    /**
+     * Link node
+     * @property link
+     * @type HTMLElement
+     * @private
+     */
+    link      : null,
+
+    /**
+     * Span node (inactive link)
+     * @property span
+     * @type HTMLElement
+     * @private
+     */
+    span      : null,
+
+    /**
+     * Generate the nodes and return the appropriate node given the current
+     * pagination state.
+     * @method render
+     * @param id_base {string} used to create unique ids for generated nodes
+     * @return {HTMLElement}
+     */
+    render : function (id_base) {
+        var p     = this.paginator,
+            c     = p.get('totalPagesClass'),
+            label = p.get('totalPagesLabel');
+
+        this.span     = document.createElement('span');
+        this.span.id        = id_base + '-totalPages-span';
+        this.span.className = c;
+        this.span.innerHTML =''+ (p.getTotalPages())+'';
+  
+        this.current =this.span;
+        return this.current;
+    },
+
+    /**
+     * Swap the link and span nodes if appropriate.
+     * @method update
+     * @param e {CustomEvent} The calling change event
+     */
+    update : function (e) {
+        if (e && e.prevValue === e.newValue) {
+            return;
+        }
+        var p     = this.paginator;
+        var par = this.current ? this.current.parentNode : null;
+      
+            if (par && this.current === this.span) {
+//                par.replaceChild(this.span,this.current);
+//                this.current = this.span;
+            	var obj = document.getElementById(this.span.id);
+               
+            	obj.innerHTML =''+(p.getTotalPages())+'';
+            }
+     
+           
+        
+    },
+
+    /**
+     * Removes the link/span node and clears event listeners
+     * removal.
+     * @method destroy
+     * @private
+     */
+    destroy : function () {
+      // YAHOO.util.Event.purgeElement(this.link);
+        this.current.parentNode.removeChild(this.current);
+        this.link = this.span = null;
+    },
+
+    /**
+     * Listener for the link's onclick event.  Pass new value to setPage method.
+     * @method onClick
+     * @param e {DOMEvent} The click event
+     */
+    onClick : function (e) {
+        YAHOO.util.Event.stopEvent(e);
+      //  this.paginator.setPage(1);
+    }
+};
+
+
+
+//########################totalRecords##################################################################
+//##########################################################################################
+//##########################################################################################
+Paginator.ui.TotalRecords = function (p) {
+    this.paginator = p;
+
+    p.subscribe('recordOffsetChange',this.update,this,true);
+    p.subscribe('rowsPerPageChange',this.update,this,true);
+    p.subscribe('totalRecordsChange',this.update,this,true);
+    p.subscribe('destroy',this.destroy,this,true);
+
+    // TODO: make this work
+};
+
+/**
+ * Decorates Paginator instances with new attributes. Called during
+ * Paginator instantiation.
+ * @method init
+ * @param p {Paginator} Paginator instance to decorate
+ * @static
+ */
+Paginator.ui.TotalRecords.init = function (p) {
+
+    /**
+     * Used as innerHTML for the first page link/span.
+     * @attribute firstPageLinkLabel
+     * @default '&lt;&lt;&nbsp;first'
+     */
+    p.setAttributeConfig('totalRecordsLabel', {
+
+        value :'',
+        validator : l.isString
+    });
+
+    /**
+     * CSS class assigned to the link/span
+     * @attribute firstPageLinkClass
+     * @default 'yui-pg-first'
+     */
+    p.setAttributeConfig('totalRecordsClass', {
+        value : 'yui-pg-totalRecords',
+        validator : l.isString
+    });
+};
+
+// Instance members and methods
+Paginator.ui.TotalRecords.prototype = {
+
+    /**
+     * The currently placed HTMLElement node
+     * @property current
+     * @type HTMLElement
+     * @private
+     */
+    current   : null,
+
+    /**
+     * Link node
+     * @property link
+     * @type HTMLElement
+     * @private
+     */
+    link      : null,
+
+    /**
+     * Span node (inactive link)
+     * @property span
+     * @type HTMLElement
+     * @private
+     */
+    span      : null,
+
+    /**
+     * Generate the nodes and return the appropriate node given the current
+     * pagination state.
+     * @method render
+     * @param id_base {string} used to create unique ids for generated nodes
+     * @return {HTMLElement}
+     */
+    render : function (id_base) {
+        var p     = this.paginator,
+            c     = p.get('totalRecordsClass'),
+            label = p.get('totalRecordsLabel');
+
+        this.span     = document.createElement('span');
+        this.span.id        = id_base + '-totalRecords-span';
+        this.span.className = c;
+        this.span.innerHTML =''+ ( p.get('totalRecords'))+'';
+  
+        this.current =this.span;
+        return this.current;
+    },
+
+    /**
+     * Swap the link and span nodes if appropriate.
+     * @method update
+     * @param e {CustomEvent} The calling change event
+     */
+    update : function (e) {
+        if (e && e.prevValue === e.newValue) {
+            return;
+        }
+        var p     = this.paginator;
+        var par = this.current ? this.current.parentNode : null;
+      
+            if (par && this.current === this.span) {
+//                par.replaceChild(this.span,this.current);
+//                this.current = this.span;
+            	var obj = document.getElementById(this.span.id);
+               
+            	obj.innerHTML =''+(p.get('totalRecords'))+'';
+            }
+     
+           
+        
+    },
+
+    /**
+     * Removes the link/span node and clears event listeners
+     * removal.
+     * @method destroy
+     * @private
+     */
+    destroy : function () {
+      // YAHOO.util.Event.purgeElement(this.link);
+        this.current.parentNode.removeChild(this.current);
+        this.link = this.span = null;
+    },
+
+    /**
+     * Listener for the link's onclick event.  Pass new value to setPage method.
+     * @method onClick
+     * @param e {DOMEvent} The click event
+     */
+    onClick : function (e) {
+        YAHOO.util.Event.stopEvent(e);
+      //  this.paginator.setPage(1);
+    }
+};
+
+
+//########################startIndex##################################################################
+//##########################################################################################
+//##########################################################################################
+Paginator.ui.StartIndex = function (p) {
+  this.paginator = p;
+
+  p.subscribe('recordOffsetChange',this.update,this,true);
+  p.subscribe('rowsPerPageChange',this.update,this,true);
+  p.subscribe('totalRecordsChange',this.update,this,true);
+  p.subscribe('destroy',this.destroy,this,true);
+
+  // TODO: make this work
+};
+
+/**
+* Decorates Paginator instances with new attributes. Called during
+* Paginator instantiation.
+* @method init
+* @param p {Paginator} Paginator instance to decorate
+* @static
+*/
+Paginator.ui.StartIndex.init = function (p) {
+
+  /**
+   * Used as innerHTML for the first page link/span.
+   * @attribute firstPageLinkLabel
+   * @default '&lt;&lt;&nbsp;first'
+   */
+  p.setAttributeConfig('startIndexLabel', {
+
+      value :'',
+      validator : l.isString
+  });
+
+  /**
+   * CSS class assigned to the link/span
+   * @attribute firstPageLinkClass
+   * @default 'yui-pg-first'
+   */
+  p.setAttributeConfig('startIndexClass', {
+      value : 'yui-pg-startIndex',
+      validator : l.isString
+  });
+};
+
+//Instance members and methods
+Paginator.ui.StartIndex.prototype = {
+
+  /**
+   * The currently placed HTMLElement node
+   * @property current
+   * @type HTMLElement
+   * @private
+   */
+  current   : null,
+
+  /**
+   * Link node
+   * @property link
+   * @type HTMLElement
+   * @private
+   */
+  link      : null,
+
+  /**
+   * Span node (inactive link)
+   * @property span
+   * @type HTMLElement
+   * @private
+   */
+  span      : null,
+
+  /**
+   * Generate the nodes and return the appropriate node given the current
+   * pagination state.
+   * @method render
+   * @param id_base {string} used to create unique ids for generated nodes
+   * @return {HTMLElement}
+   */
+  render : function (id_base) {
+      var p     = this.paginator,
+          c     = p.get('startIndexClass'),
+          label = p.get('startIndexLabel');
+      records = p.getPageRecords();
+      this.span     = document.createElement('span');
+      this.span.id        = id_base + '-startIndex-span';
+      this.span.className = c;
+      this.span.innerHTML =''+ (records ? records[0] : 0)+'';
+
+      this.current =this.span;
+      return this.current;
+  },
+
+  /**
+   * Swap the link and span nodes if appropriate.
+   * @method update
+   * @param e {CustomEvent} The calling change event
+   */
+  update : function (e) {
+      if (e && e.prevValue === e.newValue) {
+          return;
+      }
+      var p     = this.paginator;
+      records = p.getPageRecords();
+      var par = this.current ? this.current.parentNode : null;
+    
+          if (par && this.current === this.span) {
+//              par.replaceChild(this.span,this.current);
+//              this.current = this.span;
+          	var obj = document.getElementById(this.span.id);
+             
+          	obj.innerHTML =''+(records ? records[0] : 0)+'';
+          }
+   
+         
+      
+  },
+
+  /**
+   * Removes the link/span node and clears event listeners
+   * removal.
+   * @method destroy
+   * @private
+   */
+  destroy : function () {
+    // YAHOO.util.Event.purgeElement(this.link);
+      this.current.parentNode.removeChild(this.current);
+      this.link = this.span = null;
+  },
+
+  /**
+   * Listener for the link's onclick event.  Pass new value to setPage method.
+   * @method onClick
+   * @param e {DOMEvent} The click event
+   */
+  onClick : function (e) {
+      YAHOO.util.Event.stopEvent(e);
+    //  this.paginator.setPage(1);
+  }
+};
+
+
+
+//########################endIndex##################################################################
+//##########################################################################################
+//##########################################################################################
+Paginator.ui.EndIndex = function (p) {
+this.paginator = p;
+
+p.subscribe('recordOffsetChange',this.update,this,true);
+p.subscribe('rowsPerPageChange',this.update,this,true);
+p.subscribe('totalRecordsChange',this.update,this,true);
+p.subscribe('destroy',this.destroy,this,true);
+
+// TODO: make this work
+};
+
+/**
+* Decorates Paginator instances with new attributes. Called during
+* Paginator instantiation.
+* @method init
+* @param p {Paginator} Paginator instance to decorate
+* @static
+*/
+Paginator.ui.EndIndex.init = function (p) {
+
+/**
+ * Used as innerHTML for the first page link/span.
+ * @attribute firstPageLinkLabel
+ * @default '&lt;&lt;&nbsp;first'
+ */
+p.setAttributeConfig('endIndexLabel', {
+
+    value :'',
+    validator : l.isString
+});
+
+/**
+ * CSS class assigned to the link/span
+ * @attribute firstPageLinkClass
+ * @default 'yui-pg-first'
+ */
+p.setAttributeConfig('endIndexClass', {
+    value : 'yui-pg-endIndex',
+    validator : l.isString
+});
+};
+
+//Instance members and methods
+Paginator.ui.EndIndex.prototype = {
+
+/**
+ * The currently placed HTMLElement node
+ * @property current
+ * @type HTMLElement
+ * @private
+ */
+current   : null,
+
+/**
+ * Link node
+ * @property link
+ * @type HTMLElement
+ * @private
+ */
+link      : null,
+
+/**
+ * Span node (inactive link)
+ * @property span
+ * @type HTMLElement
+ * @private
+ */
+span      : null,
+
+/**
+ * Generate the nodes and return the appropriate node given the current
+ * pagination state.
+ * @method render
+ * @param id_base {string} used to create unique ids for generated nodes
+ * @return {HTMLElement}
+ */
+render : function (id_base) {
+    var p     = this.paginator,
+        c     = p.get('endIndexClass'),
+        label = p.get('endIndexLabel');
+    records = p.getPageRecords();
+    this.span     = document.createElement('span');
+    this.span.id        = id_base + '-endIndex-span';
+    this.span.className = c;
+    this.span.innerHTML =''+ (records ? records[1] : 0)+'';
+
+    this.current =this.span;
+    return this.current;
+},
+
+/**
+ * Swap the link and span nodes if appropriate.
+ * @method update
+ * @param e {CustomEvent} The calling change event
+ */
+update : function (e) {
+    if (e && e.prevValue === e.newValue) {
+        return;
+    }
+    var p     = this.paginator;
+    records = p.getPageRecords();
+    var par = this.current ? this.current.parentNode : null;
+  
+        if (par && this.current === this.span) {
+//            par.replaceChild(this.span,this.current);
+//            this.current = this.span;
+        	var obj = document.getElementById(this.span.id);
+           
+        	obj.innerHTML =''+(records ? records[1] : 0)+'';
+        }
+ 
+       
+    
+},
+
+/**
+ * Removes the link/span node and clears event listeners
+ * removal.
+ * @method destroy
+ * @private
+ */
+destroy : function () {
+  // YAHOO.util.Event.purgeElement(this.link);
+    this.current.parentNode.removeChild(this.current);
+    this.link = this.span = null;
+},
+
+/**
+ * Listener for the link's onclick event.  Pass new value to setPage method.
+ * @method onClick
+ * @param e {DOMEvent} The click event
+ */
+onClick : function (e) {
+    YAHOO.util.Event.stopEvent(e);
+  //  this.paginator.setPage(1);
+}
+};
+
+
+//##############################################StartRecord##############################################
+//############################################################################################
+//############################################################################################
+
+Paginator.ui.StartRecord = function (p) {
+	  this.paginator = p;
+
+	  p.subscribe('recordOffsetChange',this.update,this,true);
+	  p.subscribe('rowsPerPageChange',this.update,this,true);
+	  p.subscribe('totalRecordsChange',this.update,this,true);
+	  p.subscribe('destroy',this.destroy,this,true);
+
+	  // TODO: make this work
+	};
+
+	/**
+	* Decorates Paginator instances with new attributes. Called during
+	* Paginator instantiation.
+	* @method init
+	* @param p {Paginator} Paginator instance to decorate
+	* @static
+	*/
+	Paginator.ui.StartRecord.init = function (p) {
+
+	  /**
+	   * Used as innerHTML for the first page link/span.
+	   * @attribute firstPageLinkLabel
+	   * @default '&lt;&lt;&nbsp;first'
+	   */
+	  p.setAttributeConfig('startRecordLabel', {
+
+	      value :'',
+	      validator : l.isString
+	  });
+
+	  /**
+	   * CSS class assigned to the link/span
+	   * @attribute firstPageLinkClass
+	   * @default 'yui-pg-first'
+	   */
+	  p.setAttributeConfig('startRecordClass', {
+	      value : 'yui-pg-startRecord',
+	      validator : l.isString
+	  });
+	};
+
+	//Instance members and methods
+	Paginator.ui.StartRecord.prototype = {
+
+	  /**
+	   * The currently placed HTMLElement node
+	   * @property current
+	   * @type HTMLElement
+	   * @private
+	   */
+	  current   : null,
+
+	  /**
+	   * Link node
+	   * @property link
+	   * @type HTMLElement
+	   * @private
+	   */
+	  link      : null,
+
+	  /**
+	   * Span node (inactive link)
+	   * @property span
+	   * @type HTMLElement
+	   * @private
+	   */
+	  span      : null,
+
+	  /**
+	   * Generate the nodes and return the appropriate node given the current
+	   * pagination state.
+	   * @method render
+	   * @param id_base {string} used to create unique ids for generated nodes
+	   * @return {HTMLElement}
+	   */
+	  render : function (id_base) {
+	      var p     = this.paginator,
+	          c     = p.get('startRecordClass'),
+	          label = p.get('startRecordLabel');
+	      records = p.getPageRecords();
+	      this.span     = document.createElement('span');
+	      this.span.id        = id_base + '-startRecord-span';
+	      this.span.className = c;
+	      this.span.innerHTML =''+ (records ? records[0] + 1 : 0)+'';
+
+	      this.current =this.span;
+	      return this.current;
+	  },
+
+	  /**
+	   * Swap the link and span nodes if appropriate.
+	   * @method update
+	   * @param e {CustomEvent} The calling change event
+	   */
+	  update : function (e) {
+	      if (e && e.prevValue === e.newValue) {
+	          return;
+	      }
+	      var p     = this.paginator;
+	      records = p.getPageRecords();
+	      var par = this.current ? this.current.parentNode : null;
+	    
+	          if (par && this.current === this.span) {
+//	              par.replaceChild(this.span,this.current);
+//	              this.current = this.span;
+	          	var obj = document.getElementById(this.span.id);
+	             
+	          	obj.innerHTML =''+(records ? records[0] + 1 : 0)+'';
+	          }
+	   
+	         
+	      
+	  },
+
+	  /**
+	   * Removes the link/span node and clears event listeners
+	   * removal.
+	   * @method destroy
+	   * @private
+	   */
+	  destroy : function () {
+	    // YAHOO.util.Event.purgeElement(this.link);
+	      this.current.parentNode.removeChild(this.current);
+	      this.link = this.span = null;
+	  },
+
+	  /**
+	   * Listener for the link's onclick event.  Pass new value to setPage method.
+	   * @method onClick
+	   * @param e {DOMEvent} The click event
+	   */
+	  onClick : function (e) {
+	      YAHOO.util.Event.stopEvent(e);
+	    //  this.paginator.setPage(1);
+	  }
+	};
+
+
+//###################################EndRecord#############################################	
+
+	//###################################EndRecord#############################################		
+	
+	
+	Paginator.ui.EndRecord = function (p) {
+		  this.paginator = p;
+
+		  p.subscribe('recordOffsetChange',this.update,this,true);
+		  p.subscribe('rowsPerPageChange',this.update,this,true);
+		  p.subscribe('totalRecordsChange',this.update,this,true);
+		  p.subscribe('destroy',this.destroy,this,true);
+
+		  // TODO: make this work
+		};
+
+		/**
+		* Decorates Paginator instances with new attributes. Called during
+		* Paginator instantiation.
+		* @method init
+		* @param p {Paginator} Paginator instance to decorate
+		* @static
+		*/
+		Paginator.ui.EndRecord.init = function (p) {
+
+		  /**
+		   * Used as innerHTML for the first page link/span.
+		   * @attribute firstPageLinkLabel
+		   * @default '&lt;&lt;&nbsp;first'
+		   */
+		  p.setAttributeConfig('endRecordLabel', {
+
+		      value :'',
+		      validator : l.isString
+		  });
+
+		  /**
+		   * CSS class assigned to the link/span
+		   * @attribute firstPageLinkClass
+		   * @default 'yui-pg-first'
+		   */
+		  p.setAttributeConfig('endRecordClass', {
+		      value : 'yui-pg-endRecord',
+		      validator : l.isString
+		  });
+		};
+
+		//Instance members and methods
+		Paginator.ui.EndRecord.prototype = {
+
+		  /**
+		   * The currently placed HTMLElement node
+		   * @property current
+		   * @type HTMLElement
+		   * @private
+		   */
+		  current   : null,
+
+		  /**
+		   * Link node
+		   * @property link
+		   * @type HTMLElement
+		   * @private
+		   */
+		  link      : null,
+
+		  /**
+		   * Span node (inactive link)
+		   * @property span
+		   * @type HTMLElement
+		   * @private
+		   */
+		  span      : null,
+
+		  /**
+		   * Generate the nodes and return the appropriate node given the current
+		   * pagination state.
+		   * @method render
+		   * @param id_base {string} used to create unique ids for generated nodes
+		   * @return {HTMLElement}
+		   */
+		  render : function (id_base) {
+		      var p     = this.paginator,
+		          c     = p.get('endRecordClass'),
+		          label = p.get('endRecordLabel');
+		      records = p.getPageRecords();
+		      this.span     = document.createElement('span');
+		      this.span.id        = id_base + '-endRecord-span';
+		      this.span.className = c;
+		      this.span.innerHTML =''+ (records ? records[1] + 1 : 0)+'';
+
+		      this.current =this.span;
+		      return this.current;
+		  },
+
+		  /**
+		   * Swap the link and span nodes if appropriate.
+		   * @method update
+		   * @param e {CustomEvent} The calling change event
+		   */
+		  update : function (e) {
+		      if (e && e.prevValue === e.newValue) {
+		          return;
+		      }
+		      var p     = this.paginator;
+		      records = p.getPageRecords();
+		      var par = this.current ? this.current.parentNode : null;
+		    
+		          if (par && this.current === this.span) {
+//		              par.replaceChild(this.span,this.current);
+//		              this.current = this.span;
+		          	var obj = document.getElementById(this.span.id);
+		             
+		          	obj.innerHTML =''+(records ? records[1] + 1 : 0)+'';
+		          }
+		   
+		         
+		      
+		  },
+
+		  /**
+		   * Removes the link/span node and clears event listeners
+		   * removal.
+		   * @method destroy
+		   * @private
+		   */
+		  destroy : function () {
+		    // YAHOO.util.Event.purgeElement(this.link);
+		      this.current.parentNode.removeChild(this.current);
+		      this.link = this.span = null;
+		  },
+
+		  /**
+		   * Listener for the link's onclick event.  Pass new value to setPage method.
+		   * @method onClick
+		   * @param e {DOMEvent} The click event
+		   */
+		  onClick : function (e) {
+		      YAHOO.util.Event.stopEvent(e);
+		    //  this.paginator.setPage(1);
+		  }
+		};
+
+		
+		
+
+		//###################################pageGoto#############################################	
+
+		Paginator.ui.PageGoto = function (p) {
+		    this.paginator = p;
+
+		    p.subscribe('recordOffsetChange',this.update,this,true);
+		    p.subscribe('rowsPerPageChange',this.update,this,true);
+		    p.subscribe('totalRecordsChange',this.update,this,true);
+		    p.subscribe('destroy',this.destroy,this,true);
+
+		};
+
+		/**
+		 * Decorates Paginator instances with new attributes. Called during
+		 * Paginator instantiation.
+		 * @method init
+		 * @param p {Paginator} Paginator instance to decorate
+		 * @static
+		 */
+		Paginator.ui.PageGoto.init = function (p) {
+
+		    /**
+		     * Used as innerHTML for the first page link/span.
+		     * @attribute firstPageLinkLabel
+		     * @default '&lt;&lt;&nbsp;first'
+		     */
+		    p.setAttributeConfig('pageGotoLabel', {
+		        value : '',
+		        validator : l.isNumber
+		    });
+
+		    /**
+		     * CSS class assigned to the link/span
+		     * @attribute firstPageLinkClass
+		     * @default 'yui-pg-first'
+		     */
+		    p.setAttributeConfig('pageGotoClass', {
+		        value : 'yui-pg-pageGoto',
+		        validator : l.isString
+		    });
+		};
+
+		// Instance members and methods
+		Paginator.ui.PageGoto.prototype = {
+
+		   
+		    input      : null,
+
+		    /**
+		     * Generate the nodes and return the appropriate node given the current
+		     * pagination state.
+		     * @method render
+		     * @param id_base {string} used to create unique ids for generated nodes
+		     * @return {HTMLElement}
+		     */
+		    render : function (id_base) {
+		        var p     = this.paginator,
+		            c     = p.get('pageGotoClass'),
+		            label = p.get('pageGotoLabel');
+
+
+		        this.input     = document.createElement('input');
+
+		        
+
+		        this.input.id        = id_base + '-pageGoto-input';
+		        this.input.className = c;
+		        this.input.value = (p.getPageRecords() ? p.getCurrentPage() : 0);
+		    //    YAHOO.util.Event.on(this.input,'keydown',this.onClick,this,true);
+		        YAHOO.util.Event.addListener(this.input, "keydown",this.onClick,this,true);
+		        return this.input;
+		    },
+
+		    /**
+		     * Swap the link and span nodes if appropriate.
+		     * @method update
+		     * @param e {CustomEvent} The calling change event
+		     */
+		    update : function (e) {
+		        if (e && e.prevValue === e.newValue) {
+		            return;
+		        }
+		        var p     = this.paginator;
+		        this.input.value = (p.getPageRecords() ? p.getCurrentPage() : 0);
+		    },
+
+		    /**
+		     * Removes the link/span node and clears event listeners
+		     * removal.
+		     * @method destroy
+		     * @private
+		     */
+		    destroy : function () {
+		        YAHOO.util.Event.purgeElement(this.input);
+		       this.input = null;
+		    },
+
+		    /**
+		     * Listener for the link's onclick event.  Pass new value to setPage method.
+		     * @method onClick
+		     * @param e {DOMEvent} The click event
+		     */
+		    onClick : function (e) {
+		    	  // this.paginator.setPage(this.paginator.getPreviousPage());
+		    	var event = e;
+		    	var currentKey = event.charCode || event.keyCode; //IE、FF下获取键盘码
+				var type = window.event ? 0 : 1; // 0 ie 1 ff
+				var element = event.srcElement || event.target;
+				var value = element.value;
+				if (currentKey==13){
+					var go=value-0;
+					if (go>(this.paginator.getTotalPages())){
+						go=(this.paginator.getTotalPages());
+						value=this.paginator.getTotalPages();
+					}else if(go==0){
+						value=1;
+						go=1;
+					}
+					 var a=this.paginator.get('agentMethod');
+				     if (a){
+					     a(this.paginator,e,this.paginator.setPage,go);
+				     }else{
+				          this.paginator.setPage(go);
+				     }
+				}else{
+					if (!((currentKey >= 48 && currentKey <= 57) || (currentKey >= 96 && currentKey <= 105) || (currentKey == 8))) {
+						if (type == 0) { //IE
+							event.returnValue = false; //e.returnValue = false;效果相同.
+						}else {//Firefox
+							event.preventDefault();
+						}
+						return;
+					}
+				}
+		    	
+		    	
+		       
+		    }
+		};
+		
+	
+		
+		//#####################################################################################
+		Paginator.ui.FirstPageImgLink = function (p) {
+		    this.paginator = p;
+
+		    p.subscribe('recordOffsetChange',this.update,this,true);
+		    p.subscribe('rowsPerPageChange',this.update,this,true);
+		    p.subscribe('totalRecordsChange',this.update,this,true);
+		    p.subscribe('destroy',this.destroy,this,true);
+
+		    // TODO: make this work
+		    p.subscribe('firstPageLinkLabelChange',this.update,this,true);
+		    p.subscribe('firstPageLinkClassChange',this.update,this,true);
+		};
+
+		/**
+		 * Decorates Paginator instances with new attributes. Called during
+		 * Paginator instantiation.
+		 * @method init
+		 * @param p {Paginator} Paginator instance to decorate
+		 * @static
+		 */
+		Paginator.ui.FirstPageImgLink.init = function (p) {
+
+		    /**
+		     * Used as innerHTML for the first page link/span.
+		     * @attribute firstPageLinkLabel
+		     * @default '&lt;&lt;&nbsp;first'
+		     */
+		    p.setAttributeConfig('firstPageLinkLabel', {
+		        value : '&lt;&lt;&nbsp;first',
+		        validator : l.isString
+		    });
+
+		    /**
+		     * CSS class assigned to the link/span
+		     * @attribute firstPageLinkClass
+		     * @default 'yui-pg-first'
+		     */
+		    p.setAttributeConfig('firstPageLinkClass', {
+		        value : 'yui-pg-first',
+		        validator : l.isString
+		    });
+		};
+
+		// Instance members and methods
+		Paginator.ui.FirstPageImgLink.prototype = {
+
+		    /**
+		     * The currently placed HTMLElement node
+		     * @property current
+		     * @type HTMLElement
+		     * @private
+		     */
+		    current   : null,
+
+		    /**
+		     * Link node
+		     * @property link
+		     * @type HTMLElement
+		     * @private
+		     */
+		    link      : null,
+
+		    /**
+		     * Span node (inactive link)
+		     * @property span
+		     * @type HTMLElement
+		     * @private
+		     */
+		    span      : null,
+
+		    /**
+		     * Generate the nodes and return the appropriate node given the current
+		     * pagination state.
+		     * @method render
+		     * @param id_base {string} used to create unique ids for generated nodes
+		     * @return {HTMLElement}
+		     */
+		    render : function (id_base) {
+		        var p     = this.paginator,
+		            c     = p.get('firstPageLinkClass'),
+		            label = p.get('firstPageLinkLabel');
+
+		        var la =label.split(',');
+		        
+		        this.link     = document.createElement('a');
+		        this.span     = document.createElement('span');
+
+		        this.link.id        = id_base + '-first-link';
+		        this.link.href      = '#';
+		        this.link.className = c;
+		        
+		        if (la.length>1){
+		        	this.link.innerHTML = la[0];
+		        }else{
+		        	this.link.innerHTML = label;
+		        } 
+		        
+		        YAHOO.util.Event.on(this.link,'click',this.onClick,this,true);
+
+		        this.span.id        = id_base + '-first-span';
+		        this.span.className = c;
+		        
+		       
+		        if (la.length>1){
+		        	this.span.innerHTML = la[1];
+		        }else{
+		        	this.span.innerHTML = label;
+		        }
+		        this.current = p.getCurrentPage() > 1 ? this.link : this.span;
+		        return this.current;
+		    },
+
+		    /**
+		     * Swap the link and span nodes if appropriate.
+		     * @method update
+		     * @param e {CustomEvent} The calling change event
+		     */
+		    update : function (e) {
+		        if (e && e.prevValue === e.newValue) {
+		            return;
+		        }
+
+		        var par = this.current ? this.current.parentNode : null;
+		        if (this.paginator.getCurrentPage() > 1) {
+		            if (par && this.current === this.span) {
+		                par.replaceChild(this.link,this.current);
+		                this.current = this.link;
+		            }
+		        } else {
+		            if (par && this.current === this.link) {
+		                par.replaceChild(this.span,this.current);
+		                this.current = this.span;
+		            }
+		        }
+		    },
+
+		    /**
+		     * Removes the link/span node and clears event listeners
+		     * removal.
+		     * @method destroy
+		     * @private
+		     */
+		    destroy : function () {
+		        YAHOO.util.Event.purgeElement(this.link);
+		        this.current.parentNode.removeChild(this.current);
+		        this.link = this.span = null;
+		    },
+
+		    /**
+		     * Listener for the link's onclick event.  Pass new value to setPage method.
+		     * @method onClick
+		     * @param e {DOMEvent} The click event
+		     */
+		    onClick : function (e) {
+		        YAHOO.util.Event.stopEvent(e);
+		        //this.paginator.setPage(1);`
+		        var a=this.paginator.get('agentMethod');
+		        if (a){
+			        a(this.paginator,null,this.paginator.setPage,1);
+		        }else{
+		            this.paginator.setPage(1);
+		        }
+		    }
+		};
+
+//#####################################################################################		
+		Paginator.ui.LastPageImgLink = function (p) {
+		    this.paginator = p;
+
+		    p.subscribe('recordOffsetChange',this.update,this,true);
+		    p.subscribe('rowsPerPageChange',this.update,this,true);
+		    p.subscribe('totalRecordsChange',this.update,this,true);
+		    p.subscribe('destroy',this.destroy,this,true);
+
+		    // TODO: make this work
+		    p.subscribe('lastPageLinkLabelChange',this.update,this,true);
+		    p.subscribe('lastPageLinkClassChange', this.update,this,true);
+		};
+
+		/**
+		 * Decorates Paginator instances with new attributes. Called during
+		 * Paginator instantiation.
+		 * @method init
+		 * @param paginator {Paginator} Paginator instance to decorate
+		 * @static
+		 */
+		Paginator.ui.LastPageImgLink.init = function (p) {
+
+		    /**
+		     * Used as innerHTML for the last page link/span.
+		     * @attribute lastPageLinkLabel
+		     * @default 'last&nbsp;&gt;&gt;'
+		     */
+		    p.setAttributeConfig('lastPageLinkLabel', {
+		        value : 'last&nbsp;&gt;&gt;',
+		        validator : l.isString
+		    });
+
+		    /**
+		     * CSS class assigned to the link/span
+		     * @attribute lastPageLinkClass
+		     * @default 'yui-pg-last'
+		     */
+		    p.setAttributeConfig('lastPageLinkClass', {
+		        value : 'yui-pg-last',
+		        validator : l.isString
+		    });
+		};
+
+		Paginator.ui.LastPageImgLink.prototype = {
+
+		    /**
+		     * Currently placed HTMLElement node
+		     * @property current
+		     * @type HTMLElement
+		     * @private
+		     */
+		    current   : null,
+
+		    /**
+		     * Link HTMLElement node
+		     * @property link
+		     * @type HTMLElement
+		     * @private
+		     */
+		    link      : null,
+
+		    /**
+		     * Span node (inactive link)
+		     * @property span
+		     * @type HTMLElement
+		     * @private
+		     */
+		    span      : null,
+
+		    /**
+		     * Empty place holder node for when the last page link is inappropriate to
+		     * display in any form (unlimited paging).
+		     * @property na
+		     * @type HTMLElement
+		     * @private
+		     */
+		    na        : null,
+
+
+		    /**
+		     * Generate the nodes and return the appropriate node given the current
+		     * pagination state.
+		     * @method render
+		     * @param id_base {string} used to create unique ids for generated nodes
+		     * @return {HTMLElement}
+		     */
+		    render : function (id_base) {
+		        var p     = this.paginator,
+		            c     = p.get('lastPageLinkClass'),
+		            label = p.get('lastPageLinkLabel'),
+		            last  = p.getTotalPages();
+		        
+		        var la =label.split(',');
+		        
+		        this.link = document.createElement('a');
+		        this.span = document.createElement('span');
+		        this.na   = this.span.cloneNode(false);
+
+		        this.link.id        = id_base + '-last-link';
+		        this.link.href      = '#';
+		        this.link.className = c;
+		        this.link.innerHTML = label;
+		        
+		        if (la.length>1){
+		        	this.link.innerHTML = la[0];
+		        }else{
+		        	this.link.innerHTML = label;
+		        } 
+		        
+		        YAHOO.util.Event.on(this.link,'click',this.onClick,this,true);
+
+		        this.span.id        = id_base + '-last-span';
+		        this.span.className = c;
+		     
+		        if (la.length>1){
+		        	this.span.innerHTML = la[1];
+		        }else{
+		        	this.span.innerHTML = label;
+		        }
+
+		        this.na.id = id_base + '-last-na';
+
+		        switch (last) {
+		            case Paginator.VALUE_UNLIMITED :
+		                    this.current = this.na; break;
+		            case p.getCurrentPage() :
+		                    this.current = this.span; break;
+		            default :
+		                    this.current = this.link;
+		        }
+
+		        return this.current;
+		    },
+
+		    /**
+		     * Swap the link, span, and na nodes if appropriate.
+		     * @method update
+		     * @param e {CustomEvent} The calling change event (ignored)
+		     */
+		    update : function (e) {
+		        if (e && e.prevValue === e.newValue) {
+		            return;
+		        }
+
+		        var par   = this.current ? this.current.parentNode : null,
+		            after = this.link;
+
+		        if (par) {
+		            switch (this.paginator.getTotalPages()) {
+		                case Paginator.VALUE_UNLIMITED :
+		                        after = this.na; break;
+		                case this.paginator.getCurrentPage() :
+		                        after = this.span; break;
+		            }
+
+		            if (this.current !== after) {
+		                par.replaceChild(after,this.current);
+		                this.current = after;
+		            }
+		        }
+		    },
+
+		    /**
+		     * Removes the link/span node and clears event listeners
+		     * @method destroy
+		     * @private
+		     */
+		    destroy : function () {
+		        YAHOO.util.Event.purgeElement(this.link);
+		        this.current.parentNode.removeChild(this.current);
+		        this.link = this.span = null;
+		    },
+
+		    /**
+		     * Listener for the link's onclick event.  Passes to setPage method.
+		     * @method onClick
+		     * @param e {DOMEvent} The click event
+		     */
+		    onClick : function (e) {
+		        YAHOO.util.Event.stopEvent(e);
+		      //  this.paginator.setPage(this.paginator.getTotalPages());
+		        var a=this.paginator.get('agentMethod');
+		        if (a){
+			        a(this.paginator,null,this.paginator.setPage,this.paginator.getTotalPages());
+		        }else{
+		            this.paginator.setPage(this.paginator.getTotalPages());
+		        }
+		    }
+		};
+
+		//#####################################################################################				
+		Paginator.ui.NextPageImgLink = function (p) {
+		    this.paginator = p;
+
+		    p.subscribe('recordOffsetChange', this.update,this,true);
+		    p.subscribe('rowsPerPageChange', this.update,this,true);
+		    p.subscribe('totalRecordsChange', this.update,this,true);
+		    p.subscribe('destroy',this.destroy,this,true);
+
+		    // TODO: make this work
+		    p.subscribe('nextPageLinkLabelChange', this.update,this,true);
+		    p.subscribe('nextPageLinkClassChange', this.update,this,true);
+		};
+
+		/**
+		 * Decorates Paginator instances with new attributes. Called during
+		 * Paginator instantiation.
+		 * @method init
+		 * @param p {Paginator} Paginator instance to decorate
+		 * @static
+		 */
+		Paginator.ui.NextPageImgLink.init = function (p) {
+
+		    /**
+		     * Used as innerHTML for the next page link/span.
+		     * @attribute nextPageLinkLabel
+		     * @default 'next&nbsp;&gt;'
+		     */
+		    p.setAttributeConfig('nextPageLinkLabel', {
+		        value : 'next&nbsp;&gt;',
+		        validator : l.isString
+		    });
+
+		    /**
+		     * CSS class assigned to the link/span
+		     * @attribute nextPageLinkClass
+		     * @default 'yui-pg-next'
+		     */
+		    p.setAttributeConfig('nextPageLinkClass', {
+		        value : 'yui-pg-next',
+		        validator : l.isString
+		    });
+		};
+
+		Paginator.ui.NextPageImgLink.prototype = {
+
+		    /**
+		     * Currently placed HTMLElement node
+		     * @property current
+		     * @type HTMLElement
+		     * @private
+		     */
+		    current   : null,
+
+		    /**
+		     * Link node
+		     * @property link
+		     * @type HTMLElement
+		     * @private
+		     */
+		    link      : null,
+
+		    /**
+		     * Span node (inactive link)
+		     * @property span
+		     * @type HTMLElement
+		     * @private
+		     */
+		    span      : null,
+
+
+		    /**
+		     * Generate the nodes and return the appropriate node given the current
+		     * pagination state.
+		     * @method render
+		     * @param id_base {string} used to create unique ids for generated nodes
+		     * @return {HTMLElement}
+		     */
+		    render : function (id_base) {
+		        var p     = this.paginator,
+		            c     = p.get('nextPageLinkClass'),
+		            label = p.get('nextPageLinkLabel'),
+		            last  = p.getTotalPages();
+		        
+		        var la =label.split(',');
+		        
+		        this.link     = document.createElement('a');
+		        this.span     = document.createElement('span');
+
+		        this.link.id        = id_base + '-next-link';
+		        this.link.href      = '#';
+		        this.link.className = c;
+		        
+		        if (la.length>1){
+		        	this.link.innerHTML = la[0];
+		        }else{
+		        	this.link.innerHTML = label;
+		        } 
+		        
+		        YAHOO.util.Event.on(this.link,'click',this.onClick,this,true);
+
+		        this.span.id        = id_base + '-next-span';
+		        this.span.className = c;
+		       
+		       
+		        if (la.length>1){
+		        	this.span.innerHTML = la[1];
+		        }else{
+		        	this.span.innerHTML = label;
+		        }
+		        
+		        this.current = p.getCurrentPage() === last ? this.span : this.link;
+
+		        return this.current;
+		    },
+
+		    /**
+		     * Swap the link and span nodes if appropriate.
+		     * @method update
+		     * @param e {CustomEvent} The calling change event
+		     */
+		    update : function (e) {
+		        if (e && e.prevValue === e.newValue) {
+		            return;
+		        }
+
+		        var last = this.paginator.getTotalPages(),
+		            par  = this.current ? this.current.parentNode : null;
+
+		        if (this.paginator.getCurrentPage() !== last) {
+		            if (par && this.current === this.span) {
+		                par.replaceChild(this.link,this.current);
+		                this.current = this.link;
+		            }
+		        } else if (this.current === this.link) {
+		            if (par) {
+		                par.replaceChild(this.span,this.current);
+		                this.current = this.span;
+		            }
+		        }
+		    },
+
+		    /**
+		     * Removes the link/span node and clears event listeners
+		     * @method destroy
+		     * @private
+		     */
+		    destroy : function () {
+		        YAHOO.util.Event.purgeElement(this.link);
+		        this.current.parentNode.removeChild(this.current);
+		        this.link = this.span = null;
+		    },
+
+		    /**
+		     * Listener for the link's onclick event.  Passes to setPage method.
+		     * @method onClick
+		     * @param e {DOMEvent} The click event
+		     */
+		    onClick : function (e) {
+		        YAHOO.util.Event.stopEvent(e);
+		        //this.paginator.setPage(this.paginator.getNextPage());
+		        var a=this.paginator.get('agentMethod');
+		        if (a){
+			        a(this.paginator,null,this.paginator.setPage,this.paginator.getNextPage());
+		        }else{
+		            this.paginator.setPage(this.paginator.getNextPage());
+		        }
+		    }
+		};		
+		
+//###############################################################################################
+		Paginator.ui.PreviousPageImgLink = function (p) {
+		    this.paginator = p;
+
+		    p.subscribe('recordOffsetChange',this.update,this,true);
+		    p.subscribe('rowsPerPageChange',this.update,this,true);
+		    p.subscribe('totalRecordsChange',this.update,this,true);
+		    p.subscribe('destroy',this.destroy,this,true);
+
+		    // TODO: make this work
+		    p.subscribe('previousPageLinkLabelChange',this.update,this,true);
+		    p.subscribe('previousPageLinkClassChange',this.update,this,true);
+		};
+
+		/**
+		 * Decorates Paginator instances with new attributes. Called during
+		 * Paginator instantiation.
+		 * @method init
+		 * @param p {Paginator} Paginator instance to decorate
+		 * @static
+		 */
+		Paginator.ui.PreviousPageImgLink.init = function (p) {
+
+		    /**
+		     * Used as innerHTML for the previous page link/span.
+		     * @attribute previousPageLinkLabel
+		     * @default '&lt;&nbsp;prev'
+		     */
+		    p.setAttributeConfig('previousPageLinkLabel', {
+		        value : '&lt;&nbsp;prev',
+		        validator : l.isString
+		    });
+
+		    /**
+		     * CSS class assigned to the link/span
+		     * @attribute previousPageLinkClass
+		     * @default 'yui-pg-previous'
+		     */
+		    p.setAttributeConfig('previousPageLinkClass', {
+		        value : 'yui-pg-previous',
+		        validator : l.isString
+		    });
+		};
+
+		Paginator.ui.PreviousPageImgLink.prototype = {
+
+		    /**
+		     * Currently placed HTMLElement node
+		     * @property current
+		     * @type HTMLElement
+		     * @private
+		     */
+		    current   : null,
+
+		    /**
+		     * Link node
+		     * @property link
+		     * @type HTMLElement
+		     * @private
+		     */
+		    link      : null,
+
+		    /**
+		     * Span node (inactive link)
+		     * @property span
+		     * @type HTMLElement
+		     * @private
+		     */
+		    span      : null,
+
+
+		    /**
+		     * Generate the nodes and return the appropriate node given the current
+		     * pagination state.
+		     * @method render
+		     * @param id_base {string} used to create unique ids for generated nodes
+		     * @return {HTMLElement}
+		     */
+		    render : function (id_base) {
+		        var p     = this.paginator,
+		            c     = p.get('previousPageLinkClass'),
+		            label = p.get('previousPageLinkLabel');
+
+		        var la =label.split(',');
+		        
+		        this.link     = document.createElement('a');
+		        this.span     = document.createElement('span');
+
+		        this.link.id        = id_base + '-prev-link';
+		        this.link.href      = '#';
+		        this.link.className = c;
+		        
+		        if (la.length>1){
+		        	this.link.innerHTML = la[0];
+		        }else{
+		        	this.link.innerHTML = label;
+		        } 
+		  
+		        
+		        YAHOO.util.Event.on(this.link,'click',this.onClick,this,true);
+
+		        this.span.id        = id_base + '-prev-span';
+		        this.span.className = c;
+		        
+		       
+		        if (la.length>1){
+		        	this.span.innerHTML = la[1];
+		        }else{
+		        	this.span.innerHTML = label;
+		        }
+		        
+		        this.current = p.getCurrentPage() > 1 ? this.link : this.span;
+		        return this.current;
+		    },
+
+		    /**
+		     * Swap the link and span nodes if appropriate.
+		     * @method update
+		     * @param e {CustomEvent} The calling change event
+		     */
+		    update : function (e) {
+		        if (e && e.prevValue === e.newValue) {
+		            return;
+		        }
+
+		        var par = this.current ? this.current.parentNode : null;
+		        if (this.paginator.getCurrentPage() > 1) {
+		            if (par && this.current === this.span) {
+		                par.replaceChild(this.link,this.current);
+		                this.current = this.link;
+		            }
+		        } else {
+		            if (par && this.current === this.link) {
+		                par.replaceChild(this.span,this.current);
+		                this.current = this.span;
+		            }
+		        }
+		    },
+
+		    /**
+		     * Removes the link/span node and clears event listeners
+		     * @method destroy
+		     * @private
+		     */
+		    destroy : function () {
+		        YAHOO.util.Event.purgeElement(this.link);
+		        this.current.parentNode.removeChild(this.current);
+		        this.link = this.span = null;
+		    },
+
+		    /**
+		     * Listener for the link's onclick event.  Passes to setPage method.
+		     * @method onClick
+		     * @param e {DOMEvent} The click event
+		     */
+		    onClick : function (e) {
+		        YAHOO.util.Event.stopEvent(e);
+		       // this.paginator.setPage(this.paginator.getPreviousPage());
+		        var a=this.paginator.get('agentMethod');
+		        if (a){
+			        a(this.paginator,null,this.paginator.setPage,this.paginator.getPreviousPage());
+		        }else{
+		            this.paginator.setPage(this.paginator.getPreviousPage());
+		        }
+		    }
+		};
+		
+		
+		
+		

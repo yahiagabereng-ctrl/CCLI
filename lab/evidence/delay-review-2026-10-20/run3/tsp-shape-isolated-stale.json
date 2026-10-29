@@ -1,0 +1,20 @@
+{
+  "port": 3783,
+  "identity_serial": "62FE7F53D2AE14074EADEBD960FAD2DF9744A2AD",
+  "matching_public_certificates": [
+    "apps/ccli/config/EJBCA RBAC/dual-certificate/dso-mms.pem",
+    "apps/ccli/config/EJBCA RBAC/TSP DSO Viewer Credentials/dso-mms.pem",
+    "apps/ccli/config/EJBCA RBAC/TSP DSO Viewer Credentials/DSO/MMS/identity.pem"
+  ],
+  "signed_time": "20261020132431.",
+  "captured_stale_proof": true,
+  "session_bytes": 1586,
+  "presentation_bytes": 1558,
+  "fragments": [
+    1021,
+    565
+  ],
+  "cotp_ms": 4.716806999999434,
+  "closed_without_accepted_association": true,
+  "passed": true
+}

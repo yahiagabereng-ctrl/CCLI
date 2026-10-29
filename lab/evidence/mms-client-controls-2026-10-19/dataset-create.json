@@ -1,0 +1,23 @@
+{
+  "host": "127.0.0.1",
+  "port": 3784,
+  "command": "dataset-create",
+  "reference": "CCI016_01LD_Plant/LLN0.clientTest",
+  "passed": false,
+  "events": [
+    {
+      "kind": "association",
+      "reference": "127.0.0.1",
+      "error": 0,
+      "value": "mutual TLS 1.2 + ACSE certificate authentication",
+      "observed_utc": "2026-10-19T08:37:34.530218+00:00"
+    },
+    {
+      "kind": "dataset-create",
+      "reference": "CCI016_01LD_Plant/LLN0.clientTest",
+      "error": 99,
+      "value": "CCI016_01LD_Plant/PdCMMXU1.TotW[MX]",
+      "observed_utc": "2026-10-19T08:37:34.540423+00:00"
+    }
+  ]
+}

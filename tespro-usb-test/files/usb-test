@@ -1,0 +1,42 @@
+#!/bin/sh
+
+STATE_DIR=/var/run/usb-test
+STATE_FILE="$STATE_DIR/status"
+
+write_status() {
+	mkdir -p "$STATE_DIR"
+	{
+		echo "name=usb-test"
+		echo "version=1.0.2-r1"
+		echo "status=running"
+		echo "started_at=$(cat "$STATE_DIR/started_at" 2>/dev/null || date -Iseconds)"
+		echo "updated_at=$(date -Iseconds)"
+		echo "hostname=$(cat /proc/sys/kernel/hostname 2>/dev/null)"
+		echo "boot_id=$(cat /proc/sys/kernel/random/boot_id 2>/dev/null)"
+		echo "uptime=$(cut -d. -f1 /proc/uptime 2>/dev/null)s"
+	} > "$STATE_FILE"
+}
+
+case "${1:-status}" in
+	daemon|--daemon)
+		mkdir -p "$STATE_DIR"
+		date -Iseconds > "$STATE_DIR/started_at"
+		while :; do
+			write_status
+			sleep 10
+		done
+		;;
+	status|--status)
+		if [ -s "$STATE_FILE" ]; then
+			cat "$STATE_FILE"
+		else
+			echo "name=usb-test"
+			echo "status=not-running"
+			exit 1
+		fi
+		;;
+	*)
+		echo "Usage: $0 [daemon|status]" >&2
+		exit 2
+		;;
+esac

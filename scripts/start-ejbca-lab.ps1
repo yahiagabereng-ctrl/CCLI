@@ -14,8 +14,8 @@ function Show-Status {
     Write-Host "=== EJBCA lab status ===" -ForegroundColor Cyan
     docker ps -a --filter "name=ccli-ejbca-ce" --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}"
     Write-Host ""
-    Write-Host "Admin UI:  https://localhost:8443/ejbca/adminweb/"
-    Write-Host "Public UI: https://localhost:8443/ejbca/"
+    Write-Host "Admin UI:  https://localhost:9443/ejbca/adminweb/"
+    Write-Host "Public UI: https://localhost:9443/ejbca/"
     Write-Host "Runbook:   lab/EJBCA_LAB_SETUP.md"
 }
 
@@ -41,7 +41,7 @@ function Disable-EjbcaOptionalClientAuth {
     docker exec ccli-ejbca-ce /opt/keyfactor/appserver/bin/jboss-cli.sh --connect --command=':reload' | Out-Null
     for ($i = 0; $i -lt 40; $i++) {
         Start-Sleep -Seconds 3
-        $code = curl.exe -k -s -o NUL -w "%{http_code}" "https://localhost:8443/ejbca/publicweb/healthcheck/ejbcahealth" 2>$null
+        $code = curl.exe -k -s -o NUL -w "%{http_code}" "https://localhost:9443/ejbca/publicweb/healthcheck/ejbcahealth" 2>$null
         if ($code -eq "200") {
             Write-Host "Disabled optional client-auth (fixes Edge ERR_EMPTY_RESPONSE)." -ForegroundColor Green
             return
@@ -81,8 +81,8 @@ Write-Host "Waiting for EJBCA (first boot can take 2-5 min)..." -ForegroundColor
 $ready = $false
 for ($i = 0; $i -lt 60; $i++) {
     Start-Sleep -Seconds 5
-    $code = curl.exe -k -s -o NUL -w "%{http_code}" "https://localhost:8443/ejbca/publicweb/healthcheck/ejbcahealth" 2>$null
-    if ($code -eq "200") {
+    $code = curl.exe -k -s -o NUL -w "%{http_code}" "https://localhost:9443/ejbca/adminweb/" 2>$null
+    if ($code -match "^(200|302)$") {
         $ready = $true
         break
     }
@@ -91,7 +91,7 @@ for ($i = 0; $i -lt 60; $i++) {
 Write-Host ""
 
 if ($ready) {
-    Write-Host "EJBCA is responding on https://localhost:8443" -ForegroundColor Green
+    Write-Host "EJBCA is responding on https://localhost:9443" -ForegroundColor Green
     # Edge/Chrome often return ERR_EMPTY_RESPONSE when WildFly asks for optional
     # client certificates (want-client-auth=true). Lab simple mode does not need that.
     try {

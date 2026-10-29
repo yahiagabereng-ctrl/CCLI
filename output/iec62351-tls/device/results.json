@@ -1,0 +1,106 @@
+{
+  "device": "Tespro 192.168.0.1",
+  "date": "2026-10-26",
+  "installed_service_replaced": false,
+  "temporary_listeners_removed": true,
+  "campaigns": {
+    "hal": {
+      "passed": 23,
+      "cases": [
+        "PASS required suite AES128-SHA256",
+        "PASS required suite DHE-RSA-AES128-GCM-SHA256",
+        "PASS required suite ECDHE-RSA-AES128-GCM-SHA256",
+        "PASS required suite ECDHE-ECDSA-AES128-GCM-SHA256",
+        "PASS rejected peer None base.crl -",
+        "PASS rejected peer expired base.crl expired",
+        "PASS rejected peer client revoked.crl client",
+        "PASS rejected peer wrong_eku base.crl -",
+        "PASS rejected peer other base.crl client",
+        "PASS rejected CBC without encrypt-then-MAC",
+        "PASS idle renegotiation deadline (accelerated monotonic clock)",
+        "PASS rejected local configuration expired_server base.crl 43200",
+        "PASS rejected local configuration weak_server base.crl 43200",
+        "PASS rejected local configuration server base.crl 43200",
+        "PASS rejected local configuration server stale.crl 43200",
+        "PASS rejected local configuration server bad.crl 43200",
+        "PASS rejected local configuration server future.crl 43200",
+        "PASS rejected local configuration server base.crl 599",
+        "PASS rejected local configuration server base.crl 86401",
+        "PASS active CRL replacement bad.crl",
+        "PASS active CRL replacement stale.crl",
+        "PASS active CRL replacement missing",
+        "PASS active CRL replacement revoked.crl"
+      ]
+    },
+    "iec104": {
+      "passed": 23,
+      "cases": [
+        "PASS required suite AES128-SHA256",
+        "PASS required suite DHE-RSA-AES128-GCM-SHA256",
+        "PASS required suite ECDHE-RSA-AES128-GCM-SHA256",
+        "PASS required suite ECDHE-ECDSA-AES128-GCM-SHA256",
+        "PASS rejected peer None base.crl -",
+        "PASS rejected peer expired base.crl expired",
+        "PASS rejected peer client revoked.crl client",
+        "PASS rejected peer wrong_eku base.crl -",
+        "PASS rejected peer other base.crl client",
+        "PASS rejected CBC without encrypt-then-MAC",
+        "PASS idle renegotiation deadline (accelerated monotonic clock)",
+        "PASS rejected local configuration expired_server base.crl 43200",
+        "PASS rejected local configuration weak_server base.crl 43200",
+        "PASS rejected local configuration server base.crl 43200",
+        "PASS rejected local configuration server stale.crl 43200",
+        "PASS rejected local configuration server bad.crl 43200",
+        "PASS rejected local configuration server future.crl 43200",
+        "PASS rejected local configuration server base.crl 599",
+        "PASS rejected local configuration server base.crl 86401",
+        "PASS active CRL replacement bad.crl",
+        "PASS active CRL replacement stale.crl",
+        "PASS active CRL replacement missing",
+        "PASS active CRL replacement revoked.crl"
+      ]
+    }
+  },
+  "adapter_results": [
+    "new-build-adapter-startup",
+    "mms-seven-dual-certificate-cases",
+    "iec104-tls-startdt-and-interrogation",
+    "device-rejection-audits-verified",
+    "installed-service-unchanged"
+  ],
+  "mms_cases": [
+    {
+      "case": "dso-positive",
+      "passed": true
+    },
+    {
+      "case": "replay",
+      "passed": true
+    },
+    {
+      "case": "viewer-positive",
+      "passed": true
+    },
+    {
+      "case": "bad-signature",
+      "passed": true
+    },
+    {
+      "case": "stale-proof",
+      "passed": true
+    },
+    {
+      "case": "wrong-ap",
+      "passed": true
+    },
+    {
+      "case": "wrong-transport",
+      "passed": true
+    }
+  ],
+  "binary_sha256": {
+    "ccli": "6940942a4cbd364ac70e712b1d8a048ea53619b15549c8f0ddbb608492761623",
+    "mms-rbac-device-server": "8f1e5b1b949ac409805470e329a1442d8b1d8a28897b9433f5281512f9b56c24",
+    "iec62351-tls-device-probe": "e3476375259e2f55538bdfff05755993ded7aad8ff29c2c94a87c85441b9b46d"
+  }
+}

@@ -1,0 +1,5 @@
+config main 'main'
+	option enabled '1'
+	option interval '15'
+	option max_depth '8'
+	option allow_untrusted '0'

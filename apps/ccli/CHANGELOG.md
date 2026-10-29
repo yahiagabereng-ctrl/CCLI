@@ -5,9 +5,142 @@ Every DUT upload must have a matching entry here and a file under `lab/tg544-ope
 
 Format: **`semver-rN`** — bump **N** in `VERSION` line 2 and `package/ccli/Makefile` `PKG_RELEASE` together.
 
+## 0.1.0-r76 — Continuous RTU worker layout fix (2026-10-29)
+
+- Keep ModbusAdapter layout independent of the private libmodbus build flag.
+- Prevent its context pointer from overwriting ModbusService's adjacent stop flag after the first RTU read.
+- Add a cross-translation-unit layout regression check for backend and caller builds.
+
+## 0.1.0-r75 — Device CRL pull tooling (2026-10-29)
+
+- Package signed CRL fetching, rollback rejection, complete multi-issuer snapshot publication and a configurable procd worker.
+- Keep fetching disabled until issuer endpoints and pinned anchors are commissioned; preserve existing controller settings during upgrades.
+- Add curl/OpenSSL CLI runtime dependencies and remove unconditional cleaning from development builds.
+- Record host signed-fixture tests and a successful EJBCA CRL fetch on TesPro; full identity-session termination qualification remains open.
+
+## 0.1.0-r74 — Logger reader and collector reliability (2026-10-29)
+
+- Make log export a read-only EventStore operation, without extra producers, forwarding, directory creation or permission changes.
+- Isolate the 2048-event wrap/reload test from live OpenWrt audit sources and clean both temporary segments.
+- Fix unsigned auth-queue capacity underflow; bound pipe reads by available queue slots.
+- Tie logread lifetime to its parent, close inherited pipe descriptors across exec, and reset partial input after collector restart.
+- Retain the r73 independent RTU worker and commissioned Tespro configuration; remote Syslog stays optional and disabled.
+
+## 0.1.0-r73 — Independent inverter RTU poller (2026-10-29)
+
+- Read inverter P/Q/voltage on a dedicated Modbus RTU worker while the POC meter remains on its independent TCP poller.
+- Sample inverter registers every 1 s; expose inverter quality and readings in CCLI status and publish active power through `GenPVMMXU1.TotW` when that LN is in the MMS model.
+- Keep the inverter poller separate from the meter measurement path so serial timeouts do not block the CCI loop.
+
+## 0.1.0-r72 — Multiple MMS TLS identities for IEC 62351-3 (2026-10-29)
+
+- Keep the ECDSA P-256 MMS identity and add a separately validated RSA-3072 server identity so cipher suites can select a matching key type.
+- Enable the required TLS 1.2 suites `TLS_RSA_WITH_AES_128_CBC_SHA256`, `TLS_DHE_RSA_WITH_AES_128_GCM_SHA256`, and `TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256`; honor the client cipher-suite order.
+- Validate each configured endpoint identity's key pair, chain, CRL status, EKU, key policy, and certificate size before enabling the listener; recheck additional identities during CRL/session validation.
+- Tespro `192.168.0.1:3782` verification: each suite completed a mutually authenticated TLS 1.2 handshake with server-certificate verification; a read-only IEC 61850 MMS `check` also passed. No write/control services were exercised.
+
+## 0.1.0-r71 — Personal Tespro owner-branch integration (2026-10-27)
+
+- Integrate owner e6d6ce0 meter/phasor and Operating Rule updates while retaining personal TLS/RBAC/native E2E and Aggregator implementation.
+- Keep the validated personal application entry and 192.168.0.1:3782 / 23-node model defaults. Existing commissioned device configuration and credentials are preserved on upgrade.
+- Guard dynamic-model MMS values before initialization; add the TLS CRL to the native product test fixture. All 19 selected host regressions passed before packaging.
+
+## 0.1.0-r70 — Keep TLS listeners available with an expired CRL (2026-10-27)
+
+- A correctly signed but expired CRL raises a warning instead of preventing MMS or IEC 104 listener startup.
+- Preserve established sessions on CRL expiry and keep known revocations enforced. Initial handshakes still require current CRL data for the certificate issuer.
+- Reject malformed, future-dated, missing-nextUpdate, unauthorized-issuer and bad-signature CRLs; certificate validity and trust checks remain enforced.
+- Test listener startup with expired CRLs, recovery after publishing a fresh CRL without restart, and active-session survival across CRL expiry.
+
+## 0.1.0-r69 — Correct suite ID and report TLS policy failure stage (2026-10-27)
+
+- Use the registered TLS_DHE_RSA_WITH_AES_128_GCM_SHA256 suite identifier `0x009E` (RFC 5288).
+- Restore mandatory TLS_RSA_WITH_AES_128_CBC_SHA256 with the existing encrypt-then-MAC requirement; Table 1 marks RSA-NULL-SHA256, not RSA-CBC, conditional.
+- Preserve mandatory TLS 1.2 suite validation while reporting the exact failed stage for timer/CA setup, endpoint chain/EKU, CRL validation, or unavailable cipher support.
+
+## 0.1.0-r68 — Intermediate TLS suite-ID correction (2026-10-27)
+
+- An attempted correction to `0xC09E` was invalid; RFC 5288 assigns this suite `0x009E`. r69 restores the registered value and adds stage-specific policy events.
+
+## 0.1.0-r67 — Enable mandatory TLS 1.2 suites (2026-10-27)
+
+- Align the bundled libiec61850 Mbed TLS build with the IEC 62351-3 mandatory
+  DHE-RSA and ECDHE-RSA/ECDSA AES-128-GCM suites required by CCLI's TLS policy.
+- Keep optional `TLS_RSA_WITH_AES_128_CBC_SHA256` disabled by default.
+
 ---
 
-## 0.1.0-r62 — P5-EMT432-PDC-3PH-CMV (2026-10-22)
+## 0.1.0-r66 — IEC 62351-3 TLS closure work (2026-10-26)
+
+- Requires a configured, valid CRL for TLS-enabled MMS and IEC 104 endpoints.
+- Adds distinct CRL and revocation-session alarms, certificate-size handling,
+  and TLS-version stability checks across renegotiation.
+- Documents operator CRL provisioning and the current profile's OCSP exclusion.
+
+---
+
+## 0.1.0-r65 — Native E2E bench build (2026-10-26)
+
+- Integrates the current native IEC 62351-4 Annex G E2E association, codec,
+  protected MMS service, and error-handling work for TesPro bench validation.
+- This build is not a claim of full CEI conformance: application-encryption
+  transfer support (AES-CBC/GCM) and on-device validation remain open.
+
+---
+
+## 0.1.0-r64 — CEI 57-142 Aggregator interface (2026-10-21)
+
+- Implements the signed Aggregator P/Q targets, CEI mode values, function status,
+  PdCi measurements, static dataset, and buffered/unbuffered reports in the
+  hand-built and generated IEC 61850 models.
+- Keeps Aggregator plant outputs disabled by default; startup rejects an explicit
+  attempt to enable the unvalidated signed P/Q backend.
+- Preserves the existing TLS and ACSE transport/session implementation and
+  credentials. Device-specific signed policy activation is recorded in the
+  commissioning evidence for this release.
+
+---
+## 0.1.0-r60 — Owner protocol / Profile A integration (2026-10-16)
+
+- Merge owner `upstream/main` (ffb0f19) into the personal r59 branch (b185266).
+- Retain Profile A RBAC, separate application/TLS identities and controlled APK
+  preservation. Integrate the owner protocol fixes after source review/testing.
+- Preserve both branches' historical release notes below; their r57 labels refer
+  to different branches and do not supersede the merged r60 version.
+- Archive the owner's legacy DER CRL for reference; active trust/CRLs unchanged.
+- Merge verification is recorded in `lab/conformance/OWNER_BRANCH_MERGE_2026-10-16.md`.
+
+---
+
+## 0.1.0-r58 — Preserve TLS validation errors for pinned certificates (2026-10-15)
+
+- Corrects the upstream allowlist verifier through a reproducible generated
+  source overlay: certificate pins no longer clear certificate/CRL errors.
+- With chain validation enabled, preserves all validation errors. Explicit
+  pin-only mode waives only issuer trust, retaining expiry/revocation checks.
+- Adds direct TLS handshake regressions for valid/revoked/expired/untrusted and
+  unknown clients, stale/bad-signature CRLs, and explicit pin-only behavior.
+- Keeps TLS 1.2 settings, existing credentials and controlled APK upgrade guards.
+
+## 0.1.0-r57 — Profile A RBAC and controlled APK upgrade (2026-10-15)
+
+- Integrates MMS Profile A roles, signed owner commissioning, certificate/CRL
+  validation, identity binding and authorization. Profile A stays disabled.
+- Removes bundled TLS credentials from the APK. Upgrade hooks preserve and
+  restore existing configuration/credentials, retaining a persistent backup.
+- Holds automatic starts until configuration is verified and the upgrade hold
+  is explicitly released. Existing working TLS/ACSE behavior is a deployment gate.
+
+## 0.1.0-r55 — Unified certificate package integration (2026-10-14)
+
+### Included
+
+- Preserves the local MMS/AARE signing and USB updater work from the personal branch.
+- Includes the owner’s unified 5-LN certificate test matrix, product specimen, and deployment field pack.
+
+---
+
+## Owner branch 0.1.0-r62 — P5-EMT432-PDC-3PH-CMV (2026-10-22)
 
 ### Added
 
@@ -26,7 +159,7 @@ Manifest **`CCLI_DEPLOY_0.1.0-r62_2026-10-22_183656`**. ELF SHA `20a974f1…` ·
 
 ---
 
-## 0.1.0-r61 — P5-EMT432-A-PHSA-BRIDGE (2026-10-22)
+## Owner branch 0.1.0-r61 — P5-EMT432-A-PHSA-BRIDGE (2026-10-22)
 
 ### Fixed
 
@@ -44,7 +177,7 @@ Manifest **`CCLI_DEPLOY_0.1.0-r61_2026-10-22_181748`**. Staging ELF SHA `448007a
 
 ---
 
-## 0.1.0-r60 — P5-EMT432-A-PHSA-PUBLISH (2026-10-22)
+## Owner branch 0.1.0-r60 — P5-EMT432-A-PHSA-PUBLISH (2026-10-22)
 
 ### Changed
 
@@ -52,7 +185,7 @@ Manifest **`CCLI_DEPLOY_0.1.0-r61_2026-10-22_181748`**. Staging ELF SHA `448007a
 
 ---
 
-## 0.1.0-r59 — P5-EMT432-A-PHSA-WIRE (2026-10-22)
+## Owner branch 0.1.0-r59 — P5-EMT432-A-PHSA-WIRE (2026-10-22)
 
 ### Fixed
 
@@ -60,7 +193,7 @@ Manifest **`CCLI_DEPLOY_0.1.0-r61_2026-10-22_181748`**. Staging ELF SHA `448007a
 
 ---
 
-## 0.1.0-r58 — P5-EMT432-A-PHSA-MAP (2026-10-22)
+## Owner branch 0.1.0-r58 — P5-EMT432-A-PHSA-MAP (2026-10-22)
 
 ### Added
 
@@ -68,7 +201,7 @@ Manifest **`CCLI_DEPLOY_0.1.0-r61_2026-10-22_181748`**. Staging ELF SHA `448007a
 
 ---
 
-## 0.1.0-r57 — P5-5LN-ISO-PRES-AARE (2026-10-16)
+## Owner branch 0.1.0-r57 — P5-5LN-ISO-PRES-AARE (2026-10-16)
 
 ### Fixed
 
@@ -81,7 +214,7 @@ Keep 5-LN yaml `product_tr400_p3_07_connect_5ln.yaml` + P3-07 TLS. Rebuild then 
 
 ---
 
-## 0.1.0-r56 — P5-5LN-ISO-SESSION (2026-10-16)
+## Owner branch 0.1.0-r56 — P5-5LN-ISO-SESSION (2026-10-16)
 
 ### Fixed
 
@@ -91,6 +224,7 @@ Keep 5-LN yaml `product_tr400_p3_07_connect_5ln.yaml` + P3-07 TLS. Rebuild then 
 ### Deploy
 
 Keep 5-LN yaml `product_tr400_p3_07_connect_5ln.yaml` + P3-07 TLS. Rebuild `wsl-build-ccli.sh` then `deploy-product-fw-same-cyber.ps1 -ReplaceBinary -LabYaml …_5ln.yaml`.
+
 
 ---
 

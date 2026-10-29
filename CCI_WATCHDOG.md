@@ -6,7 +6,9 @@ This document records the watchdog work completed for CCI on the TesPro TR500/TG
 
 ### 1. CCI main-loop liveness tracking
 
-The CCI main loop calls `ServiceSupervision::watchdog_main_loop_tick()` once per completed iteration. The timestamp uses `CLOCK_MONOTONIC`, so wall-clock changes do not affect the health decision.
+The CCI main loop calls `ServiceSupervision::watchdog_main_loop_tick()` after each completed iteration.
+Every 250 ms it atomically publishes its PID, sequence and `CLOCK_MONOTONIC` timestamp to
+`/var/run/ccli-health`, so wall-clock changes do not affect the health decision.
 
 The existing:
 
@@ -17,44 +19,43 @@ usleep(100000);
 
 remains in place. It schedules the normal control loop at approximately 10 Hz and is not the watchdog itself.
 
-### 2. Independent watchdog timer thread
+### 2. Independent watchdog supervisor
 
-`ServiceSupervision::start_watchdog()` starts a separate C++ timer thread. The thread:
+`ccli-watchdog` is a separately packaged C process, started and respawned by `procd`. It:
 
-- wakes every 30 seconds;
-- checks the age of the last main-loop tick;
-- sends the ubus `service event` watchdog heartbeat only when the main loop is healthy;
-- treats a 90-second stale timestamp as a main-loop stall;
-- logs the stall and raises `SIGABRT` so the existing fatal path runs and `procd` can respawn CCI.
+- wakes every second;
+- checks the age of CCI's monotonic health record;
+- at 8 seconds stale, sends `SIGABRT` so CCI's existing fatal safe-state path runs;
+- after a two-second grace period, uses `SIGKILL` if CCI is still frozen; and
+- leaves `procd` to respawn CCI.
 
-`stop_watchdog()` joins the timer thread during a normal shutdown. The timer is linked with `Threads::Threads` in CMake.
+This process is independent of CCI, so it can recover a whole-process freeze such as `SIGSTOP`.
 
 ### 3. OpenWrt service supervision
 
-The CCI init script uses `procd` respawn settings and a configurable watchdog timeout:
+The CCI init script retains `procd` respawn settings and a secondary service heartbeat timeout:
 
 ```text
 respawn 3600 5 5
 watchdog timeout 90
 ```
 
-The runtime configuration is stored in UCI as `ccli.main.watchdog_timeout`, with validation and a minimum accepted value of 60 seconds.
+The 90-second `procd` setting is deliberately secondary; the safety-relevant CCI restart
+threshold is `ccli.watchdog.stale_timeout_s`, which defaults to 8 seconds. It is below the
+existing PF2 10-second stale-data bound and above the configured Modbus retry window.
 
 ## Build and installation
 
-The watchdog build was compiled for the TesPro MT798X/aarch64 target and signed with the CCLI release key.
+The source produces two signed packages: `ccli.apk` and `ccli-watchdog.apk`. The supervisor has
+its own executable and init script, but depends on `ccli.apk`; both must be installed together.
+No new watchdog package has been deployed to the DUT yet.
 
-The resulting package was:
-
-```text
-lab/tg544-openwrt/ccli-0.1.0-r34.apk
-```
-
-The package was verified with `apk-tools` and installed on the TesPro without `--allow-untrusted`. The installed trusted public key fingerprint was:
-
-```text
-SHA-256 dab241ed8f74f283fefb0ae6640902c26e8febb65c1df511fc5dbf7b924638c
-```
+`lab/tg544-openwrt/build-ccli-ipk-sdk.sh` builds the controller APK and
+`lab/tg544-openwrt/build-ccli-watchdog-apk.sh` builds the watchdog APK for the TesPro SDK target;
+each signs its output with the manufacturer release key. For an offline update, pass both APK paths to
+`scripts/new-firmware-update-bundle.ps1`; the signed manifest then carries one SHA-256 entry for
+each APK. The watchdog APK post-install script owns its own enable/start sequence because the
+updater's special restart handling remains scoped to `ccli`.
 
 ## Tests completed
 
@@ -64,21 +65,18 @@ SHA-256 dab241ed8f74f283fefb0ae6640902c26e8febb65c1df511fc5dbf7b924638c
 - `procd` respawned CCI with a new PID.
 - The crash recovery log reported `previous crash recovered`.
 
-### Main-loop stall recovery
+### Historical in-process stall test
 
-The installed build was frozen with `SIGSTOP` for more than 90 seconds. After `SIGCONT`, the watchdog timer resumed, detected the stale main-loop timestamp, and logged:
-
-```text
-watchdog: CCI main loop stalled for 92442 ms; aborting for procd respawn
-```
-
-CCI then aborted and `procd` restarted it with a new PID. The service was confirmed running afterward.
+The previous in-process design detected a `SIGSTOP` only after `SIGCONT`. That observation
+motivated the separate `ccli-watchdog` process. The new 8-second supervisor has compiled on the
+host, but remains to be tested on the TG544.
 
 ## Important limitation
 
-`SIGSTOP` suspends the entire process, including the watchdog thread. Therefore, a userspace timer cannot kill or restart a process while every thread is stopped. It can only detect the stale timestamp after the process resumes.
-
-The TesPro `procd` service watchdog was also tested and did not independently terminate a process held in `SIGSTOP`. Consequently, the current design does **not** cover every possible process or kernel failure.
+`SIGSTOP` suspends the CCI process, but not the separate `ccli-watchdog` process. The supervisor
+can therefore send `SIGKILL` after its safe-abort grace period and allow `procd` to respawn CCI.
+This still does not cover a kernel/system-wide hang; that requires the unimplemented hardware
+watchdog integration.
 
 ## Current recovery coverage
 
@@ -86,29 +84,17 @@ The TesPro `procd` service watchdog was also tested and did not independently te
 |---|---|
 | CCI crashes | `procd` respawns CCI |
 | CCI exits unexpectedly | `procd` respawns CCI |
-| Main loop blocks while timer thread runs | CCI aborts after 90 s; `procd` respawns |
-| Entire process is stopped with `SIGSTOP` | Not recoverable by CCI itself while stopped |
-| Kernel/system-wide hang | Not covered by the CCI userspace timer |
+| Main loop blocks | `ccli-watchdog` acts after 8 s; `procd` respawns |
+| Entire process is stopped with `SIGSTOP` | `ccli-watchdog` sends SIGKILL after the 2 s grace period |
+| Kernel/system-wide hang | Not covered until hardware WDT integration is validated |
 
 ## Remaining work
 
-### 1. Independent watchdog supervisor
-
-Create a separate signed package/service, for example `ccli-watchdog`, containing a small daemon that:
-
-- monitors a CCI health record or heartbeat independently;
-- uses a monotonic deadline and bounded I/O;
-- restarts CCI when the heartbeat becomes stale;
-- has its own `procd` respawn policy;
-- does not depend on MQTT or cellular connectivity.
-
-This supervisor must run as a separate process. Putting the watchdog code in the same CCI process cannot protect against a whole-process freeze.
-
-### 2. Hardware watchdog integration
+### 1. Hardware watchdog integration
 
 The device exposes `/dev/watchdog` and `/dev/watchdog0`. A production watchdog service should be designed and tested to feed the hardware watchdog only while the system and CCI health checks are valid. Ownership, timeout, `nowayout`, boot behavior, and safe-state behavior must be specified before enabling it in production.
 
-### 3. Controlled recovery and safe state
+### 2. Controlled recovery and safe state
 
 Define what happens to PF2 and digital outputs during:
 
@@ -119,7 +105,7 @@ Define what happens to PF2 and digital outputs during:
 
 The recovery path must leave outputs in the approved safe state and record a durable diagnostic event.
 
-### 4. Production testing
+### 3. Production testing
 
 Repeat tests with:
 
