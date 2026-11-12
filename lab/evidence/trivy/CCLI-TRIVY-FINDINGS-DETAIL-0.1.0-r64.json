@@ -1,0 +1,2014 @@
+{
+    "document_id":  "CCLI-TRIVY-FINDINGS-DETAIL-r64-001",
+    "schema_version":  1,
+    "generated_utc":  "2026-11-12T09:46:32.1997204Z",
+    "maps_to":  [
+                    "IEC 62443-4-1 SI-1",
+                    "IEC 62443-4-1 SVV-3"
+                ],
+    "narrative_md":  "lab/evidence/trivy/EVD-SCA-CCI-r64-Trivy.md",
+    "trivy_tool":  {
+                       "severity_filter":  "UNKNOWN,LOW,MEDIUM,HIGH,CRITICAL",
+                       "scanners":  [
+                                        "vuln",
+                                        "secret"
+                                    ],
+                       "version":  "0.76.2"
+                   },
+    "evidence_runs":  {
+                          "local_full_sca":  "0.1.0-r64-20261112-092220",
+                          "archive_local":  "0.1.0-r64-20261111-164100",
+                          "dut_lan1_latest":  "0.1.0-r64-20261112-094123"
+                      },
+    "summary":  {
+                    "total_findings":  65,
+                    "by_scanner":  {
+                                       "vuln":  0,
+                                       "secret":  65
+                                   },
+                    "by_severity":  {
+                                        "HIGH":  65
+                                    },
+                    "verdict":  {
+                                    "platform_cve_gap":  "TesproOS CVE closure via SM-10; Trivy OS family unsupported on DUT pull.",
+                                    "accepted_secrets":  65,
+                                    "firmware_binary":  "967df2764819c3b616e5467a16a3f9a923b4002ad1ca4a73d156d16e91ab2df7",
+                                    "release":  "0.1.0-r64",
+                                    "blocking_cve":  0
+                                },
+                    "archive_note":  null
+                },
+    "analysis_policy":  {
+                            "ACCEPT":  "Lab/conformance artefact; document in EVD; not production SM-8.",
+                            "N_A":  "Not in shipping firmware image.",
+                            "DIFF_device_repo":  "DUT key bytes differ from git apps/ccli/config/tls — redeploy/sync if parity required.",
+                            "SM10":  "Platform OS/packages: vendor SDL."
+                        },
+    "findings":  [
+                     {
+                         "id":  "SECRET-1",
+                         "scanner":  "secret",
+                         "severity":  "HIGH",
+                         "scope":  {
+                                       "evidence_run":  "0.1.0-r64-20261112-092220",
+                                       "scanned_at":  "2026-11-12T10:22:32.3783065+01:00",
+                                       "trivy_report":  "trivy-apps-ccli.json",
+                                       "artifact":  "C:/Yahia/projects/CCLI/apps/ccli",
+                                       "scope_label":  "apps-ccli"
+                                   },
+                         "target":  "config/tls/client.key",
+                         "secret":  {
+                                        "match_class":  "secret",
+                                        "rule_id":  "private-key",
+                                        "end_line":  26,
+                                        "start_line":  2,
+                                        "category":  "AsymmetricPrivateKey",
+                                        "title":  "Asymmetric Private Key"
+                                    },
+                         "device_key":  null,
+                         "analysis":  {
+                                          "shipping_impact":  "lab_only",
+                                          "status":  "ACCEPT",
+                                          "category":  "lab_annex_pki",
+                                          "summary":  "Annex-aligned lab PKI role key (server/client/viewer/revoked); expected Trivy secret hit.",
+                                          "action":  "verify_annex_pki_before_deploy"
+                                      }
+                     },
+                     {
+                         "id":  "SECRET-2",
+                         "scanner":  "secret",
+                         "severity":  "HIGH",
+                         "scope":  {
+                                       "evidence_run":  "0.1.0-r64-20261112-092220",
+                                       "scanned_at":  "2026-11-12T10:22:32.3783065+01:00",
+                                       "trivy_report":  "trivy-apps-ccli.json",
+                                       "artifact":  "C:/Yahia/projects/CCLI/apps/ccli",
+                                       "scope_label":  "apps-ccli"
+                                   },
+                         "target":  "config/tls/client_acse.key",
+                         "secret":  {
+                                        "match_class":  "secret",
+                                        "rule_id":  "private-key",
+                                        "end_line":  26,
+                                        "start_line":  2,
+                                        "category":  "AsymmetricPrivateKey",
+                                        "title":  "Asymmetric Private Key"
+                                    },
+                         "device_key":  null,
+                         "analysis":  {
+                                          "shipping_impact":  "lab_only",
+                                          "status":  "ACCEPT",
+                                          "category":  "lab_annex_pki",
+                                          "summary":  "Annex-aligned lab PKI role key (server/client/viewer/revoked); expected Trivy secret hit.",
+                                          "action":  "verify_annex_pki_before_deploy"
+                                      }
+                     },
+                     {
+                         "id":  "SECRET-3",
+                         "scanner":  "secret",
+                         "severity":  "HIGH",
+                         "scope":  {
+                                       "evidence_run":  "0.1.0-r64-20261112-092220",
+                                       "scanned_at":  "2026-11-12T10:22:32.3783065+01:00",
+                                       "trivy_report":  "trivy-apps-ccli.json",
+                                       "artifact":  "C:/Yahia/projects/CCLI/apps/ccli",
+                                       "scope_label":  "apps-ccli"
+                                   },
+                         "target":  "config/tls/client_acse_tsp.key",
+                         "secret":  {
+                                        "match_class":  "secret",
+                                        "rule_id":  "private-key",
+                                        "end_line":  26,
+                                        "start_line":  2,
+                                        "category":  "AsymmetricPrivateKey",
+                                        "title":  "Asymmetric Private Key"
+                                    },
+                         "device_key":  null,
+                         "analysis":  {
+                                          "shipping_impact":  "lab_only",
+                                          "status":  "ACCEPT",
+                                          "category":  "lab_annex_pki",
+                                          "summary":  "Annex-aligned lab PKI role key (server/client/viewer/revoked); expected Trivy secret hit.",
+                                          "action":  "verify_annex_pki_before_deploy"
+                                      }
+                     },
+                     {
+                         "id":  "SECRET-4",
+                         "scanner":  "secret",
+                         "severity":  "HIGH",
+                         "scope":  {
+                                       "evidence_run":  "0.1.0-r64-20261112-092220",
+                                       "scanned_at":  "2026-11-12T10:22:32.3783065+01:00",
+                                       "trivy_report":  "trivy-apps-ccli.json",
+                                       "artifact":  "C:/Yahia/projects/CCLI/apps/ccli",
+                                       "scope_label":  "apps-ccli"
+                                   },
+                         "target":  "config/tls/client_tsp.key",
+                         "secret":  {
+                                        "match_class":  "secret",
+                                        "rule_id":  "private-key",
+                                        "end_line":  26,
+                                        "start_line":  2,
+                                        "category":  "AsymmetricPrivateKey",
+                                        "title":  "Asymmetric Private Key"
+                                    },
+                         "device_key":  null,
+                         "analysis":  {
+                                          "shipping_impact":  "lab_only",
+                                          "status":  "ACCEPT",
+                                          "category":  "lab_annex_pki",
+                                          "summary":  "Annex-aligned lab PKI role key (server/client/viewer/revoked); expected Trivy secret hit.",
+                                          "action":  "verify_annex_pki_before_deploy"
+                                      }
+                     },
+                     {
+                         "id":  "SECRET-5",
+                         "scanner":  "secret",
+                         "severity":  "HIGH",
+                         "scope":  {
+                                       "evidence_run":  "0.1.0-r64-20261112-092220",
+                                       "scanned_at":  "2026-11-12T10:22:32.3783065+01:00",
+                                       "trivy_report":  "trivy-apps-ccli.json",
+                                       "artifact":  "C:/Yahia/projects/CCLI/apps/ccli",
+                                       "scope_label":  "apps-ccli"
+                                   },
+                         "target":  "config/tls/ejbca/client.key",
+                         "secret":  {
+                                        "match_class":  "secret",
+                                        "rule_id":  "private-key",
+                                        "end_line":  26,
+                                        "start_line":  2,
+                                        "category":  "AsymmetricPrivateKey",
+                                        "title":  "Asymmetric Private Key"
+                                    },
+                         "device_key":  null,
+                         "analysis":  {
+                                          "shipping_impact":  "lab_only",
+                                          "status":  "ACCEPT",
+                                          "category":  "ejbca_export_copy",
+                                          "summary":  "EJBCA issuance export under ejbca/; duplicate of deploy tree on DUT when synced.",
+                                          "action":  "sync_with_parent_tls"
+                                      }
+                     },
+                     {
+                         "id":  "SECRET-6",
+                         "scanner":  "secret",
+                         "severity":  "HIGH",
+                         "scope":  {
+                                       "evidence_run":  "0.1.0-r64-20261112-092220",
+                                       "scanned_at":  "2026-11-12T10:22:32.3783065+01:00",
+                                       "trivy_report":  "trivy-apps-ccli.json",
+                                       "artifact":  "C:/Yahia/projects/CCLI/apps/ccli",
+                                       "scope_label":  "apps-ccli"
+                                   },
+                         "target":  "config/tls/ejbca/client_acse.key",
+                         "secret":  {
+                                        "match_class":  "secret",
+                                        "rule_id":  "private-key",
+                                        "end_line":  26,
+                                        "start_line":  2,
+                                        "category":  "AsymmetricPrivateKey",
+                                        "title":  "Asymmetric Private Key"
+                                    },
+                         "device_key":  null,
+                         "analysis":  {
+                                          "shipping_impact":  "lab_only",
+                                          "status":  "ACCEPT",
+                                          "category":  "ejbca_export_copy",
+                                          "summary":  "EJBCA issuance export under ejbca/; duplicate of deploy tree on DUT when synced.",
+                                          "action":  "sync_with_parent_tls"
+                                      }
+                     },
+                     {
+                         "id":  "SECRET-7",
+                         "scanner":  "secret",
+                         "severity":  "HIGH",
+                         "scope":  {
+                                       "evidence_run":  "0.1.0-r64-20261112-092220",
+                                       "scanned_at":  "2026-11-12T10:22:32.3783065+01:00",
+                                       "trivy_report":  "trivy-apps-ccli.json",
+                                       "artifact":  "C:/Yahia/projects/CCLI/apps/ccli",
+                                       "scope_label":  "apps-ccli"
+                                   },
+                         "target":  "config/tls/ejbca/client_acse_tsp.key",
+                         "secret":  {
+                                        "match_class":  "secret",
+                                        "rule_id":  "private-key",
+                                        "end_line":  26,
+                                        "start_line":  2,
+                                        "category":  "AsymmetricPrivateKey",
+                                        "title":  "Asymmetric Private Key"
+                                    },
+                         "device_key":  null,
+                         "analysis":  {
+                                          "shipping_impact":  "lab_only",
+                                          "status":  "ACCEPT",
+                                          "category":  "ejbca_export_copy",
+                                          "summary":  "EJBCA issuance export under ejbca/; duplicate of deploy tree on DUT when synced.",
+                                          "action":  "sync_with_parent_tls"
+                                      }
+                     },
+                     {
+                         "id":  "SECRET-8",
+                         "scanner":  "secret",
+                         "severity":  "HIGH",
+                         "scope":  {
+                                       "evidence_run":  "0.1.0-r64-20261112-092220",
+                                       "scanned_at":  "2026-11-12T10:22:32.3783065+01:00",
+                                       "trivy_report":  "trivy-apps-ccli.json",
+                                       "artifact":  "C:/Yahia/projects/CCLI/apps/ccli",
+                                       "scope_label":  "apps-ccli"
+                                   },
+                         "target":  "config/tls/ejbca/client_tsp.key",
+                         "secret":  {
+                                        "match_class":  "secret",
+                                        "rule_id":  "private-key",
+                                        "end_line":  26,
+                                        "start_line":  2,
+                                        "category":  "AsymmetricPrivateKey",
+                                        "title":  "Asymmetric Private Key"
+                                    },
+                         "device_key":  null,
+                         "analysis":  {
+                                          "shipping_impact":  "lab_only",
+                                          "status":  "ACCEPT",
+                                          "category":  "ejbca_export_copy",
+                                          "summary":  "EJBCA issuance export under ejbca/; duplicate of deploy tree on DUT when synced.",
+                                          "action":  "sync_with_parent_tls"
+                                      }
+                     },
+                     {
+                         "id":  "SECRET-9",
+                         "scanner":  "secret",
+                         "severity":  "HIGH",
+                         "scope":  {
+                                       "evidence_run":  "0.1.0-r64-20261112-092220",
+                                       "scanned_at":  "2026-11-12T10:22:32.3783065+01:00",
+                                       "trivy_report":  "trivy-apps-ccli.json",
+                                       "artifact":  "C:/Yahia/projects/CCLI/apps/ccli",
+                                       "scope_label":  "apps-ccli"
+                                   },
+                         "target":  "config/tls/ejbca/revoked.key",
+                         "secret":  {
+                                        "match_class":  "secret",
+                                        "rule_id":  "private-key",
+                                        "end_line":  26,
+                                        "start_line":  2,
+                                        "category":  "AsymmetricPrivateKey",
+                                        "title":  "Asymmetric Private Key"
+                                    },
+                         "device_key":  null,
+                         "analysis":  {
+                                          "shipping_impact":  "lab_only",
+                                          "status":  "ACCEPT",
+                                          "category":  "ejbca_export_copy",
+                                          "summary":  "EJBCA issuance export under ejbca/; duplicate of deploy tree on DUT when synced.",
+                                          "action":  "sync_with_parent_tls"
+                                      }
+                     },
+                     {
+                         "id":  "SECRET-10",
+                         "scanner":  "secret",
+                         "severity":  "HIGH",
+                         "scope":  {
+                                       "evidence_run":  "0.1.0-r64-20261112-092220",
+                                       "scanned_at":  "2026-11-12T10:22:32.3783065+01:00",
+                                       "trivy_report":  "trivy-apps-ccli.json",
+                                       "artifact":  "C:/Yahia/projects/CCLI/apps/ccli",
+                                       "scope_label":  "apps-ccli"
+                                   },
+                         "target":  "config/tls/ejbca/revoked_acse.key",
+                         "secret":  {
+                                        "match_class":  "secret",
+                                        "rule_id":  "private-key",
+                                        "end_line":  26,
+                                        "start_line":  2,
+                                        "category":  "AsymmetricPrivateKey",
+                                        "title":  "Asymmetric Private Key"
+                                    },
+                         "device_key":  null,
+                         "analysis":  {
+                                          "shipping_impact":  "lab_only",
+                                          "status":  "ACCEPT",
+                                          "category":  "ejbca_export_copy",
+                                          "summary":  "EJBCA issuance export under ejbca/; duplicate of deploy tree on DUT when synced.",
+                                          "action":  "sync_with_parent_tls"
+                                      }
+                     },
+                     {
+                         "id":  "SECRET-11",
+                         "scanner":  "secret",
+                         "severity":  "HIGH",
+                         "scope":  {
+                                       "evidence_run":  "0.1.0-r64-20261112-092220",
+                                       "scanned_at":  "2026-11-12T10:22:32.3783065+01:00",
+                                       "trivy_report":  "trivy-apps-ccli.json",
+                                       "artifact":  "C:/Yahia/projects/CCLI/apps/ccli",
+                                       "scope_label":  "apps-ccli"
+                                   },
+                         "target":  "config/tls/ejbca/revoked_acse_tsp.key",
+                         "secret":  {
+                                        "match_class":  "secret",
+                                        "rule_id":  "private-key",
+                                        "end_line":  26,
+                                        "start_line":  2,
+                                        "category":  "AsymmetricPrivateKey",
+                                        "title":  "Asymmetric Private Key"
+                                    },
+                         "device_key":  null,
+                         "analysis":  {
+                                          "shipping_impact":  "lab_only",
+                                          "status":  "ACCEPT",
+                                          "category":  "ejbca_export_copy",
+                                          "summary":  "EJBCA issuance export under ejbca/; duplicate of deploy tree on DUT when synced.",
+                                          "action":  "sync_with_parent_tls"
+                                      }
+                     },
+                     {
+                         "id":  "SECRET-12",
+                         "scanner":  "secret",
+                         "severity":  "HIGH",
+                         "scope":  {
+                                       "evidence_run":  "0.1.0-r64-20261112-092220",
+                                       "scanned_at":  "2026-11-12T10:22:32.3783065+01:00",
+                                       "trivy_report":  "trivy-apps-ccli.json",
+                                       "artifact":  "C:/Yahia/projects/CCLI/apps/ccli",
+                                       "scope_label":  "apps-ccli"
+                                   },
+                         "target":  "config/tls/ejbca/revoked_tsp.key",
+                         "secret":  {
+                                        "match_class":  "secret",
+                                        "rule_id":  "private-key",
+                                        "end_line":  26,
+                                        "start_line":  2,
+                                        "category":  "AsymmetricPrivateKey",
+                                        "title":  "Asymmetric Private Key"
+                                    },
+                         "device_key":  null,
+                         "analysis":  {
+                                          "shipping_impact":  "lab_only",
+                                          "status":  "ACCEPT",
+                                          "category":  "ejbca_export_copy",
+                                          "summary":  "EJBCA issuance export under ejbca/; duplicate of deploy tree on DUT when synced.",
+                                          "action":  "sync_with_parent_tls"
+                                      }
+                     },
+                     {
+                         "id":  "SECRET-13",
+                         "scanner":  "secret",
+                         "severity":  "HIGH",
+                         "scope":  {
+                                       "evidence_run":  "0.1.0-r64-20261112-092220",
+                                       "scanned_at":  "2026-11-12T10:22:32.3783065+01:00",
+                                       "trivy_report":  "trivy-apps-ccli.json",
+                                       "artifact":  "C:/Yahia/projects/CCLI/apps/ccli",
+                                       "scope_label":  "apps-ccli"
+                                   },
+                         "target":  "config/tls/ejbca/server.key",
+                         "secret":  {
+                                        "match_class":  "secret",
+                                        "rule_id":  "private-key",
+                                        "end_line":  26,
+                                        "start_line":  2,
+                                        "category":  "AsymmetricPrivateKey",
+                                        "title":  "Asymmetric Private Key"
+                                    },
+                         "device_key":  null,
+                         "analysis":  {
+                                          "shipping_impact":  "lab_only",
+                                          "status":  "ACCEPT",
+                                          "category":  "ejbca_export_copy",
+                                          "summary":  "EJBCA issuance export under ejbca/; duplicate of deploy tree on DUT when synced.",
+                                          "action":  "sync_with_parent_tls"
+                                      }
+                     },
+                     {
+                         "id":  "SECRET-14",
+                         "scanner":  "secret",
+                         "severity":  "HIGH",
+                         "scope":  {
+                                       "evidence_run":  "0.1.0-r64-20261112-092220",
+                                       "scanned_at":  "2026-11-12T10:22:32.3783065+01:00",
+                                       "trivy_report":  "trivy-apps-ccli.json",
+                                       "artifact":  "C:/Yahia/projects/CCLI/apps/ccli",
+                                       "scope_label":  "apps-ccli"
+                                   },
+                         "target":  "config/tls/ejbca/server_acse.key",
+                         "secret":  {
+                                        "match_class":  "secret",
+                                        "rule_id":  "private-key",
+                                        "end_line":  26,
+                                        "start_line":  2,
+                                        "category":  "AsymmetricPrivateKey",
+                                        "title":  "Asymmetric Private Key"
+                                    },
+                         "device_key":  null,
+                         "analysis":  {
+                                          "shipping_impact":  "lab_only",
+                                          "status":  "ACCEPT",
+                                          "category":  "ejbca_export_copy",
+                                          "summary":  "EJBCA issuance export under ejbca/; duplicate of deploy tree on DUT when synced.",
+                                          "action":  "sync_with_parent_tls"
+                                      }
+                     },
+                     {
+                         "id":  "SECRET-15",
+                         "scanner":  "secret",
+                         "severity":  "HIGH",
+                         "scope":  {
+                                       "evidence_run":  "0.1.0-r64-20261112-092220",
+                                       "scanned_at":  "2026-11-12T10:22:32.3783065+01:00",
+                                       "trivy_report":  "trivy-apps-ccli.json",
+                                       "artifact":  "C:/Yahia/projects/CCLI/apps/ccli",
+                                       "scope_label":  "apps-ccli"
+                                   },
+                         "target":  "config/tls/ejbca/viewer.key",
+                         "secret":  {
+                                        "match_class":  "secret",
+                                        "rule_id":  "private-key",
+                                        "end_line":  26,
+                                        "start_line":  2,
+                                        "category":  "AsymmetricPrivateKey",
+                                        "title":  "Asymmetric Private Key"
+                                    },
+                         "device_key":  null,
+                         "analysis":  {
+                                          "shipping_impact":  "lab_only",
+                                          "status":  "ACCEPT",
+                                          "category":  "ejbca_export_copy",
+                                          "summary":  "EJBCA issuance export under ejbca/; duplicate of deploy tree on DUT when synced.",
+                                          "action":  "sync_with_parent_tls"
+                                      }
+                     },
+                     {
+                         "id":  "SECRET-16",
+                         "scanner":  "secret",
+                         "severity":  "HIGH",
+                         "scope":  {
+                                       "evidence_run":  "0.1.0-r64-20261112-092220",
+                                       "scanned_at":  "2026-11-12T10:22:32.3783065+01:00",
+                                       "trivy_report":  "trivy-apps-ccli.json",
+                                       "artifact":  "C:/Yahia/projects/CCLI/apps/ccli",
+                                       "scope_label":  "apps-ccli"
+                                   },
+                         "target":  "config/tls/ejbca/viewer_acse.key",
+                         "secret":  {
+                                        "match_class":  "secret",
+                                        "rule_id":  "private-key",
+                                        "end_line":  26,
+                                        "start_line":  2,
+                                        "category":  "AsymmetricPrivateKey",
+                                        "title":  "Asymmetric Private Key"
+                                    },
+                         "device_key":  null,
+                         "analysis":  {
+                                          "shipping_impact":  "lab_only",
+                                          "status":  "ACCEPT",
+                                          "category":  "ejbca_export_copy",
+                                          "summary":  "EJBCA issuance export under ejbca/; duplicate of deploy tree on DUT when synced.",
+                                          "action":  "sync_with_parent_tls"
+                                      }
+                     },
+                     {
+                         "id":  "SECRET-17",
+                         "scanner":  "secret",
+                         "severity":  "HIGH",
+                         "scope":  {
+                                       "evidence_run":  "0.1.0-r64-20261112-092220",
+                                       "scanned_at":  "2026-11-12T10:22:32.3783065+01:00",
+                                       "trivy_report":  "trivy-apps-ccli.json",
+                                       "artifact":  "C:/Yahia/projects/CCLI/apps/ccli",
+                                       "scope_label":  "apps-ccli"
+                                   },
+                         "target":  "config/tls/p3_07_connect/client.key",
+                         "secret":  {
+                                        "match_class":  "secret",
+                                        "rule_id":  "private-key",
+                                        "end_line":  26,
+                                        "start_line":  2,
+                                        "category":  "AsymmetricPrivateKey",
+                                        "title":  "Asymmetric Private Key"
+                                    },
+                         "device_key":  null,
+                         "analysis":  {
+                                          "shipping_impact":  "lab_only",
+                                          "status":  "ACCEPT",
+                                          "category":  "lab_p3_07_connect_pki",
+                                          "summary":  "P3-07 Connect conformance PKI pack; not production SM-8.",
+                                          "action":  "document_in_evd"
+                                      }
+                     },
+                     {
+                         "id":  "SECRET-18",
+                         "scanner":  "secret",
+                         "severity":  "HIGH",
+                         "scope":  {
+                                       "evidence_run":  "0.1.0-r64-20261112-092220",
+                                       "scanned_at":  "2026-11-12T10:22:32.3783065+01:00",
+                                       "trivy_report":  "trivy-apps-ccli.json",
+                                       "artifact":  "C:/Yahia/projects/CCLI/apps/ccli",
+                                       "scope_label":  "apps-ccli"
+                                   },
+                         "target":  "config/tls/p3_07_connect/client_tsp.key",
+                         "secret":  {
+                                        "match_class":  "secret",
+                                        "rule_id":  "private-key",
+                                        "end_line":  26,
+                                        "start_line":  2,
+                                        "category":  "AsymmetricPrivateKey",
+                                        "title":  "Asymmetric Private Key"
+                                    },
+                         "device_key":  null,
+                         "analysis":  {
+                                          "shipping_impact":  "lab_only",
+                                          "status":  "ACCEPT",
+                                          "category":  "lab_p3_07_connect_pki",
+                                          "summary":  "P3-07 Connect conformance PKI pack; not production SM-8.",
+                                          "action":  "document_in_evd"
+                                      }
+                     },
+                     {
+                         "id":  "SECRET-19",
+                         "scanner":  "secret",
+                         "severity":  "HIGH",
+                         "scope":  {
+                                       "evidence_run":  "0.1.0-r64-20261112-092220",
+                                       "scanned_at":  "2026-11-12T10:22:32.3783065+01:00",
+                                       "trivy_report":  "trivy-apps-ccli.json",
+                                       "artifact":  "C:/Yahia/projects/CCLI/apps/ccli",
+                                       "scope_label":  "apps-ccli"
+                                   },
+                         "target":  "config/tls/p3_07_connect/revoked.key",
+                         "secret":  {
+                                        "match_class":  "secret",
+                                        "rule_id":  "private-key",
+                                        "end_line":  26,
+                                        "start_line":  2,
+                                        "category":  "AsymmetricPrivateKey",
+                                        "title":  "Asymmetric Private Key"
+                                    },
+                         "device_key":  null,
+                         "analysis":  {
+                                          "shipping_impact":  "lab_only",
+                                          "status":  "ACCEPT",
+                                          "category":  "lab_p3_07_connect_pki",
+                                          "summary":  "P3-07 Connect conformance PKI pack; not production SM-8.",
+                                          "action":  "document_in_evd"
+                                      }
+                     },
+                     {
+                         "id":  "SECRET-20",
+                         "scanner":  "secret",
+                         "severity":  "HIGH",
+                         "scope":  {
+                                       "evidence_run":  "0.1.0-r64-20261112-092220",
+                                       "scanned_at":  "2026-11-12T10:22:32.3783065+01:00",
+                                       "trivy_report":  "trivy-apps-ccli.json",
+                                       "artifact":  "C:/Yahia/projects/CCLI/apps/ccli",
+                                       "scope_label":  "apps-ccli"
+                                   },
+                         "target":  "config/tls/p3_07_connect/root_CA.key",
+                         "secret":  {
+                                        "match_class":  "secret",
+                                        "rule_id":  "private-key",
+                                        "end_line":  26,
+                                        "start_line":  2,
+                                        "category":  "AsymmetricPrivateKey",
+                                        "title":  "Asymmetric Private Key"
+                                    },
+                         "device_key":  null,
+                         "analysis":  {
+                                          "shipping_impact":  "lab_only",
+                                          "status":  "ACCEPT",
+                                          "category":  "lab_p3_07_connect_pki",
+                                          "summary":  "P3-07 Connect conformance PKI pack; not production SM-8.",
+                                          "action":  "document_in_evd"
+                                      }
+                     },
+                     {
+                         "id":  "SECRET-21",
+                         "scanner":  "secret",
+                         "severity":  "HIGH",
+                         "scope":  {
+                                       "evidence_run":  "0.1.0-r64-20261112-092220",
+                                       "scanned_at":  "2026-11-12T10:22:32.3783065+01:00",
+                                       "trivy_report":  "trivy-apps-ccli.json",
+                                       "artifact":  "C:/Yahia/projects/CCLI/apps/ccli",
+                                       "scope_label":  "apps-ccli"
+                                   },
+                         "target":  "config/tls/p3_07_connect/server.key",
+                         "secret":  {
+                                        "match_class":  "secret",
+                                        "rule_id":  "private-key",
+                                        "end_line":  26,
+                                        "start_line":  2,
+                                        "category":  "AsymmetricPrivateKey",
+                                        "title":  "Asymmetric Private Key"
+                                    },
+                         "device_key":  null,
+                         "analysis":  {
+                                          "shipping_impact":  "lab_only",
+                                          "status":  "ACCEPT",
+                                          "category":  "lab_p3_07_connect_pki",
+                                          "summary":  "P3-07 Connect conformance PKI pack; not production SM-8.",
+                                          "action":  "document_in_evd"
+                                      }
+                     },
+                     {
+                         "id":  "SECRET-22",
+                         "scanner":  "secret",
+                         "severity":  "HIGH",
+                         "scope":  {
+                                       "evidence_run":  "0.1.0-r64-20261112-092220",
+                                       "scanned_at":  "2026-11-12T10:22:32.3783065+01:00",
+                                       "trivy_report":  "trivy-apps-ccli.json",
+                                       "artifact":  "C:/Yahia/projects/CCLI/apps/ccli",
+                                       "scope_label":  "apps-ccli"
+                                   },
+                         "target":  "config/tls/p3_07_connect/server_acse.key",
+                         "secret":  {
+                                        "match_class":  "secret",
+                                        "rule_id":  "private-key",
+                                        "end_line":  26,
+                                        "start_line":  2,
+                                        "category":  "AsymmetricPrivateKey",
+                                        "title":  "Asymmetric Private Key"
+                                    },
+                         "device_key":  null,
+                         "analysis":  {
+                                          "shipping_impact":  "lab_only",
+                                          "status":  "ACCEPT",
+                                          "category":  "lab_p3_07_connect_pki",
+                                          "summary":  "P3-07 Connect conformance PKI pack; not production SM-8.",
+                                          "action":  "document_in_evd"
+                                      }
+                     },
+                     {
+                         "id":  "SECRET-23",
+                         "scanner":  "secret",
+                         "severity":  "HIGH",
+                         "scope":  {
+                                       "evidence_run":  "0.1.0-r64-20261112-092220",
+                                       "scanned_at":  "2026-11-12T10:22:32.3783065+01:00",
+                                       "trivy_report":  "trivy-apps-ccli.json",
+                                       "artifact":  "C:/Yahia/projects/CCLI/apps/ccli",
+                                       "scope_label":  "apps-ccli"
+                                   },
+                         "target":  "config/tls/p3_07_connect/server_combined.key",
+                         "secret":  {
+                                        "match_class":  "secret",
+                                        "rule_id":  "private-key",
+                                        "end_line":  26,
+                                        "start_line":  2,
+                                        "category":  "AsymmetricPrivateKey",
+                                        "title":  "Asymmetric Private Key"
+                                    },
+                         "device_key":  null,
+                         "analysis":  {
+                                          "shipping_impact":  "lab_only",
+                                          "status":  "ACCEPT",
+                                          "category":  "lab_p3_07_connect_pki",
+                                          "summary":  "P3-07 Connect conformance PKI pack; not production SM-8.",
+                                          "action":  "document_in_evd"
+                                      }
+                     },
+                     {
+                         "id":  "SECRET-24",
+                         "scanner":  "secret",
+                         "severity":  "HIGH",
+                         "scope":  {
+                                       "evidence_run":  "0.1.0-r64-20261112-092220",
+                                       "scanned_at":  "2026-11-12T10:22:32.3783065+01:00",
+                                       "trivy_report":  "trivy-apps-ccli.json",
+                                       "artifact":  "C:/Yahia/projects/CCLI/apps/ccli",
+                                       "scope_label":  "apps-ccli"
+                                   },
+                         "target":  "config/tls/p3_07_connect/viewer.key",
+                         "secret":  {
+                                        "match_class":  "secret",
+                                        "rule_id":  "private-key",
+                                        "end_line":  26,
+                                        "start_line":  2,
+                                        "category":  "AsymmetricPrivateKey",
+                                        "title":  "Asymmetric Private Key"
+                                    },
+                         "device_key":  null,
+                         "analysis":  {
+                                          "shipping_impact":  "lab_only",
+                                          "status":  "ACCEPT",
+                                          "category":  "lab_p3_07_connect_pki",
+                                          "summary":  "P3-07 Connect conformance PKI pack; not production SM-8.",
+                                          "action":  "document_in_evd"
+                                      }
+                     },
+                     {
+                         "id":  "SECRET-25",
+                         "scanner":  "secret",
+                         "severity":  "HIGH",
+                         "scope":  {
+                                       "evidence_run":  "0.1.0-r64-20261112-092220",
+                                       "scanned_at":  "2026-11-12T10:22:32.3783065+01:00",
+                                       "trivy_report":  "trivy-apps-ccli.json",
+                                       "artifact":  "C:/Yahia/projects/CCLI/apps/ccli",
+                                       "scope_label":  "apps-ccli"
+                                   },
+                         "target":  "config/tls/revoked.key",
+                         "secret":  {
+                                        "match_class":  "secret",
+                                        "rule_id":  "private-key",
+                                        "end_line":  26,
+                                        "start_line":  2,
+                                        "category":  "AsymmetricPrivateKey",
+                                        "title":  "Asymmetric Private Key"
+                                    },
+                         "device_key":  null,
+                         "analysis":  {
+                                          "shipping_impact":  "lab_only",
+                                          "status":  "ACCEPT",
+                                          "category":  "lab_annex_pki",
+                                          "summary":  "Annex-aligned lab PKI role key (server/client/viewer/revoked); expected Trivy secret hit.",
+                                          "action":  "verify_annex_pki_before_deploy"
+                                      }
+                     },
+                     {
+                         "id":  "SECRET-26",
+                         "scanner":  "secret",
+                         "severity":  "HIGH",
+                         "scope":  {
+                                       "evidence_run":  "0.1.0-r64-20261112-092220",
+                                       "scanned_at":  "2026-11-12T10:22:32.3783065+01:00",
+                                       "trivy_report":  "trivy-apps-ccli.json",
+                                       "artifact":  "C:/Yahia/projects/CCLI/apps/ccli",
+                                       "scope_label":  "apps-ccli"
+                                   },
+                         "target":  "config/tls/revoked_acse.key",
+                         "secret":  {
+                                        "match_class":  "secret",
+                                        "rule_id":  "private-key",
+                                        "end_line":  26,
+                                        "start_line":  2,
+                                        "category":  "AsymmetricPrivateKey",
+                                        "title":  "Asymmetric Private Key"
+                                    },
+                         "device_key":  null,
+                         "analysis":  {
+                                          "shipping_impact":  "lab_only",
+                                          "status":  "ACCEPT",
+                                          "category":  "lab_annex_pki",
+                                          "summary":  "Annex-aligned lab PKI role key (server/client/viewer/revoked); expected Trivy secret hit.",
+                                          "action":  "verify_annex_pki_before_deploy"
+                                      }
+                     },
+                     {
+                         "id":  "SECRET-27",
+                         "scanner":  "secret",
+                         "severity":  "HIGH",
+                         "scope":  {
+                                       "evidence_run":  "0.1.0-r64-20261112-092220",
+                                       "scanned_at":  "2026-11-12T10:22:32.3783065+01:00",
+                                       "trivy_report":  "trivy-apps-ccli.json",
+                                       "artifact":  "C:/Yahia/projects/CCLI/apps/ccli",
+                                       "scope_label":  "apps-ccli"
+                                   },
+                         "target":  "config/tls/revoked_acse_tsp.key",
+                         "secret":  {
+                                        "match_class":  "secret",
+                                        "rule_id":  "private-key",
+                                        "end_line":  26,
+                                        "start_line":  2,
+                                        "category":  "AsymmetricPrivateKey",
+                                        "title":  "Asymmetric Private Key"
+                                    },
+                         "device_key":  null,
+                         "analysis":  {
+                                          "shipping_impact":  "lab_only",
+                                          "status":  "ACCEPT",
+                                          "category":  "lab_annex_pki",
+                                          "summary":  "Annex-aligned lab PKI role key (server/client/viewer/revoked); expected Trivy secret hit.",
+                                          "action":  "verify_annex_pki_before_deploy"
+                                      }
+                     },
+                     {
+                         "id":  "SECRET-28",
+                         "scanner":  "secret",
+                         "severity":  "HIGH",
+                         "scope":  {
+                                       "evidence_run":  "0.1.0-r64-20261112-092220",
+                                       "scanned_at":  "2026-11-12T10:22:32.3783065+01:00",
+                                       "trivy_report":  "trivy-apps-ccli.json",
+                                       "artifact":  "C:/Yahia/projects/CCLI/apps/ccli",
+                                       "scope_label":  "apps-ccli"
+                                   },
+                         "target":  "config/tls/revoked_tsp.key",
+                         "secret":  {
+                                        "match_class":  "secret",
+                                        "rule_id":  "private-key",
+                                        "end_line":  26,
+                                        "start_line":  2,
+                                        "category":  "AsymmetricPrivateKey",
+                                        "title":  "Asymmetric Private Key"
+                                    },
+                         "device_key":  null,
+                         "analysis":  {
+                                          "shipping_impact":  "lab_only",
+                                          "status":  "ACCEPT",
+                                          "category":  "lab_annex_pki",
+                                          "summary":  "Annex-aligned lab PKI role key (server/client/viewer/revoked); expected Trivy secret hit.",
+                                          "action":  "verify_annex_pki_before_deploy"
+                                      }
+                     },
+                     {
+                         "id":  "SECRET-29",
+                         "scanner":  "secret",
+                         "severity":  "HIGH",
+                         "scope":  {
+                                       "evidence_run":  "0.1.0-r64-20261112-092220",
+                                       "scanned_at":  "2026-11-12T10:22:32.3783065+01:00",
+                                       "trivy_report":  "trivy-apps-ccli.json",
+                                       "artifact":  "C:/Yahia/projects/CCLI/apps/ccli",
+                                       "scope_label":  "apps-ccli"
+                                   },
+                         "target":  "config/tls/root_CA.key",
+                         "secret":  {
+                                        "match_class":  "secret",
+                                        "rule_id":  "private-key",
+                                        "end_line":  26,
+                                        "start_line":  2,
+                                        "category":  "AsymmetricPrivateKey",
+                                        "title":  "Asymmetric Private Key"
+                                    },
+                         "device_key":  null,
+                         "analysis":  {
+                                          "shipping_impact":  "lab_only",
+                                          "status":  "ACCEPT",
+                                          "category":  "lab_ca_private_key",
+                                          "summary":  "Lab CA private key (EJBCA CCLI-Lab-CA); required for bench PKI, not production trust anchor.",
+                                          "action":  "never_field_flash_as_production"
+                                      }
+                     },
+                     {
+                         "id":  "SECRET-30",
+                         "scanner":  "secret",
+                         "severity":  "HIGH",
+                         "scope":  {
+                                       "evidence_run":  "0.1.0-r64-20261112-092220",
+                                       "scanned_at":  "2026-11-12T10:22:32.3783065+01:00",
+                                       "trivy_report":  "trivy-apps-ccli.json",
+                                       "artifact":  "C:/Yahia/projects/CCLI/apps/ccli",
+                                       "scope_label":  "apps-ccli"
+                                   },
+                         "target":  "config/tls/server.key",
+                         "secret":  {
+                                        "match_class":  "secret",
+                                        "rule_id":  "private-key",
+                                        "end_line":  26,
+                                        "start_line":  2,
+                                        "category":  "AsymmetricPrivateKey",
+                                        "title":  "Asymmetric Private Key"
+                                    },
+                         "device_key":  null,
+                         "analysis":  {
+                                          "shipping_impact":  "lab_only",
+                                          "status":  "ACCEPT",
+                                          "category":  "lab_annex_pki",
+                                          "summary":  "Annex-aligned lab PKI role key (server/client/viewer/revoked); expected Trivy secret hit.",
+                                          "action":  "verify_annex_pki_before_deploy"
+                                      }
+                     },
+                     {
+                         "id":  "SECRET-31",
+                         "scanner":  "secret",
+                         "severity":  "HIGH",
+                         "scope":  {
+                                       "evidence_run":  "0.1.0-r64-20261112-092220",
+                                       "scanned_at":  "2026-11-12T10:22:32.3783065+01:00",
+                                       "trivy_report":  "trivy-apps-ccli.json",
+                                       "artifact":  "C:/Yahia/projects/CCLI/apps/ccli",
+                                       "scope_label":  "apps-ccli"
+                                   },
+                         "target":  "config/tls/server_acse.key",
+                         "secret":  {
+                                        "match_class":  "secret",
+                                        "rule_id":  "private-key",
+                                        "end_line":  26,
+                                        "start_line":  2,
+                                        "category":  "AsymmetricPrivateKey",
+                                        "title":  "Asymmetric Private Key"
+                                    },
+                         "device_key":  null,
+                         "analysis":  {
+                                          "shipping_impact":  "lab_only",
+                                          "status":  "ACCEPT",
+                                          "category":  "lab_annex_pki",
+                                          "summary":  "Annex-aligned lab PKI role key (server/client/viewer/revoked); expected Trivy secret hit.",
+                                          "action":  "verify_annex_pki_before_deploy"
+                                      }
+                     },
+                     {
+                         "id":  "SECRET-32",
+                         "scanner":  "secret",
+                         "severity":  "HIGH",
+                         "scope":  {
+                                       "evidence_run":  "0.1.0-r64-20261112-092220",
+                                       "scanned_at":  "2026-11-12T10:22:32.3783065+01:00",
+                                       "trivy_report":  "trivy-apps-ccli.json",
+                                       "artifact":  "C:/Yahia/projects/CCLI/apps/ccli",
+                                       "scope_label":  "apps-ccli"
+                                   },
+                         "target":  "config/tls/server_combined.key",
+                         "secret":  {
+                                        "match_class":  "secret",
+                                        "rule_id":  "private-key",
+                                        "end_line":  26,
+                                        "start_line":  2,
+                                        "category":  "AsymmetricPrivateKey",
+                                        "title":  "Asymmetric Private Key"
+                                    },
+                         "device_key":  null,
+                         "analysis":  {
+                                          "shipping_impact":  "lab_only",
+                                          "status":  "ACCEPT",
+                                          "category":  "lab_annex_pki",
+                                          "summary":  "Annex-aligned lab PKI role key (server/client/viewer/revoked); expected Trivy secret hit.",
+                                          "action":  "verify_annex_pki_before_deploy"
+                                      }
+                     },
+                     {
+                         "id":  "SECRET-33",
+                         "scanner":  "secret",
+                         "severity":  "HIGH",
+                         "scope":  {
+                                       "evidence_run":  "0.1.0-r64-20261112-092220",
+                                       "scanned_at":  "2026-11-12T10:22:32.3783065+01:00",
+                                       "trivy_report":  "trivy-apps-ccli.json",
+                                       "artifact":  "C:/Yahia/projects/CCLI/apps/ccli",
+                                       "scope_label":  "apps-ccli"
+                                   },
+                         "target":  "config/tls/viewer.key",
+                         "secret":  {
+                                        "match_class":  "secret",
+                                        "rule_id":  "private-key",
+                                        "end_line":  26,
+                                        "start_line":  2,
+                                        "category":  "AsymmetricPrivateKey",
+                                        "title":  "Asymmetric Private Key"
+                                    },
+                         "device_key":  null,
+                         "analysis":  {
+                                          "shipping_impact":  "lab_only",
+                                          "status":  "ACCEPT",
+                                          "category":  "lab_annex_pki",
+                                          "summary":  "Annex-aligned lab PKI role key (server/client/viewer/revoked); expected Trivy secret hit.",
+                                          "action":  "verify_annex_pki_before_deploy"
+                                      }
+                     },
+                     {
+                         "id":  "SECRET-34",
+                         "scanner":  "secret",
+                         "severity":  "HIGH",
+                         "scope":  {
+                                       "evidence_run":  "0.1.0-r64-20261112-092220",
+                                       "scanned_at":  "2026-11-12T10:22:51.0459833+01:00",
+                                       "trivy_report":  "trivy-product-apps-ccli.json",
+                                       "artifact":  "C:/Yahia/projects/CCLI/product/apps/ccli",
+                                       "scope_label":  "product-apps-ccli"
+                                   },
+                         "target":  "config/tls/client.key",
+                         "secret":  {
+                                        "match_class":  "secret",
+                                        "rule_id":  "private-key",
+                                        "end_line":  26,
+                                        "start_line":  2,
+                                        "category":  "AsymmetricPrivateKey",
+                                        "title":  "Asymmetric Private Key"
+                                    },
+                         "device_key":  null,
+                         "analysis":  {
+                                          "shipping_impact":  "lab_only",
+                                          "status":  "ACCEPT",
+                                          "category":  "lab_annex_pki",
+                                          "summary":  "Annex-aligned lab PKI role key (server/client/viewer/revoked); expected Trivy secret hit.",
+                                          "action":  "verify_annex_pki_before_deploy"
+                                      }
+                     },
+                     {
+                         "id":  "SECRET-35",
+                         "scanner":  "secret",
+                         "severity":  "HIGH",
+                         "scope":  {
+                                       "evidence_run":  "0.1.0-r64-20261112-092220",
+                                       "scanned_at":  "2026-11-12T10:22:51.0459833+01:00",
+                                       "trivy_report":  "trivy-product-apps-ccli.json",
+                                       "artifact":  "C:/Yahia/projects/CCLI/product/apps/ccli",
+                                       "scope_label":  "product-apps-ccli"
+                                   },
+                         "target":  "config/tls/client_tsp.key",
+                         "secret":  {
+                                        "match_class":  "secret",
+                                        "rule_id":  "private-key",
+                                        "end_line":  26,
+                                        "start_line":  2,
+                                        "category":  "AsymmetricPrivateKey",
+                                        "title":  "Asymmetric Private Key"
+                                    },
+                         "device_key":  null,
+                         "analysis":  {
+                                          "shipping_impact":  "lab_only",
+                                          "status":  "ACCEPT",
+                                          "category":  "lab_annex_pki",
+                                          "summary":  "Annex-aligned lab PKI role key (server/client/viewer/revoked); expected Trivy secret hit.",
+                                          "action":  "verify_annex_pki_before_deploy"
+                                      }
+                     },
+                     {
+                         "id":  "SECRET-36",
+                         "scanner":  "secret",
+                         "severity":  "HIGH",
+                         "scope":  {
+                                       "evidence_run":  "0.1.0-r64-20261112-092220",
+                                       "scanned_at":  "2026-11-12T10:22:51.0459833+01:00",
+                                       "trivy_report":  "trivy-product-apps-ccli.json",
+                                       "artifact":  "C:/Yahia/projects/CCLI/product/apps/ccli",
+                                       "scope_label":  "product-apps-ccli"
+                                   },
+                         "target":  "config/tls/ejbca/client.key",
+                         "secret":  {
+                                        "match_class":  "secret",
+                                        "rule_id":  "private-key",
+                                        "end_line":  26,
+                                        "start_line":  2,
+                                        "category":  "AsymmetricPrivateKey",
+                                        "title":  "Asymmetric Private Key"
+                                    },
+                         "device_key":  null,
+                         "analysis":  {
+                                          "shipping_impact":  "lab_only",
+                                          "status":  "ACCEPT",
+                                          "category":  "ejbca_export_copy",
+                                          "summary":  "EJBCA issuance export under ejbca/; duplicate of deploy tree on DUT when synced.",
+                                          "action":  "sync_with_parent_tls"
+                                      }
+                     },
+                     {
+                         "id":  "SECRET-37",
+                         "scanner":  "secret",
+                         "severity":  "HIGH",
+                         "scope":  {
+                                       "evidence_run":  "0.1.0-r64-20261112-092220",
+                                       "scanned_at":  "2026-11-12T10:22:51.0459833+01:00",
+                                       "trivy_report":  "trivy-product-apps-ccli.json",
+                                       "artifact":  "C:/Yahia/projects/CCLI/product/apps/ccli",
+                                       "scope_label":  "product-apps-ccli"
+                                   },
+                         "target":  "config/tls/ejbca/client_tsp.key",
+                         "secret":  {
+                                        "match_class":  "secret",
+                                        "rule_id":  "private-key",
+                                        "end_line":  26,
+                                        "start_line":  2,
+                                        "category":  "AsymmetricPrivateKey",
+                                        "title":  "Asymmetric Private Key"
+                                    },
+                         "device_key":  null,
+                         "analysis":  {
+                                          "shipping_impact":  "lab_only",
+                                          "status":  "ACCEPT",
+                                          "category":  "ejbca_export_copy",
+                                          "summary":  "EJBCA issuance export under ejbca/; duplicate of deploy tree on DUT when synced.",
+                                          "action":  "sync_with_parent_tls"
+                                      }
+                     },
+                     {
+                         "id":  "SECRET-38",
+                         "scanner":  "secret",
+                         "severity":  "HIGH",
+                         "scope":  {
+                                       "evidence_run":  "0.1.0-r64-20261112-092220",
+                                       "scanned_at":  "2026-11-12T10:22:51.0459833+01:00",
+                                       "trivy_report":  "trivy-product-apps-ccli.json",
+                                       "artifact":  "C:/Yahia/projects/CCLI/product/apps/ccli",
+                                       "scope_label":  "product-apps-ccli"
+                                   },
+                         "target":  "config/tls/ejbca/revoked.key",
+                         "secret":  {
+                                        "match_class":  "secret",
+                                        "rule_id":  "private-key",
+                                        "end_line":  26,
+                                        "start_line":  2,
+                                        "category":  "AsymmetricPrivateKey",
+                                        "title":  "Asymmetric Private Key"
+                                    },
+                         "device_key":  null,
+                         "analysis":  {
+                                          "shipping_impact":  "lab_only",
+                                          "status":  "ACCEPT",
+                                          "category":  "ejbca_export_copy",
+                                          "summary":  "EJBCA issuance export under ejbca/; duplicate of deploy tree on DUT when synced.",
+                                          "action":  "sync_with_parent_tls"
+                                      }
+                     },
+                     {
+                         "id":  "SECRET-39",
+                         "scanner":  "secret",
+                         "severity":  "HIGH",
+                         "scope":  {
+                                       "evidence_run":  "0.1.0-r64-20261112-092220",
+                                       "scanned_at":  "2026-11-12T10:22:51.0459833+01:00",
+                                       "trivy_report":  "trivy-product-apps-ccli.json",
+                                       "artifact":  "C:/Yahia/projects/CCLI/product/apps/ccli",
+                                       "scope_label":  "product-apps-ccli"
+                                   },
+                         "target":  "config/tls/ejbca/server.key",
+                         "secret":  {
+                                        "match_class":  "secret",
+                                        "rule_id":  "private-key",
+                                        "end_line":  26,
+                                        "start_line":  2,
+                                        "category":  "AsymmetricPrivateKey",
+                                        "title":  "Asymmetric Private Key"
+                                    },
+                         "device_key":  null,
+                         "analysis":  {
+                                          "shipping_impact":  "lab_only",
+                                          "status":  "ACCEPT",
+                                          "category":  "ejbca_export_copy",
+                                          "summary":  "EJBCA issuance export under ejbca/; duplicate of deploy tree on DUT when synced.",
+                                          "action":  "sync_with_parent_tls"
+                                      }
+                     },
+                     {
+                         "id":  "SECRET-40",
+                         "scanner":  "secret",
+                         "severity":  "HIGH",
+                         "scope":  {
+                                       "evidence_run":  "0.1.0-r64-20261112-092220",
+                                       "scanned_at":  "2026-11-12T10:22:51.0459833+01:00",
+                                       "trivy_report":  "trivy-product-apps-ccli.json",
+                                       "artifact":  "C:/Yahia/projects/CCLI/product/apps/ccli",
+                                       "scope_label":  "product-apps-ccli"
+                                   },
+                         "target":  "config/tls/ejbca/server_acse.key",
+                         "secret":  {
+                                        "match_class":  "secret",
+                                        "rule_id":  "private-key",
+                                        "end_line":  26,
+                                        "start_line":  2,
+                                        "category":  "AsymmetricPrivateKey",
+                                        "title":  "Asymmetric Private Key"
+                                    },
+                         "device_key":  null,
+                         "analysis":  {
+                                          "shipping_impact":  "lab_only",
+                                          "status":  "ACCEPT",
+                                          "category":  "ejbca_export_copy",
+                                          "summary":  "EJBCA issuance export under ejbca/; duplicate of deploy tree on DUT when synced.",
+                                          "action":  "sync_with_parent_tls"
+                                      }
+                     },
+                     {
+                         "id":  "SECRET-41",
+                         "scanner":  "secret",
+                         "severity":  "HIGH",
+                         "scope":  {
+                                       "evidence_run":  "0.1.0-r64-20261112-092220",
+                                       "scanned_at":  "2026-11-12T10:22:51.0459833+01:00",
+                                       "trivy_report":  "trivy-product-apps-ccli.json",
+                                       "artifact":  "C:/Yahia/projects/CCLI/product/apps/ccli",
+                                       "scope_label":  "product-apps-ccli"
+                                   },
+                         "target":  "config/tls/ejbca/viewer.key",
+                         "secret":  {
+                                        "match_class":  "secret",
+                                        "rule_id":  "private-key",
+                                        "end_line":  26,
+                                        "start_line":  2,
+                                        "category":  "AsymmetricPrivateKey",
+                                        "title":  "Asymmetric Private Key"
+                                    },
+                         "device_key":  null,
+                         "analysis":  {
+                                          "shipping_impact":  "lab_only",
+                                          "status":  "ACCEPT",
+                                          "category":  "ejbca_export_copy",
+                                          "summary":  "EJBCA issuance export under ejbca/; duplicate of deploy tree on DUT when synced.",
+                                          "action":  "sync_with_parent_tls"
+                                      }
+                     },
+                     {
+                         "id":  "SECRET-42",
+                         "scanner":  "secret",
+                         "severity":  "HIGH",
+                         "scope":  {
+                                       "evidence_run":  "0.1.0-r64-20261112-092220",
+                                       "scanned_at":  "2026-11-12T10:22:51.0459833+01:00",
+                                       "trivy_report":  "trivy-product-apps-ccli.json",
+                                       "artifact":  "C:/Yahia/projects/CCLI/product/apps/ccli",
+                                       "scope_label":  "product-apps-ccli"
+                                   },
+                         "target":  "config/tls/revoked.key",
+                         "secret":  {
+                                        "match_class":  "secret",
+                                        "rule_id":  "private-key",
+                                        "end_line":  26,
+                                        "start_line":  2,
+                                        "category":  "AsymmetricPrivateKey",
+                                        "title":  "Asymmetric Private Key"
+                                    },
+                         "device_key":  null,
+                         "analysis":  {
+                                          "shipping_impact":  "lab_only",
+                                          "status":  "ACCEPT",
+                                          "category":  "lab_annex_pki",
+                                          "summary":  "Annex-aligned lab PKI role key (server/client/viewer/revoked); expected Trivy secret hit.",
+                                          "action":  "verify_annex_pki_before_deploy"
+                                      }
+                     },
+                     {
+                         "id":  "SECRET-43",
+                         "scanner":  "secret",
+                         "severity":  "HIGH",
+                         "scope":  {
+                                       "evidence_run":  "0.1.0-r64-20261112-092220",
+                                       "scanned_at":  "2026-11-12T10:22:51.0459833+01:00",
+                                       "trivy_report":  "trivy-product-apps-ccli.json",
+                                       "artifact":  "C:/Yahia/projects/CCLI/product/apps/ccli",
+                                       "scope_label":  "product-apps-ccli"
+                                   },
+                         "target":  "config/tls/root_CA.key",
+                         "secret":  {
+                                        "match_class":  "secret",
+                                        "rule_id":  "private-key",
+                                        "end_line":  26,
+                                        "start_line":  2,
+                                        "category":  "AsymmetricPrivateKey",
+                                        "title":  "Asymmetric Private Key"
+                                    },
+                         "device_key":  null,
+                         "analysis":  {
+                                          "shipping_impact":  "lab_only",
+                                          "status":  "ACCEPT",
+                                          "category":  "lab_ca_private_key",
+                                          "summary":  "Lab CA private key (EJBCA CCLI-Lab-CA); required for bench PKI, not production trust anchor.",
+                                          "action":  "never_field_flash_as_production"
+                                      }
+                     },
+                     {
+                         "id":  "SECRET-44",
+                         "scanner":  "secret",
+                         "severity":  "HIGH",
+                         "scope":  {
+                                       "evidence_run":  "0.1.0-r64-20261112-092220",
+                                       "scanned_at":  "2026-11-12T10:22:51.0459833+01:00",
+                                       "trivy_report":  "trivy-product-apps-ccli.json",
+                                       "artifact":  "C:/Yahia/projects/CCLI/product/apps/ccli",
+                                       "scope_label":  "product-apps-ccli"
+                                   },
+                         "target":  "config/tls/server.key",
+                         "secret":  {
+                                        "match_class":  "secret",
+                                        "rule_id":  "private-key",
+                                        "end_line":  26,
+                                        "start_line":  2,
+                                        "category":  "AsymmetricPrivateKey",
+                                        "title":  "Asymmetric Private Key"
+                                    },
+                         "device_key":  null,
+                         "analysis":  {
+                                          "shipping_impact":  "lab_only",
+                                          "status":  "ACCEPT",
+                                          "category":  "lab_annex_pki",
+                                          "summary":  "Annex-aligned lab PKI role key (server/client/viewer/revoked); expected Trivy secret hit.",
+                                          "action":  "verify_annex_pki_before_deploy"
+                                      }
+                     },
+                     {
+                         "id":  "SECRET-45",
+                         "scanner":  "secret",
+                         "severity":  "HIGH",
+                         "scope":  {
+                                       "evidence_run":  "0.1.0-r64-20261112-092220",
+                                       "scanned_at":  "2026-11-12T10:22:51.0459833+01:00",
+                                       "trivy_report":  "trivy-product-apps-ccli.json",
+                                       "artifact":  "C:/Yahia/projects/CCLI/product/apps/ccli",
+                                       "scope_label":  "product-apps-ccli"
+                                   },
+                         "target":  "config/tls/server_acse.key",
+                         "secret":  {
+                                        "match_class":  "secret",
+                                        "rule_id":  "private-key",
+                                        "end_line":  26,
+                                        "start_line":  2,
+                                        "category":  "AsymmetricPrivateKey",
+                                        "title":  "Asymmetric Private Key"
+                                    },
+                         "device_key":  null,
+                         "analysis":  {
+                                          "shipping_impact":  "lab_only",
+                                          "status":  "ACCEPT",
+                                          "category":  "lab_annex_pki",
+                                          "summary":  "Annex-aligned lab PKI role key (server/client/viewer/revoked); expected Trivy secret hit.",
+                                          "action":  "verify_annex_pki_before_deploy"
+                                      }
+                     },
+                     {
+                         "id":  "SECRET-46",
+                         "scanner":  "secret",
+                         "severity":  "HIGH",
+                         "scope":  {
+                                       "evidence_run":  "0.1.0-r64-20261112-092220",
+                                       "scanned_at":  "2026-11-12T10:22:51.0459833+01:00",
+                                       "trivy_report":  "trivy-product-apps-ccli.json",
+                                       "artifact":  "C:/Yahia/projects/CCLI/product/apps/ccli",
+                                       "scope_label":  "product-apps-ccli"
+                                   },
+                         "target":  "config/tls/server_combined.key",
+                         "secret":  {
+                                        "match_class":  "secret",
+                                        "rule_id":  "private-key",
+                                        "end_line":  26,
+                                        "start_line":  2,
+                                        "category":  "AsymmetricPrivateKey",
+                                        "title":  "Asymmetric Private Key"
+                                    },
+                         "device_key":  null,
+                         "analysis":  {
+                                          "shipping_impact":  "lab_only",
+                                          "status":  "ACCEPT",
+                                          "category":  "lab_annex_pki",
+                                          "summary":  "Annex-aligned lab PKI role key (server/client/viewer/revoked); expected Trivy secret hit.",
+                                          "action":  "verify_annex_pki_before_deploy"
+                                      }
+                     },
+                     {
+                         "id":  "SECRET-47",
+                         "scanner":  "secret",
+                         "severity":  "HIGH",
+                         "scope":  {
+                                       "evidence_run":  "0.1.0-r64-20261112-092220",
+                                       "scanned_at":  "2026-11-12T10:22:51.0459833+01:00",
+                                       "trivy_report":  "trivy-product-apps-ccli.json",
+                                       "artifact":  "C:/Yahia/projects/CCLI/product/apps/ccli",
+                                       "scope_label":  "product-apps-ccli"
+                                   },
+                         "target":  "config/tls/viewer.key",
+                         "secret":  {
+                                        "match_class":  "secret",
+                                        "rule_id":  "private-key",
+                                        "end_line":  26,
+                                        "start_line":  2,
+                                        "category":  "AsymmetricPrivateKey",
+                                        "title":  "Asymmetric Private Key"
+                                    },
+                         "device_key":  null,
+                         "analysis":  {
+                                          "shipping_impact":  "lab_only",
+                                          "status":  "ACCEPT",
+                                          "category":  "lab_annex_pki",
+                                          "summary":  "Annex-aligned lab PKI role key (server/client/viewer/revoked); expected Trivy secret hit.",
+                                          "action":  "verify_annex_pki_before_deploy"
+                                      }
+                     },
+                     {
+                         "id":  "SECRET-48",
+                         "scanner":  "secret",
+                         "severity":  "HIGH",
+                         "scope":  {
+                                       "evidence_run":  "0.1.0-r64-20261112-094123",
+                                       "scanned_at":  "2026-11-12T10:42:18.0595572+01:00",
+                                       "trivy_report":  "trivy-dut-rootfs.json",
+                                       "artifact":  "//wsl.localhost/Ubuntu/tmp/ccli-trivy-0.1.0-r64-20261112-094123",
+                                       "scope_label":  "dut-rootfs"
+                                   },
+                         "target":  "etc/ccli/tls/client.key",
+                         "secret":  {
+                                        "match_class":  "secret",
+                                        "rule_id":  "private-key",
+                                        "end_line":  26,
+                                        "start_line":  2,
+                                        "category":  "AsymmetricPrivateKey",
+                                        "title":  "Asymmetric Private Key"
+                                    },
+                         "device_key":  {
+                                            "alignment":  "DIFF",
+                                            "repo_path":  "apps/ccli/config/tls/client.key",
+                                            "repo_sha256":  "4becdd4560812c71c2910e78e520be7ee606335ebe480fadc8e62f53e6f1da88",
+                                            "dut_sha256":  "49ea576192179e1018a195cc9c239072ddabd087d8d81cc902b2f684d5556a87"
+                                        },
+                         "analysis":  {
+                                          "shipping_impact":  "lab_only",
+                                          "status":  "ACCEPT",
+                                          "category":  "lab_annex_pki",
+                                          "summary":  "Annex-aligned lab PKI role key (server/client/viewer/revoked); expected Trivy secret hit.",
+                                          "action":  "verify_annex_pki_before_deploy"
+                                      }
+                     },
+                     {
+                         "id":  "SECRET-49",
+                         "scanner":  "secret",
+                         "severity":  "HIGH",
+                         "scope":  {
+                                       "evidence_run":  "0.1.0-r64-20261112-094123",
+                                       "scanned_at":  "2026-11-12T10:42:18.0595572+01:00",
+                                       "trivy_report":  "trivy-dut-rootfs.json",
+                                       "artifact":  "//wsl.localhost/Ubuntu/tmp/ccli-trivy-0.1.0-r64-20261112-094123",
+                                       "scope_label":  "dut-rootfs"
+                                   },
+                         "target":  "etc/ccli/tls/client_acse.key",
+                         "secret":  {
+                                        "match_class":  "secret",
+                                        "rule_id":  "private-key",
+                                        "end_line":  26,
+                                        "start_line":  2,
+                                        "category":  "AsymmetricPrivateKey",
+                                        "title":  "Asymmetric Private Key"
+                                    },
+                         "device_key":  {
+                                            "alignment":  "MATCH",
+                                            "repo_path":  "apps/ccli/config/tls/client_acse.key",
+                                            "repo_sha256":  "7a7d7a2b0ee35ac5fa8820a3195ae92569d25333f15f9f4a762b003f0d9ac5b1",
+                                            "dut_sha256":  "7a7d7a2b0ee35ac5fa8820a3195ae92569d25333f15f9f4a762b003f0d9ac5b1"
+                                        },
+                         "analysis":  {
+                                          "shipping_impact":  "lab_only",
+                                          "status":  "ACCEPT",
+                                          "category":  "lab_annex_pki",
+                                          "summary":  "Annex-aligned lab PKI role key (server/client/viewer/revoked); expected Trivy secret hit.",
+                                          "action":  "verify_annex_pki_before_deploy"
+                                      }
+                     },
+                     {
+                         "id":  "SECRET-50",
+                         "scanner":  "secret",
+                         "severity":  "HIGH",
+                         "scope":  {
+                                       "evidence_run":  "0.1.0-r64-20261112-094123",
+                                       "scanned_at":  "2026-11-12T10:42:18.0595572+01:00",
+                                       "trivy_report":  "trivy-dut-rootfs.json",
+                                       "artifact":  "//wsl.localhost/Ubuntu/tmp/ccli-trivy-0.1.0-r64-20261112-094123",
+                                       "scope_label":  "dut-rootfs"
+                                   },
+                         "target":  "etc/ccli/tls/client_tsp.key",
+                         "secret":  {
+                                        "match_class":  "secret",
+                                        "rule_id":  "private-key",
+                                        "end_line":  26,
+                                        "start_line":  2,
+                                        "category":  "AsymmetricPrivateKey",
+                                        "title":  "Asymmetric Private Key"
+                                    },
+                         "device_key":  {
+                                            "alignment":  "DIFF",
+                                            "repo_path":  "apps/ccli/config/tls/client_tsp.key",
+                                            "repo_sha256":  "4becdd4560812c71c2910e78e520be7ee606335ebe480fadc8e62f53e6f1da88",
+                                            "dut_sha256":  "49ea576192179e1018a195cc9c239072ddabd087d8d81cc902b2f684d5556a87"
+                                        },
+                         "analysis":  {
+                                          "shipping_impact":  "lab_only",
+                                          "status":  "ACCEPT",
+                                          "category":  "lab_annex_pki",
+                                          "summary":  "Annex-aligned lab PKI role key (server/client/viewer/revoked); expected Trivy secret hit.",
+                                          "action":  "verify_annex_pki_before_deploy"
+                                      }
+                     },
+                     {
+                         "id":  "SECRET-51",
+                         "scanner":  "secret",
+                         "severity":  "HIGH",
+                         "scope":  {
+                                       "evidence_run":  "0.1.0-r64-20261112-094123",
+                                       "scanned_at":  "2026-11-12T10:42:18.0595572+01:00",
+                                       "trivy_report":  "trivy-dut-rootfs.json",
+                                       "artifact":  "//wsl.localhost/Ubuntu/tmp/ccli-trivy-0.1.0-r64-20261112-094123",
+                                       "scope_label":  "dut-rootfs"
+                                   },
+                         "target":  "etc/ccli/tls/ejbca/client.key",
+                         "secret":  {
+                                        "match_class":  "secret",
+                                        "rule_id":  "private-key",
+                                        "end_line":  26,
+                                        "start_line":  2,
+                                        "category":  "AsymmetricPrivateKey",
+                                        "title":  "Asymmetric Private Key"
+                                    },
+                         "device_key":  {
+                                            "alignment":  "DIFF",
+                                            "repo_path":  "apps/ccli/config/tls/ejbca/client.key",
+                                            "repo_sha256":  "4becdd4560812c71c2910e78e520be7ee606335ebe480fadc8e62f53e6f1da88",
+                                            "dut_sha256":  "9b4fe86849e5ae36b9ba9eed71438bba7f7d36deddb50d3adcedacab12c3d66b"
+                                        },
+                         "analysis":  {
+                                          "shipping_impact":  "lab_only",
+                                          "status":  "ACCEPT",
+                                          "category":  "ejbca_export_copy",
+                                          "summary":  "EJBCA issuance export under ejbca/; duplicate of deploy tree on DUT when synced.",
+                                          "action":  "sync_with_parent_tls"
+                                      }
+                     },
+                     {
+                         "id":  "SECRET-52",
+                         "scanner":  "secret",
+                         "severity":  "HIGH",
+                         "scope":  {
+                                       "evidence_run":  "0.1.0-r64-20261112-094123",
+                                       "scanned_at":  "2026-11-12T10:42:18.0595572+01:00",
+                                       "trivy_report":  "trivy-dut-rootfs.json",
+                                       "artifact":  "//wsl.localhost/Ubuntu/tmp/ccli-trivy-0.1.0-r64-20261112-094123",
+                                       "scope_label":  "dut-rootfs"
+                                   },
+                         "target":  "etc/ccli/tls/ejbca/client_tsp.key",
+                         "secret":  {
+                                        "match_class":  "secret",
+                                        "rule_id":  "private-key",
+                                        "end_line":  26,
+                                        "start_line":  2,
+                                        "category":  "AsymmetricPrivateKey",
+                                        "title":  "Asymmetric Private Key"
+                                    },
+                         "device_key":  {
+                                            "alignment":  "DIFF",
+                                            "repo_path":  "apps/ccli/config/tls/ejbca/client_tsp.key",
+                                            "repo_sha256":  "4becdd4560812c71c2910e78e520be7ee606335ebe480fadc8e62f53e6f1da88",
+                                            "dut_sha256":  "9b4fe86849e5ae36b9ba9eed71438bba7f7d36deddb50d3adcedacab12c3d66b"
+                                        },
+                         "analysis":  {
+                                          "shipping_impact":  "lab_only",
+                                          "status":  "ACCEPT",
+                                          "category":  "ejbca_export_copy",
+                                          "summary":  "EJBCA issuance export under ejbca/; duplicate of deploy tree on DUT when synced.",
+                                          "action":  "sync_with_parent_tls"
+                                      }
+                     },
+                     {
+                         "id":  "SECRET-53",
+                         "scanner":  "secret",
+                         "severity":  "HIGH",
+                         "scope":  {
+                                       "evidence_run":  "0.1.0-r64-20261112-094123",
+                                       "scanned_at":  "2026-11-12T10:42:18.0595572+01:00",
+                                       "trivy_report":  "trivy-dut-rootfs.json",
+                                       "artifact":  "//wsl.localhost/Ubuntu/tmp/ccli-trivy-0.1.0-r64-20261112-094123",
+                                       "scope_label":  "dut-rootfs"
+                                   },
+                         "target":  "etc/ccli/tls/ejbca/revoked.key",
+                         "secret":  {
+                                        "match_class":  "secret",
+                                        "rule_id":  "private-key",
+                                        "end_line":  26,
+                                        "start_line":  2,
+                                        "category":  "AsymmetricPrivateKey",
+                                        "title":  "Asymmetric Private Key"
+                                    },
+                         "device_key":  {
+                                            "alignment":  "DIFF",
+                                            "repo_path":  "apps/ccli/config/tls/ejbca/revoked.key",
+                                            "repo_sha256":  "49176265cce53775bbfbb112c505a985951988f38945cddb30be8c54e2b1a6ed",
+                                            "dut_sha256":  "d48d326afa7071203b6e963b7daa981ee8da0526a7acca0a3f7136efc9d3d4af"
+                                        },
+                         "analysis":  {
+                                          "shipping_impact":  "lab_only",
+                                          "status":  "ACCEPT",
+                                          "category":  "ejbca_export_copy",
+                                          "summary":  "EJBCA issuance export under ejbca/; duplicate of deploy tree on DUT when synced.",
+                                          "action":  "sync_with_parent_tls"
+                                      }
+                     },
+                     {
+                         "id":  "SECRET-54",
+                         "scanner":  "secret",
+                         "severity":  "HIGH",
+                         "scope":  {
+                                       "evidence_run":  "0.1.0-r64-20261112-094123",
+                                       "scanned_at":  "2026-11-12T10:42:18.0595572+01:00",
+                                       "trivy_report":  "trivy-dut-rootfs.json",
+                                       "artifact":  "//wsl.localhost/Ubuntu/tmp/ccli-trivy-0.1.0-r64-20261112-094123",
+                                       "scope_label":  "dut-rootfs"
+                                   },
+                         "target":  "etc/ccli/tls/ejbca/server.key",
+                         "secret":  {
+                                        "match_class":  "secret",
+                                        "rule_id":  "private-key",
+                                        "end_line":  26,
+                                        "start_line":  2,
+                                        "category":  "AsymmetricPrivateKey",
+                                        "title":  "Asymmetric Private Key"
+                                    },
+                         "device_key":  {
+                                            "alignment":  "DIFF",
+                                            "repo_path":  "apps/ccli/config/tls/ejbca/server.key",
+                                            "repo_sha256":  "16623277a6386aacdfd18bd6fda09101a87f18ad29e167dd8acb3a6b347e487a",
+                                            "dut_sha256":  "0025b3d50fb2fcfbc64d31906ea34fba9c3fccb876a685b01cfaa1435eeeb419"
+                                        },
+                         "analysis":  {
+                                          "shipping_impact":  "lab_only",
+                                          "status":  "ACCEPT",
+                                          "category":  "ejbca_export_copy",
+                                          "summary":  "EJBCA issuance export under ejbca/; duplicate of deploy tree on DUT when synced.",
+                                          "action":  "sync_with_parent_tls"
+                                      }
+                     },
+                     {
+                         "id":  "SECRET-55",
+                         "scanner":  "secret",
+                         "severity":  "HIGH",
+                         "scope":  {
+                                       "evidence_run":  "0.1.0-r64-20261112-094123",
+                                       "scanned_at":  "2026-11-12T10:42:18.0595572+01:00",
+                                       "trivy_report":  "trivy-dut-rootfs.json",
+                                       "artifact":  "//wsl.localhost/Ubuntu/tmp/ccli-trivy-0.1.0-r64-20261112-094123",
+                                       "scope_label":  "dut-rootfs"
+                                   },
+                         "target":  "etc/ccli/tls/ejbca/server_acse.key",
+                         "secret":  {
+                                        "match_class":  "secret",
+                                        "rule_id":  "private-key",
+                                        "end_line":  26,
+                                        "start_line":  2,
+                                        "category":  "AsymmetricPrivateKey",
+                                        "title":  "Asymmetric Private Key"
+                                    },
+                         "device_key":  {
+                                            "alignment":  "DIFF",
+                                            "repo_path":  "apps/ccli/config/tls/ejbca/server_acse.key",
+                                            "repo_sha256":  "54f4df26db310c50df9f9fc12bb35bfbc14de7bfb1675a8adbe5c06d047058e7",
+                                            "dut_sha256":  "d96d4d4bb14c640ee7f59b788472a5dfab5db34129c73b5fdf965f0491c07af0"
+                                        },
+                         "analysis":  {
+                                          "shipping_impact":  "lab_only",
+                                          "status":  "ACCEPT",
+                                          "category":  "ejbca_export_copy",
+                                          "summary":  "EJBCA issuance export under ejbca/; duplicate of deploy tree on DUT when synced.",
+                                          "action":  "sync_with_parent_tls"
+                                      }
+                     },
+                     {
+                         "id":  "SECRET-56",
+                         "scanner":  "secret",
+                         "severity":  "HIGH",
+                         "scope":  {
+                                       "evidence_run":  "0.1.0-r64-20261112-094123",
+                                       "scanned_at":  "2026-11-12T10:42:18.0595572+01:00",
+                                       "trivy_report":  "trivy-dut-rootfs.json",
+                                       "artifact":  "//wsl.localhost/Ubuntu/tmp/ccli-trivy-0.1.0-r64-20261112-094123",
+                                       "scope_label":  "dut-rootfs"
+                                   },
+                         "target":  "etc/ccli/tls/ejbca/viewer.key",
+                         "secret":  {
+                                        "match_class":  "secret",
+                                        "rule_id":  "private-key",
+                                        "end_line":  26,
+                                        "start_line":  2,
+                                        "category":  "AsymmetricPrivateKey",
+                                        "title":  "Asymmetric Private Key"
+                                    },
+                         "device_key":  {
+                                            "alignment":  "DIFF",
+                                            "repo_path":  "apps/ccli/config/tls/ejbca/viewer.key",
+                                            "repo_sha256":  "6c492ff0367df30b0d5cf5986e7963cafe745475bfe7ad95f1d03f9397218488",
+                                            "dut_sha256":  "022c95e139342ed3d97a327cd76bd96b1732319d03313604ae6a49de734e9906"
+                                        },
+                         "analysis":  {
+                                          "shipping_impact":  "lab_only",
+                                          "status":  "ACCEPT",
+                                          "category":  "ejbca_export_copy",
+                                          "summary":  "EJBCA issuance export under ejbca/; duplicate of deploy tree on DUT when synced.",
+                                          "action":  "sync_with_parent_tls"
+                                      }
+                     },
+                     {
+                         "id":  "SECRET-57",
+                         "scanner":  "secret",
+                         "severity":  "HIGH",
+                         "scope":  {
+                                       "evidence_run":  "0.1.0-r64-20261112-094123",
+                                       "scanned_at":  "2026-11-12T10:42:18.0595572+01:00",
+                                       "trivy_report":  "trivy-dut-rootfs.json",
+                                       "artifact":  "//wsl.localhost/Ubuntu/tmp/ccli-trivy-0.1.0-r64-20261112-094123",
+                                       "scope_label":  "dut-rootfs"
+                                   },
+                         "target":  "etc/ccli/tls/revoked.key",
+                         "secret":  {
+                                        "match_class":  "secret",
+                                        "rule_id":  "private-key",
+                                        "end_line":  26,
+                                        "start_line":  2,
+                                        "category":  "AsymmetricPrivateKey",
+                                        "title":  "Asymmetric Private Key"
+                                    },
+                         "device_key":  {
+                                            "alignment":  "DIFF",
+                                            "repo_path":  "apps/ccli/config/tls/revoked.key",
+                                            "repo_sha256":  "49176265cce53775bbfbb112c505a985951988f38945cddb30be8c54e2b1a6ed",
+                                            "dut_sha256":  "2a9d2448b939835b848252bf6852fecbad3fd3bc9a55265c8ac3f0b73af1985f"
+                                        },
+                         "analysis":  {
+                                          "shipping_impact":  "lab_only",
+                                          "status":  "ACCEPT",
+                                          "category":  "lab_annex_pki",
+                                          "summary":  "Annex-aligned lab PKI role key (server/client/viewer/revoked); expected Trivy secret hit.",
+                                          "action":  "verify_annex_pki_before_deploy"
+                                      }
+                     },
+                     {
+                         "id":  "SECRET-58",
+                         "scanner":  "secret",
+                         "severity":  "HIGH",
+                         "scope":  {
+                                       "evidence_run":  "0.1.0-r64-20261112-094123",
+                                       "scanned_at":  "2026-11-12T10:42:18.0595572+01:00",
+                                       "trivy_report":  "trivy-dut-rootfs.json",
+                                       "artifact":  "//wsl.localhost/Ubuntu/tmp/ccli-trivy-0.1.0-r64-20261112-094123",
+                                       "scope_label":  "dut-rootfs"
+                                   },
+                         "target":  "etc/ccli/tls/revoked_acse.key",
+                         "secret":  {
+                                        "match_class":  "secret",
+                                        "rule_id":  "private-key",
+                                        "end_line":  26,
+                                        "start_line":  2,
+                                        "category":  "AsymmetricPrivateKey",
+                                        "title":  "Asymmetric Private Key"
+                                    },
+                         "device_key":  {
+                                            "alignment":  "MATCH",
+                                            "repo_path":  "apps/ccli/config/tls/revoked_acse.key",
+                                            "repo_sha256":  "208bb39768966497d9f4229ef26636f38c8e5e162b5f044ebaf6d7b104b739f8",
+                                            "dut_sha256":  "208bb39768966497d9f4229ef26636f38c8e5e162b5f044ebaf6d7b104b739f8"
+                                        },
+                         "analysis":  {
+                                          "shipping_impact":  "lab_only",
+                                          "status":  "ACCEPT",
+                                          "category":  "lab_annex_pki",
+                                          "summary":  "Annex-aligned lab PKI role key (server/client/viewer/revoked); expected Trivy secret hit.",
+                                          "action":  "verify_annex_pki_before_deploy"
+                                      }
+                     },
+                     {
+                         "id":  "SECRET-59",
+                         "scanner":  "secret",
+                         "severity":  "HIGH",
+                         "scope":  {
+                                       "evidence_run":  "0.1.0-r64-20261112-094123",
+                                       "scanned_at":  "2026-11-12T10:42:18.0595572+01:00",
+                                       "trivy_report":  "trivy-dut-rootfs.json",
+                                       "artifact":  "//wsl.localhost/Ubuntu/tmp/ccli-trivy-0.1.0-r64-20261112-094123",
+                                       "scope_label":  "dut-rootfs"
+                                   },
+                         "target":  "etc/ccli/tls/root_CA.key",
+                         "secret":  {
+                                        "match_class":  "secret",
+                                        "rule_id":  "private-key",
+                                        "end_line":  26,
+                                        "start_line":  2,
+                                        "category":  "AsymmetricPrivateKey",
+                                        "title":  "Asymmetric Private Key"
+                                    },
+                         "device_key":  {
+                                            "alignment":  "MATCH",
+                                            "repo_path":  "apps/ccli/config/tls/root_CA.key",
+                                            "repo_sha256":  "e4060f6a5227fa532b4f7fa396fbcdb1a59e44629c635c846f3e492d53fe892c",
+                                            "dut_sha256":  "e4060f6a5227fa532b4f7fa396fbcdb1a59e44629c635c846f3e492d53fe892c"
+                                        },
+                         "analysis":  {
+                                          "shipping_impact":  "lab_only",
+                                          "status":  "ACCEPT",
+                                          "category":  "lab_ca_private_key",
+                                          "summary":  "Lab CA private key (EJBCA CCLI-Lab-CA); required for bench PKI, not production trust anchor.",
+                                          "action":  "never_field_flash_as_production"
+                                      }
+                     },
+                     {
+                         "id":  "SECRET-60",
+                         "scanner":  "secret",
+                         "severity":  "HIGH",
+                         "scope":  {
+                                       "evidence_run":  "0.1.0-r64-20261112-094123",
+                                       "scanned_at":  "2026-11-12T10:42:18.0595572+01:00",
+                                       "trivy_report":  "trivy-dut-rootfs.json",
+                                       "artifact":  "//wsl.localhost/Ubuntu/tmp/ccli-trivy-0.1.0-r64-20261112-094123",
+                                       "scope_label":  "dut-rootfs"
+                                   },
+                         "target":  "etc/ccli/tls/server.key",
+                         "secret":  {
+                                        "match_class":  "secret",
+                                        "rule_id":  "private-key",
+                                        "end_line":  26,
+                                        "start_line":  2,
+                                        "category":  "AsymmetricPrivateKey",
+                                        "title":  "Asymmetric Private Key"
+                                    },
+                         "device_key":  {
+                                            "alignment":  "DIFF",
+                                            "repo_path":  "apps/ccli/config/tls/server.key",
+                                            "repo_sha256":  "16623277a6386aacdfd18bd6fda09101a87f18ad29e167dd8acb3a6b347e487a",
+                                            "dut_sha256":  "34c03bc1767f06fdfbaa3445660ef6912fbcda2a8eadd5c5072442bc04d17c32"
+                                        },
+                         "analysis":  {
+                                          "shipping_impact":  "lab_only",
+                                          "status":  "ACCEPT",
+                                          "category":  "lab_annex_pki",
+                                          "summary":  "Annex-aligned lab PKI role key (server/client/viewer/revoked); expected Trivy secret hit.",
+                                          "action":  "verify_annex_pki_before_deploy"
+                                      }
+                     },
+                     {
+                         "id":  "SECRET-61",
+                         "scanner":  "secret",
+                         "severity":  "HIGH",
+                         "scope":  {
+                                       "evidence_run":  "0.1.0-r64-20261112-094123",
+                                       "scanned_at":  "2026-11-12T10:42:18.0595572+01:00",
+                                       "trivy_report":  "trivy-dut-rootfs.json",
+                                       "artifact":  "//wsl.localhost/Ubuntu/tmp/ccli-trivy-0.1.0-r64-20261112-094123",
+                                       "scope_label":  "dut-rootfs"
+                                   },
+                         "target":  "etc/ccli/tls/server_acse.key",
+                         "secret":  {
+                                        "match_class":  "secret",
+                                        "rule_id":  "private-key",
+                                        "end_line":  26,
+                                        "start_line":  2,
+                                        "category":  "AsymmetricPrivateKey",
+                                        "title":  "Asymmetric Private Key"
+                                    },
+                         "device_key":  {
+                                            "alignment":  "DIFF",
+                                            "repo_path":  "apps/ccli/config/tls/server_acse.key",
+                                            "repo_sha256":  "54f4df26db310c50df9f9fc12bb35bfbc14de7bfb1675a8adbe5c06d047058e7",
+                                            "dut_sha256":  "dc5db1104d1afb4a08e4363c0455c213e0692c75ecda2eb3ffa7d762c4bd9eac"
+                                        },
+                         "analysis":  {
+                                          "shipping_impact":  "lab_only",
+                                          "status":  "ACCEPT",
+                                          "category":  "lab_annex_pki",
+                                          "summary":  "Annex-aligned lab PKI role key (server/client/viewer/revoked); expected Trivy secret hit.",
+                                          "action":  "verify_annex_pki_before_deploy"
+                                      }
+                     },
+                     {
+                         "id":  "SECRET-62",
+                         "scanner":  "secret",
+                         "severity":  "HIGH",
+                         "scope":  {
+                                       "evidence_run":  "0.1.0-r64-20261112-094123",
+                                       "scanned_at":  "2026-11-12T10:42:18.0595572+01:00",
+                                       "trivy_report":  "trivy-dut-rootfs.json",
+                                       "artifact":  "//wsl.localhost/Ubuntu/tmp/ccli-trivy-0.1.0-r64-20261112-094123",
+                                       "scope_label":  "dut-rootfs"
+                                   },
+                         "target":  "etc/ccli/tls/server_combined.key",
+                         "secret":  {
+                                        "match_class":  "secret",
+                                        "rule_id":  "private-key",
+                                        "end_line":  26,
+                                        "start_line":  2,
+                                        "category":  "AsymmetricPrivateKey",
+                                        "title":  "Asymmetric Private Key"
+                                    },
+                         "device_key":  {
+                                            "alignment":  "DIFF",
+                                            "repo_path":  "apps/ccli/config/tls/server_combined.key",
+                                            "repo_sha256":  "e3760d1b0ecaa7d0f021349228fb71537261fe866c3657040fe419ed65aad8d3",
+                                            "dut_sha256":  "3c69f2e0f8bc3675b5836fb0d8270a079b2009b497db5b9884a337b249759755"
+                                        },
+                         "analysis":  {
+                                          "shipping_impact":  "lab_only",
+                                          "status":  "ACCEPT",
+                                          "category":  "lab_annex_pki",
+                                          "summary":  "Annex-aligned lab PKI role key (server/client/viewer/revoked); expected Trivy secret hit.",
+                                          "action":  "verify_annex_pki_before_deploy"
+                                      }
+                     },
+                     {
+                         "id":  "SECRET-63",
+                         "scanner":  "secret",
+                         "severity":  "HIGH",
+                         "scope":  {
+                                       "evidence_run":  "0.1.0-r64-20261112-094123",
+                                       "scanned_at":  "2026-11-12T10:42:18.0595572+01:00",
+                                       "trivy_report":  "trivy-dut-rootfs.json",
+                                       "artifact":  "//wsl.localhost/Ubuntu/tmp/ccli-trivy-0.1.0-r64-20261112-094123",
+                                       "scope_label":  "dut-rootfs"
+                                   },
+                         "target":  "etc/ccli/tls/viewer.key",
+                         "secret":  {
+                                        "match_class":  "secret",
+                                        "rule_id":  "private-key",
+                                        "end_line":  26,
+                                        "start_line":  2,
+                                        "category":  "AsymmetricPrivateKey",
+                                        "title":  "Asymmetric Private Key"
+                                    },
+                         "device_key":  {
+                                            "alignment":  "DIFF",
+                                            "repo_path":  "apps/ccli/config/tls/viewer.key",
+                                            "repo_sha256":  "6c492ff0367df30b0d5cf5986e7963cafe745475bfe7ad95f1d03f9397218488",
+                                            "dut_sha256":  "e713d0f96a991297c40ae77e25dda3f3bd13bc304d4c6e617a21d2a27d4cef02"
+                                        },
+                         "analysis":  {
+                                          "shipping_impact":  "lab_only",
+                                          "status":  "ACCEPT",
+                                          "category":  "lab_annex_pki",
+                                          "summary":  "Annex-aligned lab PKI role key (server/client/viewer/revoked); expected Trivy secret hit.",
+                                          "action":  "verify_annex_pki_before_deploy"
+                                      }
+                     },
+                     {
+                         "id":  "SECRET-64",
+                         "scanner":  "secret",
+                         "severity":  "HIGH",
+                         "scope":  {
+                                       "evidence_run":  "0.1.0-r64-20261112-094123",
+                                       "scanned_at":  "2026-11-12T10:42:18.0595572+01:00",
+                                       "trivy_report":  "trivy-dut-rootfs.json",
+                                       "artifact":  "//wsl.localhost/Ubuntu/tmp/ccli-trivy-0.1.0-r64-20261112-094123",
+                                       "scope_label":  "dut-rootfs"
+                                   },
+                         "target":  "etc/luci-encrypt/private.pem",
+                         "secret":  {
+                                        "match_class":  "secret",
+                                        "rule_id":  "private-key",
+                                        "end_line":  26,
+                                        "start_line":  2,
+                                        "category":  "AsymmetricPrivateKey",
+                                        "title":  "Asymmetric Private Key"
+                                    },
+                         "device_key":  null,
+                         "analysis":  {
+                                          "shipping_impact":  "platform_lab",
+                                          "status":  "ACCEPT",
+                                          "category":  "openwrt_luci_encrypt",
+                                          "summary":  "LuCI encryption key; bench provisioning artefact.",
+                                          "action":  "sm10_vendor"
+                                      }
+                     },
+                     {
+                         "id":  "SECRET-65",
+                         "scanner":  "secret",
+                         "severity":  "HIGH",
+                         "scope":  {
+                                       "evidence_run":  "0.1.0-r64-20261112-094123",
+                                       "scanned_at":  "2026-11-12T10:42:18.0595572+01:00",
+                                       "trivy_report":  "trivy-dut-rootfs.json",
+                                       "artifact":  "//wsl.localhost/Ubuntu/tmp/ccli-trivy-0.1.0-r64-20261112-094123",
+                                       "scope_label":  "dut-rootfs"
+                                   },
+                         "target":  "etc/uhttpd.key",
+                         "secret":  {
+                                        "match_class":  "secret",
+                                        "rule_id":  "private-key",
+                                        "end_line":  4,
+                                        "start_line":  2,
+                                        "category":  "AsymmetricPrivateKey",
+                                        "title":  "Asymmetric Private Key"
+                                    },
+                         "device_key":  null,
+                         "analysis":  {
+                                          "shipping_impact":  "platform_lab",
+                                          "status":  "ACCEPT",
+                                          "category":  "openwrt_luci_https",
+                                          "summary":  "OpenWrt uHTTPd HTTPS key on DUT; platform maintenance surface, not ccli app PKI.",
+                                          "action":  "sm10_vendor"
+                                      }
+                     }
+                 ]
+}

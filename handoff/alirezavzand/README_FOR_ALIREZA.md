@@ -1,8 +1,21 @@
 # CCLI unified cert — handoff for Alireza (@alirezavzand)
 
-**Date:** 2026-11-12 (P2 fw4 cyber normativa index added)  
+**Date:** 2026-11-12 (Trivy SCA r64 + P2 fw4 cyber normativa)  
 **Repo:** https://github.com/yahiagabereng-ctrl/CCLI  
 **GitHub:** `alirezavzand` (collaborator)
+
+---
+
+## Trivy SCA — 0.1.0-r64 (2026-11-12) — **start here for SVV-3 / findings JSON**
+
+**Git commit:** *(pinned after push)*
+
+| Item | Path |
+|------|------|
+| **Handoff** | **[TRIVY_SCA_R64_ALIREZA.md](TRIVY_SCA_R64_ALIREZA.md)** |
+| **Machine-readable** | [`lab/evidence/trivy/CCLI-TRIVY-FINDINGS-DETAIL-0.1.0-r64.json`](../../lab/evidence/trivy/CCLI-TRIVY-FINDINGS-DETAIL-0.1.0-r64.json) |
+| **Evidence narrative** | [`lab/evidence/trivy/EVD-SCA-CCI-r64-Trivy.md`](../../lab/evidence/trivy/EVD-SCA-CCI-r64-Trivy.md) |
+| **Chat blurb** | [`MESSAGE_TO_SEND.txt`](MESSAGE_TO_SEND.txt) (Trivy section) |
 
 ---
 

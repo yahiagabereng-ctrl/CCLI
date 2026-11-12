@@ -62,4 +62,11 @@ PC-A plant/logger (unchanged):
   fw4 matrix: lab/evidence/P2_fw4_NORMATIVA_COVERAGE_MATRIX.md
   Please: nft+uci export on DUT r601 · re-run P2-01/P2-03 · ss -tlnp for :3782/:2404
 
+**Trivy SCA 0.1.0-r64 (2026-11-12, git pull main):**
+  Commit: (pinned in README_FOR_ALIREZA — Trivy section)
+  Start: handoff/alirezavzand/TRIVY_SCA_R64_ALIREZA.md
+  JSON: lab/evidence/trivy/CCLI-TRIVY-FINDINGS-DETAIL-0.1.0-r64.json (65 findings, 0 blocking CVE)
+  EVD: lab/evidence/trivy/EVD-SCA-CCI-r64-Trivy.md
+  Please: skim JSON summary + any DIFF_device_repo rows; SM-10 for TesproOS platform CVE
+
 Yahia
