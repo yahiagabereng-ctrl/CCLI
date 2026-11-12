@@ -2,7 +2,7 @@
 
 **Date:** 2026-11-12  
 **Audience:** @alirezavzand (SVV-3 / SI-1 course evidence · firmware review)  
-**Git commit:** *(pinned after push — `git pull origin main`)*
+**Git commit:** **`47f2141`** — https://github.com/yahiagabereng-ctrl/CCLI/commit/47f2141 · `git pull origin main`
 
 ---
 

@@ -8,7 +8,7 @@
 
 ## Trivy SCA — 0.1.0-r64 (2026-11-12) — **start here for SVV-3 / findings JSON**
 
-**Git commit:** *(pinned after push)*
+**Git commit:** **`47f2141`** — `git pull origin main`
 
 | Item | Path |
 |------|------|
