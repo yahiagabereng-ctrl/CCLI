@@ -1,8 +1,22 @@
 # CCLI unified cert — handoff for Alireza (@alirezavzand)
 
-**Date:** 2026-10-23 (TG-544 V2 schematic handoff added)  
+**Date:** 2026-11-12 (P2 fw4 cyber normativa index added)  
 **Repo:** https://github.com/yahiagabereng-ctrl/CCLI  
 **GitHub:** `alirezavzand` (collaborator)
+
+---
+
+## P2 / fw4 vs cyber normativa (2026-11-12) — **start here for zones / firewall / 62443**
+
+**Git commit:** *(pinned in next commit on `main` after push — `git log -1 --oneline`)*
+
+| Item | Path |
+|------|------|
+| **Handoff** | **[P2_FW4_CYBER_NORMATIVA_ALIREZA.md](P2_FW4_CYBER_NORMATIVA_ALIREZA.md)** |
+| **All cyber series & annexes** | [`lab/evidence/CYBER_NORMATIVA_SERIES_COVERAGE.md`](../../lab/evidence/CYBER_NORMATIVA_SERIES_COVERAGE.md) |
+| **fw4 ↔ normativa (62 rows)** | [`lab/evidence/P2_fw4_NORMATIVA_COVERAGE_MATRIX.md`](../../lab/evidence/P2_fw4_NORMATIVA_COVERAGE_MATRIX.md) |
+| **Zones doc** | [`knowledge-base/08-engineering/CCI_62443_Zones.md`](../../knowledge-base/08-engineering/CCI_62443_Zones.md) |
+| **Chat blurb** | [`MESSAGE_TO_SEND.txt`](MESSAGE_TO_SEND.txt) (fw4 section) |
 
 ---
 

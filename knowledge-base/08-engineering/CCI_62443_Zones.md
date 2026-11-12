@@ -10,7 +10,7 @@
 **Programme link:** K6.4 · K3.3 · K6.3 · `ccli-tg500-lab-platform` · `ccli-tr400-user-manual-extract` · `ccli-cci-module-regs-class`  
 **Config anchor:** `apps/ccli/config/lab_tr400.yaml`  
 **Port-map diagram (signed P2-05):** `Architecture/Zones_62443_TG544_PortMap.drawio`  
-**Lab evidence:** `lab/evidence/O13_1_isolation_2026-09-25/P2_01_CROSS_PING_MATRIX.txt`
+**Lab evidence:** `lab/evidence/O13_1_isolation_2026-09-25/P2_01_CROSS_PING_MATRIX.txt` · **fw4 vs normativa:** `lab/evidence/P2_fw4_NORMATIVA_COVERAGE_MATRIX.md` · **all cyber series & annexes:** `lab/evidence/CYBER_NORMATIVA_SERIES_COVERAGE.md`
 
 ---
 
