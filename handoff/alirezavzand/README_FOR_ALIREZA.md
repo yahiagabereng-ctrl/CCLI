@@ -8,7 +8,7 @@
 
 ## P2 / fw4 vs cyber normativa (2026-11-12) — **start here for zones / firewall / 62443**
 
-**Git commit:** *(pinned in next commit on `main` after push — `git log -1 --oneline`)*
+**Git commit:** **`7bfa726`** — `git pull origin main`
 
 | Item | Path |
 |------|------|
