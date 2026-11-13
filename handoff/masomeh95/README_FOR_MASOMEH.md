@@ -1,7 +1,23 @@
 # CCLI — code handoff for Masomeh (masomeh95)
 
-**Date:** 2026-10-22  
+**Date:** 2026-11-13 (SBOM + SW architecture r64 added)  
 **Share via GitHub (other PC):** **[00_SHARE_VIA_GITHUB.md](00_SHARE_VIA_GITHUB.md)** ← start here  
+
+---
+
+## SBOM + software architecture — 0.1.0-r64 (2026-11-13)
+
+**Git commit:** *(pinned after push)*
+
+| Item | Path |
+|------|------|
+| **Handoff** | **[SBOM_SW_ARCHITECTURE_R64_MASOMEH.md](SBOM_SW_ARCHITECTURE_R64_MASOMEH.md)** |
+| **Architecture + what we implemented** | [`lab/evidence/EVD-SM-9-External-Components/CCLI_SW_ARCHITECTURE_AND_IMPLEMENTATION_0.1.0-r64.md`](../../lab/evidence/EVD-SM-9-External-Components/CCLI_SW_ARCHITECTURE_AND_IMPLEMENTATION_0.1.0-r64.md) |
+| **App SBOM JSON** | [`CCLI_APP_SBOM_0.1.0-r64.cdx.json`](../../lab/evidence/EVD-SM-9-External-Components/CCLI_APP_SBOM_0.1.0-r64.cdx.json) |
+| **Main application entry** | `apps/ccli/program/main.c` (full product loop) |
+| **Chat blurb** | [`MESSAGE_TO_SEND.txt`](MESSAGE_TO_SEND.txt) (SBOM section at end) |
+
+---
 **Repo:** https://github.com/yahiagabereng-ctrl/CCLI  
 **PC1 Connect session (git pull):** **[PC1_GITHUB_PULL_RUNBOOK.md](PC1_GITHUB_PULL_RUNBOOK.md)** — revision pin **P3-07-TSP-CONNECT**, frozen SSH/TLS, **`setup-pc1-p3-07-connect.ps1`**.  
 **5-LN EJBCA matrix:** **`setup-pc1-testpro-from-git.ps1`** · [PC1_PULL_TLS_DUT_ALIGNED.md](PC1_PULL_TLS_DUT_ALIGNED.md).

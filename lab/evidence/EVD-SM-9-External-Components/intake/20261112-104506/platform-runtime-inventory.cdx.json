@@ -1,0 +1,7221 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.5",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-11-12T09:47:07+00:00",
+    "tools": [
+      {
+        "vendor": "HiTEKS",
+        "name": "apk-list-to-cyclonedx",
+        "version": "1"
+      }
+    ],
+    "component": {
+      "type": "firmware",
+      "name": "TesproOS-runtime-installed",
+      "version": "TesproOS 32-2.1.0 r601-af70fcaaa2",
+      "description": "Live DUT inventory from apk list -I (not vendor image .bom.cdx.json); r601-af70fcaaa2"
+    },
+    "properties": [
+      {
+        "name": "ccli:note",
+        "value": "No vendor *.bom.cdx.json on running rootfs; runtime package list only"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "library",
+      "name": "apk-mbedtls",
+      "version": "3.0.2-r2",
+      "bom-ref": "pkg:apk/tesproos/apk-mbedtls@3.0.2-r2?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/apk-mbedtls@3.0.2-r2?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/system/apk"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0-only"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "attendedsysupgrade-common",
+      "version": "9",
+      "bom-ref": "pkg:apk/tesproos/attendedsysupgrade-common@9?arch=noarch",
+      "purl": "pkg:apk/tesproos/attendedsysupgrade-common@9?arch=noarch",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/packages/feeds/packages/utils/attendedsysupgrade-common"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "noarch"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "bacnet-stack",
+      "version": "1.3.5-r1",
+      "bom-ref": "pkg:apk/tesproos/bacnet-stack@1.3.5-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/bacnet-stack@1.3.5-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/tespro/bacnet-stack"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "base-files",
+      "version": "13~af70fcaaa2",
+      "bom-ref": "pkg:apk/tesproos/base-files@13~af70fcaaa2?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/base-files@13~af70fcaaa2?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/base-files"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "block-mount",
+      "version": "2025.10.03~12858e28-r1",
+      "bom-ref": "pkg:apk/tesproos/block-mount@2025.10.03~12858e28-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/block-mount@2025.10.03~12858e28-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/system/fstools"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "blockd",
+      "version": "2025.10.03~12858e28-r1",
+      "bom-ref": "pkg:apk/tesproos/blockd@2025.10.03~12858e28-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/blockd@2025.10.03~12858e28-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/system/fstools"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "blockdev",
+      "version": "2.41.3-r1",
+      "bom-ref": "pkg:apk/tesproos/blockdev@2.41.3-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/blockdev@2.41.3-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/utils/util-linux"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0-or-later"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "busybox",
+      "version": "1.37.0-r6",
+      "bom-ref": "pkg:apk/tesproos/busybox@1.37.0-r6?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/busybox@1.37.0-r6?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/utils/busybox"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "ca-bundle",
+      "version": "20250419-r2",
+      "bom-ref": "pkg:apk/tesproos/ca-bundle@20250419-r2?arch=noarch",
+      "purl": "pkg:apk/tesproos/ca-bundle@20250419-r2?arch=noarch",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/system/ca-certificates"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "noarch"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0-or-later MPL-2.0"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "ccli",
+      "version": "0.1.0-r51",
+      "bom-ref": "pkg:apk/tesproos/ccli@0.1.0-r51?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/ccli@0.1.0-r51?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "/mnt/d/CCLI/CCLI/CCLI/package/ccli"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Proprietary"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "cgi-io",
+      "version": "2025.12.11~658b14bd-r1",
+      "bom-ref": "pkg:apk/tesproos/cgi-io@2025.12.11~658b14bd-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/cgi-io@2025.12.11~658b14bd-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/packages/feeds/packages/net/cgi-io"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0-or-later"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "chat",
+      "version": "2.5.2-r2",
+      "bom-ref": "pkg:apk/tesproos/chat@2.5.2-r2?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/chat@2.5.2-r2?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/network/services/ppp"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "BSD-4-Clause"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "comgt",
+      "version": "0.32-r36",
+      "bom-ref": "pkg:apk/tesproos/comgt@0.32-r36?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/comgt@0.32-r36?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/network/utils/comgt"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0+"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "comgt-directip",
+      "version": "0.32-r36",
+      "bom-ref": "pkg:apk/tesproos/comgt-directip@0.32-r36?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/comgt-directip@0.32-r36?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/network/utils/comgt"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0+"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "comgt-ncm",
+      "version": "0.32-r36",
+      "bom-ref": "pkg:apk/tesproos/comgt-ncm@0.32-r36?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/comgt-ncm@0.32-r36?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/network/utils/comgt"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0+"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "coreutils",
+      "version": "9.9-r2",
+      "bom-ref": "pkg:apk/tesproos/coreutils@9.9-r2?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/coreutils@9.9-r2?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/packages/feeds/packages/utils/coreutils"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-3.0-or-later"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "coreutils-sha256sum",
+      "version": "9.9-r2",
+      "bom-ref": "pkg:apk/tesproos/coreutils-sha256sum@9.9-r2?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/coreutils-sha256sum@9.9-r2?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/packages/feeds/packages/utils/coreutils"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-3.0-or-later"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "curl",
+      "version": "8.15.0-r2",
+      "bom-ref": "pkg:apk/tesproos/curl@8.15.0-r2?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/curl@8.15.0-r2?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/packages/feeds/packages/net/curl"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "dbus",
+      "version": "1.16.2-r3",
+      "bom-ref": "pkg:apk/tesproos/dbus@1.16.2-r3?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/dbus@1.16.2-r3?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/packages/feeds/packages/utils/dbus"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "AFL-2.1"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "device-online-mgr",
+      "version": "2.0.0-r1",
+      "bom-ref": "pkg:apk/tesproos/device-online-mgr@2.0.0-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/device-online-mgr@2.0.0-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/tespro/device-online-mgr"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "dido-service-tespro-combined-v2",
+      "version": "1.0.0-r1",
+      "bom-ref": "pkg:apk/tesproos/dido-service-tespro-combined-v2@1.0.0-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/dido-service-tespro-combined-v2@1.0.0-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/tespro/dido-service-tespro-combined-v2"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "dnsmasq",
+      "version": "2.92-r1",
+      "bom-ref": "pkg:apk/tesproos/dnsmasq@2.92-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/dnsmasq@2.92-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/network/services/dnsmasq"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "dosfstools",
+      "version": "4.2-r4",
+      "bom-ref": "pkg:apk/tesproos/dosfstools@4.2-r4?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/dosfstools@4.2-r4?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/packages/feeds/packages/utils/dosfstools"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-3.0-or-later"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "dropbear",
+      "version": "2025.89-r1",
+      "bom-ref": "pkg:apk/tesproos/dropbear@2025.89-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/dropbear@2025.89-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/network/services/dropbear"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "e2fsprogs",
+      "version": "1.47.3-r1",
+      "bom-ref": "pkg:apk/tesproos/e2fsprogs@1.47.3-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/e2fsprogs@1.47.3-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/utils/e2fsprogs"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "eip197-mini-firmware",
+      "version": "20260110-r1",
+      "bom-ref": "pkg:apk/tesproos/eip197-mini-firmware@20260110-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/eip197-mini-firmware@20260110-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/firmware/linux-firmware"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "exfat-fsck",
+      "version": "1.2.9-r1",
+      "bom-ref": "pkg:apk/tesproos/exfat-fsck@1.2.9-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/exfat-fsck@1.2.9-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/packages/feeds/packages/utils/exfatprogs"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0-only"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "exfat-mkfs",
+      "version": "1.2.9-r1",
+      "bom-ref": "pkg:apk/tesproos/exfat-mkfs@1.2.9-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/exfat-mkfs@1.2.9-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/packages/feeds/packages/utils/exfatprogs"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0-only"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "f2fs-tools",
+      "version": "1.16.0-r4",
+      "bom-ref": "pkg:apk/tesproos/f2fs-tools@1.16.0-r4?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/f2fs-tools@1.16.0-r4?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/utils/f2fs-tools"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0-only"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "f2fsck",
+      "version": "1.16.0-r4",
+      "bom-ref": "pkg:apk/tesproos/f2fsck@1.16.0-r4?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/f2fsck@1.16.0-r4?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/utils/f2fs-tools"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0-only"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "factory-config",
+      "version": "1.1.0-r1",
+      "bom-ref": "pkg:apk/tesproos/factory-config@1.1.0-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/factory-config@1.1.0-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/tespro/luci-app-factory-config"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-3.0"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "firewall4",
+      "version": "2025.03.17~b6e51575-r1",
+      "bom-ref": "pkg:apk/tesproos/firewall4@2025.03.17~b6e51575-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/firewall4@2025.03.17~b6e51575-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/network/config/firewall4"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "ISC"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "fit-check-sign",
+      "version": "2026.01-r1",
+      "bom-ref": "pkg:apk/tesproos/fit-check-sign@2026.01-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/fit-check-sign@2026.01-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/boot/uboot-tools"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0 GPL-2.0+"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "fitblk",
+      "version": "2",
+      "bom-ref": "pkg:apk/tesproos/fitblk@2?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/fitblk@2?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/utils/fitblk"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0-only"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "fstools",
+      "version": "2025.10.03~12858e28-r1",
+      "bom-ref": "pkg:apk/tesproos/fstools@2025.10.03~12858e28-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/fstools@2025.10.03~12858e28-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/system/fstools"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "fwtool",
+      "version": "2025.10.03~04cd252e-r1",
+      "bom-ref": "pkg:apk/tesproos/fwtool@2025.10.03~04cd252e-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/fwtool@2025.10.03~04cd252e-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/system/fwtool"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "getrandom",
+      "version": "2025.10.30~6f78fa49-r1",
+      "bom-ref": "pkg:apk/tesproos/getrandom@2025.10.30~6f78fa49-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/getrandom@2025.10.30~6f78fa49-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/system/ubox"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "glib2",
+      "version": "2.82.0-r1",
+      "bom-ref": "pkg:apk/tesproos/glib2@2.82.0-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/glib2@2.82.0-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/packages/feeds/packages/libs/glib2"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "LGPL-2.1-or-later"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "hostapd-common",
+      "version": "2025.08.26~ca266cc2-r1",
+      "bom-ref": "pkg:apk/tesproos/hostapd-common@2025.08.26~ca266cc2-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/hostapd-common@2025.08.26~ca266cc2-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/network/services/hostapd"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "BSD-3-Clause"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "iec61850-mmsd",
+      "version": "1.0.0-r3",
+      "bom-ref": "pkg:apk/tesproos/iec61850-mmsd@1.0.0-r3?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/iec61850-mmsd@1.0.0-r3?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/tespro/iec61850-mmsd"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-3.0-or-later"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "iec61850-proto-tespro-combined",
+      "version": "1.0.0-r6",
+      "bom-ref": "pkg:apk/tesproos/iec61850-proto-tespro-combined@1.0.0-r6?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/iec61850-proto-tespro-combined@1.0.0-r6?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/tespro/iec61850-proto-tespro-combined"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Proprietary"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "iw",
+      "version": "6.17-r1",
+      "bom-ref": "pkg:apk/tesproos/iw@6.17-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/iw@6.17-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/network/utils/iw"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "jansson4",
+      "version": "2.14.1-r1",
+      "bom-ref": "pkg:apk/tesproos/jansson4@2.14.1-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/jansson4@2.14.1-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/libs/jansson"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "jshn",
+      "version": "2025.12.08~7928f171-r1",
+      "bom-ref": "pkg:apk/tesproos/jshn@2025.12.08~7928f171-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/jshn@2025.12.08~7928f171-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/libs/libubox"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "ISC"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "jsonfilter",
+      "version": "2025.10.04~f4fe702d-r1",
+      "bom-ref": "pkg:apk/tesproos/jsonfilter@2025.10.04~f4fe702d-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/jsonfilter@2025.10.04~f4fe702d-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/utils/jsonfilter"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "ISC"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "kernel",
+      "version": "6.12.68~89b4cca7c9ffe074fd47d7e3c66d90ff-r1",
+      "bom-ref": "pkg:apk/tesproos/kernel@6.12.68~89b4cca7c9ffe074fd47d7e3c66d90ff-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/kernel@6.12.68~89b4cca7c9ffe074fd47d7e3c66d90ff-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/kernel/linux"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0-only"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "kmod-cfg80211",
+      "version": "6.12.68.6.18.7-r1",
+      "bom-ref": "pkg:apk/tesproos/kmod-cfg80211@6.12.68.6.18.7-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/kmod-cfg80211@6.12.68.6.18.7-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/kernel/mac80211"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0-only"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "kmod-crypto-aead",
+      "version": "6.12.68-r1",
+      "bom-ref": "pkg:apk/tesproos/kmod-crypto-aead@6.12.68-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/kmod-crypto-aead@6.12.68-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/kernel/linux"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0-only"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "kmod-crypto-authenc",
+      "version": "6.12.68-r1",
+      "bom-ref": "pkg:apk/tesproos/kmod-crypto-authenc@6.12.68-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/kmod-crypto-authenc@6.12.68-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/kernel/linux"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0-only"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "kmod-crypto-ccm",
+      "version": "6.12.68-r1",
+      "bom-ref": "pkg:apk/tesproos/kmod-crypto-ccm@6.12.68-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/kmod-crypto-ccm@6.12.68-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/kernel/linux"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0-only"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "kmod-crypto-cmac",
+      "version": "6.12.68-r1",
+      "bom-ref": "pkg:apk/tesproos/kmod-crypto-cmac@6.12.68-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/kmod-crypto-cmac@6.12.68-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/kernel/linux"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0-only"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "kmod-crypto-crc32c",
+      "version": "6.12.68-r1",
+      "bom-ref": "pkg:apk/tesproos/kmod-crypto-crc32c@6.12.68-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/kmod-crypto-crc32c@6.12.68-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/kernel/linux"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0-only"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "kmod-crypto-ctr",
+      "version": "6.12.68-r1",
+      "bom-ref": "pkg:apk/tesproos/kmod-crypto-ctr@6.12.68-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/kmod-crypto-ctr@6.12.68-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/kernel/linux"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0-only"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "kmod-crypto-des",
+      "version": "6.12.68-r1",
+      "bom-ref": "pkg:apk/tesproos/kmod-crypto-des@6.12.68-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/kmod-crypto-des@6.12.68-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/kernel/linux"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0-only"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "kmod-crypto-gcm",
+      "version": "6.12.68-r1",
+      "bom-ref": "pkg:apk/tesproos/kmod-crypto-gcm@6.12.68-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/kmod-crypto-gcm@6.12.68-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/kernel/linux"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0-only"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "kmod-crypto-geniv",
+      "version": "6.12.68-r1",
+      "bom-ref": "pkg:apk/tesproos/kmod-crypto-geniv@6.12.68-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/kmod-crypto-geniv@6.12.68-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/kernel/linux"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0-only"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "kmod-crypto-gf128",
+      "version": "6.12.68-r1",
+      "bom-ref": "pkg:apk/tesproos/kmod-crypto-gf128@6.12.68-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/kmod-crypto-gf128@6.12.68-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/kernel/linux"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0-only"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "kmod-crypto-ghash",
+      "version": "6.12.68-r1",
+      "bom-ref": "pkg:apk/tesproos/kmod-crypto-ghash@6.12.68-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/kmod-crypto-ghash@6.12.68-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/kernel/linux"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0-only"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "kmod-crypto-hash",
+      "version": "6.12.68-r1",
+      "bom-ref": "pkg:apk/tesproos/kmod-crypto-hash@6.12.68-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/kmod-crypto-hash@6.12.68-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/kernel/linux"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0-only"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "kmod-crypto-hmac",
+      "version": "6.12.68-r1",
+      "bom-ref": "pkg:apk/tesproos/kmod-crypto-hmac@6.12.68-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/kmod-crypto-hmac@6.12.68-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/kernel/linux"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0-only"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "kmod-crypto-hw-safexcel",
+      "version": "6.12.68-r1",
+      "bom-ref": "pkg:apk/tesproos/kmod-crypto-hw-safexcel@6.12.68-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/kmod-crypto-hw-safexcel@6.12.68-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/kernel/linux"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0-only"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "kmod-crypto-manager",
+      "version": "6.12.68-r1",
+      "bom-ref": "pkg:apk/tesproos/kmod-crypto-manager@6.12.68-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/kmod-crypto-manager@6.12.68-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/kernel/linux"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0-only"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "kmod-crypto-md5",
+      "version": "6.12.68-r1",
+      "bom-ref": "pkg:apk/tesproos/kmod-crypto-md5@6.12.68-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/kmod-crypto-md5@6.12.68-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/kernel/linux"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0-only"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "kmod-crypto-null",
+      "version": "6.12.68-r1",
+      "bom-ref": "pkg:apk/tesproos/kmod-crypto-null@6.12.68-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/kmod-crypto-null@6.12.68-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/kernel/linux"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0-only"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "kmod-crypto-rng",
+      "version": "6.12.68-r1",
+      "bom-ref": "pkg:apk/tesproos/kmod-crypto-rng@6.12.68-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/kmod-crypto-rng@6.12.68-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/kernel/linux"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0-only"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "kmod-crypto-seqiv",
+      "version": "6.12.68-r1",
+      "bom-ref": "pkg:apk/tesproos/kmod-crypto-seqiv@6.12.68-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/kmod-crypto-seqiv@6.12.68-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/kernel/linux"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0-only"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "kmod-crypto-sha1",
+      "version": "6.12.68-r1",
+      "bom-ref": "pkg:apk/tesproos/kmod-crypto-sha1@6.12.68-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/kmod-crypto-sha1@6.12.68-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/kernel/linux"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0-only"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "kmod-crypto-sha256",
+      "version": "6.12.68-r1",
+      "bom-ref": "pkg:apk/tesproos/kmod-crypto-sha256@6.12.68-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/kmod-crypto-sha256@6.12.68-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/kernel/linux"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0-only"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "kmod-crypto-sha3",
+      "version": "6.12.68-r1",
+      "bom-ref": "pkg:apk/tesproos/kmod-crypto-sha3@6.12.68-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/kmod-crypto-sha3@6.12.68-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/kernel/linux"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0-only"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "kmod-crypto-sha512",
+      "version": "6.12.68-r1",
+      "bom-ref": "pkg:apk/tesproos/kmod-crypto-sha512@6.12.68-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/kmod-crypto-sha512@6.12.68-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/kernel/linux"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0-only"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "kmod-fs-autofs4",
+      "version": "6.12.68-r1",
+      "bom-ref": "pkg:apk/tesproos/kmod-fs-autofs4@6.12.68-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/kmod-fs-autofs4@6.12.68-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/kernel/linux"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0-only"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "kmod-fs-exfat",
+      "version": "6.12.68-r1",
+      "bom-ref": "pkg:apk/tesproos/kmod-fs-exfat@6.12.68-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/kmod-fs-exfat@6.12.68-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/kernel/linux"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0-only"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "kmod-fs-ext4",
+      "version": "6.12.68-r1",
+      "bom-ref": "pkg:apk/tesproos/kmod-fs-ext4@6.12.68-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/kmod-fs-ext4@6.12.68-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/kernel/linux"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0-only"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "kmod-fs-vfat",
+      "version": "6.12.68-r1",
+      "bom-ref": "pkg:apk/tesproos/kmod-fs-vfat@6.12.68-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/kmod-fs-vfat@6.12.68-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/kernel/linux"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0-only"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "kmod-gpio-button-hotplug",
+      "version": "6.12.68-r5",
+      "bom-ref": "pkg:apk/tesproos/kmod-gpio-button-hotplug@6.12.68-r5?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/kmod-gpio-button-hotplug@6.12.68-r5?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/kernel/gpio-button-hotplug"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "kmod-hwmon-core",
+      "version": "6.12.68-r1",
+      "bom-ref": "pkg:apk/tesproos/kmod-hwmon-core@6.12.68-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/kmod-hwmon-core@6.12.68-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/kernel/linux"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0-only"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "kmod-i2c-core",
+      "version": "6.12.68-r1",
+      "bom-ref": "pkg:apk/tesproos/kmod-i2c-core@6.12.68-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/kmod-i2c-core@6.12.68-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/kernel/linux"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0-only"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "kmod-leds-gpio",
+      "version": "6.12.68-r1",
+      "bom-ref": "pkg:apk/tesproos/kmod-leds-gpio@6.12.68-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/kmod-leds-gpio@6.12.68-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/kernel/linux"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0-only"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "kmod-lib-crc-ccitt",
+      "version": "6.12.68-r1",
+      "bom-ref": "pkg:apk/tesproos/kmod-lib-crc-ccitt@6.12.68-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/kmod-lib-crc-ccitt@6.12.68-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/kernel/linux"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0-only"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "kmod-lib-crc16",
+      "version": "6.12.68-r1",
+      "bom-ref": "pkg:apk/tesproos/kmod-lib-crc16@6.12.68-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/kmod-lib-crc16@6.12.68-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/kernel/linux"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0-only"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "kmod-lib-crc32c",
+      "version": "6.12.68-r1",
+      "bom-ref": "pkg:apk/tesproos/kmod-lib-crc32c@6.12.68-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/kmod-lib-crc32c@6.12.68-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/kernel/linux"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0-only"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "kmod-mac80211",
+      "version": "6.12.68.6.18.7-r1",
+      "bom-ref": "pkg:apk/tesproos/kmod-mac80211@6.12.68.6.18.7-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/kmod-mac80211@6.12.68.6.18.7-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/kernel/mac80211"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0-only"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "kmod-mii",
+      "version": "6.12.68-r1",
+      "bom-ref": "pkg:apk/tesproos/kmod-mii@6.12.68-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/kmod-mii@6.12.68-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/kernel/linux"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0-only"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "kmod-mt76-connac",
+      "version": "6.12.68.2026.01.28~b2fe7f14-r1",
+      "bom-ref": "pkg:apk/tesproos/kmod-mt76-connac@6.12.68.2026.01.28~b2fe7f14-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/kmod-mt76-connac@6.12.68.2026.01.28~b2fe7f14-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/kernel/mt76"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "BSD-3-Clause-Clear"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "kmod-mt76-core",
+      "version": "6.12.68.2026.01.28~b2fe7f14-r1",
+      "bom-ref": "pkg:apk/tesproos/kmod-mt76-core@6.12.68.2026.01.28~b2fe7f14-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/kmod-mt76-core@6.12.68.2026.01.28~b2fe7f14-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/kernel/mt76"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "BSD-3-Clause-Clear"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "kmod-mt7915e",
+      "version": "6.12.68.2026.01.28~b2fe7f14-r1",
+      "bom-ref": "pkg:apk/tesproos/kmod-mt7915e@6.12.68.2026.01.28~b2fe7f14-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/kmod-mt7915e@6.12.68.2026.01.28~b2fe7f14-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/kernel/mt76"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "BSD-3-Clause-Clear"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "kmod-mt7981-firmware",
+      "version": "6.12.68.2026.01.28~b2fe7f14-r1",
+      "bom-ref": "pkg:apk/tesproos/kmod-mt7981-firmware@6.12.68.2026.01.28~b2fe7f14-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/kmod-mt7981-firmware@6.12.68.2026.01.28~b2fe7f14-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/kernel/mt76"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "BSD-3-Clause-Clear"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "kmod-mt7996e",
+      "version": "6.12.68.2026.01.28~b2fe7f14-r1",
+      "bom-ref": "pkg:apk/tesproos/kmod-mt7996e@6.12.68.2026.01.28~b2fe7f14-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/kmod-mt7996e@6.12.68.2026.01.28~b2fe7f14-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/kernel/mt76"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "BSD-3-Clause-Clear"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "kmod-nf-conntrack",
+      "version": "6.12.68-r1",
+      "bom-ref": "pkg:apk/tesproos/kmod-nf-conntrack@6.12.68-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/kmod-nf-conntrack@6.12.68-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/kernel/linux"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0-only"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "kmod-nf-flow",
+      "version": "6.12.68-r1",
+      "bom-ref": "pkg:apk/tesproos/kmod-nf-flow@6.12.68-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/kmod-nf-flow@6.12.68-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/kernel/linux"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0-only"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "kmod-nf-log",
+      "version": "6.12.68-r1",
+      "bom-ref": "pkg:apk/tesproos/kmod-nf-log@6.12.68-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/kmod-nf-log@6.12.68-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/kernel/linux"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0-only"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "kmod-nf-log6",
+      "version": "6.12.68-r1",
+      "bom-ref": "pkg:apk/tesproos/kmod-nf-log6@6.12.68-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/kmod-nf-log6@6.12.68-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/kernel/linux"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0-only"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "kmod-nf-nat",
+      "version": "6.12.68-r1",
+      "bom-ref": "pkg:apk/tesproos/kmod-nf-nat@6.12.68-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/kmod-nf-nat@6.12.68-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/kernel/linux"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0-only"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "kmod-nf-reject",
+      "version": "6.12.68-r1",
+      "bom-ref": "pkg:apk/tesproos/kmod-nf-reject@6.12.68-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/kmod-nf-reject@6.12.68-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/kernel/linux"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0-only"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "kmod-nf-reject6",
+      "version": "6.12.68-r1",
+      "bom-ref": "pkg:apk/tesproos/kmod-nf-reject6@6.12.68-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/kmod-nf-reject6@6.12.68-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/kernel/linux"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0-only"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "kmod-nfnetlink",
+      "version": "6.12.68-r1",
+      "bom-ref": "pkg:apk/tesproos/kmod-nfnetlink@6.12.68-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/kmod-nfnetlink@6.12.68-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/kernel/linux"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0-only"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "kmod-nft-core",
+      "version": "6.12.68-r1",
+      "bom-ref": "pkg:apk/tesproos/kmod-nft-core@6.12.68-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/kmod-nft-core@6.12.68-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/kernel/linux"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0-only"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "kmod-nft-fib",
+      "version": "6.12.68-r1",
+      "bom-ref": "pkg:apk/tesproos/kmod-nft-fib@6.12.68-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/kmod-nft-fib@6.12.68-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/kernel/linux"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0-only"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "kmod-nft-nat",
+      "version": "6.12.68-r1",
+      "bom-ref": "pkg:apk/tesproos/kmod-nft-nat@6.12.68-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/kmod-nft-nat@6.12.68-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/kernel/linux"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0-only"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "kmod-nft-offload",
+      "version": "6.12.68-r1",
+      "bom-ref": "pkg:apk/tesproos/kmod-nft-offload@6.12.68-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/kmod-nft-offload@6.12.68-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/kernel/linux"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0-only"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "kmod-nls-base",
+      "version": "6.12.68-r1",
+      "bom-ref": "pkg:apk/tesproos/kmod-nls-base@6.12.68-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/kmod-nls-base@6.12.68-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/kernel/linux"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0-only"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "kmod-nls-cp437",
+      "version": "6.12.68-r1",
+      "bom-ref": "pkg:apk/tesproos/kmod-nls-cp437@6.12.68-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/kmod-nls-cp437@6.12.68-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/kernel/linux"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0-only"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "kmod-nls-iso8859",
+      "version": "1-6.12.68-r1",
+      "bom-ref": "pkg:apk/tesproos/kmod-nls-iso8859@1-6.12.68-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/kmod-nls-iso8859@1-6.12.68-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/kernel/linux"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0-only"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "kmod-nls-utf8",
+      "version": "6.12.68-r1",
+      "bom-ref": "pkg:apk/tesproos/kmod-nls-utf8@6.12.68-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/kmod-nls-utf8@6.12.68-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/kernel/linux"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0-only"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "kmod-ppp",
+      "version": "6.12.68-r1",
+      "bom-ref": "pkg:apk/tesproos/kmod-ppp@6.12.68-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/kmod-ppp@6.12.68-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/kernel/linux"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0-only"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "kmod-pppoe",
+      "version": "6.12.68-r1",
+      "bom-ref": "pkg:apk/tesproos/kmod-pppoe@6.12.68-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/kmod-pppoe@6.12.68-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/kernel/linux"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0-only"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "kmod-pppox",
+      "version": "6.12.68-r1",
+      "bom-ref": "pkg:apk/tesproos/kmod-pppox@6.12.68-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/kmod-pppox@6.12.68-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/kernel/linux"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0-only"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "kmod-random-core",
+      "version": "6.12.68-r1",
+      "bom-ref": "pkg:apk/tesproos/kmod-random-core@6.12.68-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/kmod-random-core@6.12.68-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/kernel/linux"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0-only"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "kmod-scsi-core",
+      "version": "6.12.68-r1",
+      "bom-ref": "pkg:apk/tesproos/kmod-scsi-core@6.12.68-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/kmod-scsi-core@6.12.68-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/kernel/linux"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0-only"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "kmod-slhc",
+      "version": "6.12.68-r1",
+      "bom-ref": "pkg:apk/tesproos/kmod-slhc@6.12.68-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/kmod-slhc@6.12.68-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/kernel/linux"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0-only"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "kmod-thermal",
+      "version": "6.12.68-r1",
+      "bom-ref": "pkg:apk/tesproos/kmod-thermal@6.12.68-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/kmod-thermal@6.12.68-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/kernel/linux"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0-only"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "kmod-tpm",
+      "version": "6.12.68-r1",
+      "bom-ref": "pkg:apk/tesproos/kmod-tpm@6.12.68-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/kmod-tpm@6.12.68-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/kernel/linux"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0-only"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "kmod-tpm-tis-i2c",
+      "version": "6.12.68-r1",
+      "bom-ref": "pkg:apk/tesproos/kmod-tpm-tis-i2c@6.12.68-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/kmod-tpm-tis-i2c@6.12.68-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/kernel/linux"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0-only"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "kmod-usb-acm",
+      "version": "6.12.68-r1",
+      "bom-ref": "pkg:apk/tesproos/kmod-usb-acm@6.12.68-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/kmod-usb-acm@6.12.68-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/kernel/linux"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0-only"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "kmod-usb-common",
+      "version": "6.12.68-r1",
+      "bom-ref": "pkg:apk/tesproos/kmod-usb-common@6.12.68-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/kmod-usb-common@6.12.68-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/kernel/linux"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0-only"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "kmod-usb-core",
+      "version": "6.12.68-r1",
+      "bom-ref": "pkg:apk/tesproos/kmod-usb-core@6.12.68-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/kmod-usb-core@6.12.68-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/kernel/linux"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0-only"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "kmod-usb-net",
+      "version": "6.12.68-r1",
+      "bom-ref": "pkg:apk/tesproos/kmod-usb-net@6.12.68-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/kmod-usb-net@6.12.68-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/kernel/linux"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0-only"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "kmod-usb-net-cdc-ether",
+      "version": "6.12.68-r1",
+      "bom-ref": "pkg:apk/tesproos/kmod-usb-net-cdc-ether@6.12.68-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/kmod-usb-net-cdc-ether@6.12.68-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/kernel/linux"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0-only"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "kmod-usb-net-cdc-mbim",
+      "version": "6.12.68-r1",
+      "bom-ref": "pkg:apk/tesproos/kmod-usb-net-cdc-mbim@6.12.68-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/kmod-usb-net-cdc-mbim@6.12.68-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/kernel/linux"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0-only"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "kmod-usb-net-cdc-ncm",
+      "version": "6.12.68-r1",
+      "bom-ref": "pkg:apk/tesproos/kmod-usb-net-cdc-ncm@6.12.68-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/kmod-usb-net-cdc-ncm@6.12.68-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/kernel/linux"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0-only"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "kmod-usb-net-huawei-cdc-ncm",
+      "version": "6.12.68-r1",
+      "bom-ref": "pkg:apk/tesproos/kmod-usb-net-huawei-cdc-ncm@6.12.68-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/kmod-usb-net-huawei-cdc-ncm@6.12.68-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/kernel/linux"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0-only"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "kmod-usb-net-rndis",
+      "version": "6.12.68-r1",
+      "bom-ref": "pkg:apk/tesproos/kmod-usb-net-rndis@6.12.68-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/kmod-usb-net-rndis@6.12.68-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/kernel/linux"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0-only"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "kmod-usb-net-sierrawireless",
+      "version": "6.12.68-r1",
+      "bom-ref": "pkg:apk/tesproos/kmod-usb-net-sierrawireless@6.12.68-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/kmod-usb-net-sierrawireless@6.12.68-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/kernel/linux"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0-only"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "kmod-usb-serial",
+      "version": "6.12.68-r1",
+      "bom-ref": "pkg:apk/tesproos/kmod-usb-serial@6.12.68-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/kmod-usb-serial@6.12.68-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/kernel/linux"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0-only"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "kmod-usb-serial-ftdi",
+      "version": "6.12.68-r1",
+      "bom-ref": "pkg:apk/tesproos/kmod-usb-serial-ftdi@6.12.68-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/kmod-usb-serial-ftdi@6.12.68-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/kernel/linux"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0-only"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "kmod-usb-serial-option",
+      "version": "6.12.68-r1",
+      "bom-ref": "pkg:apk/tesproos/kmod-usb-serial-option@6.12.68-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/kmod-usb-serial-option@6.12.68-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/kernel/linux"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0-only"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "kmod-usb-serial-sierrawireless",
+      "version": "6.12.68-r1",
+      "bom-ref": "pkg:apk/tesproos/kmod-usb-serial-sierrawireless@6.12.68-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/kmod-usb-serial-sierrawireless@6.12.68-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/kernel/linux"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0-only"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "kmod-usb-serial-wwan",
+      "version": "6.12.68-r1",
+      "bom-ref": "pkg:apk/tesproos/kmod-usb-serial-wwan@6.12.68-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/kmod-usb-serial-wwan@6.12.68-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/kernel/linux"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0-only"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "kmod-usb-storage",
+      "version": "6.12.68-r1",
+      "bom-ref": "pkg:apk/tesproos/kmod-usb-storage@6.12.68-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/kmod-usb-storage@6.12.68-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/kernel/linux"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0-only"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "kmod-usb-storage-uas",
+      "version": "6.12.68-r1",
+      "bom-ref": "pkg:apk/tesproos/kmod-usb-storage-uas@6.12.68-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/kmod-usb-storage-uas@6.12.68-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/kernel/linux"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0-only"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "kmod-usb-wdm",
+      "version": "6.12.68-r1",
+      "bom-ref": "pkg:apk/tesproos/kmod-usb-wdm@6.12.68-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/kmod-usb-wdm@6.12.68-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/kernel/linux"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0-only"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "kmod-usb-xhci-hcd",
+      "version": "6.12.68-r1",
+      "bom-ref": "pkg:apk/tesproos/kmod-usb-xhci-hcd@6.12.68-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/kmod-usb-xhci-hcd@6.12.68-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/kernel/linux"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0-only"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "kmod-usb-xhci-mtk",
+      "version": "6.12.68-r1",
+      "bom-ref": "pkg:apk/tesproos/kmod-usb-xhci-mtk@6.12.68-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/kmod-usb-xhci-mtk@6.12.68-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/kernel/linux"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0-only"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "kmod-usb3",
+      "version": "6.12.68-r1",
+      "bom-ref": "pkg:apk/tesproos/kmod-usb3@6.12.68-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/kmod-usb3@6.12.68-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/kernel/linux"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0-only"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "libatomic1",
+      "version": "14.3.0-r5",
+      "bom-ref": "pkg:apk/tesproos/libatomic1@14.3.0-r5?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/libatomic1@14.3.0-r5?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/libs/toolchain"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-3.0-with-GCC-exception"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "libattr",
+      "version": "2.5.2-r3",
+      "bom-ref": "pkg:apk/tesproos/libattr@2.5.2-r3?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/libattr@2.5.2-r3?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/packages/feeds/packages/utils/attr"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "LGPL-2.1-or-later"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "libblkid1",
+      "version": "2.41.3-r1",
+      "bom-ref": "pkg:apk/tesproos/libblkid1@2.41.3-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/libblkid1@2.41.3-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/utils/util-linux"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "LGPL-2.1-or-later"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "libblobmsg-json20251208",
+      "version": "2025.12.08~7928f171-r1",
+      "bom-ref": "pkg:apk/tesproos/libblobmsg-json20251208@2025.12.08~7928f171-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/libblobmsg-json20251208@2025.12.08~7928f171-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/libs/libubox"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "ISC"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "libc",
+      "version": "1.2.5-r5",
+      "bom-ref": "pkg:apk/tesproos/libc@1.2.5-r5?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/libc@1.2.5-r5?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/libs/toolchain"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-3.0-with-GCC-exception"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "libcares",
+      "version": "1.34.6-r1",
+      "bom-ref": "pkg:apk/tesproos/libcares@1.34.6-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/libcares@1.34.6-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/packages/feeds/packages/libs/c-ares"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "libcomerr0",
+      "version": "1.47.3-r1",
+      "bom-ref": "pkg:apk/tesproos/libcomerr0@1.47.3-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/libcomerr0@1.47.3-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/utils/e2fsprogs"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "libcurl4",
+      "version": "8.15.0-r2",
+      "bom-ref": "pkg:apk/tesproos/libcurl4@8.15.0-r2?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/libcurl4@8.15.0-r2?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/packages/feeds/packages/net/curl"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "libdbus",
+      "version": "1.16.2-r3",
+      "bom-ref": "pkg:apk/tesproos/libdbus@1.16.2-r3?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/libdbus@1.16.2-r3?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/packages/feeds/packages/utils/dbus"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "AFL-2.1"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "libe2p2",
+      "version": "1.47.3-r1",
+      "bom-ref": "pkg:apk/tesproos/libe2p2@1.47.3-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/libe2p2@1.47.3-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/utils/e2fsprogs"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "libexpat",
+      "version": "2.7.4-r1",
+      "bom-ref": "pkg:apk/tesproos/libexpat@2.7.4-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/libexpat@2.7.4-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/packages/feeds/packages/libs/expat"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "libext2fs2",
+      "version": "1.47.3-r1",
+      "bom-ref": "pkg:apk/tesproos/libext2fs2@1.47.3-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/libext2fs2@1.47.3-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/utils/e2fsprogs"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "libf2fs6",
+      "version": "1.16.0-r4",
+      "bom-ref": "pkg:apk/tesproos/libf2fs6@1.16.0-r4?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/libf2fs6@1.16.0-r4?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/utils/f2fs-tools"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0-only"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "libffi",
+      "version": "3.4.7-r1",
+      "bom-ref": "pkg:apk/tesproos/libffi@3.4.7-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/libffi@3.4.7-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/packages/feeds/packages/libs/libffi"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "libgcc1",
+      "version": "14.3.0-r5",
+      "bom-ref": "pkg:apk/tesproos/libgcc1@14.3.0-r5?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/libgcc1@14.3.0-r5?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/libs/toolchain"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-3.0-with-GCC-exception"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "libiec61850",
+      "version": "1.6.2-r1",
+      "bom-ref": "pkg:apk/tesproos/libiec61850@1.6.2-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/libiec61850@1.6.2-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/tespro/libiec61850"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-3.0-or-later"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "libiwinfo-data",
+      "version": "2026.01.14~f5dd57a8-r1",
+      "bom-ref": "pkg:apk/tesproos/libiwinfo-data@2026.01.14~f5dd57a8-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/libiwinfo-data@2026.01.14~f5dd57a8-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/network/utils/iwinfo"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "libiwinfo20230701",
+      "version": "2026.01.14~f5dd57a8-r1",
+      "bom-ref": "pkg:apk/tesproos/libiwinfo20230701@2026.01.14~f5dd57a8-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/libiwinfo20230701@2026.01.14~f5dd57a8-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/network/utils/iwinfo"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "libjson-c5",
+      "version": "0.18-r1",
+      "bom-ref": "pkg:apk/tesproos/libjson-c5@0.18-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/libjson-c5@0.18-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/libs/libjson-c"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "libjson-script20251208",
+      "version": "2025.12.08~7928f171-r1",
+      "bom-ref": "pkg:apk/tesproos/libjson-script20251208@2025.12.08~7928f171-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/libjson-script20251208@2025.12.08~7928f171-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/libs/libubox"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "ISC"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "liblua5.1.5",
+      "version": "5.1.5-r11",
+      "bom-ref": "pkg:apk/tesproos/liblua5.1.5@5.1.5-r11?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/liblua5.1.5@5.1.5-r11?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/utils/lua"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "liblucihttp-lua",
+      "version": "2023.03.15~9b5b683f-r1",
+      "bom-ref": "pkg:apk/tesproos/liblucihttp-lua@2023.03.15~9b5b683f-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/liblucihttp-lua@2023.03.15~9b5b683f-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/luci/feeds/luci/contrib/package/lucihttp"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "ISC"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "liblucihttp-ucode",
+      "version": "2023.03.15~9b5b683f-r1",
+      "bom-ref": "pkg:apk/tesproos/liblucihttp-ucode@2023.03.15~9b5b683f-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/liblucihttp-ucode@2023.03.15~9b5b683f-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/luci/feeds/luci/contrib/package/lucihttp"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "ISC"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "liblucihttp0",
+      "version": "2023.03.15~9b5b683f-r1",
+      "bom-ref": "pkg:apk/tesproos/liblucihttp0@2023.03.15~9b5b683f-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/liblucihttp0@2023.03.15~9b5b683f-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/luci/feeds/luci/contrib/package/lucihttp"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "ISC"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "libmbedtls21",
+      "version": "3.6.5-r1",
+      "bom-ref": "pkg:apk/tesproos/libmbedtls21@3.6.5-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/libmbedtls21@3.6.5-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/libs/mbedtls"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0-or-later"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "libmbim",
+      "version": "1.32.0-r1",
+      "bom-ref": "pkg:apk/tesproos/libmbim@1.32.0-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/libmbim@1.32.0-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/packages/feeds/packages/libs/libmbim"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "LGPL-2.0-or-later"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "libmnl0",
+      "version": "1.0.5-r1",
+      "bom-ref": "pkg:apk/tesproos/libmnl0@1.0.5-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/libmnl0@1.0.5-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/libs/libmnl"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "LGPL-2.1+"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "libmodbus",
+      "version": "3.1.12-r1",
+      "bom-ref": "pkg:apk/tesproos/libmodbus@3.1.12-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/libmodbus@3.1.12-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/packages/feeds/packages/libs/libmodbus"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "LGPL-2.1-or-later"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "libmosquitto-mbedtls",
+      "version": "2.0.22-r1",
+      "bom-ref": "pkg:apk/tesproos/libmosquitto-mbedtls@2.0.22-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/libmosquitto-mbedtls@2.0.22-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/tespro/mosquitto-mbedtls"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "EPL-2.0"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "libnftnl11",
+      "version": "1.3.1-r1",
+      "bom-ref": "pkg:apk/tesproos/libnftnl11@1.3.1-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/libnftnl11@1.3.1-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/libs/libnftnl"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0-or-later"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "libnghttp2",
+      "version": "14-1.66.0-r1",
+      "bom-ref": "pkg:apk/tesproos/libnghttp2@14-1.66.0-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/libnghttp2@14-1.66.0-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/packages/feeds/packages/libs/nghttp2"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "libnl-tiny1",
+      "version": "2025.12.02~40493a65-r1",
+      "bom-ref": "pkg:apk/tesproos/libnl-tiny1@2025.12.02~40493a65-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/libnl-tiny1@2025.12.02~40493a65-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/libs/libnl-tiny"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "LGPL-2.1"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "libopen62541",
+      "version": "1.3.6-r2",
+      "bom-ref": "pkg:apk/tesproos/libopen62541@1.3.6-r2?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/libopen62541@1.3.6-r2?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/packages/feeds/packages/libs/libopen62541"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "MPL-2.0"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "libopenssl-conf",
+      "version": "3.5.5-r1",
+      "bom-ref": "pkg:apk/tesproos/libopenssl-conf@3.5.5-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/libopenssl-conf@3.5.5-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/libs/openssl"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "libopenssl3",
+      "version": "3.5.5-r1",
+      "bom-ref": "pkg:apk/tesproos/libopenssl3@3.5.5-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/libopenssl3@3.5.5-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/libs/openssl"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "libpcre2",
+      "version": "10.47-r1",
+      "bom-ref": "pkg:apk/tesproos/libpcre2@10.47-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/libpcre2@10.47-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/libs/pcre2"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "BSD-3-Clause"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "libpthread",
+      "version": "1.2.5-r5",
+      "bom-ref": "pkg:apk/tesproos/libpthread@1.2.5-r5?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/libpthread@1.2.5-r5?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/libs/toolchain"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-3.0-with-GCC-exception"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "libqmi",
+      "version": "1.36.0-r1",
+      "bom-ref": "pkg:apk/tesproos/libqmi@1.36.0-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/libqmi@1.36.0-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/packages/feeds/packages/libs/libqmi"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "LGPL-2.0-or-later"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "libqrtr-glib",
+      "version": "1.2.2-r3",
+      "bom-ref": "pkg:apk/tesproos/libqrtr-glib@1.2.2-r3?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/libqrtr-glib@1.2.2-r3?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/packages/feeds/packages/libs/libqrtr-glib"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "LGPL-2.1-or-later"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "librt",
+      "version": "1.2.5-r5",
+      "bom-ref": "pkg:apk/tesproos/librt@1.2.5-r5?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/librt@1.2.5-r5?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/libs/toolchain"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-3.0-with-GCC-exception"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "libss2",
+      "version": "1.47.3-r1",
+      "bom-ref": "pkg:apk/tesproos/libss2@1.47.3-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/libss2@1.47.3-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/utils/e2fsprogs"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "libubox20251208",
+      "version": "2025.12.08~7928f171-r1",
+      "bom-ref": "pkg:apk/tesproos/libubox20251208@2025.12.08~7928f171-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/libubox20251208@2025.12.08~7928f171-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/libs/libubox"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "ISC"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "libubus-lua",
+      "version": "2025.12.02~3cc98db1-r1",
+      "bom-ref": "pkg:apk/tesproos/libubus-lua@2025.12.02~3cc98db1-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/libubus-lua@2025.12.02~3cc98db1-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/system/ubus"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "LGPL-2.1"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "libubus20251202",
+      "version": "2025.12.02~3cc98db1-r1",
+      "bom-ref": "pkg:apk/tesproos/libubus20251202@2025.12.02~3cc98db1-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/libubus20251202@2025.12.02~3cc98db1-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/system/ubus"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "LGPL-2.1"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "libuci20250120",
+      "version": "2025.12.02~66127cd7-r1",
+      "bom-ref": "pkg:apk/tesproos/libuci20250120@2025.12.02~66127cd7-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/libuci20250120@2025.12.02~66127cd7-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/system/uci"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "LGPL-2.1"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "libuclient20201210",
+      "version": "2026.01.31~931bbfeb-r1",
+      "bom-ref": "pkg:apk/tesproos/libuclient20201210@2026.01.31~931bbfeb-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/libuclient20201210@2026.01.31~931bbfeb-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/libs/uclient"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "ISC"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "libucode20230711",
+      "version": "2026.01.16~85922056-r1",
+      "bom-ref": "pkg:apk/tesproos/libucode20230711@2026.01.16~85922056-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/libucode20230711@2026.01.16~85922056-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/utils/ucode"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "ISC"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "libudebug",
+      "version": "2026.01.16~875e1a7a",
+      "bom-ref": "pkg:apk/tesproos/libudebug@2026.01.16~875e1a7a?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/libudebug@2026.01.16~875e1a7a?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/libs/udebug"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "libusb",
+      "version": "1.0-0-1.0.29-r1",
+      "bom-ref": "pkg:apk/tesproos/libusb@1.0-0-1.0.29-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/libusb@1.0-0-1.0.29-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/libs/libusb"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "LGPL-2.1-or-later"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "libustream-mbedtls20201210",
+      "version": "2025.10.03~5a81c108-r1",
+      "bom-ref": "pkg:apk/tesproos/libustream-mbedtls20201210@2025.10.03~5a81c108-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/libustream-mbedtls20201210@2025.10.03~5a81c108-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/libs/ustream-ssl"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "ISC"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "libuuid1",
+      "version": "2.41.3-r1",
+      "bom-ref": "pkg:apk/tesproos/libuuid1@2.41.3-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/libuuid1@2.41.3-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/utils/util-linux"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "BSD-3-Clause"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "logd",
+      "version": "2025.10.30~6f78fa49-r1",
+      "bom-ref": "pkg:apk/tesproos/logd@2025.10.30~6f78fa49-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/logd@2025.10.30~6f78fa49-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/system/ubox"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "lua",
+      "version": "5.1.5-r11",
+      "bom-ref": "pkg:apk/tesproos/lua@5.1.5-r11?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/lua@5.1.5-r11?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/utils/lua"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "luci",
+      "version": "26.168.57090~e4f593d",
+      "bom-ref": "pkg:apk/tesproos/luci@26.168.57090~e4f593d?arch=noarch",
+      "purl": "pkg:apk/tesproos/luci@26.168.57090~e4f593d?arch=noarch",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/luci/feeds/luci/collections/luci"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "noarch"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "luci-app-attendedsysupgrade",
+      "version": "26.168.57090~e4f593d",
+      "bom-ref": "pkg:apk/tesproos/luci-app-attendedsysupgrade@26.168.57090~e4f593d?arch=noarch",
+      "purl": "pkg:apk/tesproos/luci-app-attendedsysupgrade@26.168.57090~e4f593d?arch=noarch",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/luci/feeds/luci/applications/luci-app-attendedsysupgrade"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "noarch"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "luci-app-device-online-mgr",
+      "version": "2.0.0-r1",
+      "bom-ref": "pkg:apk/tesproos/luci-app-device-online-mgr@2.0.0-r1?arch=noarch",
+      "purl": "pkg:apk/tesproos/luci-app-device-online-mgr@2.0.0-r1?arch=noarch",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/tespro/luci-app-device-online-mgr"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "noarch"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-3.0"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "luci-app-firewall",
+      "version": "26.168.57090~e4f593d",
+      "bom-ref": "pkg:apk/tesproos/luci-app-firewall@26.168.57090~e4f593d?arch=noarch",
+      "purl": "pkg:apk/tesproos/luci-app-firewall@26.168.57090~e4f593d?arch=noarch",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/luci/feeds/luci/applications/luci-app-firewall"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "noarch"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "luci-app-package-manager",
+      "version": "26.168.57090~e4f593d",
+      "bom-ref": "pkg:apk/tesproos/luci-app-package-manager@26.168.57090~e4f593d?arch=noarch",
+      "purl": "pkg:apk/tesproos/luci-app-package-manager@26.168.57090~e4f593d?arch=noarch",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/luci/feeds/luci/applications/luci-app-package-manager"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "noarch"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "luci-app-sim-manager",
+      "version": "1.0.0-r3",
+      "bom-ref": "pkg:apk/tesproos/luci-app-sim-manager@1.0.0-r3?arch=noarch",
+      "purl": "pkg:apk/tesproos/luci-app-sim-manager@1.0.0-r3?arch=noarch",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/tespro/luci-app-sim-manager"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "noarch"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "luci-app-tfcard",
+      "version": "1.0.0-r1",
+      "bom-ref": "pkg:apk/tesproos/luci-app-tfcard@1.0.0-r1?arch=noarch",
+      "purl": "pkg:apk/tesproos/luci-app-tfcard@1.0.0-r1?arch=noarch",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/tespro/luci-app-tfcard"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "noarch"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "luci-base",
+      "version": "26.168.57090~e4f593d",
+      "bom-ref": "pkg:apk/tesproos/luci-base@26.168.57090~e4f593d?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/luci-base@26.168.57090~e4f593d?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/luci/feeds/luci/modules/luci-base"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "luci-compat",
+      "version": "26.168.57090~e4f593d",
+      "bom-ref": "pkg:apk/tesproos/luci-compat@26.168.57090~e4f593d?arch=noarch",
+      "purl": "pkg:apk/tesproos/luci-compat@26.168.57090~e4f593d?arch=noarch",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/luci/feeds/luci/modules/luci-compat"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "noarch"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "luci-customizations",
+      "version": "1.0-r3",
+      "bom-ref": "pkg:apk/tesproos/luci-customizations@1.0-r3?arch=noarch",
+      "purl": "pkg:apk/tesproos/luci-customizations@1.0-r3?arch=noarch",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/tespro/luci-customizations"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "noarch"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Proprietary"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "luci-i18n-attendedsysupgrade-ar",
+      "version": "26.168.57090~e4f593d",
+      "bom-ref": "pkg:apk/tesproos/luci-i18n-attendedsysupgrade-ar@26.168.57090~e4f593d?arch=noarch",
+      "purl": "pkg:apk/tesproos/luci-i18n-attendedsysupgrade-ar@26.168.57090~e4f593d?arch=noarch",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/luci/feeds/luci/applications/luci-app-attendedsysupgrade"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "noarch"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "luci-i18n-attendedsysupgrade-fr",
+      "version": "26.168.57090~e4f593d",
+      "bom-ref": "pkg:apk/tesproos/luci-i18n-attendedsysupgrade-fr@26.168.57090~e4f593d?arch=noarch",
+      "purl": "pkg:apk/tesproos/luci-i18n-attendedsysupgrade-fr@26.168.57090~e4f593d?arch=noarch",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/luci/feeds/luci/applications/luci-app-attendedsysupgrade"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "noarch"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "luci-i18n-attendedsysupgrade-zh-cn",
+      "version": "26.168.57090~e4f593d",
+      "bom-ref": "pkg:apk/tesproos/luci-i18n-attendedsysupgrade-zh-cn@26.168.57090~e4f593d?arch=noarch",
+      "purl": "pkg:apk/tesproos/luci-i18n-attendedsysupgrade-zh-cn@26.168.57090~e4f593d?arch=noarch",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/luci/feeds/luci/applications/luci-app-attendedsysupgrade"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "noarch"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "luci-i18n-attendedsysupgrade-zh-tw",
+      "version": "26.168.57090~e4f593d",
+      "bom-ref": "pkg:apk/tesproos/luci-i18n-attendedsysupgrade-zh-tw@26.168.57090~e4f593d?arch=noarch",
+      "purl": "pkg:apk/tesproos/luci-i18n-attendedsysupgrade-zh-tw@26.168.57090~e4f593d?arch=noarch",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/luci/feeds/luci/applications/luci-app-attendedsysupgrade"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "noarch"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "luci-i18n-base-ar",
+      "version": "26.168.57090~e4f593d",
+      "bom-ref": "pkg:apk/tesproos/luci-i18n-base-ar@26.168.57090~e4f593d?arch=noarch",
+      "purl": "pkg:apk/tesproos/luci-i18n-base-ar@26.168.57090~e4f593d?arch=noarch",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/luci/feeds/luci/modules/luci-base"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "noarch"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "luci-i18n-base-fr",
+      "version": "26.168.57090~e4f593d",
+      "bom-ref": "pkg:apk/tesproos/luci-i18n-base-fr@26.168.57090~e4f593d?arch=noarch",
+      "purl": "pkg:apk/tesproos/luci-i18n-base-fr@26.168.57090~e4f593d?arch=noarch",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/luci/feeds/luci/modules/luci-base"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "noarch"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "luci-i18n-base-zh-cn",
+      "version": "26.168.57090~e4f593d",
+      "bom-ref": "pkg:apk/tesproos/luci-i18n-base-zh-cn@26.168.57090~e4f593d?arch=noarch",
+      "purl": "pkg:apk/tesproos/luci-i18n-base-zh-cn@26.168.57090~e4f593d?arch=noarch",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/luci/feeds/luci/modules/luci-base"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "noarch"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "luci-i18n-base-zh-tw",
+      "version": "26.168.57090~e4f593d",
+      "bom-ref": "pkg:apk/tesproos/luci-i18n-base-zh-tw@26.168.57090~e4f593d?arch=noarch",
+      "purl": "pkg:apk/tesproos/luci-i18n-base-zh-tw@26.168.57090~e4f593d?arch=noarch",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/luci/feeds/luci/modules/luci-base"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "noarch"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "luci-i18n-device-online-mgr-fr",
+      "version": "26.245.52453~c2d3d3c",
+      "bom-ref": "pkg:apk/tesproos/luci-i18n-device-online-mgr-fr@26.245.52453~c2d3d3c?arch=noarch",
+      "purl": "pkg:apk/tesproos/luci-i18n-device-online-mgr-fr@26.245.52453~c2d3d3c?arch=noarch",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/tespro/luci-app-device-online-mgr"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "noarch"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-3.0"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "luci-i18n-device-online-mgr-zh-cn",
+      "version": "26.245.52453~c2d3d3c",
+      "bom-ref": "pkg:apk/tesproos/luci-i18n-device-online-mgr-zh-cn@26.245.52453~c2d3d3c?arch=noarch",
+      "purl": "pkg:apk/tesproos/luci-i18n-device-online-mgr-zh-cn@26.245.52453~c2d3d3c?arch=noarch",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/tespro/luci-app-device-online-mgr"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "noarch"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-3.0"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "luci-i18n-firewall-ar",
+      "version": "26.168.57090~e4f593d",
+      "bom-ref": "pkg:apk/tesproos/luci-i18n-firewall-ar@26.168.57090~e4f593d?arch=noarch",
+      "purl": "pkg:apk/tesproos/luci-i18n-firewall-ar@26.168.57090~e4f593d?arch=noarch",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/luci/feeds/luci/applications/luci-app-firewall"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "noarch"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "luci-i18n-firewall-fr",
+      "version": "26.168.57090~e4f593d",
+      "bom-ref": "pkg:apk/tesproos/luci-i18n-firewall-fr@26.168.57090~e4f593d?arch=noarch",
+      "purl": "pkg:apk/tesproos/luci-i18n-firewall-fr@26.168.57090~e4f593d?arch=noarch",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/luci/feeds/luci/applications/luci-app-firewall"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "noarch"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "luci-i18n-firewall-zh-cn",
+      "version": "26.168.57090~e4f593d",
+      "bom-ref": "pkg:apk/tesproos/luci-i18n-firewall-zh-cn@26.168.57090~e4f593d?arch=noarch",
+      "purl": "pkg:apk/tesproos/luci-i18n-firewall-zh-cn@26.168.57090~e4f593d?arch=noarch",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/luci/feeds/luci/applications/luci-app-firewall"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "noarch"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "luci-i18n-firewall-zh-tw",
+      "version": "26.168.57090~e4f593d",
+      "bom-ref": "pkg:apk/tesproos/luci-i18n-firewall-zh-tw@26.168.57090~e4f593d?arch=noarch",
+      "purl": "pkg:apk/tesproos/luci-i18n-firewall-zh-tw@26.168.57090~e4f593d?arch=noarch",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/luci/feeds/luci/applications/luci-app-firewall"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "noarch"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "luci-i18n-package-manager-ar",
+      "version": "26.168.57090~e4f593d",
+      "bom-ref": "pkg:apk/tesproos/luci-i18n-package-manager-ar@26.168.57090~e4f593d?arch=noarch",
+      "purl": "pkg:apk/tesproos/luci-i18n-package-manager-ar@26.168.57090~e4f593d?arch=noarch",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/luci/feeds/luci/applications/luci-app-package-manager"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "noarch"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "luci-i18n-package-manager-fr",
+      "version": "26.168.57090~e4f593d",
+      "bom-ref": "pkg:apk/tesproos/luci-i18n-package-manager-fr@26.168.57090~e4f593d?arch=noarch",
+      "purl": "pkg:apk/tesproos/luci-i18n-package-manager-fr@26.168.57090~e4f593d?arch=noarch",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/luci/feeds/luci/applications/luci-app-package-manager"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "noarch"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "luci-i18n-package-manager-zh-cn",
+      "version": "26.168.57090~e4f593d",
+      "bom-ref": "pkg:apk/tesproos/luci-i18n-package-manager-zh-cn@26.168.57090~e4f593d?arch=noarch",
+      "purl": "pkg:apk/tesproos/luci-i18n-package-manager-zh-cn@26.168.57090~e4f593d?arch=noarch",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/luci/feeds/luci/applications/luci-app-package-manager"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "noarch"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "luci-i18n-package-manager-zh-tw",
+      "version": "26.168.57090~e4f593d",
+      "bom-ref": "pkg:apk/tesproos/luci-i18n-package-manager-zh-tw@26.168.57090~e4f593d?arch=noarch",
+      "purl": "pkg:apk/tesproos/luci-i18n-package-manager-zh-tw@26.168.57090~e4f593d?arch=noarch",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/luci/feeds/luci/applications/luci-app-package-manager"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "noarch"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "luci-i18n-sim-manager-fr",
+      "version": "26.253.54775~5618652c",
+      "bom-ref": "pkg:apk/tesproos/luci-i18n-sim-manager-fr@26.253.54775~5618652c?arch=noarch",
+      "purl": "pkg:apk/tesproos/luci-i18n-sim-manager-fr@26.253.54775~5618652c?arch=noarch",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/tespro/luci-app-sim-manager"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "noarch"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "luci-i18n-sim-manager-zh-cn",
+      "version": "26.253.54775~5618652c",
+      "bom-ref": "pkg:apk/tesproos/luci-i18n-sim-manager-zh-cn@26.253.54775~5618652c?arch=noarch",
+      "purl": "pkg:apk/tesproos/luci-i18n-sim-manager-zh-cn@26.253.54775~5618652c?arch=noarch",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/tespro/luci-app-sim-manager"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "noarch"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "luci-i18n-tfcard-fr",
+      "version": "26.245.52453~c2d3d3c",
+      "bom-ref": "pkg:apk/tesproos/luci-i18n-tfcard-fr@26.245.52453~c2d3d3c?arch=noarch",
+      "purl": "pkg:apk/tesproos/luci-i18n-tfcard-fr@26.245.52453~c2d3d3c?arch=noarch",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/tespro/luci-app-tfcard"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "noarch"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "luci-i18n-tfcard-zh-cn",
+      "version": "26.245.52453~c2d3d3c",
+      "bom-ref": "pkg:apk/tesproos/luci-i18n-tfcard-zh-cn@26.245.52453~c2d3d3c?arch=noarch",
+      "purl": "pkg:apk/tesproos/luci-i18n-tfcard-zh-cn@26.245.52453~c2d3d3c?arch=noarch",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/tespro/luci-app-tfcard"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "noarch"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "luci-lib-base",
+      "version": "26.168.57090~e4f593d",
+      "bom-ref": "pkg:apk/tesproos/luci-lib-base@26.168.57090~e4f593d?arch=noarch",
+      "purl": "pkg:apk/tesproos/luci-lib-base@26.168.57090~e4f593d?arch=noarch",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/luci/feeds/luci/libs/luci-lib-base"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "noarch"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "luci-lib-ip",
+      "version": "26.168.57090~e4f593d",
+      "bom-ref": "pkg:apk/tesproos/luci-lib-ip@26.168.57090~e4f593d?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/luci-lib-ip@26.168.57090~e4f593d?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/luci/feeds/luci/libs/luci-lib-ip"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "luci-lib-jsonc",
+      "version": "26.168.57090~e4f593d",
+      "bom-ref": "pkg:apk/tesproos/luci-lib-jsonc@26.168.57090~e4f593d?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/luci-lib-jsonc@26.168.57090~e4f593d?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/luci/feeds/luci/libs/luci-lib-jsonc"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "luci-lib-nixio",
+      "version": "26.168.57090~e4f593d",
+      "bom-ref": "pkg:apk/tesproos/luci-lib-nixio@26.168.57090~e4f593d?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/luci-lib-nixio@26.168.57090~e4f593d?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/luci/feeds/luci/libs/luci-lib-nixio"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "luci-lib-uqr",
+      "version": "26.168.57090~e4f593d",
+      "bom-ref": "pkg:apk/tesproos/luci-lib-uqr@26.168.57090~e4f593d?arch=noarch",
+      "purl": "pkg:apk/tesproos/luci-lib-uqr@26.168.57090~e4f593d?arch=noarch",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/luci/feeds/luci/libs/luci-lib-uqr"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "noarch"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "luci-light",
+      "version": "26.168.57090~e4f593d",
+      "bom-ref": "pkg:apk/tesproos/luci-light@26.168.57090~e4f593d?arch=noarch",
+      "purl": "pkg:apk/tesproos/luci-light@26.168.57090~e4f593d?arch=noarch",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/luci/feeds/luci/collections/luci-light"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "noarch"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "luci-lua-runtime",
+      "version": "26.168.57090~e4f593d",
+      "bom-ref": "pkg:apk/tesproos/luci-lua-runtime@26.168.57090~e4f593d?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/luci-lua-runtime@26.168.57090~e4f593d?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/luci/feeds/luci/modules/luci-lua-runtime"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "luci-mod-admin-full",
+      "version": "26.168.57090~e4f593d",
+      "bom-ref": "pkg:apk/tesproos/luci-mod-admin-full@26.168.57090~e4f593d?arch=noarch",
+      "purl": "pkg:apk/tesproos/luci-mod-admin-full@26.168.57090~e4f593d?arch=noarch",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/luci/feeds/luci/modules/luci-mod-admin-full"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "noarch"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "luci-mod-encrypt",
+      "version": "1.0.0-r1",
+      "bom-ref": "pkg:apk/tesproos/luci-mod-encrypt@1.0.0-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/luci-mod-encrypt@1.0.0-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/tespro/luci-mod-encrypt"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "luci-mod-network",
+      "version": "26.168.57090~e4f593d",
+      "bom-ref": "pkg:apk/tesproos/luci-mod-network@26.168.57090~e4f593d?arch=noarch",
+      "purl": "pkg:apk/tesproos/luci-mod-network@26.168.57090~e4f593d?arch=noarch",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/luci/feeds/luci/modules/luci-mod-network"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "noarch"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "luci-mod-status",
+      "version": "26.168.57090~e4f593d",
+      "bom-ref": "pkg:apk/tesproos/luci-mod-status@26.168.57090~e4f593d?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/luci-mod-status@26.168.57090~e4f593d?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/luci/feeds/luci/modules/luci-mod-status"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "luci-mod-system",
+      "version": "26.236.23849~ca441b6",
+      "bom-ref": "pkg:apk/tesproos/luci-mod-system@26.236.23849~ca441b6?arch=noarch",
+      "purl": "pkg:apk/tesproos/luci-mod-system@26.236.23849~ca441b6?arch=noarch",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/luci/feeds/luci/modules/luci-mod-system"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "noarch"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "luci-proto-ipv6",
+      "version": "26.168.57090~e4f593d",
+      "bom-ref": "pkg:apk/tesproos/luci-proto-ipv6@26.168.57090~e4f593d?arch=noarch",
+      "purl": "pkg:apk/tesproos/luci-proto-ipv6@26.168.57090~e4f593d?arch=noarch",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/luci/feeds/luci/protocols/luci-proto-ipv6"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "noarch"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "luci-proto-mbim",
+      "version": "26.168.57090~e4f593d",
+      "bom-ref": "pkg:apk/tesproos/luci-proto-mbim@26.168.57090~e4f593d?arch=noarch",
+      "purl": "pkg:apk/tesproos/luci-proto-mbim@26.168.57090~e4f593d?arch=noarch",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/luci/feeds/luci/protocols/luci-proto-mbim"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "noarch"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "luci-proto-modemmanager",
+      "version": "26.168.57090~e4f593d",
+      "bom-ref": "pkg:apk/tesproos/luci-proto-modemmanager@26.168.57090~e4f593d?arch=noarch",
+      "purl": "pkg:apk/tesproos/luci-proto-modemmanager@26.168.57090~e4f593d?arch=noarch",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/luci/feeds/luci/protocols/luci-proto-modemmanager"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "noarch"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "luci-proto-ppp",
+      "version": "26.168.57090~e4f593d",
+      "bom-ref": "pkg:apk/tesproos/luci-proto-ppp@26.168.57090~e4f593d?arch=noarch",
+      "purl": "pkg:apk/tesproos/luci-proto-ppp@26.168.57090~e4f593d?arch=noarch",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/luci/feeds/luci/protocols/luci-proto-ppp"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "noarch"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "luci-theme-argon",
+      "version": "2.4.3-r20250722",
+      "bom-ref": "pkg:apk/tesproos/luci-theme-argon@2.4.3-r20250722?arch=noarch",
+      "purl": "pkg:apk/tesproos/luci-theme-argon@2.4.3-r20250722?arch=noarch",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/tespro/luci-theme-argon"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "noarch"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "luci-theme-bootstrap",
+      "version": "26.168.57090~e4f593d",
+      "bom-ref": "pkg:apk/tesproos/luci-theme-bootstrap@26.168.57090~e4f593d?arch=noarch",
+      "purl": "pkg:apk/tesproos/luci-theme-bootstrap@26.168.57090~e4f593d?arch=noarch",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/luci/feeds/luci/themes/luci-theme-bootstrap"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "noarch"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "luci-xlsx",
+      "version": "0.20.3-r1",
+      "bom-ref": "pkg:apk/tesproos/luci-xlsx@0.20.3-r1?arch=noarch",
+      "purl": "pkg:apk/tesproos/luci-xlsx@0.20.3-r1?arch=noarch",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/tespro/luci-xlsx"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "noarch"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "mkf2fs",
+      "version": "1.16.0-r4",
+      "bom-ref": "pkg:apk/tesproos/mkf2fs@1.16.0-r4?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/mkf2fs@1.16.0-r4?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/utils/f2fs-tools"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0-only"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "modbus-proto-tespro-combined",
+      "version": "1.0.0-r67",
+      "bom-ref": "pkg:apk/tesproos/modbus-proto-tespro-combined@1.0.0-r67?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/modbus-proto-tespro-combined@1.0.0-r67?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/tespro/modbus-proto-tespro-combined"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "modemmanager",
+      "version": "1.24.0-r9",
+      "bom-ref": "pkg:apk/tesproos/modemmanager@1.24.0-r9?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/modemmanager@1.24.0-r9?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/packages/feeds/packages/net/modemmanager"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0-or-later"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "modemmanager-hotplug-fix",
+      "version": "1.0-r2",
+      "bom-ref": "pkg:apk/tesproos/modemmanager-hotplug-fix@1.0-r2?arch=noarch",
+      "purl": "pkg:apk/tesproos/modemmanager-hotplug-fix@1.0-r2?arch=noarch",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/network/utils/modemmanager-hotplug-fix"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "noarch"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0-or-later"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "mt7981-wo-firmware",
+      "version": "20260110-r1",
+      "bom-ref": "pkg:apk/tesproos/mt7981-wo-firmware@20260110-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/mt7981-wo-firmware@20260110-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/firmware/linux-firmware"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "mt7987",
+      "version": "2p5g-phy-firmware-20260110-r1",
+      "bom-ref": "pkg:apk/tesproos/mt7987@2p5g-phy-firmware-20260110-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/mt7987@2p5g-phy-firmware-20260110-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/firmware/linux-firmware"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "mt7990-firmware",
+      "version": "20260110-r1",
+      "bom-ref": "pkg:apk/tesproos/mt7990-firmware@20260110-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/mt7990-firmware@20260110-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/firmware/linux-firmware"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "mtd",
+      "version": "27",
+      "bom-ref": "pkg:apk/tesproos/mtd@27?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/mtd@27?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/system/mtd"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0+"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "netifd",
+      "version": "2025.10.20~777f5942-r3",
+      "bom-ref": "pkg:apk/tesproos/netifd@2025.10.20~777f5942-r3?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/netifd@2025.10.20~777f5942-r3?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/network/config/netifd"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "nftables-json",
+      "version": "1.1.6-r1",
+      "bom-ref": "pkg:apk/tesproos/nftables-json@1.1.6-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/nftables-json@1.1.6-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/network/utils/nftables"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "odhcp6c",
+      "version": "2026.01.25~24485bb4-r1",
+      "bom-ref": "pkg:apk/tesproos/odhcp6c@2026.01.25~24485bb4-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/odhcp6c@2026.01.25~24485bb4-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/network/ipv6/odhcp6c"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "odhcpd-ipv6only",
+      "version": "2026.01.19~13ef4837-r1",
+      "bom-ref": "pkg:apk/tesproos/odhcpd-ipv6only@2026.01.19~13ef4837-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/odhcpd-ipv6only@2026.01.19~13ef4837-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/network/services/odhcpd"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "openssl-util",
+      "version": "3.5.5-r1",
+      "bom-ref": "pkg:apk/tesproos/openssl-util@3.5.5-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/openssl-util@3.5.5-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/libs/openssl"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "openwrt-keyring",
+      "version": "2025.12.10~f0670054-r1",
+      "bom-ref": "pkg:apk/tesproos/openwrt-keyring@2025.12.10~f0670054-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/openwrt-keyring@2025.12.10~f0670054-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/system/openwrt-keyring"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "ppp",
+      "version": "2.5.2-r2",
+      "bom-ref": "pkg:apk/tesproos/ppp@2.5.2-r2?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/ppp@2.5.2-r2?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/network/services/ppp"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "BSD-4-Clause"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "ppp-mod-pppoe",
+      "version": "2.5.2-r2",
+      "bom-ref": "pkg:apk/tesproos/ppp-mod-pppoe@2.5.2-r2?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/ppp-mod-pppoe@2.5.2-r2?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/network/services/ppp"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "BSD-4-Clause"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "procd",
+      "version": "2025.10.04~3b3501ab-r1",
+      "bom-ref": "pkg:apk/tesproos/procd@2025.10.04~3b3501ab-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/procd@2025.10.04~3b3501ab-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/system/procd"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "procd-seccomp",
+      "version": "2025.10.04~3b3501ab-r1",
+      "bom-ref": "pkg:apk/tesproos/procd-seccomp@2025.10.04~3b3501ab-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/procd-seccomp@2025.10.04~3b3501ab-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/system/procd"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "procd-ujail",
+      "version": "2025.10.04~3b3501ab-r1",
+      "bom-ref": "pkg:apk/tesproos/procd-ujail@2025.10.04~3b3501ab-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/procd-ujail@2025.10.04~3b3501ab-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/system/procd"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "rpcd",
+      "version": "2025.12.03~ffb9961c-r1",
+      "bom-ref": "pkg:apk/tesproos/rpcd@2025.12.03~ffb9961c-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/rpcd@2025.12.03~ffb9961c-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/system/rpcd"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "ISC"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "rpcd-mod-file",
+      "version": "2025.12.03~ffb9961c-r1",
+      "bom-ref": "pkg:apk/tesproos/rpcd-mod-file@2025.12.03~ffb9961c-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/rpcd-mod-file@2025.12.03~ffb9961c-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/system/rpcd"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "ISC"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "rpcd-mod-iwinfo",
+      "version": "2025.12.03~ffb9961c-r1",
+      "bom-ref": "pkg:apk/tesproos/rpcd-mod-iwinfo@2025.12.03~ffb9961c-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/rpcd-mod-iwinfo@2025.12.03~ffb9961c-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/system/rpcd"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "ISC"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "rpcd-mod-luci",
+      "version": "20240305-r1",
+      "bom-ref": "pkg:apk/tesproos/rpcd-mod-luci@20240305-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/rpcd-mod-luci@20240305-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/luci/feeds/luci/libs/rpcd-mod-luci"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "rpcd-mod-rpcsys",
+      "version": "2025.12.03~ffb9961c-r1",
+      "bom-ref": "pkg:apk/tesproos/rpcd-mod-rpcsys@2025.12.03~ffb9961c-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/rpcd-mod-rpcsys@2025.12.03~ffb9961c-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/system/rpcd"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "ISC"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "rpcd-mod-rrdns",
+      "version": "20170710",
+      "bom-ref": "pkg:apk/tesproos/rpcd-mod-rrdns@20170710?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/rpcd-mod-rrdns@20170710?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/luci/feeds/luci/libs/rpcd-mod-rrdns"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "rpcd-mod-ucode",
+      "version": "2025.12.03~ffb9961c-r1",
+      "bom-ref": "pkg:apk/tesproos/rpcd-mod-ucode@2025.12.03~ffb9961c-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/rpcd-mod-ucode@2025.12.03~ffb9961c-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/system/rpcd"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "ISC"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "serial-service-combined",
+      "version": "1.0.0-r2",
+      "bom-ref": "pkg:apk/tesproos/serial-service-combined@1.0.0-r2?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/serial-service-combined@1.0.0-r2?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/tespro/serial-service-combined"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "sim-manager",
+      "version": "1.0.0-r1",
+      "bom-ref": "pkg:apk/tesproos/sim-manager@1.0.0-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/sim-manager@1.0.0-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/tespro/sim-manager"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "tfcard-tools",
+      "version": "1.0.0-r1",
+      "bom-ref": "pkg:apk/tesproos/tfcard-tools@1.0.0-r1?arch=noarch",
+      "purl": "pkg:apk/tesproos/tfcard-tools@1.0.0-r1?arch=noarch",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/tespro/tfcard-tools"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "noarch"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "tpm2-tools",
+      "version": "5.8-r1",
+      "bom-ref": "pkg:apk/tesproos/tpm2-tools@5.8-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/tpm2-tools@5.8-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/tespro/tpm2-tools"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "BSD-3-Clause"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "tpm2-tss",
+      "version": "4.2.0-r1",
+      "bom-ref": "pkg:apk/tesproos/tpm2-tss@4.2.0-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/tpm2-tss@4.2.0-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/tespro/tpm2-tss"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "BSD-2-Clause"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "ubi-utils",
+      "version": "2.3.0-r1",
+      "bom-ref": "pkg:apk/tesproos/ubi-utils@2.3.0-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/ubi-utils@2.3.0-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/utils/mtd-utils"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPLv2"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "uboot-envtools",
+      "version": "2026.01-r1",
+      "bom-ref": "pkg:apk/tesproos/uboot-envtools@2026.01-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/uboot-envtools@2026.01-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/boot/uboot-tools"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0 GPL-2.0+"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "ubox",
+      "version": "2025.10.30~6f78fa49-r1",
+      "bom-ref": "pkg:apk/tesproos/ubox@2025.10.30~6f78fa49-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/ubox@2025.10.30~6f78fa49-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/system/ubox"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "ubus",
+      "version": "2025.12.02~3cc98db1-r1",
+      "bom-ref": "pkg:apk/tesproos/ubus@2025.12.02~3cc98db1-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/ubus@2025.12.02~3cc98db1-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/system/ubus"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "LGPL-2.1"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "ubusd",
+      "version": "2025.12.02~3cc98db1-r1",
+      "bom-ref": "pkg:apk/tesproos/ubusd@2025.12.02~3cc98db1-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/ubusd@2025.12.02~3cc98db1-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/system/ubus"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "LGPL-2.1"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "uci",
+      "version": "2025.12.02~66127cd7-r1",
+      "bom-ref": "pkg:apk/tesproos/uci@2025.12.02~66127cd7-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/uci@2025.12.02~66127cd7-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/system/uci"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "LGPL-2.1"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "uclient-fetch",
+      "version": "2026.01.31~931bbfeb-r1",
+      "bom-ref": "pkg:apk/tesproos/uclient-fetch@2026.01.31~931bbfeb-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/uclient-fetch@2026.01.31~931bbfeb-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/libs/uclient"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "ISC"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "ucode",
+      "version": "2026.01.16~85922056-r1",
+      "bom-ref": "pkg:apk/tesproos/ucode@2026.01.16~85922056-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/ucode@2026.01.16~85922056-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/utils/ucode"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "ISC"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "ucode-mod-digest",
+      "version": "2026.01.16~85922056-r1",
+      "bom-ref": "pkg:apk/tesproos/ucode-mod-digest@2026.01.16~85922056-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/ucode-mod-digest@2026.01.16~85922056-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/utils/ucode"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "ISC"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "ucode-mod-fs",
+      "version": "2026.01.16~85922056-r1",
+      "bom-ref": "pkg:apk/tesproos/ucode-mod-fs@2026.01.16~85922056-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/ucode-mod-fs@2026.01.16~85922056-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/utils/ucode"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "ISC"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "ucode-mod-html",
+      "version": "1",
+      "bom-ref": "pkg:apk/tesproos/ucode-mod-html@1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/ucode-mod-html@1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/luci/feeds/luci/contrib/package/ucode-mod-html"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "ISC"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "ucode-mod-log",
+      "version": "2026.01.16~85922056-r1",
+      "bom-ref": "pkg:apk/tesproos/ucode-mod-log@2026.01.16~85922056-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/ucode-mod-log@2026.01.16~85922056-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/utils/ucode"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "ISC"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "ucode-mod-lua",
+      "version": "1",
+      "bom-ref": "pkg:apk/tesproos/ucode-mod-lua@1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/ucode-mod-lua@1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/luci/feeds/luci/contrib/package/ucode-mod-lua"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "ISC"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "ucode-mod-math",
+      "version": "2026.01.16~85922056-r1",
+      "bom-ref": "pkg:apk/tesproos/ucode-mod-math@2026.01.16~85922056-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/ucode-mod-math@2026.01.16~85922056-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/utils/ucode"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "ISC"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "ucode-mod-nl80211",
+      "version": "2026.01.16~85922056-r1",
+      "bom-ref": "pkg:apk/tesproos/ucode-mod-nl80211@2026.01.16~85922056-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/ucode-mod-nl80211@2026.01.16~85922056-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/utils/ucode"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "ISC"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "ucode-mod-rtnl",
+      "version": "2026.01.16~85922056-r1",
+      "bom-ref": "pkg:apk/tesproos/ucode-mod-rtnl@2026.01.16~85922056-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/ucode-mod-rtnl@2026.01.16~85922056-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/utils/ucode"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "ISC"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "ucode-mod-ubus",
+      "version": "2026.01.16~85922056-r1",
+      "bom-ref": "pkg:apk/tesproos/ucode-mod-ubus@2026.01.16~85922056-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/ucode-mod-ubus@2026.01.16~85922056-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/utils/ucode"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "ISC"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "ucode-mod-uci",
+      "version": "2026.01.16~85922056-r1",
+      "bom-ref": "pkg:apk/tesproos/ucode-mod-uci@2026.01.16~85922056-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/ucode-mod-uci@2026.01.16~85922056-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/utils/ucode"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "ISC"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "ucode-mod-uloop",
+      "version": "2026.01.16~85922056-r1",
+      "bom-ref": "pkg:apk/tesproos/ucode-mod-uloop@2026.01.16~85922056-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/ucode-mod-uloop@2026.01.16~85922056-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/utils/ucode"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "ISC"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "uhttpd",
+      "version": "2025.10.03~ebb92e6b-r1",
+      "bom-ref": "pkg:apk/tesproos/uhttpd@2025.10.03~ebb92e6b-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/uhttpd@2025.10.03~ebb92e6b-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/network/services/uhttpd"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "ISC"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "uhttpd-mod-ubus",
+      "version": "2025.10.03~ebb92e6b-r1",
+      "bom-ref": "pkg:apk/tesproos/uhttpd-mod-ubus@2025.10.03~ebb92e6b-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/uhttpd-mod-ubus@2025.10.03~ebb92e6b-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/network/services/uhttpd"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "ISC"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "umbim",
+      "version": "2025.10.04~2939b7d0-r1",
+      "bom-ref": "pkg:apk/tesproos/umbim@2025.10.04~2939b7d0-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/umbim@2025.10.04~2939b7d0-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/network/utils/umbim"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "urandom-seed",
+      "version": "3",
+      "bom-ref": "pkg:apk/tesproos/urandom-seed@3?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/urandom-seed@3?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/system/urandom-seed"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0-only"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "urngd",
+      "version": "2025.10.03~f17e33d9-r1",
+      "bom-ref": "pkg:apk/tesproos/urngd@2025.10.03~f17e33d9-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/urngd@2025.10.03~f17e33d9-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/system/urngd"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0 BSD-3-Clause"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "usb-modeswitch",
+      "version": "2025.10.04~9b4d0a6e-r1",
+      "bom-ref": "pkg:apk/tesproos/usb-modeswitch@2025.10.04~9b4d0a6e-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/usb-modeswitch@2025.10.04~9b4d0a6e-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/utils/usbmode"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "usign",
+      "version": "2025.10.03~c4c72b1b-r1",
+      "bom-ref": "pkg:apk/tesproos/usign@2025.10.03~c4c72b1b-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/usign@2025.10.03~c4c72b1b-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/system/usign"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "ISC"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "vsftpd",
+      "version": "3.0.5-r6",
+      "bom-ref": "pkg:apk/tesproos/vsftpd@3.0.5-r6?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/vsftpd@3.0.5-r6?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/packages/feeds/packages/net/vsftpd"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPLv2"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "wget-ssl",
+      "version": "1.25.0-r4",
+      "bom-ref": "pkg:apk/tesproos/wget-ssl@1.25.0-r4?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/wget-ssl@1.25.0-r4?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/packages/feeds/packages/net/wget"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-3.0-or-later"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "wifi-scripts",
+      "version": "1.0-r1",
+      "bom-ref": "pkg:apk/tesproos/wifi-scripts@1.0-r1?arch=noarch",
+      "purl": "pkg:apk/tesproos/wifi-scripts@1.0-r1?arch=noarch",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/network/config/wifi-scripts"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "noarch"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "wireless-regdb",
+      "version": "2025.10.07-r1",
+      "bom-ref": "pkg:apk/tesproos/wireless-regdb@2025.10.07-r1?arch=noarch",
+      "purl": "pkg:apk/tesproos/wireless-regdb@2025.10.07-r1?arch=noarch",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/firmware/wireless-regdb"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "noarch"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "ISC"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "wpad-basic-mbedtls",
+      "version": "2025.08.26~ca266cc2-r1",
+      "bom-ref": "pkg:apk/tesproos/wpad-basic-mbedtls@2025.08.26~ca266cc2-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/wpad-basic-mbedtls@2025.08.26~ca266cc2-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/network/services/hostapd"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "BSD-3-Clause"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "wwan",
+      "version": "2019.04.29-r6",
+      "bom-ref": "pkg:apk/tesproos/wwan@2019.04.29-r6?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/wwan@2019.04.29-r6?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/network/utils/wwan"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "zlib",
+      "version": "1.3.1-r1",
+      "bom-ref": "pkg:apk/tesproos/zlib@1.3.1-r1?arch=aarch64_cortex-a53",
+      "purl": "pkg:apk/tesproos/zlib@1.3.1-r1?arch=aarch64_cortex-a53",
+      "properties": [
+        {
+          "name": "tespro:feed",
+          "value": "feeds/base/libs/zlib"
+        },
+        {
+          "name": "tespro:arch",
+          "value": "aarch64_cortex-a53"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Zlib"
+          }
+        }
+      ]
+    }
+  ]
+}

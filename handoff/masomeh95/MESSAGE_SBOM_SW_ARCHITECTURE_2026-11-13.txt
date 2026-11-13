@@ -1,0 +1,25 @@
+Masomeh — SBOM + full CCLI application architecture (2026-11-13)
+
+  cd C:\Yahia\projects\CCLI
+  git pull origin main
+
+READ FIRST:
+  handoff/masomeh95/SBOM_SW_ARCHITECTURE_R64_MASOMEH.md
+
+DOCS (0.1.0-r64):
+  lab/evidence/EVD-SM-9-External-Components/CCLI_SW_ARCHITECTURE_AND_IMPLEMENTATION_0.1.0-r64.md
+  lab/evidence/EVD-SM-9-External-Components/CCLI_APP_SBOM_0.1.0-r64.cdx.json
+
+CODE (main application — SK0153 entry):
+  apps/ccli/program/main.c
+  apps/ccli/services/ + adapters/ + core/
+  product/apps/ccli/  (product mirror — same layout)
+
+PIN:
+  Version 0.1.0-r64 · ELF SHA256 967df2764819c3b616e5467a16a3f9a923b4002ad1ca4a73d156d16e91ab2df7
+  Bench yaml: apps/ccli/config/product_tr400_p3_07_connect_5ln.yaml
+  EMT432: apps/ccli/config/modbus/chronos_emt432_map.yaml
+
+Commit: (see README_FOR_MASOMEH.md SBOM section)
+
+Questions → Yahia.

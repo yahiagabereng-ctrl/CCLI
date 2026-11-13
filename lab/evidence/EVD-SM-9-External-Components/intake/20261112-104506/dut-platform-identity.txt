@@ -1,0 +1,17 @@
+﻿host=192.168.10.1
+pulled_utc=$(date -u +%Y-%m-%dT%H:%M:%SZ)
+DISTRIB_ID='TesproOS'
+DISTRIB_RELEASE='32-2.1.0'
+DISTRIB_REVISION='r601-af70fcaaa2'
+DISTRIB_TARGET='mediatek/filogic'
+DISTRIB_ARCH='aarch64_cortex-a53'
+DISTRIB_DESCRIPTION='TesproOS 32-2.1.0 r601-af70fcaaa2'
+DISTRIB_TAINTS='no-all'
+=== ccli ===
+ccli 0.1.0-r64 (P5-EMT432-CMV-ANG-URCB-PF1)
+  semver:   0.1.0
+  release:  r64
+  git:      unknown
+  built:    2026-06-29T12:59:20Z UTC
+  platform: tg500
+967df2764819c3b616e5467a16a3f9a923b4002ad1ca4a73d156d16e91ab2df7  /usr/sbin/ccli

@@ -1,8 +1,22 @@
 # CCLI unified cert — handoff for Alireza (@alirezavzand)
 
-**Date:** 2026-11-12 (Trivy SCA r64 + P2 fw4 cyber normativa)  
+**Date:** 2026-11-13 (SBOM + SW architecture r64)  
 **Repo:** https://github.com/yahiagabereng-ctrl/CCLI  
 **GitHub:** `alirezavzand` (collaborator)
+
+---
+
+## SBOM + software architecture — 0.1.0-r64 (2026-11-13) — **start here for SM-9 / CR 7.8**
+
+**Git commit:** *(pinned after push)*
+
+| Item | Path |
+|------|------|
+| **Handoff** | **[SBOM_SW_ARCHITECTURE_R64_ALIREZA.md](SBOM_SW_ARCHITECTURE_R64_ALIREZA.md)** |
+| **Architecture + implementation** | [`lab/evidence/EVD-SM-9-External-Components/CCLI_SW_ARCHITECTURE_AND_IMPLEMENTATION_0.1.0-r64.md`](../../lab/evidence/EVD-SM-9-External-Components/CCLI_SW_ARCHITECTURE_AND_IMPLEMENTATION_0.1.0-r64.md) |
+| **App SBOM (CycloneDX)** | [`lab/evidence/EVD-SM-9-External-Components/CCLI_APP_SBOM_0.1.0-r64.cdx.json`](../../lab/evidence/EVD-SM-9-External-Components/CCLI_APP_SBOM_0.1.0-r64.cdx.json) |
+| **Platform SBOM (302 apk)** | [`intake/20261112-104506/platform-runtime-inventory.cdx.json`](../../lab/evidence/EVD-SM-9-External-Components/intake/20261112-104506/platform-runtime-inventory.cdx.json) |
+| **Chat blurb** | [`MESSAGE_TO_SEND.txt`](MESSAGE_TO_SEND.txt) (SBOM section) |
 
 ---
 
