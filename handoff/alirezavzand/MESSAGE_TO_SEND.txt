@@ -70,7 +70,7 @@ PC-A plant/logger (unchanged):
   Please: skim JSON summary + any DIFF_device_repo rows; SM-10 for TesproOS platform CVE
 
 **SBOM + SW architecture 0.1.0-r64 (2026-11-13, git pull main):**
-  Commit: (pinned in README SBOM section)
+  Commit: a1956c4
   Start: handoff/alirezavzand/SBOM_SW_ARCHITECTURE_R64_ALIREZA.md
   Arch: lab/evidence/EVD-SM-9-External-Components/CCLI_SW_ARCHITECTURE_AND_IMPLEMENTATION_0.1.0-r64.md
   App SBOM: lab/evidence/EVD-SM-9-External-Components/CCLI_APP_SBOM_0.1.0-r64.cdx.json

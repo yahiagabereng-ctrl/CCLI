@@ -2,7 +2,7 @@
 
 **Date:** 2026-11-13  
 **Audience:** @masomeh95 (PC1 / TSP / Modbus plant)  
-**Git commit:** *(pinned after push)*
+**Git commit:** **`a1956c4`** — https://github.com/yahiagabereng-ctrl/CCLI/commit/a1956c4
 
 ---
 

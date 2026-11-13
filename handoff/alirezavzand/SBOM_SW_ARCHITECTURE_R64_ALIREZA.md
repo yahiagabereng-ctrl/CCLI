@@ -2,7 +2,7 @@
 
 **Date:** 2026-11-13  
 **Audience:** @alirezavzand  
-**Git commit:** *(pinned after push)*
+**Git commit:** **`a1956c4`** — https://github.com/yahiagabereng-ctrl/CCLI/commit/a1956c4
 
 ---
 

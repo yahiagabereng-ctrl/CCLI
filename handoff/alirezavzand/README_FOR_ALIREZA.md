@@ -8,7 +8,7 @@
 
 ## SBOM + software architecture — 0.1.0-r64 (2026-11-13) — **start here for SM-9 / CR 7.8**
 
-**Git commit:** *(pinned after push)*
+**Git commit:** **`a1956c4`** — `git pull origin main`
 
 | Item | Path |
 |------|------|

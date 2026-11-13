@@ -20,6 +20,6 @@ PIN:
   Bench yaml: apps/ccli/config/product_tr400_p3_07_connect_5ln.yaml
   EMT432: apps/ccli/config/modbus/chronos_emt432_map.yaml
 
-Commit: (see README_FOR_MASOMEH.md SBOM section)
+Commit: a1956c4
 
 Questions → Yahia.
