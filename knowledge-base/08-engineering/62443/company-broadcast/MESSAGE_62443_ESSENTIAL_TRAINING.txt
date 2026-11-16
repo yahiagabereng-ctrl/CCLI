@@ -1,0 +1,42 @@
+HiTEKS — mandatory IEC 62443 security training awareness (CCLI programme)
+
+To: All staff and collaborators with access to the CCLI repo / CCLI lab / cert pack
+Normative: IEC 62443-4-1 SM-4 (security expertise)
+
+READ (essentials — ~1 hour for everyone):
+  knowledge-base/08-engineering/62443/CCI_62443_ESSENTIAL_SECURITY_TRAINING.md
+
+Repo: https://github.com/yahiagabereng-ctrl/CCLI  →  git pull origin main
+
+EVERYONE (awareness — due within 2 weeks):
+  1. 62443 SM-4 + roles overview (SDL-SM-Practice-1-Security-Management.md)
+  2. CCLI zones / scope (62443/README.md + CCI_62443_Zones.md)
+  3. No secrets in git (lab/conformance/LAB_ACCESS_FREEZE.md)
+  4. Know your RACI role (62443/templates/SM-2_RACI.md)
+  Reply to SDL lead: name · date completed · your CCLI role
+
+IF YOU HOLD AN SM-2 ROLE (Security Mgr, PM, Product Mgmt, Dev Lead, Sec Engineer, Sec Test — see plan template 1.1):
+  Complete awareness PLUS the training types for your role (90 days or before release gate):
+
+    Threat modeling     → Security Manager/Expert, Security Engineer
+    Security risk assessment → Project Manager, Product Management
+    Secure coding       → Security Engineer (C/C++ on apps/ccli)
+    Security testing    → Security Engineer, Security Test Engineer (independent of your own code)
+
+  Reference course catalogue (pick ONE acceptable course or document equivalent experience):
+    • Threat Modeling — Microsoft / Udemy / Coursera (UC Irvine)
+    • Risk assessment — SANS MGT415
+    • Secure coding — Carnegie Mellon Secure Coding in C and C++
+    • Security testing — TryHackMe
+
+  Record: templates/SM-4_Training.md section 3 (SDL lead maintains)
+
+HIRING (security-related roles): prefer CS/Cyber degree and/or CISSP, CISM, CISA, CompTIA Security+, or equivalent (Security Manager approves equivalency).
+
+CONTINUOUS: SANS Cyber Security Roadmap · secure-coding refresh when touching firmware.
+
+TesPro colleagues: your training is under SM-10 vendor SDL — not on the HiTEKS SM-4 sheet.
+
+Questions → SDL / Security Manager (CCLI programme).
+
+Yahia / HiTEKS SDL

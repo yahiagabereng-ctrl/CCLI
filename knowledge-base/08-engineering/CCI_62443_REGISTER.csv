@@ -1,0 +1,29 @@
+id,name,tags,status,release_date,version,iec_id,threat_id,jira_key,component,repo_path
+1,Security Management,process,in_progress,,1.0,SM,,CSEC-1,Security_management,knowledge-base/08-engineering/62443/SDL-SM-Practice-1-Security-Management.md
+2,Product Security Development Plan,template,in_progress,,1.0,SM,,CSEC-1,Security_management,knowledge-base/08-engineering/62443/templates/SM_Product_Security_Development_Plan.md
+3,Zone and conduit CRS (TR400/TG-524),deliverable,in_progress,,1.9,REQ-SEC-ZC-003,,CSEC-4,,knowledge-base/08-engineering/62443/ZCR-3-PARTITION-TR400.md
+4,SM-8 signing key lifecycle,deliverable,not_started,,,SM-8,,CSEC-6,SDLA_Evidence,knowledge-base/08-engineering/evidence-packs/EVD-SM-8-Signing-Keys.md
+5,SM-10 TesPro SDL handoff,deliverable,not_started,,,SM-10,,CSEC-7,TG524_Platform,Certificate/tuv-sud-china/
+6,SR-4 SL-C scope freeze,deliverable,not_started,,,SR-4,,CSEC-8,SDLA_Evidence,knowledge-base/08-engineering/CCI_SL-C_Decision_Analysis.md
+7,CR 1.8 TLS/MMS PKI (C1),deliverable,not_started,,,CR 1.8,,CSEC-9,Eth_A_DSO,apps/ccli/config/tls/
+8,Conduit C1 residual risk,deliverable,not_started,,,REQ-SEC-ZC-007,T-01,CSEC-10,Eth_A_DSO,knowledge-base/08-engineering/CCI_62443_Zones.md
+21,ZCR 4 initial vs tolerable decision,deliverable,in_progress,,1.0,REQ-SEC-ZC-007,,,SDLA_Evidence,knowledge-base/08-engineering/62443/ZCR-4-DECISION-TR400.md
+22,ZCR 6 CRS mandatory countermeasures,deliverable,in_progress,,1.0,REQ-SEC-ZC-009,,,SDLA_Evidence,knowledge-base/08-engineering/62443/ZCR-6-CRS-TR400.md
+23,ZCR 7 asset owner approval,deliverable,not_started,,1.0,REQ-SEC-ZC-010,,,SDLA_Evidence,knowledge-base/08-engineering/62443/ZCR-7-OWNER-APPROVAL-TR400.md
+24,62443-4-2 TRF SL-C 2 checklist,deliverable,in_progress,,1.0,REQ-TRF-001,,,SDLA_Evidence,knowledge-base/08-engineering/62443/trf/TRF-62443-4-2-CCLI.md
+9,Conduit C5 WAN/LTE regression,deliverable,not_started,,,REQ-SEC-ZC-006,T-05,CSEC-11,WAN_LTE,knowledge-base/08-engineering/CCI_62443_Zones.md
+10,Security Risk SR-C1 (DSO MMS),deliverable,in_progress,,1.0,C1 / ZCR 5,T-01,CSEC-12,Eth_A_DSO,knowledge-base/08-engineering/62443/ZCR-5-DETAILED-RISK-TR400.md#41-conduit-c1--z1-dso--z0-lan1--mms
+11,Security Risk SR-C2 (Operator 104),deliverable,in_progress,,1.0,C2 / ZCR 5,T-05,CSEC-13,Eth_B_Operator,knowledge-base/08-engineering/62443/ZCR-5-DETAILED-RISK-TR400.md#42-conduit-c2--z2-operator--z0-lan2--104
+12,Security Risk SR-C3 (Plant Modbus),deliverable,in_progress,,1.0,C3 / ZCR 5,T-03,CSEC-14,Plant_Modbus,knowledge-base/08-engineering/62443/ZCR-5-DETAILED-RISK-TR400.md#43-conduit-c3--z3-plant--z0-modbus
+13,Security Risk SR-C4 (USB maintenance),deliverable,in_progress,,1.0,C4 / ZCR 5,T-02,CSEC-15,Maintenance_USB,knowledge-base/08-engineering/62443/ZCR-5-DETAILED-RISK-TR400.md#44-conduit-c4--z4-maintenance--z0-usb
+14,Security Risk SR-C5 (LTE WAN),deliverable,in_progress,,1.0,C5 / ZCR 5,T-04,CSEC-16,WAN_LTE,knowledge-base/08-engineering/62443/ZCR-5-DETAILED-RISK-TR400.md#45-conduit-c5--z5-wan--z0
+15,Test Case TC-SM-8,deliverable,not_started,,,SM-8,TC-SM-8,CSEC-17,SDLA_Evidence,lab/evidence/
+16,Security user documentation,deliverable,not_started,,,,,,product/README.md,
+17,Vulnerability disclosure policy,deliverable,not_started,,,,,,MISS,
+18,TUV China 62443 evidence pack,deliverable,not_started,,,,,CSEC-5,Cert_TUV_China,Certificate/tuv-sud-china/START_HERE.md
+19,TUV Italia CYB-011 pack,deliverable,in_progress,,,,,,Cert_TUV_Italia,Certificate/tuv-sud-italy/START_HERE.md
+20,ERDA 61850 conformance wave-1,deliverable,in_progress,,,,,,Cert_ERDA_61850,Certificate/erda-india/
+25,SDL Requirement Checklist,template,in_progress,,1.0,SM-12,,CSEC-1,Security_management,knowledge-base/08-engineering/62443/templates/SM_SDL_Requirement_Checklist.md
+26,Retrospectives and Continuous Improvement,template,in_progress,,1.0,SM-13,,CSEC-1,Security_management,knowledge-base/08-engineering/62443/templates/SM_Retrospective.md
+27,IEC 62443-4-1 document library,process,in_progress,,1.0,SM,,CSEC-1,Security_management,knowledge-base/08-engineering/62443/SDL-4-1-Document-Library.md
+28,SM-4 essential security training (company broadcast),deliverable,in_progress,,1.0,SM-4,,CSEC-1,Security_management,knowledge-base/08-engineering/62443/CCI_62443_ESSENTIAL_SECURITY_TRAINING.md
