@@ -22,6 +22,7 @@
 #include "alarm.h"
 #include "ccli_bridge.h"
 #include "fw_config.h"
+#include "outputs.h"
 
 
 
@@ -66,18 +67,26 @@ void TransmissionMms_Stop(void)
 /*=============================================================================
  * Function   : TransmissionMms_PublishTask
  *
- * Description: publish TotW / TotVAr / PPV to the data model
+ * Description: publish PdC / St / SGG power and IDGXCBR1.Pos
  * Input      : tick - supervisor tick
  * Output     : -
  *=============================================================================*/
 void TransmissionMms_PublishTask(u32 tick)
 {
     CCLI_BRIDGE__MEASUREMENT measurement;
+    bool                      idg_closed = FALSE;
+    s32                       idg_dbpos = 3; /* DBPOS_BAD_STATE until a contact is read */
 
     (void)tick;
 
     CcliBridge_Measurement_Get(&measurement);
     CcliBridge_Mms_PublishMeasurement(measurement.p_kw, measurement.q_kvar, measurement.ppv_kv);
+
+    if (Outputs_ReadIdgClosed(&idg_closed))
+    {
+        idg_dbpos = idg_closed ? 2 : 1; /* closed = on, open = off */
+    }
+    CcliBridge_Mms_PublishIdgPos(idg_dbpos);
 }
 
 

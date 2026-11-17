@@ -57,6 +57,12 @@ public:
     bool is_running() const;
 
     void update_tot_w_kw(double p_kw);
+    /**
+     * IDGXCBR1.Pos.stVal (DPC, status-only).
+     * dbpos is IEC 61850 Dbpos: 0 intermediate, 1 off (open), 2 on (closed), 3 bad.
+     * Any other value is published as bad with invalid quality.
+     */
+    void update_idg_pos(int dbpos);
     /** P5-M07 / T.3.1.3 — reactive power at POC (kVAr). */
     void update_totvar_kvar(double q_kvar);
     /** P5-M08 / T.3.1.3 — phase-phase V at POC (kV); PPV.phsAB lab path. */

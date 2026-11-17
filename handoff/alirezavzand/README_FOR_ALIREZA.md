@@ -1,8 +1,26 @@
 # CCLI unified cert — handoff for Alireza (@alirezavzand)
 
-**Date:** 2026-11-13 (SBOM + SW architecture r64)  
+**Date:** 2026-11-17 (product 17-LN lab drop)  
 **Repo:** https://github.com/yahiagabereng-ctrl/CCLI  
 **GitHub:** `alirezavzand` (collaborator)
+
+---
+
+## Product 17-LN lab drop (2026-11-17) — **start here**
+
+`git pull origin main`
+
+| Item | Path |
+|------|------|
+| **Handoff** | **[PRODUCT_17LN_LAB_ALIREZA.md](PRODUCT_17LN_LAB_ALIREZA.md)** |
+| **What to send / which yaml** | [`product/README.md`](../../product/README.md) |
+| **17 LN + cyber** | [`product/PRODUCT_17LN_CYBER.md`](../../product/PRODUCT_17LN_CYBER.md) |
+| **Ship yaml** | `product/apps/ccli/config/product_tr400.yaml` (EMT432 TCP LAN3) |
+| **USB-RS485 meter yaml** | `product/apps/ccli/config/lab_tr400_phase4_eth_b_ttyS1_17ln.yaml` |
+| **CID / cfg** | `product/apps/ccli/config/icd/product/product_tr400_eth_a_17ln.cid` and `.cfg` |
+| **Chat blurb** | [`MESSAGE_TO_SEND.txt`](MESSAGE_TO_SEND.txt) (17-LN section) |
+
+The 5-LN Connect-PASS freeze below is the previous DUT pin. Do not load `product_tr400_eth_a_5ln.cfg` for this drop. There is no product-entry `.apk` yet. `deploy-ccli-session-fix.ps1` still uploads the 5-LN cfg.
 
 ---
 

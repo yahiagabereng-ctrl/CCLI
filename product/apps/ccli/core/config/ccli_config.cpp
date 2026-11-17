@@ -474,6 +474,16 @@ CcliConfig load_config(const std::string& path) {
                     } else if (key == "gpio") {
                         cfg.annex_m_trip_monitor.gpio = std::atoi(value.c_str());
                     }
+                } else if (sub == "idg_pos") {
+                    if (key == "enabled") {
+                        cfg.idg_pos.enabled = parse_bool(value, cfg.idg_pos.enabled);
+                    } else if (key == "gpio") {
+                        cfg.idg_pos.gpio = std::atoi(value.c_str());
+                    } else if (key == "active_high") {
+                        cfg.idg_pos.active_high = parse_bool(value, cfg.idg_pos.active_high);
+                    } else if (key == "active_low") {
+                        cfg.idg_pos.active_high = !parse_bool(value, !cfg.idg_pos.active_high);
+                    }
                 }
             }
             continue;

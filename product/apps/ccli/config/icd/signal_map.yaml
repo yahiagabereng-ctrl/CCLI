@@ -681,15 +681,16 @@ logical_nodes:
     group: A3
     protocol: {mms_report: urcb_GenAcc_Mis4sec}
     values: {Beh: on, TotW: 0}
-    rule: "Storage P (Accumulo)"
-    binding: {kind: none}
-    runtime_status: DEFERRED
+    rule: "Storage P (Accumulo). Wave-1 single group: tracks the plant meter P."
+    binding: {kind: meter, source: "PdC measurement p_kw (one storage group)"}
+    runtime_status: LIVE
   - ln: LD_Plant/SGGMMXU1
     group: A3
     protocol: {mms_report: urcb_SingGen_Mis4sec}
     values: {Beh: on, TotW: 0, desc: "Singolo Gruppo GenPV(1)"}
-    binding: {kind: none}
-    runtime_status: DEFERRED
+    rule: "Single storage group P. Same plant meter until a second meter is mapped."
+    binding: {kind: meter, source: "PdC measurement p_kw (SGG1)"}
+    runtime_status: LIVE
   - ln: LD_Plant/SGGMMXU2
     group: A3
     protocol: {mms_report: urcb_SingGen_Mis4sec}
@@ -704,8 +705,8 @@ logical_nodes:
     values: {Pos.ctlModel: status-only, BlkOpn.ctlModel: status-only, BlkCls.ctlModel: status-only}
     rule: "IDG (interface device) position — status only, never operated by CCI"
     equation: null
-    binding: {kind: none, candidate: "DI (aux contact) or bay IED GOOSE/MMS ExtRef (Berlin-style CSWI/XCBR)"}
-    runtime_status: STUB
+    binding: {kind: di, source: "io.idg_pos", note: "unwired → Dbpos bad; closed → on; open → off"}
+    runtime_status: LIVE
 
   # ---- A5 gen_group ------------------------------------------------------
   - ln: LD_Plant/SSGGDGEN1

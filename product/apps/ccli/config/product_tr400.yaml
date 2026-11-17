@@ -1,4 +1,5 @@
-# Product profile for ccli 0.1.0-r55+ — 5-LN MMS + full cyber on TG544/TR400.
+# Product profile — ERDA Wave-1 17-LN MMS + full cyber on TG544/TR400.
+# Model: product_tr400_eth_a_17ln.cfg (classification erda_wave1_17ln, schema 1.2).
 # Deploy as /etc/ccli/lab.yaml (until UCI product.yaml loader ships).
 #
 # Plant meter: Chronos EMT432 Modbus TCP on LAN3 (RJ45).
@@ -15,8 +16,8 @@
 #      Start: powershell -File lab/start-bench-plant.ps1 -SunOnly -Port COM5
 #      Does NOT feed ccli while backend=tcp (parallel plant / P5 GenPV sweep only).
 #
-# RS485-only meter on A1/B1: product_tr400_rtu_a1b1.yaml
-# TSP cert + single RTU slave @40001: lab_tr400_phase4_eth_b_ttyS1_5ln.yaml
+# USB-RS485 meter on A1/B1: lab_tr400_phase4_eth_b_ttyS1_17ln.yaml
+#   (one Modbus master; a second USB-RS485 inverter is not polled)
 #
 # Ship / accredited cyber (EJBCA + CRL) — requires TestPro field pack refresh.
 #
@@ -33,7 +34,7 @@ lab:
   meter: chronos_emt432_1p
   meter_ip: 192.168.178.250
   plant_gateway: 192.168.178.1
-  bench_note: "EMT432 TCP LAN3 · DIO1 relay · DIO2 permissive · 5-LN MMS/104 TLS"
+  bench_note: "EMT432 TCP LAN3 · DIO1 relay · DIO2 permissive · 17-LN MMS/104 TLS"
   hw:
     plant_meter: emt432_modbus_tcp_lan3_1p
     inverter_mock:
@@ -105,7 +106,7 @@ mms:
   enabled: true
   bind_address: 192.168.10.1
   tcp_port: 3782
-  model_cfg: /etc/ccli/icd/product_tr400_eth_a_5ln.cfg
+  model_cfg: /etc/ccli/icd/product_tr400_eth_a_17ln.cfg
   comms_loss_fallback_s: 15
   gnss_poll_s: 15
   gnss_discipline_clock: false
@@ -162,6 +163,12 @@ io:
   annex_m_trip_monitor:
     enabled: false
     gpio: 3
+  # O.8.6 IDG aux contact → IDGXCBR1.Pos. Leave disabled until a contact is wired.
+  # While disabled, Pos.stVal is published as Dbpos bad (quality invalid).
+  idg_pos:
+    enabled: false
+    gpio: 0
+    active_high: true
   do_pf2_spare:
     gpio: 4
     active_high: false

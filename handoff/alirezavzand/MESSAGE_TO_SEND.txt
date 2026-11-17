@@ -1,5 +1,25 @@
 Hi Alireza,
 
+Product ship model is now the ERDA Wave-1 **17 logical nodes** (2026-11-17). Pull main and start at:
+
+  handoff/alirezavzand/PRODUCT_17LN_LAB_ALIREZA.md
+  product/README.md
+
+| Item | Pin |
+|------|-----|
+| Tree | product/apps/ccli  (program/main.c) |
+| Ship yaml | product/apps/ccli/config/product_tr400.yaml  (EMT432 TCP LAN3) |
+| USB-RS485 meter | product/apps/ccli/config/lab_tr400_phase4_eth_b_ttyS1_17ln.yaml |
+| CID / cfg | product_tr400_eth_a_17ln.cid / .cfg |
+| DUT cfg path | /etc/ccli/icd/product_tr400_eth_a_17ln.cfg |
+
+Do not use deploy-ccli-session-fix.ps1 as it stands: it still uploads the 5-LN cfg. No .apk of this entry yet.
+
+Host check only: validate_product_17ln.py 18 pass / 0 gap. ctest 8/8. Not a DUT pass.
+IDGXCBR1.Pos stays Dbpos bad until io.idg_pos is enabled. DRC-60A contacts and a second RS485 inverter are not in this firmware.
+
+Earlier Connect-PASS (5-LN, 2026-10-16) remains the previous DUT pin — do not mix the CIDs:
+
 TestPro Connect is **PASS** on the TG544 with **product 5-LN** (2026-10-16).
 
   git clone https://github.com/yahiagabereng-ctrl/CCLI.git

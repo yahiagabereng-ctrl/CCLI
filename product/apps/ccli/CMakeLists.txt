@@ -14,7 +14,7 @@ ccli_generate_version_header()
 
 # --- libiec61850 (Phase 3 MMS) ------------------------------------------------
 option(CCLI_WITH_LIBIEC61850 "Build IEC 61850 MMS with third_party/libiec61850" ON)
-# Product 5-LN cert model (LLN0/LPHD1/PdCMMXU1/WlimDWMX1/WSdDAGC1) has no GOOSE
+# Product 17-LN ship model has no GOOSE
 # control block; default OFF = least functionality (IEC 62443-4-2 CR 7.7).
 # Lab tree (apps/ccli) keeps ON for plant-LAN GOOSE experiments.
 option(CCLI_WITH_GOOSE "Build IEC 61850 L2 GOOSE (plant LAN) with libiec61850" OFF)

@@ -101,7 +101,7 @@ bool Startup_TaskStartup(const COMMANDS__OPTIONS *ptr_options)
     {
         fprintf(stderr,
                 "startup: REFUSE — product MMS requires tls_enabled and tcp_port!=102 "
-                "(got tls=%s port=%d). Use product_tr400.yaml / *_5ln.yaml.\n",
+                "(got tls=%s port=%d). Use product_tr400.yaml / *_17ln.yaml.\n",
                 cfg->mms_tls_enabled ? "true" : "false", (int)cfg->mms_tcp_port);
         return false;
     }
@@ -134,6 +134,7 @@ bool Startup_TaskStartup(const COMMANDS__OPTIONS *ptr_options)
     }
 
     (void)Outputs_ConfigureAnnexMTripMonitor(cfg->annex_m_trip_gpio, cfg->annex_m_trip_enabled);
+    (void)Outputs_ConfigureIdgPos(cfg->idg_pos_gpio, cfg->idg_pos_enabled, cfg->idg_pos_active_high);
 
     if (ptr_options->gpio_blink > 0)
     {

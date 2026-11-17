@@ -30,6 +30,10 @@
 /* Annex M trip relay channel (0 = monitor disabled) */
 static int Outputs_AnnexMTripGpio = 0;
 
+/* IDG aux contact (0 = unwired). Logical true = breaker closed. */
+static int  Outputs_IdgPosGpio = 0;
+static bool Outputs_IdgPosActiveHigh = true;
+
 
 
 
@@ -137,6 +141,49 @@ bool Outputs_ConfigureAnnexMTripMonitor(int gpio_channel, bool enabled)
  * Input      : -
  * Output     : active - trip state; TRUE on success
  *=============================================================================*/
+/*=============================================================================
+ * Function   : Outputs_ConfigureIdgPos / Outputs_ReadIdgClosed
+ *
+ * Description: O.8.6 IDG aux contact for IDGXCBR1.Pos (status-only)
+ * Input      : gpio_channel, enabled, active_high
+ * Output     : closed - breaker closed; TRUE on a successful read
+ *=============================================================================*/
+bool Outputs_ConfigureIdgPos(int gpio_channel, bool enabled, bool active_high)
+{
+    Outputs_IdgPosActiveHigh = active_high;
+    if (!enabled || gpio_channel < 1)
+    {
+        Outputs_IdgPosGpio = 0;
+        return true;
+    }
+    if (!cci_gpio_ll_config_input(gpio_channel))
+    {
+        Outputs_IdgPosGpio = 0;
+        fprintf(stderr, "svc_io: idg_pos ch%d config failed — Pos stays bad\n", gpio_channel);
+        return false;
+    }
+    Outputs_IdgPosGpio = gpio_channel;
+    fprintf(stderr, "svc_io: idg_pos ch%d active_%s (IDGXCBR1.Pos)\n",
+            Outputs_IdgPosGpio, active_high ? "high" : "low");
+    return true;
+}
+
+bool Outputs_ReadIdgClosed(bool *closed)
+{
+    if (closed == 0 || Outputs_IdgPosGpio <= 0)
+    {
+        return false;
+    }
+    int raw = 0;
+    if (!cci_gpio_ll_read(Outputs_IdgPosGpio, &raw))
+    {
+        return false;
+    }
+    const bool level_high = raw != 0;
+    *closed = Outputs_IdgPosActiveHigh ? level_high : !level_high;
+    return true;
+}
+
 bool Outputs_ReadAnnexMTripActive(bool *active)
 {
     if (active == 0)

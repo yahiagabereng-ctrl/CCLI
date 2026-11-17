@@ -18,28 +18,29 @@ Module map and follow-ups: `knowledge-base/06-application/SK0153_CCI_Module_Map.
 
 **Corpus:** `knowledge-base/06-application/CCI_Application_Structure.md` (`ccli-app-structure`) · `CCI_OpenWrt_Freeze.md` · `CCI_Product_SW_Freeze.md` (`ccli-product-sw-freeze`)
 
-**5-LN + cyber surface:** [`../../PRODUCT_5LN_CYBER_MINIMAL.md`](../../PRODUCT_5LN_CYBER_MINIMAL.md) · ship yaml **`config/product_tr400.yaml`**.
+**What to send the lab:** [`../../README.md`](../../README.md).  
+**17-LN + cyber:** [`../../PRODUCT_17LN_CYBER.md`](../../PRODUCT_17LN_CYBER.md).  
+Ship yaml: **`config/product_tr400.yaml`**. USB-RS485 meter: **`config/lab_tr400_phase4_eth_b_ttyS1_17ln.yaml`**.
 
-**Product drops:** promoted bundles in `releases/product-cyber/` after lab gates.
+## Build for TG544
 
-## Build for TG544 (cross-compile)
+`lab/tg544-openwrt/build-ccli-ipk-sdk.sh` compiles repo **`apps/ccli`**, not this tree. Pass the product source:
 
 ```bash
-cd lab/tg544-openwrt
-./download-sdk.sh
-./build-ccli-ipk-sdk.sh    # → ccli-*.apk
+make package/feeds/ccli/ccli/compile V=s \
+  CCLI_SRC_DIR=/mnt/c/Yahia/projects/CCLI/product/apps/ccli
 ```
 
-Deploy: `lab/tg544-openwrt/DEPLOY_CCLI.md` · per-upload manifests: `lab/tg544-openwrt/deploy-manifests/`
+The model file the yaml names is `config/icd/product/product_tr400_eth_a_17ln.cfg`. The lab deploy script does not upload it.
 
 ## Config profiles
 
 | Use | Yaml | MMS |
 |-----|------|-----|
-| **Product ship** | `config/product_tr400.yaml` | **:3782 TLS + ACSE + CRL · 5-LN** |
-| Cert bench | `config/lab_tr400_phase4_eth_b_ttyS1_5ln.yaml` | same cyber · DSO mock on |
-| Lab 31-LN | `config/lab_tr400_phase4_eth_b.yaml` | :3782 — **not** first cert CID |
-| Lab TSP only | `config/lab_tr400_cleartext_tsp.yaml` | :102 — **startup REFUSE in this tree** |
+| **Product ship** | `config/product_tr400.yaml` | **:3782 TLS + ACSE + CRL · 17-LN** |
+| USB-RS485 meter | `config/lab_tr400_phase4_eth_b_ttyS1_17ln.yaml` | same model · DSO mock on |
+| Lab 31-LN | `config/lab_tr400_phase4_eth_b.yaml` | do not use as the product CID |
+| Cleartext | `config/lab_tr400_cleartext_tsp.yaml` | :102 — **startup REFUSE** |
 
 ## On-device bootstrap (interim)
 

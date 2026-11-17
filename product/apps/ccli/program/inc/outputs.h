@@ -46,6 +46,10 @@ bool Outputs_ReadPermissive  (bool *ok);
 bool Outputs_ConfigureAnnexMTripMonitor(int gpio_channel, bool enabled);
 bool Outputs_ReadAnnexMTripActive      (bool *active);
 
+/* O.8.6 IDG aux contact. Logical true = breaker closed. FALSE if unwired or read fails. */
+bool Outputs_ConfigureIdgPos(int gpio_channel, bool enabled, bool active_high);
+bool Outputs_ReadIdgClosed  (bool *closed);
+
 /* curtailment interlock: PF2 command AND permissive AND NOT Annex M trip */
 bool         Outputs_GateCurtailment (bool commanded, bool permissive_ok, bool annex_m_trip_active);
 const char  *Outputs_CurtailDetail   (bool do_on, bool commanded, bool annex_m_trip_active);

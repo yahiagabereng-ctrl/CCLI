@@ -5,6 +5,10 @@ Lab deploys stay on `apps/ccli/VERSION` (**rN**).
 
 ---
 
+## Ship model — ERDA Wave-1 17 LN (2026-11-17)
+
+`product_tr400.yaml`, `product_tr400_emt432_17ln.yaml`, and `lab_tr400_phase4_eth_b_ttyS1_17ln.yaml` load `product_tr400_eth_a_17ln.cfg`. The `*_5ln` filenames in this tree were the A0 names; the lab tree (`apps/ccli`) still keeps those names for the 5-LN cert pin.
+
 ## 0.1.0-p1 — PROD-5LN-CYBER (2026-10-15)
 
 ### Added

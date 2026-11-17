@@ -278,6 +278,9 @@ bool CcliBridge_Config_Load(const ascii* config_path, bool lab_demo,
     ptr_data->permissive_bypass = c.permissive_bypass;
     ptr_data->annex_m_trip_enabled = c.annex_m_trip_monitor.enabled;
     ptr_data->annex_m_trip_gpio = c.annex_m_trip_monitor.gpio;
+    ptr_data->idg_pos_enabled = c.idg_pos.enabled;
+    ptr_data->idg_pos_gpio = c.idg_pos.gpio;
+    ptr_data->idg_pos_active_high = c.idg_pos.active_high;
     ptr_data->mms_enabled = c.mms.enabled;
     ptr_data->mms_tls_enabled = c.mms.tls.enabled;
     ptr_data->mms_tcp_port = c.mms.tcp_port;
@@ -468,6 +471,8 @@ void CcliBridge_Mms_PublishMeasurement(double p_kw, double q_kvar, double ppv_kv
     g_rt.mms->update_totvar_kvar(q_kvar);
     g_rt.mms->update_ppv_kv(ppv_kv);
 }
+
+void CcliBridge_Mms_PublishIdgPos(s32 dbpos) { g_rt.mms->update_idg_pos(static_cast<int>(dbpos)); }
 
 void CcliBridge_Mms_RefreshTimeQuality(void) { g_rt.mms->refresh_time_quality(); }
 

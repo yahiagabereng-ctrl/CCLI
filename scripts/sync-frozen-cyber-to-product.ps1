@@ -17,10 +17,9 @@ if (-not (Test-Path $Prod)) {
     throw "Product tree missing: $Prod"
 }
 
+# Product ship yamls are 17-LN and are owned by product/apps/ccli.
+# Do not copy the lab *_5ln.yaml profiles over them.
 $files = @(
-    "config\product_tr400.yaml",
-    "config\product_tr400_emt432_5ln.yaml",
-    "config\lab_tr400_phase4_eth_b_ttyS1_5ln.yaml",
     "config\icd\product\product_tr400_eth_a_5ln.cid",
     "config\icd\product\product_tr400_eth_a_5ln.cfg",
     "core\config\product_cyber_gate.hpp",
@@ -60,4 +59,4 @@ if ($IncludeProgram) {
     }
 }
 
-Write-Host "Done. Rebuild lab + product; deploy PROFILE PRODUCT-5LN-CERT or UNIFIED-5LN-CERT." -ForegroundColor Green
+Write-Host "Done. Product ship yaml stays product_tr400.yaml (17-LN). Rebuild before deploy." -ForegroundColor Green

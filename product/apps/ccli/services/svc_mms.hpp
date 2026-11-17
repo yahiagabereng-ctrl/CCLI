@@ -13,6 +13,7 @@ public:
     void stop() { adapter_.stop(); }
     bool is_running() const { return adapter_.is_running(); }
     void update_tot_w_kw(double p_kw) { adapter_.update_tot_w_kw(p_kw); }
+    void update_idg_pos(int dbpos) { adapter_.update_idg_pos(dbpos); }
     void update_totvar_kvar(double q_kvar) { adapter_.update_totvar_kvar(q_kvar); }
     void update_ppv_kv(double ppv_kv) { adapter_.update_ppv_kv(ppv_kv); }
     bool poll_dso_live_command(adapters::DsoLiveCommand& out) {

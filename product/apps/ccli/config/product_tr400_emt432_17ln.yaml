@@ -1,10 +1,10 @@
-# 5-LN certificate run — same bench as lab_tr400_phase4_eth_b_ttyS1.yaml but MMS model =
-# product_tr400_eth_a_5ln.cfg (PRODUCT_SPECIMEN_5LN: LLN0 + LPHD1 + PdCMMXU1 + WlimDWMX1 + WSdDAGC1).
-# Use for U-T1-02 Compare / U-T1-03 browse (exactly 5 LNs). Lab 31-LN variant stays in
-# lab_tr400_phase4_eth_b_ttyS1.yaml.
+# Alias — same as product_tr400.yaml (EMT432 Modbus TCP LAN3 is the primary ship profile).
+# Requires DUT lan3: 192.168.178.1/24 and meter at 192.168.178.250:502.
 #
-# Deploy: deploy-ccli-session-fix.ps1 -HostAddr 192.168.1.130 -LabYaml .../lab_tr400_phase4_eth_b_ttyS1_5ln.yaml
-# Product ship (all features, no DSO mock): apps/ccli/config/product_tr400.yaml
+# Deploy:
+#   .\lab\tg544-openwrt\deploy-ccli-session-fix.ps1 -HostAddr 192.168.1.130 `
+#     -LabYaml product\apps\ccli\config\product_tr400_emt432_17ln.yaml `
+#     -Changes @("product EMT432 LAN3 + 17-LN cyber")
 
 platform: tg500
 lab:
@@ -12,18 +12,49 @@ lab:
   model: tespro,tr500
   address: 192.168.1.130/24
   role: operator_eth_b
-  bench_note: "two-PC TSP + logger · ttyS1 A1/B1 · COM5 slave · 5-LN cert model"
+  meter: chronos_emt432_1p
+  meter_ip: 192.168.178.250
+  plant_gateway: 192.168.178.1
+  bench_note: "EMT432 TCP LAN3 · DIO1 relay · DIO2 permissive · Sun COM5 parallel · 17-LN MMS/104 TLS"
+  hw:
+    plant_meter: emt432_modbus_tcp_lan3_1p
+    inverter_mock:
+      role: sun2000_rtu_sim
+      pc_usb_rs485: COM5
+      dut_terminals: A1_B1
+      dut_linux_device: /dev/ttyS1
+      ccli_polls: false
+      start_script: lab/start-bench-plant.ps1
+      sim: lab/third_party/Sun2000-100KTL-M2-Inverter-Simulator/sun2000_100ktl_m2_rtu_sim.py
+    curtail_relay: dio1_ch1_do
+    permissive_button: dio2_ch2_di
+    wiring_doc: lab/CURTAIL_BUTTON_AND_RELAY_SETUP.md
+    rs485_map: lab/evidence/phase5/P5_A1B1_RS485_HW_MAP.md
+    lan3_doc: lab/evidence/phase5/P5_EMT432_TERMINAL_WIRING.md
+    runbook: lab/conformance/TSP_TWO_PC_BENCH_RUNBOOK.md
+    two_pc:
+      pc_b_dso: "192.168.10.10 → MMS 3782 TLS"
+      pc_a_logger: "192.168.1.183 LAN2 · 192.168.178.10 LAN3 · COM5 RS485"
 
 modbus:
-  backend: rtu
-  device: /dev/ttyS1
-  baud: 9600
-  parity: N
+  backend: tcp
+  host: 192.168.178.250
+  tcp_port: 502
   slave_id: 1
   poll_ms: 4000
   timeout_ms: 2000
   retries: 3
   trace: true
+  reg_active_power: 932
+  reg_active_power_count: 2
+  reg_reactive_power: 940
+  reg_reactive_power_count: 2
+  power_scale: 0.001
+  reactive_scale: 0.001
+  float_word_swap: true
+  reg_line_voltage: 906
+  reg_line_voltage_count: 2
+  line_voltage_scale: 0.001
 
 pf2:
   threshold_kw: 900
@@ -32,7 +63,7 @@ pf2:
   min_on_s: 60
   min_off_s: 30
   stale_data_s: 10
-  use_dso_mock: true
+  use_dso_mock: false
 
 plant:
   p_imm_kw: 200
@@ -40,7 +71,7 @@ plant:
   q_ind_kvar: 50
   q_cap_kvar: 50
   smax_kva: 210
-  poc_ppv_kv: 20.0
+  poc_ppv_kv: 0.23
 
 dso:
   enabled: true
@@ -57,7 +88,7 @@ mms:
   enabled: true
   bind_address: 192.168.10.1
   tcp_port: 3782
-  model_cfg: /etc/ccli/icd/product_tr400_eth_a_5ln.cfg
+  model_cfg: /etc/ccli/icd/product_tr400_eth_a_17ln.cfg
   comms_loss_fallback_s: 15
   gnss_poll_s: 15
   gnss_discipline_clock: false
@@ -74,6 +105,10 @@ mms:
   tls_revoked_cert: /etc/ccli/tls/revoked_tls.pem
   tls_crl: /etc/ccli/tls/lab_crl.pem
   tls_chain_validation: true
+
+goose:
+  enabled: false
+  publish_enabled: false
 
 iec104:
   enabled: true
@@ -107,6 +142,16 @@ io:
   di_permissive:
     gpio: 2
     active_low: true
+  annex_m_trip_monitor:
+    enabled: false
+    gpio: 3
+  idg_pos:
+    enabled: false
+    gpio: 0
+    active_high: true
+  do_pf2_spare:
+    gpio: 4
+    active_high: false
 
 event_log:
   enabled: true
@@ -114,4 +159,4 @@ event_log:
   syslog_enabled: true
   syslog_host: 127.0.0.1
   syslog_port: 514
-  watch_ifaces: lan1 lan2
+  watch_ifaces: lan1 lan2 lan3

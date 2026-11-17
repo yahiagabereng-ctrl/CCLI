@@ -4,7 +4,7 @@
 **Revision:** 1.0  
 **Date:** 2026-10-14  
 **RAG source_id:** `ccli-sk0153-module-map`  
-**Product tree:** `product/apps/ccli/program/` (SK0153 entry). Lab conformance remains `apps/ccli/` (`ccli_main`). 5-LN + cyber: `product/PRODUCT_5LN_CYBER_MINIMAL.md`.  
+**Product tree:** `product/apps/ccli/program/` (SK0153 entry). Lab conformance remains `apps/ccli/` (`ccli_main`). 17-LN + cyber: `product/PRODUCT_17LN_CYBER.md`.  
 **Reference firmware:** SK0153 – LINKY DIN 4G (Shitek / HiTEKS), `_sk0153_extract/components/ql-application/osi/` in the CCLI repo  
 **Platform:** `platform_tg500` only — TesPro TG544 / TR500 (lab DUT), TG-524 / TR400 (field). OpenWrt 25.12 / TesproOS frozen.  
 **Parents:** `ccli-app-structure` · `ccli-product-sw-freeze` · `ccli-openwrt-freeze`

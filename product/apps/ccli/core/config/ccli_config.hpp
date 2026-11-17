@@ -313,6 +313,17 @@ struct CcliConfig {
         int  gpio{3};
     } annex_m_trip_monitor{};
 
+    /**
+     * O.8.6 IDG aux contact → IDGXCBR1.Pos (status-only).
+     * Disabled until a contact is assigned; Pos is then published as Dbpos bad.
+     * Logical true (after polarity) means breaker closed (Dbpos on).
+     */
+    struct {
+        bool enabled{false};
+        int  gpio{0};
+        bool active_high{true};
+    } idg_pos{};
+
     /** P7-01 / P7-03: O.14 rolling event log (2048, append-only file + optional syslog). */
     struct {
         bool        enabled{true};

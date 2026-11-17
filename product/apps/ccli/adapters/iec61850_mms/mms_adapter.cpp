@@ -150,6 +150,17 @@ struct MmsAdapter::Impl {
     DataAttribute* ppv_phsab_mag{nullptr};
     DataAttribute* ppv_phsab_t{nullptr};
     DataAttribute* ppv_phsab_q{nullptr};
+    /* O.8.4 storage aggregate and the one Wave-1 SGG. Same plant P until a second meter exists. */
+    DataAttribute* st_totw_mag{nullptr};
+    DataAttribute* st_totw_t{nullptr};
+    DataAttribute* st_totw_q{nullptr};
+    DataAttribute* sgg_totw_mag{nullptr};
+    DataAttribute* sgg_totw_t{nullptr};
+    DataAttribute* sgg_totw_q{nullptr};
+    /* O.8.6 IDG breaker position — status-only DPC. */
+    DataAttribute* idg_pos_st{nullptr};
+    DataAttribute* idg_pos_t{nullptr};
+    DataAttribute* idg_pos_q{nullptr};
     DataAttribute* wlim_mod_stval{nullptr};
     DataAttribute* wmax_mxval{nullptr};
     DataAttribute* wsd_mod_stval{nullptr};
@@ -681,23 +692,38 @@ bool MmsAdapter::Impl::wire_cfg_runtime_nodes(MmsAdapter::Impl* impl) {
     impl->ppv_phsab_t = model_da(model, "LD_Plant/PdCMMXU1.PPV.phsAB.t");
     impl->ppv_phsab_q = model_da(model, "LD_Plant/PdCMMXU1.PPV.phsAB.q");
 
+    impl->st_totw_mag = model_da(model, "LD_Plant/StMMXU1.TotW.mag.f");
+    impl->st_totw_t = model_da(model, "LD_Plant/StMMXU1.TotW.t");
+    impl->st_totw_q = model_da(model, "LD_Plant/StMMXU1.TotW.q");
+    impl->sgg_totw_mag = model_da(model, "LD_Plant/SGGMMXU1.TotW.mag.f");
+    impl->sgg_totw_t = model_da(model, "LD_Plant/SGGMMXU1.TotW.t");
+    impl->sgg_totw_q = model_da(model, "LD_Plant/SGGMMXU1.TotW.q");
+    impl->idg_pos_st = model_da(model, "LD_Plant/IDGXCBR1.Pos.stVal");
+    impl->idg_pos_t = model_da(model, "LD_Plant/IDGXCBR1.Pos.t");
+    impl->idg_pos_q = model_da(model, "LD_Plant/IDGXCBR1.Pos.q");
+
     if (impl->wlim_mod == nullptr || impl->wlim_wmax == nullptr || impl->wsd_mod == nullptr ||
         impl->wsd_wspt == nullptr || impl->totw_mag == nullptr || impl->totvar_mag == nullptr) {
         std::fprintf(stderr, "mms: cfg model missing required Wlim/WSd/PdC nodes\n");
         return false;
     }
-    /* Reactive LNs are optional: absent in the product 5-LN cert model
-     * (PRODUCT_SPECIMEN_5LN — LLN0+LPHD+PdCMMXU+WlimDWMX+WSdDAGC only).
-     * All varsd/pfsp consumers are nullptr-guarded; O.9.1.x stays inactive. */
+    /* Q-stack LNs are optional. The 17-LN ship model and the old 5-LN pin both omit them.
+     * Consumers are nullptr-guarded; O.9.1.x stays inactive. */
     if (impl->varsd_mod == nullptr || impl->varsd_vartgt == nullptr) {
         std::fprintf(stderr,
-                     "mms: cfg model without VArSdDVAR1 — O.9.1.4 P5-R01 inactive "
-                     "(5-LN cert model)\n");
+                     "mms: cfg model without VArSdDVAR1 — O.9.1.4 P5-R01 inactive\n");
+    }
+    if (impl->st_totw_mag == nullptr || impl->sgg_totw_mag == nullptr) {
+        std::fprintf(stderr,
+                     "mms: cfg model without StMMXU1/SGGMMXU1 TotW — O.8.4 storage P inactive\n");
+    }
+    if (impl->idg_pos_st == nullptr) {
+        std::fprintf(stderr,
+                     "mms: cfg model without IDGXCBR1.Pos.stVal — O.8.6 IDG position inactive\n");
     }
     if (impl->pfsp_mod == nullptr) {
         std::fprintf(stderr,
-                     "mms: cfg model without PFSPDFPF1 — O.9.1.1 P5-R02 inactive "
-                     "(5-LN cert model)\n");
+                     "mms: cfg model without PFSPDFPF1 — O.9.1.1 P5-R02 inactive\n");
     }
     return true;
 }
@@ -1304,18 +1330,65 @@ void MmsAdapter::enable_goose_publishing(const core::GooseConfig& cfg) {
 #endif
 }
 
+namespace {
+
+void write_mv_kw(IedServer server, DataAttribute* mag, DataAttribute* t, DataAttribute* q,
+                 float kw) {
+    const uint64_t now = Hal_getTimeInMs();
+    if (t != nullptr) {
+        IedServer_updateUTCTimeAttributeValue(server, t, now);
+    }
+    if (mag != nullptr) {
+        IedServer_updateFloatAttributeValue(server, mag, kw);
+    }
+    if (q != nullptr) {
+        IedServer_updateQuality(server, q, QUALITY_VALIDITY_GOOD);
+    }
+}
+
+}  // namespace
+
 void MmsAdapter::update_tot_w_kw(double p_kw) {
     if (impl_ == nullptr || !impl_->running || impl_->server == nullptr) {
         return;
     }
+    const float kw = static_cast<float>(p_kw);
     IedServer_lockDataModel(impl_->server);
     if (impl_->totw_t != nullptr) {
         IedServer_updateUTCTimeAttributeValue(impl_->server, impl_->totw_t,
                                               Hal_getTimeInMs());
     }
     if (impl_->totw_mag != nullptr) {
-        IedServer_updateFloatAttributeValue(impl_->server, impl_->totw_mag,
-                                            static_cast<float>(p_kw));
+        IedServer_updateFloatAttributeValue(impl_->server, impl_->totw_mag, kw);
+    }
+    /* Wave-1 is one storage group and one plant meter. St (aggregate) and SGG
+     * (that group) both track PdC P until a dedicated storage meter is mapped. */
+    write_mv_kw(impl_->server, impl_->st_totw_mag, impl_->st_totw_t, impl_->st_totw_q, kw);
+    write_mv_kw(impl_->server, impl_->sgg_totw_mag, impl_->sgg_totw_t, impl_->sgg_totw_q, kw);
+    IedServer_unlockDataModel(impl_->server);
+}
+
+void MmsAdapter::update_idg_pos(int dbpos) {
+    if (impl_ == nullptr || !impl_->running || impl_->server == nullptr) {
+        return;
+    }
+    if (impl_->idg_pos_st == nullptr) {
+        return;
+    }
+    Dbpos value = DBPOS_BAD_STATE;
+    Quality quality = QUALITY_VALIDITY_INVALID;
+    if (dbpos == DBPOS_INTERMEDIATE_STATE || dbpos == DBPOS_OFF || dbpos == DBPOS_ON) {
+        value = static_cast<Dbpos>(dbpos);
+        quality = QUALITY_VALIDITY_GOOD;
+    }
+    IedServer_lockDataModel(impl_->server);
+    IedServer_updateDbposValue(impl_->server, impl_->idg_pos_st, value);
+    if (impl_->idg_pos_t != nullptr) {
+        IedServer_updateUTCTimeAttributeValue(impl_->server, impl_->idg_pos_t,
+                                              Hal_getTimeInMs());
+    }
+    if (impl_->idg_pos_q != nullptr) {
+        IedServer_updateQuality(impl_->server, impl_->idg_pos_q, quality);
     }
     IedServer_unlockDataModel(impl_->server);
 }

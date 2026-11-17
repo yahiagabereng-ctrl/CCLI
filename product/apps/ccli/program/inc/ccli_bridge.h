@@ -60,6 +60,10 @@ typedef struct
     bool annex_m_trip_enabled;        /* P6-03 Annex M trip monitor enabled      */
     s32  annex_m_trip_gpio;           /* P6-03 Annex M trip monitor channel      */
 
+    bool idg_pos_enabled;             /* O.8.6 IDG aux contact enabled           */
+    s32  idg_pos_gpio;                /* O.8.6 IDG aux contact channel           */
+    bool idg_pos_active_high;         /* true: high = breaker closed             */
+
     bool mms_enabled;                 /* Eth_A IEC 61850 MMS server              */
     bool mms_tls_enabled;             /* 62351-3 TLS on MMS (product: required)  */
     s32  mms_tcp_port;                /* MMS TCP port (product: 3782, never 102) */
@@ -198,6 +202,8 @@ bool CcliBridge_Pf2_CurtailmentActive (void);
 bool CcliBridge_Mms_Start                 (void);
 void CcliBridge_Mms_Stop                  (void);
 void CcliBridge_Mms_PublishMeasurement    (double p_kw, double q_kvar, double ppv_kv);
+/* dbpos: IEC 61850 Dbpos (0 intermediate, 1 open, 2 closed, 3 bad) */
+void CcliBridge_Mms_PublishIdgPos         (s32 dbpos);
 void CcliBridge_Mms_RefreshTimeQuality    (void);
 bool CcliBridge_Mms_GnssFix               (void);
 bool CcliBridge_Mms_PollCommsLossFallback (void);

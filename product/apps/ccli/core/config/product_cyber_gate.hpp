@@ -8,7 +8,7 @@ namespace cci::core {
 inline bool product_cyber_config_ok(const CcliConfig& cfg, std::string* reason = nullptr) {
     if (cfg.mms.enabled && (!cfg.mms.tls.enabled || cfg.mms.tcp_port == 102)) {
         if (reason) {
-            *reason = "MMS requires tls_enabled and tcp_port!=102 (use product_tr400.yaml / *_5ln.yaml)";
+            *reason = "MMS requires tls_enabled and tcp_port!=102 (use product_tr400.yaml / *_17ln.yaml)";
         }
         return false;
     }
