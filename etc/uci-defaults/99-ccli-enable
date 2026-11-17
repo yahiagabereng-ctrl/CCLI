@@ -1,0 +1,4 @@
+#!/bin/sh
+# First boot: register ccli with procd (does not start until network is up).
+/etc/init.d/ccli enable
+exit 0

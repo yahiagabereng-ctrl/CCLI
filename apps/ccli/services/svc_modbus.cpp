@@ -4,6 +4,8 @@
 
 #include "cci/hal/time.hpp"
 
+#include <chrono>
+
 
 
 namespace cci::services {
@@ -14,11 +16,9 @@ namespace {
 
 
 
-adapters::ModbusPollConfig modbus_poll_from_config(const core::CcliConfig& app_cfg) {
+adapters::ModbusPollConfig modbus_poll_from_config(const core::ModbusConfig& m) {
 
     adapters::ModbusPollConfig out{};
-
-    const auto& m = app_cfg.modbus;
 
     out.host = m.host;
 
@@ -118,7 +118,47 @@ adapters::ModbusPollConfig modbus_poll_from_config(const core::CcliConfig& app_c
 
 ModbusService::ModbusService(core::MeasurementStore& measurements, const core::CcliConfig& app_cfg)
 
-    : measurements_(measurements), adapter_(modbus_poll_from_config(app_cfg)) {}
+    : ModbusService(measurements, app_cfg.modbus) {}
+
+ModbusService::ModbusService(core::MeasurementStore& measurements, const core::ModbusConfig& modbus_cfg)
+    : measurements_(measurements), adapter_(modbus_poll_from_config(modbus_cfg)) {}
+
+ModbusService::~ModbusService() {
+    stop_background();
+}
+
+bool ModbusService::start_background() {
+    if (worker_.joinable()) return true;
+    stop_requested_.store(false);
+    try {
+        worker_ = std::thread([this]() {
+            const int poll_ms = adapter_.poll_config().poll_ms > 0 ? adapter_.poll_config().poll_ms : 1;
+            const auto interval = std::chrono::milliseconds(poll_ms);
+            while (!stop_requested_.load()) {
+                try {
+                    tick();
+                } catch (...) {
+                    auto failed = measurements_.snapshot();
+                    failed.quality = core::DataQuality::Invalid;
+                    failed.timestamp_ms = cci::hal::now().epoch_ms;
+                    failed.source = "modbus_exception";
+                    measurements_.update(failed);
+                }
+                const auto deadline = std::chrono::steady_clock::now() + interval;
+                while (!stop_requested_.load() && std::chrono::steady_clock::now() < deadline)
+                    std::this_thread::sleep_for(std::chrono::milliseconds(20));
+            }
+        });
+    } catch (...) {
+        return false;
+    }
+    return true;
+}
+
+void ModbusService::stop_background() {
+    stop_requested_.store(true);
+    if (worker_.joinable()) worker_.join();
+}
 
 
 

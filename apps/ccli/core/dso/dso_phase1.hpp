@@ -67,6 +67,8 @@ DsoPhase1ApplyResult apply_live_dso_commands_to_pf2(Pf2Config& cfg,
                                                     double wmax_spt_pct,
                                                     bool wsd_active,
                                                     double wspt_pct,
+                                                    bool wsa_active = false,
+                                                    double wsa_spt_pct = 100.0,
                                                     bool operating_rule_fallback = false);
 
 /** O.13.1.2 autonomous profile → PF2 thresholds (yaml / tr57126_table1). */
@@ -90,6 +92,17 @@ DsoReactiveApplyResult apply_live_pfsp_command(const PlantConfig& plant_cfg,
                                                bool pfsp_active, double cosphi,
                                                bool generation_setpoint,
                                                double p_kw_measured);
+
+struct ReactiveCommandSelection {
+    DsoReactiveApplyResult command{};
+    const char* source{"none"};
+};
+
+/** Bench arbitration: DSO direct Q, then DSO PFSP, then Aggregator Q. */
+ReactiveCommandSelection select_live_reactive_command(const PlantConfig& plant,
+    const DsoConfig& cfg, bool varsd_active, double varsd_pct,
+    bool pfsp_active, double cosphi, bool generation, double p_kw,
+    bool varsa_active, double varsa_pct);
 
 }  // namespace cci::core::dso
 

@@ -1,0 +1,50 @@
+
+TLS: Compare With:
+TLS:      cert. version     : 3
+     serial number     : 22:4C:5F:AB:99:30:AA:8C:D1:1E:0C:EE:5B:17:67:39:8F:3D:CC:1F
+     issuer name       : CN=CCLI RBAC Lab CA, O=HiTEKS, C=IT
+     subject name      : CN=CCLI-RBAC-negative-revoked
+     issued  on        : 2026-10-16 07:14:33
+     expires on        : 2027-10-16 07:14:32
+     signed using      : RSA with SHA-256
+     RSA key size      : 2048 bits
+     basic constraints : CA=false
+     key usage         : Digital Signature
+     ext key usage     : TLS Web Client Authentication
+
+TLS: Compare With:
+TLS:      cert. version     : 3
+     serial number     : 98:A6:3C:0C:3A:4C:3D:04
+     issuer name       : C=IT, O=HiTEKS, OU=CCLI-Lab, CN=CCLI_Lab_Root_CA
+     subject name      : C=IT, O=HiTEKS, OU=CCLI-Lab, CN=DSO_OPERATOR
+     issued  on        : 2026-09-29 19:36:09
+     expires on        : 2029-01-01 19:36:09
+     signed using      : RSA with SHA-256
+     RSA key size      : 2048 bits
+     basic constraints : CA=false
+     key usage         : Digital Signature, Key Encipherment
+
+{"rbac":true,"event":"TLS_SECURITY_EVENT","severity":"notice","policy":"urn:iec:62351:8:IS:1.0:rps-root:8ef16ebb-65d6-4b2e-bad4-6729129eb412","sequence":3,"service":"TLS","object":"","reason":"Info: Session established with cipher suite TLS-RSA-WITH-AES-128-CBC-SHA256"}
+mms: client CONNECT count=1
+client_connect
+mms: iso session CONNECT (payload=1586)
+{"rbac":true,"event":"ASSOCIATION_AUTH_FAIL","severity":"alarm","policy":"urn:iec:62351:8:IS:1.0:rps-root:8ef16ebb-65d6-4b2e-bad4-6729129eb412","sequence":3,"service":"CERTIFICATE","object":"","reason":"stale or future authentication proof"}
+mms: ACSE auth REJECT — Profile A role/policy verification failed
+rbac_profile_a_auth_reject
+mms: client DISCONNECT count=0
+client_disconnect
+{"ts_ms":1792504107254,"ts_o14":"2026/10/20 13:48:27","category":"o14.auth","type":"mms","detail":"rbac_profile_a_auth_success"}
+{"ts_ms":1792504107287,"ts_o14":"2026/10/20 13:48:27","category":"o14.security","type":"mms","detail":"{\"rbac\":true,\"event\":\"ASSOCIATION_AUTH_OK\",\"severity\":\"notice\",\"policy\":\"urn:iec:62351:8:IS:1.0:rps-root:8ef16ebb-65d6-4b2e-bad4-6729129eb412\",\"sequence\":3,\"service\":\"ASSOCIATION\",\"object\":\"\",\"reason\":\"identity bound to authenticated transport\",\"subject\":\"2.5.4.106=#0C0E312E312E312E3939392E312E3132, CN=CCLI-RBAC-dso-mms\",\"issuer\":\"CN=CCLI RBAC Lab CA, O=HiTEKS, C=IT\",\"serial\":\"62:FE:7F:53:D2:AE:14:07:4E:AD:EB:D9:60:FA:D2:DF:97:44:A2:AD\",\"sha256\":\"e48c2cee2237eb58fd821055335e00bd9c91fe9c04c7b03883aa320c7539cdd8\",\"peer\":\"192.168.0.137:55378\",\"transport_sha256\":\"0d01c02c2b98759bd39138e3be0c7cd4853c9be7164a96e382765a2cf4aea277\",\"actor\":\"DSO\",\"roles\":[{\"id\":-1,\"aor\":\"DSO\",\"revision\":1,\"definition\":\"IEC 62351-8-CEI016:2021\"}]}"}
+{"ts_ms":1792504107300,"ts_o14":"2026/10/20 13:48:27","category":"o14.security","type":"mms","detail":"{\"rbac\":true,\"event\":\"MMS_ACCESS_OK\",\"severity\":\"notice\",\"policy\":\"urn:iec:62351:8:IS:1.0:rps-root:8ef16ebb-65d6-4b2e-bad4-6729129eb412\",\"sequence\":3,\"service\":\"READVALUES\",\"object\":\"LD_Plant/PdCMMXU1.TotW\",\"reason\":\"authorized\",\"subject\":\"2.5.4.106=#0C0E312E312E312E3939392E312E3132, CN=CCLI-RBAC-dso-mms\",\"issuer\":\"CN=CCLI RBAC Lab CA, O=HiTEKS, C=IT\",\"serial\":\"62:FE:7F:53:D2:AE:14:07:4E:AD:EB:D9:60:FA:D2:DF:97:44:A2:AD\",\"sha256\":\"e48c2cee2237eb58fd821055335e00bd9c91fe9c04c7b03883aa320c7539cdd8\",\"peer\":\"192.168.0.137:55378\",\"transport_sha256\":\"0d01c02c2b98759bd39138e3be0c7cd4853c9be7164a96e382765a2cf4aea277\",\"actor\":\"DSO\",\"roles\":[{\"id\":-1,\"aor\":\"DSO\",\"revision\":1,\"definition\":\"IEC 62351-8-CEI016:2021\"}]}"}
+{"ts_ms":1792504107323,"ts_o14":"2026/10/20 13:48:27","category":"o14.security","type":"mms","detail":"{\"rbac\":true,\"event\":\"ASSOCIATION_RELEASE\",\"severity\":\"notice\",\"policy\":\"urn:iec:62351:8:IS:1.0:rps-root:8ef16ebb-65d6-4b2e-bad4-6729129eb412\",\"sequence\":3,\"service\":\"ASSOCIATION\",\"object\":\"\",\"reason\":\"disconnected\",\"subject\":\"2.5.4.106=#0C0E312E312E312E3939392E312E3132, CN=CCLI-RBAC-dso-mms\",\"issuer\":\"CN=CCLI RBAC Lab CA, O=HiTEKS, C=IT\",\"serial\":\"62:FE:7F:53:D2:AE:14:07:4E:AD:EB:D9:60:FA:D2:DF:97:44:A2:AD\",\"sha256\":\"e48c2cee2237eb58fd821055335e00bd9c91fe9c04c7b03883aa320c7539cdd8\",\"peer\":\"192.168.0.137:55378\",\"transport_sha256\":\"0d01c02c2b98759bd39138e3be0c7cd4853c9be7164a96e382765a2cf4aea277\",\"actor\":\"DSO\",\"roles\":[{\"id\":-1,\"aor\":\"DSO\",\"revision\":1,\"definition\":\"IEC 62351-8-CEI016:2021\"}]}"}
+{"ts_ms":1792504107327,"ts_o14":"2026/10/20 13:48:27","category":"o14.comms_dso","type":"mms","detail":"client_disconnect"}
+{"ts_ms":1792504138514,"ts_o14":"2026/10/20 13:48:58","category":"o14.security","type":"mms","detail":"{\"rbac\":true,\"event\":\"TLS_SECURITY_EVENT\",\"severity\":\"notice\",\"policy\":\"urn:iec:62351:8:IS:1.0:rps-root:8ef16ebb-65d6-4b2e-bad4-6729129eb412\",\"sequence\":3,\"service\":\"TLS\",\"object\":\"\",\"reason\":\"Info: Session established with cipher suite TLS-RSA-WITH-AES-128-CBC-SHA256\"}"}
+{"ts_ms":1792504138517,"ts_o14":"2026/10/20 13:48:58","category":"o14.comms_dso","type":"mms","detail":"client_connect"}
+{"ts_ms":1792504138578,"ts_o14":"2026/10/20 13:48:58","category":"o14.security","type":"mms","detail":"{\"rbac\":true,\"event\":\"ASSOCIATION_AUTH_FAIL\",\"severity\":\"alarm\",\"policy\":\"urn:iec:62351:8:IS:1.0:rps-root:8ef16ebb-65d6-4b2e-bad4-6729129eb412\",\"sequence\":3,\"service\":\"CERTIFICATE\",\"object\":\"\",\"reason\":\"stale or future authentication proof\"}"}
+{"ts_ms":1792504138580,"ts_o14":"2026/10/20 13:48:58","category":"o14.auth","type":"mms","detail":"rbac_profile_a_auth_reject"}
+{"ts_ms":1792504138582,"ts_o14":"2026/10/20 13:48:58","category":"o14.comms_dso","type":"mms","detail":"client_disconnect"}
+{"ts_ms":1792504227825,"ts_o14":"2026/10/20 13:50:27","category":"o14.security","type":"mms","detail":"{\"rbac\":true,\"event\":\"TLS_SECURITY_EVENT\",\"severity\":\"notice\",\"policy\":\"urn:iec:62351:8:IS:1.0:rps-root:8ef16ebb-65d6-4b2e-bad4-6729129eb412\",\"sequence\":3,\"service\":\"TLS\",\"object\":\"\",\"reason\":\"Info: Session established with cipher suite TLS-RSA-WITH-AES-128-CBC-SHA256\"}"}
+{"ts_ms":1792504227828,"ts_o14":"2026/10/20 13:50:27","category":"o14.comms_dso","type":"mms","detail":"client_connect"}
+{"ts_ms":1792504227885,"ts_o14":"2026/10/20 13:50:27","category":"o14.security","type":"mms","detail":"{\"rbac\":true,\"event\":\"ASSOCIATION_AUTH_FAIL\",\"severity\":\"alarm\",\"policy\":\"urn:iec:62351:8:IS:1.0:rps-root:8ef16ebb-65d6-4b2e-bad4-6729129eb412\",\"sequence\":3,\"service\":\"CERTIFICATE\",\"object\":\"\",\"reason\":\"stale or future authentication proof\"}"}
+{"ts_ms":1792504227888,"ts_o14":"2026/10/20 13:50:27","category":"o14.auth","type":"mms","detail":"rbac_profile_a_auth_reject"}
+{"ts_ms":1792504227889,"ts_o14":"2026/10/20 13:50:27","category":"o14.comms_dso","type":"mms","detail":"client_disconnect"}

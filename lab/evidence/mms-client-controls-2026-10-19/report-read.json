@@ -1,0 +1,25 @@
+{
+  "host": "127.0.0.1",
+  "port": 3784,
+  "command": "rcb-read",
+  "reference": "CCI016_01LD_Plant/LLN0.RP.urcb_PdC_Mis4sec",
+  "passed": true,
+  "events": [
+    {
+      "kind": "association",
+      "reference": "127.0.0.1",
+      "error": 0,
+      "error_text": "",
+      "value": "mutual TLS 1.2 + ACSE certificate authentication",
+      "observed_utc": "2026-10-19T08:40:34.332534+00:00"
+    },
+    {
+      "kind": "rcb",
+      "reference": "CCI016_01LD_Plant/LLN0.RP.urcb_PdC_Mis4sec",
+      "error": 0,
+      "error_text": "",
+      "value": "enabled=false dataset=CCI016_01LD_Plant/LLN0$DS_R_PdC_Mis4sec",
+      "observed_utc": "2026-10-19T08:40:34.403931+00:00"
+    }
+  ]
+}

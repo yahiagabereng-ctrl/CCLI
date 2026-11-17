@@ -1,0 +1,30 @@
+{
+  "review_date": "2026-10-21",
+  "scope": "CCI OSI MMS server; TLS + native integrity-only baseline proposed; conditional encryption retained",
+  "sources": [
+    {
+      "id": "S1004",
+      "path": "C:\\Users\\Administrator\\Desktop\\IEC TS 62351-100-4 2023.pdf",
+      "sha256": "6188eca04cb2a482127b24755ad657b3ce8b86df506543b7d2e147045aef7bba"
+    },
+    {
+      "id": "S4",
+      "path": "C:\\Users\\Administrator\\Desktop\\CCLI Alireza\\CCLI\\Normativa\\IEC 62351-4 2020.pdf",
+      "sha256": "99a2652022384a5d38595e533eb07be99b31901149f854de7a7cb0023b8b39c1"
+    },
+    {
+      "id": "S4_CODE_COMPONENTS",
+      "path": "apps/ccli/adapters/iec61850_mms/e2e/spec/iec62351-4-ed1.1/",
+      "archive": "apps/ccli/adapters/iec61850_mms/e2e/spec/iec62351-4-ed1.1/iec62351-4ed1.1b.zip",
+      "sha256": "4c0bc053cafe7ee6b6ce13fef3dd9ba02f400b452f162d92ba056b14bd241fcc",
+      "asn1_module": "IEC_62351-4_E2E-security.asn",
+      "asn1_sha256": "cb7f86a5fd4d41035b41010cfb98361c5f5a32897707fdfebecd104a39b7d7e3",
+      "xsd": "IEC_62351-4_E2E-security.xsd",
+      "xsd_sha256": "ca617d552298a876164edc1b3b6c9957c3913975b7eb43394a9ddc0ba56d3192",
+      "source": "SEK Svensk Elstandard free downloads; companion archive for IEC 62351-4:2018+AMD1:2020 CSV"
+    }
+  ],
+  "requirements": 108,
+  "abstract_test_rows": 44,
+  "tables_dispositioned": 79
+}

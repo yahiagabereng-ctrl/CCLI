@@ -1,0 +1,49 @@
+{
+  "host": "127.0.0.1",
+  "port": 3784,
+  "command": "dataset-members",
+  "reference": "CCI016_01LD_Plant/LLN0.DS_R_PdC_Mis4sec",
+  "passed": true,
+  "events": [
+    {
+      "kind": "association",
+      "reference": "127.0.0.1",
+      "error": 0,
+      "error_text": "",
+      "value": "mutual TLS 1.2 + ACSE certificate authentication",
+      "observed_utc": "2026-10-19T08:40:31.336572+00:00"
+    },
+    {
+      "kind": "dataset-members",
+      "reference": "CCI016_01LD_Plant/LLN0.DS_R_PdC_Mis4sec",
+      "error": 0,
+      "error_text": "",
+      "value": "static",
+      "observed_utc": "2026-10-19T08:40:31.398367+00:00"
+    },
+    {
+      "kind": "entry",
+      "reference": "CCI016_01LD_Plant/LLN0.DS_R_PdC_Mis4sec",
+      "error": 0,
+      "error_text": "",
+      "value": "CCI016_01LD_Plant/PdCMMXU1.TotW[MX]",
+      "observed_utc": "2026-10-19T08:40:31.398468+00:00"
+    },
+    {
+      "kind": "entry",
+      "reference": "CCI016_01LD_Plant/LLN0.DS_R_PdC_Mis4sec",
+      "error": 0,
+      "error_text": "",
+      "value": "CCI016_01LD_Plant/PdCMMXU1.TotVAr[MX]",
+      "observed_utc": "2026-10-19T08:40:31.398502+00:00"
+    },
+    {
+      "kind": "entry",
+      "reference": "CCI016_01LD_Plant/LLN0.DS_R_PdC_Mis4sec",
+      "error": 0,
+      "error_text": "",
+      "value": "CCI016_01LD_Plant/PdCMMXU1.PPV.phsAB.cVal.mag.f[MX]",
+      "observed_utc": "2026-10-19T08:40:31.398519+00:00"
+    }
+  ]
+}

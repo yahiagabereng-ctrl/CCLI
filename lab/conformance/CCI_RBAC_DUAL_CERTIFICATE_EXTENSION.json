@@ -1,0 +1,29 @@
+{
+  "note": "Explicit extension to the preserved original baseline: user approved separate MMS certificate/key and additional TSP TLS pin on 2026-10-16. Network evidence and limitations: CCI_RBAC_TSP_DUAL_CERTIFICATE_INTEGRATION.md. Hashes detect changes, not normative conformance. User approved r60 integration on 2026-10-16: reproduce owner extended PGI 194 and connection diagnostics on pinned upstream 519b0208; retain owner legacy bridge cleanup. Owner d826f94 source is unavailable.",
+  "protected_source_overrides": {
+    "apps/ccli/adapters/iec61850_mms/mms_aare_auth.cpp": {
+      "original": "936ca13797978ffebde62c66a6b0344b557b990e1df7c92b9b34f71172b14f17",
+      "extended": "66c2f8381d098ca10e1c42d5d47edc8676752b2d53e8fcbcad87b4bf031bda5a",
+      "lf_sha256": "00ddb08e83f12233f47f0bbcbe46ffb674fb874355c65b1c250e01dadc62dec8"
+    },
+    "apps/ccli/adapters/iec61850_mms/ccli_acse_bridge.c": {
+      "original": "8936f9acca5dd3908888f936a8d3e482e86747604431e00d7ba929e6bb664af3",
+      "extended": "7f60bae1daf69674885e7c1aff3888dc76366fefcef5d6251b5300593a3c993f",
+      "lf_sha256": "b767afcba4cb4758d8dfee208bc17ef21cc5fc5538d64e105ac805b08de5f20b"
+    }
+  },
+  "additional_tls_configuration_calls": [
+    "TLSConfiguration_addAllowedCertificateFromFile(impl->tls,cfg.tls.additional_client_cert.c_str())){std::fprintf(stderr,\"mms:TLSfailedtoloadadditionalclientallowlist%s\\n\",cfg.tls.additional_client_cert.c_str());",
+    "TLSConfiguration_destroy(impl->tls);"
+  ],
+  "extension_source_sha256": {
+    "scripts/generate_mms_certificate_auth.py": "912dbde99b1102961cd2f62a91fb97154abe1bca035b5127a09b144000e2f978",
+    "apps/ccli/cmake/mms_certificate_auth.cmake": "ac891aedecda55edb7268cc72bb9eddab1fce0e07850bb84615f0071c0a71949",
+    "apps/ccli/adapters/iec61850_mms/mms_certificate_auth_bridge.h": "153d2bfd9691312cdb3b572e34796cde8f197cd8890dd9d4ccb4796c4728d7f5",
+    "apps/ccli/core/config/ccli_config.hpp": "52871241e2892d0949b11619a3099a6e25a4f353b782c6ac955478370cf96d25",
+    "apps/ccli/core/config/ccli_config.cpp": "87a6373d9847e2fab292994f94a83ac4eef2a702c8da500150ab4a7098be21da",
+    "apps/ccli/third_party/libiec61850/src/mms/inc_private/iso_presentation.h": "a21ce4846e2ea18aabc5269de93c6d2fa6dbea48474d925476b07eaa5f11edae",
+    "apps/ccli/third_party/libiec61850/src/mms/iso_client/iso_client_connection.c": "cf3ece287e655fc5988fbd4023351471d22506bb5d1016b52247711465a5e1d4",
+    "apps/ccli/third_party/libiec61850/src/mms/iso_server/iso_connection.c": "cb1b83830619e20e312c8b1ebc77cb66c41f6ab15ca38cffd1cfac09a2673d9a"
+  }
+}

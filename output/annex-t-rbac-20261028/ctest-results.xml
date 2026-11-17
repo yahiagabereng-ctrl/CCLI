@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="(empty)"
+	tests="4"
+	failures="0"
+	disabled="0"
+	skipped="0"
+	hostname=""
+	time="22"
+	timestamp="2026-10-28T12:22:33"
+	>
+	<testcase name="mms_acse_p307_acse_auth" classname="mms_acse_p307_acse_auth" time="0.037372" status="run">
+		<properties/>
+		<system-out>mms_acse_auth_test: PASS (ACSE + Profile A + commissioning policy)
+</system-out>
+	</testcase>
+	<testcase name="mms_rbac_generate_certificates" classname="mms_rbac_generate_certificates" time="3.86849" status="run">
+		<properties/>
+		<system-out>Generated isolated certificate and signed-package fixtures: /tmp/ccli-annext-rbac-verified-20261028/rbac-security-fixtures/run-26ba0808e62442e5ae4b0f827db8b1e4
+</system-out>
+	</testcase>
+	<testcase name="mms_rbac_signed_security" classname="mms_rbac_signed_security" time="0.224111" status="run">
+		<properties/>
+		<system-out>mms_rbac_security_test: PASS (signed commissioning, actor binding, certificates, CRL, revisions, proof replay)
+</system-out>
+	</testcase>
+	<testcase name="mms_rbac_tls_authorization" classname="mms_rbac_tls_authorization" time="17.8996" status="run">
+		<properties/>
+		<system-out>mms: O.7.3.3 set-point spacing gate ON (3 s)
+mms: PdCMMXU1.A.phsA.cVal.mag.f wired (EMT432 I1 @922) init=0.000A
+mms: PdCMMXU1.A.phsA.cVal.ang.f wired (atan2 Q1,P1 deg)
+mms: full CID model loaded from /tmp/ccli-annext-rbac-verified-20261028/rbac-security-fixtures/run-26ba0808e62442e5ae4b0f827db8b1e4/model.cfg
+mms: TLS CRL loaded /tmp/ccli-annext-rbac-verified-20261028/rbac-security-fixtures/run-26ba0808e62442e5ae4b0f827db8b1e4/base.crl.pem
+mms: AARE 62351-4 responder auth ready (cert=769 octets)
+mms: explicit certificate authentication and signed AARE bridge enabled
+mms: listening on 127.0.0.1:53535 tls=on acse_tls_auth=on rbac=on crl=on fallback_s=0 gnss_poll_s=0 chrony=off discipline=off model=full_cid_cfg
+TLS: Verify cert: depth 1
+TLS:    flags: 00000000
+TLS:   cert. version     : 3
+  serial number     : 4E:7B:82:69:67:81:57:E6:06:48:99:68:DA:06:92:B1:FA:F2:0E:91
+  issuer name       : CN=ca
+  subject name      : CN=ca
+  issued  on        : 2026-10-25 11:22:33
+  expires on        : 2026-11-27 11:22:33
+  sign...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+</testsuite>

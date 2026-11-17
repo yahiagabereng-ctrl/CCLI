@@ -1,0 +1,115 @@
+# Phase 1 complete — hardware lab + CEI TR 57-126 Table 1 / Figura 2 (WSd 20%, Wlim/w110 off)
+# Same I/O and Modbus as lab_tr400.yaml; enables Eq (1)(2)(5)(6) → PF2 ~42 kW thresholds.
+# Regulation report: ccli --regulation-check --config config/lab_tr400_phase1_regulation.yaml
+platform: tg500
+lab:
+  hostname: TG544
+  model: tespro,tr500
+  address: 192.168.0.1/24
+modbus:
+  backend: rtu
+  device: /dev/rs485_2_uart
+  baud: 9600
+  parity: N
+  slave_id: 1
+  poll_ms: 4000
+  timeout_ms: 2000
+  retries: 3
+  reg_active_power: 60000
+  reg_active_power_count: 2
+  reg_reactive_power: 60002
+  reg_reactive_power_count: 2
+  reg_line_voltage: 60004
+  reg_line_voltage_count: 2
+  power_scale: 1
+  reactive_scale: 1
+  line_voltage_scale: 0.001
+  float_word_swap: false
+  trace: true
+pf2:
+  threshold_kw: 900
+  debounce_s: 30
+  release_threshold_kw: 850
+  min_on_s: 60
+  min_off_s: 30
+  stale_data_s: 10
+  use_dso_mock: true
+plant:
+  p_imm_kw: 200
+  p_ass_kw: 200
+  q_ind_kvar: 50
+  q_cap_kvar: 50
+  smax_kva: 210
+dso:
+  enabled: true
+  profile: tr57126_table1
+  w110_active: false
+  w110_pct: 100
+  wlim_active: false
+  wmax_spt_pct: 0
+  wsd_active: true
+  wspt_pct: 20
+  release_delta_kw: 5
+# Phase 3 — MMS server on Eth_A only (LAN1).
+# P3-06 TLS :3782 · P3-07 mutual cert · P3-08 RBAC · P3-09 CRL · P3-05 fallback.
+# Disable TesPro LuCI IEC61850 if it grabs the port. Lab PEMs under /etc/ccli/tls/.
+mms:
+  enabled: true
+  bind_address: 192.168.0.1
+  tcp_port: 3782
+  # Lab: short timer for evidence; product Operating Rule sets with DSO (often 60 s).
+  comms_loss_fallback_s: 15
+  # P3-11 / T.3.3.4.5 — GNSS fix → TimeQuality; OS clock via chrony (not ccli STEP).
+  gnss_poll_s: 15
+  gnss_discipline_clock: false
+  chrony_poll: true
+  tls_enabled: true
+  tls_own_key: /etc/ccli/tls/server.key
+  tls_own_cert: /etc/ccli/tls/server_tls.pem
+  # Annex G.2 dual cert + key: TLS=server_tls.pem/server.key, AARE=server.pem/server_acse.key.
+  tls_acse_cert: /etc/ccli/tls/server.pem
+  tls_acse_key: /etc/ccli/tls/server_acse.key
+  tls_ca_cert: /etc/ccli/rbac-trust/tls-ca-bundle.pem
+  tls_client_cert: /etc/ccli/rbac-clients/dso.pem
+  # TSP Transport TLS presents client.pem (G.6.2); must also be on DUT allow-list.
+  tls_acse_client_cert: /etc/ccli/rbac-clients/engineer-r0.pem
+  tls_viewer_cert: /etc/ccli/rbac-clients/viewer-r1.pem
+  tls_revoked_cert: /etc/ccli/rbac-clients/negative-revoked.pem
+  tls_crl: /etc/ccli/rbac-dual/trust/tls-crl-bundle.pem
+  tls_chain_validation: true
+  tls_additional_client_cert: /etc/ccli/tls/client_tls.pem
+  tls_allowed_client_cert: /etc/ccli/rbac-clients/aggregator.pem
+  tls_allowed_client_cert: /etc/ccli/rbac-clients/viewer-r0.pem
+  tls_allowed_client_cert: /etc/ccli/rbac-clients/operator-r0.pem
+  tls_allowed_client_cert: /etc/ccli/rbac-clients/installer-r0.pem
+  tls_allowed_client_cert: /etc/ccli/rbac-clients/secadm-r0.pem
+  tls_allowed_client_cert: /etc/ccli/rbac-clients/secaud-r0.pem
+  tls_allowed_client_cert: /etc/ccli/rbac-clients/rbacmnt-r0.pem
+  tls_allowed_client_cert: /etc/ccli/rbac-clients/operator-r1.pem
+  tls_allowed_client_cert: /etc/ccli/rbac-clients/engineer-r1.pem
+  tls_allowed_client_cert: /etc/ccli/rbac-clients/installer-r1.pem
+  tls_allowed_client_cert: /etc/ccli/rbac-clients/secadm-r1.pem
+  tls_allowed_client_cert: /etc/ccli/rbac-clients/secaud-r1.pem
+  tls_allowed_client_cert: /etc/ccli/rbac-clients/rbacmnt-r1.pem
+  tls_allowed_client_cert: /etc/ccli/rbac-clients/multi-viewer-engineer.pem
+  tls_allowed_client_cert: /etc/ccli/rbac-clients/dual-viewer.pem
+  rbac_profile_a: true
+  rbac_policy: /etc/ccli/rbac-dual/package/commissioning-policy.xml
+  rbac_owner_cert: /etc/ccli/rbac-trust/owner.pem
+  rbac_activation_state: /etc/ccli/rbac-state/activation.state
+  rbac_identity_ca: /etc/ccli/rbac-trust/rbac_ca.pem
+  rbac_identity_crl: /etc/ccli/rbac-dual/trust/rbac_crl.pem
+io:
+  backend: ubus_dido_v2
+  permissive_bypass: false
+  do_curtail:
+    gpio: 1
+    active_high: false
+  di_permissive:
+    gpio: 2
+    active_low: true
+
+event_log:
+  enabled: true
+  path: /etc/ccli/security-events/events.jsonl
+  syslog_enabled: false

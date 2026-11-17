@@ -1,0 +1,806 @@
+<?xml version='1.0' encoding='utf-8'?>
+<CommissioningScopes Version="1.0">
+  <Binding RoleId="-1" AoR="DSO" RoleDefinition="IEC 62351-8-CEI016:2021" Revision="1">
+    <Scope Permission="LISTOBJECTS">
+      <Object>LD_Plant/WlimDWMX1.Mod</Object>
+      <Object>LD_Plant/WlimDWMX1.WMaxSptPct</Object>
+      <Object>LD_Plant/WSdDAGC1.Mod</Object>
+      <Object>LD_Plant/WSdDAGC1.WSptPct</Object>
+      <Object>LD_Plant/VArSdDVAR1.Mod</Object>
+      <Object>LD_Plant/VArSdDVAR1.VArTgtSptPct</Object>
+      <Object>LD_Plant/PFSPDFPF1.Mod</Object>
+      <Object>LD_Plant/PFSPDFPF1.PFGnTgtSpt</Object>
+      <Object>LD_Plant/PFSPDFPF1.PFLodTgtSpt</Object>
+      <Object>LD_Plant/VArVDVVR1.Mod</Object>
+      <Object>LD_Plant/VArVDVVR1.K</Object>
+      <Object>LD_Plant/VArVDPMC1.WSpt1</Object>
+      <Object>LD_Plant/VArVDPMC2.WSpt1</Object>
+      <Object>LD_Plant/VArVDECP1.VMax</Object>
+      <Object>LD_Plant/VArVDECP1.Vmin</Object>
+      <Object>LD_Plant/VArVDECP2.VMax</Object>
+      <Object>LD_Plant/VArVDECP2.Vmin</Object>
+      <Object>LD_Plant/PFWDPFW1.Mod</Object>
+      <Object>LD_Plant/PFWDPFW1.WSetA</Object>
+      <Object>LD_Plant/PFWDPFW1.PFSetA</Object>
+      <Object>LD_Plant/PFWDPFW1.WSetB</Object>
+      <Object>LD_Plant/PFWDPFW1.PFSetB</Object>
+      <Object>LD_Plant/PFWDPFW1.WSetC</Object>
+      <Object>LD_Plant/PFWDPFW1.PFSetC</Object>
+      <Object>LD_Plant/PFWDPFW1.VLkIn</Object>
+      <Object>LD_Plant/PFWDPFW1.VLkOut</Object>
+      <Object>LD_Plant/LPHD1.PhyNam</Object>
+      <Object>LD_Plant/PdC_WiDPCC1.WRtg</Object>
+      <Object>LD_Plant/PdC_WaDPCC1.WRtg</Object>
+      <Object>LD_Plant/PdC_QiDPCC1.VArRtg</Object>
+      <Object>LD_Plant/PdC_QcDPCC1.VArRtg</Object>
+      <Object>LD_Plant/PdC_VADPCC1.VARtg</Object>
+      <Object>LD_Plant/DisFRDECP1.Beh</Object>
+      <Object>LD_Plant/DisFRDGEN1.Beh</Object>
+      <Object>LD_Plant/DisFRDSTO1.Beh</Object>
+      <Object>LD_Plant/IDGXCBR1.Pos</Object>
+      <Object>LD_Plant/PdCMMXU1.TotW</Object>
+      <Object>LD_Plant/PdCMMXU1.TotVAr</Object>
+      <Object>LD_Plant/PdCMMXU1.PPV</Object>
+      <Object>LD_Plant/PdCMMXU1.A</Object>
+      <Object>LD_Plant/GenPVMMXU1.TotW</Object>
+      <Object>LD_Plant/GenWiMMXU1.TotW</Object>
+      <Object>LD_Plant/GenTerMMXU1.TotW</Object>
+      <Object>LD_Plant/GenIdrMMXU1.TotW</Object>
+      <Object>LD_Plant/StMMXU1.TotW</Object>
+      <Object>LD_Plant/WlimDWMX1.Beh</Object>
+      <Object>LD_Plant/WlimDWMX1.Health</Object>
+      <Object>LD_Plant/WlimDWMX1.FctOpStAuto</Object>
+      <Object>LD_Plant/WlimDWMX1.FctOpStEx</Object>
+      <Object>LD_Plant/WSdDAGC1.Beh</Object>
+      <Object>LD_Plant/WSdDAGC1.Health</Object>
+      <Object>LD_Plant/WSdDAGC1.FctOpSt</Object>
+      <Object>LD_Plant/VArSdDVAR1.Beh</Object>
+      <Object>LD_Plant/VArSdDVAR1.Health</Object>
+      <Object>LD_Plant/VArSdDVAR1.FctOpSt</Object>
+      <Object>LD_Plant/PFSPDFPF1.Beh</Object>
+      <Object>LD_Plant/PFSPDFPF1.Health</Object>
+      <Object>LD_Plant/PFSPDFPF1.FctOpSt</Object>
+      <Object>LD_Plant/VArVDVVR1.Beh</Object>
+      <Object>LD_Plant/VArVDVVR1.Health</Object>
+      <Object>LD_Plant/VArVDVVR1.FctOpSt</Object>
+      <Object>LD_Plant/PFWDPFW1.Beh</Object>
+      <Object>LD_Plant/PFWDPFW1.Health</Object>
+      <Object>LD_Plant/PFWDPFW1.FctOpSt</Object>
+      <Object>LD_Plant/SGGMMXU1.TotW</Object>
+      <Object>LD_Plant/SGGMMXU2.TotW</Object>
+      <Object>LD_Plant/SSGGDGEN1.Health</Object>
+      <Object>LD_Plant/SSGGDGEN1.GnGrId</Object>
+      <Object>LD_Plant/SSGGDGEN2.Health</Object>
+      <Object>LD_Plant/SSGGDGEN2.GnGrId</Object>
+    </Scope>
+    <Scope Permission="READVALUES">
+      <Object>LD_Plant/WlimDWMX1.Mod</Object>
+      <Object>LD_Plant/WlimDWMX1.WMaxSptPct</Object>
+      <Object>LD_Plant/WSdDAGC1.Mod</Object>
+      <Object>LD_Plant/WSdDAGC1.WSptPct</Object>
+      <Object>LD_Plant/VArSdDVAR1.Mod</Object>
+      <Object>LD_Plant/VArSdDVAR1.VArTgtSptPct</Object>
+      <Object>LD_Plant/PFSPDFPF1.Mod</Object>
+      <Object>LD_Plant/PFSPDFPF1.PFGnTgtSpt</Object>
+      <Object>LD_Plant/PFSPDFPF1.PFLodTgtSpt</Object>
+      <Object>LD_Plant/VArVDVVR1.Mod</Object>
+      <Object>LD_Plant/VArVDVVR1.K</Object>
+      <Object>LD_Plant/VArVDPMC1.WSpt1</Object>
+      <Object>LD_Plant/VArVDPMC2.WSpt1</Object>
+      <Object>LD_Plant/VArVDECP1.VMax</Object>
+      <Object>LD_Plant/VArVDECP1.Vmin</Object>
+      <Object>LD_Plant/VArVDECP2.VMax</Object>
+      <Object>LD_Plant/VArVDECP2.Vmin</Object>
+      <Object>LD_Plant/PFWDPFW1.Mod</Object>
+      <Object>LD_Plant/PFWDPFW1.WSetA</Object>
+      <Object>LD_Plant/PFWDPFW1.PFSetA</Object>
+      <Object>LD_Plant/PFWDPFW1.WSetB</Object>
+      <Object>LD_Plant/PFWDPFW1.PFSetB</Object>
+      <Object>LD_Plant/PFWDPFW1.WSetC</Object>
+      <Object>LD_Plant/PFWDPFW1.PFSetC</Object>
+      <Object>LD_Plant/PFWDPFW1.VLkIn</Object>
+      <Object>LD_Plant/PFWDPFW1.VLkOut</Object>
+      <Object>LD_Plant/LPHD1.PhyNam</Object>
+      <Object>LD_Plant/PdC_WiDPCC1.WRtg</Object>
+      <Object>LD_Plant/PdC_WaDPCC1.WRtg</Object>
+      <Object>LD_Plant/PdC_QiDPCC1.VArRtg</Object>
+      <Object>LD_Plant/PdC_QcDPCC1.VArRtg</Object>
+      <Object>LD_Plant/PdC_VADPCC1.VARtg</Object>
+      <Object>LD_Plant/DisFRDECP1.Beh</Object>
+      <Object>LD_Plant/DisFRDGEN1.Beh</Object>
+      <Object>LD_Plant/DisFRDSTO1.Beh</Object>
+      <Object>LD_Plant/IDGXCBR1.Pos</Object>
+      <Object>LD_Plant/PdCMMXU1.TotW</Object>
+      <Object>LD_Plant/PdCMMXU1.TotVAr</Object>
+      <Object>LD_Plant/PdCMMXU1.PPV</Object>
+      <Object>LD_Plant/PdCMMXU1.A</Object>
+      <Object>LD_Plant/GenPVMMXU1.TotW</Object>
+      <Object>LD_Plant/GenWiMMXU1.TotW</Object>
+      <Object>LD_Plant/GenTerMMXU1.TotW</Object>
+      <Object>LD_Plant/GenIdrMMXU1.TotW</Object>
+      <Object>LD_Plant/StMMXU1.TotW</Object>
+      <Object>LD_Plant/WlimDWMX1.Beh</Object>
+      <Object>LD_Plant/WlimDWMX1.Health</Object>
+      <Object>LD_Plant/WlimDWMX1.FctOpStAuto</Object>
+      <Object>LD_Plant/WlimDWMX1.FctOpStEx</Object>
+      <Object>LD_Plant/WSdDAGC1.Beh</Object>
+      <Object>LD_Plant/WSdDAGC1.Health</Object>
+      <Object>LD_Plant/WSdDAGC1.FctOpSt</Object>
+      <Object>LD_Plant/VArSdDVAR1.Beh</Object>
+      <Object>LD_Plant/VArSdDVAR1.Health</Object>
+      <Object>LD_Plant/VArSdDVAR1.FctOpSt</Object>
+      <Object>LD_Plant/PFSPDFPF1.Beh</Object>
+      <Object>LD_Plant/PFSPDFPF1.Health</Object>
+      <Object>LD_Plant/PFSPDFPF1.FctOpSt</Object>
+      <Object>LD_Plant/VArVDVVR1.Beh</Object>
+      <Object>LD_Plant/VArVDVVR1.Health</Object>
+      <Object>LD_Plant/VArVDVVR1.FctOpSt</Object>
+      <Object>LD_Plant/PFWDPFW1.Beh</Object>
+      <Object>LD_Plant/PFWDPFW1.Health</Object>
+      <Object>LD_Plant/PFWDPFW1.FctOpSt</Object>
+      <Object>LD_Plant/SGGMMXU1.TotW</Object>
+      <Object>LD_Plant/SGGMMXU2.TotW</Object>
+      <Object>LD_Plant/SSGGDGEN1.Health</Object>
+      <Object>LD_Plant/SSGGDGEN1.GnGrId</Object>
+      <Object>LD_Plant/SSGGDGEN2.Health</Object>
+      <Object>LD_Plant/SSGGDGEN2.GnGrId</Object>
+    </Scope>
+    <Scope Permission="DATASET">
+      <Object>LD_Plant/LLN0.DS_R_Stato_Allarmi_Segnali</Object>
+      <Object>LD_Plant/LLN0.DS_R_PdC_Mis4sec</Object>
+      <Object>LD_Plant/LLN0.DS_R_GenAcc_Mis4sec</Object>
+      <Object>LD_Plant/LLN0.DS_R_SingGen_Mis4sec</Object>
+    </Scope>
+    <Scope Permission="REPORTING">
+      <Object>LD_Plant/LLN0.brcb_Stato_Allarmi_Segnali01</Object>
+      <Object>LD_Plant/LLN0.brcb_Stato_Allarmi_Segnali02</Object>
+      <Object>LD_Plant/LLN0.urcb_PdC_Mis4sec01</Object>
+      <Object>LD_Plant/LLN0.urcb_PdC_Mis4sec02</Object>
+      <Object>LD_Plant/LLN0.urcb_GenAcc_Mis4sec01</Object>
+      <Object>LD_Plant/LLN0.urcb_GenAcc_Mis4sec02</Object>
+      <Object>LD_Plant/LLN0.urcb_SingGen_Mis4sec01</Object>
+      <Object>LD_Plant/LLN0.urcb_SingGen_Mis4sec02</Object>
+      <Object>LD_Plant/LLN0.urcb_PdC_Mis4sec</Object>
+      <Object>LD_Plant/LLN0.urcb_GenAcc_Mis4sec</Object>
+      <Object>LD_Plant/LLN0.urcb_SingGen_Mis4sec</Object>
+      <Object>LD_Plant/LLN0.brcb_Stato_Allarmi_Segnali</Object>
+    </Scope>
+    <Scope Permission="CONTROL">
+      <Object>LD_Plant/WlimDWMX1.Mod</Object>
+      <Object>LD_Plant/WlimDWMX1.WMaxSptPct</Object>
+      <Object>LD_Plant/WSdDAGC1.Mod</Object>
+      <Object>LD_Plant/WSdDAGC1.WSptPct</Object>
+      <Object>LD_Plant/VArSdDVAR1.Mod</Object>
+      <Object>LD_Plant/VArSdDVAR1.VArTgtSptPct</Object>
+      <Object>LD_Plant/PFSPDFPF1.Mod</Object>
+      <Object>LD_Plant/PFSPDFPF1.PFGnTgtSpt</Object>
+      <Object>LD_Plant/PFSPDFPF1.PFLodTgtSpt</Object>
+      <Object>LD_Plant/VArVDVVR1.Mod</Object>
+      <Object>LD_Plant/VArVDVVR1.K</Object>
+      <Object>LD_Plant/VArVDPMC1.WSpt1</Object>
+      <Object>LD_Plant/VArVDPMC2.WSpt1</Object>
+      <Object>LD_Plant/VArVDECP1.VMax</Object>
+      <Object>LD_Plant/VArVDECP1.Vmin</Object>
+      <Object>LD_Plant/VArVDECP2.VMax</Object>
+      <Object>LD_Plant/VArVDECP2.Vmin</Object>
+      <Object>LD_Plant/PFWDPFW1.Mod</Object>
+      <Object>LD_Plant/PFWDPFW1.WSetA</Object>
+      <Object>LD_Plant/PFWDPFW1.PFSetA</Object>
+      <Object>LD_Plant/PFWDPFW1.WSetB</Object>
+      <Object>LD_Plant/PFWDPFW1.PFSetB</Object>
+      <Object>LD_Plant/PFWDPFW1.WSetC</Object>
+      <Object>LD_Plant/PFWDPFW1.PFSetC</Object>
+      <Object>LD_Plant/PFWDPFW1.VLkIn</Object>
+      <Object>LD_Plant/PFWDPFW1.VLkOut</Object>
+    </Scope>
+    <Scope Permission="CONFIG">
+      <Object>LD_Plant/WlimDWMX1.Mod</Object>
+      <Object>LD_Plant/WlimDWMX1.WMaxSptPct</Object>
+      <Object>LD_Plant/WSdDAGC1.Mod</Object>
+      <Object>LD_Plant/WSdDAGC1.WSptPct</Object>
+      <Object>LD_Plant/VArSdDVAR1.Mod</Object>
+      <Object>LD_Plant/VArSdDVAR1.VArTgtSptPct</Object>
+      <Object>LD_Plant/PFSPDFPF1.Mod</Object>
+      <Object>LD_Plant/PFSPDFPF1.PFGnTgtSpt</Object>
+      <Object>LD_Plant/PFSPDFPF1.PFLodTgtSpt</Object>
+      <Object>LD_Plant/VArVDVVR1.Mod</Object>
+      <Object>LD_Plant/VArVDVVR1.K</Object>
+      <Object>LD_Plant/VArVDPMC1.WSpt1</Object>
+      <Object>LD_Plant/VArVDPMC2.WSpt1</Object>
+      <Object>LD_Plant/VArVDECP1.VMax</Object>
+      <Object>LD_Plant/VArVDECP1.Vmin</Object>
+      <Object>LD_Plant/VArVDECP2.VMax</Object>
+      <Object>LD_Plant/VArVDECP2.Vmin</Object>
+      <Object>LD_Plant/PFWDPFW1.Mod</Object>
+      <Object>LD_Plant/PFWDPFW1.WSetA</Object>
+      <Object>LD_Plant/PFWDPFW1.PFSetA</Object>
+      <Object>LD_Plant/PFWDPFW1.WSetB</Object>
+      <Object>LD_Plant/PFWDPFW1.PFSetB</Object>
+      <Object>LD_Plant/PFWDPFW1.WSetC</Object>
+      <Object>LD_Plant/PFWDPFW1.PFSetC</Object>
+      <Object>LD_Plant/PFWDPFW1.VLkIn</Object>
+      <Object>LD_Plant/PFWDPFW1.VLkOut</Object>
+    </Scope>
+  </Binding>
+  <Binding RoleId="-2" AoR="AGGREGATOR" RoleDefinition="IEC 62351-8-CEI016:2021" Revision="1">
+    <Scope Permission="LISTOBJECTS">
+      <Object>LD_Plant/WSaDAGC1.Mod</Object>
+      <Object>LD_Plant/WSaDAGC1.WSptPct</Object>
+      <Object>LD_Plant/VArSaDVAR1.Mod</Object>
+      <Object>LD_Plant/VArSaDVAR1.VArTgtSptPct</Object>
+      <Object>LD_Plant/PdCiMMXU1.TotW</Object>
+      <Object>LD_Plant/PdCiMMXU1.TotVAr</Object>
+      <Object>LD_Plant/WSaDAGC1.Beh</Object>
+      <Object>LD_Plant/WSaDAGC1.Health</Object>
+      <Object>LD_Plant/WSaDAGC1.FctOpSt</Object>
+      <Object>LD_Plant/VArSaDVAR1.Beh</Object>
+      <Object>LD_Plant/VArSaDVAR1.Health</Object>
+      <Object>LD_Plant/VArSaDVAR1.FctOpSt</Object>
+    </Scope>
+    <Scope Permission="READVALUES">
+      <Object>LD_Plant/WSaDAGC1.Mod</Object>
+      <Object>LD_Plant/WSaDAGC1.WSptPct</Object>
+      <Object>LD_Plant/VArSaDVAR1.Mod</Object>
+      <Object>LD_Plant/VArSaDVAR1.VArTgtSptPct</Object>
+      <Object>LD_Plant/PdCiMMXU1.TotW</Object>
+      <Object>LD_Plant/PdCiMMXU1.TotVAr</Object>
+      <Object>LD_Plant/WSaDAGC1.Beh</Object>
+      <Object>LD_Plant/WSaDAGC1.Health</Object>
+      <Object>LD_Plant/WSaDAGC1.FctOpSt</Object>
+      <Object>LD_Plant/VArSaDVAR1.Beh</Object>
+      <Object>LD_Plant/VArSaDVAR1.Health</Object>
+      <Object>LD_Plant/VArSaDVAR1.FctOpSt</Object>
+    </Scope>
+    <Scope Permission="CONTROL">
+      <Object>LD_Plant/WSaDAGC1.Mod</Object>
+      <Object>LD_Plant/WSaDAGC1.WSptPct</Object>
+      <Object>LD_Plant/VArSaDVAR1.Mod</Object>
+      <Object>LD_Plant/VArSaDVAR1.VArTgtSptPct</Object>
+    </Scope>
+    <Scope Permission="CONFIG">
+      <Object>LD_Plant/WSaDAGC1.Mod.Oper.ctlVal</Object>
+      <Object>LD_Plant/WSaDAGC1.WSptPct.Oper.ctlVal</Object>
+      <Object>LD_Plant/VArSaDVAR1.Mod.Oper.ctlVal</Object>
+      <Object>LD_Plant/VArSaDVAR1.VArTgtSptPct.Oper.ctlVal</Object>
+    </Scope>
+    <Scope Permission="DATASET">
+      <Object>LD_Plant/LLN0.DS_R_Aggregator_Mis4sec</Object>
+    </Scope>
+    <Scope Permission="REPORTING">
+      <Object>LD_Plant/LLN0.urcb_Aggregator_Mis4sec01</Object>
+      <Object>LD_Plant/LLN0.urcb_Aggregator_Mis4sec02</Object>
+      <Object>LD_Plant/LLN0.brcb_Aggregator_Mis4sec01</Object>
+      <Object>LD_Plant/LLN0.brcb_Aggregator_Mis4sec02</Object>
+    </Scope>
+  </Binding>
+  <Binding RoleId="0" AoR="CCI" RoleDefinition="IEC62351-8" Revision="1">
+    <Scope Permission="LISTOBJECTS">
+      <Object>LD_Plant/WlimDWMX1.Mod</Object>
+      <Object>LD_Plant/WlimDWMX1.WMaxSptPct</Object>
+      <Object>LD_Plant/WSdDAGC1.Mod</Object>
+      <Object>LD_Plant/WSdDAGC1.WSptPct</Object>
+      <Object>LD_Plant/VArSdDVAR1.Mod</Object>
+      <Object>LD_Plant/VArSdDVAR1.VArTgtSptPct</Object>
+      <Object>LD_Plant/PFSPDFPF1.Mod</Object>
+      <Object>LD_Plant/PFSPDFPF1.PFGnTgtSpt</Object>
+      <Object>LD_Plant/PFSPDFPF1.PFLodTgtSpt</Object>
+      <Object>LD_Plant/VArVDVVR1.Mod</Object>
+      <Object>LD_Plant/VArVDVVR1.K</Object>
+      <Object>LD_Plant/VArVDPMC1.WSpt1</Object>
+      <Object>LD_Plant/VArVDPMC2.WSpt1</Object>
+      <Object>LD_Plant/VArVDECP1.VMax</Object>
+      <Object>LD_Plant/VArVDECP1.Vmin</Object>
+      <Object>LD_Plant/VArVDECP2.VMax</Object>
+      <Object>LD_Plant/VArVDECP2.Vmin</Object>
+      <Object>LD_Plant/PFWDPFW1.Mod</Object>
+      <Object>LD_Plant/PFWDPFW1.WSetA</Object>
+      <Object>LD_Plant/PFWDPFW1.PFSetA</Object>
+      <Object>LD_Plant/PFWDPFW1.WSetB</Object>
+      <Object>LD_Plant/PFWDPFW1.PFSetB</Object>
+      <Object>LD_Plant/PFWDPFW1.WSetC</Object>
+      <Object>LD_Plant/PFWDPFW1.PFSetC</Object>
+      <Object>LD_Plant/PFWDPFW1.VLkIn</Object>
+      <Object>LD_Plant/PFWDPFW1.VLkOut</Object>
+      <Object>LD_Plant/LPHD1.PhyNam</Object>
+      <Object>LD_Plant/PdC_WiDPCC1.WRtg</Object>
+      <Object>LD_Plant/PdC_WaDPCC1.WRtg</Object>
+      <Object>LD_Plant/PdC_QiDPCC1.VArRtg</Object>
+      <Object>LD_Plant/PdC_QcDPCC1.VArRtg</Object>
+      <Object>LD_Plant/PdC_VADPCC1.VARtg</Object>
+      <Object>LD_Plant/DisFRDECP1.Beh</Object>
+      <Object>LD_Plant/DisFRDGEN1.Beh</Object>
+      <Object>LD_Plant/DisFRDSTO1.Beh</Object>
+      <Object>LD_Plant/IDGXCBR1.Pos</Object>
+      <Object>LD_Plant/PdCMMXU1.TotW</Object>
+      <Object>LD_Plant/PdCMMXU1.TotVAr</Object>
+      <Object>LD_Plant/PdCMMXU1.PPV</Object>
+      <Object>LD_Plant/PdCMMXU1.A</Object>
+      <Object>LD_Plant/GenPVMMXU1.TotW</Object>
+      <Object>LD_Plant/GenWiMMXU1.TotW</Object>
+      <Object>LD_Plant/GenTerMMXU1.TotW</Object>
+      <Object>LD_Plant/GenIdrMMXU1.TotW</Object>
+      <Object>LD_Plant/StMMXU1.TotW</Object>
+      <Object>LD_Plant/WlimDWMX1.Beh</Object>
+      <Object>LD_Plant/WlimDWMX1.Health</Object>
+      <Object>LD_Plant/WlimDWMX1.FctOpStAuto</Object>
+      <Object>LD_Plant/WlimDWMX1.FctOpStEx</Object>
+      <Object>LD_Plant/WSdDAGC1.Beh</Object>
+      <Object>LD_Plant/WSdDAGC1.Health</Object>
+      <Object>LD_Plant/WSdDAGC1.FctOpSt</Object>
+      <Object>LD_Plant/VArSdDVAR1.Beh</Object>
+      <Object>LD_Plant/VArSdDVAR1.Health</Object>
+      <Object>LD_Plant/VArSdDVAR1.FctOpSt</Object>
+      <Object>LD_Plant/PFSPDFPF1.Beh</Object>
+      <Object>LD_Plant/PFSPDFPF1.Health</Object>
+      <Object>LD_Plant/PFSPDFPF1.FctOpSt</Object>
+      <Object>LD_Plant/VArVDVVR1.Beh</Object>
+      <Object>LD_Plant/VArVDVVR1.Health</Object>
+      <Object>LD_Plant/VArVDVVR1.FctOpSt</Object>
+      <Object>LD_Plant/PFWDPFW1.Beh</Object>
+      <Object>LD_Plant/PFWDPFW1.Health</Object>
+      <Object>LD_Plant/PFWDPFW1.FctOpSt</Object>
+      <Object>LD_Plant/SGGMMXU1.TotW</Object>
+      <Object>LD_Plant/SGGMMXU2.TotW</Object>
+      <Object>LD_Plant/SSGGDGEN1.Health</Object>
+      <Object>LD_Plant/SSGGDGEN1.GnGrId</Object>
+      <Object>LD_Plant/SSGGDGEN2.Health</Object>
+      <Object>LD_Plant/SSGGDGEN2.GnGrId</Object>
+      <Object>LD_Plant/WSaDAGC1.Mod</Object>
+      <Object>LD_Plant/WSaDAGC1.WSptPct</Object>
+      <Object>LD_Plant/VArSaDVAR1.Mod</Object>
+      <Object>LD_Plant/VArSaDVAR1.VArTgtSptPct</Object>
+      <Object>LD_Plant/PdCiMMXU1.TotW</Object>
+      <Object>LD_Plant/PdCiMMXU1.TotVAr</Object>
+      <Object>LD_Plant/WSaDAGC1.Beh</Object>
+      <Object>LD_Plant/WSaDAGC1.Health</Object>
+      <Object>LD_Plant/WSaDAGC1.FctOpSt</Object>
+      <Object>LD_Plant/VArSaDVAR1.Beh</Object>
+      <Object>LD_Plant/VArSaDVAR1.Health</Object>
+      <Object>LD_Plant/VArSaDVAR1.FctOpSt</Object>
+    </Scope>
+    <Scope Permission="READVALUES">
+      <Object>LD_Plant/WlimDWMX1.Mod</Object>
+      <Object>LD_Plant/WlimDWMX1.WMaxSptPct</Object>
+      <Object>LD_Plant/WSdDAGC1.Mod</Object>
+      <Object>LD_Plant/WSdDAGC1.WSptPct</Object>
+      <Object>LD_Plant/VArSdDVAR1.Mod</Object>
+      <Object>LD_Plant/VArSdDVAR1.VArTgtSptPct</Object>
+      <Object>LD_Plant/PFSPDFPF1.Mod</Object>
+      <Object>LD_Plant/PFSPDFPF1.PFGnTgtSpt</Object>
+      <Object>LD_Plant/PFSPDFPF1.PFLodTgtSpt</Object>
+      <Object>LD_Plant/VArVDVVR1.Mod</Object>
+      <Object>LD_Plant/VArVDVVR1.K</Object>
+      <Object>LD_Plant/VArVDPMC1.WSpt1</Object>
+      <Object>LD_Plant/VArVDPMC2.WSpt1</Object>
+      <Object>LD_Plant/VArVDECP1.VMax</Object>
+      <Object>LD_Plant/VArVDECP1.Vmin</Object>
+      <Object>LD_Plant/VArVDECP2.VMax</Object>
+      <Object>LD_Plant/VArVDECP2.Vmin</Object>
+      <Object>LD_Plant/PFWDPFW1.Mod</Object>
+      <Object>LD_Plant/PFWDPFW1.WSetA</Object>
+      <Object>LD_Plant/PFWDPFW1.PFSetA</Object>
+      <Object>LD_Plant/PFWDPFW1.WSetB</Object>
+      <Object>LD_Plant/PFWDPFW1.PFSetB</Object>
+      <Object>LD_Plant/PFWDPFW1.WSetC</Object>
+      <Object>LD_Plant/PFWDPFW1.PFSetC</Object>
+      <Object>LD_Plant/PFWDPFW1.VLkIn</Object>
+      <Object>LD_Plant/PFWDPFW1.VLkOut</Object>
+      <Object>LD_Plant/LPHD1.PhyNam</Object>
+      <Object>LD_Plant/PdC_WiDPCC1.WRtg</Object>
+      <Object>LD_Plant/PdC_WaDPCC1.WRtg</Object>
+      <Object>LD_Plant/PdC_QiDPCC1.VArRtg</Object>
+      <Object>LD_Plant/PdC_QcDPCC1.VArRtg</Object>
+      <Object>LD_Plant/PdC_VADPCC1.VARtg</Object>
+      <Object>LD_Plant/DisFRDECP1.Beh</Object>
+      <Object>LD_Plant/DisFRDGEN1.Beh</Object>
+      <Object>LD_Plant/DisFRDSTO1.Beh</Object>
+      <Object>LD_Plant/IDGXCBR1.Pos</Object>
+      <Object>LD_Plant/PdCMMXU1.TotW</Object>
+      <Object>LD_Plant/PdCMMXU1.TotVAr</Object>
+      <Object>LD_Plant/PdCMMXU1.PPV</Object>
+      <Object>LD_Plant/PdCMMXU1.A</Object>
+      <Object>LD_Plant/GenPVMMXU1.TotW</Object>
+      <Object>LD_Plant/GenWiMMXU1.TotW</Object>
+      <Object>LD_Plant/GenTerMMXU1.TotW</Object>
+      <Object>LD_Plant/GenIdrMMXU1.TotW</Object>
+      <Object>LD_Plant/StMMXU1.TotW</Object>
+      <Object>LD_Plant/WlimDWMX1.Beh</Object>
+      <Object>LD_Plant/WlimDWMX1.Health</Object>
+      <Object>LD_Plant/WlimDWMX1.FctOpStAuto</Object>
+      <Object>LD_Plant/WlimDWMX1.FctOpStEx</Object>
+      <Object>LD_Plant/WSdDAGC1.Beh</Object>
+      <Object>LD_Plant/WSdDAGC1.Health</Object>
+      <Object>LD_Plant/WSdDAGC1.FctOpSt</Object>
+      <Object>LD_Plant/VArSdDVAR1.Beh</Object>
+      <Object>LD_Plant/VArSdDVAR1.Health</Object>
+      <Object>LD_Plant/VArSdDVAR1.FctOpSt</Object>
+      <Object>LD_Plant/PFSPDFPF1.Beh</Object>
+      <Object>LD_Plant/PFSPDFPF1.Health</Object>
+      <Object>LD_Plant/PFSPDFPF1.FctOpSt</Object>
+      <Object>LD_Plant/VArVDVVR1.Beh</Object>
+      <Object>LD_Plant/VArVDVVR1.Health</Object>
+      <Object>LD_Plant/VArVDVVR1.FctOpSt</Object>
+      <Object>LD_Plant/PFWDPFW1.Beh</Object>
+      <Object>LD_Plant/PFWDPFW1.Health</Object>
+      <Object>LD_Plant/PFWDPFW1.FctOpSt</Object>
+      <Object>LD_Plant/SGGMMXU1.TotW</Object>
+      <Object>LD_Plant/SGGMMXU2.TotW</Object>
+      <Object>LD_Plant/SSGGDGEN1.Health</Object>
+      <Object>LD_Plant/SSGGDGEN1.GnGrId</Object>
+      <Object>LD_Plant/SSGGDGEN2.Health</Object>
+      <Object>LD_Plant/SSGGDGEN2.GnGrId</Object>
+      <Object>LD_Plant/WSaDAGC1.Mod</Object>
+      <Object>LD_Plant/WSaDAGC1.WSptPct</Object>
+      <Object>LD_Plant/VArSaDVAR1.Mod</Object>
+      <Object>LD_Plant/VArSaDVAR1.VArTgtSptPct</Object>
+      <Object>LD_Plant/PdCiMMXU1.TotW</Object>
+      <Object>LD_Plant/PdCiMMXU1.TotVAr</Object>
+      <Object>LD_Plant/WSaDAGC1.Beh</Object>
+      <Object>LD_Plant/WSaDAGC1.Health</Object>
+      <Object>LD_Plant/WSaDAGC1.FctOpSt</Object>
+      <Object>LD_Plant/VArSaDVAR1.Beh</Object>
+      <Object>LD_Plant/VArSaDVAR1.Health</Object>
+      <Object>LD_Plant/VArSaDVAR1.FctOpSt</Object>
+    </Scope>
+    <Scope Permission="REPORTING">
+      <Object>LD_Plant/LLN0.brcb_Stato_Allarmi_Segnali01</Object>
+      <Object>LD_Plant/LLN0.brcb_Stato_Allarmi_Segnali02</Object>
+      <Object>LD_Plant/LLN0.urcb_PdC_Mis4sec01</Object>
+      <Object>LD_Plant/LLN0.urcb_PdC_Mis4sec02</Object>
+      <Object>LD_Plant/LLN0.urcb_GenAcc_Mis4sec01</Object>
+      <Object>LD_Plant/LLN0.urcb_GenAcc_Mis4sec02</Object>
+      <Object>LD_Plant/LLN0.urcb_SingGen_Mis4sec01</Object>
+      <Object>LD_Plant/LLN0.urcb_SingGen_Mis4sec02</Object>
+      <Object>LD_Plant/LLN0.urcb_PdC_Mis4sec</Object>
+      <Object>LD_Plant/LLN0.urcb_GenAcc_Mis4sec</Object>
+      <Object>LD_Plant/LLN0.urcb_SingGen_Mis4sec</Object>
+      <Object>LD_Plant/LLN0.brcb_Stato_Allarmi_Segnali</Object>
+    </Scope>
+  </Binding>
+  <Binding RoleId="1" AoR="CCI" RoleDefinition="IEC62351-8" Revision="1">
+    <Scope Permission="LISTOBJECTS">
+      <Object>*</Object>
+    </Scope>
+    <Scope Permission="READVALUES">
+      <Object>*</Object>
+    </Scope>
+    <Scope Permission="REPORTING">
+      <Object>*</Object>
+    </Scope>
+    <Scope Permission="CONTROL">
+      <Object>*</Object>
+    </Scope>
+  </Binding>
+  <Binding RoleId="2" AoR="CCI" RoleDefinition="IEC62351-8" Revision="1">
+    <Scope Permission="LISTOBJECTS">
+      <Object>*</Object>
+    </Scope>
+    <Scope Permission="READVALUES">
+      <Object>*</Object>
+    </Scope>
+    <Scope Permission="DATASET">
+      <Object>*</Object>
+    </Scope>
+    <Scope Permission="REPORTING">
+      <Object>*</Object>
+    </Scope>
+    <Scope Permission="CONFIG">
+      <Object>*</Object>
+    </Scope>
+  </Binding>
+  <Binding RoleId="3" AoR="CCI" RoleDefinition="IEC62351-8" Revision="1">
+    <Scope Permission="LISTOBJECTS">
+      <Object>*</Object>
+    </Scope>
+    <Scope Permission="READVALUES">
+      <Object>*</Object>
+    </Scope>
+    <Scope Permission="REPORTING">
+      <Object>*</Object>
+    </Scope>
+    <Scope Permission="CONFIG">
+      <Object>*</Object>
+    </Scope>
+  </Binding>
+  <Binding RoleId="4" AoR="CCI" RoleDefinition="IEC62351-8" Revision="1">
+    <Scope Permission="LISTOBJECTS">
+      <Object>*</Object>
+    </Scope>
+    <Scope Permission="READVALUES">
+      <Object>*</Object>
+    </Scope>
+    <Scope Permission="DATASET">
+      <Object>*</Object>
+    </Scope>
+    <Scope Permission="CONFIG">
+      <Object>*</Object>
+    </Scope>
+  </Binding>
+  <Binding RoleId="5" AoR="CCI" RoleDefinition="IEC62351-8" Revision="1">
+    <Scope Permission="LISTOBJECTS">
+      <Object>*</Object>
+    </Scope>
+    <Scope Permission="READVALUES">
+      <Object>*</Object>
+    </Scope>
+    <Scope Permission="REPORTING">
+      <Object>*</Object>
+    </Scope>
+  </Binding>
+  <Binding RoleId="6" AoR="CCI" RoleDefinition="IEC62351-8" Revision="1">
+    <Scope Permission="LISTOBJECTS">
+      <Object>*</Object>
+    </Scope>
+    <Scope Permission="READVALUES">
+      <Object>*</Object>
+    </Scope>
+    <Scope Permission="CONFIG">
+      <Object>*</Object>
+    </Scope>
+  </Binding>
+  <Binding RoleId="0" AoR="CCI" RoleDefinition="IEC62351-8" Revision="0">
+    <Scope Permission="LISTOBJECTS">
+      <Object>LD_Plant/WlimDWMX1.Mod</Object>
+      <Object>LD_Plant/WlimDWMX1.WMaxSptPct</Object>
+      <Object>LD_Plant/WSdDAGC1.Mod</Object>
+      <Object>LD_Plant/WSdDAGC1.WSptPct</Object>
+      <Object>LD_Plant/VArSdDVAR1.Mod</Object>
+      <Object>LD_Plant/VArSdDVAR1.VArTgtSptPct</Object>
+      <Object>LD_Plant/PFSPDFPF1.Mod</Object>
+      <Object>LD_Plant/PFSPDFPF1.PFGnTgtSpt</Object>
+      <Object>LD_Plant/PFSPDFPF1.PFLodTgtSpt</Object>
+      <Object>LD_Plant/VArVDVVR1.Mod</Object>
+      <Object>LD_Plant/VArVDVVR1.K</Object>
+      <Object>LD_Plant/VArVDPMC1.WSpt1</Object>
+      <Object>LD_Plant/VArVDPMC2.WSpt1</Object>
+      <Object>LD_Plant/VArVDECP1.VMax</Object>
+      <Object>LD_Plant/VArVDECP1.Vmin</Object>
+      <Object>LD_Plant/VArVDECP2.VMax</Object>
+      <Object>LD_Plant/VArVDECP2.Vmin</Object>
+      <Object>LD_Plant/PFWDPFW1.Mod</Object>
+      <Object>LD_Plant/PFWDPFW1.WSetA</Object>
+      <Object>LD_Plant/PFWDPFW1.PFSetA</Object>
+      <Object>LD_Plant/PFWDPFW1.WSetB</Object>
+      <Object>LD_Plant/PFWDPFW1.PFSetB</Object>
+      <Object>LD_Plant/PFWDPFW1.WSetC</Object>
+      <Object>LD_Plant/PFWDPFW1.PFSetC</Object>
+      <Object>LD_Plant/PFWDPFW1.VLkIn</Object>
+      <Object>LD_Plant/PFWDPFW1.VLkOut</Object>
+      <Object>LD_Plant/LPHD1.PhyNam</Object>
+      <Object>LD_Plant/PdC_WiDPCC1.WRtg</Object>
+      <Object>LD_Plant/PdC_WaDPCC1.WRtg</Object>
+      <Object>LD_Plant/PdC_QiDPCC1.VArRtg</Object>
+      <Object>LD_Plant/PdC_QcDPCC1.VArRtg</Object>
+      <Object>LD_Plant/PdC_VADPCC1.VARtg</Object>
+      <Object>LD_Plant/DisFRDECP1.Beh</Object>
+      <Object>LD_Plant/DisFRDGEN1.Beh</Object>
+      <Object>LD_Plant/DisFRDSTO1.Beh</Object>
+      <Object>LD_Plant/IDGXCBR1.Pos</Object>
+      <Object>LD_Plant/PdCMMXU1.TotW</Object>
+      <Object>LD_Plant/PdCMMXU1.TotVAr</Object>
+      <Object>LD_Plant/PdCMMXU1.PPV</Object>
+      <Object>LD_Plant/PdCMMXU1.A</Object>
+      <Object>LD_Plant/GenPVMMXU1.TotW</Object>
+      <Object>LD_Plant/GenWiMMXU1.TotW</Object>
+      <Object>LD_Plant/GenTerMMXU1.TotW</Object>
+      <Object>LD_Plant/GenIdrMMXU1.TotW</Object>
+      <Object>LD_Plant/StMMXU1.TotW</Object>
+      <Object>LD_Plant/WlimDWMX1.Beh</Object>
+      <Object>LD_Plant/WlimDWMX1.Health</Object>
+      <Object>LD_Plant/WlimDWMX1.FctOpStAuto</Object>
+      <Object>LD_Plant/WlimDWMX1.FctOpStEx</Object>
+      <Object>LD_Plant/WSdDAGC1.Beh</Object>
+      <Object>LD_Plant/WSdDAGC1.Health</Object>
+      <Object>LD_Plant/WSdDAGC1.FctOpSt</Object>
+      <Object>LD_Plant/VArSdDVAR1.Beh</Object>
+      <Object>LD_Plant/VArSdDVAR1.Health</Object>
+      <Object>LD_Plant/VArSdDVAR1.FctOpSt</Object>
+      <Object>LD_Plant/PFSPDFPF1.Beh</Object>
+      <Object>LD_Plant/PFSPDFPF1.Health</Object>
+      <Object>LD_Plant/PFSPDFPF1.FctOpSt</Object>
+      <Object>LD_Plant/VArVDVVR1.Beh</Object>
+      <Object>LD_Plant/VArVDVVR1.Health</Object>
+      <Object>LD_Plant/VArVDVVR1.FctOpSt</Object>
+      <Object>LD_Plant/PFWDPFW1.Beh</Object>
+      <Object>LD_Plant/PFWDPFW1.Health</Object>
+      <Object>LD_Plant/PFWDPFW1.FctOpSt</Object>
+      <Object>LD_Plant/SGGMMXU1.TotW</Object>
+      <Object>LD_Plant/SGGMMXU2.TotW</Object>
+      <Object>LD_Plant/SSGGDGEN1.Health</Object>
+      <Object>LD_Plant/SSGGDGEN1.GnGrId</Object>
+      <Object>LD_Plant/SSGGDGEN2.Health</Object>
+      <Object>LD_Plant/SSGGDGEN2.GnGrId</Object>
+      <Object>LD_Plant/WSaDAGC1.Mod</Object>
+      <Object>LD_Plant/WSaDAGC1.WSptPct</Object>
+      <Object>LD_Plant/VArSaDVAR1.Mod</Object>
+      <Object>LD_Plant/VArSaDVAR1.VArTgtSptPct</Object>
+      <Object>LD_Plant/PdCiMMXU1.TotW</Object>
+      <Object>LD_Plant/PdCiMMXU1.TotVAr</Object>
+      <Object>LD_Plant/WSaDAGC1.Beh</Object>
+      <Object>LD_Plant/WSaDAGC1.Health</Object>
+      <Object>LD_Plant/WSaDAGC1.FctOpSt</Object>
+      <Object>LD_Plant/VArSaDVAR1.Beh</Object>
+      <Object>LD_Plant/VArSaDVAR1.Health</Object>
+      <Object>LD_Plant/VArSaDVAR1.FctOpSt</Object>
+    </Scope>
+    <Scope Permission="READVALUES">
+      <Object>LD_Plant/WlimDWMX1.Mod</Object>
+      <Object>LD_Plant/WlimDWMX1.WMaxSptPct</Object>
+      <Object>LD_Plant/WSdDAGC1.Mod</Object>
+      <Object>LD_Plant/WSdDAGC1.WSptPct</Object>
+      <Object>LD_Plant/VArSdDVAR1.Mod</Object>
+      <Object>LD_Plant/VArSdDVAR1.VArTgtSptPct</Object>
+      <Object>LD_Plant/PFSPDFPF1.Mod</Object>
+      <Object>LD_Plant/PFSPDFPF1.PFGnTgtSpt</Object>
+      <Object>LD_Plant/PFSPDFPF1.PFLodTgtSpt</Object>
+      <Object>LD_Plant/VArVDVVR1.Mod</Object>
+      <Object>LD_Plant/VArVDVVR1.K</Object>
+      <Object>LD_Plant/VArVDPMC1.WSpt1</Object>
+      <Object>LD_Plant/VArVDPMC2.WSpt1</Object>
+      <Object>LD_Plant/VArVDECP1.VMax</Object>
+      <Object>LD_Plant/VArVDECP1.Vmin</Object>
+      <Object>LD_Plant/VArVDECP2.VMax</Object>
+      <Object>LD_Plant/VArVDECP2.Vmin</Object>
+      <Object>LD_Plant/PFWDPFW1.Mod</Object>
+      <Object>LD_Plant/PFWDPFW1.WSetA</Object>
+      <Object>LD_Plant/PFWDPFW1.PFSetA</Object>
+      <Object>LD_Plant/PFWDPFW1.WSetB</Object>
+      <Object>LD_Plant/PFWDPFW1.PFSetB</Object>
+      <Object>LD_Plant/PFWDPFW1.WSetC</Object>
+      <Object>LD_Plant/PFWDPFW1.PFSetC</Object>
+      <Object>LD_Plant/PFWDPFW1.VLkIn</Object>
+      <Object>LD_Plant/PFWDPFW1.VLkOut</Object>
+      <Object>LD_Plant/LPHD1.PhyNam</Object>
+      <Object>LD_Plant/PdC_WiDPCC1.WRtg</Object>
+      <Object>LD_Plant/PdC_WaDPCC1.WRtg</Object>
+      <Object>LD_Plant/PdC_QiDPCC1.VArRtg</Object>
+      <Object>LD_Plant/PdC_QcDPCC1.VArRtg</Object>
+      <Object>LD_Plant/PdC_VADPCC1.VARtg</Object>
+      <Object>LD_Plant/DisFRDECP1.Beh</Object>
+      <Object>LD_Plant/DisFRDGEN1.Beh</Object>
+      <Object>LD_Plant/DisFRDSTO1.Beh</Object>
+      <Object>LD_Plant/IDGXCBR1.Pos</Object>
+      <Object>LD_Plant/PdCMMXU1.TotW</Object>
+      <Object>LD_Plant/PdCMMXU1.TotVAr</Object>
+      <Object>LD_Plant/PdCMMXU1.PPV</Object>
+      <Object>LD_Plant/PdCMMXU1.A</Object>
+      <Object>LD_Plant/GenPVMMXU1.TotW</Object>
+      <Object>LD_Plant/GenWiMMXU1.TotW</Object>
+      <Object>LD_Plant/GenTerMMXU1.TotW</Object>
+      <Object>LD_Plant/GenIdrMMXU1.TotW</Object>
+      <Object>LD_Plant/StMMXU1.TotW</Object>
+      <Object>LD_Plant/WlimDWMX1.Beh</Object>
+      <Object>LD_Plant/WlimDWMX1.Health</Object>
+      <Object>LD_Plant/WlimDWMX1.FctOpStAuto</Object>
+      <Object>LD_Plant/WlimDWMX1.FctOpStEx</Object>
+      <Object>LD_Plant/WSdDAGC1.Beh</Object>
+      <Object>LD_Plant/WSdDAGC1.Health</Object>
+      <Object>LD_Plant/WSdDAGC1.FctOpSt</Object>
+      <Object>LD_Plant/VArSdDVAR1.Beh</Object>
+      <Object>LD_Plant/VArSdDVAR1.Health</Object>
+      <Object>LD_Plant/VArSdDVAR1.FctOpSt</Object>
+      <Object>LD_Plant/PFSPDFPF1.Beh</Object>
+      <Object>LD_Plant/PFSPDFPF1.Health</Object>
+      <Object>LD_Plant/PFSPDFPF1.FctOpSt</Object>
+      <Object>LD_Plant/VArVDVVR1.Beh</Object>
+      <Object>LD_Plant/VArVDVVR1.Health</Object>
+      <Object>LD_Plant/VArVDVVR1.FctOpSt</Object>
+      <Object>LD_Plant/PFWDPFW1.Beh</Object>
+      <Object>LD_Plant/PFWDPFW1.Health</Object>
+      <Object>LD_Plant/PFWDPFW1.FctOpSt</Object>
+      <Object>LD_Plant/SGGMMXU1.TotW</Object>
+      <Object>LD_Plant/SGGMMXU2.TotW</Object>
+      <Object>LD_Plant/SSGGDGEN1.Health</Object>
+      <Object>LD_Plant/SSGGDGEN1.GnGrId</Object>
+      <Object>LD_Plant/SSGGDGEN2.Health</Object>
+      <Object>LD_Plant/SSGGDGEN2.GnGrId</Object>
+      <Object>LD_Plant/WSaDAGC1.Mod</Object>
+      <Object>LD_Plant/WSaDAGC1.WSptPct</Object>
+      <Object>LD_Plant/VArSaDVAR1.Mod</Object>
+      <Object>LD_Plant/VArSaDVAR1.VArTgtSptPct</Object>
+      <Object>LD_Plant/PdCiMMXU1.TotW</Object>
+      <Object>LD_Plant/PdCiMMXU1.TotVAr</Object>
+      <Object>LD_Plant/WSaDAGC1.Beh</Object>
+      <Object>LD_Plant/WSaDAGC1.Health</Object>
+      <Object>LD_Plant/WSaDAGC1.FctOpSt</Object>
+      <Object>LD_Plant/VArSaDVAR1.Beh</Object>
+      <Object>LD_Plant/VArSaDVAR1.Health</Object>
+      <Object>LD_Plant/VArSaDVAR1.FctOpSt</Object>
+    </Scope>
+    <Scope Permission="REPORTING">
+      <Object>LD_Plant/LLN0.brcb_Stato_Allarmi_Segnali01</Object>
+      <Object>LD_Plant/LLN0.brcb_Stato_Allarmi_Segnali02</Object>
+      <Object>LD_Plant/LLN0.urcb_PdC_Mis4sec01</Object>
+      <Object>LD_Plant/LLN0.urcb_PdC_Mis4sec02</Object>
+      <Object>LD_Plant/LLN0.urcb_GenAcc_Mis4sec01</Object>
+      <Object>LD_Plant/LLN0.urcb_GenAcc_Mis4sec02</Object>
+      <Object>LD_Plant/LLN0.urcb_SingGen_Mis4sec01</Object>
+      <Object>LD_Plant/LLN0.urcb_SingGen_Mis4sec02</Object>
+      <Object>LD_Plant/LLN0.urcb_PdC_Mis4sec</Object>
+      <Object>LD_Plant/LLN0.urcb_GenAcc_Mis4sec</Object>
+      <Object>LD_Plant/LLN0.urcb_SingGen_Mis4sec</Object>
+      <Object>LD_Plant/LLN0.brcb_Stato_Allarmi_Segnali</Object>
+    </Scope>
+  </Binding>
+  <Binding RoleId="1" AoR="CCI" RoleDefinition="IEC62351-8" Revision="0">
+    <Scope Permission="LISTOBJECTS">
+      <Object>*</Object>
+    </Scope>
+    <Scope Permission="READVALUES">
+      <Object>*</Object>
+    </Scope>
+    <Scope Permission="REPORTING">
+      <Object>*</Object>
+    </Scope>
+    <Scope Permission="CONTROL">
+      <Object>*</Object>
+    </Scope>
+  </Binding>
+  <Binding RoleId="2" AoR="CCI" RoleDefinition="IEC62351-8" Revision="0">
+    <Scope Permission="LISTOBJECTS">
+      <Object>*</Object>
+    </Scope>
+    <Scope Permission="READVALUES">
+      <Object>*</Object>
+    </Scope>
+    <Scope Permission="DATASET">
+      <Object>*</Object>
+    </Scope>
+    <Scope Permission="REPORTING">
+      <Object>*</Object>
+    </Scope>
+    <Scope Permission="CONFIG">
+      <Object>*</Object>
+    </Scope>
+  </Binding>
+  <Binding RoleId="3" AoR="CCI" RoleDefinition="IEC62351-8" Revision="0">
+    <Scope Permission="LISTOBJECTS">
+      <Object>*</Object>
+    </Scope>
+    <Scope Permission="READVALUES">
+      <Object>*</Object>
+    </Scope>
+    <Scope Permission="REPORTING">
+      <Object>*</Object>
+    </Scope>
+    <Scope Permission="CONFIG">
+      <Object>*</Object>
+    </Scope>
+  </Binding>
+  <Binding RoleId="4" AoR="CCI" RoleDefinition="IEC62351-8" Revision="0">
+    <Scope Permission="LISTOBJECTS">
+      <Object>*</Object>
+    </Scope>
+    <Scope Permission="READVALUES">
+      <Object>*</Object>
+    </Scope>
+    <Scope Permission="DATASET">
+      <Object>*</Object>
+    </Scope>
+    <Scope Permission="CONFIG">
+      <Object>*</Object>
+    </Scope>
+  </Binding>
+  <Binding RoleId="5" AoR="CCI" RoleDefinition="IEC62351-8" Revision="0">
+    <Scope Permission="LISTOBJECTS">
+      <Object>*</Object>
+    </Scope>
+    <Scope Permission="READVALUES">
+      <Object>*</Object>
+    </Scope>
+    <Scope Permission="REPORTING">
+      <Object>*</Object>
+    </Scope>
+  </Binding>
+  <Binding RoleId="6" AoR="CCI" RoleDefinition="IEC62351-8" Revision="0">
+    <Scope Permission="LISTOBJECTS">
+      <Object>*</Object>
+    </Scope>
+    <Scope Permission="READVALUES">
+      <Object>*</Object>
+    </Scope>
+    <Scope Permission="CONFIG">
+      <Object>*</Object>
+    </Scope>
+  </Binding>
+</CommissioningScopes>

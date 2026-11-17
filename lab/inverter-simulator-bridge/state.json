@@ -1,0 +1,6 @@
+{
+  "mode": "fixed",
+  "power_kw": 10.0,
+  "q_kvar": 1.0,
+  "voltage_v": 400
+}

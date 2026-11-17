@@ -1,0 +1,49 @@
+{
+  "host": "127.0.0.1",
+  "port": 3784,
+  "command": "operate",
+  "reference": "CCI016_01LD_Plant/WlimDWMX1.Mod",
+  "passed": false,
+  "events": [
+    {
+      "kind": "association",
+      "reference": "127.0.0.1",
+      "error": 0,
+      "error_text": "",
+      "value": "mutual TLS 1.2 + ACSE certificate authentication",
+      "observed_utc": "2026-10-19T08:40:40.752562+00:00"
+    },
+    {
+      "kind": "control_model",
+      "reference": "CCI016_01LD_Plant/WlimDWMX1.Mod",
+      "error": 0,
+      "error_text": "",
+      "value": "2 SBO-normal",
+      "observed_utc": "2026-10-19T08:40:40.844157+00:00"
+    },
+    {
+      "kind": "select",
+      "reference": "CCI016_01LD_Plant/WlimDWMX1.Mod",
+      "error": 22,
+      "error_text": "object-does-not-exist",
+      "value": "selection rejected",
+      "observed_utc": "2026-10-19T08:40:40.854336+00:00"
+    },
+    {
+      "kind": "operate",
+      "reference": "CCI016_01LD_Plant/WlimDWMX1.Mod",
+      "error": 1,
+      "error_text": "not-connected",
+      "value": "status-only object or selection failed",
+      "observed_utc": "2026-10-19T08:40:40.854469+00:00"
+    },
+    {
+      "kind": "control_error",
+      "reference": "CCI016_01LD_Plant/WlimDWMX1.Mod",
+      "error": 22,
+      "error_text": "object-does-not-exist",
+      "value": "error=0 addCause=0",
+      "observed_utc": "2026-10-19T08:40:40.854545+00:00"
+    }
+  ]
+}

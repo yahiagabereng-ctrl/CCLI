@@ -1,0 +1,154 @@
+{
+  "started_utc": "2026-10-19T09:59:39.169168+00:00",
+  "mode": "isolated-no-plant-io",
+  "host": "127.0.0.1",
+  "port": 3784,
+  "policy_sha256": {
+    "commissioning-manifest.xml": "6571986abeb2fb998683738239a2c66f1517e06f5163f58513788a8a514539b4",
+    "commissioning-policy.xml": "d9461c767b16e210acc0270bcd5672f416da177e8b865c4277c3c9663db19a3e",
+    "commissioning-scopes.xml": "41385c990f18b7530a97cb86feb5bb8cb3e7da4257d22a6167b9f4c33373209b",
+    "identity-bindings.xml": "a3cfa2b5419342c4df48c2e1279ed9c0ec9351411a6b5906814c7148a4a5c60e",
+    "permission-library.xml": "c984e3ace0e0e2efeb1e7ee864a36ee430d8411bb172c78d52e098784e337df1"
+  },
+  "limitations": [
+    "Aggregator control is not implemented by the current model; its scope separation is tested.",
+    "Representative service/object checks; this is not exhaustive certification.",
+    "Dynamic dataset services are globally disabled and do not establish per-role permissions.",
+    "Isolated mode rotates the explicit TLS peer pin per identity; live TLS pins remain unchanged."
+  ],
+  "finished_utc": "2026-10-19T09:59:40.733741+00:00",
+  "identities": [],
+  "checks": [
+    {
+      "identity": "dual-dso-with-viewer-transport",
+      "case": "unbound-transport-data-blocked",
+      "expected": "fail-closed",
+      "passed": true,
+      "events": [
+        {
+          "kind": "association",
+          "reference": "127.0.0.1",
+          "error": 0,
+          "error_text": "",
+          "value": "mutual TLS 1.2 + ACSE certificate authentication",
+          "observed_utc": "2026-10-19T09:59:40.004160+00:00"
+        },
+        {
+          "kind": "read",
+          "reference": "CCI016_01LD_Plant/PdCMMXU1.TotW.mag.f",
+          "error": 21,
+          "error_text": "access-denied",
+          "value": "error 3",
+          "observed_utc": "2026-10-19T09:59:40.054943+00:00"
+        }
+      ]
+    },
+    {
+      "identity": "dual-dso-with-viewer-transport",
+      "case": "unbound-state-read",
+      "expected": "access-denied",
+      "passed": false,
+      "command": "read",
+      "reference": "CCI016_01LD_Plant/WlimDWMX1.Mod.stVal",
+      "fc": "MX",
+      "exit_code": 1,
+      "events": [
+        {
+          "kind": "read",
+          "reference": "CCI016_01LD_Plant/WlimDWMX1.Mod.stVal",
+          "error": -1,
+          "error_text": "",
+          "value": "error 10",
+          "observed_utc": "2026-10-19T09:59:40.378718+00:00"
+        }
+      ],
+      "bypass_ui_guard": false
+    },
+    {
+      "identity": "dual-dso-with-viewer-transport",
+      "case": "unbound-config-write",
+      "expected": "access-denied",
+      "passed": true,
+      "command": "write",
+      "reference": "CCI016_01LD_Plant/WlimDWMX1.WMaxSptPct.ctlModel",
+      "fc": "CF",
+      "exit_code": 1,
+      "events": [
+        {
+          "kind": "write",
+          "reference": "CCI016_01LD_Plant/WlimDWMX1.WMaxSptPct.ctlModel",
+          "error": 21,
+          "error_text": "access-denied",
+          "value": "3",
+          "observed_utc": "2026-10-19T09:59:40.460197+00:00"
+        }
+      ],
+      "bypass_ui_guard": false
+    },
+    {
+      "identity": "dual-dso-with-viewer-transport",
+      "case": "unbound-operate",
+      "expected": "access-denied",
+      "passed": false,
+      "command": "operate",
+      "reference": "CCI016_01LD_Plant/WlimDWMX1.Mod",
+      "fc": "MX",
+      "exit_code": 1,
+      "events": [
+        {
+          "kind": "operate",
+          "reference": "CCI016_01LD_Plant/WlimDWMX1.Mod",
+          "error": 1,
+          "error_text": "",
+          "value": "cannot read control model; check object reference and access",
+          "observed_utc": "2026-10-19T09:59:40.511007+00:00"
+        }
+      ],
+      "bypass_ui_guard": false
+    },
+    {
+      "identity": "dual-dso-with-viewer-transport",
+      "case": "unbound-dataset",
+      "expected": "access-denied",
+      "passed": true,
+      "command": "dataset-members",
+      "reference": "CCI016_01LD_Plant/LLN0.DS_R_PdC_Mis4sec",
+      "fc": "MX",
+      "exit_code": 1,
+      "events": [
+        {
+          "kind": "dataset-members",
+          "reference": "CCI016_01LD_Plant/LLN0.DS_R_PdC_Mis4sec",
+          "error": 21,
+          "error_text": "access-denied",
+          "value": "static",
+          "observed_utc": "2026-10-19T09:59:40.561838+00:00"
+        }
+      ],
+      "bypass_ui_guard": false
+    },
+    {
+      "identity": "dual-dso-with-viewer-transport",
+      "case": "unbound-report-read",
+      "expected": "access-denied",
+      "passed": true,
+      "command": "rcb-read",
+      "reference": "CCI016_01LD_Plant/LLN0.RP.urcb_PdC_Mis4sec",
+      "fc": "MX",
+      "exit_code": 1,
+      "events": [
+        {
+          "kind": "rcb-read",
+          "reference": "CCI016_01LD_Plant/LLN0.RP.urcb_PdC_Mis4sec",
+          "error": 21,
+          "error_text": "access-denied",
+          "value": "",
+          "observed_utc": "2026-10-19T09:59:40.612743+00:00"
+        }
+      ],
+      "bypass_ui_guard": false
+    }
+  ],
+  "passed": 4,
+  "failed": 2
+}

@@ -34,7 +34,10 @@ iec104:
   ioa_ppv: 1003
 
   tls_enabled: true
+  tls_crl: /etc/ccli/tls/lab_crl.pem
   tls_own_key: /etc/ccli/tls/server.key
   tls_own_cert: /etc/ccli/tls/server_tls.pem
   tls_ca_cert: /etc/ccli/tls/root_CA.pem
   tls_client_cert: /etc/ccli/tls/client_tls.pem
+  # Optional exact-certificate pins; repeat this key to allow several peers.
+  # Every pinned peer must also chain to tls_ca_cert and pass CRL validation.

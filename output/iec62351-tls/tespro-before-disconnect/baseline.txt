@@ -1,0 +1,163 @@
+Mon Oct 26 11:56:57 UTC 2026
+Linux TR500 6.12.68 #0 SMP Thu Sep 24 06:33:17 2026 aarch64 GNU/Linux
+ccli 0.1.0-r65 (CEI57-142-AGGREGATOR)
+  semver:   0.1.0
+15480 root      5296 S    /usr/sbin/ccli --config /etc/ccli/lab.yaml
+30835 root      1336 S    ash -c date -u; uname -a; ccli --version 2>/dev/null | head -2; ps w | grep "[c]cli"; netstat -lntp 2>/de
+tcp        0      0 192.168.0.1:3782        0.0.0.0:*               LISTEN      15480/ccli
+DISTRIB_ID='TesproOS'
+DISTRIB_RELEASE='32-2.1.0'
+DISTRIB_REVISION='r601-af70fcaaa2'
+DISTRIB_TARGET='mediatek/filogic'
+DISTRIB_ARCH='aarch64_cortex-a53'
+DISTRIB_DESCRIPTION='TesproOS 32-2.1.0 r601-af70fcaaa2'
+DISTRIB_TAINTS='no-all'
+/usr/bin/openssl
+-rw-r--r--    1 root     root          4160 Oct 26 10:26 /etc/ccli/lab.yaml
+-rw-r--r--    1 root     root          1124 Jun 29 14:59 /etc/ccli/tls/client.pem
+-rw-r--r--    1 root     root          1190 Jun 29 14:59 /etc/ccli/tls/client_tls.pem
+-rw-r--r--    1 root     root           654 Jun 29 14:59 /etc/ccli/tls/lab_crl.pem
+-rw-r--r--    1 root     root          1190 Jun 29 14:59 /etc/ccli/tls/revoked.pem
+-rw-r--r--    1 root     root          1190 Jun 29 14:59 /etc/ccli/tls/revoked_tls.pem
+-rw-r--r--    1 root     root          1204 Jun 29 14:59 /etc/ccli/tls/root_CA.pem
+-rw-r--r--    1 root     root          1124 Jun 29 14:59 /etc/ccli/tls/server.pem
+-rw-r--r--    1 root     root          1124 Jun 29 14:59 /etc/ccli/tls/server_combined.pem
+-rw-r--r--    1 root     root          1186 Jun 29 14:59 /etc/ccli/tls/server_tls.pem
+-rw-r--r--    1 root     root          1182 Jun 29 14:59 /etc/ccli/tls/viewer.pem
+-rw-r--r--    1 root     root          1182 Jun 29 14:59 /etc/ccli/tls/viewer_tls.pem
+CONFIG_PATH=/etc/ccli/lab.yaml
+  enabled: true
+  enabled: true
+  bind_address: 192.168.0.1
+  tcp_port: 3782
+  tls_enabled: true
+  tls_own_key: /etc/ccli/tls/server.key
+  tls_own_cert: /etc/ccli/tls/server_tls.pem
+  tls_acse_cert: /etc/ccli/tls/server.pem
+  tls_acse_key: /etc/ccli/tls/server_acse.key
+  tls_ca_cert: /etc/ccli/rbac-trust/tls-ca-bundle.pem
+  tls_client_cert: /etc/ccli/rbac-clients/dso.pem
+  tls_acse_client_cert: /etc/ccli/rbac-clients/engineer-r0.pem
+  tls_viewer_cert: /etc/ccli/rbac-clients/viewer-r1.pem
+  tls_revoked_cert: /etc/ccli/rbac-clients/negative-revoked.pem
+  tls_crl: /etc/ccli/rbac-dual/trust/tls-crl-bundle.pem
+  tls_chain_validation: true
+  tls_additional_client_cert: /etc/ccli/tls/client_tls.pem
+  tls_allowed_client_cert: /etc/ccli/rbac-clients/aggregator.pem
+  tls_allowed_client_cert: /etc/ccli/rbac-clients/viewer-r0.pem
+  tls_allowed_client_cert: /etc/ccli/rbac-clients/operator-r0.pem
+  tls_allowed_client_cert: /etc/ccli/rbac-clients/installer-r0.pem
+  tls_allowed_client_cert: /etc/ccli/rbac-clients/secadm-r0.pem
+  tls_allowed_client_cert: /etc/ccli/rbac-clients/secaud-r0.pem
+  tls_allowed_client_cert: /etc/ccli/rbac-clients/rbacmnt-r0.pem
+  tls_allowed_client_cert: /etc/ccli/rbac-clients/operator-r1.pem
+  tls_allowed_client_cert: /etc/ccli/rbac-clients/engineer-r1.pem
+  tls_allowed_client_cert: /etc/ccli/rbac-clients/installer-r1.pem
+  tls_allowed_client_cert: /etc/ccli/rbac-clients/secadm-r1.pem
+  tls_allowed_client_cert: /etc/ccli/rbac-clients/secaud-r1.pem
+  tls_allowed_client_cert: /etc/ccli/rbac-clients/rbacmnt-r1.pem
+  tls_allowed_client_cert: /etc/ccli/rbac-clients/multi-viewer-engineer.pem
+  tls_allowed_client_cert: /etc/ccli/rbac-clients/dual-viewer.pem
+  rbac_identity_ca: /etc/ccli/rbac-trust/rbac_ca.pem
+  rbac_identity_crl: /etc/ccli/rbac-dual/trust/rbac_crl.pem
+  enabled: true
+Mon Oct 26 12:52:15 2026 daemon.err ccli[15480]: modbus: FC3 ReadHoldingRegisters unit=1 addr=100001 qty=6 -> P=91.5661kW Q=0kvar raw=0x42b7 0x21d6 0x0000 0x0000 0x43c7 0xe9a8 P=91.5661kW pf2=ok curtail=no DO=OFF
+Mon Oct 26 12:52:19 2026 daemon.err ccli[15480]: modbus: FC3 ReadHoldingRegisters unit=1 addr=100001 qty=6 -> P=87.2745kW Q=0kvar raw=0x42ae 0x8c89 0x0000 0x0000 0x43c8 0x3e2a P=87.2745kW pf2=ok curtail=no DO=OFF
+Mon Oct 26 12:52:23 2026 daemon.err ccli[15480]: mms: time_quality GNSS searching/no-fix clockNotSynchronized=1 (T.3.3.4.5)
+Mon Oct 26 12:52:24 2026 daemon.err ccli[15480]: modbus: FC3 ReadHoldingRegisters unit=1 addr=100001 qty=6 -> P=82.27kW Q=0kvar raw=0x42a4 0x8a3c 0x0000 0x0000 0x43c7 0xe83f P=82.27kW pf2=ok curtail=no DO=OFF
+Mon Oct 26 12:52:28 2026 daemon.err ccli[15480]: modbus: FC3 ReadHoldingRegisters unit=1 addr=100001 qty=6 -> P=78.5757kW Q=0kvar raw=0x429d 0x26c8 0x0000 0x0000 0x43c8 0x339d P=78.5757kW pf2=ok curtail=no DO=OFF
+Mon Oct 26 12:52:29 2026 daemon.err ccli[15480]: io: curtail_do=OFF permissive=BLOCKED
+Mon Oct 26 12:52:32 2026 daemon.err ccli[15480]: modbus: FC3 ReadHoldingRegisters unit=1 addr=100001 qty=6 -> P=77.7653kW Q=0kvar raw=0x429b 0x87cf 0x0000 0x0000 0x43c8 0x2f46 P=77.7653kW pf2=ok curtail=no DO=OFF
+Mon Oct 26 12:52:38 2026 daemon.err ccli[15480]: mms: time_quality GNSS searching/no-fix clockNotSynchronized=1 (T.3.3.4.5)
+Mon Oct 26 12:52:38 2026 daemon.err ccli[15480]: modbus: FC3 ReadHoldingRegisters unit=1 addr=100001 qty=6 -> P=78.7178kW Q=0kvar raw=0x429d 0x6f80 0x0000 0x0000 0x43c7 0xd067 P=78.7178kW pf2=ok curtail=no DO=OFF
+Mon Oct 26 12:52:42 2026 daemon.err ccli[15480]: modbus: FC3 ReadHoldingRegisters unit=1 addr=100001 qty=6 -> P=76.3498kW Q=0kvar raw=0x4298 0xb316 0x0000 0x0000 0x43c8 0x2adf P=76.3498kW pf2=ok curtail=no DO=OFF
+Mon Oct 26 12:52:46 2026 daemon.err ccli[15480]: modbus: FC3 ReadHoldingRegisters unit=1 addr=100001 qty=6 -> P=71.7192kW Q=0kvar raw=0x428f 0x7037 0x0000 0x0000 0x43c8 0x0588 P=71.7192kW pf2=ok curtail=no DO=OFF
+Mon Oct 26 12:52:49 2026 daemon.err ccli[15480]: io: curtail_do=OFF permissive=BLOCKED
+Mon Oct 26 12:52:53 2026 daemon.err ccli[15480]: mms: time_quality GNSS searching/no-fix clockNotSynchronized=1 (T.3.3.4.5)
+Mon Oct 26 12:52:53 2026 daemon.err ccli[15480]: modbus: FC3 ReadHoldingRegisters unit=1 addr=100001 qty=6 -> P=63.648kW Q=0kvar raw=0x427e 0x9799 0x0000 0x0000 0x43c8 0x002b P=63.648kW pf2=ok curtail=no DO=OFF
+Mon Oct 26 12:52:57 2026 daemon.err ccli[15480]: modbus: FC3 ReadHoldingRegisters unit=1 addr=100001 qty=6 -> P=62.8498kW Q=0kvar raw=0x427b 0x6625 0x0000 0x0000 0x43c8 0x15c3 P=62.8498kW pf2=ok curtail=no DO=OFF
+Mon Oct 26 12:53:02 2026 daemon.err ccli[15480]: modbus: FC3 ReadHoldingRegisters unit=1 addr=100001 qty=6 -> P=65.6099kW Q=0kvar raw=0x4283 0x3841 0x0000 0x0000 0x43c8 0x2101 P=65.6099kW pf2=ok curtail=no DO=OFF
+Mon Oct 26 12:53:07 2026 daemon.err ccli[15480]: mms: time_quality GNSS searching/no-fix clockNotSynchronized=1 (T.3.3.4.5)
+Mon Oct 26 12:53:08 2026 daemon.err ccli[15480]: modbus: FC3 ReadHoldingRegisters unit=1 addr=100001 qty=6 -> P=69.4795kW Q=0kvar raw=0x428a 0xf581 0x0000 0x0000 0x43c8 0x2694 P=69.4795kW pf2=ok curtail=no DO=OFF
+Mon Oct 26 12:53:11 2026 daemon.err ccli[15480]: io: curtail_do=OFF permissive=BLOCKED
+Mon Oct 26 12:53:12 2026 daemon.err ccli[15480]: modbus: FC3 ReadHoldingRegisters unit=1 addr=100001 qty=6 -> P=70.9498kW Q=0kvar raw=0x428d 0xe649 0x0000 0x0000 0x43c8 0x1602 P=70.9498kW pf2=ok curtail=no DO=OFF
+Mon Oct 26 12:53:16 2026 daemon.err ccli[15480]: modbus: FC3 ReadHoldingRegisters unit=1 addr=100001 qty=6 -> P=70.4061kW Q=0kvar raw=0x428c 0xcff0 0x0000 0x0000 0x43c8 0x2cec P=70.4061kW pf2=ok curtail=no DO=OFF
+Mon Oct 26 12:53:20 2026 daemon.err ccli[15480]: modbus: FC3 ReadHoldingRegisters unit=1 addr=100001 qty=6 -> P=69.2514kW Q=0kvar raw=0x428a 0x80b2 0x0000 0x0000 0x43c7 0xfed7 P=69.2514kW pf2=ok curtail=no DO=OFF
+Mon Oct 26 12:53:22 2026 daemon.err ccli[15480]: mms: time_quality GNSS searching/no-fix clockNotSynchronized=1 (T.3.3.4.5)
+Mon Oct 26 12:53:24 2026 daemon.err ccli[15480]: modbus: FC3 ReadHoldingRegisters unit=1 addr=100001 qty=6 -> P=70.388kW Q=0kvar raw=0x428c 0xc6ad 0x0000 0x0000 0x43c8 0x0889 P=70.388kW pf2=ok curtail=no DO=OFF
+Mon Oct 26 12:53:28 2026 daemon.err ccli[15480]: modbus: FC3 ReadHoldingRegisters unit=1 addr=100001 qty=6 -> P=74.6306kW Q=0kvar raw=0x4295 0x42db 0x0000 0x0000 0x43c8 0x0b22 P=74.6306kW pf2=ok curtail=no DO=OFF
+Mon Oct 26 12:53:30 2026 daemon.err ccli[15480]: io: curtail_do=OFF permissive=BLOCKED
+Mon Oct 26 12:53:33 2026 daemon.err ccli[15480]: modbus: FC3 ReadHoldingRegisters unit=1 addr=100001 qty=6 -> P=80.9557kW Q=0kvar raw=0x42a1 0xe950 0x0000 0x0000 0x43c7 0xfb52 P=80.9557kW pf2=ok curtail=no DO=OFF
+Mon Oct 26 12:53:37 2026 daemon.err ccli[15480]: mms: time_quality GNSS searching/no-fix clockNotSynchronized=1 (T.3.3.4.5)
+Mon Oct 26 12:53:38 2026 daemon.err ccli[15480]: modbus: FC3 ReadHoldingRegisters unit=1 addr=100001 qty=6 -> P=86.8797kW Q=0kvar raw=0x42ad 0xc267 0x0000 0x0000 0x43c8 0x4e4e P=86.8797kW pf2=ok curtail=no DO=OFF
+Mon Oct 26 12:53:42 2026 daemon.err ccli[15480]: modbus: FC3 ReadHoldingRegisters unit=1 addr=100001 qty=6 -> P=87.367kW Q=0kvar raw=0x42ae 0xbbe1 0x0000 0x0000 0x43c8 0x310f P=87.367kW pf2=ok curtail=no DO=OFF
+Mon Oct 26 12:53:46 2026 daemon.err ccli[15480]: modbus: FC3 ReadHoldingRegisters unit=1 addr=100001 qty=6 -> P=86.2326kW Q=0kvar raw=0x42ac 0x771a 0x0000 0x0000 0x43c8 0x3177 P=86.2326kW pf2=ok curtail=no DO=OFF
+Mon Oct 26 12:53:49 2026 daemon.err ccli[15480]: io: curtail_do=OFF permissive=BLOCKED
+Mon Oct 26 12:53:51 2026 daemon.err ccli[15480]: modbus: FC3 ReadHoldingRegisters unit=1 addr=100001 qty=6 -> P=85.4485kW Q=0kvar raw=0x42aa 0xe5a2 0x0000 0x0000 0x43c7 0xcf58 P=85.4485kW pf2=ok curtail=no DO=OFF
+Mon Oct 26 12:53:55 2026 daemon.err ccli[15480]: mms: time_quality GNSS searching/no-fix clockNotSynchronized=1 (T.3.3.4.5)
+Mon Oct 26 12:53:55 2026 daemon.err ccli[15480]: modbus: FC3 ReadHoldingRegisters unit=1 addr=100001 qty=6 -> P=85.9864kW Q=0kvar raw=0x42ab 0xf90d 0x0000 0x0000 0x43c8 0x2c14 P=85.9864kW pf2=ok curtail=no DO=OFF
+Mon Oct 26 12:54:00 2026 daemon.err ccli[15480]: modbus: FC3 ReadHoldingRegisters unit=1 addr=100001 qty=6 -> P=90.2831kW Q=0kvar raw=0x42b4 0x90f3 0x0000 0x0000 0x43c8 0x2a15 P=90.2831kW pf2=ok curtail=no DO=OFF
+Mon Oct 26 12:54:04 2026 daemon.err ccli[15480]: modbus: FC3 ReadHoldingRegisters unit=1 addr=100001 qty=6 -> P=92.1755kW Q=0kvar raw=0x42b8 0x59e0 0x0000 0x0000 0x43c7 0xfde5 P=92.1755kW pf2=ok curtail=no DO=OFF
+Mon Oct 26 12:54:09 2026 daemon.err ccli[15480]: mms: time_quality GNSS searching/no-fix clockNotSynchronized=1 (T.3.3.4.5)
+Mon Oct 26 12:54:09 2026 daemon.err ccli[15480]: modbus: FC3 ReadHoldingRegisters unit=1 addr=100001 qty=6 -> P=91.2813kW Q=0kvar raw=0x42b6 0x9008 0x0000 0x0000 0x43c8 0x31a9 P=91.2813kW pf2=ok curtail=no DO=OFF
+Mon Oct 26 12:54:13 2026 daemon.err ccli[15480]: io: curtail_do=OFF permissive=BLOCKED
+Mon Oct 26 12:54:13 2026 daemon.err ccli[15480]: modbus: FC3 ReadHoldingRegisters unit=1 addr=100001 qty=6 -> P=86.3218kW Q=0kvar raw=0x42ac 0xa4c4 0x0000 0x0000 0x43c7 0xe941 P=86.3218kW pf2=ok curtail=no DO=OFF
+Mon Oct 26 12:54:17 2026 daemon.err ccli[15480]: modbus: FC3 ReadHoldingRegisters unit=1 addr=100001 qty=6 -> P=80.4913kW Q=0kvar raw=0x42a0 0xfb91 0x0000 0x0000 0x43c7 0xf33f P=80.4913kW pf2=ok curtail=no DO=OFF
+Mon Oct 26 12:54:24 2026 daemon.err ccli[15480]: mms: time_quality GNSS searching/no-fix clockNotSynchronized=1 (T.3.3.4.5)
+Mon Oct 26 12:54:25 2026 daemon.err ccli[15480]: modbus: FC3 ReadHoldingRegisters unit=1 addr=100001 qty=6 -> P=77.9542kW Q=0kvar raw=0x429b 0xe891 0x0000 0x0000 0x43c8 0x1ab1 P=77.9542kW pf2=ok curtail=no DO=OFF
+Mon Oct 26 12:54:29 2026 daemon.err ccli[15480]: modbus: FC3 ReadHoldingRegisters unit=1 addr=100001 qty=6 -> P=78.7103kW Q=0kvar raw=0x429d 0x6ba9 0x0000 0x0000 0x43c7 0xf451 P=78.7103kW pf2=ok curtail=no DO=OFF
+Mon Oct 26 12:54:33 2026 daemon.err ccli[15480]: modbus: FC3 ReadHoldingRegisters unit=1 addr=100001 qty=6 -> P=77.6016kW Q=0kvar raw=0x429b 0x3407 0x0000 0x0000 0x43c7 0xe72e P=77.6016kW pf2=ok curtail=no DO=OFF
+Mon Oct 26 12:54:33 2026 daemon.err ccli[15480]: io: curtail_do=OFF permissive=BLOCKED
+Mon Oct 26 12:54:39 2026 daemon.err ccli[15480]: mms: time_quality GNSS searching/no-fix clockNotSynchronized=1 (T.3.3.4.5)
+Mon Oct 26 12:54:40 2026 daemon.err ccli[15480]: modbus: FC3 ReadHoldingRegisters unit=1 addr=100001 qty=6 -> P=71.8919kW Q=0kvar raw=0x428f 0xc8a2 0x0000 0x0000 0x43c7 0xf529 P=71.8919kW pf2=ok curtail=no DO=OFF
+Mon Oct 26 12:54:44 2026 daemon.err ccli[15480]: modbus: FC3 ReadHoldingRegisters unit=1 addr=100001 qty=6 -> P=66.3372kW Q=0kvar raw=0x4284 0xacaa 0x0000 0x0000 0x43c7 0xf914 P=66.3372kW pf2=ok curtail=no DO=OFF
+Mon Oct 26 12:54:48 2026 daemon.err ccli[15480]: modbus: FC3 ReadHoldingRegisters unit=1 addr=100001 qty=6 -> P=62.8165kW Q=0kvar raw=0x427b 0x440c 0x0000 0x0000 0x43c7 0xf85a P=62.8165kW pf2=ok curtail=no DO=OFF
+Mon Oct 26 12:54:53 2026 daemon.err ccli[15480]: mms: time_quality GNSS searching/no-fix clockNotSynchronized=1 (T.3.3.4.5)
+Mon Oct 26 12:54:54 2026 daemon.err ccli[15480]: modbus: FC3 ReadHoldingRegisters unit=1 addr=100001 qty=6 -> P=65.0741kW Q=0kvar raw=0x4282 0x25f4 0x0000 0x0000 0x43c8 0x2d89 P=65.0741kW pf2=ok curtail=no DO=OFF
+Mon Oct 26 12:54:56 2026 daemon.err ccli[15480]: io: curtail_do=OFF permissive=BLOCKED
+Mon Oct 26 12:54:58 2026 daemon.err ccli[15480]: modbus: FC3 ReadHoldingRegisters unit=1 addr=100001 qty=6 -> P=68.0402kW Q=0kvar raw=0x4288 0x1494 0x0000 0x0000 0x43c8 0x04fb P=68.0402kW pf2=ok curtail=no DO=OFF
+Mon Oct 26 12:55:02 2026 daemon.err ccli[15480]: modbus: FC3 ReadHoldingRegisters unit=1 addr=100001 qty=6 -> P=70.2304kW Q=0kvar raw=0x428c 0x75f5 0x0000 0x0000 0x43c7 0xfd83 P=70.2304kW pf2=ok curtail=no DO=OFF
+Mon Oct 26 12:55:06 2026 daemon.err ccli[15480]: modbus: FC3 ReadHoldingRegisters unit=1 addr=100001 qty=6 -> P=70.4298kW Q=0kvar raw=0x428c 0xdc11 0x0000 0x0000 0x43c8 0x00e6 P=70.4298kW pf2=ok curtail=no DO=OFF
+Mon Oct 26 12:55:11 2026 daemon.err ccli[15480]: mms: time_quality GNSS searching/no-fix clockNotSynchronized=1 (T.3.3.4.5)
+Mon Oct 26 12:55:11 2026 daemon.err ccli[15480]: modbus: FC3 ReadHoldingRegisters unit=1 addr=100001 qty=6 -> P=68.3181kW Q=0kvar raw=0x4288 0xa2db 0x0000 0x0000 0x43c7 0xdddb P=68.3181kW pf2=ok curtail=no DO=OFF
+Mon Oct 26 12:55:15 2026 daemon.err ccli[15480]: modbus: FC3 ReadHoldingRegisters unit=1 addr=100001 qty=6 -> P=68.0005kW Q=0kvar raw=0x4288 0x0046 0x0000 0x0000 0x43c8 0x49d8 P=68.0005kW pf2=ok curtail=no DO=OFF
+Mon Oct 26 12:55:17 2026 daemon.err ccli[15480]: io: curtail_do=OFF permissive=BLOCKED
+Mon Oct 26 12:55:20 2026 daemon.err ccli[15480]: modbus: FC3 ReadHoldingRegisters unit=1 addr=100001 qty=6 -> P=71.0191kW Q=0kvar raw=0x428e 0x09c8 0x0000 0x0000 0x43c8 0x17fc P=71.0191kW pf2=ok curtail=no DO=OFF
+Mon Oct 26 12:55:24 2026 daemon.err ccli[15480]: mms: time_quality GNSS searching/no-fix clockNotSynchronized=1 (T.3.3.4.5)
+Mon Oct 26 12:55:24 2026 daemon.err ccli[15480]: modbus: FC3 ReadHoldingRegisters unit=1 addr=100001 qty=6 -> P=79.0471kW Q=0kvar raw=0x429e 0x181a 0x0000 0x0000 0x43c7 0xdbf2 P=79.0471kW pf2=ok curtail=no DO=OFF
+Mon Oct 26 12:55:29 2026 daemon.err ccli[15480]: modbus: FC3 ReadHoldingRegisters unit=1 addr=100001 qty=6 -> P=84.8212kW Q=0kvar raw=0x42a9 0xa472 0x0000 0x0000 0x43c7 0xe274 P=84.8212kW pf2=ok curtail=no DO=OFF
+Mon Oct 26 12:55:33 2026 daemon.err ccli[15480]: modbus: FC3 ReadHoldingRegisters unit=1 addr=100001 qty=6 -> P=86.5585kW Q=0kvar raw=0x42ad 0x1df0 0x0000 0x0000 0x43c8 0x101c P=86.5585kW pf2=ok curtail=no DO=OFF
+Mon Oct 26 12:55:36 2026 daemon.err ccli[15480]: io: curtail_do=OFF permissive=BLOCKED
+Mon Oct 26 12:55:37 2026 daemon.err ccli[15480]: modbus: FC3 ReadHoldingRegisters unit=1 addr=100001 qty=6 -> P=87.3157kW Q=0kvar raw=0x42ae 0xa19d 0x0000 0x0000 0x43c7 0xe689 P=87.3157kW pf2=ok curtail=no DO=OFF
+Mon Oct 26 12:55:39 2026 daemon.err ccli[15480]: mms: time_quality GNSS searching/no-fix clockNotSynchronized=1 (T.3.3.4.5)
+Mon Oct 26 12:55:41 2026 daemon.err ccli[15480]: modbus: FC3 ReadHoldingRegisters unit=1 addr=100001 qty=6 -> P=84.6272kW Q=0kvar raw=0x42a9 0x411f 0x0000 0x0000 0x43c8 0x0610 P=84.6272kW pf2=ok curtail=no DO=OFF
+Mon Oct 26 12:55:45 2026 daemon.err ccli[15480]: modbus: FC3 ReadHoldingRegisters unit=1 addr=100001 qty=6 -> P=85.645kW Q=0kvar raw=0x42ab 0x4a41 0x0000 0x0000 0x43c8 0x2d91 P=85.645kW pf2=ok curtail=no DO=OFF
+Mon Oct 26 12:55:49 2026 daemon.err ccli[15480]: modbus: FC3 ReadHoldingRegisters unit=1 addr=100001 qty=6 -> P=88.2147kW Q=0kvar raw=0x42b0 0x6df0 0x0000 0x0000 0x43c7 0xe6f0 P=88.2147kW pf2=ok curtail=no DO=OFF
+Mon Oct 26 12:55:55 2026 daemon.err ccli[15480]: mms: time_quality GNSS searching/no-fix clockNotSynchronized=1 (T.3.3.4.5)
+Mon Oct 26 12:55:56 2026 daemon.err ccli[15480]: modbus: FC3 ReadHoldingRegisters unit=1 addr=100001 qty=6 -> P=92.2396kW Q=0kvar raw=0x42b8 0x7aad 0x0000 0x0000 0x43c7 0xf3b9 P=92.2396kW pf2=ok curtail=no DO=OFF
+Mon Oct 26 12:55:58 2026 daemon.err ccli[15480]: io: curtail_do=OFF permissive=BLOCKED
+Mon Oct 26 12:56:00 2026 daemon.err ccli[15480]: modbus: FC3 ReadHoldingRegisters unit=1 addr=100001 qty=6 -> P=93.0352kW Q=0kvar raw=0x42ba 0x120c 0x0000 0x0000 0x43c8 0x2515 P=93.0352kW pf2=ok curtail=no DO=OFF
+Mon Oct 26 12:56:04 2026 daemon.err ccli[15480]: modbus: FC3 ReadHoldingRegisters unit=1 addr=100001 qty=6 -> P=89.0145kW Q=0kvar raw=0x42b2 0x0769 0x0000 0x0000 0x43c7 0xd192 P=89.0145kW pf2=ok curtail=no DO=OFF
+Mon Oct 26 12:56:09 2026 daemon.err ccli[15480]: mms: time_quality GNSS searching/no-fix clockNotSynchronized=1 (T.3.3.4.5)
+Mon Oct 26 12:56:10 2026 daemon.err ccli[15480]: modbus: FC3 ReadHoldingRegisters unit=1 addr=100001 qty=6 -> P=81.8133kW Q=0kvar raw=0x42a3 0xa064 0x0000 0x0000 0x43c7 0xd160 P=81.8133kW pf2=ok curtail=no DO=OFF
+Mon Oct 26 12:56:14 2026 daemon.err ccli[15480]: modbus: FC3 ReadHoldingRegisters unit=1 addr=100001 qty=6 -> P=78.5744kW Q=0kvar raw=0x429d 0x261b 0x0000 0x0000 0x43c8 0x0712 P=78.5744kW pf2=ok curtail=no DO=OFF
+Mon Oct 26 12:56:17 2026 daemon.err ccli[15480]: io: curtail_do=OFF permissive=BLOCKED
+Mon Oct 26 12:56:18 2026 daemon.err ccli[15480]: modbus: FC3 ReadHoldingRegisters unit=1 addr=100001 qty=6 -> P=77.7541kW Q=0kvar raw=0x429b 0x821a 0x0000 0x0000 0x43c7 0xef22 P=77.7541kW pf2=ok curtail=no DO=OFF
+Mon Oct 26 12:56:22 2026 daemon.err ccli[15480]: modbus: FC3 ReadHoldingRegisters unit=1 addr=100001 qty=6 -> P=77.52kW Q=0kvar raw=0x429b 0x0a3b 0x0000 0x0000 0x43c8 0x2d61 P=77.52kW pf2=ok curtail=no DO=OFF
+Mon Oct 26 12:56:25 2026 daemon.err ccli[15480]: mms: time_quality GNSS searching/no-fix clockNotSynchronized=1 (T.3.3.4.5)
+Mon Oct 26 12:56:26 2026 daemon.err ccli[15480]: modbus: FC3 ReadHoldingRegisters unit=1 addr=100001 qty=6 -> P=78.8899kW Q=0kvar raw=0x429d 0xc7a0 0x0000 0x0000 0x43c8 0x07cf P=78.8899kW pf2=ok curtail=no DO=OFF
+Mon Oct 26 12:56:30 2026 daemon.err ccli[15480]: modbus: FC3 ReadHoldingRegisters unit=1 addr=100001 qty=6 -> P=75.8903kW Q=0kvar raw=0x4297 0xc7d8 0x0000 0x0000 0x43c8 0x2b17 P=75.8903kW pf2=ok curtail=no DO=OFF
+Mon Oct 26 12:56:34 2026 daemon.err ccli[15480]: modbus: FC3 ReadHoldingRegisters unit=1 addr=100001 qty=6 -> P=70.5315kW Q=0kvar raw=0x428d 0x101d 0x0000 0x0000 0x43c8 0x15d3 P=70.5315kW pf2=ok curtail=no DO=OFF
+Mon Oct 26 12:56:40 2026 daemon.err ccli[15480]: mms: time_quality GNSS searching/no-fix clockNotSynchronized=1 (T.3.3.4.5)
+Mon Oct 26 12:56:41 2026 daemon.err ccli[15480]: io: curtail_do=OFF permissive=BLOCKED
+Mon Oct 26 12:56:41 2026 daemon.err ccli[15480]: TLS:  connection was closed gracefully
+Mon Oct 26 12:56:41 2026 daemon.err ccli[15480]: mms: client DISCONNECT count=0
+Mon Oct 26 12:56:41 2026 daemon.err ccli[15480]: mms: no clients — Operating Rule fallback armed (15 s)
+Mon Oct 26 12:56:41 2026 daemon.err ccli[15480]: modbus: FC3 ReadHoldingRegisters unit=1 addr=100001 qty=6 -> P=63.1557kW Q=0kvar raw=0x427c 0x9f73 0x0000 0x0000 0x43c8 0x096d P=63.1557kW pf2=ok curtail=no DO=OFF
+Mon Oct 26 12:56:45 2026 daemon.err ccli[15480]: modbus: FC3 ReadHoldingRegisters unit=1 addr=100001 qty=6 -> P=62.9945kW Q=0kvar raw=0x427b 0xfa69 0x0000 0x0000 0x43c8 0x082c P=62.9945kW pf2=ok curtail=no DO=OFF
+Mon Oct 26 12:56:49 2026 daemon.err ccli[15480]: modbus: FC3 ReadHoldingRegisters unit=1 addr=100001 qty=6 -> P=66.531kW Q=0kvar raw=0x4285 0x0fe0 0x0000 0x0000 0x43c8 0x21c9 P=66.531kW pf2=ok curtail=no DO=OFF
+Mon Oct 26 12:56:55 2026 daemon.err ccli[15480]: mms: time_quality GNSS searching/no-fix clockNotSynchronized=1 (T.3.3.4.5)
+Mon Oct 26 12:56:56 2026 daemon.err ccli[15480]: modbus: FC3 ReadHoldingRegisters unit=1 addr=100001 qty=6 -> P=70.287kW Q=0kvar raw=0x428c 0x92f2 0x0000 0x0000 0x43c7 0xdac6 P=70.287kW pf2=ok curtail=no DO=OFF
+Mon Oct 26 12:56:56 2026 daemon.err ccli[15480]: mms: P3-05 Operating Rule fallback — live Wlim/WSd/VArSd/PFSP cleared after 15 s no-comms
+Mon Oct 26 12:56:56 2026 daemon.err ccli[15480]: mms→pf2: P3-05 Operating Rule fallback (Eth_A no-comms)
+Mon Oct 26 12:56:56 2026 daemon.err ccli[15480]: mms→pf2: Wlim=off@0% WSd=off@0% p_wlim=0 p_wsd=0 p_eff=210 kW → enter=210 release=205 kW

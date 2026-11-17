@@ -1,0 +1,19 @@
+Start testing: Oct 23 15:31 CEST
+----------------------------------------------------------
+12/12 Testing: e2e_ber_fields
+12/12 Test: e2e_ber_fields
+Command: "/mnt/c/Users/Administrator/Desktop/CCLI Alireza/CCLI Merged/apps/ccli/build-e2e-ber-sanitizers/OPTIONAL/e2e_ber_field_test"
+Directory: /mnt/c/Users/Administrator/Desktop/CCLI Alireza/CCLI Merged/apps/ccli/build-e2e-ber-sanitizers/OPTIONAL
+"e2e_ber_fields" start time: Oct 23 15:31 CEST
+Output:
+----------------------------------------------------------
+BER/field checks=465468 seeds=27 exhaustive single-octet mutations=459520 accepted=206314 rejected=253206 failures=0
+<end of output>
+Test time =  51.19 sec
+----------------------------------------------------------
+Test Passed.
+"e2e_ber_fields" end time: Oct 23 15:32 CEST
+"e2e_ber_fields" time elapsed: 00:00:51
+----------------------------------------------------------
+
+End testing: Oct 23 15:32 CEST

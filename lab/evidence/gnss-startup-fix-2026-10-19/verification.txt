@@ -1,0 +1,53 @@
+Mon Oct 19 13:01:22 UTC 2026
+{
+	"supported": true,
+	"powered_on": true
+}
+{
+	"course": "264.57",
+	"date": "2026-10-19",
+	"raw_nmea": "+QGPSGNMEA: $GNRMC,133840.00,A,4529.13814,N,01142.51953,E,0.103,264.57,191026,,,A,V*02\nOK\n+QGPSGNMEA: $GNGGA,133843.00,4529.13823,N,01142.51929,E,1,15,0.95,60.6,M,,M,,*6B\nOK",
+	"altitude": "60.6",
+	"satellites": "15",
+	"success": true,
+	"fix": true,
+	"longitude": "11.708659",
+	"latitude": "45.485636",
+	"time": "13:38:40",
+	"speed": "0.103"
+}
+Reference ID    : 00000000 ()
+Stratum         : 0
+Ref time (UTC)  : Thu Jan 01 00:00:00 1970
+System time     : 0.000000000 seconds fast of NTP time
+Last offset     : +0.000000000 seconds
+RMS offset      : 0.000000000 seconds
+Frequency       : 0.000 ppm slow
+Residual freq   : +0.000 ppm
+Skew            : 0.000 ppm
+Root delay      : 1.000000000 seconds
+Root dispersion : 1.000000000 seconds
+Update interval : 0.0 seconds
+Leap status     : Not synchronised
+
+  .-- Source mode  '^' = server, '=' = peer, '#' = local clock.
+ / .- Source state '*' = current best, '+' = combined, '-' = not combined,
+| /             'x' = may be in error, '~' = too variable, '?' = unusable.
+||                                                 .- xxxx [ yyyy ] +/- zzzz
+||      Reachability register (octal) -.           |  xxxx = adjusted offset,
+||      Log2(Polling interval) --.      |          |  yyyy = measured offset,
+||                                \     |          |  zzzz = estimated error.
+||                                 |    |           \
+MS Name/IP address         Stratum Poll Reach LastRx Last sample               
+===============================================================================
+#? GNSS                          0   4     2    29   -2228s[ -2228s] +/-  250ms
+Mon Oct 19 20:59:38 2026 daemon.err sh[3953]: gnss_chrony_sock: no GNSS fix
+Mon Oct 19 20:59:56 2026 daemon.err sh[3953]: gnss_chrony_sock: no GNSS fix
+Mon Oct 19 21:00:15 2026 daemon.err sh[3953]: gnss_chrony_sock: no GNSS fix
+Mon Oct 19 21:00:20 2026 user.notice gnss: AT port /dev/ttyUSB2 ready after 0x3s
+Mon Oct 19 21:00:27 2026 user.notice gnss: GNSS positioning started via ubus
+Mon Oct 19 21:00:43 2026 daemon.err sh[3953]: gnss_chrony_sock: no GNSS fix
+Mon Oct 19 21:01:06 2026 daemon.err sh[3953]: gnss_chrony_sock: sample offset_ms=2227837 ok
+Mon Oct 19 21:01:31 2026 daemon.err sh[3953]: gnss_chrony_sock: sample offset_ms=2227738 ok
+c14c53e036acc0587583311e68f150b5e672deb81eec8eedd82bbe114b7b0b4c  /etc/init.d/gnss
+d8b433aca6bd18ccec54ce7a6995665f1452df7f2520bd7a8addac9cb7d19406  /etc/init.d/gnss.before-20261019

@@ -1,0 +1,226 @@
+{
+  "host": "192.168.0.1",
+  "port": 3782,
+  "command": "browse",
+  "reference": "CCI016_01LD_Plant",
+  "connection_mode": "single-command",
+  "passed": true,
+  "events": [
+    {
+      "kind": "wire_profile",
+      "reference": "",
+      "error": 0,
+      "error_text": "",
+      "value": "TSP observed association: MMS/ACSE/auth contexts 3/1/5, COTP TPDU 1024",
+      "observed_utc": "2026-10-27T16:34:28.427651+00:00"
+    },
+    {
+      "kind": "server_auth",
+      "reference": "",
+      "error": 0,
+      "error_text": "",
+      "value": "MMS server certificate chain, signed time and signature verified; SHA-256=907b925056381bde886d1be7063302312c11396d2e8c0e89efaf83c2b7b7f563",
+      "observed_utc": "2026-10-27T16:34:28.586555+00:00"
+    },
+    {
+      "kind": "association",
+      "reference": "192.168.0.1",
+      "error": 0,
+      "error_text": "",
+      "value": "mutual TLS 1.2 + ACSE certificate authentication",
+      "observed_utc": "2026-10-27T16:34:28.613820+00:00"
+    },
+    {
+      "kind": "directory",
+      "reference": "CCI016_01LD_Plant",
+      "error": 0,
+      "error_text": "",
+      "value": "nodes",
+      "observed_utc": "2026-10-27T16:34:28.655247+00:00"
+    },
+    {
+      "kind": "entry",
+      "reference": "CCI016_01LD_Plant",
+      "error": 0,
+      "error_text": "",
+      "value": "DisFRDECP1",
+      "observed_utc": "2026-10-27T16:34:28.655349+00:00"
+    },
+    {
+      "kind": "entry",
+      "reference": "CCI016_01LD_Plant",
+      "error": 0,
+      "error_text": "",
+      "value": "DisFRDGEN1",
+      "observed_utc": "2026-10-27T16:34:28.655372+00:00"
+    },
+    {
+      "kind": "entry",
+      "reference": "CCI016_01LD_Plant",
+      "error": 0,
+      "error_text": "",
+      "value": "DisFRDSTO1",
+      "observed_utc": "2026-10-27T16:34:28.655399+00:00"
+    },
+    {
+      "kind": "entry",
+      "reference": "CCI016_01LD_Plant",
+      "error": 0,
+      "error_text": "",
+      "value": "GenIdrMMXU1",
+      "observed_utc": "2026-10-27T16:34:28.655608+00:00"
+    },
+    {
+      "kind": "entry",
+      "reference": "CCI016_01LD_Plant",
+      "error": 0,
+      "error_text": "",
+      "value": "GenPVMMXU1",
+      "observed_utc": "2026-10-27T16:34:28.655704+00:00"
+    },
+    {
+      "kind": "entry",
+      "reference": "CCI016_01LD_Plant",
+      "error": 0,
+      "error_text": "",
+      "value": "GenTerMMXU1",
+      "observed_utc": "2026-10-27T16:34:28.655808+00:00"
+    },
+    {
+      "kind": "entry",
+      "reference": "CCI016_01LD_Plant",
+      "error": 0,
+      "error_text": "",
+      "value": "GenWiMMXU1",
+      "observed_utc": "2026-10-27T16:34:28.655839+00:00"
+    },
+    {
+      "kind": "entry",
+      "reference": "CCI016_01LD_Plant",
+      "error": 0,
+      "error_text": "",
+      "value": "IDGXCBR1",
+      "observed_utc": "2026-10-27T16:34:28.655917+00:00"
+    },
+    {
+      "kind": "entry",
+      "reference": "CCI016_01LD_Plant",
+      "error": 0,
+      "error_text": "",
+      "value": "LLN0",
+      "observed_utc": "2026-10-27T16:34:28.656006+00:00"
+    },
+    {
+      "kind": "entry",
+      "reference": "CCI016_01LD_Plant",
+      "error": 0,
+      "error_text": "",
+      "value": "LPHD1",
+      "observed_utc": "2026-10-27T16:34:28.656089+00:00"
+    },
+    {
+      "kind": "entry",
+      "reference": "CCI016_01LD_Plant",
+      "error": 0,
+      "error_text": "",
+      "value": "PdCMMXU1",
+      "observed_utc": "2026-10-27T16:34:28.656120+00:00"
+    },
+    {
+      "kind": "entry",
+      "reference": "CCI016_01LD_Plant",
+      "error": 0,
+      "error_text": "",
+      "value": "PdC_QcDPCC1",
+      "observed_utc": "2026-10-27T16:34:28.656191+00:00"
+    },
+    {
+      "kind": "entry",
+      "reference": "CCI016_01LD_Plant",
+      "error": 0,
+      "error_text": "",
+      "value": "PdC_QiDPCC1",
+      "observed_utc": "2026-10-27T16:34:28.656222+00:00"
+    },
+    {
+      "kind": "entry",
+      "reference": "CCI016_01LD_Plant",
+      "error": 0,
+      "error_text": "",
+      "value": "PdC_VADPCC1",
+      "observed_utc": "2026-10-27T16:34:28.656286+00:00"
+    },
+    {
+      "kind": "entry",
+      "reference": "CCI016_01LD_Plant",
+      "error": 0,
+      "error_text": "",
+      "value": "PdC_WaDPCC1",
+      "observed_utc": "2026-10-27T16:34:28.656364+00:00"
+    },
+    {
+      "kind": "entry",
+      "reference": "CCI016_01LD_Plant",
+      "error": 0,
+      "error_text": "",
+      "value": "PdC_WiDPCC1",
+      "observed_utc": "2026-10-27T16:34:28.656392+00:00"
+    },
+    {
+      "kind": "entry",
+      "reference": "CCI016_01LD_Plant",
+      "error": 0,
+      "error_text": "",
+      "value": "SGGMMXU1",
+      "observed_utc": "2026-10-27T16:34:28.656476+00:00"
+    },
+    {
+      "kind": "entry",
+      "reference": "CCI016_01LD_Plant",
+      "error": 0,
+      "error_text": "",
+      "value": "SGGMMXU2",
+      "observed_utc": "2026-10-27T16:34:28.656561+00:00"
+    },
+    {
+      "kind": "entry",
+      "reference": "CCI016_01LD_Plant",
+      "error": 0,
+      "error_text": "",
+      "value": "SSGGDGEN1",
+      "observed_utc": "2026-10-27T16:34:28.656597+00:00"
+    },
+    {
+      "kind": "entry",
+      "reference": "CCI016_01LD_Plant",
+      "error": 0,
+      "error_text": "",
+      "value": "SSGGDGEN2",
+      "observed_utc": "2026-10-27T16:34:28.656665+00:00"
+    },
+    {
+      "kind": "entry",
+      "reference": "CCI016_01LD_Plant",
+      "error": 0,
+      "error_text": "",
+      "value": "StMMXU1",
+      "observed_utc": "2026-10-27T16:34:28.656726+00:00"
+    },
+    {
+      "kind": "entry",
+      "reference": "CCI016_01LD_Plant",
+      "error": 0,
+      "error_text": "",
+      "value": "WlimDWMX1",
+      "observed_utc": "2026-10-27T16:34:28.656803+00:00"
+    },
+    {
+      "kind": "entry",
+      "reference": "CCI016_01LD_Plant",
+      "error": 0,
+      "error_text": "",
+      "value": "WSdDAGC1",
+      "observed_utc": "2026-10-27T16:34:28.656840+00:00"
+    }
+  ]
+}

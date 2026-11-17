@@ -1,0 +1,301 @@
+<?xml version='1.0' encoding='utf-8'?>
+<xacml3:PolicySet xmlns:xacml3="urn:oasis:names:tc:xacml:3.0:core:schema:wd-17" PolicySetId="urn:iec:62351:8:IS:1.0:rps-root:8ef16ebb-65d6-4b2e-bad4-6729129eb412" Version="1.0" PolicyCombiningAlgId="urn:oasis:names:tc:xacml:3.0:policy-combining-algorithm:permit-overrides">
+  <xacml3:Description>Root Policy Set for Role Policy Sets</xacml3:Description>
+  <xacml3:Target />
+  <xacml3:PolicySet PolicySetId="urn:iec:62351:8:IS:1.0:rps-id:-1:c2cc6701-5c6d-4f25-ae07-143ad2ea84f9" Version="1.0" PolicyCombiningAlgId="urn:oasis:names:tc:xacml:3.0:policy-combining-algorithm:permit-overrides">
+    <xacml3:Description>IEC 61850 role definition: Role ID = -1, Role Name = DSO_OPERATOR</xacml3:Description>
+    <xacml3:Target>
+      <xacml3:AnyOf>
+        <xacml3:AllOf>
+          <xacml3:Match MatchId="urn:oasis:names:tc:xacml:1.0:function:integer-equal">
+            <xacml3:AttributeValue DataType="http://www.w3.org/2001/XMLSchema#integer">-1</xacml3:AttributeValue>
+            <xacml3:AttributeDesignator Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" AttributeId="urn:iec:62351:8:IS:1.0:attribute:role-id" DataType="http://www.w3.org/2001/XMLSchema#integer" MustBePresent="false" />
+          </xacml3:Match>
+          <xacml3:Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+            <xacml3:AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">IEC 62351-8-CEI016:2021</xacml3:AttributeValue>
+            <xacml3:AttributeDesignator Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" AttributeId="urn:iec:62351:8:IS:1.0:attribute:roleDefinition" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false" />
+          </xacml3:Match>
+          <xacml3:Match MatchId="urn:oasis:names:tc:xacml:1.0:function:integer-equal">
+            <xacml3:AttributeValue DataType="http://www.w3.org/2001/XMLSchema#integer">1</xacml3:AttributeValue>
+            <xacml3:AttributeDesignator Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" AttributeId="urn:iec:62351:8:IS:1.0:attribute:revision" DataType="http://www.w3.org/2001/XMLSchema#integer" MustBePresent="false" />
+          </xacml3:Match>
+        </xacml3:AllOf>
+      </xacml3:AnyOf>
+    </xacml3:Target>
+    <xacml3:PolicySetIdReference>urn:iec:62351:8:IS:1.0:pps-id:DSO_OPERATOR_PERMISSIONS:d5a74ef8-6f7a-4cad-bcc7-2b2680c2dc2e</xacml3:PolicySetIdReference>
+  </xacml3:PolicySet>
+  <xacml3:PolicySet PolicySetId="urn:iec:62351:8:IS:1.0:rps-id:-2:bc946449-e94d-49ec-a291-e68d9daab10d" Version="1.0" PolicyCombiningAlgId="urn:oasis:names:tc:xacml:3.0:policy-combining-algorithm:permit-overrides">
+    <xacml3:Description>IEC 61850 role definition: Role ID = -2, Role Name = AGGREGATOR_OPERATOR</xacml3:Description>
+    <xacml3:Target>
+      <xacml3:AnyOf>
+        <xacml3:AllOf>
+          <xacml3:Match MatchId="urn:oasis:names:tc:xacml:1.0:function:integer-equal">
+            <xacml3:AttributeValue DataType="http://www.w3.org/2001/XMLSchema#integer">-2</xacml3:AttributeValue>
+            <xacml3:AttributeDesignator Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" AttributeId="urn:iec:62351:8:IS:1.0:attribute:role-id" DataType="http://www.w3.org/2001/XMLSchema#integer" MustBePresent="false" />
+          </xacml3:Match>
+          <xacml3:Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+            <xacml3:AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">IEC 62351-8-CEI016:2021</xacml3:AttributeValue>
+            <xacml3:AttributeDesignator Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" AttributeId="urn:iec:62351:8:IS:1.0:attribute:roleDefinition" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false" />
+          </xacml3:Match>
+          <xacml3:Match MatchId="urn:oasis:names:tc:xacml:1.0:function:integer-equal">
+            <xacml3:AttributeValue DataType="http://www.w3.org/2001/XMLSchema#integer">1</xacml3:AttributeValue>
+            <xacml3:AttributeDesignator Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" AttributeId="urn:iec:62351:8:IS:1.0:attribute:revision" DataType="http://www.w3.org/2001/XMLSchema#integer" MustBePresent="false" />
+          </xacml3:Match>
+        </xacml3:AllOf>
+      </xacml3:AnyOf>
+    </xacml3:Target>
+    <xacml3:PolicySetIdReference>urn:iec:62351:8:IS:1.0:pps-id:AGGREGATOR_OPERATOR_PERMISSIONS:b2921aa7-4298-48c2-8f7a-939c353a7126</xacml3:PolicySetIdReference>
+  </xacml3:PolicySet>
+  <xacml3:PolicySet PolicySetId="urn:iec:62351:8:IS:1.0:rps-id:0:2ab9285a-875a-4a33-9b2c-25f048fa26e6" Version="1.0" PolicyCombiningAlgId="urn:oasis:names:tc:xacml:3.0:policy-combining-algorithm:permit-overrides">
+    <xacml3:Description>IEC 61850 role definition: Role ID = 0, Role Name = VIEWER</xacml3:Description>
+    <xacml3:Target>
+      <xacml3:AnyOf>
+        <xacml3:AllOf>
+          <xacml3:Match MatchId="urn:oasis:names:tc:xacml:1.0:function:integer-equal">
+            <xacml3:AttributeValue DataType="http://www.w3.org/2001/XMLSchema#integer">0</xacml3:AttributeValue>
+            <xacml3:AttributeDesignator Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" AttributeId="urn:iec:62351:8:IS:1.0:attribute:role-id" DataType="http://www.w3.org/2001/XMLSchema#integer" MustBePresent="false" />
+          </xacml3:Match>
+          <xacml3:Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+            <xacml3:AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">IEC62351-8</xacml3:AttributeValue>
+            <xacml3:AttributeDesignator Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" AttributeId="urn:iec:62351:8:IS:1.0:attribute:roleDefinition" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false" />
+          </xacml3:Match>
+          <xacml3:Match MatchId="urn:oasis:names:tc:xacml:1.0:function:integer-equal">
+            <xacml3:AttributeValue DataType="http://www.w3.org/2001/XMLSchema#integer">1</xacml3:AttributeValue>
+            <xacml3:AttributeDesignator Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" AttributeId="urn:iec:62351:8:IS:1.0:attribute:revision" DataType="http://www.w3.org/2001/XMLSchema#integer" MustBePresent="false" />
+          </xacml3:Match>
+        </xacml3:AllOf>
+        <xacml3:AllOf>
+          <xacml3:Match MatchId="urn:oasis:names:tc:xacml:1.0:function:integer-equal">
+            <xacml3:AttributeValue DataType="http://www.w3.org/2001/XMLSchema#integer">0</xacml3:AttributeValue>
+            <xacml3:AttributeDesignator Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" AttributeId="urn:iec:62351:8:IS:1.0:attribute:role-id" DataType="http://www.w3.org/2001/XMLSchema#integer" MustBePresent="false" />
+          </xacml3:Match>
+          <xacml3:Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+            <xacml3:AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">IEC62351-8</xacml3:AttributeValue>
+            <xacml3:AttributeDesignator Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" AttributeId="urn:iec:62351:8:IS:1.0:attribute:roleDefinition" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false" />
+          </xacml3:Match>
+          <xacml3:Match MatchId="urn:oasis:names:tc:xacml:1.0:function:integer-equal">
+            <xacml3:AttributeValue DataType="http://www.w3.org/2001/XMLSchema#integer">0</xacml3:AttributeValue>
+            <xacml3:AttributeDesignator Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" AttributeId="urn:iec:62351:8:IS:1.0:attribute:revision" DataType="http://www.w3.org/2001/XMLSchema#integer" MustBePresent="false" />
+          </xacml3:Match>
+        </xacml3:AllOf>
+      </xacml3:AnyOf>
+    </xacml3:Target>
+    <xacml3:PolicySetIdReference>urn:iec:62351:8:IS:1.0:pps-id:VIEWER_PERMISSIONS:8d1fdf82-a229-414a-95a0-8761faec1088</xacml3:PolicySetIdReference>
+  </xacml3:PolicySet>
+  <xacml3:PolicySet PolicySetId="urn:iec:62351:8:IS:1.0:rps-id:1:b69acc4e-bad6-488b-9b83-10fdab01e497" Version="1.0" PolicyCombiningAlgId="urn:oasis:names:tc:xacml:3.0:policy-combining-algorithm:permit-overrides">
+    <xacml3:Description>IEC 61850 role definition: Role ID = 1, Role Name = OPERATOR</xacml3:Description>
+    <xacml3:Target>
+      <xacml3:AnyOf>
+        <xacml3:AllOf>
+          <xacml3:Match MatchId="urn:oasis:names:tc:xacml:1.0:function:integer-equal">
+            <xacml3:AttributeValue DataType="http://www.w3.org/2001/XMLSchema#integer">1</xacml3:AttributeValue>
+            <xacml3:AttributeDesignator Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" AttributeId="urn:iec:62351:8:IS:1.0:attribute:role-id" DataType="http://www.w3.org/2001/XMLSchema#integer" MustBePresent="false" />
+          </xacml3:Match>
+          <xacml3:Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+            <xacml3:AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">IEC62351-8</xacml3:AttributeValue>
+            <xacml3:AttributeDesignator Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" AttributeId="urn:iec:62351:8:IS:1.0:attribute:roleDefinition" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false" />
+          </xacml3:Match>
+          <xacml3:Match MatchId="urn:oasis:names:tc:xacml:1.0:function:integer-equal">
+            <xacml3:AttributeValue DataType="http://www.w3.org/2001/XMLSchema#integer">1</xacml3:AttributeValue>
+            <xacml3:AttributeDesignator Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" AttributeId="urn:iec:62351:8:IS:1.0:attribute:revision" DataType="http://www.w3.org/2001/XMLSchema#integer" MustBePresent="false" />
+          </xacml3:Match>
+        </xacml3:AllOf>
+        <xacml3:AllOf>
+          <xacml3:Match MatchId="urn:oasis:names:tc:xacml:1.0:function:integer-equal">
+            <xacml3:AttributeValue DataType="http://www.w3.org/2001/XMLSchema#integer">1</xacml3:AttributeValue>
+            <xacml3:AttributeDesignator Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" AttributeId="urn:iec:62351:8:IS:1.0:attribute:role-id" DataType="http://www.w3.org/2001/XMLSchema#integer" MustBePresent="false" />
+          </xacml3:Match>
+          <xacml3:Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+            <xacml3:AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">IEC62351-8</xacml3:AttributeValue>
+            <xacml3:AttributeDesignator Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" AttributeId="urn:iec:62351:8:IS:1.0:attribute:roleDefinition" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false" />
+          </xacml3:Match>
+          <xacml3:Match MatchId="urn:oasis:names:tc:xacml:1.0:function:integer-equal">
+            <xacml3:AttributeValue DataType="http://www.w3.org/2001/XMLSchema#integer">0</xacml3:AttributeValue>
+            <xacml3:AttributeDesignator Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" AttributeId="urn:iec:62351:8:IS:1.0:attribute:revision" DataType="http://www.w3.org/2001/XMLSchema#integer" MustBePresent="false" />
+          </xacml3:Match>
+        </xacml3:AllOf>
+      </xacml3:AnyOf>
+    </xacml3:Target>
+    <xacml3:PolicySetIdReference>urn:iec:62351:8:IS:1.0:pps-id:OPERATOR_PERMISSIONS:d32ef1a5-b631-4d59-bdc5-c07530c54e1f</xacml3:PolicySetIdReference>
+  </xacml3:PolicySet>
+  <xacml3:PolicySet PolicySetId="urn:iec:62351:8:IS:1.0:rps-id:2:b5e44a13-3b4b-43f6-837f-89f2f257c643" Version="1.0" PolicyCombiningAlgId="urn:oasis:names:tc:xacml:3.0:policy-combining-algorithm:permit-overrides">
+    <xacml3:Description>IEC 61850 role definition: Role ID = 2, Role Name = ENGINEER</xacml3:Description>
+    <xacml3:Target>
+      <xacml3:AnyOf>
+        <xacml3:AllOf>
+          <xacml3:Match MatchId="urn:oasis:names:tc:xacml:1.0:function:integer-equal">
+            <xacml3:AttributeValue DataType="http://www.w3.org/2001/XMLSchema#integer">2</xacml3:AttributeValue>
+            <xacml3:AttributeDesignator Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" AttributeId="urn:iec:62351:8:IS:1.0:attribute:role-id" DataType="http://www.w3.org/2001/XMLSchema#integer" MustBePresent="false" />
+          </xacml3:Match>
+          <xacml3:Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+            <xacml3:AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">IEC62351-8</xacml3:AttributeValue>
+            <xacml3:AttributeDesignator Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" AttributeId="urn:iec:62351:8:IS:1.0:attribute:roleDefinition" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false" />
+          </xacml3:Match>
+          <xacml3:Match MatchId="urn:oasis:names:tc:xacml:1.0:function:integer-equal">
+            <xacml3:AttributeValue DataType="http://www.w3.org/2001/XMLSchema#integer">1</xacml3:AttributeValue>
+            <xacml3:AttributeDesignator Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" AttributeId="urn:iec:62351:8:IS:1.0:attribute:revision" DataType="http://www.w3.org/2001/XMLSchema#integer" MustBePresent="false" />
+          </xacml3:Match>
+        </xacml3:AllOf>
+        <xacml3:AllOf>
+          <xacml3:Match MatchId="urn:oasis:names:tc:xacml:1.0:function:integer-equal">
+            <xacml3:AttributeValue DataType="http://www.w3.org/2001/XMLSchema#integer">2</xacml3:AttributeValue>
+            <xacml3:AttributeDesignator Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" AttributeId="urn:iec:62351:8:IS:1.0:attribute:role-id" DataType="http://www.w3.org/2001/XMLSchema#integer" MustBePresent="false" />
+          </xacml3:Match>
+          <xacml3:Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+            <xacml3:AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">IEC62351-8</xacml3:AttributeValue>
+            <xacml3:AttributeDesignator Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" AttributeId="urn:iec:62351:8:IS:1.0:attribute:roleDefinition" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false" />
+          </xacml3:Match>
+          <xacml3:Match MatchId="urn:oasis:names:tc:xacml:1.0:function:integer-equal">
+            <xacml3:AttributeValue DataType="http://www.w3.org/2001/XMLSchema#integer">0</xacml3:AttributeValue>
+            <xacml3:AttributeDesignator Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" AttributeId="urn:iec:62351:8:IS:1.0:attribute:revision" DataType="http://www.w3.org/2001/XMLSchema#integer" MustBePresent="false" />
+          </xacml3:Match>
+        </xacml3:AllOf>
+      </xacml3:AnyOf>
+    </xacml3:Target>
+    <xacml3:PolicySetIdReference>urn:iec:62351:8:IS:1.0:pps-id:ENGINEER_PERMISSIONS:05dd54d6-38bb-449a-bdbc-1834f936f295</xacml3:PolicySetIdReference>
+  </xacml3:PolicySet>
+  <xacml3:PolicySet PolicySetId="urn:iec:62351:8:IS:1.0:rps-id:3:76e34ddd-1ba9-47c1-bc68-c3429048a9be" Version="1.0" PolicyCombiningAlgId="urn:oasis:names:tc:xacml:3.0:policy-combining-algorithm:permit-overrides">
+    <xacml3:Description>IEC 61850 role definition: Role ID = 3, Role Name = INSTALLER</xacml3:Description>
+    <xacml3:Target>
+      <xacml3:AnyOf>
+        <xacml3:AllOf>
+          <xacml3:Match MatchId="urn:oasis:names:tc:xacml:1.0:function:integer-equal">
+            <xacml3:AttributeValue DataType="http://www.w3.org/2001/XMLSchema#integer">3</xacml3:AttributeValue>
+            <xacml3:AttributeDesignator Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" AttributeId="urn:iec:62351:8:IS:1.0:attribute:role-id" DataType="http://www.w3.org/2001/XMLSchema#integer" MustBePresent="false" />
+          </xacml3:Match>
+          <xacml3:Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+            <xacml3:AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">IEC62351-8</xacml3:AttributeValue>
+            <xacml3:AttributeDesignator Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" AttributeId="urn:iec:62351:8:IS:1.0:attribute:roleDefinition" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false" />
+          </xacml3:Match>
+          <xacml3:Match MatchId="urn:oasis:names:tc:xacml:1.0:function:integer-equal">
+            <xacml3:AttributeValue DataType="http://www.w3.org/2001/XMLSchema#integer">1</xacml3:AttributeValue>
+            <xacml3:AttributeDesignator Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" AttributeId="urn:iec:62351:8:IS:1.0:attribute:revision" DataType="http://www.w3.org/2001/XMLSchema#integer" MustBePresent="false" />
+          </xacml3:Match>
+        </xacml3:AllOf>
+        <xacml3:AllOf>
+          <xacml3:Match MatchId="urn:oasis:names:tc:xacml:1.0:function:integer-equal">
+            <xacml3:AttributeValue DataType="http://www.w3.org/2001/XMLSchema#integer">3</xacml3:AttributeValue>
+            <xacml3:AttributeDesignator Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" AttributeId="urn:iec:62351:8:IS:1.0:attribute:role-id" DataType="http://www.w3.org/2001/XMLSchema#integer" MustBePresent="false" />
+          </xacml3:Match>
+          <xacml3:Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+            <xacml3:AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">IEC62351-8</xacml3:AttributeValue>
+            <xacml3:AttributeDesignator Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" AttributeId="urn:iec:62351:8:IS:1.0:attribute:roleDefinition" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false" />
+          </xacml3:Match>
+          <xacml3:Match MatchId="urn:oasis:names:tc:xacml:1.0:function:integer-equal">
+            <xacml3:AttributeValue DataType="http://www.w3.org/2001/XMLSchema#integer">0</xacml3:AttributeValue>
+            <xacml3:AttributeDesignator Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" AttributeId="urn:iec:62351:8:IS:1.0:attribute:revision" DataType="http://www.w3.org/2001/XMLSchema#integer" MustBePresent="false" />
+          </xacml3:Match>
+        </xacml3:AllOf>
+      </xacml3:AnyOf>
+    </xacml3:Target>
+    <xacml3:PolicySetIdReference>urn:iec:62351:8:IS:1.0:pps-id:INSTALLER_PERMISSIONS:acae80ea-a070-4270-bc85-93498392addb</xacml3:PolicySetIdReference>
+  </xacml3:PolicySet>
+  <xacml3:PolicySet PolicySetId="urn:iec:62351:8:IS:1.0:rps-id:4:1750b296-ab02-437b-8de5-d0b62b19716c" Version="1.0" PolicyCombiningAlgId="urn:oasis:names:tc:xacml:3.0:policy-combining-algorithm:permit-overrides">
+    <xacml3:Description>IEC 61850 role definition: Role ID = 4, Role Name = SECADM</xacml3:Description>
+    <xacml3:Target>
+      <xacml3:AnyOf>
+        <xacml3:AllOf>
+          <xacml3:Match MatchId="urn:oasis:names:tc:xacml:1.0:function:integer-equal">
+            <xacml3:AttributeValue DataType="http://www.w3.org/2001/XMLSchema#integer">4</xacml3:AttributeValue>
+            <xacml3:AttributeDesignator Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" AttributeId="urn:iec:62351:8:IS:1.0:attribute:role-id" DataType="http://www.w3.org/2001/XMLSchema#integer" MustBePresent="false" />
+          </xacml3:Match>
+          <xacml3:Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+            <xacml3:AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">IEC62351-8</xacml3:AttributeValue>
+            <xacml3:AttributeDesignator Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" AttributeId="urn:iec:62351:8:IS:1.0:attribute:roleDefinition" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false" />
+          </xacml3:Match>
+          <xacml3:Match MatchId="urn:oasis:names:tc:xacml:1.0:function:integer-equal">
+            <xacml3:AttributeValue DataType="http://www.w3.org/2001/XMLSchema#integer">1</xacml3:AttributeValue>
+            <xacml3:AttributeDesignator Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" AttributeId="urn:iec:62351:8:IS:1.0:attribute:revision" DataType="http://www.w3.org/2001/XMLSchema#integer" MustBePresent="false" />
+          </xacml3:Match>
+        </xacml3:AllOf>
+        <xacml3:AllOf>
+          <xacml3:Match MatchId="urn:oasis:names:tc:xacml:1.0:function:integer-equal">
+            <xacml3:AttributeValue DataType="http://www.w3.org/2001/XMLSchema#integer">4</xacml3:AttributeValue>
+            <xacml3:AttributeDesignator Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" AttributeId="urn:iec:62351:8:IS:1.0:attribute:role-id" DataType="http://www.w3.org/2001/XMLSchema#integer" MustBePresent="false" />
+          </xacml3:Match>
+          <xacml3:Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+            <xacml3:AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">IEC62351-8</xacml3:AttributeValue>
+            <xacml3:AttributeDesignator Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" AttributeId="urn:iec:62351:8:IS:1.0:attribute:roleDefinition" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false" />
+          </xacml3:Match>
+          <xacml3:Match MatchId="urn:oasis:names:tc:xacml:1.0:function:integer-equal">
+            <xacml3:AttributeValue DataType="http://www.w3.org/2001/XMLSchema#integer">0</xacml3:AttributeValue>
+            <xacml3:AttributeDesignator Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" AttributeId="urn:iec:62351:8:IS:1.0:attribute:revision" DataType="http://www.w3.org/2001/XMLSchema#integer" MustBePresent="false" />
+          </xacml3:Match>
+        </xacml3:AllOf>
+      </xacml3:AnyOf>
+    </xacml3:Target>
+    <xacml3:PolicySetIdReference>urn:iec:62351:8:IS:1.0:pps-id:SECADM_PERMISSIONS:ba653789-0fe3-4b26-8c58-8db5632ed390</xacml3:PolicySetIdReference>
+  </xacml3:PolicySet>
+  <xacml3:PolicySet PolicySetId="urn:iec:62351:8:IS:1.0:rps-id:5:3f9b1c0a-f337-419d-997d-0a70d2717518" Version="1.0" PolicyCombiningAlgId="urn:oasis:names:tc:xacml:3.0:policy-combining-algorithm:permit-overrides">
+    <xacml3:Description>IEC 61850 role definition: Role ID = 5, Role Name = SECAUD</xacml3:Description>
+    <xacml3:Target>
+      <xacml3:AnyOf>
+        <xacml3:AllOf>
+          <xacml3:Match MatchId="urn:oasis:names:tc:xacml:1.0:function:integer-equal">
+            <xacml3:AttributeValue DataType="http://www.w3.org/2001/XMLSchema#integer">5</xacml3:AttributeValue>
+            <xacml3:AttributeDesignator Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" AttributeId="urn:iec:62351:8:IS:1.0:attribute:role-id" DataType="http://www.w3.org/2001/XMLSchema#integer" MustBePresent="false" />
+          </xacml3:Match>
+          <xacml3:Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+            <xacml3:AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">IEC62351-8</xacml3:AttributeValue>
+            <xacml3:AttributeDesignator Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" AttributeId="urn:iec:62351:8:IS:1.0:attribute:roleDefinition" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false" />
+          </xacml3:Match>
+          <xacml3:Match MatchId="urn:oasis:names:tc:xacml:1.0:function:integer-equal">
+            <xacml3:AttributeValue DataType="http://www.w3.org/2001/XMLSchema#integer">1</xacml3:AttributeValue>
+            <xacml3:AttributeDesignator Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" AttributeId="urn:iec:62351:8:IS:1.0:attribute:revision" DataType="http://www.w3.org/2001/XMLSchema#integer" MustBePresent="false" />
+          </xacml3:Match>
+        </xacml3:AllOf>
+        <xacml3:AllOf>
+          <xacml3:Match MatchId="urn:oasis:names:tc:xacml:1.0:function:integer-equal">
+            <xacml3:AttributeValue DataType="http://www.w3.org/2001/XMLSchema#integer">5</xacml3:AttributeValue>
+            <xacml3:AttributeDesignator Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" AttributeId="urn:iec:62351:8:IS:1.0:attribute:role-id" DataType="http://www.w3.org/2001/XMLSchema#integer" MustBePresent="false" />
+          </xacml3:Match>
+          <xacml3:Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+            <xacml3:AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">IEC62351-8</xacml3:AttributeValue>
+            <xacml3:AttributeDesignator Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" AttributeId="urn:iec:62351:8:IS:1.0:attribute:roleDefinition" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false" />
+          </xacml3:Match>
+          <xacml3:Match MatchId="urn:oasis:names:tc:xacml:1.0:function:integer-equal">
+            <xacml3:AttributeValue DataType="http://www.w3.org/2001/XMLSchema#integer">0</xacml3:AttributeValue>
+            <xacml3:AttributeDesignator Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" AttributeId="urn:iec:62351:8:IS:1.0:attribute:revision" DataType="http://www.w3.org/2001/XMLSchema#integer" MustBePresent="false" />
+          </xacml3:Match>
+        </xacml3:AllOf>
+      </xacml3:AnyOf>
+    </xacml3:Target>
+    <xacml3:PolicySetIdReference>urn:iec:62351:8:IS:1.0:pps-id:SECAUD_PERMISSIONS:8218e860-561e-4010-8f45-f54546bb581f</xacml3:PolicySetIdReference>
+  </xacml3:PolicySet>
+  <xacml3:PolicySet PolicySetId="urn:iec:62351:8:IS:1.0:rps-id:6:5c6cabc0-59a7-4833-93b9-86cfa70a5356" Version="1.0" PolicyCombiningAlgId="urn:oasis:names:tc:xacml:3.0:policy-combining-algorithm:permit-overrides">
+    <xacml3:Description>IEC 61850 role definition: Role ID = 6, Role Name = RBACMNT</xacml3:Description>
+    <xacml3:Target>
+      <xacml3:AnyOf>
+        <xacml3:AllOf>
+          <xacml3:Match MatchId="urn:oasis:names:tc:xacml:1.0:function:integer-equal">
+            <xacml3:AttributeValue DataType="http://www.w3.org/2001/XMLSchema#integer">6</xacml3:AttributeValue>
+            <xacml3:AttributeDesignator Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" AttributeId="urn:iec:62351:8:IS:1.0:attribute:role-id" DataType="http://www.w3.org/2001/XMLSchema#integer" MustBePresent="false" />
+          </xacml3:Match>
+          <xacml3:Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+            <xacml3:AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">IEC62351-8</xacml3:AttributeValue>
+            <xacml3:AttributeDesignator Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" AttributeId="urn:iec:62351:8:IS:1.0:attribute:roleDefinition" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false" />
+          </xacml3:Match>
+          <xacml3:Match MatchId="urn:oasis:names:tc:xacml:1.0:function:integer-equal">
+            <xacml3:AttributeValue DataType="http://www.w3.org/2001/XMLSchema#integer">1</xacml3:AttributeValue>
+            <xacml3:AttributeDesignator Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" AttributeId="urn:iec:62351:8:IS:1.0:attribute:revision" DataType="http://www.w3.org/2001/XMLSchema#integer" MustBePresent="false" />
+          </xacml3:Match>
+        </xacml3:AllOf>
+        <xacml3:AllOf>
+          <xacml3:Match MatchId="urn:oasis:names:tc:xacml:1.0:function:integer-equal">
+            <xacml3:AttributeValue DataType="http://www.w3.org/2001/XMLSchema#integer">6</xacml3:AttributeValue>
+            <xacml3:AttributeDesignator Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" AttributeId="urn:iec:62351:8:IS:1.0:attribute:role-id" DataType="http://www.w3.org/2001/XMLSchema#integer" MustBePresent="false" />
+          </xacml3:Match>
+          <xacml3:Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+            <xacml3:AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">IEC62351-8</xacml3:AttributeValue>
+            <xacml3:AttributeDesignator Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" AttributeId="urn:iec:62351:8:IS:1.0:attribute:roleDefinition" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false" />
+          </xacml3:Match>
+          <xacml3:Match MatchId="urn:oasis:names:tc:xacml:1.0:function:integer-equal">
+            <xacml3:AttributeValue DataType="http://www.w3.org/2001/XMLSchema#integer">0</xacml3:AttributeValue>
+            <xacml3:AttributeDesignator Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" AttributeId="urn:iec:62351:8:IS:1.0:attribute:revision" DataType="http://www.w3.org/2001/XMLSchema#integer" MustBePresent="false" />
+          </xacml3:Match>
+        </xacml3:AllOf>
+      </xacml3:AnyOf>
+    </xacml3:Target>
+    <xacml3:PolicySetIdReference>urn:iec:62351:8:IS:1.0:pps-id:RBACMNT_PERMISSIONS:71ce51d9-d230-42e7-b64b-302830a5ed42</xacml3:PolicySetIdReference>
+  </xacml3:PolicySet>
+</xacml3:PolicySet>

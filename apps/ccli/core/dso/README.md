@@ -11,7 +11,10 @@ Lab Operate clients: `lab/mms_wlim_client.c`, `lab/mms_wsd_client.c`, `lab/mms_v
 IED CCI016_01 / LD_Plant
   WlimDWMX1.{Mod,WMaxSptPct}   O.9.2.2 lim W     → live.wlim_*   IMPL
   WSdDAGC1.{Mod,WSptPct}       O.9.2.3 s.p. W    → live.wsd_*    IMPL (Figura 2)
-  WSaDAGC1 / VArSd / PFSP / VArV / PFW           → Mod=5 STUB
+  WSaDAGC1.{Mod,WSptPct}     Aggregator export ceiling (0..100% Smax)
+  VArSaDVAR1.{Mod,VArTgtSptPct} Aggregator Q target, bounded by plant envelope
+  VArSdDVAR1 / PFSPDFPF1     DSO reactive controls, take priority over Aggregator Q
+  VArVDVVR1 / PFWDPFW1       Mod=5 STUB
   PdCMMXU1.TotW + urcb 4 s     O.8.3 / T.3.2.1   → MeasurementStore PART
 ```
 

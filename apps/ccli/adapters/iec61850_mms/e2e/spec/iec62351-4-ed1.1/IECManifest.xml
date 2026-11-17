@@ -1,0 +1,22 @@
+<IECManifest xmlns="http://www.iec.ch/CC/2017/IECManifest" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.iec.ch/CC/2017/IECManifest IECManifest.xsd">
+	<Copyright>
+		<Notice>
+			COPYRIGHT (c) IEC, 2016. This version of this code component is part of IEC 62351-4; see the IEC 62351-4; for full legal notices. In case of any differences between the here-below code and the IEC published content, the here-below definition supersedes the IEC publication; it may contain updates. See history files. The whole document has to be taken into account to have a full description of this code component.
+			See www.iec.ch/CCv1 for copyright details.
+		</Notice>
+		<License uri="www.iec.ch/CCv1">IEC License</License>
+	</Copyright>
+	<CodeComponent id="IEC_62351-4.ASN.1_XSD.full" name="IEC 62351-4 Security for Profiles including MMS and derivatives full version" date="2018-04-19" >
+		<Publication name="IEC 62351-4.2018"/>
+		<File name="IEC_62351-4_E2E-security.asn" category="normative" content="full"/>
+		<File name="IEC_62351-4_E2E-security.xsd" category="normative" content="full"/>	
+		<File name="IEC_62351-4_First-edition.asn" category="normative" content="full"/>
+		<File name="IEC_62351-4_OSI-Env.asn" category="normative" content="full"/>	
+		<File name="IEC_62351-4_XMPP-Env.asn" category="normative" content="full"/>
+		<File name="IEC_62351-4_XMPP-Env.xsd" category="normative" content="full"/>	
+		<File name="IEC_62351-4_XMPP-Stz.asn" category="normative" content="full"/>
+		<File name="IEC_62351-4_XMPP-Stz.xsd" category="normative" content="full"/>	
+	</CodeComponent>
+	<History>
+	</History>
+</IECManifest>

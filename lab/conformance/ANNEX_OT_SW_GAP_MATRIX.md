@@ -83,11 +83,11 @@
 | T.3.3.1.1 | DECP/DGEN/DSTO/XCBR/SGG | Lab CID | Absent | GAP if PF1 status claimed | P3 |
 | T.3.3.2 ACSI | Get*, Report; Set RCB N/A (T) | libiec61850; we Set URCB (TesPro) | Works | T says Set RCB N/A — PIXIT HOLD | P3 |
 | T.3.3.3 | 8-1 MMS mapping | Ed.2 + SCL B4 | HAVE | Ed 2.1 UCA TP MISSING | P3 / P7 |
-| T.3.3.4.1 | RSA ≥2048, algos | Lab RSA 2048 | HAVE | Full cipher list PART | P3 |
+| T.3.3.4.1 | RSA ≥2048; ECDSA ≥256 on secp256r1 and brainpoolP256r1 | Source supports RSA/P-256/Brainpool P-256; deployed lab credentials are RSA | PART | Both ECDSA curves are now allowed by the certificate-validation profile; ECDSA-issued lab credentials and target-profile evidence remain open | P3 |
 | T.3.3.4.2 | GOOSE security (info) | GOOSE parked/off | off | — | P5-G |
 | T.3.3.4.3 | Roles DSO_OPERATOR / AGGREGATOR + 7 | Lab DSO vs VIEWER | P3-08 | IECUserRoles / token A | P3 |
 | T.3.3.4.5 | UTC ±100 ms; NTP; NTS; 10 min peer; redundant NTP | chrony + GNSS q | HAVE accuracy | NTS, redundant NTP, 10 min fail | P3 / P7 |
-| T.3.3.4.6 | Security event log | O.14 + TLS/auth events | PART | Full mnemonic table | P7 |
+| T.3.3.4.6 | Security event log | O.14 + IEC 62351-14 structured sender and RFC 5425 TLS; see `apps/ccli/docs/IEC62351_14_LOGGER.md` | PART | Final-edition comparison, platform-wide event coverage, clock/storage qualification and collector commissioning | P7 |
 | T.3.3.4.7 | Asset ID via LPHD | LPHD1 | Present | Inventory API | P7 |
 | T.3.3.4.8 | Secure boot / signed update | Platform | — | PART | P7 |
 | T.3.3.4.9 | PKI, CRL ≤24 h, ≥5 roots | Lab CA + CRL | P3-07/09 | SCEP/EST, 5 roots, OCSP | P3 |

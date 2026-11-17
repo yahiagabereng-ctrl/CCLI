@@ -9,7 +9,9 @@
 #include "config/ccli_config.hpp"
 #include "config/modbus_pdc_config.hpp"
 
+#include <algorithm>
 #include <cctype>
+#include <charconv>
 #include <cstdlib>
 #include <fstream>
 #include <string>
@@ -17,6 +19,22 @@
 namespace cci::core {
 
 namespace {
+
+bool tls_timing(const std::string& key, const std::string& value, TlsTimingConfig& cfg) {
+    int* field = nullptr;
+    int minimum = 1;
+    int maximum = 86400;
+    if (key == "tls_revocation_check_s") field = &cfg.revocation_check_s;
+    else if (key == "tls_renegotiation_s") { field = &cfg.renegotiation_s; minimum = 600; }
+    else if (key == "tls_resumption_s") { field = &cfg.resumption_s; maximum = 7200; }
+    else return false;
+    int parsed = 0;
+    const auto result = std::from_chars(value.data(), value.data() + value.size(), parsed);
+    if (result.ec != std::errc{} || result.ptr != value.data() + value.size() ||
+        parsed < minimum || parsed > maximum) cfg.configuration_valid = false;
+    else *field = parsed;
+    return true;
+}
 
 std::size_t indent_of(const std::string& s) {
     std::size_t n = 0;
@@ -69,6 +87,31 @@ bool parse_bool(const std::string& v, bool fallback) {
         return false;
     }
     return fallback;
+}
+bool tls_optional_hash(const std::string& key, const std::string& value,
+                       TlsTimingConfig& cfg) {
+    bool* field = nullptr;
+    if (key == "tls_allow_sha384") field = &cfg.allow_sha384;
+    else if (key == "tls_allow_sha512") field = &cfg.allow_sha512;
+    else return false;
+    if (value == "true" || value == "True" || value == "1" || value == "yes") *field = true;
+    else if (value == "false" || value == "False" || value == "0" || value == "no") *field = false;
+    else cfg.configuration_valid = false;
+    return true;
+}
+bool parse_e2e_bool(const std::string& value, bool& valid) {
+    if (value != "true" && value != "True" && value != "1" && value != "yes" &&
+        value != "false" && value != "False" && value != "0" && value != "no") {
+        valid = false;
+        return false;
+    }
+    return parse_bool(value, false);
+}
+unsigned parse_e2e_unsigned(const std::string& value, bool& valid) {
+    unsigned result = 0;
+    const auto parsed = std::from_chars(value.data(), value.data() + value.size(), result);
+    if (parsed.ec != std::errc{} || parsed.ptr != value.data() + value.size()) valid = false;
+    return result;
 }
 
 }  // namespace
@@ -336,6 +379,66 @@ CcliConfig load_config(const std::string& path) {
             continue;
         }
 
+        if (top == "inverter_modbus" && ind == 2 && !value.empty()) {
+            auto& mb = cfg.inverter_modbus;
+            if (key == "enabled") {
+                mb.enabled = parse_bool(value, mb.enabled);
+            } else if (key == "backend") {
+                if (value == "rtu" || value == "libmodbus") {
+                    mb.backend = ModbusBackendKind::Rtu;
+                } else if (value == "tcp") {
+                    mb.backend = ModbusBackendKind::Tcp;
+                } else if (value == "simulator" || value == "sim") {
+                    mb.backend = ModbusBackendKind::Simulator;
+                }
+            } else if (key == "host") {
+                mb.host = value;
+            } else if (key == "tcp_port" || key == "port") {
+                mb.tcp_port = std::atoi(value.c_str());
+            } else if (key == "device") {
+                mb.device = value;
+            } else if (key == "baud") {
+                mb.baud = std::atoi(value.c_str());
+            } else if (key == "parity") {
+                mb.parity = value.empty() ? 'N' : value[0];
+            } else if (key == "slave_id") {
+                mb.slave_id = std::atoi(value.c_str());
+            } else if (key == "poll_ms") {
+                mb.poll_ms = std::atoi(value.c_str());
+            } else if (key == "timeout_ms") {
+                mb.timeout_ms = std::atoi(value.c_str());
+            } else if (key == "retries") {
+                mb.retries = std::atoi(value.c_str());
+            } else if (key == "reg_active_power") {
+                mb.reg_active_power = std::atoi(value.c_str());
+            } else if (key == "reg_active_power_count") {
+                mb.reg_active_power_count = std::atoi(value.c_str());
+            } else if (key == "reg_reactive_power") {
+                mb.reg_reactive_power = std::atoi(value.c_str());
+            } else if (key == "reg_reactive_power_count") {
+                mb.reg_reactive_power_count = std::atoi(value.c_str());
+            } else if (key == "reg_line_voltage") {
+                mb.reg_line_voltage = std::atoi(value.c_str());
+            } else if (key == "reg_line_voltage_count") {
+                mb.reg_line_voltage_count = std::atoi(value.c_str());
+            } else if (key == "line_voltage_scale") {
+                mb.line_voltage_scale = std::strtod(value.c_str(), nullptr);
+            } else if (key == "power_scale") {
+                mb.power_scale = std::strtod(value.c_str(), nullptr);
+            } else if (key == "reactive_scale") {
+                mb.reactive_scale = std::strtod(value.c_str(), nullptr);
+            } else if (key == "float_word_swap") {
+                mb.float_word_swap = parse_bool(value, mb.float_word_swap);
+            } else if (key == "trace") {
+                mb.trace = parse_bool(value, mb.trace);
+            }
+            continue;
+        }
+
+        if ((top == "iec104" || top == "mms") && ind == 2 && value.empty()) {
+            tls_timing(key, value, top == "mms" ? static_cast<TlsTimingConfig&>(cfg.mms.tls)
+                                               : static_cast<TlsTimingConfig&>(cfg.iec104.tls));
+        }
         if (top == "iec104" && ind == 2 && !value.empty()) {
             if (key == "enabled") {
                 cfg.iec104.enabled = parse_bool(value, cfg.iec104.enabled);
@@ -387,10 +490,18 @@ CcliConfig load_config(const std::string& path) {
                 cfg.iec104.tls.ca_cert = value;
             } else if (key == "tls_client_cert") {
                 cfg.iec104.tls.client_cert = value;
+            } else if (key == "tls_allowed_client_cert") {
+                cfg.iec104.tls.allowed_client_certs.push_back(value);
+            } else if (key == "tls_crl") {
+                cfg.iec104.tls.crl_path = value;
+            } else if (tls_optional_hash(key, value, cfg.iec104.tls)) {
+            } else if (tls_timing(key, value, cfg.iec104.tls)) {
             }
             continue;
         }
 
+        if (top == "mms" && ind == 2 && value.empty() && key.rfind("e2e_", 0) == 0)
+            cfg.mms.e2e.configuration_valid = false;
         if (top == "mms" && ind == 2 && !value.empty()) {
             if (key == "enabled") {
                 cfg.mms.enabled = parse_bool(value, cfg.mms.enabled);
@@ -404,6 +515,10 @@ CcliConfig load_config(const std::string& path) {
                 cfg.mms.tls.own_key = value;
             } else if (key == "tls_own_cert") {
                 cfg.mms.tls.own_cert = value;
+            } else if (key == "tls_additional_own_key") {
+                cfg.mms.tls.additional_own_key = value;
+            } else if (key == "tls_additional_own_cert") {
+                cfg.mms.tls.additional_own_cert = value;
             } else if (key == "tls_acse_cert") {
                 cfg.mms.tls.acse_cert = value;
             } else if (key == "tls_acse_key") {
@@ -422,11 +537,19 @@ CcliConfig load_config(const std::string& path) {
                 cfg.mms.tls.crl_path = value;
             } else if (key == "tls_revoked_cert") {
                 cfg.mms.tls.revoked_cert = value;
+            } else if (key == "tls_additional_client_cert") {
+                cfg.mms.tls.additional_client_cert = value;
+            } else if (key == "tls_allowed_client_cert") {
+                cfg.mms.tls.allowed_client_certs.push_back(value);
             } else if (key == "tls_chain_validation") {
                 cfg.mms.tls.chain_validation =
                     parse_bool(value, cfg.mms.tls.chain_validation);
+            } else if (tls_optional_hash(key, value, cfg.mms.tls)) {
+            } else if (tls_timing(key, value, cfg.mms.tls)) {
             } else if (key == "comms_loss_fallback_s") {
                 cfg.mms.comms_loss_fallback_s = std::atoi(value.c_str());
+            } else if (key == "aggregator_plant_outputs_enabled") {
+                cfg.mms.aggregator_plant_outputs_enabled = parse_bool(value, false);
             } else if (key == "setpoint_min_interval_s") {
                 cfg.mms.setpoint_min_interval_s = std::atoi(value.c_str());
             } else if (key == "gnss_poll_s") {
@@ -438,6 +561,42 @@ CcliConfig load_config(const std::string& path) {
                 cfg.mms.chrony_poll = parse_bool(value, cfg.mms.chrony_poll);
             } else if (key == "model_cfg") {
                 cfg.mms.model_cfg_path = value;
+            } else if (key == "rbac_policy") {
+                cfg.mms.rbac_policy_path = value;
+            } else if (key == "rbac_profile_a") {
+                cfg.mms.rbac_profile_a = parse_bool(value, cfg.mms.rbac_profile_a);
+            } else if (key == "rbac_owner_cert") {
+                cfg.mms.rbac_owner_cert = value;
+            } else if (key == "rbac_activation_state") {
+                cfg.mms.rbac_activation_state = value;
+            } else if (key == "rbac_identity_ca") {
+                cfg.mms.rbac_identity_ca = value;
+            } else if (key == "rbac_identity_crl") {
+                cfg.mms.rbac_identity_crl = value;
+            } else if (key == "e2e_enabled") {
+                cfg.mms.e2e.enabled = parse_e2e_bool(value, cfg.mms.e2e.configuration_valid);
+            } else if (key == "e2e_allow_compatibility") {
+                cfg.mms.e2e.allow_compatibility = parse_e2e_bool(value, cfg.mms.e2e.configuration_valid);
+            } else if (key == "e2e_certificate") {
+                cfg.mms.e2e.certificate = value;
+            } else if (key == "e2e_private_key") {
+                cfg.mms.e2e.private_key = value;
+            } else if (key == "e2e_trust_anchors") {
+                cfg.mms.e2e.trust_anchors = value;
+            } else if (key == "e2e_crls") {
+                cfg.mms.e2e.crls = value;
+            } else if (key == "e2e_certificate_path") {
+                cfg.mms.e2e.certificate_path.push_back(value);
+            } else if (key == "e2e_ap_title") {
+                cfg.mms.e2e.ap_title = value;
+            } else if (key == "e2e_ae_qualifier") {
+                cfg.mms.e2e.ae_qualifier = parse_e2e_unsigned(value, cfg.mms.e2e.configuration_valid);
+            } else if (key == "e2e_signature_algorithm") {
+                cfg.mms.e2e.signature_algorithm = value;
+            } else if (key == "e2e_rekey_seconds") {
+                cfg.mms.e2e.rekey_seconds = parse_e2e_unsigned(value, cfg.mms.e2e.configuration_valid);
+            } else if (key.rfind("e2e_", 0) == 0) {
+                cfg.mms.e2e.configuration_valid = false;
             }
             continue;
         }
@@ -516,10 +675,38 @@ CcliConfig load_config(const std::string& path) {
             } else if (key == "syslog_enabled") {
                 cfg.event_log.syslog_enabled =
                     parse_bool(value, cfg.event_log.syslog_enabled);
+            } else if (key == "platform_audit_enabled") {
+                cfg.event_log.platform_audit_enabled =
+                    parse_bool(value, cfg.event_log.platform_audit_enabled);
+            } else if (key == "platform_updater_audit_path") {
+                cfg.event_log.platform_updater_audit_path = value;
             } else if (key == "syslog_host") {
                 cfg.event_log.syslog_host = value;
             } else if (key == "syslog_port") {
-                cfg.event_log.syslog_port = std::atoi(value.c_str());
+                int port = 0;
+                const auto result = std::from_chars(value.data(), value.data() + value.size(), port);
+                cfg.event_log.syslog_port = result.ec == std::errc{} && result.ptr == value.data() + value.size() ? port : 0;
+            } else if (key == "syslog_source") {
+                cfg.event_log.syslog_source = value;
+            } else if (key == "syslog_app_name") {
+                cfg.event_log.syslog_app_name = value;
+            } else if (key == "syslog_tls_ca") {
+                cfg.event_log.syslog_tls_ca = value;
+            } else if (key == "syslog_tls_cert") {
+                cfg.event_log.syslog_tls_cert = value;
+            } else if (key == "syslog_tls_key") {
+                cfg.event_log.syslog_tls_key = value;
+            } else if (key == "syslog_tls_crl") {
+                cfg.event_log.syslog_tls_crl = value;
+            } else if (key == "syslog_tls_peer_sha256") {
+                cfg.event_log.syslog_tls_peer_sha256 = value;
+            } else if (key == "syslog_revocation_check_s" || key == "syslog_renegotiation_s" || key == "syslog_resumption_s") {
+                int seconds = 0;
+                const auto result = std::from_chars(value.data(), value.data() + value.size(), seconds);
+                if (result.ec != std::errc{} || result.ptr != value.data() + value.size()) seconds = 0;
+                if (key == "syslog_revocation_check_s") cfg.event_log.syslog_revocation_check_s = seconds;
+                else if (key == "syslog_renegotiation_s") cfg.event_log.syslog_renegotiation_s = seconds;
+                else cfg.event_log.syslog_resumption_s = seconds;
             } else if (key == "watch_ifaces") {
                 cfg.event_log.watch_ifaces = value;
             }
@@ -527,6 +714,24 @@ CcliConfig load_config(const std::string& path) {
     }
 
     apply_modbus_pdc_defaults(cfg.modbus);
+    apply_modbus_pdc_defaults(cfg.inverter_modbus);
+    auto& watched = cfg.event_log.platform_credential_paths;
+    auto add_path = [&watched](const std::string& path) {
+        if (!path.empty() && std::find(watched.begin(), watched.end(), path) == watched.end())
+            watched.push_back(path);
+    };
+    for (const auto& path : {cfg.mms.tls.own_key, cfg.mms.tls.own_cert,
+         cfg.mms.tls.additional_own_key, cfg.mms.tls.additional_own_cert,
+         cfg.mms.tls.acse_cert, cfg.mms.tls.acse_key, cfg.mms.tls.ca_cert, cfg.mms.tls.client_cert,
+         cfg.mms.tls.acse_client_cert, cfg.mms.tls.viewer_cert, cfg.mms.tls.acse_viewer_cert,
+         cfg.mms.tls.crl_path, cfg.mms.tls.revoked_cert, cfg.mms.tls.additional_client_cert,
+         cfg.mms.rbac_owner_cert, cfg.mms.rbac_policy_path,
+         cfg.iec104.tls.own_key, cfg.iec104.tls.own_cert, cfg.iec104.tls.ca_cert,
+         cfg.iec104.tls.client_cert, cfg.iec104.tls.crl_path,
+         cfg.event_log.syslog_tls_ca, cfg.event_log.syslog_tls_cert,
+         cfg.event_log.syslog_tls_key, cfg.event_log.syslog_tls_crl}) add_path(path);
+    for (const auto& path : cfg.mms.tls.allowed_client_certs) add_path(path);
+    for (const auto& path : cfg.iec104.tls.allowed_client_certs) add_path(path);
     cfg.loaded_from_file = true;
     return cfg;
 }

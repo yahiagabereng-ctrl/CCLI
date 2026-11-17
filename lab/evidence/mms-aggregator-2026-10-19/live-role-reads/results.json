@@ -1,0 +1,3026 @@
+{
+  "started_utc": "2026-10-19T13:06:49.951919+00:00",
+  "mode": "live-read-only",
+  "host": "192.168.0.1",
+  "port": 3782,
+  "policy_sha256": {
+    "commissioning-manifest.xml": "6571986abeb2fb998683738239a2c66f1517e06f5163f58513788a8a514539b4",
+    "commissioning-policy.xml": "d9461c767b16e210acc0270bcd5672f416da177e8b865c4277c3c9663db19a3e",
+    "commissioning-scopes.xml": "41385c990f18b7530a97cb86feb5bb8cb3e7da4257d22a6167b9f4c33373209b",
+    "identity-bindings.xml": "a3cfa2b5419342c4df48c2e1279ed9c0ec9351411a6b5906814c7148a4a5c60e",
+    "permission-library.xml": "c984e3ace0e0e2efeb1e7ee864a36ee430d8411bb172c78d52e098784e337df1"
+  },
+  "limitations": [
+    "Aggregator P is an export ceiling, not signed import/export tracking; own datasets/reports are not allocated.",
+    "Representative service/object checks; this is not exhaustive certification.",
+    "Dynamic dataset services are globally disabled and do not establish per-role permissions.",
+    "Isolated mode rotates the explicit TLS peer pin per identity; live TLS pins remain unchanged."
+  ],
+  "finished_utc": "2026-10-19T13:07:04.689580+00:00",
+  "identities": [
+    {
+      "label": "dso",
+      "roles": [
+        -1
+      ],
+      "authentication": "tls",
+      "certificate_sha256": "5c00a846ec806eff12c6f62bb426b270c35a51ccc096f8157e02f7cd53d4d094",
+      "transport_sha256": "5c00a846ec806eff12c6f62bb426b270c35a51ccc096f8157e02f7cd53d4d094"
+    },
+    {
+      "label": "aggregator",
+      "roles": [
+        -2
+      ],
+      "authentication": "tls",
+      "certificate_sha256": "4bec0222fc88b8e9d5adc502d2186de111bef11607631791de4507ea8f186f18",
+      "transport_sha256": "4bec0222fc88b8e9d5adc502d2186de111bef11607631791de4507ea8f186f18"
+    },
+    {
+      "label": "viewer-r0",
+      "roles": [
+        0
+      ],
+      "authentication": "tls",
+      "certificate_sha256": "baeb01a7c58672f731a721c989cab39dfd035631fccbb79aed864ba01e7f899d",
+      "transport_sha256": "baeb01a7c58672f731a721c989cab39dfd035631fccbb79aed864ba01e7f899d"
+    },
+    {
+      "label": "operator-r0",
+      "roles": [
+        1
+      ],
+      "authentication": "tls",
+      "certificate_sha256": "7588c34bb8a8dfbbb0ddea68b64f02a96291505b7cb3b3359cb379ba4677d016",
+      "transport_sha256": "7588c34bb8a8dfbbb0ddea68b64f02a96291505b7cb3b3359cb379ba4677d016"
+    },
+    {
+      "label": "engineer-r0",
+      "roles": [
+        2
+      ],
+      "authentication": "tls",
+      "certificate_sha256": "5c2ae825e9b2a0b9ea38630ceab09cd4c355d5ec8bc610b5dff83706880b1acd",
+      "transport_sha256": "5c2ae825e9b2a0b9ea38630ceab09cd4c355d5ec8bc610b5dff83706880b1acd"
+    },
+    {
+      "label": "installer-r0",
+      "roles": [
+        3
+      ],
+      "authentication": "tls",
+      "certificate_sha256": "cfc5498f44a6473ca5d0a79684b9d4d96143678e6144be898c423955b3cd3d32",
+      "transport_sha256": "cfc5498f44a6473ca5d0a79684b9d4d96143678e6144be898c423955b3cd3d32"
+    },
+    {
+      "label": "secadm-r0",
+      "roles": [
+        4
+      ],
+      "authentication": "tls",
+      "certificate_sha256": "5ff8880ec332cdd1dba72c69fdd48c4bbdd17bd02044f0fc3cb827f38a3f4e01",
+      "transport_sha256": "5ff8880ec332cdd1dba72c69fdd48c4bbdd17bd02044f0fc3cb827f38a3f4e01"
+    },
+    {
+      "label": "secaud-r0",
+      "roles": [
+        5
+      ],
+      "authentication": "tls",
+      "certificate_sha256": "fa2037e092c9c7883e520068a2a94385288d048a4c5b0757328155565b103fd0",
+      "transport_sha256": "fa2037e092c9c7883e520068a2a94385288d048a4c5b0757328155565b103fd0"
+    },
+    {
+      "label": "rbacmnt-r0",
+      "roles": [
+        6
+      ],
+      "authentication": "tls",
+      "certificate_sha256": "9fb153075747396dbe53d39818ba55964ab5dccb09fee35d0d8a592dbb2fa9c2",
+      "transport_sha256": "9fb153075747396dbe53d39818ba55964ab5dccb09fee35d0d8a592dbb2fa9c2"
+    },
+    {
+      "label": "viewer-r1",
+      "roles": [
+        0
+      ],
+      "authentication": "tls",
+      "certificate_sha256": "9b8c3c556f7c48590202f91595624a867c0a3160109795f20bfd87f1e7ec9577",
+      "transport_sha256": "9b8c3c556f7c48590202f91595624a867c0a3160109795f20bfd87f1e7ec9577"
+    },
+    {
+      "label": "operator-r1",
+      "roles": [
+        1
+      ],
+      "authentication": "tls",
+      "certificate_sha256": "7c782c90ecf817ab633d2680628e93d727bd88d8bc887bf139fe101f85397550",
+      "transport_sha256": "7c782c90ecf817ab633d2680628e93d727bd88d8bc887bf139fe101f85397550"
+    },
+    {
+      "label": "engineer-r1",
+      "roles": [
+        2
+      ],
+      "authentication": "tls",
+      "certificate_sha256": "94c81e48f5f0d53a2fbaa5470bbf36f6e7192a7105426ba2386641750c644427",
+      "transport_sha256": "94c81e48f5f0d53a2fbaa5470bbf36f6e7192a7105426ba2386641750c644427"
+    },
+    {
+      "label": "installer-r1",
+      "roles": [
+        3
+      ],
+      "authentication": "tls",
+      "certificate_sha256": "23857285e04b02d646cef1756c5f508ff23ee9468193c5d9745244724d1d7a3e",
+      "transport_sha256": "23857285e04b02d646cef1756c5f508ff23ee9468193c5d9745244724d1d7a3e"
+    },
+    {
+      "label": "secadm-r1",
+      "roles": [
+        4
+      ],
+      "authentication": "tls",
+      "certificate_sha256": "a5eae8dfd0835c52086a268d648d8dab13a113ffbd50ad15041c54fdf2e1f8b4",
+      "transport_sha256": "a5eae8dfd0835c52086a268d648d8dab13a113ffbd50ad15041c54fdf2e1f8b4"
+    },
+    {
+      "label": "secaud-r1",
+      "roles": [
+        5
+      ],
+      "authentication": "tls",
+      "certificate_sha256": "54bb933aa95bd11fe37eb3847495478004f1bf792bdd8a3bbd25a0471bd48ac2",
+      "transport_sha256": "54bb933aa95bd11fe37eb3847495478004f1bf792bdd8a3bbd25a0471bd48ac2"
+    },
+    {
+      "label": "rbacmnt-r1",
+      "roles": [
+        6
+      ],
+      "authentication": "tls",
+      "certificate_sha256": "e2c7c6cfc16d6013ca32daed870fcd5422cd49a23f5ab1ad183c92a877d0fb47",
+      "transport_sha256": "e2c7c6cfc16d6013ca32daed870fcd5422cd49a23f5ab1ad183c92a877d0fb47"
+    },
+    {
+      "label": "multi-viewer-engineer",
+      "roles": [
+        0,
+        2
+      ],
+      "authentication": "tls",
+      "certificate_sha256": "267aab50897a23436246e4146094bf534a136ee03ef8133564627577aa710590",
+      "transport_sha256": "267aab50897a23436246e4146094bf534a136ee03ef8133564627577aa710590"
+    },
+    {
+      "label": "dual-dso",
+      "roles": [
+        -1
+      ],
+      "authentication": "certificate",
+      "certificate_sha256": "e48c2cee2237eb58fd821055335e00bd9c91fe9c04c7b03883aa320c7539cdd8",
+      "transport_sha256": "0d01c02c2b98759bd39138e3be0c7cd4853c9be7164a96e382765a2cf4aea277"
+    },
+    {
+      "label": "dual-viewer",
+      "roles": [
+        0
+      ],
+      "authentication": "certificate",
+      "certificate_sha256": "331699803aeed3904ab1a0d0ab03ae01a58f5eacff75c785da513c6544800b64",
+      "transport_sha256": "9b7960ec8867526ccfdb20ae3f7fe531f9550fdc8329a0605eeb304f258ce9ef"
+    }
+  ],
+  "checks": [
+    {
+      "identity": "dso",
+      "case": "association",
+      "expected": "allow",
+      "passed": true
+    },
+    {
+      "identity": "dso",
+      "case": "measurement-read",
+      "expected": "allow",
+      "passed": true,
+      "command": "read",
+      "reference": "CCI016_01LD_Plant/PdCMMXU1.TotW.mag.f",
+      "fc": "MX",
+      "exit_code": 0,
+      "events": [
+        {
+          "kind": "read",
+          "reference": "CCI016_01LD_Plant/PdCMMXU1.TotW.mag.f",
+          "error": 0,
+          "error_text": "",
+          "value": "0.000000",
+          "observed_utc": "2026-10-19T13:06:50.349887+00:00"
+        }
+      ],
+      "bypass_ui_guard": false
+    },
+    {
+      "identity": "dso",
+      "case": "dso-state-read",
+      "expected": "allow",
+      "passed": true,
+      "command": "read",
+      "reference": "CCI016_01LD_Plant/WlimDWMX1.Mod.stVal",
+      "fc": "ST",
+      "exit_code": 0,
+      "events": [
+        {
+          "kind": "read",
+          "reference": "CCI016_01LD_Plant/WlimDWMX1.Mod.stVal",
+          "error": 0,
+          "error_text": "",
+          "value": "5",
+          "observed_utc": "2026-10-19T13:06:50.390582+00:00"
+        }
+      ],
+      "bypass_ui_guard": false
+    },
+    {
+      "identity": "dso",
+      "case": "aggregator-scope-read",
+      "expected": "access-denied",
+      "passed": true,
+      "command": "read",
+      "reference": "CCI016_01LD_Plant/WSaDAGC1.Mod.stVal",
+      "fc": "ST",
+      "exit_code": 1,
+      "events": [
+        {
+          "kind": "read",
+          "reference": "CCI016_01LD_Plant/WSaDAGC1.Mod.stVal",
+          "error": 21,
+          "error_text": "access-denied",
+          "value": "error 3",
+          "observed_utc": "2026-10-19T13:06:50.431340+00:00"
+        }
+      ],
+      "bypass_ui_guard": false
+    },
+    {
+      "identity": "dso",
+      "case": "discovery-in-scope",
+      "expected": "allow",
+      "passed": true,
+      "command": "browse",
+      "reference": "CCI016_01LD_Plant/WlimDWMX1",
+      "fc": "ST",
+      "exit_code": 0,
+      "events": [
+        {
+          "kind": "directory",
+          "reference": "CCI016_01LD_Plant/WlimDWMX1",
+          "error": 0,
+          "error_text": "",
+          "value": "objects",
+          "observed_utc": "2026-10-19T13:06:50.461985+00:00"
+        },
+        {
+          "kind": "entry",
+          "reference": "CCI016_01LD_Plant/WlimDWMX1",
+          "error": 0,
+          "error_text": "",
+          "value": "Mod",
+          "observed_utc": "2026-10-19T13:06:50.462018+00:00"
+        },
+        {
+          "kind": "entry",
+          "reference": "CCI016_01LD_Plant/WlimDWMX1",
+          "error": 0,
+          "error_text": "",
+          "value": "WMaxSptPct",
+          "observed_utc": "2026-10-19T13:06:50.462148+00:00"
+        }
+      ],
+      "bypass_ui_guard": false
+    },
+    {
+      "identity": "dso",
+      "case": "dataset-directory",
+      "expected": "allow",
+      "passed": true,
+      "command": "dataset-members",
+      "reference": "CCI016_01LD_Plant/LLN0.DS_R_PdC_Mis4sec",
+      "fc": "ST",
+      "exit_code": 0,
+      "events": [
+        {
+          "kind": "dataset-members",
+          "reference": "CCI016_01LD_Plant/LLN0.DS_R_PdC_Mis4sec",
+          "error": 0,
+          "error_text": "",
+          "value": "static",
+          "observed_utc": "2026-10-19T13:06:50.492682+00:00"
+        },
+        {
+          "kind": "entry",
+          "reference": "CCI016_01LD_Plant/LLN0.DS_R_PdC_Mis4sec",
+          "error": 0,
+          "error_text": "",
+          "value": "CCI016_01LD_Plant/PdCMMXU1.TotW[MX]",
+          "observed_utc": "2026-10-19T13:06:50.492715+00:00"
+        },
+        {
+          "kind": "entry",
+          "reference": "CCI016_01LD_Plant/LLN0.DS_R_PdC_Mis4sec",
+          "error": 0,
+          "error_text": "",
+          "value": "CCI016_01LD_Plant/PdCMMXU1.TotVAr[MX]",
+          "observed_utc": "2026-10-19T13:06:50.492721+00:00"
+        },
+        {
+          "kind": "entry",
+          "reference": "CCI016_01LD_Plant/LLN0.DS_R_PdC_Mis4sec",
+          "error": 0,
+          "error_text": "",
+          "value": "CCI016_01LD_Plant/PdCMMXU1.PPV.phsAB.cVal.mag.f[MX]",
+          "observed_utc": "2026-10-19T13:06:50.492726+00:00"
+        }
+      ],
+      "bypass_ui_guard": false
+    },
+    {
+      "identity": "dso",
+      "case": "dataset-values",
+      "expected": "allow",
+      "passed": true,
+      "command": "dataset-read",
+      "reference": "CCI016_01LD_Plant/LLN0.DS_R_PdC_Mis4sec",
+      "fc": "ST",
+      "exit_code": 0,
+      "events": [
+        {
+          "kind": "dataset-read",
+          "reference": "CCI016_01LD_Plant/LLN0.DS_R_PdC_Mis4sec",
+          "error": 0,
+          "error_text": "",
+          "value": "{{{0.000000},1100000001000,20261019122940.419Z},{{0.000000},1100000001000,20261019122940.419Z},20.000000}",
+          "observed_utc": "2026-10-19T13:06:50.543325+00:00"
+        }
+      ],
+      "bypass_ui_guard": false
+    },
+    {
+      "identity": "dso",
+      "case": "report-block-read",
+      "expected": "allow",
+      "passed": true,
+      "command": "rcb-read",
+      "reference": "CCI016_01LD_Plant/LLN0.RP.urcb_PdC_Mis4sec",
+      "fc": "ST",
+      "exit_code": 0,
+      "events": [
+        {
+          "kind": "rcb",
+          "reference": "CCI016_01LD_Plant/LLN0.RP.urcb_PdC_Mis4sec",
+          "error": 0,
+          "error_text": "",
+          "value": "enabled=false dataset=CCI016_01LD_Plant/LLN0$DS_R_PdC_Mis4sec",
+          "observed_utc": "2026-10-19T13:06:50.573813+00:00"
+        }
+      ],
+      "bypass_ui_guard": false
+    },
+    {
+      "identity": "aggregator",
+      "case": "association",
+      "expected": "allow",
+      "passed": true
+    },
+    {
+      "identity": "aggregator",
+      "case": "measurement-read",
+      "expected": "access-denied",
+      "passed": true,
+      "command": "read",
+      "reference": "CCI016_01LD_Plant/PdCMMXU1.TotW.mag.f",
+      "fc": "MX",
+      "exit_code": 1,
+      "events": [
+        {
+          "kind": "read",
+          "reference": "CCI016_01LD_Plant/PdCMMXU1.TotW.mag.f",
+          "error": 21,
+          "error_text": "access-denied",
+          "value": "error 3",
+          "observed_utc": "2026-10-19T13:06:50.912976+00:00"
+        }
+      ],
+      "bypass_ui_guard": false
+    },
+    {
+      "identity": "aggregator",
+      "case": "dso-state-read",
+      "expected": "access-denied",
+      "passed": true,
+      "command": "read",
+      "reference": "CCI016_01LD_Plant/WlimDWMX1.Mod.stVal",
+      "fc": "ST",
+      "exit_code": 1,
+      "events": [
+        {
+          "kind": "read",
+          "reference": "CCI016_01LD_Plant/WlimDWMX1.Mod.stVal",
+          "error": 21,
+          "error_text": "access-denied",
+          "value": "error 3",
+          "observed_utc": "2026-10-19T13:06:50.943652+00:00"
+        }
+      ],
+      "bypass_ui_guard": false
+    },
+    {
+      "identity": "aggregator",
+      "case": "aggregator-scope-read",
+      "expected": "allow",
+      "passed": true,
+      "command": "read",
+      "reference": "CCI016_01LD_Plant/WSaDAGC1.Mod.stVal",
+      "fc": "ST",
+      "exit_code": 0,
+      "events": [
+        {
+          "kind": "read",
+          "reference": "CCI016_01LD_Plant/WSaDAGC1.Mod.stVal",
+          "error": 0,
+          "error_text": "",
+          "value": "5",
+          "observed_utc": "2026-10-19T13:06:50.984564+00:00"
+        }
+      ],
+      "bypass_ui_guard": false
+    },
+    {
+      "identity": "aggregator",
+      "case": "discovery-in-scope",
+      "expected": "allow",
+      "passed": true,
+      "command": "browse",
+      "reference": "CCI016_01LD_Plant/WSaDAGC1",
+      "fc": "ST",
+      "exit_code": 0,
+      "events": [
+        {
+          "kind": "directory",
+          "reference": "CCI016_01LD_Plant/WSaDAGC1",
+          "error": 0,
+          "error_text": "",
+          "value": "objects",
+          "observed_utc": "2026-10-19T13:06:51.026105+00:00"
+        },
+        {
+          "kind": "entry",
+          "reference": "CCI016_01LD_Plant/WSaDAGC1",
+          "error": 0,
+          "error_text": "",
+          "value": "Mod",
+          "observed_utc": "2026-10-19T13:06:51.026143+00:00"
+        },
+        {
+          "kind": "entry",
+          "reference": "CCI016_01LD_Plant/WSaDAGC1",
+          "error": 0,
+          "error_text": "",
+          "value": "WSptPct",
+          "observed_utc": "2026-10-19T13:06:51.026149+00:00"
+        }
+      ],
+      "bypass_ui_guard": false
+    },
+    {
+      "identity": "aggregator",
+      "case": "dataset-directory",
+      "expected": "access-denied",
+      "passed": true,
+      "command": "dataset-members",
+      "reference": "CCI016_01LD_Plant/LLN0.DS_R_PdC_Mis4sec",
+      "fc": "ST",
+      "exit_code": 1,
+      "events": [
+        {
+          "kind": "dataset-members",
+          "reference": "CCI016_01LD_Plant/LLN0.DS_R_PdC_Mis4sec",
+          "error": 21,
+          "error_text": "access-denied",
+          "value": "static",
+          "observed_utc": "2026-10-19T13:06:51.056682+00:00"
+        }
+      ],
+      "bypass_ui_guard": false
+    },
+    {
+      "identity": "aggregator",
+      "case": "dataset-values",
+      "expected": "access-denied",
+      "passed": true,
+      "command": "dataset-read",
+      "reference": "CCI016_01LD_Plant/LLN0.DS_R_PdC_Mis4sec",
+      "fc": "ST",
+      "exit_code": 1,
+      "events": [
+        {
+          "kind": "dataset-read",
+          "reference": "CCI016_01LD_Plant/LLN0.DS_R_PdC_Mis4sec",
+          "error": 21,
+          "error_text": "access-denied",
+          "value": "no dataset returned",
+          "observed_utc": "2026-10-19T13:06:51.087335+00:00"
+        }
+      ],
+      "bypass_ui_guard": false
+    },
+    {
+      "identity": "aggregator",
+      "case": "report-block-read",
+      "expected": "access-denied",
+      "passed": true,
+      "command": "rcb-read",
+      "reference": "CCI016_01LD_Plant/LLN0.RP.urcb_PdC_Mis4sec",
+      "fc": "ST",
+      "exit_code": 1,
+      "events": [
+        {
+          "kind": "rcb-read",
+          "reference": "CCI016_01LD_Plant/LLN0.RP.urcb_PdC_Mis4sec",
+          "error": 21,
+          "error_text": "access-denied",
+          "value": "",
+          "observed_utc": "2026-10-19T13:06:51.118046+00:00"
+        }
+      ],
+      "bypass_ui_guard": false
+    },
+    {
+      "identity": "viewer-r0",
+      "case": "association",
+      "expected": "allow",
+      "passed": true
+    },
+    {
+      "identity": "viewer-r0",
+      "case": "measurement-read",
+      "expected": "allow",
+      "passed": true,
+      "command": "read",
+      "reference": "CCI016_01LD_Plant/PdCMMXU1.TotW.mag.f",
+      "fc": "MX",
+      "exit_code": 0,
+      "events": [
+        {
+          "kind": "read",
+          "reference": "CCI016_01LD_Plant/PdCMMXU1.TotW.mag.f",
+          "error": 0,
+          "error_text": "",
+          "value": "0.000000",
+          "observed_utc": "2026-10-19T13:06:51.581247+00:00"
+        }
+      ],
+      "bypass_ui_guard": false
+    },
+    {
+      "identity": "viewer-r0",
+      "case": "dso-state-read",
+      "expected": "allow",
+      "passed": true,
+      "command": "read",
+      "reference": "CCI016_01LD_Plant/WlimDWMX1.Mod.stVal",
+      "fc": "ST",
+      "exit_code": 0,
+      "events": [
+        {
+          "kind": "read",
+          "reference": "CCI016_01LD_Plant/WlimDWMX1.Mod.stVal",
+          "error": 0,
+          "error_text": "",
+          "value": "5",
+          "observed_utc": "2026-10-19T13:06:51.611703+00:00"
+        }
+      ],
+      "bypass_ui_guard": false
+    },
+    {
+      "identity": "viewer-r0",
+      "case": "discovery-in-scope",
+      "expected": "allow",
+      "passed": true,
+      "command": "browse",
+      "reference": "CCI016_01LD_Plant/WlimDWMX1",
+      "fc": "ST",
+      "exit_code": 0,
+      "events": [
+        {
+          "kind": "directory",
+          "reference": "CCI016_01LD_Plant/WlimDWMX1",
+          "error": 0,
+          "error_text": "",
+          "value": "objects",
+          "observed_utc": "2026-10-19T13:06:51.653076+00:00"
+        },
+        {
+          "kind": "entry",
+          "reference": "CCI016_01LD_Plant/WlimDWMX1",
+          "error": 0,
+          "error_text": "",
+          "value": "Mod",
+          "observed_utc": "2026-10-19T13:06:51.653114+00:00"
+        },
+        {
+          "kind": "entry",
+          "reference": "CCI016_01LD_Plant/WlimDWMX1",
+          "error": 0,
+          "error_text": "",
+          "value": "WMaxSptPct",
+          "observed_utc": "2026-10-19T13:06:51.653119+00:00"
+        }
+      ],
+      "bypass_ui_guard": false
+    },
+    {
+      "identity": "viewer-r0",
+      "case": "dataset-directory",
+      "expected": "access-denied",
+      "passed": true,
+      "command": "dataset-members",
+      "reference": "CCI016_01LD_Plant/LLN0.DS_R_PdC_Mis4sec",
+      "fc": "ST",
+      "exit_code": 1,
+      "events": [
+        {
+          "kind": "dataset-members",
+          "reference": "CCI016_01LD_Plant/LLN0.DS_R_PdC_Mis4sec",
+          "error": 21,
+          "error_text": "access-denied",
+          "value": "static",
+          "observed_utc": "2026-10-19T13:06:51.683606+00:00"
+        }
+      ],
+      "bypass_ui_guard": false
+    },
+    {
+      "identity": "viewer-r0",
+      "case": "dataset-values",
+      "expected": "access-denied",
+      "passed": true,
+      "command": "dataset-read",
+      "reference": "CCI016_01LD_Plant/LLN0.DS_R_PdC_Mis4sec",
+      "fc": "ST",
+      "exit_code": 1,
+      "events": [
+        {
+          "kind": "dataset-read",
+          "reference": "CCI016_01LD_Plant/LLN0.DS_R_PdC_Mis4sec",
+          "error": 21,
+          "error_text": "access-denied",
+          "value": "no dataset returned",
+          "observed_utc": "2026-10-19T13:06:51.714260+00:00"
+        }
+      ],
+      "bypass_ui_guard": false
+    },
+    {
+      "identity": "viewer-r0",
+      "case": "report-block-read",
+      "expected": "allow",
+      "passed": true,
+      "command": "rcb-read",
+      "reference": "CCI016_01LD_Plant/LLN0.RP.urcb_PdC_Mis4sec",
+      "fc": "ST",
+      "exit_code": 0,
+      "events": [
+        {
+          "kind": "rcb",
+          "reference": "CCI016_01LD_Plant/LLN0.RP.urcb_PdC_Mis4sec",
+          "error": 0,
+          "error_text": "",
+          "value": "enabled=false dataset=CCI016_01LD_Plant/LLN0$DS_R_PdC_Mis4sec",
+          "observed_utc": "2026-10-19T13:06:51.755200+00:00"
+        }
+      ],
+      "bypass_ui_guard": false
+    },
+    {
+      "identity": "operator-r0",
+      "case": "association",
+      "expected": "allow",
+      "passed": true
+    },
+    {
+      "identity": "operator-r0",
+      "case": "measurement-read",
+      "expected": "allow",
+      "passed": true,
+      "command": "read",
+      "reference": "CCI016_01LD_Plant/PdCMMXU1.TotW.mag.f",
+      "fc": "MX",
+      "exit_code": 0,
+      "events": [
+        {
+          "kind": "read",
+          "reference": "CCI016_01LD_Plant/PdCMMXU1.TotW.mag.f",
+          "error": 0,
+          "error_text": "",
+          "value": "0.000000",
+          "observed_utc": "2026-10-19T13:06:52.217499+00:00"
+        }
+      ],
+      "bypass_ui_guard": false
+    },
+    {
+      "identity": "operator-r0",
+      "case": "dso-state-read",
+      "expected": "allow",
+      "passed": true,
+      "command": "read",
+      "reference": "CCI016_01LD_Plant/WlimDWMX1.Mod.stVal",
+      "fc": "ST",
+      "exit_code": 0,
+      "events": [
+        {
+          "kind": "read",
+          "reference": "CCI016_01LD_Plant/WlimDWMX1.Mod.stVal",
+          "error": 0,
+          "error_text": "",
+          "value": "5",
+          "observed_utc": "2026-10-19T13:06:52.248050+00:00"
+        }
+      ],
+      "bypass_ui_guard": false
+    },
+    {
+      "identity": "operator-r0",
+      "case": "discovery-in-scope",
+      "expected": "allow",
+      "passed": true,
+      "command": "browse",
+      "reference": "CCI016_01LD_Plant/WlimDWMX1",
+      "fc": "ST",
+      "exit_code": 0,
+      "events": [
+        {
+          "kind": "directory",
+          "reference": "CCI016_01LD_Plant/WlimDWMX1",
+          "error": 0,
+          "error_text": "",
+          "value": "objects",
+          "observed_utc": "2026-10-19T13:06:52.289532+00:00"
+        },
+        {
+          "kind": "entry",
+          "reference": "CCI016_01LD_Plant/WlimDWMX1",
+          "error": 0,
+          "error_text": "",
+          "value": "Mod",
+          "observed_utc": "2026-10-19T13:06:52.289582+00:00"
+        },
+        {
+          "kind": "entry",
+          "reference": "CCI016_01LD_Plant/WlimDWMX1",
+          "error": 0,
+          "error_text": "",
+          "value": "WMaxSptPct",
+          "observed_utc": "2026-10-19T13:06:52.289592+00:00"
+        }
+      ],
+      "bypass_ui_guard": false
+    },
+    {
+      "identity": "operator-r0",
+      "case": "dataset-directory",
+      "expected": "access-denied",
+      "passed": true,
+      "command": "dataset-members",
+      "reference": "CCI016_01LD_Plant/LLN0.DS_R_PdC_Mis4sec",
+      "fc": "ST",
+      "exit_code": 1,
+      "events": [
+        {
+          "kind": "dataset-members",
+          "reference": "CCI016_01LD_Plant/LLN0.DS_R_PdC_Mis4sec",
+          "error": 21,
+          "error_text": "access-denied",
+          "value": "static",
+          "observed_utc": "2026-10-19T13:06:52.330032+00:00"
+        }
+      ],
+      "bypass_ui_guard": false
+    },
+    {
+      "identity": "operator-r0",
+      "case": "dataset-values",
+      "expected": "access-denied",
+      "passed": true,
+      "command": "dataset-read",
+      "reference": "CCI016_01LD_Plant/LLN0.DS_R_PdC_Mis4sec",
+      "fc": "ST",
+      "exit_code": 1,
+      "events": [
+        {
+          "kind": "dataset-read",
+          "reference": "CCI016_01LD_Plant/LLN0.DS_R_PdC_Mis4sec",
+          "error": 21,
+          "error_text": "access-denied",
+          "value": "no dataset returned",
+          "observed_utc": "2026-10-19T13:06:52.360715+00:00"
+        }
+      ],
+      "bypass_ui_guard": false
+    },
+    {
+      "identity": "operator-r0",
+      "case": "report-block-read",
+      "expected": "allow",
+      "passed": true,
+      "command": "rcb-read",
+      "reference": "CCI016_01LD_Plant/LLN0.RP.urcb_PdC_Mis4sec",
+      "fc": "ST",
+      "exit_code": 0,
+      "events": [
+        {
+          "kind": "rcb",
+          "reference": "CCI016_01LD_Plant/LLN0.RP.urcb_PdC_Mis4sec",
+          "error": 0,
+          "error_text": "",
+          "value": "enabled=false dataset=CCI016_01LD_Plant/LLN0$DS_R_PdC_Mis4sec",
+          "observed_utc": "2026-10-19T13:06:52.391555+00:00"
+        }
+      ],
+      "bypass_ui_guard": false
+    },
+    {
+      "identity": "engineer-r0",
+      "case": "association",
+      "expected": "allow",
+      "passed": true
+    },
+    {
+      "identity": "engineer-r0",
+      "case": "measurement-read",
+      "expected": "allow",
+      "passed": true,
+      "command": "read",
+      "reference": "CCI016_01LD_Plant/PdCMMXU1.TotW.mag.f",
+      "fc": "MX",
+      "exit_code": 0,
+      "events": [
+        {
+          "kind": "read",
+          "reference": "CCI016_01LD_Plant/PdCMMXU1.TotW.mag.f",
+          "error": 0,
+          "error_text": "",
+          "value": "0.000000",
+          "observed_utc": "2026-10-19T13:06:52.807593+00:00"
+        }
+      ],
+      "bypass_ui_guard": false
+    },
+    {
+      "identity": "engineer-r0",
+      "case": "dso-state-read",
+      "expected": "allow",
+      "passed": true,
+      "command": "read",
+      "reference": "CCI016_01LD_Plant/WlimDWMX1.Mod.stVal",
+      "fc": "ST",
+      "exit_code": 0,
+      "events": [
+        {
+          "kind": "read",
+          "reference": "CCI016_01LD_Plant/WlimDWMX1.Mod.stVal",
+          "error": 0,
+          "error_text": "",
+          "value": "5",
+          "observed_utc": "2026-10-19T13:06:52.838497+00:00"
+        }
+      ],
+      "bypass_ui_guard": false
+    },
+    {
+      "identity": "engineer-r0",
+      "case": "discovery-in-scope",
+      "expected": "allow",
+      "passed": true,
+      "command": "browse",
+      "reference": "CCI016_01LD_Plant/WlimDWMX1",
+      "fc": "ST",
+      "exit_code": 0,
+      "events": [
+        {
+          "kind": "directory",
+          "reference": "CCI016_01LD_Plant/WlimDWMX1",
+          "error": 0,
+          "error_text": "",
+          "value": "objects",
+          "observed_utc": "2026-10-19T13:06:52.879369+00:00"
+        },
+        {
+          "kind": "entry",
+          "reference": "CCI016_01LD_Plant/WlimDWMX1",
+          "error": 0,
+          "error_text": "",
+          "value": "Mod",
+          "observed_utc": "2026-10-19T13:06:52.879411+00:00"
+        },
+        {
+          "kind": "entry",
+          "reference": "CCI016_01LD_Plant/WlimDWMX1",
+          "error": 0,
+          "error_text": "",
+          "value": "WMaxSptPct",
+          "observed_utc": "2026-10-19T13:06:52.879744+00:00"
+        }
+      ],
+      "bypass_ui_guard": false
+    },
+    {
+      "identity": "engineer-r0",
+      "case": "dataset-directory",
+      "expected": "allow",
+      "passed": true,
+      "command": "dataset-members",
+      "reference": "CCI016_01LD_Plant/LLN0.DS_R_PdC_Mis4sec",
+      "fc": "ST",
+      "exit_code": 0,
+      "events": [
+        {
+          "kind": "dataset-members",
+          "reference": "CCI016_01LD_Plant/LLN0.DS_R_PdC_Mis4sec",
+          "error": 0,
+          "error_text": "",
+          "value": "static",
+          "observed_utc": "2026-10-19T13:06:52.909935+00:00"
+        },
+        {
+          "kind": "entry",
+          "reference": "CCI016_01LD_Plant/LLN0.DS_R_PdC_Mis4sec",
+          "error": 0,
+          "error_text": "",
+          "value": "CCI016_01LD_Plant/PdCMMXU1.TotW[MX]",
+          "observed_utc": "2026-10-19T13:06:52.909978+00:00"
+        },
+        {
+          "kind": "entry",
+          "reference": "CCI016_01LD_Plant/LLN0.DS_R_PdC_Mis4sec",
+          "error": 0,
+          "error_text": "",
+          "value": "CCI016_01LD_Plant/PdCMMXU1.TotVAr[MX]",
+          "observed_utc": "2026-10-19T13:06:52.910235+00:00"
+        },
+        {
+          "kind": "entry",
+          "reference": "CCI016_01LD_Plant/LLN0.DS_R_PdC_Mis4sec",
+          "error": 0,
+          "error_text": "",
+          "value": "CCI016_01LD_Plant/PdCMMXU1.PPV.phsAB.cVal.mag.f[MX]",
+          "observed_utc": "2026-10-19T13:06:52.910368+00:00"
+        }
+      ],
+      "bypass_ui_guard": false
+    },
+    {
+      "identity": "engineer-r0",
+      "case": "dataset-values",
+      "expected": "allow",
+      "passed": true,
+      "command": "dataset-read",
+      "reference": "CCI016_01LD_Plant/LLN0.DS_R_PdC_Mis4sec",
+      "fc": "ST",
+      "exit_code": 0,
+      "events": [
+        {
+          "kind": "dataset-read",
+          "reference": "CCI016_01LD_Plant/LLN0.DS_R_PdC_Mis4sec",
+          "error": 0,
+          "error_text": "",
+          "value": "{{{0.000000},1100000001000,20261019122944.127Z},{{0.000000},1100000001000,20261019122944.127Z},20.000000}",
+          "observed_utc": "2026-10-19T13:06:52.961062+00:00"
+        }
+      ],
+      "bypass_ui_guard": false
+    },
+    {
+      "identity": "engineer-r0",
+      "case": "report-block-read",
+      "expected": "allow",
+      "passed": true,
+      "command": "rcb-read",
+      "reference": "CCI016_01LD_Plant/LLN0.RP.urcb_PdC_Mis4sec",
+      "fc": "ST",
+      "exit_code": 0,
+      "events": [
+        {
+          "kind": "rcb",
+          "reference": "CCI016_01LD_Plant/LLN0.RP.urcb_PdC_Mis4sec",
+          "error": 0,
+          "error_text": "",
+          "value": "enabled=false dataset=CCI016_01LD_Plant/LLN0$DS_R_PdC_Mis4sec",
+          "observed_utc": "2026-10-19T13:06:52.991793+00:00"
+        }
+      ],
+      "bypass_ui_guard": false
+    },
+    {
+      "identity": "installer-r0",
+      "case": "association",
+      "expected": "allow",
+      "passed": true
+    },
+    {
+      "identity": "installer-r0",
+      "case": "measurement-read",
+      "expected": "allow",
+      "passed": true,
+      "command": "read",
+      "reference": "CCI016_01LD_Plant/PdCMMXU1.TotW.mag.f",
+      "fc": "MX",
+      "exit_code": 0,
+      "events": [
+        {
+          "kind": "read",
+          "reference": "CCI016_01LD_Plant/PdCMMXU1.TotW.mag.f",
+          "error": 0,
+          "error_text": "",
+          "value": "0.000000",
+          "observed_utc": "2026-10-19T13:06:53.443033+00:00"
+        }
+      ],
+      "bypass_ui_guard": false
+    },
+    {
+      "identity": "installer-r0",
+      "case": "dso-state-read",
+      "expected": "allow",
+      "passed": true,
+      "command": "read",
+      "reference": "CCI016_01LD_Plant/WlimDWMX1.Mod.stVal",
+      "fc": "ST",
+      "exit_code": 0,
+      "events": [
+        {
+          "kind": "read",
+          "reference": "CCI016_01LD_Plant/WlimDWMX1.Mod.stVal",
+          "error": 0,
+          "error_text": "",
+          "value": "5",
+          "observed_utc": "2026-10-19T13:06:53.473649+00:00"
+        }
+      ],
+      "bypass_ui_guard": false
+    },
+    {
+      "identity": "installer-r0",
+      "case": "discovery-in-scope",
+      "expected": "allow",
+      "passed": true,
+      "command": "browse",
+      "reference": "CCI016_01LD_Plant/WlimDWMX1",
+      "fc": "ST",
+      "exit_code": 0,
+      "events": [
+        {
+          "kind": "directory",
+          "reference": "CCI016_01LD_Plant/WlimDWMX1",
+          "error": 0,
+          "error_text": "",
+          "value": "objects",
+          "observed_utc": "2026-10-19T13:06:53.524882+00:00"
+        },
+        {
+          "kind": "entry",
+          "reference": "CCI016_01LD_Plant/WlimDWMX1",
+          "error": 0,
+          "error_text": "",
+          "value": "Mod",
+          "observed_utc": "2026-10-19T13:06:53.524922+00:00"
+        },
+        {
+          "kind": "entry",
+          "reference": "CCI016_01LD_Plant/WlimDWMX1",
+          "error": 0,
+          "error_text": "",
+          "value": "WMaxSptPct",
+          "observed_utc": "2026-10-19T13:06:53.524929+00:00"
+        }
+      ],
+      "bypass_ui_guard": false
+    },
+    {
+      "identity": "installer-r0",
+      "case": "dataset-directory",
+      "expected": "access-denied",
+      "passed": true,
+      "command": "dataset-members",
+      "reference": "CCI016_01LD_Plant/LLN0.DS_R_PdC_Mis4sec",
+      "fc": "ST",
+      "exit_code": 1,
+      "events": [
+        {
+          "kind": "dataset-members",
+          "reference": "CCI016_01LD_Plant/LLN0.DS_R_PdC_Mis4sec",
+          "error": 21,
+          "error_text": "access-denied",
+          "value": "static",
+          "observed_utc": "2026-10-19T13:06:53.555335+00:00"
+        }
+      ],
+      "bypass_ui_guard": false
+    },
+    {
+      "identity": "installer-r0",
+      "case": "dataset-values",
+      "expected": "access-denied",
+      "passed": true,
+      "command": "dataset-read",
+      "reference": "CCI016_01LD_Plant/LLN0.DS_R_PdC_Mis4sec",
+      "fc": "ST",
+      "exit_code": 1,
+      "events": [
+        {
+          "kind": "dataset-read",
+          "reference": "CCI016_01LD_Plant/LLN0.DS_R_PdC_Mis4sec",
+          "error": 21,
+          "error_text": "access-denied",
+          "value": "no dataset returned",
+          "observed_utc": "2026-10-19T13:06:53.585894+00:00"
+        }
+      ],
+      "bypass_ui_guard": false
+    },
+    {
+      "identity": "installer-r0",
+      "case": "report-block-read",
+      "expected": "allow",
+      "passed": true,
+      "command": "rcb-read",
+      "reference": "CCI016_01LD_Plant/LLN0.RP.urcb_PdC_Mis4sec",
+      "fc": "ST",
+      "exit_code": 0,
+      "events": [
+        {
+          "kind": "rcb",
+          "reference": "CCI016_01LD_Plant/LLN0.RP.urcb_PdC_Mis4sec",
+          "error": 0,
+          "error_text": "",
+          "value": "enabled=false dataset=CCI016_01LD_Plant/LLN0$DS_R_PdC_Mis4sec",
+          "observed_utc": "2026-10-19T13:06:53.637151+00:00"
+        }
+      ],
+      "bypass_ui_guard": false
+    },
+    {
+      "identity": "secadm-r0",
+      "case": "association",
+      "expected": "allow",
+      "passed": true
+    },
+    {
+      "identity": "secadm-r0",
+      "case": "measurement-read",
+      "expected": "allow",
+      "passed": true,
+      "command": "read",
+      "reference": "CCI016_01LD_Plant/PdCMMXU1.TotW.mag.f",
+      "fc": "MX",
+      "exit_code": 0,
+      "events": [
+        {
+          "kind": "read",
+          "reference": "CCI016_01LD_Plant/PdCMMXU1.TotW.mag.f",
+          "error": 0,
+          "error_text": "",
+          "value": "0.000000",
+          "observed_utc": "2026-10-19T13:06:54.439253+00:00"
+        }
+      ],
+      "bypass_ui_guard": false
+    },
+    {
+      "identity": "secadm-r0",
+      "case": "dso-state-read",
+      "expected": "allow",
+      "passed": true,
+      "command": "read",
+      "reference": "CCI016_01LD_Plant/WlimDWMX1.Mod.stVal",
+      "fc": "ST",
+      "exit_code": 0,
+      "events": [
+        {
+          "kind": "read",
+          "reference": "CCI016_01LD_Plant/WlimDWMX1.Mod.stVal",
+          "error": 0,
+          "error_text": "",
+          "value": "5",
+          "observed_utc": "2026-10-19T13:06:54.776700+00:00"
+        }
+      ],
+      "bypass_ui_guard": false
+    },
+    {
+      "identity": "secadm-r0",
+      "case": "discovery-in-scope",
+      "expected": "allow",
+      "passed": true,
+      "command": "browse",
+      "reference": "CCI016_01LD_Plant/WlimDWMX1",
+      "fc": "ST",
+      "exit_code": 0,
+      "events": [
+        {
+          "kind": "directory",
+          "reference": "CCI016_01LD_Plant/WlimDWMX1",
+          "error": 0,
+          "error_text": "",
+          "value": "objects",
+          "observed_utc": "2026-10-19T13:06:54.838627+00:00"
+        },
+        {
+          "kind": "entry",
+          "reference": "CCI016_01LD_Plant/WlimDWMX1",
+          "error": 0,
+          "error_text": "",
+          "value": "Mod",
+          "observed_utc": "2026-10-19T13:06:54.838676+00:00"
+        },
+        {
+          "kind": "entry",
+          "reference": "CCI016_01LD_Plant/WlimDWMX1",
+          "error": 0,
+          "error_text": "",
+          "value": "WMaxSptPct",
+          "observed_utc": "2026-10-19T13:06:54.838687+00:00"
+        }
+      ],
+      "bypass_ui_guard": false
+    },
+    {
+      "identity": "secadm-r0",
+      "case": "dataset-directory",
+      "expected": "allow",
+      "passed": true,
+      "command": "dataset-members",
+      "reference": "CCI016_01LD_Plant/LLN0.DS_R_PdC_Mis4sec",
+      "fc": "ST",
+      "exit_code": 0,
+      "events": [
+        {
+          "kind": "dataset-members",
+          "reference": "CCI016_01LD_Plant/LLN0.DS_R_PdC_Mis4sec",
+          "error": 0,
+          "error_text": "",
+          "value": "static",
+          "observed_utc": "2026-10-19T13:06:54.950762+00:00"
+        },
+        {
+          "kind": "entry",
+          "reference": "CCI016_01LD_Plant/LLN0.DS_R_PdC_Mis4sec",
+          "error": 0,
+          "error_text": "",
+          "value": "CCI016_01LD_Plant/PdCMMXU1.TotW[MX]",
+          "observed_utc": "2026-10-19T13:06:54.950804+00:00"
+        },
+        {
+          "kind": "entry",
+          "reference": "CCI016_01LD_Plant/LLN0.DS_R_PdC_Mis4sec",
+          "error": 0,
+          "error_text": "",
+          "value": "CCI016_01LD_Plant/PdCMMXU1.TotVAr[MX]",
+          "observed_utc": "2026-10-19T13:06:54.951046+00:00"
+        },
+        {
+          "kind": "entry",
+          "reference": "CCI016_01LD_Plant/LLN0.DS_R_PdC_Mis4sec",
+          "error": 0,
+          "error_text": "",
+          "value": "CCI016_01LD_Plant/PdCMMXU1.PPV.phsAB.cVal.mag.f[MX]",
+          "observed_utc": "2026-10-19T13:06:54.951073+00:00"
+        }
+      ],
+      "bypass_ui_guard": false
+    },
+    {
+      "identity": "secadm-r0",
+      "case": "dataset-values",
+      "expected": "allow",
+      "passed": true,
+      "command": "dataset-read",
+      "reference": "CCI016_01LD_Plant/LLN0.DS_R_PdC_Mis4sec",
+      "fc": "ST",
+      "exit_code": 0,
+      "events": [
+        {
+          "kind": "dataset-read",
+          "reference": "CCI016_01LD_Plant/LLN0.DS_R_PdC_Mis4sec",
+          "error": 0,
+          "error_text": "",
+          "value": "{{{0.000000},1100000001000,20261019122944.575Z},{{0.000000},1100000001000,20261019122944.575Z},20.000000}",
+          "observed_utc": "2026-10-19T13:06:55.073510+00:00"
+        }
+      ],
+      "bypass_ui_guard": false
+    },
+    {
+      "identity": "secadm-r0",
+      "case": "report-block-read",
+      "expected": "access-denied",
+      "passed": true,
+      "command": "rcb-read",
+      "reference": "CCI016_01LD_Plant/LLN0.RP.urcb_PdC_Mis4sec",
+      "fc": "ST",
+      "exit_code": 1,
+      "events": [
+        {
+          "kind": "rcb-read",
+          "reference": "CCI016_01LD_Plant/LLN0.RP.urcb_PdC_Mis4sec",
+          "error": 21,
+          "error_text": "access-denied",
+          "value": "",
+          "observed_utc": "2026-10-19T13:06:55.216349+00:00"
+        }
+      ],
+      "bypass_ui_guard": false
+    },
+    {
+      "identity": "secaud-r0",
+      "case": "association",
+      "expected": "allow",
+      "passed": true
+    },
+    {
+      "identity": "secaud-r0",
+      "case": "measurement-read",
+      "expected": "allow",
+      "passed": true,
+      "command": "read",
+      "reference": "CCI016_01LD_Plant/PdCMMXU1.TotW.mag.f",
+      "fc": "MX",
+      "exit_code": 0,
+      "events": [
+        {
+          "kind": "read",
+          "reference": "CCI016_01LD_Plant/PdCMMXU1.TotW.mag.f",
+          "error": 0,
+          "error_text": "",
+          "value": "0.000000",
+          "observed_utc": "2026-10-19T13:06:55.800048+00:00"
+        }
+      ],
+      "bypass_ui_guard": false
+    },
+    {
+      "identity": "secaud-r0",
+      "case": "dso-state-read",
+      "expected": "allow",
+      "passed": true,
+      "command": "read",
+      "reference": "CCI016_01LD_Plant/WlimDWMX1.Mod.stVal",
+      "fc": "ST",
+      "exit_code": 0,
+      "events": [
+        {
+          "kind": "read",
+          "reference": "CCI016_01LD_Plant/WlimDWMX1.Mod.stVal",
+          "error": 0,
+          "error_text": "",
+          "value": "5",
+          "observed_utc": "2026-10-19T13:06:55.830935+00:00"
+        }
+      ],
+      "bypass_ui_guard": false
+    },
+    {
+      "identity": "secaud-r0",
+      "case": "discovery-in-scope",
+      "expected": "allow",
+      "passed": true,
+      "command": "browse",
+      "reference": "CCI016_01LD_Plant/WlimDWMX1",
+      "fc": "ST",
+      "exit_code": 0,
+      "events": [
+        {
+          "kind": "directory",
+          "reference": "CCI016_01LD_Plant/WlimDWMX1",
+          "error": 0,
+          "error_text": "",
+          "value": "objects",
+          "observed_utc": "2026-10-19T13:06:55.872144+00:00"
+        },
+        {
+          "kind": "entry",
+          "reference": "CCI016_01LD_Plant/WlimDWMX1",
+          "error": 0,
+          "error_text": "",
+          "value": "Mod",
+          "observed_utc": "2026-10-19T13:06:55.872178+00:00"
+        },
+        {
+          "kind": "entry",
+          "reference": "CCI016_01LD_Plant/WlimDWMX1",
+          "error": 0,
+          "error_text": "",
+          "value": "WMaxSptPct",
+          "observed_utc": "2026-10-19T13:06:55.872186+00:00"
+        }
+      ],
+      "bypass_ui_guard": false
+    },
+    {
+      "identity": "secaud-r0",
+      "case": "dataset-directory",
+      "expected": "access-denied",
+      "passed": true,
+      "command": "dataset-members",
+      "reference": "CCI016_01LD_Plant/LLN0.DS_R_PdC_Mis4sec",
+      "fc": "ST",
+      "exit_code": 1,
+      "events": [
+        {
+          "kind": "dataset-members",
+          "reference": "CCI016_01LD_Plant/LLN0.DS_R_PdC_Mis4sec",
+          "error": 21,
+          "error_text": "access-denied",
+          "value": "static",
+          "observed_utc": "2026-10-19T13:06:55.902840+00:00"
+        }
+      ],
+      "bypass_ui_guard": false
+    },
+    {
+      "identity": "secaud-r0",
+      "case": "dataset-values",
+      "expected": "access-denied",
+      "passed": true,
+      "command": "dataset-read",
+      "reference": "CCI016_01LD_Plant/LLN0.DS_R_PdC_Mis4sec",
+      "fc": "ST",
+      "exit_code": 1,
+      "events": [
+        {
+          "kind": "dataset-read",
+          "reference": "CCI016_01LD_Plant/LLN0.DS_R_PdC_Mis4sec",
+          "error": 21,
+          "error_text": "access-denied",
+          "value": "no dataset returned",
+          "observed_utc": "2026-10-19T13:06:55.943668+00:00"
+        }
+      ],
+      "bypass_ui_guard": false
+    },
+    {
+      "identity": "secaud-r0",
+      "case": "report-block-read",
+      "expected": "allow",
+      "passed": true,
+      "command": "rcb-read",
+      "reference": "CCI016_01LD_Plant/LLN0.RP.urcb_PdC_Mis4sec",
+      "fc": "ST",
+      "exit_code": 0,
+      "events": [
+        {
+          "kind": "rcb",
+          "reference": "CCI016_01LD_Plant/LLN0.RP.urcb_PdC_Mis4sec",
+          "error": 0,
+          "error_text": "",
+          "value": "enabled=false dataset=CCI016_01LD_Plant/LLN0$DS_R_PdC_Mis4sec",
+          "observed_utc": "2026-10-19T13:06:55.984355+00:00"
+        }
+      ],
+      "bypass_ui_guard": false
+    },
+    {
+      "identity": "rbacmnt-r0",
+      "case": "association",
+      "expected": "allow",
+      "passed": true
+    },
+    {
+      "identity": "rbacmnt-r0",
+      "case": "measurement-read",
+      "expected": "allow",
+      "passed": true,
+      "command": "read",
+      "reference": "CCI016_01LD_Plant/PdCMMXU1.TotW.mag.f",
+      "fc": "MX",
+      "exit_code": 0,
+      "events": [
+        {
+          "kind": "read",
+          "reference": "CCI016_01LD_Plant/PdCMMXU1.TotW.mag.f",
+          "error": 0,
+          "error_text": "",
+          "value": "0.000000",
+          "observed_utc": "2026-10-19T13:06:56.438152+00:00"
+        }
+      ],
+      "bypass_ui_guard": false
+    },
+    {
+      "identity": "rbacmnt-r0",
+      "case": "dso-state-read",
+      "expected": "allow",
+      "passed": true,
+      "command": "read",
+      "reference": "CCI016_01LD_Plant/WlimDWMX1.Mod.stVal",
+      "fc": "ST",
+      "exit_code": 0,
+      "events": [
+        {
+          "kind": "read",
+          "reference": "CCI016_01LD_Plant/WlimDWMX1.Mod.stVal",
+          "error": 0,
+          "error_text": "",
+          "value": "5",
+          "observed_utc": "2026-10-19T13:06:56.479006+00:00"
+        }
+      ],
+      "bypass_ui_guard": false
+    },
+    {
+      "identity": "rbacmnt-r0",
+      "case": "discovery-in-scope",
+      "expected": "allow",
+      "passed": true,
+      "command": "browse",
+      "reference": "CCI016_01LD_Plant/WlimDWMX1",
+      "fc": "ST",
+      "exit_code": 0,
+      "events": [
+        {
+          "kind": "directory",
+          "reference": "CCI016_01LD_Plant/WlimDWMX1",
+          "error": 0,
+          "error_text": "",
+          "value": "objects",
+          "observed_utc": "2026-10-19T13:06:56.520397+00:00"
+        },
+        {
+          "kind": "entry",
+          "reference": "CCI016_01LD_Plant/WlimDWMX1",
+          "error": 0,
+          "error_text": "",
+          "value": "Mod",
+          "observed_utc": "2026-10-19T13:06:56.520445+00:00"
+        },
+        {
+          "kind": "entry",
+          "reference": "CCI016_01LD_Plant/WlimDWMX1",
+          "error": 0,
+          "error_text": "",
+          "value": "WMaxSptPct",
+          "observed_utc": "2026-10-19T13:06:56.520455+00:00"
+        }
+      ],
+      "bypass_ui_guard": false
+    },
+    {
+      "identity": "rbacmnt-r0",
+      "case": "dataset-directory",
+      "expected": "access-denied",
+      "passed": true,
+      "command": "dataset-members",
+      "reference": "CCI016_01LD_Plant/LLN0.DS_R_PdC_Mis4sec",
+      "fc": "ST",
+      "exit_code": 1,
+      "events": [
+        {
+          "kind": "dataset-members",
+          "reference": "CCI016_01LD_Plant/LLN0.DS_R_PdC_Mis4sec",
+          "error": 21,
+          "error_text": "access-denied",
+          "value": "static",
+          "observed_utc": "2026-10-19T13:06:56.561422+00:00"
+        }
+      ],
+      "bypass_ui_guard": false
+    },
+    {
+      "identity": "rbacmnt-r0",
+      "case": "dataset-values",
+      "expected": "access-denied",
+      "passed": true,
+      "command": "dataset-read",
+      "reference": "CCI016_01LD_Plant/LLN0.DS_R_PdC_Mis4sec",
+      "fc": "ST",
+      "exit_code": 1,
+      "events": [
+        {
+          "kind": "dataset-read",
+          "reference": "CCI016_01LD_Plant/LLN0.DS_R_PdC_Mis4sec",
+          "error": 21,
+          "error_text": "access-denied",
+          "value": "no dataset returned",
+          "observed_utc": "2026-10-19T13:06:56.602403+00:00"
+        }
+      ],
+      "bypass_ui_guard": false
+    },
+    {
+      "identity": "rbacmnt-r0",
+      "case": "report-block-read",
+      "expected": "access-denied",
+      "passed": true,
+      "command": "rcb-read",
+      "reference": "CCI016_01LD_Plant/LLN0.RP.urcb_PdC_Mis4sec",
+      "fc": "ST",
+      "exit_code": 1,
+      "events": [
+        {
+          "kind": "rcb-read",
+          "reference": "CCI016_01LD_Plant/LLN0.RP.urcb_PdC_Mis4sec",
+          "error": 21,
+          "error_text": "access-denied",
+          "value": "",
+          "observed_utc": "2026-10-19T13:06:56.653380+00:00"
+        }
+      ],
+      "bypass_ui_guard": false
+    },
+    {
+      "identity": "viewer-r1",
+      "case": "association",
+      "expected": "allow",
+      "passed": true
+    },
+    {
+      "identity": "viewer-r1",
+      "case": "measurement-read",
+      "expected": "allow",
+      "passed": true,
+      "command": "read",
+      "reference": "CCI016_01LD_Plant/PdCMMXU1.TotW.mag.f",
+      "fc": "MX",
+      "exit_code": 0,
+      "events": [
+        {
+          "kind": "read",
+          "reference": "CCI016_01LD_Plant/PdCMMXU1.TotW.mag.f",
+          "error": 0,
+          "error_text": "",
+          "value": "0.000000",
+          "observed_utc": "2026-10-19T13:06:57.071446+00:00"
+        }
+      ],
+      "bypass_ui_guard": false
+    },
+    {
+      "identity": "viewer-r1",
+      "case": "dso-state-read",
+      "expected": "allow",
+      "passed": true,
+      "command": "read",
+      "reference": "CCI016_01LD_Plant/WlimDWMX1.Mod.stVal",
+      "fc": "ST",
+      "exit_code": 0,
+      "events": [
+        {
+          "kind": "read",
+          "reference": "CCI016_01LD_Plant/WlimDWMX1.Mod.stVal",
+          "error": 0,
+          "error_text": "",
+          "value": "5",
+          "observed_utc": "2026-10-19T13:06:57.112277+00:00"
+        }
+      ],
+      "bypass_ui_guard": false
+    },
+    {
+      "identity": "viewer-r1",
+      "case": "discovery-in-scope",
+      "expected": "allow",
+      "passed": true,
+      "command": "browse",
+      "reference": "CCI016_01LD_Plant/WlimDWMX1",
+      "fc": "ST",
+      "exit_code": 0,
+      "events": [
+        {
+          "kind": "directory",
+          "reference": "CCI016_01LD_Plant/WlimDWMX1",
+          "error": 0,
+          "error_text": "",
+          "value": "objects",
+          "observed_utc": "2026-10-19T13:06:57.153361+00:00"
+        },
+        {
+          "kind": "entry",
+          "reference": "CCI016_01LD_Plant/WlimDWMX1",
+          "error": 0,
+          "error_text": "",
+          "value": "Mod",
+          "observed_utc": "2026-10-19T13:06:57.153407+00:00"
+        },
+        {
+          "kind": "entry",
+          "reference": "CCI016_01LD_Plant/WlimDWMX1",
+          "error": 0,
+          "error_text": "",
+          "value": "WMaxSptPct",
+          "observed_utc": "2026-10-19T13:06:57.153416+00:00"
+        }
+      ],
+      "bypass_ui_guard": false
+    },
+    {
+      "identity": "viewer-r1",
+      "case": "dataset-directory",
+      "expected": "access-denied",
+      "passed": true,
+      "command": "dataset-members",
+      "reference": "CCI016_01LD_Plant/LLN0.DS_R_PdC_Mis4sec",
+      "fc": "ST",
+      "exit_code": 1,
+      "events": [
+        {
+          "kind": "dataset-members",
+          "reference": "CCI016_01LD_Plant/LLN0.DS_R_PdC_Mis4sec",
+          "error": 21,
+          "error_text": "access-denied",
+          "value": "static",
+          "observed_utc": "2026-10-19T13:06:57.194501+00:00"
+        }
+      ],
+      "bypass_ui_guard": false
+    },
+    {
+      "identity": "viewer-r1",
+      "case": "dataset-values",
+      "expected": "access-denied",
+      "passed": true,
+      "command": "dataset-read",
+      "reference": "CCI016_01LD_Plant/LLN0.DS_R_PdC_Mis4sec",
+      "fc": "ST",
+      "exit_code": 1,
+      "events": [
+        {
+          "kind": "dataset-read",
+          "reference": "CCI016_01LD_Plant/LLN0.DS_R_PdC_Mis4sec",
+          "error": 21,
+          "error_text": "access-denied",
+          "value": "no dataset returned",
+          "observed_utc": "2026-10-19T13:06:57.224904+00:00"
+        }
+      ],
+      "bypass_ui_guard": false
+    },
+    {
+      "identity": "viewer-r1",
+      "case": "report-block-read",
+      "expected": "allow",
+      "passed": true,
+      "command": "rcb-read",
+      "reference": "CCI016_01LD_Plant/LLN0.RP.urcb_PdC_Mis4sec",
+      "fc": "ST",
+      "exit_code": 0,
+      "events": [
+        {
+          "kind": "rcb",
+          "reference": "CCI016_01LD_Plant/LLN0.RP.urcb_PdC_Mis4sec",
+          "error": 0,
+          "error_text": "",
+          "value": "enabled=false dataset=CCI016_01LD_Plant/LLN0$DS_R_PdC_Mis4sec",
+          "observed_utc": "2026-10-19T13:06:57.265861+00:00"
+        }
+      ],
+      "bypass_ui_guard": false
+    },
+    {
+      "identity": "operator-r1",
+      "case": "association",
+      "expected": "allow",
+      "passed": true
+    },
+    {
+      "identity": "operator-r1",
+      "case": "measurement-read",
+      "expected": "allow",
+      "passed": true,
+      "command": "read",
+      "reference": "CCI016_01LD_Plant/PdCMMXU1.TotW.mag.f",
+      "fc": "MX",
+      "exit_code": 0,
+      "events": [
+        {
+          "kind": "read",
+          "reference": "CCI016_01LD_Plant/PdCMMXU1.TotW.mag.f",
+          "error": 0,
+          "error_text": "",
+          "value": "0.000000",
+          "observed_utc": "2026-10-19T13:06:57.668188+00:00"
+        }
+      ],
+      "bypass_ui_guard": false
+    },
+    {
+      "identity": "operator-r1",
+      "case": "dso-state-read",
+      "expected": "allow",
+      "passed": true,
+      "command": "read",
+      "reference": "CCI016_01LD_Plant/WlimDWMX1.Mod.stVal",
+      "fc": "ST",
+      "exit_code": 0,
+      "events": [
+        {
+          "kind": "read",
+          "reference": "CCI016_01LD_Plant/WlimDWMX1.Mod.stVal",
+          "error": 0,
+          "error_text": "",
+          "value": "5",
+          "observed_utc": "2026-10-19T13:06:57.708996+00:00"
+        }
+      ],
+      "bypass_ui_guard": false
+    },
+    {
+      "identity": "operator-r1",
+      "case": "discovery-in-scope",
+      "expected": "allow",
+      "passed": true,
+      "command": "browse",
+      "reference": "CCI016_01LD_Plant/WlimDWMX1",
+      "fc": "ST",
+      "exit_code": 0,
+      "events": [
+        {
+          "kind": "directory",
+          "reference": "CCI016_01LD_Plant/WlimDWMX1",
+          "error": 0,
+          "error_text": "",
+          "value": "objects",
+          "observed_utc": "2026-10-19T13:06:57.770874+00:00"
+        },
+        {
+          "kind": "entry",
+          "reference": "CCI016_01LD_Plant/WlimDWMX1",
+          "error": 0,
+          "error_text": "",
+          "value": "Mod",
+          "observed_utc": "2026-10-19T13:06:57.770922+00:00"
+        },
+        {
+          "kind": "entry",
+          "reference": "CCI016_01LD_Plant/WlimDWMX1",
+          "error": 0,
+          "error_text": "",
+          "value": "WMaxSptPct",
+          "observed_utc": "2026-10-19T13:06:57.771176+00:00"
+        }
+      ],
+      "bypass_ui_guard": false
+    },
+    {
+      "identity": "operator-r1",
+      "case": "dataset-directory",
+      "expected": "access-denied",
+      "passed": true,
+      "command": "dataset-members",
+      "reference": "CCI016_01LD_Plant/LLN0.DS_R_PdC_Mis4sec",
+      "fc": "ST",
+      "exit_code": 1,
+      "events": [
+        {
+          "kind": "dataset-members",
+          "reference": "CCI016_01LD_Plant/LLN0.DS_R_PdC_Mis4sec",
+          "error": 21,
+          "error_text": "access-denied",
+          "value": "static",
+          "observed_utc": "2026-10-19T13:06:57.811918+00:00"
+        }
+      ],
+      "bypass_ui_guard": false
+    },
+    {
+      "identity": "operator-r1",
+      "case": "dataset-values",
+      "expected": "access-denied",
+      "passed": true,
+      "command": "dataset-read",
+      "reference": "CCI016_01LD_Plant/LLN0.DS_R_PdC_Mis4sec",
+      "fc": "ST",
+      "exit_code": 1,
+      "events": [
+        {
+          "kind": "dataset-read",
+          "reference": "CCI016_01LD_Plant/LLN0.DS_R_PdC_Mis4sec",
+          "error": 21,
+          "error_text": "access-denied",
+          "value": "no dataset returned",
+          "observed_utc": "2026-10-19T13:06:57.852787+00:00"
+        }
+      ],
+      "bypass_ui_guard": false
+    },
+    {
+      "identity": "operator-r1",
+      "case": "report-block-read",
+      "expected": "allow",
+      "passed": true,
+      "command": "rcb-read",
+      "reference": "CCI016_01LD_Plant/LLN0.RP.urcb_PdC_Mis4sec",
+      "fc": "ST",
+      "exit_code": 0,
+      "events": [
+        {
+          "kind": "rcb",
+          "reference": "CCI016_01LD_Plant/LLN0.RP.urcb_PdC_Mis4sec",
+          "error": 0,
+          "error_text": "",
+          "value": "enabled=false dataset=CCI016_01LD_Plant/LLN0$DS_R_PdC_Mis4sec",
+          "observed_utc": "2026-10-19T13:06:57.883509+00:00"
+        }
+      ],
+      "bypass_ui_guard": false
+    },
+    {
+      "identity": "engineer-r1",
+      "case": "association",
+      "expected": "allow",
+      "passed": true
+    },
+    {
+      "identity": "engineer-r1",
+      "case": "measurement-read",
+      "expected": "allow",
+      "passed": true,
+      "command": "read",
+      "reference": "CCI016_01LD_Plant/PdCMMXU1.TotW.mag.f",
+      "fc": "MX",
+      "exit_code": 0,
+      "events": [
+        {
+          "kind": "read",
+          "reference": "CCI016_01LD_Plant/PdCMMXU1.TotW.mag.f",
+          "error": 0,
+          "error_text": "",
+          "value": "0.000000",
+          "observed_utc": "2026-10-19T13:06:58.272486+00:00"
+        }
+      ],
+      "bypass_ui_guard": false
+    },
+    {
+      "identity": "engineer-r1",
+      "case": "dso-state-read",
+      "expected": "allow",
+      "passed": true,
+      "command": "read",
+      "reference": "CCI016_01LD_Plant/WlimDWMX1.Mod.stVal",
+      "fc": "ST",
+      "exit_code": 0,
+      "events": [
+        {
+          "kind": "read",
+          "reference": "CCI016_01LD_Plant/WlimDWMX1.Mod.stVal",
+          "error": 0,
+          "error_text": "",
+          "value": "5",
+          "observed_utc": "2026-10-19T13:06:58.313319+00:00"
+        }
+      ],
+      "bypass_ui_guard": false
+    },
+    {
+      "identity": "engineer-r1",
+      "case": "discovery-in-scope",
+      "expected": "allow",
+      "passed": true,
+      "command": "browse",
+      "reference": "CCI016_01LD_Plant/WlimDWMX1",
+      "fc": "ST",
+      "exit_code": 0,
+      "events": [
+        {
+          "kind": "directory",
+          "reference": "CCI016_01LD_Plant/WlimDWMX1",
+          "error": 0,
+          "error_text": "",
+          "value": "objects",
+          "observed_utc": "2026-10-19T13:06:58.354518+00:00"
+        },
+        {
+          "kind": "entry",
+          "reference": "CCI016_01LD_Plant/WlimDWMX1",
+          "error": 0,
+          "error_text": "",
+          "value": "Mod",
+          "observed_utc": "2026-10-19T13:06:58.354552+00:00"
+        },
+        {
+          "kind": "entry",
+          "reference": "CCI016_01LD_Plant/WlimDWMX1",
+          "error": 0,
+          "error_text": "",
+          "value": "WMaxSptPct",
+          "observed_utc": "2026-10-19T13:06:58.354559+00:00"
+        }
+      ],
+      "bypass_ui_guard": false
+    },
+    {
+      "identity": "engineer-r1",
+      "case": "dataset-directory",
+      "expected": "allow",
+      "passed": true,
+      "command": "dataset-members",
+      "reference": "CCI016_01LD_Plant/LLN0.DS_R_PdC_Mis4sec",
+      "fc": "ST",
+      "exit_code": 0,
+      "events": [
+        {
+          "kind": "dataset-members",
+          "reference": "CCI016_01LD_Plant/LLN0.DS_R_PdC_Mis4sec",
+          "error": 0,
+          "error_text": "",
+          "value": "static",
+          "observed_utc": "2026-10-19T13:06:58.395537+00:00"
+        },
+        {
+          "kind": "entry",
+          "reference": "CCI016_01LD_Plant/LLN0.DS_R_PdC_Mis4sec",
+          "error": 0,
+          "error_text": "",
+          "value": "CCI016_01LD_Plant/PdCMMXU1.TotW[MX]",
+          "observed_utc": "2026-10-19T13:06:58.395572+00:00"
+        },
+        {
+          "kind": "entry",
+          "reference": "CCI016_01LD_Plant/LLN0.DS_R_PdC_Mis4sec",
+          "error": 0,
+          "error_text": "",
+          "value": "CCI016_01LD_Plant/PdCMMXU1.TotVAr[MX]",
+          "observed_utc": "2026-10-19T13:06:58.395578+00:00"
+        },
+        {
+          "kind": "entry",
+          "reference": "CCI016_01LD_Plant/LLN0.DS_R_PdC_Mis4sec",
+          "error": 0,
+          "error_text": "",
+          "value": "CCI016_01LD_Plant/PdCMMXU1.PPV.phsAB.cVal.mag.f[MX]",
+          "observed_utc": "2026-10-19T13:06:58.395582+00:00"
+        }
+      ],
+      "bypass_ui_guard": false
+    },
+    {
+      "identity": "engineer-r1",
+      "case": "dataset-values",
+      "expected": "allow",
+      "passed": true,
+      "command": "dataset-read",
+      "reference": "CCI016_01LD_Plant/LLN0.DS_R_PdC_Mis4sec",
+      "fc": "ST",
+      "exit_code": 0,
+      "events": [
+        {
+          "kind": "dataset-read",
+          "reference": "CCI016_01LD_Plant/LLN0.DS_R_PdC_Mis4sec",
+          "error": 0,
+          "error_text": "",
+          "value": "{{{0.000000},1100000001000,20261019122948.603Z},{{0.000000},1100000001000,20261019122948.603Z},20.000000}",
+          "observed_utc": "2026-10-19T13:06:58.456654+00:00"
+        }
+      ],
+      "bypass_ui_guard": false
+    },
+    {
+      "identity": "engineer-r1",
+      "case": "report-block-read",
+      "expected": "allow",
+      "passed": true,
+      "command": "rcb-read",
+      "reference": "CCI016_01LD_Plant/LLN0.RP.urcb_PdC_Mis4sec",
+      "fc": "ST",
+      "exit_code": 0,
+      "events": [
+        {
+          "kind": "rcb",
+          "reference": "CCI016_01LD_Plant/LLN0.RP.urcb_PdC_Mis4sec",
+          "error": 0,
+          "error_text": "",
+          "value": "enabled=false dataset=CCI016_01LD_Plant/LLN0$DS_R_PdC_Mis4sec",
+          "observed_utc": "2026-10-19T13:06:58.487206+00:00"
+        }
+      ],
+      "bypass_ui_guard": false
+    },
+    {
+      "identity": "installer-r1",
+      "case": "association",
+      "expected": "allow",
+      "passed": true
+    },
+    {
+      "identity": "installer-r1",
+      "case": "measurement-read",
+      "expected": "allow",
+      "passed": true,
+      "command": "read",
+      "reference": "CCI016_01LD_Plant/PdCMMXU1.TotW.mag.f",
+      "fc": "MX",
+      "exit_code": 0,
+      "events": [
+        {
+          "kind": "read",
+          "reference": "CCI016_01LD_Plant/PdCMMXU1.TotW.mag.f",
+          "error": 0,
+          "error_text": "",
+          "value": "0.000000",
+          "observed_utc": "2026-10-19T13:06:58.880606+00:00"
+        }
+      ],
+      "bypass_ui_guard": false
+    },
+    {
+      "identity": "installer-r1",
+      "case": "dso-state-read",
+      "expected": "allow",
+      "passed": true,
+      "command": "read",
+      "reference": "CCI016_01LD_Plant/WlimDWMX1.Mod.stVal",
+      "fc": "ST",
+      "exit_code": 0,
+      "events": [
+        {
+          "kind": "read",
+          "reference": "CCI016_01LD_Plant/WlimDWMX1.Mod.stVal",
+          "error": 0,
+          "error_text": "",
+          "value": "5",
+          "observed_utc": "2026-10-19T13:06:58.921352+00:00"
+        }
+      ],
+      "bypass_ui_guard": false
+    },
+    {
+      "identity": "installer-r1",
+      "case": "discovery-in-scope",
+      "expected": "allow",
+      "passed": true,
+      "command": "browse",
+      "reference": "CCI016_01LD_Plant/WlimDWMX1",
+      "fc": "ST",
+      "exit_code": 0,
+      "events": [
+        {
+          "kind": "directory",
+          "reference": "CCI016_01LD_Plant/WlimDWMX1",
+          "error": 0,
+          "error_text": "",
+          "value": "objects",
+          "observed_utc": "2026-10-19T13:06:58.973217+00:00"
+        },
+        {
+          "kind": "entry",
+          "reference": "CCI016_01LD_Plant/WlimDWMX1",
+          "error": 0,
+          "error_text": "",
+          "value": "Mod",
+          "observed_utc": "2026-10-19T13:06:58.973256+00:00"
+        },
+        {
+          "kind": "entry",
+          "reference": "CCI016_01LD_Plant/WlimDWMX1",
+          "error": 0,
+          "error_text": "",
+          "value": "WMaxSptPct",
+          "observed_utc": "2026-10-19T13:06:58.973264+00:00"
+        }
+      ],
+      "bypass_ui_guard": false
+    },
+    {
+      "identity": "installer-r1",
+      "case": "dataset-directory",
+      "expected": "access-denied",
+      "passed": true,
+      "command": "dataset-members",
+      "reference": "CCI016_01LD_Plant/LLN0.DS_R_PdC_Mis4sec",
+      "fc": "ST",
+      "exit_code": 1,
+      "events": [
+        {
+          "kind": "dataset-members",
+          "reference": "CCI016_01LD_Plant/LLN0.DS_R_PdC_Mis4sec",
+          "error": 21,
+          "error_text": "access-denied",
+          "value": "static",
+          "observed_utc": "2026-10-19T13:06:59.013731+00:00"
+        }
+      ],
+      "bypass_ui_guard": false
+    },
+    {
+      "identity": "installer-r1",
+      "case": "dataset-values",
+      "expected": "access-denied",
+      "passed": true,
+      "command": "dataset-read",
+      "reference": "CCI016_01LD_Plant/LLN0.DS_R_PdC_Mis4sec",
+      "fc": "ST",
+      "exit_code": 1,
+      "events": [
+        {
+          "kind": "dataset-read",
+          "reference": "CCI016_01LD_Plant/LLN0.DS_R_PdC_Mis4sec",
+          "error": 21,
+          "error_text": "access-denied",
+          "value": "no dataset returned",
+          "observed_utc": "2026-10-19T13:06:59.054666+00:00"
+        }
+      ],
+      "bypass_ui_guard": false
+    },
+    {
+      "identity": "installer-r1",
+      "case": "report-block-read",
+      "expected": "allow",
+      "passed": true,
+      "command": "rcb-read",
+      "reference": "CCI016_01LD_Plant/LLN0.RP.urcb_PdC_Mis4sec",
+      "fc": "ST",
+      "exit_code": 0,
+      "events": [
+        {
+          "kind": "rcb",
+          "reference": "CCI016_01LD_Plant/LLN0.RP.urcb_PdC_Mis4sec",
+          "error": 0,
+          "error_text": "",
+          "value": "enabled=false dataset=CCI016_01LD_Plant/LLN0$DS_R_PdC_Mis4sec",
+          "observed_utc": "2026-10-19T13:06:59.095758+00:00"
+        }
+      ],
+      "bypass_ui_guard": false
+    },
+    {
+      "identity": "secadm-r1",
+      "case": "association",
+      "expected": "allow",
+      "passed": true
+    },
+    {
+      "identity": "secadm-r1",
+      "case": "measurement-read",
+      "expected": "allow",
+      "passed": true,
+      "command": "read",
+      "reference": "CCI016_01LD_Plant/PdCMMXU1.TotW.mag.f",
+      "fc": "MX",
+      "exit_code": 0,
+      "events": [
+        {
+          "kind": "read",
+          "reference": "CCI016_01LD_Plant/PdCMMXU1.TotW.mag.f",
+          "error": 0,
+          "error_text": "",
+          "value": "0.000000",
+          "observed_utc": "2026-10-19T13:06:59.520555+00:00"
+        }
+      ],
+      "bypass_ui_guard": false
+    },
+    {
+      "identity": "secadm-r1",
+      "case": "dso-state-read",
+      "expected": "allow",
+      "passed": true,
+      "command": "read",
+      "reference": "CCI016_01LD_Plant/WlimDWMX1.Mod.stVal",
+      "fc": "ST",
+      "exit_code": 0,
+      "events": [
+        {
+          "kind": "read",
+          "reference": "CCI016_01LD_Plant/WlimDWMX1.Mod.stVal",
+          "error": 0,
+          "error_text": "",
+          "value": "5",
+          "observed_utc": "2026-10-19T13:06:59.561639+00:00"
+        }
+      ],
+      "bypass_ui_guard": false
+    },
+    {
+      "identity": "secadm-r1",
+      "case": "discovery-in-scope",
+      "expected": "allow",
+      "passed": true,
+      "command": "browse",
+      "reference": "CCI016_01LD_Plant/WlimDWMX1",
+      "fc": "ST",
+      "exit_code": 0,
+      "events": [
+        {
+          "kind": "directory",
+          "reference": "CCI016_01LD_Plant/WlimDWMX1",
+          "error": 0,
+          "error_text": "",
+          "value": "objects",
+          "observed_utc": "2026-10-19T13:06:59.602946+00:00"
+        },
+        {
+          "kind": "entry",
+          "reference": "CCI016_01LD_Plant/WlimDWMX1",
+          "error": 0,
+          "error_text": "",
+          "value": "Mod",
+          "observed_utc": "2026-10-19T13:06:59.602991+00:00"
+        },
+        {
+          "kind": "entry",
+          "reference": "CCI016_01LD_Plant/WlimDWMX1",
+          "error": 0,
+          "error_text": "",
+          "value": "WMaxSptPct",
+          "observed_utc": "2026-10-19T13:06:59.603005+00:00"
+        }
+      ],
+      "bypass_ui_guard": false
+    },
+    {
+      "identity": "secadm-r1",
+      "case": "dataset-directory",
+      "expected": "allow",
+      "passed": true,
+      "command": "dataset-members",
+      "reference": "CCI016_01LD_Plant/LLN0.DS_R_PdC_Mis4sec",
+      "fc": "ST",
+      "exit_code": 0,
+      "events": [
+        {
+          "kind": "dataset-members",
+          "reference": "CCI016_01LD_Plant/LLN0.DS_R_PdC_Mis4sec",
+          "error": 0,
+          "error_text": "",
+          "value": "static",
+          "observed_utc": "2026-10-19T13:06:59.643881+00:00"
+        },
+        {
+          "kind": "entry",
+          "reference": "CCI016_01LD_Plant/LLN0.DS_R_PdC_Mis4sec",
+          "error": 0,
+          "error_text": "",
+          "value": "CCI016_01LD_Plant/PdCMMXU1.TotW[MX]",
+          "observed_utc": "2026-10-19T13:06:59.643921+00:00"
+        },
+        {
+          "kind": "entry",
+          "reference": "CCI016_01LD_Plant/LLN0.DS_R_PdC_Mis4sec",
+          "error": 0,
+          "error_text": "",
+          "value": "CCI016_01LD_Plant/PdCMMXU1.TotVAr[MX]",
+          "observed_utc": "2026-10-19T13:06:59.643930+00:00"
+        },
+        {
+          "kind": "entry",
+          "reference": "CCI016_01LD_Plant/LLN0.DS_R_PdC_Mis4sec",
+          "error": 0,
+          "error_text": "",
+          "value": "CCI016_01LD_Plant/PdCMMXU1.PPV.phsAB.cVal.mag.f[MX]",
+          "observed_utc": "2026-10-19T13:06:59.643937+00:00"
+        }
+      ],
+      "bypass_ui_guard": false
+    },
+    {
+      "identity": "secadm-r1",
+      "case": "dataset-values",
+      "expected": "allow",
+      "passed": true,
+      "command": "dataset-read",
+      "reference": "CCI016_01LD_Plant/LLN0.DS_R_PdC_Mis4sec",
+      "fc": "ST",
+      "exit_code": 0,
+      "events": [
+        {
+          "kind": "dataset-read",
+          "reference": "CCI016_01LD_Plant/LLN0.DS_R_PdC_Mis4sec",
+          "error": 0,
+          "error_text": "",
+          "value": "{{{0.000000},1100000001000,20261019122948.603Z},{{0.000000},1100000001000,20261019122948.603Z},20.000000}",
+          "observed_utc": "2026-10-19T13:07:00.275613+00:00"
+        }
+      ],
+      "bypass_ui_guard": false
+    },
+    {
+      "identity": "secadm-r1",
+      "case": "report-block-read",
+      "expected": "access-denied",
+      "passed": true,
+      "command": "rcb-read",
+      "reference": "CCI016_01LD_Plant/LLN0.RP.urcb_PdC_Mis4sec",
+      "fc": "ST",
+      "exit_code": 1,
+      "events": [
+        {
+          "kind": "rcb-read",
+          "reference": "CCI016_01LD_Plant/LLN0.RP.urcb_PdC_Mis4sec",
+          "error": 21,
+          "error_text": "access-denied",
+          "value": "",
+          "observed_utc": "2026-10-19T13:07:00.306221+00:00"
+        }
+      ],
+      "bypass_ui_guard": false
+    },
+    {
+      "identity": "secaud-r1",
+      "case": "association",
+      "expected": "allow",
+      "passed": true
+    },
+    {
+      "identity": "secaud-r1",
+      "case": "measurement-read",
+      "expected": "allow",
+      "passed": true,
+      "command": "read",
+      "reference": "CCI016_01LD_Plant/PdCMMXU1.TotW.mag.f",
+      "fc": "MX",
+      "exit_code": 0,
+      "events": [
+        {
+          "kind": "read",
+          "reference": "CCI016_01LD_Plant/PdCMMXU1.TotW.mag.f",
+          "error": 0,
+          "error_text": "",
+          "value": "0.000000",
+          "observed_utc": "2026-10-19T13:07:00.750628+00:00"
+        }
+      ],
+      "bypass_ui_guard": false
+    },
+    {
+      "identity": "secaud-r1",
+      "case": "dso-state-read",
+      "expected": "allow",
+      "passed": true,
+      "command": "read",
+      "reference": "CCI016_01LD_Plant/WlimDWMX1.Mod.stVal",
+      "fc": "ST",
+      "exit_code": 0,
+      "events": [
+        {
+          "kind": "read",
+          "reference": "CCI016_01LD_Plant/WlimDWMX1.Mod.stVal",
+          "error": 0,
+          "error_text": "",
+          "value": "5",
+          "observed_utc": "2026-10-19T13:07:00.791259+00:00"
+        }
+      ],
+      "bypass_ui_guard": false
+    },
+    {
+      "identity": "secaud-r1",
+      "case": "discovery-in-scope",
+      "expected": "allow",
+      "passed": true,
+      "command": "browse",
+      "reference": "CCI016_01LD_Plant/WlimDWMX1",
+      "fc": "ST",
+      "exit_code": 0,
+      "events": [
+        {
+          "kind": "directory",
+          "reference": "CCI016_01LD_Plant/WlimDWMX1",
+          "error": 0,
+          "error_text": "",
+          "value": "objects",
+          "observed_utc": "2026-10-19T13:07:00.832533+00:00"
+        },
+        {
+          "kind": "entry",
+          "reference": "CCI016_01LD_Plant/WlimDWMX1",
+          "error": 0,
+          "error_text": "",
+          "value": "Mod",
+          "observed_utc": "2026-10-19T13:07:00.832566+00:00"
+        },
+        {
+          "kind": "entry",
+          "reference": "CCI016_01LD_Plant/WlimDWMX1",
+          "error": 0,
+          "error_text": "",
+          "value": "WMaxSptPct",
+          "observed_utc": "2026-10-19T13:07:00.832702+00:00"
+        }
+      ],
+      "bypass_ui_guard": false
+    },
+    {
+      "identity": "secaud-r1",
+      "case": "dataset-directory",
+      "expected": "access-denied",
+      "passed": true,
+      "command": "dataset-members",
+      "reference": "CCI016_01LD_Plant/LLN0.DS_R_PdC_Mis4sec",
+      "fc": "ST",
+      "exit_code": 1,
+      "events": [
+        {
+          "kind": "dataset-members",
+          "reference": "CCI016_01LD_Plant/LLN0.DS_R_PdC_Mis4sec",
+          "error": 21,
+          "error_text": "access-denied",
+          "value": "static",
+          "observed_utc": "2026-10-19T13:07:00.873348+00:00"
+        }
+      ],
+      "bypass_ui_guard": false
+    },
+    {
+      "identity": "secaud-r1",
+      "case": "dataset-values",
+      "expected": "access-denied",
+      "passed": true,
+      "command": "dataset-read",
+      "reference": "CCI016_01LD_Plant/LLN0.DS_R_PdC_Mis4sec",
+      "fc": "ST",
+      "exit_code": 1,
+      "events": [
+        {
+          "kind": "dataset-read",
+          "reference": "CCI016_01LD_Plant/LLN0.DS_R_PdC_Mis4sec",
+          "error": 21,
+          "error_text": "access-denied",
+          "value": "no dataset returned",
+          "observed_utc": "2026-10-19T13:07:00.914400+00:00"
+        }
+      ],
+      "bypass_ui_guard": false
+    },
+    {
+      "identity": "secaud-r1",
+      "case": "report-block-read",
+      "expected": "allow",
+      "passed": true,
+      "command": "rcb-read",
+      "reference": "CCI016_01LD_Plant/LLN0.RP.urcb_PdC_Mis4sec",
+      "fc": "ST",
+      "exit_code": 0,
+      "events": [
+        {
+          "kind": "rcb",
+          "reference": "CCI016_01LD_Plant/LLN0.RP.urcb_PdC_Mis4sec",
+          "error": 0,
+          "error_text": "",
+          "value": "enabled=false dataset=CCI016_01LD_Plant/LLN0$DS_R_PdC_Mis4sec",
+          "observed_utc": "2026-10-19T13:07:00.955364+00:00"
+        }
+      ],
+      "bypass_ui_guard": false
+    },
+    {
+      "identity": "rbacmnt-r1",
+      "case": "association",
+      "expected": "allow",
+      "passed": true
+    },
+    {
+      "identity": "rbacmnt-r1",
+      "case": "measurement-read",
+      "expected": "allow",
+      "passed": true,
+      "command": "read",
+      "reference": "CCI016_01LD_Plant/PdCMMXU1.TotW.mag.f",
+      "fc": "MX",
+      "exit_code": 0,
+      "events": [
+        {
+          "kind": "read",
+          "reference": "CCI016_01LD_Plant/PdCMMXU1.TotW.mag.f",
+          "error": 0,
+          "error_text": "",
+          "value": "0.000000",
+          "observed_utc": "2026-10-19T13:07:01.380704+00:00"
+        }
+      ],
+      "bypass_ui_guard": false
+    },
+    {
+      "identity": "rbacmnt-r1",
+      "case": "dso-state-read",
+      "expected": "allow",
+      "passed": true,
+      "command": "read",
+      "reference": "CCI016_01LD_Plant/WlimDWMX1.Mod.stVal",
+      "fc": "ST",
+      "exit_code": 0,
+      "events": [
+        {
+          "kind": "read",
+          "reference": "CCI016_01LD_Plant/WlimDWMX1.Mod.stVal",
+          "error": 0,
+          "error_text": "",
+          "value": "5",
+          "observed_utc": "2026-10-19T13:07:01.431816+00:00"
+        }
+      ],
+      "bypass_ui_guard": false
+    },
+    {
+      "identity": "rbacmnt-r1",
+      "case": "discovery-in-scope",
+      "expected": "allow",
+      "passed": true,
+      "command": "browse",
+      "reference": "CCI016_01LD_Plant/WlimDWMX1",
+      "fc": "ST",
+      "exit_code": 0,
+      "events": [
+        {
+          "kind": "directory",
+          "reference": "CCI016_01LD_Plant/WlimDWMX1",
+          "error": 0,
+          "error_text": "",
+          "value": "objects",
+          "observed_utc": "2026-10-19T13:07:01.483481+00:00"
+        },
+        {
+          "kind": "entry",
+          "reference": "CCI016_01LD_Plant/WlimDWMX1",
+          "error": 0,
+          "error_text": "",
+          "value": "Mod",
+          "observed_utc": "2026-10-19T13:07:01.483526+00:00"
+        },
+        {
+          "kind": "entry",
+          "reference": "CCI016_01LD_Plant/WlimDWMX1",
+          "error": 0,
+          "error_text": "",
+          "value": "WMaxSptPct",
+          "observed_utc": "2026-10-19T13:07:01.483535+00:00"
+        }
+      ],
+      "bypass_ui_guard": false
+    },
+    {
+      "identity": "rbacmnt-r1",
+      "case": "dataset-directory",
+      "expected": "access-denied",
+      "passed": true,
+      "command": "dataset-members",
+      "reference": "CCI016_01LD_Plant/LLN0.DS_R_PdC_Mis4sec",
+      "fc": "ST",
+      "exit_code": 1,
+      "events": [
+        {
+          "kind": "dataset-members",
+          "reference": "CCI016_01LD_Plant/LLN0.DS_R_PdC_Mis4sec",
+          "error": 21,
+          "error_text": "access-denied",
+          "value": "static",
+          "observed_utc": "2026-10-19T13:07:01.524189+00:00"
+        }
+      ],
+      "bypass_ui_guard": false
+    },
+    {
+      "identity": "rbacmnt-r1",
+      "case": "dataset-values",
+      "expected": "access-denied",
+      "passed": true,
+      "command": "dataset-read",
+      "reference": "CCI016_01LD_Plant/LLN0.DS_R_PdC_Mis4sec",
+      "fc": "ST",
+      "exit_code": 1,
+      "events": [
+        {
+          "kind": "dataset-read",
+          "reference": "CCI016_01LD_Plant/LLN0.DS_R_PdC_Mis4sec",
+          "error": 21,
+          "error_text": "access-denied",
+          "value": "no dataset returned",
+          "observed_utc": "2026-10-19T13:07:01.565253+00:00"
+        }
+      ],
+      "bypass_ui_guard": false
+    },
+    {
+      "identity": "rbacmnt-r1",
+      "case": "report-block-read",
+      "expected": "access-denied",
+      "passed": true,
+      "command": "rcb-read",
+      "reference": "CCI016_01LD_Plant/LLN0.RP.urcb_PdC_Mis4sec",
+      "fc": "ST",
+      "exit_code": 1,
+      "events": [
+        {
+          "kind": "rcb-read",
+          "reference": "CCI016_01LD_Plant/LLN0.RP.urcb_PdC_Mis4sec",
+          "error": 21,
+          "error_text": "access-denied",
+          "value": "",
+          "observed_utc": "2026-10-19T13:07:01.606007+00:00"
+        }
+      ],
+      "bypass_ui_guard": false
+    },
+    {
+      "identity": "multi-viewer-engineer",
+      "case": "association",
+      "expected": "allow",
+      "passed": true
+    },
+    {
+      "identity": "multi-viewer-engineer",
+      "case": "measurement-read",
+      "expected": "allow",
+      "passed": true,
+      "command": "read",
+      "reference": "CCI016_01LD_Plant/PdCMMXU1.TotW.mag.f",
+      "fc": "MX",
+      "exit_code": 0,
+      "events": [
+        {
+          "kind": "read",
+          "reference": "CCI016_01LD_Plant/PdCMMXU1.TotW.mag.f",
+          "error": 0,
+          "error_text": "",
+          "value": "0.000000",
+          "observed_utc": "2026-10-19T13:07:02.069800+00:00"
+        }
+      ],
+      "bypass_ui_guard": false
+    },
+    {
+      "identity": "multi-viewer-engineer",
+      "case": "dso-state-read",
+      "expected": "allow",
+      "passed": true,
+      "command": "read",
+      "reference": "CCI016_01LD_Plant/WlimDWMX1.Mod.stVal",
+      "fc": "ST",
+      "exit_code": 0,
+      "events": [
+        {
+          "kind": "read",
+          "reference": "CCI016_01LD_Plant/WlimDWMX1.Mod.stVal",
+          "error": 0,
+          "error_text": "",
+          "value": "5",
+          "observed_utc": "2026-10-19T13:07:02.110557+00:00"
+        }
+      ],
+      "bypass_ui_guard": false
+    },
+    {
+      "identity": "multi-viewer-engineer",
+      "case": "discovery-in-scope",
+      "expected": "allow",
+      "passed": true,
+      "command": "browse",
+      "reference": "CCI016_01LD_Plant/WlimDWMX1",
+      "fc": "ST",
+      "exit_code": 0,
+      "events": [
+        {
+          "kind": "directory",
+          "reference": "CCI016_01LD_Plant/WlimDWMX1",
+          "error": 0,
+          "error_text": "",
+          "value": "objects",
+          "observed_utc": "2026-10-19T13:07:02.151730+00:00"
+        },
+        {
+          "kind": "entry",
+          "reference": "CCI016_01LD_Plant/WlimDWMX1",
+          "error": 0,
+          "error_text": "",
+          "value": "Mod",
+          "observed_utc": "2026-10-19T13:07:02.151771+00:00"
+        },
+        {
+          "kind": "entry",
+          "reference": "CCI016_01LD_Plant/WlimDWMX1",
+          "error": 0,
+          "error_text": "",
+          "value": "WMaxSptPct",
+          "observed_utc": "2026-10-19T13:07:02.151780+00:00"
+        }
+      ],
+      "bypass_ui_guard": false
+    },
+    {
+      "identity": "multi-viewer-engineer",
+      "case": "dataset-directory",
+      "expected": "allow",
+      "passed": true,
+      "command": "dataset-members",
+      "reference": "CCI016_01LD_Plant/LLN0.DS_R_PdC_Mis4sec",
+      "fc": "ST",
+      "exit_code": 0,
+      "events": [
+        {
+          "kind": "dataset-members",
+          "reference": "CCI016_01LD_Plant/LLN0.DS_R_PdC_Mis4sec",
+          "error": 0,
+          "error_text": "",
+          "value": "static",
+          "observed_utc": "2026-10-19T13:07:02.192612+00:00"
+        },
+        {
+          "kind": "entry",
+          "reference": "CCI016_01LD_Plant/LLN0.DS_R_PdC_Mis4sec",
+          "error": 0,
+          "error_text": "",
+          "value": "CCI016_01LD_Plant/PdCMMXU1.TotW[MX]",
+          "observed_utc": "2026-10-19T13:07:02.192652+00:00"
+        },
+        {
+          "kind": "entry",
+          "reference": "CCI016_01LD_Plant/LLN0.DS_R_PdC_Mis4sec",
+          "error": 0,
+          "error_text": "",
+          "value": "CCI016_01LD_Plant/PdCMMXU1.TotVAr[MX]",
+          "observed_utc": "2026-10-19T13:07:02.192930+00:00"
+        },
+        {
+          "kind": "entry",
+          "reference": "CCI016_01LD_Plant/LLN0.DS_R_PdC_Mis4sec",
+          "error": 0,
+          "error_text": "",
+          "value": "CCI016_01LD_Plant/PdCMMXU1.PPV.phsAB.cVal.mag.f[MX]",
+          "observed_utc": "2026-10-19T13:07:02.192949+00:00"
+        }
+      ],
+      "bypass_ui_guard": false
+    },
+    {
+      "identity": "multi-viewer-engineer",
+      "case": "dataset-values",
+      "expected": "allow",
+      "passed": true,
+      "command": "dataset-read",
+      "reference": "CCI016_01LD_Plant/LLN0.DS_R_PdC_Mis4sec",
+      "fc": "ST",
+      "exit_code": 0,
+      "events": [
+        {
+          "kind": "dataset-read",
+          "reference": "CCI016_01LD_Plant/LLN0.DS_R_PdC_Mis4sec",
+          "error": 0,
+          "error_text": "",
+          "value": "{{{0.000000},1100000001000,20261019122948.603Z},{{0.000000},1100000001000,20261019122948.603Z},20.000000}",
+          "observed_utc": "2026-10-19T13:07:02.243719+00:00"
+        }
+      ],
+      "bypass_ui_guard": false
+    },
+    {
+      "identity": "multi-viewer-engineer",
+      "case": "report-block-read",
+      "expected": "allow",
+      "passed": true,
+      "command": "rcb-read",
+      "reference": "CCI016_01LD_Plant/LLN0.RP.urcb_PdC_Mis4sec",
+      "fc": "ST",
+      "exit_code": 0,
+      "events": [
+        {
+          "kind": "rcb",
+          "reference": "CCI016_01LD_Plant/LLN0.RP.urcb_PdC_Mis4sec",
+          "error": 0,
+          "error_text": "",
+          "value": "enabled=false dataset=CCI016_01LD_Plant/LLN0$DS_R_PdC_Mis4sec",
+          "observed_utc": "2026-10-19T13:07:02.274490+00:00"
+        }
+      ],
+      "bypass_ui_guard": false
+    },
+    {
+      "identity": "dual-dso",
+      "case": "association",
+      "expected": "allow",
+      "passed": false,
+      "error": "MMS association failed; use --verbose for diagnostics."
+    },
+    {
+      "identity": "dual-viewer",
+      "case": "association",
+      "expected": "allow",
+      "passed": false,
+      "error": "MMS association failed; use --verbose for diagnostics."
+    },
+    {
+      "identity": "negative-no-roles",
+      "case": "invalid-identity-rejected",
+      "expected": "association-rejected",
+      "passed": true,
+      "events": [
+        {
+          "kind": "association",
+          "reference": "192.168.0.1",
+          "error": 5,
+          "error_text": "",
+          "value": "mutual TLS 1.2 + TLS peer identity authentication",
+          "observed_utc": "2026-10-19T13:07:03.205258+00:00"
+        }
+      ]
+    },
+    {
+      "identity": "negative-revoked",
+      "case": "invalid-identity-rejected",
+      "expected": "association-rejected",
+      "passed": true,
+      "events": [
+        {
+          "kind": "association",
+          "reference": "192.168.0.1",
+          "error": 5,
+          "error_text": "",
+          "value": "mutual TLS 1.2 + TLS peer identity authentication",
+          "observed_utc": "2026-10-19T13:07:03.434580+00:00"
+        }
+      ]
+    },
+    {
+      "identity": "negative-unknown-role",
+      "case": "invalid-identity-rejected",
+      "expected": "association-rejected",
+      "passed": true,
+      "events": [
+        {
+          "kind": "association",
+          "reference": "192.168.0.1",
+          "error": 5,
+          "error_text": "",
+          "value": "mutual TLS 1.2 + TLS peer identity authentication",
+          "observed_utc": "2026-10-19T13:07:03.652269+00:00"
+        }
+      ]
+    },
+    {
+      "identity": "negative-wrong-aor",
+      "case": "invalid-identity-rejected",
+      "expected": "association-rejected",
+      "passed": true,
+      "events": [
+        {
+          "kind": "association",
+          "reference": "192.168.0.1",
+          "error": 5,
+          "error_text": "",
+          "value": "mutual TLS 1.2 + TLS peer identity authentication",
+          "observed_utc": "2026-10-19T13:07:03.901856+00:00"
+        }
+      ]
+    },
+    {
+      "identity": "negative-wrong-definition",
+      "case": "invalid-identity-rejected",
+      "expected": "association-rejected",
+      "passed": true,
+      "events": [
+        {
+          "kind": "association",
+          "reference": "192.168.0.1",
+          "error": 5,
+          "error_text": "",
+          "value": "mutual TLS 1.2 + TLS peer identity authentication",
+          "observed_utc": "2026-10-19T13:07:04.136800+00:00"
+        }
+      ]
+    },
+    {
+      "identity": "negative-wrong-revision",
+      "case": "invalid-identity-rejected",
+      "expected": "association-rejected",
+      "passed": true,
+      "events": [
+        {
+          "kind": "association",
+          "reference": "192.168.0.1",
+          "error": 5,
+          "error_text": "",
+          "value": "mutual TLS 1.2 + TLS peer identity authentication",
+          "observed_utc": "2026-10-19T13:07:04.370613+00:00"
+        }
+      ]
+    },
+    {
+      "identity": "dual-dso-with-viewer-transport",
+      "case": "unbound-transport-data-blocked",
+      "expected": "fail-closed",
+      "passed": true,
+      "events": [
+        {
+          "kind": "association",
+          "reference": "192.168.0.1",
+          "error": 5,
+          "error_text": "",
+          "value": "mutual TLS 1.2 + ACSE certificate authentication",
+          "observed_utc": "2026-10-19T13:07:04.634613+00:00"
+        }
+      ]
+    }
+  ],
+  "passed": 128,
+  "failed": 2
+}

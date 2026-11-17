@@ -1,0 +1,13 @@
+XMPP-Stz {iso(1) standard(0) iec62351(62351) part4(4) modules(0) xmpp-stz(6)
+     version1(1)}
+DEFINITIONS XER INSTRUCTIONS IMPLICIT TAGS ::=
+BEGIN
+
+Bad-request ::= [UNTAGGED] SEQUENCE {
+  bad-request [NAMESPACE AS "urn:ietf:params:xml:ns:xmpp-stanzas"] UTF8String ("") }
+
+ENCODING-CONTROL XER
+  GLOBAL-DEFAULTS MODIFIED-ENCODINGS
+  [NAMESPACE AS "urn:ietf:params:xml:ns:xmpp-stanzas" PREFIX "stz"]  ALL 
+
+END

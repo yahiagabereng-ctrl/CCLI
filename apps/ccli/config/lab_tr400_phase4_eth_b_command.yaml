@@ -93,6 +93,7 @@ iec104:
   ioa_ppv: 1003
   operator_ioa_msd_sp: 3001
   tls_enabled: true
+  tls_crl: /etc/ccli/tls/lab_crl.pem
   tls_own_key: /etc/ccli/tls/server.key
   tls_own_cert: /etc/ccli/tls/server_tls.pem
   tls_ca_cert: /etc/ccli/tls/root_CA.pem

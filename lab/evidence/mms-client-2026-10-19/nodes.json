@@ -1,0 +1,78 @@
+{
+  "host": "192.168.0.1",
+  "port": 3782,
+  "command": "browse",
+  "passed": true,
+  "events": [
+    {
+      "kind": "association",
+      "reference": "192.168.0.1",
+      "error": 0,
+      "value": "mutual TLS 1.2 + ACSE certificate authentication",
+      "observed_utc": "2026-10-19T08:16:13.427820+00:00"
+    },
+    {
+      "kind": "directory",
+      "reference": "CCI016_01LD_Plant",
+      "error": 0,
+      "value": "nodes",
+      "observed_utc": "2026-10-19T08:16:13.458964+00:00"
+    },
+    {
+      "kind": "entry",
+      "reference": "CCI016_01LD_Plant",
+      "error": 0,
+      "value": "LLN0",
+      "observed_utc": "2026-10-19T08:16:13.459221+00:00"
+    },
+    {
+      "kind": "entry",
+      "reference": "CCI016_01LD_Plant",
+      "error": 0,
+      "value": "PdCMMXU1",
+      "observed_utc": "2026-10-19T08:16:13.459313+00:00"
+    },
+    {
+      "kind": "entry",
+      "reference": "CCI016_01LD_Plant",
+      "error": 0,
+      "value": "PFSPDFPF1",
+      "observed_utc": "2026-10-19T08:16:13.459341+00:00"
+    },
+    {
+      "kind": "entry",
+      "reference": "CCI016_01LD_Plant",
+      "error": 0,
+      "value": "PFWDPFW1",
+      "observed_utc": "2026-10-19T08:16:13.459358+00:00"
+    },
+    {
+      "kind": "entry",
+      "reference": "CCI016_01LD_Plant",
+      "error": 0,
+      "value": "VArSdDVAR1",
+      "observed_utc": "2026-10-19T08:16:13.459414+00:00"
+    },
+    {
+      "kind": "entry",
+      "reference": "CCI016_01LD_Plant",
+      "error": 0,
+      "value": "VArVDVVR1",
+      "observed_utc": "2026-10-19T08:16:13.459436+00:00"
+    },
+    {
+      "kind": "entry",
+      "reference": "CCI016_01LD_Plant",
+      "error": 0,
+      "value": "WlimDWMX1",
+      "observed_utc": "2026-10-19T08:16:13.459448+00:00"
+    },
+    {
+      "kind": "entry",
+      "reference": "CCI016_01LD_Plant",
+      "error": 0,
+      "value": "WSdDAGC1",
+      "observed_utc": "2026-10-19T08:16:13.459460+00:00"
+    }
+  ]
+}

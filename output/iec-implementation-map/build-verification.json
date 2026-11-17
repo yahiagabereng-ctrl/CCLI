@@ -1,0 +1,25 @@
+{
+  "summary": {
+    "parents": 289,
+    "tasks": 531,
+    "by_standard": {
+      "IEC 62443-4-1:2018": 139,
+      "IEC 62443-4-2:2019": 173,
+      "EN IEC 62351-3:2023": 219
+    },
+    "by_kind": {
+      "Mandatory": 296,
+      "Conditional mandatory": 179,
+      "Prohibited": 14,
+      "Conditional optional": 3,
+      "Optional": 29,
+      "Recommendation / optional": 10
+    },
+    "coverage_pages": 117,
+    "sdl_clauses": 47,
+    "cr_bases": 43,
+    "type_bases": 30
+  },
+  "closureChecks": "passed; inputs restored",
+  "xlsx": "C:\\Users\\Administrator\\Desktop\\CCLI Alireza\\CCLI Merged\\outputs\\01a177ab-1d02-7271-9033-edf3fd3f3419\\CCI_IEC_implementation_register.xlsx"
+}

@@ -95,6 +95,8 @@ DsoPhase1ApplyResult apply_live_dso_commands_to_pf2(Pf2Config& cfg,
                                                     double wmax_spt_pct,
                                                     bool wsd_active,
                                                     double wspt_pct,
+                                                    bool wsa_active,
+                                                    double wsa_spt_pct,
                                                     bool operating_rule_fallback) {
     DsoPhase1ApplyResult result{};
 
@@ -127,6 +129,8 @@ DsoPhase1ApplyResult apply_live_dso_commands_to_pf2(Pf2Config& cfg,
     mock.commands.wmax_spt_pct = wmax_spt_pct;
     mock.commands.wsd_active = wsd_active;
     mock.commands.wspt_pct = wspt_pct;
+    mock.commands.wsa_active = wsa_active;
+    mock.commands.wsa_spt_pct = wsa_spt_pct;
 
     result.derived = derive_active_power_kw(mock.plant, mock.commands);
     result.applied = true;
@@ -183,6 +187,24 @@ DsoReactiveApplyResult apply_live_pfsp_command(const PlantConfig& plant_cfg,
     result.derived = derive_pfsp_kvar(mock.plant, p_kw_measured, pfsp);
     result.applied = pfsp_active;
     return result;
+}
+
+ReactiveCommandSelection select_live_reactive_command(const PlantConfig& plant,
+    const DsoConfig& cfg, bool varsd_active, double varsd_pct,
+    bool pfsp_active, double cosphi, bool generation, double p_kw,
+    bool varsa_active, double varsa_pct) {
+    ReactiveCommandSelection out;
+    if (varsd_active) {
+        out.command = apply_live_varsd_command(plant, cfg, true, varsd_pct);
+        out.source = "DSO_VArSd";
+    } else if (pfsp_active) {
+        out.command = apply_live_pfsp_command(plant, cfg, true, cosphi, generation, p_kw);
+        out.source = "DSO_PFSP";
+    } else if (varsa_active) {
+        out.command = apply_live_varsd_command(plant, cfg, true, varsa_pct);
+        out.source = "AGGREGATOR_VArSa";
+    }
+    return out;
 }
 
 }  // namespace cci::core::dso

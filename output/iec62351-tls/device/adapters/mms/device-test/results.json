@@ -1,0 +1,30 @@
+[
+  {
+    "case": "dso-positive",
+    "passed": true
+  },
+  {
+    "case": "replay",
+    "passed": true
+  },
+  {
+    "case": "viewer-positive",
+    "passed": true
+  },
+  {
+    "case": "bad-signature",
+    "passed": true
+  },
+  {
+    "case": "stale-proof",
+    "passed": true
+  },
+  {
+    "case": "wrong-ap",
+    "passed": true
+  },
+  {
+    "case": "wrong-transport",
+    "passed": true
+  }
+]

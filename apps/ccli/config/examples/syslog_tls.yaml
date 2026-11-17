@@ -1,0 +1,19 @@
+# Merge this block into a device profile after provisioning the collector.
+event_log:
+  enabled: true
+  path: /etc/ccli/security-events/events.jsonl
+  platform_audit_enabled: true
+  syslog_enabled: false
+  syslog_host: 203.0.113.20 # Replace with the real collector IPv4 address
+  syslog_port: 6514
+  syslog_source: cci-01
+  syslog_app_name: ccli
+  syslog_tls_ca: /etc/ccli/tls/syslog-ca.pem
+  syslog_tls_cert: /etc/ccli/tls/syslog-client.pem
+  syslog_tls_key: /etc/ccli/tls/syslog-client.key
+  syslog_tls_crl: /etc/ccli/tls/syslog-issuers.crl.pem
+  # Replace with the collector DER leaf's SHA-256 fingerprint before enabling.
+  syslog_tls_peer_sha256: REPLACE_WITH_COLLECTOR_SHA256
+  syslog_revocation_check_s: 3600
+  syslog_renegotiation_s: 43200
+  syslog_resumption_s: 3600

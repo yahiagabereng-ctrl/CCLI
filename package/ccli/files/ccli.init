@@ -23,6 +23,11 @@ ccli_config_file() {
 
 start_service() {
 	local cfg enabled blink extra=""
+	# OpenWrt may invoke start before the credential restoration hook completes.
+	if [ -e /etc/ccli-upgrade.pending ] || [ -e /etc/ccli-upgrade.hold ]; then
+		logger -t ccli "Start held for controlled upgrade verification"
+		return 1
+	fi
 
 	enabled=$(uci -q get ccli.main.enabled 2>/dev/null)
 	[ "$enabled" = "0" ] && return 0

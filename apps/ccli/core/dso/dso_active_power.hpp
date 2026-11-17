@@ -32,6 +32,8 @@ struct DsoActivePowerCommands {
 
     bool wsd_active{false};    /**< O.9.2.3 — DSO modulation (DAGC1 / WSd) — Figura 2 s.p. W */
     double wspt_pct{0.0};      /**< WSptPct: + export, − import (% Smax); import not used in P1 FSM */
+    bool wsa_active{false};
+    double wsa_spt_pct{100.0}; /**< Aggregator export ceiling; cannot relax DSO/protection caps. */
 };
 
 /** Numeric trace of derive_active_power_kw() for logs and tests. */
@@ -41,6 +43,7 @@ struct ActivePowerDerivation {
     double p_w110_kw{0.0};           /**< Component cap if w110_active */
     double p_wlim_kw{0.0};           /**< Component cap if wlim_active */
     double p_wsd_kw{0.0};            /**< Component cap if wsd_active (export + only in P1) */
+    double p_wsa_kw{0.0};
     double p_effective_export_kw{0.0}; /**< O.11-style min() result used for Phase 1 PF2 threshold */
 };
 

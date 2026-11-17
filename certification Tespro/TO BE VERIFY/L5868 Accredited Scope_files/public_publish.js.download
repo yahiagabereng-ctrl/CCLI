@@ -1,0 +1,438 @@
+/**
+ * 获得contextPath
+ */
+function getContextPath() {
+    var pathName = document.location.pathname;
+    var index = pathName.substr(1).indexOf("/");
+    var result = pathName.substr(0,index+1);
+    return result;
+}
+
+
+String.prototype.trim   =   function()
+{
+         //   用正则表达式将前后空格
+         //   用空字符串替代。
+         return   this.replace(/(^\s*)|(\s*$)/g, "");
+};
+//去空格的拆分字符串
+String.prototype.split2   =   function(separator, limit){
+	var _newArr = [];
+	var _arr = this.split(separator, limit);
+	$.each(_arr, function(i, val){
+		_newArr.push(val.trim());
+	});
+	return _newArr;
+};
+
+String.prototype.startWith=function(str){     
+	  var reg=new RegExp("^"+str);     
+	  return reg.test(this);        
+};
+	 
+String.prototype.endWith=function(str){     
+  var reg=new RegExp(str+"$");     
+  return reg.test(this);        
+};
+
+//***********************扩展方法**************************
+//String to Date
+String.prototype.toDate = function(format) {
+   var returnDate = null;
+	format = format != null ? format : 'yyyy-MM-dd';
+	var pattern = format.replace("yyyy", "(\\~1{4})")
+		.replace("MM", "(\\~1{1,2})")
+		.replace("dd", "(\\~1{1,2})")
+		.replace(/~1/g, "d");
+	if (new RegExp(pattern).test(this)) {
+		var yPos = format.indexOf("yyyy");
+		var mPos = format.indexOf("MM");
+		var dPos = format.indexOf("dd");
+		var pos = new Array(yPos + "y", mPos + "m", dPos + "d").sort();
+		var data = { y: 0, m: 0, d: 0 };
+		var m = this.match(pattern);
+		for (var i = 1; i < m.length; i++) {
+			if (i == 0) 
+				return null;
+			var flag = pos[i - 1].split('')[1];
+			data[flag] = m[i];
+		};
+		data.m = data.m - 1;
+		returnDate = new Date(data.y, data.m, data.d);
+	}
+
+	return returnDate;
+};
+Date.prototype.addYearOrMonth=function   (type1,num1){ 
+	if(num1==null)   
+		num1=1; 
+	var   tempDate=this.getDate(); 
+	switch(type1) { 
+		case   'M':	
+			this.setMonth(this.getMonth()+num1);   
+			break   ; 
+		case   'Y':	
+			this.setYear(this.getFullYear()+num1);   
+			break   ;	
+	} 
+	if(tempDate!=this.getDate())   
+		this.setDate(0); 
+	return   this; 
+};
+Date.prototype.add=function(type, num){ 
+	if(num==null)   
+		num=1; 
+	var tempDate=this.getDate();
+	switch(type){
+	case 'D':
+		this.setDate(this.getDate()+num);   
+		break; 
+	case 'M':	
+		this.setMonth(this.getMonth()+num);   
+		break; 
+	case 'Y':	
+		this.setYear(this.getFullYear()+num);   
+		break;	
+	}
+	if(tempDate!=this.getDate())   
+		this.setDate(0); 
+	return this; 
+};
+
+Date.prototype.format =function(format)
+{
+var o = {
+"M+" : this.getMonth()+1, //month
+"d+" : this.getDate(), //day
+"H+" : this.getHours(), //hour
+"h+" : this.getHours(), //hour
+"m+" : this.getMinutes(), //minute
+"s+" : this.getSeconds(), //second
+"q+" : Math.floor((this.getMonth()+3)/3), //quarter
+"S" : this.getMilliseconds() //millisecond
+};
+if(/(y+)/.test(format)) format=format.replace(RegExp.$1,
+(this.getFullYear()+"").substr(4- RegExp.$1.length));
+for(var k in o)if(new RegExp("("+ k +")").test(format))
+format = format.replace(RegExp.$1,
+RegExp.$1.length==1? o[k] :
+("00"+ o[k]).substr((""+ o[k]).length));
+return format;
+};
+
+
+
+Array.prototype.contains = function(obj){
+	for(var i=0; i<this.length; i++){
+		if(this[i] == obj){
+			return true;
+		}
+	}
+	return false;
+};
+Array.prototype.indexOf = function(Object){  
+	for(var i = 0;i<this.length;i++){  
+		if(this[i] == Object){  
+			return i;  
+		}  
+	}  
+	return -1;  
+};  
+
+//*****************************公用方法***************************
+function cloneFun(obj){
+  if(!obj||"object" != typeof obj){
+    return null;
+  }
+  var result = null;
+  if(obj instanceof Array){
+	  result=[];
+  }else if(obj instanceof Date){
+	  result=new Date();
+	  result.setTime(obj.getTime());
+  }else{
+	  result={};
+  }
+  for(var i in obj){
+    result[i] = ("object" != typeof obj[i])?obj[i]:cloneFun(obj[i]);
+  }
+  return result;
+}
+function coalesce(){
+	var val = null;
+	$.each(arguments, function(i, param){
+		val = param;
+		if(val!=null){
+			return false;
+		}
+	});
+	return val;
+}
+function nvl(){
+	var val = null;
+	$.each(arguments, function(i, param){
+		val = param;
+		if(val!=null&&val!=''){
+			return false;
+		}
+	});
+	return val;
+}
+/**
+ * 创建一个加指定类型时间的日期
+ * @param date
+ * @param type
+ * @param num
+ * @returns
+ */
+function addDateDay(date, type, num){
+	var newDate = cloneFun(date);
+	return newDate.add(type, num);
+}
+/**
+ * 时间段验证
+ * @param smallDate 小日期
+ * @param bigDate 大日期
+ * @param include 是否包括等于
+ */
+function datePartValidate(smallDate, bigDate, include){
+	var date1 = smallDate.toDate();
+	var date2 = bigDate.toDate();
+	return (date1 < date2) || (include && date1.getTime()==date2.getTime());
+}
+//获得一个月的天数 (最后一天）
+function daysInMonth(iMonth, iYear){
+    return 32-new Date(iYear, iMonth-1, 32).getDate();
+}
+//扩展名 文件类型
+ function getFileExpandedName(fileInput){
+	var expandedName = '';
+	var fileName = fileInput.value;
+	if(fileName.indexOf('.')!=-1 && fileName.lastIndexOf('.') > fileName.lastIndexOf('\\')){
+		expandedName = fileName.substring(fileName.lastIndexOf('.')+1);
+	}
+	return expandedName;
+ }
+//增加正则表达式验证
+var addRegexpMothed = function(e){
+	jQuery.validator.addMethod("regexp",function(value,element,param){
+		var regexp = param;
+		return this.optional(element) || regexp.test(value);
+	},"验证格式错误！");
+};
+
+/**
+ * 为url追加参数
+ * @param url
+ * @param data
+ * @returns
+ */
+function addUrlParam(url, data){
+	if(url!=null && data){
+		data = coverParamData(data);
+		var haveParam = /\?/.test(url);
+		$.each(data,function(key,value){
+			if(value!=null){
+				url+=(haveParam?"&":"?");
+				haveParam=true;
+				url+=key+"="+encodeURIComponent(value);
+			}
+		});
+	}
+	return url;
+}
+/**
+ * 转化参数对象变为url的参数对象
+ * 参数1 参数对象
+ * 参数2 参数名称
+ * @returns
+ */
+function coverParamData(){
+	var data = {};
+	var objVal = arguments[0];
+	if(objVal!=null){
+		var objName = arguments[1];
+		switch($.type(objVal)){
+		case 'object':
+			$.each(objVal, function(attrName, attrVal){
+				var newObjName = attrName;
+				if(objName){
+					newObjName=objName+'.'+attrName;
+				}
+				joinObj(data, coverParamData(attrVal,newObjName));
+			});
+			break;
+		case 'array':
+			$.each(objVal, function(i, subVal){
+				joinObj(data, coverParamData(subVal,objName+'['+i+']'));
+			});
+			break;
+		default:
+			data[objName]=objVal;
+		break;
+		}
+		return data;
+	}
+}
+/**
+ * 转化参数对象变为url的参数对象（不保存空字符串参数）
+ * 参数1 参数对象
+ * 参数2 参数名称
+ * @returns
+ */
+function coverParamData2(){
+	var data = {};
+	var objVal = arguments[0];
+	if(objVal!=null){
+		var objName = arguments[1];
+		switch($.type(objVal)){
+		case 'object':
+			$.each(objVal, function(attrName, attrVal){
+				var newObjName = attrName;
+				if(objName){
+					newObjName=objName+'.'+attrName;
+				}
+				joinObj(data, coverParamData(attrVal,newObjName), true);
+			});
+			break;
+		case 'array':
+			$.each(objVal, function(i, subVal){
+				joinObj(data, coverParamData(subVal,objName+'['+i+']'), true);
+			});
+			break;
+		default:
+			if(objVal!=''&&objVal!=null){
+				data[objName]=objVal;
+			}
+			break;
+		}
+		return data;
+	}
+}
+/**
+ * 连接两个对象
+ * @param obj1
+ * @param obj2
+ */
+function joinObj(obj1, obj2){
+	var delEmpty = arguments[2]!=null?arguments[2]:false;
+	if(obj2){
+		$.each(obj2, function(attrName, attrVal){
+			if(delEmpty&&(attrVal==''||attrVal==null)){
+				return;
+			}
+			obj1[attrName]=attrVal;
+		});
+	}
+	return obj1;
+}
+function waitSubmit(){
+	try{
+	$.blockUI({
+		  fadeIn: 0, //渐入式显示
+		  fadeOut: 700, //渐出式消失
+		  timeout: 0, //2 秒后消失
+		  message: '<img width="32px" height="32px" src="'+getContextPath()+'/images/load.gif" /><br/> 数据处理中，请稍候',
+		  css: { border: '0',backgroundColor: '#FFFFFF'},
+		  overlayCSS: { backgroundColor: '#FFFFFF' }
+		});
+	}catch(e){}
+}
+
+//获取表格的行序号
+var seqFormatter = function(elCell, oRecord, oColumn, oData) { 
+	var thePirl = null;
+	if(oRecord.getData('dtId')){
+		thePirl = eval('('+oRecord.getData('dtId')+')');
+	}else{
+		thePirl = pirl;
+	}
+	var id =thePirl.getRecordIndex(oRecord);
+	var n =0;
+	var p = thePirl.get('paginator');
+	if(p) {
+		var currentPage = p.getCurrentPage();
+		var rows = p.getRowsPerPage();
+		n = (currentPage==0?0:currentPage-1)*rows;
+	}
+	elCell.innerHTML = ''+(id+1)+''; 
+};
+var seqFormatter2 = function(elCell, oRecord, oColumn, oData) { 
+	var thePirl = this;
+	var id =thePirl.getRecordIndex(oRecord);
+	var n =0;
+	var p = thePirl.get('paginator');
+	if(p) {
+		var currentPage = p.getCurrentPage();
+		var rows = p.getRowsPerPage();
+		n = (currentPage==0?0:currentPage-1)*rows;
+	}
+	elCell.innerHTML = ''+(id+1)+''; 
+};
+
+/**
+ * 获得当前页的index索引 从0开始
+ * @param oRecord
+ */
+function getCurrentPageIndex(oRecord) { 
+	var thePirl;
+	if(oRecord.getData('dtId')){
+		thePirl = eval('('+oRecord.getData('dtId')+')');
+	}else{
+		thePirl = pirl;
+	}
+	var id =thePirl.getRecordIndex(oRecord);
+	var n =0;
+	var p = thePirl.get('paginator');
+	if(p) {
+		var currentPage = p.getCurrentPage();
+		var rows = p.getRowsPerPage();
+		n = (currentPage==0?0:currentPage-1)*rows;
+	}
+	return id-n;
+};
+/**
+ * 加参数的URL串
+ * @param url
+ * @param paramName
+ * @param paramValue
+ * @return
+ */
+function getAddParamUrlStr(url, paramName, paramValue){
+	var haveParam = /\?/.test(url);
+	if(paramValue instanceof Array){
+		for(var i=0; i<paramValue.length; i++){
+			url += _oneParamStr(haveParam, paramName, paramValue[i]);
+			haveParam = true;
+		}
+	}else{
+		url += _oneParamStr(haveParam, paramName, paramValue);
+	}
+	return url;
+}
+//一个参数的参数串
+function _oneParamStr(haveParam, paramName, paramValue){
+	return (haveParam ? '&' : '?') + paramName + '=' + paramValue;
+}
+
+/**
+ * null转空字符串
+ * @param str
+ * @returns
+ */
+function nullToStr(str){
+	return str == null ? '' : str;
+}
+		
+/**
+ * 根据dict格式化展现
+ * @param elCell
+ * @param oRecord
+ * @param oColumn
+ * @param oData
+ * @param dict
+ */
+function dictFmt(elCell, oRecord, oColumn, oData, dict){
+	elCell.innerHTML=searchDictValue(oData, dict);
+}
+

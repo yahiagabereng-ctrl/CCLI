@@ -7,13 +7,20 @@ namespace cci::services {
 
 class MmsService {
 public:
-    bool start(const core::MmsConfig& cfg, adapters::MmsAuditFn audit = {}) {
-        return adapter_.start(cfg, std::move(audit));
+    bool start(const core::MmsConfig& cfg, adapters::MmsAuditFn audit = {},
+               adapters::MmsTimeSyncAuditFn time_sync_audit = {}) {
+        return adapter_.start(cfg, std::move(audit), std::move(time_sync_audit));
     }
     void stop() { adapter_.stop(); }
     bool is_running() const { return adapter_.is_running(); }
     void update_tot_w_kw(double p_kw) { adapter_.update_tot_w_kw(p_kw); }
+    void update_gen_pv_active_power_kw(double p_kw, core::DataQuality quality) {
+        adapter_.update_gen_pv_active_power_kw(p_kw, quality);
+    }
     void update_totvar_kvar(double q_kvar) { adapter_.update_totvar_kvar(q_kvar); }
+    void update_aggregator_measurement_quality(core::DataQuality quality) {
+        adapter_.update_aggregator_measurement_quality(quality);
+    }
     void update_ppv_kv(double ppv_kv) { adapter_.update_ppv_kv(ppv_kv); }
     void update_phs_a_a(double amps) { adapter_.update_phs_a_a(amps); }
     void update_pdc_phasors(const core::PdcMmxuPhasors& pdc) {

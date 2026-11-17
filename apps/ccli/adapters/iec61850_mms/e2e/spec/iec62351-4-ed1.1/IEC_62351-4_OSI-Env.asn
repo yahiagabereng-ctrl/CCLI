@@ -1,0 +1,84 @@
+OSI-Env {iso(1) standard(0) iec62351(62351) part4(4) modules(0) osi-e2e(3) version1(1)}
+DEFINITIONS IMPLICIT TAGS ::=
+BEGIN
+IMPORTS
+
+  ApplAbort, ApplicationReject, ClearTransfer, DtSecAbort, EncrTransfer,
+  HandshakeReq, HandshakeAcc, HandshakeSecAbort, HandshakeSecReject, ReleaseReq,
+  ReleaseRsp
+    FROM E2E-Security {iso(1) standard(0) iec62351(62351) part4(4) modules(0)
+                       e2e-security(1) version1(1)} ;
+
+-- OSI-AssoReq to be carried in an AARQ-apdu
+
+OSI-AssoReq::= SEQUENCE SIZE(1) OF 
+  [UNIVERSAL 8] SEQUENCE {
+    indirect-reference             INTEGER,
+    single-ASN1-type  [0] EXPLICIT HandshakeReq }
+
+-- OSI-AssoRsp to be carried in an AARE-apdu
+
+OSI-AssoRsp::= SEQUENCE SIZE(1) OF
+  [UNIVERSAL 8] SEQUENCE {
+    indirect-reference             INTEGER,
+    single-ASN1-type  [0] EXPLICIT HandshakeRsp }
+
+HandshakeRsp::= CHOICE {
+  assoAccept    [1] HandshakeAcc,
+  applReject    [2] ApplicationReject,
+  secReject     [3] HandshakeSecReject,
+  ... }
+
+-- OSI-AssoAbr to be carried in an ABRT-apdu
+
+OSI-AssoAbr::= SEQUENCE SIZE(1) OF
+  [UNIVERSAL 8] SEQUENCE {
+    indirect-reference             INTEGER,
+    single-ASN1-type  [0] EXPLICIT AssoAbort }
+
+AssoAbort::= CHOICE {
+  handsSecAbort [0] HandshakeSecAbort,
+  dtSecAbort    [1] DtSecAbort,
+  applAbort     [2] ApplAbort,
+  osiDiag       [3] OsiDiagnostics,
+  ... }  
+
+-- OSI-AssoRelReq to be carried in an RLRQ-apdu
+
+OSI-AssoRelReq::= SEQUENCE SIZE(1) OF
+  [UNIVERSAL 8] SEQUENCE {
+    indirect-reference             INTEGER,
+    single-ASN1-type  [0] EXPLICIT ReleaseReq }
+
+-- OSI-AssoRelRsp to be carried in an RLRE-apdu
+
+OSI-AssoRelRsp::= SEQUENCE SIZE(1) OF
+  [UNIVERSAL 8] SEQUENCE {
+    indirect-reference             INTEGER,
+    single-ASN1-type  [0] EXPLICIT ReleaseRsp }
+
+-- Presentation user information for data transfer
+
+User-data ::= [APPLICATION 1] IMPLICIT SEQUENCE SIZE (1) OF SEQUENCE {
+  presentation-context-identifier Presentation-context-identifier,
+  single-ASN1-type           [0]  EXPLICIT DataTransfer (CONSTRAINED BY {
+            --  Type corresponding to presentation context identifier  --} ) }
+
+Presentation-context-identifier ::= INTEGER
+
+-- ClearTransfer and EncrTransfer are SecPDUs to be carried by the
+-- presentation protocol
+
+DataTransfer ::= CHOICE {
+  clearTransfer [0] ClearTransfer,
+  encrTransfer  [1] EncrTransfer,
+  ... }
+
+OsiDiagnostics ::= ENUMERATED {
+  no-reason-given                  (0),
+  protocol-error                   (1),
+  invalid-indirect-reference       (2),
+  invalid-pci                      (3),
+  ... }
+
+END

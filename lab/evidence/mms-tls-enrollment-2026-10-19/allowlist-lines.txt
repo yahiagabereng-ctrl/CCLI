@@ -1,0 +1,15 @@
+  tls_allowed_client_cert: /etc/ccli/rbac-clients/aggregator.pem
+  tls_allowed_client_cert: /etc/ccli/rbac-clients/viewer-r0.pem
+  tls_allowed_client_cert: /etc/ccli/rbac-clients/operator-r0.pem
+  tls_allowed_client_cert: /etc/ccli/rbac-clients/installer-r0.pem
+  tls_allowed_client_cert: /etc/ccli/rbac-clients/secadm-r0.pem
+  tls_allowed_client_cert: /etc/ccli/rbac-clients/secaud-r0.pem
+  tls_allowed_client_cert: /etc/ccli/rbac-clients/rbacmnt-r0.pem
+  tls_allowed_client_cert: /etc/ccli/rbac-clients/operator-r1.pem
+  tls_allowed_client_cert: /etc/ccli/rbac-clients/engineer-r1.pem
+  tls_allowed_client_cert: /etc/ccli/rbac-clients/installer-r1.pem
+  tls_allowed_client_cert: /etc/ccli/rbac-clients/secadm-r1.pem
+  tls_allowed_client_cert: /etc/ccli/rbac-clients/secaud-r1.pem
+  tls_allowed_client_cert: /etc/ccli/rbac-clients/rbacmnt-r1.pem
+  tls_allowed_client_cert: /etc/ccli/rbac-clients/multi-viewer-engineer.pem
+  tls_allowed_client_cert: /etc/ccli/rbac-clients/dual-viewer.pem

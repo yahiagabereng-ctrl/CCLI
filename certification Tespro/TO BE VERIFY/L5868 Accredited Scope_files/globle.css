@@ -1,0 +1,539 @@
+html,body {
+	height: 100%;
+	width: 100%;
+}
+
+body {
+	background-color: #FFF;
+	background-repeat: repeat;
+	margin: 0;
+	padding: 0;
+}
+.formBody{
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+html {
+	overflow: hidden;
+ 
+}
+
+form {
+	margin-bottom: 0;
+}
+
+/* table{   */
+/* border-collapse:collapse;   */
+/* border-spacing:0;   */
+/* }   */
+ 
+/* th,td{   */
+/* padding:0;   */
+/* } */
+
+.normal {
+	color: #000;
+}
+
+.buttonRounded,.buttonRoundedOver,.buttonRoundedFocused,.buttonRoundedFocusedOver,.buttonRoundedDown,.buttonRoundedFocusedDown,.buttonRoundedSelected,.buttonRoundedSelectedFocused,.buttonRoundedSelectedDown,.buttonRoundedSelectedFocusedDown,.buttonRoundedSelectedOver,.buttonRoundedSelectedFocusedOver,.buttonRoundedDisabled,.buttonRoundedSelectedDisabled
+	{
+	font-family: Arial, 宋体;
+	font-size: 13px;
+}
+
+.menuButton,.menuButtonOver,.menuButtonDown,.menuButtonDisabled,.menuButtonFocused,.menuButtonFocusedDown,.menuButtonFocusedOver,.menuButtonSelected,.menuButtonSelectedDown,.menuButtonSelectedOver,.menuButtonSelectedDisabled
+	{
+	font-family: Arial, 宋体;
+	font-size: 13px;
+}
+
+.windowHeaderText,.dialogHeaderText {
+	color: #4d4d4d;
+	font-family: Arial, 宋体;
+	font-size: 13px;
+	padding-bottom: 2px;
+	padding-left: 2px;
+	padding-right: 2px;
+}
+
+.tablepaging {
+	height: 25px;
+}
+
+.tablepaging input {
+	width: 50px;
+	border: 1px solid #a0c4e3;
+	text-align: right;
+	margin: 0;
+}
+
+.tablepaging td {
+	font-size: 13px;
+	color: #000;
+}
+
+.colorLight {
+	background-color: #F7F7F7;
+}
+
+.colorDeep {
+	background-color: #EDF5FF;
+}
+
+.commonTable {
+/* 	background: url(../images/table_bg.jpg); */
+	border-collapse: collapse;
+	text-align: left;
+	word-wrap: break-word;
+	word-break: break-all;
+	width: 100%;
+	margin-left:0px;
+	margin-right: 0px;
+}
+
+.commonTable td {
+	border: 1px solid;
+	border-color: #556F9D;
+	padding: 2px;
+}
+.commonTable2 {
+	border-collapse: collapse;
+	text-align: left;
+	word-wrap: break-word;
+	word-break: break-all;
+	margin-left:0px;
+	margin-right: 0px;
+}
+
+.commonTable2 td {
+	border: 1px solid;
+	border-color: #556F9D;
+	padding: 2px;
+}
+.textwrapper {
+	border: 0 solid #999;
+	margin: 1px 0;
+	padding: 1px;
+}
+
+.apply_main {
+	overflow-x: hidden;
+	overflow-y: auto;
+	border: 0 solid;
+	height: 100%;
+	width: 100%;
+}
+
+.yui_table {
+	
+	border: 0 solid;
+	height: 80%;
+	width: 100%;
+}
+
+.yui-skin-sam .yui-dt-liner {
+	margin: 0;
+	padding: 2px 1px;
+}
+
+.yui-skin-sam TR.yui-dt-selected TD A {
+	color: #fff;
+}
+
+.yui-skin-sam .yui-dt TH {
+	font-size: 13px;
+	vertical-align: middle;
+}
+
+#checkValue {
+	height: 200px;
+	width: 600px;
+	overflow-y: auto;
+	overflow: scroll;
+}
+
+.calendarDiv {
+	background-color: #F7F7F7;
+	border: 1px solid gray;
+	height: 18px;
+	width: 93px;
+}
+
+.titleFont {
+	font-size: 14pt;
+	font-family: _GB2312;
+	font-weight: 700;
+}
+.stitleFont {
+	font-size: 10pt;
+	font-family: _GB2312;
+	font-weight: bold;
+}
+.yellowFont {
+	color: #FF0;
+}
+
+.orangeFont {
+	color: orange;
+}
+
+.greenFont {
+	color: green;
+}
+.fuchsiaFont{
+	color:Fuchsia;
+}
+.blueFont {
+	color: blue;
+}
+
+.redBorder {
+	border: 1px solid red;
+}
+/** 注 **/
+.noteFont {
+	font-family: _GB2312;
+	font-size: 10px;
+}
+/** 备注 **/
+.remarkFont {
+	font-family: _GB2312;
+	font-size: 9px;
+	font-style: italic ;
+}
+
+.silverFont {
+	color: silver;
+}
+
+textarea {
+	border: 1px solid gray;
+	word-break: break-all;
+	word-wrap: break-word;
+	overflow: auto;
+}
+
+.fmtSeperatorFont {
+	font-size: 11pt;
+	margin-left: 5px;
+	margin-right: 10px;
+	font-family: _GB2312;
+	font-weight: bold;
+}
+
+#fmtSeperatorTd img {
+	weight: 12px;
+	height: 12px;
+}
+
+#btnIFrame,#backIFrame {
+	margin-left: 50px;
+}
+
+#container .yui-content {
+	height: 100%;
+}
+
+.yui-skin-sam .yui-navset .yui-nav .selected A EM {
+	/*padding: 3px 10px 1px;*/
+	border-top-color : #729edf;
+	border-top-width : 3px;
+	border-bottom : 0px solid #ababab;
+}
+.yui-skin-sam .yui-navset .yui-nav A:hover EM {
+	background-color: #e3e3e3;
+	color: #15428b;
+	background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjUwJSIgeTE9IjAlIiB4Mj0iNTAlIiB5Mj0iMTAwJSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2YwZjBmMCIvPjxzdG9wIG9mZnNldD0iNCUiIHN0b3AtY29sb3I9IiNmMGYwZjAiLz48c3RvcCBvZmZzZXQ9IjQlIiBzdG9wLWNvbG9yPSIjZTNlM2UzIi8+PHN0b3Agb2Zmc2V0PSIyMyUiIHN0b3AtY29sb3I9IiNmMmYyZjIiLz48c3RvcCBvZmZzZXQ9IjMyJSIgc3RvcC1jb2xvcj0iI2Y1ZjVmNSIvPjxzdG9wIG9mZnNldD0iNjglIiBzdG9wLWNvbG9yPSIjZmFmYWZhIi8+PHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjZmZmZmZmIi8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmFkKSIgLz48L3N2Zz4g');
+    background-size: 100%;
+    background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #f0f0f0), color-stop(4%, #f0f0f0), color-stop(4%, #e3e3e3), color-stop(23%, #f2f2f2), color-stop(32%, #f5f5f5), color-stop(68%, #fafafa), color-stop(100%, #ffffff));
+    background-image: -webkit-linear-gradient(top, #f0f0f0 0%, #f0f0f0 4%, #e3e3e3 4%, #f2f2f2 23%, #f5f5f5 32%, #fafafa 68%, #ffffff 100%);
+    background-image: -moz-linear-gradient(top, #f0f0f0 0%, #f0f0f0 4%, #e3e3e3 4%, #f2f2f2 23%, #f5f5f5 32%, #fafafa 68%, #ffffff 100%);
+    background-image: -o-linear-gradient(top, #f0f0f0 0%, #f0f0f0 4%, #e3e3e3 4%, #f2f2f2 23%, #f5f5f5 32%, #fafafa 68%, #ffffff 100%);
+    background-image: linear-gradient(top, #f0f0f0 0%, #f0f0f0 4%, #e3e3e3 4%, #f2f2f2 23%, #f5f5f5 32%, #fafafa 68%, #ffffff 100%);
+    box-shadow: 0 1px 1px white inset, 1px 0 1px white inset, -1px 0 1px white inset;
+}
+
+.yui-skin-sam .yui-navset .yui-nav A EM {
+	/*padding: 1px 5px 0;*/
+	/*border-bottom: 1px solid #ababab;*/
+}
+
+.yui-skin-sam .yui-navset .yui-nav .a:Over {
+	color: red;
+}
+
+.calendarButton {
+	background: url(../images/calendar.gif);
+	border: 0;
+	height: 16px;
+	width: 16px;
+	margin: 0;
+}
+
+.detailGreekSpan {
+	display: inline;
+	width: 70px;
+	margin-left: 75px;
+}
+
+.yui-skin-sam .yui-navset .yui-content,.yui-skin-sam .yui-navset .yui-navset-top .yui-content
+	{
+	border: 0;
+	border-top-color: #243356;
+	padding: .2em .0em .0em;
+}
+
+input[type=text] {
+	border: 1px solid gray;
+}
+/** 长文本省略显示 **/
+.ellipsis {
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	-ms-text-overflow: ellipsis;
+	-o-text-overflow: ellipsis;
+	-moz-binding: url(ellipsis.xml#ellipsis);
+}
+
+*,.formTitle,.formTitleRTL,.formTitleFocused,.formTitleFocusedRTL,.formTitleDisabled,.formTitleDisabledRTL,.formCellError,.formCellErrorRTL,.formTitleError,.formTitleErrorRTL,.formHint,.formHintRTL,.headerItem,.headerItemRTL,.headerItemDisabled,.headerItemDisabledRTL,.headerItemError,.headerItemErrorRTL,.staticTextItem,.staticTextItemRTL,.staticTextItemDisabled,.staticTextItemDisabledRTL,.staticTextItemError,.staticTextItemErrorRTL,.textItem,.textItemRTL,.textItemFocused,.textItemFocusedRTL,.textItemDisabled,.textItemDisabledRTL,.textItemDisabledHint,.textItemDisabledHintRTL,.textItemError,.textItemErrorRTL,.textItemHint,.textItemHintRTL,.selectItemControl,.selectItemControlRTL,.selectItemControlError,.selectItemControlErrorRTL,.selectItemControlFocused,.selectItemControlFocusedRTL,.selectItemText,.selectItemTextRTL,.selectItemTextError,.selectItemTextErrorRTL,.selectItemTextDisabled,.selectItemTextDisabledRTL,.selectItemTextFocused,.selectItemTextFocusedRTL,.selectItemTextHint,.selectItemTextHintRTL,.selectItemTextDisabledHint,.selectItemTextDisabledHintRTL,.comboBoxItemPendingText,.comboBoxItemPendingTextRTL,.pickListCell,.pickListCellRTL,.pickListCellSelected,.pickListCellSelectedRTL,.pickListCellDisabled,.pickListCellDisabledRTL,.pickListCellDark,.pickListCellDarkRTL,.pickListCellSelectedDark,.pickListCellSelectedDarkRTL,.pickListCellDisabledDark,.pickListCellDisabledDarkRTL,.tallPickListCell,.tallPickListCellRTL,.tallPickListCellSelected,.tallPickListCellSelectedRTL,.tallPickListCellDisabled,.tallPickListCellDisabledRTL,.tallPickListCellDark,.tallPickListCellDarkRTL,.tallPickListCellSelectedDark,.tallPickListCellSelectedDarkRTL,.tallPickListCellDisabledDark,.tallPickListCellDisabledDarkRTL,.labelAnchor,.labelAnchorRTL,.labelAnchorDisabled,.labelAnchorDisabledRTL,.labelAnchorError,.labelAnchorErrorRTL,.labelAnchorFocused,.labelAnchorFocusedRTL .cell,.cellDark,.cellOver,.cellOverDark,.cellSelected,.cellSelectedDark,.cellSelectedOver,.cellSelectedOverDark,.cellDisabled,.cellDisabledDark,.tallCell,.tallCellDark,.tallCellOver,.tallCellOverDark,.tallCellSelected,.tallCellSelectedDark,.tallCellSelectedOver,.tallCellSelectedOverDark,.tallCellDisabled,.tallCellDisabledDark,.gridSummaryCell,.gridSummaryCellDisabled,.recordSummaryCell,.recordSummaryCellDark,.recordSummaryCellOver,.recordSummaryCellOverDark,.recordSummaryCellSelected,.recordSummaryCellSelectedDark,.recordSummaryCellSelectedOver,.recordSummaryCellSelectedOverDark,.recordSummaryCellDisabled,.recordSummaryCellDisabledDark,.expansionCellCell,.expansionCellCellDark,.expansionCellCellOver,.expansionCellCellOverDark,.expansionCellCellSelected,.expansionCellCellSelectedDark,.expansionCellCellSelectedOver,.expansionCellCellSelectedOverDark,.expansionCellCellDisabled,.expansionCellCellDisabledDark,.specialCol,.specialColOver,.specialColSelected,.specialColSelectedOver,.specialColDisabled,.groupNode,.toolStripGroupTitle,.toolStripGroupTitleOver,.toolStripGroupTitleSelected,.toolStripGroupTitleSelectedDisabled,.toolStripGroupTitleSelectedOver,.toolStripGroupTitleDown,.toolStripGroupTitleSelectedDown,.toolStripGroupTitleDisabled
+	{
+	font-family: Arial, 宋体;
+	font-size: 13px;
+}
+
+.btn,.btnChange {
+	background: none repeat scroll 0 0 #e3e3e3;
+    border: 1px solid #bbb;
+    border-radius: 0px;
+    color: #333;
+    font: bold 12px/1 "helvetica neue",helvetica,arial,sans-serif;
+    padding: 4px 12px 4px;
+    text-align: center;
+    text-shadow: 0 1px 0 #fff;
+    margin: 1px;
+}
+
+.btn:hover,.btnChange:hover {
+	background: none repeat scroll 0 0 #d9d9d9;
+    
+    color: #222;
+    cursor: pointer;
+}
+
+.btn:active,.btnChange:active {
+	background: none repeat scroll 0 0 #d0d0d0;
+    
+    color: #000;
+}
+
+.redBtn, .redBtnChange {
+background: none repeat scroll 0 0 #e3e3e3;
+border: 1px solid #F00;
+border-radius: 0px;
+color: #F30000;
+font: bold 12px/1 "helvetica neue",helvetica,arial,sans-serif;
+padding: 4px 12px 4px;
+text-align: center;
+text-shadow: 0 1px 0 #fff;
+margin: 1px;
+}
+ .redBtn:hover,.redBtnChange:hover {
+	background: none repeat scroll 0 0 #d9d9d9;
+    
+    color: #F00;
+    cursor: pointer;
+}
+
+.redBtn:active,.redBtnChange:active {
+	background: none repeat scroll 0 0 #d0d0d0;
+    color: #F00;
+}
+
+.yui_table .yui-dt table,.yui-dt-scrollable {
+	width: 100%;
+}
+
+.dtable-ext-group,.yui-skin-sam .yui-dt TR TD {
+	border-bottom: #cbcbcb 1px solid;
+}
+
+#calendarDate,.calendarDiv .calendarDate {
+	float: left;
+	border: 0;
+	color: #333;
+	font-size: 100%;
+	width: 70px;
+	height: 17px;
+}
+
+#showCalendarDate,.calendarDiv .showCalendarDate {
+	background: url(../images/calendar.gif);
+	height: 16px;
+	width: 16px;
+	overflow: hidden;
+	border: 0;
+	margin: 0;
+}
+/** 警告 **/
+.warnFont,.radFont,.redFont {
+	color: red;
+}
+/** 隐藏表格线 **/
+.utall,.utall td,.utall input,.utall2,.utall2 td,.utall2 th{
+	border-width: 0;
+}
+
+.yui-navset,.yui-content,.yui-content div,#stepIFrame {
+	height: 100%;
+}
+
+.td,#fmtSeperatorTd {
+	border: 1px solid #556f9d;
+}
+
+.td,#fmtSeperatorTd1 {
+	border-image:none;
+	border-color:#556f9d;
+	border-style:none solid;
+	border-width: 0 1px;
+}
+.td,#fmtSeperatorTd2 {
+	border-image:none;
+	border-color:#556f9d;
+	border-style:none solid;
+	border-width: 0 1px;
+	border-right:0px;
+	border-left:0px;
+}
+
+.tabButtonTop,.tabButtonTopSelected,.tabButtonTopDown,.tabButtonTopSelectedOver,.tabButtonTopOver,.tabButtonTopSelectedDown {
+ 
+	font-family: Arial, "宋体";
+	font-size: 13px;
+}
+
+
+.tabButtonTop,.tabButtonTopSelected,.tabButtonTopDown,.tabButtonTopSelectedOver,.tabButtonTopOver,.tabButtonTopSelectedDown {
+	-webkit-border-top-right-radius: 0px;
+	border-top-right-radius: 0px;
+	-moz-border-radius-topleft: 0px;
+	-webkit-border-top-left-radius: 0px;
+	border-top-left-radius: 0px;
+	font-family: Arial, "宋体";
+	font-size: 13px;
+}
+
+.tabButtonTopSelected,.tabButtonTopSelectedOver,.tabButtonTopSelectedDown {
+	border-top-width: 3px;
+}
+.tabButtonTopSelected,.tabButtonTopSelectedDown,.tabButtonTopSelectedOver {
+		border-top-color:#729edf;
+}
+.tabButtonTopSelectedOver{
+
+	border-top-color:#729edf；
+}
+ .rightAlgin{
+ 	text-align: right;
+ }
+ /** yui列表能力大类样式 **/
+.gtitle{
+	background-color:#a5c7fe;
+	text-indent: 1em;
+	font-weight:bold;
+}
+/** yui表格删除记录 **/
+.delFont{
+	background-color:#C0C0C0;
+}
+.delTxtFont{
+	color:red;
+}
+.smartForm .label{
+	color:#003399;
+}
+.smartForm .careful{
+	font-weight:bold;
+}
+/*竖向的checkbox*/
+.checkbox-vertical>*{
+	float: left;
+}
+.checkbox-vertical input[type="checkbox"] {
+	clear: left;
+}
+/** 临时 **/
+.tranWarn{
+	color:red;
+	font-size: 11pt;
+	font-weight: bold;
+	font-style: italic;
+}
+/** 下划线信息 **/
+.unLineTxt{
+	display:inline-block;
+	border-bottom:1px solid black;
+	/*text-decoration: underline;*/
+	text-align:center;
+	min-width:40px;
+	text-indent: initial;
+	vertical-align: bottom;
+}
+.unLineTxt2{
+	display:inline-block;
+	border-bottom:1px solid black;
+	/*text-decoration: underline;*/
+	text-align:left;
+	min-width:200px;
+	text-indent: initial;
+	vertical-align: bottom;
+}
+.unLineTxt3{
+	display:inline-block;
+	border-bottom:1px solid black;
+	/*text-decoration: underline;*/
+	text-align:left;
+	min-width:120px;
+	text-indent: initial;
+	vertical-align: bottom;
+}
+
+/** 控件项目的填充部分的样式 **/
+.itemContent{
+	display:none;
+}
+/** 必填 **/
+.requiredTxt:after{
+	content: "*";
+	color:red;
+}
+/** 行高设置 **/
+.lineHeight1{
+	line-height: 150%;
+}
+/**追溯的表头样式**/
+.traceTh span{
+	color: blue;
+}
+.lvl0Font{
+	background-color: #D9D9D9;
+}
+.lvl1Font{
+	background-color: #BAFFB2;
+}
+.lvl2Font{
+	background-color: #B2BFFF;
+}
+.lvl3Font{
+	background-color: #FFF6B2;
+}
+.lvl4Font{
+	background-color: #FFB2B2;
+}
+.colorSpan{
+	width: 12px;
+	height: 12px;
+	border:1px inset;
+	display: inline-block;
+}

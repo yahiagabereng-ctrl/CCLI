@@ -43,6 +43,7 @@ public:
 
     /** O.14: one-shot operator ASDU audit (reject in monitor_only). */
     bool poll_operator_audit(OperatorAuditEvent& out);
+    bool poll_security_event(std::string& detail);
 
     int client_count() const;
 

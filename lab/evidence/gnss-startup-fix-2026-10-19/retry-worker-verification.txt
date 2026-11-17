@@ -1,0 +1,33 @@
+{ "instances": { "startup": { "running": true, "pid": 2947, "command": [ "\/usr\/sbin\/gnss-start-worker" ], "term_timeout": 5, "respawn": { "threshold": 3600, "timeout": 5, "retry": 5 } } } }
+{
+	"supported": true,
+	"powered_on": true
+}
+{
+	"course": "",
+	"date": "2026-10-19",
+	"raw_nmea": "+QGPSGNMEA: $GNRMC,143436.00,A,4529.13616,N,01142.53560,E,0.345,,191026,,,A,V*16\nOK\n+QGPSGNMEA: $GNGGA,143438.00,4529.13660,N,01142.53449,E,1,06,1.27,62.0,M,,M,,*62\nOK",
+	"altitude": "62.0",
+	"satellites": "06",
+	"success": true,
+	"fix": true,
+	"longitude": "11.708927",
+	"latitude": "45.485603",
+	"time": "14:34:36",
+	"speed": "0.345"
+}
+Mon Oct 19 22:01:09 2026 user.notice gnss: GNSS worker waiting for modem readiness; boot continues independently
+Mon Oct 19 22:01:21 2026 user.notice gnss: GNSS receiver verified powered on; awaiting satellite fix separately
+Reference ID    : 00000000 ()
+Stratum         : 0
+Ref time (UTC)  : Thu Jan 01 00:00:00 1970
+System time     : 0.000000000 seconds fast of NTP time
+Last offset     : +0.000000000 seconds
+RMS offset      : 0.000000000 seconds
+Frequency       : 0.000 ppm slow
+Residual freq   : +0.000 ppm
+Skew            : 0.000 ppm
+Root delay      : 1.000000000 seconds
+Root dispersion : 1.000000000 seconds
+Update interval : 0.0 seconds
+Leap status     : Not synchronised

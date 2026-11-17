@@ -1,0 +1,6 @@
+[submodule "apps/ccli/third_party/lib60870"]
+	path = apps/ccli/third_party/lib60870
+	url = https://github.com/mz-automation/lib60870.git
+[submodule "apps/ccli/third_party/libiec61850"]
+	path = apps/ccli/third_party/libiec61850
+	url = https://github.com/mz-automation/libiec61850.git

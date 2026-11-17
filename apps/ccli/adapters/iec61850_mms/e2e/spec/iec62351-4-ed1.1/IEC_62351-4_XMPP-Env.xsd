@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2017 rel. 3 sp1 (x64) (http://www.altova.com) by Erik Andersen (Andersen's L-Service) -->
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.iec.ch/62351/2018/ENV_4" xmlns:oss="http://www.oss.com/XSD" xmlns:e2e="http://www.iec.ch/62351/2018/E2E_4" xmlns:stz="urn:ietf:params:xml:ns:xmpp-stanzas" targetNamespace="http://www.iec.ch/62351/2018/ENV_4" elementFormDefault="qualified">
+  <xsd:import namespace="urn:ietf:params:xml:ns:xmpp-stanzas" schemaLocation="IEC_62351-4_XMPP-Stz.xsd"/>
+  <xsd:import namespace="http://www.iec.ch/62351/2018/E2E_4" schemaLocation="IEC_62351-4_E2E-security.xsd"/>
+  <xsd:element name="IQ-context" type="IQ-context"/>
+  <xsd:element name="Msg-context" type="Msg-context"/>
+  <xsd:element name="Error" type="Error"/>
+  <xsd:complexType name="Error">
+    <xsd:sequence>
+      <xsd:element ref="stz:bad-request"/>
+      <xsd:choice>
+        <xsd:element name="iq-context-missing">
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string"/>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="msg-context-missing">
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string"/>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="environment-ns-invalid">
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string"/>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="unknown-iq-SecPDU">
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string"/>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="unknown-msg-SecPDU">
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string"/>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="invalid-type-specification">
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string"/>
+          </xsd:simpleType>
+        </xsd:element>
+      </xsd:choice>
+    </xsd:sequence>
+    <xsd:attribute name="type" type="ErrorType" use="required"/>
+  </xsd:complexType>
+  <xsd:simpleType name="ErrorType">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="modify"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="Msg-context">
+    <xsd:sequence>
+      <xsd:choice>
+        <xsd:element ref="e2e:HandshakeSecAbort"/>
+        <xsd:element ref="e2e:DtSecAbort"/>
+        <xsd:element ref="e2e:ApplAbort"/>
+        <xsd:element ref="e2e:ClearTransfer"/>
+        <xsd:element ref="e2e:EncrTransfer"/>
+      </xsd:choice>
+    </xsd:sequence>
+    <xsd:attribute name="version" type="Version" default="1"/>
+    <xsd:attribute name="assoID" type="xsd:string"/>
+  </xsd:complexType>
+  <xsd:simpleType name="Version">
+    <xsd:union>
+      <xsd:simpleType>
+        <xsd:restriction base="xsd:string">
+          <xsd:whiteSpace value="collapse"/>
+          <xsd:pattern value="( *(1|0) *)*"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType>
+        <xsd:list>
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string">
+              <xsd:enumeration value="v1"/>
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:list>
+      </xsd:simpleType>
+    </xsd:union>
+  </xsd:simpleType>
+  <xsd:complexType name="IQ-context">
+    <xsd:sequence>
+      <xsd:element name="supp" type="SuppInfo" form="unqualified" minOccurs="0"/>
+      <xsd:choice>
+        <xsd:element ref="e2e:HandshakeReq"/>
+        <xsd:element ref="e2e:HandshakeAcc"/>
+        <xsd:element ref="e2e:ApplicationReject"/>
+        <xsd:element ref="e2e:HandshakeSecReject"/>
+        <xsd:element ref="e2e:ReleaseReq"/>
+        <xsd:element ref="e2e:ReleaseRsp"/>
+        <xsd:element ref="e2e:ClearTransfer"/>
+        <xsd:element ref="e2e:EncrTransfer"/>
+      </xsd:choice>
+    </xsd:sequence>
+    <xsd:attribute name="version" type="Version" default="1"/>
+    <xsd:attribute name="assoID" type="xsd:string" use="required"/>
+  </xsd:complexType>
+  <xsd:simpleType name="SuppInfo">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="normal"/>
+      <xsd:enumeration value="notFinished"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+</xsd:schema>

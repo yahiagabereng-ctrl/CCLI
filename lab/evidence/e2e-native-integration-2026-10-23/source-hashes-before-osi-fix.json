@@ -1,0 +1,22 @@
+{
+  "note": "SHA-256 of actual file bytes; base bdbac16 plus working-tree changes; no private credentials",
+  "sources": {
+    ".gitmodules": "19d2e50b6810eeca917cfcfca952774b85da4b1d368e832f8f3ae278bc5e7977",
+    "apps/ccli/CMakeLists.txt": "4bc3d1e73dc605ae964990337f100431835b5667c9f00b720f232520633e7e79",
+    "apps/ccli/adapters/iec61850_mms/e2e/ber_codec.cpp": "29c198df720e18d6e862927c309022cbc10c7bfab89f1fdb69321d15e48df187",
+    "apps/ccli/adapters/iec61850_mms/e2e/e2e_association.cpp": "d2d14e42c758dd605f2179c5d64a7583ef28c6dc76a6da1f7b3a2fe6a2d86b3d",
+    "apps/ccli/adapters/iec61850_mms/e2e/e2e_codec.cpp": "132ca785f8fd65db45031dd4711d69782e84ac9b82f90423e524206bfadf9387",
+    "apps/ccli/adapters/iec61850_mms/e2e/e2e_crypto.cpp": "a01bbdbd02418ab68870306ca703231faf5005baea9dcc47256b07d542515659",
+    "apps/ccli/adapters/iec61850_mms/e2e/e2e_identity.cpp": "6d0feda95a72e9d3df81ff96be52ffac5ae1ee38f140f23d343423e08755b8ad",
+    "apps/ccli/adapters/iec61850_mms/e2e/e2e_key_schedule.cpp": "2729f3b91f947960808a9bd25168ddad56c2a9544c941cdb9ba0c4ce91b59a33",
+    "apps/ccli/adapters/iec61850_mms/e2e/e2e_server.cpp": "d8650af7b9471154fabca9d90017a48669fd91fb410f6fccb4f2748fc2ff099b",
+    "apps/ccli/adapters/iec61850_mms/e2e/e2e_time.cpp": "4dc59b2e4815c1dd5ca4932d1f4c9fd920c39c336b4f2f3954576c3cbf9620b9",
+    "apps/ccli/adapters/iec61850_mms/e2e/transfer_sequence.cpp": "c66a7ca669a211b2dee82a8779a69fea7c324e85df8bcd7ac663189f7d70169f",
+    "apps/ccli/tests/unit/e2e_native_stack_test.py": "b7a27f34ebed4c7244aa2cee844b8dca5d1eacd1618f0b57dfe89315b3b83f5c",
+    "apps/firmware-updater/scripts/check-ccli-target-build.sh": "985e4ee5f50bce20bcb62c9a7cc7329cb714f3019aabd431a903660a19c1a50f",
+    "lab/conformance/CCI_RBAC_NATIVE_E2E_EXTENSION.json": "9c1b3e5b88afb9241f7f8dbc56703abc720fe656e390e76fa511f49795b96e3e",
+    "package/ccli/Makefile": "b2c48bf7d8665dd92576a01ec52f5a560689e65cbfe8d52886140f26fcafc44a",
+    "scripts/check_rbac_tls_baseline.py": "ad4464b4d041987b4faf1ea9ec8e21b6a4d02f9acbf7f02147bacca04d2c75e3",
+    "scripts/generate_mms_e2e.py": "83b015a7153449ea951406b33336b1a20936e40bf01aae4e8debd320259bb0ff"
+  }
+}

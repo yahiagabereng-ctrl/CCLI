@@ -1,0 +1,72 @@
+[
+  {
+    "case": "check",
+    "passed": true,
+    "exit_code": 0
+  },
+  {
+    "case": "write-config",
+    "passed": true,
+    "exit_code": 0
+  },
+  {
+    "case": "config-readback",
+    "passed": true,
+    "exit_code": 0
+  },
+  {
+    "case": "operate-direct",
+    "passed": true,
+    "exit_code": 0
+  },
+  {
+    "case": "viewer-write-denied",
+    "passed": true,
+    "exit_code": 1
+  },
+  {
+    "case": "viewer-operate-denied",
+    "passed": true,
+    "exit_code": 1
+  },
+  {
+    "case": "dataset-create",
+    "passed": false,
+    "exit_code": 1
+  },
+  {
+    "case": "dataset-members",
+    "passed": false,
+    "exit_code": 1
+  },
+  {
+    "case": "dataset-read",
+    "passed": false,
+    "exit_code": 1
+  },
+  {
+    "case": "dataset-delete",
+    "passed": false,
+    "exit_code": 1
+  },
+  {
+    "case": "report-list",
+    "passed": true,
+    "exit_code": 0
+  },
+  {
+    "case": "attribute-navigation",
+    "passed": true,
+    "exit_code": 0
+  },
+  {
+    "case": "out-of-range",
+    "passed": true,
+    "exit_code": 2
+  },
+  {
+    "case": "unconfirmed-write",
+    "passed": true,
+    "exit_code": 2
+  }
+]

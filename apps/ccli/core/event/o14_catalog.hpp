@@ -45,6 +45,7 @@ inline const char* category_for(const std::string& type, const std::string& deta
         return kSwitchDi;
     }
     if (type == "mms") {
+        if (detail.find("\"rbac\":true") != std::string::npos) return kSecurity;
         if (detail.find("auth_") != std::string::npos ||
             detail.find("rbac_") != std::string::npos) {
             return kAuth;

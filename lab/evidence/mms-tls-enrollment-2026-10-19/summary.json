@@ -1,0 +1,16 @@
+{
+  "date": "2026-10-19",
+  "target": "192.168.0.1:3782",
+  "newly_enrolled_public_certificates": 15,
+  "commissioned_identities_connected": 19,
+  "live_checks_passed": 143,
+  "isolated_checks_passed": 298,
+  "failed": 0,
+  "binary_sha256": "e61fdf9c5b14be9dac84edffe61d8b6bab650d6546a7e4c722fc2075ce819188",
+  "configuration_sha256": "346e0b653d224231c542e664cf50ada443835e44436e3fe43705b5825a203c5c",
+  "backup": "/etc/ccli/tls-enrollment-backup-20261019",
+  "role_policy_changed": false,
+  "private_keys_copied": false,
+  "tpm_migration_performed": false,
+  "limitation": "Aggregator control remains unimplemented; enrollment makes its scoped read access usable"
+}

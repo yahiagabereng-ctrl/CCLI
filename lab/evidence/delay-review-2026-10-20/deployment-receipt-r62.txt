@@ -1,0 +1,16 @@
+STOPPING_CCI_SERVICE_ONLY
+ccli 0.1.0-r62 (AUDIT-LOG-ROTATION)
+  semver:   0.1.0
+  release:  r62
+  git:      unknown
+  built:    2026-10-20T13:00:44Z UTC
+  platform: tg500
+8311
+8a7963740d88f79e26adf162075300f2afe08ff6f5a7b4619c1111713c22449c  /usr/sbin/ccli
+346e0b653d224231c542e664cf50ada443835e44436e3fe43705b5825a203c5c  /etc/ccli/lab.yaml
+        9 /etc/ccli/security-events/events.jsonl
+     2048 /etc/ccli/security-events/events.jsonl.1
+     2057 total
+PROTECTED_CONFIGURATION_AND_CREDENTIAL_HASHES_UNCHANGED
+ORIGINAL_FULL_AUDIT_SEGMENT_PRESERVED_BYTE_FOR_BYTE
+LOGFIX_R62_APPLIED backup=/etc/ccli/logfix-r62-backup-20261020

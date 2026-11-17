@@ -1,0 +1,241 @@
+<?xml version='1.0' encoding='utf-8'?>
+<xacml3:PolicySet xmlns:xacml3="urn:oasis:names:tc:xacml:3.0:core:schema:wd-17" PolicySetId="urn:iec:62351:8:IS:1.0:pps-library:1730dda7-9a71-4037-90fb-02cd1335f8a2" Version="1.0" PolicyCombiningAlgId="urn:oasis:names:tc:xacml:3.0:policy-combining-algorithm:permit-overrides">
+  <xacml3:Description>Local PermissionGroup and Permission definitions; resolved by PolicySetIdReference</xacml3:Description>
+  <xacml3:Target />
+  <xacml3:PolicySet PolicySetId="urn:iec:62351:8:IS:1.0:pps-id:DSO_OPERATOR_PERMISSIONS:d5a74ef8-6f7a-4cad-bcc7-2b2680c2dc2e" Version="1.0" PolicyCombiningAlgId="urn:oasis:names:tc:xacml:3.0:policy-combining-algorithm:permit-overrides">
+    <xacml3:Description>IEC 61850 permission assignment for DSO_OPERATOR</xacml3:Description>
+    <xacml3:Target />
+    <xacml3:PolicySetIdReference>urn:iec:62351:8:IS:1.0:pps-id:LISTOBJECTS:db844454-cddb-4245-b9d5-b5e202ce5120</xacml3:PolicySetIdReference>
+    <xacml3:PolicySetIdReference>urn:iec:62351:8:IS:1.0:pps-id:READVALUES:c23f30db-f7e9-4bfa-a93b-422bab7bb010</xacml3:PolicySetIdReference>
+    <xacml3:PolicySetIdReference>urn:iec:62351:8:IS:1.0:pps-id:DATASET:356d34f9-60bb-46ce-bdfc-4756d6355de3</xacml3:PolicySetIdReference>
+    <xacml3:PolicySetIdReference>urn:iec:62351:8:IS:1.0:pps-id:REPORTING:3a860409-c829-4d43-8508-b4de32ac19d3</xacml3:PolicySetIdReference>
+    <xacml3:PolicySetIdReference>urn:iec:62351:8:IS:1.0:pps-id:CONTROL:e60764b3-b0bb-4c74-ad10-78e764c1c764</xacml3:PolicySetIdReference>
+    <xacml3:PolicySetIdReference>urn:iec:62351:8:IS:1.0:pps-id:CONFIG:76430f77-940a-44df-af5e-42ec0f0f473f</xacml3:PolicySetIdReference>
+  </xacml3:PolicySet>
+  <xacml3:PolicySet PolicySetId="urn:iec:62351:8:IS:1.0:pps-id:AGGREGATOR_OPERATOR_PERMISSIONS:b2921aa7-4298-48c2-8f7a-939c353a7126" Version="1.0" PolicyCombiningAlgId="urn:oasis:names:tc:xacml:3.0:policy-combining-algorithm:permit-overrides">
+    <xacml3:Description>IEC 61850 permission assignment for AGGREGATOR_OPERATOR</xacml3:Description>
+    <xacml3:Target />
+    <xacml3:PolicySetIdReference>urn:iec:62351:8:IS:1.0:pps-id:LISTOBJECTS:db844454-cddb-4245-b9d5-b5e202ce5120</xacml3:PolicySetIdReference>
+    <xacml3:PolicySetIdReference>urn:iec:62351:8:IS:1.0:pps-id:READVALUES:c23f30db-f7e9-4bfa-a93b-422bab7bb010</xacml3:PolicySetIdReference>
+    <xacml3:PolicySetIdReference>urn:iec:62351:8:IS:1.0:pps-id:CONTROL:e60764b3-b0bb-4c74-ad10-78e764c1c764</xacml3:PolicySetIdReference>
+    <xacml3:PolicySetIdReference>urn:iec:62351:8:IS:1.0:pps-id:CONFIG:76430f77-940a-44df-af5e-42ec0f0f473f</xacml3:PolicySetIdReference>
+    <xacml3:PolicySetIdReference>urn:iec:62351:8:IS:1.0:pps-id:DATASET:356d34f9-60bb-46ce-bdfc-4756d6355de3</xacml3:PolicySetIdReference>
+    <xacml3:PolicySetIdReference>urn:iec:62351:8:IS:1.0:pps-id:REPORTING:3a860409-c829-4d43-8508-b4de32ac19d3</xacml3:PolicySetIdReference>
+  </xacml3:PolicySet>
+  <xacml3:PolicySet PolicySetId="urn:iec:62351:8:IS:1.0:pps-id:VIEWER_PERMISSIONS:8d1fdf82-a229-414a-95a0-8761faec1088" Version="1.0" PolicyCombiningAlgId="urn:oasis:names:tc:xacml:3.0:policy-combining-algorithm:permit-overrides">
+    <xacml3:Description>IEC 61850 permission assignment for VIEWER</xacml3:Description>
+    <xacml3:Target />
+    <xacml3:PolicySetIdReference>urn:iec:62351:8:IS:1.0:pps-id:LISTOBJECTS:db844454-cddb-4245-b9d5-b5e202ce5120</xacml3:PolicySetIdReference>
+    <xacml3:PolicySetIdReference>urn:iec:62351:8:IS:1.0:pps-id:READVALUES:c23f30db-f7e9-4bfa-a93b-422bab7bb010</xacml3:PolicySetIdReference>
+    <xacml3:PolicySetIdReference>urn:iec:62351:8:IS:1.0:pps-id:REPORTING:3a860409-c829-4d43-8508-b4de32ac19d3</xacml3:PolicySetIdReference>
+  </xacml3:PolicySet>
+  <xacml3:PolicySet PolicySetId="urn:iec:62351:8:IS:1.0:pps-id:OPERATOR_PERMISSIONS:d32ef1a5-b631-4d59-bdc5-c07530c54e1f" Version="1.0" PolicyCombiningAlgId="urn:oasis:names:tc:xacml:3.0:policy-combining-algorithm:permit-overrides">
+    <xacml3:Description>IEC 61850 permission assignment for OPERATOR</xacml3:Description>
+    <xacml3:Target />
+    <xacml3:PolicySetIdReference>urn:iec:62351:8:IS:1.0:pps-id:LISTOBJECTS:db844454-cddb-4245-b9d5-b5e202ce5120</xacml3:PolicySetIdReference>
+    <xacml3:PolicySetIdReference>urn:iec:62351:8:IS:1.0:pps-id:READVALUES:c23f30db-f7e9-4bfa-a93b-422bab7bb010</xacml3:PolicySetIdReference>
+    <xacml3:PolicySetIdReference>urn:iec:62351:8:IS:1.0:pps-id:REPORTING:3a860409-c829-4d43-8508-b4de32ac19d3</xacml3:PolicySetIdReference>
+    <xacml3:PolicySetIdReference>urn:iec:62351:8:IS:1.0:pps-id:CONTROL:e60764b3-b0bb-4c74-ad10-78e764c1c764</xacml3:PolicySetIdReference>
+  </xacml3:PolicySet>
+  <xacml3:PolicySet PolicySetId="urn:iec:62351:8:IS:1.0:pps-id:ENGINEER_PERMISSIONS:05dd54d6-38bb-449a-bdbc-1834f936f295" Version="1.0" PolicyCombiningAlgId="urn:oasis:names:tc:xacml:3.0:policy-combining-algorithm:permit-overrides">
+    <xacml3:Description>IEC 61850 permission assignment for ENGINEER</xacml3:Description>
+    <xacml3:Target />
+    <xacml3:PolicySetIdReference>urn:iec:62351:8:IS:1.0:pps-id:LISTOBJECTS:db844454-cddb-4245-b9d5-b5e202ce5120</xacml3:PolicySetIdReference>
+    <xacml3:PolicySetIdReference>urn:iec:62351:8:IS:1.0:pps-id:READVALUES:c23f30db-f7e9-4bfa-a93b-422bab7bb010</xacml3:PolicySetIdReference>
+    <xacml3:PolicySetIdReference>urn:iec:62351:8:IS:1.0:pps-id:DATASET:356d34f9-60bb-46ce-bdfc-4756d6355de3</xacml3:PolicySetIdReference>
+    <xacml3:PolicySetIdReference>urn:iec:62351:8:IS:1.0:pps-id:REPORTING:3a860409-c829-4d43-8508-b4de32ac19d3</xacml3:PolicySetIdReference>
+    <xacml3:PolicySetIdReference>urn:iec:62351:8:IS:1.0:pps-id:CONFIG:76430f77-940a-44df-af5e-42ec0f0f473f</xacml3:PolicySetIdReference>
+  </xacml3:PolicySet>
+  <xacml3:PolicySet PolicySetId="urn:iec:62351:8:IS:1.0:pps-id:INSTALLER_PERMISSIONS:acae80ea-a070-4270-bc85-93498392addb" Version="1.0" PolicyCombiningAlgId="urn:oasis:names:tc:xacml:3.0:policy-combining-algorithm:permit-overrides">
+    <xacml3:Description>IEC 61850 permission assignment for INSTALLER</xacml3:Description>
+    <xacml3:Target />
+    <xacml3:PolicySetIdReference>urn:iec:62351:8:IS:1.0:pps-id:LISTOBJECTS:db844454-cddb-4245-b9d5-b5e202ce5120</xacml3:PolicySetIdReference>
+    <xacml3:PolicySetIdReference>urn:iec:62351:8:IS:1.0:pps-id:READVALUES:c23f30db-f7e9-4bfa-a93b-422bab7bb010</xacml3:PolicySetIdReference>
+    <xacml3:PolicySetIdReference>urn:iec:62351:8:IS:1.0:pps-id:REPORTING:3a860409-c829-4d43-8508-b4de32ac19d3</xacml3:PolicySetIdReference>
+    <xacml3:PolicySetIdReference>urn:iec:62351:8:IS:1.0:pps-id:CONFIG:76430f77-940a-44df-af5e-42ec0f0f473f</xacml3:PolicySetIdReference>
+  </xacml3:PolicySet>
+  <xacml3:PolicySet PolicySetId="urn:iec:62351:8:IS:1.0:pps-id:SECADM_PERMISSIONS:ba653789-0fe3-4b26-8c58-8db5632ed390" Version="1.0" PolicyCombiningAlgId="urn:oasis:names:tc:xacml:3.0:policy-combining-algorithm:permit-overrides">
+    <xacml3:Description>IEC 61850 permission assignment for SECADM</xacml3:Description>
+    <xacml3:Target />
+    <xacml3:PolicySetIdReference>urn:iec:62351:8:IS:1.0:pps-id:LISTOBJECTS:db844454-cddb-4245-b9d5-b5e202ce5120</xacml3:PolicySetIdReference>
+    <xacml3:PolicySetIdReference>urn:iec:62351:8:IS:1.0:pps-id:READVALUES:c23f30db-f7e9-4bfa-a93b-422bab7bb010</xacml3:PolicySetIdReference>
+    <xacml3:PolicySetIdReference>urn:iec:62351:8:IS:1.0:pps-id:DATASET:356d34f9-60bb-46ce-bdfc-4756d6355de3</xacml3:PolicySetIdReference>
+    <xacml3:PolicySetIdReference>urn:iec:62351:8:IS:1.0:pps-id:CONFIG:76430f77-940a-44df-af5e-42ec0f0f473f</xacml3:PolicySetIdReference>
+  </xacml3:PolicySet>
+  <xacml3:PolicySet PolicySetId="urn:iec:62351:8:IS:1.0:pps-id:SECAUD_PERMISSIONS:8218e860-561e-4010-8f45-f54546bb581f" Version="1.0" PolicyCombiningAlgId="urn:oasis:names:tc:xacml:3.0:policy-combining-algorithm:permit-overrides">
+    <xacml3:Description>IEC 61850 permission assignment for SECAUD</xacml3:Description>
+    <xacml3:Target />
+    <xacml3:PolicySetIdReference>urn:iec:62351:8:IS:1.0:pps-id:LISTOBJECTS:db844454-cddb-4245-b9d5-b5e202ce5120</xacml3:PolicySetIdReference>
+    <xacml3:PolicySetIdReference>urn:iec:62351:8:IS:1.0:pps-id:READVALUES:c23f30db-f7e9-4bfa-a93b-422bab7bb010</xacml3:PolicySetIdReference>
+    <xacml3:PolicySetIdReference>urn:iec:62351:8:IS:1.0:pps-id:REPORTING:3a860409-c829-4d43-8508-b4de32ac19d3</xacml3:PolicySetIdReference>
+  </xacml3:PolicySet>
+  <xacml3:PolicySet PolicySetId="urn:iec:62351:8:IS:1.0:pps-id:RBACMNT_PERMISSIONS:71ce51d9-d230-42e7-b64b-302830a5ed42" Version="1.0" PolicyCombiningAlgId="urn:oasis:names:tc:xacml:3.0:policy-combining-algorithm:permit-overrides">
+    <xacml3:Description>IEC 61850 permission assignment for RBACMNT</xacml3:Description>
+    <xacml3:Target />
+    <xacml3:PolicySetIdReference>urn:iec:62351:8:IS:1.0:pps-id:LISTOBJECTS:db844454-cddb-4245-b9d5-b5e202ce5120</xacml3:PolicySetIdReference>
+    <xacml3:PolicySetIdReference>urn:iec:62351:8:IS:1.0:pps-id:READVALUES:c23f30db-f7e9-4bfa-a93b-422bab7bb010</xacml3:PolicySetIdReference>
+    <xacml3:PolicySetIdReference>urn:iec:62351:8:IS:1.0:pps-id:CONFIG:76430f77-940a-44df-af5e-42ec0f0f473f</xacml3:PolicySetIdReference>
+  </xacml3:PolicySet>
+  <xacml3:PolicySet PolicySetId="urn:iec:62351:8:IS:1.0:pps-id:CONFIG:76430f77-940a-44df-af5e-42ec0f0f473f" Version="1.0" PolicyCombiningAlgId="urn:oasis:names:tc:xacml:3.0:policy-combining-algorithm:permit-overrides">
+    <xacml3:Description>IEC 61850 permission: CONFIG</xacml3:Description>
+    <xacml3:Target />
+    <xacml3:Policy PolicyId="urn:iec:62351:8:IS:1.0:p-id:c4741839-3fad-477f-8214-1a11e9d17412" Version="1.0" RuleCombiningAlgId="urn:oasis:names:tc:xacml:1.0:rule-combining-algorithm:permit-overrides">
+      <xacml3:Target />
+      <xacml3:Rule RuleId="urn:iec:62351:8:IS:1.0:r-id:984461a0-8766-42ee-9c95-9fb13c401307" Effect="Permit">
+        <xacml3:Target>
+          <xacml3:AnyOf>
+            <xacml3:AllOf>
+              <xacml3:Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                <xacml3:AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">IEC61850/MMS</xacml3:AttributeValue>
+                <xacml3:AttributeDesignator Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource" AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false" />
+              </xacml3:Match>
+            </xacml3:AllOf>
+          </xacml3:AnyOf>
+          <xacml3:AnyOf>
+            <xacml3:AllOf>
+              <xacml3:Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                <xacml3:AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">CONFIG</xacml3:AttributeValue>
+                <xacml3:AttributeDesignator Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false" />
+              </xacml3:Match>
+            </xacml3:AllOf>
+          </xacml3:AnyOf>
+        </xacml3:Target>
+      </xacml3:Rule>
+    </xacml3:Policy>
+  </xacml3:PolicySet>
+  <xacml3:PolicySet PolicySetId="urn:iec:62351:8:IS:1.0:pps-id:CONTROL:e60764b3-b0bb-4c74-ad10-78e764c1c764" Version="1.0" PolicyCombiningAlgId="urn:oasis:names:tc:xacml:3.0:policy-combining-algorithm:permit-overrides">
+    <xacml3:Description>IEC 61850 permission: CONTROL</xacml3:Description>
+    <xacml3:Target />
+    <xacml3:Policy PolicyId="urn:iec:62351:8:IS:1.0:p-id:7d7e55e4-510b-474e-ad17-d7e8ebd53994" Version="1.0" RuleCombiningAlgId="urn:oasis:names:tc:xacml:1.0:rule-combining-algorithm:permit-overrides">
+      <xacml3:Target />
+      <xacml3:Rule RuleId="urn:iec:62351:8:IS:1.0:r-id:21460fbb-9ec8-495b-a5f1-b81a7a725174" Effect="Permit">
+        <xacml3:Target>
+          <xacml3:AnyOf>
+            <xacml3:AllOf>
+              <xacml3:Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                <xacml3:AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">IEC61850/MMS</xacml3:AttributeValue>
+                <xacml3:AttributeDesignator Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource" AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false" />
+              </xacml3:Match>
+            </xacml3:AllOf>
+          </xacml3:AnyOf>
+          <xacml3:AnyOf>
+            <xacml3:AllOf>
+              <xacml3:Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                <xacml3:AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">CONTROL</xacml3:AttributeValue>
+                <xacml3:AttributeDesignator Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false" />
+              </xacml3:Match>
+            </xacml3:AllOf>
+          </xacml3:AnyOf>
+        </xacml3:Target>
+      </xacml3:Rule>
+    </xacml3:Policy>
+  </xacml3:PolicySet>
+  <xacml3:PolicySet PolicySetId="urn:iec:62351:8:IS:1.0:pps-id:DATASET:356d34f9-60bb-46ce-bdfc-4756d6355de3" Version="1.0" PolicyCombiningAlgId="urn:oasis:names:tc:xacml:3.0:policy-combining-algorithm:permit-overrides">
+    <xacml3:Description>IEC 61850 permission: DATASET</xacml3:Description>
+    <xacml3:Target />
+    <xacml3:Policy PolicyId="urn:iec:62351:8:IS:1.0:p-id:ce5985a4-d657-4835-a21c-2ded10e1d2df" Version="1.0" RuleCombiningAlgId="urn:oasis:names:tc:xacml:1.0:rule-combining-algorithm:permit-overrides">
+      <xacml3:Target />
+      <xacml3:Rule RuleId="urn:iec:62351:8:IS:1.0:r-id:aac4dfd2-49a5-4819-ad6b-45a37065352f" Effect="Permit">
+        <xacml3:Target>
+          <xacml3:AnyOf>
+            <xacml3:AllOf>
+              <xacml3:Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                <xacml3:AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">IEC61850/MMS</xacml3:AttributeValue>
+                <xacml3:AttributeDesignator Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource" AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false" />
+              </xacml3:Match>
+            </xacml3:AllOf>
+          </xacml3:AnyOf>
+          <xacml3:AnyOf>
+            <xacml3:AllOf>
+              <xacml3:Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                <xacml3:AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">DATASET</xacml3:AttributeValue>
+                <xacml3:AttributeDesignator Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false" />
+              </xacml3:Match>
+            </xacml3:AllOf>
+          </xacml3:AnyOf>
+        </xacml3:Target>
+      </xacml3:Rule>
+    </xacml3:Policy>
+  </xacml3:PolicySet>
+  <xacml3:PolicySet PolicySetId="urn:iec:62351:8:IS:1.0:pps-id:LISTOBJECTS:db844454-cddb-4245-b9d5-b5e202ce5120" Version="1.0" PolicyCombiningAlgId="urn:oasis:names:tc:xacml:3.0:policy-combining-algorithm:permit-overrides">
+    <xacml3:Description>IEC 61850 permission: LISTOBJECTS</xacml3:Description>
+    <xacml3:Target />
+    <xacml3:Policy PolicyId="urn:iec:62351:8:IS:1.0:p-id:13ec09b7-1091-40d2-b6a5-770ea40dc5bb" Version="1.0" RuleCombiningAlgId="urn:oasis:names:tc:xacml:1.0:rule-combining-algorithm:permit-overrides">
+      <xacml3:Target />
+      <xacml3:Rule RuleId="urn:iec:62351:8:IS:1.0:r-id:0b427c22-8c73-44bc-a286-839b9c6ad298" Effect="Permit">
+        <xacml3:Target>
+          <xacml3:AnyOf>
+            <xacml3:AllOf>
+              <xacml3:Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                <xacml3:AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">IEC61850/MMS</xacml3:AttributeValue>
+                <xacml3:AttributeDesignator Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource" AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false" />
+              </xacml3:Match>
+            </xacml3:AllOf>
+          </xacml3:AnyOf>
+          <xacml3:AnyOf>
+            <xacml3:AllOf>
+              <xacml3:Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                <xacml3:AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">LISTOBJECTS</xacml3:AttributeValue>
+                <xacml3:AttributeDesignator Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false" />
+              </xacml3:Match>
+            </xacml3:AllOf>
+          </xacml3:AnyOf>
+        </xacml3:Target>
+      </xacml3:Rule>
+    </xacml3:Policy>
+  </xacml3:PolicySet>
+  <xacml3:PolicySet PolicySetId="urn:iec:62351:8:IS:1.0:pps-id:READVALUES:c23f30db-f7e9-4bfa-a93b-422bab7bb010" Version="1.0" PolicyCombiningAlgId="urn:oasis:names:tc:xacml:3.0:policy-combining-algorithm:permit-overrides">
+    <xacml3:Description>IEC 61850 permission: READVALUES</xacml3:Description>
+    <xacml3:Target />
+    <xacml3:Policy PolicyId="urn:iec:62351:8:IS:1.0:p-id:aeb2a054-bde8-48a1-bf84-da6aeb504801" Version="1.0" RuleCombiningAlgId="urn:oasis:names:tc:xacml:1.0:rule-combining-algorithm:permit-overrides">
+      <xacml3:Target />
+      <xacml3:Rule RuleId="urn:iec:62351:8:IS:1.0:r-id:ee3088cf-7e94-4821-995b-6313834839d9" Effect="Permit">
+        <xacml3:Target>
+          <xacml3:AnyOf>
+            <xacml3:AllOf>
+              <xacml3:Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                <xacml3:AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">IEC61850/MMS</xacml3:AttributeValue>
+                <xacml3:AttributeDesignator Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource" AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false" />
+              </xacml3:Match>
+            </xacml3:AllOf>
+          </xacml3:AnyOf>
+          <xacml3:AnyOf>
+            <xacml3:AllOf>
+              <xacml3:Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                <xacml3:AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">READVALUES</xacml3:AttributeValue>
+                <xacml3:AttributeDesignator Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false" />
+              </xacml3:Match>
+            </xacml3:AllOf>
+          </xacml3:AnyOf>
+        </xacml3:Target>
+      </xacml3:Rule>
+    </xacml3:Policy>
+  </xacml3:PolicySet>
+  <xacml3:PolicySet PolicySetId="urn:iec:62351:8:IS:1.0:pps-id:REPORTING:3a860409-c829-4d43-8508-b4de32ac19d3" Version="1.0" PolicyCombiningAlgId="urn:oasis:names:tc:xacml:3.0:policy-combining-algorithm:permit-overrides">
+    <xacml3:Description>IEC 61850 permission: REPORTING</xacml3:Description>
+    <xacml3:Target />
+    <xacml3:Policy PolicyId="urn:iec:62351:8:IS:1.0:p-id:77814d42-dbe5-4607-97ae-17ed2a00a63b" Version="1.0" RuleCombiningAlgId="urn:oasis:names:tc:xacml:1.0:rule-combining-algorithm:permit-overrides">
+      <xacml3:Target />
+      <xacml3:Rule RuleId="urn:iec:62351:8:IS:1.0:r-id:1525f4a9-9f31-40ed-ace5-d0395e8e52bd" Effect="Permit">
+        <xacml3:Target>
+          <xacml3:AnyOf>
+            <xacml3:AllOf>
+              <xacml3:Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                <xacml3:AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">IEC61850/MMS</xacml3:AttributeValue>
+                <xacml3:AttributeDesignator Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource" AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false" />
+              </xacml3:Match>
+            </xacml3:AllOf>
+          </xacml3:AnyOf>
+          <xacml3:AnyOf>
+            <xacml3:AllOf>
+              <xacml3:Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                <xacml3:AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">REPORTING</xacml3:AttributeValue>
+                <xacml3:AttributeDesignator Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false" />
+              </xacml3:Match>
+            </xacml3:AllOf>
+          </xacml3:AnyOf>
+        </xacml3:Target>
+      </xacml3:Rule>
+    </xacml3:Policy>
+  </xacml3:PolicySet>
+</xacml3:PolicySet>

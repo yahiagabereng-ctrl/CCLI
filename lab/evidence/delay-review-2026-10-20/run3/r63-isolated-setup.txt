@@ -1,0 +1,7 @@
+ccli 0.1.0-r63 (TSP-PRESENTATION-CONTEXT)
+  semver:   0.1.0
+  release:  r63
+  git:      unknown
+  built:    2026-10-20T13:44:35Z UTC
+  platform: tg500
+ISOLATED_R63_PREPARED_LIVE_SERVICE_UNCHANGED

@@ -166,7 +166,7 @@ int main() {
     tr_dc.profile = DsoProfile::Tr57126Table1;
     tr_dc.release_delta_kw = 5.0;
     const auto or_fb = apply_live_dso_commands_to_pf2(live_pf2, pc, tr_dc, false, 0.0, false, 0.0,
-                                                     true);
+                                                     false, 100.0, true);
     if (!or_fb.applied || !near_eq(or_fb.pf2_threshold_kw, 42.0, 0.5)) {
         std::cerr << "OR fallback Figura2 expected enter~42 kW got " << or_fb.pf2_threshold_kw
                   << '\n';

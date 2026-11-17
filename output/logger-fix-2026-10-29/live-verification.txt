@@ -1,0 +1,7 @@
+{"ts_ms":1793273330000,"ts_o14":"2026/10/29 11:28:50","category":"security","type":"security","detail":"security_log_read:LOG_READ_SUCCESS uid=0","sequence":11766,"iec_id":"IEC62351-14:9.1","mnemonic":"CYBSECEV_LOG_READ_SUCCESS","severity":"notice","text":"Cybsecev log read success","source":"TR500","app_name":"event-reader","peer_info":"","user_id":"","role":"","P.ProcessUid":"0","P.Operation":"security_log_read"}
+READOUT_ONE_COLLECTOR_PASS
+COLLECTOR_PARENT_EXIT_PASS
+NO_INHERITED_CCI_SOCKETS_PASS
+ 5868 root      1744 S    logread -f
+tcp        0      0 192.168.0.1:3782        0.0.0.0:*               LISTEN      
+R74_LOGGER_VERIFICATION_PASS

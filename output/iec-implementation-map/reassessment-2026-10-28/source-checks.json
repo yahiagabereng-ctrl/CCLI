@@ -1,0 +1,13 @@
+{
+  "date_utc": "2026-10-28T08:57:57.714020+00:00",
+  "source_commit": "15b0a9c51e368bdbad98e4e71d3784a6cfb7b6b5",
+  "tracked_key_certificate_candidates_scanned": 82,
+  "private_key_pem_marker_filenames": [],
+  "limits": "Current tracked candidate files only. Does not prove historical exposure/rotation closure or absence of every possible secret format. No private contents were printed.",
+  "protected_source_baseline": {
+    "command": "scripts/check_rbac_tls_baseline.py",
+    "returncode": 0,
+    "stdout": "PASS: protected wire baseline and documented integration/TLS security extensions match.",
+    "stderr": ""
+  }
+}

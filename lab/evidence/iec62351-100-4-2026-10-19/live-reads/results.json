@@ -1,0 +1,393 @@
+{
+  "started_utc": "2026-10-19T13:27:37.261766+00:00",
+  "mode": "live-read-only",
+  "host": "192.168.0.1",
+  "port": 3782,
+  "policy_sha256": {
+    "commissioning-manifest.xml": "6571986abeb2fb998683738239a2c66f1517e06f5163f58513788a8a514539b4",
+    "commissioning-policy.xml": "d9461c767b16e210acc0270bcd5672f416da177e8b865c4277c3c9663db19a3e",
+    "commissioning-scopes.xml": "41385c990f18b7530a97cb86feb5bb8cb3e7da4257d22a6167b9f4c33373209b",
+    "identity-bindings.xml": "a3cfa2b5419342c4df48c2e1279ed9c0ec9351411a6b5906814c7148a4a5c60e",
+    "permission-library.xml": "c984e3ace0e0e2efeb1e7ee864a36ee430d8411bb172c78d52e098784e337df1"
+  },
+  "limitations": [
+    "Aggregator P is an export ceiling, not signed import/export tracking; own datasets/reports are not allocated.",
+    "Representative service/object checks; this is not exhaustive certification.",
+    "Dynamic dataset services are globally disabled and do not establish per-role permissions.",
+    "Isolated mode rotates the explicit TLS peer pin per identity; live TLS pins remain unchanged."
+  ],
+  "finished_utc": "2026-10-19T13:27:39.029182+00:00",
+  "identities": [
+    {
+      "label": "aggregator",
+      "roles": [
+        -2
+      ],
+      "authentication": "tls",
+      "certificate_sha256": "4bec0222fc88b8e9d5adc502d2186de111bef11607631791de4507ea8f186f18",
+      "transport_sha256": "4bec0222fc88b8e9d5adc502d2186de111bef11607631791de4507ea8f186f18"
+    },
+    {
+      "label": "viewer-r0",
+      "roles": [
+        0
+      ],
+      "authentication": "tls",
+      "certificate_sha256": "baeb01a7c58672f731a721c989cab39dfd035631fccbb79aed864ba01e7f899d",
+      "transport_sha256": "baeb01a7c58672f731a721c989cab39dfd035631fccbb79aed864ba01e7f899d"
+    },
+    {
+      "label": "dual-dso",
+      "roles": [
+        -1
+      ],
+      "authentication": "certificate",
+      "certificate_sha256": "e48c2cee2237eb58fd821055335e00bd9c91fe9c04c7b03883aa320c7539cdd8",
+      "transport_sha256": "0d01c02c2b98759bd39138e3be0c7cd4853c9be7164a96e382765a2cf4aea277"
+    }
+  ],
+  "checks": [
+    {
+      "identity": "aggregator",
+      "case": "association",
+      "expected": "allow",
+      "passed": true
+    },
+    {
+      "identity": "aggregator",
+      "case": "measurement-read",
+      "expected": "access-denied",
+      "passed": true,
+      "command": "read",
+      "reference": "CCI016_01LD_Plant/PdCMMXU1.TotW.mag.f",
+      "fc": "MX",
+      "exit_code": 1,
+      "events": [
+        {
+          "kind": "read",
+          "reference": "CCI016_01LD_Plant/PdCMMXU1.TotW.mag.f",
+          "error": 21,
+          "error_text": "access-denied",
+          "value": "error 3",
+          "observed_utc": "2026-10-19T13:27:37.718969+00:00"
+        }
+      ],
+      "bypass_ui_guard": false
+    },
+    {
+      "identity": "aggregator",
+      "case": "dso-state-read",
+      "expected": "access-denied",
+      "passed": true,
+      "command": "read",
+      "reference": "CCI016_01LD_Plant/WlimDWMX1.Mod.stVal",
+      "fc": "ST",
+      "exit_code": 1,
+      "events": [
+        {
+          "kind": "read",
+          "reference": "CCI016_01LD_Plant/WlimDWMX1.Mod.stVal",
+          "error": 21,
+          "error_text": "access-denied",
+          "value": "error 3",
+          "observed_utc": "2026-10-19T13:27:37.790274+00:00"
+        }
+      ],
+      "bypass_ui_guard": false
+    },
+    {
+      "identity": "aggregator",
+      "case": "aggregator-scope-read",
+      "expected": "allow",
+      "passed": true,
+      "command": "read",
+      "reference": "CCI016_01LD_Plant/WSaDAGC1.Mod.stVal",
+      "fc": "ST",
+      "exit_code": 0,
+      "events": [
+        {
+          "kind": "read",
+          "reference": "CCI016_01LD_Plant/WSaDAGC1.Mod.stVal",
+          "error": 0,
+          "error_text": "",
+          "value": "5",
+          "observed_utc": "2026-10-19T13:27:37.820588+00:00"
+        }
+      ],
+      "bypass_ui_guard": false
+    },
+    {
+      "identity": "aggregator",
+      "case": "discovery-in-scope",
+      "expected": "allow",
+      "passed": true,
+      "command": "browse",
+      "reference": "CCI016_01LD_Plant/WSaDAGC1",
+      "fc": "ST",
+      "exit_code": 0,
+      "events": [
+        {
+          "kind": "directory",
+          "reference": "CCI016_01LD_Plant/WSaDAGC1",
+          "error": 0,
+          "error_text": "",
+          "value": "objects",
+          "observed_utc": "2026-10-19T13:27:37.861430+00:00"
+        },
+        {
+          "kind": "entry",
+          "reference": "CCI016_01LD_Plant/WSaDAGC1",
+          "error": 0,
+          "error_text": "",
+          "value": "Mod",
+          "observed_utc": "2026-10-19T13:27:37.861460+00:00"
+        },
+        {
+          "kind": "entry",
+          "reference": "CCI016_01LD_Plant/WSaDAGC1",
+          "error": 0,
+          "error_text": "",
+          "value": "WSptPct",
+          "observed_utc": "2026-10-19T13:27:37.861467+00:00"
+        }
+      ],
+      "bypass_ui_guard": false
+    },
+    {
+      "identity": "aggregator",
+      "case": "dataset-directory",
+      "expected": "access-denied",
+      "passed": true,
+      "command": "dataset-members",
+      "reference": "CCI016_01LD_Plant/LLN0.DS_R_PdC_Mis4sec",
+      "fc": "ST",
+      "exit_code": 1,
+      "events": [
+        {
+          "kind": "dataset-members",
+          "reference": "CCI016_01LD_Plant/LLN0.DS_R_PdC_Mis4sec",
+          "error": 21,
+          "error_text": "access-denied",
+          "value": "static",
+          "observed_utc": "2026-10-19T13:27:37.892049+00:00"
+        }
+      ],
+      "bypass_ui_guard": false
+    },
+    {
+      "identity": "aggregator",
+      "case": "dataset-values",
+      "expected": "access-denied",
+      "passed": true,
+      "command": "dataset-read",
+      "reference": "CCI016_01LD_Plant/LLN0.DS_R_PdC_Mis4sec",
+      "fc": "ST",
+      "exit_code": 1,
+      "events": [
+        {
+          "kind": "dataset-read",
+          "reference": "CCI016_01LD_Plant/LLN0.DS_R_PdC_Mis4sec",
+          "error": 21,
+          "error_text": "access-denied",
+          "value": "no dataset returned",
+          "observed_utc": "2026-10-19T13:27:37.922641+00:00"
+        }
+      ],
+      "bypass_ui_guard": false
+    },
+    {
+      "identity": "aggregator",
+      "case": "report-block-read",
+      "expected": "access-denied",
+      "passed": true,
+      "command": "rcb-read",
+      "reference": "CCI016_01LD_Plant/LLN0.RP.urcb_PdC_Mis4sec",
+      "fc": "ST",
+      "exit_code": 1,
+      "events": [
+        {
+          "kind": "rcb-read",
+          "reference": "CCI016_01LD_Plant/LLN0.RP.urcb_PdC_Mis4sec",
+          "error": 21,
+          "error_text": "access-denied",
+          "value": "",
+          "observed_utc": "2026-10-19T13:27:37.953002+00:00"
+        }
+      ],
+      "bypass_ui_guard": false
+    },
+    {
+      "identity": "viewer-r0",
+      "case": "association",
+      "expected": "allow",
+      "passed": true
+    },
+    {
+      "identity": "viewer-r0",
+      "case": "measurement-read",
+      "expected": "allow",
+      "passed": true,
+      "command": "read",
+      "reference": "CCI016_01LD_Plant/PdCMMXU1.TotW.mag.f",
+      "fc": "MX",
+      "exit_code": 0,
+      "events": [
+        {
+          "kind": "read",
+          "reference": "CCI016_01LD_Plant/PdCMMXU1.TotW.mag.f",
+          "error": 0,
+          "error_text": "",
+          "value": "0.000000",
+          "observed_utc": "2026-10-19T13:27:38.294816+00:00"
+        }
+      ],
+      "bypass_ui_guard": false
+    },
+    {
+      "identity": "viewer-r0",
+      "case": "dso-state-read",
+      "expected": "allow",
+      "passed": true,
+      "command": "read",
+      "reference": "CCI016_01LD_Plant/WlimDWMX1.Mod.stVal",
+      "fc": "ST",
+      "exit_code": 0,
+      "events": [
+        {
+          "kind": "read",
+          "reference": "CCI016_01LD_Plant/WlimDWMX1.Mod.stVal",
+          "error": 0,
+          "error_text": "",
+          "value": "5",
+          "observed_utc": "2026-10-19T13:27:38.335579+00:00"
+        }
+      ],
+      "bypass_ui_guard": false
+    },
+    {
+      "identity": "viewer-r0",
+      "case": "discovery-in-scope",
+      "expected": "allow",
+      "passed": true,
+      "command": "browse",
+      "reference": "CCI016_01LD_Plant/WlimDWMX1",
+      "fc": "ST",
+      "exit_code": 0,
+      "events": [
+        {
+          "kind": "directory",
+          "reference": "CCI016_01LD_Plant/WlimDWMX1",
+          "error": 0,
+          "error_text": "",
+          "value": "objects",
+          "observed_utc": "2026-10-19T13:27:38.387109+00:00"
+        },
+        {
+          "kind": "entry",
+          "reference": "CCI016_01LD_Plant/WlimDWMX1",
+          "error": 0,
+          "error_text": "",
+          "value": "Mod",
+          "observed_utc": "2026-10-19T13:27:38.387150+00:00"
+        },
+        {
+          "kind": "entry",
+          "reference": "CCI016_01LD_Plant/WlimDWMX1",
+          "error": 0,
+          "error_text": "",
+          "value": "WMaxSptPct",
+          "observed_utc": "2026-10-19T13:27:38.387159+00:00"
+        }
+      ],
+      "bypass_ui_guard": false
+    },
+    {
+      "identity": "viewer-r0",
+      "case": "dataset-directory",
+      "expected": "access-denied",
+      "passed": true,
+      "command": "dataset-members",
+      "reference": "CCI016_01LD_Plant/LLN0.DS_R_PdC_Mis4sec",
+      "fc": "ST",
+      "exit_code": 1,
+      "events": [
+        {
+          "kind": "dataset-members",
+          "reference": "CCI016_01LD_Plant/LLN0.DS_R_PdC_Mis4sec",
+          "error": 21,
+          "error_text": "access-denied",
+          "value": "static",
+          "observed_utc": "2026-10-19T13:27:38.417604+00:00"
+        }
+      ],
+      "bypass_ui_guard": false
+    },
+    {
+      "identity": "viewer-r0",
+      "case": "dataset-values",
+      "expected": "access-denied",
+      "passed": true,
+      "command": "dataset-read",
+      "reference": "CCI016_01LD_Plant/LLN0.DS_R_PdC_Mis4sec",
+      "fc": "ST",
+      "exit_code": 1,
+      "events": [
+        {
+          "kind": "dataset-read",
+          "reference": "CCI016_01LD_Plant/LLN0.DS_R_PdC_Mis4sec",
+          "error": 21,
+          "error_text": "access-denied",
+          "value": "no dataset returned",
+          "observed_utc": "2026-10-19T13:27:38.448170+00:00"
+        }
+      ],
+      "bypass_ui_guard": false
+    },
+    {
+      "identity": "viewer-r0",
+      "case": "report-block-read",
+      "expected": "allow",
+      "passed": true,
+      "command": "rcb-read",
+      "reference": "CCI016_01LD_Plant/LLN0.RP.urcb_PdC_Mis4sec",
+      "fc": "ST",
+      "exit_code": 0,
+      "events": [
+        {
+          "kind": "rcb",
+          "reference": "CCI016_01LD_Plant/LLN0.RP.urcb_PdC_Mis4sec",
+          "error": 0,
+          "error_text": "",
+          "value": "enabled=false dataset=CCI016_01LD_Plant/LLN0$DS_R_PdC_Mis4sec",
+          "observed_utc": "2026-10-19T13:27:38.478761+00:00"
+        }
+      ],
+      "bypass_ui_guard": false
+    },
+    {
+      "identity": "dual-dso",
+      "case": "association",
+      "expected": "allow",
+      "passed": false,
+      "error": "MMS association failed; use --verbose for diagnostics."
+    },
+    {
+      "identity": "negative-revoked",
+      "case": "invalid-identity-rejected",
+      "expected": "association-rejected",
+      "passed": true,
+      "events": [
+        {
+          "kind": "association",
+          "reference": "192.168.0.1",
+          "error": 5,
+          "error_text": "",
+          "value": "mutual TLS 1.2 + TLS peer identity authentication",
+          "observed_utc": "2026-10-19T13:27:38.996492+00:00"
+        }
+      ]
+    }
+  ],
+  "passed": 16,
+  "failed": 1
+}

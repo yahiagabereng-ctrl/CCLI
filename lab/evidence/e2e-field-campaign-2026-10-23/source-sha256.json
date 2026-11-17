@@ -1,0 +1,48 @@
+{
+  "applicability_review_source_sha256": {
+    "C:\\Users\\Administrator\\Desktop\\CCLI Alireza\\CCLI\\Normativa\\CEI 57-142-2026-07.pdf": "4d0f33a2e29fb479d53c3005c491f81469bbd227b691e77611ff46403b517b58",
+    "C:\\Users\\Administrator\\Desktop\\IEC TS 62351-100-4 2023.pdf": "6188eca04cb2a482127b24755ad657b3ce8b86df506543b7d2e147045aef7bba"
+  },
+  "evidence_artifacts": {
+    "RESULTS.md": "15d857481b182b97888a4d208dd45958ac7fb532400eef3a6f67533ace4cd345",
+    "ber-field-assertions.tsv": "9bca60b6c9bd3e9cbf2496177503e656f23faff19a9b85d85cf94722a5810271",
+    "complete-test-evidence-ledger.csv": "dbb9cc32c4337ef2df124dd3013964e0125046e8767116cf7fde3d22f3909169",
+    "field-campaign-ctest.log": "5de8815361593546f4414d843983e9d043fe02ddd66402cc3b1a951511354d6f",
+    "field-campaign-ec.json": "db70ec4241c6f27d44c2956831ca08ad2a6960933ad33b67e28a3cab98bb40ed",
+    "field-campaign-rsa.json": "8bfb3c773e00450bc9eeddb5408bd73a7c1399a8498a5a6d6b88e483a4a4ab9a",
+    "field-execution-ledger.csv": "5b1fa4322b9173f00b57da68a8875426bacb8470d497ddd3a70c1500f5385c39",
+    "host-ctest.log": "7988cd84beefb776a146005de078a3df7232327391acc496af80626d7599c43d",
+    "mms-ctest.log": "e431f66403de9ad2376b48bf7b3362da50a98c3a18a7aa415dc03bf14d0c21d5",
+    "sanitizer-ctest.log": "b0b53883a091939175ad8a786b4ace088a3befdcde82481509eb5087101255e1",
+    "tx-contract.json": "23114dbfc37e653e700711197c44f5cbf19e0302222ed491d525e5f556da133c"
+  },
+  "files": {
+    "apps/ccli/adapters/iec61850_mms/e2e/e2e_identity.cpp": "6d0feda95a72e9d3df81ff96be52ffac5ae1ee38f140f23d343423e08755b8ad",
+    "apps/ccli/adapters/iec61850_mms/e2e/e2e_identity.hpp": "f62cd8979084959a7ccd88248842617990ff12da032437c6ff663726f2b0aee7",
+    "apps/ccli/build-e2e-arm64/ccli": "5d42af83f7548dcb116cd7a8ded046bfb83566d81e6f1a4e53d620469d1892fa",
+    "apps/ccli/cmake/patch_mbedtls_3_6_crl_scope.py": "eca334d5ae073f174e3fcb31d21210bda3de528ef2c8d803423909adfce6cae4",
+    "apps/ccli/tests/unit/CMakeLists.txt": "61d95a7a538cb90adf191324cc762662d5f37b27edc11b02325d824a8240310e",
+    "apps/ccli/tests/unit/e2e_allocation_fault.hpp": "faae4720716326e5d2fc94d52ae458e9bb440eed678b6a2209616963fb0e8e99",
+    "apps/ccli/tests/unit/e2e_ber_field_test.cpp": "b08371407378bc94f0013bff2d13b194b7acff3c9224fdb3875ed291b0a06bb7",
+    "apps/ccli/tests/unit/e2e_field_campaign.py": "2de7513b70b0610afe6f2afb17c74fd42497a445855d4d5f712ffdd13590009a",
+    "apps/ccli/tests/unit/e2e_identity_fixtures.py": "324135d732f765d5caa8ee07d86910eab3b3d7ed8946f51e17d261f9500160e6",
+    "apps/ccli/tests/unit/e2e_identity_test.cpp": "d264f93ab146d6fe86eedcb4b773a9bf42eaec959f0575a41e013119ce53060a",
+    "apps/ccli/tests/unit/e2e_native_server_test.cpp": "7d1412d01c71852c6ed43bad6c4c665b20437b82b33282669fae4bc6cc2c0964",
+    "apps/ccli/tests/unit/e2e_native_stack_test.py": "89ff250e340be41b95b7e73b57288846a273609d29dfe5e75d1f220678ad7c2a",
+    "apps/ccli/tests/unit/e2e_tx_contract.py": "0c7f20895fe6eec6e22a653d9ad6af40411f28d698bb19820c4ee60192129752",
+    "apps/ccli/tools/mms-client/e2e_probe.py": "9381f9abe4b6f92bf9b3bf30b2d102bcce5bba0aadc45f77be4dd333832b77f1",
+    "lab/conformance/CCI_RBAC_NATIVE_E2E_EXTENSION.json": "d7f44fa4238f815ea6eea82ba7c5241f7c7791645da156e14ff4184fae9bc4e2",
+    "lab/conformance/e2e/APPLICABILITY_REVIEW.md": "870e4e96b5703b8da2c72cf8a14f8664468e490911ad2fdc84790653a774396c",
+    "lab/conformance/e2e/BER_FIELD_COVERAGE.md": "0cf804dae94792d8216ae771ec1370c20f4bb7730b5c63c76a699122d6ec5e9a",
+    "lab/conformance/e2e/BER_FIELD_HANDOFF.md": "3c9f58c8f16d4c0bf9578df85624e3f1e119540155efd67f2a7f5397780feef8",
+    "lab/conformance/e2e/IMPLEMENTATION_PLAN.md": "17f96f68cee27179c99c59d6494df6b86801d660f4e454382afe67b63784d4f8",
+    "lab/conformance/e2e/ber-field-map.csv": "f29ca50db268b6f85ea4ccd74df30104639d6769340c44e175bf89f83614ba10",
+    "lab/conformance/e2e/build_field_evidence_ledger.py": "f98fd7c0fd034e716496744a0b9e46edff2c8745765e80cc246e8166b4e7da53",
+    "scripts/check_e2e_ber_sanitizers.sh": "f229598246f34c1cb2bda1cd5bc699dd69c7672b4d55e9846f2ec75b951fe20e",
+    "scripts/check_e2e_host.sh": "90bf2e00530c9d5817391149a72d34b5d10ee203a0ae5df4b279afe945d65303",
+    "scripts/generate_mms_e2e.py": "4ba058e1f0e5f052aac787b0111b8d2ad127d363b90fee6f88740aa74e75ea00"
+  },
+  "hash_policy": "Raw file-byte SHA-256. Generated disposable credentials are not included.",
+  "mapping_sha256": "f29ca50db268b6f85ea4ccd74df30104639d6769340c44e175bf89f83614ba10",
+  "tested_profile": "Native integrity-only E2E over mutual TLS; RSA/group 14 and EC/group 23 field campaigns."
+}

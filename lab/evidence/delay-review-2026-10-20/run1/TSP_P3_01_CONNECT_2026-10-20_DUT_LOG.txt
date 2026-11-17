@@ -1,0 +1,331 @@
+﻿# CCLI DUT SSH evidence
+tsp_id: T1-01
+dut_ip: 192.168.0.1
+date: 2026-10-20
+
+
+========== DUT SSH PRE 2026-10-20 12:38:21 UTC-ish local ==========
+=== DUT evidence PRE test_id=T1-01 ===
+2026-10-20T18:38:20+08:00
+ccli 0.1.0-r61 (AGGREGATOR-PQ-BENCH)
+  semver:   0.1.0
+  release:  r61
+  git:      unknown
+  built:    2026-10-19T10:41:59Z UTC
+  platform: tg500
+=== process / listen ===
+5136 /usr/sbin/ccli
+tcp        0      0 192.168.0.1:3782        0.0.0.0:*               LISTEN      5136/ccli
+=== dido_v2 (actuation) ===
+{
+	"running": true,
+	"northbound_count": 0,
+	"channels": [
+		{
+			"channel": 1,
+			"name": "DIO-1",
+			"enabled": true,
+			"mode": "DO",
+			"report_key": "relay_1",
+			"state": 0,
+			"memory_state": false
+		},
+		{
+			"channel": 2,
+			"name": "DIO-2",
+			"enabled": true,
+			"mode": "DI",
+			"report_key": "relay_2",
+			"state": 0,
+			"irq_active": false,
+			"poll_enabled": true,
+			"poll_interval": 5,
+			"change_report": true,
+			"last_poll": 0
+		},
+		{
+			"channel": 3,
+			"name": "DIO-3",
+			"enabled": true,
+			"mode": "DO",
+			"report_key": "relay_3",
+			"state": 0,
+			"memory_state": false
+		},
+		{
+			"channel": 4,
+			"name": "DIO-4",
+			"enabled": true,
+			"mode": "DO",
+			"report_key": "relay_4",
+			"state": 0,
+			"memory_state": false
+		}
+	],
+	"ai": [
+		{
+			"channel": 1,
+			"raw": 0,
+			"ma": 0.000000,
+			"valid": true,
+			"age_ms": 1073
+		},
+		{
+			"channel": 2,
+			"raw": 0,
+			"ma": 0.000000,
+			"valid": true,
+			"age_ms": 1073
+		}
+	],
+	"northbound_channels": [
+		
+	]
+}
+=== logread ccli (filter: CONNECT|DISCONNECT|TLS|ACSE|AARE|auth|handshake|Initiate|session|listening|FAILED|closed) ===
+Tue Oct 20 18:36:18 2026 daemon.err ccli[5136]: TLS:  connection was closed gracefully
+Tue Oct 20 18:36:18 2026 daemon.err ccli[5136]: mms: client DISCONNECT count=0
+Tue Oct 20 18:36:20 2026 daemon.err ccli[5136]: TLS: mbedtls_ssl_close_notify returned -0x1
+Tue Oct 20 18:36:45 2026 daemon.err ccli[5136]: TLS: Verify cert: depth 1
+Tue Oct 20 18:36:45 2026 daemon.err ccli[5136]: TLS:    flags: 00000000
+Tue Oct 20 18:36:45 2026 daemon.err ccli[5136]: TLS:   cert. version     : 3
+Tue Oct 20 18:36:45 2026 daemon.err ccli[5136]: TLS: Verify cert: depth 0
+Tue Oct 20 18:36:45 2026 daemon.err ccli[5136]: TLS:    flags: 00000000
+Tue Oct 20 18:36:45 2026 daemon.err ccli[5136]: TLS:   cert. version     : 3
+Tue Oct 20 18:36:45 2026 daemon.err ccli[5136]: TLS: Check against list of allowed certs
+Tue Oct 20 18:36:45 2026 daemon.err ccli[5136]: TLS: Compare With:
+Tue Oct 20 18:36:45 2026 daemon.err ccli[5136]: TLS:      cert. version     : 3
+Tue Oct 20 18:36:45 2026 daemon.err ccli[5136]:      ext key usage     : TLS Web Client Authentication
+Tue Oct 20 18:36:45 2026 daemon.err ccli[5136]: TLS: Compare With:
+Tue Oct 20 18:36:45 2026 daemon.err ccli[5136]: TLS:      cert. version     : 3
+Tue Oct 20 18:36:45 2026 daemon.err ccli[5136]:      ext key usage     : TLS Web Client Authentication
+Tue Oct 20 18:36:45 2026 daemon.err ccli[5136]: TLS: Compare With:
+Tue Oct 20 18:36:45 2026 daemon.err ccli[5136]: TLS:      cert. version     : 3
+Tue Oct 20 18:36:45 2026 daemon.err ccli[5136]:      ext key usage     : TLS Web Client Authentication
+Tue Oct 20 18:36:45 2026 daemon.err ccli[5136]: TLS: Compare With:
+Tue Oct 20 18:36:45 2026 daemon.err ccli[5136]: TLS:      cert. version     : 3
+Tue Oct 20 18:36:45 2026 daemon.err ccli[5136]:      ext key usage     : TLS Web Client Authentication
+Tue Oct 20 18:36:45 2026 daemon.err ccli[5136]: TLS: Compare With:
+Tue Oct 20 18:36:45 2026 daemon.err ccli[5136]: TLS:      cert. version     : 3
+Tue Oct 20 18:36:47 2026 daemon.err ccli[5136]: mms: client CONNECT count=1
+Tue Oct 20 18:36:53 2026 daemon.err ccli[5136]: TLS: handshake failed - mbedtls_ssl_handshake returned -0x1
+Tue Oct 20 18:36:56 2026 daemon.err ccli[5136]: TLS:  connection was closed gracefully
+Tue Oct 20 18:36:56 2026 daemon.err ccli[5136]: mms: client DISCONNECT count=0
+Tue Oct 20 18:36:58 2026 daemon.err ccli[5136]: TLS: mbedtls_ssl_close_notify returned -0x1
+Tue Oct 20 18:37:34 2026 daemon.err ccli[5136]: TLS: Verify cert: depth 1
+Tue Oct 20 18:37:34 2026 daemon.err ccli[5136]: TLS:    flags: 00000000
+Tue Oct 20 18:37:34 2026 daemon.err ccli[5136]: TLS:   cert. version     : 3
+Tue Oct 20 18:37:34 2026 daemon.err ccli[5136]: TLS: Verify cert: depth 0
+Tue Oct 20 18:37:34 2026 daemon.err ccli[5136]: TLS:    flags: 00000000
+Tue Oct 20 18:37:34 2026 daemon.err ccli[5136]: TLS:   cert. version     : 3
+Tue Oct 20 18:37:34 2026 daemon.err ccli[5136]: TLS: Check against list of allowed certs
+Tue Oct 20 18:37:34 2026 daemon.err ccli[5136]: TLS: Compare With:
+Tue Oct 20 18:37:34 2026 daemon.err ccli[5136]: TLS:      cert. version     : 3
+Tue Oct 20 18:37:34 2026 daemon.err ccli[5136]:      ext key usage     : TLS Web Client Authentication
+Tue Oct 20 18:37:34 2026 daemon.err ccli[5136]: TLS: Compare With:
+Tue Oct 20 18:37:34 2026 daemon.err ccli[5136]: TLS:      cert. version     : 3
+Tue Oct 20 18:37:34 2026 daemon.err ccli[5136]:      ext key usage     : TLS Web Client Authentication
+Tue Oct 20 18:37:34 2026 daemon.err ccli[5136]: TLS: Compare With:
+Tue Oct 20 18:37:34 2026 daemon.err ccli[5136]: TLS:      cert. version     : 3
+Tue Oct 20 18:37:34 2026 daemon.err ccli[5136]:      ext key usage     : TLS Web Client Authentication
+Tue Oct 20 18:37:34 2026 daemon.err ccli[5136]: TLS: Compare With:
+Tue Oct 20 18:37:34 2026 daemon.err ccli[5136]: TLS:      cert. version     : 3
+Tue Oct 20 18:37:34 2026 daemon.err ccli[5136]:      ext key usage     : TLS Web Client Authentication
+Tue Oct 20 18:37:34 2026 daemon.err ccli[5136]: TLS: Compare With:
+Tue Oct 20 18:37:34 2026 daemon.err ccli[5136]: TLS:      cert. version     : 3
+Tue Oct 20 18:37:37 2026 daemon.err ccli[5136]: mms: client CONNECT count=1
+Tue Oct 20 18:37:39 2026 daemon.err ccli[5136]: TLS: Verify cert: depth 1
+Tue Oct 20 18:37:39 2026 daemon.err ccli[5136]: TLS:    flags: 00000000
+Tue Oct 20 18:37:39 2026 daemon.err ccli[5136]: TLS:   cert. version     : 3
+Tue Oct 20 18:37:39 2026 daemon.err ccli[5136]: TLS: Verify cert: depth 0
+Tue Oct 20 18:37:39 2026 daemon.err ccli[5136]: TLS:    flags: 00000000
+Tue Oct 20 18:37:39 2026 daemon.err ccli[5136]: TLS:   cert. version     : 3
+Tue Oct 20 18:37:39 2026 daemon.err ccli[5136]: TLS: Check against list of allowed certs
+Tue Oct 20 18:37:39 2026 daemon.err ccli[5136]: TLS: Compare With:
+Tue Oct 20 18:37:39 2026 daemon.err ccli[5136]: TLS:      cert. version     : 3
+Tue Oct 20 18:37:39 2026 daemon.err ccli[5136]:      ext key usage     : TLS Web Client Authentication
+Tue Oct 20 18:37:39 2026 daemon.err ccli[5136]: TLS: Compare With:
+Tue Oct 20 18:37:39 2026 daemon.err ccli[5136]: TLS:      cert. version     : 3
+Tue Oct 20 18:37:39 2026 daemon.err ccli[5136]:      ext key usage     : TLS Web Client Authentication
+Tue Oct 20 18:37:39 2026 daemon.err ccli[5136]: TLS: Compare With:
+Tue Oct 20 18:37:39 2026 daemon.err ccli[5136]: TLS:      cert. version     : 3
+Tue Oct 20 18:37:39 2026 daemon.err ccli[5136]:      ext key usage     : TLS Web Client Authentication
+Tue Oct 20 18:37:39 2026 daemon.err ccli[5136]: TLS: Compare With:
+Tue Oct 20 18:37:39 2026 daemon.err ccli[5136]: TLS:      cert. version     : 3
+Tue Oct 20 18:37:39 2026 daemon.err ccli[5136]:      ext key usage     : TLS Web Client Authentication
+Tue Oct 20 18:37:39 2026 daemon.err ccli[5136]: TLS: Compare With:
+Tue Oct 20 18:37:39 2026 daemon.err ccli[5136]: TLS:      cert. version     : 3
+Tue Oct 20 18:37:43 2026 daemon.err ccli[5136]: mms: client CONNECT count=2
+Tue Oct 20 18:37:45 2026 daemon.err ccli[5136]: TLS:  connection was closed gracefully
+Tue Oct 20 18:37:45 2026 daemon.err ccli[5136]: mms: client DISCONNECT count=1
+Tue Oct 20 18:37:48 2026 daemon.err ccli[5136]: TLS: mbedtls_ssl_close_notify returned -0x1
+Tue Oct 20 18:37:48 2026 daemon.err ccli[5136]: TLS: handshake failed - mbedtls_ssl_handshake returned -0x1
+Tue Oct 20 18:37:49 2026 daemon.err ccli[5136]: TLS:  connection was closed gracefully
+Tue Oct 20 18:37:49 2026 daemon.err ccli[5136]: mms: client DISCONNECT count=0
+Tue Oct 20 18:37:52 2026 daemon.err ccli[5136]: TLS: mbedtls_ssl_close_notify returned -0x1
+=== /tmp/ccli.log tail ===
+(no /tmp/ccli.log)
+
+
+========== DUT SSH POST 2026-10-20 12:39:55 UTC-ish local ==========
+=== DUT evidence POST test_id=T1-01 ===
+2026-10-20T18:39:54+08:00
+ccli 0.1.0-r61 (AGGREGATOR-PQ-BENCH)
+  semver:   0.1.0
+  release:  r61
+  git:      unknown
+  built:    2026-10-19T10:41:59Z UTC
+  platform: tg500
+=== process / listen ===
+5136 /usr/sbin/ccli
+tcp        0      0 192.168.0.1:3782        0.0.0.0:*               LISTEN      1234/ubus
+=== dido_v2 (actuation) ===
+{
+	"running": true,
+	"northbound_count": 0,
+	"channels": [
+		{
+			"channel": 1,
+			"name": "DIO-1",
+			"enabled": true,
+			"mode": "DO",
+			"report_key": "relay_1",
+			"state": 0,
+			"memory_state": false
+		},
+		{
+			"channel": 2,
+			"name": "DIO-2",
+			"enabled": true,
+			"mode": "DI",
+			"report_key": "relay_2",
+			"state": 0,
+			"irq_active": false,
+			"poll_enabled": true,
+			"poll_interval": 5,
+			"change_report": true,
+			"last_poll": 0
+		},
+		{
+			"channel": 3,
+			"name": "DIO-3",
+			"enabled": true,
+			"mode": "DO",
+			"report_key": "relay_3",
+			"state": 0,
+			"memory_state": false
+		},
+		{
+			"channel": 4,
+			"name": "DIO-4",
+			"enabled": true,
+			"mode": "DO",
+			"report_key": "relay_4",
+			"state": 0,
+			"memory_state": false
+		}
+	],
+	"ai": [
+		{
+			"channel": 1,
+			"raw": 0,
+			"ma": 0.000000,
+			"valid": true,
+			"age_ms": 565
+		},
+		{
+			"channel": 2,
+			"raw": 0,
+			"ma": 0.000000,
+			"valid": true,
+			"age_ms": 565
+		}
+	],
+	"northbound_channels": [
+		
+	]
+}
+=== logread ccli (filter: CONNECT|DISCONNECT|TLS|ACSE|AARE|auth|handshake|Initiate|session|listening|FAILED|closed) ===
+Tue Oct 20 18:37:48 2026 daemon.err ccli[5136]: TLS: mbedtls_ssl_close_notify returned -0x1
+Tue Oct 20 18:37:48 2026 daemon.err ccli[5136]: TLS: handshake failed - mbedtls_ssl_handshake returned -0x1
+Tue Oct 20 18:37:49 2026 daemon.err ccli[5136]: TLS:  connection was closed gracefully
+Tue Oct 20 18:37:49 2026 daemon.err ccli[5136]: mms: client DISCONNECT count=0
+Tue Oct 20 18:37:52 2026 daemon.err ccli[5136]: TLS: mbedtls_ssl_close_notify returned -0x1
+Tue Oct 20 18:39:23 2026 daemon.err ccli[5136]: TLS: Verify cert: depth 1
+Tue Oct 20 18:39:23 2026 daemon.err ccli[5136]: TLS:    flags: 00000000
+Tue Oct 20 18:39:23 2026 daemon.err ccli[5136]: TLS:   cert. version     : 3
+Tue Oct 20 18:39:23 2026 daemon.err ccli[5136]: TLS: Verify cert: depth 0
+Tue Oct 20 18:39:23 2026 daemon.err ccli[5136]: TLS:    flags: 00000000
+Tue Oct 20 18:39:23 2026 daemon.err ccli[5136]: TLS:   cert. version     : 3
+Tue Oct 20 18:39:23 2026 daemon.err ccli[5136]: TLS: Check against list of allowed certs
+Tue Oct 20 18:39:23 2026 daemon.err ccli[5136]: TLS: Compare With:
+Tue Oct 20 18:39:23 2026 daemon.err ccli[5136]: TLS:      cert. version     : 3
+Tue Oct 20 18:39:23 2026 daemon.err ccli[5136]:      ext key usage     : TLS Web Client Authentication
+Tue Oct 20 18:39:23 2026 daemon.err ccli[5136]: TLS: Compare With:
+Tue Oct 20 18:39:23 2026 daemon.err ccli[5136]: TLS:      cert. version     : 3
+Tue Oct 20 18:39:23 2026 daemon.err ccli[5136]:      ext key usage     : TLS Web Client Authentication
+Tue Oct 20 18:39:23 2026 daemon.err ccli[5136]: TLS: Compare With:
+Tue Oct 20 18:39:23 2026 daemon.err ccli[5136]: TLS:      cert. version     : 3
+Tue Oct 20 18:39:23 2026 daemon.err ccli[5136]:      ext key usage     : TLS Web Client Authentication
+Tue Oct 20 18:39:23 2026 daemon.err ccli[5136]: TLS: Compare With:
+Tue Oct 20 18:39:23 2026 daemon.err ccli[5136]: TLS:      cert. version     : 3
+Tue Oct 20 18:39:23 2026 daemon.err ccli[5136]:      ext key usage     : TLS Web Client Authentication
+Tue Oct 20 18:39:23 2026 daemon.err ccli[5136]: TLS: Compare With:
+Tue Oct 20 18:39:23 2026 daemon.err ccli[5136]: TLS:      cert. version     : 3
+Tue Oct 20 18:39:25 2026 daemon.err ccli[5136]: mms: client CONNECT count=1
+Tue Oct 20 18:39:28 2026 daemon.err ccli[5136]: TLS:  connection was closed gracefully
+Tue Oct 20 18:39:28 2026 daemon.err ccli[5136]: mms: client DISCONNECT count=0
+Tue Oct 20 18:39:31 2026 daemon.err ccli[5136]: TLS: mbedtls_ssl_close_notify returned -0x1
+Tue Oct 20 18:39:34 2026 daemon.err ccli[5136]: TLS: Verify cert: depth 1
+Tue Oct 20 18:39:34 2026 daemon.err ccli[5136]: TLS:    flags: 00000000
+Tue Oct 20 18:39:34 2026 daemon.err ccli[5136]: TLS:   cert. version     : 3
+Tue Oct 20 18:39:34 2026 daemon.err ccli[5136]: TLS: Verify cert: depth 0
+Tue Oct 20 18:39:34 2026 daemon.err ccli[5136]: TLS:    flags: 00000000
+Tue Oct 20 18:39:34 2026 daemon.err ccli[5136]: TLS:   cert. version     : 3
+Tue Oct 20 18:39:34 2026 daemon.err ccli[5136]: TLS: Check against list of allowed certs
+Tue Oct 20 18:39:34 2026 daemon.err ccli[5136]: TLS: Compare With:
+Tue Oct 20 18:39:34 2026 daemon.err ccli[5136]: TLS:      cert. version     : 3
+Tue Oct 20 18:39:34 2026 daemon.err ccli[5136]:      ext key usage     : TLS Web Client Authentication
+Tue Oct 20 18:39:34 2026 daemon.err ccli[5136]: TLS: Compare With:
+Tue Oct 20 18:39:34 2026 daemon.err ccli[5136]: TLS:      cert. version     : 3
+Tue Oct 20 18:39:34 2026 daemon.err ccli[5136]:      ext key usage     : TLS Web Client Authentication
+Tue Oct 20 18:39:34 2026 daemon.err ccli[5136]: TLS: Compare With:
+Tue Oct 20 18:39:34 2026 daemon.err ccli[5136]: TLS:      cert. version     : 3
+Tue Oct 20 18:39:34 2026 daemon.err ccli[5136]:      ext key usage     : TLS Web Client Authentication
+Tue Oct 20 18:39:34 2026 daemon.err ccli[5136]: TLS: Compare With:
+Tue Oct 20 18:39:34 2026 daemon.err ccli[5136]: TLS:      cert. version     : 3
+Tue Oct 20 18:39:34 2026 daemon.err ccli[5136]:      ext key usage     : TLS Web Client Authentication
+Tue Oct 20 18:39:34 2026 daemon.err ccli[5136]: TLS: Compare With:
+Tue Oct 20 18:39:34 2026 daemon.err ccli[5136]: TLS:      cert. version     : 3
+Tue Oct 20 18:39:36 2026 daemon.err ccli[5136]: mms: client CONNECT count=1
+Tue Oct 20 18:39:39 2026 daemon.err ccli[5136]: TLS: Verify cert: depth 1
+Tue Oct 20 18:39:39 2026 daemon.err ccli[5136]: TLS:    flags: 00000000
+Tue Oct 20 18:39:39 2026 daemon.err ccli[5136]: TLS:   cert. version     : 3
+Tue Oct 20 18:39:39 2026 daemon.err ccli[5136]: TLS: Verify cert: depth 0
+Tue Oct 20 18:39:39 2026 daemon.err ccli[5136]: TLS:    flags: 00000000
+Tue Oct 20 18:39:39 2026 daemon.err ccli[5136]: TLS:   cert. version     : 3
+Tue Oct 20 18:39:39 2026 daemon.err ccli[5136]: TLS: Check against list of allowed certs
+Tue Oct 20 18:39:39 2026 daemon.err ccli[5136]: TLS: Compare With:
+Tue Oct 20 18:39:39 2026 daemon.err ccli[5136]: TLS:      cert. version     : 3
+Tue Oct 20 18:39:39 2026 daemon.err ccli[5136]:      ext key usage     : TLS Web Client Authentication
+Tue Oct 20 18:39:39 2026 daemon.err ccli[5136]: TLS: Compare With:
+Tue Oct 20 18:39:39 2026 daemon.err ccli[5136]: TLS:      cert. version     : 3
+Tue Oct 20 18:39:39 2026 daemon.err ccli[5136]:      ext key usage     : TLS Web Client Authentication
+Tue Oct 20 18:39:39 2026 daemon.err ccli[5136]: TLS: Compare With:
+Tue Oct 20 18:39:39 2026 daemon.err ccli[5136]: TLS:      cert. version     : 3
+Tue Oct 20 18:39:39 2026 daemon.err ccli[5136]:      ext key usage     : TLS Web Client Authentication
+Tue Oct 20 18:39:39 2026 daemon.err ccli[5136]: TLS: Compare With:
+Tue Oct 20 18:39:39 2026 daemon.err ccli[5136]: TLS:      cert. version     : 3
+Tue Oct 20 18:39:39 2026 daemon.err ccli[5136]:      ext key usage     : TLS Web Client Authentication
+Tue Oct 20 18:39:39 2026 daemon.err ccli[5136]: TLS: Compare With:
+Tue Oct 20 18:39:39 2026 daemon.err ccli[5136]: TLS:      cert. version     : 3
+Tue Oct 20 18:39:41 2026 daemon.err ccli[5136]: mms: client CONNECT count=2
+Tue Oct 20 18:39:43 2026 daemon.err ccli[5136]: TLS:  connection was closed gracefully
+Tue Oct 20 18:39:43 2026 daemon.err ccli[5136]: mms: client DISCONNECT count=1
+Tue Oct 20 18:39:46 2026 daemon.err ccli[5136]: TLS: mbedtls_ssl_close_notify returned -0x1
+Tue Oct 20 18:39:46 2026 daemon.err ccli[5136]: TLS:  connection was closed gracefully
+Tue Oct 20 18:39:46 2026 daemon.err ccli[5136]: mms: client DISCONNECT count=0
+Tue Oct 20 18:39:48 2026 daemon.err ccli[5136]: TLS: mbedtls_ssl_close_notify returned -0x1
+=== /tmp/ccli.log tail ===
+(no /tmp/ccli.log)
+

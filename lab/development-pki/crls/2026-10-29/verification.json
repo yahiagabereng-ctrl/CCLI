@@ -1,0 +1,16 @@
+[
+  {
+    "ca": "CCLI-Lab-CA",
+    "number": 9,
+    "revoked_count": 0,
+    "this_update": "2026-10-29T16:24:22+00:00",
+    "next_update": "2026-11-28T16:24:21+00:00"
+  },
+  {
+    "ca": "CCLI-RBAC-Lab-CA",
+    "number": 13,
+    "revoked_count": 5,
+    "this_update": "2026-10-29T16:25:00+00:00",
+    "next_update": "2026-11-28T16:24:59+00:00"
+  }
+]

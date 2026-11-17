@@ -1,0 +1,16 @@
+{
+  "tls_version": "TLSv1.2",
+  "cipher": [
+    "ECDHE-RSA-AES128-GCM-SHA256",
+    "TLSv1.2",
+    128
+  ],
+  "received_hex": "68040b000000",
+  "general_interrogation_frames": [
+    "680e0000020064010700010000000014",
+    "6812020002000d0114000100e903000000404100",
+    "680e0400020064010a00010000000014"
+  ],
+  "stopdt_confirmation_hex": "6812060002000d0101000100e903000000404100680423000000",
+  "control_asdu_sent": false
+}

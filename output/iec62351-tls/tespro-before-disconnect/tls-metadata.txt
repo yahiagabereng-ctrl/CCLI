@@ -1,0 +1,80 @@
+Mon Oct 26 11:57:28 UTC 2026
+OpenSSL 3.5.5 27 Jan 2026 (Library: OpenSSL 3.5.5 27 Jan 2026)
+subject=C=IT, O=HiTEKS, OU=CCLI-Lab, CN=CCI016_01
+issuer=C=IT, O=HiTEKS, OU=CCLI-Lab, CN=CCLI_Lab_Root_CA
+serial=691B6D540A8CE39E
+notBefore=Sep 29 19:36:09 2026 GMT
+notAfter=Jan  1 19:36:09 2029 GMT
+sha256 Fingerprint=91:E1:BE:FA:8E:3F:79:B0:09:42:76:C9:E5:65:E8:98:6A:FF:AF:9B:B3:B6:D6:47:95:0B:A1:D8:E0:00:68:66
+No extensions in certificate
+CRL_PATH=/etc/ccli/rbac-dual/trust/tls-crl-bundle.pem
+issuer=C=IT, O=HiTEKS, OU=CCLI-Lab, CN=CCLI_Lab_Root_CA
+lastUpdate=Sep 29 19:36:10 2026 GMT
+nextUpdate=Oct 29 19:36:10 2026 GMT
+crlNumber=<NONE>
+CRL_PATH=/etc/ccli/rbac-dual/trust/rbac_crl.pem
+issuer=CN=CCLI RBAC Lab CA, O=HiTEKS, C=IT
+lastUpdate=Oct 26 09:04:58 2026 GMT
+nextUpdate=Nov  2 09:04:57 2026 GMT
+crlNumber=0x07
+0cb065916fbc1b867a9942a7f3e2d59d0bd4bbccb5f8f959c0ceda92f53050dc  /usr/sbin/ccli
+28836fe50d36d47126ff05192d1568bcaba39d443ddbf5e5706dc55118cf1626  /etc/ccli/lab.yaml
+405a0ab931a17a11d13af8f922db0f52e79f1d8c0ab1a015eaa80be9371c2b10  /etc/ccli/rbac-trust/tls-ca-bundle.pem
+9246bb687b410463d325f15519e0e2566a9e9095f3b731774a13f798845974ee  /etc/ccli/rbac-dual/trust/tls-crl-bundle.pem
+-rw-r--r--    1 root     root            46 Sep 24 09:05 /etc/crontabs/root
+-rwxr-xr-x    1 root     root          1394 Jun 29 14:59 /etc/init.d/ccli
+#!/bin/sh /etc/rc.common
+
+START=99
+STOP=10
+USE_PROCD=1
+
+ccli_config_file() {
+	local f
+
+	f=$(uci -q get ccli.main.config_file 2>/dev/null)
+	if [ -n "$f" ] && [ -f "$f" ]; then
+		echo "$f"
+		return 0
+	fi
+
+	echo "/etc/ccli/lab.yaml"
+}
+
+start_service() {
+	local cfg enabled blink extra=""
+	# OpenWrt may invoke start before the credential restoration hook completes.
+	if [ -e /etc/ccli-upgrade.pending ] || [ -e /etc/ccli-upgrade.hold ]; then
+		logger -t ccli "Start held for controlled upgrade verification"
+		return 1
+	fi
+
+	enabled=$(uci -q get ccli.main.enabled 2>/dev/null)
+	[ "$enabled" = "0" ] && return 0
+
+	cfg=$(ccli_config_file)
+	# Lab-only relay self-test. MUST default to 0 so a field/product image never
+	# actuates the curtailment contact on boot or procd respawn (IEC 62443 CR 3.6).
+	blink=$(uci -q get ccli.plant.gpio_lab_blink 2>/dev/null)
+	[ -z "$blink" ] && blink=0
+	[ "$blink" -gt 0 ] 2>/dev/null && extra="--gpio-blink $blink"
+
+	procd_open_instance
+	procd_set_param command /usr/sbin/ccli --config "$cfg" $extra
+	procd_set_param respawn 3600 5 5
+	# SR 6.2 / hang detection: ccli pings via ubus every 30 s (see service_supervision.cpp)
+	procd_set_param watchdog 90
+	procd_set_param file /etc/config/ccli "$cfg"
+	procd_set_param stdout 1
+	procd_set_param stderr 1
+	procd_close_instance
+}
+
+service_triggers() {
+	procd_add_reload_trigger "ccli"
+}
+
+reload_service() {
+	stop
+	start
+}

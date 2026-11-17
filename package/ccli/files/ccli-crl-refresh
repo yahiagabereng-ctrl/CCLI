@@ -1,0 +1,51 @@
+#!/bin/sh
+# Publish a complete multi-issuer snapshot using one atomic symlink switch.
+# Usage: ccli-crl-refresh ISSUER_CONFIG STATE_DIRECTORY
+# Config rows: issuer-id tls|identity|both http(s)-url pinned-ca-file
+set -eu
+umask 077
+fail() { logger -t ccli-crl "CRL publication failed: $*"; echo "$*" >&2; exit 1; }
+[ "$#" -eq 2 ] || fail 'usage: ccli-crl-refresh ISSUER_CONFIG STATE_DIRECTORY'
+config=$1 root=$2
+fetch=${CCLI_CRL_FETCH:-/usr/sbin/ccli-crl-fetch}
+[ -f "$config" ] && [ ! -L "$config" ] || fail 'issuer configuration must be a regular file'
+[ ! -L "$root" ] || fail 'state directory must not be a symlink'
+mkdir -p "$root"
+[ "$(ls -nd "$root" | awk '{print $3}')" = "$(id -u)" ] || fail 'state directory ownership mismatch'
+chmod 700 "$root"
+mkdir "$root/.refresh-lock" 2>/dev/null || fail 'refresh already running or stale lock needs inspection'
+stage=
+cleanup() { [ -z "$stage" ] || rm -rf "$stage"; rm -f "$root/.next"; rmdir "$root/.refresh-lock"; }
+trap cleanup EXIT
+trap 'exit 1' HUP INT TERM
+stage=$(mktemp -d "$root/generation.XXXXXX")
+: > "$stage/tls-crl-bundle.pem"
+: > "$stage/rbac_crl.pem"
+: > "$stage/issuers"
+count=0
+while read -r id role url ca extra; do
+    case "$id" in ''|\#*) continue;; esac
+    case "$id" in *[!A-Za-z0-9_-]*) fail 'invalid issuer identifier';; esac
+    [ -z "$extra" ] && [ -n "$ca" ] || fail 'issuer rows require exactly four whitespace-separated fields'
+    grep -qx "$id" "$stage/issuers" && fail 'duplicate issuer identifier'
+    printf '%s\n' "$id" >> "$stage/issuers"
+    case "$role" in tls|identity|both) ;; *) fail 'issuer role must be tls, identity or both';; esac
+    sh "$fetch" "$url" "$ca" "$root/cache-$id" || fail "issuer refresh failed: $id"
+    case "$role" in tls|both) cat "$root/cache-$id/crl.pem" >> "$stage/tls-crl-bundle.pem";; esac
+    case "$role" in identity|both) cat "$root/cache-$id/crl.pem" >> "$stage/rbac_crl.pem";; esac
+    count=$((count+1))
+done < "$config"
+[ "$count" -gt 0 ] && [ -s "$stage/tls-crl-bundle.pem" ] && [ -s "$stage/rbac_crl.pem" ] || fail 'both TLS and identity issuer coverage are required'
+if [ -e "$root/current" ]; then
+    [ -L "$root/current" ] || fail 'current must be a managed symlink'
+    if cmp -s "$stage/tls-crl-bundle.pem" "$root/current/tls-crl-bundle.pem" &&
+       cmp -s "$stage/rbac_crl.pem" "$root/current/rbac_crl.pem"; then exit 0; fi
+fi
+chmod 600 "$stage/"*
+# A power loss may leave an unused generation, but must not expose a partial pair.
+sync
+ln -s "$(basename "$stage")" "$root/.next"
+mv -fT "$root/.next" "$root/current"
+stage=
+sync
+logger -t ccli-crl 'Complete TLS and identity CRL snapshot published; no service restart requested'

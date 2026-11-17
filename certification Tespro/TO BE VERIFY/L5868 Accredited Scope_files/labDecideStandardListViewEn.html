@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<!-- saved from url=(0183)https://www.cnas.org.cn/LAS_FQ/publish/lab/labDecideStandardListViewEn.jsp?baseInfoId=f6808888cdf947a5bdb6951c4cda2417&type=decideStd&orgEnOrCh=En&certUpdateTs=1&validate=&attactdate= -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>判定标准一览表（查看）</title>
+<!-- 自动生成 /publish/lab/labDecideStandardListViewEn.jsp JS　CSS　-->
+<link rel="stylesheet" type="text/css" href="./fonts.css">
+ <link rel="stylesheet" type="text/css" href="./container.css">
+ <link rel="stylesheet" type="text/css" href="./datatable.css">
+ <link rel="stylesheet" type="text/css" href="./datatable_ext.css">
+ <link rel="stylesheet" type="text/css" href="./button.css">
+ <link rel="stylesheet" type="text/css" href="./menu.css">
+ <link rel="stylesheet" type="text/css" href="./container.css">
+ <link rel="stylesheet" type="text/css" href="./button.css">
+ <link rel="stylesheet" type="text/css" href="./resize.css">
+ <script type="text/javascript" src="./jquery.min.js.download"></script>
+<script type="text/javascript" src="./jquery.metadata.js.download"></script>
+<script type="text/javascript" src="./yuiloader-min.js.download"></script>
+<script type="text/javascript" src="./yahoo-dom-event-min.js.download"></script>
+<script type="text/javascript" src="./dragdrop-min.js.download"></script>
+<script type="text/javascript" src="./element-min.js.download"></script>
+<script type="text/javascript" src="./animation-min.js.download"></script>
+<script type="text/javascript" src="./datasource-min.js.download"></script>
+<script type="text/javascript" src="./datatable-min.js.download"></script>
+<script type="text/javascript" src="./connection-min.js.download"></script>
+<script type="text/javascript" src="./json-min.js.download"></script>
+<script type="text/javascript" src="./paginator-min.js.download"></script>
+<script type="text/javascript" src="./caf-paginator.js.download"></script>
+<script type="text/javascript" src="./button-min.js.download"></script>
+<script type="text/javascript" src="./caf-util-min.js.download"></script>
+<script type="text/javascript" src="./caf-datatable.js.download"></script>
+<script type="text/javascript" src="./caf-datatable-filter.js.download"></script>
+<script type="text/javascript" src="./container-min.js.download"></script>
+<script type="text/javascript" src="./button-min.js.download">"></script>
+<script type="text/javascript" src="./menu-min.js.download">"></script>
+<script type="text/javascript" src="./resize-min.js.download"></script>
+<script type="text/javascript" src="./jquery.validate.js.download"></script>
+<script type="text/javascript" src="./jquery.validate.extend.js.download"></script>
+<script type="text/javascript" src="./jquery.check.js.download"></script>
+<!-- 自动生成JS　CSS结束　-->
+
+<!-- message tag
+-->
+ 
+
+<script type="text/javascript" src="./public.js.download"></script>
+<script type="text/javascript" src="./jquery.blockUI.js.download"></script>
+<link href="./globle.css" rel="stylesheet" type="text/css">
+<script language="javascript">
+$(function() {
+	_query();
+	$('#queryForm').validate({
+		submitHandler:function(form){
+			_query();
+			return;
+		}
+	});
+});
+function _requery(){
+	requeryYui('pirl');
+}
+function _query(){
+	pirl_refresh($('#queryForm')[0]);
+}
+var ascendPublishFmt = function(elCell, oRecord, oColumn, oData){
+	$(elCell).append($('<a>',{href:'javascript:void(0)',click:function(){
+		top.openTopWindow({
+		    title:'Retrospect'
+		    , url: '/LAS_FQ/publish/toBaseAbilityAscendEn.action'
+		    , data:{status:oRecord.getData('status'),ascendInfoList:[
+				{abilityItem:'CriteProduct',abilityId:oRecord.getData('criteProductId'),abilityItemName:'Product',abilityShowVal:oRecord.getData('productNameEn')}
+				,{abilityItem:'CriteStandard',abilityId:oRecord.getData('criteStandardId'),abilityItemName:'Standard',abilityShowVal:oRecord.getData('stdNameEn')}
+		    ]}
+		    , width: 600
+		    , height:300
+		});
+	}}).append(bStatusEnHtml(oData)));
+};
+</script>
+<style type="text/css"></style></head>
+<body class="lib yui-skin-sam"><div id="yui-dt-colresizerproxy" class="yui-dt-resizerproxy"></div>
+<form id="queryForm" name="queryForm" method="post" novalidate="novalidate">
+ 
+	<input type="hidden" name="baseInfoId" id="baseInfoId" value="f6808888cdf947a5bdb6951c4cda2417">
+	<table class="commonTable" cellpadding="0" cellspacing="0" width="100%" style="margin:0px;">
+		<colgroup><col width="15%">
+		<col>
+		<col width="15%">
+		<col>
+		<col width="15%">
+		<col>
+		<col width="100">
+		</colgroup><tbody><tr class="colorLight">
+			<td width="15%" align="left">Product</td>
+			<td><input type="text" name="productNameEn" value="" id="productNameEn" style="width:98%"></td>
+			<td width="15%" align="left">Title, Code of of Standard</td>
+			<td><input type="text" name="stdNameEn" value="" id="stdNameEn" style="width:98%"></td>
+		</tr> 
+		<tr>
+		    <td width="15%" align="left">Address</td>
+			<td align="left">
+			
+			   
+			   
+			   
+			   
+
+
+
+
+
+
+
+
+<select id="branchId" name="branchId" style="max-width:600px;">
+	
+		
+		<option value="0c655198985b49a78f44a50498083ddd">Room 101, No.7, Zone 2, Xinxing Industrial Park, Fuhai Road, Xinhe, Fuhai Subdistrict, Bao'an District, Shenzhen, Guangdong, China</option>
+		
+	
+</select>
+<input type="hidden" name="effBranchIds" value="'0c655198985b49a78f44a50498083ddd'">
+
+			</td>
+				 <td colspan="2">
+					 
+					 
+				 </td>
+		</tr>
+		<tr class="colorLight">	
+			<td colspan="4" align="center"><input type="submit" id="" value="Search" class="btn">
+
+			   <input type="reset" value="Reset" class="btn">
+
+		  </td>
+		</tr>
+	</tbody></table>
+</form>
+<div id="pirl" class="yui-dt yui-dt-scrollable"><div class="yui-dt-mask" style="display: none;"></div><div class="yui-dt-hd" style="background-color: rgb(242, 242, 242); width: 1892px;"><table><colgroup><col><col><col><col><col><col><col><col><col></colgroup><thead style=""><tr class="yui-dt-first yui-dt-last"><th id="yui-dt0-fixedth-num1" rowspan="1" colspan="1" class="yui-dt0-col-num1 yui-dt-col-num1 yui-dt-resizeable"><div class="yui-dt-resizerliner"><div id="yui-dt0-th-num1-liner" class="yui-dt-liner"><span class="yui-dt-label">No</span></div><div id="yui-dt0-fixedth-num1-resizer" class="yui-dt-resizer" style="inset: auto 0px 0px auto; height: 20px;"></div></div></th><th id="yui-dt0-fixedth-productNameEn" rowspan="1" colspan="1" class="yui-dt0-col-productNameEn yui-dt-col-productNameEn yui-dt-resizeable"><div class="yui-dt-resizerliner"><div id="yui-dt0-th-productNameEn-liner" class="yui-dt-liner"><span class="yui-dt-label">Product</span></div><div id="yui-dt0-fixedth-productNameEn-resizer" class="yui-dt-resizer" style="inset: auto 0px 0px auto; height: 20px;"></div></div></th><th id="yui-dt0-fixedth-num2" rowspan="1" colspan="1" class="yui-dt0-col-num2 yui-dt-col-num2 yui-dt-resizeable"><div class="yui-dt-resizerliner"><div id="yui-dt0-th-num2-liner" class="yui-dt-liner"><span class="yui-dt-label">No</span></div><div id="yui-dt0-fixedth-num2-resizer" class="yui-dt-resizer" style="inset: auto 0px 0px auto; height: 20px;"></div></div></th><th id="yui-dt0-fixedth-stdNameEn" rowspan="1" colspan="1" class="yui-dt0-col-stdNameEn yui-dt-col-stdNameEn yui-dt-resizeable"><div class="yui-dt-resizerliner"><div id="yui-dt0-th-stdNameEn-liner" class="yui-dt-liner"><span class="yui-dt-label">Standard</span></div><div id="yui-dt0-fixedth-stdNameEn-resizer" class="yui-dt-resizer" style="inset: auto 0px 0px auto; height: 20px;"></div></div></th><th id="yui-dt0-fixedth-explainEn" rowspan="1" colspan="1" class="yui-dt0-col-explainEn yui-dt-col-explainEn yui-dt-resizeable"><div class="yui-dt-resizerliner"><div id="yui-dt0-th-explainEn-liner" class="yui-dt-liner"><span class="yui-dt-label">Note</span></div><div id="yui-dt0-fixedth-explainEn-resizer" class="yui-dt-resizer" style="inset: auto 0px 0px auto; height: 20px;"></div></div></th><th id="yui-dt0-fixedth-status" rowspan="1" colspan="1" class="yui-dt0-col-status yui-dt-col-status yui-dt-resizeable"><div class="yui-dt-resizerliner"><div id="yui-dt0-th-status-liner" class="yui-dt-liner"><span class="yui-dt-label">Status</span></div><div id="yui-dt0-fixedth-status-resizer" class="yui-dt-resizer" style="inset: auto 0px 0px auto; height: 20px;"></div></div></th><th id="yui-dt0-fixedth-criteProductId" rowspan="1" colspan="1" class="yui-dt0-col-criteProductId yui-dt-col-criteProductId yui-dt-hidden yui-dt-resizeable"><div class="yui-dt-resizerliner"><div id="yui-dt0-th-criteProductId-liner" class="yui-dt-liner"><span class="yui-dt-label">criteProductId</span></div><div id="yui-dt0-fixedth-criteProductId-resizer" class="yui-dt-resizer" style="inset: auto 0px 0px auto; height: 0px;"></div></div></th><th id="yui-dt0-fixedth-criteStandardId" rowspan="1" colspan="1" class="yui-dt0-col-criteStandardId yui-dt-col-criteStandardId yui-dt-hidden yui-dt-resizeable"><div class="yui-dt-resizerliner"><div id="yui-dt0-th-criteStandardId-liner" class="yui-dt-liner"><span class="yui-dt-label">criteStandardId</span></div><div id="yui-dt0-fixedth-criteStandardId-resizer" class="yui-dt-resizer" style="inset: auto 0px 0px auto; height: 0px;"></div></div></th><th id="yui-dt0-fixedth-paramListJson" rowspan="1" colspan="1" class="yui-dt0-col-paramListJson yui-dt-col-paramListJson yui-dt-hidden yui-dt-resizeable" style="border-right: 1px solid rgb(242, 242, 242);"><div class="yui-dt-resizerliner"><div id="yui-dt0-th-paramListJson-liner" class="yui-dt-liner"><span class="yui-dt-label">paramListJson</span></div><div id="yui-dt0-fixedth-paramListJson-resizer" class="yui-dt-resizer" style="inset: auto 0px 0px auto; height: 0px;"></div></div></th></tr></thead></table></div><div class="yui-dt-bd" style="height: 803px; width: 1892px;"><table summary="" style="margin-top: 0px;"><thead><tr><th id="yui-dt0-th-num1" rowspan="1" colspan="1" class="yui-dt-first">No</th><th id="yui-dt0-th-productNameEn" rowspan="1" colspan="1">Product</th><th id="yui-dt0-th-num2" rowspan="1" colspan="1">No</th><th id="yui-dt0-th-stdNameEn" rowspan="1" colspan="1">Standard</th><th id="yui-dt0-th-explainEn" rowspan="1" colspan="1">Note</th><th id="yui-dt0-th-status" rowspan="1" colspan="1">Status</th><th id="yui-dt0-th-criteProductId" rowspan="1" colspan="1">criteProductId</th><th id="yui-dt0-th-criteStandardId" rowspan="1" colspan="1">criteStandardId</th><th id="yui-dt0-th-paramListJson" rowspan="1" colspan="1" class="yui-dt-last">paramListJson</th></tr></thead><tbody class="yui-dt-message" style="display: none;"><tr class="yui-dt-first yui-dt-last"><td colspan="9" class="yui-dt-first yui-dt-last"><div class="yui-dt-liner yui-dt-loading yui-dt-empty">Loading...</div></td></tr></tbody><tbody tabindex="0" class="yui-dt-data" style=""><tr id="yui-rec0" class="yui-dt-first yui-dt-even" style=""><td headers="yui-dt0-th-num1 " class="yui-dt0-col-num1 yui-dt-col-num1 yui-dt-resizeable yui-dt-first dtable-ext-group" rowspan="2"><div class="yui-dt-liner">1</div></td><td headers="yui-dt0-th-productNameEn " class="yui-dt0-col-productNameEn yui-dt-col-productNameEn yui-dt-resizeable dtable-ext-group" rowspan="2"><div class="yui-dt-liner">External power supplies</div></td><td headers="yui-dt0-th-num2 " class="yui-dt0-col-num2 yui-dt-col-num2 yui-dt-resizeable"><div class="yui-dt-liner">1</div></td><td headers="yui-dt0-th-stdNameEn " class="yui-dt0-col-stdNameEn yui-dt-col-stdNameEn yui-dt-resizeable"><div class="yui-dt-liner">Ecodesign requirements for external power supplies(EU) 2019/1782</div></td><td headers="yui-dt0-th-explainEn " class="yui-dt0-col-explainEn yui-dt-col-explainEn yui-dt-resizeable"><div class="yui-dt-liner"></div></td><td headers="yui-dt0-th-status " class="yui-dt0-col-status yui-dt-col-status yui-dt-resizeable"><div class="yui-dt-liner"><a href="javascript:void(0)">Effectivity</a></div></td><td headers="yui-dt0-th-criteProductId " class="yui-dt0-col-criteProductId yui-dt-col-criteProductId yui-dt-hidden yui-dt-resizeable"><div class="yui-dt-liner">207e243bc3c849b588bf5dcc0737c800</div></td><td headers="yui-dt0-th-criteStandardId " class="yui-dt0-col-criteStandardId yui-dt-col-criteStandardId yui-dt-hidden yui-dt-resizeable"><div class="yui-dt-liner">dfd1e63906b44e04aacb7d1c1d1d59cf</div></td><td headers="yui-dt0-th-paramListJson " class="yui-dt0-col-paramListJson yui-dt-col-paramListJson yui-dt-hidden yui-dt-resizeable yui-dt-last"><div class="yui-dt-liner">&nbsp;</div></td></tr><tr id="yui-rec1" class="yui-dt-last yui-dt-odd" style=""><td headers="yui-dt0-th-num1 " class="yui-dt0-col-num1 yui-dt-col-num1 yui-dt-resizeable yui-dt-first" style="display: none;"><div class="yui-dt-liner">1</div></td><td headers="yui-dt0-th-productNameEn " class="yui-dt0-col-productNameEn yui-dt-col-productNameEn yui-dt-resizeable" style="display: none;"><div class="yui-dt-liner">External power supplies</div></td><td headers="yui-dt0-th-num2 " class="yui-dt0-col-num2 yui-dt-col-num2 yui-dt-resizeable"><div class="yui-dt-liner">2</div></td><td headers="yui-dt0-th-stdNameEn " class="yui-dt0-col-stdNameEn yui-dt-col-stdNameEn yui-dt-resizeable"><div class="yui-dt-liner">Ecodesign requirements for off mode, standby mode, and networked standby energy consumption of electrical and electronic household and office equipment (EU) 2023/826</div></td><td headers="yui-dt0-th-explainEn " class="yui-dt0-col-explainEn yui-dt-col-explainEn yui-dt-resizeable"><div class="yui-dt-liner"></div></td><td headers="yui-dt0-th-status " class="yui-dt0-col-status yui-dt-col-status yui-dt-resizeable"><div class="yui-dt-liner"><a href="javascript:void(0)">Effectivity</a></div></td><td headers="yui-dt0-th-criteProductId " class="yui-dt0-col-criteProductId yui-dt-col-criteProductId yui-dt-hidden yui-dt-resizeable"><div class="yui-dt-liner">207e243bc3c849b588bf5dcc0737c800</div></td><td headers="yui-dt0-th-criteStandardId " class="yui-dt0-col-criteStandardId yui-dt-col-criteStandardId yui-dt-hidden yui-dt-resizeable"><div class="yui-dt-liner">7da75c345f814322a8b8c674ffbd3a30</div></td><td headers="yui-dt0-th-paramListJson " class="yui-dt0-col-paramListJson yui-dt-col-paramListJson yui-dt-hidden yui-dt-resizeable yui-dt-last"><div class="yui-dt-liner">&nbsp;</div></td></tr></tbody></table></div></div>
+<div id="paginatorContainer" class="pager yui-pg-container" style=""><table width="100%" class="tablepaging"><tbody><tr><td width="20px"><span id="yui-pg0-0-first-span" class="yui-pg-first"><img src="./firstnull.gif" border="0" title="First Page" style="border-width:0px;vertical-align:center"></span></td><td width="20px"><span id="yui-pg0-0-prev-span" class="yui-pg-previous"><img src="./prevnull.gif" border="0" title="Previous Page" style="border-width:0px;vertical-align:center"></span></td><td valign="middle" width="150px" align="center">Page&nbsp;<input id="yui-pg0-0-pageGoto-input" class="yui-pg-pageGoto">&nbsp;&nbsp;Total&nbsp;<span id="yui-pg0-0-totalPages-span" class="yui-pg-totalPages">1</span></td><td width="20px"><span id="yui-pg0-0-next-span" class="yui-pg-next"><img src="./nextnull.gif" border="0" title="Next Page" style="border-width:0px;vertical-align:center"></span></td><td width="20px"><span id="yui-pg0-0-last-span" class="yui-pg-last"><img src="./lastnull.gif" border="0" title="Last Page" style="border-width:0px;vertical-align:center"></span></td><td width="10px"></td><td width="120"><select onchange="pirlReQuery(this.options[this.options.selectedIndex].value);"><option value="0">All</option><option value="10">10</option><option value="30">30</option><option value="50">50</option><option value="100" selected="">100</option></select>/page</td><td width="10px" align="right"><img src="./refresh.gif" style="CURSOR: hand" border="0" title="refresh" onclick="pirlReQuery();"></td><td align="right">Show&nbsp;<span id="yui-pg0-0-startRecord-span" class="yui-pg-startRecord">1</span>-<span id="yui-pg0-0-endRecord-span" class="yui-pg-endRecord">2</span>&nbsp;&nbsp; Total records&nbsp;<span id="yui-pg0-0-totalRecords-span" class="yui-pg-totalRecords">2</span>&nbsp;&nbsp;&nbsp;</td></tr></tbody></table></div>
+
+	
+	
+	
+	
+	
+	
+	
+
+	
+	
+	
+	 
+	
+	
+		
+
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+String.prototype.trim = function(){return   this.replace(/(^\s*)|(\s*$)/g, "");}
+
+var pirlClearGroupVar=function(){  
+	num1_oldValue='';
+	num1_oldCell=null;  
+	productNameEn_oldValue='';
+	productNameEn_oldCell=null;  
+	num2_oldValue='';
+	num2_oldCell=null;  
+	stdNameEn_oldValue='';
+	stdNameEn_oldCell=null;  
+	explainEn_oldValue='';
+	explainEn_oldCell=null;  
+	status_oldValue='';
+	status_oldCell=null;  
+};
+ 
+ var num1_oldValue = '';
+ var num1_oldCell = null;
+ var num1_group=function(elCell, oRecord, oColumn, oData) { 
+  	var g='criteProductId';
+  	var arr = g.split('_');
+  	var newValue ='';
+  	for (var c=0;c<arr.length;c++){
+  		newValue = newValue+oRecord.getData(arr[c]);
+  	}	 
+	if(newValue!=num1_oldValue){
+		num1_oldCell = elCell;
+		num1_oldValue = newValue;
+	}else if(num1_oldCell != null){
+		var td = YAHOO.util.Dom.getAncestorByTagName(num1_oldCell,'td');
+		if(td != null){
+			var rowspan = $(td).attr('rowSpan');
+			if(rowspan == null){
+				rowspan = 1;
+			}
+			$(td).attr('rowSpan', parseInt(rowspan)+1);
+			$(td).addClass("dtable-ext-group");
+		}
+		td = YAHOO.util.Dom.getAncestorByTagName(elCell,'td');
+		if(td != null){
+			$(td).css('display', 'none');
+		}
+	}
+			
+	if (oData&&oData!=null){
+		elCell.innerHTML = oData;
+	}
+};
+
+ 
+ var productNameEn_oldValue = '';
+ var productNameEn_oldCell = null;
+ var productNameEn_group=function(elCell, oRecord, oColumn, oData) { 
+  	var g='criteProductId';
+  	var arr = g.split('_');
+  	var newValue ='';
+  	for (var c=0;c<arr.length;c++){
+  		newValue = newValue+oRecord.getData(arr[c]);
+  	}	 
+	if(newValue!=productNameEn_oldValue){
+		productNameEn_oldCell = elCell;
+		productNameEn_oldValue = newValue;
+	}else if(productNameEn_oldCell != null){
+		var td = YAHOO.util.Dom.getAncestorByTagName(productNameEn_oldCell,'td');
+		if(td != null){
+			var rowspan = $(td).attr('rowSpan');
+			if(rowspan == null){
+				rowspan = 1;
+			}
+			$(td).attr('rowSpan', parseInt(rowspan)+1);
+			$(td).addClass("dtable-ext-group");
+		}
+		td = YAHOO.util.Dom.getAncestorByTagName(elCell,'td');
+		if(td != null){
+			$(td).css('display', 'none');
+		}
+	}
+			
+	if (oData&&oData!=null){
+		elCell.innerHTML = oData;
+	}
+};
+
+ 
+ var num2_oldValue = '';
+ var num2_oldCell = null;
+ var num2_group=function(elCell, oRecord, oColumn, oData) { 
+  	var g='criteProductId_criteStandardId';
+  	var arr = g.split('_');
+  	var newValue ='';
+  	for (var c=0;c<arr.length;c++){
+  		newValue = newValue+oRecord.getData(arr[c]);
+  	}	 
+	if(newValue!=num2_oldValue){
+		num2_oldCell = elCell;
+		num2_oldValue = newValue;
+	}else if(num2_oldCell != null){
+		var td = YAHOO.util.Dom.getAncestorByTagName(num2_oldCell,'td');
+		if(td != null){
+			var rowspan = $(td).attr('rowSpan');
+			if(rowspan == null){
+				rowspan = 1;
+			}
+			$(td).attr('rowSpan', parseInt(rowspan)+1);
+			$(td).addClass("dtable-ext-group");
+		}
+		td = YAHOO.util.Dom.getAncestorByTagName(elCell,'td');
+		if(td != null){
+			$(td).css('display', 'none');
+		}
+	}
+			
+	if (oData&&oData!=null){
+		elCell.innerHTML = oData;
+	}
+};
+
+ 
+ var stdNameEn_oldValue = '';
+ var stdNameEn_oldCell = null;
+ var stdNameEn_group=function(elCell, oRecord, oColumn, oData) { 
+  	var g='criteProductId_criteStandardId';
+  	var arr = g.split('_');
+  	var newValue ='';
+  	for (var c=0;c<arr.length;c++){
+  		newValue = newValue+oRecord.getData(arr[c]);
+  	}	 
+	if(newValue!=stdNameEn_oldValue){
+		stdNameEn_oldCell = elCell;
+		stdNameEn_oldValue = newValue;
+	}else if(stdNameEn_oldCell != null){
+		var td = YAHOO.util.Dom.getAncestorByTagName(stdNameEn_oldCell,'td');
+		if(td != null){
+			var rowspan = $(td).attr('rowSpan');
+			if(rowspan == null){
+				rowspan = 1;
+			}
+			$(td).attr('rowSpan', parseInt(rowspan)+1);
+			$(td).addClass("dtable-ext-group");
+		}
+		td = YAHOO.util.Dom.getAncestorByTagName(elCell,'td');
+		if(td != null){
+			$(td).css('display', 'none');
+		}
+	}
+			
+	if (oData&&oData!=null){
+		elCell.innerHTML = oData;
+	}
+};
+
+ 
+ var explainEn_oldValue = '';
+ var explainEn_oldCell = null;
+ var explainEn_group=function(elCell, oRecord, oColumn, oData) { 
+  	var g='criteProductId_criteStandardId';
+  	var arr = g.split('_');
+  	var newValue ='';
+  	for (var c=0;c<arr.length;c++){
+  		newValue = newValue+oRecord.getData(arr[c]);
+  	}	 
+	if(newValue!=explainEn_oldValue){
+		explainEn_oldCell = elCell;
+		explainEn_oldValue = newValue;
+	}else if(explainEn_oldCell != null){
+		var td = YAHOO.util.Dom.getAncestorByTagName(explainEn_oldCell,'td');
+		if(td != null){
+			var rowspan = $(td).attr('rowSpan');
+			if(rowspan == null){
+				rowspan = 1;
+			}
+			$(td).attr('rowSpan', parseInt(rowspan)+1);
+			$(td).addClass("dtable-ext-group");
+		}
+		td = YAHOO.util.Dom.getAncestorByTagName(elCell,'td');
+		if(td != null){
+			$(td).css('display', 'none');
+		}
+	}
+			
+	if (oData&&oData!=null){
+		elCell.innerHTML = oData;
+	}
+};
+
+ 
+ var status_oldValue = '';
+ var status_oldCell = null;
+ var status_group=function(elCell, oRecord, oColumn, oData) { 
+  	var g='criteProductId_criteStandardId';
+  	var arr = g.split('_');
+  	var newValue ='';
+  	for (var c=0;c<arr.length;c++){
+  		newValue = newValue+oRecord.getData(arr[c]);
+  	}	 
+	if(newValue!=status_oldValue){
+		status_oldCell = elCell;
+		status_oldValue = newValue;
+	}else if(status_oldCell != null){
+		var td = YAHOO.util.Dom.getAncestorByTagName(status_oldCell,'td');
+		if(td != null){
+			var rowspan = $(td).attr('rowSpan');
+			if(rowspan == null){
+				rowspan = 1;
+			}
+			$(td).attr('rowSpan', parseInt(rowspan)+1);
+			$(td).addClass("dtable-ext-group");
+		}
+		td = YAHOO.util.Dom.getAncestorByTagName(elCell,'td');
+		if(td != null){
+			$(td).css('display', 'none');
+		}
+	}
+			
+	ascendPublishFmt(elCell, oRecord, oColumn, oData);
+};
+
+
+
+var prevParam_9c0884b84cfa4a00892273a1553a4d4f='';
+var resumbitRequestParaStr_9c0884b84cfa4a00892273a1553a4d4f='';
+	resumbitRequestParaStr_9c0884b84cfa4a00892273a1553a4d4f='&startIndex=0&sizePerPage=100';
+var paraArrays_9c0884b84cfa4a00892273a1553a4d4f= new Array({"name":"baseInfoId","value":"f6808888cdf947a5bdb6951c4cda2417"});
+var providerArrays_9c0884b84cfa4a00892273a1553a4d4f= new Array();
+var columnArrays_9c0884b84cfa4a00892273a1553a4d4f= [{key:"num1",label:"No",hidden:false,resizeable:true,sortable:false,formatter:num1_group,width:30},{key:"productNameEn",label:"Product",hidden:false,resizeable:true,formatter:productNameEn_group,width:120},{key:"num2",label:"No",hidden:false,resizeable:true,formatter:num2_group,width:30},{key:"stdNameEn",label:"Standard",hidden:false,resizeable:true,formatter:stdNameEn_group,width:220},{key:"explainEn",label:"Note",hidden:false,resizeable:true,formatter:explainEn_group,width:200},{key:"status",label:"Status",hidden:false,resizeable:true,formatter:status_group,width:70},{key:"criteProductId",label:"criteProductId",hidden:true,resizeable:true},{key:"criteStandardId",label:"criteStandardId",hidden:true,resizeable:true},{key:"paramListJson",label:"paramListJson",hidden:true,resizeable:true}];
+var exportColumn_9c0884b84cfa4a00892273a1553a4d4f= '';
+var exportName_9c0884b84cfa4a00892273a1553a4d4f= '';
+
+var generateRequest_9c0884b84cfa4a00892273a1553a4d4f = function(oState, oSelf) {  
+	var reqStr ='';
+	var startIndex ='';     
+	var sizePerPage ='';
+	   
+	var sortbykey='';
+	var sortbydir='';
+		
+	if (oState.sortedBy){
+		var v1= oState.sortedBy.key;
+		var v2= oState.sortedBy.dir;
+		try{
+			v1 = pirlReplaceSortedKeyDir(v1,v2);
+		}catch(e){}
+		sortbykey= "sortedByKey=" + v1;
+		sortbydir="sortedByDir=" + v2 ;
+	}
+	if (oState.pagination){
+		startIndex ="startIndex="+oState.pagination.recordOffset;     
+		sizePerPage = "sizePerPage="+oState.pagination.rowsPerPage;
+	}
+	
+	if (sortbykey!=''){reqStr+='&'+sortbykey;}
+	if (sortbydir!=''){reqStr+='&'+sortbydir;}
+	if (startIndex!=''){reqStr+='&'+startIndex;}
+	if (sizePerPage!=''){reqStr+='&'+sizePerPage;}
+	         
+	if (paraArrays_9c0884b84cfa4a00892273a1553a4d4f.length!=0){
+		for (var i = 0;i<paraArrays_9c0884b84cfa4a00892273a1553a4d4f.length;i++){
+	    	var name = paraArrays_9c0884b84cfa4a00892273a1553a4d4f[i].name;//.replace("\"","\\\"");
+	    	var value = paraArrays_9c0884b84cfa4a00892273a1553a4d4f[i].value;//.replace("\"","\\\"");
+	    	reqStr+="&"+name+"="+encodeURIComponent(value);
+	    }
+	}      
+	    
+	if (providerArrays_9c0884b84cfa4a00892273a1553a4d4f.length!=0){
+	    for (var i = 0;i<providerArrays_9c0884b84cfa4a00892273a1553a4d4f.length;i++){
+	    	var name = providerArrays_9c0884b84cfa4a00892273a1553a4d4f[i].name;//.replace("\"","\\\"");
+	    	var value = providerArrays_9c0884b84cfa4a00892273a1553a4d4f[i].value;//.replace("\"","\\\"");
+	    	reqStr+="&"+name+"="+encodeURIComponent(value);
+	    }
+	} 
+	prevParam_9c0884b84cfa4a00892273a1553a4d4f=reqStr;  
+	return  reqStr;  
+}; 
+var pirlRefresh = function(){
+	var param = arguments[0];
+	__pirlRefresh(param);
+	 
+};
+
+var pirlReQueryRefresh = function(){
+	var param = arguments[0];
+	__pirlReQueryRefresh(param);
+	 
+};
+var pirlReQuery=function(){  
+	var param = arguments[0];
+	__pirlReQuery(param);
+ 
+}; 
+ 
+var __pirlReQuery=function(sizePerPage){  
+	if(sizePerPage){
+		resumbitRequestParaStr_9c0884b84cfa4a00892273a1553a4d4f=pirlReplaceSizePerPage(resumbitRequestParaStr_9c0884b84cfa4a00892273a1553a4d4f,sizePerPage);
+    	prevParam_9c0884b84cfa4a00892273a1553a4d4f=pirlReplaceSizePerPage(prevParam_9c0884b84cfa4a00892273a1553a4d4f,sizePerPage);
+    }
+    __pirlReQueryRefresh(prevParam_9c0884b84cfa4a00892273a1553a4d4f);
+}; 
+
+var __pirlRefresh = function(){
+ 	pirl.showTableMessage('Loading...');
+ 	var object = arguments[0];
+ 	var url='';
+ 	
+ 	paraArrays_9c0884b84cfa4a00892273a1553a4d4f=new Array();
+ 
+ 	var elecount=0;//参数数组计数
+ 	
+    if (typeof(object)=='string'){
+   		url=object;
+    	var codeStr='';
+		var array =url.split('&');
+		
+		for(var i = 0;i<array.length;i++){
+			paraArrays_9c0884b84cfa4a00892273a1553a4d4f[elecount++]={"name":array[i].substring(0,array[i].indexOf('=')),"value":array[i].substring(array[i].indexOf('=')+1,array[i].length)};
+		}
+ 
+ 		url = encodeURI(url);
+ 
+    }else {
+     
+    	var form=object;
+    
+	   for(var i=0;i<form.elements.length;i++){
+	  	 	var el=form.elements[i];
+	   		if(el.type=='text'||el.type=='hidden'||el.type=='textarea'){
+	   			if (el.name!=''&&el.value!=''){
+	   			   el.value =el.value.trim();
+				   paraArrays_9c0884b84cfa4a00892273a1553a4d4f[elecount++]={"name":el.name,"value":el.value};
+		       	   url+='&'+el.name+'='+encodeURIComponent(el.value);
+	   			}
+	        }else if (el.type=='radio'||el.type=='checkbox'){
+				if (el.checked){
+					if (el.name!=''&&el.value!=''){
+						 paraArrays_9c0884b84cfa4a00892273a1553a4d4f[elecount++]={"name":el.name,"value":el.value};
+		       			 url+='&'+el.name+'='+encodeURIComponent(el.value);
+	   				}
+				}
+	        }else if (el.tagName=='SELECT'){
+				for (var selcount=0;selcount<el.options.length ;selcount++ ){
+	
+					if (el.options[selcount].selected){
+						if (el.options[selcount].value!=''){
+							 paraArrays_9c0884b84cfa4a00892273a1553a4d4f[elecount++]={"name":el.name,"value":el.options[selcount].value};
+		       				url+='&'+el.name+'='+encodeURIComponent(el.options[selcount].value);
+	   					}
+					}
+				}
+			} 
+	  	 }
+
+    }
+ 
+    url=url+resumbitRequestParaStr_9c0884b84cfa4a00892273a1553a4d4f;
+ 
+ 
+    var codeStr='';
+    if (providerArrays_9c0884b84cfa4a00892273a1553a4d4f.length!=0){
+    	for (var i = 0;i<providerArrays_9c0884b84cfa4a00892273a1553a4d4f.length;i++){
+	    		var name = providerArrays_9c0884b84cfa4a00892273a1553a4d4f[i].name;
+	    		var value = providerArrays_9c0884b84cfa4a00892273a1553a4d4f[i].value;
+	    		codeStr+='&'+name+'='+encodeURIComponent(value);
+	    }
+	    
+	    
+    	if (url==''&&codeStr!=''){
+    		codeStr=codeStr.substring(1,codeStr.length);
+    	}
+    	
+    	url=url+codeStr;
+    }
+
+    var customFilter='';
+	 try{
+    	customFilter=getpirlCustomFilter();
+    }catch(e){ }
+    url+=customFilter;
+ 
+  prevParam_9c0884b84cfa4a00892273a1553a4d4f=url;  
+  //	alert(url);
+	dataSource_9c0884b84cfa4a00892273a1553a4d4f.sendRequest(url,
+	 	oCallback_9c0884b84cfa4a00892273a1553a4d4f
+	);
+
+};
+
+
+
+var __pirlReQueryRefresh = function(){
+ 	pirl.showTableMessage('读取中...');
+ 	
+ 	
+ 	var object = arguments[0];
+ 	var url=object;
+ 
+    var customFilter='';
+	 try{
+    	customFilter=getpirlCustomFilter();
+    }catch(e){ }
+    url+=customFilter;
+ 
+  prevParam_9c0884b84cfa4a00892273a1553a4d4f=url;  
+ 	//alert(url);
+	dataSource_9c0884b84cfa4a00892273a1553a4d4f.sendRequest(url,
+	 	oCallback_9c0884b84cfa4a00892273a1553a4d4f
+	);
+
+}
+
+
+
+ var  pirlReplaceSizePerPage=function(url,sizePerPage){
+			var s = 'sizePerPage='+sizePerPage;
+			var newurl=url.replace(/startIndex=(\d+)/g,'startIndex=0');
+			newurl=newurl.replace(/sizePerPage=(\d+)/g,s);
+	 
+ 	 		return newurl;
+};
+
+var pirl_refresh  =pirlRefresh; 
+</script>
+
+<script>
+var authInterceptDoFunctionMethodParam_9c0884b84cfa4a00892273a1553a4d4f=null;
+var authInterceptDoFunctionMethod_9c0884b84cfa4a00892273a1553a4d4f=null;
+var authInterceptDoFunctionThis_9c0884b84cfa4a00892273a1553a4d4f=null;
+var authInterceptDoFunctionEvent_9c0884b84cfa4a00892273a1553a4d4f=null;
+var pirlAuthInterceptKeydownSearch =function(evt){ 
+	evt = (evt) ? evt : ((window.event) ? window.event : "") ;
+	keyCode = evt.keyCode ? evt.keyCode : (evt.which ? evt.which : evt.charCode); 
+	if (keyCode == 13) { 
+	pirlAuthInterceptDoFunction();
+	} 
+};
+</script>   
+
+
+ <script>
+
+pirlAuthInterceptDivShow =function(obj,event,method,param){
+	authInterceptDoFunctionThis_9c0884b84cfa4a00892273a1553a4d4f=null;
+	authInterceptDoFunctionMethod_9c0884b84cfa4a00892273a1553a4d4f=null;
+	authInterceptDoFunctionMethodParam_9c0884b84cfa4a00892273a1553a4d4f=null;
+	authInterceptDoFunctionMethodEvent_9c0884b84cfa4a00892273a1553a4d4f=null;
+ 
+				
+	authInterceptDoFunctionThis_9c0884b84cfa4a00892273a1553a4d4f=obj;
+	authInterceptDoFunctionMethod_9c0884b84cfa4a00892273a1553a4d4f=method;
+	authInterceptDoFunctionMethodParam_9c0884b84cfa4a00892273a1553a4d4f=param;
+	authInterceptDoFunctionMethodEvent_9c0884b84cfa4a00892273a1553a4d4f=event;
+	try{
+		if (authInterceptDoFunctionMethodParam_9c0884b84cfa4a00892273a1553a4d4f){
+			if (authInterceptDoFunctionThis_9c0884b84cfa4a00892273a1553a4d4f){
+				authInterceptDoFunctionMethod_9c0884b84cfa4a00892273a1553a4d4f.call(authInterceptDoFunctionThis_9c0884b84cfa4a00892273a1553a4d4f,authInterceptDoFunctionMethodParam_9c0884b84cfa4a00892273a1553a4d4f);
+			}
+							
+		}else{
+			authInterceptDoFunctionMethod_9c0884b84cfa4a00892273a1553a4d4f.call(authInterceptDoFunctionThis_9c0884b84cfa4a00892273a1553a4d4f);
+		}
+	}catch(e){alert(e);}
+};
+ 
+</script>    
+
+<!-- start datatable id ：pirl -->
+
+
+
+<script>
+var columnSet_9c0884b84cfa4a00892273a1553a4d4f = new YAHOO.widget.ColumnSet([{key:"num1",label:"No",hidden:false,resizeable:true,sortable:false,formatter:num1_group,width:30},{key:"productNameEn",label:"Product",hidden:false,resizeable:true,formatter:productNameEn_group,width:120},{key:"num2",label:"No",hidden:false,resizeable:true,formatter:num2_group,width:30},{key:"stdNameEn",label:"Standard",hidden:false,resizeable:true,formatter:stdNameEn_group,width:220},{key:"explainEn",label:"Note",hidden:false,resizeable:true,formatter:explainEn_group,width:200},{key:"status",label:"Status",hidden:false,resizeable:true,formatter:status_group,width:70},{key:"criteProductId",label:"criteProductId",hidden:true,resizeable:true},{key:"criteStandardId",label:"criteStandardId",hidden:true,resizeable:true},{key:"paramListJson",label:"paramListJson",hidden:true,resizeable:true}]);  
+		
+var dataSource_9c0884b84cfa4a00892273a1553a4d4f = new YAHOO.util.XHRDataSource("/LAS_FQ/publish/queryPublishCriteProduct.action?");                   
+
+dataSource_9c0884b84cfa4a00892273a1553a4d4f.responseType  = YAHOO.util.DataSource.TYPE_JSON;  
+											 
+dataSource_9c0884b84cfa4a00892273a1553a4d4f.connMethodPost = true;
+
+dataSource_9c0884b84cfa4a00892273a1553a4d4f.connXhrMode = "queueRequests";
+ 	   
+
+dataSource_9c0884b84cfa4a00892273a1553a4d4f.responseSchema = {
+	fields: [{key:"num1"},{key:"productNameEn"},{key:"num2"},{key:"stdNameEn"},{key:"explainEn"},{key:"status"},{key:"criteProductId"},{key:"criteStandardId"},{key:"paramListJson"}]
+,resultsList: "data"
+,metaFields: { totalRecords: "totalSize",startIndex: "startIndex",rowsPerPage:"sizePerPage"  } 
+};  
+	       
+
+
+                 
+var configs_9c0884b84cfa4a00892273a1553a4d4f = {paginator:new YAHOO.widget.Paginator({agentMethod:pirlAuthInterceptDivShow,rowsPerPage:100,firstPageLinkLabel:"<img src='/LAS_FQ/images/page/food23.gif'  border='0' title='First Page' style='border-width:0px;cursor:hand;vertical-align:center'/>,<img src='/LAS_FQ/images/page/firstnull.gif'  border='0' title='First Page' style='border-width:0px;vertical-align:center'/>",lastPageLinkLabel:"<img src='/LAS_FQ/images/page/food24.gif'  border='0' title='Last Page' style='border-width:0px;cursor:hand;vertical-align:center'/>,<img src='/LAS_FQ/images/page/lastnull.gif'  border='0' title='Last Page' style='border-width:0px;vertical-align:center'/>",previousPageLinkLabel:"<img src='/LAS_FQ/images/page/food26.gif'  border='0' title='Previous Page' style='border-width:0px;cursor:hand;vertical-align:center'/>,<img src='/LAS_FQ/images/page/prevnull.gif'  border='0' title='Previous Page' style='border-width:0px;vertical-align:center'/>",nextPageLinkLabel:"<img src='/LAS_FQ/images/page/food25.gif'  border='0' title='Next Page' style='border-width:0px;cursor:hand;vertical-align:center'/>,<img src='/LAS_FQ/images/page/nextnull.gif'  border='0' title='Next Page' style='border-width:0px;vertical-align:center'/>",containers:"paginatorContainer",template:"<table width='100%' class='tablepaging'><tr><td width='20px'>{FirstPageImgLink}</td><td width='20px'>{PreviousPageImgLink}</td><td valign='middle' width='150px' align='center'>Page&nbsp;{PageGoto}&nbsp;&nbsp;Total&nbsp;{TotalPages}</td><td width='20px'>{NextPageImgLink}</td><td width='20px'>{LastPageImgLink}</td><td width='10px' ><td width='120'><select onChange='pirlReQuery(this.options[this.options.selectedIndex].value);' ><option value='0'>All</option><option value='10'>10</option><option value='30' >30</option><option value='50' >50</option><option value='100'  selected >100</option></select>/page</td></td><td width='10px' align='right' ><img src='/LAS_FQ/images/page/refresh.gif' style='CURSOR: hand'  border='0' title='refresh' style='border-width:0px;vertical-align:center' onclick='pirlReQuery();'/></td><td align='right' >Show&nbsp;{StartRecord}-{EndRecord}&nbsp;&nbsp; Total records&nbsp;{TotalRecords}&nbsp;&nbsp;&nbsp;</td></tr></table>"}),initialRequest:"startIndex=0&sizePerPage=100&baseInfoId=f6808888cdf947a5bdb6951c4cda2417",dynamicData:true,initialLoad:false,generateRequest:generateRequest_9c0884b84cfa4a00892273a1553a4d4f,draggableColumns:false,scrollable:true,width:"100%",height:"300px",MSG_ERROR:'Data error.',MSG_EMPTY:'No records found.',MSG_LOADING:'Loading data...'};
+ 
+var pirl = new 
+YAHOO.widget.ScrollingDataTable
+("pirl", columnSet_9c0884b84cfa4a00892273a1553a4d4f, dataSource_9c0884b84cfa4a00892273a1553a4d4f,configs_9c0884b84cfa4a00892273a1553a4d4f);
+<!-- subscribe -->
+
+	// 行高亮
+	//dataTable.subscribe("rowMouseoverEvent",dataTable.onEventHighlightRow); 
+	//dataTable.subscribe("rowMouseoutEvent",dataTable.onEventUnhighlightRow); 
+//
+// yui:subscribe name="rowDblclickEvent" event="rowDblclickEvent('abc',callBack)" --> function rowDblclickEvent(oArgs,str,callBack)
+//
+// function functionName(oArgs){ 
+//				
+//		            var oRecord = DataTable.getRecord(oArgs.target); 
+//		            alert(YAHOO.lang.dump(oRecord.getData())); 
+//		}
+
+		 
+ 
+  
+	var oCallback_9c0884b84cfa4a00892273a1553a4d4f= { 
+	success: function(sRequest, oResponse, oPayload){
+
+  	pirl.onDataReturnInitializeTable(sRequest,oResponse,oPayload) ;
+   	var paginator = pirl.get('paginator');
+   	if (paginator){
+   		paginator.set('rowsPerPage', oResponse.meta.rowsPerPage);
+ 	 	paginator.set('totalRecords', oResponse.meta.totalRecords);
+		paginator.set('recordOffset', oResponse.meta.startIndex);
+	//alert('p-rowsPerPage'+oResponse.meta.rowsPerPage+',p-totalRecords'+oResponse.meta.totalRecords+',p-recordOffset'+oResponse.meta.startIndex);
+ 	  
+		 	
+		 		document.getElementById('paginatorContainer').style.display='';
+ 	  
+   }
+}, 
+	failure : function(sRequest, oResponse, oPayload){
+
+
+	pirl.onDataReturnInitializeTable(sRequest,oResponse,oPayload) ;
+	var paginator = pirl.get('paginator');
+	if (paginator){
+		paginator.set('rowsPerPage', oResponse.meta.rowsPerPage);
+		paginator.set('totalRecords', oResponse.meta.totalRecords);
+ 		paginator.set('recordOffset', oResponse.meta.startIndex);
+ 	  
+		 		document.getElementById('paginatorContainer').style.display='';
+   }
+   
+}, 
+   scope : pirl, 
+   argument: pirl.getState() 
+}; 
+
+
+
+pirl.doBeforeLoadData = function(oRequest, oResponse, oPayload) {
+pirlClearGroupVar(); 
+	 // alert(YAHOO.lang.dump(oResponse));
+        var meta = oResponse.meta;
+        oPayload.totalRecords = meta.totalRecords || oPayload.totalRecords;
+        oPayload.pagination = {
+            rowsPerPage: meta.rowsPerPage ,
+            recordOffset: meta.startIndex 
+        };
+        try{
+       	 pirldoBeforeLoadData(oRequest, oResponse, oPayload);
+        }catch(e){}
+        return true;
+    };
+
+
+	function pirlInitDtScrollDiv(){
+		initDtScrollDiv('pirl','',0,0);
+	}
+ 
+ 			YAHOO.util.Event.onDOMReady(function(){
+ 				pirl.addListener('postRenderEvent', function(request , response ){
+ 
+				 pirlInitDtScrollDiv();
+
+				});
+		
+		 		pirlInitDtScrollDiv();
+		 		
+		 		try{$(window).resize(function(){pirlInitDtScrollDiv(); });}catch(e){alert(e);}
+			});
+ 	
+ 			
+ 			
+ 		
+
+</script>
+<!-- end datatable id ：pirl  -->
+
+
+</body></html>

@@ -8,6 +8,9 @@
 
 #include "modbus_adapter.hpp"
 
+#include <atomic>
+#include <thread>
+
 
 
 namespace cci::services {
@@ -19,6 +22,11 @@ class ModbusService {
 public:
 
     ModbusService(core::MeasurementStore& measurements, const core::CcliConfig& app_cfg);
+    ModbusService(core::MeasurementStore& measurements, const core::ModbusConfig& modbus_cfg);
+    ~ModbusService();
+
+    bool start_background();
+    void stop_background();
 
 
 
@@ -40,6 +48,8 @@ private:
     core::MeasurementStore& measurements_;
 
     adapters::ModbusAdapter adapter_;
+    std::atomic<bool> stop_requested_{false};
+    std::thread worker_;
 
 };
 

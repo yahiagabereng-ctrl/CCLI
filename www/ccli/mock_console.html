@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CCLI Regulation Mock — TesPro TG544</title>
+  <style>
+    :root { --bg:#0f1419; --panel:#1a2332; --text:#e7ecf3; --muted:#9aa8b8; --acc:#3d8bfd; --pass:#2ecc71; --warn:#f1c40f; --dio-on:#e74c3c; --dio-off:#27ae60; }
+    * { box-sizing: border-box; }
+    body { margin:0; font-family: system-ui, sans-serif; background: var(--bg); color: var(--text); }
+    header { padding: 1rem 1.25rem; border-bottom: 1px solid #2a3544; display:flex; flex-wrap:wrap; gap:1rem; align-items:center; }
+    h1 { font-size:1.15rem; margin:0; }
+    main { display:grid; grid-template-columns: 1fr 1fr; gap:1rem; padding:1rem; max-width:1400px; margin:0 auto; }
+    @media (max-width:960px) { main { grid-template-columns: 1fr; } }
+    section { background: var(--panel); border-radius:10px; padding:1rem; border:1px solid #2a3544; }
+    h2 { font-size:0.95rem; margin:0 0 0.75rem; color: var(--acc); }
+    label { display:block; font-size:0.75rem; color: var(--muted); margin-top:0.5rem; }
+    input, select { width:100%; padding:0.35rem 0.5rem; margin-top:0.15rem; background:#0d1117; border:1px solid #3d4f63; color:var(--text); border-radius:4px; }
+    input[type=checkbox] { width:auto; margin-right:0.4rem; }
+    .row2 { display:grid; grid-template-columns:1fr 1fr; gap:0.5rem; }
+    .btn { background: var(--acc); color:#fff; border:none; padding:0.5rem 1rem; border-radius:6px; cursor:pointer; font-weight:600; margin:0.35rem 0.35rem 0 0; }
+    .btn.secondary { background:#3d4f63; }
+    .btn.danger { background:#c0392b; }
+    table { width:100%; border-collapse:collapse; font-size:0.78rem; }
+    th, td { border:1px solid #2a3544; padding:0.35rem; text-align:left; vertical-align:top; }
+    th { background:#121a24; color:var(--muted); }
+    .live-box { display:grid; grid-template-columns: repeat(3, 1fr); gap:0.75rem; margin-bottom:0.75rem; }
+    .tile { background:#0d1117; padding:0.6rem; border-radius:8px; text-align:center; }
+    .tile .v { font-size:1.4rem; font-weight:700; }
+    .tile .l { font-size:0.7rem; color:var(--muted); }
+    .dio-on { color: var(--dio-on); }
+    .dio-off { color: var(--dio-off); }
+    .mono { font-family: ui-monospace, monospace; font-size:0.72rem; }
+    #log { max-height:120px; overflow:auto; background:#0d1117; padding:0.5rem; border-radius:6px; font-size:0.72rem; }
+    .full { grid-column: 1 / -1; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>CCLI Phase 1 — Regulation mock &amp; DIO actions (CEI 0-16 / TR 57-126 Figura 2)</h1>
+    <label style="margin:0">API <input id="apiBase" style="width:220px" placeholder="http://192.168.1.130/cgi-bin/ccli-bench" /></label>
+    <button class="btn secondary" id="btnPoll">Poll live</button>
+    <select id="preset">
+      <option value="figura2">Preset: TR Figura 2 (~42 kW)</option>
+      <option value="legacy">Preset: Legacy 900 kW</option>
+      <option value="o11">Preset: O.11 custom (105 kW)</option>
+    </select>
+    <button class="btn" id="btnApply">Apply mock → TG544 &amp; restart ccli</button>
+    <button class="btn secondary" id="btnReg">Validate all (live + JSON)</button>
+    <button class="btn secondary" id="btnRegStatic">Validate all (static)</button>
+  </header>
+
+  <main>
+    <section>
+      <h2>Mock inputs (yaml → /etc/ccli/lab.yaml)</h2>
+      <div class="row2">
+        <div><label>P_imm kW <input type="number" id="p_imm" value="200" step="1" /></label></div>
+        <div><label>P_ass kW <input type="number" id="p_ass" value="200" step="1" /></label></div>
+        <div><label>Q_ind kVAr <input type="number" id="q_ind" value="50" step="1" /></label></div>
+        <div><label>Q_cap kVAr <input type="number" id="q_cap" value="50" step="1" /></label></div>
+        <div><label>Smax kVA (authoritative) <input type="number" id="smax" value="210" step="0.1" /></label></div>
+        <div><label>release_delta kW <input type="number" id="release_delta" value="5" step="0.5" /></label></div>
+      </div>
+      <label><input type="checkbox" id="dso_enabled" checked /> dso.enabled</label>
+      <label><input type="checkbox" id="use_dso_mock" checked /> pf2.use_dso_mock</label>
+      <div class="row2">
+        <div><label>WSd active <input type="checkbox" id="wsd_active" checked /></label></div>
+        <div><label>WSptPct % Smax <input type="number" id="wspt_pct" value="20" step="0.1" /></label></div>
+        <div><label>Wlim active <input type="checkbox" id="wlim_active" /></label></div>
+        <div><label>WMaxSptPct % <input type="number" id="wmax_spt_pct" value="0" step="1" /></label></div>
+        <div><label>w110 active <input type="checkbox" id="w110_active" /></label></div>
+        <div><label>w110_pct % <input type="number" id="w110_pct" value="100" step="1" /></label></div>
+      </div>
+      <div class="row2">
+        <div><label>debounce_s <input type="number" id="debounce_s" value="30" /></label></div>
+        <div><label>stale_data_s <input type="number" id="stale_data_s" value="10" /></label></div>
+        <div><label>poll_ms <input type="number" id="poll_ms" value="4000" /></label></div>
+        <div><label><input type="checkbox" id="permissive_bypass" /> permissive_bypass (lab only)</label></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Computed (Phase 1 equations — preview)</h2>
+      <table id="calcTbl">
+        <tr><th>ID</th><th>Eq</th><th>Value</th></tr>
+      </table>
+      <p class="mono" id="yamlPreview" style="word-break:break-all; margin-top:0.75rem;"></p>
+    </section>
+
+    <section class="full">
+      <h2>Live plant (TG544) — Modbus P &amp; DIO1 curtailment</h2>
+      <div class="live-box">
+        <div class="tile"><div class="l">Measured P (Modbus)</div><div class="v" id="liveP">—</div><div class="l" id="liveQ">quality</div></div>
+        <div class="tile"><div class="l">PF2 enter / release kW</div><div class="v" id="liveThr">—</div><div class="l" id="livePf2">reason</div></div>
+        <div class="tile"><div class="l">DIO1 curtail DO</div><div class="v" id="liveDio">—</div><div class="l" id="livePerm">permissive</div></div>
+      </div>
+      <p><strong>Actuation rule (lab):</strong> <code>DIO1 ON ⇔ PF2.curtailment_commanded ∧ permissive OK</code> · debounce <span id="dispDeb">30</span>s · stale safe <span id="dispStale">10</span>s</p>
+    </section>
+
+    <section class="full">
+      <h2>Change value → regulation → DIO action (operator map)</h2>
+      <p style="font-size:0.85rem;color:var(--muted);margin:0">Edit <strong>Mock inputs</strong> → <strong>Apply</strong>. Set **PC slave P** with <code>python lab/modbus_rtu_slave.py --port COMx --power-kw N --trace</code>. Doc: <code>lab/REGULATION_MOCK_DIO_MAP.md</code></p>
+      <p style="font-size:0.85rem;margin:0.5rem 0">Test P from slave (preview): <input id="testP" type="number" value="45" step="0.5" style="width:5rem;display:inline-block" /> kW → predicted below</p>
+      <table>
+        <thead><tr><th>Change this (UI / yaml)</th><th>Reg IDs</th><th>Threshold / timing</th><th>PF2 + permissive</th><th><strong>DIO1</strong></th></tr></thead>
+        <tbody id="dioMapBody"></tbody>
+      </table>
+      <h3 style="font-size:0.9rem;color:var(--acc);margin:1rem 0 0.5rem">Bench scenarios (see every DIO state)</h3>
+      <table>
+        <thead><tr><th>Step</th><th>Mock preset</th><th>PC Modbus</th><th>DIO2 key</th><th>Expect DIO1</th><th>Live match</th></tr></thead>
+        <tbody id="scenarioBody"></tbody>
+      </table>
+    </section>
+
+    <section class="full">
+      <h2>Standards reference — values &amp; expected actions (DIO / Modbus focus)</h2>
+      <p style="font-size:0.85rem;color:var(--muted);margin-top:0">Only clauses with direct <strong>lab action</strong> on this page. All other IDs (R02, R04, R06–R07, R10–R15, TR-T1, CFG, …) are in the <strong>full map</strong> below — validated by <code>ccli --regulation-check</code>.</p>
+      <table>
+        <thead><tr><th>ID</th><th>Clause</th><th>Standard / TR reference</th><th>Mocked value</th><th>Expected CCLI action</th></tr></thead>
+        <tbody id="stdBody"></tbody>
+      </table>
+    </section>
+
+    <section class="full">
+      <h2>Full regulation map — where each clause is validated</h2>
+      <p style="font-size:0.85rem;color:var(--muted);margin-top:0">Click <strong>Validate all (static)</strong> or <strong>Validate all (live)</strong> to fill <em>Status</em> from TG544. Matrix: <code>lab/PHASE1_REGULATION_CHECK_MATRIX.md</code></p>
+      <table>
+        <thead><tr><th>ID</th><th>Clause</th><th>Validate via</th><th>Reference / expected</th><th>Status</th></tr></thead>
+        <tbody id="fullRegBody"></tbody>
+      </table>
+    </section>
+
+    <section class="full">
+      <h2>Event log</h2>
+      <div id="log"></div>
+    </section>
+  </main>
+
+  <script>
+    const REG_MASTER = [
+      {id:"R01",c:"O.8.2",v:"Static check",r:"Eq(1) S_calc ~206.15 kVA"},
+      {id:"R02",c:"O.9.2.2",v:"Static + LIVE-CONF",r:"Wlim off (Figura 2) or %→kW mock"},
+      {id:"R03",c:"O.9.2.3",v:"Static + LIVE-CONF",r:"WSd % → kW (42 @ 20%)"},
+      {id:"R04",c:"O.9.2.1",v:"Static + LIVE-CONF",r:"w110 off or autonomous cap"},
+      {id:"R05",c:"O.11",v:"Static + LIVE-CONF",r:"p_effective = min(export caps)"},
+      {id:"R06",c:"O.7.3.1",v:"Static (unit test)",r:"±5% band Eq(7)(8)"},
+      {id:"R07",c:"O.7.3.3",v:"N/A Phase 1",r:"3 s MMS set-point spacing"},
+      {id:"R08",c:"O.13.1.2",v:"Static + LIVE-CONF",r:"stale_data_s comm safe"},
+      {id:"R09",c:"O.8.3",v:"Static + LIVE-MB",r:"poll_ms=4000 FC03 TotW"},
+      {id:"R10",c:"O.9.1",v:"N/A Figura 2",r:"Reactive VArV"},
+      {id:"R11",c:"O.9.1",v:"N/A Figura 2",r:"Reactive PFW"},
+      {id:"R12",c:"O.9.1",v:"N/A Figura 2",r:"Reactive PFSP"},
+      {id:"R13",c:"Annex T",v:"N/A Phase 3",r:"MMS reactive"},
+      {id:"R14",c:"O.14",v:"Static",r:"EventRing ≥2048"},
+      {id:"R15",c:"Annex M",v:"N/A Phase 4",r:"DIO3 teledistacco (lab: DIO1 only)"},
+      {id:"L01",c:"Lab",v:"Static + live FSM",r:"PF2 enter kW + debounce"},
+      {id:"L02",c:"Lab",v:"Static + LIVE-CONF",r:"Release hysteresis kW"},
+      {id:"L03",c:"Lab",v:"Static + bench",r:"Stop Modbus → stale DO OFF"},
+      {id:"L04",c:"Lab",v:"Static",r:"PC slave --ramp Eq(18)"},
+      {id:"TR-T1",c:"TR Table 1",v:"Static",r:"Smax 210 kVA"},
+      {id:"PLANT",c:"O.8.2",v:"Static",r:"200/200 kW 50/50 kVAr"},
+      {id:"MOCK",c:"yaml",v:"Static",r:"w110/wlim/wsd flags"},
+      {id:"CFG",c:"yaml",v:"Static",r:"dso.enabled + use_dso_mock"},
+      {id:"IO-DI",c:"REQ-LAB",v:"Static + LIVE-DI",r:"Permissive active_low"},
+      {id:"IO-byp",c:"Lab",v:"Static",r:"permissive_bypass false"},
+      {id:"REQ-61850",c:"Annex T",v:"N/A Phase 3",r:"MMS Eth_A"},
+      {id:"LIVE-*",c:"—",v:"--live only",r:"LIVE-MB, LIVE-CONF-Rxx, LIVE-P, LIVE-DIO"},
+    ];
+    function renderFullMap(statusById) {
+      $("fullRegBody").innerHTML = REG_MASTER.map(row => {
+        const st = statusById[row.id] || statusById["LIVE-CONF-"+row.id] || "—";
+        const cls = st==="PASS"?"pass":st==="FAIL"?"fail":st==="PART"?"pend":"";
+        return `<tr class="${cls}"><td>${row.id}</td><td>${row.c}</td><td>${row.v}</td><td>${row.r}</td><td class="st">${st}</td></tr>`;
+      }).join("");
+    }
+    function mergeRegRows(rows) {
+      const m = {};
+      (rows||[]).forEach(r => { m[r.id] = r.status; });
+      return m;
+    }
+    const $ = id => document.getElementById(id);
+    function log(msg) {
+      const el = $("log");
+      el.textContent = new Date().toLocaleTimeString() + " " + msg + "\n" + el.textContent;
+    }
+    function apiUrl(action) {
+      let base = $("apiBase").value.trim();
+      if (!base) base = location.origin + "/cgi-bin/ccli-bench";
+      return base + (base.includes("?") ? "&" : "?") + "action=" + action;
+    }
+    function calc() {
+      const p_imm = +$("p_imm").value, p_ass = +$("p_ass").value;
+      const q_ind = +$("q_ind").value, q_cap = +$("q_cap").value;
+      const smax = +$("smax").value;
+      const s_calc = Math.sqrt(Math.max(p_imm*p_imm,p_ass*p_ass) + Math.max(q_ind*q_ind,q_cap*q_cap));
+      const pct = (p, base) => (p/100)*base;
+      const caps = [];
+      let p_wsd = 0, p_wlim = 0, p_w110 = 0;
+      if ($("wsd_active").checked && +$("wspt_pct").value > 0) {
+        p_wsd = pct(Math.max(0, +$("wspt_pct").value), smax);
+        caps.push(p_wsd);
+      }
+      if ($("wlim_active").checked) { p_wlim = pct(+$("wmax_spt_pct").value, smax); caps.push(p_wlim); }
+      if ($("w110_active").checked) { p_w110 = pct(+$("w110_pct").value, smax); caps.push(p_w110); }
+      const p_eff = caps.length ? Math.min(...caps) : smax;
+      const useMock = $("use_dso_mock").checked && $("dso_enabled").checked;
+      const enter = useMock ? p_eff : 900;
+      const release = useMock ? Math.max(0, enter - +$("release_delta").value) : 850;
+      const rows = [
+        ["R01","Eq(1)", s_calc.toFixed(2)+" kVA calc"],
+        ["TR-T1","O.8.2", smax.toFixed(0)+" kVA nameplate"],
+        ["R03","WSd", p_wsd.toFixed(2)+" kW"],
+        ["R05","min()", p_eff.toFixed(2)+" kW effective"],
+        ["L01","PF2 enter", enter.toFixed(2)+" kW"],
+        ["L02","release", release.toFixed(2)+" kW"],
+      ];
+      $("calcTbl").innerHTML = "<tr><th>ID</th><th>Eq</th><th>Value</th></tr>" +
+        rows.map(r=>`<tr><td>${r[0]}</td><td>${r[1]}</td><td>${r[2]}</td></tr>`).join("");
+      $("dispDeb").textContent = $("debounce_s").value;
+      $("dispStale").textContent = $("stale_data_s").value;
+      buildStdTable(s_calc, smax, p_eff, enter, release, p_wsd);
+      buildDioOperatorMap(enter, release);
+      buildScenarios(enter);
+      return { s_calc, smax, p_eff, enter, release, p_wsd, p_wlim, p_w110, useMock };
+    }
+    function buildDioOperatorMap(enter, release) {
+      const deb = +$("debounce_s").value;
+      const stale = +$("stale_data_s").value;
+      const testP = +$("testP").value;
+      const bypass = $("permissive_bypass").checked;
+      const rows = [
+        ["WSptPct / WSd / Wlim / w110 / Smax", "R02–R05, L01", "enter " + enter.toFixed(1) + " kW, release " + release.toFixed(1) + " kW", "P > enter " + deb + " s → curtail", "ON if perm OK"],
+        ["debounce_s", "L01", deb + " s above enter", "CurtailPending → Active", "OFF then ON"],
+        ["stale_data_s", "R08, L03", stale + " s no good Modbus", "SafeState", "OFF (fail-safe)"],
+        ["permissive_bypass", "IO-byp", bypass ? "DI ignored" : "DIO2 required", bypass ? "DIO = PF2 only" : "ON only if key closed", bypass ? "follows PF2" : "gated"],
+        ["use_dso_mock off", "CFG, L01", "enter 900 / release 850 kW", "Legacy FSM", "ON if P>900"],
+        ["PC slave P (Modbus 40001)", "LIVE-P", "not in yaml", "FSM vs enter", "see live tile"],
+      ];
+      $("dioMapBody").innerHTML = rows.map(r => `<tr><td>${r[0]}</td><td>${r[1]}</td><td>${r[2]}</td><td>${r[3]}</td><td><strong>${r[4]}</strong></td></tr>`).join("");
+      const pred = testP > enter ? "ON (after debounce)" : "OFF";
+      $("testP").title = "P=" + testP + " vs enter " + enter.toFixed(1) + " → " + pred;
+    }
+    function buildScenarios(enter) {
+      const deb = $("debounce_s").value;
+      const scenarios = [
+        ["A Curtail ON", "Figura 2 + Apply", "power-kw " + (enter + 3).toFixed(0), "Closed", "ON after " + deb + " s", "scenarioA"],
+        ["B Perm blocked", "Figura 2", "power-kw " + (enter + 3).toFixed(0), "Open", "OFF", "scenarioB"],
+        ["C Below enter", "Figura 2", "power-kw " + Math.max(0, enter - 3).toFixed(0), "Closed", "OFF", "scenarioC"],
+        ["D Stale safe", "stale 10 s", "stop slave", "—", "OFF ≤10 s", "scenarioD"],
+        ["E Legacy 900", "Legacy + Apply", "power-kw 950", "Closed", "ON after " + deb + " s", "scenarioE"],
+      ];
+      $("scenarioBody").innerHTML = scenarios.map(s => {
+        return `<tr data-sc="${s[5]}"><td>${s[0]}</td><td>${s[1]}</td><td>${s[2]}</td><td>${s[3]}</td><td>${s[4]}</td><td class="mono" id="${s[5]}">—</td></tr>`;
+      }).join("");
+    }
+    function updateScenarioLive(j) {
+      if (!j || j.error) return;
+      const p = j.p_kw, enter = (j.derived && j.derived.pf2_enter_kw) || 0;
+      const on = j.do_curtail_on;
+      const perm = j.permissive_ok;
+      const set = (id, ok, txt) => { const el = $(id); if (el) { el.textContent = txt; el.style.color = ok ? "var(--pass)" : "var(--muted)"; } };
+      set("scenarioA", on && perm, on && perm ? "DIO ON" : (p > enter ? "wait debounce / check P" : "P low"));
+      set("scenarioB", !on && j.curtailment_commanded && !perm, !perm && j.curtailment_commanded ? "blocked OK" : "—");
+      set("scenarioC", !on && p <= enter + 0.5, p <= enter + 0.5 ? "OFF OK" : "P=" + p);
+      set("scenarioD", j.quality === "stale", j.quality === "stale" ? "stale OK" : j.quality);
+      set("scenarioE", on, on ? "ON" : "legacy?");
+    }
+    function buildStdTable(s_calc, smax, p_eff, enter, release, p_wsd) {
+      const std = [
+        ["R01","O.8.2","S_calc ≈ 206.15 kVA (TR corners)", s_calc.toFixed(2)+" kVA","yaml plant corners"],
+        ["R03","O.9.2.3","WSptPct +20 % → 42 kW @210 kVA", p_wsd.toFixed(1)+" kW","PF2 threshold from WSd"],
+        ["R05","O.11","min(export caps)", p_eff.toFixed(1)+" kW","enter threshold"],
+        ["R08","O.13.2","Comm loss → safe state","stale "+$("stale_data_s").value+" s","DO OFF, quality stale"],
+        ["R09","O.8.3","TotW 4 s block", $("poll_ms").value+" ms poll","FC03 read 40001"],
+        ["L01","Lab FSM","P > enter "+$("debounce_s").value+" s", enter.toFixed(1)+" kW","curtailment_commanded"],
+        ["L02","Lab","P < release", release.toFixed(1)+" kW","release curtailment"],
+        ["IO","Annex M / lab","Curtail contact","DIO1 (ch1 DO)","ON when curtail ∧ permissive"],
+        ["L03","Lab","Meter stale","10 s typ.","force DO OFF"],
+      ];
+      $("stdBody").innerHTML = std.map(r=>`<tr><td>${r[0]}</td><td>${r[1]}</td><td>${r[2]}</td><td>${r[3]}</td><td>${r[4]}</td></tr>`).join("");
+    }
+    function buildYaml() {
+      calc();
+      const y = `# Generated by CCLI mock UI
+platform: tg500
+modbus:
+  backend: rtu
+  device: /dev/ttyS2
+  baud: 9600
+  parity: N
+  slave_id: 1
+  poll_ms: ${+$("poll_ms").value}
+  timeout_ms: 2000
+  retries: 3
+  trace: true
+pf2:
+  threshold_kw: 900
+  debounce_s: ${+$("debounce_s").value}
+  release_threshold_kw: 850
+  min_on_s: 60
+  min_off_s: 30
+  stale_data_s: ${+$("stale_data_s").value}
+  use_dso_mock: ${$("use_dso_mock").checked}
+plant:
+  p_imm_kw: ${+$("p_imm").value}
+  p_ass_kw: ${+$("p_ass").value}
+  q_ind_kvar: ${+$("q_ind").value}
+  q_cap_kvar: ${+$("q_cap").value}
+  smax_kva: ${+$("smax").value}
+dso:
+  enabled: ${$("dso_enabled").checked}
+  profile: tr57126_table1
+  w110_active: ${$("w110_active").checked}
+  w110_pct: ${+$("w110_pct").value}
+  wlim_active: ${$("wlim_active").checked}
+  wmax_spt_pct: ${+$("wmax_spt_pct").value}
+  wsd_active: ${$("wsd_active").checked}
+  wspt_pct: ${+$("wspt_pct").value}
+  release_delta_kw: ${+$("release_delta").value}
+io:
+  backend: ubus_dido_v2
+  permissive_bypass: ${$("permissive_bypass").checked}
+  do_curtail:
+    gpio: 1
+    active_high: false
+  di_permissive:
+    gpio: 2
+    active_low: true
+`;
+      $("yamlPreview").textContent = y.slice(0, 400) + "...";
+      return y;
+    }
+    function applyPreset(name) {
+      if (name === "figura2") {
+        $("use_dso_mock").checked = true; $("dso_enabled").checked = true;
+        $("wsd_active").checked = true; $("wspt_pct").value = 20;
+        $("wlim_active").checked = false; $("w110_active").checked = false;
+        $("smax").value = 210; $("release_delta").value = 5;
+      } else if (name === "legacy") {
+        $("use_dso_mock").checked = false; $("dso_enabled").checked = false;
+        $("poll_ms").value = 1000;
+      } else if (name === "o11") {
+        $("use_dso_mock").checked = true; $("dso_enabled").checked = true;
+        $("w110_active").checked = true; $("w110_pct").value = 100;
+        $("wlim_active").checked = true; $("wmax_spt_pct").value = 70;
+        $("wsd_active").checked = true; $("wspt_pct").value = 50;
+        $("smax").value = 210;
+      }
+      calc();
+    }
+    async function pollStatus() {
+      try {
+        const r = await fetch(apiUrl("status"));
+        const j = await r.json();
+        if (j.error) { log("status: " + j.error); return; }
+        $("liveP").textContent = j.p_kw != null ? j.p_kw.toFixed(1) + " kW" : "—";
+        $("liveQ").textContent = j.quality || "";
+        const d = j.derived || {};
+        $("liveThr").textContent = (d.pf2_enter_kw||0).toFixed(1) + " / " + (d.pf2_release_kw||0).toFixed(1);
+        $("livePf2").textContent = j.pf2_reason || "";
+        const on = j.do_curtail_on;
+        $("liveDio").textContent = on ? "ON" : "OFF";
+        $("liveDio").className = "v " + (on ? "dio-on" : "dio-off");
+        $("livePerm").textContent = j.permissive_ok ? "permissive OK" : "BLOCKED";
+        updateScenarioLive(j);
+      } catch (e) { log("poll failed: " + e.message); }
+    }
+    async function applyMock() {
+      const yaml = buildYaml();
+      try {
+        const r = await fetch(apiUrl("apply"), { method:"POST", body: yaml, headers:{"Content-Type":"text/plain"} });
+        const t = await r.text();
+        log("apply: " + t);
+        setTimeout(pollStatus, 3000);
+      } catch (e) { log("apply failed: " + e.message); }
+    }
+    async function runRegLive() {
+      try {
+        log("regulation live: running (may stop ccli ~6s)...");
+        const r = await fetch(apiUrl("regulation_live"));
+        const t = await r.text();
+        const j = JSON.parse(t);
+        renderFullMap(mergeRegRows(j.rows));
+        log("live PASS=" + (j.rows||[]).filter(x=>x.status==="PASS").length + " / rows=" + (j.rows||[]).length);
+        localStorage.setItem("ccli_last_reg", JSON.stringify(j));
+      } catch (e) { log("regulation live: " + e.message); }
+    }
+    async function runRegStatic() {
+      try {
+        const r = await fetch(apiUrl("regulation"));
+        const j = await r.json();
+        renderFullMap(mergeRegRows(j.rows));
+        log("static PASS=" + (j.rows||[]).filter(x=>x.status==="PASS").length + " / rows=" + (j.rows||[]).length);
+      } catch (e) { log("regulation static: " + e.message); }
+    }
+    $("testP").addEventListener("input", () => { const c = calc(); buildDioOperatorMap(c.enter, c.release); });
+    document.querySelectorAll("input,select").forEach(el => el.addEventListener("input", () => { calc(); buildYaml(); }));
+    $("preset").addEventListener("change", e => applyPreset(e.target.value));
+    $("btnPoll").addEventListener("click", pollStatus);
+    $("btnApply").addEventListener("click", applyMock);
+    $("btnReg").addEventListener("click", runRegLive);
+    $("btnRegStatic").addEventListener("click", runRegStatic);
+    if (! $("apiBase").value) $("apiBase").placeholder = "default: " + location.origin + "/cgi-bin/ccli-bench";
+    renderFullMap({});
+    applyPreset("figura2");
+    buildYaml();
+    setInterval(pollStatus, 2500);
+    pollStatus();
+  </script>
+</body>
+</html>

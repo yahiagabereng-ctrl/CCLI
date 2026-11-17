@@ -1,0 +1,438 @@
+Frame 27: 683 bytes on wire (5464 bits), 683 bytes captured (5464 bits) on interface \Device\NPF_{1088FBF9-BFCD-4587-AE4E-9373CBDB453E}, id 0
+    Section number: 1
+    Interface id: 0 (\Device\NPF_{1088FBF9-BFCD-4587-AE4E-9373CBDB453E})
+        Interface name: \Device\NPF_{1088FBF9-BFCD-4587-AE4E-9373CBDB453E}
+        Interface description: Ethernet
+    Encapsulation type: Ethernet (1)
+    Arrival Time: Oct 20, 2026 15:24:31.508486800 W. Europe Daylight Time
+    UTC Arrival Time: Oct 20, 2026 13:24:31.508486800 UTC
+    Epoch Arrival Time: 1792502671.508486800
+    [Time shift for this packet: 0.000000000 seconds]
+    [Time delta from previous captured frame: 0.000070400 seconds]
+    [Time delta from previous displayed frame: 0.000000000 seconds]
+    [Time since reference or first frame: 0.081722600 seconds]
+    Frame Number: 27
+    Frame Length: 683 bytes (5464 bits)
+    Capture Length: 683 bytes (5464 bits)
+    [Frame is marked: False]
+    [Frame is ignored: False]
+    [Protocols in frame: eth:ethertype:ip:tcp:tls:tpkt:cotp:ses:pres:acse:iec61850]
+Ethernet II, Src: CompalInform_88:0b:dc (08:8f:c3:88:0b:dc), Dst: MediaTek_26:60:0f (00:0c:43:26:60:0f)
+    Destination: MediaTek_26:60:0f (00:0c:43:26:60:0f)
+        Address: MediaTek_26:60:0f (00:0c:43:26:60:0f)
+        .... ..0. .... .... .... .... = LG bit: Globally unique address (factory default)
+        .... ...0 .... .... .... .... = IG bit: Individual address (unicast)
+    Source: CompalInform_88:0b:dc (08:8f:c3:88:0b:dc)
+        Address: CompalInform_88:0b:dc (08:8f:c3:88:0b:dc)
+        .... ..0. .... .... .... .... = LG bit: Globally unique address (factory default)
+        .... ...0 .... .... .... .... = IG bit: Individual address (unicast)
+    Type: IPv4 (0x0800)
+Internet Protocol Version 4, Src: 192.168.0.115, Dst: 192.168.0.1
+    0100 .... = Version: 4
+    .... 0101 = Header Length: 20 bytes (5)
+    Differentiated Services Field: 0x00 (DSCP: CS0, ECN: Not-ECT)
+        0000 00.. = Differentiated Services Codepoint: Default (0)
+        .... ..00 = Explicit Congestion Notification: Not ECN-Capable Transport (0)
+    Total Length: 669
+    Identification: 0x10a3 (4259)
+    010. .... = Flags: 0x2, Don't fragment
+        0... .... = Reserved bit: Not set
+        .1.. .... = Don't fragment: Set
+        ..0. .... = More fragments: Not set
+    ...0 0000 0000 0000 = Fragment Offset: 0
+    Time to Live: 128
+    Protocol: TCP (6)
+    Header Checksum: 0x0000 [validation disabled]
+    [Header checksum status: Unverified]
+    Source Address: 192.168.0.115
+    Destination Address: 192.168.0.1
+Transmission Control Protocol, Src Port: 35488, Dst Port: 3782, Seq: 3728, Ack: 1283, Len: 629
+    Source Port: 35488
+    Destination Port: 3782
+    [Stream index: 0]
+    [Conversation completeness: Incomplete, DATA (15)]
+        ..0. .... = RST: Absent
+        ...0 .... = FIN: Absent
+        .... 1... = Data: Present
+        .... .1.. = ACK: Present
+        .... ..1. = SYN-ACK: Present
+        .... ...1 = SYN: Present
+        [Completeness Flags: ··DASS]
+    [TCP Segment Len: 629]
+    Sequence Number: 3728    (relative sequence number)
+    Sequence Number (raw): 3725654667
+    [Next Sequence Number: 4357    (relative sequence number)]
+    Acknowledgment Number: 1283    (relative ack number)
+    Acknowledgment number (raw): 657472677
+    0101 .... = Header Length: 20 bytes (5)
+    Flags: 0x018 (PSH, ACK)
+        000. .... .... = Reserved: Not set
+        ...0 .... .... = Accurate ECN: Not set
+        .... 0... .... = Congestion Window Reduced: Not set
+        .... .0.. .... = ECN-Echo: Not set
+        .... ..0. .... = Urgent: Not set
+        .... ...1 .... = Acknowledgment: Set
+        .... .... 1... = Push: Set
+        .... .... .0.. = Reset: Not set
+        .... .... ..0. = Syn: Not set
+        .... .... ...0 = Fin: Not set
+        [TCP Flags: ·······AP···]
+    Window: 250
+    [Calculated window size: 64000]
+    [Window size scaling factor: 256]
+    Checksum: 0x8454 [unverified]
+    [Checksum Status: Unverified]
+    Urgent Pointer: 0
+    [Timestamps]
+        [Time since first frame in this TCP stream: 0.081722600 seconds]
+        [Time since previous frame in this TCP stream: 0.000070400 seconds]
+    [SEQ/ACK analysis]
+        [iRTT: 0.001031500 seconds]
+        [Bytes in flight: 629]
+        [Bytes sent since last PSH flag: 629]
+    TCP payload (629 bytes)
+Transport Layer Security
+    TLSv1.2 Record Layer: Application Data Protocol: TPKT - ISO on TCP - RFC1006
+        Content Type: Application Data (23)
+        Version: TLS 1.2 (0x0303)
+        Length: 624
+        Encrypted Application Data [truncated]: ecc0cdcd68baa252fddffdaa055982998f3b25b5cd0c266e20eead5373ab6bd33c1dac3bad71646190af00af3635c682a76a07426d653a11ca41131f8d6705b87966938f13d3254e676fcd311833fa943b9888b7cb70a3cf26d44dcdf53c5b113f3da7c
+        [Application Data Protocol: TPKT - ISO on TCP - RFC1006]
+TPKT, Version: 3, Length: 572
+    Version: 3
+    Reserved: 0
+    Length: 572
+ISO 8073/X.224 COTP Connection-Oriented Transport Protocol
+    Length: 2
+    PDU Type: DT Data (0x0f)
+    [Destination reference: 0x0000]
+    .000 0000 = TPDU number: 0x00
+    1... .... = Last data unit: Yes
+    COTP segment data (565 bytes)
+[2 COTP Segments (1586 bytes): #24(1021), #27(565)]
+    [Frame: 24, payload: 0-1020 (1021 bytes)]
+    [Frame: 27, payload: 1021-1585 (565 bytes)]
+    [Segment count: 2]
+    [Reassembled COTP length: 1586]
+ISO 8327-1 OSI Session Protocol
+    SPDU Type: CONNECT (CN) SPDU (13)
+    Length: 1582
+    Connect Accept Item
+        Parameter type: Connect Accept Item (5)
+        Parameter length: 6
+        Protocol Options
+            Parameter type: Protocol Options (19)
+            Parameter length: 1
+            Flags: 0x00
+                .... ...0 = Able to receive extended concatenated SPDU: False
+        Version Number
+            Parameter type: Version Number (22)
+            Parameter length: 1
+            Flags: 0x02, Protocol Version 2
+                .... ..1. = Protocol Version 2: True
+                .... ...0 = Protocol Version 1: False
+    Session Requirement
+        Parameter type: Session Requirement (20)
+        Parameter length: 2
+        Flags: 0x0002, Duplex functional unit
+            ..0. .... .... .... = Session exception report: False
+            ...0 .... .... .... = Data separation function unit: False
+            .... 0... .... .... = Symmetric synchronize function unit: False
+            .... .0.. .... .... = Typed data function unit: False
+            .... ..0. .... .... = Exception function unit: False
+            .... ...0 .... .... = Capability function unit: False
+            .... .... 0... .... = Negotiated release function unit: False
+            .... .... .0.. .... = Activity management function unit: False
+            .... .... ..0. .... = Resynchronize function unit: False
+            .... .... ...0 .... = Major resynchronize function unit: False
+            .... .... .... 0... = Minor resynchronize function unit: False
+            .... .... .... .0.. = Expedited data function unit: False
+            .... .... .... ..1. = Duplex functional unit: True
+            .... .... .... ...0 = Half-duplex functional unit: False
+    Calling Session Selector
+        Parameter type: Calling Session Selector (51)
+        Parameter length: 2
+        Calling Session Selector: 0001
+    Called Session Selector
+        Parameter type: Called Session Selector (52)
+        Parameter length: 2
+        Called Session Selector: 0001
+    Session extended user data
+        Parameter type: Session extended user data (194)
+        Parameter length: 1558
+ISO 8823 OSI Presentation Protocol
+    CP-type
+        mode-selector
+            mode-value: normal-mode (1)
+        normal-mode-parameters
+            calling-presentation-selector: 00000001
+            presentation-context-definition-list: 3 items
+                Context-list item
+                    presentation-context-identifier: 3
+                    abstract-syntax-name: 1.0.9506.2.1 (iec61850-abstract-syntax-version1(1))
+                    transfer-syntax-name-list: 1 item
+                        Transfer-syntax-name: 2.1.1 (basic-encoding)
+                Context-list item
+                    presentation-context-identifier: 1
+                    abstract-syntax-name: 2.2.1.0.1 (id-as-acse)
+                    transfer-syntax-name-list: 1 item
+                        Transfer-syntax-name: 2.1.1 (basic-encoding)
+                Context-list item
+                    presentation-context-identifier: 5
+                    abstract-syntax-name: 1.0.840.0.1.1.4.1 (iso.0.840.0.1.1.4.1)
+                    transfer-syntax-name-list: 1 item
+                        Transfer-syntax-name: 2.1.1 (basic-encoding)
+            user-data: fully-encoded-data (1)
+                fully-encoded-data: 1 item
+                    PDV-list
+                        presentation-context-identifier: 1 (id-as-acse)
+                        presentation-data-values: single-ASN1-type (0)
+ISO 8650-1 OSI Association Control Service
+    aarq
+        aSO-context-name: 1.0.9506.2.3 (IEC61850)
+        called-AP-title: ap-title-form2 (1)
+            ap-title-form2: 1.1.1.999.1 (iso.1.1.999.1)
+        called-AE-qualifier: aso-qualifier-form2 (1)
+            aso-qualifier-form2: 12
+        calling-AP-title: ap-title-form2 (1)
+            ap-title-form2: 1.1.1.999.1 (iso.1.1.999.1)
+        calling-AE-qualifier: aso-qualifier-form2 (1)
+            aso-qualifier-form2: 12
+        calling-AP-invocation-identifier: 10
+        calling-AE-invocation-identifier: 10
+        Padding: 7
+        sender-acse-requirements: 80
+            1... .... = authentication: True
+            .0.. .... = aSO-context-negotiation: False
+            ..0. .... = higher-level-association: False
+            ...0 .... = nested-association: False
+        mechanism-name: 1.0.840.0.1.0.1.1 (iso.0.840.0.1.0.1.1)
+        calling-authentication-value: external (2)
+            external
+                indirect-reference: 5
+                encoding: single-ASN1-type (0)
+        user-information: 1 item
+            Association-data
+                direct-reference: 2.1.1 (basic-encoding)
+                indirect-reference: 3
+                encoding: single-ASN1-type (0)
+BER: Dissector for OID not implemented. Contact Wireshark developers if you want this supported
+    [Expert Info (Warning/Undecoded): BER: Dissector for OID not implemented. Contact Wireshark developers if you want this supported]
+        [BER: Dissector for OID not implemented. Contact Wireshark developers if you want this supported]
+        [Severity level: Warning]
+        [Group: Undecoded]
+MMS Protocol (IEC-61850)
+    initiate-RequestPDU
+        localDetailCalling: 65000
+        proposedMaxServOutstandingCalling: 10
+        proposedMaxServOutstandingCalled: 10
+        proposedDataStructureNestingLevel: 5
+        mmsInitRequestDetail
+            proposedVersionNumber: 1
+            Padding: 5
+            proposedParameterCBB: f100
+                1... .... = str1: True
+                .1.. .... = str2: True
+                ..1. .... = vnam: True
+                ...1 .... = valt: True
+                .... 0... = vadr: False
+                .... .0.. = vsca: False
+                .... ..0. = tpy: False
+                .... ...1 = vlis: True
+                0... .... = real: False
+                .0.. .... = spare_bit9: False
+                ..0. .... = cei: False
+            Padding: 3
+            servicesSupportedCalling: ee1c00000402000079ef18
+                1... .... = status: True
+                .1.. .... = getNameList: True
+                ..1. .... = identify: True
+                ...0 .... = rename: False
+                .... 1... = read: True
+                .... .1.. = write: True
+                .... ..1. = getVariableAccessAttributes: True
+                .... ...0 = defineNamedVariable: False
+                0... .... = defineScatteredAccess: False
+                .0.. .... = getScatteredAccessAttributes: False
+                ..0. .... = deleteVariableAccess: False
+                ...1 .... = defineNamedVariableList: True
+                .... 1... = getNamedVariableListAttributes: True
+                .... .1.. = deleteNamedVariableList: True
+                .... ..0. = defineNamedType: False
+                .... ...0 = getNamedTypeAttributes: False
+                0... .... = deleteNamedType: False
+                .0.. .... = input: False
+                ..0. .... = output: False
+                ...0 .... = takeControl: False
+                .... 0... = relinquishControl: False
+                .... .0.. = defineSemaphore: False
+                .... ..0. = deleteSemaphore: False
+                .... ...0 = reportSemaphoreStatus: False
+                0... .... = reportPoolSemaphoreStatus: False
+                .0.. .... = reportSemaphoreEntryStatus: False
+                ..0. .... = initiateDownloadSequence: False
+                ...0 .... = downloadSegment: False
+                .... 0... = terminateDownloadSequence: False
+                .... .0.. = initiateUploadSequence: False
+                .... ..0. = uploadSegment: False
+                .... ...0 = terminateUploadSequence: False
+                0... .... = requestDomainDownload: False
+                .0.. .... = requestDomainUpload: False
+                ..0. .... = loadDomainContent: False
+                ...0 .... = storeDomainContent: False
+                .... 0... = deleteDomain: False
+                .... .1.. = getDomainAttributes: True
+                .... ..0. = createProgramInvocation: False
+                .... ...0 = deleteProgramInvocation: False
+                0... .... = start: False
+                .0.. .... = stop: False
+                ..0. .... = resume: False
+                ...0 .... = reset: False
+                .... 0... = kill: False
+                .... .0.. = getProgramInvocationAttributes: False
+                .... ..1. = obtainFile: True
+                .... ...0 = defineEventCondition: False
+                0... .... = deleteEventCondition: False
+                .0.. .... = getEventConditionAttributes: False
+                ..0. .... = reportEventConditionStatus: False
+                ...0 .... = alterEventConditionMonitoring: False
+                .... 0... = triggerEvent: False
+                .... .0.. = defineEventAction: False
+                .... ..0. = deleteEventAction: False
+                .... ...0 = getEventActionAttributes: False
+                0... .... = reportActionStatus: False
+                .0.. .... = defineEventEnrollment: False
+                ..0. .... = deleteEventEnrollment: False
+                ...0 .... = alterEventEnrollment: False
+                .... 0... = reportEventEnrollmentStatus: False
+                .... .0.. = getEventEnrollmentAttributes: False
+                .... ..0. = acknowledgeEventNotification: False
+                .... ...0 = getAlarmSummary: False
+                0... .... = getAlarmEnrollmentSummary: False
+                .1.. .... = readJournal: True
+                ..1. .... = writeJournal: True
+                ...1 .... = initializeJournal: True
+                .... 1... = reportJournalStatus: True
+                .... .0.. = createJournal: False
+                .... ..0. = deleteJournal: False
+                .... ...1 = getCapabilityList: True
+                1... .... = fileOpen: True
+                .1.. .... = fileRead: True
+                ..1. .... = fileClose: True
+                ...0 .... = fileRename: False
+                .... 1... = fileDelete: True
+                .... .1.. = fileDirectory: True
+                .... ..1. = unsolicitedStatus: True
+                .... ...1 = informationReport: True
+                0... .... = eventNotification: False
+                .0.. .... = attachToEventCondition: False
+                ..0. .... = attachToSemaphore: False
+                ...1 .... = conclude: True
+                .... 1... = cancel: True
+IEC-61850 Protocol
+    Associate
+        localDetailCalling: 65000
+        proposedMaxServOutstandingCalling: 10
+        proposedMaxServOutstandingCalled: 10
+        proposedDataStructureNestingLevel: 5
+        mmsInitRequestDetail
+            proposedVersionNumber: 1
+            proposedParameterCBB: f100
+                1... .... = str1: True
+                .1.. .... = str2: True
+                ..1. .... = vnam: True
+                ...1 .... = valt: True
+                .... 0... = vadr: False
+                .... .0.. = vsca: False
+                .... ..0. = tpy: False
+                .... ...1 = vlis: True
+                0... .... = real: False
+                .0.. .... = spare_bit9: False
+                ..0. .... = cei: False
+            servicesSupportedCalling: ee1c00000402000079ef18
+                1... .... = status: True
+                .1.. .... = getNameList: True
+                ..1. .... = identify: True
+                ...0 .... = rename: False
+                .... 1... = read: True
+                .... .1.. = write: True
+                .... ..1. = getVariableAccessAttributes: True
+                .... ...0 = defineNamedVariable: False
+                0... .... = defineScatteredAccess: False
+                .0.. .... = getScatteredAccessAttributes: False
+                ..0. .... = deleteVariableAccess: False
+                ...1 .... = defineNamedVariableList: True
+                .... 1... = getNamedVariableListAttributes: True
+                .... .1.. = deleteNamedVariableList: True
+                .... ..0. = defineNamedType: False
+                .... ...0 = getNamedTypeAttributes: False
+                0... .... = deleteNamedType: False
+                .0.. .... = input: False
+                ..0. .... = output: False
+                ...0 .... = takeControl: False
+                .... 0... = relinquishControl: False
+                .... .0.. = defineSemaphore: False
+                .... ..0. = deleteSemaphore: False
+                .... ...0 = reportSemaphoreStatus: False
+                0... .... = reportPoolSemaphoreStatus: False
+                .0.. .... = reportSemaphoreEntryStatus: False
+                ..0. .... = initiateDownloadSequence: False
+                ...0 .... = downloadSegment: False
+                .... 0... = terminateDownloadSequence: False
+                .... .0.. = initiateUploadSequence: False
+                .... ..0. = uploadSegment: False
+                .... ...0 = terminateUploadSequence: False
+                0... .... = requestDomainDownload: False
+                .0.. .... = requestDomainUpload: False
+                ..0. .... = loadDomainContent: False
+                ...0 .... = storeDomainContent: False
+                .... 0... = deleteDomain: False
+                .... .1.. = getDomainAttributes: True
+                .... ..0. = createProgramInvocation: False
+                .... ...0 = deleteProgramInvocation: False
+                0... .... = start: False
+                .0.. .... = stop: False
+                ..0. .... = resume: False
+                ...0 .... = reset: False
+                .... 0... = kill: False
+                .... .0.. = getProgramInvocationAttributes: False
+                .... ..1. = obtainFile: True
+                .... ...0 = defineEventCondition: False
+                0... .... = deleteEventCondition: False
+                .0.. .... = getEventConditionAttributes: False
+                ..0. .... = reportEventConditionStatus: False
+                ...0 .... = alterEventConditionMonitoring: False
+                .... 0... = triggerEvent: False
+                .... .0.. = defineEventAction: False
+                .... ..0. = deleteEventAction: False
+                .... ...0 = getEventActionAttributes: False
+                0... .... = reportActionStatus: False
+                .0.. .... = defineEventEnrollment: False
+                ..0. .... = deleteEventEnrollment: False
+                ...0 .... = alterEventEnrollment: False
+                .... 0... = reportEventEnrollmentStatus: False
+                .... .0.. = getEventEnrollmentAttributes: False
+                .... ..0. = acknowledgeEventNotification: False
+                .... ...0 = getAlarmSummary: False
+                0... .... = getAlarmEnrollmentSummary: False
+                .1.. .... = readJournal: True
+                ..1. .... = writeJournal: True
+                ...1 .... = initializeJournal: True
+                .... 1... = reportJournalStatus: True
+                .... .0.. = createJournal: False
+                .... ..0. = deleteJournal: False
+                .... ...1 = getCapabilityList: True
+                1... .... = fileOpen: True
+                .1.. .... = fileRead: True
+                ..1. .... = fileClose: True
+                ...0 .... = fileRename: False
+                .... 1... = fileDelete: True
+                .... .1.. = fileDirectory: True
+                .... ..1. = unsolicitedStatus: True
+                .... ...1 = informationReport: True
+                0... .... = eventNotification: False
+                .0.. .... = attachToEventCondition: False
+                ..0. .... = attachToSemaphore: False
+                ...1 .... = conclude: True
+                .... 1... = cancel: True
+

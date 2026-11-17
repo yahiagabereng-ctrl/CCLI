@@ -1,0 +1,14 @@
+6571986abeb2fb998683738239a2c66f1517e06f5163f58513788a8a514539b4  /etc/ccli/rbac-dual/package/commissioning-manifest.xml
+d9461c767b16e210acc0270bcd5672f416da177e8b865c4277c3c9663db19a3e  /etc/ccli/rbac-dual/package/commissioning-policy.xml
+41385c990f18b7530a97cb86feb5bb8cb3e7da4257d22a6167b9f4c33373209b  /etc/ccli/rbac-dual/package/commissioning-scopes.xml
+a3cfa2b5419342c4df48c2e1279ed9c0ec9351411a6b5906814c7148a4a5c60e  /etc/ccli/rbac-dual/package/identity-bindings.xml
+c984e3ace0e0e2efeb1e7ee864a36ee430d8411bb172c78d52e098784e337df1  /etc/ccli/rbac-dual/package/permission-library.xml
+1107
+Mon Oct 19 18:01:36 2026 daemon.debug seriald[4679]: Port 3: Serial port has data, attempting read
+Mon Oct 19 18:01:36 2026 daemon.debug seriald[4679]: Port 3: Attempting to read from serial port fd=12
+Mon Oct 19 18:01:36 2026 daemon.debug seriald[4679]: Port 3: read() returned 0, errno=0 (No error information)
+Mon Oct 19 18:01:36 2026 daemon.debug seriald[4679]: Port 3: serial_port_read returned 0
+Mon Oct 19 18:01:36 2026 daemon.debug seriald[4679]: Port 3: serial_port_read returned 0 (no data)
+Mon Oct 19 18:01:36 2026 daemon.err ccli[1107]: modbus: FC3 ReadHoldingRegisters unit=1 addr=100001 qty=6 -> P=10kW Q=1kvar raw=0x4120 0x0000 0x3f80 0x0000 0x43c8 0x4000 P=10kW pf2=ok curtail=no DO=OFF
+Mon Oct 19 18:01:38 2026 authpriv.info dropbear[17109]: Child connection from 192.168.0.137:50234
+Mon Oct 19 18:01:38 2026 authpriv.notice dropbear[17109]: Password auth succeeded for 'root' from 192.168.0.137:50234

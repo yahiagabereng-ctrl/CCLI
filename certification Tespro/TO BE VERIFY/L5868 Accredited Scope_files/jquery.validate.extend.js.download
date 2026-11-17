@@ -1,0 +1,336 @@
+/**
+ * 修改validator的设置
+ * 1、改变其错误输出方式，变成弹出错误，且焦点放于错误组件上
+ * 2、屏蔽 onkeyup 和 onfocusout 事件
+ * 
+ */
+$.validator.setDefaults({
+	submitHandler: function() {  },
+	showErrors:function(){
+		
+			for ( var i = 0; this.errorList[i]; i++ ) {
+				var error = this.errorList[i];
+		
+				alert(error.message );
+				try{
+				error.element.focus();
+				}catch(e){}
+				return;
+			}
+			
+	}
+	,
+	onfocusout: function(element) {
+	},
+	onkeyup: function(element) {
+	}
+});
+
+// 邮政编码验证    
+// 六个0-9间的数字
+$.validator.addMethod("zip", function(value, element) {    
+  var tel = /^[0-9]{6}$/;
+  return this.optional(element) || (tel.test(value));    
+}, "请正确填写您的邮政编码");
+$.validator.addMethod("nums",function(value,element){
+    var regex = /^(\d+)(,\d+)*$/;
+    return this.optional(element) || (regex.test(value));
+}, "只能输入以逗号分割的数字");   
+//中文长度验证
+jQuery.validator.addMethod("byteRangeLength", function(value, element, param) {    
+	var length = value.length;    
+	  for(var i = 0; i < value.length; i++){
+		  var clength = value.charCodeAt(i);
+	   if(clength >= 128 && clength <= 2047){//特殊字符2位    
+		   length+=1;    
+	   }else if(clength > 2047){//中文3位
+		   length += 2;
+	   }
+	  }
+	  return this.optional(element) || ( length >= param[0] && length <= param[1] );     
+}, jQuery.format("请确保输入{0}~{1}个字节(一个中文字算3个字节)"));  
+
+//增加正则表达式验证
+jQuery.validator.addMethod("regexp",function(value,element,param){
+	var regexp = param;
+	return this.optional(element) || regexp.test(value);
+},"验证格式错误！");
+
+//--身份证号码验证-支持新的带x身份证
+// 身份证号码验证    
+// 验证其中的日期段是否是日期
+
+jQuery.validator.addMethod("idcardno", function(value, element) {    
+  return this.optional(element) || isIdCardNo(value);    
+}, "请正确输入您的身份证号码");    
+  
+function isIdCardNo(num)
+{
+    var factorArr = new Array(7,9,10,5,8,4,2,1,6,3,7,9,10,5,8,4,2,1);
+    var error;
+    var varArray = new Array();
+    var intValue;
+    var lngProduct = 0;
+    var intCheckDigit;
+    var intStrLen = num.length;
+    var idNumber = num;
+    // initialize
+    if ((intStrLen != 15) && (intStrLen != 18)) {
+         error = "输入身份证号码长度不对！";
+         // alert(error);
+         //frmAddUser.txtIDCard.focus();
+         return false;
+     }
+     // check and set value
+     for(i=0;i<intStrLen;i++) {
+         varArray[i] = idNumber.charAt(i);
+         if ((varArray[i] < '0' || varArray[i] > '9') && (i != 17)) {
+             error = "错误的身份证号码！.";
+             // alert(error);
+             //frmAddUser.txtIDCard.focus();
+             return false;
+         } else if (i < 17) {
+             varArray[i] = varArray[i]*factorArr[i];
+         }
+     }
+     if (intStrLen == 18) {
+         //check date
+         var date8 = idNumber.substring(6,14);
+         if (checkDate(date8) == false) {
+             error = "身份证中日期信息不正确！.";
+             // alert(error);
+             return false;
+        }
+         // calculate the sum of the products
+         for(i=0;i<17;i++) {
+             lngProduct = lngProduct + varArray[i];
+         }
+         // calculate the check digit
+         intCheckDigit = 12 - lngProduct % 11;
+         switch (intCheckDigit) {
+             case 10:
+                 intCheckDigit = 'X';
+                 break;
+             case 11:
+                 intCheckDigit = 0;
+                 break;
+             case 12:
+                 intCheckDigit = 1;
+                 break;
+         }
+         // check last digit
+         if (varArray[17].toUpperCase() != intCheckDigit) {
+             error = "身份证效验位错误!正确为： " + intCheckDigit + ".";
+             // alert(error);
+             return false;
+         }
+     }
+     else{        //length is 15
+         //check date
+         var date6 = idNumber.substring(6,12);
+         if (checkDate(date6) == false) {
+             // alert("身份证日期信息有误！.");
+             return false;
+         }
+     }
+     // alert ("Correct.");
+     return true;
+ }
+
+/**
+*	使用正则表达式，判定格式 为 yyyymmdd 的，月日可以是单个数字
+	使用js 的Date 对象判定此时间的合法性
+*
+*/
+function checkDate(theDate){
+  var reg = /^\d{4}((0{0,1}[1-9]{1})|(1[0-2]{1}))((0{0,1}[1-9]{1})|([1-2]{1}[0-9]{1})|(3[0-1]{1}))$/;  
+  var result=true;
+  if(!reg.test(theDate))
+    result = false;
+  else{
+    var arr_hd=new Array(3);
+	arr_hd[0] = theDate.substr(0,4);
+	arr_hd[1] = theDate.substr(4,2);
+	arr_hd[2] = theDate.substr(6,2);
+
+    var dateTmp;
+    dateTmp= new Date(arr_hd[0],parseFloat(arr_hd[1])-1,parseFloat(arr_hd[2]));
+    if(dateTmp.getFullYear()!=parseFloat(arr_hd[0])
+       || dateTmp.getMonth()!=parseFloat(arr_hd[1]) -1 
+        || dateTmp.getDate()!=parseFloat(arr_hd[2])){
+        result = false
+    }
+  }
+  return result;
+}
+
+
+// 手机号码验证    
+// 必须是11 位
+// 前两位是13或者15后面加九位数字
+jQuery.validator.addMethod("mobile", function(value, element) {    
+  var length = value.length;    
+  return this.optional(element) || (/^(1[3-9][0-9])?\d{8}$/.test(value));    
+}, "请正确填写您的手机号码");    
+  
+// 电话号码验证    
+// 不带中线的，七到九位数字
+// 带中线的 前面是3到4位数字，后面是7到九位数字
+jQuery.validator.addMethod("phone", function(value, element) {    
+//  var tel = /^(\d{3,4}-?)?\d{7,9}(-\d{1,4})?$/g; 
+  var tel = /^[\d-\/\;\,\(\)\s]{7,50}$/g;
+  
+  return this.optional(element) || (tel.test(value));    
+}, "请正确填写您的电话号码");    
+
+// 只能输入有两位小数的正实数：“^[0-9]+(.[0-9]{2})?$”
+// 钱数验证    
+//  要么带两位小数的数字，要么不带小数点
+jQuery.validator.addMethod("currency", function(value, element) {    
+  //var tel = /^[0-9]+(.[0-9]{2})?$/g;    
+  var tel =  /^[0-9]+(\.[0-9]{1,2})?$/g;
+  return this.optional(element) || (tel.test(value));    
+}, "请填写正确的钱币数");    
+
+ 
+// 只能输入有两位小数的正实数：“^[0-9]+(.[0-9]{2})?$”
+// 面积数字验证    
+// 要么带两位小数的数字，要么不带小数点
+jQuery.validator.addMethod("area", function(value, element) {    
+  var tel = /^[0-9]+(\.[0-9]{2})?$/g;    
+  return this.optional(element) || (tel.test(value));    
+}, "请填写正确的面积数");    
+
+jQuery.validator.addMethod("realnum", function(value, element) {    
+	  var tel = /^[0-9]+(\.[0-9]+)?$/g;    
+	  return this.optional(element) || (tel.test(value));    
+}, "请填写正确的正实数");    
+//非负整数
+jQuery.validator.addMethod("pint", function(value, element) {    
+	  var tel = /^([1-9]\d*|0)$/g;    
+	  return this.optional(element) || (tel.test(value));    
+}, "请填写正确的非负整数");
+// 
+// 组织机构代码验证    
+jQuery.validator.addMethod("orgcode", function(value, element) {    
+    
+  return this.optional(element) || checkOrgCode(value);    
+}, "请填写正确的组织机构代码");  
+
+function checkOrgCode(obj){
+
+		var objValue=obj;
+	//	alert('objValue'+objValue);
+	    var post=[3,7,9,10,5,8,4,2];
+	    var ch=['0','1','2','3','4','5','6','7','8','9',
+	    'A','B','C','D','E','F','G','H','I','J','K','L',
+	    'M', 'N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
+
+		var charToNumber = {
+					'0':0,'1':1,'2':2,'3':3,
+					'4':4,'5':5,'6':6,'7':7,
+					'8':8,'9':9,'A':10,'B':11,
+					'C':12,'D':13,'E':14,'F':15,
+					'G':16,'H':17,'I':18,'J':19,
+					'K':20,'L':21,'M':22,'N':23,
+					'O':24,'P':25,'Q':26,'R':27,
+					'S':28,'T':29,'U':30,'V':31,
+					'W':32,'X':33,'Y':34,'Z':35
+				}
+   
+		 try{
+
+
+			var reg =/^((\d|[A-Z]){8}-?)((\d|[A-Z]){1})$/g;
+			if(reg.test(objValue)){
+				// alert("符合格式！");	
+			}else{
+				return false;
+				// alert("不符合！");
+			}
+
+	        var charArr = new Array();
+	        for (var i = 0; i < objValue.length; i++) charArr[i] = objValue.charAt(i);
+	        var total=0;
+	        for(var i=0;i<8;i++){
+	            var chV=-1;
+				chV = charToNumber[charArr[i]];
+	            total+=chV*post[i];
+	        }
+	        total=11-(total%11);
+	        var last;
+	        if (10==total){
+	                last='X';
+	        }else if (11==total){
+	                last='0';
+	        }
+	        else{
+	            last=(48+total);
+	            last=String.fromCharCode(last);
+	        }
+
+	        if (charArr.length==9){
+	            if(last==charArr[8]){
+	           //  alert('2');
+	                    return true;
+	            }else {
+					// alert('组织机构代码验证错误！');
+	                    return false;
+	            }
+	        } else{
+	            if(last==charArr[9]){
+	          //     alert('1');
+	                    return true;
+	            }else {
+					// alert('组织机构代码验证错误！');
+	                    return false;
+	            }
+	        }
+	    }catch(e){
+	          //   alert('发生异常！');
+	         //   alert(e);
+	            return false;
+	    }
+	}
+jQuery.validator.addMethod("date", function(value, element) {
+  return this.optional(element) || checkDateFormat(value);   
+}, "请填写正确的日期");    
+
+/**
+*	使用正则表达式，判定格式 为 yyyy-mm-dd 的，月日可以是单个数字
+	使用js 的Date 对象判定此时间的合法性
+*
+*/
+function checkDateFormat(theDate){
+  var reg = /^\d{4}-((0{0,1}[1-9]{1})|(1[0-2]{1}))-((0{0,1}[1-9]{1})|([1-2]{1}[0-9]{1})|(3[0-1]{1}))$/;  
+  var result=true;
+  if(!reg.test(theDate))
+    result = false;
+  else{
+    var arr_hd=theDate.split("-");
+    var dateTmp;
+    dateTmp= new Date(arr_hd[0],parseFloat(arr_hd[1])-1,parseFloat(arr_hd[2]));
+    if(dateTmp.getFullYear()!=parseFloat(arr_hd[0])
+       || dateTmp.getMonth()!=parseFloat(arr_hd[1]) -1 
+        || dateTmp.getDate()!=parseFloat(arr_hd[2])){
+        result = false
+    }
+  }
+  return result;
+}
+
+function __getUtf8Length(value){   
+	if (!value){
+		return 0;
+	}
+	var length = value.length;    
+	  for(var i = 0; i < value.length; i++){
+		  var clength = value.charCodeAt(i);
+	   if(clength >= 128 && clength <= 2047){//特殊字符2位    
+		   length+=1;    
+	   }else if(clength > 2047){//中文3位
+		   length += 2;
+	   }
+	 }
+	return length;   
+}   

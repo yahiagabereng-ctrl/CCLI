@@ -3,6 +3,7 @@
 #include "measurement/pdc_mmxu_phasors.hpp"
 
 #include <cstdint>
+#include <mutex>
 #include <string>
 
 namespace cci::core {
@@ -36,6 +37,7 @@ public:
     Measurement snapshot() const;
 
 private:
+    mutable std::mutex mutex_;
     Measurement latest_{};
 };
 

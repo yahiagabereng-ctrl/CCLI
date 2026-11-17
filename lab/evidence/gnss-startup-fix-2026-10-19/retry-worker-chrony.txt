@@ -1,0 +1,29 @@
+Mon Oct 19 14:02:23 UTC 2026
+Reference ID    : 00000000 ()
+Stratum         : 0
+Ref time (UTC)  : Thu Jan 01 00:00:00 1970
+System time     : 0.000000000 seconds fast of NTP time
+Last offset     : +0.000000000 seconds
+RMS offset      : 0.000000000 seconds
+Frequency       : 0.000 ppm slow
+Residual freq   : +0.000 ppm
+Skew            : 0.000 ppm
+Root delay      : 1.000000000 seconds
+Root dispersion : 1.000000000 seconds
+Update interval : 0.0 seconds
+Leap status     : Not synchronised
+
+  .-- Source mode  '^' = server, '=' = peer, '#' = local clock.
+ / .- Source state '*' = current best, '+' = combined, '-' = not combined,
+| /             'x' = may be in error, '~' = too variable, '?' = unusable.
+||                                                 .- xxxx [ yyyy ] +/- zzzz
+||      Reachability register (octal) -.           |  xxxx = adjusted offset,
+||      Log2(Polling interval) --.      |          |  yyyy = measured offset,
+||                                \     |          |  zzzz = estimated error.
+||                                 |    |           \
+MS Name/IP address         Stratum Poll Reach LastRx Last sample               
+===============================================================================
+#? GNSS                          0   4     3     9   -1983s[ -1983s] +/-  250ms
+Mon Oct 19 22:01:21 2026 user.notice gnss: GNSS receiver verified powered on; awaiting satellite fix separately
+Mon Oct 19 22:01:49 2026 daemon.err sh[3955]: gnss_chrony_sock: sample offset_ms=1983208 ok
+Mon Oct 19 22:02:13 2026 daemon.err sh[3955]: gnss_chrony_sock: sample offset_ms=1983111 ok

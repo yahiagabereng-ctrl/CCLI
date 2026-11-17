@@ -1,0 +1,588 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0246)https://www.cnas.org.cn/LAS_FQ/publish/orgBaseInfoScopePartEn.jsp?id=bbcbbc33ca5c4c488c02a62fbc1fc8ae&baseInfoId=f6808888cdf947a5bdb6951c4cda2417&labType=L&scopeStr=decideStd_abilityL1_signPerson_keyBranch_&orgEnOrCh=En&licNo=L5868&certUpdateTs=1 -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+	
+<title>L5868  Accredited Scope</title>
+<script>window.isomorphicDir='/LAS_FQ/isomorphic/';</script>
+<script src="./L5868 Accredited Scope_files/ISC_Core.js.download"></script><script>isc._lastModule='Core';</script>
+<script src="./L5868 Accredited Scope_files/ISC_Foundation.js.download"></script><script>isc._lastModule='Foundation';</script>
+<script src="./L5868 Accredited Scope_files/ISC_Containers.js.download"></script><script>isc._lastModule='Containers';</script>
+<script src="./L5868 Accredited Scope_files/ISC_Grids.js.download"></script><script>isc._lastModule='Grids';</script>
+<script src="./L5868 Accredited Scope_files/ISC_Forms.js.download"></script><script>isc._lastModule='Forms';</script>
+<script src="./L5868 Accredited Scope_files/ISC_DataBinding.js.download"></script><script>isc._lastModule='DataBinding';</script>
+<script src="./L5868 Accredited Scope_files/ISC_Drawing.js.download"></script><script>isc._lastModule='Drawing';</script>
+<script src="./L5868 Accredited Scope_files/load_skin.js.download"></script><link rel="stylesheet" type="text/css" href="./L5868 Accredited Scope_files/skin_styles.css">
+
+<script type="text/javascript" src="./L5868 Accredited Scope_files/jquery.min.js.download"></script>
+<script type="text/javascript" src="./L5868 Accredited Scope_files/isc-tabset-ext.js.download"></script>
+<script type="text/javascript" src="./L5868 Accredited Scope_files/public_publish.js.download"></script> 
+
+</head>
+<body class="yui-skin-sam">
+﻿
+<script type="text/javascript">
+var msgInfoMsgStr = "<img src='/LAS_FQ/images/common/msg-info.png'/>";
+var msgErrorMsgStr = "<img src='/LAS_FQ/images/common/msg-error.png'/>";
+var msgAlertMsgStr = "<img src='/LAS_FQ/images/common/msg-alert.png'/>";
+var _closeTemplate="<img src='/LAS_FQ/images/common/msg-close.png'/>";
+
+var _topWindowArray = new Array();
+var _topWindowMap = {};
+
+
+var toSlientPrinting=function(params){
+	slientPrintWindow.items[0].setContentsURL("/LAS_FQ/framework/slientPrint.jsp"+params);
+	slientPrintWindow.show();
+};
+
+var closeSlientPrinting=function(){
+	slientPrintWindow.closeClick();
+};
+
+
+function showM(msg) {
+		var message = {
+			type : "info",
+			text : msg
+		};
+		try {
+			showMessage(message);
+		} catch (e) {
+			alert(e);
+		}
+	}
+	
+
+	function getMessageHeader(_type){
+		var v="<div>";
+		switch (_type){
+			case 'info':
+				v+=msgInfoMsgStr;
+				v+="消息";
+				v+="</div>";
+				break;
+			case 'error':
+				v+=msgErrorMsgStr;
+				v+="错误消息";
+				v+="</div>";
+				break;
+			case 'alert':
+				v+=msgAlertMsgStr;
+				v+="通知";
+				v+="</div>";
+				break;
+			default:
+				v+=msgInfoMsgStr;
+				v+="消息";
+				v+="</div>";
+				break;
+		}
+		return v;
+	}
+	function  getMessage(_message,_type){
+		return _message;
+	}
+	
+	function showMessage(message) {
+		var _type = 'info';
+ 		var _message=message["text"];
+		var _stickyV = false;
+		var _header="";
+		var _expire = message["expire"]?message["expire"]:5000;
+		var _theme ='info'; 
+		if (message["type"]) {
+			_type = message["type"].toLowerCase() == 'error' ? 'error' : message["type"].toLowerCase();
+			//_expire = _type== 'info' ? 5000 : 5000;
+			_header=getMessageHeader(_type);
+			_message=getMessage(_message,_type);
+			if (_type == 'error') {
+				_stickyV = true;
+				_theme ='error'; 
+			}else if (_type == 'alert') {
+				_stickyV = true;
+				_theme ='alert'; 
+			}else if (_type == 'info') {
+				_stickyV = false;
+				_theme ='info'; 
+			}else{
+				_stickyV = false;
+				_theme ='info';
+			}
+		}
+		
+		$.jGrowl(_message, {
+			header :_header,
+			closeTemplate:_closeTemplate,
+			theme : _type,
+			life : _expire,
+			sticky : _stickyV,
+			closer : true,
+			theme: _theme
+		});
+	}
+ 
+
+	
+	var getNewTopWindow = function(params) {
+		var id = "topWindow" + _topWindowArray.length;
+		var v = _topWindowMap[id];
+
+		if (!v || v == null) {
+			v = _newTopWindow(params);
+			_topWindowMap[id] = v;
+		} else {
+			_updateTopWindow(v, params);
+		}
+		_topWindowArray.push(v);
+		var url = params.url;
+		if(params.data){
+			url = addUrlParam(url, coverParamData(params.data));
+		}
+		v.items[0].setContentsURL(url);
+		v.show();
+	};
+
+	var _updateTopWindow = function(window, params) {
+		window.setTitle(isc.propertyDefined(params, "title") ? params.title
+				: '');
+		window.setWidth(isc.propertyDefined(params, "width") ? params.title
+				: '100%');
+		window.setHeight(isc.propertyDefined(params, "height") ? params.title
+				: '100%');
+		autoSize : isc.propertyDefined(params, "autoSize") ? params.autoSize
+				: false;
+		window.refreshObj = _updateTopWindow.refreshObj;
+		window.refreshMethod = isc.propertyDefined(params, "refreshMethod") ? params.refreshMethod
+				: null;
+		window.autoRefresh = isc.propertyDefined(params, "autoRefresh") ? params.autoRefresh
+				: false;
+	};
+
+	var closeCurrentTopWindow = function(params) {
+		getCurrentTopWindow().closeClick(params);
+	};
+
+	var refreshCurrentTopWindowOpener = function(params) {
+		getCurrentTopWindow().forceRefresh(params);
+	};
+	var topWinClose = function(param){
+		closeCurrentTopWindow(param);
+	}
+	//topwin的刷新当前窗口
+	var topWinRefresh = function(param){
+		/* if(param == null){
+			param = {};
+		}
+		if(param.winlvl==null){
+			param.winlvl = _topWindowArray.length-1;
+		}
+		var rmethod = _topWindowArray[param.winlvl].refreshMethod;
+		var robj = _topWindowArray[param.winlvl].refreshObj;
+		_runrmethod(rmethod, robj, param); */
+		refreshCurrentTopWindowOpener(param);
+	};
+	/**
+	*设置页面关闭刷新
+	*/
+	function topWinSetAutoRefresh(){
+		var _win = getCurrentTopWindow();
+		if(_win){
+			_win.autoRefresh=true;
+		}
+	}
+	//topwin的刷新父窗口并关闭当前窗口
+ 	var topWinCloseRefresh=function(param){
+ 		 if(param == null){
+			param = {};
+		}
+ 		/*if(param.winlvl==null){
+			param.winlvl = _topWindowArray.length-1;
+		}
+		var rmethod = _topWindowArray[param.winlvl].refreshMethod;
+		var robj = _topWindowArray[param.winlvl].refreshObj;
+ 		closeCurrentTopWindow(param);
+ 		_runrmethod(rmethod, robj, param); */
+ 		param.refresh=true;
+ 		closeCurrentTopWindow(param);
+ 	};
+ 	
+ 	function _runrmethod(_method, _obj, _param){
+ 		if(_method){
+			if(typeof(_method)=='string'){
+				_runObjFunction(_obj, _method, _param);
+			}else{
+				_method(_param);
+			}
+		}
+ 	}
+ 	
+	var getCurrentTopWindow = function() {
+		if (_topWindowArray.length != 0) {
+			return _topWindowArray[_topWindowArray.length - 1];
+		} else {
+			return null;
+		}
+	};
+
+	var _newTopWindow = function(params) {
+
+		var _topWindow = isc.Window.create({
+			ID : "topWindow" + _topWindowArray.length,
+			title : isc.propertyDefined(params, "title") ? params.title: '',
+			width : isc.propertyDefined(params, "width") ? params.width: '100%',
+			height : isc.propertyDefined(params, "height") ? params.height: '100%',
+			autoSize : isc.propertyDefined(params, "autoSize") ? params.autoSize: false,
+			autoCenter : true,
+			isModal : true,
+			showModalMask : true,
+			showMaximizeButton : true,
+			showMinimizeButton : false,
+			autoDraw : false,
+			subCallBack : "",
+			canDragReposition : isc.propertyDefined(params, "canDragReposition") ? params.canDragReposition: true,
+			canDragResize : true,
+			refreshObj : params.refreshObj,
+			refreshMethod : isc.propertyDefined(params, "refreshMethod") ? params.refreshMethod: null,
+			autoRefresh : isc.propertyDefined(params, "autoRefresh") ? params.autoRefresh: false,
+			showCloseButton : isc.propertyDefined(params, "showCloseButton") ? params.showCloseButton: true,		
+			closeClick : function() {
+				try {
+					var v = _topWindowArray.pop();
+					delete _topWindowMap[v.ID];
+					_topWindowArray.remove(_topWindowArray.length - 1);
+					eval(this.subCallBack);
+				} catch (e) {}
+				this.Super("closeClick", arguments);
+				this.clearURL({url : ""});
+				var param = arguments[0];
+				if (this.autoRefresh|| (isc.propertyDefined(param, "refresh") && param.refresh)) {
+					try {
+						if (this.refreshMethod == null) {
+							_runObjFunction(this.refreshObj, "_requery");
+						} else if(typeof(this.refreshMethod)=='function'){
+							this.refreshMethod(param);
+						}else{
+							_runObjFunction(this.refreshObj,this.refreshMethod, param);
+						}
+					} catch (e) {}
+				}
+			},
+			forceRefresh : function() {
+				try {
+					var param = arguments[0];
+					if (this.refreshMethod == null) {
+						_runObjFunction(this.refreshObj, "_requery");
+					} else if(typeof(this.refreshMethod)=='function'){
+						this.refreshMethod(param);
+					} else {
+						_runObjFunction(this.refreshObj,this.refreshMethod,param);
+					}
+				} catch (e) {}	 
+			},
+			clearURL : function(params) {
+				this.items[0].setContentsURL("");
+			},
+			items : [ isc.HTMLPane.create({contentsURL : "",contentsType : "page"}) ],
+			openParam:params
+		});
+		return _topWindow;
+	};
+	
+	
+	
+	var _newTopAlertWindow = function(params) {
+
+		var _topAlertWindow = isc.Window.create({
+			ID : "topAlertWindow" + _topWindowArray.length,
+			title : isc.propertyDefined(params, "title") ? params.title: '',
+			width : isc.propertyDefined(params, "width") ? params.width: '100%',
+			height : isc.propertyDefined(params, "height") ? params.height: '100%',
+			autoSize : isc.propertyDefined(params, "autoSize") ? params.autoSize: false,
+			autoCenter : true,
+			isModal : true,
+			showModalMask : true,
+			showMaximizeButton : true,
+			showMinimizeButton : false,
+			autoDraw : false,
+			subCallBack : "",
+			canDragReposition : isc.propertyDefined(params, "canDragReposition") ? params.canDragReposition: true,
+			canDragResize : true,
+		 
+			closeClick : function() {
+				try {
+					this.hide();
+				 this.items[0].destroy();
+				} catch (e) {}
+				this.Super("closeClick", arguments);
+			}, 
+			items : [ isc.HTMLPane.create({contents : params.contents}) ]
+		});
+		return _topAlertWindow;
+	};
+	
+ 
+ 
+	var slientPrintWindow = isc.Window.create({
+			ID : "slientPrint",
+			title : "打印",
+			width : '300',
+			height :  '200',
+			autoSize :false,
+			autoCenter : true,
+			isModal : true,
+			showModalMask : true,
+			showMaximizeButton : false,
+			showMinimizeButton : false,
+			autoDraw : false,
+		 
+			closeClick : function() {
+				try {
+					this.hide();
+				 this.items[0].destroy();
+				} catch (e) {}
+				this.Super("closeClick", arguments);
+			}, 
+			 
+			items : [ isc.HTMLPane.create({contentsURL : "",contentsType : "page"}) ]
+		});
+ 
+	
+	
+
+	/***
+	 *  params.url
+	 params.refreshObj 调用页面 self
+	 params.refreshMethod 默认为_query
+	 params.autoRefresh 是否关闭windows 自动执行刷新 默认是 true 是否是false 则调用close方法时 close(refresh:true) 刷新
+	 *
+	 */
+	var openTopWindow = function(params) {
+
+		getNewTopWindow(params);
+
+	};
+	function _runObjFunction(){
+		var obj = arguments[0];
+		var methodName = arguments[1];
+		var param = arguments[2];
+		var pass = false;
+		if(eval('obj.'+methodName) != null){
+			pass = true;
+			if(param == null){
+				eval('obj.'+methodName+'()');
+			}else{
+				//alert(param);
+				eval('obj.'+methodName)(param);
+			}
+		}
+		return pass;
+	}
+
+	
+	$(document).ready(function () {
+		 
+		//$.jGrowl.defaults.closerTemplate = '<div>关闭所有消息</div>';
+
+ 
+ 	});
+	/**
+	*打开公告提示
+	*param title,noticeUrl,runFun
+	*/
+	function openPublicNotice(param){
+		if(typeof(PublicNoticeWin)!="undefined"){
+			try{
+				PublicNoticeWin.destroy();
+			}catch(e){}
+		}
+		param.ID="PublicNoticeWin";
+		mergeAddAttr(param, {
+			title:"公告"
+			,width:"85%"
+			,height:"80%"
+			,autoCenter : true
+			,showMaximizeButton : false
+			,showMinimizeButton : false
+			,isModal : true
+			,showModalMask : true
+			,items : [ 
+				isc.VLayout.create({
+				    width: "100%"
+				    ,height: "100%"
+				    ,layoutMargin:5
+	 				,defaultLayoutAlign: "center"
+	 				,autoDraw : false
+				    ,members: [
+				        isc.HTMLFlow.create({
+				            padding:5,
+				            height: "*",
+				            contentsURL : param.noticeUrl
+	                        ,contentsType : "page"
+	                        ,autoDraw : false
+				        }),
+				        isc.Button.create({
+				        	width:60
+				            ,title: "关闭"
+				            ,autoDraw : false
+				            ,click: function () {
+				            	PublicNoticeWin.closeClick();
+				            }
+				        })
+				    ]
+				})
+			]
+			,closeClick:function(){
+				try {
+					this.hide();
+				 	this.items[0].destroy();
+				} catch (e) {}
+				this.Super("closeClick", arguments);
+				if(this.runFun){
+					this.runFun();
+				}
+			}
+		});
+		var nWin = isc.Window.create(param);
+	}
+	
+	
+/**
+ * 对话框处理
+ */
+function askDialog(param){
+	isc.Dialog.create($.extend({
+		  title:'对话框',
+	      //message : '',
+	      canDragReposition:true,
+	      pass:true,
+	      buttons : [isc.Dialog.OK,isc.Dialog.CANCEL],
+	      buttonClick:function(button, index){
+	    	  if(this.pass){
+	 		   	  this.destroy();
+	    	  }else{
+	    		  this.pass = true;
+	    	  }
+	      },
+	      getAskEl:function(){
+	    	  return this.getOuterElement();
+	      }
+		  //okClick
+	  },param));
+}
+</script><table cellpadding="81" style="position:absolute;left:0px;top:-2000px;"><tbody><tr><td id="isc_cellStyleTester" class="tabSetContainer">&nbsp;</td><td id="isc_cellNoStyleTester">&nbsp;</td></tr></tbody></table><div id="isc_styleTester" style="position:absolute;left:0px;top:-2000px;" class="tabSetContainer">&nbsp;</div>
+ 
+	<div id="dialog1">
+		<div class="hd"></div>
+		<div class="bd">
+		<iframe id="sCont1" src="./L5868 Accredited Scope_files/saved_resource.html" scrolling="no" width="0" height="0" frameborder="0"></iframe>
+		<iframe id="autoScrollIframe" src="./L5868 Accredited Scope_files/saved_resource(1).html" width="0" height="0" scrolling="yes" frameborder="0"></iframe>
+		</div>
+	</div>
+
+
+<!-- 多层次的dialog -->
+	<div id="dlog0">
+		<div class="hd"></div>
+		<div class="bd">
+			<iframe id="dlog0_cont" src="./L5868 Accredited Scope_files/saved_resource(2).html" scrolling="no" width="0" height="0" frameborder="0"></iframe>
+			<iframe id="dlog0_autoScrollIframe" src="./L5868 Accredited Scope_files/saved_resource(3).html" width="0" height="0" scrolling="yes" frameborder="0"></iframe>
+	
+		</div>
+	</div>
+
+	<div id="dlog1">
+		<div class="hd"></div>
+		<div class="bd">
+			<iframe id="dlog1_cont" src="./L5868 Accredited Scope_files/saved_resource(4).html" scrolling="no" width="0" height="0" frameborder="0"></iframe>
+			<iframe id="dlog1_autoScrollIframe" src="./L5868 Accredited Scope_files/saved_resource(5).html" width="0" height="0" scrolling="yes" frameborder="0"></iframe>
+		</div>
+	</div>
+
+	<div id="dlog2">
+		<div class="hd"></div>
+		<div class="bd">
+			<iframe id="dlog2_cont" src="./L5868 Accredited Scope_files/saved_resource(6).html" scrolling="no" width="0" height="0" frameborder="0"></iframe>
+			<iframe id="dlog2_autoScrollIframe" src="./L5868 Accredited Scope_files/saved_resource(7).html" width="0" height="0" scrolling="yes" frameborder="0"></iframe>
+		</div>
+	</div>
+	<div id="dlog3">
+		<div class="hd"></div>
+		<div class="bd">
+			<iframe id="dlog3_cont" src="./L5868 Accredited Scope_files/saved_resource(8).html" scrolling="no" width="0" height="0" frameborder="0"></iframe>
+			<iframe id="dlog3_autoScrollIframe" src="./L5868 Accredited Scope_files/saved_resource(9).html" width="0" height="0" scrolling="yes" frameborder="0"></iframe>
+		</div>
+	</div>
+	<div id="dlog4">
+		<div class="hd"></div>
+		<div class="bd">
+			<iframe id="dlog4_cont" src="./L5868 Accredited Scope_files/saved_resource(10).html" scrolling="no" width="0" height="0" frameborder="0"></iframe>
+			<iframe id="dlog4_autoScrollIframe" src="./L5868 Accredited Scope_files/saved_resource(11).html" width="0" height="0" scrolling="yes" frameborder="0"></iframe>
+		</div>
+	</div>
+
+<script>
+var scopeSet = isc.LasTabSet.create({
+	ID : "scopeSet",
+	tabBarPosition : "top",
+	width : '100%',
+	height : '100%',
+	tabs : [],
+	tabBarControls : [ "tabPicker"]
+});
+</script><div id="isc_3" eventproxy="scopeSet" class="normal" style="POSITION:absolute;LEFT:0px;TOP:0px;WIDTH:1904px;HEIGHT:966px;Z-INDEX:200054;OVERFLOW:hidden;CURSOR:default;-webkit-margin-collapse:collapse collapse" onscroll="return scopeSet.$lh()">&nbsp;<div id="isc_4" eventproxy="scopeSet_tabBar" class="tabBarTop" style="position: absolute; left: 0px; top: 0px; width: 1904px; height: 26px; z-index: 800018; overflow: hidden; cursor: default;" onscroll="return scopeSet_tabBar.$lh()" role="tablist" tabindex="1254">&nbsp;<div id="isc_5" style="position: absolute; width: 1px; height: 1px; overflow: hidden; left: 894px; top: 25px; font-size: 0px;">&nbsp;</div><div id="isc_6" eventproxy="scopeSet_tabBar_baseLine" class="normal" style="position: absolute; left: 0px; top: 25px; width: 1904px; height: 1px; z-index: 800144; overflow: hidden; background-color: rgb(192, 195, 199); cursor: default;" onscroll="return scopeSet_tabBar_baseLine.$lh()">&nbsp;</div><div id="isc_C" eventproxy="keyBranch" role="tab" onfocus="isc.EH.focusInCanvas(keyBranch,true);" onblur="if(window.isc)isc.EH.blurFocusCanvas(keyBranch,true);" tabindex="-1" style="position: absolute; left: 5px; top: 0px; width: 298px; height: 26px; z-index: 199932; box-shadow: white 0px 1px 1px inset, white 1px 0px 1px inset, white -1px 0px 1px inset; outline-style: none; overflow: visible; cursor: pointer;" onscroll="return keyBranch.$lh()"><div id="isc_D" eventproxy="keyBranch" style="position: relative; visibility: inherit; z-index: 199932; cursor: pointer; box-shadow: white 0px 1px 1px inset, white 1px 0px 1px inset, white -1px 0px 1px inset;"><table cellspacing="0" cellpadding="0" width="298px" height="26px"><tbody><tr><td nowrap="true" class="tabButtonTop" align="center" valign="center" onfocus="keyBranch.$47()">ACCREDITED KEY LOCATIONS OF THE LABORATORY</td></tr></tbody></table></div></div><div id="isc_H" eventproxy="signPerson" role="tab" onfocus="isc.EH.focusInCanvas(signPerson,true);" onblur="if(window.isc)isc.EH.blurFocusCanvas(signPerson,true);" tabindex="-1" style="position: absolute; left: 304px; top: 0px; width: 232px; height: 26px; z-index: 199914; box-shadow: white 0px 1px 1px inset, white 1px 0px 1px inset, white -1px 0px 1px inset; outline-style: none; overflow: visible; cursor: pointer;" onscroll="return signPerson.$lh()"><div id="isc_I" eventproxy="signPerson" style="position: relative; visibility: inherit; z-index: 199914; cursor: pointer; box-shadow: white 0px 1px 1px inset, white 1px 0px 1px inset, white -1px 0px 1px inset;"><table cellspacing="0" cellpadding="0" width="232px" height="26px"><tbody><tr><td nowrap="true" class="tabButtonTop" align="center" valign="center" onfocus="signPerson.$47()">ACCREDITED SIGNATORIES AND SCOPE</td></tr></tbody></table></div></div><div id="isc_M" eventproxy="abilityL1" role="tab" onfocus="isc.EH.focusInCanvas(abilityL1,true);" onblur="if(window.isc)isc.EH.blurFocusCanvas(abilityL1,true);" tabindex="1254" style="position: absolute; left: 537px; top: 0px; width: 180px; height: 26px; z-index: 800270; box-shadow: white 0px 1px 1px inset, white 1px 0px 1px inset, white -1px 0px 1px inset; outline-style: none; overflow: visible; cursor: pointer;" onscroll="return abilityL1.$lh()"><div id="isc_N" eventproxy="abilityL1" style="position: relative; visibility: inherit; z-index: 800270; cursor: pointer; box-shadow: white 0px 1px 1px inset, white 1px 0px 1px inset, white -1px 0px 1px inset;"><table cellspacing="0" cellpadding="0" width="180px" height="26px"><tbody><tr><td nowrap="true" class="tabButtonTopSelected" align="center" valign="center" onfocus="abilityL1.$47()">ACCREDITED TESTING SCOPE</td></tr></tbody></table></div></div><div id="isc_R" eventproxy="decideStd" role="tab" onfocus="isc.EH.focusInCanvas(decideStd,true);" onblur="if(window.isc)isc.EH.blurFocusCanvas(decideStd,true);" tabindex="-1" style="position: absolute; left: 718px; top: 0px; width: 172px; height: 26px; z-index: 199842; box-shadow: white 0px 1px 1px inset, white 1px 0px 1px inset, white -1px 0px 1px inset; outline-style: none; overflow: visible; cursor: pointer;" onscroll="return decideStd.$lh()"><div id="isc_S" eventproxy="decideStd" style="position: relative; visibility: inherit; z-index: 199842; cursor: pointer; box-shadow: white 0px 1px 1px inset, white 1px 0px 1px inset, white -1px 0px 1px inset;"><table cellspacing="0" cellpadding="0" width="172px" height="26px"><tbody><tr><td nowrap="true" class="tabButtonTop" align="center" valign="center" onfocus="decideStd.$47()">REFERENCE OF STANDARDS</td></tr></tbody></table></div></div></div><div id="isc_7" eventproxy="scopeSet_paneContainer" class="tabSetContainer" style="POSITION:absolute;LEFT:0px;TOP:25px;WIDTH:1904px;HEIGHT:941px;Z-INDEX:200072;OVERFLOW:hidden;CURSOR:default;-webkit-margin-collapse:collapse collapse" onscroll="return scopeSet_paneContainer.$lh()" role="tabpanel">&nbsp;<div id="isc_8" style="position: absolute; width: 1px; height: 1px; overflow: hidden; left: 1903px; top: 940px; font-size: 0px;">&nbsp;</div><div id="isc_A" eventproxy="isc_HTMLPane_1" class="normal" style="position: absolute; left: 5px; top: 5px; width: 1894px; height: 931px; z-index: 200126; overflow: hidden; visibility: hidden;" onscroll="return isc_HTMLPane_1.$lh()" role="article"><iframe height="100%" width="100%" scrolling="auto" id="isc_9" frameborder="0" src="./L5868 Accredited Scope_files/keyBranchListViewEn.html" style="height: 931px;"></iframe></div><div id="isc_T" eventproxy="isc_HTMLPane_1" class="normal" style="position: absolute; left: 5px; top: 5px; width: 1894px; height: 931px; z-index: 200342; overflow: hidden; visibility: hidden;" onscroll="return isc_HTMLPane_1.$lh()"><span style="display:inline-block;background-size:100% 100%;background-image:url(&quot;https://www.cnas.org.cn/LAS_FQ/isomorphic/skins/Enterprise/images/blank.gif&quot;);width:3200px;height:2400px;vertical-align:text-top"></span></div><div id="isc_F" eventproxy="isc_HTMLPane_2" class="normal" style="position: absolute; left: 5px; top: 5px; width: 1894px; height: 931px; z-index: 200180; overflow: hidden; visibility: hidden;" onscroll="return isc_HTMLPane_2.$lh()" role="article"><iframe height="100%" width="100%" scrolling="auto" id="isc_E" frameborder="0" src="./L5868 Accredited Scope_files/signatoryListEn.html" style="height: 931px;"></iframe></div><div id="isc_U" eventproxy="isc_HTMLPane_2" class="normal" style="position: absolute; left: 5px; top: 5px; width: 1894px; height: 931px; z-index: 200360; overflow: hidden; visibility: hidden;" onscroll="return isc_HTMLPane_2.$lh()"><span style="display:inline-block;background-size:100% 100%;background-image:url(&quot;https://www.cnas.org.cn/LAS_FQ/isomorphic/skins/Enterprise/images/blank.gif&quot;);width:3200px;height:2400px;vertical-align:text-top"></span></div><div id="isc_K" eventproxy="isc_HTMLPane_3" class="normal" style="position: absolute; left: 5px; top: 5px; width: 1894px; height: 931px; z-index: 200234; overflow: hidden; visibility: inherit;" onscroll="return isc_HTMLPane_3.$lh()" role="article"><iframe height="100%" width="100%" scrolling="auto" id="isc_J" frameborder="0" src="./L5868 Accredited Scope_files/checkLabObjListViewEn.html" style="height: 931px;"></iframe></div><div id="isc_V" eventproxy="isc_HTMLPane_3" class="normal" style="position: absolute; left: 5px; top: 5px; width: 1894px; height: 931px; z-index: 200378; overflow: hidden; visibility: hidden;" onscroll="return isc_HTMLPane_3.$lh()"><span style="display:inline-block;background-size:100% 100%;background-image:url(&quot;https://www.cnas.org.cn/LAS_FQ/isomorphic/skins/Enterprise/images/blank.gif&quot;);width:3200px;height:2400px;vertical-align:text-top"></span></div><div id="isc_P" eventproxy="isc_HTMLPane_4" class="normal" style="position: absolute; left: 5px; top: 5px; width: 1894px; height: 931px; z-index: 200288; overflow: hidden; visibility: hidden;" onscroll="return isc_HTMLPane_4.$lh()" role="article"><iframe height="100%" width="100%" scrolling="auto" id="isc_O" frameborder="0" src="./L5868 Accredited Scope_files/labDecideStandardListViewEn.html" style="height: 931px;"></iframe></div><div id="isc_W" eventproxy="isc_HTMLPane_4" class="normal" style="position: absolute; left: 5px; top: 5px; width: 1894px; height: 931px; z-index: 200396; overflow: hidden; visibility: hidden;" onscroll="return isc_HTMLPane_4.$lh()"><span style="display:inline-block;background-size:100% 100%;background-image:url(&quot;https://www.cnas.org.cn/LAS_FQ/isomorphic/skins/Enterprise/images/blank.gif&quot;);width:3200px;height:2400px;vertical-align:text-top"></span></div></div></div>
+
+<script>
+
+	scopeSet.addTab({ID : "keyBranch",title : "ACCREDITED KEY LOCATIONS OF THE LABORATORY",pane : isc.HTMLPane.create({
+		contentsURL : '/LAS_FQ/publish/lab/keyBranchListViewEn.jsp?baseInfoId=f6808888cdf947a5bdb6951c4cda2417&certUpdateTs=1&validate=&attactdate=',
+		contentsType : "page"})
+	});
+
+
+scopeSet.addTab({ID : "signPerson",title : "ACCREDITED SIGNATORIES AND SCOPE",pane : isc.HTMLPane.create({
+	contentsURL : '/LAS_FQ/publish/lab/signatoryListEn.jsp?baseInfoId=f6808888cdf947a5bdb6951c4cda2417&certUpdateTs=1&validate=&attactdate=',
+	contentsType : "page"})
+});
+
+
+scopeSet.addTab({ID : "abilityL1",title : "ACCREDITED TESTING SCOPE",pane : isc.HTMLPane.create({
+	contentsURL : '/LAS_FQ/publish/lab/checkLabObjListViewEn.jsp?baseInfoId=f6808888cdf947a5bdb6951c4cda2417&enstart=0&blueTooth=0&type=abilityL1&orgEnOrCh=En&certUpdateTs=1&validate=&attactdate=',
+	contentsType : "page"})
+});
+
+
+
+
+
+
+
+scopeSet.addTab({ID : "decideStd",title : "REFERENCE OF STANDARDS",pane : isc.HTMLPane.create({
+	contentsURL : '/LAS_FQ/publish/lab/labDecideStandardListViewEn.jsp?baseInfoId=f6808888cdf947a5bdb6951c4cda2417&type=decideStd&orgEnOrCh=En&certUpdateTs=1&validate=&attactdate=',
+	contentsType : "page"})
+});
+
+
+</script><div id="isc_getStyleDeclaration_defaultReferenceElement" class="tabButtonTopSelectedOver" style="display: none;"></div>
+
+ 
+ 
+
+ 
+
+
+ 
+
+ 
+ 
+ 
+
+ 
+
+ 
+
+
+
+ 
+
+</body></html>

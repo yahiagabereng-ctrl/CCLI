@@ -1,0 +1,145 @@
+1	0	TCP	55314 → 3782 [SYN] Seq=0 Win=64240 Len=0 MSS=1460 SACK_PERM TSval=3507676521 TSecr=0 WS=1024
+2	0	TCP	3782 → 55314 [SYN, ACK] Seq=0 Ack=1 Win=65160 Len=0 MSS=1460 SACK_PERM TSval=2750217 TSecr=3507676521 WS=128
+3	0	TCP	55314 → 3782 [ACK] Seq=1 Ack=1 Win=64512 Len=0 TSval=3507676522 TSecr=2750217
+4	0	TLSv1.2	Client Hello
+5	0	TCP	3782 → 55314 [ACK] Seq=1 Ack=121 Win=65152 Len=0 TSval=2750241 TSecr=3507676545
+6	0	TLSv1.2	Server Hello
+7	0	TLSv1.2	Certificate
+8	0	TCP	55314 → 3782 [ACK] Seq=121 Ack=95 Win=64512 Len=0 TSval=3507676546 TSecr=2750241
+9	0	TCP	55314 → 3782 [ACK] Seq=121 Ack=933 Win=67584 Len=0 TSval=3507676546 TSecr=2750241
+10	0	TLSv1.2	Certificate Request, Server Hello Done
+11	0	TCP	55314 → 3782 [ACK] Seq=121 Ack=1107 Win=68608 Len=0 TSval=3507676554 TSecr=2750249
+12	0	TLSv1.2	Certificate
+13	0	TLSv1.2	Client Key Exchange
+14	0	TCP	[TCP Retransmission] 55314 → 3782 [PSH, ACK] Seq=1190 Ack=1107 Win=68608 Len=267 TSval=3507676561 TSecr=2750249
+15	0	TCP	3782 → 55314 [ACK] Seq=1107 Ack=1457 Win=63872 Len=0 TSval=2750256 TSecr=3507676554 SLE=1190 SRE=1457
+16	0	TLSv1.2	Certificate Verify
+17	0	TLSv1.2	Change Cipher Spec, Finished
+18	0	TCP	3782 → 55314 [ACK] Seq=1107 Ack=1726 Win=63616 Len=0 TSval=2750293 TSecr=3507676597
+19	0	TCP	3782 → 55314 [ACK] Seq=1107 Ack=1817 Win=63616 Len=0 TSval=2750293 TSecr=3507676597
+20	0	TLSv1.2	Change Cipher Spec
+21	0	TLSv1.2	Encrypted Handshake Message
+22	0	TCP	55314 → 3782 [ACK] Seq=1817 Ack=1198 Win=68608 Len=0 TSval=3507676600 TSecr=2750295
+23	0	COTP	CR TPDU src-ref: 0x0001 dst-ref: 0x0000
+24	0	COTP	CC TPDU src-ref: 0x0001 dst-ref: 0x0001
+25	0	IEC-61850	Associate req 
+26	0	IEC-61850	Associate res 
+27	0	IEC-61850	01 GetDataValue req  CCI016_01LD_Plant/PdCMMXU1$MX$TotW$mag$f 
+28	0	IEC-61850	01 GetDataValue res Failure object-access-denied 
+29	0	IEC-61850	02 GetDataValue req  CCI016_01LD_Plant/WlimDWMX1$ST$Mod$stVal 
+30	0	IEC-61850	02 GetDataValue res Failure object-access-denied 
+31	0	IEC-61850	03 GetDataValue req  CCI016_01LD_Plant/WSaDAGC1$ST$Mod$stVal 
+32	0	IEC-61850	03 GetDataValue res Success 5 
+33	0	IEC-61850	04 GetServerDirectory req 
+34	0	IEC-61850	04 GetServerDirectory res CCI016_01LD_Plant 
+35	0	IEC-61850	05 GetLogicalDeviceDirectory req CCI016_01LD_Plant 
+36	0	TCP	[TCP segment of a reassembled PDU]
+37	0	IEC-61850	05 GetLogicalDeviceDirectory res VArSaDVAR1 VArSaDVAR1$CF VArSaDVAR1$CF$Mod VArSaDVAR1$CF$Mod$ctlModel VArSaDVAR1$CF$VArTgtSptPct VArSaDVAR1$CF$VArTgtSptPct$ctlModel VArSaDVAR1$CO VArSaDVAR1$CO$Mod VArSaDVAR1$CO$Mod$Oper VArSaDVAR1$CO$Mod$Oper$Check VArSaDVAR1$CO$Mod$Oper$ctlNum VArSaDVAR1$CO$Mod$Oper$ctlVal VArSaDVAR1$CO$Mod$Oper$origin VArSaDVAR1$CO$Mod$Oper$origin$orCat VArSaDVAR1$CO$Mod$Oper$origin$orIdent VArSaDVAR1$CO$Mod$Oper$T VArSaDVAR1$CO$Mod$Oper$Test VArSaDVAR1$CO$VArTgtSptPct VArSaDVAR1$CO$VArTgtSptPct$Oper VArSaDVAR1$CO$VArTgtSptPct$Oper$Check VArSaDVAR1$CO$VArTgtSptPct$Oper$ctlNum VArSaDVAR1$CO$VArTgtSptPct$Oper$ctlVal VArSaDVAR1$CO$VArTgtSptPct$Oper$ctlVal$f VArSaDVAR1$CO$VArTgtSptPct$Oper$origin VArSaDVAR1$CO$VArTgtSptPct$Oper$origin$orCat VArSaDVAR1$CO$VArTgtSptPct$Oper$origin$orIdent VArSaDVAR1$CO$VArTgtSptPct$Oper$T VArSaDVAR1$CO$VArTgtSptPct$Oper$Test VArSaDVAR1$MX VArSaDVAR1$MX$VArTgtSptPct VArSaDVAR1$MX$VArTgtSptPct$mxVal VArSaDVAR1$MX$VArTgtSptPct$mxVal$f VArSaDVAR1$MX$VArTgtSptPct$q VArSaDVAR1$MX$VArTgtSptPct$t VArS
+38	0	TCP	55314 → 3782 [ACK] Seq=2796 Ack=4145 Win=73728 Len=0 TSval=3507676823 TSecr=2750518
+39	0	IEC-61850	06 GetDataSetDirectory req CCI016_01LD_Plant/LLN0$DS_R_PdC_Mis4sec 
+40	0	IEC-61850	Error object-access-denied 
+41	0	IEC-61850	07 GetDataSetValues req  CCI016_01LD_Plant/LLN0$DS_R_PdC_Mis4sec 
+42	0	IEC-61850	Error object-access-denied 
+43	0	IEC-61850	08 GetRCBValues req  CCI016_01LD_Plant/LLN0$RP$urcb_PdC_Mis4sec 
+44	0	IEC-61850	08 GetRCBValues res Failure object-access-denied 
+45	0	TLSv1.2	Alert (Level: Warning, Description: Close Notify)
+46	0	TCP	55314 → 3782 [FIN, ACK] Seq=3280 Ack=4448 Win=73728 Len=0 TSval=3507676955 TSecr=2750614
+47	0	TLSv1.2	Alert (Level: Warning, Description: Close Notify)
+48	0	TCP	55314 → 3782 [RST] Seq=3281 Win=0 Len=0
+49	1	TCP	55328 → 3782 [SYN] Seq=0 Win=64240 Len=0 MSS=1460 SACK_PERM TSval=1182201406 TSecr=0 WS=1024
+50	1	TCP	3782 → 55328 [SYN, ACK] Seq=0 Ack=1 Win=65160 Len=0 MSS=1460 SACK_PERM TSval=2750826 TSecr=1182201406 WS=128
+51	1	TCP	55328 → 3782 [ACK] Seq=1 Ack=1 Win=64512 Len=0 TSval=1182201407 TSecr=2750826
+52	1	TLSv1.2	Client Hello
+53	1	TCP	3782 → 55328 [ACK] Seq=1 Ack=121 Win=65152 Len=0 TSval=2750838 TSecr=1182201418
+54	1	TLSv1.2	Server Hello
+55	1	TLSv1.2	Certificate
+56	1	TCP	55328 → 3782 [ACK] Seq=121 Ack=95 Win=64512 Len=0 TSval=1182201419 TSecr=2750838
+57	1	TCP	55328 → 3782 [ACK] Seq=121 Ack=933 Win=67584 Len=0 TSval=1182201419 TSecr=2750838
+58	1	TLSv1.2	Certificate Request, Server Hello Done
+59	1	TCP	55328 → 3782 [ACK] Seq=121 Ack=1107 Win=68608 Len=0 TSval=1182201429 TSecr=2750849
+60	1	TLSv1.2	Certificate
+61	1	TLSv1.2	Client Key Exchange
+62	1	TCP	3782 → 55328 [ACK] Seq=1107 Ack=1436 Win=63872 Len=0 TSval=2750858 TSecr=1182201429
+63	1	TLSv1.2	Certificate Verify
+64	1	TLSv1.2	Change Cipher Spec, Finished
+65	1	TCP	[TCP Retransmission] 55328 → 3782 [PSH, ACK] Seq=1705 Ack=1107 Win=68608 Len=91 TSval=1182201453 TSecr=2750858
+66	1	TCP	3782 → 55328 [ACK] Seq=1107 Ack=1796 Win=63616 Len=0 TSval=2750872 TSecr=1182201442 SLE=1705 SRE=1796
+67	1	TLSv1.2	Change Cipher Spec
+68	1	TLSv1.2	Encrypted Handshake Message
+69	1	TCP	55328 → 3782 [ACK] Seq=1796 Ack=1198 Win=68608 Len=0 TSval=1182201459 TSecr=2750878
+70	1	COTP	CR TPDU src-ref: 0x0001 dst-ref: 0x0000
+71	1	COTP	CC TPDU src-ref: 0x0001 dst-ref: 0x0001
+72	1	IEC-61850	Associate req 
+73	1	IEC-61850	Associate res 
+74	1	IEC-61850	01 GetDataValue req  CCI016_01LD_Plant/PdCMMXU1$MX$TotW$mag$f 
+75	1	IEC-61850	01 GetDataValue res Success 0.000000 
+76	1	IEC-61850	02 GetDataValue req  CCI016_01LD_Plant/WlimDWMX1$ST$Mod$stVal 
+77	1	IEC-61850	02 GetDataValue res Success 5 
+78	1	IEC-61850	03 GetServerDirectory req 
+79	1	IEC-61850	03 GetServerDirectory res CCI016_01LD_Plant 
+80	1	IEC-61850	04 GetLogicalDeviceDirectory req CCI016_01LD_Plant 
+81	1	TCP	[TCP segment of a reassembled PDU]
+82	1	TCP	3782 → 55328 [ACK] Seq=3247 Ack=2642 Win=63232 Len=1448 TSval=2751048 TSecr=1182201612 [TCP segment of a reassembled PDU]
+83	1	TCP	3782 → 55328 [ACK] Seq=4695 Ack=2642 Win=63232 Len=1448 TSval=2751048 TSecr=1182201612 [TCP segment of a reassembled PDU]
+84	1	TCP	3782 → 55328 [ACK] Seq=6143 Ack=2642 Win=63232 Len=1448 TSval=2751048 TSecr=1182201612 [TCP segment of a reassembled PDU]
+85	1	TCP	3782 → 55328 [PSH, ACK] Seq=7591 Ack=2642 Win=63232 Len=1448 TSval=2751048 TSecr=1182201612 [TCP segment of a reassembled PDU]
+86	1	IEC-61850	04 GetLogicalDeviceDirectory res LLN0 LLN0$ST PdCMMXU1 PdCMMXU1$MX PdCMMXU1$MX$PPV PdCMMXU1$MX$PPV$phsAB PdCMMXU1$MX$PPV$phsAB$cVal PdCMMXU1$MX$PPV$phsAB$cVal$mag PdCMMXU1$MX$PPV$phsAB$cVal$mag$f PdCMMXU1$MX$PPV$phsAB$q PdCMMXU1$MX$PPV$phsAB$t PdCMMXU1$MX$PPV$phsBC PdCMMXU1$MX$PPV$phsBC$cVal PdCMMXU1$MX$PPV$phsBC$cVal$mag PdCMMXU1$MX$PPV$phsBC$cVal$mag$f PdCMMXU1$MX$PPV$phsBC$q PdCMMXU1$MX$PPV$phsBC$t PdCMMXU1$MX$PPV$phsCA PdCMMXU1$MX$PPV$phsCA$cVal PdCMMXU1$MX$PPV$phsCA$cVal$mag PdCMMXU1$MX$PPV$phsCA$cVal$mag$f PdCMMXU1$MX$PPV$phsCA$q PdCMMXU1$MX$PPV$phsCA$t PdCMMXU1$MX$TotVAr PdCMMXU1$MX$TotVAr$mag PdCMMXU1$MX$TotVAr$mag$f PdCMMXU1$MX$TotVAr$q PdCMMXU1$MX$TotVAr$t PdCMMXU1$MX$TotW PdCMMXU1$MX$TotW$mag PdCMMXU1$MX$TotW$mag$f PdCMMXU1$MX$TotW$q PdCMMXU1$MX$TotW$t PFSPDFPF1 PFSPDFPF1$CF PFSPDFPF1$CF$Mod PFSPDFPF1$CF$Mod$ctlModel PFSPDFPF1$CF$PFGnTgtSpt PFSPDFPF1$CF$PFGnTgtSpt$ctlModel PFSPDFPF1$CF$PFLodTgtSpt PFSPDFPF1$CF$PFLodTgtSpt$ctlModel PFSPDFPF1$CO PFSPDFPF1$CO$Mod PFSPDFPF1$CO$Mod$Oper PFSPDFPF1$CO$Mod$Oper$Check PFSPDFPF1$CO$Mod$Ope
+87	1	TCP	55328 → 3782 [ACK] Seq=2642 Ack=9039 Win=74752 Len=0 TSval=1182201629 TSecr=2751048
+88	1	IEC-61850	05 GetDataSetDirectory req CCI016_01LD_Plant/LLN0$DS_R_PdC_Mis4sec 
+89	1	IEC-61850	Error object-access-denied 
+90	1	IEC-61850	06 GetDataSetValues req  CCI016_01LD_Plant/LLN0$DS_R_PdC_Mis4sec 
+91	1	IEC-61850	Error object-access-denied 
+92	1	IEC-61850	07 GetRCBValues req  CCI016_01LD_Plant/LLN0$RP$urcb_PdC_Mis4sec 
+93	1	IEC-61850	07 GetRCBValues res Success { "CCI016_01LD_Plant/LLN0.urcb_PdC_Mis4sec" false false "CCI016_01LD_Plant/LLN0$DS_R_PdC_Mis4sec" 1 b'0111110000' 0 0 b'011010' 4000 false } 
+94	1	TLSv1.2	Alert (Level: Warning, Description: Close Notify)
+95	1	TCP	55328 → 3782 [FIN, ACK] Seq=3126 Ack=10475 Win=80896 Len=0 TSval=1182201755 TSecr=2751140
+96	1	TLSv1.2	Alert (Level: Warning, Description: Close Notify)
+97	1	TCP	55328 → 3782 [RST] Seq=3127 Win=0 Len=0
+98	2	TCP	55240 → 3782 [SYN] Seq=0 Win=64240 Len=0 MSS=1460 SACK_PERM TSval=158186670 TSecr=0 WS=1024
+99	2	TCP	3782 → 55240 [SYN, ACK] Seq=0 Ack=1 Win=65160 Len=0 MSS=1460 SACK_PERM TSval=2751371 TSecr=158186670 WS=128
+100	2	TCP	55240 → 3782 [ACK] Seq=1 Ack=1 Win=64512 Len=0 TSval=158186671 TSecr=2751371
+101	2	TLSv1.2	Client Hello
+102	2	TCP	3782 → 55240 [ACK] Seq=1 Ack=121 Win=65152 Len=0 TSval=2751383 TSecr=158186682
+103	2	TLSv1.2	Server Hello
+104	2	TLSv1.2	Certificate
+105	2	TLSv1.2	Certificate Request, Server Hello Done
+106	2	TCP	55240 → 3782 [ACK] Seq=121 Ack=95 Win=64512 Len=0 TSval=158186684 TSecr=2751383
+107	2	TCP	55240 → 3782 [ACK] Seq=121 Ack=1107 Win=66560 Len=0 TSval=158186684 TSecr=2751383
+108	2	TLSv1.2	Certificate
+109	2	TLSv1.2	Client Key Exchange
+110	2	TCP	3782 → 55240 [ACK] Seq=1107 Ack=1230 Win=64128 Len=0 TSval=2751390 TSecr=158186685
+111	2	TLSv1.2	Certificate Verify
+112	2	TLSv1.2	Change Cipher Spec, Finished
+113	2	TCP	3782 → 55240 [ACK] Seq=1107 Ack=1590 Win=63872 Len=0 TSval=2751410 TSecr=158186702
+114	2	TLSv1.2	Change Cipher Spec
+115	2	TLSv1.2	Encrypted Handshake Message
+116	2	TCP	55240 → 3782 [ACK] Seq=1590 Ack=1198 Win=66560 Len=0 TSval=158186710 TSecr=2751410
+117	2	COTP	CR TPDU src-ref: 0x0001 dst-ref: 0x0000
+118	2	COTP	CC TPDU src-ref: 0x0001 dst-ref: 0x0001
+119	2	IEC-61850	Associate req 
+120	2	TCP	3782 → 55240 [ACK] Seq=1283 Ack=3328 Win=62336 Len=0 TSval=2751421 TSecr=158186721
+121	2	TLSv1.2	Alert (Level: Warning, Description: Close Notify)
+122	2	TLSv1.2	Alert (Level: Warning, Description: Close Notify)
+123	2	TCP	3782 → 55240 [FIN, ACK] Seq=1352 Ack=3397 Win=62336 Len=0 TSval=2751448 TSecr=158186741
+124	2	TCP	55240 → 3782 [FIN, ACK] Seq=3397 Ack=1353 Win=66560 Len=0 TSval=158186751 TSecr=2751448
+125	2	TCP	3782 → 55240 [ACK] Seq=1353 Ack=3398 Win=62336 Len=0 TSval=2751452 TSecr=158186751
+126	3	TCP	55242 → 3782 [SYN] Seq=0 Win=64240 Len=0 MSS=1460 SACK_PERM TSval=1465341201 TSecr=0 WS=1024
+127	3	TCP	3782 → 55242 [SYN, ACK] Seq=0 Ack=1 Win=65160 Len=0 MSS=1460 SACK_PERM TSval=2751631 TSecr=1465341201 WS=128
+128	3	TCP	55242 → 3782 [ACK] Seq=1 Ack=1 Win=64512 Len=0 TSval=1465341202 TSecr=2751631
+129	3	TLSv1.2	Client Hello
+130	3	TCP	3782 → 55242 [ACK] Seq=1 Ack=121 Win=65152 Len=0 TSval=2751645 TSecr=1465341215
+131	3	TLSv1.2	Server Hello
+132	3	TLSv1.2	Certificate
+133	3	TLSv1.2	Certificate Request, Server Hello Done
+134	3	TCP	55242 → 3782 [ACK] Seq=121 Ack=95 Win=64512 Len=0 TSval=1465341216 TSecr=2751645
+135	3	TCP	55242 → 3782 [ACK] Seq=121 Ack=1107 Win=66560 Len=0 TSval=1465341216 TSecr=2751645
+136	3	TLSv1.2	Certificate
+137	3	TLSv1.2	Client Key Exchange
+138	3	TCP	[TCP Retransmission] 55242 → 3782 [PSH, ACK] Seq=1176 Ack=1107 Win=66560 Len=267 TSval=1465341227 TSecr=2751645
+139	3	TLSv1.2	Alert (Level: Fatal, Description: Certificate Revoked)
+140	3	TCP	[TCP Dup ACK 139#1] 3782 → 55242 [ACK] Seq=1114 Ack=1443 Win=63872 Len=0 TSval=2751656 TSecr=1465341227 SLE=1176 SRE=1443
+141	3	TCP	3782 → 55242 [FIN, ACK] Seq=1114 Ack=1443 Win=63872 Len=0 TSval=2751661 TSecr=1465341227
+142	3	TLSv1.2	Certificate Verify
+143	3	TLSv1.2	Change Cipher Spec, Finished
+144	3	TCP	3782 → 55242 [RST] Seq=1115 Win=0 Len=0
+145	3	TCP	3782 → 55242 [RST] Seq=1115 Win=0 Len=0

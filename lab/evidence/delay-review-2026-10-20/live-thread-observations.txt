@@ -1,0 +1,166 @@
+SAMPLE 19897.86 5136=do_select 5990=do_sys_poll 
+SAMPLE 19897.86 5136=do_select 5990=do_sys_poll 
+SAMPLE 19897.87 5136=do_select 5990=do_sys_poll 
+SAMPLE 19897.88 5136=do_select 5990=do_sys_poll 
+SAMPLE 19897.89 5136=do_select 5990=do_sys_poll 
+SAMPLE 19897.89 5136=do_select 5990=do_sys_poll 
+SAMPLE 19897.90 5136=do_select 5990=do_sys_poll 
+SAMPLE 19897.91 5136=do_select 5990=0 
+SAMPLE 19897.91 5136=do_select 5990=do_sys_poll 
+SAMPLE 19897.92 5136=do_select 5990=do_sys_poll 
+SAMPLE 19897.93 5136=do_select 5990=0 
+SAMPLE 19897.94 5136=do_select 5990=do_sys_poll 
+SAMPLE 19897.94 5136=do_select 5990=do_sys_poll 
+SAMPLE 19897.95 5136=do_select 5990=do_sys_poll 
+SAMPLE 19897.96 5136=do_select 5990=do_sys_poll 
+SAMPLE 19897.97 5136=do_select 5990=do_sys_poll 
+SAMPLE 19897.97 5136=do_select 5990=do_sys_poll 
+SAMPLE 19897.98 5136=do_select 5990=do_sys_poll 
+SAMPLE 19897.99 5136=do_select 5990=do_sys_poll 
+SAMPLE 19897.99 5136=do_select 5990=do_sys_poll 
+SAMPLE 19898.00 5136=do_select 5990=do_sys_poll 
+SAMPLE 19898.01 5136=do_select 5990=do_sys_poll 
+SAMPLE 19898.02 5136=do_select 5990=do_sys_poll 
+SAMPLE 19898.02 5136=do_select 5990=do_sys_poll 
+SAMPLE 19898.03 5136=do_select 5990=do_sys_poll 
+SAMPLE 19898.04 5136=do_select 5990=do_sys_poll 
+SAMPLE 19898.05 5136=do_select 5990=do_sys_poll 
+SAMPLE 19898.05 5136=do_select 5990=do_sys_poll 
+SAMPLE 19898.06 5136=do_select 5990=do_sys_poll 
+SAMPLE 19898.07 5136=do_select 5990=do_sys_poll 
+SAMPLE 19898.08 5136=do_select 5990=do_sys_poll 
+SAMPLE 19898.08 5136=do_select 5990=do_sys_poll 
+SAMPLE 19898.09 5136=do_select 5990=do_sys_poll 
+SAMPLE 19898.10 5136=do_select 5990=do_sys_poll 
+SAMPLE 19898.11 5136=do_select 5990=do_sys_poll 
+SAMPLE 19898.11 5136=do_select 5990=do_sys_poll 
+SAMPLE 19898.12 5136=do_select 5990=do_sys_poll 
+SAMPLE 19898.13 5136=do_select 5990=do_sys_poll 
+SAMPLE 19898.13 5136=do_select 5990=do_sys_poll 
+SAMPLE 19898.14 5136=do_select 5990=do_sys_poll 
+SAMPLE 19898.15 5136=do_select 5990=do_sys_poll 
+SAMPLE 19898.16 5136=do_select 5990=do_sys_poll 
+SAMPLE 19898.16 5136=do_select 5990=do_sys_poll 
+SAMPLE 19898.17 5136=do_select 5990=do_sys_poll 
+SAMPLE 19898.18 5136=do_select 5990=do_sys_poll 
+SAMPLE 19898.19 5136=do_select 5990=do_sys_poll 
+SAMPLE 19898.19 5136=do_select 5990=do_sys_poll 
+SAMPLE 19898.20 5136=do_select 5990=do_sys_poll 
+SAMPLE 19898.21 5136=pipe_read 5990=do_sys_poll 
+SAMPLE 19898.21 5136=pipe_read 5990=do_sys_poll 
+SAMPLE 19898.22 5136=pipe_read 5990=do_sys_poll 
+SAMPLE 19898.23 5136=pipe_read 5990=do_sys_poll 
+SAMPLE 19898.24 5136=pipe_read 5990=do_sys_poll 
+SAMPLE 19898.24 5136=pipe_read 5990=do_sys_poll 
+SAMPLE 19898.25 5136=pipe_read 5990=do_sys_poll 
+SAMPLE 19898.26 5136=pipe_read 5990=do_sys_poll 
+SAMPLE 19898.27 5136=pipe_read 5990=do_sys_poll 
+SAMPLE 19898.27 5136=pipe_read 5990=do_sys_poll 
+SAMPLE 19898.28 5136=pipe_read 5990=do_sys_poll 
+SAMPLE 19898.29 5136=pipe_read 5990=do_sys_poll 
+SAMPLE 19898.29 5136=pipe_read 5990=do_sys_poll 
+SAMPLE 19898.30 5136=pipe_read 5990=do_sys_poll 
+SAMPLE 19898.31 5136=pipe_read 5990=do_sys_poll 
+SAMPLE 19898.32 5136=pipe_read 5990=do_sys_poll 
+SAMPLE 19898.32 5136=pipe_read 5990=do_sys_poll 
+SAMPLE 19898.33 5136=pipe_read 5990=do_sys_poll 
+SAMPLE 19898.34 5136=pipe_read 5990=do_sys_poll 
+SAMPLE 19898.34 5136=pipe_read 5990=do_sys_poll 
+SAMPLE 19898.35 5136=pipe_read 5990=do_sys_poll 
+SAMPLE 19898.36 5136=pipe_read 5990=do_sys_poll 
+SAMPLE 19898.37 5136=pipe_read 5990=do_sys_poll 
+SAMPLE 19898.37 5136=pipe_read 5990=do_sys_poll 
+SAMPLE 19898.38 5136=pipe_read 5990=do_sys_poll 
+SAMPLE 19898.39 5136=pipe_read 5990=do_sys_poll 
+SAMPLE 19898.40 5136=pipe_read 5990=0 
+SAMPLE 19898.40 5136=pipe_read 5990=0 
+SAMPLE 19898.41 5136=pipe_read 5990=0 
+SAMPLE 19898.42 5136=hrtimer_nanosleep 5990=0 
+SAMPLE 19898.43 5136=hrtimer_nanosleep 5990=0 
+SAMPLE 19898.43 5136=hrtimer_nanosleep 5990=0 
+SAMPLE 19898.44 5136=hrtimer_nanosleep 5990=0 
+SAMPLE 19898.45 5136=hrtimer_nanosleep 5990=0 
+SAMPLE 19898.46 5136=hrtimer_nanosleep 5990=0 
+l-wx------    1 root     root            64 Oct 20 18:17 4 -> /etc/ccli/security-events/events.jsonl
+SAMPLE 19898.46 5136=hrtimer_nanosleep 5990=0 
+l-wx------    1 root     root            64 Oct 20 18:17 4 -> /etc/ccli/security-events/events.jsonl
+SAMPLE 19898.47 5136=hrtimer_nanosleep 5990=mtk_spi_mem_exec_op 
+l-wx------    1 root     root            64 Oct 20 18:17 4 -> /etc/ccli/security-events/events.jsonl
+SAMPLE 19898.48 5136=hrtimer_nanosleep 5990=0 
+l-wx------    1 root     root            64 Oct 20 18:17 4 -> /etc/ccli/security-events/events.jsonl
+SAMPLE 19898.49 5136=hrtimer_nanosleep 5990=0 
+l-wx------    1 root     root            64 Oct 20 18:17 4 -> /etc/ccli/security-events/events.jsonl
+SAMPLE 19898.50 5136=hrtimer_nanosleep 5990=0 
+l-wx------    1 root     root            64 Oct 20 18:17 4 -> /etc/ccli/security-events/events.jsonl
+SAMPLE 19898.50 5136=hrtimer_nanosleep 5990=0 
+l-wx------    1 root     root            64 Oct 20 18:17 4 -> /etc/ccli/security-events/events.jsonl
+SAMPLE 19898.51 5136=hrtimer_nanosleep 5990=0 
+l-wx------    1 root     root            64 Oct 20 18:17 4 -> /etc/ccli/security-events/events.jsonl
+SAMPLE 19898.52 5136=pipe_read 5990=0 
+l-wx------    1 root     root            64 Oct 20 18:17 4 -> /etc/ccli/security-events/events.jsonl
+SAMPLE 19898.53 5136=pipe_read 5990=0 
+l-wx------    1 root     root            64 Oct 20 18:17 4 -> /etc/ccli/security-events/events.jsonl
+SAMPLE 19898.54 5136=pipe_read 5990=0 
+l-wx------    1 root     root            64 Oct 20 18:17 4 -> /etc/ccli/security-events/events.jsonl
+SAMPLE 19898.54 5136=pipe_read 5990=0 
+l-wx------    1 root     root            64 Oct 20 18:17 4 -> /etc/ccli/security-events/events.jsonl
+SAMPLE 19898.55 5136=pipe_read 5990=0 
+l-wx------    1 root     root            64 Oct 20 18:17 4 -> /etc/ccli/security-events/events.jsonl
+SAMPLE 19898.56 5136=pipe_read 5990=0 
+l-wx------    1 root     root            64 Oct 20 18:17 4 -> /etc/ccli/security-events/events.jsonl
+SAMPLE 19898.57 5136=pipe_read 5990=0 
+l-wx------    1 root     root            64 Oct 20 18:17 4 -> /etc/ccli/security-events/events.jsonl
+SAMPLE 19898.57 5136=pipe_read 5990=0 
+l-wx------    1 root     root            64 Oct 20 18:17 4 -> /etc/ccli/security-events/events.jsonl
+SAMPLE 19898.58 5136=pipe_read 5990=0 
+l-wx------    1 root     root            64 Oct 20 18:17 4 -> /etc/ccli/security-events/events.jsonl
+SAMPLE 19898.59 5136=pipe_read 5990=0 
+l-wx------    1 root     root            64 Oct 20 18:17 4 -> /etc/ccli/security-events/events.jsonl
+SAMPLE 19898.60 5136=pipe_read 5990=0 
+l-wx------    1 root     root            64 Oct 20 18:17 4 -> /etc/ccli/security-events/events.jsonl
+SAMPLE 19898.61 5136=pipe_read 5990=0 
+l-wx------    1 root     root            64 Oct 20 18:17 4 -> /etc/ccli/security-events/events.jsonl
+SAMPLE 19898.61 5136=pipe_read 5990=0 
+l-wx------    1 root     root            64 Oct 20 18:17 4 -> /etc/ccli/security-events/events.jsonl
+SAMPLE 19898.62 5136=0 5990=0 
+l-wx------    1 root     root            64 Oct 20 18:17 4 -> /etc/ccli/security-events/events.jsonl
+SAMPLE 19898.64 5136=pipe_read 5990=jffs2_write_begin 
+l-wx------    1 root     root            64 Oct 20 18:17 4 -> /etc/ccli/security-events/events.jsonl
+SAMPLE 19898.64 5136=pipe_read 5990=jffs2_reserve_space 
+l-wx------    1 root     root            64 Oct 20 18:17 4 -> /etc/ccli/security-events/events.jsonl
+SAMPLE 19898.65 5136=pipe_read 5990=jffs2_reserve_space 
+l-wx------    1 root     root            64 Oct 20 18:17 4 -> /etc/ccli/security-events/events.jsonl
+SAMPLE 19898.66 5136=pipe_read 5990=jffs2_write_begin 
+l-wx------    1 root     root            64 Oct 20 18:17 4 -> /etc/ccli/security-events/events.jsonl
+SAMPLE 19898.67 5136=pipe_read 5990=jffs2_write_begin 
+l-wx------    1 root     root            64 Oct 20 18:17 4 -> /etc/ccli/security-events/events.jsonl
+SAMPLE 19898.67 5136=pipe_read 5990=jffs2_write_begin 
+l-wx------    1 root     root            64 Oct 20 18:17 4 -> /etc/ccli/security-events/events.jsonl
+SAMPLE 19898.68 5136=pipe_read 5990=jffs2_write_begin 
+l-wx------    1 root     root            64 Oct 20 18:17 4 -> /etc/ccli/security-events/events.jsonl
+SAMPLE 19898.69 5136=pipe_read 5990=jffs2_write_begin 
+l-wx------    1 root     root            64 Oct 20 18:17 4 -> /etc/ccli/security-events/events.jsonl
+SAMPLE 19898.70 5136=pipe_read 5990=0 
+l-wx------    1 root     root            64 Oct 20 18:17 4 -> /etc/ccli/security-events/events.jsonl
+SAMPLE 19898.71 5136=pipe_read 5990=0 
+l-wx------    1 root     root            64 Oct 20 18:17 4 -> /etc/ccli/security-events/events.jsonl
+SAMPLE 19898.71 5136=pipe_read 5990=jffs2_reserve_space 
+l-wx------    1 root     root            64 Oct 20 18:17 4 -> /etc/ccli/security-events/events.jsonl
+SAMPLE 19898.72 5136=pipe_read 5990=0 
+l-wx------    1 root     root            64 Oct 20 18:17 4 -> /etc/ccli/security-events/events.jsonl
+SAMPLE 19898.73 5136=pipe_read 5990=0 
+l-wx------    1 root     root            64 Oct 20 18:17 4 -> /etc/ccli/security-events/events.jsonl
+SAMPLE 19898.74 5136=hrtimer_nanosleep 5990=0 
+l-wx------    1 root     root            64 Oct 20 18:17 4 -> /etc/ccli/security-events/events.jsonl
+SAMPLE 19898.75 5136=hrtimer_nanosleep 5990=0 
+l-wx------    1 root     root            64 Oct 20 18:17 4 -> /etc/ccli/security-events/events.jsonl
+SAMPLE 19898.76 5136=hrtimer_nanosleep 5990=0 
+l-wx------    1 root     root            64 Oct 20 18:17 4 -> /etc/ccli/security-events/events.jsonl
+{"ts_ms":1792403728893,"ts_o14":"2026/10/19 09:55:28","category":"o14.security","type":"mms","detail":"{\\\\"}
+{"ts_ms":1792403728896,"ts_o14":"2026/10/19 09:55:28","category":"o14.security","type":"mms","detail":"{\\\\"}
+{"ts_ms":1792403729273,"ts_o14":"2026/10/19 09:55:29","category":"o14.security","type":"mms","detail":"{\\\\"}
+{"ts_ms":1792403729277,"ts_o14":"2026/10/19 09:55:29","category":"o14.security","type":"mms","detail":"{\\\\"}
+{"ts_ms":1792403729585,"ts_o14":"2026/10/19 09:55:29","category":"o14.security","type":"mms","detail":"{\\\\"}
+{"ts_ms":1792403729587,"ts_o14":"2026/10/19 09:55:29","category":"o14.security","type":"mms","detail":"{\\\\"}
+{"ts_ms":1792403730012,"ts_o14":"2026/10/19 09:55:30","category":"o14.security","type":"mms","detail":"{\\\\"}
+{"ts_ms":1792403730015,"ts_o14":"2026/10/19 09:55:30","category":"o14.comms_dso","type":"mms","detail":"client_connect"}

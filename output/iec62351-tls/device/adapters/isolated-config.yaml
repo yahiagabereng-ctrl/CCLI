@@ -1,0 +1,44 @@
+mms:
+  enabled: true
+  bind_address: 192.168.0.1
+  tcp_port: 3783
+  comms_loss_fallback_s: 0
+  rbac_profile_a: true
+  rbac_policy: /etc/ccli/rbac-test-20261016/tls-da47b412c5ac4202bd32f124cc75e3c1/package/commissioning-policy.xml
+  rbac_owner_cert: /etc/ccli/rbac-trust/owner.pem
+  rbac_activation_state: /etc/ccli/rbac-test-20261016/tls-da47b412c5ac4202bd32f124cc75e3c1/state/activation.state
+  rbac_identity_ca: /etc/ccli/rbac-trust/rbac_ca.pem
+  rbac_identity_crl: /etc/ccli/rbac-dual/trust/rbac_crl.pem
+  tls_enabled: true
+  tls_chain_validation: true
+  tls_own_cert: /etc/ccli/tls/server_tls.pem
+  tls_own_key: /etc/ccli/tls/server.key
+  tls_acse_cert: /etc/ccli/tls/server.pem
+  tls_acse_key: /etc/ccli/tls/server_acse.key
+  tls_ca_cert: /etc/ccli/rbac-trust/tls-ca-bundle.pem
+  tls_crl: /tmp/ccli-tls-bb4d65df52024026bcf9a430b963a454/candidate.crl.pem
+  tls_client_cert: /etc/ccli/rbac-clients/dso.pem
+  tls_acse_client_cert: /etc/ccli/tls/viewer_tls.pem
+  tls_viewer_cert: /etc/ccli/rbac-clients/viewer-r1.pem
+  tls_revoked_cert: /etc/ccli/rbac-clients/negative-revoked.pem
+  tls_additional_client_cert: /etc/ccli/tls/client_tls.pem
+  tls_revocation_check_s: 1
+  tls_renegotiation_s: 600
+iec104:
+  enabled: true
+  bind_address: 192.168.0.1
+  tcp_port: 2405
+  comms_loss_fallback_s: 0
+  operator_mode: monitor_only
+  tls_enabled: true
+  tls_own_cert: /etc/ccli/tls/server_tls.pem
+  tls_own_key: /etc/ccli/tls/server.key
+  tls_ca_cert: /etc/ccli/rbac-trust/tls-ca-bundle.pem
+  tls_client_cert: /etc/ccli/tls/client_tls.pem
+  tls_crl: /tmp/ccli-tls-bb4d65df52024026bcf9a430b963a454/candidate.crl.pem
+  tls_revocation_check_s: 1
+  tls_renegotiation_s: 600
+event_log:
+  enabled: true
+  path: /etc/ccli/rbac-test-20261016/tls-da47b412c5ac4202bd32f124cc75e3c1/events.jsonl
+  syslog_enabled: false

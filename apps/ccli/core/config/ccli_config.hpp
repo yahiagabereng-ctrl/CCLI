@@ -27,11 +27,13 @@
 
 
 #include "pf2/pf2_fsm.hpp"
+#include "event/event_store.hpp"
 
 
 
 #include <cstdint>
 #include <string>
+#include <vector>
 
 
 
@@ -98,6 +100,9 @@ struct ModbusCommissioningConfig {
 };
 
 struct ModbusConfig {
+
+    /** Optional second reader, used for an independent inverter RTU link. */
+    bool enabled{false};
 
     ModbusBackendKind backend{ModbusBackendKind::Simulator};
 
@@ -179,10 +184,34 @@ struct ModbusConfig {
 };
 
 /** Phase 3 — IEC 61850 MMS on Eth_A (LAN1). */
-struct MmsTlsConfig {
+struct MmsE2eConfig {
+    bool configuration_valid{true};
+    bool enabled{false};
+    bool allow_compatibility{false};
+    std::string certificate, private_key, trust_anchors, crls;
+    std::vector<std::string> certificate_path;
+    std::string ap_title;
+    unsigned ae_qualifier{0};
+    std::string signature_algorithm{"rsa-sha256"};
+    unsigned rekey_seconds{900};
+};
+
+struct TlsTimingConfig {
+    int revocation_check_s{3600}; // 1..86400; required local CRL re-evaluation
+    int renegotiation_s{43200};   // 600..86400; TLS 1.2 full handshake
+    int resumption_s{3600};       // 1..7200; monotonic session cache lifetime (one-hour default)
+    bool allow_sha384{false};     // optional TLS/certificate signature hash
+    bool allow_sha512{false};     // optional TLS/certificate signature hash
+    bool configuration_valid{true};
+};
+
+struct MmsTlsConfig : TlsTimingConfig {
     bool        enabled{false};
     std::string own_key;     /**< PEM/DER private key path */
     std::string own_cert;    /**< Server TLS certificate (mbedtls-parseable CN subject) */
+    /** Optional additional server identity for TLS suites requiring another key type. */
+    std::string additional_own_key;
+    std::string additional_own_cert;
     /** 62351-4 G.2/G.6.2 MMS auth cert; defaults to own_cert when empty. */
     std::string acse_cert;
     /** G.2 E2E auth private key; defaults to own_key when empty. */
@@ -194,13 +223,17 @@ struct MmsTlsConfig {
     /** P3-08 / 62351-8: VIEWER role — associate+read, no Wlim write. */
     std::string viewer_cert;
     std::string acse_viewer_cert;
-    /** P3-09 / T.3.3.4.9: PEM CRL path (lab); EST/SCEP product follow-up. */
+    /** Required PEM CRL bundle for TLS peer revocation checks. */
     std::string crl_path;
     /**
      * Optional: allow-listed but CRL-revoked cert (P3-09 negative).
      * Must be listed so rejection is from CRL, not unknown-cert.
      */
     std::string revoked_cert;
+    /** Additional TLS peer pin; application roles still require the commissioning policy. */
+    std::string additional_client_cert;
+    /** Repeatable tls_allowed_client_cert entries; pins do not grant application roles. */
+    std::vector<std::string> allowed_client_certs;
     /** Validate peer chain against ca_cert (lab PKI). */
     bool chain_validation{true};
 };
@@ -209,12 +242,16 @@ struct MmsTlsConfig {
  * Phase 4 — IEC 60870-5-104 on Eth_B (LAN2) only.
  * O.13.1.1.1 operator port · 62351-3 TLS (P4-03) · not Annex T.
  */
-struct Iec104TlsConfig {
+struct Iec104TlsConfig : TlsTimingConfig {
     bool        enabled{false};
     std::string own_key;
     std::string own_cert;
     std::string ca_cert;
     std::string client_cert;
+    /** Repeatable exact TLS peer-certificate allowlist entries. */
+    std::vector<std::string> allowed_client_certs;
+    /** Required PEM CRL bundle for TLS peer revocation checks. */
+    std::string crl_path;
 };
 
 /**
@@ -296,6 +333,8 @@ struct MmsConfig {
      * Normative default 3; 0 = disable gate (lab only).
      */
     int         setpoint_min_interval_s{3};
+    /** Reserved for a validated signed P/Q plant backend; false keeps Aggregator commands in memory. */
+    bool        aggregator_plant_outputs_enabled{false};
     /**
      * P3-11: poll TesPro `sim-manager gnss_get_position` for TimeQuality.
      * 0 = disable GNSS poll (TimeQuality stays clockNotSynchronized).
@@ -310,6 +349,18 @@ struct MmsConfig {
      * Empty → legacy 9-LN hand-built MVP in mms_adapter.cpp.
      */
     std::string model_cfg_path;
+    /** IEC role PolicySet; local permission library and scopes share its directory. */
+    std::string rbac_policy_path;
+    /** Enable Profile A only after a valid commissioning policy is loaded. */
+    bool rbac_profile_a{false};
+    /** Pinned device-owner signing certificate; independent of TLS credentials. */
+    std::string rbac_owner_cert;
+    /** Durable policy anti-rollback state; provision directory on persistent storage. */
+    std::string rbac_activation_state;
+    /** Identity validation CA/CRL; CA falls back to the existing TLS CA path. */
+    std::string rbac_identity_ca;
+    std::string rbac_identity_crl;
+    MmsE2eConfig e2e{};
     MmsTlsConfig tls{};
 };
 
@@ -322,6 +373,9 @@ struct CcliConfig {
     DsoConfig   dso{};
 
     ModbusConfig modbus{};
+
+    /** Independent inverter reader; does not replace the POC meter poller. */
+    ModbusConfig inverter_modbus{};
 
     MmsConfig   mms{};
 
@@ -340,12 +394,7 @@ struct CcliConfig {
     } annex_m_trip_monitor{};
 
     /** P7-01 / P7-03: O.14 rolling event log (2048, append-only file + optional syslog). */
-    struct {
-        bool        enabled{true};
-        std::string path{"/var/lib/ccli/events.jsonl"};
-        bool        syslog_enabled{false};
-        std::string syslog_host{"127.0.0.1"};
-        int         syslog_port{514};
+    struct : EventLogConfig {
         /** Space/comma-separated ifaces for O.14 physical-link (e.g. "lan1 lan2"). */
         std::string watch_ifaces;
     } event_log{};

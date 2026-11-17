@@ -1,0 +1,27 @@
+FIRST MESSAGE FOR THE NEW CHATGPT PROJECT
+
+I am Alireza. Continue my CCLI / TesPro CCI project using the attached CCLI_PROJECT_HANDOFF.md and the repository. This is an existing project, not a new implementation. Read the handoff and repository AGENTS.md before proposing changes.
+
+The active local repository is:
+C:\Users\Administrator\Desktop\CCLI Alireza\CCLI Merged
+
+At handoff on 20 October 2026:
+- Branch codex/merge-owner-main, HEAD fac93a94233e500fe7a6e28c4c9c2b55de717e9c.
+- The latest release checkpoint is in alirezavzand/CCLI-final; origin still points to alirezavzand/CCLI. Verify remotes before pushing.
+- Manufacturer-signed CCLI 0.1.0-r63 was installed on TesPro and the operator confirmed actual Test Suite Pro connection success.
+- r62 fixed full audit-log rewrite latency; r63 fixed the TSP authentication presentation OID.
+- There is newer LOCAL UNCOMMITTED MMS-client TSP-profile/server-verification/GUI work. A fresh clone of the checkpoint does not contain it. Preserve the full working tree and do not reset/clean it.
+- The last Modbus checks were still failing. P/Q zero and MMS Good quality are not proof of healthy data. An MMS quality-propagation discrepancy remains unresolved.
+- GNSS/chrony synchronization was restored, but intermittent BL2 bootloader decompression failures remain unresolved and full-device/TPM backup is not established.
+
+Important constraints:
+- I operate the inverter simulator myself. Do not take COM8 or stop/start the simulator unless I ask. RS485 is the intended bench path.
+- Preserve configuration, credentials, trust, RBAC and audit history. Do not reboot/reset/flash or force the clock as an incidental diagnostic action.
+- APK here means an OpenWrt package, not Android.
+- Use only apps/firmware-updater for signing and USB bundles, starting with docs/SIGNING_AND_USB_UPDATES.md. Private keys stay confidential and Git-ignored. Ask for the operator passphrase only at my visible local prompt, never in chat.
+- Never substitute SSH installation for a requested USB installation test.
+- Standards discussions contain conflicting editions. Read the applicable controlled references and focus on mandatory requirements. TLS/signed association/RBAC are not native IEC 62351-4 E2E or accredited certification.
+
+First inspect the handoff and available repository state, identify what is local-only or missing from the new environment, then continue with my next specific request. Do not deploy or change the bench simply because you read this prompt. If you cannot access files or a reference, state that limitation rather than assuming it is present.
+
+The handoff package contains context only. It does not contain the repository, latest source edits, private keys, SDK, binaries, protected backups, raw evidence or all historical chat turns. Keep using the existing merged working directory if this is the same machine. Transfer needed source and approved references separately if changing machines.

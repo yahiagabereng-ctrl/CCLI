@@ -1,0 +1,3 @@
+package=test-revoke
+version=1.0.0-r1
+signature=unsigned

@@ -1,0 +1,331 @@
+﻿# CCLI DUT SSH evidence
+tsp_id: T1-01
+dut_ip: 192.168.0.1
+date: 2026-10-20
+
+
+========== DUT SSH PRE 2026-10-20 15:23:42 UTC-ish local ==========
+=== DUT evidence PRE test_id=T1-01 ===
+2026-10-20T21:23:40+08:00
+ccli 0.1.0-r62 (AUDIT-LOG-ROTATION)
+  semver:   0.1.0
+  release:  r62
+  git:      unknown
+  built:    2026-10-20T13:00:44Z UTC
+  platform: tg500
+=== process / listen ===
+13080 /usr/sbin/ccli
+tcp        0      0 192.168.0.1:3782        0.0.0.0:*               LISTEN      13080/ccli
+=== dido_v2 (actuation) ===
+{
+	"running": true,
+	"northbound_count": 0,
+	"channels": [
+		{
+			"channel": 1,
+			"name": "DIO-1",
+			"enabled": true,
+			"mode": "DO",
+			"report_key": "relay_1",
+			"state": 0,
+			"memory_state": false
+		},
+		{
+			"channel": 2,
+			"name": "DIO-2",
+			"enabled": true,
+			"mode": "DI",
+			"report_key": "relay_2",
+			"state": 0,
+			"irq_active": false,
+			"poll_enabled": true,
+			"poll_interval": 5,
+			"change_report": true,
+			"last_poll": 0
+		},
+		{
+			"channel": 3,
+			"name": "DIO-3",
+			"enabled": true,
+			"mode": "DO",
+			"report_key": "relay_3",
+			"state": 0,
+			"memory_state": false
+		},
+		{
+			"channel": 4,
+			"name": "DIO-4",
+			"enabled": true,
+			"mode": "DO",
+			"report_key": "relay_4",
+			"state": 0,
+			"memory_state": false
+		}
+	],
+	"ai": [
+		{
+			"channel": 1,
+			"raw": 0,
+			"ma": 0.000000,
+			"valid": true,
+			"age_ms": 684
+		},
+		{
+			"channel": 2,
+			"raw": 0,
+			"ma": 0.000000,
+			"valid": true,
+			"age_ms": 684
+		}
+	],
+	"northbound_channels": [
+		
+	]
+}
+=== logread ccli (filter: CONNECT|DISCONNECT|TLS|ACSE|AARE|auth|handshake|Initiate|session|listening|FAILED|closed) ===
+Tue Oct 20 21:20:20 2026 daemon.err ccli[13080]: TLS:      cert. version     : 3
+Tue Oct 20 21:20:20 2026 daemon.err ccli[13080]: mms: client CONNECT count=1
+Tue Oct 20 21:20:20 2026 daemon.err ccli[13080]: mms: iso session CONNECT (payload=1586)
+Tue Oct 20 21:20:20 2026 daemon.err ccli[13080]: mms: client DISCONNECT count=0
+Tue Oct 20 21:20:24 2026 daemon.err ccli[13080]: TLS: Verify cert: depth 1
+Tue Oct 20 21:20:24 2026 daemon.err ccli[13080]: TLS:    flags: 00000000
+Tue Oct 20 21:20:24 2026 daemon.err ccli[13080]: TLS:   cert. version     : 3
+Tue Oct 20 21:20:24 2026 daemon.err ccli[13080]: TLS: Verify cert: depth 0
+Tue Oct 20 21:20:24 2026 daemon.err ccli[13080]: TLS:    flags: 00000000
+Tue Oct 20 21:20:24 2026 daemon.err ccli[13080]: TLS:   cert. version     : 3
+Tue Oct 20 21:20:24 2026 daemon.err ccli[13080]: TLS: Check against list of allowed certs
+Tue Oct 20 21:20:24 2026 daemon.err ccli[13080]: TLS: Compare With:
+Tue Oct 20 21:20:24 2026 daemon.err ccli[13080]: TLS:      cert. version     : 3
+Tue Oct 20 21:20:24 2026 daemon.err ccli[13080]:      ext key usage     : TLS Web Client Authentication
+Tue Oct 20 21:20:24 2026 daemon.err ccli[13080]: TLS: Compare With:
+Tue Oct 20 21:20:24 2026 daemon.err ccli[13080]: TLS:      cert. version     : 3
+Tue Oct 20 21:20:24 2026 daemon.err ccli[13080]:      ext key usage     : TLS Web Client Authentication
+Tue Oct 20 21:20:24 2026 daemon.err ccli[13080]: TLS: Compare With:
+Tue Oct 20 21:20:24 2026 daemon.err ccli[13080]: TLS:      cert. version     : 3
+Tue Oct 20 21:20:24 2026 daemon.err ccli[13080]:      ext key usage     : TLS Web Client Authentication
+Tue Oct 20 21:20:24 2026 daemon.err ccli[13080]: TLS: Compare With:
+Tue Oct 20 21:20:24 2026 daemon.err ccli[13080]: TLS:      cert. version     : 3
+Tue Oct 20 21:20:24 2026 daemon.err ccli[13080]:      ext key usage     : TLS Web Client Authentication
+Tue Oct 20 21:20:24 2026 daemon.err ccli[13080]: TLS: Compare With:
+Tue Oct 20 21:20:24 2026 daemon.err ccli[13080]: TLS:      cert. version     : 3
+Tue Oct 20 21:20:24 2026 daemon.err ccli[13080]: mms: client CONNECT count=1
+Tue Oct 20 21:20:24 2026 daemon.err ccli[13080]: mms: iso session CONNECT (payload=1586)
+Tue Oct 20 21:20:24 2026 daemon.err ccli[13080]: mms: client DISCONNECT count=0
+Tue Oct 20 21:21:07 2026 daemon.err ccli[13080]: TLS: Verify cert: depth 1
+Tue Oct 20 21:21:07 2026 daemon.err ccli[13080]: TLS:    flags: 00000000
+Tue Oct 20 21:21:07 2026 daemon.err ccli[13080]: TLS:   cert. version     : 3
+Tue Oct 20 21:21:07 2026 daemon.err ccli[13080]: TLS: Verify cert: depth 0
+Tue Oct 20 21:21:07 2026 daemon.err ccli[13080]: TLS:    flags: 00000000
+Tue Oct 20 21:21:07 2026 daemon.err ccli[13080]: TLS:   cert. version     : 3
+Tue Oct 20 21:21:07 2026 daemon.err ccli[13080]: TLS: Check against list of allowed certs
+Tue Oct 20 21:21:07 2026 daemon.err ccli[13080]: TLS: Compare With:
+Tue Oct 20 21:21:07 2026 daemon.err ccli[13080]: TLS:      cert. version     : 3
+Tue Oct 20 21:21:07 2026 daemon.err ccli[13080]:      ext key usage     : TLS Web Client Authentication
+Tue Oct 20 21:21:07 2026 daemon.err ccli[13080]: TLS: Compare With:
+Tue Oct 20 21:21:07 2026 daemon.err ccli[13080]: TLS:      cert. version     : 3
+Tue Oct 20 21:21:07 2026 daemon.err ccli[13080]:      ext key usage     : TLS Web Client Authentication
+Tue Oct 20 21:21:07 2026 daemon.err ccli[13080]: TLS: Compare With:
+Tue Oct 20 21:21:07 2026 daemon.err ccli[13080]: TLS:      cert. version     : 3
+Tue Oct 20 21:21:07 2026 daemon.err ccli[13080]:      ext key usage     : TLS Web Client Authentication
+Tue Oct 20 21:21:07 2026 daemon.err ccli[13080]: TLS: Compare With:
+Tue Oct 20 21:21:07 2026 daemon.err ccli[13080]: TLS:      cert. version     : 3
+Tue Oct 20 21:21:07 2026 daemon.err ccli[13080]:      ext key usage     : TLS Web Client Authentication
+Tue Oct 20 21:21:07 2026 daemon.err ccli[13080]: TLS: Compare With:
+Tue Oct 20 21:21:07 2026 daemon.err ccli[13080]: TLS:      cert. version     : 3
+Tue Oct 20 21:21:07 2026 daemon.err ccli[13080]: mms: client CONNECT count=1
+Tue Oct 20 21:21:07 2026 daemon.err ccli[13080]: mms: iso session CONNECT (payload=1586)
+Tue Oct 20 21:21:07 2026 daemon.err ccli[13080]: mms: ACSE auth ACCEPT ΓÇö Profile A role token
+Tue Oct 20 21:21:07 2026 daemon.err ccli[13080]: mms: AARE responder auth [10]EXTERNAL ctx=5 inner=1075 octets
+Tue Oct 20 21:21:07 2026 daemon.err ccli[13080]: mms: iso session ACCEPT extended LI (spdu=1264 payload=1244)
+Tue Oct 20 21:21:36 2026 daemon.err ccli[13080]: TLS:  connection was closed gracefully
+Tue Oct 20 21:21:36 2026 daemon.err ccli[13080]: mms: client DISCONNECT count=0
+Tue Oct 20 21:21:40 2026 daemon.err ccli[13080]: TLS: Verify cert: depth 1
+Tue Oct 20 21:21:40 2026 daemon.err ccli[13080]: TLS:    flags: 00000000
+Tue Oct 20 21:21:40 2026 daemon.err ccli[13080]: TLS:   cert. version     : 3
+Tue Oct 20 21:21:40 2026 daemon.err ccli[13080]: TLS: Verify cert: depth 0
+Tue Oct 20 21:21:40 2026 daemon.err ccli[13080]: TLS:    flags: 00000000
+Tue Oct 20 21:21:40 2026 daemon.err ccli[13080]: TLS:   cert. version     : 3
+Tue Oct 20 21:21:40 2026 daemon.err ccli[13080]: TLS: Check against list of allowed certs
+Tue Oct 20 21:21:40 2026 daemon.err ccli[13080]: TLS: Compare With:
+Tue Oct 20 21:21:40 2026 daemon.err ccli[13080]: TLS:      cert. version     : 3
+Tue Oct 20 21:21:40 2026 daemon.err ccli[13080]:      ext key usage     : TLS Web Client Authentication
+Tue Oct 20 21:21:40 2026 daemon.err ccli[13080]: TLS: Compare With:
+Tue Oct 20 21:21:40 2026 daemon.err ccli[13080]: TLS:      cert. version     : 3
+Tue Oct 20 21:21:40 2026 daemon.err ccli[13080]:      ext key usage     : TLS Web Client Authentication
+Tue Oct 20 21:21:40 2026 daemon.err ccli[13080]: TLS: Compare With:
+Tue Oct 20 21:21:40 2026 daemon.err ccli[13080]: TLS:      cert. version     : 3
+Tue Oct 20 21:21:40 2026 daemon.err ccli[13080]:      ext key usage     : TLS Web Client Authentication
+Tue Oct 20 21:21:40 2026 daemon.err ccli[13080]: TLS: Compare With:
+Tue Oct 20 21:21:40 2026 daemon.err ccli[13080]: TLS:      cert. version     : 3
+Tue Oct 20 21:21:40 2026 daemon.err ccli[13080]:      ext key usage     : TLS Web Client Authentication
+Tue Oct 20 21:21:40 2026 daemon.err ccli[13080]: TLS: Compare With:
+Tue Oct 20 21:21:40 2026 daemon.err ccli[13080]: TLS:      cert. version     : 3
+Tue Oct 20 21:21:40 2026 daemon.err ccli[13080]: mms: client CONNECT count=1
+Tue Oct 20 21:21:40 2026 daemon.err ccli[13080]: mms: iso session CONNECT (payload=1586)
+Tue Oct 20 21:21:40 2026 daemon.err ccli[13080]: mms: client DISCONNECT count=0
+=== /tmp/ccli.log tail ===
+(no /tmp/ccli.log)
+
+
+========== DUT SSH POST 2026-10-20 15:25:14 UTC-ish local ==========
+=== DUT evidence POST test_id=T1-01 ===
+2026-10-20T21:25:12+08:00
+ccli 0.1.0-r62 (AUDIT-LOG-ROTATION)
+  semver:   0.1.0
+  release:  r62
+  git:      unknown
+  built:    2026-10-20T13:00:44Z UTC
+  platform: tg500
+=== process / listen ===
+13080 /usr/sbin/ccli
+tcp        0      0 192.168.0.1:3782        0.0.0.0:*               LISTEN      13080/ccli
+=== dido_v2 (actuation) ===
+{
+	"running": true,
+	"northbound_count": 0,
+	"channels": [
+		{
+			"channel": 1,
+			"name": "DIO-1",
+			"enabled": true,
+			"mode": "DO",
+			"report_key": "relay_1",
+			"state": 0,
+			"memory_state": false
+		},
+		{
+			"channel": 2,
+			"name": "DIO-2",
+			"enabled": true,
+			"mode": "DI",
+			"report_key": "relay_2",
+			"state": 0,
+			"irq_active": false,
+			"poll_enabled": true,
+			"poll_interval": 5,
+			"change_report": true,
+			"last_poll": 0
+		},
+		{
+			"channel": 3,
+			"name": "DIO-3",
+			"enabled": true,
+			"mode": "DO",
+			"report_key": "relay_3",
+			"state": 0,
+			"memory_state": false
+		},
+		{
+			"channel": 4,
+			"name": "DIO-4",
+			"enabled": true,
+			"mode": "DO",
+			"report_key": "relay_4",
+			"state": 0,
+			"memory_state": false
+		}
+	],
+	"ai": [
+		{
+			"channel": 1,
+			"raw": 0,
+			"ma": 0.000000,
+			"valid": true,
+			"age_ms": 162
+		},
+		{
+			"channel": 2,
+			"raw": 0,
+			"ma": 0.000000,
+			"valid": true,
+			"age_ms": 162
+		}
+	],
+	"northbound_channels": [
+		
+	]
+}
+=== logread ccli (filter: CONNECT|DISCONNECT|TLS|ACSE|AARE|auth|handshake|Initiate|session|listening|FAILED|closed) ===
+Tue Oct 20 21:24:29 2026 daemon.err ccli[13080]: TLS: Compare With:
+Tue Oct 20 21:24:29 2026 daemon.err ccli[13080]: TLS:      cert. version     : 3
+Tue Oct 20 21:24:29 2026 daemon.err ccli[13080]:      ext key usage     : TLS Web Client Authentication
+Tue Oct 20 21:24:29 2026 daemon.err ccli[13080]: TLS: Compare With:
+Tue Oct 20 21:24:29 2026 daemon.err ccli[13080]: TLS:      cert. version     : 3
+Tue Oct 20 21:24:29 2026 daemon.err ccli[13080]: mms: client CONNECT count=1
+Tue Oct 20 21:24:29 2026 daemon.err ccli[13080]: mms: iso session CONNECT (payload=1586)
+Tue Oct 20 21:24:29 2026 daemon.err ccli[13080]: mms: client DISCONNECT count=0
+Tue Oct 20 21:24:33 2026 daemon.err ccli[13080]: TLS: Verify cert: depth 1
+Tue Oct 20 21:24:33 2026 daemon.err ccli[13080]: TLS:    flags: 00000000
+Tue Oct 20 21:24:33 2026 daemon.err ccli[13080]: TLS:   cert. version     : 3
+Tue Oct 20 21:24:33 2026 daemon.err ccli[13080]: TLS: Verify cert: depth 0
+Tue Oct 20 21:24:33 2026 daemon.err ccli[13080]: TLS:    flags: 00000000
+Tue Oct 20 21:24:33 2026 daemon.err ccli[13080]: TLS:   cert. version     : 3
+Tue Oct 20 21:24:33 2026 daemon.err ccli[13080]: TLS: Check against list of allowed certs
+Tue Oct 20 21:24:33 2026 daemon.err ccli[13080]: TLS: Compare With:
+Tue Oct 20 21:24:33 2026 daemon.err ccli[13080]: TLS:      cert. version     : 3
+Tue Oct 20 21:24:33 2026 daemon.err ccli[13080]:      ext key usage     : TLS Web Client Authentication
+Tue Oct 20 21:24:33 2026 daemon.err ccli[13080]: TLS: Compare With:
+Tue Oct 20 21:24:33 2026 daemon.err ccli[13080]: TLS:      cert. version     : 3
+Tue Oct 20 21:24:33 2026 daemon.err ccli[13080]:      ext key usage     : TLS Web Client Authentication
+Tue Oct 20 21:24:33 2026 daemon.err ccli[13080]: TLS: Compare With:
+Tue Oct 20 21:24:33 2026 daemon.err ccli[13080]: TLS:      cert. version     : 3
+Tue Oct 20 21:24:33 2026 daemon.err ccli[13080]:      ext key usage     : TLS Web Client Authentication
+Tue Oct 20 21:24:33 2026 daemon.err ccli[13080]: TLS: Compare With:
+Tue Oct 20 21:24:33 2026 daemon.err ccli[13080]: TLS:      cert. version     : 3
+Tue Oct 20 21:24:33 2026 daemon.err ccli[13080]:      ext key usage     : TLS Web Client Authentication
+Tue Oct 20 21:24:33 2026 daemon.err ccli[13080]: TLS: Compare With:
+Tue Oct 20 21:24:33 2026 daemon.err ccli[13080]: TLS:      cert. version     : 3
+Tue Oct 20 21:24:33 2026 daemon.err ccli[13080]: mms: client CONNECT count=1
+Tue Oct 20 21:24:33 2026 daemon.err ccli[13080]: mms: iso session CONNECT (payload=1586)
+Tue Oct 20 21:24:33 2026 daemon.err ccli[13080]: mms: client DISCONNECT count=0
+Tue Oct 20 21:24:37 2026 daemon.err ccli[13080]: TLS: Verify cert: depth 1
+Tue Oct 20 21:24:37 2026 daemon.err ccli[13080]: TLS:    flags: 00000000
+Tue Oct 20 21:24:37 2026 daemon.err ccli[13080]: TLS:   cert. version     : 3
+Tue Oct 20 21:24:37 2026 daemon.err ccli[13080]: TLS: Verify cert: depth 0
+Tue Oct 20 21:24:37 2026 daemon.err ccli[13080]: TLS:    flags: 00000000
+Tue Oct 20 21:24:37 2026 daemon.err ccli[13080]: TLS:   cert. version     : 3
+Tue Oct 20 21:24:37 2026 daemon.err ccli[13080]: TLS: Check against list of allowed certs
+Tue Oct 20 21:24:37 2026 daemon.err ccli[13080]: TLS: Compare With:
+Tue Oct 20 21:24:37 2026 daemon.err ccli[13080]: TLS:      cert. version     : 3
+Tue Oct 20 21:24:37 2026 daemon.err ccli[13080]:      ext key usage     : TLS Web Client Authentication
+Tue Oct 20 21:24:37 2026 daemon.err ccli[13080]: TLS: Compare With:
+Tue Oct 20 21:24:37 2026 daemon.err ccli[13080]: TLS:      cert. version     : 3
+Tue Oct 20 21:24:37 2026 daemon.err ccli[13080]:      ext key usage     : TLS Web Client Authentication
+Tue Oct 20 21:24:37 2026 daemon.err ccli[13080]: TLS: Compare With:
+Tue Oct 20 21:24:37 2026 daemon.err ccli[13080]: TLS:      cert. version     : 3
+Tue Oct 20 21:24:37 2026 daemon.err ccli[13080]:      ext key usage     : TLS Web Client Authentication
+Tue Oct 20 21:24:37 2026 daemon.err ccli[13080]: TLS: Compare With:
+Tue Oct 20 21:24:37 2026 daemon.err ccli[13080]: TLS:      cert. version     : 3
+Tue Oct 20 21:24:37 2026 daemon.err ccli[13080]:      ext key usage     : TLS Web Client Authentication
+Tue Oct 20 21:24:37 2026 daemon.err ccli[13080]: TLS: Compare With:
+Tue Oct 20 21:24:37 2026 daemon.err ccli[13080]: TLS:      cert. version     : 3
+Tue Oct 20 21:24:37 2026 daemon.err ccli[13080]: mms: client CONNECT count=1
+Tue Oct 20 21:24:37 2026 daemon.err ccli[13080]: mms: iso session CONNECT (payload=1586)
+Tue Oct 20 21:24:37 2026 daemon.err ccli[13080]: mms: client DISCONNECT count=0
+Tue Oct 20 21:24:45 2026 daemon.err ccli[13080]: TLS: Verify cert: depth 1
+Tue Oct 20 21:24:45 2026 daemon.err ccli[13080]: TLS:    flags: 00000000
+Tue Oct 20 21:24:45 2026 daemon.err ccli[13080]: TLS:   cert. version     : 3
+Tue Oct 20 21:24:45 2026 daemon.err ccli[13080]: TLS: Verify cert: depth 0
+Tue Oct 20 21:24:45 2026 daemon.err ccli[13080]: TLS:    flags: 00000000
+Tue Oct 20 21:24:45 2026 daemon.err ccli[13080]: TLS:   cert. version     : 3
+Tue Oct 20 21:24:45 2026 daemon.err ccli[13080]: TLS: Check against list of allowed certs
+Tue Oct 20 21:24:45 2026 daemon.err ccli[13080]: TLS: Compare With:
+Tue Oct 20 21:24:45 2026 daemon.err ccli[13080]: TLS:      cert. version     : 3
+Tue Oct 20 21:24:45 2026 daemon.err ccli[13080]:      ext key usage     : TLS Web Client Authentication
+Tue Oct 20 21:24:45 2026 daemon.err ccli[13080]: TLS: Compare With:
+Tue Oct 20 21:24:45 2026 daemon.err ccli[13080]: TLS:      cert. version     : 3
+Tue Oct 20 21:24:45 2026 daemon.err ccli[13080]:      ext key usage     : TLS Web Client Authentication
+Tue Oct 20 21:24:45 2026 daemon.err ccli[13080]: TLS: Compare With:
+Tue Oct 20 21:24:45 2026 daemon.err ccli[13080]: TLS:      cert. version     : 3
+Tue Oct 20 21:24:45 2026 daemon.err ccli[13080]:      ext key usage     : TLS Web Client Authentication
+Tue Oct 20 21:24:45 2026 daemon.err ccli[13080]: TLS: Compare With:
+Tue Oct 20 21:24:45 2026 daemon.err ccli[13080]: TLS:      cert. version     : 3
+Tue Oct 20 21:24:45 2026 daemon.err ccli[13080]:      ext key usage     : TLS Web Client Authentication
+Tue Oct 20 21:24:45 2026 daemon.err ccli[13080]: TLS: Compare With:
+Tue Oct 20 21:24:45 2026 daemon.err ccli[13080]: TLS:      cert. version     : 3
+Tue Oct 20 21:24:45 2026 daemon.err ccli[13080]: mms: client CONNECT count=1
+Tue Oct 20 21:24:45 2026 daemon.err ccli[13080]: mms: iso session CONNECT (payload=1586)
+Tue Oct 20 21:24:45 2026 daemon.err ccli[13080]: mms: client DISCONNECT count=0
+=== /tmp/ccli.log tail ===
+(no /tmp/ccli.log)
+

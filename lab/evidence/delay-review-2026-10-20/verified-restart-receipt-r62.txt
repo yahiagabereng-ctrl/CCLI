@@ -1,0 +1,11 @@
+VERIFIED_R62_LISTENER_OWNER pid=13080
+ccli 0.1.0-r62 (AUDIT-LOG-ROTATION)
+  semver:   0.1.0
+  release:  r62
+  git:      unknown
+  built:    2026-10-20T13:00:44Z UTC
+  platform: tg500
+       30 /etc/ccli/security-events/events.jsonl
+     2048 /etc/ccli/security-events/events.jsonl.1
+     2078 total
+RESTART_AND_PROTECTED_FILE_CHECK_PASS

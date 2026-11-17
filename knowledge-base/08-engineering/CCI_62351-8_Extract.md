@@ -1,5 +1,19 @@
 # IEC TS 62351-8 — CCLI Engineering Extract
 
+> **Implementation edition note — 2026-10-15:** This extract records the 2011
+> technical specification. Current CCLI RBAC work uses
+> `Normativa/IEC 62351-8-2020.pdf` and CEI 57-142:2026-07 (referenced by the
+> current CEI 0-16 Annex T). Do not transfer the clause numbers or incomplete
+> token description below to the 2020 edition. Profile A is in 10.5.1;
+> standard roleDefinition is `IEC62351-8`; standard role revisions 0 and 1
+> must be handled. Optional Operation/sequence fields concern administrative
+> permission updates and are not normal MMS session grants. The selected
+> product scope is IEC 61850/MMS, owner-signed commissioning, and Profile A,
+> preserving the existing TLS/ACSE transport. Firmware updating is separate.
+> Implementation status, verification and remaining gates are maintained in
+> `lab/conformance/CCI_RBAC_ROLE_IMPLEMENTATION.md`; this historical extract
+> is not evidence of completed conformance or an implemented MMS SECAUD log.
+
 **Document ID:** CCLI-SEC-62351-008  
 **Revision:** 1.0  
 **Date:** 2026-09-16  

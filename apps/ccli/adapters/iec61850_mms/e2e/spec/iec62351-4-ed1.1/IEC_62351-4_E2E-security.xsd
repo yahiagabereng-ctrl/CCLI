@@ -1,0 +1,501 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- E2E-Security -->
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.iec.ch/62351/2018/E2E_4" xmlns:oss="http://www.oss.com/XSD" targetNamespace="http://www.iec.ch/62351/2018/E2E_4" elementFormDefault="qualified">
+  <xsd:include schemaLocation="Virtual-API.xsd"/>
+  <xsd:element name="HandshakeReq" type="HandshakeReq"/>
+  <xsd:element name="HandshakeAcc" type="HandshakeAcc"/>
+  <xsd:element name="ApplicationReject" type="ApplicationReject"/>
+  <xsd:element name="HandshakeSecReject" type="HandshakeSecReject"/>
+  <xsd:element name="HandshakeSecAbort" type="HandshakeSecAbort"/>
+  <xsd:element name="DtSecAbort" type="DtSecAbort"/>
+  <xsd:element name="ApplAbort" type="ApplAbort"/>
+  <xsd:element name="ReleaseReq" type="ReleaseReq"/>
+  <xsd:element name="ReleaseRsp" type="ReleaseRsp"/>
+  <xsd:element name="ClearTransfer" type="ClearTransfer"/>
+  <xsd:element name="EncrTransfer" type="EncrTransfer"/>
+  <xsd:element name="AES-InitializationVector" type="AES-InitializationVector"/>
+  <xsd:simpleType name="AES-InitializationVector">
+    <xsd:restriction base="xsd:base64Binary"/>
+  </xsd:simpleType>
+  <xsd:complexType name="EncrTransfer">
+    <xsd:sequence>
+      <xsd:element name="tbp">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="token2" type="ClearToken2"/>
+            <xsd:element name="applData" type="Encrypted-ApplData"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="auth" type="Authenticator" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="Authenticator">
+    <xsd:sequence>
+      <xsd:element name="nonce" type="xsd:base64Binary" minOccurs="0"/>
+      <xsd:element name="algo">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="parm" minOccurs="0">
+              <xsd:complexType mixed="true">
+                <xsd:choice>
+                  <xsd:any processContents="lax"/>
+                </xsd:choice>
+              </xsd:complexType>
+            </xsd:element>
+          </xsd:sequence>
+          <xsd:attribute name="id" type="OBJECT_IDENTIFIER" use="required"/>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="icv" type="xsd:base64Binary"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:simpleType name="OBJECT_IDENTIFIER">
+    <xsd:restriction base="xsd:string">
+      <xsd:pattern value="( *([a-z]|[0-9]|\{|\}|\.)* *)"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="Encrypted-ApplData">
+    <xsd:restriction base="xsd:base64Binary"/>
+  </xsd:simpleType>
+  <xsd:complexType name="ClearToken2">
+    <xsd:sequence>
+      <!-- IV for AES encryption -->
+      <xsd:element name="iv" type="InitializationVector" minOccurs="0"/>
+      <xsd:element name="rekey" type="DhPublicKey" minOccurs="0"/>
+    </xsd:sequence>
+    <xsd:attribute name="version" type="Version" default="1"/>
+    <xsd:attribute name="assoID" type="xsd:string" use="required"/>
+    <xsd:attribute name="time" type="TimeStamp" use="required"/>
+    <xsd:attribute name="seq" type="SequenceNumber" use="required"/>
+    <xsd:attribute name="reqRekey" type="BOOLEAN" default="false"/>
+    <xsd:attribute name="changedKey" type="E2E-Security_BOOLEAN_1" default="false"/>
+  </xsd:complexType>
+  <xsd:simpleType name="E2E-Security_BOOLEAN_1">
+    <xsd:restriction base="xsd:boolean"/>
+  </xsd:simpleType>
+  <xsd:simpleType name="BOOLEAN">
+    <xsd:restriction base="xsd:boolean"/>
+  </xsd:simpleType>
+  <xsd:simpleType name="SequenceNumber">
+    <xsd:restriction base="INTEGER"/>
+  </xsd:simpleType>
+  <xsd:simpleType name="INTEGER">
+    <xsd:restriction base="xsd:integer"/>
+  </xsd:simpleType>
+  <xsd:simpleType name="TimeStamp">
+    <xsd:restriction base="GeneralizedTime"/>
+  </xsd:simpleType>
+  <xsd:simpleType name="GeneralizedTime">
+    <xsd:restriction base="xsd:string">
+      <xsd:whiteSpace value="collapse"/>
+      <xsd:pattern value="( *([0-9]{8}([0-9]{2})?([0-9]{2})?([0-9]{2})?(\.[0-9]+)?((Z)|([\+\-][0-9]{4}))?) *)"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="Version">
+    <xsd:union>
+      <xsd:simpleType>
+        <xsd:restriction base="xsd:string">
+          <xsd:whiteSpace value="collapse"/>
+          <xsd:pattern value="( *(1|0) *)*"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType>
+        <xsd:list>
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string">
+              <xsd:enumeration value="v1"/>
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:list>
+      </xsd:simpleType>
+    </xsd:union>
+  </xsd:simpleType>
+  <xsd:simpleType name="DhPublicKey">
+    <xsd:restriction base="xsd:string">
+      <xsd:whiteSpace value="collapse"/>
+      <xsd:pattern value="( *([0-9]|[A-F]|[a-f]) *)*"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="InitializationVector">
+    <xsd:restriction base="xsd:base64Binary"/>
+  </xsd:simpleType>
+  <xsd:complexType name="ClearTransfer">
+    <xsd:sequence>
+      <xsd:element name="tbp">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="token2" type="ClearToken2"/>
+            <xsd:element ref="ApplData"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="auth" type="Authenticator"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <!--
+IMPORTS
+
+  ApplData
+    FROM Virtual-API
+      {iso(1) standard(0) iec62351(62351) part4(4) modules(0) virtual-API(2) version1(1)} ;
+-->
+  <xsd:complexType name="ReleaseRsp">
+    <xsd:sequence>
+      <xsd:element name="tbs">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="token3" type="ClearToken3"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="sign" type="Signature"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="Signature">
+    <xsd:sequence>
+      <xsd:element name="algo">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="parm" minOccurs="0">
+              <xsd:complexType mixed="true">
+                <xsd:choice>
+                  <xsd:any processContents="lax"/>
+                </xsd:choice>
+              </xsd:complexType>
+            </xsd:element>
+          </xsd:sequence>
+          <xsd:attribute name="id" type="OBJECT_IDENTIFIER" use="required"/>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="sign" type="xsd:base64Binary"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ClearToken3">
+    <xsd:sequence>
+      <xsd:element name="sigAlg">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="parm" minOccurs="0">
+              <xsd:complexType mixed="true">
+                <xsd:choice>
+                  <xsd:any processContents="lax"/>
+                </xsd:choice>
+              </xsd:complexType>
+            </xsd:element>
+          </xsd:sequence>
+          <xsd:attribute name="id" type="OBJECT_IDENTIFIER" use="required"/>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="pkCert" type="PKCert"/>
+      <xsd:element name="certPath" type="CertPath" minOccurs="0"/>
+    </xsd:sequence>
+    <xsd:attribute name="version" type="Version" default="1"/>
+    <xsd:attribute name="assoID" type="xsd:string"/>
+    <xsd:attribute name="time" type="TimeStamp" use="required"/>
+  </xsd:complexType>
+  <xsd:complexType name="CertPath">
+    <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+      <xsd:element name="pkCert" type="PKCert"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:simpleType name="PKCert">
+    <xsd:restriction base="xsd:base64Binary"/>
+  </xsd:simpleType>
+  <xsd:complexType name="ReleaseReq">
+    <xsd:sequence>
+      <xsd:element name="tbs">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="token3" type="ClearToken3"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="sign" type="Signature"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ApplAbort">
+    <xsd:sequence>
+      <xsd:element name="tbs">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="token3" type="ClearToken3"/>
+            <xsd:element ref="ApplData" minOccurs="0"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="sign" type="Signature"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="DtSecAbort">
+    <xsd:sequence>
+      <xsd:element name="tbs">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="token3" type="ClearToken3"/>
+            <xsd:element name="diag" type="DtDiagnostics" minOccurs="0"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="sign" type="Signature"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:simpleType name="DtDiagnostics">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="no-reason-given"/>
+      <xsd:enumeration value="protocol-error"/>
+      <xsd:enumeration value="unexpected-version"/>
+      <xsd:enumeration value="encryption-not-selected"/>
+      <xsd:enumeration value="encryption-required"/>
+      <xsd:enumeration value="gmac-nonce-required"/>
+      <xsd:enumeration value="invalid-time-value"/>
+      <xsd:enumeration value="invalid-sequence-number"/>
+      <xsd:enumeration value="aes-init-vector-required"/>
+      <xsd:enumeration value="unexpected-dhPublicKey"/>
+      <xsd:enumeration value="unexpected-changedCypher"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="HandshakeSecAbort">
+    <xsd:sequence>
+      <xsd:element name="tbs">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="token3" type="ClearToken3"/>
+            <xsd:element name="diag" type="HandshakeDiagnostics" minOccurs="0"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="sign" type="Signature"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:simpleType name="HandshakeDiagnostics">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="no-reason-given"/>
+      <xsd:enumeration value="protocol-error"/>
+      <xsd:enumeration value="protected-protocol-not-supported"/>
+      <xsd:enumeration value="invalid-signatureAlgorithm"/>
+      <xsd:enumeration value="unexpected-version"/>
+      <xsd:enumeration value="hmac-algorithm-not-supported"/>
+      <xsd:enumeration value="encryption-not-required"/>
+      <xsd:enumeration value="encryption-required"/>
+      <xsd:enumeration value="invalid-public-key-certificate"/>
+      <xsd:enumeration value="invalid-certification-path"/>
+      <xsd:enumeration value="invalid-time-value"/>
+      <xsd:enumeration value="dhGroup-not-supported"/>
+      <xsd:enumeration value="illegal-dhGroup-selected"/>
+      <xsd:enumeration value="icv-algorithms-not-supported"/>
+      <xsd:enumeration value="encrypt-algorithms-not-supported"/>
+      <xsd:enumeration value="aea-algorithms-not-supported"/>
+      <xsd:enumeration value="invalid-attribute-certificate"/>
+      <xsd:enumeration value="encr-mode-aea-not-supported"/>
+      <xsd:enumeration value="ae-is-required"/>
+      <xsd:enumeration value="altSig-mismatch"/>
+      <xsd:enumeration value="aea-select-but-encryp-not-supp"/>
+      <xsd:enumeration value="invalid-ae-algorithm"/>
+      <xsd:enumeration value="single-ae-algorithm-required"/>
+      <xsd:enumeration value="ae-not-used"/>
+      <xsd:enumeration value="invalid-encryption-algorithm"/>
+      <xsd:enumeration value="single-encrypt-algo-required"/>
+      <xsd:enumeration value="single-icv-algo-required"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="HandshakeSecReject">
+    <xsd:sequence>
+      <xsd:element name="tbs">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="token3" type="ClearToken3"/>
+            <xsd:element name="diag" type="HandshakeDiagnostics" minOccurs="0"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="sign" type="Signature"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ApplicationReject">
+    <xsd:sequence>
+      <xsd:element name="tbs">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="token3" type="ClearToken3"/>
+            <xsd:element ref="ApplData"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="sign" type="Signature"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="HandshakeAcc">
+    <xsd:sequence>
+      <xsd:element name="tbs">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="token1" type="ClearToken1"/>
+            <xsd:element ref="ApplData" minOccurs="0"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="sign" type="Signature"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <!-- Shall be the result of the encryption of the encoded ApplData -->
+  <xsd:complexType name="ClearToken1">
+    <xsd:sequence>
+      <xsd:element name="sigAlg">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="parm" minOccurs="0">
+              <xsd:complexType mixed="true">
+                <xsd:choice>
+                  <xsd:any processContents="lax"/>
+                </xsd:choice>
+              </xsd:complexType>
+            </xsd:element>
+          </xsd:sequence>
+          <xsd:attribute name="id" type="OBJECT_IDENTIFIER" use="required"/>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="pkCert" type="PKCert"/>
+      <xsd:element name="certPath" type="CertPath" minOccurs="0"/>
+      <xsd:element name="dHKey" type="DiffieHellmanSet"/>
+      <xsd:element name="hmac">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="parm" minOccurs="0">
+              <xsd:complexType mixed="true">
+                <xsd:choice>
+                  <xsd:any processContents="lax"/>
+                </xsd:choice>
+              </xsd:complexType>
+            </xsd:element>
+          </xsd:sequence>
+          <xsd:attribute name="id" type="OBJECT_IDENTIFIER" use="required"/>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="encr-mode">
+        <xsd:complexType>
+          <xsd:choice>
+            <xsd:element name="aea">
+              <xsd:complexType>
+                <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+                  <xsd:element name="algo">
+                    <xsd:complexType>
+                      <xsd:sequence>
+                        <xsd:element name="parm" minOccurs="0">
+                          <xsd:complexType mixed="true">
+                            <xsd:choice>
+                              <xsd:any processContents="lax"/>
+                            </xsd:choice>
+                          </xsd:complexType>
+                        </xsd:element>
+                      </xsd:sequence>
+                      <xsd:attribute name="id" type="OBJECT_IDENTIFIER" use="required"/>
+                    </xsd:complexType>
+                  </xsd:element>
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="non-aea">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element name="encr" minOccurs="0">
+                    <xsd:complexType>
+                      <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+                        <xsd:element name="algo">
+                          <xsd:complexType>
+                            <xsd:sequence>
+                              <xsd:element name="parm" minOccurs="0">
+                                <xsd:complexType mixed="true">
+                                  <xsd:choice>
+                                    <xsd:element name="AES-InitializationVector" type="AES-InitializationVector" minOccurs="0"/>
+                                  </xsd:choice>
+                                </xsd:complexType>
+                              </xsd:element>
+                            </xsd:sequence>
+                            <xsd:attribute name="id" type="OBJECT_IDENTIFIER" use="required"/>
+                          </xsd:complexType>
+                        </xsd:element>
+                      </xsd:sequence>
+                    </xsd:complexType>
+                  </xsd:element>
+                  <xsd:element name="icvAlgID">
+                    <xsd:complexType>
+                      <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+                        <xsd:element name="algo">
+                          <xsd:complexType>
+                            <xsd:sequence>
+                              <xsd:element name="parm" minOccurs="0">
+                                <xsd:complexType mixed="true">
+                                  <xsd:choice>
+                                    <xsd:any processContents="lax"/>
+                                  </xsd:choice>
+                                </xsd:complexType>
+                              </xsd:element>
+                            </xsd:sequence>
+                            <xsd:attribute name="id" type="OBJECT_IDENTIFIER" use="required"/>
+                          </xsd:complexType>
+                        </xsd:element>
+                      </xsd:sequence>
+                    </xsd:complexType>
+                  </xsd:element>
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+          </xsd:choice>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="confParams" type="ConfidentialityParms"/>
+      <xsd:element name="attCert" type="ACert" minOccurs="0"/>
+    </xsd:sequence>
+    <xsd:attribute name="version" type="Version" default="1"/>
+    <xsd:attribute name="assoID" type="xsd:string" use="required"/>
+    <xsd:attribute name="time" type="TimeStamp" use="required"/>
+  </xsd:complexType>
+  <!--  (CONTAINING Certificate ENCODED BY der) -->
+  <xsd:simpleType name="ACert">
+    <xsd:restriction base="xsd:base64Binary"/>
+  </xsd:simpleType>
+  <!-- out-of-current scope -->
+  <xsd:simpleType name="ConfidentialityParms">
+    <xsd:union>
+      <xsd:simpleType>
+        <xsd:restriction base="xsd:string">
+          <xsd:whiteSpace value="collapse"/>
+          <xsd:pattern value="( *(1|0) *)*"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType>
+        <xsd:list>
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string">
+              <xsd:enumeration value="tlsProtected"/>
+              <xsd:enumeration value="applProtected"/>
+              <xsd:enumeration value="vpn"/>
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:list>
+      </xsd:simpleType>
+    </xsd:union>
+  </xsd:simpleType>
+  <xsd:complexType name="DiffieHellmanSet">
+    <xsd:sequence>
+      <xsd:element name="dhpk" type="DhPublicKey"/>
+    </xsd:sequence>
+    <xsd:attribute name="grp" type="INTEGER" use="required"/>
+    <!-- Group identifier -->
+  </xsd:complexType>
+  <xsd:complexType name="HandshakeReq">
+    <xsd:sequence>
+      <xsd:element name="tbs">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="token1" type="ClearToken1"/>
+            <xsd:element ref="ApplData" minOccurs="0"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="sign" type="Signature"/>
+    </xsd:sequence>
+    <xsd:attribute name="pp" type="xsd:string" use="required"/>
+  </xsd:complexType>
+</xsd:schema>

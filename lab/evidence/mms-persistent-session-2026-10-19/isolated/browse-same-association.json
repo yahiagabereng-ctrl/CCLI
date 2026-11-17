@@ -1,0 +1,82 @@
+{
+  "host": "127.0.0.1",
+  "port": 3784,
+  "command": "browse",
+  "reference": "CCI016_01LD_Plant",
+  "connection_mode": "persistent",
+  "passed": true,
+  "events": [
+    {
+      "kind": "directory",
+      "reference": "CCI016_01LD_Plant",
+      "error": 0,
+      "error_text": "",
+      "value": "nodes",
+      "observed_utc": "2026-10-19T09:39:27.670076+00:00"
+    },
+    {
+      "kind": "entry",
+      "reference": "CCI016_01LD_Plant",
+      "error": 0,
+      "error_text": "",
+      "value": "LLN0",
+      "observed_utc": "2026-10-19T09:39:27.670117+00:00"
+    },
+    {
+      "kind": "entry",
+      "reference": "CCI016_01LD_Plant",
+      "error": 0,
+      "error_text": "",
+      "value": "PdCMMXU1",
+      "observed_utc": "2026-10-19T09:39:27.670124+00:00"
+    },
+    {
+      "kind": "entry",
+      "reference": "CCI016_01LD_Plant",
+      "error": 0,
+      "error_text": "",
+      "value": "PFSPDFPF1",
+      "observed_utc": "2026-10-19T09:39:27.670129+00:00"
+    },
+    {
+      "kind": "entry",
+      "reference": "CCI016_01LD_Plant",
+      "error": 0,
+      "error_text": "",
+      "value": "PFWDPFW1",
+      "observed_utc": "2026-10-19T09:39:27.670134+00:00"
+    },
+    {
+      "kind": "entry",
+      "reference": "CCI016_01LD_Plant",
+      "error": 0,
+      "error_text": "",
+      "value": "VArSdDVAR1",
+      "observed_utc": "2026-10-19T09:39:27.670138+00:00"
+    },
+    {
+      "kind": "entry",
+      "reference": "CCI016_01LD_Plant",
+      "error": 0,
+      "error_text": "",
+      "value": "VArVDVVR1",
+      "observed_utc": "2026-10-19T09:39:27.670143+00:00"
+    },
+    {
+      "kind": "entry",
+      "reference": "CCI016_01LD_Plant",
+      "error": 0,
+      "error_text": "",
+      "value": "WlimDWMX1",
+      "observed_utc": "2026-10-19T09:39:27.670147+00:00"
+    },
+    {
+      "kind": "entry",
+      "reference": "CCI016_01LD_Plant",
+      "error": 0,
+      "error_text": "",
+      "value": "WSdDAGC1",
+      "observed_utc": "2026-10-19T09:39:27.670155+00:00"
+    }
+  ]
+}

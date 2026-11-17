@@ -1,0 +1,337 @@
+{
+  "schema": "ccli-plant-ui-map/1",
+  "source": "apps/ccli/config/plant/PLANT_ASSIGNMENT_PLANE.csv",
+  "bus_notes": "9600 8N1 /dev/ttyS2; addressing=huawei_direct; poll_ms=4000",
+  "poc": [
+    {
+      "id": "PdC.TotW",
+      "device": "Grid analyzer",
+      "slave_id": 1,
+      "reg": 40001,
+      "type": "float32",
+      "mms_path": "LD_Plant/PdCMMXU1.TotW",
+      "runtime_status": "IMPL"
+    },
+    {
+      "id": "PdC.TotVAr",
+      "device": "Grid analyzer",
+      "slave_id": 1,
+      "reg": 40003,
+      "type": "float32",
+      "mms_path": "LD_Plant/PdCMMXU1.TotVAr",
+      "runtime_status": "IMPL"
+    }
+  ],
+  "inverters": [
+    {
+      "id": "INV01",
+      "vendor": "Huawei SUN2000-100KTL-M2",
+      "slave_id": 1,
+      "mms_ln": "LD_Plant/SGGMMXU1",
+      "enabled": true,
+      "runtime_status": "IMPL",
+      "p": {
+        "fc": 3,
+        "reg": 32080,
+        "type": "I32",
+        "gain": 1000.0,
+        "mms_path": "LD_Plant/SGGMMXU1.TotW"
+      },
+      "notes": "Inverter sample INV-01",
+      "status": {
+        "fc": 3,
+        "reg": 32089,
+        "type": "U16",
+        "mms_path": "LD_Plant/SGGMMXU1.Beh"
+      }
+    },
+    {
+      "id": "INV02",
+      "vendor": "Huawei SUN2000-100KTL-M2",
+      "slave_id": 2,
+      "mms_ln": "LD_Plant/SGGMMXU2",
+      "enabled": true,
+      "runtime_status": "IMPL",
+      "p": {
+        "fc": 3,
+        "reg": 32080,
+        "type": "I32",
+        "gain": 1000.0,
+        "mms_path": "LD_Plant/SGGMMXU2.TotW"
+      },
+      "notes": "Inverter sample INV-02",
+      "status": {
+        "fc": 3,
+        "reg": 32089,
+        "type": "U16",
+        "mms_path": "LD_Plant/SGGMMXU2.Beh"
+      }
+    },
+    {
+      "id": "INV03",
+      "vendor": "Huawei SUN2000-100KTL-M2",
+      "slave_id": 3,
+      "mms_ln": "LD_Plant/SGGMMXU3",
+      "enabled": true,
+      "runtime_status": "CID_GAP",
+      "p": {
+        "fc": 3,
+        "reg": 32080,
+        "type": "I32",
+        "gain": 1000.0,
+        "mms_path": "LD_Plant/SGGMMXU3.TotW"
+      },
+      "notes": "Inverter sample INV-03",
+      "status": {
+        "fc": 3,
+        "reg": 32089,
+        "type": "U16",
+        "mms_path": "LD_Plant/SGGMMXU3.Beh"
+      }
+    },
+    {
+      "id": "INV04",
+      "vendor": "Huawei SUN2000-100KTL-M2",
+      "slave_id": 4,
+      "mms_ln": "LD_Plant/SGGMMXU4",
+      "enabled": true,
+      "runtime_status": "CID_GAP",
+      "p": {
+        "fc": 3,
+        "reg": 32080,
+        "type": "I32",
+        "gain": 1000.0,
+        "mms_path": "LD_Plant/SGGMMXU4.TotW"
+      },
+      "notes": "Inverter sample INV-04",
+      "status": {
+        "fc": 3,
+        "reg": 32089,
+        "type": "U16",
+        "mms_path": "LD_Plant/SGGMMXU4.Beh"
+      }
+    },
+    {
+      "id": "INV05",
+      "vendor": "Huawei SUN2000-100KTL-M2",
+      "slave_id": 5,
+      "mms_ln": "LD_Plant/SGGMMXU5",
+      "enabled": true,
+      "runtime_status": "CID_GAP",
+      "p": {
+        "fc": 3,
+        "reg": 32080,
+        "type": "I32",
+        "gain": 1000.0,
+        "mms_path": "LD_Plant/SGGMMXU5.TotW"
+      },
+      "notes": "Inverter sample INV-05",
+      "status": {
+        "fc": 3,
+        "reg": 32089,
+        "type": "U16",
+        "mms_path": "LD_Plant/SGGMMXU5.Beh"
+      }
+    },
+    {
+      "id": "INV06",
+      "vendor": "Huawei SUN2000-100KTL-M2",
+      "slave_id": 6,
+      "mms_ln": "LD_Plant/SGGMMXU6",
+      "enabled": true,
+      "runtime_status": "CID_GAP",
+      "p": {
+        "fc": 3,
+        "reg": 32080,
+        "type": "I32",
+        "gain": 1000.0,
+        "mms_path": "LD_Plant/SGGMMXU6.TotW"
+      },
+      "notes": "Inverter sample INV-06",
+      "status": {
+        "fc": 3,
+        "reg": 32089,
+        "type": "U16",
+        "mms_path": "LD_Plant/SGGMMXU6.Beh"
+      }
+    },
+    {
+      "id": "INV07",
+      "vendor": "Huawei SUN2000-100KTL-M2",
+      "slave_id": 7,
+      "mms_ln": "LD_Plant/SGGMMXU7",
+      "enabled": true,
+      "runtime_status": "CID_GAP",
+      "p": {
+        "fc": 3,
+        "reg": 32080,
+        "type": "I32",
+        "gain": 1000.0,
+        "mms_path": "LD_Plant/SGGMMXU7.TotW"
+      },
+      "notes": "Inverter sample INV-07",
+      "status": {
+        "fc": 3,
+        "reg": 32089,
+        "type": "U16",
+        "mms_path": "LD_Plant/SGGMMXU7.Beh"
+      }
+    },
+    {
+      "id": "INV08",
+      "vendor": "Huawei SUN2000-100KTL-M2",
+      "slave_id": 8,
+      "mms_ln": "LD_Plant/SGGMMXU8",
+      "enabled": true,
+      "runtime_status": "CID_GAP",
+      "p": {
+        "fc": 3,
+        "reg": 32080,
+        "type": "I32",
+        "gain": 1000.0,
+        "mms_path": "LD_Plant/SGGMMXU8.TotW"
+      },
+      "notes": "Inverter sample INV-08",
+      "status": {
+        "fc": 3,
+        "reg": 32089,
+        "type": "U16",
+        "mms_path": "LD_Plant/SGGMMXU8.Beh"
+      }
+    },
+    {
+      "id": "INV09",
+      "vendor": "Huawei SUN2000-100KTL-M2",
+      "slave_id": 9,
+      "mms_ln": "LD_Plant/SGGMMXU9",
+      "enabled": true,
+      "runtime_status": "CID_GAP",
+      "p": {
+        "fc": 3,
+        "reg": 32080,
+        "type": "I32",
+        "gain": 1000.0,
+        "mms_path": "LD_Plant/SGGMMXU9.TotW"
+      },
+      "notes": "Inverter sample INV-09",
+      "status": {
+        "fc": 3,
+        "reg": 32089,
+        "type": "U16",
+        "mms_path": "LD_Plant/SGGMMXU9.Beh"
+      }
+    },
+    {
+      "id": "INV10",
+      "vendor": "Huawei SUN2000-100KTL-M2",
+      "slave_id": 10,
+      "mms_ln": "LD_Plant/SGGMMXU10",
+      "enabled": true,
+      "runtime_status": "CID_GAP",
+      "p": {
+        "fc": 3,
+        "reg": 32080,
+        "type": "I32",
+        "gain": 1000.0,
+        "mms_path": "LD_Plant/SGGMMXU10.TotW"
+      },
+      "notes": "Inverter sample INV-10",
+      "status": {
+        "fc": 3,
+        "reg": 32089,
+        "type": "U16",
+        "mms_path": "LD_Plant/SGGMMXU10.Beh"
+      }
+    }
+  ],
+  "aggregates": [
+    {
+      "id": "GenPV.TotW",
+      "mms_path": "LD_Plant/GenPVMMXU1.TotW",
+      "transform": "sum(INV01..INV10.TotW)",
+      "enabled": true,
+      "runtime_status": "PART",
+      "notes": "Clears PLANT-GAP-01 when multi-slave Modbus wired"
+    }
+  ],
+  "controls": [
+    {
+      "id": "DSO.WSd.PctWrite",
+      "app_group": "A6",
+      "dso_source": "WSdDAGC1.WSptPct",
+      "clause": "O.9",
+      "slave_id": "ALL",
+      "fc": 6,
+      "reg": 40125,
+      "gain": 10.0,
+      "transform": "fanout slaves 1-10",
+      "enabled": true,
+      "runtime_status": "PART"
+    },
+    {
+      "id": "DSO.Wlim.PctWrite",
+      "app_group": "A6",
+      "dso_source": "WlimDWMX1.WMaxSptPct",
+      "clause": "O.9",
+      "slave_id": "ALL",
+      "fc": 6,
+      "reg": 40125,
+      "gain": 10.0,
+      "transform": "fanout slaves 1-10",
+      "enabled": true,
+      "runtime_status": "PART"
+    },
+    {
+      "id": "DSO.VArSd.QWrite",
+      "app_group": "A7",
+      "dso_source": "VArSdDVAR1.VArTgtSptPct",
+      "clause": "O.9.1.4",
+      "slave_id": "ALL",
+      "fc": 6,
+      "reg": 40123,
+      "gain": 1000.0,
+      "transform": "Q/S signed",
+      "enabled": true,
+      "runtime_status": "PART"
+    },
+    {
+      "id": "DSO.PFSP.PFWrite",
+      "app_group": "A7",
+      "dso_source": "PFSPDFPF1.PFGnTgtSpt",
+      "clause": "O.9.1.1",
+      "slave_id": "ALL",
+      "fc": 6,
+      "reg": 40122,
+      "gain": 1000.0,
+      "transform": "cosφ*1000 export target",
+      "enabled": false,
+      "runtime_status": "PART"
+    },
+    {
+      "id": "COMM.42014",
+      "app_group": "A0",
+      "dso_source": "",
+      "clause": "O.9",
+      "slave_id": "ALL",
+      "fc": 6,
+      "reg": 42014,
+      "gain": 1.0,
+      "transform": "Remote scheduling enable",
+      "enabled": true,
+      "runtime_status": "STUB"
+    },
+    {
+      "id": "COMM.42000",
+      "app_group": "A0",
+      "dso_source": "",
+      "clause": "O.9",
+      "slave_id": "ALL",
+      "fc": 6,
+      "reg": 42000,
+      "gain": 1.0,
+      "transform": "Grid code 70=CEI0-16 Italy",
+      "enabled": true,
+      "runtime_status": "STUB"
+    }
+  ]
+}

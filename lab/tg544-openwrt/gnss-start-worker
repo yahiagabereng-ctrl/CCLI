@@ -1,0 +1,59 @@
+#!/bin/sh
+# Nonblocking GNSS startup/health worker, supervised by /etc/init.d/gnss.
+# The AT broker owns the modem port; use only its ubus interface.
+
+gnss_broker_ready() {
+    local uptime rest state port pid
+    read -r uptime rest < /proc/uptime
+    # Match sim-info-collector's 90-second modem boot quiet period.
+    [ "${uptime%%.*}" -ge 90 ] || return 1
+    state=$(jsonfilter -i /tmp/sim_manager/at_broker.json -e '@.state' 2>/dev/null)
+    [ "$state" = running ] || return 1
+    port=$(jsonfilter -i /tmp/sim_manager/at_broker.json -e '@.at_port' 2>/dev/null)
+    [ -n "$port" ] && [ -c "$port" ] || return 1
+    pid=$(jsonfilter -i /tmp/sim_manager/at_broker.json -e '@.pid' 2>/dev/null)
+    case "$pid" in ''|*[!0-9]*) return 1 ;; esac
+    kill -0 "$pid" 2>/dev/null
+}
+
+gnss_ensure_on() {
+    local state reply
+    gnss_broker_ready || return 1
+    state=$(ubus -t 10 call sim-manager gnss_check 2>/dev/null) || return 1
+    if [ "$(jsonfilter -s "$state" -e '@.powered_on' 2>/dev/null)" = true ]; then
+        return 0
+    fi
+    [ "$(jsonfilter -s "$state" -e '@.supported' 2>/dev/null)" = true ] || return 1
+    reply=$(ubus -t 15 call sim-manager gnss_start 2>/dev/null) || return 1
+    if [ "$(jsonfilter -s "$reply" -e '@.success' 2>/dev/null)" != true ]; then
+        logger -t gnss "GNSS start request failed; retrying after modem readiness check"
+        return 1
+    fi
+    # A successful request is not proof the receiver is on. Verify separately.
+    sleep 2
+    state=$(ubus -t 10 call sim-manager gnss_check 2>/dev/null) || return 1
+    [ "$(jsonfilter -s "$state" -e '@.powered_on' 2>/dev/null)" = true ]
+}
+
+gnss_main() {
+    local confirmed=0
+    trap 'exit 0' TERM INT
+    logger -t gnss "GNSS worker waiting for modem readiness; boot continues independently"
+    while [ "$(uci -q get gnss.general.enabled)" = 1 ]; do
+        if gnss_ensure_on; then
+            if [ "$confirmed" = 0 ]; then
+                logger -t gnss "GNSS receiver verified powered on; awaiting satellite fix separately"
+            fi
+            confirmed=1
+            sleep 60
+        else
+            if [ "$confirmed" = 1 ]; then
+                logger -t gnss "GNSS receiver no longer verified; retrying startup"
+            fi
+            confirmed=0
+            sleep 15
+        fi
+    done
+}
+
+gnss_main "$@"

@@ -1,0 +1,42 @@
+{
+  "note": "Follow-up review fixes, 23 October 2026. Working tree source hashes and compile-only ARM64 artifact; no device runtime evidence.",
+  "sources": {
+    "apps/ccli/adapters/iec61850_mms/e2e/e2e_codec.cpp": {
+      "sha256": "6421cf7f51ec386583a041e52bbd6a4c0ac703cbda367dec80d2ee9262cfdd17",
+      "lf_sha256": "6b3eb70a411d177ebc62295d29018f01240ac814e15cc91c89fdb8535d78ac26"
+    },
+    "apps/ccli/adapters/iec61850_mms/e2e/e2e_wire.hpp": {
+      "sha256": "2e78f6435cadf04982df45ff56eb9239f53cfd196b276fd7953be38bd1ce98a1",
+      "lf_sha256": "2e78f6435cadf04982df45ff56eb9239f53cfd196b276fd7953be38bd1ce98a1"
+    },
+    "apps/ccli/adapters/iec61850_mms/e2e/e2e_association.cpp": {
+      "sha256": "e10c978ad8063a9f49bae86ae103921a56abe83134580ca1d7cb316fb6f65129",
+      "lf_sha256": "bb747296a772191a8ff4a7724158987714534c62aeb3ed753e5eccb9b57ecf83"
+    },
+    "apps/ccli/adapters/iec61850_mms/e2e/e2e_server.cpp": {
+      "sha256": "1bc9b0c0e948f9786edd7db08e2fb0ece6f4cfad5b836fadf8780a38ee4cd941",
+      "lf_sha256": "aa8b25d232d0e7771342a771ed25e3d6a020545ef8d64e0e8a162fdd9879be5e"
+    },
+    "apps/ccli/tests/unit/e2e_ber_field_test.cpp": {
+      "sha256": "ceb0f4df75e85bdedfe15d5e0bc3784514772bdd66b2af59666851e0cffe8d7d",
+      "lf_sha256": "e205348fafd0989aef54799b40d841165fad2644e7ed3d75f8398184fc73acbf"
+    },
+    "apps/ccli/tests/unit/e2e_native_stack_test.py": {
+      "sha256": "853daabe7a89f5cb83a516ba50960d3119bff6bf265dd05c45e1ed5e000d5a1d",
+      "lf_sha256": "af5fb4091ed406b81f9e7f2bf601f0a288e8400e6da7de7076ab2065db739da3"
+    },
+    "apps/ccli/tools/mms-client/e2e_probe.py": {
+      "sha256": "cccce8f8f6b200c4d29e8c3e961a9d327e355f74dd5b8dc75a974b9ddb7eb40f",
+      "lf_sha256": "6fbb50f97c74b182954130c5c76dd0d56332cdef6ae8212f40ea30b5c3d39000"
+    },
+    "lab/conformance/CCI_RBAC_NATIVE_E2E_EXTENSION.json": {
+      "sha256": "9fa5264ce8b61206eaa0998ef273d05de5f3eb7b4391889a723edc64b275cec7",
+      "lf_sha256": "b21c4c9418ce38a9e6182b70249f14d7827812506d1b1dbb0e60de3f3fbedfd1"
+    }
+  },
+  "arm64_binary_sha256": "5812ec9ddedb7c872332862cd39fd7eac118f8b3b70cb1d49b285c1ef938f5ab",
+  "host_test_binaries": {
+    "apps/ccli/build-e2e-crypto/OPTIONAL/e2e_native_server_test": "228f9319a259786cd7d017659e569ab7990a902c0984ebaba58ad5e0e877f0ce",
+    "apps/ccli/build-e2e-ber-sanitizers/OPTIONAL/e2e_ber_field_test": "bd416e93ac9acd5e808fe55838f2ed3b42b4251f24927560b0a3d264dda3f98b"
+  }
+}

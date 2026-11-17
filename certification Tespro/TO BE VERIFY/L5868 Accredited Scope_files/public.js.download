@@ -1,0 +1,4528 @@
+/**
+ * 获得contextPath
+ */
+function getContextPath() {
+    var pathName = document.location.pathname;
+    var index = pathName.substr(1).indexOf("/");
+    var result = pathName.substr(0,index+1);
+    return result;
+}
+
+
+//***********************全局变量**************************
+var adminOpter="admin";
+//修改状态字典集合
+var dictIsModify = [new DictItem('0','保持'), new DictItem('1','新增'), new DictItem('2','修改'), new DictItem('3','删除'), new DictItem('', '')];
+var dictIsModifyEn = [new DictItem('0','Keep'), new DictItem('1','New'), new DictItem('2','Modify'), new DictItem('3','Delete'), new DictItem('', '')];
+var taskStatusDict = [new DictItem('0','未完成'), new DictItem('1','已完成'), new DictItem('2','终止'), new DictItem('3','暂停'), new DictItem('9','未提交')];
+var apprResultDict = [new DictItem('1','予以'), new DictItem('2','不予'), new DictItem('3','予以')];
+var libraryNameDict = [new DictItem('1','A库'), new DictItem('4','B库'), new DictItem('3','Z库')];
+var labStatusDict = [new DictItem('0','有效'), new DictItem('1','注销'), new DictItem('2','撤销'), new DictItem('3','暂停')];
+var statusDict = [new DictItem('4','恢复'), new DictItem('1','注销'), new DictItem('2','撤销'), new DictItem('3','暂停')];
+var appTypeDict = [new DictItem('F','初次'),new DictItem('R','复评'),new DictItem('RC','换证复评'),new DictItem('E','扩项'),new DictItem('C','变更'),new DictItem('S','定期监督'),new DictItem('S1','第一次定期监督'),new DictItem('S2','第二次定期监督'),new DictItem('S3','第三次定期监督'),new DictItem('S4','第四次定期监督'),new DictItem('S5','第五次定期监督'),new DictItem('1','注销能力'),new DictItem('2','撤销能力'),new DictItem('3','暂停能力'),new DictItem('4','恢复暂停能力'),new DictItem('5','注销证书'),new DictItem('6','撤销证书'),new DictItem('7','暂停证书'),new DictItem('8','恢复暂停证书'),new DictItem('D','延期申请'),new DictItem('N','能力状态变化')];
+var glpAppTypeDict = [new DictItem('F','初次检查'),new DictItem('R','到期复查'),new DictItem('RC','换证复评'),new DictItem('E','扩大研究领域'),new DictItem('C','不定期监督'),new DictItem('S','监督检查'),new DictItem('S1','第一次定期监督'),new DictItem('S2','第二次定期监督'),new DictItem('S3','第三次定期监督'),new DictItem('S4','第四次定期监督'),new DictItem('S5','第五次定期监督'),new DictItem('1','注销能力'),new DictItem('2','撤销能力'),new DictItem('3','暂停能力'),new DictItem('4','恢复暂停能力'),new DictItem('5','注销证书'),new DictItem('6','撤销证书'),new DictItem('7','暂停证书'),new DictItem('8','恢复暂停证书'),new DictItem('D','延期申请'),new DictItem('N','能力状态变化'),new DictItem('M','公布数据修正')];
+var assessTypeDict = [new DictItem('F','初评'),new DictItem('R','复评'),new DictItem('RC','换证复评'),new DictItem('E','扩项'),new DictItem('C','不定期监督'),new DictItem('S','定期监督'),new DictItem('SS','定期监督（自查）'),new DictItem('S1','第一次定期监督'),new DictItem('S2','第二次定期监督'),new DictItem('S3','第三次定期监督'),new DictItem('S4','第四次定期监督'),new DictItem('S5','第五次定期监督'),new DictItem('1','注销能力'),new DictItem('2','撤销能力'),new DictItem('3','暂停能力'),new DictItem('4','恢复暂停能力'),new DictItem('5','注销证书'),new DictItem('6','撤销证书'),new DictItem('7','暂停证书'),new DictItem('8','恢复暂停证书'),new DictItem('D','延期申请'),new DictItem('N','能力状态变化'),new DictItem('M','公布数据修正')];
+var teamAsseStatus = [new DictItem('0','审批中'),new DictItem('3','待评审'),new DictItem('1','评审中'),new DictItem('2','评审完成')]; 
+var teamLevelDict = [new DictItem('1','主评审组'),new DictItem('2','分支评审组')];
+var orgInvoiceStatusDict = [new DictItem('0','无效'), new DictItem('1','未提交'), new DictItem('2','CNAS审核中'), new DictItem('3','审核通过'), new DictItem('4','退回修改')];
+var effDict = [new DictItem('1','有效'),new DictItem('0','无效')];
+var recommendDict = [new DictItem('1','是'),new DictItem('0','否')];
+var recommendEnDict = [new DictItem('1','Y'),new DictItem('0','N')];
+var appStatusDict = [new DictItem(0,'未提交'),new DictItem(1,'已提交'),new DictItem(2,'已完成'),new DictItem(3,'停止')];
+var alertTypeDict = [new DictItem('SPECIALSUP','专项监督'),new DictItem('TASK_HAS_ZN','组长为专职评审员')];
+//***********************结构*****************************
+//字典项目
+function DictItem(key, value){
+	this._key = key;
+	this._value = value;
+
+	DictItem.prototype.getValue=function(){
+			return this._value;
+	};
+	DictItem.prototype.getKey=function(){
+			return this._key;
+	};
+	
+}
+
+String.prototype.trim   =   function()
+{
+         //   用正则表达式将前后空格
+         //   用空字符串替代。
+         return   this.replace(/(^\s*)|(\s*$)/g, "");
+};
+//去空格的拆分字符串
+String.prototype.split2   =   function(separator, limit){
+	var _newArr = [];
+	var _arr = this.split(separator, limit);
+	$.each(_arr, function(i, val){
+		_newArr.push(val.trim());
+	});
+	return _newArr;
+};
+
+String.prototype.startWith=function(str){     
+	  var reg=new RegExp("^"+str);     
+	  return reg.test(this);        
+	};
+	 
+	String.prototype.endWith=function(str){     
+	  var reg=new RegExp(str+"$");     
+	  return reg.test(this);        
+	};
+
+//***********************扩展方法**************************
+//String to Date
+String.prototype.toDate = function(format) {
+   var returnDate = null;
+	format = format != null ? format : 'yyyy-MM-dd';
+	var pattern = format.replace("yyyy", "(\\~1{4})")
+		.replace("MM", "(\\~1{1,2})")
+		.replace("dd", "(\\~1{1,2})")
+		.replace(/~1/g, "d");
+	if (new RegExp(pattern).test(this)) {
+		var yPos = format.indexOf("yyyy");
+		if(yPos==-1){
+			yPos = 9;
+		}
+		var mPos = format.indexOf("MM");
+		if(mPos==-1){
+			mPos = 9;
+		}
+		var dPos = format.indexOf("dd");
+		if(dPos==-1){
+			dPos = 9;
+		}
+		var pos = new Array(yPos + "y", mPos + "m", dPos + "d").sort();
+		var data = { y: 0, m: 1, d: 1 };
+		var m = this.match(pattern);
+		for (var i = 1; i < m.length; i++) {
+			var flag = pos[i - 1].split('')[1];
+			data[flag] = m[i];
+		};
+		data.m = data.m - 1;
+		returnDate = new Date(data.y, data.m, data.d);
+	}
+
+	return returnDate;
+};
+Date.prototype.addYearOrMonth=function   (type1,num1){ 
+	if(num1==null)   
+		num1=1; 
+	var   tempDate=this.getDate(); 
+	switch(type1) { 
+		case   'M':	
+			this.setMonth(this.getMonth()+num1);   
+			break   ; 
+		case   'Y':	
+			this.setYear(this.getFullYear()+num1);   
+			break   ;	
+	} 
+	if(tempDate!=this.getDate())   
+		this.setDate(0); 
+	return   this; 
+};
+Date.prototype.add=function(type, value){ 
+	if(value==null)   
+		value=1; 
+	var d = this;
+	switch(type) {
+    case 'milli':
+        d.setMilliseconds(this.getMilliseconds() + value);
+        break;
+    case 'ss':
+        d.setSeconds(this.getSeconds() + value);
+        break;
+    case 'mm':
+        d.setMinutes(this.getMinutes() + value);
+        break;
+    case 'HH':
+        d.setHours(this.getHours() + value);
+        break;
+    case 'D':
+        d.setDate(this.getDate() + value);
+        break;
+    case 'M':
+        var day = this.getDate();
+        if (day > 28) {
+            day = Math.min(day, this.getFirstDateOfMonth().add('month', value).getLastDateOfMonth().getDate());
+        }
+        d.setDate(day);
+        d.setMonth(this.getMonth() + value);
+        break;
+    case 'Y':
+        d.setFullYear(this.getFullYear() + value);
+        break;
+	}
+	return d;
+};
+Date.prototype.getFirstDateOfMonth=function(){
+	return new Date(this.getFullYear(), this.getMonth(), 1);
+};
+Date.prototype.getLastDateOfMonth=function(){
+	return new Date(this.getFullYear(), this.getMonth()+1, 0);
+};
+Date.prototype.format =function(format)
+{
+var o = {
+"M+" : this.getMonth()+1, //month
+"d+" : this.getDate(), //day
+"H+" : this.getHours(), //hour
+"h+" : this.getHours(), //hour
+"m+" : this.getMinutes(), //minute
+"s+" : this.getSeconds(), //second
+"q+" : Math.floor((this.getMonth()+3)/3), //quarter
+"S" : this.getMilliseconds() //millisecond
+};
+if(/(y+)/.test(format)) format=format.replace(RegExp.$1,
+(this.getFullYear()+"").substr(4- RegExp.$1.length));
+for(var k in o)if(new RegExp("("+ k +")").test(format))
+format = format.replace(RegExp.$1,
+RegExp.$1.length==1? o[k] :
+("00"+ o[k]).substr((""+ o[k]).length));
+return format;
+};
+
+
+
+Array.prototype.contains = function(obj){
+	for(var i=0; i<this.length; i++){
+		if(this[i] == obj){
+			return true;
+		}
+	}
+	return false;
+};
+Array.prototype.indexOf = function(Object){  
+	for(var i = 0;i<this.length;i++){  
+		if(this[i] == Object){  
+			return i;  
+		}  
+	}  
+	return -1;  
+};  
+
+//*****************************公用方法***************************
+function cloneFun(obj){
+  if(!obj||"object" != typeof obj){
+    return null;
+  }
+  var result = null;
+  if(obj instanceof Array){
+	  result=[];
+  }else if(obj instanceof Date){
+	  result=new Date();
+	  result.setTime(obj.getTime());
+  }else if(objType(obj)=='RegExp'){
+	  result = obj;
+	  return result;
+  }else{
+	  result={};
+  }
+  for(var i in obj){
+    result[i] = ("object" != typeof obj[i])?obj[i]:cloneFun(obj[i]);
+  }
+  return result;
+}
+/**
+ * Js对象类型
+ * @param obj
+ * @returns 
+ */
+function objType(obj){
+	var typeStr = Object.prototype.toString.call(obj);
+	return typeStr.substring(8, typeStr.length-1);
+}
+function coalesce(){
+	var val = null;
+	$.each(arguments, function(i, param){
+		val = param;
+		if(val!=null){
+			return false;
+		}
+	});
+	return val;
+}
+function nvl(){
+	var val = null;
+	$.each(arguments, function(i, param){
+		val = param;
+		if(val!=null&&val!=''){
+			return false;
+		}
+	});
+	return val;
+}
+/**
+ * 创建一个加指定类型时间的日期
+ * @param date
+ * @param type
+ * @param num
+ * @returns
+ */
+function addDateDay(date, type, num){
+	var newDate = cloneFun(date);
+	return newDate.add(type, num);
+}
+/**
+ * 时间段验证
+ * @param smallDate 小日期
+ * @param bigDate 大日期
+ * @param include 是否包括等于
+ */
+function datePartValidate(smallDate, bigDate, include){
+	var date1 = smallDate.toDate();
+	var date2 = bigDate.toDate();
+	return (date1 < date2) || (include && date1.getTime()==date2.getTime());
+}
+//获得一个月的天数 (最后一天）
+function daysInMonth(iMonth, iYear){
+    return 32-new Date(iYear, iMonth-1, 32).getDate();
+}
+//扩展名 文件类型
+ function getFileExpandedName(fileInput){
+	var expandedName = '';
+	var fileName = fileInput.value;
+	if(fileName.indexOf('.')!=-1 && fileName.lastIndexOf('.') > fileName.lastIndexOf('\\')){
+		expandedName = fileName.substring(fileName.lastIndexOf('.')+1);
+	}
+	return expandedName;
+ }
+//增加正则表达式验证
+var addRegexpMothed = function(e){
+	jQuery.validator.addMethod("regexp",function(value,element,param){
+		var regexp = param;
+		return this.optional(element) || regexp.test(value);
+	},"验证格式错误！");
+};
+/**
+ * 增加jquery.validate的验证方法
+ */
+function addJvMethod(methods){
+	if(methods.contains('itemRequired')){
+		$.validator.addMethod("itemRequired", function(value, element, param) {
+			var pass = this.optional(element);
+			if(!pass){
+				var codes = param;
+				pass = $('[name="'+$(element).prop('name')+'"]:checked').is(function(){
+					return codes.contains($(this).val());
+				});
+			}
+			return pass;
+		}, $.format("必选项目未选择！"));
+	}
+}
+//中文和英文混合验证长度
+var stringValidator = function(e){
+		//中文长度验证
+		jQuery.validator.addMethod("byteRangeLength", function(value, element, param) {    
+			var length = value.length;    
+			  for(var i = 0; i < value.length; i++){
+				  var clength = value.charCodeAt(i);
+			   if(clength >= 128 && clength <= 2047){//特殊字符2位    
+				   length+=1;    
+			   }else if(clength > 2047){//中文3位
+				   length += 2;
+			   }
+			  }
+			  return this.optional(element) || ( length >= param[0] && length <= param[1] );     
+		}, jQuery.format("请确保输入{0}~{1}个字节(一个中文字算3个字节)"));
+};
+function byteRangeLength(value, min, max){
+	var length = value.length;    
+	  for(var i = 0; i < value.length; i++){
+		  var clength = value.charCodeAt(i);
+	   if(clength >= 128 && clength <= 2047){//特殊字符2位    
+		   length+=1;    
+	   }else if(clength > 2047){//中文3位
+		   length += 2;
+	   }
+	  }
+	  return ( length >= min && length <= max );  
+}
+var fileTypeValidator = function(e){
+	 jQuery.validator.addMethod("fileType", function(value, element, param) {
+		 var pass = false;
+		  var expandedName = getFileExpandedName(element).toLowerCase();   
+		  for(var i=0; i<param.length; i++){
+			  if(expandedName == param[i]){
+				  pass = true;
+				  break;
+			  }
+		  }
+		  return this.optional(element) || pass;    
+		}, jQuery.format("请确保输入上传文件格式正确！"));
+};
+
+
+//手机验证     
+var mobileValidator = function(e){
+		jQuery.validator.addMethod("isMobile", function(value, element) {    
+		var mob = /^1[35789]\d{9}$/;  
+		var length = value.length;
+		return this.optional(element) || (mob.test(value)&&length == 11);  
+	}, "请正确填写您的手机号码");  
+};
+/**
+ * 调用jquery验证，验证指定值
+ */
+var $jqvalidValTmp = null;
+var jqValidVal = function(rules, val){
+	var pass = true;
+	var mes = '';
+	if($jqvalidValTmp == null){
+		$jqvalidValTmp = $('<input type="text"></input>');
+		$jqvalidValTmp.optional=function(){};
+		$jqvalidValTmp.depend=function(){return true;};
+		$jqvalidValTmp.checkable=function(){return false;};
+		$jqvalidValTmp.getLength=function(val){return val.length;};
+	}
+	$jqvalidValTmp.val(val);
+	$.each(rules, function(attr, attrVal){
+		pass = $.validator.methods[attr].call($jqvalidValTmp,val,$jqvalidValTmp.get(0),attrVal);
+		if(!pass){
+			mes = $.validator.messages[attr];
+			if(typeof mes=='function'){
+				mes = mes(attrVal);
+			}
+			return false;
+		}
+	});
+	$jqvalidValTmp.val('');
+	return [pass,mes];
+};
+/**
+ * 解析MessageInfo对象
+ *param messageInfoColl 要解析的MessageInfo对象集合
+ example:alert(getAlertMessageInfo(eval('('+obj.responseText+')')));
+ var messageObj = eval('('+obj.responseText+')');
+ alert(getAlertMessageInfo(messageObj.messageInfoColl));
+
+ */
+function getAlertMessageInfo(messageInfoColl){
+	var _alertMessage = '';
+	if(messageInfoColl!=null){
+		for(var i=0; i<messageInfoColl.length; i++){
+			var _messageInfo = messageInfoColl[i];
+			if(i!=0){
+				_alertMessage += '\n';
+			}
+			_alertMessage += _messageInfo.message;
+		}
+	}
+	return _alertMessage;
+}
+
+/**
+ * 提交get请求
+ *param url 提交请求地址
+ *param successFunction 成功后的回调方法
+ *param failFunction 失败的回调方法
+ */
+function asyncRequestGet(url, successFunction, failFunction){
+	var extParam = arguments[3];//扩展参数
+	return asyncRequest('GET',url,successFunction, failFunction,extParam);
+}
+function jsonMessageFailFunction(){
+	var obj = arguments[0];
+	try{
+		var jsonMessage = eval('('+obj.responseText+')');
+		var txt = getAlertMessageInfo(jsonMessage.messageInfoColl);
+		if(txt != ''){
+			alert(txt);
+		}
+		return jsonMessage;
+	}catch(e){
+		alert('发生错误！');
+	}
+	
+}
+function jsonMessageSuccessFunction(){
+	var obj = arguments[0];
+	return jsonMessageShow(eval('('+obj.responseText+')'), arguments[1]);
+}
+function jsonMessageShowFunc(){
+	var refreshFun = arguments[0];
+	return function(data){
+		jsonMessageShow(data, refreshFun);
+	}
+}
+/**
+ * 
+ * @param jsonMessage
+ * @param sucessFun
+ * @parem extParam {ignoreLoglvl:[忽略的log级别]}
+ * @returns
+ */
+function jsonMessageShow(jsonMessage, sucessFun){
+	var extParam = arguments[2]!=null?arguments[2]:{};
+	var lvlSet = [null, null, 'error', null, 'alert', 'info'];
+	try{
+		var messageInfoColl = jsonMessage.messageInfoColl;
+		
+		if(jsonMessage.messageLevel == 3){//错误
+			var txt = getAlertMessageInfo(messageInfoColl);
+			if(txt != ''){
+				alert(txt);
+			}
+		}else{
+			if(messageInfoColl!=null){
+				try{
+					for(var i=0; i<messageInfoColl.length; i++){
+						var loglvl = lvlSet[messageInfoColl[i].severity];
+						if(extParam['ignoreLoglvl'] && extParam['ignoreLoglvl'].contains(loglvl)){
+							continue;
+						}
+						if(loglvl!=null){
+							top.showMessage({type:loglvl, text:messageInfoColl[i].message});
+						}else{
+							top.showMessage({expire:2000, text:messageInfoColl[i].message});
+						}
+					}
+				}catch(e){
+					var txt = getAlertMessageInfo(messageInfoColl);
+					if(txt != ''){
+						alert(txt);
+					}
+				}
+				
+			}
+			if(sucessFun){
+				if(sucessFun!='notAction'){
+					sucessFun(jsonMessage);
+				}
+			}else if(typeof(_requery) != "undefined"){
+				_requery();
+			}
+		} 
+		return jsonMessage;
+	}catch(e){
+		alert(e.message);
+	}
+}
+/**
+ * 提交post请求
+ *param url 提交请求地址
+ *param successFunction 成功后的回调方法 (jsonMessageSuccessFunction)
+ *param failFunction 失败的回调方法 (jsonMessageFailFunction)
+ */
+function asyncRequestPost(url, successFunction, failFunction){
+	var extParam = arguments[3];//扩展参数
+	return asyncRequest('POST',url,successFunction, failFunction,extParam);
+}
+/**
+ * 为url追加参数
+ * @param url
+ * @param data
+ * @returns
+ */
+function addUrlParam(url, data){
+	if(url!=null && data){
+		data = coverParamData(data);
+		var haveParam = /\?/.test(url);
+		$.each(data,function(key,value){
+			if(value!=null && value!=''){
+				url+=(haveParam?"&":"?");
+				haveParam=true;
+				url+=key+"="+encodeURIComponent(value);
+			}
+		});
+	}
+	return url;
+}
+function asyncRequest(requestType, url, successFunction, failFunction, extParam){
+	url = addUrlParam(url, extParam);
+	if(failFunction == null){
+		failFunction = function(o){
+			alert('操作出错！');
+		};
+	}
+	try{
+		top.waitSubmit();
+	}catch(e){}
+	var obj1 = YAHOO.util.Connect.asyncRequest(requestType, url, {
+		  success: function(obj){
+			  try{
+				  top.$.unblockUI();
+			  }catch(e){}
+			  successFunction(obj);
+		  },
+		  failure: function(obj){
+			  try{
+				  top.$.unblockUI();
+			  }catch(e){}
+			  failFunction(obj);
+		  },
+		  timeout: 120000,
+		  cache:false
+	});
+	return obj1;
+}
+
+/**
+ * 提交async的post请求
+ * @param form
+ * @param successFunction
+ * @param failFunction
+ * @return
+ */
+function asyncRequestPostByForm(form, successFunction, failFunction){
+	var extParam = arguments[3];//扩展参数
+	var url = form.action;
+	extParam = _appendFormParam(form, extParam);
+	return asyncRequestPost(url, successFunction, failFunction, extParam);
+}
+function _appendFormParam(_form, _paramdata){
+	if(_paramdata == null){
+		_paramdata = {};
+	}
+	var elements = _form.elements;
+	for(var i=0; i<elements.length; i++){
+		if(elements[i].name != null 
+				&& elements[i].name != ''
+				&& elements[i].value != null
+				&& elements[i].value != ''){
+			if(elements[i].tagName == 'INPUT'){
+				if(elements[i].type == 'radio' || elements[i].type == 'checkbox'){
+					if(!elements[i].checked){
+						continue;
+					}
+				}
+			}
+			_paramdata[elements[i].name]=elements[i].value;
+		}
+	}
+	return _paramdata;
+}
+/**
+ * jquery的ajax提交包装
+ * 可以使用jsonMessageShow做successFun
+ * async:true (异步操作)
+ * @param params (url,failFun,successFun,completeFun,dataType,requestType,data,form)
+ */
+function ajaxSubmit(params){
+	if(params.failFun == null){
+		params.failFun = function(o){
+			alert('操作出错！');
+		};
+	}
+	if(params.async==null){
+		params.async = true;
+	}
+	if(params.dataType == null){
+		params.dataType="json";
+	}
+	if(params.requestType == null){
+		params.requestType = "POST";
+	}
+	if(params.data){
+		params.data = coverParamData(params.data);//转化复杂参数
+	}
+	if(params.form != null){
+		params.data = _appendFormParam(params.form, params.data);
+		if(params.url == null){
+			params.url = params.form.action;
+		}
+	}
+	if(params.cache == null){
+		params.cache = false;
+	}
+	if(params.timeout==null){
+		params.timeout = 0;
+	}
+	var haveBlockUI = params.notBlockUI?false:true;
+	var setting = {
+		url:params.url,
+		beforeSend:function(_request){
+			if(haveBlockUI){
+				top.waitSubmit();
+			}
+		},
+		error:function(_request, textStatus, errorThrown){
+			try{
+				params.failFun(textStatus);
+			}catch(e){}
+		},
+		success:function(data, textStatus){
+			if(params.successFun){
+				try{
+					params.successFun(data);
+				}catch(e){}
+			}
+			if(params.callBack){
+				try{
+					params.callBack(data);
+				}catch(e){}
+			}
+		},
+		complete:function(_request,textStatus){
+			if(params.completeFun){
+				try{
+					params.completeFun(_request, textStatus);
+				}catch(e){}
+			}
+			if(haveBlockUI){
+				try{
+					top.$.unblockUI();
+				}catch(e){}
+			}
+		},
+		dataType:params.dataType, 
+		type:params.requestType,
+		data:params.data,
+		timeout:params.timeout,
+		traditional:true,
+		cache:params.cache,
+		async:params.async
+	};
+	$.ajax(setting);
+}
+/**
+ * 转化参数对象变为url的参数对象
+ * 参数1 参数对象
+ * 参数2 参数名称
+ * @returns
+ */
+function coverParamData(){
+	var data = {};
+	var objVal = arguments[0];
+	if(objVal!=null){
+		var objName = arguments[1];
+		switch($.type(objVal)){
+		case 'object':
+			$.each(objVal, function(attrName, attrVal){
+				var newObjName = attrName;
+				if(objName){
+					newObjName=objName+'.'+attrName;
+				}
+				joinObj(data, coverParamData(attrVal,newObjName));
+			});
+			break;
+		case 'array':
+			$.each(objVal, function(i, subVal){
+				joinObj(data, coverParamData(subVal,objName+'['+i+']'));
+			});
+			break;
+		default:
+			data[objName]=objVal;
+		break;
+		}
+		return data;
+	}
+}
+/**
+ * 转化参数对象变为url的参数对象（不保存空字符串参数）
+ * 参数1 参数对象
+ * 参数2 参数名称
+ * @returns
+ */
+function coverParamData2(){
+	var data = {};
+	var objVal = arguments[0];
+	if(objVal!=null){
+		var objName = arguments[1];
+		switch($.type(objVal)){
+		case 'object':
+			$.each(objVal, function(attrName, attrVal){
+				var newObjName = attrName;
+				if(objName){
+					newObjName=objName+'.'+attrName;
+				}
+				joinObj(data, coverParamData(attrVal,newObjName), true);
+			});
+			break;
+		case 'array':
+			$.each(objVal, function(i, subVal){
+				joinObj(data, coverParamData(subVal,objName+'['+i+']'), true);
+			});
+			break;
+		default:
+			if(objVal!=''&&objVal!=null){
+				data[objName]=objVal;
+			}
+			break;
+		}
+		return data;
+	}
+}
+/**
+ * 连接两个对象
+ * @param obj1
+ * @param obj2
+ */
+function joinObj(obj1, obj2){
+	var delEmpty = arguments[2]!=null?arguments[2]:false;
+	if(obj2){
+		$.each(obj2, function(attrName, attrVal){
+			if(delEmpty&&(attrVal==''||attrVal==null)){
+				return;
+			}
+			obj1[attrName]=attrVal;
+		});
+	}
+	return obj1;
+}
+/**
+ * 文字长度验证
+ * @param str 验证的字符串
+ * @param minLength 最小值
+ * @param maxLength 最大值
+ * @param warnMessage 警告消息
+ * @return 是否通过
+ */
+function byteRangeLengthValidate(str, minLength, maxLength, warnMessage){
+	 var _pass = true;
+	 if(str != ''){
+		 var _length = str.length;    
+		  for(var i = 0; i < str.length; i++){    
+		   if(str.charCodeAt(i) > 127){    
+			   _length+=2;    
+		   }    
+		  }
+		  _pass = _length >= minLength && _length <= maxLength;
+	 }
+	 if(!_pass && warnMessage != null){
+		 alert(warnMessage);
+	 }
+	 return _pass;
+}
+/**
+ * txt转换成html显示的格式
+ * @param txt
+ * @return
+ */
+function toHtmlText(txt){
+		var newTxt = '';
+		if(txt != null && txt != ''){
+			newTxt += '<div>';
+			newTxt += txt.replace(/\n/g,'</div><div>').replace(/\s/g,'&nbsp;');
+			newTxt += '</div>';
+		}
+		return newTxt;
+}
+
+/**
+ * 简单html格式的列表显示
+ */
+var sHtmlFmt = function(elCell, oRecord, oColumn, oData){
+	$(elCell).append(toHtmlText(oData));
+}
+
+/**
+ * 搜索字典项目的value
+ * @param key
+ * @param dict
+ * @return value
+ */
+function searchMapValue(key, dict){
+	var val = dict[key];
+	return nullToStr(val);
+}
+/**
+ * 搜索字典项目的value
+ * @param key
+ * @param dict
+ * @return value
+ */
+function searchDictValue(key, dict){
+	var value = key;
+	var dictItem = searchDict(key, dict);
+	if(dictItem != null){
+		value = dictItem.getValue();
+	}
+	if(value == null){
+		value = '';
+	}
+	return value;
+}
+/**
+ * 搜索字典项目的dictItem
+ * @param key
+ * @param dict
+ * @return dictItem
+ */
+function searchDict(key, dict){
+	var dictItem = null;
+	for(var i=0; i<dict.length; i++){
+		if(dict[i].getKey() == key){
+			dictItem = dict[i];
+		}
+	}
+	return dictItem;
+}
+/**
+ * 验证输入的是否为年号
+ * @param id 
+ */
+function validateYear(id){
+	var obj=document.getElementById(id);
+	var reg=/^\d{4}$/;
+	if( !reg.test(obj.value)){
+		alert("请填写正确的年号！");
+		obj.focus();
+	}
+}
+/**
+ * 验证括号是否配对
+ */
+var checkBracket= function (e){
+	jQuery.validator.addMethod("checkBracket", function(value, element){
+	 	var str=value;
+	 	var str1=str.split("(");
+		var str2=str.split(")");
+		var str3=str.split("（");
+		var str4=str.split("）");
+	 return (str1.length==str2.length)&&(str3.length==str4.length);
+	}, "请确保输入括号保持匹配！请仔细检查");
+};
+ 
+/**
+ * 数组转字符串
+ * @param arr 数组
+ * @param reg 分割符 默认','
+ * @param bracket 括符 默认空
+ * @param delEmpty 是否删除空项 不删除
+ * @param rowheavy 是否排重 不排重
+ * @param dict 数据对应的字典
+ * @return
+ */
+function arrToString(arr, reg, bracket, delEmpty, rowheavy, dict){
+	var txt = '';
+	var sarr = new Array();
+	reg = (reg != null ? reg : ',');
+	bracket = (bracket != null ? bracket : '');
+	delEmpty = (delEmpty !=null ? delEmpty : false);
+	rowheavy = (rowheavy !=null ? rowheavy : false);
+	if(arr != null){
+		for(var i=0; i<arr.length; i++){
+			if(!delEmpty || arr[i]!=null && arr[i] != ''){
+				if(!rowheavy || !sarr.contains(arr[i])){
+					txt += ((i!=0 ? reg : '') 
+						+ bracket 
+						+ (dict != null ? searchDictValue(arr[i], dict) : arr[i])
+						+ bracket);
+					sarr.push(arr[i]);
+				}
+			}
+		}
+	}
+	return txt;
+}
+//根据tabId查询
+function getTabById(_tabView, _tabId){
+	var tab = null;
+	var tabs = _tabView.getAttributeConfig('tabs').value;
+	for(var i=0; i<tabs.length; i++){
+		if(tabs[i].get('id') == _tabId){
+			tab = tabs[i];
+		}
+	}
+	return tab;
+}
+/**
+ * 根据title来刷新tab信息
+ * @param tabSet
+ * @param title
+ */
+function redrawTab(tabSet, title){
+	if(tabSet){
+		$.each(tabSet.tabs, function(_index, _val){
+			if(_val.title == title){
+				var rTab = tabSet.getTabPane(_index);
+				if(rTab.isDrawn()){
+					rTab.redraw();
+				}
+				return false;
+			}
+		});
+	}
+}
+/**
+ * tab子页面根据title来刷新tab信息
+ * @param tabSet
+ * @param title
+ */
+function subPageRedrawTab(title, subWindow){
+	if(subWindow == null){
+		subWindow = window;
+	}
+	if(subWindow.frameElement){
+		var tabSetEl = subWindow.frameElement.parentElement.parentElement.parentElement;
+		subWindow.parent.redrawTab(subWindow.parent.Canvas.getById(tabSetEl.getAttribute('eventproxy')),title);
+	}
+}
+//*****************************公用业务方法************************
+//根据id来设置警告样式 
+function addWarnStyleById(id){
+	var element = document.getElementById(id);
+	if(element != null){
+		addWarnStyle(element);
+	}
+}
+//根据id来设置警告样式 
+function addWarnStyleByName(name){
+	$('[name="'+name+'"]').each(function(){
+		addWarnStyle(this);
+	});
+}
+//设置警告样式
+function addWarnStyle(element){
+	
+	switch($(element).attr('tagName')){
+	case 'INPUT':
+		if($(element).attr('type') == 'CHECKBOX'){
+			$(element).parent("[tagName='DIV']").css('border', '1px solid #FF0000');
+			break;
+		}
+	case 'LABEL':
+	case 'DIV':
+	default:
+		$(element).css('color','red');
+	}
+}
+/**
+ * 通过编码获得显示名称
+ * arguments arrayName 编码机构的名称
+ * arguments code 编码
+ */
+function getSimpleCodeNameByCode(arrayName, code){
+	var name = null;
+	try{
+		if(code != null && code != ''){
+			var index = -1;
+			eval('index = codeArray_'+arrayName+'.indexOf(code)');
+			if(index != -1){
+				 eval('name = nameArray_'+arrayName+'['+index+']');
+			}
+		}
+		if(name == null){
+			name = code;
+		}
+	}catch(e){}
+	return name;
+}
+function waitSubmit(){
+	try{
+	$.blockUI({
+		  fadeIn: 0, //渐入式显示
+		  fadeOut: 700, //渐出式消失
+		  timeout: 0, //2 秒后消失
+		  message: '<img width="32px" height="32px" src="'+getContextPath()+'/images/load.gif" /><br/> 数据处理中，请稍候',
+		  css: { border: '0',backgroundColor: '#FFFFFF'},
+		  overlayCSS: { backgroundColor: '#FFFFFF' }
+		});
+	}catch(e){}
+}
+/**
+ * 列表中删除操作
+ * arguments[0] 表格的id名称
+ *  删除行的index
+ * arguments[2] 删除行的action地址
+ * arguments[3] 弹出提示信息内容
+ */
+var ajaxDelHandleYes = function(){
+	var table = arguments[0];
+	var index = arguments[1];
+	var actionUrl = arguments[2];
+	var showMessage = arguments[3];
+	var config = { action:actionUrl,
+			table:table, prefix:'',
+			index:index,
+			confirm:true,
+			confirmMessage:showMessage
+			};
+	YAHOO.caf.table.tableDelete(config);
+ 
+
+};
+
+//获取表格的行序号
+var seqFormatter = function(elCell, oRecord, oColumn, oData) { 
+	var thePirl = null;
+	if(oRecord.getData('dtId')){
+		thePirl = eval('('+oRecord.getData('dtId')+')');
+	}else{
+		thePirl = pirl;
+	}
+	var id =thePirl.getRecordIndex(oRecord);
+	var n =0;
+	var p = thePirl.get('paginator');
+	if(p) {
+		var currentPage = p.getCurrentPage();
+		var rows = p.getRowsPerPage();
+		n = (currentPage==0?0:currentPage-1)*rows;
+	}
+	$(elCell).append(''+(id+1)+''); 
+};
+var seqFormatter2 = function(elCell, oRecord, oColumn, oData) { 
+	var thePirl = this;
+	var id =thePirl.getRecordIndex(oRecord);
+	var n =0;
+	var p = thePirl.get('paginator');
+	if(p) {
+		var currentPage = p.getCurrentPage();
+		var rows = p.getRowsPerPage();
+		n = (currentPage==0?0:currentPage-1)*rows;
+	}
+	$(elCell).append(''+(id+1)+''); 
+};
+
+/**
+ * 获得当前页的index索引 从0开始
+ * @param oRecord
+ */
+function getCurrentPageIndex(oRecord) { 
+	var thePirl;
+	if(oRecord.getData('dtId')){
+		thePirl = eval('('+oRecord.getData('dtId')+')');
+	}else{
+		thePirl = pirl;
+	}
+	var id =thePirl.getRecordIndex(oRecord);
+	var n =0;
+	var p = thePirl.get('paginator');
+	if(p) {
+		var currentPage = p.getCurrentPage();
+		var rows = p.getRowsPerPage();
+		n = (currentPage==0?0:currentPage-1)*rows;
+	}
+	return id-n;
+};
+
+var workItemSeq = function(elCell, oRecord, oColumn, oData) { 
+	var id =pirl.getRecordIndex(oRecord);
+	var n =0;
+	var p = pirl.get('paginator');
+	if(p) {
+		var currentPage = p.getCurrentPage();
+		var rows = p.getRowsPerPage();
+		n = (currentPage==0?0:currentPage-1)*rows;
+	}
+	var isMySelf = oRecord.getData('isMySelf'); 
+	var isMyOrg = oRecord.getData('isMyOrg'); 
+	var goback = oRecord.getData('goBack'); 
+	var imagespath= getContextPath()+'/images/';
+	var pngName=imagespath;
+	var pngName1=imagespath;
+	if (isMySelf=='1'){
+		pngName+='blue.png';
+		
+	}else {
+		if (isMyOrg=='1'){
+			pngName+='gray-blue.png';	
+		}else{
+			pngName+='gray-gray.png';	
+		}
+	}
+	pngName1+='workdiag.png';	
+	var c ="<img border='0' src='"+pngName+"' />";
+	var c1 ="<img border='0' src='"+pngName1+"' />";
+	//var expired = oRecord.getData('expired'); 
+	//if(expired){
+	//	elCell.parentElement.parentElement.className='radFont';
+	//}
+//	alert(goback);
+	var g ='';
+	if (goback){
+		g="<img border='0' src='"+imagespath+"goback.png' />";
+	}
+	
+	//elCell.innerHTML = ''+(id+1)+' '+c+'<a href="'+getContextPath()+'/comm/processMonitor.action?piid='+ oRecord.getData('piid')+'" target="_blank">'+c1+g+'</a>'; 
+	elCell.innerHTML = ''+(id+1)+' <a href="'+getContextPath()+'/framework/workflow/MonitorViewer.jsp?piid='+ oRecord.getData('piid')+'" target="_blank">'+c1+g+'</a>'; 
+//	elCell.innerHTML = ''+(id+1)+' '+c+'<a href="'+getContextPath()+'/framework/workflow/MonitorViewer.jsp?piid='+ oRecord.getData('piid')+'" target="_blank">'+c1+g+'</a>'; 
+};
+
+
+var workItemHisSeq = function(elCell, oRecord, oColumn, oData) { 
+	var id =pirl.getRecordIndex(oRecord);
+	var n =0;
+	var p = pirl.get('paginator');
+	if(p) {
+		var currentPage = p.getCurrentPage();
+		var rows = p.getRowsPerPage();
+		n = (currentPage==0?0:currentPage-1)*rows;
+	}
+	 
+	var imagespath= getContextPath()+'/images/';
+	 
+	var pngName1=imagespath;
+	 
+	pngName1+='workdiag.png';	
+ 
+	var c1 ="<img border='0' src='"+pngName1+"' />";
+	//var expired = oRecord.getData('expired'); 
+	//if(expired){
+	//	elCell.parentElement.parentElement.className='radFont';
+	//}
+	//elCell.innerHTML = ''+(id+1)+'<a href="'+getContextPath()+'/framework/workflow/MonitorViewer.jsp?piid='+ oRecord.getData('piid')+'" target="_blank">'+c1+'</a>'; 
+	elCell.innerHTML = ''+(id+1)+'<a href="'+getContextPath()+'/comm/processMonitor.action?piid='+ oRecord.getData('piid')+'" target="_blank">'+c1+'</a>'; 
+
+};
+var workItemHisSeqOld = function(elCell, oRecord, oColumn, oData) { 
+	var id =pirl.getRecordIndex(oRecord);
+	var n =0;
+	var p = pirl.get('paginator');
+	if(p) {
+		var currentPage = p.getCurrentPage();
+		var rows = p.getRowsPerPage();
+		n = (currentPage==0?0:currentPage-1)*rows;
+	}
+	
+	var imagespath= getContextPath()+'/images/';
+	
+	var pngName1=imagespath;
+	
+	pngName1+='workdiag.png';	
+	
+	var c1 ="<img border='0' src='"+pngName1+"' />";
+	//var expired = oRecord.getData('expired'); 
+	//if(expired){
+	//	elCell.parentElement.parentElement.className='radFont';
+	//}
+	elCell.innerHTML = ''+(id+1)+'<a href="'+getContextPath()+'/framework/workflow/MonitorViewer.jsp?piid='+ oRecord.getData('piid')+'" target="_blank">'+c1+'</a>'; 
+};
+//能力状态格式
+var abilityStatusFormatter = function(elCell, oRecord, oColumn, oData) { 
+	$(elCell).append(searchDictValue(oData, labStatusDict));
+};
+
+ function toopWorkItemInfo(dt,taskFlagName){
+	var tt = new YAHOO.widget.Tooltip("myTooltip");
+	var showTimer,hideTimer;
+	dt.on('cellMouseoverEvent', function (oArgs) {
+		if (showTimer) {
+			window.clearTimeout(showTimer);
+			showTimer = 0;
+		}
+		
+		var target = oArgs.target;
+		var column = dt.getColumn(target);
+		
+		if (column.key == taskFlagName) {
+	 
+			var record = dt.getRecord(target);
+ 
+			//var description = record.getData('ownerName')+' '+record.getData('ownerOrgName')+' <br>流程['+record.getData('processName')+'] 节点['+record.getData('activityName')+']';
+			var description = '流程['+record.getData('processName')+'] 节点['+record.getData('activityName')+']';
+			
+			var xy = [parseInt(oArgs.event.clientX,10) + 10 ,parseInt(oArgs.event.clientY,10) + 10 ];
+			showTimer = window.setTimeout(function() {
+				tt.setBody(description);
+				tt.cfg.setProperty('xy',xy);
+				tt.show();
+				hideTimer = window.setTimeout(function() {
+					tt.hide();
+				},10000);
+			},500);
+		}
+	});
+	dt.on('cellMouseoutEvent', function (oArgs) {
+		if (showTimer) {
+			window.clearTimeout(showTimer);
+			showTimer = 0;
+		}
+		if (hideTimer) {
+			window.clearTimeout(hideTimer);
+			hideTimer = 0;
+		}
+		tt.hide();
+	});
+	tabExpiredAlertedPostRender(dt);
+}
+var tabExpiredAlertedPostRender=function (pirl){
+ pirl.subscribe("postRenderEvent",function(){
+	 var allRows = this._elTbody.rows;
+	 for(var i=allRows.length-1; i>-1; i--) { 
+		 //alert(allRows[i].id);elCell.parentElement.parentElement.className='radFont';
+		 var oRecord = this.getRecord(allRows[i].id);
+		 var isExpired=oRecord.getData('expired');
+		 var isAlerted=oRecord.getData('alerted');
+		 var isAlertedBefore=oRecord.getData('alertedBefore');
+		 if(isExpired){
+			 $("#" + allRows[i].id).css("backgroundColor","red");
+		 }else if(isAlerted){
+			 $("#" + allRows[i].id).css("backgroundColor","fuchsia");
+		 }else if(isAlertedBefore){
+			 $("#" + allRows[i].id).css("backgroundColor","yellow");
+		 }
+	 }
+	}); 
+};
+/**
+ * 按照key值,将记录的属性串联
+ * @param oRecord
+ * @param itemStr
+ * @returns {String}
+ */
+var mergeFmt = function(elCell, oRecord, oColumn, oData){
+	$(elCell).html(mergeText(oRecord, oColumn.key));
+}
+/**
+ * 按照连接串,将记录的属性串联
+ * @param oRecord
+ * @param itemStr
+ * @returns {String}
+ */
+function mergeText(oRecord, itemStr){
+	var txt = '';
+	var items = itemStr.split('_');
+	$.each(items, function(i, val){
+		if(oRecord.getData(val)!=null){
+			txt+=(txt==''?'':'&nbsp;')+oRecord.getData(val);
+		}
+	});
+	return txt;
+}
+var fmtState = function(elCell, oRecord, oColumn, oData) {
+	 var ismodify = oRecord.getData("isModify"); 
+	 if(typeof ismodify == "undefined"){
+		 ismodify = oRecord.getData("ismodify");
+	 }
+	 var showCh;
+	 if(ismodify == 0){
+		 showCh = "保持";
+	  }else if(ismodify == 1){
+		 showCh = "新增";
+	  }else if(ismodify == 2){
+		 showCh = "修改";
+	  }else if(ismodify == 3){
+		 showCh = "删除";
+	  }else{
+		 showCh = "保持";
+	  }
+	elCell.innerHTML = showCh; 
+};
+/**
+ * 是否推荐的fmt
+ * @param elCell
+ * @param oRecord
+ * @param oColumn
+ * @param oData
+ * @returns
+ */
+var isRecommendFmt=function(elCell, oRecord, oColumn, oData){
+	$(elCell).append(searchDictValue(oData, recommendDict));
+}
+/**
+ * 是否推荐的fmt
+ * @param elCell
+ * @param oRecord
+ * @param oColumn
+ * @param oData
+ * @returns
+ */
+var isRecommendEnFmt=function(elCell, oRecord, oColumn, oData){
+	$(elCell).append(searchDictValue(oData, recommendEnDict));
+}
+/**
+ * 推荐人fmt
+ * @param elCell
+ * @param oRecord
+ * @param oColumn
+ * @param oData
+ * @returns
+ */
+var recommendUserFmt = function(elCell, oRecord, oColumn, oData){
+	var arr = oColumn.key.split('_');
+	if(oRecord.getData(arr[0])=="1"){
+		$(elCell).text(oRecord.getData(arr[1]));
+	}
+}
+/**
+ * 计算yui记录的isModify值
+ * @param oRecord
+ * @param fieldStr
+ * @returns
+ */
+var isModifyVal = function(oRecord, fieldStr){
+	var lastVal = null;
+	var isModifyArr = $.map(fieldStr.split('_'), function(_val){
+		lastVal = oRecord.getData(_val);
+		return lastVal;
+	});
+	return lastVal!=null?isModifyConclusion(isModifyArr):null;
+};
+/**
+ * isModify的格式显示
+ * @param elCell
+ * @param oRecord
+ * @param oColumn
+ * @param oData
+ * @return
+ */
+var isModifyFmt = function(elCell, oRecord, oColumn, oData){
+//	var sort = {'0':1,'2':2,'1':3,'3':4};
+//	var modifyArray = oColumn.key.split('_');
+//	var modifyValue = null;
+//	if(oRecord.getData(modifyArray[modifyArray.length-1])!=null){
+//		for(var i=0; i<modifyArray.length; i++){
+//			if(modifyValue == null){
+//				modifyValue = oRecord.getData(modifyArray[i]);
+//			}else{
+//				modifyValue = sort[oRecord.getData(modifyArray[i])] > sort[modifyValue] ? oRecord.getData(modifyArray[i]) : modifyValue;
+//				//modifyValue = oRecord.getData(modifyArray[i]) > modifyValue ? oRecord.getData(modifyArray[i]) : modifyValue;
+//			}
+//			
+//		}
+//		elCell.innerHTML = getStatusShow(modifyValue);
+//	}
+	var lastVal = null;
+	var isModifyArr = $.map(oColumn.key.split('_'), function(_val){
+		lastVal = oRecord.getData(_val);
+		return lastVal;
+	});
+	if(lastVal!=null){
+		var isModify = isModifyConclusion(isModifyArr);
+		if(isModify!=null){//为td增加isModify的标记属性
+			//$(elCell.parentElement).attr('isModifyTag',isModify);//废弃
+			$(elCell).closest('tr').addClass('isModify_'+isModify);
+			if(oRecord.getData(oColumn.key)==null){
+				oRecord.setData(oColumn.key, isModify);
+			}
+		}
+		elCell.innerHTML = getStatusShow(isModify);
+	}
+};
+/**
+ * isModify的格式显示
+ * @param elCell
+ * @param oRecord
+ * @param oColumn
+ * @param oData
+ * @return
+ */
+var isModifyEnFmt = function(elCell, oRecord, oColumn, oData){
+	var lastVal = null;
+	var isModifyArr = $.map(oColumn.key.split('_'), function(_val){
+		lastVal = oRecord.getData(_val);
+		return lastVal;
+	});
+	if(lastVal!=null){
+		var isModify = isModifyConclusion(isModifyArr);
+		if(isModify!=null){//为td增加isModify的标记属性
+			//$(elCell.parentElement).attr('isModifyTag',isModify);//废弃
+			$(elCell).closest('tr').addClass('isModify_'+isModify);
+		}
+		elCell.innerHTML = getStatusShowEn(isModify);
+	}
+};
+var bStatusHtml = function(oData){
+	var txt = '';
+	switch(oData){
+	case 0:
+	case "0":
+		txt = '有效';
+		break;
+	case 3:
+	case "3":
+		txt = '<span class="warnFont">暂停</span>';
+		break;
+	default:
+		txt = oData!=null?oData:'有效';
+	}
+	return txt;
+};
+var bStatusEnHtml = function(oData){
+	var txt = '';
+	switch(oData){
+	case 0:
+	case "0":
+		txt = 'Effectivity';
+		break;
+	case 3:
+	case "3":
+		txt = '<span class="warnFont">Pause</span>';
+		break;
+	default:
+		txt = oData!=null?oData:'Effectivity';
+	}
+	return txt;
+};
+var bStatusHtml2 = function(oData){
+	var txt = '';
+	switch(oData){
+	case 0:
+	case "0":
+		txt = '有效';
+		break;
+	case 3:
+	case "3":
+		txt = '<span class="warnFont">暂停</span>';
+		break;
+	case -1:
+	case "-1":
+		txt = '';
+		break;
+	default:
+		txt = oData!=null?oData:'';
+	}
+	return txt;
+};
+var bStatusEnHtml2 = function(oData){
+	var txt = '';
+	switch(oData){
+	case 0:
+	case "0":
+		txt = 'Valid';
+		break;
+	case 3:
+	case "3":
+		txt = '<span class="warnFont">Pause</span>';
+		break;
+	case -1:
+	case "-1":
+		txt = '';
+		break;
+	default:
+		txt = oData!=null?oData:'';
+	}
+	return txt;
+};
+//认可数据使用
+var bStatusFmt = function(elCell, oRecord, oColumn, oData){
+	$(elCell).append(bStatusHtml(oData));
+};
+var bStatusEnFmt = function(elCell, oRecord, oColumn, oData){
+	$(elCell).append(bStatusEnHtml(oData));
+};
+var bStatusFmt2 = function(value, record, rowNum, colNum, grid){
+	return bStatusHtml(value); 
+};
+var bStatusEnFmt2 = function(value, record, rowNum, colNum, grid){
+	return bStatusEnHtml(value); 
+};
+//认可任务使用
+var bStatusFmt3 = function(elCell, oRecord, oColumn, oData){
+	$(elCell).append(bStatusHtml2(oData));
+};
+var bStatusEnFmt3 = function(elCell, oRecord, oColumn, oData){
+	$(elCell).append(bStatusEnHtml2(oData));
+};
+var bStatusFmt4 = function(value, record, rowNum, colNum, grid){
+	return bStatusHtml2(value); 
+};
+var bStatusEnFmt4 = function(value, record, rowNum, colNum, grid){
+	return bStatusEnHtml2(value); 
+};
+var brFmt = function(elCell, oRecord, oColumn, oData){
+	if(oData!=null){
+		$(elCell).append(oData.replaceAll('\r','<br/>'));
+	}
+};
+/**
+ * yui表格显示isModify的样式
+ * @param pirl
+ * @param isModifys
+ * 例:showModifyFontYui(pirl, ['3']);
+ */
+function showModifyFontYui(pirl, isModifys){
+	showModifyFont($(pirl.getTableEl()),isModifys);
+}
+/**
+ * 表格显示isModify的样式
+ * @param pirl
+ * @param isModifys
+ */
+function showModifyFont($table, isModifys){
+	for(var i=0; i<isModifys.length; i++){
+		var isModifyTag = isModifys[i];
+		switch(isModifyTag){
+		case '0':
+			break;
+		case '1':
+			break;
+		case '2':
+			break;
+		case '3':
+			_showModifyFont($table, isModifyTag, 'delFont');
+			break;
+		}
+	}
+}
+function _showModifyFont($table, isModifyTag, className){
+	$table.find('td[isModifyTag="'+isModifyTag+'"]').each(function(){
+		var $dtd = $(this);
+		$dtd.siblings().andSelf().map(function(){
+			if($(this).prop('rowspan')==$dtd.prop('rowspan')){
+				return this;
+			}
+		}).addClass(className);
+	});
+}
+/**
+ * 为Yui记录添加fontTag标记
+ * @param elCell
+ * @param fontTag
+ */
+function addRecordFontYui(elCell, fontTag){
+	$(elCell.parentElement).attr('fontTag',fontTag);
+}
+/**
+ * 为指定font标记的Yui记录设置class
+ * @param yuiTable
+ * @param fontTag
+ * @param className
+ */
+function showRecordFontYui(yuiTable, fontTag, className){
+	$(yuiTable.getTableEl()).find('td[fontTag="'+fontTag+'"]').each(function(){
+		var $dtd = $(this);
+		$dtd.siblings().andSelf().map(function(){
+			if($(this).prop('rowspan')==$dtd.prop('rowspan')){
+				return this;
+			}
+		}).addClass(className);
+	});
+}
+/**
+ * 计算汇总的isModify
+ * @param isModifys
+ * @returns
+ */
+function isModifyConclusion(isModifys){
+	if($.isArray(isModifys)){
+		var sort = {'0':1,'2':2,'1':3,'3':4};
+		var modifyValue = null;
+		for(var i=0; i<isModifys.length; i++){
+			if(modifyValue == null){
+				modifyValue = isModifys[i];
+			}else{
+				modifyValue = sort[isModifys[i]] > sort[modifyValue] ? isModifys[i] : modifyValue;
+			}
+		}
+		return modifyValue;
+	}else{
+		return isModifys;
+	}
+}
+/**
+ * 计算yui记录的isModify值
+ * @param oRecord
+ * @param fieldStr
+ * @returns
+ */
+var isModifySureYui = function(oRecord, fieldStr){
+	var isModifyArr = $.map(fieldStr.split('_'), function(_val){
+		return oRecord.getData(_val);
+	});
+	return isModifySure(isModifyArr);
+};
+/**
+ * 计算绝对的isModify (最后一个isModify为null,返回null)
+ * @param isModifys
+ * @returns
+ */
+function isModifySure(isModifys){
+	if(isModifys.length > 0 && isModifys[isModifys.length-1]!=null){
+		return isModifyConclusion(isModifys);
+	}else{
+		return null;
+	}
+}
+/**
+ * isModify的格式显示 前面的如果是删除则状态为删除，如果不是则显示最后一个状态
+ * @param elCell
+ * @param oRecord
+ * @param oColumn
+ * @param oData
+ * @returns
+ */
+var isModifyFmt2 = function(elCell, oRecord, oColumn, oData){
+	var modifyArray = oColumn.key.split('_');
+	var modifyValue = null;
+	for(var i=0; i<modifyArray.length-1; i++){
+		if(oRecord.getData(modifyArray[i])=='3'){
+			modifyValue = '3';
+		}
+	}
+	if(!modifyValue){
+		modifyValue = oRecord.getData(modifyArray[modifyArray.length-1]);
+	}
+	elCell.innerHTML = getStatusShow(modifyValue);
+};
+/**
+ * 能力状态变更状态显示
+ * @returns
+ */
+var fmtChangeAbility=function(elCell, oRecord, oColumn, oData){
+	var obj = oRecord.getData("status");
+	var text="";
+	if(obj==0){
+		text="正常";
+	}
+	else if(obj==1){
+		text="注销";
+	}
+	else if(obj==2){
+		text="撤销";
+	}
+	else if(obj==3){
+		text="暂停";
+	}
+	else if(obj==4){
+		text="待恢复";
+	}
+
+	elCell.innerHTML = text;
+};
+/**
+ * 多层次的isModify状态
+ * @param pStatus 父一级的状态
+ * @param sStatus 子一级的状态
+ * @return
+ */
+function getLevelStatus(pStatus, sStatus){
+	if(sStatus == '0' || sStatus == '' || sStatus == null){
+		return pStatus;
+	}else{
+		return sStatus;
+	}
+}
+/**
+ * 获得isModify的状态显示格式
+ * @param key
+ * @return
+ */
+function getStatusShow(key){
+	var txt = searchDictValue(key=='null' ? '' : key, dictIsModify);
+	if(key == '3'){
+		txt = '<span class="delTxtFont">'+txt+'</span>';
+	}
+	return txt;
+}
+/**
+ * 获得isModify的状态英文显示格式
+ * @param key
+ * @return
+ */
+function getStatusShowEn(key){
+	return searchDictValue(key=='null' ? '' : key, dictIsModifyEn);
+}
+
+var revokeFun = function(action){
+	var handleSuccess = function(o){
+		alert("处理成功！");
+		if(_requery){
+			_requery();
+		}else if(_reQuery){
+			_reQuery();
+		}else{
+			isRefresh();
+		}
+	};
+	 
+	var handleFailure = function(o){
+		alert("处理失败！");
+		
+	};
+	var callback = { 
+			success:handleSuccess,
+			failure:handleFailure
+	}; 
+	
+	var url = action;
+	
+	var request=YAHOO.util.Connect.asyncRequest('POST', url, callback, '');
+};
+var revokeParamFun = function(action){
+	var handleSuccess = function(o){
+		alert("处理成功！");
+		try{
+			pirl1_refresh(document.getElementById('mainForm'));
+		}catch (e){  
+			pirl_refresh(document.getElementById('mainForm'));
+		}  
+	};
+	 
+	var handleFailure = function(o){
+		alert("处理失败！");
+		
+	};
+	var callback = { 
+			success:handleSuccess,
+			failure:handleFailure
+	}; 
+	
+	var url = action;
+	
+	var request=YAHOO.util.Connect.asyncRequest('POST', url, callback, '');
+};
+
+/**
+ * 工作流程中对列表中接收时间(String类型)扩展属性格式化
+ * @param elCell
+ * @param oRecord
+ * @param oColumn
+ * @param oData
+ * @return
+ */
+var fmtDate = function(elCell, oRecord, oColumn, oData) {
+
+	var rt = oRecord.getData("exAttributeH");
+	if(rt != null){
+	
+		rt = rt.substring(0,19);
+	
+	}else{
+	
+		rt = "";
+	
+	}
+	elCell.innerHTML = rt;
+	
+};
+//动态增加行
+//tableId: 表id
+//trSetId: 模板tr的Id
+//firstDateRowIndex: 第一个数据行的位置
+var maxLength = 0; 
+function addRow(tableId, trSetId){
+var table = document.getElementById(tableId);//表格
+var trSet = document.getElementById(trSetId);//模板tr
+var newTr= table.insertRow(-1);
+var newTd;//新增加的列
+var tdSet;//模板td
+
+	maxLength = maxLength + 1;
+	if(table.rows.length > maxLength) maxLength = table.rows.length;
+
+	//alert(maxLength);
+var index = maxLength - 2;//数据项list中 本行应保存在list集合中的位置
+for(var i=0; i<trSet.cells.length; i++){//遍历模板下的td
+    tdSet = trSet.cells[i];
+    newTd = newTr.insertCell(-1);
+    copyTd(tdSet, newTd, index);
+}
+
+}
+//sourceTd 模板td
+//goalTd 目标td
+//rowIndex 行号
+function copyTd(sourceTd, goalTd, rowIndex){
+//1 复制td属性
+for(var i in sourceTd.attributes){
+  try{
+        //if(sourceTd[i] != null && sourceTd[i] != ''  )
+        //        goalTd[i] = sourceTd[i];
+        if(sourceTd.attributes[i].value!=null && sourceTd.attributes[i].value!='null' && sourceTd.attributes[i].value!=''){
+	  		if(sourceTd.attributes[i].name != 'disabled')
+	  			goalTd.setAttribute(sourceTd.attributes[i].name,sourceTd.attributes[i].value);
+	  	}
+  }catch(e){}                    
+}
+//2 复制td下控件
+var regex = /\+\+\*\+\+/g;
+var newHtml = sourceTd.innerHTML.replace(regex, rowIndex);
+goalTd.innerHTML = newHtml;
+}
+
+
+////////////////////////////////////////////for copy//////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+function copy(tableId, titleArray, modelId){
+	var copyMap = copyRow(tableId);
+
+	if(copyMap.size() == 0){
+		alert("请选择需要复制的行！");
+		return;
+	}
+	
+	copyMap.put("title",titleArray);
+	
+	var map = top.getClipboard();
+
+	if(!map.containsKey(modelId)){
+		map.put(modelId,copyMap);
+	}
+	else{
+		var valueMap = map.get(modelId);
+		for(var i=0;i<valueMap.size();i++){
+			var key = valueMap.keys()[i];
+			copyMap.put(key,valueMap.get(key));
+		}
+	
+		map.put(modelId,copyMap);
+	}
+	
+	top.setClipboard(map);
+	
+	try{
+		top.showMessage({expire:2000, text:'复制成功！' });
+	}catch(e){
+	}
+}
+function copyOut(titleArray, copyMap, modelId){
+
+	copyMap.put("title",titleArray);
+	
+	var map = top.getClipboard();
+
+	if(!map.containsKey(modelId)){
+		map.put(modelId,copyMap);
+	}
+	else{
+		var valueMap = map.get(modelId);
+		for(var i=0;i<valueMap.size();i++){
+			var key = valueMap.keys()[i];
+			copyMap.put(key,valueMap.get(key));
+		}
+	
+		map.put(modelId,copyMap);
+	}
+	
+	top.setClipboard(map);
+	
+	try{
+		top.showMessage({expire:2000, text:'复制成功！' });
+	}catch(e){
+	}
+}
+function showClipboard(url){	
+	top.openNewLevelDialog('剪切板',url,self,800,550);
+	//top._show("剪切板",url,'sCont1',800,450);
+	//top.setClip(self);
+}
+function paste(tableId, trSetId, modelId, chkValue){
+	var map = top.getClipboard();
+	var copyMap = map.get(modelId);
+
+	var chks = chkValue.split(",");	
+	for(var i=0;i<chks.length;i++){
+		var valueArray = copyMap.get(chks[i]);
+		pasteRow(tableId, trSetId, valueArray);
+	}
+}
+
+//动态复制行
+function copyRow(tableId){
+	var table = document.getElementById(tableId);//表格
+	var rows = table.rows;//模板tr
+	var cells;
+	
+	//解决 不能执行已释放的Script代码
+	var allMap = new (top.Map)();
+	var num = 0;
+	
+	for(var i=1; i<rows.length; i++){//遍历模板下的tr
+		var row = rows[i];
+		if(!isSelectedRow(row)) continue;
+		
+		var rowArray = new Array();
+		for(var j=0; j<row.cells.length; j++){//遍历tr下的td
+			cells = row.cells[j];
+	
+			for(var k=0;k<cells.children.length;k++){
+				var element = cells.children[k];
+	
+				if(element.tagName == "SELECT"){
+					rowArray[j] = element.value+"@@"+element.options[element.selectedIndex].text;
+					break;
+				}
+				else if(element.tagName == "TEXTAREA"){
+					rowArray[j] = element.value;
+					break;
+				}
+				else if(element.tagName == "INPUT"){
+					if(element.type == "text"){
+						rowArray[j] = element.value;
+						break;
+					}
+					else if(element.type == "checkbox"){
+						rowArray[j] = "";
+						break;
+					}
+				}
+			}
+		}
+		
+		var uuid = Math.uuid(10, 16);
+		allMap.put(uuid,rowArray);
+	}
+	
+	return allMap;
+}
+function isSelectedRow(row){
+	var inputs = row.getElementsByTagName("INPUT");
+	for(var i=0;i<inputs.length;i++){
+		if(inputs[i].type == "checkbox" && inputs[i].checked){
+			return true;
+		}
+	}
+	
+	return false;
+}
+/**
+ * checkbox的排斥 互斥
+ * @param obj
+ */
+function checkboxAddRejectEvent(name){
+	checkboxAddRejectEvent2($('input[name="'+name+'"][type="checkbox"]'));
+}
+function checkboxAddRejectEvent2($elems){
+	$elems.bind('click', function(){
+    	if(this.checked){
+            $('input[name="'+this.name+'"]').not(this).prop('checked',false).change();
+        }
+    });
+}
+function checkReject($range, filter){
+	if($range==null){
+		$range = $('body');
+	}
+	$range.on('click', filter, function(){
+		if(this.checked){
+            $('input[name="'+this.name+'"]').not(this).prop('checked',false).change();
+        }
+	});
+}
+//动态粘贴行
+function pasteRow(tableId, trSetId, rowArray){
+	var table = document.getElementById(tableId);//表格
+	var trSet = document.getElementById(trSetId);//模板tr
+	var newTr = table.insertRow(-1);//新增加的行
+	var newTd;//新增加的列
+	var tdSet;//模板td
+
+	maxLength = maxLength + 1;
+	if(table.rows.length > maxLength) maxLength = table.rows.length;
+	
+	var index = maxLength - 2;//数据项list中 本行应保存在list集合中的位置
+	for(var i=0; i<trSet.cells.length; i++){//遍历模板下的td
+	  tdSet = trSet.cells[i];
+	  newTd = newTr.insertCell(-1);
+	  pasteTd(tdSet, newTd, index, rowArray[i]);
+	}
+}
+function pasteTd(sourceTd, goalTd, rowIndex, rowValue){
+	for(var i in sourceTd.attributes){
+	try{
+//	    if(sourceTd[i] != null && sourceTd[i] != ''  )
+//	    	goalTd[i] = sourceTd[i];
+	    if(sourceTd.attributes[i].value!=null && sourceTd.attributes[i].value!='null' && sourceTd.attributes[i].value!=''){
+	  		if(sourceTd.attributes[i].name != 'disabled')
+	  			goalTd.setAttribute(sourceTd.attributes[i].name,sourceTd.attributes[i].value);
+	  	}
+	}catch(e){}                    
+	}
+
+	//2 复制td下控件
+	var regex = /\+\+\*\+\+/g;
+	var newHtml = sourceTd.innerHTML.replace(regex, rowIndex);
+	goalTd.innerHTML = newHtml;
+	
+	for(var j=0;j<goalTd.children.length;j++){
+		var element = goalTd.children[j];
+		
+		if(element.tagName == "SELECT"){
+			var sel = new String(rowValue).split("@@");
+			element.value=sel[0];
+			break;
+		}
+		else if(element.tagName == "TEXTAREA"){
+			element.value=rowValue;
+			break;
+		}
+		else if(element.tagName == "INPUT"){
+			if(element.type == "text"){
+				element.value=rowValue;
+				break;
+			}
+		}
+	}
+}
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+//删除单行 dealType:删除操作的方式
+function deleteRow(tableId, rowIndex){
+	//alert(event.srcElement.outerHTML);
+	
+	
+var optTable = document.getElementById(tableId);
+if(optTable.rows.length > maxLength) maxLength = optTable.rows.length;
+
+var o = findParentTR(event.srcElement);
+optTable.deleteRow(o.rowIndex);
+ 
+    //var optTr = optTable.rows[rowIndex+1];
+    //optTr.style.display = "none";
+    
+	//for(var i=0; i<optTr.cells.length; i++){//遍历模板下的td
+    //optTd = optTr.cells[i];
+    //optTd.innerHTML ="&nbsp;";
+//}
+}
+function findParentTR(obj){
+	  var newObj = obj.parentElement;
+	  if(newObj.tagName == 'TR'){
+	      return newObj;
+	  }else if(newObj.tagName == 'BODY'){
+	      return null;
+	  }else{
+	      return findParentTR(newObj);
+	  }
+	}	
+
+
+//添加tab页*****************************************************************
+
+
+var codelist = new Array();
+
+var map ={};
+
+var tabOne ;
+
+
+//链接跳转修改页面
+var addTab = function(contentUrl,cbiId)
+{
+
+	var tabView = YAHOO.caf.tabview.getTabViewObj("addCertDiv");
+
+	if(!map)
+	{
+		map ={};
+	}
+
+	if(map[cbiId]){
+		tabView.set("activeTab", map[cbiId]);
+		return;
+	}
+	
+	var tabOne = new YAHOO.widget.Tab({
+        label: "编辑证书",
+        //dataSrc: '<%=request.getContextPath()%>/haccpcert/showCertBaseInfo2.action?model.certBaseInfo.cbiId='+cbiId,
+        //dataSrc: '<%=request.getContextPath()%>/certtab/certhaccpdpaddtab.jsp?cbiId='+cbiId,
+		//content:'<IFRAME ID=IFrame1 width=100% height=100% FRAMEBORDER=0 SCROLLING=yes SRC="<%=request.getContextPath()%>/cert/showCertBaseInfo2.action?model.certBaseInfo.cbiId='+cbiId+'"></IFRAME>',
+		content:'<IFRAME ID=IFrame1 width=100% height=100% FRAMEBORDER=0 SCROLLING=no SRC=<%=request.getContextPath()%>'+contentUrl+'></IFRAME>',
+        cacheData: true,
+        closed: true,
+        active: true
+    });
+	//contentUrl
+	if(tabOne.get('dataSrc')){
+	
+		YAHOO.plugin.Dispatcher.delegate (tabOne, tabView);
+	}
+	else{
+		try{
+			tabView.addTab(tabOne);
+		}catch(e){alert(e);}
+	}
+	map[cbiId]=tabOne;
+	
+	// alert(tabOne.get('dataSrc'));
+
+	tabOne.subscribe('remove',function (e) {
+
+	
+		map[cbiId] = null;
+	});
+
+	// 为关闭作准备
+
+	
+};
+
+function _addCert()
+{
+	
+	var tabView = YAHOO.caf.tabview.getTabViewObj("addCertDiv");
+
+	if(!map)
+	{
+		map ={};
+	}
+
+	
+	
+	var tabOne = new YAHOO.widget.Tab({
+        label: "添加证书",
+        //dataSrc: '<%=request.getContextPath()%>/haccpcert/showCertBaseInfo2.action?model.certBaseInfo.cbiId='+cbiId,
+        //dataSrc: '<%=request.getContextPath()%>/certtab/certhaccpdpaddtab.jsp?cbiId='+cbiId,
+		content:'<IFRAME ID=IFrame1 width=100% height=100% FRAMEBORDER=0 SCROLLING=yes SRC="<%=request.getContextPath()%>/cert/showCertBaseInfo.action?model.certBaseInfo.cbiId="></IFRAME>',
+        cacheData: true,
+        closed: true,
+        active: true
+    });
+	//contentUrl
+	if(tabOne.get('dataSrc')){
+	
+		YAHOO.plugin.Dispatcher.delegate (tabOne, tabView);
+	}
+	else{
+		try{
+			tabView.addTab(tabOne);
+			
+		}catch(e){alert(e);}
+	}
+	activeTabIndex = tabOne;
+	
+	// alert(tabOne.get('dataSrc'));
+
+	
+}
+//添加按钮 
+function addMenuTab(labelName,contentUrl,cbiId){
+	var tabView = YAHOO.caf.tabview.getTabViewObj("addCertDiv");
+	if(!map){
+		map ={};
+	}
+	var tabOne = new YAHOO.widget.Tab({
+        label: labelName,
+		content:'<IFRAME ID="chargeIframe" width=100% height=100% FRAMEBORDER=0 SCROLLING=no SRC='+contentUrl+'></IFRAME>',
+        cacheData: true,
+        closed: true,
+        active: true,
+        iframeToolbar:'oneUseToolbar'
+    });
+	if(tabOne.get('dataSrc')){
+		YAHOO.plugin.Dispatcher.delegate (tabOne, tabView);
+	}
+	else{
+		try{
+			tabView.addTab(tabOne);
+		}catch(e){alert(e);}
+	}
+	tabOne.subscribe('remove',function (e) {
+
+		
+
+	});
+	
+	activeTabIndex = tabOne;
+}
+/**
+ * 附件上传 -------------begin----------------
+ * 
+ */
+	function showFileName(event) {
+		var fileList = event.fileList;
+		var nameStr = "";
+		for ( var item in event.fileList) {
+			nameStr += fileList[item].name + ",";
+		}
+		nameStr = nameStr.substring(0, nameStr.length - 1);
+		document.getElementById("fileName").innerText = nameStr;
+		YAHOO.caf.upload.getUploader("uploaderUI").disable();
+	}
+
+	function progerss(event) {
+		prog = Math.round(300*(event["bytesLoaded"]/event["bytesTotal"]));
+	  	progbar = "<div style=\"background-color: #f00; height: 5px; width: " + prog + "px\"/>";
+		var progressbar = document.getElementById("progressBar");
+		progressbar.innerHTML = progbar;
+	}
+
+
+	var ff = new Array( {
+		description :"文件类型",
+		extensions :"*.xlsx;*.xls;*.rar;*.zip;*.doc;*.docx;*.jpg;*.png;*.gif"
+	});
+	
+	//触发日期点击事件
+	function openCalendar(cal){
+		var getCal = document.getElementById(cal);
+		getCal.click();
+	}
+
+	
+	/**
+	 * 附件上传 ---------------end--------------
+	 * 
+	 */
+
+	 /**
+	  * 给表格隔行套用样式
+	  */
+	 	 function fmtTableBackground(table){
+	 		 if(table){
+	 			for (var i=0;i<table.rows.length;i++) {
+
+	 				(i%2==0)?($(table.rows[i]).addClass("colorLight")):($(table.rows[i]).removeClass("colorLight"));
+	 				
+	 			}
+	 		 }
+	 	 }
+	 /**
+	  * 给表格隔列套用样式
+	  */
+	 	 function fmtTableBackgroundTD(table){
+	 		 
+//	 		 for(var   i=0;i<table.rows.length;i++){  
+//	 		  for(var   j=0;j<table.rows[i].cells.length;j++){  
+//	 		  	
+//	 		  	(j%2==0)?	table.rows[i].cells[j].className="colorDeep":table.rows[i].cells[j].className="colorLight"; 
+//	 		  		
+//	 		  }  
+//	 		  }  
+	 		 if(table){
+		 			for (var i=0;i<table.rows.length;i++) {
+
+		 				(i%2==0)?(table.rows[i].className = "colorLight"):(table.rows[i].className = "");
+		 				
+		 			}
+		 		 }
+	 	 }
+	  
+	  /**
+	   * 根据分辨率，动态设置一般页面div高度
+	   */
+		  var setDivHeight = function(h){
+		   if(typeof h == "undefined"){
+	  			h = 280;
+	  		}
+		   if(window.screen.availHeight <= "600"){
+				$(".apply_main").attr("style","height:" + h + "px;overflow:auto");
+			}
+	  }
+	  /**
+	   * 根据分辨率，动态设置表格div高度
+	   */
+	  var setTableDivHeight = function(h){
+		   if(typeof h == "undefined"){
+	  			h = 150;
+	  		}
+			if(window.screen.availHeight <= "600"){
+				$(".yui_table").attr("style","height:" + h + "px;width:98%;overflow:auto;");
+			}
+	  };
+	  var setBaseInfoTabDiv = function(){
+			/**
+		  if(window.screen.availHeight <= "600"){
+				$(".tabnavi").attr("style","height:300px;overflow:auto;");
+			}else{
+				$(".tabnavi").attr("style","height:450px;overflow:auto;");
+			}
+			**/
+			//调整右边内容高度
+			//var tabContent = document.getElementById("tabContent");
+			//var contTd = document.getElementById("contTd");
+			//tabContent.style.height=contTd.clientHeight-3+"px";
+			var h = $("body").attr("clientHeight")-3 + "px";
+			//alert(h);
+			$(".tabContent").attr("style","height:" + h);
+			//alert(h);
+			//$(".yui_table").attr("style","height:" + h);
+	  };
+	  var regLabType = function(labtype){
+		  if(labtype){
+			  var reg = /^[A-Z]*/g;
+			  labtype = labtype.match(reg);
+			  if('I'==labtype){
+				  labtype = 'IB';
+			  }else if('P'==labtype){
+				  labtype = 'PT';
+			  }else if('R'==labtype){
+				  labtype = 'RM';
+			  }else if('ZL' == labtype){
+				  labtype = 'L';
+			  }
+		  }
+		  return labtype;
+	  };
+	  
+	/**
+	 * 得到评审组组长
+	 * 0 现场评审组
+	 * 1 文审组
+	 * 2 预评审组
+	 */
+	  var getDuty = function(piid,flag,nextUserId,nextUserName){
+	  	var handleSuccess = function(o){
+	  		var person = eval(o.responseText);
+	  		if(person[0] != null){
+		  		$('#transitionPerson_userId').css("width","auto");
+		  		$("#transitionPerson_userId option").remove();
+		  		//正常节点，选择下一步人员
+		  			for(var i = 0 ; i < person[0].length; i++){
+		  				//alert(person[0][i].userId);
+		  				$("#transitionPerson_userId").append("<option value='" + person[0][i].userId + "'>" + person[0][i].userName + "</option>");
+		  			}
+		  		$("#trId").val($('#nextTransaction1 option:selected').val());
+		  		
+		  		//alert($("#trId").val());
+		  		
+		  		if(nextUserId&&nextUserId != ''){
+					$("#transitionPerson_userId").val(nextUserId);
+				}
+				if(nextUserName&&nextUserName != ''){
+					$("#transitionPersonName").attr("value",nextUserName);
+				}
+
+
+
+	  		}
+	  	};
+	  	var handleFailure = function(o){
+	  		alert(o.responseText);
+	  	};
+	  	var callback = { 
+	  			success:handleSuccess,
+	  			failure:handleFailure
+	  		}; 
+	  	var url = getContextPath()+'/approval/getGroupPersonList.action?workFlowParam.piid=' + piid + '&workFlowParam.docureviOnly='+flag;
+	  	var request=YAHOO.util.Connect.asyncRequest('POST', url, callback, '');
+	  };
+	/**
+	 * 得到评审组组长(ib多次评审）
+	 * 0 现场评审组
+	 * 1 文审组
+	 * 2 预评审组
+	 */
+	  var getManyDuty = function(piid,flag,nextUserId,nextUserName){
+	  	var handleSuccess = function(o){
+	  		var person = eval(o.responseText);
+	  		if(person[0] != null){
+		  		$('#transitionPerson_userId').css("width","auto");
+		  		$("#transitionPerson_userId option").remove();
+		  		//正常节点，选择下一步人员
+		  			for(var i = 0 ; i < person[0].length; i++){
+		  				//alert(person[0][i].userId);
+		  				var appendText = '';
+		  				if(person[0][i].exAttributeA == '1'){
+		  					appendText = '（已评审）';
+		  				}
+		  					
+		  				$("#transitionPerson_userId").append("<option value='" + person[0][i].userId + "'>" + person[0][i].userName + appendText +"</option>");
+		  			}
+		  		$("#trId").val($('#nextTransaction1 option:selected').val());
+		  		
+		  		//alert($("#trId").val());
+		  		
+		  		if(nextUserId&&nextUserId != ''){
+					$("#transitionPerson_userId").val(nextUserId);
+				}
+				if(nextUserName&&nextUserName != ''){
+					$("#transitionPersonName").attr("value",nextUserName);
+				}
+
+
+
+	  		}
+	  	};
+	  	var handleFailure = function(o){
+	  		alert(o.responseText);
+	  	};
+	  	var callback = { 
+	  			success:handleSuccess,
+	  			failure:handleFailure
+	  		}; 
+	  	var url = getContextPath()+'/approval/getGroupPersonList.action?workFlowParam.piid=' + piid + '&workFlowParam.docureviOnly='+flag;
+	  	var request=YAHOO.util.Connect.asyncRequest('POST', url, callback, '');
+	  };
+	 /**
+	  * 修改序号共用弹出窗体大小
+	  * @param url
+	  * @return
+	  */
+	 function _showTopNum(title,url){
+		 top.openNewLevelDialog(title,url,self,400,200);
+			//top._show(title,url,'sCont1',400,200);
+			//top.setBeginer(self);
+	 }
+	 /**
+	  * 修改序号页面表单验证
+	  * @return
+	  */
+	 function updateNumValidator(){
+			fmtTableBackground(document.getElementById("commonTable"));
+			$("#mainForm").validate({
+				rules: {
+					"num.newNum": {
+						required: true,
+						digits:true  
+					}
+				},
+				messages: {
+					"num.newNum": {
+						required: "【新序号】内容未填写！",
+						digits:"【新序号】必须输入整数！"
+					}
+				}
+			});
+	  }
+
+	 
+	 var ajaxMethod = function(action,successMethod,failureMethod){
+			var handleSuccess = function(o){
+				alert("处理成功！");
+				successMethod();
+				
+			};
+			 
+			var handleFailure = function(o){
+				alert("处理失败！");
+				failureMethod();
+			};
+			var callback = { 
+					timeout: 120000,
+					success:handleSuccess,
+					failure:handleFailure
+			}; 
+			
+			var request=YAHOO.util.Connect.asyncRequest('POST', action, callback, '');
+		};
+		
+		
+
+		var humanSizeFormatter = function(elCell, oRecord, oColumn, oData) {
+			var str = humanSize(oRecord.getData("uploadSize"));
+		elCell.innerHTML= str; 
+
+		};
+		function humanSize(size){
+		if (size==0){
+			return Math.round(size*100)/100+'B';
+		}else if (size<1000){
+			return Math.round(size*100)/100+'B';
+		}else if (size<1000000){
+			
+			return Math.round(size/1000*100)/100+'KB';
+		}else{
+
+			return Math.round(size/1000000*100)/100+'MB';
+		}
+
+		}
+		
+		function getFileTypeIcon(name,context){
+			var fileType = 'unknown';
+			var c = context?context:getContextPath();
+			if (name.lastIndexOf(".")!=-1){
+				fileType = name.substring(name.lastIndexOf(".")+1,name.length).toLowerCase();
+				
+				var farr =['bmp','doc','docx','ini','jpeg','jpg','pdf','rtf','tif','txt','xls','xlsx','rar','zip'];
+				if (!farr.contains(fileType)){
+					fileType='unknown';
+				}
+			}
+
+			return "<img border=0 src='"+c+"/images/filetype/"+fileType+".gif'/>";
+			
+		}
+		
+		
+		function canPreview(name){
+			var fileType = '';
+			if (name.lastIndexOf(".")!=-1){
+				fileType = name.substring(name.lastIndexOf(".")+1,name.length).toLowerCase();
+				var farr =['bmp','doc','docx','ini','jpeg','jpg','pdf','jpe','rtf','tif','txt','xls','xlsx'];
+				if (!farr.contains(fileType)){
+					return false;
+				}else{
+					return true;
+				}
+			}else{
+				return false;
+			}
+			
+			
+		}
+
+
+		/**
+		 * 刷新tabView的指定tab页面
+		 * @param tview tabView对象
+		 * @param tabIds 要刷新的tab的id集合
+		 * @return
+		 */
+		function refreshTabView(tview, tabIds){
+			var tab = null;
+			var i=0;
+			do{
+				tab = tview.getTab(i);
+				if(tab){
+					var tabId = tab.get('id');
+					if(tabIds.contains(tabId)){
+						tab.resetValue('iframeUrl',true);
+					}
+				}
+				i++;
+			}
+			while(tab!=null);
+		}
+		/**
+		 * 延时调用某个时间段之后调用某函数
+		 * @param func
+		 * @param time
+		 */
+		function delayCall(func){
+			var time=500;
+			try{
+				waitSubmit();
+			}catch(e){}
+			setTimeout(function(){
+				try{
+					func();
+				}catch(e){}
+				try{
+					$.unblockUI();
+				}catch(e){}
+			},time);
+		}
+		/**
+		 * 获得申请类型的显示信息
+		 * @param appType
+		 * @return
+		 */
+	 	function getAppTypeShow(appType){
+			var _showValue = '';
+			var dict = arguments[1];
+			if(!dict){
+				dict = appTypeDict;
+			}
+			var sortArr = ['F','RC','R','S','SS','E','C','1','2','3','4','5','6','7','8','D'];
+			if(appType != null && appType != ''){
+				var arr = appType.split(',');
+				
+				arr = arr.sort(function(a,b){
+					var i1 = sortArr.indexOf(a);
+					var i2 = sortArr.indexOf(b);
+					if(i1 == -1) return 1;
+					if(i2 == -1) return -1;
+					return i1-i2;
+				});
+				
+				_showValue = arrToString(arr, '+', null, true, true, dict);
+			}
+			return _showValue;
+		}
+	 	
+	 	
+		/**
+		 * 获得申请类型的显示信息
+		 * @param appType
+		 * @return
+		 */
+	 	function getAssessTypeShow(appType, subType){
+	 		var dict = arguments[2];
+	 		if(dict==null){
+	 			dict = assessTypeDict;
+	 		}
+			var _showValue = '';
+			var sortArr = ['F','RC','R','S','SS','E','C','1','2','3','4','5','6','7','8','D','N'];
+			if(appType != null && appType != ''){
+				var arr = appType.split(',');
+				for(var i=0; i<arr.length; i++){
+					switch(arr[i]){
+					case 'S':
+						if(subType=='selfCheck'){
+							arr[i] = 'SS';
+						}
+						break;
+					case 'R':
+						if(subType=='cert'){
+							arr[i] = 'RC';
+						}
+					}
+				}
+				arr = arr.sort(function(a,b){
+					var i1 = sortArr.indexOf(a);
+					var i2 = sortArr.indexOf(b);
+					if(i1 == -1) return 1;
+					if(i2 == -1) return -1;
+					return i1-i2;
+				});
+				
+				_showValue = arrToString(arr, '+', null, true, true, dict);
+			}
+			return _showValue;
+		}
+	 	
+	 	 
+	 	/**
+	 	 * 申请类型格式化显示
+	 	 * @param elCell
+	 	 * @param oRecord
+	 	 * @param oColumn
+	 	 * @param oData
+	 	 */
+	 	function appTypeFormatter(elCell, oRecord, oColumn, oData){
+	 		elCell.innerHTML = getAppTypeShow(oData);
+	 	}
+	 	
+	 	/**
+	 	 * 评审类型格式化显示
+	 	 * @param elCell
+	 	 * @param oRecord
+	 	 * @param oColumn
+	 	 * @param oData
+	 	 */
+	 	function assessTypeFormatter(elCell, oRecord, oColumn, oData){
+	 		elCell.innerHTML = getAssessTypeShow(oData);
+	 	}
+	 	
+	 	/**
+	 	 * 通过elementName查询其值
+	 	 * @param name
+	 	 * @return 数组
+	 	 */
+	 	function getValuesByElementName(name){
+	 		var elements = document.getElementsByName(name);
+	 		var array = new Array();
+	 		for(var i=0; i<elements.length; i++){
+	 			array[i] = elements[i].value;
+	 		}
+	 		return array;
+	 	}
+	 	/**
+	 	 * 加参数的URL串
+	 	 * @param url
+	 	 * @param paramName
+	 	 * @param paramValue
+	 	 * @return
+	 	 */
+	 	function getAddParamUrlStr(url, paramName, paramValue){
+	 		var haveParam = /\?/.test(url);
+	 		if(paramValue instanceof Array){
+	 			for(var i=0; i<paramValue.length; i++){
+	 				url += _oneParamStr(haveParam, paramName, paramValue[i]);
+	 				haveParam = true;
+	 			}
+	 		}else{
+	 			url += _oneParamStr(haveParam, paramName, paramValue);
+	 		}
+	 		return url;
+	 	}
+	 	//一个参数的参数串
+	 	function _oneParamStr(haveParam, paramName, paramValue){
+	 		return (haveParam ? '&' : '?') + paramName + '=' + paramValue;
+	 	}
+	 	
+	 	//领域代码复制
+	 	function copyCodeField(code,name,type){
+	 		var map = top.getClipboard();
+	 		//var allMap = new Map();
+	 		var allMap = new (top.Map)();
+	 		
+	 		
+	 		var newMap = new (top.Map)();
+	 		if(map.get(type)!=null){
+	 			var valueMap = map.get(type);
+	 			for(var i=0;i<valueMap.size();i++){
+	 					var key = valueMap.keys()[i];
+	 			 		newMap.put(key,valueMap.get(key));
+	 				}
+	 		}
+	 		newMap.put(code,name);
+	 		allMap.put(type,newMap);
+	 		top.setClipboard(allMap);
+	 		//alert('复制成功');
+	 		try{
+	 			top.showMessage({expire:2000, text:'复制成功！' });
+	 		}catch(e){
+	 		}
+	 	}
+	 	
+	 	function parseCodeField(url){
+			//top.openNewLevelDialog("剪切板",url,self,800,550);
+	 		top._show("剪切板",url,'sCont1',800,550);
+	 		top.setClip(self);
+	 	}
+	 	
+	 	/*
+	 	*
+	 	*string:原始字符串
+	 	*substr:子字符串
+	 	*isIgnoreCase:忽略大小写
+	 	*/
+	 	function contains(string,substr,isIgnoreCase)
+	 	{
+		 	if(isIgnoreCase)
+		 	{
+			 	string=string.toLowerCase();
+			 	substr=substr.toLowerCase();
+		 	}
+		 	var startChar=substr.substring(0,1);
+		 	var strLen=substr.length;
+		 	for(var j=0;j<string.length-strLen+1;j++)
+		 	{
+			 	if(string.charAt(j)==startChar)//如果匹配起始字符,开始查找
+			 	{
+			 		if(string.substring(j,j+strLen)==substr)//如果从j开始的字符与str匹配，那ok
+				 	{
+			 			return true;
+				 	}   
+			 	}
+		 	}
+		 	return false;
+	 	}
+	 	/**
+	 	 * 更新序号超链接
+	 	 * @param title
+	 	 * @param namespace
+	 	 * @param parentId
+	 	 * @param id
+	 	 * @param oldNum
+	 	 */
+	 	function openUpdateNum(title, namespace, parentId, id, oldNum){
+			var updateNumUrl = getContextPath()+'/framework/updateRemoveNum.jsp'
+			+'?namespace='+namespace
+			+'&parentId='+parentId
+			+'&id='+id
+			+'&oldNum='+oldNum;
+			top.openNewLevelDialog(title, updateNumUrl, self, 400,200);
+		}
+	 	
+	 	function debounceOnResize(callback, delay, context){  
+	 		 
+	 		  // alert(1);
+	 		    if (typeof(callback) == "function") {  
+	 		      
+	 			    delay = delay || 300;  
+	 			    context = context || null;  
+	 			    var timeout;  
+	 			    var runIt = function(){  
+	 			            callback.apply(context);  
+	 			        };  
+	 			    return (function(){  
+	 			        window.clearTimeout(timeout);  
+	 			        timeout = window.setTimeout(runIt, delay);  
+	 			    }); 
+	 		    }else{
+	 		 	 //  alert(2);
+	 		     	delay = delay || 300;  
+	 			    context = context || null;  
+	 			    var timeout;  
+	 			    var runIt = function(){
+	 			    		for(var z=0;z<callback.length;z++){
+	 			    			//alert('callback'+z);
+	 			            	callback[z].apply(context);  
+	 			            }
+	 			     	 
+	 			        };  
+	 			 	 //  alert(3);
+	 			    return (function(){  
+	 			        window.clearTimeout(timeout);  
+	 			        timeout = window.setTimeout(runIt, delay);  
+	 			    }); 
+	 		 
+	 		    }
+	 		}
+	 	/**验证自我核查字段长度*/	
+	 	function validateSelfContentLength(results,message,maxSize){
+	 		 for(var j=0;j<results.length;j++){
+	 			 var provision="条款:"+$(results[j]).attr("alt");
+	 			 	if($(results[j]).attr("alt")==undefined){
+	 			 		provision="";
+	 			 	}
+	 			 var isPassResults=byteRangeLengthValidate($(results[j]).text(),0,maxSize,provision+message+'超长(最长'+maxSize+'个字节,一个汉字3个字节)!');
+	 			 if(!isPassResults){ return false;}
+	 		 }
+	 		 return true;
+	 	}	  
+	 	/**
+	 	 * 验证select 是不是只有一个option
+	 	 * @param selectId
+	 	 * @returns {Boolean}
+	 	 */
+	 	function checkSelectHasOneItem(selectId){	 		
+	 		var selectObj = document.getElementById(selectId);
+	 		try{
+		 		if (selectObj){
+		 			if (1==selectObj.options.length){
+			 			return true;
+			 		}else{
+			 			return false;
+			 		}
+		 		}else{
+		 			return false;
+		 		}
+	 		}catch(e){
+	 			return false;
+	 		}
+	 	}
+	 	
+	 	
+	 	var sendRequest = function(method, url, sync, callback, postData){
+	 	    var connObj = YAHOO.util.Connect.getConnectionObject();
+	 	    connObj.conn.open(method, url , sync);
+	 	    connObj.conn.send(postData || '');
+	 	    if(connObj.conn && connObj.conn.readyState === 4){
+	 	    var args = (callback && callback.argument)?callback.argument:null;
+	 	    if(callback && callback.timeout){
+	 	    YAHOO.util.Connect._timeOut[connObj.tId] = 
+	 	    window.setTimeout(function(){ YAHOO.util.Connect.abort(connObj, callback, true); }, callback.timeout);
+	 	        }
+	 	        YAHOO.util.Connect.completeEvent.fire(connObj, args);
+	 	        if(connObj.completeEvent){
+	 	            connObj.completeEvent.fire(connObj, args);
+	 	        }
+	 	        YAHOO.util.Connect.handleTransactionResponse(connObj, callback);
+	 	    }
+	 	        return connObj;
+	 	};
+	 	
+	 	
+//		function linkContrl(eventEleId,tarEleId,msg){
+//			 
+//			if ($('#'+eventEleId).prop('checked')){
+//			
+//				$('#'+tarEleId).prop('disabled',false);
+//			}else{
+//				if ($('#'+tarEleId).val()!=''){
+//					if(confirm(msg+'已经填写，是否删除？')){
+//						$('#'+tarEleId).val('');
+//						$('#'+tarEleId).prop('disabled',true);
+//					}else{
+//						
+//						$('#'+eventEleId).prop('checked',true);
+//					}
+//				}else{
+//					$('#'+tarEleId).prop('disabled',true);
+//				}
+//			}
+//		}
+//		
+//		function initLinkContrl(eventEleId,tarEleId){
+//			 
+//			if ($('#'+eventEleId).prop('checked')){
+//			
+//				$('#'+tarEleId).prop('disabled',false);
+//			}else{
+//				 
+//				$('#'+tarEleId).prop('disabled',true);
+//			}
+//		}
+		
+		
+		
+		
+	 	function linkContrl(eventEleId,tarEleId,msg){
+			var has=false;
+			var isArray=false;
+			if (Object.prototype.toString.call(tarEleId) === '[object Array]'){
+				isArray=true;
+			}
+			
+			if ($('#'+eventEleId).prop('checked')){
+				if (isArray){
+					for (x in tarEleId){
+						$('#'+tarEleId[x]).prop('disabled',false);
+					}
+				}else{
+					$('#'+tarEleId).prop('disabled',false);
+				}
+				
+			}else{
+				
+				if (isArray){
+					for (x in tarEleId){
+					 
+						if (($('#'+tarEleId[x]).val())){
+						//	alert(tarEleId[x]+":"+($('#'+tarEleId[x]).val()));
+							has=true;
+							 
+						}
+					}
+					if (has){
+						if(confirm(msg+'已经填写，是否删除？')){
+							for (x in tarEleId){
+								$('#'+tarEleId[x]).val('');
+								$('#'+tarEleId[x]).prop('disabled',true);
+							}
+						}else{
+							
+							$('#'+eventEleId).prop('checked',true);
+						}
+					}else{
+						for (x in tarEleId){
+			 
+							$('#'+tarEleId[x]).prop('disabled',true);
+						}
+					}
+					
+					 
+				}else{
+					if ($('#'+tarEleId).val()!=''){
+						if(confirm(msg+'已经填写，是否删除？')){
+							$('#'+tarEleId).val('');
+							$('#'+tarEleId).prop('disabled',true);
+						}else{
+							
+							$('#'+eventEleId).prop('checked',true);
+						}
+					}else{
+						$('#'+tarEleId).prop('disabled',true);
+					}
+					
+				}
+				
+				
+				
+				
+			}
+		}
+		
+		function initLinkContrl(eventEleId,tarEleId){
+			var isArray=false;
+			if (Object.prototype.toString.call(tarEleId) === '[object Array]'){
+				isArray=true;
+			}
+			 
+			if ($('#'+eventEleId).prop('checked')){
+				if (isArray){
+					for (x in tarEleId){
+		 
+						$('#'+tarEleId[x]).prop('disabled',false);
+					}
+				}else{
+					$('#'+tarEleId).prop('disabled',false);
+				}
+				
+			}else{
+				if (isArray){
+					for (x in tarEleId){
+						 
+						$('#'+tarEleId[x]).prop('disabled',true);
+					}
+				}else{
+					$('#'+tarEleId).prop('disabled',true);
+				}
+			}
+		}
+		/**
+		 * null转空字符串
+		 * @param str
+		 * @returns
+		 */
+		function nullToStr(str){
+			return str == null ? '' : str;
+		}
+		
+		
+		 function DBC2SBC(str, flag){
+			    var result = '';
+			    str = str.replace(/。/g,"．");
+			    for(var i=0;i<str.length;i++){
+			        code = str.charCodeAt(i);
+			        if(flag){
+			            if(code >= 65281 && code <= 65373) result += String.fromCharCode(str.charCodeAt(i) - 65248);
+			            else if(code == 12288) result += String.fromCharCode(str.charCodeAt(i) - 12288 + 32);
+			                else result += str.charAt(i);
+			        }
+			        else{
+			            if(code >= 33 && code <= 126) result += String.fromCharCode(str.charCodeAt(i) + 65248);
+			            else if(code == 32) result += String.fromCharCode(str.charCodeAt(i) - 32 + 12288);
+			                else result += str.charAt(i);
+			        }
+			    }
+			    return result;
+			}
+		 function setDefaultTextOption(id,text){
+				var obj=$("#"+id+" option");
+				var count=obj.length;
+	        	for(var i=0;i<count;i++){  
+	        		if($("#"+id).get(0).options[i].text == text){
+	        			$("#"+id).get(0).options[i].selected =true;
+	        			$("#"+id).get(0).options[i].selected = true;
+	                  break;
+	              	}
+	          	}
+		}
+/**
+ * 分解页面，将操作部分置于页面最下方
+ * @param optDiv 操作按钮的对象
+ */
+function downBtnFrame(optDiv){
+    var valueDiv = $('<div id="valueDiv" style="width:100%;height:100%;overflow-y:auto;"></div>');
+    //$('body').contents().wrapAll(valueDiv);
+    $('body:first').wrapInner(valueDiv);
+    var btnDiv = $('<div id="btnDiv" style="background-color:#000;width:100%;"></div>');
+    $(optDiv).insertAfter('#valueDiv').wrapAll(btnDiv);
+    $('#valueDiv').height($('#valueDiv').height()-$('#btnDiv').height());
+}
+/**
+ * 表格变色
+ */
+
+function keydownsearch(evt) 
+{ 
+	evt = (evt) ? evt : ((window.event) ? window.event : "") ;
+	keyCode = evt.keyCode ? evt.keyCode : (evt.which ? evt.which : evt.charCode); 
+	if (keyCode == 13) { 
+	_query();//搜索事件 
+	}
+}
+/**
+ * 为btn样式的button添加前置图标(ie不支持和filter公用）
+ * @param jqueryObj
+ * @param url
+ * @param size
+ */
+function addBtnImg(jqueryObj,url,size){
+	var bpy = ((24-size)/2)+'px';
+	var ti = size-10+'px';
+	jqueryObj.css({
+		'background-image':'url('+url+')'
+		,'background-repeat':'no-repeat'
+		,'background-position-y':bpy
+		,'text-indent':ti
+	});
+}
+
+
+function onKeyUpYMD(value,obj,flag){
+	//去除TAB键相应
+	if (event.keyCode=='9'||event.keyCode=='8'||event.keyCode=='37'
+		||event.keyCode=='38'
+			||event.keyCode=='39'
+				||event.keyCode=='40'){
+		return false;
+	}
+
+	var yearEleId=obj["YearValueEleId"];
+	var monthEleId=obj["MonthValueEleId"];
+	var dayEleId=obj["DayValueEleId"];
+
+	var valueMask =obj["ValueMask"];
+	var valueEleId=obj["ValueEleId"];
+	
+	var current= new Date();
+		var dd = '01';
+		var dm = '01';
+		var dy = current.getFullYear();
+		
+	var yE=document.getElementById(yearEleId);
+	yE.value=yE.value.trim();
+
+
+	var mE=null;
+	if (monthEleId!=''){
+	    mE=document.getElementById(monthEleId);
+		mE.value=mE.value.trim();
+	}
+
+	var dE=null;
+	if (dayEleId!=''){
+		dE=document.getElementById(dayEleId);
+		dE.value=dE.value.trim();
+	}
+
+	if ('year'==flag){
+		
+		if (''!=value){
+			if (isNaN(value)||'0000'==value||value.length>4){
+				yE.value=valueMask['year'];
+				return;
+			}
+			 
+			valueMask['year']=value;
+			
+		}else{
+			valueMask['year']='';
+		}
+		
+		if (dayEleId!='' && monthEleId!='' && valueMask['year']!=''&&valueMask['month']!=''&&(valueMask['year']-0)!=0&&(valueMask['month']-0)!=0){
+			var  monthNextFirstDay=new Date(valueMask['year']-0,valueMask['month']-0,1); 
+			var   monthLastDay=new   Date(monthNextFirstDay-86400000); 
+			var monthMaxDays=monthLastDay.getDate();
+			if ((valueMask['day']-0)>monthMaxDays){
+				valueMask['day']=monthMaxDays+'';
+				dE.value=valueMask['day'];
+			}
+		}
+
+
+		
+		 yE.value=valueMask['year'];
+		 updateYMD(obj);
+		if ((value+'').length==4&&monthEleId!=''){
+	 		mE.focus();
+	 	}
+		
+		return ;
+		
+	}else if ('month'==flag&&monthEleId!=''){
+		if (yE.value==''){
+			valueMask['year']=dy;
+			yE.value=valueMask['year'];
+		}
+		if (value!=''){
+			if (isNaN(value)||'00'==value||value.length>2){
+				mE.value=valueMask['month'];
+				return;
+			}
+		    if ((value-0)>12){
+				value='12';
+			}
+		    if ((value-0)>1&&value.length==1){
+				value='0'+value;
+				
+			}
+		    valueMask['month']=value;
+
+		}else{
+			valueMask['month']='';
+		}
+		
+		if (dayEleId!='' && monthEleId!='' &&valueMask['year']!=''&&valueMask['month']!=''&&(valueMask['year']-0)!=0&&(valueMask['month']-0)!=0){
+			var  monthNextFirstDay=new Date(valueMask['year']-0,valueMask['month'],1); 
+			var   monthLastDay=new   Date(monthNextFirstDay-86400000); 
+			var monthMaxDays=monthLastDay.getDate();
+			if ((valueMask['day']-0)>monthMaxDays){
+				valueMask['day']=monthMaxDays+'';
+				dE.value=valueMask['day'];
+			}
+		 
+			
+		}
+		 
+		 mE.value=valueMask['month'];
+
+		updateYMD(obj);
+		if ((value+'').length==2&&dayEleId!=''){
+		 	dE.focus();
+		 	//dE.select();	
+		 }
+		return ;
+	 
+	}else if ('day'==flag&&dayEleId!=''){
+		if (yE.value==''){
+			valueMask['year']=dy;
+			yE.value=valueMask['year'];
+		}
+		if (mE && mE.value==''){
+			valueMask['month']=dm;
+			mE.value=valueMask['month'];
+		}
+		
+		if (dE && value!=''){
+			if (isNaN(value)||'00'==value||value.length>2){
+				dE.value=valueMask['day'];
+				return;
+			}
+			
+			var  monthNextFirstDay=new Date(valueMask['year']-0,valueMask['month'],1); 
+			var   monthLastDay=new   Date(monthNextFirstDay-86400000); 
+			var monthMaxDays=monthLastDay.getDate();
+			if ((value-0)>monthMaxDays){
+				value=monthMaxDays+'';
+			}
+			
+		 
+			    if ((value-0)>3&&value.length==1){
+					value='0'+value;
+				
+				}
+				valueMask['day']=value;
+		}else{
+			
+			valueMask['day']='';
+		}
+
+		 dE.value=valueMask['day'];
+		 updateYMD(obj);
+		
+		return;
+	}
+	
+
+}
+
+function onBlurYMD(obj,flag){
+	
+
+	var yearEleId=obj["YearValueEleId"];
+	var monthEleId=obj["MonthValueEleId"];
+	var dayEleId=obj["DayValueEleId"];
+	var valueMask =obj["ValueMask"];
+	var valueEleId=obj["ValueEleId"];
+	
+	var yE='';
+	if (yearEleId!=''){
+		yE=document.getElementById(yearEleId);
+		yE.value=yE.value.trim();
+	}
+	
+	var mE='';
+	if (monthEleId!=''){
+	mE=document.getElementById(monthEleId);
+	mE.value=mE.value.trim();
+	}
+	
+	var dE='';
+	if (dayEleId!=''){
+	dE=document.getElementById(dayEleId);
+	dE.value=dE.value.trim();
+	}
+	if ('year'==flag&&yearEleId!=''){
+	 
+		if(yE.value.length==1){
+			yE.value='000'+yE.value;
+		}else if(yE.value.length==2){
+			yE.value='00'+yE.value;
+		}else if(yE.value.length==3){
+			yE.value='0'+yE.value;
+		}if (yE.value.length==0){
+			
+			yE.value='';
+		}
+		valueMask['year']=yE.value;
+	}else if ('month'==flag&&monthEleId!=''){
+		if( mE.value.length==1){
+			mE.value='0'+mE.value;
+			//mE.value=valueMask['month'];
+		}else if (mE.value.length==0){
+			
+			mE.value='';
+		}
+		valueMask['month']=mE.value;
+	}else if ('day'==flag&&dayEleId!=''){
+		if(dE.value.length==1){
+			dE.value='0'+dE.value;
+			
+			
+		}else if (dE.value.length==0){
+			
+			dE.value='';
+		}
+		valueMask['day']=dE.value;
+	}
+	updateYMD(obj);
+	
+}
+
+
+function updateYMD(obj) {
+
+		var yearEleId=obj["YearValueEleId"];
+	var monthEleId=obj["MonthValueEleId"];
+	var dayEleId=obj["DayValueEleId"];
+	var valueMask =obj["ValueMask"];
+	var valueEleId=obj["ValueEleId"];
+
+	if (monthEleId!=''&& dayEleId!=''){
+		if (valueMask['month']!=''&&valueMask['year']!=''&&valueMask['day']!=''
+		&&(valueMask['month']-0)!=0&&(valueMask['year']-0)!=0&&(valueMask['day']-0)!=0){
+	
+      
+    		document.getElementById(valueEleId).value=valueMask['year']+'-'+valueMask['month']+'-'+valueMask['day'];
+//		document.getElementById('test').value=(valueMask['year']+' '+valueMask['month']+' '+valueMask['day']);
+		}else if (valueMask['month']==''&&valueMask['year']==''&&valueMask['day']==''){
+     
+    	 
+    		document.getElementById(valueEleId).value='';
+		}
+	}else if (monthEleId!=''&& dayEleId==''){
+	
+			if (valueMask['month']!=''&&valueMask['year']!=''
+		&&(valueMask['month']-0)!=0&&(valueMask['year']-0)!=0){
+	
+      
+    		document.getElementById(valueEleId).value=valueMask['year']+'-'+valueMask['month'];
+//		document.getElementById('test').value=(valueMask['year']+' '+valueMask['month']+' '+valueMask['day']);
+		}else if (valueMask['month']==''&&valueMask['year']==''){
+     
+    	 
+    		document.getElementById(valueEleId).value='';
+		}
+
+	}else if (yearEleId!=''){
+	
+	
+		if (valueMask['year']!=''&&(valueMask['year']-0)!=0){
+	
+      
+    		document.getElementById(valueEleId).value=valueMask['year'];
+//		document.getElementById('test').value=(valueMask['year']+' '+valueMask['month']+' '+valueMask['day']);
+		}else if (valueMask['year']==''){
+     
+    	 
+    		document.getElementById(valueEleId).value='';
+		}
+
+	
+	
+	}
+
+	
+
+}
+
+ 
+ function initYMD(obj){
+
+	 	var yearEleId=obj["YearValueEleId"];
+		var monthEleId=obj["MonthValueEleId"];
+		var dayEleId=obj["DayValueEleId"];
+		var valueMask =obj["ValueMask"];
+		var valueEleId=obj["ValueEleId"];
+	     
+		 var v = document.getElementById(valueEleId).value;
+		  
+		 if (v!=''){
+			 var ymd=v.split('-');
+			 if(yearEleId!=''&&monthEleId!=''&&dayEleId!=''){
+				document.getElementById(yearEleId).value=ymd[0];
+				document.getElementById(monthEleId).value=ymd[1];
+				document.getElementById(dayEleId).value=ymd[2]; 
+				valueMask['year']=ymd[0];
+				valueMask['month']=ymd[1];
+				valueMask['day']=ymd[2];
+			 }else if(yearEleId!=''&&monthEleId!=''&&dayEleId==''){
+				document.getElementById(yearEleId).value=ymd[0];
+				document.getElementById(monthEleId).value=ymd[1];
+
+				valueMask['year']=ymd[0];
+				valueMask['month']=ymd[1];
+				valueMask['day']='';
+			 }else if(yearEleId!=''&&monthEleId==''&&dayEleId==''){
+				document.getElementById(yearEleId).value=ymd[0];
+
+				valueMask['year']=ymd[0];
+				valueMask['month']='';
+				valueMask['day']='';
+			 }
+			 
+
+		 }
+ }
+
+try{
+	$(document).ready(function() {
+		$(".commonTable").each(function(){
+	    	fmtTableBackground(this);
+	    });
+		$('.Wdate').prop('autocomplete', 'off');
+		if(typeof pirl!="undefined"){
+			htmlEscapeYuiTable(pirl);
+		}
+	});
+}catch(e){
+	
+}
+
+
+function tabviewAutoSize(id){
+	 
+	setTabviewAutoSize(id);
+	try{$(window).resize(function(){setTabviewAutoSize(id); });}catch(e){alert(e);}
+
+}
+function setTabviewAutoSize(id){
+	 
+	  
+	//var	docbodych = document.body.clientHeight;
+	
+	var	docbodych = (document.documentElement.clientHeight == 0) ? document.body.clientHeight : document.documentElement.clientHeight;
+	var	ddbch = $(id).position().top;
+
+		//	alert('li'+ddbch);
+		//	alert('li'+(docbodych)+'px');
+	
+		$(id).css("height",((docbodych-ddbch-3)+'px'));
+		try {
+			//	alert(docbodych-ddbch);
+		} catch (e) {
+			alert(e);
+		}
+
+
+}
+/**
+ * 加操作div
+ * @param elCell
+ * @param oData
+ */
+function addOptDiv(elCell, oData, isHide){
+	var div = $("<div class=\"optItemDiv\"></div>");
+	if(oData!=null){
+		$(elCell).append(oData);
+	}
+	$(elCell).append(div);
+	if(isHide){
+		div.hide();
+//		$(elCell).closest("tr").mouseover(function(){
+//			div.toggle();
+//		}).mouseout(function(){
+//			div.toggle();
+
+//		});
+	}
+	return div;
+}
+var defaultOptItemOrder = ['look','modify','updown','del','restore','copy','paste','new','include'];
+var defaultOptItemImgs = {
+	'modify':getContextPath()+'/images/tu01.gif'
+	,'updown':getContextPath()+'/images/updown.png'
+	,'del':getContextPath()+'/images/tu02.gif'
+	,'restore':getContextPath()+'/images/repwd.gif'
+	,'copy':getContextPath()+'/images/copy.png'
+	,'paste':getContextPath()+'/images/paste.png'
+	,'new':getContextPath()+'/images/add.png'
+	,'include':getContextPath()+'/images/table.png'
+	,'look':getContextPath()+'/images/xiangxi.png'
+	,'stop':getContextPath()+'/images/delOne.png'
+	,'msg-info':getContextPath()+'/images/common/msg-info.png'
+	,'msg-alert':getContextPath()+'/images/common/msg-alert.png'
+	,'msg-error':getContextPath()+'/images/common/msg-error.png'
+	,'msg-close':getContextPath()+'/images/common/msg-close.png'
+};
+var defaultTitles={
+	'modify':'修改'
+	,'updown':'序号调整'
+	,'del':'删除'
+	,'restore':'恢复'
+	,'copy':'复制'
+	,'paste':'粘贴'
+	,'new':'添加'
+	,'include':'编辑列表'
+	,'look':'详情'
+	,'stop':'停用'
+};
+/**
+ * 消息图标
+ * @param level
+ * @param msg
+ * @returns 图标的jquery对象
+ */
+function msgIco(level, msg){
+	var $elem = null;
+	if(defaultOptItemImgs['msg-'+level]){
+		$elem = $('<img src="'+defaultOptItemImgs['msg-'+level]+'" style="vertical-align: middle;">');
+		if(msg){
+			$elem.prop('title', msg);
+		}
+	}
+	return $elem;
+}
+/**
+ * 在列表操作div中增加操作项目
+ * @param div
+ * @param pisModify 父级isModify值
+ * @param isModify 本级的isModify值
+ * @param sets 操作设置
+ * @param order 自定义排序
+ 例:
+ var div = addOptDiv(elCell,txt,true);
+ addOptItem(div, '0', oRecord.getData('isModify1'), {
+		'modify':'<a href="javascript:_modify(\''+oRecord.getId()+'\')"></a>'
+		,'updown':'<a href="javascript:_updown(\''+oRecord.getId()+'\')"></a>'
+		,'del':'<a href="javascript:_del(\''+oRecord.getId()+'\')"></a>'
+		,'restore':'<a href="javascript:_restore(\''+oRecord.getId()+'\')"></a>'
+		,'copy':'<a href="javascript:_copy(\''+oRecord.getId()+'\')"></a>'
+		,'paste':'<a href="javascript:_paste(\''+oRecord.getId()+'\')"></a>'
+		,'new':'<a href="javascript:_new(\''+oRecord.getId()+'\')"></a>'
+		,entityName:'实体名'
+	});
+ */
+function addOptItem(div, pisModify, isModify, sets, order){
+	if(pisModify != null){
+		if(!order){
+			order = defaultOptItemOrder;
+		}
+		var optItemNames = [];
+		if(isModify!=null){
+			optItemNames.push('copy');
+		}
+		if(pisModify != '3'){
+			optItemNames.push('paste');
+			optItemNames.push('new');
+			optItemNames.push('include');
+			if(isModify!=null){
+				optItemNames.push('updown');
+				if(isModify!='3'){
+					optItemNames.push('modify');
+					optItemNames.push('del');
+				}else{
+					optItemNames.push('restore');
+				}
+			}
+		}
+		$.each(order, function(i, n){
+			if(optItemNames.contains(n) && sets[n]){
+				$elm = $(sets[n]);
+				if(!sets['customImg']){
+					$elm.append('<img border="0" src="'+defaultOptItemImgs[n]+'">');
+				}
+				if(sets['entityName']){
+					$elm.attr('title', sets['entityName']+defaultTitles[n]);
+				}else{
+					$elm.attr('title', defaultTitles[n]);
+				}
+				div.append($elm);
+			}
+		});
+	}
+}
+
+function addCommOptItem(div, ableVal, sets, order){
+	if(!order){
+		order = defaultOptItemOrder;
+	}
+	var keepKeys = ['entityName','txtLink'];
+	var optItemNames = [];
+	$.each(sets, function(key, val){
+		if(!keepKeys.contains(key) && (val.ableVals==null||val.ableVals.contains(ableVal))){
+			optItemNames.push(key);
+		}
+	});
+	$.each(order, function(i, n){
+		if(optItemNames.contains(n) && sets[n]){
+			$elm = $(sets[n].elem);
+			$elmA = $elm.filter('a');
+			if($elmA.length==0){
+				$elmA = $elm.find('a');
+			}
+			if(!sets['txtLink']){
+				if(sets[n].customImg==null){
+					$elmA.append('<img border="0" src="'+defaultOptItemImgs[n]+'">');
+				}
+			}else if(i!=0){
+				div.append('&nbsp;');
+			}
+			if(sets['entityName']){
+				$elmA.attr('title', sets['entityName']+defaultTitles[n]);
+			}else{
+				$elmA.attr('title', defaultTitles[n]);
+			}
+			div.append($elm);
+		}
+	});
+}
+
+/**
+ * 添加省略显示
+ * @param thePirl
+ */
+function addEllipsis(thePirl){
+	var ellipsisKeys = arguments[1];
+	if(thePirl){
+		var ctrlEl = null;
+		if(ellipsisKeys){
+ 			$.each(ellipsisKeys, function(i,key){
+ 					$(thePirl.getBdTableEl()).find('[headers$="'+key+' "] div').not(':hidden').addClass('ellipsis').prop('title',function(){
+					return $(this).text().trim();
+				});
+ 			});
+		}else{
+			ctrlEl = $(thePirl.getTbodyEl()).find('div').addClass('ellipsis').prop('title',function(){
+				return $(this).text().trim();
+			});;
+		}
+	}
+}
+/**
+ * 增加选中操作事件
+ * @param thePirl
+ */
+function addSelectOptEvent(thePirl){
+	$(thePirl.getBdTableEl()).find('div.optItemDiv').hide();
+	thePirl.addListener('rowSelectEvent',function(obj){
+		var cDiv = $(thePirl).data('cDiv');
+		if(cDiv){
+			cDiv.hide();
+		}
+		cDiv = $(obj.el).find('div.optItemDiv');
+		cDiv.show();
+		$(thePirl).data('cDiv',cDiv);
+	});
+}
+/**
+ * 增加选中操作事件(不使用rowSelectEvent绑定)
+ * @param thePirl
+ */
+function addSelectOptEvent2(thePirl, param){
+	if(param==null){
+		param = {hide:true};
+	}
+	if(param.hide){
+		$(thePirl.getBdTableEl()).find('div.optItemDiv').hide();
+	}
+	$(thePirl.getBdContainerEl()).find('tbody.yui-dt-data tr').click(function(){
+		$(thePirl.getBdContainerEl()).find('tbody.yui-dt-data tr td').removeClass('yui-dt-selected');
+		$(this).children('td').addClass('yui-dt-selected');
+		var cDiv = $(thePirl).data('cDiv');
+		if(param.hide){
+			if(cDiv){
+				cDiv.hide();
+			}
+			cDiv = $(this).find('div.optItemDiv');
+			cDiv.show();
+		}
+		$(thePirl).data('cDiv',cDiv);
+	});
+}
+/**
+ * 移除GroupTr
+ * @param thePirl
+ */
+function removeGroupTr(thePirl){
+	$(thePirl.getBdContainerEl()).find('tr.gtitle').remove();
+}
+/**
+ * 增加分组tr
+ * @param thePirl
+ * @param groupId 分组key的id
+ * @param groupTitle 组title的id
+ * @param emptyTitle 默认title
+ * @param extParam 扩展参数
+ */
+function addGroupTr(thePirl, groupId, groupTitle, lvl, emptyTitle, extParam){
+	//计算record属性
+	function getVal(obj, record){
+		if(typeof(obj) == 'function'){
+			return obj(record);
+		}else{
+			return record.getData(obj);
+		}
+	}
+	//计算属性
+	function getVal2(obj, record){
+		if(typeof(obj) == 'function'){
+			return obj(record);
+		}else{
+			return obj;
+		}
+	}
+	//折叠或者展开
+	function positiveShow(positive){
+		if($(this).prop('openState') && positive || !$(this).prop('openState') && !positive){
+			loclshow.call(this);
+			$(this).prop('openState',1);
+			$(this).find('.changeImg').prop('src',getContextPath()+'/images/bottom.png');
+		}else{
+			loclhide.call(this);
+			$(this).prop('openState',0);
+			$(this).find('.changeImg').prop('src',getContextPath()+'/images/rt.png');
+		}
+	}
+	//显示
+	function loclshow(){
+		var $nextgtr = $(this).nextAll('.gtitle:first');
+		if(!$nextgtr.length){
+			$(this).nextAll('tr').show();
+		}else if($nextgtr.attr('lvl')<$(this).attr('lvl')){//父级
+			$(this).nextUntil($nextgtr).show();
+		}else if($nextgtr.attr('lvl')==$(this).attr('lvl')){//同级
+			$(this).nextUntil($nextgtr).show();
+		}else if($nextgtr.attr('lvl')>$(this).attr('lvl')){//子级
+			for(;;){
+				$nextgtr.show();
+				positiveShow.call($nextgtr[0],true);
+				$nextgtr = $nextgtr.nextAll('.gtitle:first');
+				if(!$nextgtr.length){
+					break;
+				}else if($nextgtr.attr('lvl')<=$(this).attr('lvl')){
+					break;
+				}
+			}
+		}
+	}
+	//隐藏
+	function loclhide(){
+		var $nextgtr = $(this).nextAll('.gtitle:first');
+		if(!$nextgtr.length){
+			$(this).nextAll('tr').hide();
+		}else if($nextgtr.attr('lvl')<$(this).attr('lvl')){//父级
+			$(this).nextUntil($nextgtr).hide();
+		}else if($nextgtr.attr('lvl')==$(this).attr('lvl')){//同级
+			$(this).nextUntil($nextgtr).hide();
+		}else if($nextgtr.attr('lvl')>$(this).attr('lvl')){//子级
+			for(;;){
+				$nextgtr = $nextgtr.nextAll('.gtitle:first');
+				if(!$nextgtr.length){
+					$(this).nextAll('tr').hide();
+					break;
+				}else if($nextgtr.attr('lvl')<=$(this).attr('lvl')){
+					$(this).nextUntil($nextgtr).hide();
+					break;
+				}
+			}
+		}
+	}
+	//扩展参数处理
+	var modifyFun = null;
+	if(extParam){
+		modifyFun = extParam.modifyFun?extParam.modifyFun:null;
+	}
+	//添加分组
+	var bgid = 'first';
+	$.each(thePirl.getRecordSet().getRecords(), function(i, record){
+		if(record){
+			var _gid = getVal(groupId, record);
+			if(_gid==''){
+				_gid=null;
+			}
+			if(_gid!=bgid){
+				
+				var _title = null;
+				if(_gid==null){
+					_title = emptyTitle;
+				}else{
+					_title = getVal(groupTitle, record);
+				}
+				if(_title){
+					var $groupTr = $('<tr height="25" class="gtitle"><td colspan="100" ><span class="txtSpan"><img class="changeImg" border="0" src="'+getContextPath()+'/images/bottom.png"></span></td></tr>');
+					if(modifyFun && _gid){
+						var $modifyElm = $('<a href="javascript:void(0);" title="修改" class="modifySpan"><img border="0" src="'+getContextPath()+'/images/tu01.gif" ></a>');
+						$modifyElm.click(function(){
+							modifyFun(record, thePirl);
+						});
+						$groupTr.find('td').prepend($modifyElm);
+					}
+					var lvlVal = getVal2(lvl, record);
+					$groupTr.attr('lvl',lvlVal);//层次级别
+					$groupTr.prop('openState', 1);//打开状态
+					//$groupTr.click(function(){//折叠事件
+					//	positiveShow.call(this, false);
+					//});
+					//$groupTr.children('td').append(_title);//title
+					$groupTr.children('td').css('textIndent',lvlVal+'em');//层次感
+					//$groupTr.children('td').width($(thePirl.getHdTableEl()).width());//数据表格宽度
+					$groupTr.children('td').width(($(thePirl.getHdTableEl()).width()-2)+'px');//数据表格宽度
+					$groupTr.find('.txtSpan')
+						.append(_title)
+						.click(function(){//折叠事件
+							positiveShow.call($groupTr[0], false);
+						});
+					$(pirl.getTrEl(record)).before($groupTr);
+				}
+				bgid = _gid;
+			}
+		}
+		
+	});
+}
+/**
+ * 获得纯文本字符串（用于防注入） 暂时不使用了
+ * @param text
+ */
+function getOnlyText(text){
+	return text;
+//	if(text != null){
+//		var _span = $('<span></span>').text(text);
+//		var _newText = _span.html();
+//		_span.empty();
+//		return _newText;
+//	}else{
+//		return '';
+//	}
+}
+/**
+ * 根据记录属性 使列表的某条记录被选中
+ * @param _table
+ * @param _attrName
+ * @param _attrValue
+ */
+function selectRecord(_table, _attrName, _attrValue){
+	var rows = _table.data.getAllRows();
+	$.each(rows, function(index, _record){
+		if(_record[_attrName]==_attrValue){
+			_table.selectRecord(index);
+			return false;
+		}
+	});
+}
+/**
+ * 子窗口获得smartCleint窗口对象(framewindow)
+ * @returns
+ */
+function getParentWindow(){
+	try{
+		return parent[$(frameElement.parentElement.parentElement.parentElement).attr('eventproxy')];
+	}catch(e){}
+	return null;
+}
+/**
+ * 为yuitable增加显示列的方法typeShow(type)
+ * @param dt
+ * @param typeShowSet
+ * 例:addTypeShowForYuiTable(pirl, {
+		'def':['num1','num2','isModify1','code','isModify1_isModify2','checkerStr','opt1']
+		,'ch':['fieldch','descriptCh','standardCh']
+		,'en':['fielden','descriptEn','standardEn']
+	});
+	pirl.typeShow('ch');
+	pirl.typeShow('all');
+ */
+function addTypeShowForYuiTable(dt, typeShowSet){
+	var allCol = $.map(pirl.getColumnSet().keys,function(val){
+		return val.hidden ? null : val.key;
+	});
+	typeShowSet['all']=allCol;
+	dt['typeShowSet']=typeShowSet;
+	dt['typeShow']=function(type){
+		var columns = null;
+		var dt = this;
+		var showColumnSet = $(dt).prop('typeShowSet');
+		var allColumns = showColumnSet['all'];
+		columns = showColumnSet[type];
+		if(type=='all' || columns==null){
+			$.each(allColumns,function(i, val){
+				dt.showColumn(val);
+			});
+		}else{
+			if(showColumnSet['def']){
+				columns = columns.concat(showColumnSet['def']);
+			}
+			$.each(allColumns,function(i, val){
+				if(columns.contains(val)){
+					dt.showColumn(val);
+				}else{
+					dt.hideColumn(val);
+				}
+			});
+		}
+	};
+}
+/**
+ * yui表格的刷新表格,增加了属性还原(滚动条)requeryYui('pirl');
+ * @param arg1 dtName table的id
+ * @param arg2 selectKey 
+ */
+function requeryYui(){
+	var dtName = arguments[0];
+	var selectKey = arguments[1];
+	var dt = eval(dtName);
+	
+	//保存设置
+	$(dt).data('requeryPropSet',{scrollTop:$(dt.getBdContainerEl()).prop('scrollTop'),scrollLeft:$(dt.getBdContainerEl()).prop('scrollLeft')});
+	if(selectKey){
+		var selectKeys = $.map(dt.getSelectedRows(),function(rid){
+			var oRecord = dt.getRecord(rid);
+			return oRecord.getData(selectKey);
+		});
+		$(dt).data('requerySelectKeys',selectKeys);
+	}
+	//重查数据
+	eval(dtName+'ReQuery()');
+	//还原设置
+	if(!$(dt).data('addRequeryPropSetListener')){
+		$(dt).data('addRequeryPropSetListener', true);
+		dt.addListener('renderEvent', function(request , response){
+			if($(dt).data('requeryPropSet')){
+				$(dt.getBdContainerEl()).prop($(dt).data('requeryPropSet'));
+				$(dt).removeData('requeryPropSet');
+			}
+			var selectKeys = $(dt).data('requerySelectKeys');
+			$(dt).removeData('requerySelectKeys');
+			if(selectKeys && selectKeys.length>0){
+				var records = dt.getRecordSet();
+				var pager = dt.get('paginator');
+				if(pager){//分页列表
+					var index = pager.getStartIndex();
+					for(var i=0; i<pager.getRowsPerPage(); i++,index++){
+						var record = records.getRecord(index);
+						if(record && selectKeys.contains(record.getData(selectKey))){
+							dt.selectRow(record);
+						}
+					}
+				}else{
+					for(var i=0; i<records.getLength(); i++){
+						var record = records.getRecord(i);
+						if(record && selectKeys.contains(record.getData(selectKey))){
+							dt.selectRow(record);
+						}
+					}
+				}
+			}
+		});
+	}
+}
+/**
+ * 合并对象属性
+ * @param obj1 对象
+ * @param obj2 待合并的对象
+ * @returns
+ */
+function mergeAddAttr(obj1, obj2){
+	$.each(obj2,function(_key, _value){
+		 if(!obj1.hasOwnProperty(_key)){
+			 obj1[_key] = _value;
+		 }
+	 });
+	return obj1;
+}
+/**
+ * 下载aspose报表
+ * @param reportName
+ * @param param
+ */
+function downReport(reportName, param){
+	var defaultParam = {downType:'doc',reportName:reportName};
+	var url = addUrlParam(getContextPath()+'/asposeReport/getAsposeFile.action',mergeAddAttr(defaultParam, param));
+	window.open(url,'_self');
+}
+/**
+ * 自动调整高
+ * @param $obj
+ * @param addVal
+ */
+function autoResizeHeight($obj, addVal){
+	var resizeFun = function(){
+		$obj.height($('body').height()-$obj.offset().top-(addVal?addVal:0));
+	};
+	resizeFun();
+	$(window).resize(function(){
+		resizeFun();
+	});
+}
+/**
+ * form多按钮提交问题。
+ * @param action
+ * @param namespace
+ * @returns {Boolean}
+ */
+function setFormAction(action, namespace){
+	try{
+		var $el = $(event.srcElement);
+		var form = $($el).prop('form');
+		if(form){
+			var prefix = null;
+			if(namespace){
+				prefix = getContextPath()+namespace;
+			}else{
+				var pathName = document.location.pathname;
+				if(pathName.indexOf('?')!=-1){
+					pathName = pathName.substr(0, pathName.indexOf('?'));
+				}
+				prefix = pathName.substr(0, pathName.lastIndexOf('/'));
+			}
+			form.action=prefix+'/'+action+'.action';
+		}else{
+			return false;
+		}
+	}catch(e){
+		return false;
+	}
+}
+
+function addBigTxtBtn(selecter){
+	if(!top.openBigWin){
+		return;
+	}
+	var selecter = selecter?selecter:'body';
+	$(selecter).on('focus', '.bigTxt', function(){
+		var $elem = $(this);
+		var view = $elem.prop('readonly') || $elem.prop('disabled');
+		$elem.data('range', true);
+		if(!$elem.data('bigTxtBtn')){
+			var $btn = $('<button class="bigTxtBtn"></button>').text(view?'查看':'编辑').css({
+				position:'absolute'
+				,top:$elem.offset().top
+				,left:$elem.offset().left+$elem.width()+4
+			});
+			$btn.bind({
+				click:function(){
+					top.openBigWin({elem:$elem});
+				}
+				,mouseover:function(){
+					$btn.data('range',true);
+				}
+				,mouseleave:function(){
+					$btn.data('range',false);
+				}
+				,blur:function(){
+					$btn.data('range', false);
+					if(!$elem.data('range')&&!$btn.data('range')){
+						$btn.remove();
+						$elem.removeData('bigTxtBtn');
+					}
+				}
+			});
+			$('body').append($btn);
+			$elem.data('bigTxtBtn',$btn);
+		}
+		
+	}).on('blur','.bigTxt',function(){
+		var $elem = $(this);
+		$elem.data('range', false);
+		var $btn = $elem.data('bigTxtBtn');
+		if($btn){
+			if(!$elem.data('range')&&!$btn.data('range')){
+				$btn.remove();
+				$elem.removeData('bigTxtBtn');
+			}
+		}
+	}).on('keydown','.bigTxt',function(event){
+		if(event.keyCode==13 && event.ctrlKey){
+			var $elem = $(this);
+			top.openBigWin({elem:$elem});
+		}
+	});
+} 
+/**
+ * 动态加载js文件
+ * @param fileName
+ */
+function loadJs(fileName){
+	$(document).append("<script type='text/javascript' src='"+getContextPath()+"/js/"+fileName+".js'</script>"); 
+}
+
+var TYPE_MAP = ['初评','复评','监督','扩项','不定期','暂停认可','注销认可','撤销认可','恢复认可','能力状态变化','恢复能力','监督延期','复评延期','公布数据修正'];
+var TYPECODE_MAP = ['F','R','S','E','C','7','5','6','8','N','4','DS','DR','M'];
+/**
+ * 报表使用，显示任务类型
+ * @param typeStr
+ * @returns
+ */
+function assessIntTypeFmt(typeStr, subType){
+	var names = [];
+	$.each(typeStr.split(','), function(i, val){
+		if(val=='1'){
+			if(TYPECODE_MAP[i]=='R' && subType=='cert'){
+				names.push('换证复评');
+			}else if(TYPECODE_MAP[i]=='S' && subType=='selfCheck'){
+				names.push('自查');
+			}else{
+				names.push(TYPE_MAP[i]);
+			}
+		}
+	});
+	return names.join('+');
+}
+/**
+ * 构建评审类型的int形式
+ * @param types
+ */
+function buildAssessIntType(types){
+	var intTypes = [];
+	$.each(TYPECODE_MAP, function(i, type){
+		intTypes[i] = types.contains(type)?'1':'';
+	});
+	return intTypes.join(',');
+}
+//待办列表
+var TYPE_MAP2 = ['初评','复评','监督','扩项','不定期','恢复认可','暂停认可','注销认可','撤销认可','恢复能力','能力状态变化','注销能力','撤销能力','复评延期','监督延期'];
+//F,R,S,E,C,8,7,5,6,4,N,1,2,DR,DS-SUB_TYPE
+var TYPECODE_MAP2 = ['F','R','S','E','C','8','7','5','6','4','N','1','2','DR','DS'];
+/**
+ * 报表使用，显示任务类型
+ * @param typeStr
+ * @returns
+ */
+function assessIntTypeFmt2(typeStr, subType){
+	var names = [];
+	$.each(typeStr.split(','), function(i, val){
+		if(val=='1'){
+			switch(subType){
+			case 'selfCheck':
+				names.push('自查');
+				break;
+			case 'cert':
+				names.push('换证复评');
+				break;
+			default:
+				names.push(TYPE_MAP2[i]);
+				break;
+			}
+		}
+	});
+	return names.join('+');
+}
+/**
+ * 构建评审类型的int形式
+ * @param types
+ */
+function buildAssessIntType2(types){
+	var intTypes = [];
+	$.each(TYPECODE_MAP2, function(i, type){
+		intTypes[i] = types.contains(type)?'1':'';
+	});
+	return intTypes.join(',');
+}
+/**
+ * 隐藏域重置功能 在初始化方法中调用
+ * @param $form
+ * @param $resetBtn
+ */
+function hiddenReset($form, $resetBtn){
+	$form.find('input[type="hidden"]').each(function(){
+		$(this).data('defualtVal', $(this).val());
+	});
+	if(!$resetBtn){
+		$resetBtn = $form.find('input[type="reset"],button[type="reset"]');
+	}
+	$resetBtn.click(function(){
+		$form.find('input[type="hidden"]').each(function(){
+			$(this).val($(this).data('defualtVal'));
+		});
+	});
+}
+/**
+ * CheckBox的规则控制，一个选项控制多个子选项
+ * @param $boxs
+ * @param val
+ * @param subval
+ */
+function subItemctrl($boxs, val, subval){
+	if(!$.isArray(subval)){
+		subval = [subval];
+	}
+	var changeVal = function(check){
+		$.each(subval, function(i, sval){
+			var $sItem = $boxs.filter('[value="'+sval+'"]').prop('disabled', !check);
+			if(!check){
+				$sItem.prop('checked', false);
+			}
+		});
+	}
+	var chk = $boxs.filter('[value="'+val+'"]').change(function(){
+		changeVal($(this).prop('checked'));
+	});
+	changeVal($(chk).prop('checked'));
+}
+/**
+ * 进制转换方法
+ * @param val10 十进制数
+ * @param dict 要转化的进制字典
+ * @returns {String}
+ */
+function convHex(val10, dict){
+	var newVal = '';
+	var arr = convHexArr(val10, dict.length);
+	$.each(arr, function(i, val){
+		newVal+=dict[val];
+	});
+	return newVal;
+}
+function convHexArr(val10, hex){
+	var arr = [];
+	var sv = val10;
+	for(;;){
+		var ys = sv%hex;
+		sv = parseInt(sv/hex);
+		arr.push(ys);
+		if(sv==0){
+			break;
+		}
+	}
+	arr.reverse();
+	return arr;
+}
+/**
+ * checkbox,radio的只读js(用于disabled的显示)
+ * @param $content
+ */
+function checkboxReadonly($content){
+	$content.on('click','input[type="checkbox"],input[type="radio"]',function(){
+		return false;
+	});
+}
+/**
+ * 控件分割 如checkbox换行
+ * @param $chk
+ * @param segs 分割符设置 [默认分割符,可确切位置分割符]
+ * @param ignoreEnd 忽略最尾记录 默认true
+ * @param endFind 最尾记录后的查找 '+label'
+ */
+function elemSeg(){
+	var $chk = arguments[0];
+	if($chk&&$chk.length){
+		var segs = arguments[1];
+		if(!$.isArray(segs)){
+			segs = [segs];
+		}
+		var ignoreEnd = arguments[2];
+		if(ignoreEnd==null){
+			ignoreEnd = true;
+		}
+		$chk.not(':first').each(function(i){
+			$(this).before(segs[i+1]?segs[i+1]:segs[0]);
+		});
+		if(!ignoreEnd){
+			var endFind = arguments[3];
+			if(endFind){
+				$chk.filter(':last').find(endFind).after(segs[$chk.length]?segs[$chk.length]:segs[0]);
+			}else{
+				$chk.filter(':last').after(segs[$chk.length]?segs[$chk.length]:segs[0]);
+			}
+			
+		}
+	}
+}
+/**
+ * 自动调整高度带滚动条的div
+ * @param $div	要调整的滚动条	$('#div1')
+ * @param props	属性 maxh,minh
+autoHeightDiv($('div'), {maxh:0,minh:0});
+ */
+function autoHeightDiv($div, props){
+	if($div==null || $div.length==0){
+		return;
+	}
+	$div.css('overflow','auto');
+	var $wcon = $(window);
+	var $ncon = $('body');
+	if(props['maxh']==0){
+		props['maxh']=$div.height();
+	}
+	if(!props['minh']){
+		props['minh']=50;
+	}
+	function setHeight(){
+		$div.height(function(){
+			var wheight = $wcon.height();//外高
+			var nheight = $ncon.prop('scrollHeight');//内高
+			if(wheight>=nheight){//外高大于内高
+				//nheight=$ncon.height();//使用本身高度
+				nheight=$ncon.find('>:last').offset().top+$ncon.find('>:last').height();//取最后一个元素的尾
+			}
+			var divh = wheight-(nheight-$(this).height());
+			if(props['maxh']!=null && divh>props['maxh']){
+				divh=props['maxh'];
+			}
+			if(props['minh']!=null && divh<props['minh']){
+				divh=props['minh'];
+			}
+			return divh;
+		});
+		return 
+	}
+	setHeight();
+	$(window).on('resize',function(){
+		setHeight();
+	});
+}
+/**
+ * yui表格的扩展属性处理
+ * @param dataTable
+ * @param attr
+ * @param callFun
+ */
+function extQuery(dataTable, attr, callFun){
+	var paramName = 'ext_'+attr;
+	dataTable.getDataSource().responseSchema.metaFields[paramName]=attr;
+	dataTable.addListener("dataReturnEvent", function(param){
+		var extResult = param.response.meta[paramName];
+		callFun(extResult);
+	});
+}
+/**
+ * 设置内容变更后,按钮颜色改变
+ * saveContentWarn($('#saveBtn'), $('.saveData'));
+ * @param $btn
+ * @param $content
+ */
+function saveContentWarn($btn, $content){
+	$content.change(function(){
+		$btn.css('border','1px solid red');
+	});
+}
+/**
+ * 根据dict格式化展现
+ * @param elCell
+ * @param oRecord
+ * @param oColumn
+ * @param oData
+ * @param dict
+ */
+function dictFmt(elCell, oRecord, oColumn, oData, dict){
+	elCell.innerHTML=searchDictValue(oData, dict);
+}
+/**
+ * 从集合中查找某属性值的对象
+ * @param coll
+ * @param attrName
+ * @param attrVal
+ * @returns
+ */
+function findObjectFormColl(coll, attrName, attrVal){
+	var obj = null;
+	$.each(coll, function(i, item){
+		if(item[attrName]==attrVal){
+			obj = item;
+			return false;
+		}
+	});
+	return obj;
+}
+//能力备注
+var noteFmt = function(elCell, oRecord, oColumn, oData) {
+	 var noteType = oRecord.getData("noteType"); 
+	 var key= oColumn.key;
+	 var note = oRecord.getData(key); 
+	 elCell.innerHTML = nodeTxt(noteType, note); 
+};
+function nodeTxt(noteType, note){
+	 var val="";
+	 if(noteType == 'C'){
+		 val = "变更";
+	  }else if(noteType =='E'){
+		  val = "扩项";
+	  }else{
+		 val=note;
+	  }
+	 return val;
+}
+//签字人备注
+var noteTypeFmt = function(elCell, oRecord, oColumn, oData) {
+	 var noteType = oRecord.getData("noteType"); 
+	 var key= oColumn.key;
+	 var note = oRecord.getData(key); 
+	elCell.innerHTML = nodeTypeTxt(noteType, note); 
+};
+function nodeTypeTxt(noteType, note){
+	 var val="";
+	 if(noteType == 'A'){
+		 val = "新增";
+	  }else if(noteType =='C'){
+		  val = "变化";
+	  }else if(noteType =='H'){//ML
+		  val = "维持";
+	  }else if(noteType =='E'){//ML
+		  val = "扩大授权范围";
+	  }else if(noteType =='S'){//ML
+		  val = "缩小授权范围";
+	  }else{
+		 val=note;
+	  }
+	 return val;
+}
+var noteEnTypeFmt = function(elCell, oRecord, oColumn, oData) {
+	 var noteType = oRecord.getData("noteType"); 
+	 var key= oColumn.key;
+	 var note = oRecord.getData(key); 
+	 var val="";
+	 if(noteType == 'A'){
+		 val = "New";
+	  }else if(noteType =='C'){
+		  val = "Changed";
+	  }else if(noteType =='H'){//ML
+		  val = "Remain";
+	  }else if(noteType =='E'){//ML
+		  val = "Extended";
+	  }else if(noteType =='S'){//ML
+		  val = "Reduced";
+	  }else{
+		 val=note;
+	  }
+	elCell.innerHTML = val; 
+};
+//ML资质的英文备注
+var noteEnTypeFmtMl = function(elCell, oRecord, oColumn, oData) {
+	var noteType = oRecord.getData("noteType"); 
+	var key= oColumn.key;
+	var note = oRecord.getData(key); 
+	var val="";
+	if(noteType == 'A'){
+		val = "New scope";
+	}else if(noteType =='C'){
+		val = "Changed scope";
+	}else if(noteType =='H'){//ML maintain 
+		val = "Maintain scope";
+	}else if(noteType =='E'){//ML
+		val = "Extended scope";
+	}else if(noteType =='S'){//ML
+		val = "Reduced scope";
+	}else{
+		val=note;
+	}
+	elCell.innerHTML = val; 
+};
+/**
+ * 根据form参数下载数据文件
+ * downDataFileByForm(mainForm);
+ * @param pform
+ */
+function downDataFileByForm(pform){
+	if(pform!=null){
+		var data = _appendFormParam(pform);
+		downDataFile(pform.action, data);
+	}
+}
+/**
+ * 根据form参数下载数据文件
+ * @param pform
+ */
+function downDataFile(url, data){
+	if(url&&data){
+		url = addUrlParam(url, data);
+		if(top.downFileWin==null||top.downFileWin.closed){
+			top.downFileWin = window.open(url, 'downFileWin');
+			top.downFileWin.document.title="打印下载页面";
+		}else{
+			alert('打印下载页面已打开！一个用户同时不能下载多个文件，请关闭打印下载页面后重试。');
+		}
+	}
+}
+/**
+ * 预览文件
+ */
+function previewFile(url, data, fileName){
+	if(url&&data){
+		url = addUrlParam(url, data);
+		var previewFileWin = window.open(url,'_blank','height=500px,width=800px,top=0,left=0,toolbar=no,menubar=no,scrollbars=no, resizable=no,location=no, status=no');
+		//previewFileWin.document.title = fileName?'文件预览《'+fileName+'》':'文件预览';
+	}
+}
+/**
+ * 转义特殊符号
+ * @param text
+ * @returns
+ */
+function htmlEscape(text){
+  if(text==null || typeof(text)!='string'){
+	  return text;
+  }
+  text = text.replace('<br/>','').replace('<br />','').replace('<br>','').replace('<br >','');
+  return text.replace(/[<>"&]/g, function(match, pos, originalText){
+    switch(match){
+	    case "<": return "&lt;";
+	    case ">":return "&gt;";
+	    case "&":return "&amp;";
+	    case "\"":return "&quot;";
+    }
+  });
+}
+/**
+ * 本地转义业务
+ * @param text
+ * @returns
+ */
+function localHtmlEscape(text){
+	if(text==null || typeof(text)!='string'){
+		return text;
+	}
+	var text = htmlEscape(text);
+	var regExps = [
+		[/&lt;sup&gt;&lt;i&gt;([\w\+\-\_]+)&lt;\/i&gt;&lt;\/sup&gt;/ig, '<sup><i>$1</i></sup>']
+		, [/&lt;sub&gt;&lt;i&gt;([\w\+\-\_]+)&lt;\/i&gt;&lt;\/sub&gt;/ig, '<sub><i>$1</i></sub>']
+		, [/&lt;sup&gt;([\w\+\-\_]+)&lt;\/sup&gt;/ig, '<sup>$1</sup>']
+		, [/&lt;sub&gt;([\w\+\-\_]+)&lt;\/sub&gt;/ig, '<sub>$1</sub>']
+		, [/&lt;i&gt;([\w\+\-\_]+)&lt;\/i&gt;/ig, '<i>$1</i>']
+		, [/&lt;IMG SRC='([\w/]+@\w+.png)'\/&gt;/ig, "<IMG SRC='$1'/>"]
+	];
+	for(var i=0; i<regExps.length; i++){
+		text = text.replace(regExps[i][0], regExps[i][1]);
+	}
+	return text;
+}
+/**
+ * Yui表格的转义转换
+ * 	dataTable.ignoreEscape为忽略转换的字段要求
+ * @param dataTable
+ * @returns
+ */
+function htmlEscapeYuiTable(dataTable){
+	if(dataTable == null || dataTable.onDataReturnSetRowsOld != null){
+		return;
+	}
+	dataTable.onDataReturnSetRowsOld = dataTable.onDataReturnSetRows;
+	dataTable.onDataReturnSetRows = function(sRequest,oResponse,oPayload){
+		try{
+			var ignoreEscape = dataTable.ignoreEscape ? dataTable.ignoreEscape : [];
+			if(oResponse && oResponse.results){
+				$.each(oResponse.results, function(index, obj){
+					$.each(obj, function(name, val){
+						if(!ignoreEscape.contains(name)){
+							obj[name] = localHtmlEscape(val);
+						}
+					});
+				});
+			}
+		}catch(e){}
+		dataTable.onDataReturnSetRowsOld(sRequest,oResponse,oPayload);
+	}
+}

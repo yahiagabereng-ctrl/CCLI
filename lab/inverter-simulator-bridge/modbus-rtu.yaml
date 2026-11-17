@@ -1,0 +1,21 @@
+# Bench-only: original Huawei model, with float compatibility registers over RTU.
+modbus:
+  backend: rtu
+  device: /dev/rs485_2_uart
+  baud: 9600
+  parity: N
+  slave_id: 1
+  poll_ms: 4000
+  timeout_ms: 2000
+  retries: 3
+  reg_active_power: 60000
+  reg_active_power_count: 2
+  reg_reactive_power: 60002
+  reg_reactive_power_count: 2
+  reg_line_voltage: 60004
+  reg_line_voltage_count: 2
+  power_scale: 1
+  reactive_scale: 1
+  line_voltage_scale: 0.001
+  float_word_swap: false
+  trace: true

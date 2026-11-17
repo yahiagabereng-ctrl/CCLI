@@ -1,0 +1,33 @@
+{
+  "read_only": true,
+  "private_keys_copied": false,
+  "crls": [
+    {
+      "file": "tls-crl-bundle.pem",
+      "issuer": "CN=CCLI_Lab_Root_CA,OU=CCLI-Lab,O=HiTEKS,C=IT",
+      "last_update": "2026-09-29 19:36:10+00:00",
+      "next_update": "2026-10-29 19:36:10+00:00",
+      "entries": 1
+    },
+    {
+      "file": "tls-crl-bundle.pem",
+      "issuer": "C=IT,O=HiTEKS,CN=CCLI RBAC Lab CA",
+      "last_update": "2026-10-16 08:59:50+00:00",
+      "next_update": "2026-10-23 08:59:49+00:00",
+      "entries": 5
+    },
+    {
+      "file": "rbac_crl.pem",
+      "issuer": "C=IT,O=HiTEKS,CN=CCLI RBAC Lab CA",
+      "last_update": "2026-10-26 09:04:58+00:00",
+      "next_update": "2026-11-02 09:04:57+00:00",
+      "entries": 5
+    }
+  ],
+  "hashes": {
+    "tls-ca-bundle.pem": "405a0ab931a17a11d13af8f922db0f52e79f1d8c0ab1a015eaa80be9371c2b10",
+    "tls-crl-bundle.pem": "9246bb687b410463d325f15519e0e2566a9e9095f3b731774a13f798845974ee",
+    "rbac_crl.pem": "05c51835aa6ce45dd2a9ce260317be63e8f505babc8c1a16530bf6a5f25ea9cf",
+    "server_tls.pem": "6749a3f2a610af42e41552c102da198f9b07c410035f1b3609144f633aed0d34"
+  }
+}

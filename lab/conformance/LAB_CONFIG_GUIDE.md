@@ -55,7 +55,11 @@ ccli --event-wrap-test   # P7-01 2048 ring
 ccli --event-clear       # must fail (O.14 no overwrite)
 ```
 
-Store: `/var/lib/ccli/events.jsonl` (mode 0640, append). No user erase API.  
+Store: `/var/lib/ccli/events.jsonl` (mode 0640, append). A full 2048-line
+segment is renamed to `events.jsonl.1`; the next event starts a new segment.
+Both segments are bounded to 2048 lines each, and `--event-dump` exposes the
+latest 2048 valid events across them. Existing single-file logs are supported.
+Rotation never rewrites the retained events. No user erase API.
 Syslog: UDP RFC 5424 to `event_log.syslog_host` (lab default `127.0.0.1:514`).
 
 ---

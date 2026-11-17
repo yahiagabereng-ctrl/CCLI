@@ -19,6 +19,8 @@ Place CID/ICD exports and mapping tables here.
 | `cei-tr-57-126-example.cid` | Annex A reference CID from CEI TR 57-126 (PF1 + PF2 example plant) — **do not edit** |
 | `lab_tg544_eth_a.cid` | **Lab** copy — Communication IP **`192.168.10.1/24`** (TG544 LAN1 Eth_A); 2026-09-25 |
 | `lab_tg544_eth_a.cfg` | **Runtime model** (genconfig from CID) — **31 LNs**; deploy to `/etc/ccli/icd/` |
+| `lab_tg544_aggregator.cid` | Additive CEI 57-142 Aggregator model, generated from the lab CID; preserves the DSO model |
+| `lab_tg544_aggregator.cfg` | Runtime config generated from the Aggregator CID; select with `mms.model_cfg_path` |
 | `signal_map.yaml` | **31-LN doc plane (rev 2, r29)** — equations + bindings; NOT loaded at runtime |
 | `../plant/` | **CSV commissioning plane (2026-10-04)** — GOOSE data map + Modbus/Huawei + MMS points — see [`../plant/READ.md`](../plant/READ.md) |
 
@@ -29,5 +31,6 @@ Place CID/ICD exports and mapping tables here.
 - Phase 3: load with libiec61850; validate reports (`intgPd=4000`) and SBO control paths.
 - **r23 (2026-09-30):** full CID on wire via `mms.model_cfg` + `lab_tg544_eth_a.cfg`. Regenerate: `scripts/gen-mms-model-cfg.ps1`
 - Legacy **9-LN MVP** if `model_cfg` unset in yaml.
+- Aggregator variant (CEI 57-142:2026-07): regenerate the separate CID/runtime config with `python scripts/generate_aggregator_model.py --source apps/ccli/config/icd/lab_tg544_eth_a.cid --output apps/ccli/config/icd/lab_tg544_aggregator.cid --jar apps/ccli/third_party/libiec61850/tools/model_generator/genconfig.jar --cfg apps/ccli/config/icd/lab_tg544_aggregator.cfg`. Set `mms.model_cfg_path` to that CFG to use it. If it is unset, the hand-built model exposes the Aggregator interface too. Plant outputs remain disabled until a validated signed P/Q backend is implemented.
 
 See also: `knowledge-base/08-engineering/CCI_CEI_0-16_Consolidated.md`

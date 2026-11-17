@@ -1,0 +1,1322 @@
+{
+  "frames": 2189,
+  "emitted_shapes": 29,
+  "local_negative_controls": 3215,
+  "schema_paths": {
+    "AARE": [
+      "order/cardinality",
+      "tag/framing"
+    ],
+    "AARE.application-context-name": [
+      "nonempty",
+      "present",
+      "tag/framing"
+    ],
+    "AARE.application-context-name-list": [
+      "absent"
+    ],
+    "AARE.application-context-name/explicit value": [
+      "tag/framing"
+    ],
+    "AARE.implementation-information": [
+      "absent"
+    ],
+    "AARE.mechanism-name": [
+      "absent"
+    ],
+    "AARE.protocol-version": [
+      "absent"
+    ],
+    "AARE.responder-acse-requirements": [
+      "absent"
+    ],
+    "AARE.responding-AE-invocation-id": [
+      "absent"
+    ],
+    "AARE.responding-AE-qualifier": [
+      "integer/range",
+      "present",
+      "tag/framing"
+    ],
+    "AARE.responding-AE-qualifier/explicit value": [
+      "tag/framing"
+    ],
+    "AARE.responding-AP-invocation-id": [
+      "absent"
+    ],
+    "AARE.responding-AP-title": [
+      "nonempty",
+      "present",
+      "tag/framing"
+    ],
+    "AARE.responding-AP-title/explicit value": [
+      "tag/framing"
+    ],
+    "AARE.responding-authentication-value": [
+      "absent"
+    ],
+    "AARE.result": [
+      "integer/range",
+      "present",
+      "tag/framing"
+    ],
+    "AARE.result-source-diagnostic": [
+      "integer/range",
+      "present",
+      "tag/framing"
+    ],
+    "AARE.result-source-diagnostic.acse-service-provider": [
+      "source/cause"
+    ],
+    "AARE.result-source-diagnostic.acse-service-user": [
+      "source/cause"
+    ],
+    "AARE.result/explicit value": [
+      "tag/framing"
+    ],
+    "AARE.user-information": [
+      "absent",
+      "order/cardinality",
+      "present",
+      "tag/framing"
+    ],
+    "AARE.user-information.entry[0]": [
+      "order/cardinality",
+      "present",
+      "tag/framing"
+    ],
+    "AARE.user-information.entry[0].indirect-reference": [
+      "integer/range",
+      "present",
+      "tag/framing"
+    ],
+    "AARE.user-information.entry[0].single-ASN1-type": [
+      "present",
+      "tag/framing"
+    ],
+    "AARE.user-information.entry[0].single-ASN1-type.applReject": [
+      "order/cardinality",
+      "tag/framing"
+    ],
+    "AARE.user-information.entry[0].single-ASN1-type.applReject.sign": [
+      "order/cardinality",
+      "present",
+      "tag/framing"
+    ],
+    "AARE.user-information.entry[0].single-ASN1-type.applReject.sign.algo": [
+      "present",
+      "tag/framing"
+    ],
+    "AARE.user-information.entry[0].single-ASN1-type.applReject.sign.algo.algorithm": [
+      "OID/present"
+    ],
+    "AARE.user-information.entry[0].single-ASN1-type.applReject.sign.algo.parameters": [
+      "absent"
+    ],
+    "AARE.user-information.entry[0].single-ASN1-type.applReject.sign.sign": [
+      "nonempty",
+      "present",
+      "tag/framing"
+    ],
+    "AARE.user-information.entry[0].single-ASN1-type.applReject.tbs": [
+      "order/cardinality",
+      "present",
+      "tag/framing"
+    ],
+    "AARE.user-information.entry[0].single-ASN1-type.applReject.tbs.applData": [
+      "MMS open type",
+      "present",
+      "tag/framing"
+    ],
+    "AARE.user-information.entry[0].single-ASN1-type.applReject.tbs.token3": [
+      "order/cardinality",
+      "present",
+      "tag/framing"
+    ],
+    "AARE.user-information.entry[0].single-ASN1-type.applReject.tbs.token3.assoID": [
+      "nonempty",
+      "present",
+      "tag/framing"
+    ],
+    "AARE.user-information.entry[0].single-ASN1-type.applReject.tbs.token3.certPath": [
+      "absent"
+    ],
+    "AARE.user-information.entry[0].single-ASN1-type.applReject.tbs.token3.pkCert": [
+      "nonempty",
+      "present",
+      "tag/framing"
+    ],
+    "AARE.user-information.entry[0].single-ASN1-type.applReject.tbs.token3.sigAlg": [
+      "present",
+      "tag/framing"
+    ],
+    "AARE.user-information.entry[0].single-ASN1-type.applReject.tbs.token3.sigAlg.algorithm": [
+      "OID/present"
+    ],
+    "AARE.user-information.entry[0].single-ASN1-type.applReject.tbs.token3.sigAlg.parameters": [
+      "absent"
+    ],
+    "AARE.user-information.entry[0].single-ASN1-type.applReject.tbs.token3.time": [
+      "present",
+      "tag/framing",
+      "time syntax"
+    ],
+    "AARE.user-information.entry[0].single-ASN1-type.applReject.tbs.token3.version": [
+      "absent"
+    ],
+    "AARE.user-information.entry[0].single-ASN1-type.assoAccept": [
+      "order/cardinality",
+      "tag/framing"
+    ],
+    "AARE.user-information.entry[0].single-ASN1-type.assoAccept.sign": [
+      "order/cardinality",
+      "present",
+      "tag/framing"
+    ],
+    "AARE.user-information.entry[0].single-ASN1-type.assoAccept.sign.algo": [
+      "present",
+      "tag/framing"
+    ],
+    "AARE.user-information.entry[0].single-ASN1-type.assoAccept.sign.algo.algorithm": [
+      "OID/present"
+    ],
+    "AARE.user-information.entry[0].single-ASN1-type.assoAccept.sign.algo.parameters": [
+      "absent"
+    ],
+    "AARE.user-information.entry[0].single-ASN1-type.assoAccept.sign.sign": [
+      "nonempty",
+      "present",
+      "tag/framing"
+    ],
+    "AARE.user-information.entry[0].single-ASN1-type.assoAccept.tbs": [
+      "order/cardinality",
+      "present",
+      "tag/framing"
+    ],
+    "AARE.user-information.entry[0].single-ASN1-type.assoAccept.tbs.applData": [
+      "MMS open type",
+      "present",
+      "tag/framing"
+    ],
+    "AARE.user-information.entry[0].single-ASN1-type.assoAccept.tbs.token1": [
+      "order/cardinality",
+      "present",
+      "tag/framing"
+    ],
+    "AARE.user-information.entry[0].single-ASN1-type.assoAccept.tbs.token1.assoID": [
+      "nonempty",
+      "present",
+      "tag/framing"
+    ],
+    "AARE.user-information.entry[0].single-ASN1-type.assoAccept.tbs.token1.attCert": [
+      "absent",
+      "unselected optional feature absent in integrity-only profile"
+    ],
+    "AARE.user-information.entry[0].single-ASN1-type.assoAccept.tbs.token1.certPath": [
+      "absent"
+    ],
+    "AARE.user-information.entry[0].single-ASN1-type.assoAccept.tbs.token1.confParams": [
+      "present",
+      "selected bits",
+      "tag/framing"
+    ],
+    "AARE.user-information.entry[0].single-ASN1-type.assoAccept.tbs.token1.dHKey": [
+      "order/cardinality",
+      "present",
+      "tag/framing"
+    ],
+    "AARE.user-information.entry[0].single-ASN1-type.assoAccept.tbs.token1.dHKey.dhPublicKey": [
+      "group/public width",
+      "nonempty",
+      "present",
+      "tag/framing"
+    ],
+    "AARE.user-information.entry[0].single-ASN1-type.assoAccept.tbs.token1.dHKey.groupId": [
+      "integer/range",
+      "present",
+      "tag/framing"
+    ],
+    "AARE.user-information.entry[0].single-ASN1-type.assoAccept.tbs.token1.encr-mode": [
+      "present",
+      "tag/framing"
+    ],
+    "AARE.user-information.entry[0].single-ASN1-type.assoAccept.tbs.token1.encr-mode.aea": [
+      "unselected"
+    ],
+    "AARE.user-information.entry[0].single-ASN1-type.assoAccept.tbs.token1.encr-mode.non-aea": [
+      "order/cardinality",
+      "tag/framing"
+    ],
+    "AARE.user-information.entry[0].single-ASN1-type.assoAccept.tbs.token1.encr-mode.non-aea.encr": [
+      "absent",
+      "unselected feature absent in integrity-only profile"
+    ],
+    "AARE.user-information.entry[0].single-ASN1-type.assoAccept.tbs.token1.encr-mode.non-aea.encr.algo[*]": [
+      "unselected feature absent in integrity-only profile"
+    ],
+    "AARE.user-information.entry[0].single-ASN1-type.assoAccept.tbs.token1.encr-mode.non-aea.icvAlgID": [
+      "present",
+      "single SET selection",
+      "tag/framing"
+    ],
+    "AARE.user-information.entry[0].single-ASN1-type.assoAccept.tbs.token1.encr-mode.non-aea.icvAlgID.algo[*]": [
+      "tag/framing"
+    ],
+    "AARE.user-information.entry[0].single-ASN1-type.assoAccept.tbs.token1.encr-mode.non-aea.icvAlgID.algo[*].algorithm": [
+      "OID/present"
+    ],
+    "AARE.user-information.entry[0].single-ASN1-type.assoAccept.tbs.token1.encr-mode.non-aea.icvAlgID.algo[*].parameters": [
+      "absent"
+    ],
+    "AARE.user-information.entry[0].single-ASN1-type.assoAccept.tbs.token1.hmac": [
+      "present",
+      "tag/framing"
+    ],
+    "AARE.user-information.entry[0].single-ASN1-type.assoAccept.tbs.token1.hmac.algorithm": [
+      "OID/present"
+    ],
+    "AARE.user-information.entry[0].single-ASN1-type.assoAccept.tbs.token1.hmac.parameters": [
+      "absent"
+    ],
+    "AARE.user-information.entry[0].single-ASN1-type.assoAccept.tbs.token1.pkCert": [
+      "nonempty",
+      "present",
+      "tag/framing"
+    ],
+    "AARE.user-information.entry[0].single-ASN1-type.assoAccept.tbs.token1.sigAlg": [
+      "present",
+      "tag/framing"
+    ],
+    "AARE.user-information.entry[0].single-ASN1-type.assoAccept.tbs.token1.sigAlg.algorithm": [
+      "OID/present"
+    ],
+    "AARE.user-information.entry[0].single-ASN1-type.assoAccept.tbs.token1.sigAlg.parameters": [
+      "absent"
+    ],
+    "AARE.user-information.entry[0].single-ASN1-type.assoAccept.tbs.token1.time": [
+      "present",
+      "tag/framing",
+      "time syntax"
+    ],
+    "AARE.user-information.entry[0].single-ASN1-type.assoAccept.tbs.token1.version": [
+      "absent"
+    ],
+    "AARE.user-information.entry[0].single-ASN1-type.secReject": [
+      "order/cardinality",
+      "tag/framing"
+    ],
+    "AARE.user-information.entry[0].single-ASN1-type.secReject.sign": [
+      "order/cardinality",
+      "present",
+      "tag/framing"
+    ],
+    "AARE.user-information.entry[0].single-ASN1-type.secReject.sign.algo": [
+      "present",
+      "tag/framing"
+    ],
+    "AARE.user-information.entry[0].single-ASN1-type.secReject.sign.algo.algorithm": [
+      "OID/present"
+    ],
+    "AARE.user-information.entry[0].single-ASN1-type.secReject.sign.algo.parameters": [
+      "absent"
+    ],
+    "AARE.user-information.entry[0].single-ASN1-type.secReject.sign.sign": [
+      "nonempty",
+      "present",
+      "tag/framing"
+    ],
+    "AARE.user-information.entry[0].single-ASN1-type.secReject.tbs": [
+      "order/cardinality",
+      "present",
+      "tag/framing"
+    ],
+    "AARE.user-information.entry[0].single-ASN1-type.secReject.tbs.diag": [
+      "absent",
+      "integer/range",
+      "present",
+      "tag/framing"
+    ],
+    "AARE.user-information.entry[0].single-ASN1-type.secReject.tbs.token3": [
+      "order/cardinality",
+      "present",
+      "tag/framing"
+    ],
+    "AARE.user-information.entry[0].single-ASN1-type.secReject.tbs.token3.assoID": [
+      "absent",
+      "nonempty",
+      "present",
+      "tag/framing"
+    ],
+    "AARE.user-information.entry[0].single-ASN1-type.secReject.tbs.token3.certPath": [
+      "absent"
+    ],
+    "AARE.user-information.entry[0].single-ASN1-type.secReject.tbs.token3.pkCert": [
+      "nonempty",
+      "present",
+      "tag/framing"
+    ],
+    "AARE.user-information.entry[0].single-ASN1-type.secReject.tbs.token3.sigAlg": [
+      "present",
+      "tag/framing"
+    ],
+    "AARE.user-information.entry[0].single-ASN1-type.secReject.tbs.token3.sigAlg.algorithm": [
+      "OID/present"
+    ],
+    "AARE.user-information.entry[0].single-ASN1-type.secReject.tbs.token3.sigAlg.parameters": [
+      "absent"
+    ],
+    "AARE.user-information.entry[0].single-ASN1-type.secReject.tbs.token3.time": [
+      "present",
+      "tag/framing",
+      "time syntax"
+    ],
+    "AARE.user-information.entry[0].single-ASN1-type.secReject.tbs.token3.version": [
+      "absent"
+    ],
+    "ABRT": [
+      "order/cardinality",
+      "tag/framing"
+    ],
+    "ABRT.abort-diagnostic": [
+      "absent"
+    ],
+    "ABRT.abort-source": [
+      "integer/range",
+      "present",
+      "tag/framing"
+    ],
+    "ABRT.user-information": [
+      "absent",
+      "order/cardinality",
+      "present",
+      "tag/framing"
+    ],
+    "ABRT.user-information.entry[0]": [
+      "order/cardinality",
+      "present",
+      "tag/framing"
+    ],
+    "ABRT.user-information.entry[0].indirect-reference": [
+      "integer/range",
+      "present",
+      "tag/framing"
+    ],
+    "ABRT.user-information.entry[0].single-ASN1-type": [
+      "present",
+      "tag/framing"
+    ],
+    "ABRT.user-information.entry[0].single-ASN1-type.applAbort": [
+      "order/cardinality",
+      "tag/framing"
+    ],
+    "ABRT.user-information.entry[0].single-ASN1-type.applAbort.sign": [
+      "order/cardinality",
+      "present",
+      "tag/framing"
+    ],
+    "ABRT.user-information.entry[0].single-ASN1-type.applAbort.sign.algo": [
+      "present",
+      "tag/framing"
+    ],
+    "ABRT.user-information.entry[0].single-ASN1-type.applAbort.sign.algo.algorithm": [
+      "OID/present"
+    ],
+    "ABRT.user-information.entry[0].single-ASN1-type.applAbort.sign.algo.parameters": [
+      "absent"
+    ],
+    "ABRT.user-information.entry[0].single-ASN1-type.applAbort.sign.sign": [
+      "nonempty",
+      "present",
+      "tag/framing"
+    ],
+    "ABRT.user-information.entry[0].single-ASN1-type.applAbort.tbs": [
+      "order/cardinality",
+      "present",
+      "tag/framing"
+    ],
+    "ABRT.user-information.entry[0].single-ASN1-type.applAbort.tbs.applData": [
+      "MMS open type",
+      "absent",
+      "present",
+      "tag/framing"
+    ],
+    "ABRT.user-information.entry[0].single-ASN1-type.applAbort.tbs.token3": [
+      "order/cardinality",
+      "present",
+      "tag/framing"
+    ],
+    "ABRT.user-information.entry[0].single-ASN1-type.applAbort.tbs.token3.assoID": [
+      "nonempty",
+      "present",
+      "tag/framing"
+    ],
+    "ABRT.user-information.entry[0].single-ASN1-type.applAbort.tbs.token3.certPath": [
+      "absent"
+    ],
+    "ABRT.user-information.entry[0].single-ASN1-type.applAbort.tbs.token3.pkCert": [
+      "nonempty",
+      "present",
+      "tag/framing"
+    ],
+    "ABRT.user-information.entry[0].single-ASN1-type.applAbort.tbs.token3.sigAlg": [
+      "present",
+      "tag/framing"
+    ],
+    "ABRT.user-information.entry[0].single-ASN1-type.applAbort.tbs.token3.sigAlg.algorithm": [
+      "OID/present"
+    ],
+    "ABRT.user-information.entry[0].single-ASN1-type.applAbort.tbs.token3.sigAlg.parameters": [
+      "absent"
+    ],
+    "ABRT.user-information.entry[0].single-ASN1-type.applAbort.tbs.token3.time": [
+      "present",
+      "tag/framing",
+      "time syntax"
+    ],
+    "ABRT.user-information.entry[0].single-ASN1-type.applAbort.tbs.token3.version": [
+      "absent"
+    ],
+    "ABRT.user-information.entry[0].single-ASN1-type.dtSecAbort": [
+      "order/cardinality",
+      "tag/framing"
+    ],
+    "ABRT.user-information.entry[0].single-ASN1-type.dtSecAbort.sign": [
+      "order/cardinality",
+      "present",
+      "tag/framing"
+    ],
+    "ABRT.user-information.entry[0].single-ASN1-type.dtSecAbort.sign.algo": [
+      "present",
+      "tag/framing"
+    ],
+    "ABRT.user-information.entry[0].single-ASN1-type.dtSecAbort.sign.algo.algorithm": [
+      "OID/present"
+    ],
+    "ABRT.user-information.entry[0].single-ASN1-type.dtSecAbort.sign.algo.parameters": [
+      "absent"
+    ],
+    "ABRT.user-information.entry[0].single-ASN1-type.dtSecAbort.sign.sign": [
+      "nonempty",
+      "present",
+      "tag/framing"
+    ],
+    "ABRT.user-information.entry[0].single-ASN1-type.dtSecAbort.tbs": [
+      "order/cardinality",
+      "present",
+      "tag/framing"
+    ],
+    "ABRT.user-information.entry[0].single-ASN1-type.dtSecAbort.tbs.diag": [
+      "absent",
+      "integer/range",
+      "present",
+      "tag/framing"
+    ],
+    "ABRT.user-information.entry[0].single-ASN1-type.dtSecAbort.tbs.token3": [
+      "order/cardinality",
+      "present",
+      "tag/framing"
+    ],
+    "ABRT.user-information.entry[0].single-ASN1-type.dtSecAbort.tbs.token3.assoID": [
+      "nonempty",
+      "present",
+      "tag/framing"
+    ],
+    "ABRT.user-information.entry[0].single-ASN1-type.dtSecAbort.tbs.token3.certPath": [
+      "absent"
+    ],
+    "ABRT.user-information.entry[0].single-ASN1-type.dtSecAbort.tbs.token3.pkCert": [
+      "nonempty",
+      "present",
+      "tag/framing"
+    ],
+    "ABRT.user-information.entry[0].single-ASN1-type.dtSecAbort.tbs.token3.sigAlg": [
+      "present",
+      "tag/framing"
+    ],
+    "ABRT.user-information.entry[0].single-ASN1-type.dtSecAbort.tbs.token3.sigAlg.algorithm": [
+      "OID/present"
+    ],
+    "ABRT.user-information.entry[0].single-ASN1-type.dtSecAbort.tbs.token3.sigAlg.parameters": [
+      "absent"
+    ],
+    "ABRT.user-information.entry[0].single-ASN1-type.dtSecAbort.tbs.token3.time": [
+      "present",
+      "tag/framing",
+      "time syntax"
+    ],
+    "ABRT.user-information.entry[0].single-ASN1-type.dtSecAbort.tbs.token3.version": [
+      "absent"
+    ],
+    "ABRT.user-information.entry[0].single-ASN1-type.osiDiag": [
+      "integer/range"
+    ],
+    "ApplAbort": [
+      "order/cardinality",
+      "tag/framing"
+    ],
+    "ApplAbort.sign": [
+      "order/cardinality",
+      "present",
+      "tag/framing"
+    ],
+    "ApplAbort.sign.algo": [
+      "present",
+      "tag/framing"
+    ],
+    "ApplAbort.sign.algo.algorithm": [
+      "OID/present"
+    ],
+    "ApplAbort.sign.algo.parameters": [
+      "absent"
+    ],
+    "ApplAbort.sign.sign": [
+      "nonempty",
+      "present",
+      "tag/framing"
+    ],
+    "ApplAbort.tbs": [
+      "order/cardinality",
+      "present",
+      "tag/framing"
+    ],
+    "ApplAbort.tbs.applData": [
+      "MMS open type",
+      "absent",
+      "present",
+      "tag/framing"
+    ],
+    "ApplAbort.tbs.token3": [
+      "order/cardinality",
+      "present",
+      "tag/framing"
+    ],
+    "ApplAbort.tbs.token3.assoID": [
+      "nonempty",
+      "present",
+      "tag/framing"
+    ],
+    "ApplAbort.tbs.token3.certPath": [
+      "absent"
+    ],
+    "ApplAbort.tbs.token3.pkCert": [
+      "nonempty",
+      "present",
+      "tag/framing"
+    ],
+    "ApplAbort.tbs.token3.sigAlg": [
+      "present",
+      "tag/framing"
+    ],
+    "ApplAbort.tbs.token3.sigAlg.algorithm": [
+      "OID/present"
+    ],
+    "ApplAbort.tbs.token3.sigAlg.parameters": [
+      "absent"
+    ],
+    "ApplAbort.tbs.token3.time": [
+      "present",
+      "tag/framing",
+      "time syntax"
+    ],
+    "ApplAbort.tbs.token3.version": [
+      "absent"
+    ],
+    "ApplicationReject": [
+      "order/cardinality",
+      "tag/framing"
+    ],
+    "ApplicationReject.sign": [
+      "order/cardinality",
+      "present",
+      "tag/framing"
+    ],
+    "ApplicationReject.sign.algo": [
+      "present",
+      "tag/framing"
+    ],
+    "ApplicationReject.sign.algo.algorithm": [
+      "OID/present"
+    ],
+    "ApplicationReject.sign.algo.parameters": [
+      "absent"
+    ],
+    "ApplicationReject.sign.sign": [
+      "nonempty",
+      "present",
+      "tag/framing"
+    ],
+    "ApplicationReject.tbs": [
+      "order/cardinality",
+      "present",
+      "tag/framing"
+    ],
+    "ApplicationReject.tbs.applData": [
+      "MMS open type",
+      "present",
+      "tag/framing"
+    ],
+    "ApplicationReject.tbs.token3": [
+      "order/cardinality",
+      "present",
+      "tag/framing"
+    ],
+    "ApplicationReject.tbs.token3.assoID": [
+      "nonempty",
+      "present",
+      "tag/framing"
+    ],
+    "ApplicationReject.tbs.token3.certPath": [
+      "absent"
+    ],
+    "ApplicationReject.tbs.token3.pkCert": [
+      "nonempty",
+      "present",
+      "tag/framing"
+    ],
+    "ApplicationReject.tbs.token3.sigAlg": [
+      "present",
+      "tag/framing"
+    ],
+    "ApplicationReject.tbs.token3.sigAlg.algorithm": [
+      "OID/present"
+    ],
+    "ApplicationReject.tbs.token3.sigAlg.parameters": [
+      "absent"
+    ],
+    "ApplicationReject.tbs.token3.time": [
+      "present",
+      "tag/framing",
+      "time syntax"
+    ],
+    "ApplicationReject.tbs.token3.version": [
+      "absent"
+    ],
+    "ClearTransfer": [
+      "order/cardinality",
+      "tag/framing"
+    ],
+    "ClearTransfer.auth": [
+      "order/cardinality",
+      "present",
+      "tag/framing"
+    ],
+    "ClearTransfer.auth.algo": [
+      "present",
+      "tag/framing"
+    ],
+    "ClearTransfer.auth.algo.algorithm": [
+      "OID/present"
+    ],
+    "ClearTransfer.auth.algo.parameters": [
+      "absent"
+    ],
+    "ClearTransfer.auth.icv": [
+      "negotiated length",
+      "nonempty",
+      "present",
+      "tag/framing"
+    ],
+    "ClearTransfer.auth.nonce": [
+      "absent",
+      "negotiated conditional presence/length",
+      "nonempty",
+      "present",
+      "tag/framing"
+    ],
+    "ClearTransfer.tbp": [
+      "order/cardinality",
+      "present",
+      "tag/framing"
+    ],
+    "ClearTransfer.tbp.applData": [
+      "MMS open type",
+      "present",
+      "tag/framing"
+    ],
+    "ClearTransfer.tbp.token2": [
+      "order/cardinality",
+      "present",
+      "tag/framing"
+    ],
+    "ClearTransfer.tbp.token2.assoID": [
+      "nonempty",
+      "present",
+      "tag/framing"
+    ],
+    "ClearTransfer.tbp.token2.changedKey": [
+      "absent",
+      "boolean",
+      "present",
+      "tag/framing"
+    ],
+    "ClearTransfer.tbp.token2.iv": [
+      "absent"
+    ],
+    "ClearTransfer.tbp.token2.rekey": [
+      "absent"
+    ],
+    "ClearTransfer.tbp.token2.reqRekey": [
+      "absent",
+      "boolean",
+      "present",
+      "tag/framing"
+    ],
+    "ClearTransfer.tbp.token2.seq": [
+      "integer/range",
+      "present",
+      "tag/framing"
+    ],
+    "ClearTransfer.tbp.token2.time": [
+      "present",
+      "tag/framing",
+      "time syntax"
+    ],
+    "ClearTransfer.tbp.token2.version": [
+      "absent"
+    ],
+    "DtSecAbort": [
+      "order/cardinality",
+      "tag/framing"
+    ],
+    "DtSecAbort.sign": [
+      "order/cardinality",
+      "present",
+      "tag/framing"
+    ],
+    "DtSecAbort.sign.algo": [
+      "present",
+      "tag/framing"
+    ],
+    "DtSecAbort.sign.algo.algorithm": [
+      "OID/present"
+    ],
+    "DtSecAbort.sign.algo.parameters": [
+      "absent"
+    ],
+    "DtSecAbort.sign.sign": [
+      "nonempty",
+      "present",
+      "tag/framing"
+    ],
+    "DtSecAbort.tbs": [
+      "order/cardinality",
+      "present",
+      "tag/framing"
+    ],
+    "DtSecAbort.tbs.diag": [
+      "absent",
+      "integer/range",
+      "present",
+      "tag/framing"
+    ],
+    "DtSecAbort.tbs.token3": [
+      "order/cardinality",
+      "present",
+      "tag/framing"
+    ],
+    "DtSecAbort.tbs.token3.assoID": [
+      "nonempty",
+      "present",
+      "tag/framing"
+    ],
+    "DtSecAbort.tbs.token3.certPath": [
+      "absent"
+    ],
+    "DtSecAbort.tbs.token3.pkCert": [
+      "nonempty",
+      "present",
+      "tag/framing"
+    ],
+    "DtSecAbort.tbs.token3.sigAlg": [
+      "present",
+      "tag/framing"
+    ],
+    "DtSecAbort.tbs.token3.sigAlg.algorithm": [
+      "OID/present"
+    ],
+    "DtSecAbort.tbs.token3.sigAlg.parameters": [
+      "absent"
+    ],
+    "DtSecAbort.tbs.token3.time": [
+      "present",
+      "tag/framing",
+      "time syntax"
+    ],
+    "DtSecAbort.tbs.token3.version": [
+      "absent"
+    ],
+    "EncrTransfer": [
+      "unselected feature; server emits integrity-only ClearTransfer"
+    ],
+    "HandshakeAcc": [
+      "order/cardinality",
+      "tag/framing"
+    ],
+    "HandshakeAcc.sign": [
+      "order/cardinality",
+      "present",
+      "tag/framing"
+    ],
+    "HandshakeAcc.sign.algo": [
+      "present",
+      "tag/framing"
+    ],
+    "HandshakeAcc.sign.algo.algorithm": [
+      "OID/present"
+    ],
+    "HandshakeAcc.sign.algo.parameters": [
+      "absent"
+    ],
+    "HandshakeAcc.sign.sign": [
+      "nonempty",
+      "present",
+      "tag/framing"
+    ],
+    "HandshakeAcc.tbs": [
+      "order/cardinality",
+      "present",
+      "tag/framing"
+    ],
+    "HandshakeAcc.tbs.applData": [
+      "MMS open type",
+      "present",
+      "tag/framing"
+    ],
+    "HandshakeAcc.tbs.token1": [
+      "order/cardinality",
+      "present",
+      "tag/framing"
+    ],
+    "HandshakeAcc.tbs.token1.assoID": [
+      "nonempty",
+      "present",
+      "tag/framing"
+    ],
+    "HandshakeAcc.tbs.token1.attCert": [
+      "absent",
+      "unselected optional feature absent in integrity-only profile"
+    ],
+    "HandshakeAcc.tbs.token1.certPath": [
+      "absent"
+    ],
+    "HandshakeAcc.tbs.token1.confParams": [
+      "present",
+      "selected bits",
+      "tag/framing"
+    ],
+    "HandshakeAcc.tbs.token1.dHKey": [
+      "order/cardinality",
+      "present",
+      "tag/framing"
+    ],
+    "HandshakeAcc.tbs.token1.dHKey.dhPublicKey": [
+      "group/public width",
+      "nonempty",
+      "present",
+      "tag/framing"
+    ],
+    "HandshakeAcc.tbs.token1.dHKey.groupId": [
+      "integer/range",
+      "present",
+      "tag/framing"
+    ],
+    "HandshakeAcc.tbs.token1.encr-mode": [
+      "present",
+      "tag/framing"
+    ],
+    "HandshakeAcc.tbs.token1.encr-mode.aea": [
+      "unselected"
+    ],
+    "HandshakeAcc.tbs.token1.encr-mode.non-aea": [
+      "order/cardinality",
+      "tag/framing"
+    ],
+    "HandshakeAcc.tbs.token1.encr-mode.non-aea.encr": [
+      "absent",
+      "unselected feature absent in integrity-only profile"
+    ],
+    "HandshakeAcc.tbs.token1.encr-mode.non-aea.encr.algo[*]": [
+      "unselected feature absent in integrity-only profile"
+    ],
+    "HandshakeAcc.tbs.token1.encr-mode.non-aea.icvAlgID": [
+      "present",
+      "single SET selection",
+      "tag/framing"
+    ],
+    "HandshakeAcc.tbs.token1.encr-mode.non-aea.icvAlgID.algo[*]": [
+      "tag/framing"
+    ],
+    "HandshakeAcc.tbs.token1.encr-mode.non-aea.icvAlgID.algo[*].algorithm": [
+      "OID/present"
+    ],
+    "HandshakeAcc.tbs.token1.encr-mode.non-aea.icvAlgID.algo[*].parameters": [
+      "absent"
+    ],
+    "HandshakeAcc.tbs.token1.hmac": [
+      "present",
+      "tag/framing"
+    ],
+    "HandshakeAcc.tbs.token1.hmac.algorithm": [
+      "OID/present"
+    ],
+    "HandshakeAcc.tbs.token1.hmac.parameters": [
+      "absent"
+    ],
+    "HandshakeAcc.tbs.token1.pkCert": [
+      "nonempty",
+      "present",
+      "tag/framing"
+    ],
+    "HandshakeAcc.tbs.token1.sigAlg": [
+      "present",
+      "tag/framing"
+    ],
+    "HandshakeAcc.tbs.token1.sigAlg.algorithm": [
+      "OID/present"
+    ],
+    "HandshakeAcc.tbs.token1.sigAlg.parameters": [
+      "absent"
+    ],
+    "HandshakeAcc.tbs.token1.time": [
+      "present",
+      "tag/framing",
+      "time syntax"
+    ],
+    "HandshakeAcc.tbs.token1.version": [
+      "absent"
+    ],
+    "HandshakeSecReject": [
+      "order/cardinality",
+      "tag/framing"
+    ],
+    "HandshakeSecReject.sign": [
+      "order/cardinality",
+      "present",
+      "tag/framing"
+    ],
+    "HandshakeSecReject.sign.algo": [
+      "present",
+      "tag/framing"
+    ],
+    "HandshakeSecReject.sign.algo.algorithm": [
+      "OID/present"
+    ],
+    "HandshakeSecReject.sign.algo.parameters": [
+      "absent"
+    ],
+    "HandshakeSecReject.sign.sign": [
+      "nonempty",
+      "present",
+      "tag/framing"
+    ],
+    "HandshakeSecReject.tbs": [
+      "order/cardinality",
+      "present",
+      "tag/framing"
+    ],
+    "HandshakeSecReject.tbs.diag": [
+      "absent",
+      "integer/range",
+      "present",
+      "tag/framing"
+    ],
+    "HandshakeSecReject.tbs.token3": [
+      "order/cardinality",
+      "present",
+      "tag/framing"
+    ],
+    "HandshakeSecReject.tbs.token3.assoID": [
+      "absent",
+      "nonempty",
+      "present",
+      "tag/framing"
+    ],
+    "HandshakeSecReject.tbs.token3.certPath": [
+      "absent"
+    ],
+    "HandshakeSecReject.tbs.token3.pkCert": [
+      "nonempty",
+      "present",
+      "tag/framing"
+    ],
+    "HandshakeSecReject.tbs.token3.sigAlg": [
+      "present",
+      "tag/framing"
+    ],
+    "HandshakeSecReject.tbs.token3.sigAlg.algorithm": [
+      "OID/present"
+    ],
+    "HandshakeSecReject.tbs.token3.sigAlg.parameters": [
+      "absent"
+    ],
+    "HandshakeSecReject.tbs.token3.time": [
+      "present",
+      "tag/framing",
+      "time syntax"
+    ],
+    "HandshakeSecReject.tbs.token3.version": [
+      "absent"
+    ],
+    "RLRE": [
+      "order/cardinality",
+      "tag/framing"
+    ],
+    "RLRE.reason": [
+      "absent"
+    ],
+    "RLRE.user-information": [
+      "order/cardinality",
+      "present",
+      "tag/framing"
+    ],
+    "RLRE.user-information.entry[0]": [
+      "order/cardinality",
+      "present",
+      "tag/framing"
+    ],
+    "RLRE.user-information.entry[0].indirect-reference": [
+      "integer/range",
+      "present",
+      "tag/framing"
+    ],
+    "RLRE.user-information.entry[0].single-ASN1-type": [
+      "order/cardinality",
+      "present",
+      "tag/framing"
+    ],
+    "RLRE.user-information.entry[0].single-ASN1-type.sign": [
+      "order/cardinality",
+      "present",
+      "tag/framing"
+    ],
+    "RLRE.user-information.entry[0].single-ASN1-type.sign.algo": [
+      "present",
+      "tag/framing"
+    ],
+    "RLRE.user-information.entry[0].single-ASN1-type.sign.algo.algorithm": [
+      "OID/present"
+    ],
+    "RLRE.user-information.entry[0].single-ASN1-type.sign.algo.parameters": [
+      "absent"
+    ],
+    "RLRE.user-information.entry[0].single-ASN1-type.sign.sign": [
+      "nonempty",
+      "present",
+      "tag/framing"
+    ],
+    "RLRE.user-information.entry[0].single-ASN1-type.tbs": [
+      "order/cardinality",
+      "present",
+      "tag/framing"
+    ],
+    "RLRE.user-information.entry[0].single-ASN1-type.tbs.token3": [
+      "order/cardinality",
+      "present",
+      "tag/framing"
+    ],
+    "RLRE.user-information.entry[0].single-ASN1-type.tbs.token3.assoID": [
+      "nonempty",
+      "present",
+      "tag/framing"
+    ],
+    "RLRE.user-information.entry[0].single-ASN1-type.tbs.token3.certPath": [
+      "absent"
+    ],
+    "RLRE.user-information.entry[0].single-ASN1-type.tbs.token3.pkCert": [
+      "nonempty",
+      "present",
+      "tag/framing"
+    ],
+    "RLRE.user-information.entry[0].single-ASN1-type.tbs.token3.sigAlg": [
+      "present",
+      "tag/framing"
+    ],
+    "RLRE.user-information.entry[0].single-ASN1-type.tbs.token3.sigAlg.algorithm": [
+      "OID/present"
+    ],
+    "RLRE.user-information.entry[0].single-ASN1-type.tbs.token3.sigAlg.parameters": [
+      "absent"
+    ],
+    "RLRE.user-information.entry[0].single-ASN1-type.tbs.token3.time": [
+      "present",
+      "tag/framing",
+      "time syntax"
+    ],
+    "RLRE.user-information.entry[0].single-ASN1-type.tbs.token3.version": [
+      "absent"
+    ],
+    "ReleaseRsp": [
+      "order/cardinality",
+      "tag/framing"
+    ],
+    "ReleaseRsp.sign": [
+      "order/cardinality",
+      "present",
+      "tag/framing"
+    ],
+    "ReleaseRsp.sign.algo": [
+      "present",
+      "tag/framing"
+    ],
+    "ReleaseRsp.sign.algo.algorithm": [
+      "OID/present"
+    ],
+    "ReleaseRsp.sign.algo.parameters": [
+      "absent"
+    ],
+    "ReleaseRsp.sign.sign": [
+      "nonempty",
+      "present",
+      "tag/framing"
+    ],
+    "ReleaseRsp.tbs": [
+      "order/cardinality",
+      "present",
+      "tag/framing"
+    ],
+    "ReleaseRsp.tbs.token3": [
+      "order/cardinality",
+      "present",
+      "tag/framing"
+    ],
+    "ReleaseRsp.tbs.token3.assoID": [
+      "nonempty",
+      "present",
+      "tag/framing"
+    ],
+    "ReleaseRsp.tbs.token3.certPath": [
+      "absent"
+    ],
+    "ReleaseRsp.tbs.token3.pkCert": [
+      "nonempty",
+      "present",
+      "tag/framing"
+    ],
+    "ReleaseRsp.tbs.token3.sigAlg": [
+      "present",
+      "tag/framing"
+    ],
+    "ReleaseRsp.tbs.token3.sigAlg.algorithm": [
+      "OID/present"
+    ],
+    "ReleaseRsp.tbs.token3.sigAlg.parameters": [
+      "absent"
+    ],
+    "ReleaseRsp.tbs.token3.time": [
+      "present",
+      "tag/framing",
+      "time syntax"
+    ],
+    "ReleaseRsp.tbs.token3.version": [
+      "absent"
+    ],
+    "User-data": [
+      "order/cardinality",
+      "tag/framing"
+    ],
+    "User-data.entry[0]": [
+      "order/cardinality",
+      "present",
+      "tag/framing"
+    ],
+    "User-data.entry[0].presentation-context-identifier": [
+      "integer/range",
+      "present",
+      "tag/framing"
+    ],
+    "User-data.entry[0].single-ASN1-type": [
+      "present",
+      "tag/framing"
+    ],
+    "User-data.entry[0].single-ASN1-type.clearTransfer": [
+      "order/cardinality",
+      "tag/framing"
+    ],
+    "User-data.entry[0].single-ASN1-type.clearTransfer.auth": [
+      "order/cardinality",
+      "present",
+      "tag/framing"
+    ],
+    "User-data.entry[0].single-ASN1-type.clearTransfer.auth.algo": [
+      "present",
+      "tag/framing"
+    ],
+    "User-data.entry[0].single-ASN1-type.clearTransfer.auth.algo.algorithm": [
+      "OID/present"
+    ],
+    "User-data.entry[0].single-ASN1-type.clearTransfer.auth.algo.parameters": [
+      "absent"
+    ],
+    "User-data.entry[0].single-ASN1-type.clearTransfer.auth.icv": [
+      "negotiated length",
+      "nonempty",
+      "present",
+      "tag/framing"
+    ],
+    "User-data.entry[0].single-ASN1-type.clearTransfer.auth.nonce": [
+      "absent",
+      "negotiated conditional presence/length",
+      "nonempty",
+      "present",
+      "tag/framing"
+    ],
+    "User-data.entry[0].single-ASN1-type.clearTransfer.tbp": [
+      "order/cardinality",
+      "present",
+      "tag/framing"
+    ],
+    "User-data.entry[0].single-ASN1-type.clearTransfer.tbp.applData": [
+      "MMS open type",
+      "present",
+      "tag/framing"
+    ],
+    "User-data.entry[0].single-ASN1-type.clearTransfer.tbp.token2": [
+      "order/cardinality",
+      "present",
+      "tag/framing"
+    ],
+    "User-data.entry[0].single-ASN1-type.clearTransfer.tbp.token2.assoID": [
+      "nonempty",
+      "present",
+      "tag/framing"
+    ],
+    "User-data.entry[0].single-ASN1-type.clearTransfer.tbp.token2.changedKey": [
+      "absent",
+      "boolean",
+      "present",
+      "tag/framing"
+    ],
+    "User-data.entry[0].single-ASN1-type.clearTransfer.tbp.token2.iv": [
+      "absent"
+    ],
+    "User-data.entry[0].single-ASN1-type.clearTransfer.tbp.token2.rekey": [
+      "absent"
+    ],
+    "User-data.entry[0].single-ASN1-type.clearTransfer.tbp.token2.reqRekey": [
+      "absent",
+      "boolean",
+      "present",
+      "tag/framing"
+    ],
+    "User-data.entry[0].single-ASN1-type.clearTransfer.tbp.token2.seq": [
+      "integer/range",
+      "present",
+      "tag/framing"
+    ],
+    "User-data.entry[0].single-ASN1-type.clearTransfer.tbp.token2.time": [
+      "present",
+      "tag/framing",
+      "time syntax"
+    ],
+    "User-data.entry[0].single-ASN1-type.clearTransfer.tbp.token2.version": [
+      "absent"
+    ],
+    "User-data.entry[0].single-ASN1-type.encrTransfer": [
+      "unselected feature; server emits integrity-only ClearTransfer"
+    ]
+  },
+  "rows_with_tx_assertions": 334,
+  "rows_with_rx_cases": 229,
+  "mapped_rows": 695,
+  "mapping_sha256": "f29ca50db268b6f85ea4ccd74df30104639d6769340c44e175bf89f83614ba10"
+}

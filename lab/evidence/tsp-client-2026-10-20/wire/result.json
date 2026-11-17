@@ -1,0 +1,159 @@
+{
+  "passed": true,
+  "association_count": 1,
+  "operations": [
+    {
+      "command": "read",
+      "reference": "CCI016_01LD_Plant/PdCMMXU1.TotW.mag.f",
+      "events": [
+        {
+          "kind": "read",
+          "reference": "CCI016_01LD_Plant/PdCMMXU1.TotW.mag.f",
+          "error": 0,
+          "error_text": "",
+          "value": "80.089752",
+          "observed_utc": "2026-10-20T15:18:09.446076+00:00"
+        }
+      ]
+    },
+    {
+      "command": "browse",
+      "reference": "CCI016_01LD_Plant",
+      "events": [
+        {
+          "kind": "directory",
+          "reference": "CCI016_01LD_Plant",
+          "error": 0,
+          "error_text": "",
+          "value": "nodes",
+          "observed_utc": "2026-10-20T15:18:09.518514+00:00"
+        },
+        {
+          "kind": "entry",
+          "reference": "CCI016_01LD_Plant",
+          "error": 0,
+          "error_text": "",
+          "value": "LLN0",
+          "observed_utc": "2026-10-20T15:18:09.518556+00:00"
+        },
+        {
+          "kind": "entry",
+          "reference": "CCI016_01LD_Plant",
+          "error": 0,
+          "error_text": "",
+          "value": "PdCMMXU1",
+          "observed_utc": "2026-10-20T15:18:09.518566+00:00"
+        },
+        {
+          "kind": "entry",
+          "reference": "CCI016_01LD_Plant",
+          "error": 0,
+          "error_text": "",
+          "value": "PFSPDFPF1",
+          "observed_utc": "2026-10-20T15:18:09.518575+00:00"
+        },
+        {
+          "kind": "entry",
+          "reference": "CCI016_01LD_Plant",
+          "error": 0,
+          "error_text": "",
+          "value": "PFWDPFW1",
+          "observed_utc": "2026-10-20T15:18:09.518583+00:00"
+        },
+        {
+          "kind": "entry",
+          "reference": "CCI016_01LD_Plant",
+          "error": 0,
+          "error_text": "",
+          "value": "VArSdDVAR1",
+          "observed_utc": "2026-10-20T15:18:09.518591+00:00"
+        },
+        {
+          "kind": "entry",
+          "reference": "CCI016_01LD_Plant",
+          "error": 0,
+          "error_text": "",
+          "value": "VArVDVVR1",
+          "observed_utc": "2026-10-20T15:18:09.518598+00:00"
+        },
+        {
+          "kind": "entry",
+          "reference": "CCI016_01LD_Plant",
+          "error": 0,
+          "error_text": "",
+          "value": "WlimDWMX1",
+          "observed_utc": "2026-10-20T15:18:09.518605+00:00"
+        },
+        {
+          "kind": "entry",
+          "reference": "CCI016_01LD_Plant",
+          "error": 0,
+          "error_text": "",
+          "value": "WSdDAGC1",
+          "observed_utc": "2026-10-20T15:18:09.518612+00:00"
+        }
+      ]
+    },
+    {
+      "command": "control-info",
+      "reference": "CCI016_01LD_Plant/WlimDWMX1.Mod",
+      "events": [
+        {
+          "kind": "control_model",
+          "reference": "CCI016_01LD_Plant/WlimDWMX1.Mod",
+          "error": 0,
+          "error_text": "",
+          "value": "3 direct-enhanced",
+          "observed_utc": "2026-10-20T15:18:09.549045+00:00"
+        },
+        {
+          "kind": "control_type",
+          "reference": "CCI016_01LD_Plant/WlimDWMX1.Mod",
+          "error": 0,
+          "error_text": "",
+          "value": "int32",
+          "observed_utc": "2026-10-20T15:18:09.549077+00:00"
+        }
+      ]
+    },
+    {
+      "command": "read",
+      "reference": "CCI016_01LD_Plant/PdCMMXU1.TotW.mag.f",
+      "events": [
+        {
+          "kind": "read",
+          "reference": "CCI016_01LD_Plant/PdCMMXU1.TotW.mag.f",
+          "error": 0,
+          "error_text": "",
+          "value": "80.089752",
+          "observed_utc": "2026-10-20T15:18:09.559240+00:00"
+        }
+      ]
+    }
+  ],
+  "cotp_request_matches_tsp": true,
+  "context_ids": [
+    3,
+    1,
+    5
+  ],
+  "request_session_bytes": 1593,
+  "request_fragments": [
+    1021,
+    572
+  ],
+  "response_fragments": [
+    1021,
+    247
+  ],
+  "server_certificate": {
+    "sha256": "907b925056381bde886d1be7063302312c11396d2e8c0e89efaf83c2b7b7f563",
+    "serial": "75984EC90EB5C225",
+    "subject": "2.5.4.106=1.1.1.999.1.12",
+    "signed_time": "20261020151804.",
+    "signature_verified": true,
+    "chain_verified": true,
+    "ca": "/mnt/c/Users/Administrator/Desktop/CCLI Alireza/CCLI Merged/apps/ccli/config/tls/root_CA.pem"
+  },
+  "captured_presentation_matches_except_fresh_time_and_signature": true
+}

@@ -1,0 +1,73 @@
+#!/bin/sh /etc/rc.common
+# GNSS Positioning Service
+# Copyright (C) 2024-2026 Tespro Technology Co., Ltd.
+#
+# This service starts GNSS positioning on boot if enabled in UCI config
+
+START=99
+STOP=10
+
+start_service() {
+    # Check if GNSS is enabled in UCI config
+    local enabled
+    enabled=$(uci -q get gnss.general.enabled)
+
+    if [ "$enabled" != "1" ]; then
+        logger -t gnss "GNSS positioning is disabled in config"
+        return 0
+    fi
+
+    # Resolve the AT port dynamically (board-independent): the AT engine
+    # lives on a fixed USB interface number but the ttyUSBx index differs
+    # per board (e.g. EC200U AT = ttyUSB0 on TR300, ttyUSB2 on TR200), so
+    # NEVER hardcode a device index. Prefer at-broker's owned port, then
+    # fall back to the sysfs resolver in common.sh.
+    . /usr/lib/sim-manager/common.sh 2>/dev/null
+    local max_wait=20
+    local i=0
+    local at_port=""
+    while [ $i -lt $max_wait ]; do
+        at_port=$(jsonfilter -i /tmp/sim_manager/at_broker.json -e '@.at_port' 2>/dev/null)
+        [ -n "$at_port" ] || at_port=$(sm_resolve_at_port 0 2>/dev/null)
+        if [ -n "$at_port" ] && [ -e "$at_port" ]; then
+            break
+        fi
+        sleep 3
+        i=$((i + 1))
+    done
+
+    if [ -z "$at_port" ] || [ ! -e "$at_port" ]; then
+        logger -t gnss "AT port not resolved after ${max_wait}x3s, GNSS start skipped"
+        return 1
+    fi
+
+    logger -t gnss "AT port $at_port ready after ${i}x3s"
+
+    # Wait a bit more for AT commands to work
+    sleep 2
+
+    # Start GNSS via ubus
+    ubus call sim-manager gnss_start
+    logger -t gnss "GNSS positioning started via ubus"
+}
+
+stop_service() {
+    # Stop GNSS via ubus
+    ubus call sim-manager gnss_stop
+    logger -t gnss "GNSS positioning stopped via ubus"
+}
+
+reload_service() {
+    local enabled
+    enabled=$(uci -q get gnss.general.enabled)
+
+    if [ "$enabled" = "1" ]; then
+        start
+    else
+        stop
+    fi
+}
+
+service_triggers() {
+    procd_add_reload_trigger "gnss"
+}

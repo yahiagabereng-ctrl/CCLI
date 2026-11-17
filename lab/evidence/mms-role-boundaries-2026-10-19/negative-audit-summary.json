@@ -1,0 +1,44 @@
+[
+  {
+    "Identity": "negative-no-roles",
+    "Reasons": [
+      "Info: Session established with cipher suite TLS-RSA-WITH-AES-128-CBC-SHA256",
+      "identity certificate not individually authorized"
+    ]
+  },
+  {
+    "Identity": "negative-revoked",
+    "Reasons": [
+      "Alarm: revoked certificate",
+      "Alarm: Certificate verification failed"
+    ]
+  },
+  {
+    "Identity": "negative-unknown-role",
+    "Reasons": [
+      "Info: Session established with cipher suite TLS-RSA-WITH-AES-128-CBC-SHA256",
+      "identity certificate not individually authorized"
+    ]
+  },
+  {
+    "Identity": "negative-wrong-aor",
+    "Reasons": [
+      "Info: Session established with cipher suite TLS-RSA-WITH-AES-128-CBC-SHA256",
+      "identity certificate not individually authorized"
+    ]
+  },
+  {
+    "Identity": "negative-wrong-definition",
+    "Reasons": [
+      "Info: Session established with cipher suite TLS-RSA-WITH-AES-128-CBC-SHA256",
+      "identity certificate not individually authorized"
+    ]
+  },
+  {
+    "Identity": "negative-wrong-revision",
+    "Reasons": [
+      "Info: Session established with cipher suite TLS-RSA-WITH-AES-128-CBC-SHA256",
+      "identity certificate not individually authorized"
+    ]
+  }
+]

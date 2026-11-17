@@ -1,0 +1,70 @@
+#!/bin/sh
+set -eu
+
+if [ "$#" -ne 4 ]; then
+	echo "Usage: firmware-updater-provision-trust CA_PEM CRL_PEM RELEASE_PUB_PEM DEVICE_ID" >&2
+	exit 2
+fi
+
+ca=$1
+crl=$2
+release_key=$3
+device_id=$4
+
+case "$device_id" in
+	*[!a-zA-Z0-9_.:-]*|'') echo "Invalid device ID" >&2; exit 2 ;;
+esac
+
+for file in "$ca" "$crl" "$release_key"; do
+	[ -f "$file" ] && [ ! -L "$file" ] || { echo "Missing regular input: $file" >&2; exit 1; }
+	size=$(wc -c < "$file")
+	[ "$size" -gt 0 ] && [ "$size" -le 2160 ] || {
+		echo "Input must be 1–2160 bytes: $file" >&2
+		exit 1
+	}
+done
+
+openssl x509 -in "$ca" -noout >/dev/null || exit 1
+openssl crl -in "$crl" -CAfile "$ca" -verify -noout >/dev/null || exit 1
+openssl pkey -pubin -in "$release_key" -noout >/dev/null || exit 1
+
+ca_index=$(uci -q get firmware-updater.main.tpm_operator_ca_index || echo 0x1500017)
+crl_index=$(uci -q get firmware-updater.main.tpm_operator_crl_index || echo 0x1500018)
+key_index=$(uci -q get firmware-updater.main.tpm_manufacturer_key_index || echo 0x1500019)
+
+for index in "$ca_index" "$crl_index" "$key_index"; do
+	case "$index" in
+		0x1??????|0x01??????) ;;
+		*) echo "Invalid TPM NV index: $index" >&2; exit 1 ;;
+	esac
+	if tpm2_nvreadpublic "$index" >/dev/null 2>&1; then
+		echo "TPM NV index already exists; refusing overwrite: $index" >&2
+		exit 1
+	fi
+done
+
+[ "$ca_index" != "$crl_index" ] && [ "$ca_index" != "$key_index" ] &&
+	[ "$crl_index" != "$key_index" ] || { echo "TPM NV indexes must differ" >&2; exit 1; }
+
+write_and_check() {
+	file=$1
+	index=$2
+	size=$(wc -c < "$file")
+	tmp=$(mktemp)
+	trap 'rm -f "$tmp"' EXIT HUP INT TERM
+	tpm2_nvdefine "$index" -C o -s "$size" -a 'ownerread|ownerwrite|authread'
+	tpm2_nvwrite "$index" -C o -i "$file"
+	tpm2_nvread "$index" -C o -o "$tmp"
+	cmp -s "$file" "$tmp" || { echo "TPM readback mismatch: $index" >&2; exit 1; }
+	rm -f "$tmp"
+	trap - EXIT HUP INT TERM
+	echo "Verified TPM NV $index ($size bytes)"
+}
+
+write_and_check "$ca" "$ca_index"
+write_and_check "$crl" "$crl_index"
+write_and_check "$release_key" "$key_index"
+
+uci set "firmware-updater.main.device_id=$device_id"
+uci commit firmware-updater
+echo "TPM trust provisioned for $device_id"

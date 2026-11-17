@@ -1,0 +1,128 @@
+XMPP-Env {iso(1) standard(0) iec62351(62351) part4(4) modules(0) xmpp-env(4)
+  version1(1)}
+DEFINITIONS XER INSTRUCTIONS IMPLICIT TAGS ::=
+BEGIN
+
+IMPORTS
+
+  ApplAbort, ApplicationReject, ClearTransfer, DtSecAbort, EncrTransfer,
+  HandshakeReq, HandshakeAcc, HandshakeSecAbort, HandshakeSecReject, ReleaseReq,
+  ReleaseRsp
+    FROM E2E-Security {iso(1) standard(0) iec62351(62351) part4(4) modules(0)
+                       e2e-security(1) version1(1)}
+
+  Bad-request 
+    FROM XMPP-Stz {iso(1) standard(0) iec62351(62351) part4(4) modules(0) xmpp-stz(6)
+     version1(1)}  ;
+
+/*
+HandshakeReq ::= [TAG: 0] SEQUENCE{}
+HandshakeAcc ::= [TAG: 1] SEQUENCE{}
+ApplicationReject ::= [TAG: 2] SEQUENCE{}
+HandshakeSecReject ::= [TAG: 3] SEQUENCE{}
+HandshakeSecAbort ::= [TAG: 4] SEQUENCE{}
+DtSecAbort ::= [TAG: 5] SEQUENCE{}
+ApplAbort ::= [TAG: 6] SEQUENCE{}
+ReleaseReq ::= [TAG: 7] SEQUENCE{}
+ReleaseRsp ::= [TAG: 8] SEQUENCE{}
+ClearTransfer ::= [TAG:9] SEQUENCE{}
+EncrTransfer ::= [TAG: 10] SEQUENCE{}
+Bad-request ::= [TAG: 11] SEQUENCE {}
+*/
+
+NMTOKEN ::= UTF8String (FROM(
+  {0, 0, 0, 32} .. {0, 0, 215, 255} |
+  {0, 0, 224, 0} .. {0, 0, 255, 253} |
+  {0, 1, 0, 0} .. {0, 16, 255, 253}))
+
+IQ-context ::= [TAG: 0] SEQUENCE {
+  version  Version  DEFAULT {v1},
+  assoID   AssoID,
+  supp     SuppInfo OPTIONAL,
+  secPDU [UNTAGGED] CHOICE {
+    assoRequest      [TAG: 0] HandshakeReq,
+    assoAccept       [TAG: 1] HandshakeAcc,
+    applReject       [TAG: 2] ApplicationReject,
+    secReject        [TAG: 3] HandshakeSecReject,
+    relRequest       [TAG: 4] ReleaseReq,
+    relResult        [TAG: 5] ReleaseRsp,
+    clearTransfer    [TAG: 6] ClearTransfer,
+    encrTransfer     [TAG: 7] EncrTransfer },
+  ... }
+
+Version ::= BIT STRING {v1 (0)}
+
+AssoID ::= NMTOKEN
+  (PATTERN "(\d#(1,3):\d#(1,3))|(\d#(1,3))")
+
+SuppInfo ::= ENUMERATED {
+  normal       (0),
+  notFinished  (1),
+  ... }
+
+Msg-context ::= [TAG: 1] SEQUENCE {
+  version  Version DEFAULT {v1},
+  assoID   AssoID  OPTIONAL,
+  secPDU [UNTAGGED] CHOICE {
+    handsSecAbort    [TAG: 0] HandshakeSecAbort,
+    dtSecAbort       [TAG: 1] DtSecAbort,
+    applAbort        [TAG: 2] ApplAbort,
+    clearTransfer    [TAG: 3] ClearTransfer,
+    encrTransfer     [TAG: 4] EncrTransfer },
+  ... }
+
+Error ::= [TAG: 2] SEQUENCE {
+  type        ErrorType,
+  bad-request Bad-request,
+  error  [UNTAGGED] CHOICE {
+    iq-context-missing          [TAG: 0] UTF8String (""),
+    msg-context-missing         [TAG: 1] UTF8String (""),
+    environment-ns-invalid      [TAG: 2] UTF8String (""),
+    unknown-iq-SecPDU           [TAG: 3] UTF8String (""),
+    unknown-msg-SecPDU          [TAG: 4] UTF8String (""),
+    invalid-type-specification  [TAG: 5] UTF8String ("") }
+  }
+
+ErrorType ::= ENUMERATED {
+  modify,
+  ... }
+
+ENCODING-CONTROL XER
+  GLOBAL-DEFAULTS MODIFIED-ENCODINGS
+  [NAMESPACE AS "http://www.iec.ch/62351/2018/ENV_4"] ALL,
+    Error.error.iq-context-missing,
+    Error.error.msg-context-missing,
+    Error.error.environment-ns-invalid,
+    Error.error.unknown-iq-SecPDU,
+    Error.error.unknown-msg-SecPDU,
+    Error.error.invalid-type-specification
+  [NAMESPACE AS "http://www.iec.ch/62351/2018/E2E_4"]
+    IQ-context.secPDU.assoRequest, IQ-context.secPDU.assoAccept,
+    IQ-context.secPDU.applReject, IQ-context.secPDU.relRequest,
+    IQ-context.secPDU.relResult, IQ-context.secPDU.clearTransfer,
+    IQ-context.secPDU.encrTransfer,
+    Msg-context.secPDU.handsSecAbort, Msg-context.secPDU.dtSecAbort,
+    Msg-context.secPDU.applAbort, Msg-context.secPDU.clearTransfer,
+    Msg-context.secPDU.encrTransfer
+
+  [NOT NAMESPACE] IQ-context.version, IQ-context.assoID,
+     Msg-context.version, Msg-context.assoID, Error.type
+  [ATTRIBUTE] IQ-context.version, IQ-context.assoID,
+     Msg-context.version, Msg-context.assoID, Error.type
+
+  [NAME AS "HandshakeReq"]       IQ-context.secPDU.assoRequest
+  [NAME AS "HandshakeAcc"]       IQ-context.secPDU.assoAccept
+  [NAME AS "ApplicationReject"]  IQ-context.secPDU.applReject
+  [NAME AS "HandshakeSecReject"] IQ-context.secPDU.secReject
+  [NAME AS "ReleaseReq"]         IQ-context.secPDU.relRequest
+  [NAME AS "ReleaseRsp"]         IQ-context.secPDU.relResult
+  [NAME AS "ClearTransfer"]      IQ-context.secPDU.clearTransfer
+  [NAME AS "EncrTransfer"]       IQ-context.secPDU.encrTransfer
+
+  [NAME AS "HandshakeSecAbort"]  Msg-context.secPDU.handsSecAbort
+  [NAME AS "DtSecAbort"]         Msg-context.secPDU.dtSecAbort
+  [NAME AS "ApplAbort"]          Msg-context.secPDU.applAbort
+  [NAME AS "ClearTransfer"]      Msg-context.secPDU.clearTransfer
+  [NAME AS "EncrTransfer"]       Msg-context.secPDU.encrTransfer
+
+END

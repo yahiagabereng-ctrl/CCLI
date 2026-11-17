@@ -1,0 +1,3 @@
+presentation_parse=REJECT payload_size=1558 acse_context=1 mms_context=3
+presentation_parse=ACCEPT payload_size=1558 acse_context=1 mms_context=3
+OFFLINE_OID_MISMATCH_CONFIRMED

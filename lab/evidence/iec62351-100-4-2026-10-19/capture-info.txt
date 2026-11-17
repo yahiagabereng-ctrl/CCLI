@@ -1,0 +1,35 @@
+File name:           lab/evidence/iec62351-100-4-2026-10-19/tespro-mms.pcapng
+File type:           Wireshark/... - pcapng
+File encapsulation:  Ethernet
+File timestamp precision:  nanoseconds (9)
+Packet size limit:   file hdr: (not set)
+Number of packets:   145
+File size:           44 kB
+Data size:           39 kB
+Capture duration:    1.446503600 second
+First packet time:   2026-10-19 15:27:37.551172700
+Last packet time:    2026-10-19 15:27:38.997676300
+Data byte rate:      27 kBps
+Data bit rate:       217 kbps
+Average packet size: 271.61 bytes
+Average packet rate: 100 packets/s
+SHA256:              d292c5132e075164e01800c75405537737aaf66d4863f73ecad85ddfe0c38758
+SHA1:                fcf00934d6bcccb207b0e02047021a174a7bf5c6
+Strict time order:   True
+Capture hardware:    AMD Ryzen 7 3750H with Radeon Vega Mobile Gfx (with SSE4.2)
+Capture oper-sys:    64-bit Windows 11 (25H2), build 26200
+Capture application: Dumpcap (Wireshark) 4.2.14 (v4.2.14-0-g9d81a981d05c)
+Number of interfaces in file: 1
+Interface #0 info:
+                     Name = \Device\NPF_{A9BEB4E0-83A6-4D5C-AD9D-ED88098B4927}
+                     Description = Ethernet 2
+                     Encapsulation = Ethernet (1 - ether)
+                     Hardware = Realtek PCIe GbE Family Controller #2
+                     Capture length = 262144
+                     Time precision = nanoseconds (9)
+                     Time ticks per second = 1000000000
+                     Time resolution = 0x09
+                     Filter string = host 192.168.0.1 and tcp port 3782
+                     Operating system = 64-bit Windows 11 (25H2), build 26200
+                     Number of stat entries = 1
+                     Number of packets = 145

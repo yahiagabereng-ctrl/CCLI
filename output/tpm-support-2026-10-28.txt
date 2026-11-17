@@ -1,0 +1,19 @@
+Subject: Tespro TPM fails kernel initialization after reboot (SLB9673 / I2C 0x2e)
+
+Current device: Tespro at 192.168.0.1
+Kernel: 6.12.68
+Date: 2026-10-28
+
+Problem:
+After reboot, the TPM driver fails its probe. No /dev/tpm0 or /dev/tpmrm0
+was present when checked over SSH. TPM tools therefore cannot access this unit.
+The following lines were read directly using on sys log of this unit after reboot:
+
+[    0.833540] i2c_dev: i2c /dev entries driver
+[   15.612408] tpm tpm0: tpm_try_transmit: send(): error -62
+[   15.618645] tpm_tis_i2c 0-002e: 1.2 TPM (device-id 0x1C, rev-id 22)
+[   19.622586] tpm tpm0: tpm_try_transmit: send(): error -62
+[   19.628000] tpm tpm0: A TPM error (-62) occurred attempting to determine the timeouts
+[   19.637539] tpm_tis_i2c 0-002e: probe with driver tpm_tis_i2c failed with error -62
+
+

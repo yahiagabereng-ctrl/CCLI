@@ -1,0 +1,42 @@
+[
+  {
+    "case": "static-dataset-members",
+    "passed": true,
+    "exit_code": 0
+  },
+  {
+    "case": "static-dataset-read",
+    "passed": true,
+    "exit_code": 0
+  },
+  {
+    "case": "report-read",
+    "passed": true,
+    "exit_code": 0
+  },
+  {
+    "case": "report-subscribe",
+    "passed": false,
+    "exit_code": 1
+  },
+  {
+    "case": "report-cleanup",
+    "passed": true,
+    "exit_code": 0
+  },
+  {
+    "case": "set-sbo-model",
+    "passed": true,
+    "exit_code": 0
+  },
+  {
+    "case": "sbo-select-cancel",
+    "passed": false,
+    "exit_code": 1
+  },
+  {
+    "case": "sbo-operate",
+    "passed": false,
+    "exit_code": 1
+  }
+]
