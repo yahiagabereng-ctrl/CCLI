@@ -1,8 +1,10 @@
 #include "svc_modbus.hpp"
 
-
+#include "dso/dso_phase1.hpp"
 
 #include "cci/hal/time.hpp"
+
+#include <iostream>
 
 
 
@@ -90,6 +92,12 @@ adapters::ModbusPollConfig modbus_poll_from_config(const core::CcliConfig& app_c
 
     out.float_word_swap = m.float_word_swap;
 
+    out.inverter_control = m.inverter_control;
+    out.reg_p_limit_pct = m.reg_p_limit_pct;
+    out.p_limit_gain = m.p_limit_gain;
+    out.reg_power_on = m.reg_power_on;
+    out.reg_shutdown = m.reg_shutdown;
+
     out.commissioning = m.commissioning;
 
     if (m.backend == core::ModbusBackendKind::Rtu) {
@@ -142,6 +150,45 @@ bool ModbusService::write_reactive_kvar(const double q_kvar) {
 
     return adapter_.write_reactive_kvar(q_kvar);
 
+}
+
+bool ModbusService::command_active_limit(const bool wlim_active, const double wmax_spt_pct,
+                                         const bool wsd_active, const double wspt_pct) {
+    double pct = 100.0;
+    if (wsd_active && wspt_pct >= 0.0) {
+        pct = wspt_pct > 100.0 ? 100.0 : wspt_pct;
+    } else if (wlim_active) {
+        if (wmax_spt_pct < 0.0) {
+            pct = 0.0;
+        } else if (wmax_spt_pct > 100.0) {
+            pct = 100.0;
+        } else {
+            pct = wmax_spt_pct;
+        }
+    }
+    return adapter_.write_active_power_limit_pct(pct);
+}
+
+bool ModbusService::command_in_service(const bool in_service) {
+    return adapter_.write_inverter_in_service(in_service);
+}
+
+void ModbusService::apply_startup_inverter_control(const core::CcliConfig& app_cfg) {
+    if (!app_cfg.modbus.inverter_control) {
+        return;
+    }
+    if (!command_in_service(app_cfg.modbus.inverter_in_service)) {
+        std::cerr << "modbus: inverter run-state write failed\n";
+        return;
+    }
+    if (!app_cfg.modbus.inverter_in_service || !app_cfg.dso.enabled || !app_cfg.pf2.use_dso_mock) {
+        return;
+    }
+    const auto mock = core::dso::resolve_dso_mock_inputs(app_cfg.plant, app_cfg.dso);
+    if (!command_active_limit(mock.commands.wlim_active, mock.commands.wmax_spt_pct,
+                              mock.commands.wsd_active, mock.commands.wspt_pct)) {
+        std::cerr << "modbus: inverter P limit write failed\n";
+    }
 }
 
 

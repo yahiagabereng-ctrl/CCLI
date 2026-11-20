@@ -5,6 +5,7 @@
 
 #include "config/modbus_pdc_config.hpp"
 
+#include <cmath>
 #include <cstdio>
 #include <cstring>
 #include <iomanip>
@@ -29,7 +30,7 @@ namespace {
 /** On Modbus errors, keep last P/Q/PPV so MMS does not flash to zero between polls. */
 cci::core::Measurement measurement_stale_preserve(const cci::core::MeasurementStore& store,
                                                   const std::int64_t timestamp_ms,
-                                                  const std::string& source) {
+                                                  const char* source) {
     cci::core::Measurement m = store.snapshot();
     const bool had_values =
         m.quality == cci::core::DataQuality::Good ||
@@ -45,7 +46,7 @@ cci::core::Measurement measurement_stale_preserve(const cci::core::MeasurementSt
     }
     m.quality = cci::core::DataQuality::Stale;
     m.timestamp_ms = timestamp_ms;
-    m.source = source;
+    m.set_source(source);
     return m;
 }
 
@@ -327,6 +328,81 @@ bool ModbusAdapter::write_reactive_kvar(const double q_kvar) {
 #endif
 }
 
+bool ModbusAdapter::write_holding_u16(const int address, const std::uint16_t value) {
+    if (!cfg_.inverter_control || address < 0) {
+        return false;
+    }
+
+    if (cfg_.backend == ModbusBackend::Simulator) {
+        if (address == cfg_.reg_p_limit_pct && cfg_.p_limit_gain > 0.0) {
+            inverter_limit_pct_ = static_cast<double>(value) / cfg_.p_limit_gain;
+        } else if (address == cfg_.reg_shutdown) {
+            inverter_in_service_ = false;
+        } else if (address == cfg_.reg_power_on) {
+            inverter_in_service_ = true;
+        }
+        return true;
+    }
+
+#ifdef CCLI_MODBUS_LIBMODBUS
+    if (cfg_.backend != ModbusBackend::LibmodbusRtu &&
+        cfg_.backend != ModbusBackend::LibmodbusTcp) {
+        return false;
+    }
+    if (!ensure_libmodbus_connected()) {
+        std::fprintf(stderr, "modbus: FC06 write @ %d failed (not connected)\n", address);
+        return false;
+    }
+    if (modbus_write_register(static_cast<modbus_t*>(libmodbus_ctx_), address, value) == -1) {
+        std::fprintf(stderr, "modbus: FC06 write @ %d value %u failed\n", address,
+                     static_cast<unsigned>(value));
+        return false;
+    }
+    return true;
+#else
+    (void)value;
+    return false;
+#endif
+}
+
+bool ModbusAdapter::write_active_power_limit_pct(const double pct) {
+    if (!cfg_.inverter_control || !inverter_in_service_) {
+        return false;
+    }
+    if (cfg_.p_limit_gain <= 0.0 || cfg_.reg_p_limit_pct < 0) {
+        return false;
+    }
+    double clamped = pct;
+    if (clamped < 0.0) {
+        clamped = 0.0;
+    } else if (clamped > 100.0) {
+        clamped = 100.0;
+    }
+    const long raw_l = std::lround(clamped * cfg_.p_limit_gain);
+    const auto raw = static_cast<std::uint16_t>(raw_l < 0 ? 0 : (raw_l > 65535 ? 65535 : raw_l));
+    if (!write_holding_u16(cfg_.reg_p_limit_pct, raw)) {
+        return false;
+    }
+    inverter_limit_pct_ = clamped;
+    std::fprintf(stderr, "modbus: FC06 inverter P limit %.1f%% → holding %d value %u\n",
+                 clamped, cfg_.reg_p_limit_pct, static_cast<unsigned>(raw));
+    return true;
+}
+
+bool ModbusAdapter::write_inverter_in_service(const bool in_service) {
+    if (!cfg_.inverter_control) {
+        return false;
+    }
+    const int address = in_service ? cfg_.reg_power_on : cfg_.reg_shutdown;
+    if (!write_holding_u16(address, 0)) {
+        return false;
+    }
+    inverter_in_service_ = in_service;
+    std::fprintf(stderr, "modbus: FC06 inverter %s → holding %d\n",
+                 in_service ? "power on" : "shutdown", address);
+    return true;
+}
+
 
 
 void ModbusAdapter::inject_comm_fault(const std::string& fault_id) {
@@ -388,7 +464,7 @@ bool ModbusAdapter::poll_simulator(cci::core::MeasurementStore& store, const std
 
             m.timestamp_ms = now_ms - (cfg_.timeout_ms + 1);
 
-            m.source = "modbus_sim";
+            m.set_source("modbus_sim");
 
             store.update(m);
 
@@ -404,7 +480,7 @@ bool ModbusAdapter::poll_simulator(cci::core::MeasurementStore& store, const std
 
             m.timestamp_ms = now_ms;
 
-            m.source = "modbus_sim";
+            m.set_source("modbus_sim");
 
             store.update(m);
 
@@ -426,10 +502,18 @@ bool ModbusAdapter::poll_simulator(cci::core::MeasurementStore& store, const std
 
     cci::core::Measurement m{};
 
-    m.p_kw = simulated_p_kw_;
+    double p_kw = simulated_p_kw_;
+    if (cfg_.inverter_control) {
+        if (!inverter_in_service_) {
+            p_kw = 0.0;
+        } else {
+            p_kw *= inverter_limit_pct_ / 100.0;
+        }
+    }
+    m.p_kw = p_kw;
 
     m.q_kvar =
-        simulated_q_override_ ? simulated_q_kvar_ : (simulated_p_kw_ * 0.1);
+        simulated_q_override_ ? simulated_q_kvar_ : (p_kw * 0.1);
 
     m.pf = 0.98;
 
@@ -437,7 +521,7 @@ bool ModbusAdapter::poll_simulator(cci::core::MeasurementStore& store, const std
 
     m.timestamp_ms = now_ms;
 
-    m.source = "modbus_sim";
+    m.set_source("modbus_sim");
 
     const int start = read_block_start(cfg_);
     const int count = read_block_count(cfg_);
@@ -719,7 +803,7 @@ bool ModbusAdapter::poll_libmodbus(cci::core::MeasurementStore& store, const std
 
     m.timestamp_ms = now_ms;
 
-    m.source = source;
+    m.set_source(source);
 
     store.update(m);
 

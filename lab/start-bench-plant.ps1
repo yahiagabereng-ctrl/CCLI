@@ -12,17 +12,20 @@ param(
 
 $ErrorActionPreference = "Stop"
 $Probe = Join-Path $PSScriptRoot "modbus_emt432_tcp_probe.py"
-$SunSim = Join-Path $PSScriptRoot "sun2000\sun2000_100ktl_m2_rtu_sim.py"
+$SunSim = Join-Path $PSScriptRoot "third_party\Sun2000-100KTL-M2-Inverter-Simulator\sun2000_100ktl_m2_rtu_real_register_mock.py"
 if (-not (Test-Path $Probe)) {
     $Repo = Split-Path -Parent $PSScriptRoot
     $Probe = Join-Path $Repo "lab\modbus_emt432_tcp_probe.py"
-    $SunSim = Join-Path $Repo "lab\third_party\Sun2000-100KTL-M2-Inverter-Simulator\sun2000_100ktl_m2_rtu_sim.py"
+}
+if (-not (Test-Path $SunSim)) {
+    $Repo = Split-Path -Parent $PSScriptRoot
+    $SunSim = Join-Path $Repo "lab\third_party\Sun2000-100KTL-M2-Inverter-Simulator\sun2000_100ktl_m2_rtu_real_register_mock.py"
 }
 
 if ($SunOnly) {
     if (-not (Test-Path $SunSim)) { Write-Error "Missing Sun2000 simulator: $SunSim" }
     Write-Host "=== SUN2000 inverter mock on $Port ===" -ForegroundColor Cyan
-    python $SunSim --port $Port --baud 9600 --slave 1
+    python $SunSim --port $Port --baudrate 9600
     exit $LASTEXITCODE
 }
 
@@ -50,7 +53,7 @@ if (-not (Test-Path $SunSim)) {
 
 Write-Host ""
 Write-Host "=== SUN2000 inverter mock on $Port (A1/B1) ===" -ForegroundColor Cyan
-Write-Host "DUT yaml: apps/ccli/config/product_tr400.yaml (P/Q/PPV from EMT432 TCP LAN3)"
-Write-Host "RS485 Sun mock on COM5 -> A1/B1 — inverter plant path; not ccli Modbus when backend=tcp"
+Write-Host "Control check yaml: apps/ccli/config/lab_tr400_inverter_control.yaml"
+Write-Host "FC06 40125 caps P. FC06 40201 takes the inverter out of service."
 Write-Host ""
-python $SunSim --port $Port --baud 9600 --slave 1
+python $SunSim --port $Port --baudrate 9600

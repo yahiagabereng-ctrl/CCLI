@@ -94,7 +94,24 @@ void apply_dso_live_command(const cci::adapters::DsoLiveCommand& dso_cmd) {
             live_cfg, cfg.plant, cfg.dso, dso_cmd.wlim_active, dso_cmd.wmax_spt_pct,
             dso_cmd.wsd_active, dso_cmd.wspt_pct, use_or_profile);
         if (live.applied) {
-            pf2.set_thresholds(live.pf2_threshold_kw, live.pf2_release_kw);
+            pf2.set_thresholds(cci::core::Kw{live.pf2_threshold_kw},
+                               cci::core::Kw{live.pf2_release_kw});
+            if (cfg.modbus.inverter_control && cfg.modbus.inverter_in_service) {
+                bool wlim = dso_cmd.wlim_active;
+                double wmax = dso_cmd.wmax_spt_pct;
+                bool wsd = dso_cmd.wsd_active;
+                double wspt = dso_cmd.wspt_pct;
+                if (use_or_profile) {
+                    const auto mock = cci::core::dso::resolve_dso_mock_inputs(cfg.plant, cfg.dso);
+                    wlim = mock.commands.wlim_active;
+                    wmax = mock.commands.wmax_spt_pct;
+                    wsd = mock.commands.wsd_active;
+                    wspt = mock.commands.wspt_pct;
+                }
+                if (!modbus.command_active_limit(wlim, wmax, wsd, wspt)) {
+                    std::cerr << "mms→inverter: P limit write failed\n";
+                }
+            }
             if (use_or_profile) {
                 std::cerr << "mms→pf2: O.13.1.2 Operating Rule (O.11 min) — enter="
                           << live.pf2_threshold_kw << " release=" << live.pf2_release_kw
@@ -247,6 +264,10 @@ void CcliBridge_Supervision_WatchdogPing(void) {
     cci::core::ServiceSupervision::procd_watchdog_ping();
 }
 
+bool CcliBridge_Supervision_HwWatchdogPresent(void) {
+    return cci::core::ServiceSupervision::hw_watchdog_present();
+}
+
 u32 CcliBridge_Supervision_WatchdogPingS(void) {
     return static_cast<u32>(cci::core::ServiceSupervision::kDefaultWatchdogPingS);
 }
@@ -351,6 +372,8 @@ void CcliBridge_Runtime_Create(void) {
         append_event("dso", "polygon_seed smax_kva=" + std::to_string(d.derived.smax_kva_used) +
                                 " enter_kw=" + std::to_string(g_rt.pf2_cfg.threshold_kw));
     }
+
+    g_rt.modbus->apply_startup_inverter_control(c);
 
     g_rt.pf2 = std::make_unique<cci::services::Pf2Service>(*g_rt.measurements, *g_rt.events,
                                                            g_rt.pf2_cfg);

@@ -1,5 +1,23 @@
 Hi Alireza,
 
+RS485 inverter control on A1/B1 (2026-11-20). Pull main and start at:
+
+  handoff/alirezavzand/INVERTER_RS485_LN_ALIREZA.md
+
+| Item | Pin |
+|------|-----|
+| Check yaml | apps/ccli/config/lab_tr400_inverter_control.yaml |
+| PC | powershell -File lab\start-bench-plant.ps1 -SunOnly -Port COM5 |
+| Limit | WSdDAGC1.WSptPct 20% → FC06 40125 = 200, unit stays in service |
+| Out of service | inverter_in_service: false → FC06 40201, P = 0. No LN for this |
+| Readback | holding 40001 float kW |
+
+Product product_tr400.yaml does not send these frames (TCP meter, inverter_control off). DIO1 is still the plant relay.
+
+Earlier notes below.
+
+---
+
 Product ship model is now the ERDA Wave-1 **17 logical nodes** (2026-11-17). Pull main and start at:
 
   handoff/alirezavzand/PRODUCT_17LN_LAB_ALIREZA.md

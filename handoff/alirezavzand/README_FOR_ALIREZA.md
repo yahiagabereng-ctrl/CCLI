@@ -1,12 +1,27 @@
 # CCLI unified cert — handoff for Alireza (@alirezavzand)
 
-**Date:** 2026-11-17 (product 17-LN lab drop)  
+**Date:** 2026-11-20 (RS485 inverter control)  
 **Repo:** https://github.com/yahiagabereng-ctrl/CCLI  
 **GitHub:** `alirezavzand` (collaborator)
 
 ---
 
-## Product 17-LN lab drop (2026-11-17) — **start here**
+## RS485 inverter control and logical nodes (2026-11-20) — **start here**
+
+`git pull origin main`
+
+| Item | Path |
+|------|------|
+| **Handoff** | **[INVERTER_RS485_LN_ALIREZA.md](INVERTER_RS485_LN_ALIREZA.md)** |
+| **Check yaml** | `apps/ccli/config/lab_tr400_inverter_control.yaml` |
+| **PC slave** | `powershell -File lab\start-bench-plant.ps1 -SunOnly -Port COM5` |
+| **Chat blurb** | [`MESSAGE_TO_SEND.txt`](MESSAGE_TO_SEND.txt) (inverter section) |
+
+20% limit is `WSdDAGC1.WSptPct` → FC06 holding **40125** = 200. Out of service is yaml `inverter_in_service: false` → FC06 **40201**. No logical node operates shutdown. Product `product_tr400.yaml` does not send these frames.
+
+---
+
+## Product 17-LN lab drop (2026-11-17)
 
 `git pull origin main`
 

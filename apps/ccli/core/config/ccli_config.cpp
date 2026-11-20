@@ -332,6 +332,18 @@ CcliConfig load_config(const std::string& path) {
                 cfg.modbus.float_word_swap = parse_bool(value, cfg.modbus.float_word_swap);
             } else if (key == "trace") {
                 cfg.modbus.trace = parse_bool(value, cfg.modbus.trace);
+            } else if (key == "inverter_control") {
+                cfg.modbus.inverter_control = parse_bool(value, cfg.modbus.inverter_control);
+            } else if (key == "inverter_in_service") {
+                cfg.modbus.inverter_in_service = parse_bool(value, cfg.modbus.inverter_in_service);
+            } else if (key == "reg_p_limit_pct") {
+                cfg.modbus.reg_p_limit_pct = std::atoi(value.c_str());
+            } else if (key == "p_limit_gain") {
+                cfg.modbus.p_limit_gain = std::strtod(value.c_str(), nullptr);
+            } else if (key == "reg_power_on") {
+                cfg.modbus.reg_power_on = std::atoi(value.c_str());
+            } else if (key == "reg_shutdown") {
+                cfg.modbus.reg_shutdown = std::atoi(value.c_str());
             }
             continue;
         }

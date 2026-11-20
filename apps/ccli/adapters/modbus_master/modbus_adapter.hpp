@@ -124,6 +124,13 @@ struct ModbusPollConfig {
 
     bool        float_word_swap{false};
 
+    /** Huawei FC06 on this master. Default off so a meter slave is never written. */
+    bool        inverter_control{false};
+    int         reg_p_limit_pct{40125};
+    double      p_limit_gain{10.0};
+    int         reg_power_on{40200};
+    int         reg_shutdown{40201};
+
     core::ModbusCommissioningConfig commissioning{};
 
 };
@@ -155,6 +162,15 @@ public:
     /** P5-R01 — lab plant Q command (simulator backend or FC16 RTU write). */
     bool write_reactive_kvar(double q_kvar);
 
+    /**
+     * Huawei active-power percent derating (FC06 @ 40125, raw = pct × gain).
+     * The inverter stays in service. No write unless inverter_control is set.
+     */
+    bool write_active_power_limit_pct(double pct);
+
+    /** Huawei 40200 power-on or 40201 shutdown. Shutdown takes this slave out of service. */
+    bool write_inverter_in_service(bool in_service);
+
     void inject_comm_fault(const std::string& fault_id);
 
 
@@ -182,6 +198,8 @@ private:
 
     bool ensure_libmodbus_connected();
 
+    bool write_holding_u16(int address, std::uint16_t value);
+
     void close_libmodbus();
 
     bool is_tcp_backend() const {
@@ -198,6 +216,8 @@ private:
     double           simulated_p_kw_{500.0};
     double           simulated_q_kvar_{50.0};
     bool             simulated_q_override_{false};
+    double           inverter_limit_pct_{100.0};
+    bool             inverter_in_service_{true};
 
     std::optional<std::string> injected_fault_;
 

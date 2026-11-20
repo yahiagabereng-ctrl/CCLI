@@ -175,6 +175,18 @@ struct ModbusConfig {
     /** stderr log on each successful Modbus poll (lab bus trace). */
     bool trace{false};
 
+    /**
+     * Huawei SUN2000 commands on this same master (FC06).
+     * Off unless the yaml asks: the meter map must not receive 40125/40201.
+     * Limit (stay in service) is reg 40125, gain 10. Out of service is reg 40201.
+     */
+    bool   inverter_control{false};
+    bool   inverter_in_service{true};
+    int    reg_p_limit_pct{40125};
+    double p_limit_gain{10.0};
+    int    reg_power_on{40200};
+    int    reg_shutdown{40201};
+
     ModbusCommissioningConfig commissioning{};
 };
 
